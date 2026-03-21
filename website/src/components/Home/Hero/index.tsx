@@ -6,11 +6,14 @@
 import React from 'react';
 import GitHubButton from 'react-github-btn';
 import {useColorMode} from '@docusaurus/theme-common';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 import styles from './styles.module.css';
 
 function Hero() {
   const {colorMode} = useColorMode();
+  const docsUrl = useBaseUrl('/docs');
+  const aiCodingUrl = useBaseUrl('/ai-coding/intro');
   return (
     <div className={styles.container}>
       <div className={styles.socialLinks}>
@@ -37,10 +40,10 @@ function Hero() {
           기업 오픈소스 관리 체계 구축 실전 가이드
         </p>
         <div className={styles.buttonContainer}>
-          <a href="/docs" className={styles.primaryButton}>
+          <a href={docsUrl} className={styles.primaryButton}>
             체계구축 시작하기
           </a>
-          <a href="/ai-coding/intro" className={styles.secondaryButton}>
+          <a href={aiCodingUrl} className={styles.secondaryButton}>
             AI코딩 가이드
           </a>
         </div>
