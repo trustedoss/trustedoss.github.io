@@ -26,7 +26,7 @@ const config: Config = {
   organizationName: 'haksungjang',
   projectName: 'trustedoss',
   url: 'https://trustedoss.dev',
-  baseUrl: '/',
+  baseUrl: '/trustedoss/',
   clientModules: [
     './modules/jumpToFragment.ts',
   ],
