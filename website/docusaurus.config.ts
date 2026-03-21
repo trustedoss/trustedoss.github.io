@@ -22,10 +22,10 @@ const config: Config = {
   },
 
   title: 'Trusted OSS',
-  tagline: '신뢰할 수 있는 오픈소스 공급망 관리 가이드',
+  tagline: '신뢰할 수 있는 오픈소스 공급망 관리',
   organizationName: 'haksungjang',
   projectName: 'trustedoss',
-  url: 'https://trustedoss.dev',
+  url: 'https://haksungjang.github.io/',
   baseUrl: '/trustedoss/',
   clientModules: [
     './modules/jumpToFragment.ts',

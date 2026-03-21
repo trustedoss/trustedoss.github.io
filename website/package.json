@@ -1,10 +1,10 @@
 {
   "name": "trustedoss",
-  "description": "신뢰할 수 있는 오픈소스 공급망 관리 가이드",
+  "description": "신뢰할 수 있는 오픈소스 공급망 관리",
   "version": "0.0.1",
   "private": true,
   "license": "CC-BY-4.0",
-  "homepage": "https://trustedoss.dev",
+  "homepage": "https://haksungjang.github.io/trustedoss",
   "repository": "github:haksungjang/trustedoss",
   "bugs": {
     "url": "https://github.com/haksungjang/trustedoss/issues"
