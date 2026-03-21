@@ -74,6 +74,7 @@ sidebar_position: 2
 | G1 | G1.4 | 교육 프로그램 수립 | 담당자 역량 확보 및 지속적 유지; 표준 모두 교육 이수 증빙 요구 | 3.1.2 | 3.1.2 | 06-training-manager | output/training/curriculum.md | M6 | [공통] |
 | G1 | G1.5 | 프로그램 범위 정의 | 대상 소프트웨어·제품 명확화로 효율적 자원 배분 가능 | 3.1.4 | 3.1.4 | 03-policy-generator | output/policy/oss-policy.md | M1 | [공통] |
 | G1 | G1.6 | 라이선스 의무사항 검토 절차 수립 | 배포 전 라이선스 위반 방지; Copyleft 소스코드 공개 의무 등 | 3.1.5 | — | 04-process-designer | output/process/usage-approval.md | M2 | [5230] |
+| G1 | G1.7 | 프로그램 참여자 인식 기록 | 역할별 담당자가 정책·목표·기여 방법을 이해했는지 개인 단위로 문서화; 감사 시 핵심 증빙 자료 | 3.2.3 | 3.2.3 | 06-training-manager | output/training/completion-tracker.md | M6 | [공통] |
 
 ### G2: 관련 업무 정의 및 지원
 
@@ -91,6 +92,8 @@ sidebar_position: 2
 | G3-L | G3L.2 | 라이선스 의무사항 이행 | GPL·LGPL·AGPL 등 Copyleft 라이선스 의무 이행; 허용 라이선스 목록 관리 | 3.3.2 | — | 04-process-designer | output/process/distribution-checklist.md, output/policy/license-allowlist.md | M2 | [5230] |
 | G3-L | G3L.3 | 컴플라이언스 산출물 생성 | 배포 시 고지문·소스코드 등 법적 의무 이행 증빙 파일 제공 의무 | 3.4.1 | — | 05-sbom-analyst | output/sbom/license-report.md | M3 | [5230] |
 | G3-L | G3L.4 | 오픈소스 기여 정책 수립 | 업스트림 기여 시 IP 유출·라이선스 오염 위험 사전 방지 | 3.5.1 | — | 03-policy-generator | output/policy/oss-policy.md | M1 | [5230] |
+| G3-L | G3L.5 | 라이선스 의무사항 충족 확인 프로세스 | 배포 전 모든 라이선스 의무(소스코드 공개, 고지문 포함 등)가 실제로 이행되었는지 검증; 배포 승인 관문 역할 | 3.4.2 | — | 04-process-designer | output/process/distribution-checklist.md | M2 | [5230] |
+| G3-L | G3L.6 | 오픈소스 기여 프로세스 운영 | 정책(G3L.4)을 실행하는 구체적 절차; 기여 검토·승인·제출 워크플로우; 정책만으로는 실제 기여 통제 불가 | 3.5.2 | — | 03-policy-generator | output/policy/oss-policy.md | M1 | [5230] |
 
 ### G3-S: 보안 보증 (ISO/IEC 18974 중심)
 
@@ -100,13 +103,15 @@ sidebar_position: 2
 | G3-S | G3S.2 | 취약점 추적 및 상태 관리 | 식별된 취약점을 대응 완료까지 지속 추적; 누락·방치 방지 | — | 3.3.3 | 05-vulnerability-analyst | output/vulnerability/cve-report.md | M5 | [18974] |
 | G3-S | G3S.3 | CVE 위험 점수 평가 (CVSS) | CVSS 점수 기반 우선순위 결정; 자원 배분 효율화 | — | 3.3.4 | 05-vulnerability-analyst | output/vulnerability/cve-report.md | M5 | [18974] |
 | G3-S | G3S.4 | 취약점 대응 및 패치 절차 | 발견된 취약점 신속 패치·업그레이드·완화 조치 체계 | — | 3.3.5 | 05-vulnerability-analyst | output/vulnerability/remediation-plan.md | M5 | [18974] |
+| G3-S | G3S.5 | 보안 산출물 배포 프로세스 | SBOM·CVE 리포트 등 보안 산출물을 공급망 파트너·고객에게 전달하는 공식 절차; EO 14028·EU CRA 공시 의무 대응 | — | 3.4.1 | 05-sbom-management | output/sbom/sbom-sharing-template.md | M4 | [18974, 공급망] |
+| G3-S | G3S.6 | 보안 의무사항 충족 확인 프로세스 | 식별·추적된 취약점의 대응·패치·완화 조치가 실제로 완료되었는지 검증하는 절차; 형식적 선언이 아닌 실질적 이행 확인 | — | 3.4.2 | 05-vulnerability-analyst | output/vulnerability/remediation-plan.md | M5 | [18974] |
 
 ### G3-B: SBOM 및 공급망 (공통)
 
 | 그룹 | 항목ID | 요구사항 요약 | 왜 필요한가 | ISO/IEC 5230 | ISO/IEC 18974 | 담당 Agent | 산출물 파일 | 워크숍 모듈 | 비고 |
 |------|--------|------------|-----------|-------------|--------------|-----------|------------|------------|------|
 | G3-B | G3B.1 | SBOM 생성 (CycloneDX/SPDX) | 구성 요소 투명성 확보의 출발점; 라이선스·보안 분석 모두의 입력값 | 3.3.1 | 3.3.1 | 05-sbom-guide | output/sbom/[project].cdx.json, output/sbom/sbom-commands.sh | M3 | [공통, 공급망] |
-| G3-B | G3B.2 | SBOM 관리 및 유지보수 | 릴리즈·업데이트 시 SBOM 최신 상태 유지; 형상 관리 통합 | — | 3.3.1 | 05-sbom-management | output/sbom/sbom-management-plan.md | M4 | [공급망] |
+| G3-B | G3B.2 | SBOM 관리 및 유지보수 | 릴리즈·업데이트 시 SBOM 최신 상태 유지; 형상 관리 통합 | 3.3.3 | 3.3.1 | 05-sbom-management | output/sbom/sbom-management-plan.md | M4 | [공통, 공급망] |
 | G3-B | G3B.3 | SBOM 공유 (공급망 파트너) | 하위 공급망으로 투명성 전달; NTIA·EU CRA 공급망 공개 의무 대응 | — | 3.3.1 | 05-sbom-management | output/sbom/sbom-sharing-template.md | M4 | [공급망, 규제] |
 | G3-B | G3B.4 | 공급망 취약점 지속 모니터링 | 신규 CVE 공개 시 영향받는 공급망 컴포넌트 즉시 파악 | — | 3.3.3 | 05-sbom-management | output/sbom/sbom-management-plan.md | M4 | [공급망] |
 
@@ -115,9 +120,10 @@ sidebar_position: 2
 | 그룹 | 항목ID | 요구사항 요약 | 왜 필요한가 | ISO/IEC 5230 | ISO/IEC 18974 | 담당 Agent | 산출물 파일 | 워크숍 모듈 | 비고 |
 |------|--------|------------|-----------|-------------|--------------|-----------|------------|------------|------|
 | G4 | G4.1 | ISO/IEC 5230 자체 인증 선언 | 라이선스 컴플라이언스 능력 공식 선언; 공급망 파트너 신뢰 확보 | 3.6.1 | — | 07-conformance-preparer | output/conformance/declaration-draft.md | M6 | [5230] |
-| G4 | G4.2 | ISO/IEC 18974 자체 인증 선언 | 보안 보증 능력 공식 선언; EO 14028 및 EU CRA 대응 증빙 | — | 3.4.1 | 07-conformance-preparer | output/conformance/declaration-draft.md | M6 | [18974] |
-| G4 | G4.3 | 인증 유효기간 관리 (18개월) | 두 표준 모두 18개월마다 재선언 의무; 자동 만료 방지 | 3.6.2 | 3.4.2 | 07-conformance-preparer | output/conformance/submission-guide.md | M6 | [공통] |
-| G4 | G4.4 | 정기 갭 분석 및 정책 갱신 | 기술·규제 환경 변화에 따른 체계 현행화; 갱신 선언 전 필수 | 3.6.2 | 3.4.2 | 07-conformance-preparer | output/conformance/gap-analysis.md | M6 | [공통] |
+| G4 | G4.2 | ISO/IEC 18974 자체 인증 선언 | 보안 보증 능력 공식 선언; EO 14028 및 EU CRA 대응 증빙 | — | 3.5.1 | 07-conformance-preparer | output/conformance/declaration-draft.md | M6 | [18974] |
+| G4 | G4.3 | 인증 유효기간 관리 (18개월) | 두 표준 모두 18개월마다 재선언 의무; 자동 만료 방지 | 3.6.2 | 3.5.2 | 07-conformance-preparer | output/conformance/submission-guide.md | M6 | [공통] |
+| G4 | G4.4 | 정기 갭 분석 및 정책 갱신 | 기술·규제 환경 변화에 따른 체계 현행화; 갱신 선언 전 필수 | 3.6.2 | 3.5.2 | 07-conformance-preparer | output/conformance/gap-analysis.md | M6 | [공통] |
+| G4 | G4.5 | 배포 소프트웨어 알려진 취약점 없음 확인 | 외부 배포 소프트웨어에 알려진 취약점이 없음을 배포 전 검증·선언; 인증 선언의 실질적 전제 조건 | — | 3.5.3 | 07-conformance-preparer | output/conformance/declaration-draft.md | M6 | [18974] |
 
 ---
 
@@ -126,12 +132,12 @@ sidebar_position: 2
 | 모듈 | 명칭 | 포함 항목 | 관련 챕터 |
 |------|------|---------|---------|
 | M0 | 공급망 보안 개요 | 두 표준 소개, 이 매핑 문서 리뷰 | docs/00-overview, docs/00b-supply-chain |
-| M1 | 조직 + 정책 | G1.1~G1.5, G2.1~G2.3, G3L.4 | docs/02-organization, docs/03-policy |
-| M2 | 프로세스 | G1.6, G3L.2 | docs/04-process |
+| M1 | 조직 + 정책 | G1.1~G1.5, G2.1~G2.3, G3L.4, G3L.6 | docs/02-organization, docs/03-policy |
+| M2 | 프로세스 | G1.6, G3L.2, G3L.5 | docs/04-process |
 | M3 | SBOM 생성 + 라이선스 분석 | G3B.1, G3L.1, G3L.3 | docs/05-tools/sbom-generation |
-| M4 | SBOM 관리 + 공유 | G3B.2, G3B.3, G3B.4 | docs/05-tools/sbom-management |
-| M5 | 취약점 분석 | G3S.1~G3S.4 | docs/05-tools/vulnerability |
-| M6 | 교육 + 인증 선언 | G1.2(교육), G1.4, G2.3, G4.1~G4.4 | docs/06-training, docs/07-conformance |
+| M4 | SBOM 관리 + 공유 | G3B.2, G3B.3, G3B.4, G3S.5 | docs/05-tools/sbom-management |
+| M5 | 취약점 분석 | G3S.1~G3S.4, G3S.6 | docs/05-tools/vulnerability |
+| M6 | 교육 + 인증 선언 | G1.4, G1.7, G2.3, G4.1~G4.5 | docs/06-training, docs/07-conformance |
 
 ---
 
@@ -139,15 +145,15 @@ sidebar_position: 2
 
 | 구분 | 항목 수 |
 |------|--------|
-| ISO/IEC 5230 매핑 항목 수 | 16 |
-| ISO/IEC 18974 매핑 항목 수 | 19 |
-| 두 표준 공통 항목 수 | 10 |
-| 공급망 관련 항목 수 (`[공급망]` 태그) | 4 |
+| ISO/IEC 5230 매핑 항목 수 | 20 |
+| ISO/IEC 18974 매핑 항목 수 | 23 |
+| 두 표준 공통 항목 수 | 11 |
+| 공급망 관련 항목 수 (`[공급망]` 태그) | 5 |
 | 규제 연계 항목 수 (`[규제]` 태그) | 1 |
-| **전체 항목 수** | **25** |
+| **전체 항목 수** | **31** |
 
-> **참고:** 공통 항목(10개)은 5230(16개)과 18974(19개) 양쪽에 모두 계산된다.
-> 두 표준을 동시에 준비하면 공통 항목을 한 번만 작업하여 약 40%를 절약할 수 있다.
+> **참고:** 공통 항목(11개)은 5230(20개)과 18974(23개) 양쪽에 모두 계산된다.
+> 두 표준을 동시에 준비하면 공통 항목을 한 번만 작업하여 약 35%를 절약할 수 있다.
 
 ---
 

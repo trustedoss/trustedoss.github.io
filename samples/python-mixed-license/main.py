@@ -22,7 +22,7 @@ def main():
     print("=== 라이선스 혼재 샘플 앱 ===")
 
     # PyYAML (MIT) 사용 예시
-    data = yaml.safe_load("name: trusted-oss-kit\nversion: 1.0")
+    data = yaml.safe_load("name: trustedoss\nversion: 1.0")
     print(f"YAML 파싱 결과 (MIT): {data}")
 
     # requests (Apache-2.0) 사용 예시

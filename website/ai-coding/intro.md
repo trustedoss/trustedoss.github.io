@@ -3,7 +3,7 @@ id: intro
 title: AI 코딩 도구 소개
 sidebar_label: 소개
 sidebar_position: 1
-slug: /ai-coding/intro
+slug: intro
 ---
 
 # AI 코딩 도구와 오픈소스 컴플라이언스

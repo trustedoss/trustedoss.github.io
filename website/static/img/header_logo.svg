@@ -1,7 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 40" width="200" height="40">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40">
   <!-- Shield icon -->
   <path d="M8 4 L20 2 L32 4 L32 18 Q32 28 20 34 Q8 28 8 18 Z" fill="#1a7f5a" stroke="#fff" stroke-width="1"/>
   <path d="M14 16 L18 20 L26 12" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <!-- Text -->
-  <text x="40" y="26" font-family="'Helvetica Neue', Arial, sans-serif" font-size="20" font-weight="700" fill="#ffffff">Trusted OSS</text>
 </svg>

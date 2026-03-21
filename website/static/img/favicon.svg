@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40">
+  <!-- Background -->
+  <rect width="40" height="40" rx="8" fill="#1a7f5a"/>
+  <!-- Shield icon -->
+  <path d="M10 8 L20 6 L30 8 L30 19 Q30 27 20 33 Q10 27 10 19 Z" fill="#fff" opacity="0.9"/>
+  <path d="M15 18 L19 22 L26 15" stroke="#1a7f5a" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

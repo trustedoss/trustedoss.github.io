@@ -83,7 +83,7 @@ echo "[4/5] 필수 파일 존재 확인..."
 REQUIRED_FILES=(
   "CLAUDE.md"
   "README.md"
-  "docusaurus.config.ts"
+  "website/docusaurus.config.ts"
   ".github/workflows/deploy.yml"
   ".claude/settings.json"
   ".claude/skills/create-doc.md"

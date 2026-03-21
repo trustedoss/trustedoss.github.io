@@ -78,6 +78,21 @@ ISO/IEC 5230(라이선스 컴플라이언스)과 ISO/IEC 18974(보안 보증)는
 
 ---
 
+:::note 실습 전 확인
+이 실습은 trustedoss 프로젝트 루트에서
+Claude Code 를 실행하는 환경을 전제합니다.
+
+- [ ] trustedoss 저장소를 클론했나요?
+      `git clone https://github.com/haksungjang/trustedoss.git`
+- [ ] 터미널에서 프로젝트 루트에 있나요?
+      `cd trustedoss`
+- [ ] Claude Code 가 실행 중인가요?
+      `claude`
+
+모두 체크되지 않았다면
+→ [1. 환경 준비](../01-setup/) 챕터를 먼저 진행하세요.
+:::
+
 ## 3. 셀프스터디 경로
 
 :::info 셀프스터디 모드 (약 1시간)
@@ -128,6 +143,48 @@ open output/policy/license-allowlist.md
 아래 5번 섹션의 체크리스트를 항목별로 확인한다.
 
 > 이 단계는 ISO/IEC 5230 3.5.1 (오픈소스 기여 정책 수립) 요구사항을 충족합니다.
+
+---
+
+:::tip 예상 결과
+실습이 정상적으로 완료되면
+아래 파일이 생성됩니다.
+
+**생성 파일:**
+- `output/policy/oss-policy.md`
+- `output/policy/license-allowlist.md`
+
+**파일 내 반드시 포함되어야 할 항목:**
+- 오픈소스 사용 허용 범위 및 제한
+- 라이선스 의무 이행 절차
+- 담당자 및 연락처
+- 정책 위반 시 처리 절차
+- 정책 검토 주기
+- 알려진 취약점 대응 절차 (18974 요구사항)
+
+생성된 파일을 열어 위 항목이 포함되어 있는지
+직접 확인하고 필요시 보완하세요.
+:::
+
+:::info 충족되는 표준 요구사항
+이 실습을 완료하면 아래 요구사항이 충족됩니다.
+
+**ISO/IEC 5230**
+
+| 항목 ID | 요구사항 | 자체인증 체크리스트 |
+|---|---|---|
+| 3.1.1 | 오픈소스 정책 문서화 | Do you have a documented open source policy? |
+| 3.1.4 | 프로그램 범위 정의 | Is the scope of your open source program documented? |
+| 3.5.1 | 오픈소스 커뮤니티 참여 정책 | Do you have a policy for open source community participation? |
+| 3.5.2 | 오픈소스 기여 프로세스 | Do you have a process for contributing to open source projects? |
+
+**ISO/IEC 18974**
+
+| 항목 ID | 요구사항 | 자체인증 체크리스트 |
+|---|---|---|
+| 3.1.1 | 보안 보증 정책 문서화 | Do you have a documented open source security assurance policy? |
+| 3.1.4 | 보안 프로그램 범위 정의 | Is the scope of your open source security assurance program documented? |
+:::
 
 ---
 
@@ -231,3 +288,16 @@ claude
 또는 `docs/04-process/` 폴더로 이동하여 챕터 문서를 읽고 진행한다.
 
 > 이 단계는 ISO/IEC 5230 3.1.1, 3.1.4, 3.5.1 및 ISO/IEC 18974 3.1.1 요구사항을 충족합니다.
+
+---
+
+## ✅ 완료 확인
+
+이 챕터를 완료하면 아래를 확인하세요.
+
+- [ ] `output/policy/oss-policy.md` 파일이 생성됨
+- [ ] `output/policy/license-allowlist.md` 파일이 생성됨
+- [ ] 정책 문서에 ISO 5230 필수 항목이 포함됨
+- [ ] 정책 문서에 ISO 18974 보안 조항이 포함됨
+- [ ] [checklist-mapping](../00-overview/checklist-mapping.md) 에서
+      3.1.1 항목에 체크 가능한 상태

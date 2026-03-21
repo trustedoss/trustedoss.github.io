@@ -37,7 +37,7 @@ const config: Config = {
       defer: true,
     },
   ],
-  favicon: 'favicon.ico',
+  favicon: 'img/favicon.svg',
   titleDelimiter: '·',
   i18n: {
     defaultLocale: 'ko',
@@ -130,6 +130,30 @@ const config: Config = {
         path: 'ai-coding',
         routeBasePath: '/ai-coding',
         sidebarPath: require.resolve('./sidebarsAiCoding'),
+        breadcrumbs: false,
+        showLastUpdateAuthor: false,
+        showLastUpdateTime: false,
+      } satisfies PluginContentDocs.Options,
+    ],
+    [
+      'content-docs',
+      {
+        id: 'devsecops',
+        path: 'devsecops',
+        routeBasePath: 'devsecops',
+        sidebarPath: require.resolve('./sidebarsDevSecOps'),
+        breadcrumbs: false,
+        showLastUpdateAuthor: false,
+        showLastUpdateTime: false,
+      } satisfies PluginContentDocs.Options,
+    ],
+    [
+      'content-docs',
+      {
+        id: 'reference',
+        path: 'reference',
+        routeBasePath: 'reference',
+        sidebarPath: require.resolve('./sidebarsReference'),
         breadcrumbs: false,
         showLastUpdateAuthor: false,
         showLastUpdateTime: false,
@@ -244,13 +268,18 @@ const config: Config = {
           position: 'left',
         },
         {
+          to: '/devsecops/intro',
+          label: 'DevSecOps',
+          position: 'left',
+        },
+        {
           to: '/ai-coding/intro',
           label: 'AI코딩',
           position: 'left',
         },
         {
-          to: '/blog',
-          label: '블로그',
+          to: '/reference/intro',
+          label: '레퍼런스',
           position: 'left',
         },
         {
@@ -273,8 +302,16 @@ const config: Config = {
               to: '/docs',
             },
             {
+              label: 'DevSecOps',
+              to: '/devsecops/intro',
+            },
+            {
               label: 'AI코딩',
               to: '/ai-coding/intro',
+            },
+            {
+              label: '레퍼런스',
+              to: '/reference/intro',
             },
             {
               label: '블로그',

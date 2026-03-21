@@ -17,18 +17,18 @@ const features = [
     linkLabel: '가이드 시작하기',
   },
   {
+    icon: '🔒',
+    title: 'DevSecOps',
+    description: '개발 파이프라인에 보안을 통합합니다. SAST, SCA, 컨테이너 보안, CI/CD 자동화를 다룹니다.',
+    link: '/devsecops/intro',
+    linkLabel: 'DevSecOps 가이드',
+  },
+  {
     icon: '🤖',
     title: 'AI코딩',
     description: 'Claude Code, Cursor, Copilot 등 AI 코딩 도구와 오픈소스 컴플라이언스를 함께 관리합니다.',
     link: '/ai-coding/intro',
     linkLabel: 'AI코딩 가이드',
-  },
-  {
-    icon: '📰',
-    title: '블로그',
-    description: '오픈소스 공급망 보안, SBOM, 취약점 관리에 관한 최신 정보를 공유합니다.',
-    link: '/blog',
-    linkLabel: '블로그 보기',
   },
 ];
 
