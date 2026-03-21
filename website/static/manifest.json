@@ -1,0 +1,58 @@
+{
+  "name": "Trusted OSS · 신뢰할 수 있는 오픈소스 공급망 관리",
+  "short_name": "Trusted OSS",
+  "description": "ISO/IEC 5230 & 18974 기반 기업 오픈소스 관리 체계 구축 실전 가이드",
+  "theme_color": "#20232a",
+  "background_color": "#20232a",
+  "display": "minimal-ui",
+  "orientation": "any",
+  "scope": "./",
+  "start_url": "./index.html",
+  "id": "./index.html",
+  "shortcuts": [
+    {
+      "name": "체계구축 가이드",
+      "short_name": "체계구축",
+      "url": "/docs",
+      "icons": [{ "src": "img/pwa/manifest-icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "AI코딩",
+      "short_name": "AI코딩",
+      "url": "/ai-coding/intro",
+      "icons": [{ "src": "img/pwa/manifest-icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "블로그",
+      "short_name": "Blog",
+      "url": "/blog",
+      "icons": [{ "src": "img/pwa/manifest-icon-192.png", "sizes": "192x192" }]
+    }
+  ],
+  "icons": [
+    {
+      "src": "img/pwa/manifest-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "img/pwa/manifest-icon-192.maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "img/pwa/manifest-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "img/pwa/manifest-icon-512.maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

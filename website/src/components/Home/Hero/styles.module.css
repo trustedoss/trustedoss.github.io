@@ -1,0 +1,123 @@
+/**
+ * trustedoss.dev Hero styles
+ */
+
+.container {
+  min-height: 600px;
+  background: linear-gradient(135deg, #20232a 0%, #1a3a2a 50%, #0d2a1e 100%);
+  display: flex;
+  flex-direction: column;
+}
+
+.socialLinks {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+  margin-right: 1rem;
+  min-height: 36px;
+  font-size: 14px;
+}
+
+.shieldIcon {
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(0 4px 12px rgba(26, 127, 90, 0.4));
+}
+
+.title {
+  font-size: 52px;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+  color: #ffffff;
+  letter-spacing: -1px;
+}
+
+.subtitle {
+  font-weight: 600;
+  color: #a8e6cf;
+  font-size: 24px;
+  margin-bottom: 1rem;
+}
+
+.description {
+  color: #c8d8cf;
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.content {
+  flex: 1;
+  padding: 60px 24px 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.primaryButton {
+  background-color: #1a7f5a;
+  color: #ffffff;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 99rem;
+  font-weight: bold;
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  text-decoration: none;
+}
+
+.primaryButton:hover {
+  color: #ffffff;
+  background-color: #22a070;
+}
+
+.secondaryButton {
+  border: none;
+  padding: 12px 28px;
+  border-radius: 99rem;
+  font-weight: bold;
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  color: #a8e6cf;
+  border: 1px solid rgba(168, 230, 207, 0.4);
+  background-color: rgba(255, 255, 255, 0.05);
+  text-decoration: none;
+}
+
+.secondaryButton:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #a8e6cf;
+}
+
+@media (max-width: 450px) {
+  .title {
+    font-size: 36px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    width: calc(100% - 2rem);
+  }
+}

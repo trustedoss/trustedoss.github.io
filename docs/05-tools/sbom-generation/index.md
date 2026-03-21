@@ -1,0 +1,336 @@
+---
+작성일: 2026-03-20
+버전: 1.0
+충족 체크리스트:
+  - "ISO/IEC 5230: [3.3.1, 3.3.2, 3.4.1]"
+  - "ISO/IEC 18974: [3.3.1]"
+셀프스터디 소요시간: 1.5시간
+워크숍 소요시간: 90분 (M3 모듈)
+---
+
+# SBOM 생성: syft와 cdxgen으로 소프트웨어 구성 명세 만들기
+
+## 1. 이 챕터에서 하는 일
+
+이 챕터에서는 syft와 cdxgen을 사용해 프로젝트의 CycloneDX 형식 SBOM(Software Bill of Materials)을 생성한다. 두 도구 모두 Docker로 실행하므로 별도 설치가 필요 없으며, 명령어 몇 줄로 프로젝트의 전체 의존성 목록을 JSON 파일로 만들 수 있다.
+
+생성된 SBOM은 이후 라이선스 분석(05-sbom-analyst)과 취약점 스캔(05-vulnerability-analyst)의 기반이 된다. SBOM이 정확할수록 컴플라이언스 리스크와 보안 취약점을 빠짐없이 파악할 수 있다.
+
+---
+
+## 2. 배경 지식
+
+### SBOM이란?
+
+SBOM(Software Bill of Materials)은 소프트웨어에 포함된 모든 구성 요소의 목록이다. 식품 영양성분표처럼, 소프트웨어에 어떤 오픈소스가 어떤 버전으로 들어있는지 명시한다. ISO/IEC 5230과 18974 모두 SBOM 생성을 핵심 요구사항으로 규정한다 (G3B.1).
+
+SBOM이 중요한 이유:
+- 어떤 오픈소스 라이선스가 포함되어 있는지 파악 (컴플라이언스)
+- 취약한 버전의 라이브러리가 있는지 확인 (보안)
+- 제품 배포 시 고객 또는 규제 기관에 소프트웨어 구성 정보 제공
+
+### 사용 도구 소개
+
+| 도구 | 제작사 | 특징 | 적합한 상황 |
+|------|--------|------|------------|
+| syft | Anchore | 빠르고 가볍다, 단일 바이너리, 다양한 언어 지원 | Python, Node.js, Go |
+| cdxgen | CycloneDX | CycloneDX 전용, 언어별 정밀 분석 | Java(Maven/Gradle), 정밀 분석 필요 시 |
+
+두 도구 모두 CycloneDX JSON 형식으로 출력할 수 있으며, 이 챕터에서는 CycloneDX를 표준 포맷으로 사용한다.
+
+### CycloneDX JSON 형식 주요 필드
+
+```json
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.4",
+  "metadata": {
+    "component": {
+      "name": "my-app",
+      "version": "1.0.0",
+      "type": "application"
+    }
+  },
+  "components": [
+    {
+      "name": "log4j-core",
+      "version": "2.14.1",
+      "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1",
+      "licenses": [{"license": {"id": "Apache-2.0"}}]
+    }
+  ]
+}
+```
+
+주요 필드 설명:
+- `bomFormat`, `specVersion`: CycloneDX 포맷 식별자
+- `metadata.component`: 분석 대상 소프트웨어 정보
+- `components[]`: 의존성 목록 (라이선스, PURL 포함)
+- `vulnerabilities[]`: 취약점 정보 (있을 경우)
+
+### Docker로 syft 실행 — 언어/패키지매니저별 명령어
+
+| 언어 | 패키지매니저 | 명령어 |
+|------|------------|--------|
+| Java | Maven/Gradle | `docker run --rm -v $(pwd):/project anchore/syft:latest /project --output cyclonedx-json > output/sbom/sbom.cdx.json` |
+| Python | pip | `docker run --rm -v $(pwd):/project anchore/syft:latest /project --output cyclonedx-json > output/sbom/sbom.cdx.json` |
+| Node.js | npm | `docker run --rm -v $(pwd):/project anchore/syft:latest /project --output cyclonedx-json > output/sbom/sbom.cdx.json` |
+| Go | go mod | `docker run --rm -v $(pwd):/project anchore/syft:latest /project --output cyclonedx-json > output/sbom/sbom.cdx.json` |
+
+전체 명령어 (각 언어 동일, 디렉토리만 조정):
+
+```bash
+# output/sbom 폴더 생성
+mkdir -p output/sbom
+
+# syft로 SBOM 생성
+docker run --rm \
+  -v $(pwd):/project \
+  anchore/syft:latest \
+  /project \
+  --output cyclonedx-json \
+  > output/sbom/sbom.cdx.json
+```
+
+### Docker로 cdxgen 실행 (더 정밀한 분석 필요 시)
+
+```bash
+docker run --rm \
+  -v $(pwd):/app \
+  -w /app \
+  ghcr.io/cyclonedx/cdxgen:latest \
+  -r /app \
+  -o /app/output/sbom/sbom-cdxgen.cdx.json
+```
+
+Java Maven 프로젝트에 권장한다. syft보다 의존성 추적이 더 정밀하며, 전이 의존성(transitive dependencies)까지 더 완전하게 수집한다.
+
+### GitHub Actions 자동화
+
+SBOM 생성을 CI/CD 파이프라인에 통합하면 모든 릴리스마다 최신 SBOM이 자동으로 생성된다.
+
+```yaml
+# .github/workflows/sbom.yml
+name: Generate SBOM
+
+on:
+  push:
+    branches: [main]
+  release:
+    types: [published]
+
+jobs:
+  sbom:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate SBOM with syft
+        run: |
+          docker run --rm \
+            -v ${{ github.workspace }}:/project \
+            anchore/syft:latest \
+            /project --output cyclonedx-json \
+            > sbom.cdx.json
+      - name: Upload SBOM as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: sbom
+          path: sbom.cdx.json
+```
+
+### samples/ 프로젝트로 실습
+
+실습용 샘플 프로젝트가 두 가지 제공된다:
+
+- `samples/java-vulnerable/`: log4j-core 2.14.1 포함 → CVE-2021-44228 탐지 예상
+- `samples/python-mixed-license/`: GPL 혼재 → 라이선스 충돌 탐지 예상
+
+```bash
+# java-vulnerable 샘플로 실습
+docker run --rm \
+  -v $(pwd)/samples/java-vulnerable:/project \
+  anchore/syft:latest \
+  /project --output cyclonedx-json \
+  > output/sbom/java-vulnerable.cdx.json
+```
+
+### 트러블슈팅
+
+| 증상 | 원인 | 해결 방법 |
+|------|------|---------|
+| SBOM이 비어있음 (`components: []`) | lock 파일 없음 | `package-lock.json`, `requirements.txt`, `pom.xml` 등 확인 |
+| Docker 볼륨 마운트 오류 | 경로 문제 | 절대 경로로 변경: `-v /full/path:/project` |
+| Permission denied | 권한 문제 | `sudo` 또는 Docker 그룹 추가 |
+| 이미지 풀링 오래 걸림 | 네트워크 | 최초 실행 시 정상, 이후 캐시 사용 |
+
+---
+
+## 3. 셀프스터디 경로
+
+:::info 셀프스터디 모드 (약 1시간 30분)
+처음 실행 시 Docker 이미지 풀링으로 10-15분 추가 소요될 수 있습니다.
+:::
+
+단계별 실습:
+
+**단계 1** — Docker Desktop 실행 확인
+
+```bash
+docker ps
+```
+
+오류 없이 실행되면 Docker가 준비된 것이다.
+
+**단계 2** — 분석할 프로젝트 선택
+
+본인의 프로젝트를 사용할 수도 있고, 샘플을 사용할 수도 있다. 처음이라면 `samples/java-vulnerable/`을 권장한다.
+
+**단계 3** — 출력 폴더 생성
+
+```bash
+mkdir -p output/sbom
+```
+
+**단계 4** — sbom-guide agent 실행
+
+```bash
+cd agents/05-sbom-guide
+claude
+```
+
+agent가 프로젝트 정보를 묻는 3가지 질문을 한다:
+- 프로젝트 경로 (예: `samples/java-vulnerable`)
+- 주 언어 (예: `Java`)
+- 패키지 매니저 (예: `Maven`)
+
+**단계 5** — 생성된 스크립트 실행
+
+agent가 `output/sbom/sbom-commands.sh`를 생성하면 실행한다:
+
+```bash
+bash output/sbom/sbom-commands.sh
+```
+
+**단계 6** — SBOM 파일 존재 확인
+
+```bash
+ls -lh output/sbom/*.cdx.json
+```
+
+파일이 존재하고 크기가 0보다 크면 정상이다. 파일을 열어 `components` 배열이 비어있지 않은지 확인한다.
+
+**단계 7** — 라이선스 분석 실행
+
+```bash
+cd agents/05-sbom-analyst
+claude
+```
+
+**단계 8** — 분석 결과 확인
+
+```bash
+ls output/sbom/license-report.md output/sbom/copyleft-risk.md
+```
+
+**각 단계 예상 결과:**
+
+| 단계 완료 후 | 예상 결과 |
+|------------|---------|
+| 4번 (sbom-guide) | `output/sbom/sbom-commands.sh` 생성됨 |
+| 5번 (스크립트 실행) | `output/sbom/sbom.cdx.json` 생성됨 (`components` 항목 있어야 정상) |
+| 7번 (sbom-analyst) | `output/sbom/license-report.md`, `output/sbom/copyleft-risk.md` 생성됨 |
+
+---
+
+## 4. 워크숍 경로
+
+:::tip 워크숍 모드 (M3 - 1시간 30분)
+강의 시작 전 강사가 Docker 이미지를 미리 pull 해두세요: `docker pull anchore/syft:latest`
+:::
+
+### 핵심 3단계
+
+**1단계 (15분) — 개념 설명 + 도구 소개**
+
+- SBOM 개념 및 중요성 설명
+- CycloneDX JSON 구조 함께 리뷰
+- syft와 cdxgen 차이점 설명
+- `samples/java-vulnerable/` 프로젝트 구조 확인
+
+**2단계 (45분) — SBOM 생성 + 라이선스 분석**
+
+수강생이 직접 실행:
+
+```bash
+mkdir -p output/sbom
+docker run --rm \
+  -v $(pwd)/samples/java-vulnerable:/project \
+  anchore/syft:latest \
+  /project --output cyclonedx-json \
+  > output/sbom/java-vulnerable.cdx.json
+```
+
+SBOM 생성 후 sbom-analyst agent 실행:
+
+```bash
+cd agents/05-sbom-analyst && claude
+```
+
+**3단계 (30분) — 팀 리뷰**
+
+- `output/sbom/license-report.md` 내용 팀 공유
+- `output/sbom/copyleft-risk.md` 에서 GPL 의존성 확인
+- java-vulnerable 샘플에서 log4j-core 2.14.1 탐지 여부 확인
+- 팀별 실제 프로젝트 적용 계획 논의
+
+**막혔을 때:** `output/sbom/sbom.cdx.json`이 비어있으면 lock 파일 존재 여부를 먼저 확인한다. lock 파일이 없으면 cdxgen으로 전환하여 재시도한다.
+
+```bash
+docker run --rm \
+  -v $(pwd)/samples/java-vulnerable:/app \
+  -w /app \
+  ghcr.io/cyclonedx/cdxgen:latest \
+  -r /app \
+  -o /app/output/sbom/java-vulnerable-cdxgen.cdx.json
+```
+
+---
+
+## 5. 완료 확인 체크리스트
+
+아래 항목을 모두 확인한 후 다음 단계로 넘어간다.
+
+- [ ] `output/sbom/[project].cdx.json` 생성됨
+- [ ] SBOM 파일에 `components` 배열이 비어있지 않음
+- [ ] `output/sbom/sbom-commands.sh` 생성됨
+- [ ] `output/sbom/license-report.md` 생성됨
+- [ ] `output/sbom/copyleft-risk.md` 생성됨
+
+**java-vulnerable 샘플 실습 시 예상 결과:**
+- log4j-core 2.14.1 컴포넌트 탐지
+- Apache-2.0 라이선스 식별
+- CVE-2021-44228 (Log4Shell) 취약점 플래그 예상
+
+> 이 단계는 ISO/IEC 5230 3.3.1, 3.3.2, 3.4.1 및 ISO/IEC 18974 3.3.1 요구사항을 충족합니다.
+
+---
+
+## 6. 다음 단계
+
+SBOM 생성과 라이선스 분석이 완료되면, SBOM 관리 체계를 수립하는 단계로 넘어간다.
+
+```bash
+cd agents/05-sbom-management
+claude
+```
+
+또는 `docs/05-tools/sbom-management/` 로 이동하여 가이드를 확인한다.
+
+취약점 분석을 먼저 진행하려면:
+
+```bash
+cd agents/05-vulnerability-analyst
+claude
+```
+
+완료 후 `output/progress.md`를 업데이트하여 진행 상황을 기록한다.

@@ -1,0 +1,43 @@
+# 개인 산출물
+output/
+!output-sample/
+
+# 로컬 Claude 설정
+.claude/settings.local.json
+
+# Logs
+logs
+*.log
+yarn-debug.log*
+yarn-error.log*
+
+node_modules
+*.local
+
+# Editor directories and files
+.vscode/*
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+*.tsbuildinfo
+
+packages/lint-examples/out/
+
+website/.docusaurus/
+website/.cache-loader
+website/build/
+website/node_modules/
+
+# https://yarnpkg.com/getting-started/qa#which-files-should-be-gitignored
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions

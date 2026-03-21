@@ -1,0 +1,133 @@
+/**
+ * trustedoss.dev CallToAction styles
+ */
+
+.wrapper {
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+  padding: 4rem 1rem;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto 4rem;
+  padding: 0 1rem;
+}
+
+.featureCard {
+  background: var(--ifm-card-background-color, #f8f9fa);
+  border: 1px solid var(--ifm-color-emphasis-200, #e8e8e8);
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  text-align: left;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+[data-theme='dark'] .featureCard {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.featureCard:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.featureIcon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.featureTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: var(--ifm-heading-color);
+}
+
+.featureDescription {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--ifm-color-emphasis-700);
+  margin-bottom: 1.5rem;
+}
+
+.featureLink {
+  color: #1a7f5a;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.featureLink:hover {
+  color: #22a070;
+  text-decoration: underline;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 3rem 2rem;
+  margin: 0 auto;
+  max-width: 700px;
+  background: linear-gradient(135deg, #1a3a2a 0%, #0d2a1e 100%);
+  border-radius: 20px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #a8e6cf;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.primaryButton {
+  background-color: #1a7f5a;
+  color: #ffffff;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 99rem;
+  font-weight: bold;
+  font-size: 17px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  margin-top: 0.5rem;
+}
+
+.primaryButton:hover {
+  background-color: #22a070;
+  color: #ffffff;
+}
+
+@media (max-width: 900px) {
+  .featuresGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .featuresGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+}

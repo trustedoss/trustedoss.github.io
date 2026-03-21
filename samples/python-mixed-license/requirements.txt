@@ -1,0 +1,7 @@
+# Permissive 라이선스 패키지
+PyYAML==6.0.1          # MIT 라이선스
+requests==2.31.0       # Apache-2.0 라이선스
+celery==5.3.4          # BSD 라이선스
+
+# GPL 라이선스 패키지 (라이선스 리스크 시연용)
+mysql-connector-python==8.1.0  # GPL-2.0 라이선스 (Oracle)

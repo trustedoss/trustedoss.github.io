@@ -1,0 +1,16 @@
+[build]
+  base    = ""
+  publish = "website/build"
+  command = "yarn && cd website && yarn build"
+
+[context.production.environment]
+  NODE_VERSION = "22"
+
+[context.deploy-preview.environment]
+  NODE_VERSION = "22"
+  PREVIEW_DEPLOY = "true"
+
+[[headers]]
+  for = "/movies.json"
+    [headers.values]
+    Access-Control-Allow-Origin = "*"

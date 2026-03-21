@@ -1,0 +1,5 @@
+{
+  "_comment": "이 파일을 settings.local.json 으로 복사하여 사용하세요.",
+  "_comment2": "settings.local.json 은 .gitignore 에 의해 GitHub에 올라가지 않습니다.",
+  "example_local_path": "/path/to/your/project"
+}
