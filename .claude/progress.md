@@ -107,8 +107,12 @@
 - [x] docs/05-tools/sbom-generation/CLAUDE.md — 잘못된 samples 경로 수정 (java-app → java-vulnerable 등)
 - [x] verify.sh 6/6 PASS 확인
 
+### 지시 N (완료)
+- [x] templates/ 나머지 4개 구조 정의 (policy/oss-policy, process/usage-approval, training/curriculum, conformance/submission-guide)
+- [x] README.md — 저장소 구조(website/ 설명) 섹션 추가, 00b-supply-chain → 00-overview/supply-chain 경로 수정
+- [x] verify.sh 6/6 PASS 확인
+
 ### 다음 작업 (예정)
-- templates/ 나머지 산출물 (policy/oss-policy, process/usage-approval, training/curriculum, conformance/submission-guide) 구조 정의
 - docs/ 챕터별 실습 블록 보강 (Phase 1 콘텐츠 완성)
 
 ---

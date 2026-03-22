@@ -24,6 +24,24 @@ cd trustedoss && claude
 
 ---
 
+## 저장소 구조
+
+```
+trustedoss/
+├── docs/          # 챕터별 가이드 문서 (핵심)
+├── agents/        # 산출물 자동 생성 Agent
+├── templates/     # 문서 템플릿
+├── samples/       # 실습용 샘플 프로젝트 (Log4Shell 등)
+├── output/        # 생성된 산출물 (.gitignore, 직접 편집)
+├── .claude/       # Claude Code 설정 및 skills
+└── website/       # 문서 웹사이트 소스 (Docusaurus — 체계 구축과 무관)
+```
+
+> `website/`는 이 문서를 웹사이트로 배포하기 위한 코드입니다. 체계 구축 작업과 무관하며,
+> `claude` 실행 시 자동으로 제외됩니다 (`.claudeignore` 적용).
+
+---
+
 ## 두 가지 사용 방법
 
 | 방법 | 대상 | 소요시간 | 시작 방법 |
@@ -38,7 +56,7 @@ cd trustedoss && claude
 | 챕터 | 내용 | 셀프스터디 | 워크숍 모듈 |
 |------|------|---------|-----------|
 | 00-overview | 두 표준 개요 및 체크리스트 매핑 | 1시간 | M0 (30분) |
-| 00b-supply-chain | 소프트웨어 공급망 보안 + SBOM 개념 | 1시간 | M0 포함 |
+| 00-overview/supply-chain | 소프트웨어 공급망 보안 + SBOM 개념 | 1시간 | M0 포함 |
 | 01-setup | 환경 준비 (Docker, Git, Claude Code) | 30분 | 사전 준비 |
 | 02-organization | 조직 구성 및 담당자 지정 | 1시간 | M1 |
 | 03-policy | 오픈소스 정책 수립 | 1시간 | M1 |
