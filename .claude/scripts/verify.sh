@@ -131,13 +131,27 @@ else
 fi
 
 # 검증 6: ISO/IEC 18974 섹션 번호 형식 확인
-# 18974는 §4.x.x 체계 — §3.x.x 형식이 같은 줄에 있으면 오류
+# 18974는 §4.x.x 체계 — 아래 2가지 패턴으로 §3.x.x 오표기 탐지
 echo "[6/6] ISO/IEC 18974 섹션 번호 형식 확인..."
 SPEC_ERRORS=0
+
+# 패턴 1: 본문 텍스트 "18974 3.x.x" 형식 (괄호·숫자 이전까지만 탐색)
+# [^(0-9]*: ( 와 숫자 이전까지만 허용 — "4.3.2.1" 안의 "3.2.1"을 오탐하지 않음
 while IFS= read -r match; do
   WARNINGS+=("18974 번호 오류 (§4.x.x 이어야 함): $match")
   SPEC_ERRORS=$((SPEC_ERRORS+1))
 done < <(grep -rn "18974[^(0-9]*3\.[1-9]\.[0-9]" \
+    docs/ agents/ \
+    --include="*.md" \
+    2>/dev/null | \
+    grep -v "\.claude/reference/")
+
+# 패턴 2: 괄호/대괄호 안 "18974 G?.? (3.x.x)" 또는 "[3.x.x]" 형식
+# [\[(]3\.: [ 또는 ( 바로 뒤에 3.이 오는 경우만 탐지 — "§4.3.1" 형태는 오탐 없음
+while IFS= read -r match; do
+  WARNINGS+=("18974 번호 오류 (§4.x.x 이어야 함): $match")
+  SPEC_ERRORS=$((SPEC_ERRORS+1))
+done < <(grep -rn "18974[^)]*[\[(]3\.[1-9]" \
     docs/ agents/ \
     --include="*.md" \
     2>/dev/null | \

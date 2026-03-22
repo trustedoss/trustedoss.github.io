@@ -83,8 +83,16 @@
 - [x] docs/.claude/settings.local.json git 추적 해제 + .gitignore 추가
 - [x] verify.sh 6/6 PASS 확인
 
+### 지시 K (완료)
+- [x] verify.sh [6/6] 정규식 이중 패턴 적용 (false positive 수정)
+  - 패턴 1: `18974[^(0-9]*3\.[1-9]\.[0-9]` — 본문 텍스트 §3.x.x 탐지
+  - 패턴 2: `18974[^)]*[\[(]3\.[1-9]` — 괄호/대괄호 형식 `G?.? (3.x.x)` 탐지
+- [x] `.claude/skills/create-doc.md` 업데이트 — 워크숍 제거, 품질 기준 추가
+- [x] `docs/CLAUDE.md` 업데이트 — 워크숍 규칙 명시
+- [x] verify.sh 6/6 PASS 확인
+
 ### 다음 작업 (예정)
-- docs/ 챕터별 실습 블록 작성 (Phase 1 콘텐츠)
+- docs/ 챕터별 실습 블록 보강 (Phase 1 콘텐츠)
 - agents/ CLAUDE.md 정비 — 각 agent 실행 맥락 명확화
 
 ---
