@@ -10,11 +10,14 @@ ISO/IEC 5230 (라이선스 컴플라이언스)과 ISO/IEC 18974 (보안 보증) 
 
 | 작업 대상 (O) | 작업 금지 (X) |
 |-------------|-------------|
-| `docs/`      | `website/src/` |
+| `docs/`      | `website/src/` (아래 예외 제외) |
 | `agents/`    | `website/static/` |
 | `templates/` | `*.ts`, `*.tsx`, `*.js` |
-| `.claude/`   | `*.css`, `*.scss` |
+| `.claude/`   | `*.css`, `*.scss` (아래 예외 제외) |
 | `CLAUDE.md`  | 설정 파일 전체 |
+
+**예외 — 사이드바 계층 구조 스타일 수정 시 허용:**
+- `website/src/css/customTheme.scss` — sidebar 계층 구분 CSS 추가 목적에 한해 수정 가능
 
 콘텐츠 작업 중 디자인/코드 수정이 필요해 보이는 상황이 생기면 작업을 멈추고 사용자에게 확인하라.
 

@@ -19,66 +19,69 @@ const sidebars: SidebarsConfig = {
       ],
     },
     {
-      type: 'doc',
-      id: 'setup/index',
+      type: 'category',
       label: '환경 준비',
+      collapsed: false,
+      items: [
+        'setup/index',
+      ],
     },
     {
-      type: 'doc',
-      id: 'organization/index',
+      type: 'category',
       label: '조직 구성',
+      collapsed: false,
+      items: [
+        'organization/index',
+      ],
     },
     {
-      type: 'doc',
-      id: 'policy/index',
+      type: 'category',
       label: '오픈소스 정책',
+      collapsed: false,
+      items: [
+        'policy/index',
+      ],
     },
     {
-      type: 'doc',
-      id: 'process/index',
+      type: 'category',
       label: '오픈소스 프로세스',
+      collapsed: false,
+      items: [
+        'process/index',
+      ],
     },
     {
       type: 'category',
       label: '도구',
       collapsed: false,
       items: [
-        {
-          type: 'category',
-          label: 'SBOM 생성',
-          items: [
-            'tools/sbom-generation/index',
-            'tools/sbom-generation/docker-cicd',
-          ],
-        },
-        {
-          type: 'doc',
-          id: 'tools/sbom-management/index',
-          label: 'SBOM 관리',
-        },
-        {
-          type: 'category',
-          label: '취약점 분석',
-          items: [
-            'tools/vulnerability/index',
-            'tools/vulnerability/tools-setup',
-          ],
-        },
+        'tools/sbom-generation/index',
+        'tools/sbom-generation/docker-cicd',
+        'tools/sbom-management/index',
+        'tools/vulnerability/index',
+        'tools/vulnerability/tools-setup',
       ],
     },
     {
-      type: 'doc',
-      id: 'training/index',
+      type: 'category',
       label: '교육 체계',
+      collapsed: false,
+      items: [
+        'training/index',
+      ],
     },
     {
-      type: 'doc',
-      id: 'conformance/index',
+      type: 'category',
       label: '자체 인증',
+      collapsed: false,
+      items: [
+        'conformance/index',
+      ],
     },
     {
       type: 'category',
       label: '개발자 가이드 (선택)',
+      collapsed: false,
       items: [
         'developer-guide/08-developer-guide',
         'developer-guide/method1-claude-md',
