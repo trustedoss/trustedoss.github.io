@@ -19,8 +19,9 @@ output/ 스캔은 `.claude/skills/validate-checklist.md` 의 순서를 따른다
 | output/organization/ 있음, output/policy/ 없음 | → agents/03-policy-generator |
 | output/policy/ 있음, output/process/ 없음 | → agents/04-process-designer |
 | output/process/ 있음, output/sbom/ 없음 | → agents/05-sbom-guide |
-| output/sbom/ 있음, output/vulnerability/ 없음 | → agents/05-sbom-analyst 후 → agents/05-vulnerability-analyst |
-| output/vulnerability/ 있음, output/training/ 없음 | → agents/05-sbom-management 후 → agents/06-training-manager |
+| output/sbom/ 있음, output/vulnerability/ 없음 | → agents/05-sbom-analyst → agents/05-vulnerability-analyst → agents/05-sbom-management 순서로 실행 |
+| output/vulnerability/ 있음, output/sbom/sbom-management-plan.md 없음 | → agents/05-sbom-management |
+| output/sbom/sbom-management-plan.md 있음, output/training/ 없음 | → agents/06-training-manager |
 | output/training/ 있음, output/conformance/ 없음 | → agents/07-conformance-preparer |
 | output/conformance/ 있음 | 완성 축하 메시지 출력 |
 

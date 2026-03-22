@@ -91,9 +91,20 @@
 - [x] `docs/CLAUDE.md` 업데이트 — 워크숍 규칙 명시
 - [x] verify.sh 6/6 PASS 확인
 
-### 다음 작업 (예정)
-- docs/ 챕터별 실습 블록 보강 (Phase 1 콘텐츠)
-- agents/ CLAUDE.md 정비 — 각 agent 실행 맥락 명확화
+### 지시 L (완료)
+- [x] 가이드 완전성 검증 (입증자료 50개 커버리지 분석)
+- [x] validate-checklist.md 13항목 → 17항목으로 보완 (distribution-checklist.md, remediation-plan.md, sbom-sharing-template.md, copyleft-risk.md 추가)
+- [x] §4.1.2.5·§4.1.2.6·§4.1.4.3 시간 기반 항목 안내 추가 (checklist-mapping.md, 07-conformance-preparer)
+- [x] §3.2.2.5 라이선스 미준수 절차 매핑 수정 (vulnerability-response.md → usage-approval.md + distribution-checklist.md)
+- [x] 05-sbom-management 실행 순서 명확화 (agents/CLAUDE.md, checklist-mapping.md 다음 단계 9단계로 수정)
+- [x] verify.sh 6/6 PASS 확인
+
+### 다음 작업 (예정) — 개선 권고사항 처리
+우선순위 순:
+1. templates/ 폴더에 각 산출물 섹션 구조 정의 추가 (산출물 품질 일관성 보장)
+2. docs/06-training/index.md — completion-tracker.md 빈 템플릿 처리 안내 추가
+3. docs/05-tools/sbom-generation/index.md — samples/ 프로젝트 사용 안내 연결
+4. docs/07-conformance/index.md — G4.5 취약점 있을 때 인증 선언 처리 안내
 
 ---
 
