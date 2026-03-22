@@ -2383,3 +2383,23 @@ figcaption > p:last-child {
   }
 }
 
+// ============================
+// 테이블 컬럼 가독성 개선
+// ============================
+.theme-doc-markdown table {
+  table-layout: auto;
+  width: 100%;
+
+  th,
+  td {
+    white-space: normal;
+    width: auto;
+  }
+
+  // 짧은 컬럼(태그, ID, 버전 등)은 줄바꿈 방지
+  th:first-child,
+  td:first-child {
+    white-space: nowrap;
+  }
+}
+
