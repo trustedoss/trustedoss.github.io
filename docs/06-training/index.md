@@ -93,6 +93,40 @@
    - 교육 이수 증빙 목적 (내부 기록용 / 감사 대비 / 인증 제출용)
 4. agent가 산출물을 생성한 뒤 `output/training/` 폴더에서 결과를 확인한다.
 
+:::tip 예상 결과
+실습을 완료하면 아래 3개 파일이 생성됩니다.
+
+**생성 파일:**
+- `output/training/curriculum.md`
+- `output/training/completion-tracker.md`
+- `output/training/resources.md`
+
+**파일 내 반드시 포함되어야 할 항목:**
+- 직군별 교육 항목과 권장 시간
+- 이수 증빙 방법 (수료증 / 서명 / 이메일 확인)
+- 정기 교육 일정 (연 1회 이상)
+
+> `completion-tracker.md`는 빈 양식으로 생성됩니다. 실제 교육 이수 후 직접 채워야 합니다.
+:::
+
+:::info 충족되는 표준 요구사항
+이 실습을 완료하면 아래 요구사항이 충족됩니다.
+
+**ISO/IEC 5230**
+
+| 항목 ID | 요구사항 | 자체인증 체크리스트 |
+|---|---|---|
+| 3.1.2 | 역량 보유 증빙 | Do you have documented evidence that each program participant has completed the necessary training? |
+| 3.1.3 | 인식 평가 | Do you have documented evidence that your program participants are aware of your open source policy? |
+
+**ISO/IEC 18974**
+
+| 항목 ID | 요구사항 | 자체인증 체크리스트 |
+|---|---|---|
+| 4.1.2 | 보안 역량 보유 증빙 | Do you have documented evidence that each program participant has the necessary competence for security assurance? |
+| 4.1.3 | 보안 인식 평가 | Do you have documented evidence that your program participants are aware of your open source security assurance policy? |
+:::
+
 ## 7. 생성되는 산출물
 
 이 챕터를 완료하면 `output/training/` 폴더에 아래 파일이 생성된다:

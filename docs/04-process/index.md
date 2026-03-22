@@ -209,6 +209,18 @@ ls output/process/
 | `output/process/vulnerability-response.md` | 취약점 대응 절차서 및 심각도별 기한 |
 | `output/process/process-diagram.md` | Mermaid 흐름도 포함 전체 프로세스 개요 |
 
+:::info 충족되는 표준 요구사항
+이 실습을 완료하면 아래 요구사항이 충족됩니다.
+
+**ISO/IEC 5230**
+
+| 항목 ID | 요구사항 | 자체인증 체크리스트 |
+|---|---|---|
+| 3.1.5 | 라이선스 의무사항 검토 절차 | Do you have a documented procedure to review and record the obligations, restrictions, and rights granted by each identified license? |
+| 3.3.2 | 배포 전 컴플라이언스 준비 | Do you have a process for creating the necessary compliance artifacts for each distribution? |
+| 3.4.1 | 컴플라이언스 산출물 관리 | Do you have a process to ensure compliance artifacts accompany each distribution? |
+:::
+
 ---
 
 ## 4. 완료 확인 체크리스트

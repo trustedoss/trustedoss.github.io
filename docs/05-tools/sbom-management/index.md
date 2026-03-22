@@ -184,6 +184,17 @@ cp output/sbom/myapp-v1.0.0-20260320.cdx.json output/sbom/myapp-latest.cdx.json
 - `output/sbom/sbom-management-plan.md`: 갱신 트리거, 갱신 주기, 책임자, 보관 정책, 모니터링 계획 포함
 - `output/sbom/sbom-sharing-template.md`: 납품처 제공용 커버 문서 (회사 정보 플레이스홀더 포함)
 
+:::info 충족되는 표준 요구사항
+이 실습을 완료하면 아래 요구사항이 충족됩니다.
+
+**ISO/IEC 18974**
+
+| 항목 ID | 요구사항 | 자체인증 체크리스트 |
+|---|---|---|
+| 4.3.1 | SBOM 관리 및 갱신 | Do you have a process for maintaining and updating the SBOM when supply software changes? |
+| 4.3.2 | SBOM 기반 취약점 모니터링 | Do you have a process for continuously monitoring supply software components for new vulnerabilities? |
+:::
+
 ---
 
 ## 4. 완료 확인 체크리스트
