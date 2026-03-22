@@ -89,7 +89,17 @@ docker ps
 
 **단계 2** — 분석할 프로젝트 선택
 
-본인의 프로젝트를 사용할 수도 있고, 샘플을 사용할 수도 있다. 처음이라면 `samples/java-vulnerable/`을 권장한다.
+본인의 프로젝트를 사용할 수도 있고, 샘플을 사용할 수도 있다.
+
+처음이라면 아래 샘플 중 하나를 선택한다:
+
+| 샘플 경로 | 언어 | 특징 | 학습 포인트 |
+|---------|------|------|-----------|
+| `samples/java-vulnerable/` | Java (Maven) | Log4Shell(CVE-2021-44228) 포함 | Critical 취약점 탐지 실습 |
+| `samples/python-mixed-license/` | Python (pip) | GPL + MIT 혼용 | Copyleft 라이선스 충돌 실습 |
+| `samples/nodejs-unlicensed/` | Node.js (npm) | 라이선스 미표기 패키지 | 라이선스 미식별 처리 실습 |
+
+> **권장**: `samples/java-vulnerable/` — Log4Shell 취약점을 직접 탐지하며 SBOM의 가치를 체감할 수 있다.
 
 **단계 3** — 출력 폴더 생성
 

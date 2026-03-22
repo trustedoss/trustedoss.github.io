@@ -99,12 +99,17 @@
 - [x] 05-sbom-management 실행 순서 명확화 (agents/CLAUDE.md, checklist-mapping.md 다음 단계 9단계로 수정)
 - [x] verify.sh 6/6 PASS 확인
 
-### 다음 작업 (예정) — 개선 권고사항 처리
-우선순위 순:
-1. templates/ 폴더에 각 산출물 섹션 구조 정의 추가 (산출물 품질 일관성 보장)
-2. docs/06-training/index.md — completion-tracker.md 빈 템플릿 처리 안내 추가
-3. docs/05-tools/sbom-generation/index.md — samples/ 프로젝트 사용 안내 연결
-4. docs/07-conformance/index.md — G4.5 취약점 있을 때 인증 선언 처리 안내
+### 지시 M (완료)
+- [x] templates/ 핵심 산출물 5개 섹션 구조 정의 (role-definition, raci-matrix, distribution-checklist, vulnerability-response, completion-tracker, gap-analysis, declaration-draft)
+- [x] docs/06-training/index.md — completion-tracker.md 빈 템플릿 처리 안내 추가 (⚠️ 블록)
+- [x] docs/05-tools/sbom-generation/index.md — 3개 샘플 프로젝트 비교 표 추가
+- [x] docs/07-conformance/index.md — G4.5 취약점 있을 때 인증 선언 처리 방법 표 추가
+- [x] docs/05-tools/sbom-generation/CLAUDE.md — 잘못된 samples 경로 수정 (java-app → java-vulnerable 등)
+- [x] verify.sh 6/6 PASS 확인
+
+### 다음 작업 (예정)
+- templates/ 나머지 산출물 (policy/oss-policy, process/usage-approval, training/curriculum, conformance/submission-guide) 구조 정의
+- docs/ 챕터별 실습 블록 보강 (Phase 1 콘텐츠 완성)
 
 ---
 

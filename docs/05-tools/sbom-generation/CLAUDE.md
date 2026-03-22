@@ -27,9 +27,9 @@ syft 또는 cdxgen 도구를 사용하여 실제 프로젝트의 SBOM을 Cyclone
 
 | 언어 | 패키지 매니저 | 권장 도구 | samples/ 프로젝트 |
 |------|------------|---------|----------------|
-| Java | Maven/Gradle | cdxgen | samples/java-app |
-| Python | pip/poetry | syft | samples/python-app |
-| Node.js | npm/yarn | syft | samples/node-app |
+| Java | Maven/Gradle | cdxgen | samples/java-vulnerable |
+| Python | pip/poetry | syft | samples/python-mixed-license |
+| Node.js | npm/yarn | syft | samples/nodejs-unlicensed |
 | Go | go mod | syft | — |
 
 ## samples/ 프로젝트 활용
@@ -37,8 +37,13 @@ syft 또는 cdxgen 도구를 사용하여 실제 프로젝트의 SBOM을 Cyclone
 실습할 프로젝트가 없다면:
 ```bash
 ls samples/
-# java-app, python-app, node-app 중 선택
+# java-vulnerable, python-mixed-license, nodejs-unlicensed 중 선택
 ```
+
+각 샘플의 학습 포인트:
+- `java-vulnerable`: Log4Shell(CVE-2021-44228) Critical 취약점 탐지 실습
+- `python-mixed-license`: GPL + MIT 혼용 → Copyleft 충돌 실습
+- `nodejs-unlicensed`: 라이선스 미표기 패키지 처리 실습
 
 ## agent 실행 안내
 
