@@ -194,7 +194,7 @@ Claude Code가 실행되면:
 
 환경 준비가 완료되면 조직 설계 단계로 진행한다.
 
-`docs/02-organization/` 챕터를 먼저 읽은 뒤 agent를 실행하거나, 바로 agent를 실행해도 된다.
+[조직 구성: 오픈소스 담당자 지정과 역할 정의](../02-organization/index.md) 챕터를 먼저 읽은 뒤 agent를 실행하거나, 바로 agent를 실행해도 된다.
 
 ```bash
 cd agents/02-organization-designer

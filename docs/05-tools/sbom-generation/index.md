@@ -189,7 +189,7 @@ cd agents/05-sbom-management
 claude
 ```
 
-또는 `docs/05-tools/sbom-management/` 로 이동하여 가이드를 확인한다.
+또는 [SBOM 관리: 만들고 끝이 아니라 관리가 시작이다](../sbom-management/index.md)로 이동하여 가이드를 확인한다.
 
 취약점 분석을 먼저 진행하려면:
 

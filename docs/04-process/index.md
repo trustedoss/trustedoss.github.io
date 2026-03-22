@@ -251,7 +251,7 @@ cd agents/05-sbom-guide
 claude
 ```
 
-또는 문서를 먼저 읽고 싶다면 `docs/05-tools/sbom-generation/` 으로 이동한다.
+또는 문서를 먼저 읽고 싶다면 [SBOM 생성: syft와 cdxgen으로 소프트웨어 구성 명세 만들기](../05-tools/sbom-generation/index.md)로 이동한다.
 
 SBOM(소프트웨어 명세서)은 이 챕터에서 만든 프로세스가 실제로 작동하는지 확인하는 핵심
 도구다. 어떤 오픈소스가 포함되어 있는지를 기계 가독 형식으로 기록하면, 라이선스 의무

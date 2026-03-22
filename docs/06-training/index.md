@@ -107,10 +107,8 @@
 
 마지막 챕터로 이동하거나 agent를 바로 실행한다:
 
-```bash
-# 챕터 문서 먼저 읽기
-docs/07-conformance/
+먼저 챕터 문서를 읽으려면 [자체 인증 선언: 마지막 단계](../07-conformance/index.md)로 이동한다.
 
-# 또는 agent 바로 실행
+```bash
 cd agents/07-conformance-preparer && claude
 ```

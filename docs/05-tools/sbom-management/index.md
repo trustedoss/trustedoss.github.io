@@ -239,10 +239,6 @@ cd agents/05-vulnerability-analyst
 claude
 ```
 
-또는 가이드 문서를 먼저 읽으려면:
-
-```bash
-cd docs/05-tools/vulnerability
-```
+또는 [취약점 분석: 오픈소스의 알려진 위험 찾기](../vulnerability/index.md)로 이동하여 가이드를 먼저 읽을 수 있다.
 
 취약점 분석 단계에서는 앞서 생성한 `output/sbom/[project].cdx.json`을 입력으로 사용하므로, SBOM 파일이 최신 상태인지 한 번 더 확인하고 진행하는 것을 권장한다.

@@ -151,4 +151,4 @@ cd agents/03-policy-generator
 claude
 ```
 
-또는 `docs/03-policy/` 으로 이동하여 정책 챕터를 먼저 읽은 뒤 진행할 수 있다.
+또는 [오픈소스 정책 수립: 법적 보호의 첫걸음](../03-policy/index.md)으로 이동하여 정책 챕터를 먼저 읽은 뒤 진행할 수 있다.

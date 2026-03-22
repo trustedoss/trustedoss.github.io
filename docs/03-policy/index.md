@@ -246,7 +246,7 @@ cd agents/04-process-designer
 claude
 ```
 
-또는 `docs/04-process/` 폴더로 이동하여 챕터 문서를 읽고 진행한다.
+또는 [오픈소스 프로세스: 사용부터 배포까지](../04-process/index.md)로 이동하여 챕터 문서를 읽고 진행한다.
 
 > 이 단계는 ISO/IEC 5230 3.1.1, 3.1.4, 3.5.1 및 ISO/IEC 18974 4.1.1 요구사항을 충족합니다.
 
