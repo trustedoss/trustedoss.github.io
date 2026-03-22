@@ -54,10 +54,24 @@
 - [x] 내부 링크 수정 (verify.sh 10개 broken link 전부 해결)
 - [x] verify.sh 5/5 PASS 확인
 
+### 지시 I (완료)
+- [x] `docs/00-overview/checklist-mapping.md` 전면 개편
+  - 10컬럼 테이블 → 항목별 `####` 섹션 + 입증자료 소형 테이블
+  - 산출물 파일 매핑 추가 (입증자료 ID → output/ 파일)
+  - 스펙 번호 오류 전수 수정 (G1.7, G3L.5, G3L.6, G3B.2, G4.2~G4.4)
+- [x] ISO/IEC 5230/18974 전문을 `.claude/reference/` 에 저장 (나침반)
+- [x] ISO/IEC 18974 섹션 번호 체계 일괄 정정 (§3.x.x → §4.x.x)
+  - agents/ CLAUDE.md 7개 파일
+  - docs/ CLAUDE.md 7개 파일
+  - docs/ index.md 4개 파일
+- [x] verify.sh [6/6] 체크 추가 (18974 §3.x.x 오표기 탐지)
+- [x] CLAUDE.md 스펙 섹션 번호 표기 규칙 추가
+- [x] 기존 broken link 수정 (docs/01-setup/method1-claude-md.md)
+- [x] verify.sh 6/6 PASS 확인
+
 ### 다음 작업 (예정)
 - docs/ 챕터별 실습 블록 작성 (Phase 1 콘텐츠)
 - agents/ CLAUDE.md 정비 — 각 agent 실행 맥락 명확화
-- verify.sh 검증 항목 확장 (Phase 3)
 - workshop/student-handout.md 초안 작성 (Phase 4)
 
 ---

@@ -16,8 +16,8 @@ ISO/IEC 5230 (라이선스 컴플라이언스)과 ISO/IEC 18974 (보안 보증) 
 | `.claude/`   | `*.css`, `*.scss` (아래 예외 제외) |
 | `CLAUDE.md`  | 설정 파일 전체 |
 
-**예외 — 사이드바 계층 구조 스타일 수정 시 허용:**
-- `website/src/css/customTheme.scss` — sidebar 계층 구분 CSS 추가 목적에 한해 수정 가능
+**예외 — 아래 목적에 한해 허용:**
+- `website/src/css/customTheme.scss` — sidebar 계층 구분 CSS 추가, 또는 테이블 가독성 개선 CSS 추가 목적에 한해 수정 가능
 
 콘텐츠 작업 중 디자인/코드 수정이 필요해 보이는 상황이 생기면 작업을 멈추고 사용자에게 확인하라.
 
@@ -68,7 +68,7 @@ ISO/IEC 5230 (라이선스 컴플라이언스)과 ISO/IEC 18974 (보안 보증) 
 bash .claude/scripts/verify.sh
 ```
 
-검증 항목: Docusaurus 빌드 / 내부 링크 / front matter YAML / 필수 파일 / 로컬 경로 노출
+검증 항목: Docusaurus 빌드 / 내부 링크 / front matter YAML / 필수 파일 / 로컬 경로 노출 / **18974 섹션 번호 형식**
 모든 항목 PASS 후에만 push 가능.
 
 ### 2. 경로 규칙
@@ -82,7 +82,18 @@ bash .claude/scripts/verify.sh
 
 명령어 예시·스크립트·에러 인용·README 설치 가이드 모두 동일 규칙 적용.
 
-### 3. settings 파일 규칙
+### 3. 스펙 섹션 번호 표기 규칙
+
+ISO/IEC 5230과 18974는 섹션 번호 체계가 다르다. 혼용하면 verify.sh [6/6] 항목이 FAIL을 낸다.
+
+| 표준 | 섹션 번호 체계 | 올바른 예 | 잘못된 예 |
+|------|------------|---------|---------|
+| ISO/IEC 5230 | `3.x.x` | `3.1.1`, `3.3.2`, `3.6.1` | — |
+| ISO/IEC 18974 | `4.x.x` | `4.1.1`, `4.3.2`, `4.4.1` | ~~`3.1.1`, `3.3.2`~~ |
+
+**스펙 전문은** `.claude/reference/iso-5230.md` 및 `.claude/reference/iso-18974.md` 참조.
+
+### 4. settings 파일 규칙
 
 | 파일 | 용도 | 로컬 경로 | 커밋 |
 |---|---|---|---|

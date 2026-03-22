@@ -43,5 +43,3 @@ sidebar_label: "방법 1: CLAUDE.md 정책"
 **한계:** 개발자가 직접 터미널에서 `npm install`을 실행하면 Claude Code가 개입하지 못한다.
 
 ---
-
-→ 다음: [방법 2: Skill 정의하기](./method2-skill.md)

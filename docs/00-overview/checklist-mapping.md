@@ -25,8 +25,8 @@ sidebar_position: 2
 ### 이 문서를 읽는 방법
 
 1. **두 표준 비교 표** → 각 표준의 목적과 범위를 먼저 파악한다
-2. **통합 매핑 테이블** → 그룹별로 어떤 agent와 산출물이 어느 요구사항을 충족하는지 확인한다
-3. **비고 컬럼** → `[공통]` `[5230]` `[18974]` `[공급망]` `[규제]` 태그로 항목 성격을 빠르게 파악한다
+2. **통합 매핑** → G1~G4 그룹별 항목 블록에서 입증자료·산출물·담당 Agent를 확인한다
+3. **태그** → `[공통]` `[5230]` `[18974]` `[공급망]` `[규제]` 로 항목 성격을 빠르게 파악한다
 4. **요약 통계** → 문서 하단에서 전체 현황을 숫자로 확인한다
 
 ---
@@ -62,68 +62,529 @@ sidebar_position: 2
 
 ---
 
-## 통합 매핑 테이블
+## 통합 매핑
 
 ### G1: 프로그램 기반
 
-| 그룹 | 항목ID | 요구사항 요약 | 왜 필요한가 | ISO/IEC 5230 | ISO/IEC 18974 | 담당 Agent | 산출물 파일 | 워크숍 모듈 | 비고 |
-|------|--------|------------|-----------|-------------|--------------|-----------|------------|------------|------|
-| G1 | G1.1 | 오픈소스 정책 수립 및 문서화 | 정책 없이 체계적 컴플라이언스 구축 불가; 모든 활동의 근거 | 3.1.1 | 3.1.1 | 03-policy-generator | output/policy/oss-policy.md | M1 | [공통] |
-| G1 | G1.2 | 보안 보증 정책 수립 | 알려진 취약점 대응 체계의 공식 근거; 18974 특화 보안 정책 요소 포함 | — | 3.1.1 | 03-policy-generator | output/policy/oss-policy.md | M1 | [18974] |
-| G1 | G1.3 | 오픈소스 담당자 및 조직 지정 | 명확한 책임 소재 없이는 의사결정 공백 발생 | 3.1.2 | 3.1.2 | 02-organization-designer | output/organization/role-definition.md | M1 | [공통] |
-| G1 | G1.4 | 교육 프로그램 수립 | 담당자 역량 확보 및 지속적 유지; 표준 모두 교육 이수 증빙 요구 | 3.1.2 | 3.1.2 | 06-training-manager | output/training/curriculum.md | M6 | [공통] |
-| G1 | G1.5 | 프로그램 범위 정의 | 대상 소프트웨어·제품 명확화로 효율적 자원 배분 가능 | 3.1.4 | 3.1.4 | 03-policy-generator | output/policy/oss-policy.md | M1 | [공통] |
-| G1 | G1.6 | 라이선스 의무사항 검토 절차 수립 | 배포 전 라이선스 위반 방지; Copyleft 소스코드 공개 의무 등 | 3.1.5 | — | 04-process-designer | output/process/usage-approval.md | M2 | [5230] |
-| G1 | G1.7 | 프로그램 참여자 인식 기록 | 역할별 담당자가 정책·목표·기여 방법을 이해했는지 개인 단위로 문서화; 감사 시 핵심 증빙 자료 | 3.2.3 | 3.2.3 | 06-training-manager | output/training/completion-tracker.md | M6 | [공통] |
+---
+
+#### G1.1 — 오픈소스 정책 수립 및 문서화 `[공통]`
+
+> ISO/IEC 5230 §3.1.1 · ISO/IEC 18974 §4.1.1
+
+정책 없이는 체계적 컴플라이언스 구축 불가; 모든 활동의 근거
+
+| 입증자료 ID | 내용 | 산출물 파일 |
+|------------|------|------------|
+| 5230 §3.1.1.1 · 18974 §4.1.1.1 | 문서화된 오픈소스 정책 | `output/policy/oss-policy.md` |
+| 5230 §3.1.1.2 · 18974 §4.1.1.2 | 정책 전파 절차 | `output/training/curriculum.md` |
+
+- **담당 Agent**: `03-policy-generator`
+- **워크숍 모듈**: M1
+
+---
+
+#### G1.2 — 보안 보증 정책의 검토 프로세스 수립 `[18974]`
+
+> ISO/IEC 18974 §4.1.1
+
+18974는 정책과 전달 방법이 항상 최신 상태를 유지하도록 정기 검토 프로세스를 추가 요구
+
+| 입증자료 ID | 내용 | 산출물 파일 |
+|------------|------|------------|
+| 18974 §4.1.1.1 | 문서화된 보안 보증 정책 (검토 프로세스 포함) | `output/policy/oss-policy.md` |
+| 18974 §4.1.2.5 | 주기적 검토 및 변경 증거 | `output/conformance/gap-analysis.md` |
+
+- **담당 Agent**: `03-policy-generator`
+- **워크숍 모듈**: M1
+
+---
+
+#### G1.3 — 오픈소스 담당자 및 조직 지정 `[공통]`
+
+> ISO/IEC 5230 §3.1.2 · ISO/IEC 18974 §4.1.2
+
+명확한 책임 소재 없이는 의사결정 공백 발생
+
+| 입증자료 ID | 내용 | 산출물 파일 |
+|------------|------|------------|
+| 5230 §3.1.2.1 · 18974 §4.1.2.1 | 역할과 책임 목록 | `output/organization/raci-matrix.md` |
+| 5230 §3.1.2.2 · 18974 §4.1.2.2 | 역할별 역량 기술 문서 | `output/organization/role-definition.md` |
+| 18974 §4.1.2.3 | 참여자 목록 및 역할 | `output/organization/role-definition.md` |
+| 5230 §3.1.2.3 · 18974 §4.1.2.4 | 역량 평가 증거 | `output/training/completion-tracker.md` |
+| 18974 §4.1.2.5 | 주기적 검토 및 프로세스 변경 증거 | `output/conformance/gap-analysis.md` |
+| 18974 §4.1.2.6 | 내부 모범 사례 일치 검증 | `output/conformance/gap-analysis.md` |
+
+- **담당 Agent**: `02-organization-designer`
+- **워크숍 모듈**: M1
+
+---
+
+#### G1.4 — 교육 프로그램 수립 `[공통]`
+
+> ISO/IEC 5230 §3.1.2 · ISO/IEC 18974 §4.1.2 (교육·훈련 측면)
+
+담당자 역량 확보 및 지속적 유지; 표준 모두 교육 이수 증빙 요구
+
+| 입증자료 ID | 내용 | 산출물 파일 |
+|------------|------|------------|
+| 5230 §3.1.2.1 · 18974 §4.1.2.1 | 역할과 책임 목록 | `output/organization/raci-matrix.md` |
+| 5230 §3.1.2.3 · 18974 §4.1.2.4 | 역량 평가 증거 | `output/training/completion-tracker.md` |
+
+- **담당 Agent**: `06-training-manager`
+- **워크숍 모듈**: M6
+
+---
+
+#### G1.5 — 프로그램 범위 정의 `[공통]`
+
+> ISO/IEC 5230 §3.1.4 · ISO/IEC 18974 §4.1.4
+
+대상 소프트웨어·제품 명확화로 효율적 자원 배분 가능
+
+| 입증자료 ID | 내용 | 산출물 파일 |
+|------------|------|------------|
+| 5230 §3.1.4.1 · 18974 §4.1.4.1 | 프로그램 적용 범위 및 한계 문서 | `output/policy/oss-policy.md` |
+| 18974 §4.1.4.2 | 성과 메트릭 | `output/policy/oss-policy.md` |
+| 18974 §4.1.4.3 | 지속적 개선 증거 | `output/conformance/gap-analysis.md` |
+
+- **담당 Agent**: `03-policy-generator`
+- **워크숍 모듈**: M1
+
+---
+
+#### G1.6 — 라이선스 의무사항 검토 절차 수립 `[5230]`
+
+> ISO/IEC 5230 §3.1.5
+
+배포 전 라이선스 위반 방지; Copyleft 소스코드 공개 의무 등
+
+| 입증자료 ID | 내용 | 산출물 파일 |
+|------------|------|------------|
+| 5230 §3.1.5.1 | 식별된 라이선스별 의무·제한·권리 검토 및 기록 절차 | `output/process/usage-approval.md` |
+
+- **담당 Agent**: `04-process-designer`
+- **워크숍 모듈**: M2
+
+---
+
+#### G1.7 — 프로그램 참여자 인식 기록 `[공통]`
+
+> ISO/IEC 5230 §3.1.3 · ISO/IEC 18974 §4.1.3
+
+역할별 담당자가 정책·목표·기여 방법을 이해했는지 개인 단위로 문서화; 감사 시 핵심 증빙 자료
+
+| 입증자료 ID | 내용 | 산출물 파일 |
+|------------|------|------------|
+| 5230 §3.1.3.1 · 18974 §4.1.3.1 | 프로그램 목표·기여 방법·비준수 영향에 대한 참여자 인식 평가 증거 | `output/training/completion-tracker.md` |
+
+- **담당 Agent**: `06-training-manager`
+- **워크숍 모듈**: M6
+
+---
 
 ### G2: 관련 업무 정의 및 지원
 
-| 그룹 | 항목ID | 요구사항 요약 | 왜 필요한가 | ISO/IEC 5230 | ISO/IEC 18974 | 담당 Agent | 산출물 파일 | 워크숍 모듈 | 비고 |
-|------|--------|------------|-----------|-------------|--------------|-----------|------------|------------|------|
-| G2 | G2.1 | 역할과 책임 (RACI) 수립 | 오픈소스 활동 주체·승인·검토 체계 명확화; 업무 공백 방지 | 3.2.2 | 3.2.2 | 02-organization-designer | output/organization/raci-matrix.md | M1 | [공통] |
-| G2 | G2.2 | 외부 문의 수신 채널 운영 | 라이선스 의무사항 이행 요청 및 보안 취약점 신고 공식 채널 의무 | 3.2.1 | 3.2.1 | 02-organization-designer | output/organization/role-definition.md | M1 | [공통] |
-| G2 | G2.3 | 인식 제고 프로그램 운영 | 전체 구성원이 정책을 알고 준수해야 컴플라이언스 실효성 보장 | 3.1.3 | 3.1.3 | 06-training-manager | output/training/resources.md | M6 | [공통] |
+---
+
+#### G2.1 — 역할과 책임 (RACI) 수립 `[공통]`
+
+> ISO/IEC 5230 §3.2.2 · ISO/IEC 18974 §4.2.2
+
+오픈소스 활동 주체·승인·검토 체계 명확화; 업무 공백 방지
+
+| 입증자료 ID | 내용 | 산출물 파일 |
+|------------|------|------------|
+| 5230 §3.2.2.1 · 18974 §4.2.2.1 | 역할 담당자/그룹/직무 이름 문서 | `output/organization/raci-matrix.md` |
+| 5230 §3.2.2.2 · 18974 §4.2.2.2 | 역할 배치 및 예산 적절성 확인 | `output/organization/raci-matrix.md` |
+| 5230 §3.2.2.3 | 라이선스 컴플라이언스 법률 자문 접근 방법 | `output/organization/role-definition.md` |
+| 5230 §3.2.2.4 · 18974 §4.2.2.4 | 내부 책임 할당 절차 | `output/organization/raci-matrix.md` |
+| 5230 §3.2.2.5 | 미준수 사례 검토 및 수정 절차 | `output/process/vulnerability-response.md` |
+| 18974 §4.2.2.3 | 취약점 해결을 위해 이용 가능한 전문성 명시 | `output/organization/role-definition.md` |
+
+- **담당 Agent**: `02-organization-designer`
+- **워크숍 모듈**: M1
+
+---
+
+#### G2.2 — 외부 문의 수신 채널 운영 `[공통]`
+
+> ISO/IEC 5230 §3.2.1 · ISO/IEC 18974 §4.2.1
+
+라이선스 의무사항 이행 요청 및 보안 취약점 신고 공식 채널 의무
+
+| 입증자료 ID | 내용 | 산출물 파일 |
+|------------|------|------------|
+| 5230 §3.2.1.1 · 18974 §4.2.1.1 | 제3자가 문의할 수 있는 공개 채널 | `output/organization/role-definition.md` |
+| 5230 §3.2.1.2 · 18974 §4.2.1.2 | 제3자 문의 내부 대응 절차 | `output/process/vulnerability-response.md` |
+
+- **담당 Agent**: `02-organization-designer`
+- **워크숍 모듈**: M1
+
+---
+
+#### G2.3 — 인식 제고 프로그램 운영 `[공통]`
+
+> ISO/IEC 5230 §3.1.3 · ISO/IEC 18974 §4.1.3
+
+전체 구성원이 정책을 알고 준수해야 컴플라이언스 실효성 보장
+
+| 입증자료 ID | 내용 | 산출물 파일 |
+|------------|------|------------|
+| 5230 §3.1.3.1 · 18974 §4.1.3.1 | 참여자 인식 평가 증거 (목표·기여·비준수 영향 포함) | `output/training/resources.md`, `output/training/completion-tracker.md` |
+
+- **담당 Agent**: `06-training-manager`
+- **워크숍 모듈**: M6
+
+---
 
 ### G3-L: 라이선스 컴플라이언스 (ISO/IEC 5230 중심)
 
-| 그룹 | 항목ID | 요구사항 요약 | 왜 필요한가 | ISO/IEC 5230 | ISO/IEC 18974 | 담당 Agent | 산출물 파일 | 워크숍 모듈 | 비고 |
-|------|--------|------------|-----------|-------------|--------------|-----------|------------|------------|------|
-| G3-L | G3L.1 | 라이선스 식별 및 분류 | SBOM 기반 컴포넌트별 라이선스 현황 파악; Copyleft 위험 식별 | 3.3.2 | — | 05-sbom-analyst | output/sbom/license-report.md, output/sbom/copyleft-risk.md | M3 | [5230] |
-| G3-L | G3L.2 | 라이선스 의무사항 이행 | GPL·LGPL·AGPL 등 Copyleft 라이선스 의무 이행; 허용 라이선스 목록 관리 | 3.3.2 | — | 04-process-designer | output/process/distribution-checklist.md, output/policy/license-allowlist.md | M2 | [5230] |
-| G3-L | G3L.3 | 컴플라이언스 산출물 생성 | 배포 시 고지문·소스코드 등 법적 의무 이행 증빙 파일 제공 의무 | 3.4.1 | — | 05-sbom-analyst | output/sbom/license-report.md | M3 | [5230] |
-| G3-L | G3L.4 | 오픈소스 기여 정책 수립 | 업스트림 기여 시 IP 유출·라이선스 오염 위험 사전 방지 | 3.5.1 | — | 03-policy-generator | output/policy/oss-policy.md | M1 | [5230] |
-| G3-L | G3L.5 | 라이선스 의무사항 충족 확인 프로세스 | 배포 전 모든 라이선스 의무(소스코드 공개, 고지문 포함 등)가 실제로 이행되었는지 검증; 배포 승인 관문 역할 | 3.4.2 | — | 04-process-designer | output/process/distribution-checklist.md | M2 | [5230] |
-| G3-L | G3L.6 | 오픈소스 기여 프로세스 운영 | 정책(G3L.4)을 실행하는 구체적 절차; 기여 검토·승인·제출 워크플로우; 정책만으로는 실제 기여 통제 불가 | 3.5.2 | — | 03-policy-generator | output/policy/oss-policy.md | M1 | [5230] |
+---
+
+#### G3L.1 — 라이선스 식별 및 분류 `[5230]`
+
+> ISO/IEC 5230 §3.3.1 · §3.3.2
+
+SBOM 기반 컴포넌트별 라이선스 현황 파악; Copyleft 위험 식별
+
+| 입증자료 ID | 내용 | 산출물 파일 |
+|------------|------|------------|
+| 5230 §3.3.1.1 | SBOM 식별·추적·검토·승인·보관 절차 | `output/process/usage-approval.md` |
+| 5230 §3.3.1.2 | 컴포넌트 기록 (절차 준수 증빙) | `output/sbom/[project].cdx.json` |
+| 5230 §3.3.2.1 | 라이선스 사용 사례 처리 절차 | `output/sbom/license-report.md`, `output/sbom/copyleft-risk.md` |
+
+- **담당 Agent**: `05-sbom-analyst`
+- **워크숍 모듈**: M3
+
+---
+
+#### G3L.2 — 라이선스 의무사항 이행 `[5230]`
+
+> ISO/IEC 5230 §3.3.2
+
+GPL·LGPL·AGPL 등 Copyleft 라이선스 의무 이행; 허용 라이선스 목록 관리
+
+| 입증자료 ID | 내용 | 산출물 파일 |
+|------------|------|------------|
+| 5230 §3.3.2.1 | 오픈소스 컴포넌트별 라이선스 사용 사례 처리 절차 | `output/process/distribution-checklist.md`, `output/policy/license-allowlist.md` |
+
+- **담당 Agent**: `04-process-designer`
+- **워크숍 모듈**: M2
+
+---
+
+#### G3L.3 — 컴플라이언스 산출물 생성 `[5230]`
+
+> ISO/IEC 5230 §3.4.1
+
+배포 시 고지문·소스코드 등 법적 의무 이행 증빙 파일 제공 의무
+
+| 입증자료 ID | 내용 | 산출물 파일 |
+|------------|------|------------|
+| 5230 §3.4.1.1 | 컴플라이언스 산출물 준비 및 배포 절차 | `output/sbom/license-report.md` |
+| 5230 §3.4.1.2 | 컴플라이언스 산출물 보관 절차 및 이행 기록 | `output/sbom/license-report.md` |
+
+- **담당 Agent**: `05-sbom-analyst`
+- **워크숍 모듈**: M3
+
+---
+
+#### G3L.4 — 오픈소스 기여 정책 수립 `[5230]`
+
+> ISO/IEC 5230 §3.5.1
+
+업스트림 기여 시 IP 유출·라이선스 오염 위험 사전 방지
+
+| 입증자료 ID | 내용 | 산출물 파일 |
+|------------|------|------------|
+| 5230 §3.5.1.1 | 오픈소스 기여 정책 | `output/policy/oss-policy.md` |
+| 5230 §3.5.1.3 | 기여 정책 인식 절차 | `output/training/curriculum.md` |
+
+- **담당 Agent**: `03-policy-generator`
+- **워크숍 모듈**: M1
+
+---
+
+#### G3L.5 — 라이선스 의무사항 충족 확인 프로세스 `[5230]`
+
+> ISO/IEC 5230 §3.4.1
+
+배포 전 모든 라이선스 의무(소스코드 공개, 고지문 포함 등)가 실제로 이행되었는지 검증; 배포 승인 관문 역할
+
+| 입증자료 ID | 내용 | 산출물 파일 |
+|------------|------|------------|
+| 5230 §3.4.1.1 | 컴플라이언스 산출물 준비 및 배포 절차 | `output/process/distribution-checklist.md` |
+| 5230 §3.4.1.2 | 컴플라이언스 산출물 보관 절차 및 이행 기록 | `output/process/distribution-checklist.md` |
+
+- **담당 Agent**: `04-process-designer`
+- **워크숍 모듈**: M2
+
+---
+
+#### G3L.6 — 오픈소스 기여 프로세스 운영 `[5230]`
+
+> ISO/IEC 5230 §3.5.1
+
+정책(G3L.4)을 실행하는 구체적 절차; 기여 검토·승인·제출 워크플로우; 정책만으로는 실제 기여 통제 불가
+
+| 입증자료 ID | 내용 | 산출물 파일 |
+|------------|------|------------|
+| 5230 §3.5.1.2 | 오픈소스 기여 관리 절차 | `output/policy/oss-policy.md` |
+
+- **담당 Agent**: `03-policy-generator`
+- **워크숍 모듈**: M1
+
+---
 
 ### G3-S: 보안 보증 (ISO/IEC 18974 중심)
 
-| 그룹 | 항목ID | 요구사항 요약 | 왜 필요한가 | ISO/IEC 5230 | ISO/IEC 18974 | 담당 Agent | 산출물 파일 | 워크숍 모듈 | 비고 |
-|------|--------|------------|-----------|-------------|--------------|-----------|------------|------------|------|
-| G3-S | G3S.1 | 알려진 취약점 식별 (CVE 스캔) | CVE 취약점 미파악 시 보안 사고·법적 책임 위험; EO 14028 요구사항 | — | 3.3.2 | 05-vulnerability-analyst | output/vulnerability/cve-report.md | M5 | [18974] |
-| G3-S | G3S.2 | 취약점 추적 및 상태 관리 | 식별된 취약점을 대응 완료까지 지속 추적; 누락·방치 방지 | — | 3.3.3 | 05-vulnerability-analyst | output/vulnerability/cve-report.md | M5 | [18974] |
-| G3-S | G3S.3 | CVE 위험 점수 평가 (CVSS) | CVSS 점수 기반 우선순위 결정; 자원 배분 효율화 | — | 3.3.4 | 05-vulnerability-analyst | output/vulnerability/cve-report.md | M5 | [18974] |
-| G3-S | G3S.4 | 취약점 대응 및 패치 절차 | 발견된 취약점 신속 패치·업그레이드·완화 조치 체계 | — | 3.3.5 | 05-vulnerability-analyst | output/vulnerability/remediation-plan.md | M5 | [18974] |
-| G3-S | G3S.5 | 보안 산출물 배포 프로세스 | SBOM·CVE 리포트 등 보안 산출물을 공급망 파트너·고객에게 전달하는 공식 절차; EO 14028·EU CRA 공시 의무 대응 | — | 3.4.1 | 05-sbom-management | output/sbom/sbom-sharing-template.md | M4 | [18974, 공급망] |
-| G3-S | G3S.6 | 보안 의무사항 충족 확인 프로세스 | 식별·추적된 취약점의 대응·패치·완화 조치가 실제로 완료되었는지 검증하는 절차; 형식적 선언이 아닌 실질적 이행 확인 | — | 3.4.2 | 05-vulnerability-analyst | output/vulnerability/remediation-plan.md | M5 | [18974] |
+---
+
+#### G3S.1 — 알려진 취약점 식별 (CVE 스캔) `[18974]`
+
+> ISO/IEC 18974 §4.3.2 · §4.1.5
+
+CVE 취약점 미파악 시 보안 사고·법적 책임 위험; EO 14028 요구사항
+
+| 입증자료 ID | 내용 | 산출물 파일 |
+|------------|------|------------|
+| 18974 §4.1.5.1 | 취약점 탐지 방법을 포함한 표준 취약점 대응 절차 | `output/process/vulnerability-response.md` |
+| 18974 §4.3.2.1 | 취약점 탐지 및 해결 절차 | `output/vulnerability/cve-report.md` |
+| 18974 §4.3.2.2 | 취약점 및 취해진 조치 기록 | `output/vulnerability/cve-report.md` |
+
+- **담당 Agent**: `05-vulnerability-analyst`
+- **워크숍 모듈**: M5
+
+---
+
+#### G3S.2 — 취약점 추적 및 상태 관리 `[18974]`
+
+> ISO/IEC 18974 §4.3.2 · §4.1.5
+
+식별된 취약점을 대응 완료까지 지속 추적; 누락·방치 방지
+
+| 입증자료 ID | 내용 | 산출물 파일 |
+|------------|------|------------|
+| 18974 §4.1.5.1 | 취약점 후속 조치 방법을 포함한 표준 대응 절차 | `output/process/vulnerability-response.md` |
+| 18974 §4.3.2.1 | 취약점 탐지 및 해결 절차 | `output/vulnerability/cve-report.md` |
+| 18974 §4.3.2.2 | 취약점 및 취해진 조치 기록 | `output/vulnerability/cve-report.md` |
+
+- **담당 Agent**: `05-vulnerability-analyst`
+- **워크숍 모듈**: M5
+
+---
+
+#### G3S.3 — CVE 위험 점수 평가 (CVSS) `[18974]`
+
+> ISO/IEC 18974 §4.3.2
+
+CVSS 점수 기반 우선순위 결정; 자원 배분 효율화
+
+| 입증자료 ID | 내용 | 산출물 파일 |
+|------------|------|------------|
+| 18974 §4.3.2.1 | 위험/영향 점수 할당을 포함한 취약점 처리 절차 | `output/vulnerability/cve-report.md` |
+| 18974 §4.3.2.2 | 식별된 취약점 및 위험 점수 기록 | `output/vulnerability/cve-report.md` |
+
+- **담당 Agent**: `05-vulnerability-analyst`
+- **워크숍 모듈**: M5
+
+---
+
+#### G3S.4 — 취약점 대응 및 패치 절차 `[18974]`
+
+> ISO/IEC 18974 §4.3.2 · §4.1.5
+
+발견된 취약점 신속 패치·업그레이드·완화 조치 체계
+
+| 입증자료 ID | 내용 | 산출물 파일 |
+|------------|------|------------|
+| 18974 §4.1.5.1 | 위험 수준별 적절한 조치 방법을 포함한 표준 대응 절차 | `output/vulnerability/remediation-plan.md` |
+| 18974 §4.3.2.1 | 취약점 해결 절차 | `output/vulnerability/remediation-plan.md` |
+| 18974 §4.3.2.2 | 취해진 조치 기록 | `output/vulnerability/remediation-plan.md` |
+
+- **담당 Agent**: `05-vulnerability-analyst`
+- **워크숍 모듈**: M5
+
+---
+
+#### G3S.5 — 보안 산출물 배포 프로세스 `[18974, 공급망]`
+
+> ISO/IEC 18974 §4.3.1
+
+SBOM·CVE 리포트 등 보안 산출물을 공급망 파트너·고객에게 전달하는 공식 절차; EO 14028·EU CRA 공시 의무 대응
+
+| 입증자료 ID | 내용 | 산출물 파일 |
+|------------|------|------------|
+| 18974 §4.3.1.1 | 공급 소프트웨어 수명주기 동안 SBOM 지속 기록 절차 | `output/sbom/sbom-sharing-template.md` |
+| 18974 §4.3.1.2 | 컴포넌트 기록 (절차 준수 증빙) | `output/sbom/[project].cdx.json` |
+
+- **담당 Agent**: `05-sbom-management`
+- **워크숍 모듈**: M4
+
+---
+
+#### G3S.6 — 보안 의무사항 충족 확인 프로세스 `[18974]`
+
+> ISO/IEC 18974 §4.3.2
+
+식별·추적된 취약점의 대응·패치·완화 조치가 실제로 완료되었는지 검증하는 절차; 형식적 선언이 아닌 실질적 이행 확인
+
+| 입증자료 ID | 내용 | 산출물 파일 |
+|------------|------|------------|
+| 18974 §4.3.2.1 | 취약점 해결 완료 검증을 포함한 절차 | `output/vulnerability/remediation-plan.md` |
+| 18974 §4.3.2.2 | 조치 완료 기록 | `output/vulnerability/remediation-plan.md` |
+
+- **담당 Agent**: `05-vulnerability-analyst`
+- **워크숍 모듈**: M5
+
+---
 
 ### G3-B: SBOM 및 공급망 (공통)
 
-| 그룹 | 항목ID | 요구사항 요약 | 왜 필요한가 | ISO/IEC 5230 | ISO/IEC 18974 | 담당 Agent | 산출물 파일 | 워크숍 모듈 | 비고 |
-|------|--------|------------|-----------|-------------|--------------|-----------|------------|------------|------|
-| G3-B | G3B.1 | SBOM 생성 (CycloneDX/SPDX) | 구성 요소 투명성 확보의 출발점; 라이선스·보안 분석 모두의 입력값 | 3.3.1 | 3.3.1 | 05-sbom-guide | output/sbom/[project].cdx.json, output/sbom/sbom-commands.sh | M3 | [공통, 공급망] |
-| G3-B | G3B.2 | SBOM 관리 및 유지보수 | 릴리즈·업데이트 시 SBOM 최신 상태 유지; 형상 관리 통합 | 3.3.3 | 3.3.1 | 05-sbom-management | output/sbom/sbom-management-plan.md | M4 | [공통, 공급망] |
-| G3-B | G3B.3 | SBOM 공유 (공급망 파트너) | 하위 공급망으로 투명성 전달; NTIA·EU CRA 공급망 공개 의무 대응 | — | 3.3.1 | 05-sbom-management | output/sbom/sbom-sharing-template.md | M4 | [공급망, 규제] |
-| G3-B | G3B.4 | 공급망 취약점 지속 모니터링 | 신규 CVE 공개 시 영향받는 공급망 컴포넌트 즉시 파악 | — | 3.3.3 | 05-sbom-management | output/sbom/sbom-management-plan.md | M4 | [공급망] |
+---
+
+#### G3B.1 — SBOM 생성 (CycloneDX/SPDX) `[공통, 공급망]`
+
+> ISO/IEC 5230 §3.3.1 · ISO/IEC 18974 §4.3.1
+
+구성 요소 투명성 확보의 출발점; 라이선스·보안 분석 모두의 입력값
+
+| 입증자료 ID | 내용 | 산출물 파일 |
+|------------|------|------------|
+| 5230 §3.3.1.1 · 18974 §4.3.1.1 | SBOM 식별·추적·검토·승인·보관 절차 | `output/sbom/sbom-commands.sh` |
+| 5230 §3.3.1.2 · 18974 §4.3.1.2 | 컴포넌트 기록 (절차 준수 증빙) | `output/sbom/[project].cdx.json` |
+
+- **담당 Agent**: `05-sbom-guide`
+- **워크숍 모듈**: M3
+
+---
+
+#### G3B.2 — SBOM 관리 및 유지보수 `[공통, 공급망]`
+
+> ISO/IEC 5230 §3.3.1 · ISO/IEC 18974 §4.3.1
+
+릴리즈·업데이트 시 SBOM 최신 상태 유지; 형상 관리 통합
+
+| 입증자료 ID | 내용 | 산출물 파일 |
+|------------|------|------------|
+| 5230 §3.3.1.1 · 18974 §4.3.1.1 | SBOM 수명주기 관리 절차 | `output/sbom/sbom-management-plan.md` |
+| 5230 §3.3.1.2 · 18974 §4.3.1.2 | 최신 컴포넌트 기록 | `output/sbom/[project].cdx.json` |
+
+- **담당 Agent**: `05-sbom-management`
+- **워크숍 모듈**: M4
+
+---
+
+#### G3B.3 — SBOM 공유 (공급망 파트너) `[공급망, 규제]`
+
+> ISO/IEC 18974 §4.3.1
+
+하위 공급망으로 투명성 전달; NTIA·EU CRA 공급망 공개 의무 대응
+
+| 입증자료 ID | 내용 | 산출물 파일 |
+|------------|------|------------|
+| 18974 §4.3.1.1 | 공급망 파트너 대상 SBOM 공유를 포함한 수명주기 기록 절차 | `output/sbom/sbom-sharing-template.md` |
+| 18974 §4.3.1.2 | 컴포넌트 기록 | `output/sbom/[project].cdx.json` |
+
+- **담당 Agent**: `05-sbom-management`
+- **워크숍 모듈**: M4
+
+---
+
+#### G3B.4 — 공급망 취약점 지속 모니터링 `[공급망]`
+
+> ISO/IEC 18974 §4.3.2
+
+신규 CVE 공개 시 영향받는 공급망 컴포넌트 즉시 파악
+
+| 입증자료 ID | 내용 | 산출물 파일 |
+|------------|------|------------|
+| 18974 §4.3.2.1 | 출시 후 신규 취약점 분석 방법을 포함한 대응 절차 | `output/sbom/sbom-management-plan.md` |
+| 18974 §4.3.2.2 | 취약점 및 조치 기록 | `output/sbom/sbom-management-plan.md` |
+
+- **담당 Agent**: `05-sbom-management`
+- **워크숍 모듈**: M4
+
+---
 
 ### G4: 준수 선언 및 유지
 
-| 그룹 | 항목ID | 요구사항 요약 | 왜 필요한가 | ISO/IEC 5230 | ISO/IEC 18974 | 담당 Agent | 산출물 파일 | 워크숍 모듈 | 비고 |
-|------|--------|------------|-----------|-------------|--------------|-----------|------------|------------|------|
-| G4 | G4.1 | ISO/IEC 5230 자체 인증 선언 | 라이선스 컴플라이언스 능력 공식 선언; 공급망 파트너 신뢰 확보 | 3.6.1 | — | 07-conformance-preparer | output/conformance/declaration-draft.md | M6 | [5230] |
-| G4 | G4.2 | ISO/IEC 18974 자체 인증 선언 | 보안 보증 능력 공식 선언; EO 14028 및 EU CRA 대응 증빙 | — | 3.5.1 | 07-conformance-preparer | output/conformance/declaration-draft.md | M6 | [18974] |
-| G4 | G4.3 | 인증 유효기간 관리 (18개월) | 두 표준 모두 18개월마다 재선언 의무; 자동 만료 방지 | 3.6.2 | 3.5.2 | 07-conformance-preparer | output/conformance/submission-guide.md | M6 | [공통] |
-| G4 | G4.4 | 정기 갭 분석 및 정책 갱신 | 기술·규제 환경 변화에 따른 체계 현행화; 갱신 선언 전 필수 | 3.6.2 | 3.5.2 | 07-conformance-preparer | output/conformance/gap-analysis.md | M6 | [공통] |
-| G4 | G4.5 | 배포 소프트웨어 알려진 취약점 없음 확인 | 외부 배포 소프트웨어에 알려진 취약점이 없음을 배포 전 검증·선언; 인증 선언의 실질적 전제 조건 | — | 3.5.3 | 07-conformance-preparer | output/conformance/declaration-draft.md | M6 | [18974] |
+---
+
+#### G4.1 — ISO/IEC 5230 자체 인증 선언 `[5230]`
+
+> ISO/IEC 5230 §3.6.1
+
+라이선스 컴플라이언스 능력 공식 선언; 공급망 파트너 신뢰 확보
+
+| 입증자료 ID | 내용 | 산출물 파일 |
+|------------|------|------------|
+| 5230 §3.6.1.1 | §3.1.4의 프로그램이 본 규격 모든 요구사항 충족 확인 문서 | `output/conformance/declaration-draft.md` |
+
+- **담당 Agent**: `07-conformance-preparer`
+- **워크숍 모듈**: M6
+
+---
+
+#### G4.2 — ISO/IEC 18974 자체 인증 선언 `[18974]`
+
+> ISO/IEC 18974 §4.4.1
+
+보안 보증 능력 공식 선언; EO 14028 및 EU CRA 대응 증빙
+
+| 입증자료 ID | 내용 | 산출물 파일 |
+|------------|------|------------|
+| 18974 §4.4.1.1 | §4.1.4의 프로그램이 본 규격 모든 요구사항 충족 확인 문서 | `output/conformance/declaration-draft.md` |
+
+- **담당 Agent**: `07-conformance-preparer`
+- **워크숍 모듈**: M6
+
+---
+
+#### G4.3 — 인증 유효기간 관리 (18개월) `[공통]`
+
+> ISO/IEC 5230 §3.6.2 · ISO/IEC 18974 §4.4.2
+
+두 표준 모두 18개월마다 재선언 의무; 자동 만료 방지
+
+| 입증자료 ID | 내용 | 산출물 파일 |
+|------------|------|------------|
+| 5230 §3.6.2.1 · 18974 §4.4.2.1 | 적합성 획득 후 18개월 이내 모든 요구사항 충족 확인 문서 | `output/conformance/submission-guide.md` |
+
+- **담당 Agent**: `07-conformance-preparer`
+- **워크숍 모듈**: M6
+
+---
+
+#### G4.4 — 정기 갭 분석 및 정책 갱신 `[공통]`
+
+> ISO/IEC 5230 §3.6.2 · ISO/IEC 18974 §4.4.2
+
+기술·규제 환경 변화에 따른 체계 현행화; 갱신 선언 전 필수
+
+| 입증자료 ID | 내용 | 산출물 파일 |
+|------------|------|------------|
+| 5230 §3.6.2.1 · 18974 §4.4.2.1 | 갱신 후 요구사항 재충족 확인 문서 | `output/conformance/gap-analysis.md` |
+
+- **담당 Agent**: `07-conformance-preparer`
+- **워크숍 모듈**: M6
+
+---
+
+#### G4.5 — 배포 소프트웨어 알려진 취약점 없음 확인 `[18974]`
+
+> ISO/IEC 18974 §4.4.1 · §4.3.2
+
+외부 배포 소프트웨어에 알려진 취약점이 없음을 배포 전 검증·선언; 인증 선언의 실질적 전제 조건
+
+| 입증자료 ID | 내용 | 산출물 파일 |
+|------------|------|------------|
+| 18974 §4.4.1.1 | 배포 소프트웨어 요구사항 완전 충족 확인 문서 | `output/conformance/declaration-draft.md` |
+| 18974 §4.3.2.2 | 취약점 조치 완료 기록 | `output/vulnerability/cve-report.md` |
+
+- **담당 Agent**: `07-conformance-preparer`
+- **워크숍 모듈**: M6
 
 ---
 

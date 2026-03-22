@@ -3,7 +3,7 @@
 버전: 1.0
 충족 체크리스트:
   - "ISO/IEC 5230: [3.1.1, 3.1.4, 3.5.1]"
-  - "ISO/IEC 18974: [3.1.1, 3.1.4]"
+  - "ISO/IEC 18974: [4.1.1, 4.1.4]"
 셀프스터디 소요시간: 1시간
 워크숍 소요시간: 30분 (M1 모듈)
 ---
@@ -176,7 +176,7 @@ open output/policy/license-allowlist.md
 | 3.1.1 | 오픈소스 정책 문서화 | Do you have a documented open source policy? |
 | 3.1.4 | 프로그램 범위 정의 | Is the scope of your open source program documented? |
 | 3.5.1 | 오픈소스 커뮤니티 참여 정책 | Do you have a policy for open source community participation? |
-| 3.5.2 | 오픈소스 기여 프로세스 | Do you have a process for contributing to open source projects? |
+| 3.5.1 | 오픈소스 기여 프로세스 | Do you have a process for contributing to open source projects? |
 
 **ISO/IEC 18974**
 
@@ -222,7 +222,7 @@ ls output/policy/
 
 막혔을 때: `docs/03-policy/CLAUDE.md` 참조
 
-> 이 단계는 ISO/IEC 18974 3.1.1 (보안 보증 정책 수립) 요구사항을 충족합니다.
+> 이 단계는 ISO/IEC 18974 4.1.1 (보안 보증 정책 수립) 요구사항을 충족합니다.
 
 ---
 
@@ -287,7 +287,7 @@ claude
 
 또는 `docs/04-process/` 폴더로 이동하여 챕터 문서를 읽고 진행한다.
 
-> 이 단계는 ISO/IEC 5230 3.1.1, 3.1.4, 3.5.1 및 ISO/IEC 18974 3.1.1 요구사항을 충족합니다.
+> 이 단계는 ISO/IEC 5230 3.1.1, 3.1.4, 3.5.1 및 ISO/IEC 18974 4.1.1 요구사항을 충족합니다.
 
 ---
 
