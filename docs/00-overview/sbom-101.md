@@ -6,6 +6,8 @@
   - "ISO/IEC 18974: [G3B.1 배경]"
 셀프스터디 소요시간: 1시간
 워크숍 소요시간: M0 포함
+sidebar_position: 4
+sidebar_label: "SBOM 101"
 ---
 
 # SBOM 101: 소프트웨어 구성 명세서 입문

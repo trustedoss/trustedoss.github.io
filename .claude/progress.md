@@ -31,11 +31,30 @@
 
 ## 다음 작업
 
-### 지시 E (현재 작업)
+### 지시 E (완료)
 - [x] CLAUDE.md 재작성 — 토큰 최소화, 표 압축, 스킬 트리거 명시
 - [x] `.claude/progress.md` 생성 — 진행 상태 정보 분리 보관
 
-### 지시 F 이후 계획 (예정)
+### 지시 F (완료)
+- [x] `.claudeignore` 보강 — Docusaurus 소스/설정/CSS 추가
+- [x] CLAUDE.md 작업 범위 섹션 추가
+
+### 지시 G (완료)
+- [x] docs/ 파일 크기 분석 (`wc -l`)
+
+### 지시 H (완료)
+- [x] 모든 챕터 디렉토리에 `_category_.json` 생성 (숫자 접두사 제거)
+- [x] `website/sidebars.ts` 업데이트
+- [x] `docs/00b-supply-chain/` → `docs/00-overview/supply-chain.md` + `sbom-101.md` 이동 및 삭제
+- [x] 관련 CLAUDE.md 병합, intro.md 링크 수정
+- [x] 대형 챕터 분리:
+  - `08-developer-guide/index.md` → 4개 method 파일 추출
+  - `05-tools/vulnerability/index.md` → `tools-setup.md` 추출
+  - `05-tools/sbom-generation/index.md` → `docker-cicd.md` 추출
+- [x] 내부 링크 수정 (verify.sh 10개 broken link 전부 해결)
+- [x] verify.sh 5/5 PASS 확인
+
+### 다음 작업 (예정)
 - docs/ 챕터별 실습 블록 작성 (Phase 1 콘텐츠)
 - agents/ CLAUDE.md 정비 — 각 agent 실행 맥락 명확화
 - verify.sh 검증 항목 확장 (Phase 3)
@@ -48,7 +67,7 @@
 | 챕터 | 셀프스터디 실습 | 워크숍 실습 | 연동 Agent |
 |---|---|---|---|
 | 00-overview | 두 표준 체크리스트 비교 | 개요 강의 (15분) | — |
-| 00b-supply-chain | SBOM 개념 정리 | 공급망 위협 시나리오 (20분) | — |
+| 00-overview/supply-chain | SBOM 개념 정리 | 공급망 위협 시나리오 (20분) | — |
 | 01-setup | 도구 설치 및 환경 확인 | 환경 세팅 (15분) | — |
 | 02-organization | 역할 정의 + RACI 작성 | 역할 지정 워크 (30분) | 02-organization-designer |
 | 03-policy | 오픈소스 정책 문서 작성 | 정책 초안 리뷰 (30분) | 03-policy-generator |

@@ -9,65 +9,83 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: '0. 시작하기',
+      label: '시작하기',
       collapsed: false,
       items: [
         'overview/index',
         'overview/checklist-mapping',
+        'overview/supply-chain',
+        'overview/sbom-101',
+      ],
+    },
+    {
+      type: 'doc',
+      id: 'setup/index',
+      label: '환경 준비',
+    },
+    {
+      type: 'doc',
+      id: 'organization/index',
+      label: '조직 구성',
+    },
+    {
+      type: 'doc',
+      id: 'policy/index',
+      label: '오픈소스 정책',
+    },
+    {
+      type: 'doc',
+      id: 'process/index',
+      label: '오픈소스 프로세스',
+    },
+    {
+      type: 'category',
+      label: '도구',
+      collapsed: false,
+      items: [
         {
           type: 'category',
-          label: '소프트웨어 공급망 보안',
+          label: 'SBOM 생성',
           items: [
-            '00b-supply-chain/index',
-            '00b-supply-chain/sbom-101',
+            'tools/sbom-generation/index',
+            'tools/sbom-generation/docker-cicd',
+          ],
+        },
+        {
+          type: 'doc',
+          id: 'tools/sbom-management/index',
+          label: 'SBOM 관리',
+        },
+        {
+          type: 'category',
+          label: '취약점 분석',
+          items: [
+            'tools/vulnerability/index',
+            'tools/vulnerability/tools-setup',
           ],
         },
       ],
     },
     {
       type: 'doc',
-      id: 'setup/index',
-      label: '1. 환경 준비',
-    },
-    {
-      type: 'doc',
-      id: 'organization/index',
-      label: '2. 조직 구성',
-    },
-    {
-      type: 'doc',
-      id: 'policy/index',
-      label: '3. 오픈소스 정책',
-    },
-    {
-      type: 'doc',
-      id: 'process/index',
-      label: '4. 오픈소스 프로세스',
-    },
-    {
-      type: 'category',
-      label: '5. 도구',
-      collapsed: false,
-      items: [
-        'tools/sbom-generation/index',
-        'tools/sbom-management/index',
-        'tools/vulnerability/index',
-      ],
-    },
-    {
-      type: 'doc',
       id: 'training/index',
-      label: '6. 교육 체계',
+      label: '교육 체계',
     },
     {
       type: 'doc',
       id: 'conformance/index',
-      label: '7. 자체 인증 선언',
+      label: '자체 인증',
     },
     {
-      type: 'doc',
-      id: 'developer-guide/08-developer-guide',
-      label: '8. 개발자 가이드',
+      type: 'category',
+      label: '개발자 가이드 (선택)',
+      items: [
+        'developer-guide/08-developer-guide',
+        'developer-guide/method1-claude-md',
+        'developer-guide/method2-skill',
+        'developer-guide/method3-hooks',
+        'developer-guide/method4-cicd',
+      ],
     },
   ],
 };

@@ -35,7 +35,7 @@ cd trustedoss && claude
 
 ### 문서만 읽으시는 분
 
-왼쪽 사이드바에서 **00-overview → 00b-supply-chain → 01-setup** 순서로 읽어보세요.
+왼쪽 사이드바에서 **시작하기 → 환경 준비** 순서로 읽어보세요.
 각 챕터 하단의 **다음 단계** 링크를 따라가시면 됩니다.
 
 ---
@@ -44,8 +44,8 @@ cd trustedoss && claude
 
 | 챕터 | 내용 | 워크숍 모듈 |
 |------|------|-----------|
-| [00 개요](./00-overview/index.md) | 두 표준 개요 및 체크리스트 매핑 | M0 |
-| [00b 공급망](./00b-supply-chain/index.md) | 소프트웨어 공급망 보안 + SBOM 개념 | M0 |
+| [개요](./00-overview/index.md) | 두 표준 개요 및 체크리스트 매핑 | M0 |
+| [공급망 보안](./00-overview/supply-chain.md) | 소프트웨어 공급망 보안 + SBOM 개념 | M0 |
 | [01 환경 준비](./01-setup/index.md) | Docker, Git, Claude Code 설치 | 사전 준비 |
 | [02 조직](./02-organization/index.md) | 조직 구성 및 담당자 지정 | M1 |
 | [03 정책](./03-policy/index.md) | 오픈소스 정책 수립 | M1 |
