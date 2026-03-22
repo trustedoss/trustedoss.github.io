@@ -5,7 +5,6 @@
   - "ISO/IEC 5230: [3.3.1, 3.3.2, 3.4.1]"
   - "ISO/IEC 18974: [4.3.1]"
 셀프스터디 소요시간: 1.5시간
-워크숍 소요시간: 90분 (M3 모듈)
 ---
 
 # SBOM 생성: syft와 cdxgen으로 소프트웨어 구성 명세 만들기
@@ -139,58 +138,9 @@ claude
 ls output/sbom/license-report.md output/sbom/copyleft-risk.md
 ```
 
-**각 단계 예상 결과:**
+**막혔을 때:**
 
-| 단계 완료 후 | 예상 결과 |
-|------------|---------|
-| 4번 (sbom-guide) | `output/sbom/sbom-commands.sh` 생성됨 |
-| 5번 (스크립트 실행) | `output/sbom/sbom.cdx.json` 생성됨 (`components` 항목 있어야 정상) |
-| 7번 (sbom-analyst) | `output/sbom/license-report.md`, `output/sbom/copyleft-risk.md` 생성됨 |
-
----
-
-## 4. 워크숍 경로
-
-:::tip 워크숍 모드 (M3 - 1시간 30분)
-강의 시작 전 강사가 Docker 이미지를 미리 pull 해두세요: `docker pull anchore/syft:latest`
-:::
-
-### 핵심 3단계
-
-**1단계 (15분) — 개념 설명 + 도구 소개**
-
-- SBOM 개념 및 중요성 설명
-- CycloneDX JSON 구조 함께 리뷰
-- syft와 cdxgen 차이점 설명
-- `samples/java-vulnerable/` 프로젝트 구조 확인
-
-**2단계 (45분) — SBOM 생성 + 라이선스 분석**
-
-수강생이 직접 실행:
-
-```bash
-mkdir -p output/sbom
-docker run --rm \
-  -v $(pwd)/samples/java-vulnerable:/project \
-  anchore/syft:latest \
-  /project --output cyclonedx-json \
-  > output/sbom/java-vulnerable.cdx.json
-```
-
-SBOM 생성 후 sbom-analyst agent 실행:
-
-```bash
-cd agents/05-sbom-analyst && claude
-```
-
-**3단계 (30분) — 팀 리뷰**
-
-- `output/sbom/license-report.md` 내용 팀 공유
-- `output/sbom/copyleft-risk.md` 에서 GPL 의존성 확인
-- java-vulnerable 샘플에서 log4j-core 2.14.1 탐지 여부 확인
-- 팀별 실제 프로젝트 적용 계획 논의
-
-**막혔을 때:** `output/sbom/sbom.cdx.json`이 비어있으면 lock 파일 존재 여부를 먼저 확인한다. lock 파일이 없으면 cdxgen으로 전환하여 재시도한다.
+`output/sbom/sbom.cdx.json`이 비어있으면 lock 파일 존재 여부를 먼저 확인한다 (`package-lock.json`, `requirements.txt`, `pom.xml` 등). lock 파일이 없으면 cdxgen으로 전환하여 재시도한다.
 
 ```bash
 docker run --rm \
@@ -201,9 +151,17 @@ docker run --rm \
   -o /app/output/sbom/java-vulnerable-cdxgen.cdx.json
 ```
 
+**각 단계 예상 결과:**
+
+| 단계 완료 후 | 예상 결과 |
+|------------|---------|
+| 4번 (sbom-guide) | `output/sbom/sbom-commands.sh` 생성됨 |
+| 5번 (스크립트 실행) | `output/sbom/sbom.cdx.json` 생성됨 (`components` 항목 있어야 정상) |
+| 7번 (sbom-analyst) | `output/sbom/license-report.md`, `output/sbom/copyleft-risk.md` 생성됨 |
+
 ---
 
-## 5. 완료 확인 체크리스트
+## 4. 완료 확인 체크리스트
 
 아래 항목을 모두 확인한 후 다음 단계로 넘어간다.
 
@@ -222,7 +180,7 @@ docker run --rm \
 
 ---
 
-## 6. 다음 단계
+## 5. 다음 단계
 
 SBOM 생성과 라이선스 분석이 완료되면, SBOM 관리 체계를 수립하는 단계로 넘어간다.
 

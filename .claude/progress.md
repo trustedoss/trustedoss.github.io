@@ -69,10 +69,23 @@
 - [x] 기존 broken link 수정 (docs/01-setup/method1-claude-md.md)
 - [x] verify.sh 6/6 PASS 확인
 
+### 지시 J (완료)
+- [x] 가이드 기준 충족 여부 검토 (표준 설명/이유/방법/입증자료)
+- [x] 워크숍 경로 섹션 전체 제거 (9개 챕터 index.md)
+  - 00-overview, 02-organization, 03-policy, 04-process
+  - 05-sbom-generation, 05-sbom-management, 05-vulnerability
+  - 06-training, 07-conformance
+- [x] front matter `워크숍 소요시간` 줄 전체 제거
+- [x] "막혔을 때" 주요 내용 셀프스터디 섹션에 통합 (04, 05-sbom-gen, 05-sbom-management)
+- [x] 06-training/index.md 18974 섹션 번호 수정 (3.1.2→4.1.2, 3.1.3→4.1.3)
+- [x] 03-policy/index.md :::info 블록 내 18974 번호 수정 (3.1.1→4.1.1, 3.1.4→4.1.4)
+- [x] 03-policy/index.md 중복 ✅ 완료 확인 섹션 제거
+- [x] docs/.claude/settings.local.json git 추적 해제 + .gitignore 추가
+- [x] verify.sh 6/6 PASS 확인
+
 ### 다음 작업 (예정)
 - docs/ 챕터별 실습 블록 작성 (Phase 1 콘텐츠)
 - agents/ CLAUDE.md 정비 — 각 agent 실행 맥락 명확화
-- workshop/student-handout.md 초안 작성 (Phase 4)
 
 ---
 

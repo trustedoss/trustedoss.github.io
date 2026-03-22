@@ -5,7 +5,6 @@
   - "ISO/IEC 5230: [3.1.1, 3.1.4, 3.5.1]"
   - "ISO/IEC 18974: [4.1.1, 4.1.4]"
 셀프스터디 소요시간: 1시간
-워크숍 소요시간: 30분 (M1 모듈)
 ---
 
 # 오픈소스 정책 수립: 법적 보호의 첫걸음
@@ -182,51 +181,13 @@ open output/policy/license-allowlist.md
 
 | 항목 ID | 요구사항 | 자체인증 체크리스트 |
 |---|---|---|
-| 3.1.1 | 보안 보증 정책 문서화 | Do you have a documented open source security assurance policy? |
-| 3.1.4 | 보안 프로그램 범위 정의 | Is the scope of your open source security assurance program documented? |
+| 4.1.1 | 보안 보증 정책 문서화 | Do you have a documented open source security assurance policy? |
+| 4.1.4 | 보안 프로그램 범위 정의 | Is the scope of your open source security assurance program documented? |
 :::
 
 ---
 
-## 4. 워크숍 경로
-
-:::tip 워크숍 모드 (M1 후반부 - 30분)
-배포 방식, 개발 언어, 납품 여부를 미리 정리해오면 빠르게 진행됩니다.
-:::
-
-**핵심 3단계**
-
-**Step 1. 정책 문서의 법적 보호 역할 설명 (5분)**
-
-진행자는 다음 내용을 중심으로 설명한다:
-- Artifex vs Hancom (2017) 사례: GPL 라이선스의 법적 구속력 판결
-- 정책 부재 시 발생하는 3가지 실무 문제 (라이선스 충돌, 고지 누락, 취약점 방치)
-- 정책 문서가 있으면 분쟁 시 고의성 없음 입증 가능
-
-**Step 2. policy-generator agent 실행 및 질문 답변 (20분)**
-
-```bash
-cd agents/03-policy-generator
-claude
-```
-
-팀별로 5개 질문에 답변하며 진행한다. 배포 방식이 다른 팀은 각자 다른 정책이 생성되는 것을 비교해보는 것을 권장한다.
-
-**Step 3. output/policy/ 생성 확인 및 허용 라이선스 목록 검토 (5분)**
-
-```bash
-ls output/policy/
-```
-
-두 파일(`oss-policy.md`, `license-allowlist.md`)이 생성되었는지 확인하고, 허용 라이선스 표에서 우리 제품의 배포 방식과 맞는 분류가 적용되었는지 팀원과 함께 검토한다.
-
-막혔을 때: `docs/03-policy/CLAUDE.md` 참조
-
-> 이 단계는 ISO/IEC 18974 4.1.1 (보안 보증 정책 수립) 요구사항을 충족합니다.
-
----
-
-## 5. 완료 확인 체크리스트
+## 4. 완료 확인 체크리스트
 
 agent 실행 후 사람이 직접 확인해야 할 항목들이다. 체크리스트를 모두 통과해야 이 챕터가 완료된다.
 
@@ -276,7 +237,7 @@ agent 실행 후 사람이 직접 확인해야 할 항목들이다. 체크리스
 
 ---
 
-## 6. 다음 단계
+## 5. 다음 단계
 
 이 챕터를 완료했으면 프로세스 설계 단계로 이동한다. 오픈소스 프로세스는 정책에서 정의한 절차를 실제 업무 흐름으로 구체화하는 단계다.
 
@@ -289,15 +250,3 @@ claude
 
 > 이 단계는 ISO/IEC 5230 3.1.1, 3.1.4, 3.5.1 및 ISO/IEC 18974 4.1.1 요구사항을 충족합니다.
 
----
-
-## ✅ 완료 확인
-
-이 챕터를 완료하면 아래를 확인하세요.
-
-- [ ] `output/policy/oss-policy.md` 파일이 생성됨
-- [ ] `output/policy/license-allowlist.md` 파일이 생성됨
-- [ ] 정책 문서에 ISO 5230 필수 항목이 포함됨
-- [ ] 정책 문서에 ISO 18974 보안 조항이 포함됨
-- [ ] [checklist-mapping](../00-overview/checklist-mapping.md) 에서
-      3.1.1 항목에 체크 가능한 상태

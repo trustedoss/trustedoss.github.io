@@ -41,3 +41,4 @@ website/node_modules/
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+docs/.claude/settings.local.json
