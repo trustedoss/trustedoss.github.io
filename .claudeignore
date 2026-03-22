@@ -62,6 +62,33 @@ workshop/
 scripts/
 
 # ============================
+# Docusaurus 소스 코드 (디자인/동작 수정 안 함)
+# ============================
+website/src/
+website/static/
+website/plugins/
+plugins/
+packages/
+
+# ============================
+# 설정 파일 (수정 안 함)
+# ============================
+website/sidebars*.ts
+website/tsconfig.json
+eslint.config.js
+netlify.toml
+.prettierrc.json
+.yarnrc.yml
+.husky/
+.github/
+
+# ============================
+# css 파일 확장자
+# ============================
+*.css
+*.scss
+
+# ============================
 # 기타
 # ============================
 .DS_Store
