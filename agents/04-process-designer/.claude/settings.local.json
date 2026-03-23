@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/1112821/projects/trustedoss/output/**)",
+      "Read(//Users/1112821/projects/trustedoss/output/policy/**)",
+      "Bash(bash .claude/scripts/verify.sh)"
+    ]
+  }
+}

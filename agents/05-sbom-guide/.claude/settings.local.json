@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(chmod +x /Users/1112821/projects/trustedoss/output/sbom/sbom-commands.sh)",
+      "Read(//Users/1112821/projects/trustedoss/**)",
+      "Bash(bash output/sbom/sbom-commands.sh)",
+      "Bash(docker run:*)",
+      "Bash(bash .claude/scripts/verify.sh)"
+    ]
+  }
+}

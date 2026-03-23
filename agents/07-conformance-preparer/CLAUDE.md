@@ -24,7 +24,7 @@ validate-checklist skill과 generate-report skill을 모두 적용한다.
 - output/vulnerability/ (G3S.1~G3S.4)
 - output/training/ (G1.4, G2.3)
 
-일부 미완료 상태에서도 실행 가능하다. 갭 分析에서 미충족 항목이 표시된다.
+일부 미완료 상태에서도 실행 가능하다. 갭 분석에서 미충족 항목이 표시된다.
 
 ## 처리 방식
 
@@ -49,7 +49,7 @@ validate-checklist skill과 generate-report skill을 모두 적용한다.
 
 ```
 output/conformance/
-├── gap-analysis.md        # 갭 分析 리포트 (25개 항목 대조)
+├── gap-analysis.md        # 갭 분석 리포트 (25개 항목 대조)
 ├── declaration-draft.md   # 자체 인증 선언문 초안
 └── submission-guide.md    # OpenChain 등록 절차 안내
 ```
@@ -100,5 +100,5 @@ cat output/conformance/gap-analysis.md
 ## 유지 관리 안내
 
 - 18개월마다 재선언 필요
-- 연 1회 갭 分析 재실행 권장
+- 연 1회 갭 분석 재실행 권장
 - 정책·프로세스 변경 시 관련 산출물 즉시 업데이트
