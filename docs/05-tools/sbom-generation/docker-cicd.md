@@ -5,7 +5,7 @@ sidebar_label: "Docker·CI/CD 실행 가이드"
 
 # SBOM 생성: Docker 실행 가이드 및 CI/CD 자동화
 
-이 문서는 syft·cdxgen의 실제 Docker 실행 명령어, GitHub Actions 자동화 설정, 샘플 프로젝트 실습, 트러블슈팅을 담고 있다.
+이 문서는 syft·cdxgen의 실제 Docker 실행 명령어, GitHub Actions 자동화 설정, 샘플 프로젝트 실습, 트러블슈팅을 담고 있습니다.
 
 ---
 
@@ -46,13 +46,13 @@ docker run --rm \
   -o /app/output/sbom/sbom-cdxgen.cdx.json
 ```
 
-Java Maven 프로젝트에 권장한다. syft보다 의존성 추적이 더 정밀하며, 전이 의존성(transitive dependencies)까지 더 완전하게 수집한다.
+Java Maven 프로젝트에 권장합니다. syft보다 의존성 추적이 더 정밀하며, 전이 의존성(transitive dependencies)까지 더 완전하게 수집합니다.
 
 ---
 
 ## GitHub Actions 자동화
 
-SBOM 생성을 CI/CD 파이프라인에 통합하면 모든 릴리스마다 최신 SBOM이 자동으로 생성된다.
+SBOM 생성을 CI/CD 파이프라인에 통합하면 모든 릴리스마다 최신 SBOM이 자동으로 생성됩니다.
 
 ```yaml
 # .github/workflows/sbom.yml

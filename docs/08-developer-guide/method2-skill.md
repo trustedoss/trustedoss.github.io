@@ -6,10 +6,10 @@ sidebar_label: "방법 2: Skill 정의"
 # 방법 2: Skill 정의하기
 
 :::info 셀프스터디 모드 (약 20분)
-한 번 정의하면 모든 프로젝트에서 `/oss-policy-check`으로 즉시 호출할 수 있다.
+한 번 정의하면 모든 프로젝트에서 `/oss-policy-check`으로 즉시 호출할 수 있습니다.
 :::
 
-`.claude/skills/oss-policy-check.md` 파일을 생성한다.
+`.claude/skills/oss-policy-check.md` 파일을 생성합니다.
 
 ```markdown
 # Skill: OSS 정책 준수 검사 (oss-policy-check)
@@ -79,7 +79,7 @@ osv-scanner --recursive .
 ---
 ```
 
-**효과:** 팀원 누구나 `/oss-policy-check` 명령으로 즉시 현황을 파악할 수 있다.
+**효과:** 팀원 누구나 `/oss-policy-check` 명령으로 즉시 현황을 파악할 수 있습니다.
 
 ---
 

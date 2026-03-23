@@ -6,10 +6,10 @@ sidebar_label: "방법 1: CLAUDE.md 정책"
 # 방법 1: CLAUDE.md에 정책 추가하기
 
 :::info 셀프스터디 모드 (약 15분)
-프로젝트 루트 CLAUDE.md에 정책을 추가하면 Claude Code가 즉시 인식한다.
+프로젝트 루트 CLAUDE.md에 정책을 추가하면 Claude Code가 즉시 인식합니다.
 :::
 
-프로젝트 루트의 `CLAUDE.md`에 아래 섹션을 추가한다.
+프로젝트 루트의 `CLAUDE.md`에 아래 섹션을 추가합니다.
 
 ```markdown
 ## 오픈소스 정책 (자동 준수)
@@ -38,8 +38,8 @@ sidebar_label: "방법 1: CLAUDE.md 정책"
 4. 위반 시: 담당자에게 사용 승인 요청 (output/process/usage-approval.md 참조)
 ```
 
-**효과:** Claude Code가 패키지 추가를 도울 때 이 정책을 자동으로 참조하여 경고한다.
+**효과:** Claude Code가 패키지 추가를 도울 때 이 정책을 자동으로 참조하여 경고합니다.
 
-**한계:** 개발자가 직접 터미널에서 `npm install`을 실행하면 Claude Code가 개입하지 못한다.
+**한계:** 개발자가 직접 터미널에서 `npm install`을 실행하면 Claude Code가 개입하지 못합니다.
 
 ---

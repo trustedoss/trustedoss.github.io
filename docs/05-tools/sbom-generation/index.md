@@ -11,9 +11,9 @@
 
 ## 1. 이 챕터에서 하는 일
 
-이 챕터에서는 syft와 cdxgen을 사용해 프로젝트의 CycloneDX 형식 SBOM(Software Bill of Materials)을 생성한다. 두 도구 모두 Docker로 실행하므로 별도 설치가 필요 없으며, 명령어 몇 줄로 프로젝트의 전체 의존성 목록을 JSON 파일로 만들 수 있다.
+이 챕터에서는 syft와 cdxgen을 사용해 프로젝트의 CycloneDX 형식 SBOM(Software Bill of Materials)을 생성합니다. 두 도구 모두 Docker로 실행하므로 별도 설치가 필요 없으며, 명령어 몇 줄로 프로젝트의 전체 의존성 목록을 JSON 파일로 만들 수 있습니다.
 
-생성된 SBOM은 이후 라이선스 분석(05-sbom-analyst)과 취약점 스캔(05-vulnerability-analyst)의 기반이 된다. SBOM이 정확할수록 컴플라이언스 리스크와 보안 취약점을 빠짐없이 파악할 수 있다.
+생성된 SBOM은 이후 라이선스 분석(05-sbom-analyst)과 취약점 스캔(05-vulnerability-analyst)의 기반이 됩니다. SBOM이 정확할수록 컴플라이언스 리스크와 보안 취약점을 빠짐없이 파악할 수 있습니다.
 
 ---
 
@@ -21,7 +21,7 @@
 
 ### SBOM이란?
 
-SBOM(Software Bill of Materials)은 소프트웨어에 포함된 모든 구성 요소의 목록이다. 식품 영양성분표처럼, 소프트웨어에 어떤 오픈소스가 어떤 버전으로 들어있는지 명시한다. ISO/IEC 5230과 18974 모두 SBOM 생성을 핵심 요구사항으로 규정한다 (G3B.1).
+SBOM(Software Bill of Materials)은 소프트웨어에 포함된 모든 구성 요소의 목록입니다. 식품 영양성분표처럼, 소프트웨어에 어떤 오픈소스가 어떤 버전으로 들어있는지 명시합니다. ISO/IEC 5230과 18974 모두 SBOM 생성을 핵심 요구사항으로 규정합니다 (G3B.1).
 
 SBOM이 중요한 이유:
 - 어떤 오픈소스 라이선스가 포함되어 있는지 파악 (컴플라이언스)
@@ -35,9 +35,9 @@ SBOM이 중요한 이유:
 | syft | Anchore | 빠르고 가볍다, 단일 바이너리, 다양한 언어 지원 | Python, Node.js, Go |
 | cdxgen | CycloneDX | CycloneDX 전용, 언어별 정밀 분석 | Java(Maven/Gradle), 정밀 분석 필요 시 |
 
-두 도구 모두 CycloneDX JSON 형식으로 출력할 수 있으며, 이 챕터에서는 CycloneDX를 표준 포맷으로 사용한다.
+두 도구 모두 CycloneDX JSON 형식으로 출력할 수 있으며, 이 챕터에서는 CycloneDX를 표준 포맷으로 사용합니다.
 
-실제 Docker 실행 명령어, GitHub Actions CI/CD 설정, 샘플 프로젝트 실습은 [Docker·CI/CD 실행 가이드](./docker-cicd.md) 페이지를 참조한다.
+실제 Docker 실행 명령어, GitHub Actions CI/CD 설정, 샘플 프로젝트 실습은 [Docker·CI/CD 실행 가이드](./docker-cicd.md) 페이지를 참조합니다.
 
 ### CycloneDX JSON 형식 주요 필드
 
@@ -85,11 +85,11 @@ SBOM이 중요한 이유:
 docker ps
 ```
 
-오류 없이 실행되면 Docker가 준비된 것이다.
+오류 없이 실행되면 Docker가 준비된 것입니다.
 
 **단계 2** — 분석할 프로젝트 선택
 
-본인의 프로젝트를 사용할 수도 있고, 샘플을 사용할 수도 있다.
+본인의 프로젝트를 사용할 수도 있고, 샘플을 사용할 수도 있습니다.
 
 처음이라면 아래 샘플 중 하나를 선택한다:
 
@@ -99,7 +99,7 @@ docker ps
 | `samples/python-mixed-license/` | Python (pip) | GPL + MIT 혼용 | Copyleft 라이선스 충돌 실습 |
 | `samples/nodejs-unlicensed/` | Node.js (npm) | 라이선스 미표기 패키지 | 라이선스 미식별 처리 실습 |
 
-> **권장**: `samples/java-vulnerable/` — Log4Shell 취약점을 직접 탐지하며 SBOM의 가치를 체감할 수 있다.
+> **권장**: `samples/java-vulnerable/` — Log4Shell 취약점을 직접 탐지하며 SBOM의 가치를 체감할 수 있습니다.
 
 **단계 3** — 출력 폴더 생성
 
@@ -137,7 +137,7 @@ bash output/sbom/sbom-commands.sh
 ls -lh output/sbom/*.cdx.json
 ```
 
-파일이 존재하고 크기가 0보다 크면 정상이다. 파일을 열어 `components` 배열이 비어있지 않은지 확인한다.
+파일이 존재하고 크기가 0보다 크면 정상입니다. 파일을 열어 `components` 배열이 비어있지 않은지 확인합니다.
 
 **단계 7** — 라이선스 분석 실행
 
@@ -158,7 +158,7 @@ ls output/sbom/license-report.md output/sbom/copyleft-risk.md
 
 **막혔을 때:**
 
-`output/sbom/sbom.cdx.json`이 비어있으면 lock 파일 존재 여부를 먼저 확인한다 (`package-lock.json`, `requirements.txt`, `pom.xml` 등). lock 파일이 없으면 cdxgen으로 전환하여 재시도한다.
+`output/sbom/sbom.cdx.json`이 비어있으면 lock 파일 존재 여부를 먼저 확인합니다 (`package-lock.json`, `requirements.txt`, `pom.xml` 등). lock 파일이 없으면 cdxgen으로 전환하여 재시도합니다.
 
 ```bash
 docker run --rm \
@@ -231,7 +231,7 @@ cd agents/05-sbom-management
 claude
 ```
 
-또는 [SBOM 관리: 만들고 끝이 아니라 관리가 시작이다](../sbom-management/index.md)로 이동하여 가이드를 확인한다.
+또는 [SBOM 관리: 만들고 끝이 아니라 관리가 시작이다](../sbom-management/index.md)로 이동하여 가이드를 확인합니다.
 
 취약점 분석을 먼저 진행하려면:
 
@@ -244,4 +244,4 @@ cd agents/05-vulnerability-analyst
 claude
 ```
 
-완료 후 `output/progress.md`를 업데이트하여 진행 상황을 기록한다.
+완료 후 `output/progress.md`를 업데이트하여 진행 상황을 기록합니다.

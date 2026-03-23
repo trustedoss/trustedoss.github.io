@@ -6,10 +6,10 @@ sidebar_label: "방법 3: Hooks 설정"
 # 방법 3: Hooks 설정하기
 
 :::info 셀프스터디 모드 (약 30분)
-의존성 파일이 변경될 때마다 자동으로 경고가 발생한다.
+의존성 파일이 변경될 때마다 자동으로 경고가 발생합니다.
 :::
 
-`.claude/settings.json`에 아래 Hook을 추가한다.
+`.claude/settings.json`에 아래 Hook을 추가합니다.
 
 ```json
 {
@@ -31,9 +31,9 @@ sidebar_label: "방법 3: Hooks 설정"
 
 > 이 단계는 `output/process/usage-approval.md`에 정의된 패키지 추가 승인 절차를 자동으로 환기시킵니다.
 
-**효과:** Claude Code가 `package.json`, `requirements.txt`, `pom.xml`, `go.mod`, `Cargo.toml` 등을 수정할 때마다 자동으로 경고 메시지가 표시된다.
+**효과:** Claude Code가 `package.json`, `requirements.txt`, `pom.xml`, `go.mod`, `Cargo.toml` 등을 수정할 때마다 자동으로 경고 메시지가 표시됩니다.
 
-**한계:** Claude Code 외부에서 파일을 수정하면 Hook이 실행되지 않는다. CI/CD로 보완한다.
+**한계:** Claude Code 외부에서 파일을 수정하면 Hook이 실행되지 않는다. CI/CD로 보완합니다.
 
 ---
 

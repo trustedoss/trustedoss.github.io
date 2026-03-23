@@ -6,11 +6,11 @@ sidebar_label: "방법 4: CI/CD 파이프라인"
 # 방법 4: CI/CD 파이프라인 추가하기
 
 :::info 셀프스터디 모드 (약 45분)
-PR 단계에서 자동으로 차단하면 위반이 메인 브랜치에 들어오지 못한다.
+PR 단계에서 자동으로 차단하면 위반이 메인 브랜치에 들어오지 못합니다.
 :::
 
-`.github/workflows/oss-policy-check.yml`을 생성한다.
-아래 예시는 **무료 오픈소스 도구만** 사용한다 (syft, grype 모두 오픈소스).
+`.github/workflows/oss-policy-check.yml`을 생성합니다.
+아래 예시는 **무료 오픈소스 도구만** 사용합니다 (syft, grype 모두 오픈소스).
 
 ```yaml
 name: OSS Policy Check

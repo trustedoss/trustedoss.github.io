@@ -11,7 +11,7 @@
 
 ## 1. 이 챕터에서 하는 일
 
-이 키트의 모든 실습에서 사용할 도구를 설치하고 검증한다.
+이 키트의 모든 실습에서 사용할 도구를 설치하고 검증합니다.
 
 - 이 단계가 완료되어야 이후 agent 실행이 가능하다
 - 이 챕터 자체는 ISO/IEC 5230 또는 ISO/IEC 18974의 체크리스트 항목을 직접 충족하지 않는다
@@ -46,7 +46,7 @@ brew install node
 
 ### Windows
 
-WSL2 사용을 권장한다. Docker Desktop 설치 시 WSL2 백엔드를 활성화해야 한다.
+WSL2 사용을 권장합니다. Docker Desktop 설치 시 WSL2 백엔드를 활성화해야 합니다.
 
 ```powershell
 # Docker Desktop: https://www.docker.com/products/docker-desktop 에서 다운로드
@@ -79,7 +79,7 @@ nvm install --lts
 
 ## 4. 설치 확인 명령어 모음
 
-아래 스크립트를 실행하여 모든 필수 도구가 정상 설치되었는지 한 번에 확인한다.
+아래 스크립트를 실행하여 모든 필수 도구가 정상 설치되었는지 한 번에 확인합니다.
 
 ```bash
 #!/bin/bash
@@ -133,7 +133,7 @@ Claude Code가 실행되면:
 2. 처음 실행이라면 `output/` 폴더가 비어있으므로 `02-organization-designer` agent 안내를 받게 된다
 3. Claude Code는 `CLAUDE.md`를 자동으로 읽어 프로젝트 맥락을 이해한다
 
-> Claude Code는 각 챕터 폴더의 `CLAUDE.md`도 함께 읽어 해당 단계의 맥락을 파악한다.
+> Claude Code는 각 챕터 폴더의 `CLAUDE.md`도 함께 읽어 해당 단계의 맥락을 파악합니다.
 
 ## 7. 트러블슈팅
 
@@ -180,9 +180,9 @@ Claude Code가 실행되면:
 
 ## 10. 다음 단계
 
-환경 준비가 완료되면 조직 설계 단계로 진행한다.
+환경 준비가 완료되면 조직 설계 단계로 진행합니다.
 
-[조직 구성: 오픈소스 담당자 지정과 역할 정의](../02-organization/index.md) 챕터를 먼저 읽은 뒤 agent를 실행하거나, 바로 agent를 실행해도 된다.
+[조직 구성: 오픈소스 담당자 지정과 역할 정의](../02-organization/index.md) 챕터를 먼저 읽은 뒤 agent를 실행하거나, 바로 agent를 실행해도 됩니다.
 
 :::tip 실행 전 확인
 현재 Claude 세션을 먼저 종료(`/exit` 또는 `Ctrl+C`)한 뒤, 새 터미널에서 아래 명령을 실행하세요.
