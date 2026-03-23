@@ -1,8 +1,8 @@
 ---
-id: github-copilot
+id: copilot
 title: GitHub Copilot
 sidebar_label: GitHub Copilot
-sidebar_position: 4
+sidebar_position: 3
 ---
 
 # GitHub Copilot
@@ -45,4 +45,4 @@ GitHub Copilot의 "공개 코드 제안 차단" 옵션을 활성화하여 라이
 ## 관련 링크
 
 - [GitHub Copilot 공식 문서](https://docs.github.com/ko/copilot)
-- [공통 Rules 템플릿](./common-rules)
+- [공통 Rules 템플릿](../rules-template)

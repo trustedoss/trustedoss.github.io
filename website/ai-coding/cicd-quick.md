@@ -1,8 +1,8 @@
 ---
-id: cicd-automation
+id: cicd-quick
 title: CI/CD 자동화
 sidebar_label: CI/CD 자동화
-sidebar_position: 7
+sidebar_position: 5
 ---
 
 # CI/CD 자동화

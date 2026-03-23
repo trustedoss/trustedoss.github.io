@@ -2,7 +2,7 @@
 id: cursor
 title: Cursor
 sidebar_label: Cursor
-sidebar_position: 3
+sidebar_position: 2
 ---
 
 # Cursor
@@ -39,4 +39,4 @@ Cursor는 AI 기능이 내장된 코드 편집기입니다. VS Code를 기반으
 ## 관련 링크
 
 - [Cursor 공식 문서](https://docs.cursor.com)
-- [공통 Rules 템플릿](./common-rules)
+- [공통 Rules 템플릿](../rules-template)

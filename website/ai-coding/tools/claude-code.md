@@ -2,7 +2,7 @@
 id: claude-code
 title: Claude Code
 sidebar_label: Claude Code
-sidebar_position: 2
+sidebar_position: 1
 ---
 
 # Claude Code

@@ -2,7 +2,7 @@
 id: windsurf
 title: Windsurf
 sidebar_label: Windsurf
-sidebar_position: 5
+sidebar_position: 4
 ---
 
 # Windsurf
@@ -42,4 +42,4 @@ Windsurf 설정에서 Global Rules를 추가합니다:
 ## 관련 링크
 
 - [Windsurf 공식 문서](https://docs.windsurf.ai)
-- [공통 Rules 템플릿](./common-rules)
+- [공통 Rules 템플릿](../rules-template)
