@@ -1,0 +1,179 @@
+---
+id: iac-security
+title: IaC 보안
+sidebar_label: IaC 보안
+sidebar_position: 7
+---
+# IaC 보안
+
+## IaC 보안이란
+
+Terraform·CloudFormation·Kubernetes YAML·Dockerfile 등 인프라를 코드로 정의하는 IaC 파일의 보안 설정 오류(퍼블릭 S3 버킷·암호화 미적용·과도한 권한 등)를 배포 전에 탐지하는 검사입니다. 잘못된 인프라 설정은 애플리케이션 취약점보다 더 넓은 범위의 피해를 유발할 수 있어 코드 리뷰 단계에서의 차단이 중요합니다.
+
+---
+
+## 도구 비교
+
+| 도구 | 특징 | 지원 대상 | 라이선스 |
+|------|------|-----------|----------|
+| Checkov | 광범위한 커버리지·커스텀 정책 지원 | Terraform·K8s·CF·Dockerfile·ARM | Apache-2.0 |
+| tfsec | Terraform 전용·빠른 속도 | Terraform | MIT |
+| Trivy | IaC 스캔 포함 (컨테이너와 통합) | Terraform·K8s·Dockerfile | Apache-2.0 |
+| Kubesec | Kubernetes 전용 보안 점수 | Kubernetes YAML | Apache-2.0 |
+
+멀티 IaC 환경에는 Checkov, Terraform만 사용한다면 tfsec, 컨테이너 보안과 통합하려면 Trivy를 권장합니다.
+
+---
+
+## Checkov 설정
+
+Checkov는 500개 이상의 내장 정책을 제공하며 별도 서버 없이 로컬과 CI 모두에서 실행됩니다. SARIF 포맷 출력을 지원해 GitHub Security 탭과 연동하면 PR에서 바로 결과를 확인할 수 있습니다.
+
+### 기본 사용법
+
+```bash
+# 현재 디렉토리 전체 스캔
+checkov -d .
+
+# 특정 프레임워크만 스캔
+checkov -d . --framework terraform
+checkov -d . --framework kubernetes
+
+# 특정 검사 항목만 실행
+checkov -d . --check CKV_AWS_18,CKV_AWS_19
+
+# 결과를 JSON으로 출력
+checkov -d . -o json > checkov-report.json
+```
+
+### GitHub Actions
+
+```yaml
+# .github/workflows/iac-security.yml
+
+name: IaC Security — Checkov
+
+on:
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  checkov:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Checkov
+        uses: bridgecrewio/checkov-action@master
+        with:
+          directory: .
+          framework: terraform,kubernetes,dockerfile
+          soft_fail: false
+          output_format: cli,sarif
+          output_file_path: console,checkov-results.sarif
+
+      - name: Upload SARIF
+        uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: checkov-results.sarif
+```
+
+### GitLab CI
+
+```yaml
+# .gitlab-ci.yml (iac-security 잡 부분)
+
+iac-security:
+  stage: test
+  image: bridgecrew/checkov:latest
+  script:
+    - checkov -d .
+      --framework terraform,kubernetes,dockerfile
+      --output cli
+      --soft-fail false
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+```
+
+---
+
+## tfsec 설정 (Terraform 전용)
+
+tfsec은 Terraform에 특화된 도구로 실행 속도가 빠르고 AWS·Azure·GCP 등 주요 클라우드 프로바이더의 보안 규칙이 내장돼 있습니다. Checkov와 병행해 Terraform 전용 심층 검사를 추가할 때도 유용합니다.
+
+### GitHub Actions
+
+```yaml
+# .github/workflows/iac-security-tfsec.yml (Terraform 전용)
+
+name: IaC Security — tfsec
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  tfsec:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run tfsec
+        uses: aquasecurity/tfsec-action@v1.0.0
+        with:
+          soft_fail: false
+```
+
+---
+
+## 예외 처리
+
+:::info 예외는 코드에 인라인으로 명시해 추적 가능하게 관리하세요
+:::
+
+불가피하게 특정 검사를 건너뛰어야 할 경우 인프라 코드에 인라인 주석으로 이유를 명시합니다.
+
+```hcl
+# Terraform 인라인 예외 예시
+
+resource "aws_s3_bucket" "logs" {
+  bucket = "my-log-bucket"
+
+  # checkov:skip=CKV_AWS_18:접근 로그 버킷은 자체 로깅 불필요
+  # checkov:skip=CKV_AWS_52:MFA 삭제는 로그 버킷 특성상 불필요
+}
+```
+
+```yaml
+# Kubernetes 인라인 예외 예시
+
+metadata:
+  annotations:
+    checkov.io/skip1: "CKV_K8S_14=테스트 환경 전용 파드"
+```
+
+---
+
+## 주요 검사 항목
+
+:::warning 아래 항목은 실제 침해 사고의 주요 원인입니다
+:::
+
+처음 도입 시 아래 항목부터 우선 검사를 활성화하면 실질적인 리스크를 빠르게 줄일 수 있습니다. 팀이 결과에 익숙해진 뒤 전체 정책으로 확대하는 것을 권장합니다.
+
+| 항목 | Checkov ID | 설명 |
+|------|-----------|------|
+| S3 퍼블릭 접근 차단 | CKV_AWS_53 | 버킷 퍼블릭 접근 차단 설정 |
+| S3 암호화 | CKV_AWS_19 | 서버 사이드 암호화 활성화 |
+| 보안 그룹 0.0.0.0 | CKV_AWS_25 | SSH 포트 전체 개방 금지 |
+| K8s 루트 실행 금지 | CKV_K8S_6 | 컨테이너 루트 실행 차단 |
+| K8s 리소스 제한 | CKV_K8S_11 | CPU·메모리 limits 설정 |
+| 최신 API 버전 | CKV_K8S_35 | 지원 종료 API 버전 사용 금지 |
+
+---
+
+## 다음 단계
+
+- 동적 분석으로 배포 후 검증: [DAST](./dast)
+- 전체 파이프라인 통합: [파이프라인 설계](./pipeline-design)

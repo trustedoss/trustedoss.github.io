@@ -1,0 +1,161 @@
+---
+id: secret-detection
+title: 시크릿 탐지
+sidebar_label: 시크릿 탐지
+sidebar_position: 5
+---
+# 시크릿 탐지
+
+## 왜 시크릿 탐지가 중요한가
+
+:::warning 커밋된 시크릿은 삭제해도 git 히스토리에 남습니다
+force push로 덮어도 이미 클론된 저장소·포크·CI 캐시에 남아있을 수 있어, 노출된 시크릿은 반드시 즉시 폐기·재발급해야 합니다.
+:::
+
+**흔한 실수:** AWS Access Key·GitHub Token·DB 패스워드·개인키를 `.env` 파일이나 설정 파일에 하드코딩한 채 커밋하는 경우가 많습니다. 공개 저장소라면 수 분 내에 자동화된 봇이 수집합니다.
+
+**비용:** 노출된 클라우드 키 하나로 수백만 원의 요금이 청구된 사례가 빈번합니다. 탐지·차단 비용보다 사고 대응 비용이 수백 배 높습니다.
+
+---
+
+## 도구 비교
+
+| 도구 | 특징 | 탐지 방식 | 라이선스 |
+|------|------|-----------|----------|
+| Gitleaks | 빠른 속도·설정 단순 | 정규식·엔트로피 | MIT |
+| truffleHog | 깊은 히스토리 스캔·검증 기능 | 정규식·엔트로피·API 검증 | AGPL-3.0 |
+
+CI/CD 파이프라인 기본 도구로는 Gitleaks, 기존 저장소 전체 히스토리 감사에는 truffleHog를 권장합니다.
+
+---
+
+## Gitleaks 설정
+
+### GitHub Actions
+
+```yaml
+# .github/workflows/secret-detection.yml
+
+name: Secret Detection — Gitleaks
+
+on:
+  pull_request:
+    branches: [main, develop]
+  push:
+    branches: [main]
+
+jobs:
+  gitleaks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # 전체 히스토리 스캔
+
+      - name: Run Gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+```
+
+### GitLab CI
+
+```yaml
+# .gitlab-ci.yml (secret-detection 잡 부분)
+
+secret-detection:
+  stage: test
+  image: zricethezav/gitleaks:latest
+  script:
+    - gitleaks detect
+      --source .
+      --config .gitleaks.toml
+      --exit-code 1
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+```
+
+### 예외 처리 설정
+
+탐지에서 제외할 패턴은 `.gitleaks.toml`로 관리합니다.
+
+```toml
+# .gitleaks.toml
+
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "테스트용 더미 시크릿"
+regexes = [
+  '''(?i)example''',
+  '''(?i)dummy''',
+  '''(?i)test[-_]?key''',
+]
+
+[[allowlists]]
+description = "특정 파일 제외"
+paths = [
+  '''tests/fixtures/.*''',
+  '''docs/.*\.md''',
+]
+```
+
+---
+
+## pre-commit 훅 설정
+
+:::tip pre-commit으로 커밋 전에 차단하면 CI까지 갈 필요가 없습니다
+:::
+
+로컬 커밋 단계에서 먼저 차단하면 CI 실패→수정→재푸시 사이클을 줄일 수 있습니다.
+
+```yaml
+# .pre-commit-config.yaml
+
+repos:
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.18.0
+    hooks:
+      - id: gitleaks
+```
+
+```bash
+# pre-commit 설치
+pip install pre-commit
+
+# 훅 등록
+pre-commit install
+```
+
+---
+
+## 기존 저장소 전체 스캔 — truffleHog
+
+신규 도입 시 기존 git 히스토리 전체를 truffleHog로 한 번 감사하는 것을 권장합니다.
+
+```bash
+# 전체 히스토리 스캔
+trufflehog git file://. --only-verified
+
+# 특정 브랜치만 스캔
+trufflehog git file://. --branch main --only-verified
+```
+
+`--only-verified` 옵션은 실제로 유효한 시크릿만 출력해 오탐을 줄여줍니다.
+
+---
+
+## 노출 시 대응 절차
+
+1. **즉시 폐기·재발급:** 노출된 키·토큰을 해당 서비스(AWS·GitHub·GCP 등)에서 즉시 비활성화하고 새 키를 발급합니다.
+2. **히스토리 정리:** `git filter-repo` 또는 BFG Repo Cleaner로 히스토리에서 제거합니다. 단, 이미 클론된 저장소에는 효과가 없습니다.
+3. **접근 로그 확인:** 노출 기간 동안 해당 키로 이뤄진 API 호출 로그를 검토합니다.
+4. **재발 방지:** `.gitleaks.toml` 예외 규칙을 검토하고, 팀 교육과 secret manager(Vault 등) 도입을 검토합니다.
+
+---
+
+## 다음 단계
+
+- 컨테이너 이미지 내 시크릿 포함 취약점: [컨테이너 보안](./container-security)
+- 전체 파이프라인 통합: [파이프라인 설계](./pipeline-design)

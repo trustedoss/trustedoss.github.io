@@ -1,0 +1,173 @@
+---
+id: sast
+title: 정적 분석 (SAST)
+sidebar_label: SAST
+sidebar_position: 3
+---
+# 정적 분석 (SAST)
+
+## SAST란
+
+소스코드를 실행하지 않고 분석해 SQL 인젝션·XSS·버퍼 오버플로우 등 보안 취약점 패턴을 탐지하는 기법입니다. PR 단계에서 실행해 취약한 코드가 메인 브랜치에 병합되기 전에 차단합니다.
+
+---
+
+## 도구 비교
+
+SAST 도구는 지원 언어와 분석 깊이에 따라 선택 기준이 달라집니다. 오픈소스 생태계에서 널리 사용되는 도구는 다음과 같습니다.
+
+| 도구 | 특징 | 지원 언어 | 라이선스 |
+|------|------|-----------|----------|
+| Semgrep | 커스텀 룰 작성 용이, 빠른 속도 | 30+ 언어 | LGPL-2.1 (OSS 버전) |
+| CodeQL | GitHub 네이티브, 깊은 분석 | 12개 주요 언어 | GitHub Actions 무료 |
+| Bandit | Python 전용, 경량 | Python | Apache-2.0 |
+| SpotBugs | Java/Kotlin 전용 | Java, Kotlin, Scala | LGPL |
+
+멀티 언어 프로젝트에는 Semgrep, GitHub를 사용하는 팀에는 CodeQL이 가장 적합합니다. 단일 언어 프로젝트는 언어 전용 도구 병행을 권장합니다.
+
+---
+
+## Semgrep 설정
+
+Semgrep은 공개 룰셋이 풍부하고 커스텀 룰 작성이 쉬워 빠르게 도입할 수 있는 도구입니다. `semgrep-action`을 사용하면 별도의 설치 없이 GitHub Actions에서 바로 실행됩니다.
+
+### GitHub Actions
+
+```yaml
+# .github/workflows/sast-semgrep.yml
+
+name: SAST — Semgrep
+
+on:
+  pull_request:
+    branches: [main, develop]
+  push:
+    branches: [main]
+
+jobs:
+  semgrep:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Semgrep
+        uses: semgrep/semgrep-action@v1
+        with:
+          config: >-
+            p/owasp-top-ten
+            p/security-audit
+            p/secrets
+        env:
+          SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
+```
+
+### 룰셋 선택 가이드
+
+| 룰셋 | 대상 | 설명 |
+|------|------|------|
+| p/owasp-top-ten | 전체 | OWASP Top 10 취약점 탐지 |
+| p/security-audit | 전체 | 보안 감사용 포괄 룰셋 |
+| p/secrets | 전체 | 하드코딩된 시크릿 탐지 |
+| p/python | Python | Python 전용 보안 룰 |
+| p/java | Java | Java 전용 보안 룰 |
+| p/javascript | JS/TS | JS·TS 전용 보안 룰 |
+
+### 커스텀 룰 작성
+
+팀 특화 패턴은 `.semgrep/` 폴더에 YAML 형식으로 커스텀 룰을 추가할 수 있습니다. 기존 공개 룰셋에 없는 조직 내부 코딩 금지 패턴을 직접 정의할 때 유용합니다.
+
+```yaml
+# .semgrep/custom-rules.yml
+
+rules:
+  - id: no-hardcoded-db-password
+    patterns:
+      - pattern: |
+          $DB = new PDO("...", "...", "$PASSWORD", ...)
+    message: |
+      하드코딩된 DB 패스워드가 감지됐습니다.
+      환경변수로 교체하세요.
+    languages: [php]
+    severity: ERROR
+```
+
+---
+
+## CodeQL 설정
+
+CodeQL은 GitHub에서 제공하는 도구로, GitHub Actions에서 퍼블릭 저장소 및 GitHub Advanced Security 구독 조직에 무료로 제공됩니다. 데이터플로우 분석을 지원해 간접적인 취약점 경로도 탐지할 수 있습니다.
+
+### GitHub Actions
+
+```yaml
+# .github/workflows/sast-codeql.yml
+
+name: SAST — CodeQL
+
+on:
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '0 2 * * 1'  # 매주 월요일 새벽 2시 전체 스캔
+
+jobs:
+  codeql:
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: javascript, python
+          # 지원 언어: javascript, python, java,
+          #            cpp, csharp, go, ruby, swift
+
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v3
+
+      - name: Analyze
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:javascript"
+```
+
+### GitLab CI
+
+```yaml
+# .gitlab-ci.yml (semgrep 잡 부분)
+
+semgrep:
+  stage: test
+  image: semgrep/semgrep:latest
+  script:
+    - semgrep ci
+      --config p/owasp-top-ten
+      --config p/security-audit
+      --error
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+```
+
+---
+
+## 도입 시 주의사항
+
+:::warning 처음부터 빌드 차단으로 설정하지 마세요
+:::
+
+**단계적 강화:** 처음 2~4주는 경고만 출력하고 팀이 결과에 익숙해진 뒤 빌드 차단으로 전환합니다. 한 번에 수백 개의 경고가 쏟아지면 팀이 알림 피로에 빠져 도구 자체를 무시하게 됩니다.
+
+**오탐(False Positive) 관리:** Semgrep은 `.semgrepignore` 파일로 특정 파일·경로를 제외할 수 있습니다. 테스트 코드·서드파티 라이브러리 경로는 제외를 권장합니다.
+
+**룰셋 범위:** 처음에는 `p/owasp-top-ten` 하나만 적용하고 안정화 후 추가 룰셋 확장을 권장합니다. 룰셋을 한꺼번에 모두 활성화하면 오탐 비율이 높아져 개발 흐름을 방해할 수 있습니다.
+
+---
+
+## 다음 단계
+
+- 의존성 취약점 관리: [SCA](./sca)
+- 전체 파이프라인 통합: [파이프라인 설계](./pipeline-design)

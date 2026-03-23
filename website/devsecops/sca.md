@@ -1,0 +1,166 @@
+---
+id: sca
+title: 소프트웨어 구성 분석 (SCA)
+sidebar_label: SCA
+sidebar_position: 4
+---
+# 소프트웨어 구성 분석 (SCA)
+
+## SCA란
+
+소프트웨어에 포함된 오픈소스 컴포넌트를 분석해 알려진 취약점(CVE)을 탐지하는 기법입니다. SBOM(Software Bill of Materials)을 기반으로 의존성 전체를 추적하고 신규 CVE 발견 시 즉시 대응합니다.
+
+---
+
+## SBOM 생성 — syft
+
+### 기본 사용법
+
+```bash
+# CycloneDX JSON 생성 (권장)
+syft . -o cyclonedx-json=sbom.cdx.json
+
+# SPDX JSON 생성
+syft . -o spdx-json=sbom.spdx.json
+
+# 컨테이너 이미지 분석
+syft nginx:latest -o cyclonedx-json=sbom.cdx.json
+```
+
+### 포맷 선택
+
+| 포맷 | 주관 | 권장 용도 |
+|------|------|-----------|
+| CycloneDX JSON | OWASP | 보안·취약점 관리 (grype 연동) |
+| SPDX JSON | Linux Foundation | 공급망 공유·규제 대응 |
+
+보안 파이프라인 중심이라면 CycloneDX JSON을 권장합니다.
+
+---
+
+## 취약점 스캔 — grype
+
+### GitHub Actions 전체 워크플로우
+
+```yaml
+# .github/workflows/sca.yml
+
+name: SCA — SBOM & Vulnerability Scan
+
+on:
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  sca:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate SBOM
+        uses: anchore/sbom-action@v0
+        with:
+          format: cyclonedx-json
+          output-file: sbom.cdx.json
+
+      - name: Scan vulnerabilities
+        uses: anchore/scan-action@v3
+        with:
+          sbom: sbom.cdx.json
+          fail-build: true
+          severity-cutoff: high
+          config: .grype.yaml
+
+      - name: Upload SBOM artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: sbom-${{ github.sha }}
+          path: sbom.cdx.json
+          retention-days: 90
+```
+
+### GitLab CI
+
+```yaml
+# .gitlab-ci.yml (sca 잡 부분)
+
+sca:
+  stage: test
+  image: ubuntu:22.04
+  script:
+    - curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh
+      | sh -s -- -b /usr/local/bin
+    - curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh
+      | sh -s -- -b /usr/local/bin
+    - syft . -o cyclonedx-json=sbom.cdx.json
+    - grype sbom:sbom.cdx.json --fail-on high --config .grype.yaml
+  artifacts:
+    paths:
+      - sbom.cdx.json
+    expire_in: 90 days
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+```
+
+---
+
+## 취약점 정책 설계
+
+### 심각도별 SLA
+
+| 심각도 | CVSS 범위 | 권장 SLA | 빌드 차단 |
+|--------|-----------|----------|-----------|
+| Critical | 9.0–10.0 | 24시간 | 차단 |
+| High | 7.0–8.9 | 7일 | 차단 |
+| Medium | 4.0–6.9 | 30일 | 경고만 |
+| Low | 0.1–3.9 | 다음 릴리즈 | 무시 |
+
+처음 도입 시에는 Critical만 차단하고 팀이 익숙해진 뒤 High로 확대하는 것을 권장합니다.
+
+### grype 정책 파일
+
+:::info 무시 규칙은 반드시 이유와 승인일을 기록하세요
+감사(Audit) 대응 시 근거 없는 예외는 오히려 컴플라이언스 리스크가 됩니다.
+:::
+
+```yaml
+# .grype.yaml
+
+fail-on-severity: high
+
+ignore:
+  # 실제 코드 경로 미사용 — 보안팀 승인 2024-01-15
+  - vulnerability: CVE-2023-XXXXX
+    reason: "해당 함수 미사용 확인"
+  # 테스트 전용 패키지
+  - package:
+      name: some-test-lib
+      type: npm
+```
+
+---
+
+## VEX 활용
+
+**VEX(Vulnerability Exploitability eXchange)란:** 특정 CVE가 해당 제품에서 실제로 악용 가능한지를 기계가 읽을 수 있는 형식으로 명시하는 문서입니다. "CVE는 존재하지만 해당 코드 경로 미사용"을 공식적으로 표현해 하위 공급망의 불필요한 알림을 방지합니다.
+
+**실무 활용:** CycloneDX VEX 또는 OpenVEX 형식으로 작성하고 SBOM과 함께 배포합니다. 현재는 도입 초기 단계이나 공급망 규제 강화 추세에 따라 중요성이 커지고 있습니다.
+
+---
+
+## SBOM 보관 정책
+
+**보관 위치:** CI/CD 아티팩트로 저장하고 릴리즈 태그와 연결해 버전별 SBOM을 추적합니다. GitHub Actions `upload-artifact`, GitLab `artifacts.paths`를 활용합니다.
+
+**보관 기간:** ISO/IEC 18974는 프로그램 존속 기간 동안 보존을 요구합니다. 실무적으로는 릴리즈 버전별 영구 보관을 권장합니다.
+
+**업데이트 시점:** 의존성 변경 시마다 재생성합니다. PR 단위 자동 생성으로 항상 최신 상태를 유지합니다.
+
+---
+
+## 다음 단계
+
+- 시크릿 누출 방지: [시크릿 탐지](./secret-detection)
+- 컨테이너 이미지 취약점: [컨테이너 보안](./container-security)
+- 배포 후 지속 모니터링: [모니터링·자동 교정](./monitoring)
+- ISO/IEC 18974 연계: [ISO 표준 연계](./iso-mapping)
