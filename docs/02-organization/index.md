@@ -98,13 +98,14 @@ agent와 대화하며 조직 산출물을 생성합니다.
    cd agents/02-organization-designer
    claude
    ```
-4. agent의 5개 질문에 답변:
+4. Claude 프롬프트가 열리면 **`시작`** 을 입력하세요. agent가 5개 질문을 순서대로 진행합니다.
+5. agent의 5개 질문에 답변:
    - 회사명과 담당 부서명
    - 전체 개발자 수
    - 전담/겸직/1인 담당 중 선택
    - 법무팀 유무
    - 보안팀 유무
-5. `output/organization/` 생성 확인
+6. `output/organization/` 생성 확인
 
 :::tip 예상 결과
 실습을 완료하면 아래 3개 파일이 생성됩니다.

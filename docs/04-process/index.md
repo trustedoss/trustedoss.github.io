@@ -175,15 +175,17 @@ cd agents/04-process-designer
 claude
 ```
 
-**3단계**: 4개 질문에 순서대로 답변
+**3단계**: Claude 프롬프트가 열리면 `시작` 을 입력한다.
 
-**4단계**: 생성된 Mermaid 흐름도 검토
+**4단계**: 4개 질문에 순서대로 답변
+
+**5단계**: 생성된 Mermaid 흐름도 검토
 
 생성된 `output/process/process-diagram.md` 파일을 GitHub에서 열면 흐름도가 자동으로
 렌더링된다. 흐름도가 실제 업무 흐름과 일치하는지 검토한다. 수정이 필요하면 agent에게
 추가 요청하거나 직접 파일을 편집한다.
 
-**5단계**: `output/process/` 디렉토리에 4개 파일이 모두 생성되었는지 확인
+**6단계**: `output/process/` 디렉토리에 4개 파일이 모두 생성되었는지 확인
 
 ```bash
 ls output/process/

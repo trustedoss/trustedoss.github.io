@@ -124,10 +124,12 @@ cd agents/03-policy-generator
 claude
 ```
 
-**Step 3. agent 질문에 순서대로 답변**
+**Step 3. Claude 프롬프트가 열리면 `시작` 을 입력한다.**
+
+**Step 4. agent 질문에 순서대로 답변**
 agent가 5개 질문을 하나씩 물어본다. 준비한 답변을 바탕으로 대화한다. 확실하지 않은 항목은 agent에게 가이드를 요청할 수 있다.
 
-**Step 4. oss-policy.md 검토**
+**Step 5. oss-policy.md 검토**
 ```bash
 open output/policy/oss-policy.md
 ```
@@ -135,7 +137,7 @@ open output/policy/oss-policy.md
 - 배포 방식에 맞는 라이선스 의무 이행 절차가 포함되어 있는지 확인
 - 정책 검토 주기(예: 연 1회)가 명시되어 있는지 확인
 
-**Step 5. license-allowlist.md 검토 및 수정**
+**Step 6. license-allowlist.md 검토 및 수정**
 ```bash
 open output/policy/license-allowlist.md
 ```
@@ -143,7 +145,7 @@ open output/policy/license-allowlist.md
 - 실제 사용 중인 라이선스가 목록에 포함되어 있는지 확인
 - 필요 시 항목 추가 또는 조건 수정
 
-**Step 6. 완료 확인 체크리스트 점검**
+**Step 7. 완료 확인 체크리스트 점검**
 아래 5번 섹션의 체크리스트를 항목별로 확인한다.
 
 > 이 단계는 ISO/IEC 5230 3.5.1 (오픈소스 기여 정책 수립) 요구사항을 충족합니다.
