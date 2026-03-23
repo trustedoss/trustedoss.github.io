@@ -35,3 +35,6 @@
   - 입증자료 50개 전체 checklist-mapping.md 매핑
   - 챕터별 :::info 충족되는 표준 요구사항 블록 추가 (03-policy 기준)
   - README.md 저장소 구조 안내 추가
+  - docs 챕터 02/03/04/06 셀프스터디 경로에 `:::details` Agent 대화 예시 블록 추가
+  - website/reference/samples/ 산출물 Best Practice 5종 생성 (organization, policy, process, training, conformance) — 규모별 3 프로필 (스타트업/중소기업/대기업)
+  - website/reference/intro.md 및 sidebarsReference.ts 업데이트

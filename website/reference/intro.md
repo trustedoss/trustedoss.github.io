@@ -6,26 +6,23 @@ slug: intro
 
 # 레퍼런스
 
-오픈소스 관리 체계 구축에 필요한
-참조 자료를 모아둔 섹션입니다.
+오픈소스 관리 체계 구축에 필요한 참조 자료를 모아둔 섹션입니다.
 
-:::info 준비 중
-이 섹션은 현재 준비 중입니다.
-:::
+## 산출물 Best Practice
 
-## 다룰 내용
+각 단계별 agent가 생성하는 산출물의 완성 예시입니다.
+규모별(스타트업 / 중소기업 / 대기업) 3가지 프로필을 제공합니다.
+자신의 `output/` 폴더 결과물과 비교하여 빠진 항목을 확인하세요.
 
-### 정책/프로세스 샘플
-실제 사용 가능한 Best Practice 기반 샘플 문서입니다.
-기업 규모별로 제공됩니다.
+| 산출물 | 대응 Agent | 바로가기 |
+|--------|----------|---------|
+| 조직 (role-definition, raci-matrix, appointment-template) | organization-designer | [조직 산출물](./samples/organization) |
+| 정책 (oss-policy, license-allowlist) | policy-generator | [정책 산출물](./samples/policy) |
+| 프로세스 (usage-approval, distribution-checklist, vulnerability-response) | process-designer | [프로세스 산출물](./samples/process) |
+| 교육 (curriculum, completion-tracker, resources) | training-manager | [교육 산출물](./samples/training) |
+| 인증 (gap-analysis, declaration-draft, submission-guide) | conformance-preparer | [인증 산출물](./samples/conformance) |
 
-| 문서 | 대상 | 상태 |
-|---|---|---|
-| 오픈소스 정책 (스타트업) | 개발자 10명 이하 | 준비 중 |
-| 오픈소스 정책 (중소기업) | 10~100명 | 준비 중 |
-| 오픈소스 정책 (대기업) | 100명 이상 | 준비 중 |
-| 라이선스 검토 프로세스 | 전 규모 | 준비 중 |
-| 취약점 대응 프로세스 | 전 규모 | 준비 중 |
+## 다룰 내용 (준비 중)
 
 ### 도구 가이드
 무료 오픈소스 도구 심화 가이드입니다.

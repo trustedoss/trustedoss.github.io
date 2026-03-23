@@ -175,6 +175,47 @@ cd agents/04-process-designer
 claude
 ```
 
+:::details Agent 대화 예시 (클릭해서 펼치기)
+아래는 실제 agent와의 대화 흐름 예시입니다. 실행 시 이런 형태로 진행됩니다.
+
+**Agent 안내 메시지:**
+> 안녕하세요! 오픈소스 프로세스 산출물을 생성하는 agent입니다.
+> 4개 질문에 답변하시면 프로세스 문서 4개가 자동으로 생성됩니다.
+
+---
+
+**질문 1/4** — 현재 사용 중인 CI/CD 도구는? (GitHub Actions / Jenkins / GitLab CI / 없음 / 기타)
+
+`예시 답변: GitHub Actions`
+
+**질문 2/4** — 소프트웨어 배포 주기는? (매일 / 주간 / 월간 / 비정기)
+
+`예시 답변: 주간`
+
+**질문 3/4** — 이슈 트래커를 사용하나요? (GitHub Issues / Jira / 없음 / 기타)
+
+`예시 답변: GitHub Issues`
+
+**질문 4/4** — 오픈소스 사용 승인 결재 단계가 필요한가요? (담당자 단독 / 팀장 승인 / 위원회 승인)
+
+`예시 답변: 팀장 승인`
+
+---
+
+**생성 완료 시 출력 예시:**
+
+| 파일 | 내용 |
+|------|------|
+| `output/process/usage-approval.md` | 오픈소스 도입 승인 양식 및 절차 |
+| `output/process/distribution-checklist.md` | 배포 전 컴플라이언스 체크리스트 |
+| `output/process/vulnerability-response.md` | 취약점 대응 절차서 및 심각도별 기한 |
+| `output/process/process-diagram.md` | Mermaid 흐름도 포함 전체 프로세스 개요 |
+
+**직접 기입이 필요한 항목:**
+- GitHub Actions 워크플로우 파일 경로 확인
+- 승인자 이름 및 연락처
+:::
+
 **3단계**: Claude 프롬프트가 열리면 `시작` 을 입력한다.
 
 **4단계**: 4개 질문에 순서대로 답변
