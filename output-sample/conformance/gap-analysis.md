@@ -1,7 +1,7 @@
 ---
 리포트 유형: 갭 분석 (ISO/IEC 5230 + ISO/IEC 18974)
 생성일: 2026-03-23
-대상 프로젝트: SK텔레콤 오픈소스 프로그램
+대상 프로젝트: 테크유니콘 오픈소스 프로그램
 사용 도구: trustedoss agents/07-conformance-preparer
 ---
 
