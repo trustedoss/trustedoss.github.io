@@ -165,6 +165,63 @@ else
   FAIL=$((FAIL+1))
 fi
 
+# 검증 7: agent 실행 블록 admonition 누락 확인
+# docs/ 내 bash 블록에 'cd agents/'가 있으면 직전 10줄에 ':::tip 실행 전 확인'이 있어야 함
+echo "[7/7] agent 실행 admonition 누락 확인..."
+ADMON_ERRORS=0
+while IFS= read -r result; do
+  WARNINGS+=("admonition 누락: $result")
+  ADMON_ERRORS=$((ADMON_ERRORS+1))
+done < <(python3 - <<'PYEOF'
+import os, sys
+
+docs_dir = 'docs'
+violations = []
+
+for root, dirs, files in os.walk(docs_dir):
+    for fname in files:
+        if not fname.endswith('.md'):
+            continue
+            # CLAUDE.md 는 내부 지침 파일 — admonition 검사 제외
+        if fname == 'CLAUDE.md':
+            continue
+        fpath = os.path.join(root, fname)
+        with open(fpath, encoding='utf-8') as f:
+            lines = f.readlines()
+        i = 0
+        while i < len(lines):
+            # bash 블록 시작 탐지
+            if lines[i].strip() == '```bash':
+                block_start = i
+                block_lines = []
+                j = i + 1
+                while j < len(lines) and lines[j].strip() != '```':
+                    block_lines.append(lines[j])
+                    j += 1
+                # cd agents/ 포함 여부 확인
+                if any('cd agents/' in bl for bl in block_lines):
+                    # 직전 10줄에 admonition 있는지 확인
+                    preceding = lines[max(0, block_start - 10):block_start]
+                    if not any(':::tip 실행 전 확인' in pl for pl in preceding):
+                        # 위반 위치와 명령어 출력
+                        cmd = next((bl.strip() for bl in block_lines if 'cd agents/' in bl), '')
+                        violations.append(f'{fpath}:{block_start + 1} — {cmd}')
+                i = j
+            i += 1
+
+for v in violations:
+    print(v)
+PYEOF
+)
+
+if [ $ADMON_ERRORS -eq 0 ]; then
+  echo "  PASS: agent 실행 admonition 이상 없음"
+  PASS=$((PASS+1))
+else
+  echo "  FAIL: admonition 누락 ${ADMON_ERRORS}곳 발견"
+  FAIL=$((FAIL+1))
+fi
+
 # 최종 결과 출력
 echo ""
 echo "===== 검증 결과 ====="

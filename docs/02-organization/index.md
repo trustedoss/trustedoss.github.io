@@ -187,6 +187,10 @@ agent와 대화하며 조직 산출물을 생성합니다.
 
 조직 구성이 완료되면 오픈소스 정책 수립으로 이동한다.
 
+:::tip 실행 전 확인
+현재 Claude 세션을 먼저 종료(`/exit` 또는 `Ctrl+C`)한 뒤, 새 터미널에서 아래 명령을 실행하세요.
+:::
+
 ```bash
 cd agents/03-policy-generator
 claude

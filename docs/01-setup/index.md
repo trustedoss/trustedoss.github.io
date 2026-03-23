@@ -196,6 +196,10 @@ Claude Code가 실행되면:
 
 [조직 구성: 오픈소스 담당자 지정과 역할 정의](../02-organization/index.md) 챕터를 먼저 읽은 뒤 agent를 실행하거나, 바로 agent를 실행해도 된다.
 
+:::tip 실행 전 확인
+현재 Claude 세션을 먼저 종료(`/exit` 또는 `Ctrl+C`)한 뒤, 새 터미널에서 아래 명령을 실행하세요.
+:::
+
 ```bash
 cd agents/02-organization-designer
 claude
