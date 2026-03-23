@@ -57,6 +57,22 @@ ISO/IEC 5230 (라이선스 컴플라이언스)과 ISO/IEC 18974 (보안 보증) 
 | `.claude/skills/create-doc.md` | `docs/` 하위 문서를 새로 작성하거나 수정할 때 |
 | `.claude/skills/validate-checklist.md` | `agents/07-conformance-preparer` 또는 output/ 전체 완료 여부 점검 시 |
 | `.claude/skills/generate-report.md` | SBOM 분석·취약점 분석·갭 분석 리포트를 생성할 때 |
+| `.claude/skills/update-reference-samples.md` | output/ 또는 output-sample/ 갱신 후 `website/reference/samples/` 페이지 재생성 시 |
+
+## 샘플 페이지 갱신 워크플로우
+
+agents/ 실행으로 output/ 파일이 갱신된 후 샘플 페이지를 최신화하는 순서:
+
+```bash
+# 1. output/ → output-sample/ 동기화
+bash .claude/scripts/sync-output-samples.sh
+
+# 2. website/reference/samples/ 재생성 (Claude 스킬)
+# /update-reference-samples
+
+# 3. 검증
+bash .claude/scripts/verify.sh
+```
 
 ## 작업 완료 후 필수 규칙
 
