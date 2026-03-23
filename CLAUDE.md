@@ -38,7 +38,7 @@ ISO/IEC 5230 (라이선스 컴플라이언스)과 ISO/IEC 18974 (보안 보증) 
 
 | output/ 상태 | 안내 |
 |---|---|
-| 비어있음 | "시작하기 전에: 두 표준과 이 키트의 소개"(`docs/00-overview/index.md`) 및 "소프트웨어 공급망 보안: 왜 지금 중요한가"(`docs/00-overview/supply-chain.md`) 읽기 → 현재 Claude 세션 종료 후 `cd agents/02-organization-designer && claude` 실행 |
+| 비어있음 | "시작하기 전에"(`docs/00-overview/index.md`) 및 "소프트웨어 공급망 보안: 왜 지금 중요한가"(`docs/00-overview/supply-chain.md`) 읽기 → 현재 Claude 세션 종료 후 `cd agents/02-organization-designer && claude` 실행 |
 | organization/ 있음, policy/ 없음 | 현재 Claude 세션 종료 후 `cd agents/03-policy-generator && claude` 실행 |
 | policy/ 있음, process/ 없음 | 현재 Claude 세션 종료 후 `cd agents/04-process-designer && claude` 실행 |
 | process/ 있음, sbom/ 없음 | 현재 Claude 세션 종료 후 `cd agents/05-sbom-guide && claude` 실행 |

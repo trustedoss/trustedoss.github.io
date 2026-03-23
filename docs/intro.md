@@ -3,7 +3,7 @@ id: intro
 title: trustedoss 소개
 sidebar_label: 소개
 sidebar_position: 1
-slug: /
+# slug: /
 ---
 
 # 신뢰할 수 있는 Open Source 관리 체계 구축 Kit
@@ -50,7 +50,7 @@ cd trustedoss && claude
 | [02 조직](./02-organization/index.md) | 조직 구성 및 담당자 지정 |
 | [03 정책](./03-policy/index.md) | 오픈소스 정책 수립 |
 | [04 프로세스](./04-process/index.md) | 오픈소스 프로세스 설계 |
-| 05 도구 | [SBOM 생성](./05-tools/sbom-generation/index.md) · [SBOM 관리](./05-tools/sbom-management/index.md) · [취약점](./05-tools/vulnerability/index.md) |
+| 05 도구 | · [SBOM 생성](./05-tools/sbom-generation/index.md) <br /> · [SBOM 관리](./05-tools/sbom-management/index.md) <br />· [취약점](./05-tools/vulnerability/index.md) |
 | [06 교육](./06-training/index.md) | 교육 체계 구축 |
 | [07 인증](./07-conformance/index.md) | 자체 인증 선언 |
 | [08 개발자 가이드](./08-developer-guide/index.md) | Claude Code로 정책 자동 준수 (선택) |
@@ -63,7 +63,7 @@ cd trustedoss && claude
 
 혼자서 며칠에 걸쳐 진행합니다. 각 챕터의 **배경 지식** 섹션을 충분히 읽고 실습합니다.
 
-→ [시작하기 전에: 두 표준과 이 키트의 소개](./00-overview/index.md)부터 시작하세요
+→ [시작하기 전에](./00-overview/index.md)부터 시작하세요
 
 ---
 
