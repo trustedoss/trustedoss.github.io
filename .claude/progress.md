@@ -38,3 +38,11 @@
   - docs 챕터 02/03/04/06 셀프스터디 경로에 `:::details` Agent 대화 예시 블록 추가
   - website/reference/samples/ 산출물 Best Practice 5종 생성 (organization, policy, process, training, conformance) — 규모별 3 프로필 (스타트업/중소기업/대기업)
   - website/reference/intro.md 및 sidebarsReference.ts 업데이트
+  - docs/intro.md 챕터 05 테이블 3행 → 1행("05 도구") 병합
+  - 전체 챕터 "셀프스터디 경로" 섹션 제목 → "셀프 스터디"로 통일 (11개 파일)
+  - docs/06-training: `시작` 입력 안내를 bash block 직후로 이동
+  - docs/05-tools/vulnerability + agents/05-vulnerability-analyst: 다음 단계 `시작` 안내 추가
+  - website/reference/samples/sbom.md, vulnerability.md 신규 생성 (Best Practice, 렌더링 마크다운)
+  - sidebarsReference.ts에 sbom, vulnerability 항목 추가
+  - 전체 챕터(00~07) 완료 확인 섹션 및 산출물 테이블에 /reference/samples/* 링크 추가
+  - verify.sh: 절대경로 링크(/로 시작) 및 settings.local.json 예외 처리 추가

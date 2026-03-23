@@ -81,6 +81,17 @@ bash .claude/scripts/verify.sh
 
 명령어 예시·스크립트·에러 인용·README 설치 가이드 모두 동일 규칙 적용.
 
+#### docs/ → reference/ 크로스 인스턴스 링크
+
+`docs/` 문서에서 `website/reference/` 페이지를 참조할 때는 Docusaurus 절대 경로를 사용한다.
+
+| 구분 | 형식 | 예시 |
+|---|---|---|
+| **올바름** | `/reference/samples/{name}` | `/reference/samples/sbom` |
+| **금지** | 상대 경로로 reference/ 접근 | `../../website/reference/...` |
+
+`verify.sh` 링크 체크는 `/`로 시작하는 절대 경로를 자동으로 건너뛴다 (Docusaurus 라우팅 경로로 처리).
+
 ### 3. 스펙 섹션 번호 표기 규칙
 
 ISO/IEC 5230과 18974는 섹션 번호 체계가 다르다. 혼용하면 verify.sh [6/6] 항목이 FAIL을 낸다.

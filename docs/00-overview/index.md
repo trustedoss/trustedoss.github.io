@@ -17,14 +17,14 @@
 
 | 단계 | 산출물 파일 | 관련 표준 |
 |------|------------|----------|
-| 조직 | `role-definition.md`, `raci-matrix.md`, `appointment-template.md` | [공통] |
-| 정책 | `oss-policy.md`, `license-allowlist.md` | [공통] |
-| 프로세스 | `usage-approval.md`, `distribution-checklist.md`, `vulnerability-response.md`, `process-diagram.md` | [공통] |
-| SBOM 생성 | `[project].cdx.json`, `sbom-commands.sh`, `license-report.md`, `copyleft-risk.md` | [공통] |
-| SBOM 관리 | `sbom-management-plan.md`, `sbom-sharing-template.md` | [공급망] |
-| 취약점 | `cve-report.md`, `remediation-plan.md` | [18974] |
-| 교육 | `curriculum.md`, `completion-tracker.md`, `resources.md` | [공통] |
-| 인증 | `gap-analysis.md`, `declaration-draft.md`, `submission-guide.md` | [공통] |
+| 조직 | `role-definition.md`, `raci-matrix.md`, `appointment-template.md` — [예시 보기](/reference/samples/organization) | [공통] |
+| 정책 | `oss-policy.md`, `license-allowlist.md` — [예시 보기](/reference/samples/policy) | [공통] |
+| 프로세스 | `usage-approval.md`, `distribution-checklist.md`, `vulnerability-response.md`, `process-diagram.md` — [예시 보기](/reference/samples/process) | [공통] |
+| SBOM 생성 | `[project].cdx.json`, `sbom-commands.sh`, `license-report.md`, `copyleft-risk.md` — [예시 보기](/reference/samples/sbom) | [공통] |
+| SBOM 관리 | `sbom-management-plan.md`, `sbom-sharing-template.md` — [예시 보기](/reference/samples/sbom) | [공급망] |
+| 취약점 | `cve-report.md`, `remediation-plan.md` — [예시 보기](/reference/samples/vulnerability) | [18974] |
+| 교육 | `curriculum.md`, `completion-tracker.md`, `resources.md` — [예시 보기](/reference/samples/training) | [공통] |
+| 인증 | `gap-analysis.md`, `declaration-draft.md`, `submission-guide.md` — [예시 보기](/reference/samples/conformance) | [공통] |
 
 ---
 
@@ -78,7 +78,7 @@
 
 ---
 
-## 3. 셀프스터디 경로
+## 3. 셀프 스터디
 
 :::info 셀프스터디 모드 (약 1시간)
 혼자서 충분한 시간을 갖고 각 문서를 이해하며 진행합니다. 전체 키트 완료까지 3~5일을 권장합니다.

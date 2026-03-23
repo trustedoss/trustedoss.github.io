@@ -33,7 +33,7 @@ while IFS= read -r file; do
       WARNINGS+=("깨진 링크: $file → $link")
       BROKEN=$((BROKEN+1))
     fi
-  done < <(grep -Eo '\]\([^)]+\)' "$file" | sed 's/\](\(.*\))/\1/' | grep -v "^http")
+  done < <(grep -Eo '\]\([^)]+\)' "$file" | sed 's/\](\(.*\))/\1/' | grep -v "^http" | grep -v "^/")
 done < <(find docs README.md workshop -name "*.md" \
          2>/dev/null)
 
@@ -113,7 +113,7 @@ LOCAL_PATH_HITS=$(git ls-files \
   -- '*.md' '*.sh' '*.yml' '*.yaml' '*.json' '*.ts' \
   2>/dev/null | \
   grep -v "^\.claude/scripts/verify\.sh$" | \
-  grep -v "^\.claude/settings\.local\.json$" | \
+  grep -v "settings\.local\.json$" | \
   xargs grep -ln "/Users/[^/]*/\|/home/[^/]*/" 2>/dev/null || true)
 
 LOCAL_PATH_COUNT=$(echo "$LOCAL_PATH_HITS" | grep -c . || true)

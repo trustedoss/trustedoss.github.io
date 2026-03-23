@@ -10,6 +10,8 @@ const sidebars: SidebarsConfig = {
         'samples/organization',
         'samples/policy',
         'samples/process',
+        'samples/sbom',
+        'samples/vulnerability',
         'samples/training',
         'samples/conformance',
       ],

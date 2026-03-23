@@ -50,9 +50,7 @@ cd trustedoss && claude
 | [02 조직](./02-organization/index.md) | 조직 구성 및 담당자 지정 |
 | [03 정책](./03-policy/index.md) | 오픈소스 정책 수립 |
 | [04 프로세스](./04-process/index.md) | 오픈소스 프로세스 설계 |
-| [05 SBOM 생성](./05-tools/sbom-generation/index.md) | SBOM 생성 및 라이선스 분석 |
-| [05 SBOM 관리](./05-tools/sbom-management/index.md) | SBOM 관리 및 공급망 공유 |
-| [05 취약점](./05-tools/vulnerability/index.md) | 취약점 분석 및 대응 |
+| 05 도구 | [SBOM 생성](./05-tools/sbom-generation/index.md) · [SBOM 관리](./05-tools/sbom-management/index.md) · [취약점](./05-tools/vulnerability/index.md) |
 | [06 교육](./06-training/index.md) | 교육 체계 구축 |
 | [07 인증](./07-conformance/index.md) | 자체 인증 선언 |
 | [08 개발자 가이드](./08-developer-guide/index.md) | Claude Code로 정책 자동 준수 (선택) |
@@ -61,7 +59,7 @@ cd trustedoss && claude
 
 ## 사용 경로
 
-### 셀프스터디 (8–12시간)
+### 셀프 스터디 (8–12시간)
 
 혼자서 며칠에 걸쳐 진행합니다. 각 챕터의 **배경 지식** 섹션을 충분히 읽고 실습합니다.
 
