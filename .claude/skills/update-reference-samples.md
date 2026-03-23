@@ -9,17 +9,15 @@
 
 ---
 
-## 실행 절차
+## 실행 절차 — 페이지 단위 순차 처리
 
-### 1단계: output-sample/ 파일 읽기
+**토큰 절약을 위해 파일을 한꺼번에 읽지 않는다.** 페이지별로 처리한다:
 
-`output-sample/` 하위의 모든 `.md` 파일을 Read 도구로 읽는다.
+1. 해당 페이지에 필요한 output-sample 파일만 읽기 (2~4개)
+2. 해당 페이지 재생성 (Write 도구)
+3. 다음 페이지로 이동
 
-### 2단계: 각 샘플 페이지 재생성
-
-아래 **페이지별 매핑**을 참조하여 7개 파일을 순서대로 재생성한다.
-
-### 3단계: verify.sh 실행
+7개 페이지 완료 후:
 
 ```bash
 bash .claude/scripts/verify.sh
@@ -31,100 +29,108 @@ bash .claude/scripts/verify.sh
 
 ## 페이지별 매핑
 
-### organization.md
+### organization.md — Type A
 
-| 섹션 헤더 (H2) | output-sample 파일 |
-|----------------|-------------------|
-| 오픈소스 역할 및 책임 정의 | organization/role-definition.md |
-| 오픈소스 RACI 매트릭스 | organization/raci-matrix.md |
-
-**특이사항**: `관련 표준` 코드블록 패턴 유지 (기존 파일 참조)
+| 섹션 이름 (H2) | 파일명 | output-sample 경로 |
+|----------------|--------|-------------------|
+| 오픈소스 역할 및 책임 정의 | role-definition.md | organization/role-definition.md |
+| 오픈소스 RACI 매트릭스 | raci-matrix.md | organization/raci-matrix.md |
 
 ---
 
-### policy.md
+### policy.md — Type A
 
-| 섹션 헤더 (H2) | output-sample 파일 |
-|----------------|-------------------|
-| oss-policy.md | policy/oss-policy.md |
-| license-allowlist.md | policy/license-allowlist.md |
-
-**특이사항**: `관련 표준` 코드블록 패턴 유지
+| 섹션 이름 (H2) | 파일명 | output-sample 경로 |
+|----------------|--------|-------------------|
+| 오픈소스 정책 | oss-policy.md | policy/oss-policy.md |
+| 허용 라이선스 목록 | license-allowlist.md | policy/license-allowlist.md |
 
 ---
 
-### process.md
+### process.md — Type A
 
-| 섹션 헤더 (H2) | output-sample 파일 |
-|----------------|-------------------|
-| usage-approval.md | process/usage-approval.md |
-| distribution-checklist.md | process/distribution-checklist.md |
-| vulnerability-response.md | process/vulnerability-response.md |
-| process-diagram.md | process/process-diagram.md |
-
-**특이사항**: `관련 표준` 코드블록 패턴 유지
+| 섹션 이름 (H2) | 파일명 | output-sample 경로 |
+|----------------|--------|-------------------|
+| 오픈소스 사용 승인 절차 | usage-approval.md | process/usage-approval.md |
+| 배포 전 라이선스 컴플라이언스 체크리스트 | distribution-checklist.md | process/distribution-checklist.md |
+| 취약점 대응 절차 | vulnerability-response.md | process/vulnerability-response.md |
+| 오픈소스 프로세스 흐름도 | process-diagram.md | process/process-diagram.md |
 
 ---
 
-### sbom.md
+### sbom.md — Type B
 
-| 섹션 헤더 (H2) | output-sample 파일 |
-|----------------|-------------------|
-| license-report.md | sbom/license-report.md |
-| copyleft-risk.md | sbom/copyleft-risk.md |
-| sbom-management-plan.md | sbom/sbom-management-plan.md |
-| sbom-sharing-template.md | sbom/sbom-sharing-template.md |
-
-**특이사항**: `관련 표준` 블록 없음. YAML front matter → 평문 메타데이터만.
+| 섹션 헤더 (H2) | output-sample 경로 | 생성 agent |
+|----------------|-------------------|-----------|
+| license-report.md | sbom/license-report.md | `05-sbom-analyst` |
+| copyleft-risk.md | sbom/copyleft-risk.md | `05-sbom-analyst` |
+| sbom-management-plan.md | sbom/sbom-management-plan.md | `05-sbom-management` |
+| sbom-sharing-template.md | sbom/sbom-sharing-template.md | `05-sbom-management` |
 
 ---
 
-### vulnerability.md
+### vulnerability.md — Type B
 
-| 섹션 헤더 (H2) | output-sample 파일 |
-|----------------|-------------------|
-| cve-report.md | vulnerability/cve-report.md |
-| remediation-plan.md | vulnerability/remediation-plan.md |
-
-**특이사항**: `관련 표준` 블록 없음.
+| 섹션 헤더 (H2) | output-sample 경로 | 생성 agent |
+|----------------|-------------------|-----------|
+| cve-report.md | vulnerability/cve-report.md | `05-vulnerability-analyst` |
+| remediation-plan.md | vulnerability/remediation-plan.md | `05-vulnerability-analyst` |
 
 ---
 
-### training.md
+### training.md — Type A
 
-| 섹션 헤더 (H2) | output-sample 파일 |
-|----------------|-------------------|
-| curriculum.md | training/curriculum.md |
-| completion-tracker.md | training/completion-tracker.md |
-| resources.md | training/resources.md |
-
-**특이사항**: `관련 표준` 코드블록 패턴 유지
+| 섹션 이름 (H2) | 파일명 | output-sample 경로 |
+|----------------|--------|-------------------|
+| 오픈소스 교육 커리큘럼 | curriculum.md | training/curriculum.md |
+| 교육 이수 추적 시트 | completion-tracker.md | training/completion-tracker.md |
+| 무료 교육 리소스 목록 | resources.md | training/resources.md |
 
 ---
 
-### conformance.md
+### conformance.md — Type B
 
-| 섹션 헤더 (H2) | output-sample 파일 |
-|----------------|-------------------|
-| gap-analysis.md | conformance/gap-analysis.md |
-| declaration-draft.md | conformance/declaration-draft.md |
-| submission-guide.md | conformance/submission-guide.md |
-
-**특이사항**: `관련 표준` 블록 없음.
+| 섹션 헤더 (H2) | output-sample 경로 | 생성 agent |
+|----------------|-------------------|-----------|
+| gap-analysis.md | conformance/gap-analysis.md | `07-conformance-preparer` |
+| declaration-draft.md | conformance/declaration-draft.md | `07-conformance-preparer` |
+| submission-guide.md | conformance/submission-guide.md | `07-conformance-preparer` |
 
 ---
 
-## 변환 규칙 (모든 페이지 공통)
+## 섹션 구조 — Type A vs Type B
 
-### 1. Docusaurus frontmatter 유지
+### Type A: organization / policy / process / training
 
-각 샘플 페이지의 기존 frontmatter(id, title, sidebar_label, sidebar_position)는 변경하지 않는다.
-페이지 상단 안내문(`agent가 생성하는 N개 산출물의 완성 예시입니다.`)과
-`> **레퍼런스 바로가기:**` callout도 유지한다.
+관련 표준 주석(HTML comment)이 있고, 메타데이터가 볼드 키-값 형식인 파일군.
 
-### 2. 섹션 헤더 구조
+```
+## {섹션 이름}
 
-각 output-sample 파일은 다음 구조로 임베드한다:
+문서: {파일명}
+
+- **key1**: value1
+- **key2**: value2
+
+```
+관련 표준
+- 5230 §x.x.x
+- 18974 §4.x.x
+```
+
+---
+
+{변환된 내용}
+
+---
+```
+
+**메타데이터 규칙**: output-sample의 `**key**: value` 줄을 `- **key**: value` (불릿 포함)으로 변환한다.
+**관련 표준 위치**: 메타데이터 블록 바로 뒤, 첫 번째 `---` 앞에 배치한다.
+
+### Type B: sbom / vulnerability / conformance
+
+YAML front matter가 있고, 파일명을 섹션 헤더로 쓰는 파일군.
 
 ```
 ## {파일명}
@@ -138,11 +144,18 @@ bash .claude/scripts/verify.sh
 ---
 ```
 
-`생성 agent` 값은 기존 페이지의 callout을 그대로 유지한다.
+---
 
-### 3. YAML front matter 처리
+## 변환 규칙 (공통)
 
-output-sample 파일의 YAML front matter(`--- ... ---`)가 있으면 평문 메타데이터 블록으로 변환한다.
+### 1. Docusaurus frontmatter 유지
+
+각 샘플 페이지의 기존 frontmatter(id, title, sidebar_label, sidebar_position)는 변경하지 않는다.
+페이지 상단 안내문과 `> **레퍼런스 바로가기:**` callout도 유지한다.
+
+### 2. YAML front matter 처리 (Type B 전용)
+
+output-sample 파일의 `--- ... ---` 블록을 평문으로 변환한다:
 
 ```
 리포트 유형: {값}
@@ -153,22 +166,19 @@ output-sample 파일의 YAML front matter(`--- ... ---`)가 있으면 평문 메
 
 `---` 구분선으로 감싼다.
 
-### 4. 헤딩 강등
+### 3. 헤딩 강등
 
-output-sample 파일의 헤딩을 한 단계 강등한다:
-- H1 (`#`) → 생략 (섹션 헤더인 H2가 대신함)
+- H1 (`#`) → 생략
 - H2 (`##`) → H3 (`###`)
 - H3 (`###`) → H4 (`####`)
 
-### 5. MDX 빌드 오류 방지
+### 4. MDX 빌드 오류 방지
 
-테이블 셀 또는 일반 문단에서 `{변수명}` 형식의 중괄호가 **코드블록 밖에** 있으면
-`(변수명)`으로 교체한다. 코드블록(``` ``` ```) 내부는 변경하지 않는다.
+코드블록 **밖의** `{변수명}` → `(변수명)` 교체. 코드블록 내부는 변경하지 않는다.
 
-### 6. 관련 표준 블록
+### 5. 관련 표준 블록 (Type A 전용)
 
-organization/policy/process/training 계열 파일에는 HTML 주석(`<!-- 5230 §... -->`)이
-있을 수 있다. 이를 다음 형식의 코드블록으로 변환한다:
+HTML 주석 `<!-- 5230 §... -->` 을 코드블록으로 변환한다:
 
 ````
 ```
@@ -178,11 +188,13 @@ organization/policy/process/training 계열 파일에는 HTML 주석(`<!-- 5230 
 ```
 ````
 
-섹션 번호 체계: ISO/IEC 5230은 `3.x.x`, ISO/IEC 18974는 `4.x.x`.
+- 섹션 번호 체계: ISO/IEC 5230은 `3.x.x`, ISO/IEC 18974는 `4.x.x`
+- 파일 최상단 주석은 메타데이터 바로 뒤에 배치
+- 섹션별 주석은 해당 H3/H4 헤딩 바로 뒤에 배치
 
-### 7. 타이포 수정
+### 6. 타이포 수정
 
-- `갭 分析` → `갭 분析` (한자 혼용 수정)
+- `갭 分析` → `갭 분析`
 
 ---
 
