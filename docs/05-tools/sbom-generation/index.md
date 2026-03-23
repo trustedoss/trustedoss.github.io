@@ -109,6 +109,10 @@ mkdir -p output/sbom
 
 **단계 4** — sbom-guide agent 실행
 
+:::tip 실행 전 확인
+현재 Claude 세션을 먼저 종료(`/exit` 또는 `Ctrl+C`)한 뒤, 새 터미널에서 아래 명령을 실행하세요.
+:::
+
 ```bash
 cd agents/05-sbom-guide
 claude
@@ -136,6 +140,10 @@ ls -lh output/sbom/*.cdx.json
 파일이 존재하고 크기가 0보다 크면 정상이다. 파일을 열어 `components` 배열이 비어있지 않은지 확인한다.
 
 **단계 7** — 라이선스 분석 실행
+
+:::tip 실행 전 확인
+현재 Claude 세션을 먼저 종료(`/exit` 또는 `Ctrl+C`)한 뒤, 새 터미널에서 아래 명령을 실행하세요.
+:::
 
 ```bash
 cd agents/05-sbom-analyst
@@ -210,7 +218,11 @@ docker run --rm \
 
 ## 5. 다음 단계
 
-SBOM 생성과 라이선스 분석이 완료되면, SBOM 관리 체계를 수립하는 단계로 넘어간다.
+SBOM 생성과 라이선스 분析이 완료되면, SBOM 관리 체계를 수립하는 단계로 넘어간다.
+
+:::tip 실행 전 확인
+현재 Claude 세션을 먼저 종료(`/exit` 또는 `Ctrl+C`)한 뒤, 새 터미널에서 아래 명령을 실행하세요.
+:::
 
 ```bash
 cd agents/05-sbom-management
@@ -219,7 +231,11 @@ claude
 
 또는 [SBOM 관리: 만들고 끝이 아니라 관리가 시작이다](../sbom-management/index.md)로 이동하여 가이드를 확인한다.
 
-취약점 분석을 먼저 진행하려면:
+취약점 分析을 먼저 진행하려면:
+
+:::tip 실행 전 확인
+현재 Claude 세션을 먼저 종료(`/exit` 또는 `Ctrl+C`)한 뒤, 새 터미널에서 아래 명령을 실행하세요.
+:::
 
 ```bash
 cd agents/05-vulnerability-analyst

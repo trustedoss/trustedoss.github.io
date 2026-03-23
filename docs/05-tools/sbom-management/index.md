@@ -147,6 +147,11 @@ agent와 대화하며 SBOM 관리 계획과 납품처 공유 템플릿을 생성
 **Step 1.** 위 3개 질문에 대한 자신의 상황을 간략히 메모한다.
 
 **Step 2.** agent를 실행한다.
+
+:::tip 실행 전 확인
+현재 Claude 세션을 먼저 종료(`/exit` 또는 `Ctrl+C`)한 뒤, 새 터미널에서 아래 명령을 실행하세요.
+:::
+
 ```bash
 cd agents/05-sbom-management
 claude
@@ -244,6 +249,10 @@ cp output/sbom/myapp-v1.0.0-20260320.cdx.json output/sbom/myapp-latest.cdx.json
 ## 5. 다음 단계
 
 SBOM 관리 체계가 갖춰졌으면, 취약점 분석 단계로 이동한다. SBOM을 기반으로 현재 소프트웨어에 영향받는 CVE를 분석하고, 대응 계획을 수립하는 단계다.
+
+:::tip 실행 전 확인
+현재 Claude 세션을 먼저 종료(`/exit` 또는 `Ctrl+C`)한 뒤, 새 터미널에서 아래 명령을 실행하세요.
+:::
 
 ```bash
 cd agents/05-vulnerability-analyst

@@ -89,6 +89,11 @@ agent와 대화하며 조직 산출물을 생성합니다.
 1. 이 문서 읽기 — 역할 개념 이해
 2. 자사 규모와 상황에 맞는 구성 방안 결정 (섹션 4 참고)
 3. agent 실행:
+
+   :::tip 실행 전 확인
+   현재 Claude 세션을 먼저 종료(`/exit` 또는 `Ctrl+C`)한 뒤, 새 터미널에서 아래 명령을 실행하세요.
+   :::
+
    ```bash
    cd agents/02-organization-designer
    claude

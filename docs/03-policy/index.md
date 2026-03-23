@@ -114,6 +114,11 @@ agent 실행 전에 아래 질문에 대한 회사 상황을 간단히 메모해
 위 5개 질문에 대한 답변을 미리 메모한다.
 
 **Step 2. policy-generator agent 실행**
+
+:::tip 실행 전 확인
+현재 Claude 세션을 먼저 종료(`/exit` 또는 `Ctrl+C`)한 뒤, 새 터미널에서 아래 명령을 실행하세요.
+:::
+
 ```bash
 cd agents/03-policy-generator
 claude

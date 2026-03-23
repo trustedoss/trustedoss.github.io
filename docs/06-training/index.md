@@ -84,6 +84,11 @@
 
 1. 이 문서를 처음부터 끝까지 읽는다.
 2. 아래 명령어로 training-manager agent를 실행한다:
+
+   :::tip 실행 전 확인
+   현재 Claude 세션을 먼저 종료(`/exit` 또는 `Ctrl+C`)한 뒤, 새 터미널에서 아래 명령을 실행하세요.
+   :::
+
    ```bash
    cd agents/06-training-manager && claude
    ```
@@ -150,6 +155,10 @@
 마지막 챕터로 이동하거나 agent를 바로 실행한다:
 
 먼저 챕터 문서를 읽으려면 [자체 인증 선언: 마지막 단계](../07-conformance/index.md)로 이동한다.
+
+:::tip 실행 전 확인
+현재 Claude 세션을 먼저 종료(`/exit` 또는 `Ctrl+C`)한 뒤, 새 터미널에서 아래 명령을 실행하세요.
+:::
 
 ```bash
 cd agents/07-conformance-preparer && claude
