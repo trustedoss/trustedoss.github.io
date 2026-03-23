@@ -38,7 +38,7 @@ ISO/IEC 5230 (라이선스 컴플라이언스)과 ISO/IEC 18974 (보안 보증) 
 
 | output/ 상태 | 안내 |
 |---|---|
-| 비어있음 | docs/00-overview, docs/00b-supply-chain 읽기 → `cd agents/02-organization-designer` 후 `claude` 실행 |
+| 비어있음 | docs/00-overview, docs/00-overview/supply-chain.md 읽기 → `cd agents/02-organization-designer` 후 `claude` 실행 |
 | organization/ 있음, policy/ 없음 | `cd agents/03-policy-generator` 후 `claude` 실행 |
 | policy/ 있음, process/ 없음 | `cd agents/04-process-designer` 후 `claude` 실행 |
 | process/ 있음, sbom/ 없음 | `cd agents/05-sbom-guide` 후 `claude` 실행 |
@@ -49,7 +49,6 @@ ISO/IEC 5230 (라이선스 컴플라이언스)과 ISO/IEC 18974 (보안 보증) 
 
 ## 사용 경로
 - **셀프스터디**: `docs/` 챕터를 00부터 순서대로 진행
-- **워크숍**: `workshop/student-handout.md` 를 따라 진행
 
 ## Skills — 언제 쓰는가
 
