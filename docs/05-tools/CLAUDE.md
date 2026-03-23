@@ -54,14 +54,6 @@ docker ps
 2. `docs/05-tools/sbom-management/` 진행 (45분)
 3. `docs/05-tools/vulnerability/` 진행 (45분)
 
-## 워크숍 경로
-
-:::tip 워크숍 모드 (M3~M5 - 총 3시간)
-Docker Desktop을 강의 전에 미리 시작해두세요. 이미지 풀링에 시간이 필요합니다.
-:::
-
-각 모듈은 독립적으로 진행 가능하지만, sbom-generation 이 먼저여야 한다.
-
 ## 자주 발생하는 문제
 
 **Q: Docker Desktop이 느려요.**

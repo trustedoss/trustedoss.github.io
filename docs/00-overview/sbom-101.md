@@ -5,12 +5,11 @@
   - "ISO/IEC 5230: []"
   - "ISO/IEC 18974: [G3B.1 배경]"
 셀프스터디 소요시간: 1시간
-워크숍 소요시간: M0 포함
 sidebar_position: 4
-sidebar_label: "SBOM 101"
+sidebar_label: "SBOM 기본"
 ---
 
-# SBOM 101: 소프트웨어 구성 명세서 입문
+# SBOM 기본: 소프트웨어 구성 명세서 입문
 
 ## 1. 이 챕터에서 하는 일
 

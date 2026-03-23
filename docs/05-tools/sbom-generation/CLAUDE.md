@@ -84,17 +84,6 @@ claude
 4. `cd agents/05-sbom-analyst && claude` 실행
 5. `output/sbom/` 산출물 확인
 
-## 워크숍 경로
-
-:::tip 워크숍 모드 (M3 - 1시간 30분)
-Docker 이미지를 강의 전에 미리 pull 해두세요.
-docker pull anchore/syft
-:::
-
-1. (15분) SBOM 개념 및 도구 소개
-2. (45분) syft/cdxgen 실행, SBOM 생성
-3. (30분) 라이선스 분석 리포트 생성
-
 ## 자주 발생하는 문제
 
 **Q: syft 실행 시 "no packages discovered" 가 나와요.**
