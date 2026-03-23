@@ -10,11 +10,13 @@ ISO/IEC 5230 (라이선스 컴플라이언스)과 ISO/IEC 18974 (보안 보증) 
 
 | 작업 대상 (O) | 작업 금지 (X) |
 |-------------|-------------|
-| `docs/`      | `website/src/` (아래 예외 제외) |
-| `agents/`    | `website/static/` |
-| `templates/` | `*.ts`, `*.tsx`, `*.js` |
-| `.claude/`   | `*.css`, `*.scss` (아래 예외 제외) |
-| `CLAUDE.md`  | 설정 파일 전체 |
+| `docs/`                        | `website/src/` (아래 예외 제외) |
+| `agents/`                      | `website/static/` |
+| `templates/`                   | `website/src/**/*.ts` (아래 예외 제외) |
+| `.claude/`                     | `website/src/**/*.tsx` |
+| `CLAUDE.md`                    | `*.js`, `*.css`, `*.scss` (아래 예외 제외) |
+| `website/ai-coding/` (md만)    | 설정 파일 전체 |
+| `website/devsecops/` (md만)    |  |
 
 **예외 — 아래 목적에 한해 허용:**
 - `website/src/css/customTheme.scss` — sidebar 계층 구분 CSS 추가, 또는 테이블 가독성 개선 CSS 추가 목적에 한해 수정 가능
@@ -31,6 +33,8 @@ ISO/IEC 5230 (라이선스 컴플라이언스)과 ISO/IEC 18974 (보안 보증) 
 | `workshop/` | 강의 키트 |
 | `output/` | 생성된 산출물 (gitignore) |
 | `.claude/skills/` | 재사용 skill 정의 |
+| `website/ai-coding/` | AI 코딩 가이드 페이지 (md) |
+| `website/devsecops/` | DevSecOps 가이드 페이지 (md) |
 
 ## 독자 상태 감지 — 다음 단계 안내
 
@@ -54,7 +58,7 @@ ISO/IEC 5230 (라이선스 컴플라이언스)과 ISO/IEC 18974 (보안 보증) 
 
 | 파일 | 트리거 조건 |
 |---|---|
-| `.claude/skills/create-doc.md` | `docs/` 하위 문서를 새로 작성하거나 수정할 때 |
+| `.claude/skills/create-doc.md` | `docs/` 하위 문서를 새로 작성하거나 수정할 때. `website/ai-coding/` 및 `website/devsecops/` 하위 .md 작성 시에는 해당 폴더의 기존 파일 front matter 패턴을 따르고 create-doc.md 스킬은 적용하지 않음 |
 | `.claude/skills/validate-checklist.md` | `agents/07-conformance-preparer` 또는 output/ 전체 완료 여부 점검 시 |
 | `.claude/skills/generate-report.md` | SBOM 분석·취약점 분석·갭 분석 리포트를 생성할 때 |
 | `.claude/skills/update-reference-samples.md` | output/ 또는 output-sample/ 갱신 후 `website/reference/samples/` 페이지 재생성 시 |
