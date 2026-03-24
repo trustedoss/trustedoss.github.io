@@ -18,11 +18,11 @@ function Hero() {
     <div className={styles.container}>
       <div className={styles.socialLinks}>
         <GitHubButton
-          href="https://github.com/haksungjang/trustedoss"
+          href="https://github.com/trustedoss/trustedoss.github.io"
           data-icon="octicon-star"
           data-size="large"
           data-color-scheme={colorMode}
-          aria-label="Star haksungjang/trustedoss on GitHub">
+          aria-label="Star trustedoss/trustedoss.github.io on GitHub">
           Star
         </GitHubButton>
       </div>

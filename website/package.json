@@ -4,10 +4,10 @@
   "version": "0.0.1",
   "private": true,
   "license": "CC-BY-4.0",
-  "homepage": "https://haksungjang.github.io/trustedoss",
-  "repository": "github:haksungjang/trustedoss",
+  "homepage": "https://trustedoss.github.io",
+  "repository": "github:trustedoss/trustedoss.github.io",
   "bugs": {
-    "url": "https://github.com/haksungjang/trustedoss/issues"
+    "url": "https://github.com/trustedoss/trustedoss.github.io/issues"
   },
   "scripts": {
     "docusaurus": "docusaurus",

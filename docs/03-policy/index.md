@@ -82,7 +82,7 @@ ISO/IEC 5230(라이선스 컴플라이언스)과 ISO/IEC 18974(보안 보증)는
 Claude Code 를 실행하는 환경을 전제합니다.
 
 - [ ] trustedoss 저장소를 클론했나요?
-      `git clone https://github.com/haksungjang/trustedoss.git`
+      `git clone https://github.com/trustedoss/trustedoss.github.io.git`
 - [ ] 터미널에서 프로젝트 루트에 있나요?
       `cd trustedoss`
 - [ ] Claude Code 가 실행 중인가요?

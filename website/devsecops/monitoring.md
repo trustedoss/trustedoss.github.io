@@ -199,7 +199,7 @@ jobs:
 보안 분석을 완전히 자동화하는 워크플로우 파일을 생성합니다.
 :::
 
-**사전 조건**: [Trusted OSS 저장소](https://github.com/haksungjang/trustedoss) 클론 필요
+**사전 조건**: [Trusted OSS 저장소](https://github.com/trustedoss/trustedoss.github.io) 클론 필요
 
 ### PR 보안 분석 자동 코멘트
 

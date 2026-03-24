@@ -28,7 +28,7 @@ slug: /
 ### 빠른 시작
 
 ```bash
-git clone https://github.com/haksungjang/trustedoss.git
+git clone https://github.com/trustedoss/trustedoss.github.io.git
 cd trustedoss && claude
 # "어디서 시작해야 해?" 입력
 ```

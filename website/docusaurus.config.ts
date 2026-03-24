@@ -23,10 +23,10 @@ const config: Config = {
 
   title: 'Trusted OSS',
   tagline: '신뢰할 수 있는 오픈소스 공급망 관리',
-  organizationName: 'haksungjang',
-  projectName: 'trustedoss',
-  url: 'https://haksungjang.github.io/',
-  baseUrl: '/trustedoss/',
+  organizationName: 'trustedoss',
+  projectName: 'trustedoss.github.io',
+  url: 'https://trustedoss.github.io/',
+  baseUrl: '/',
   clientModules: [
     './modules/jumpToFragment.ts',
   ],
@@ -57,8 +57,8 @@ const config: Config = {
       innerHTML: JSON.stringify({
         '@context': 'https://schema.org/',
         '@type': 'WebSite',
-        '@id': 'https://trustedoss.dev/',
-        url: 'https://trustedoss.dev/',
+        '@id': 'https://trustedoss.github.io/',
+        url: 'https://trustedoss.github.io/',
         name: 'Trusted OSS · 신뢰할 수 있는 오픈소스 공급망 관리',
         description:
           'ISO/IEC 5230 & 18974 기반 기업 오픈소스 관리 체계 구축 실전 가이드',
@@ -84,7 +84,7 @@ const config: Config = {
           showLastUpdateAuthor: false,
           showLastUpdateTime: false,
           editUrl:
-            'https://github.com/haksungjang/trustedoss/edit/main/',
+            'https://github.com/trustedoss/trustedoss.github.io/edit/main/',
         },
         blog: {
           path: 'blog',

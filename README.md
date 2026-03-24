@@ -13,7 +13,7 @@
 
 ```bash
 # 1. 저장소 클론
-git clone https://github.com/haksungjang/trustedoss.git
+git clone https://github.com/trustedoss/trustedoss.github.io.git
 
 # 2. 프로젝트 진입 및 Claude Code 실행
 cd trustedoss && claude
