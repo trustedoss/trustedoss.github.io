@@ -27,9 +27,7 @@ const config: Config = {
   projectName: 'trustedoss.github.io',
   url: 'https://trustedoss.github.io/',
   baseUrl: '/',
-  clientModules: [
-    './modules/jumpToFragment.ts',
-  ],
+  clientModules: ['./modules/jumpToFragment.ts'],
   trailingSlash: false,
   scripts: [
     {
@@ -64,13 +62,6 @@ const config: Config = {
           'ISO/IEC 5230 & 18974 기반 기업 오픈소스 관리 체계 구축 실전 가이드',
         inLanguage: 'ko',
       }),
-    },
-    {
-      tagName: 'link',
-      attributes: {
-        rel: 'apple-touch-icon',
-        href: '/img/pwa/apple-icon-180.png',
-      },
     },
   ],
   presets: [
@@ -158,61 +149,6 @@ const config: Config = {
         showLastUpdateAuthor: false,
         showLastUpdateTime: false,
       } satisfies PluginContentDocs.Options,
-    ],
-    [
-      '@docusaurus/plugin-pwa',
-      {
-        debug: true,
-        offlineModeActivationStrategies: ['appInstalled', 'queryString'],
-        pwaHead: [
-          {
-            tagName: 'link',
-            rel: 'icon',
-            href: '/img/pwa/manifest-icon-512.png',
-          },
-          {
-            tagName: 'link',
-            rel: 'manifest',
-            href: '/manifest.json',
-          },
-          {
-            tagName: 'meta',
-            name: 'theme-color',
-            content: '#20232a',
-          },
-          {
-            tagName: 'meta',
-            name: 'mobile-web-app-capable',
-            content: 'yes',
-          },
-          {
-            tagName: 'meta',
-            name: 'apple-mobile-web-app-status-bar-style',
-            content: '#20232a',
-          },
-          {
-            tagName: 'link',
-            rel: 'apple-touch-icon',
-            href: '/img/pwa/manifest-icon-512.png',
-          },
-          {
-            tagName: 'link',
-            rel: 'mask-icon',
-            href: '/img/pwa/manifest-icon-512.png',
-            color: '#1a7f5a',
-          },
-          {
-            tagName: 'meta',
-            name: 'msapplication-TileImage',
-            href: '/img/pwa/manifest-icon-512.png',
-          },
-          {
-            tagName: 'meta',
-            name: 'msapplication-TileColor',
-            content: '#20232a',
-          },
-        ],
-      },
     ],
   ],
   themeConfig: {
