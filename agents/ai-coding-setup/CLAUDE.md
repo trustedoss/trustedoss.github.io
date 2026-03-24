@@ -20,7 +20,7 @@
 ## 입력 질문 (순서대로)
 
 1. **분석할 프로젝트 경로**는?
-   (예: /Users/me/myproject 또는 ../myproject)
+   (예: ~/myproject 또는 ../myproject)
    → 입력받은 경로의 파일 구조와 의존성 파일을 즉시 분석한다.
    → package.json / requirements.txt / go.mod / Cargo.toml /
      pom.xml / build.gradle 중 존재하는 파일 자동 감지.
