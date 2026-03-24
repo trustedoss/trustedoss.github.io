@@ -203,6 +203,29 @@ Anthropic API 키가 필요합니다.
 
 ---
 
+## 셀프 스터디
+
+:::tip Claude Code로 프로젝트 맞춤형 파이프라인 생성
+위 생성기는 옵션 기반 범용 YAML을 만들어 줍니다.
+실제 프로젝트 구조를 분석해서
+컨테이너·IaC 사용 여부를 자동 감지하고
+최적화된 파이프라인을 생성하려면 아래 agent를 사용하세요.
+:::
+
+**사전 조건**: [Trusted OSS 저장소](https://github.com/haksungjang/trustedoss) 클론 필요
+```bash
+cd agents/devsecops-setup
+claude
+```
+
+agent가 아래를 자동으로 수행합니다.
+- Dockerfile·IaC 파일 자동 감지 및 보안 영역 자동 권장
+- GitHub Actions / GitLab CI 선택에 따른 파일 분리 생성
+- 정책 파일(.grype.yaml, .gitleaks.toml 등) 동시 생성
+- 기존 워크플로우 충돌 방지 안내
+
+---
+
 ## 다음 단계
 
 멀티 저장소·정책 거버넌스·ORT 연동 등 전사 수준의 파이프라인 설계가 필요하다면 DevSecOps 가이드를 참고하세요.

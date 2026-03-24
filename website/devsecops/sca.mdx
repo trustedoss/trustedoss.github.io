@@ -158,6 +158,28 @@ ignore:
 
 ---
 
+## 셀프 스터디
+
+:::tip Claude Code로 SBOM 심층 분석
+위 분석기는 브라우저에서 바로 사용 가능합니다.
+더 상세한 분석과 .grype.yaml 정책 파일 자동 생성이 필요하면
+아래 agent를 사용하세요.
+:::
+
+**사전 조건**: [Trusted OSS 저장소](https://github.com/haksungjang/trustedoss) 클론 필요
+```bash
+cd agents/sbom-vuln-analyst
+claude
+```
+
+agent가 아래를 자동으로 수행합니다.
+- CycloneDX / SPDX / grype 결과 자동 감지
+- 심각도별 분류 및 수정 버전 제시
+- .grype.yaml 예외 처리 예시 생성
+- CI/CD 파이프라인 연동 안내
+
+---
+
 ## SBOM 분석기
 
 syft·trivy·cdxgen으로 생성한 SBOM 파일을 업로드하면

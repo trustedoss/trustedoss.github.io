@@ -167,6 +167,28 @@ semgrep:
 
 ---
 
+## 셀프 스터디
+
+:::tip Claude Code로 SAST 결과 심층 분석
+위 분석기는 브라우저에서 바로 사용 가능합니다.
+수정 코드 예시와 .semgrepignore 파일 생성이 필요하면
+아래 agent를 사용하세요.
+:::
+
+**사전 조건**: [Trusted OSS 저장소](https://github.com/haksungjang/trustedoss) 클론 필요
+```bash
+cd agents/sast-analyst
+claude
+```
+
+agent가 아래를 자동으로 수행합니다.
+- Semgrep JSON / CodeQL SARIF 자동 감지
+- 규칙별 수정 코드 예시 직접 생성
+- 오탐 처리 예시 (.semgrepignore) 생성
+- 우선순위 기반 수정 로드맵 제시
+
+---
+
 ## SAST 결과 분석기
 
 Semgrep·CodeQL 결과 파일을 업로드하면

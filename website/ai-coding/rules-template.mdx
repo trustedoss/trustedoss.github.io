@@ -129,3 +129,25 @@ SBOM은 프로젝트가 사용하는 의존성 전체를 기록한 명세서로,
 - [GitHub Copilot](./tools/copilot)
 - [Windsurf](./tools/windsurf)
 - [Cline / Aider](./tools/cline-aider)
+
+---
+
+## 셀프 스터디
+
+:::tip Claude Code로 실제 프로젝트에 적용하기
+위 생성기는 범용 템플릿을 만들어 줍니다.
+실제 프로젝트의 의존성을 분석해서 맞춤형 파일을 생성하려면
+아래 agent를 사용하세요.
+:::
+
+**사전 조건**: [Trusted OSS 저장소](https://github.com/haksungjang/trustedoss) 클론 필요
+```bash
+cd agents/ai-coding-setup
+claude
+```
+
+agent가 아래를 자동으로 수행합니다.
+- 프로젝트 의존성 파일 분석 (package.json, requirements.txt 등)
+- 금지 라이선스 패키지 사전 감지 및 대체 패키지 제안
+- 선택한 AI 코딩 도구별 맞춤형 Rules 파일 생성
+- 라이선스 위험 리포트 생성
