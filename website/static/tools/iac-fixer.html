@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IaC 보안 수정기</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+KR:wght@400;500;600&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#f7f8fa;--surface:#fff;--surface2:#f0f2f5;--border:#e0e5ec;--border-s:#c5ccd8;
+  --text:#1e2433;--text-2:#6b7589;--text-3:#adb5c7;
+  --accent:#5c6bc0;--accent-bg:#eef0fb;--accent-b:#c5caed;
+  --green:#2e7d32;--green-bg:#e8f5e9;--green-b:#a5d6a7;
+  --red:#c62828;--red-bg:#ffebee;--red-b:#ef9a9a;
+  --orange:#e65100;--orange-bg:#fff3e0;--orange-b:#ffcc80;
+  --yellow:#f57f17;--yellow-bg:#fffde7;--yellow-b:#fff176;
+  --code-bg:#1e2433;--code-text:#e8edf5;
+  --mono:'IBM Plex Mono',monospace;--sans:'Noto Sans KR',-apple-system,sans-serif;
+  --r:8px;--rl:12px;
+}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:14px;line-height:1.6;min-height:100vh;}
+.wrap{max-width:780px;margin:0 auto;padding:40px 20px 80px;}
+
+.header{margin-bottom:28px;}
+.badge{display:inline-flex;align-items:center;gap:6px;background:var(--accent-bg);border:1px solid var(--accent-b);border-radius:20px;padding:4px 12px;font-size:11px;font-weight:600;color:var(--accent);letter-spacing:0.04em;text-transform:uppercase;margin-bottom:10px;}
+h1{font-size:24px;font-weight:600;letter-spacing:-0.02em;margin-bottom:6px;}
+.subtitle{color:var(--text-2);font-size:13px;}
+
+.api-box{background:var(--surface);border:1.5px dashed var(--border-s);border-radius:var(--rl);padding:14px 16px;margin-bottom:10px;}
+.api-label{font-size:12px;font-weight:600;color:var(--text-2);margin-bottom:8px;}
+.api-row{display:flex;gap:8px;}
+.api-input{flex:1;padding:7px 11px;border:1.5px solid var(--border);border-radius:var(--r);font-family:var(--mono);font-size:12px;background:var(--surface2);color:var(--text);outline:none;transition:border-color 0.15s;}
+.api-input:focus{border-color:var(--accent);}
+.api-input::placeholder{color:var(--text-3);}
+.show-btn{padding:7px 11px;border:1.5px solid var(--border);border-radius:var(--r);background:var(--surface2);font-size:12px;cursor:pointer;color:var(--text-2);}
+.show-btn:hover{background:var(--border);}
+.api-hint{font-size:11px;color:var(--text-3);margin-top:5px;}
+.api-hint a{color:var(--accent);text-decoration:none;}
+
+/* Framework selector */
+.fw-row{display:flex;gap:8px;margin-bottom:10px;}
+.fw-btn{flex:1;padding:10px 8px;border:1.5px solid var(--border);border-radius:var(--r);background:var(--surface);font-size:12px;font-weight:500;cursor:pointer;color:var(--text-2);transition:all 0.12s;text-align:center;}
+.fw-btn:hover{border-color:var(--border-s);color:var(--text);}
+.fw-btn.active{border-color:var(--accent);color:var(--accent);background:var(--accent-bg);}
+.fw-sub{font-size:11px;font-weight:400;opacity:0.7;display:block;margin-top:2px;}
+
+.upload-zone{background:var(--surface);border:2px dashed var(--border-s);border-radius:var(--rl);padding:32px 20px;text-align:center;cursor:pointer;transition:all 0.2s;margin-bottom:10px;}
+.upload-zone:hover,.upload-zone.drag{border-color:var(--accent);background:var(--accent-bg);}
+.upload-zone.has-file{border-color:var(--green);border-style:solid;background:var(--green-bg);}
+.upload-icon{font-size:32px;margin-bottom:10px;display:block;}
+.upload-title{font-size:14px;font-weight:600;margin-bottom:4px;}
+.upload-desc{font-size:12px;color:var(--text-2);}
+.upload-formats{display:flex;justify-content:center;gap:6px;margin-top:10px;flex-wrap:wrap;}
+.fmt-badge{padding:2px 8px;border-radius:4px;background:var(--surface2);border:1px solid var(--border);font-family:var(--mono);font-size:11px;color:var(--text-2);}
+#fileInput{display:none;}
+
+/* Mode selector */
+.mode-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);padding:14px 16px;margin-bottom:10px;}
+.mode-label{font-size:12px;font-weight:600;color:var(--text-2);margin-bottom:10px;}
+.pills{display:flex;border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden;}
+.pill{flex:1;}
+.pill input{position:absolute;opacity:0;pointer-events:none;}
+.pill label{display:block;text-align:center;padding:8px 10px;font-size:12px;cursor:pointer;transition:all 0.12s;color:var(--text-2);border-right:1px solid var(--border);line-height:1.4;}
+.pill:last-child label{border-right:none;}
+.pill label:hover{background:var(--surface2);color:var(--text);}
+.pill input:checked+label{background:var(--accent);color:#fff;font-weight:600;}
+
+.fix-btn{width:100%;padding:13px;background:var(--accent);color:#fff;border:none;border-radius:var(--rl);font-family:var(--sans);font-size:14px;font-weight:700;cursor:pointer;transition:all 0.15s;}
+.fix-btn:hover:not(:disabled){background:#4a5ab0;transform:translateY(-1px);box-shadow:0 4px 16px rgba(92,107,192,0.3);}
+.fix-btn:disabled{opacity:0.4;cursor:not-allowed;transform:none;box-shadow:none;}
+
+.loading-bar{height:3px;background:var(--border);border-radius:2px;overflow:hidden;margin-top:8px;display:none;}
+.loading-bar.on{display:block;}
+.loading-fill{height:100%;background:var(--accent);animation:load 1.8s ease-in-out infinite;}
+@keyframes load{0%{width:0%;margin-left:0}50%{width:60%;margin-left:20%}100%{width:0%;margin-left:100%}}
+.loading-text{text-align:center;font-size:12px;color:var(--text-2);margin-top:6px;display:none;}
+.loading-text.on{display:block;}
+
+.err{background:var(--red-bg);border:1.5px solid var(--red-b);border-radius:var(--rl);padding:12px 14px;margin-top:10px;font-size:13px;color:var(--red);display:none;}
+.err.on{display:block;}
+.err-title{font-weight:600;margin-bottom:3px;}
+
+/* Result */
+.result{margin-top:24px;display:none;}
+.result.on{display:block;}
+
+/* Stats row */
+.stats-row{display:flex;gap:10px;margin-bottom:16px;}
+.stat{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);padding:14px;text-align:center;}
+.stat-num{font-size:26px;font-weight:700;font-family:var(--mono);line-height:1;margin-bottom:3px;}
+.stat-label{font-size:11px;color:var(--text-2);}
+.stat.fixed{border-color:var(--green-b);background:var(--green-bg);}
+.stat.fixed .stat-num{color:var(--green);}
+.stat.skipped{border-color:var(--orange-b);background:var(--orange-bg);}
+.stat.skipped .stat-num{color:var(--orange);}
+.stat.total .stat-num{color:var(--accent);}
+
+/* Violation list */
+.viol-list{margin-bottom:16px;}
+.viol-item{border:1px solid var(--border);border-radius:var(--r);margin-bottom:8px;overflow:hidden;}
+.viol-item.fixed-item{border-left:3px solid var(--green);}
+.viol-item.skipped-item{border-left:3px solid var(--orange);}
+.viol-head{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 14px;background:var(--surface2);cursor:pointer;}
+.viol-head:hover{background:var(--border);}
+.viol-id{font-family:var(--mono);font-size:12px;color:var(--accent);font-weight:500;}
+.viol-res{font-size:11px;color:var(--text-2);}
+.viol-badge{padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:0.04em;flex-shrink:0;}
+.viol-badge.fixed{background:var(--green-bg);color:var(--green);border:1px solid var(--green-b);}
+.viol-badge.skipped{background:var(--orange-bg);color:var(--orange);border:1px solid var(--orange-b);}
+.viol-body{padding:12px 14px;border-top:1px solid var(--border);display:none;}
+.viol-body.open{display:block;}
+.viol-desc{font-size:13px;color:var(--text-2);margin-bottom:10px;line-height:1.5;}
+.viol-skip-reason{font-size:12px;color:var(--orange);background:var(--orange-bg);border:1px solid var(--orange-b);border-radius:var(--r);padding:8px 10px;margin-bottom:10px;}
+
+/* Code diff */
+.diff-wrap{border-radius:var(--r);overflow:hidden;border:1px solid var(--border);margin-top:8px;}
+.diff-header{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:var(--code-bg);}
+.diff-title{font-family:var(--mono);font-size:11px;color:var(--text-3);}
+.copy-code-btn{padding:3px 10px;border-radius:4px;font-size:11px;cursor:pointer;background:var(--surface2);border:1px solid var(--border-s);color:var(--text-2);font-family:var(--sans);transition:all 0.12s;}
+.copy-code-btn:hover{background:var(--border);}
+.copy-code-btn.done{background:var(--green-bg);border-color:var(--green-b);color:var(--green);}
+.code-block{background:var(--code-bg);padding:14px;font-family:var(--mono);font-size:12px;line-height:1.7;color:var(--code-text);white-space:pre-wrap;overflow-x:auto;max-height:320px;overflow-y:auto;}
+.code-block::-webkit-scrollbar{width:4px;height:4px;}
+.code-block::-webkit-scrollbar-thumb{background:#3a4055;border-radius:2px;}
+.line-added{color:#4ade80;}
+.line-removed{color:#f87171;}
+.line-ctx{color:#8892a8;}
+
+/* Download panel */
+.dl-panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);padding:16px;margin-bottom:12px;}
+.dl-title{font-size:13px;font-weight:600;margin-bottom:10px;color:var(--text-2);}
+.dl-items{display:flex;flex-direction:column;gap:6px;}
+.dl-item{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 12px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);}
+.dl-file{font-family:var(--mono);font-size:12px;color:var(--text);}
+.dl-btn{padding:5px 12px;border-radius:var(--r);font-size:12px;font-weight:500;cursor:pointer;background:var(--accent);border:none;color:#fff;font-family:var(--sans);transition:all 0.12s;white-space:nowrap;}
+.dl-btn:hover{background:#4a5ab0;}
+
+/* Md raw */
+.md-raw{font-family:var(--mono);font-size:12px;line-height:1.7;white-space:pre-wrap;color:var(--text-2);}
+
+/* Tabs */
+.tabs{display:flex;gap:3px;margin-bottom:-1px;position:relative;z-index:1;}
+.tab{padding:7px 14px;font-size:12px;font-weight:500;border:1.5px solid var(--border);border-bottom:none;border-radius:5px 5px 0 0;background:var(--surface2);color:var(--text-2);cursor:pointer;transition:all 0.12s;}
+.tab.active{background:var(--surface);color:var(--text);}
+.panel{background:var(--surface);border:1.5px solid var(--border);border-radius:0 var(--rl) var(--rl) var(--rl);overflow:hidden;}
+.pane{display:none;padding:18px;max-height:560px;overflow-y:auto;}
+.pane.active{display:block;}
+.pane::-webkit-scrollbar{width:4px;}
+.pane::-webkit-scrollbar-thumb{background:var(--border-s);border-radius:2px;}
+
+.footer{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-top:1px solid var(--border);background:var(--surface2);}
+.footer-left{display:flex;gap:7px;}
+.btn{padding:6px 13px;border-radius:var(--r);font-size:12px;font-weight:500;cursor:pointer;font-family:var(--sans);transition:all 0.12s;}
+.btn-sec{background:var(--surface);border:1.5px solid var(--border);color:var(--text);}
+.btn-sec:hover{border-color:var(--border-s);}
+.btn-sec.done{background:var(--green-bg);border-color:var(--green-b);color:var(--green);}
+.btn-pri{background:var(--accent);border:1.5px solid var(--accent);color:#fff;font-weight:600;}
+.btn-pri:hover{background:#4a5ab0;}
+.footer-hint{font-size:11px;color:var(--text-3);}
+.empty{text-align:center;padding:40px;color:var(--text-3);font-size:13px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="header">
+    <div class="badge">🏗️ Trusted OSS</div>
+    <h1>IaC 보안 수정기</h1>
+    <p class="subtitle">Checkov 결과 파일을 업로드하면 위반 항목별 수정된 코드를 자동으로 생성합니다.<br>리포트가 아닌 바로 적용할 수 있는 수정 코드를 제공합니다.</p>
+  </div>
+
+  <div class="api-box">
+    <div class="api-label">🔑 Anthropic API Key</div>
+    <div class="api-row">
+      <input class="api-input" type="password" id="apiKey" placeholder="sk-ant-api03-..." autocomplete="off">
+      <button class="show-btn" onclick="toggleKey()">표시</button>
+    </div>
+    <div class="api-hint">키는 브라우저에서만 사용됩니다. 발급: <a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a></div>
+  </div>
+
+  <!-- Framework -->
+  <div class="fw-row">
+    <button class="fw-btn active" onclick="selectFw('terraform')" id="fw-terraform">Terraform<span class="fw-sub">.tf 파일</span></button>
+    <button class="fw-btn" onclick="selectFw('kubernetes')" id="fw-kubernetes">Kubernetes<span class="fw-sub">YAML 매니페스트</span></button>
+    <button class="fw-btn" onclick="selectFw('cloudformation')" id="fw-cloudformation">CloudFormation<span class="fw-sub">JSON/YAML</span></button>
+    <button class="fw-btn" onclick="selectFw('auto')" id="fw-auto">자동 감지<span class="fw-sub">도구 무관</span></button>
+  </div>
+
+  <!-- Upload -->
+  <div class="upload-zone" id="uploadZone"
+    onclick="document.getElementById('fileInput').click()"
+    ondragover="onDragOver(event)" ondragleave="onDragLeave(event)" ondrop="onDrop(event)">
+    <span class="upload-icon" id="uploadIcon">🔒</span>
+    <div class="upload-title" id="uploadTitle">Checkov 결과 파일을 드래그하거나 클릭해서 선택</div>
+    <div class="upload-desc" id="uploadDesc">checkov -d . -o json > checkov-result.json 으로 생성한 파일</div>
+    <div class="upload-formats">
+      <span class="fmt-badge">Checkov JSON</span>
+      <span class="fmt-badge">tfsec JSON</span>
+      <span class="fmt-badge">Trivy JSON (IaC)</span>
+    </div>
+  </div>
+  <input type="file" id="fileInput" accept=".json" onchange="onFileSelect(event)">
+
+  <!-- Mode -->
+  <div class="mode-box">
+    <div class="mode-label">수정 모드</div>
+    <div class="pills">
+      <div class="pill"><input type="radio" id="m1" name="mode" value="fix" checked><label for="m1">수정 코드 생성<br><small style="opacity:.7;font-weight:400">위반 항목 자동 수정</small></label></div>
+      <div class="pill"><input type="radio" id="m2" name="mode" value="annotate"><label for="m2">인라인 주석 추가<br><small style="opacity:.7;font-weight:400">checkov:skip 주석 삽입</small></label></div>
+      <div class="pill"><input type="radio" id="m3" name="mode" value="both"><label for="m3">수정 + 불가 항목 주석<br><small style="opacity:.7;font-weight:400">혼합 방식 (권장)</small></label></div>
+    </div>
+  </div>
+
+  <button class="fix-btn" id="fixBtn" onclick="analyze()" disabled>수정 코드 생성하기 →</button>
+
+  <div class="loading-bar" id="lb"><div class="loading-fill"></div></div>
+  <div class="loading-text" id="lt">Claude가 위반 항목을 분석하고 수정 코드를 생성하고 있습니다...</div>
+  <div class="err" id="errBox"><div class="err-title" id="errTitle">오류</div><div id="errMsg"></div></div>
+
+  <!-- Result -->
+  <div class="result" id="result">
+
+    <div class="stats-row">
+      <div class="stat total"><div class="stat-num" id="sTotal">0</div><div class="stat-label">전체 위반</div></div>
+      <div class="stat fixed"><div class="stat-num" id="sFixed">0</div><div class="stat-label">수정 완료</div></div>
+      <div class="stat skipped"><div class="stat-num" id="sSkipped">0</div><div class="stat-label">수동 검토 필요</div></div>
+    </div>
+
+    <!-- Download panel -->
+    <div class="dl-panel" id="dlPanel" style="display:none">
+      <div class="dl-title">📥 수정된 파일 다운로드</div>
+      <div class="dl-items" id="dlItems"></div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab(0)">위반 항목</button>
+      <button class="tab" onclick="switchTab(1)">원본 Markdown</button>
+    </div>
+    <div class="panel">
+      <div class="pane active" id="pane0"><div id="violList"></div></div>
+      <div class="pane" id="pane1"><div class="md-raw" id="mdContent"></div></div>
+      <div class="footer">
+        <div class="footer-left">
+          <button class="btn btn-sec" id="copyBtn" onclick="copyMd()">리포트 복사</button>
+          <button class="btn btn-pri" onclick="downloadAllFixed()">수정 파일 전체 다운로드</button>
+        </div>
+        <div class="footer-hint" id="footerHint"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<script>
+let fileContent='',fileName='',reportMd='',keyVisible=false,selectedFw='terraform';
+let parsedData=null;
+
+function toggleKey(){keyVisible=!keyVisible;document.getElementById('apiKey').type=keyVisible?'text':'password';document.querySelector('.show-btn').textContent=keyVisible?'숨김':'표시';}
+function selectFw(fw){selectedFw=fw;document.querySelectorAll('.fw-btn').forEach(b=>b.classList.remove('active'));document.getElementById('fw-'+fw).classList.add('active');}
+function onDragOver(e){e.preventDefault();document.getElementById('uploadZone').classList.add('drag');}
+function onDragLeave(){document.getElementById('uploadZone').classList.remove('drag');}
+function onDrop(e){e.preventDefault();document.getElementById('uploadZone').classList.remove('drag');const f=e.dataTransfer.files[0];if(f)processFile(f);}
+function onFileSelect(e){const f=e.target.files[0];if(f)processFile(f);}
+function processFile(f){
+  fileName=f.name;
+  const r=new FileReader();
+  r.onload=e=>{
+    fileContent=e.target.result;
+    document.getElementById('uploadZone').classList.add('has-file');
+    document.getElementById('uploadIcon').textContent='✅';
+    document.getElementById('uploadTitle').textContent='파일 준비 완료';
+    document.getElementById('uploadDesc').textContent=`${f.name} (${(f.size/1024).toFixed(1)} KB)`;
+    document.getElementById('fixBtn').disabled=false;
+  };
+  r.readAsText(f);
+}
+function setLoading(on){
+  document.getElementById('lb').classList.toggle('on',on);
+  document.getElementById('lt').classList.toggle('on',on);
+  document.getElementById('fixBtn').disabled=on;
+  document.getElementById('fixBtn').textContent=on?'생성 중...':'수정 코드 생성하기 →';
+}
+function showErr(t,m){document.getElementById('errTitle').textContent=t;document.getElementById('errMsg').textContent=m;document.getElementById('errBox').classList.add('on');}
+function hideErr(){document.getElementById('errBox').classList.remove('on');}
+
+async function analyze(){
+  const apiKey=document.getElementById('apiKey').value.trim();
+  const mode=document.querySelector('input[name="mode"]:checked')?.value||'both';
+  hideErr();
+  if(!apiKey){showErr('API 키 필요','Anthropic API 키를 입력하세요.');return;}
+  if(!apiKey.startsWith('sk-ant-')){showErr('잘못된 API 키','sk-ant-로 시작하는 키를 입력하세요.');return;}
+  if(!fileContent){showErr('파일 필요','Checkov 결과 파일을 먼저 업로드하세요.');return;}
+
+  const content=fileContent.length>80000?fileContent.substring(0,80000)+'...(이하 생략)':fileContent;
+  setLoading(true);
+  document.getElementById('result').classList.remove('on');
+
+  const fwDesc={terraform:'Terraform (.tf)',kubernetes:'Kubernetes YAML',cloudformation:'AWS CloudFormation',auto:'자동 감지'};
+  const modeDesc={fix:'수정 가능한 항목은 수정 코드 생성, 불가능한 항목은 skipReason 표시',annotate:'모든 항목에 checkov:skip 인라인 주석 삽입',both:'수정 가능한 항목은 수정 코드 생성, 불가능한 항목은 checkov:skip 주석 삽입'};
+
+  const prompt=`아래는 Checkov(또는 tfsec/Trivy IaC) 보안 검사 결과 파일이다.
+IaC 프레임워크: ${fwDesc[selectedFw]}
+수정 모드: ${modeDesc[mode]}
+파일명: ${fileName}
+
+파일 내용:
+\`\`\`json
+${content}
+\`\`\`
+
+분석해서 아래 JSON 형식으로만 응답해. 순수 JSON만.
+
+{
+  "summary": {
+    "total": 숫자,
+    "fixed": 숫자,
+    "skipped": 숫자,
+    "framework": "감지된 프레임워크"
+  },
+  "violations": [
+    {
+      "checkId": "CKV_AWS_18",
+      "resource": "리소스명",
+      "file": "파일 경로",
+      "line": "줄 번호",
+      "description": "위반 내용 설명 (한국어)",
+      "status": "fixed|skipped",
+      "skipReason": "수정 불가 이유 (status=skipped일 때, 한국어)",
+      "originalCode": "수정 전 코드 (해당 리소스 블록)",
+      "fixedCode": "수정 후 코드 (status=fixed일 때)",
+      "skipAnnotation": "# checkov:skip=CKV_AWS_18:이유 (status=skipped일 때)"
+    }
+  ],
+  "fixedFiles": [
+    {
+      "filename": "파일명.tf",
+      "content": "수정된 전체 파일 내용"
+    }
+  ],
+  "markdown": "전체 수정 리포트 마크다운 (한국어)"
+}
+
+요구사항:
+- fixed 항목은 실제로 적용 가능한 수정 코드 생성 (해당 프레임워크 문법 준수)
+- skipped 항목은 수정이 구조적으로 불가능하거나 의도적 설정인 경우
+- fixedFiles는 동일 파일의 여러 위반을 한 번에 수정한 전체 파일 내용 포함
+- originalCode와 fixedCode는 해당 리소스 블록만 (전체 파일 X)
+- markdown에는 ## 요약, ## 수정 완료 항목, ## 수동 검토 필요 항목 섹션 포함
+- 한국어로 작성`;
+
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','x-api-key':apiKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:4000,messages:[{role:'user',content:prompt}]})
+    });
+    if(!res.ok){const e=await res.json().catch(()=>({}));if(res.status===401)throw new Error('API 키가 유효하지 않습니다.');if(res.status===429)throw new Error('요청 한도 초과. 잠시 후 다시 시도하세요.');throw new Error(e?.error?.message||`HTTP ${res.status}`);}
+    const data=await res.json();
+    const raw=data.content.map(i=>i.text||'').join('').trim();
+    let parsed;
+    try{const clean=raw.replace(/^```json\s*/,'').replace(/```\s*$/,'').trim();parsed=JSON.parse(clean);}
+    catch{throw new Error('응답 파싱 실패. 다시 시도해주세요.');}
+    parsedData=parsed;
+    reportMd=parsed.markdown||'';
+    renderResult(parsed);
+  }catch(e){showErr('생성 실패',e.message);}
+  finally{setLoading(false);}
+}
+
+function renderResult(data){
+  const s=data.summary||{};
+  document.getElementById('sTotal').textContent=s.total||0;
+  document.getElementById('sFixed').textContent=s.fixed||0;
+  document.getElementById('sSkipped').textContent=s.skipped||0;
+  document.getElementById('footerHint').textContent=`${s.framework||''} · ${s.fixed||0}개 자동 수정`;
+
+  // Download panel
+  if(data.fixedFiles&&data.fixedFiles.length){
+    const dlPanel=document.getElementById('dlPanel');
+    const dlItems=document.getElementById('dlItems');
+    dlPanel.style.display='block';
+    dlItems.innerHTML=data.fixedFiles.map((f,i)=>`
+      <div class="dl-item">
+        <span class="dl-file">${f.filename}</span>
+        <button class="dl-btn" onclick="downloadFile(${i})">다운로드</button>
+      </div>`).join('');
+  }
+
+  // Violations
+  const list=document.getElementById('violList');
+  if(!data.violations||!data.violations.length){
+    list.innerHTML='<div class="empty">✅ 위반 항목이 없습니다.</div>';
+  } else {
+    list.innerHTML=data.violations.map((v,i)=>`
+      <div class="viol-item ${v.status}-item">
+        <div class="viol-head" onclick="toggleViol(${i})">
+          <div>
+            <div class="viol-id">${v.checkId} <span style="color:var(--text-2);font-weight:400">${v.resource}</span></div>
+            <div class="viol-res" style="font-size:11px;color:var(--text-3);font-family:var(--mono)">${v.file}:${v.line}</div>
+          </div>
+          <span class="viol-badge ${v.status}">${v.status==='fixed'?'✓ 수정 완료':'⚠ 수동 검토'}</span>
+        </div>
+        <div class="viol-body" id="viol-body-${i}">
+          <div class="viol-desc">${v.description}</div>
+          ${v.status==='skipped'&&v.skipReason?`<div class="viol-skip-reason">⚠ ${v.skipReason}</div>`:''}
+          ${v.status==='skipped'&&v.skipAnnotation?`<div class="diff-wrap"><div class="diff-header"><span class="diff-title">checkov:skip 주석</span><button class="copy-code-btn" onclick="copyCode(event,'${escStr(v.skipAnnotation)}')">복사</button></div><div class="code-block">${escHtml(v.skipAnnotation)}</div></div>`:''}
+          ${v.status==='fixed'&&v.fixedCode?`
+            <div class="diff-wrap">
+              <div class="diff-header"><span class="diff-title">수정 코드</span><button class="copy-code-btn" onclick="copyCode(event,${JSON.stringify(v.fixedCode)})">복사</button></div>
+              <div class="code-block">${escHtml(v.fixedCode)}</div>
+            </div>`:''}
+        </div>
+      </div>`).join('');
+  }
+
+  document.getElementById('mdContent').textContent=reportMd;
+  document.getElementById('result').classList.add('on');
+  document.getElementById('result').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function toggleViol(i){
+  const body=document.getElementById('viol-body-'+i);
+  body.classList.toggle('open');
+}
+function escHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function escStr(s){return String(s).replace(/'/g,"\\'");}
+
+function copyCode(e,text){
+  e.stopPropagation();
+  navigator.clipboard.writeText(text).then(()=>{
+    const btn=e.target;btn.textContent='복사됨 ✓';btn.classList.add('done');
+    setTimeout(()=>{btn.textContent='복사';btn.classList.remove('done');},2000);
+  });
+}
+function switchTab(i){
+  document.querySelectorAll('.tab').forEach((t,idx)=>t.classList.toggle('active',idx===i));
+  document.querySelectorAll('.pane').forEach((p,idx)=>p.classList.toggle('active',idx===i));
+}
+function downloadFile(i){
+  const f=parsedData?.fixedFiles?.[i];if(!f)return;
+  const blob=new Blob([f.content],{type:'text/plain;charset=utf-8'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=f.filename;a.click();URL.revokeObjectURL(a.href);
+}
+function downloadAllFixed(){
+  if(!parsedData?.fixedFiles?.length){
+    copyMd();return;
+  }
+  parsedData.fixedFiles.forEach((_,i)=>setTimeout(()=>downloadFile(i),i*300));
+}
+function copyMd(){navigator.clipboard.writeText(reportMd).then(()=>{const b=document.getElementById('copyBtn');b.textContent='복사됨 ✓';b.classList.add('done');setTimeout(()=>{b.textContent='리포트 복사';b.classList.remove('done');},2000);});}
+</script>
+</body>
+</html>
