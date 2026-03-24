@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OSS Rules 생성기</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Pretendard:wght@400;500;600&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #f5f4f0;
+  --surface: #ffffff;
+  --surface2: #f0efe9;
+  --border: #e2e0d8;
+  --border-strong: #c8c5bb;
+  --text: #1c1b18;
+  --text-2: #6b6860;
+  --text-3: #9b9890;
+  --accent: #2d5be3;
+  --accent-bg: #eef2fd;
+  --accent-border: #b8ccf8;
+  --success: #1a7a4a;
+  --success-bg: #edf7f1;
+  --warning: #b54708;
+  --warning-bg: #fef6ee;
+  --danger: #c0392b;
+  --mono: 'IBM Plex Mono', monospace;
+  --sans: 'Pretendard', -apple-system, sans-serif;
+  --radius: 8px;
+  --radius-lg: 12px;
+}
+
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+.wrap { max-width: 700px; margin: 0 auto; padding: 40px 20px 80px; }
+
+/* Header */
+.header { margin-bottom: 36px; }
+.header-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--accent-bg); border: 1px solid var(--accent-border);
+  border-radius: 20px; padding: 4px 12px;
+  font-size: 11px; font-weight: 600; color: var(--accent);
+  letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 12px;
+}
+.header h1 { font-size: 26px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 6px; }
+.header p { color: var(--text-2); font-size: 14px; }
+
+/* Steps */
+.steps { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
+
+.step {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: border-color 0.15s;
+}
+.step:focus-within { border-color: var(--border-strong); }
+
+.step-head {
+  display: flex; align-items: center; gap: 10px;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface2);
+}
+.step-num {
+  width: 22px; height: 22px;
+  background: var(--text); color: #fff;
+  border-radius: 50%; font-size: 11px; font-weight: 600;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.step-title { font-size: 13px; font-weight: 600; }
+.step-desc { font-size: 12px; color: var(--text-2); margin-left: auto; }
+
+.step-body { padding: 16px 18px; }
+
+/* Chip groups */
+.chips { display: flex; flex-wrap: wrap; gap: 7px; }
+.chip input { position: absolute; opacity: 0; pointer-events: none; }
+.chip label {
+  display: flex; align-items: center; gap: 5px;
+  padding: 6px 13px; border-radius: 6px;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  font-size: 13px; cursor: pointer;
+  transition: all 0.12s; user-select: none;
+  color: var(--text);
+}
+.chip label:hover { border-color: var(--border-strong); background: var(--surface2); }
+.chip input:checked + label {
+  background: var(--accent-bg);
+  border-color: var(--accent);
+  color: var(--accent);
+  font-weight: 500;
+}
+.chip-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: currentColor; opacity: 0;
+  transition: opacity 0.12s;
+}
+.chip input:checked + label .chip-dot { opacity: 1; }
+
+/* Radio pills */
+.pills { display: flex; gap: 0; border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.pill input { position: absolute; opacity: 0; pointer-events: none; }
+.pill { flex: 1; }
+.pill label {
+  display: block; text-align: center;
+  padding: 8px 12px; font-size: 13px; cursor: pointer;
+  transition: all 0.12s; color: var(--text-2);
+  border-right: 1px solid var(--border);
+}
+.pill:last-child label { border-right: none; }
+.pill label:hover { background: var(--surface2); color: var(--text); }
+.pill input:checked + label {
+  background: var(--text); color: #fff; font-weight: 500;
+}
+
+/* API Key input */
+.api-section {
+  background: var(--surface);
+  border: 1.5px dashed var(--border-strong);
+  border-radius: var(--radius-lg);
+  padding: 16px 18px;
+  margin-bottom: 12px;
+}
+.api-label { font-size: 12px; font-weight: 600; color: var(--text-2); margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+.api-label-icon { font-size: 14px; }
+.api-row { display: flex; gap: 8px; }
+.api-input {
+  flex: 1; padding: 8px 12px;
+  border: 1.5px solid var(--border); border-radius: var(--radius);
+  font-family: var(--mono); font-size: 12px;
+  background: var(--surface2); color: var(--text);
+  outline: none; transition: border-color 0.15s;
+}
+.api-input:focus { border-color: var(--accent); background: #fff; }
+.api-input::placeholder { color: var(--text-3); }
+.api-hint { font-size: 11px; color: var(--text-3); margin-top: 6px; }
+.api-hint a { color: var(--accent); text-decoration: none; }
+.show-btn {
+  padding: 8px 12px; border: 1.5px solid var(--border);
+  border-radius: var(--radius); background: var(--surface2);
+  font-size: 12px; cursor: pointer; color: var(--text-2);
+  white-space: nowrap;
+}
+.show-btn:hover { background: var(--border); }
+
+/* Generate button */
+.gen-btn {
+  width: 100%; padding: 14px;
+  background: var(--text); color: #fff;
+  border: none; border-radius: var(--radius-lg);
+  font-family: var(--sans); font-size: 15px; font-weight: 600;
+  cursor: pointer; letter-spacing: -0.01em;
+  transition: all 0.15s; position: relative;
+  overflow: hidden;
+}
+.gen-btn:hover:not(:disabled) { background: #333; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+.gen-btn:active { transform: translateY(0); }
+.gen-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
+
+/* Loading */
+.loading-bar {
+  height: 3px; background: var(--border);
+  border-radius: 2px; overflow: hidden; margin-top: 10px;
+  display: none;
+}
+.loading-bar.visible { display: block; }
+.loading-fill {
+  height: 100%; background: var(--accent);
+  border-radius: 2px;
+  animation: loadingAnim 1.5s ease-in-out infinite;
+}
+@keyframes loadingAnim {
+  0% { width: 0%; margin-left: 0; }
+  50% { width: 60%; margin-left: 20%; }
+  100% { width: 0%; margin-left: 100%; }
+}
+.loading-text { text-align: center; font-size: 13px; color: var(--text-2); margin-top: 8px; display: none; }
+.loading-text.visible { display: block; }
+
+/* Error */
+.error-box {
+  background: #fff5f5; border: 1.5px solid #fcc;
+  border-radius: var(--radius-lg); padding: 14px 16px;
+  margin-top: 12px; font-size: 13px; color: var(--danger);
+  display: none;
+}
+.error-box.visible { display: block; }
+.error-title { font-weight: 600; margin-bottom: 4px; }
+
+/* Result */
+.result { margin-top: 24px; display: none; }
+.result.visible { display: block; }
+
+.result-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 10px;
+}
+.result-title { font-size: 13px; font-weight: 600; color: var(--text-2); }
+.result-meta { font-size: 12px; color: var(--text-3); }
+
+.tabs { display: flex; gap: 4px; margin-bottom: -1px; position: relative; z-index: 1; }
+.tab-btn {
+  padding: 8px 14px; font-size: 12px; font-weight: 500;
+  border: 1.5px solid var(--border); border-bottom: none;
+  border-radius: 6px 6px 0 0;
+  background: var(--surface2); color: var(--text-2);
+  cursor: pointer; font-family: var(--mono);
+  transition: all 0.12s;
+}
+.tab-btn:hover { background: var(--surface); color: var(--text); }
+.tab-btn.active { background: var(--surface); color: var(--text); border-color: var(--border); }
+
+.result-panel {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) var(--radius-lg);
+  overflow: hidden;
+}
+
+.code-wrap {
+  display: none; padding: 20px;
+  font-family: var(--mono); font-size: 12.5px; line-height: 1.7;
+  white-space: pre-wrap; word-break: break-word;
+  max-height: 440px; overflow-y: auto;
+  color: var(--text);
+}
+.code-wrap.active { display: block; }
+
+/* Scrollbar */
+.code-wrap::-webkit-scrollbar { width: 6px; }
+.code-wrap::-webkit-scrollbar-track { background: transparent; }
+.code-wrap::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+.result-actions {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 16px;
+  border-top: 1.5px solid var(--border);
+  background: var(--surface2);
+}
+.action-left { display: flex; gap: 8px; }
+.action-right { font-size: 11px; color: var(--text-3); }
+
+.btn-copy, .btn-dl {
+  padding: 6px 14px; border-radius: 6px;
+  font-size: 12px; font-weight: 500; cursor: pointer;
+  transition: all 0.12s; font-family: var(--sans);
+}
+.btn-copy {
+  background: var(--surface); border: 1.5px solid var(--border);
+  color: var(--text);
+}
+.btn-copy:hover { border-color: var(--border-strong); background: var(--bg); }
+.btn-copy.copied { background: var(--success-bg); border-color: #a8d5bc; color: var(--success); }
+.btn-dl {
+  background: var(--text); border: 1.5px solid var(--text);
+  color: #fff;
+}
+.btn-dl:hover { background: #333; border-color: #333; }
+
+/* Success banner */
+.success-banner {
+  display: none; align-items: center; gap: 8px;
+  background: var(--success-bg); border: 1.5px solid #a8d5bc;
+  border-radius: var(--radius); padding: 10px 14px;
+  font-size: 13px; color: var(--success); margin-bottom: 10px;
+}
+.success-banner.visible { display: flex; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="header">
+    <div class="header-badge">
+      <span>✦</span> Trusted OSS
+    </div>
+    <h1>OSS Rules 생성기</h1>
+    <p>AI 코딩 도구에 적용할 오픈소스 정책 파일을 자동으로 생성합니다.<br>질문에 답하면 바로 다운로드할 수 있는 설정 파일이 만들어집니다.</p>
+  </div>
+
+  <!-- API Key -->
+  <div class="api-section">
+    <div class="api-label">
+      <span class="api-label-icon">🔑</span>
+      Anthropic API Key
+    </div>
+    <div class="api-row">
+      <input class="api-input" type="password" id="apiKey" placeholder="sk-ant-api03-..." autocomplete="off">
+      <button class="show-btn" onclick="toggleKey()">표시</button>
+    </div>
+    <div class="api-hint">
+      API 키는 브라우저에서만 사용되며 서버로 전송되지 않습니다.
+      키 발급: <a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a>
+    </div>
+  </div>
+
+  <div class="steps">
+
+    <!-- Step 1 -->
+    <div class="step">
+      <div class="step-head">
+        <div class="step-num">1</div>
+        <div class="step-title">AI 코딩 도구</div>
+        <div class="step-desc">복수 선택 가능</div>
+      </div>
+      <div class="step-body">
+        <div class="chips" id="tools">
+          <div class="chip"><input type="checkbox" id="t1" name="tool" value="claude"><label for="t1"><span class="chip-dot"></span>Claude Code</label></div>
+          <div class="chip"><input type="checkbox" id="t2" name="tool" value="cursor"><label for="t2"><span class="chip-dot"></span>Cursor</label></div>
+          <div class="chip"><input type="checkbox" id="t3" name="tool" value="copilot"><label for="t3"><span class="chip-dot"></span>GitHub Copilot</label></div>
+          <div class="chip"><input type="checkbox" id="t4" name="tool" value="windsurf"><label for="t4"><span class="chip-dot"></span>Windsurf</label></div>
+          <div class="chip"><input type="checkbox" id="t5" name="tool" value="cline"><label for="t5"><span class="chip-dot"></span>Cline / Aider</label></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="step">
+      <div class="step-head">
+        <div class="step-num">2</div>
+        <div class="step-title">개발 언어</div>
+        <div class="step-desc">언어별 audit 명령어가 포함됩니다</div>
+      </div>
+      <div class="step-body">
+        <div class="chips">
+          <div class="chip"><input type="checkbox" id="l1" name="lang" value="javascript"><label for="l1"><span class="chip-dot"></span>JavaScript / TypeScript</label></div>
+          <div class="chip"><input type="checkbox" id="l2" name="lang" value="python"><label for="l2"><span class="chip-dot"></span>Python</label></div>
+          <div class="chip"><input type="checkbox" id="l3" name="lang" value="java"><label for="l3"><span class="chip-dot"></span>Java</label></div>
+          <div class="chip"><input type="checkbox" id="l4" name="lang" value="go"><label for="l4"><span class="chip-dot"></span>Go</label></div>
+          <div class="chip"><input type="checkbox" id="l5" name="lang" value="rust"><label for="l5"><span class="chip-dot"></span>Rust</label></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="step">
+      <div class="step-head">
+        <div class="step-num">3</div>
+        <div class="step-title">라이선스 정책 수준</div>
+      </div>
+      <div class="step-body">
+        <div class="pills">
+          <div class="pill"><input type="radio" id="lic1" name="license" value="strict"><label for="lic1">엄격<br><small style="font-weight:400;opacity:.7">MIT·Apache·BSD만</small></label></div>
+          <div class="pill"><input type="radio" id="lic2" name="license" value="moderate" checked><label for="lic2">표준 (권장)<br><small style="font-weight:400;opacity:.7">LGPL·MPL 주의</small></label></div>
+          <div class="pill"><input type="radio" id="lic3" name="license" value="permissive"><label for="lic3">유연<br><small style="font-weight:400;opacity:.7">법무 검토 후 GPL 가능</small></label></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="step">
+      <div class="step-head">
+        <div class="step-num">4</div>
+        <div class="step-title">취약점 차단 기준</div>
+      </div>
+      <div class="step-body">
+        <div class="pills">
+          <div class="pill"><input type="radio" id="v1" name="vuln" value="critical"><label for="v1">Critical만<br><small style="font-weight:400;opacity:.7">처음 도입 시</small></label></div>
+          <div class="pill"><input type="radio" id="v2" name="vuln" value="high" checked><label for="v2">High 이상<br><small style="font-weight:400;opacity:.7">권장</small></label></div>
+          <div class="pill"><input type="radio" id="v3" name="vuln" value="medium"><label for="v3">Medium 이상<br><small style="font-weight:400;opacity:.7">엄격</small></label></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 5 -->
+    <div class="step">
+      <div class="step-head">
+        <div class="step-num">5</div>
+        <div class="step-title">추가 규칙</div>
+        <div class="step-desc">선택 사항</div>
+      </div>
+      <div class="step-body">
+        <div class="chips">
+          <div class="chip"><input type="checkbox" id="o1" name="option" value="sbom" checked><label for="o1"><span class="chip-dot"></span>SBOM 관리</label></div>
+          <div class="chip"><input type="checkbox" id="o2" name="option" value="copyright" checked><label for="o2"><span class="chip-dot"></span>저작권 헤더</label></div>
+          <div class="chip"><input type="checkbox" id="o3" name="option" value="cicd"><label for="o3"><span class="chip-dot"></span>CI/CD 연동 안내</label></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <button class="gen-btn" id="genBtn" onclick="generate()">Rules 파일 생성하기 →</button>
+
+  <div class="loading-bar" id="loadingBar"><div class="loading-fill"></div></div>
+  <div class="loading-text" id="loadingText">Claude가 설정 파일을 생성하고 있습니다...</div>
+
+  <div class="error-box" id="errorBox">
+    <div class="error-title" id="errorTitle">오류 발생</div>
+    <div id="errorMsg"></div>
+  </div>
+
+  <!-- Result -->
+  <div class="result" id="result">
+    <div class="success-banner visible" id="successBanner">
+      ✓ 생성 완료 — 탭을 선택해 파일을 확인하고 다운로드하세요.
+    </div>
+    <div class="result-header">
+      <div class="tabs" id="tabs"></div>
+    </div>
+    <div class="result-panel">
+      <div id="codeContents"></div>
+      <div class="result-actions">
+        <div class="action-left">
+          <button class="btn-copy" id="copyBtn" onclick="copyActive()">복사</button>
+          <button class="btn-dl" onclick="downloadActive()">다운로드</button>
+        </div>
+        <div class="action-right" id="actionHint">프로젝트 루트에 붙여넣으세요</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+let files = [];
+let activeIdx = 0;
+let keyVisible = false;
+
+const toolMeta = {
+  claude:   { filename: 'CLAUDE.md',                        label: 'CLAUDE.md',          hint: '프로젝트 루트에 위치시키세요' },
+  cursor:   { filename: '.cursorrules',                     label: '.cursorrules',        hint: '프로젝트 루트에 위치시키세요' },
+  copilot:  { filename: '.github/copilot-instructions.md',  label: 'copilot-instructions.md', hint: '.github/ 폴더 안에 위치시키세요' },
+  windsurf: { filename: '.windsurfrules',                   label: '.windsurfrules',      hint: '프로젝트 루트에 위치시키세요' },
+  cline:    { filename: '.clinerules',                      label: '.clinerules',         hint: '프로젝트 루트에 위치시키세요' },
+};
+
+const licensePolicy = {
+  strict:     '허용: MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC\n금지: LGPL, MPL, GPL, AGPL, SSPL, Commons Clause',
+  moderate:   '허용: MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC\n주의(법무 검토 필요): LGPL, MPL\n금지: GPL, AGPL, SSPL, Commons Clause',
+  permissive: '허용: MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC, LGPL, MPL\n주의(법무 검토 필요): GPL, AGPL\n금지: SSPL, Commons Clause',
+};
+
+const vulnPolicy = {
+  critical: 'Critical CVE만 즉시 차단. High 이하는 경고 출력.',
+  high:     'High·Critical CVE 발견 시 차단. Medium 이하는 경고.',
+  medium:   'Medium·High·Critical CVE 발견 시 차단.',
+};
+
+const auditCmd = {
+  javascript: 'npm audit 또는 yarn audit',
+  python:     'pip-audit',
+  java:       'dependency-check',
+  go:         'govulncheck ./...',
+  rust:       'cargo audit',
+};
+
+const toolFormat = {
+  claude:   'Claude Code의 CLAUDE.md 형식 — ## 섹션 헤더와 지시문 스타일로 작성. Claude Code가 프로젝트 시작 시 자동으로 읽는 파일임.',
+  cursor:   'Cursor의 .cursorrules 형식 — 간결한 규칙 목록 스타일. Cursor AI가 코드 작성 시 참고하는 파일임.',
+  copilot:  'GitHub Copilot의 copilot-instructions.md 형식 — 마크다운 형식, .github/ 폴더에 위치. Copilot Chat과 코드 완성에 적용됨.',
+  windsurf: 'Windsurf의 .windsurfrules 형식 — Cascade AI 에이전트 지침 파일. 간결하고 명확한 규칙 목록.',
+  cline:    'Cline의 .clinerules 형식 — 프로젝트 루트에 위치하는 지침 파일.',
+};
+
+function getChecked(name) {
+  return [...document.querySelectorAll(`input[name="${name}"]:checked`)].map(e => e.value);
+}
+function getRadio(name) {
+  const el = document.querySelector(`input[name="${name}"]:checked`);
+  return el ? el.value : null;
+}
+function toggleKey() {
+  keyVisible = !keyVisible;
+  document.getElementById('apiKey').type = keyVisible ? 'text' : 'password';
+  document.querySelector('.show-btn').textContent = keyVisible ? '숨김' : '표시';
+}
+function setLoading(on) {
+  document.getElementById('loadingBar').classList.toggle('visible', on);
+  document.getElementById('loadingText').classList.toggle('visible', on);
+  document.getElementById('genBtn').disabled = on;
+  document.getElementById('genBtn').textContent = on ? '생성 중...' : 'Rules 파일 생성하기 →';
+}
+function showError(title, msg) {
+  const box = document.getElementById('errorBox');
+  document.getElementById('errorTitle').textContent = title;
+  document.getElementById('errorMsg').textContent = msg;
+  box.classList.add('visible');
+}
+function hideError() {
+  document.getElementById('errorBox').classList.remove('visible');
+}
+
+async function generate() {
+  const apiKey = document.getElementById('apiKey').value.trim();
+  const tools = getChecked('tool');
+  const langs = getChecked('lang');
+  const license = getRadio('license');
+  const vuln = getRadio('vuln');
+  const options = getChecked('option');
+
+  hideError();
+
+  if (!apiKey) { showError('API 키 필요', 'Anthropic API 키를 입력하세요. console.anthropic.com에서 발급받을 수 있습니다.'); return; }
+  if (!apiKey.startsWith('sk-ant-')) { showError('잘못된 API 키 형식', 'API 키는 sk-ant-로 시작해야 합니다.'); return; }
+  if (tools.length === 0) { showError('선택 필요', 'AI 코딩 도구를 하나 이상 선택하세요.'); return; }
+  if (langs.length === 0) { showError('선택 필요', '개발 언어를 하나 이상 선택하세요.'); return; }
+
+  setLoading(true);
+  document.getElementById('result').classList.remove('visible');
+
+  const auditList = langs.map(l => `- ${auditCmd[l]}`).join('\n');
+  const toolInstructions = tools.map(t =>
+    `### ${toolMeta[t].filename}\n형식: ${toolFormat[t]}`
+  ).join('\n\n');
+
+  const optionList = [
+    options.includes('sbom') ? '- SBOM 관리: 의존성 변경 시 SBOM 업데이트 필요, 생성 도구(syft/cdxgen/trivy), 권장 포맷(CycloneDX)' : '',
+    options.includes('copyright') ? '- 저작권: 기존 코드 저작권 헤더 유지, 새 파일 생성 시 라이선스 헤더 포함, 타 프로젝트 코드 복사 시 출처 명시' : '',
+    options.includes('cicd') ? '- CI/CD 연동: AI 규칙은 권장사항이므로 CI/CD 파이프라인에서 syft+grype로 강제 검증 권장' : '',
+  ].filter(Boolean).join('\n');
+
+  const prompt = `아래 조건에 맞는 AI 코딩 도구용 오픈소스 정책 Rules 파일들을 생성해.
+
+## 생성할 파일 목록과 형식
+${toolInstructions}
+
+## 공통 정책 내용
+라이선스 정책:
+${licensePolicy[license]}
+
+취약점 정책: ${vulnPolicy[vuln]}
+
+언어별 보안 감사 명령어:
+${auditList}
+
+추가 규칙:
+${optionList || '없음'}
+
+## 응답 형식
+반드시 아래 JSON 형식으로만 응답. 설명 텍스트, 마크다운 코드블록 없이 순수 JSON만.
+
+{"files":[{"tool":"도구키(claude/cursor/copilot/windsurf/cline 중 하나)","filename":"파일명","content":"파일 전체 내용"}]}
+
+## 작성 요구사항
+- 각 도구의 특성과 형식에 맞게 작성
+- 한국어로 작성
+- 실제 프로젝트에 바로 적용 가능한 수준으로 구체적으로 작성
+- 각 섹션(라이선스/보안/SBOM 등)을 명확히 구분
+- tool 값은 반드시 ${tools.join('/')} 중에서만 사용`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': apiKey,
+        'anthropic-version': '2023-06-01',
+        'anthropic-dangerous-direct-browser-access': 'true',
+      },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 4000,
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
+
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      const msg = err?.error?.message || `HTTP ${res.status}`;
+      if (res.status === 401) throw new Error('API 키가 유효하지 않습니다. 키를 다시 확인하세요.');
+      if (res.status === 429) throw new Error('API 요청 한도를 초과했습니다. 잠시 후 다시 시도하세요.');
+      throw new Error(msg);
+    }
+
+    const data = await res.json();
+    const raw = data.content.map(i => i.text || '').join('').trim();
+
+    let parsed;
+    try {
+      const clean = raw.replace(/^```json\s*/,'').replace(/```\s*$/,'').trim();
+      parsed = JSON.parse(clean);
+    } catch {
+      throw new Error('응답 파싱 실패. 다시 시도해주세요.');
+    }
+
+    if (!parsed.files || !Array.isArray(parsed.files) || parsed.files.length === 0) {
+      throw new Error('생성된 파일이 없습니다. 다시 시도해주세요.');
+    }
+
+    files = parsed.files;
+    renderResult();
+
+  } catch (e) {
+    showError('생성 실패', e.message);
+  } finally {
+    setLoading(false);
+  }
+}
+
+function renderResult() {
+  const tabsEl = document.getElementById('tabs');
+  const contentsEl = document.getElementById('codeContents');
+  tabsEl.innerHTML = '';
+  contentsEl.innerHTML = '';
+
+  files.forEach((f, i) => {
+    const meta = toolMeta[f.tool] || {};
+    const label = meta.label || f.filename;
+
+    const tab = document.createElement('button');
+    tab.className = 'tab-btn' + (i === 0 ? ' active' : '');
+    tab.textContent = label;
+    tab.onclick = () => switchTab(i);
+    tabsEl.appendChild(tab);
+
+    const code = document.createElement('div');
+    code.className = 'code-wrap' + (i === 0 ? ' active' : '');
+    code.id = `code-${i}`;
+    code.textContent = f.content;
+    contentsEl.appendChild(code);
+  });
+
+  activeIdx = 0;
+  updateHint();
+  document.getElementById('result').classList.add('visible');
+  document.getElementById('result').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function switchTab(i) {
+  activeIdx = i;
+  document.querySelectorAll('.tab-btn').forEach((t, idx) => t.classList.toggle('active', idx === i));
+  document.querySelectorAll('.code-wrap').forEach((c, idx) => c.classList.toggle('active', idx === i));
+  updateHint();
+  document.getElementById('copyBtn').textContent = '복사';
+  document.getElementById('copyBtn').classList.remove('copied');
+}
+
+function updateHint() {
+  const f = files[activeIdx];
+  if (!f) return;
+  const meta = toolMeta[f.tool] || {};
+  document.getElementById('actionHint').textContent = meta.hint || '';
+}
+
+function copyActive() {
+  const text = files[activeIdx]?.content || '';
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById('copyBtn');
+    btn.textContent = '복사됨 ✓';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = '복사';
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+
+function downloadActive() {
+  const f = files[activeIdx];
+  if (!f) return;
+  const blob = new Blob([f.content], { type: 'text/plain;charset=utf-8' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = f.filename.split('/').pop();
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+</script>
+</body>
+</html>
