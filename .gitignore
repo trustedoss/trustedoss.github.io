@@ -42,3 +42,4 @@ website/node_modules/
 !.yarn/sdks
 !.yarn/versions
 docs/.claude/settings.local.json
+agents/**/settings.local.json
