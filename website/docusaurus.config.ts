@@ -219,6 +219,11 @@ const config: Config = {
           position: 'left',
         },
         {
+          to: '/blog',
+          label: '블로그',
+          position: 'left',
+        },
+        {
           href: 'https://github.com/haksungjang/trustedoss',
           'aria-label': 'GitHub repository',
           position: 'right',
