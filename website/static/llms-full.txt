@@ -1,0 +1,35 @@
+# Trusted OSS — 상세 가이드 목록
+
+## 체계구축 (/docs)
+- 00. 개요 및 소프트웨어 공급망 보안
+- 01. 환경 설정
+- 02. 조직 구성 (오픈소스 프로그램 오피스)
+- 03. 정책 수립 (오픈소스 정책 문서)
+- 04. 프로세스 설계
+- 05. 도구 (SBOM 생성·관리·취약점 분석)
+- 06. 교육
+- 07. 자체 인증 (ISO/IEC 5230·18974 준수 선언)
+- 08. 개발자 가이드
+
+## AI 코딩 (/ai-coding)
+- 소개: AI 코딩 도구의 오픈소스 정책 위반 위험
+- 4단계 전략: 프롬프트 의존 → 규칙 내재화 → CI/CD 차단 → 자동 교정
+- 공통 Rules 템플릿: 라이선스·보안·SBOM·저작권 규칙
+- Claude Code (CLAUDE.md) 설정
+- Cursor (.cursor/rules/) 설정
+- GitHub Copilot (copilot-instructions.md) 설정
+- Windsurf (.windsurfrules) 설정
+- Cline / Aider (.clinerules / AGENTS.md) 설정
+- Quick CI/CD: syft·grype·라이선스 차단 30분 완성
+
+## DevSecOps (/devsecops)
+- 도입 전략: 성숙도 모델·4단계 로드맵
+- SAST: Semgrep·CodeQL 정적 분석
+- SCA: syft·grype SBOM 및 취약점 관리
+- 시크릿 탐지: Gitleaks·truffleHog
+- 컨테이너 보안: Trivy 이미지 스캔
+- IaC 보안: Checkov·tfsec
+- DAST: OWASP ZAP·Nuclei 동적 분석
+- 파이프라인 설계: 전체 통합 GitHub Actions·GitLab CI
+- 모니터링·자동 교정: Dependabot·Renovate
+- ISO/IEC 18974 연계: 요구사항 매핑·증적 자동화
