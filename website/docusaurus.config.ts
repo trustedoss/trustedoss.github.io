@@ -224,7 +224,7 @@ const config: Config = {
           position: 'left',
         },
         {
-          href: 'https://github.com/haksungjang/trustedoss',
+          href: 'https://github.com/trustedoss',
           'aria-label': 'GitHub repository',
           position: 'right',
           className: 'navbar-github-link',
@@ -269,7 +269,7 @@ const config: Config = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/haksungjang/trustedoss',
+              href: 'https://github.com/trustedoss',
             },
           ],
         },
