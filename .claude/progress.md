@@ -19,7 +19,7 @@
 
 **수정 시 체크리스트:**
 
-1. 파일 수정 후 `bash .claude/scripts/verify.sh` — 6/6 PASS 확인
+1. 파일 수정 후 `bash .claude/scripts/verify.sh` — 8/8 PASS 확인
 2. `git commit`
 
 ---
@@ -55,3 +55,8 @@
   - Phase 5: docs/ 4개 수정 (02-organization, 03-policy, 04-process, 07-conformance)
   - Phase 6: update-reference-samples.md process.md 매핑 3종 추가, website/reference/samples/process.md 3섹션 추가
   - Phase 7: verify.sh 7/7 PASS, 갭 해소 확인 완료
+- **ISO 커버리지 테스트 추가** (2026-03-30):
+  - `.claude/scripts/test-coverage.py` 신규 작성 — 4가지 정적 검증 (G-항목 Agent할당, output 파일 할당, mapping↔checklist 일관성, templates 파일 존재)
+  - `docs/00-overview/checklist-mapping.md` G2.2·G3L.6 테이블 보완 (inquiry-response.md, contribution-process.md 누락 추가)
+  - `verify.sh` 8번 항목 추가 (ISO 커버리지 정합성), 번호 표기 [1/8]~[8/8] 통일
+  - 8/8 PASS 확인

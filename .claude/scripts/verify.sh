@@ -9,7 +9,7 @@ WARNINGS=()
 echo "===== trustedoss 자체 검증 시작 ====="
 
 # 검증 1: Docusaurus 빌드
-echo "[1/6] Docusaurus 빌드 확인..."
+echo "[1/8] Docusaurus 빌드 확인..."
 if npm run build --silent 2>/dev/null; then
   echo "  PASS: 빌드 성공"
   PASS=$((PASS+1))
@@ -19,7 +19,7 @@ else
 fi
 
 # 검증 2: 내부 링크 확인
-echo "[2/6] 내부 링크 확인..."
+echo "[2/8] 내부 링크 확인..."
 BROKEN=0
 while IFS= read -r file; do
   while IFS= read -r link; do
@@ -46,7 +46,7 @@ else
 fi
 
 # 검증 3: YAML front matter 콜론 확인
-echo "[3/6] Front matter YAML 형식 확인..."
+echo "[3/8] Front matter YAML 형식 확인..."
 FM_ERRORS=0
 while IFS= read -r file; do
   # front matter 추출 후 콜론 포함 값 따옴표 여부 확인
@@ -79,7 +79,7 @@ else
 fi
 
 # 검증 4: 필수 파일 존재 확인
-echo "[4/6] 필수 파일 존재 확인..."
+echo "[4/8] 필수 파일 존재 확인..."
 REQUIRED_FILES=(
   "CLAUDE.md"
   "README.md"
@@ -113,7 +113,7 @@ fi
 
 # 검증 5: 로컬 경로 노출 확인
 # (git ls-files 기준 — gitignore 된 파일 제외, verify.sh 자신 제외)
-echo "[5/6] 로컬 경로 노출 확인..."
+echo "[5/8] 로컬 경로 노출 확인..."
 LOCAL_PATH_HITS=$(git ls-files \
   -- '*.md' '*.sh' '*.yml' '*.yaml' '*.json' '*.ts' \
   2>/dev/null | \
@@ -137,7 +137,7 @@ fi
 
 # 검증 6: ISO/IEC 18974 섹션 번호 형식 확인
 # 18974는 §4.x.x 체계 — 아래 2가지 패턴으로 §3.x.x 오표기 탐지
-echo "[6/6] ISO/IEC 18974 섹션 번호 형식 확인..."
+echo "[6/8] ISO/IEC 18974 섹션 번호 형식 확인..."
 SPEC_ERRORS=0
 
 # 패턴 1: 본문 텍스트 "18974 3.x.x" 형식 (괄호·숫자 이전까지만 탐색)
@@ -172,7 +172,7 @@ fi
 
 # 검증 7: agent 실행 블록 admonition 누락 확인
 # docs/ 내 bash 블록에 'cd agents/'가 있으면 직전 10줄에 ':::tip 실행 전 확인'이 있어야 함
-echo "[7/7] agent 실행 admonition 누락 확인..."
+echo "[7/8] agent 실행 admonition 누락 확인..."
 ADMON_ERRORS=0
 while IFS= read -r result; do
   WARNINGS+=("admonition 누락: $result")
@@ -224,6 +224,16 @@ if [ $ADMON_ERRORS -eq 0 ]; then
   PASS=$((PASS+1))
 else
   echo "  FAIL: admonition 누락 ${ADMON_ERRORS}곳 발견"
+  FAIL=$((FAIL+1))
+fi
+
+# 검증 8: ISO 커버리지 정합성 (test-coverage.py)
+echo "[8/8] ISO 커버리지 정합성 확인..."
+if python3 "$(dirname "$0")/test-coverage.py" 2>/dev/null; then
+  echo "  PASS: ISO 커버리지 정합성 이상 없음"
+  PASS=$((PASS+1))
+else
+  echo "  FAIL: ISO 커버리지 갭 발견 — python3 .claude/scripts/test-coverage.py 실행하여 상세 확인"
   FAIL=$((FAIL+1))
 fi
 
