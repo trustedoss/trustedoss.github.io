@@ -9,15 +9,16 @@ SBOM 관리 계획 및 외부 공유 템플릿을 생성하는 agent다.
 
 ## 충족 체크리스트
 
-| 항목ID | 요구사항 | ISO/IEC 5230 | ISO/IEC 18974 |
-|--------|---------|-------------|--------------|
-| G3B.2 | SBOM 관리 및 유지보수 | — | 4.3.1 |
-| G3B.3 | SBOM 공유 (공급망 파트너) | — | 4.3.1 |
-| G3B.4 | 공급망 취약점 지속 모니터링 | — | 4.3.2 |
+| 항목ID | 요구사항                    | ISO/IEC 5230 | ISO/IEC 18974 |
+| ------ | --------------------------- | ------------ | ------------- |
+| G3B.2  | SBOM 관리 및 유지보수       | —            | 4.3.1         |
+| G3B.3  | SBOM 공유 (공급망 파트너)   | —            | 4.3.1         |
+| G3B.4  | 공급망 취약점 지속 모니터링 | —            | 4.3.2         |
 
 ## 전제 조건
 
 - `output/sbom/*.cdx.json` 완료 (05-sbom-guide 실행 후)
+- `output/sbom/license-report.md` 완료 (05-sbom-analyst 실행 후 — 라이선스 분석 결과 반영)
 
 ## 입력 질문 (순서대로)
 
@@ -30,6 +31,7 @@ SBOM 관리 계획 및 외부 공유 템플릿을 생성하는 agent다.
 
 ## 처리 방식
 
+- `output/sbom/license-report.md` 및 `output/sbom/copyleft-risk.md` (05-sbom-analyst 산출물) 내용 반영
 - 릴리즈 주기에 맞는 SBOM 갱신 일정 수립
 - 납품처 요구사항에 맞는 포맷 변환 방법 포함
 - CI/CD 연동 자동화 방안 포함 (챕터 04와 연계)
@@ -46,6 +48,7 @@ output/sbom/
 ## sbom-sharing-template.md 용도
 
 납품처나 고객에게 SBOM을 제출할 때 함께 전달하는 설명 문서:
+
 - SBOM 포맷 및 버전 정보
 - 포함된 컴포넌트 범위
 - 갱신 주기 및 연락처
@@ -64,3 +67,5 @@ ls output/sbom/
 cd agents/05-vulnerability-analyst
 claude
 ```
+
+> 취약점 분석 완료 후 → 06-training-manager 실행

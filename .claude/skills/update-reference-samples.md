@@ -31,70 +31,75 @@ bash .claude/scripts/verify.sh
 
 ### organization.md — Type A
 
-| 섹션 이름 (H2) | 파일명 | output-sample 경로 |
-|----------------|--------|-------------------|
+| 섹션 이름 (H2)             | 파일명             | output-sample 경로              |
+| -------------------------- | ------------------ | ------------------------------- |
 | 오픈소스 역할 및 책임 정의 | role-definition.md | organization/role-definition.md |
-| 오픈소스 RACI 매트릭스 | raci-matrix.md | organization/raci-matrix.md |
+| 오픈소스 RACI 매트릭스     | raci-matrix.md     | organization/raci-matrix.md     |
 
 ---
 
 ### policy.md — Type A
 
-| 섹션 이름 (H2) | 파일명 | output-sample 경로 |
-|----------------|--------|-------------------|
-| 오픈소스 정책 | oss-policy.md | policy/oss-policy.md |
+| 섹션 이름 (H2)     | 파일명               | output-sample 경로          |
+| ------------------ | -------------------- | --------------------------- |
+| 오픈소스 정책      | oss-policy.md        | policy/oss-policy.md        |
 | 허용 라이선스 목록 | license-allowlist.md | policy/license-allowlist.md |
 
 ---
 
 ### process.md — Type A
 
-| 섹션 이름 (H2) | 파일명 | output-sample 경로 |
-|----------------|--------|-------------------|
-| 오픈소스 사용 승인 절차 | usage-approval.md | process/usage-approval.md |
-| 배포 전 라이선스 컴플라이언스 체크리스트 | distribution-checklist.md | process/distribution-checklist.md |
-| 취약점 대응 절차 | vulnerability-response.md | process/vulnerability-response.md |
-| 오픈소스 프로세스 흐름도 | process-diagram.md | process/process-diagram.md |
+| 섹션 이름 (H2)                           | 파일명                         | output-sample 경로                     | 조건                         |
+| ---------------------------------------- | ------------------------------ | -------------------------------------- | ---------------------------- |
+| 오픈소스 사용 승인 절차                  | usage-approval.md              | process/usage-approval.md              | 상시                         |
+| 배포 전 라이선스 컴플라이언스 체크리스트 | distribution-checklist.md      | process/distribution-checklist.md      | 상시                         |
+| 취약점 대응 절차                         | vulnerability-response.md      | process/vulnerability-response.md      | 상시                         |
+| 외부 문의 대응 절차                      | inquiry-response.md            | process/inquiry-response.md            | 상시                         |
+| 오픈소스 프로세스 흐름도                 | process-diagram.md             | process/process-diagram.md             | 상시                         |
+| 오픈소스 기여 절차                       | contribution-process.md        | process/contribution-process.md        | 조건부 (기여 계획 있을 경우) |
+| 사내 프로젝트 공개 절차                  | project-publication-process.md | process/project-publication-process.md | 조건부 (공개 계획 있을 경우) |
+
+> **조건부 처리**: output-sample/process/ 에 해당 파일이 없으면 해당 섹션을 재생성하지 않고 기존 내용을 유지한다.
 
 ---
 
 ### sbom.md — Type B
 
-| 섹션 헤더 (H2) | output-sample 경로 | 생성 agent |
-|----------------|-------------------|-----------|
-| license-report.md | sbom/license-report.md | `05-sbom-analyst` |
-| copyleft-risk.md | sbom/copyleft-risk.md | `05-sbom-analyst` |
-| sbom-management-plan.md | sbom/sbom-management-plan.md | `05-sbom-management` |
+| 섹션 헤더 (H2)           | output-sample 경로            | 생성 agent           |
+| ------------------------ | ----------------------------- | -------------------- |
+| license-report.md        | sbom/license-report.md        | `05-sbom-analyst`    |
+| copyleft-risk.md         | sbom/copyleft-risk.md         | `05-sbom-analyst`    |
+| sbom-management-plan.md  | sbom/sbom-management-plan.md  | `05-sbom-management` |
 | sbom-sharing-template.md | sbom/sbom-sharing-template.md | `05-sbom-management` |
 
 ---
 
 ### vulnerability.md — Type B
 
-| 섹션 헤더 (H2) | output-sample 경로 | 생성 agent |
-|----------------|-------------------|-----------|
-| cve-report.md | vulnerability/cve-report.md | `05-vulnerability-analyst` |
+| 섹션 헤더 (H2)      | output-sample 경로                | 생성 agent                 |
+| ------------------- | --------------------------------- | -------------------------- |
+| cve-report.md       | vulnerability/cve-report.md       | `05-vulnerability-analyst` |
 | remediation-plan.md | vulnerability/remediation-plan.md | `05-vulnerability-analyst` |
 
 ---
 
 ### training.md — Type A
 
-| 섹션 이름 (H2) | 파일명 | output-sample 경로 |
-|----------------|--------|-------------------|
-| 오픈소스 교육 커리큘럼 | curriculum.md | training/curriculum.md |
-| 교육 이수 추적 시트 | completion-tracker.md | training/completion-tracker.md |
-| 무료 교육 리소스 목록 | resources.md | training/resources.md |
+| 섹션 이름 (H2)         | 파일명                | output-sample 경로             |
+| ---------------------- | --------------------- | ------------------------------ |
+| 오픈소스 교육 커리큘럼 | curriculum.md         | training/curriculum.md         |
+| 교육 이수 추적 시트    | completion-tracker.md | training/completion-tracker.md |
+| 무료 교육 리소스 목록  | resources.md          | training/resources.md          |
 
 ---
 
 ### conformance.md — Type B
 
-| 섹션 헤더 (H2) | output-sample 경로 | 생성 agent |
-|----------------|-------------------|-----------|
-| gap-analysis.md | conformance/gap-analysis.md | `07-conformance-preparer` |
+| 섹션 헤더 (H2)       | output-sample 경로               | 생성 agent                |
+| -------------------- | -------------------------------- | ------------------------- |
+| gap-analysis.md      | conformance/gap-analysis.md      | `07-conformance-preparer` |
 | declaration-draft.md | conformance/declaration-draft.md | `07-conformance-preparer` |
-| submission-guide.md | conformance/submission-guide.md | `07-conformance-preparer` |
+| submission-guide.md  | conformance/submission-guide.md  | `07-conformance-preparer` |
 
 ---
 
@@ -113,9 +118,12 @@ bash .claude/scripts/verify.sh
 - **key2**: value2
 
 ```
+
 관련 표준
+
 - 5230 §x.x.x
 - 18974 §4.x.x
+
 ```
 
 ---

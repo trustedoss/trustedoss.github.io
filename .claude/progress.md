@@ -2,13 +2,13 @@
 
 ## 로드맵
 
-| Phase | 이름 | 상태 |
-|---|---|---|
-| 0 | 플랫폼 기반 구축 (Docusaurus, CI/CD, 기본 구조) | ✅ 완료 |
-| 1 | 핵심 콘텐츠 작성 (docs 챕터 00~07, templates, agents) | ✅ 완료 (2026-03) |
-| 2 | Agent 구축 (산출물 자동 생성 파이프라인) | ⏳ 대기 |
-| 3 | 검증 시스템 강화 (verify.sh, CI 통합) | ⏳ 대기 |
-| 4 | 출시 및 배포 (퍼블리시, OpenChain 등록 안내) | ⏳ 대기 |
+| Phase | 이름                                                  | 상태              |
+| ----- | ----------------------------------------------------- | ----------------- |
+| 0     | 플랫폼 기반 구축 (Docusaurus, CI/CD, 기본 구조)       | ✅ 완료           |
+| 1     | 핵심 콘텐츠 작성 (docs 챕터 00~07, templates, agents) | ✅ 완료 (2026-03) |
+| 2     | Agent 구축 (산출물 자동 생성 파이프라인)              | ⏳ 대기           |
+| 3     | 검증 시스템 강화 (verify.sh, CI 통합)                 | ⏳ 대기           |
+| 4     | 출시 및 배포 (퍼블리시, OpenChain 등록 안내)          | ⏳ 대기           |
 
 ---
 
@@ -18,6 +18,7 @@
 오류·개선 포인트 발견 시 알려주면 즉시 수정한다.
 
 **수정 시 체크리스트:**
+
 1. 파일 수정 후 `bash .claude/scripts/verify.sh` — 6/6 PASS 확인
 2. `git commit`
 
@@ -43,5 +44,14 @@
   - docs/05-tools/vulnerability + agents/05-vulnerability-analyst: 다음 단계 `시작` 안내 추가
   - website/reference/samples/sbom.md, vulnerability.md 신규 생성 (Best Practice, 렌더링 마크다운)
   - sidebarsReference.ts에 sbom, vulnerability 항목 추가
-  - 전체 챕터(00~07) 완료 확인 섹션 및 산출물 테이블에 /reference/samples/* 링크 추가
+  - 전체 챕터(00~07) 완료 확인 섹션 및 산출물 테이블에 /reference/samples/\* 링크 추가
   - verify.sh: 절대경로 링크(/로 시작) 및 settings.local.json 예외 처리 추가
+- **KWG 동등성 갭 해소** (2026-03-29, Phase 0~7):
+  - Phase 0: agents/ 실행 순서 수정 (sbom-analyst→sbom-management→vulnerability)
+  - Phase 1: templates 신규 4종 (contribution-process, inquiry-response, project-publication-process, appointment-template)
+  - Phase 2: templates 기존 6개 수정 (3년 보관 조항, CVD §8, RACI 기여·공개·문의 행, role-definition §6 검토이력)
+  - Phase 3: verify.sh 필수파일 5개 추가, validate-checklist.md 18항목화, settings.json hook 확장
+  - Phase 4: agents/ 8개 CLAUDE.md 수정 (입력질문 신설·보강, 산출물 목록 확장, 연결고리 수정)
+  - Phase 5: docs/ 4개 수정 (02-organization, 03-policy, 04-process, 07-conformance)
+  - Phase 6: update-reference-samples.md process.md 매핑 3종 추가, website/reference/samples/process.md 3섹션 추가
+  - Phase 7: verify.sh 7/7 PASS, 갭 해소 확인 완료

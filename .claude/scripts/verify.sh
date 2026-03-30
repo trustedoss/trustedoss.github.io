@@ -89,6 +89,11 @@ REQUIRED_FILES=(
   ".claude/skills/create-doc.md"
   ".claude/skills/validate-checklist.md"
   ".claude/skills/generate-report.md"
+  ".claude/skills/update-reference-samples.md"
+  "templates/process/contribution-process.md"
+  "templates/process/inquiry-response.md"
+  "templates/process/project-publication-process.md"
+  "templates/organization/appointment-template.md"
 )
 MISSING=0
 for f in "${REQUIRED_FILES[@]}"; do
