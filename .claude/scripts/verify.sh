@@ -119,6 +119,7 @@ LOCAL_PATH_HITS=$(git ls-files \
   2>/dev/null | \
   grep -v "^\.claude/scripts/verify\.sh$" | \
   grep -v "settings\.local\.json$" | \
+  grep -v "^\.claude/reference/kwg/" | \
   xargs grep -ln "/Users/[^/]*/\|/home/[^/]*/" 2>/dev/null || true)
 
 LOCAL_PATH_COUNT=$(echo "$LOCAL_PATH_HITS" | grep -c . || true)

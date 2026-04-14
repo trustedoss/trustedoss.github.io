@@ -174,7 +174,7 @@ bash .claude/scripts/verify.sh                 # 검증
 | `YAML_QUOTE`    | front matter 콜론 값 따옴표 없음 | `title: 정책: 관리`           |
 | `ADMONITION`    | cd agents/ 직전 tip 블록 없음    | bash 블록 직전 누락           |
 | `ISO18974_NUM`  | 18974 문서에 §3.x.x 사용         | §3.4.1 → §4.4.1               |
-| `LOCAL_PATH`    | 사용자명 포함 경로 노출          | `/Users/haksung/...`          |
+| `LOCAL_PATH`    | 사용자명 포함 경로 노출          | 사용자명 포함 절대경로        |
 | `BROKEN_LINK`   | 내부 링크 대상 파일 없음         | `[링크](../없는파일.md)`      |
 | `SECTION_ORDER` | 섹션 순서 위반                   | 완료확인이 다음단계 뒤에 위치 |
 

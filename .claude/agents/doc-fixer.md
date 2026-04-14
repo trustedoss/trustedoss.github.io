@@ -82,13 +82,10 @@ ISO/IEC 18974 §4.4.1 요구사항
 
 ### LOCAL_PATH 처리
 
-파일을 Read → `/Users/[사용자명]/` 패턴을 `~/` 또는 `/path/to/` 로 치환.
+파일을 Read → 사용자명이 포함된 절대 경로를 `~/` 또는 `/path/to/` 로 치환.
 
 ```
-# 전
-cd /Users/haksung/projects/trustedoss
-
-# 후
+# 올바른 형식
 cd ~/projects/trustedoss
 ```
 
