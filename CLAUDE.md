@@ -106,8 +106,8 @@ bash .claude/scripts/verify.sh
 bash .claude/scripts/verify.sh
 ```
 
-검증 항목: Docusaurus 빌드 / 내부 링크 / front matter YAML / 필수 파일 / 로컬 경로 노출 / **18974 섹션 번호 형식** / **agent 실행 admonition 누락**
-모든 항목 PASS 후에만 push 가능.
+검증 항목: Docusaurus 빌드 / 내부 링크 / front matter YAML / 필수 파일 / 로컬 경로 노출 / **18974 섹션 번호 형식** / **agent 실행 admonition 누락** / ISO 커버리지 정합성 / **output/ 산출물 완전성**
+모든 항목 PASS 후에만 push 가능. push 전 5단계 절차는 `CONTRIBUTING.md` 참조.
 
 ### 2. 경로 규칙
 
@@ -180,7 +180,7 @@ ISO/IEC 5230과 18974는 섹션 번호 체계가 다르다. 혼용하면 verify.
 
 매 작업 세션 종료 전 아래를 순서대로 실행하라.
 
-- [ ] bash .claude/scripts/verify.sh 실행 후 모두 PASS 확인
+- [ ] bash .claude/scripts/verify.sh 실행 후 9/9 모두 PASS 확인
 - [ ] .claude/progress.md 업데이트
       (완료 항목 체크, 다음 작업 갱신)
 - [ ] 이번 세션에서 구조 변경이 있었으면 CLAUDE.md도 업데이트
