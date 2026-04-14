@@ -1,0 +1,248 @@
+# kwg-mapping.yaml
+# KWG 원본 파일 ↔ trustedoss 파일 대응 매핑
+#
+# 용도:
+#   - check-kwg-drift.py 가 이 파일을 읽어 4개 차원 싱크 감지
+#   - kwg-drift-checker 에이전트가 이 파일을 읽어 의미론적 갭 분석
+#
+# 차원 종류:
+#   guide    : KWG 기업 가이드 → 우리 docs/ 챕터
+#   template : KWG 문서 템플릿 → 우리 templates/
+#   tools    : KWG 도구 가이드 → 우리 docs/05-tools/
+#   iso      : KWG ISO 항목 번호 → 우리 G항목 체계
+#
+# 유지보수 규칙:
+#   - KWG 원본에 새 파일/섹션 추가 시 이 파일도 업데이트
+#   - check-kwg-drift.py 가 FAIL 출력 시 이 파일 확인
+#   - 관련 섹션: .claude/harness-guide.md "KWG 원본 동기화"
+
+kwg_base: "content/ko/guide"
+
+# ─────────────────────────────────────────────────────────────
+# 차원 1: KWG 기업 가이드 → 우리 docs/ 챕터
+# ─────────────────────────────────────────────────────────────
+guide_mappings:
+  - id: guide-overview
+    kwg_file: "content/ko/guide/opensource_for_enterprise/_index.md"
+    our_files:
+      - "docs/00-overview/index.md"
+    description: "ISO 표준 기반 기업 오픈소스 관리 개요"
+    watch_for:
+      - "새 표준 추가 (5230/18974 외)"
+      - "전체 구조 변경"
+
+  - id: guide-teams
+    kwg_file: "content/ko/guide/opensource_for_enterprise/1-teams/_index.md"
+    our_files:
+      - "docs/02-organization/index.md"
+    description: "오픈소스 조직·역할 구성"
+    watch_for:
+      - "새 역할 유형 추가"
+      - "역량 요구사항 변경"
+
+  - id: guide-policy
+    kwg_file: "content/ko/guide/opensource_for_enterprise/2-policy/_index.md"
+    our_files:
+      - "docs/03-policy/index.md"
+    description: "오픈소스 정책 수립 가이드"
+    watch_for:
+      - "정책 필수 구성 요소 추가"
+      - "ISO 요구사항 항목 추가"
+      - "보안 보증 정책 항목 변경"
+
+  - id: guide-process
+    kwg_file: "content/ko/guide/opensource_for_enterprise/3-process/_index.md"
+    our_files:
+      - "docs/04-process/index.md"
+    description: "오픈소스 프로세스 설계 가이드"
+    watch_for:
+      - "새 프로세스 유형 추가 (기여·공개·문의 외)"
+      - "프로세스 단계 수 변경"
+
+  - id: guide-tools
+    kwg_file: "content/ko/guide/opensource_for_enterprise/4-tool/_index.md"
+    our_files:
+      - "docs/05-tools/index.md"
+    description: "SBOM·취약점 도구 활용 가이드"
+    watch_for:
+      - "권장 도구 변경"
+      - "SBOM 포맷 권장사항 변경"
+
+  - id: guide-training
+    kwg_file: "content/ko/guide/opensource_for_enterprise/5-training/_index.md"
+    our_files:
+      - "docs/06-training/index.md"
+    description: "오픈소스 교육 가이드"
+    watch_for:
+      - "교육 필수 항목 변경"
+      - "이수 기준 변경"
+
+  - id: guide-conformance
+    kwg_file: "content/ko/guide/opensource_for_enterprise/6-conforming/_index.md"
+    our_files:
+      - "docs/07-conformance/index.md"
+    description: "OpenChain 자체 인증 준수 가이드"
+    watch_for:
+      - "인증 절차 변경"
+      - "자체 선언 방식 변경"
+
+# ─────────────────────────────────────────────────────────────
+# 차원 2: KWG 문서 템플릿 → 우리 templates/
+# ─────────────────────────────────────────────────────────────
+template_mappings:
+  - id: template-policy
+    kwg_file: "content/ko/guide/templates/1-policy/_index.md"
+    our_files:
+      - "templates/policy/oss-policy.md"
+    description: "오픈소스 정책 문서 템플릿"
+    watch_for:
+      - "용어 정의 추가/변경"
+      - "역할별 책임 항목 변경"
+      - "정책 필수 섹션 추가"
+      - "새 부록 추가"
+
+  - id: template-policy-appendix
+    kwg_file: "content/ko/guide/templates/1-policy/appendix/_index.md"
+    our_files:
+      - "templates/policy/license-allowlist.md"
+    description: "오픈소스 정책 부록 (라이선스 분류 등)"
+    watch_for:
+      - "라이선스 분류 체계 변경"
+      - "새 부록 항목 추가"
+
+  - id: template-process
+    kwg_file: "content/ko/guide/templates/2-process-template/_index.md"
+    our_files:
+      - "templates/process/usage-approval.md"
+      - "templates/process/distribution-checklist.md"
+      - "templates/process/vulnerability-response.md"
+      - "templates/process/contribution-process.md"
+      - "templates/process/inquiry-response.md"
+      - "templates/process/project-publication-process.md"
+    description: "오픈소스 프로세스 문서 템플릿"
+    watch_for:
+      - "프로세스 단계 추가/삭제"
+      - "역할 분담 변경"
+      - "SBOM 관련 프로세스 항목 추가"
+      - "취약점 대응 단계 변경"
+      - "기여/공개/문의 프로세스 변경"
+
+# ─────────────────────────────────────────────────────────────
+# 차원 3: KWG 도구 가이드 → 우리 docs/05-tools/
+# ─────────────────────────────────────────────────────────────
+tools_dimension:
+  kwg_tools_dir: "content/ko/guide/tools"
+  our_tools_doc: "docs/05-tools/index.md"
+  expected_tool_count: 7
+  known_tools:
+    - dir: "1-fossology"
+      name: "FOSSology"
+      our_coverage: "docs/05-tools/index.md"
+    - dir: "2-sw360"
+      name: "SW360"
+      our_coverage: "docs/05-tools/index.md"
+    - dir: "3-fosslight"
+      name: "FOSSLight"
+      our_coverage: "docs/05-tools/index.md"
+    - dir: "4-osvscalibr"
+      name: "OSV-Scalibr"
+      our_coverage: "docs/05-tools/index.md"
+    - dir: "5-cdxgen"
+      name: "CDXGen"
+      our_coverage: "docs/05-tools/index.md"
+    - dir: "6-syft"
+      name: "Syft"
+      our_coverage: "docs/05-tools/index.md"
+    - dir: "7-dependency-track"
+      name: "Dependency-Track"
+      our_coverage: "docs/05-tools/index.md"
+
+# ─────────────────────────────────────────────────────────────
+# 차원 4: KWG ISO 섹션 번호 → 우리 G항목 체계
+# ─────────────────────────────────────────────────────────────
+# KWG 형식: 3.x.x.x (4자리)
+# 우리 형식: G항목 코드 + ISO §3.x.x (5230) / §4.x.x (18974)
+#
+# 주의: KWG는 5230과 18974 모두 "3.x.x.x" 형식으로 표기
+#       (5230과 18974를 같은 번호 체계로 표기)
+#       우리 프로젝트는 18974를 §4.x.x 로 구분
+iso_section_mapping:
+  # G1: 프로그램 기반 (공통)
+  - kwg_sections: ["3.1.1"]
+    our_g_items: ["G1.1", "G1.2"]
+    standard: "5230+18974"
+    description: "정책 수립 및 검토"
+
+  - kwg_sections: ["3.1.2"]
+    our_g_items: ["G1.3"]
+    standard: "5230+18974"
+    description: "담당자 및 조직 지정"
+
+  - kwg_sections: ["3.1.3"]
+    our_g_items: ["G1.4"]
+    standard: "5230+18974"
+    description: "역량 평가 및 교육"
+
+  - kwg_sections: ["3.1.4"]
+    our_g_items: ["G1.5"]
+    standard: "5230+18974"
+    description: "인식 제고 및 전파"
+
+  - kwg_sections: ["3.1.5"]
+    our_g_items: ["G1.6"]
+    standard: "5230+18974"
+    description: "프로그램 범위"
+
+  - kwg_sections: ["3.1.6"]
+    our_g_items: ["G1.7"]
+    standard: "5230+18974"
+    description: "라이선스 의무 리뷰"
+
+  # G2: 관련 업무 정의 (공통)
+  - kwg_sections: ["3.2.1"]
+    our_g_items: ["G2.1", "G2.2"]
+    standard: "5230+18974"
+    description: "외부 문의 채널 및 대응"
+
+  - kwg_sections: ["3.2.2"]
+    our_g_items: ["G2.3"]
+    standard: "5230+18974"
+    description: "내부 인식 제고"
+
+  # G3L: 라이선스 컴플라이언스 (5230 전용)
+  - kwg_sections: ["3.3.1", "3.3.2"]
+    our_g_items: ["G3L.1", "G3L.2", "G3L.3"]
+    standard: "5230"
+    description: "SBOM, BOM 관리, 컴플라이언스 산출물"
+
+  - kwg_sections: ["3.4"]
+    our_g_items: ["G3L.4", "G3L.5"]
+    standard: "5230"
+    description: "컴플라이언스 산출물 전달"
+
+  - kwg_sections: ["3.4", "3.4.1", "3.4.2"]
+    our_g_items: ["G3L.4", "G3L.5"]
+    standard: "5230"
+    description: "컴플라이언스 산출물 전달 및 배포 패키지 관리"
+
+  - kwg_sections: ["3.5", "3.5.1"]
+    our_g_items: ["G3L.6"]
+    standard: "5230"
+    description: "오픈소스 기여 정책 및 절차"
+
+  - kwg_sections: ["3.6", "3.6.1", "3.6.2"]
+    our_g_items: ["G4.1", "G4.2"]
+    standard: "5230"
+    description: "OpenChain 자체 인증 준수 선언"
+
+  # G3S: 보안 보증 (18974 전용)
+  - kwg_sections: ["3.3.1", "3.3.2"] # 18974에서 3.3.x는 보안 항목
+    our_g_items: ["G3S.1", "G3S.2", "G3S.3", "G3S.4", "G3S.5", "G3S.6"]
+    standard: "18974"
+    description: "CVE 식별, 추적, 점수화, 대응, 지속 모니터링"
+
+  # G4: 준수 (공통)
+  - kwg_sections: ["3.6"]
+    our_g_items: ["G4.1", "G4.2"]
+    standard: "5230+18974"
+    description: "자체 인증 준수 선언"

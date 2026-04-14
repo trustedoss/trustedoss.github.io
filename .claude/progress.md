@@ -60,3 +60,24 @@
   - `docs/00-overview/checklist-mapping.md` G2.2·G3L.6 테이블 보완 (inquiry-response.md, contribution-process.md 누락 추가)
   - `verify.sh` 8번 항목 추가 (ISO 커버리지 정합성), 번호 표기 [1/8]~[8/8] 통일
   - 8/8 PASS 확인
+- **QA 자동화 하네스 구축** (2026-04-14):
+  - `.claude/agents/` 4종 신규: qa-reviewer, doc-fixer, iso-verifier, content-auditor
+  - `.claude/skills/qa-loop/skill.md` 신규 — `/qa` 슬래시 커맨드 오케스트레이터
+  - `.claude/skills/diff-scope/skill.md` 신규 — git 변경 범위 계산 (토큰 절약)
+  - `.claude/scripts/check-admonition.js` 신규 — PostToolUse 즉시 admonition 경고
+  - `settings.json` 훅 추가 (check-admonition)
+  - `CLAUDE.md` Skills + Agents 트리거 테이블 추가
+  - 8/8 PASS 확인
+- **KWG 원본 동기화 + 하네스 가이드** (2026-04-14):
+  - `.claude/scripts/sync-kwg-reference.sh` 신규 — KWG GitHub에서 md 파일 20개 다운로드
+  - `.claude/reference/kwg/` 신규 — opensource_for_enterprise, templates, tools 원본
+  - `.claude/harness-guide.md` 신규 — 하네스 전체 사용법·시나리오 가이드
+- **KWG 싱크 드리프트 탐지 시스템 구축** (2026-04-14):
+  - `.claude/reference/kwg-mapping.yaml` 신규 — 4개 차원 KWG↔우리파일 매핑 (guide 7개, template 3개, tools 7종, iso_section 12개)
+  - `.claude/scripts/check-kwg-drift.py` 신규 — 구조적 변경 감지 + 스냅샷 관리 (4개 차원)
+  - `.claude/agents/kwg-drift-checker.md` 신규 — 의미론적 갭 분석 에이전트
+  - `.claude/skills/kwg-check/skill.md` 신규 — `/kwg-check` 슬래시 커맨드
+  - `sync-kwg-reference.sh` 수정 — sync 완료 후 check-kwg-drift.py 자동 실행
+  - `.claude/kwg-human-tasks.md` 신규 — 사람이 해야 할 일 상세 가이드
+  - 초기 스냅샷 생성 및 차원 4 미매핑 섹션 보완 완료
+  - "싱크 OK" 확인

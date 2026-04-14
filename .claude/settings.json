@@ -23,6 +23,11 @@
           {
             "type": "command",
             "command": "node -e \"const fs=require('fs');const now=new Date().toISOString();const file=process.env.CLAUDE_TOOL_OUTPUT||'';const tracked=['templates/','agents/','docs/','.claude/skills/','.claude/scripts/'];const match=tracked.some(p=>file.includes(p));if(!match)process.exit(0);const dir='.claude';if(!fs.existsSync(dir))fs.mkdirSync(dir,{recursive:true});const log=dir+'/progress-infra.md';let content=fs.existsSync(log)?fs.readFileSync(log,'utf8'):'# 인프라 변경 이력\\n\\n';content+='- '+now+' | '+file+'\\n';fs.writeFileSync(log,content);\""
+          },
+          {
+            "type": "command",
+            "command": "node .claude/scripts/check-admonition.js",
+            "description": "docs/ 파일 저장 시 cd agents/ 블록 직전 admonition 누락 즉시 경고"
           }
         ]
       }
