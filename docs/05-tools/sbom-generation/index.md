@@ -2,8 +2,8 @@
 작성일: 2026-03-20
 버전: 1.0
 충족 체크리스트:
-  - "ISO/IEC 5230: [3.3.1, 3.3.2, 3.4.1]"
-  - "ISO/IEC 18974: [4.3.1]"
+  - 'ISO/IEC 5230: [3.3.1, 3.3.2, 3.4.1]'
+  - 'ISO/IEC 18974: [4.3.1]'
 셀프스터디 소요시간: 1.5시간
 ---
 
@@ -24,18 +24,31 @@
 SBOM(Software Bill of Materials)은 소프트웨어에 포함된 모든 구성 요소의 목록입니다. 식품 영양성분표처럼, 소프트웨어에 어떤 오픈소스가 어떤 버전으로 들어있는지 명시합니다. ISO/IEC 5230과 18974 모두 SBOM 생성을 핵심 요구사항으로 규정합니다 (G3B.1).
 
 SBOM이 중요한 이유:
+
 - 어떤 오픈소스 라이선스가 포함되어 있는지 파악 (컴플라이언스)
 - 취약한 버전의 라이브러리가 있는지 확인 (보안)
 - 제품 배포 시 고객 또는 규제 기관에 소프트웨어 구성 정보 제공
 
 ### 사용 도구 소개
 
-| 도구 | 제작사 | 특징 | 적합한 상황 |
-|------|--------|------|------------|
-| syft | Anchore | 빠르고 가볍다, 단일 바이너리, 다양한 언어 지원 | Python, Node.js, Go |
-| cdxgen | CycloneDX | CycloneDX 전용, 언어별 정밀 분석 | Java(Maven/Gradle), 정밀 분석 필요 시 |
+SBOM 생성에는 두 가지 접근 방식이 있습니다. **Dependency 분석**은 패키지 매니저 파일(pom.xml, package-lock.json 등)을 기반으로 선언된 의존성을 파악하고, **소스 코드 스캔**은 코드 내에 직접 내장된 오픈소스를 파일 레벨에서 탐지합니다. 두 방식을 병행하면 패키지 선언 없이 복사·삽입된 코드 조각까지 포함한 더 완전한 SBOM을 만들 수 있습니다.
+
+**Dependency 분석 도구** (이 챕터에서 실습)
+
+| 도구   | 제작사    | 특징                                           | 적합한 상황                           |
+| ------ | --------- | ---------------------------------------------- | ------------------------------------- |
+| syft   | Anchore   | 빠르고 가볍다, 단일 바이너리, 다양한 언어 지원 | Python, Node.js, Go                   |
+| cdxgen | CycloneDX | CycloneDX 전용, 언어별 정밀 분석               | Java(Maven/Gradle), 정밀 분석 필요 시 |
 
 두 도구 모두 CycloneDX JSON 형식으로 출력할 수 있으며, 이 챕터에서는 CycloneDX를 표준 포맷으로 사용합니다.
+
+**소스 코드 스캔 도구** (선택 사항)
+
+| 도구    | 운영주체 | 특징                                                            | 적합한 상황                                    |
+| ------- | -------- | --------------------------------------------------------------- | ---------------------------------------------- |
+| SCANOSS | SCANOSS  | 파일 단위 스니펫 스캔, 클라우드+온프레미스, API 통합, SBOM 생성 | 소스 코드 직접 임베딩 탐지, 정밀 라이선스 식별 |
+
+[SCANOSS](https://www.scanoss.com/)는 패키지 선언 없이 직접 복사·삽입된 오픈소스 코드 조각을 파일 레벨에서 탐지하는 데 강점이 있습니다. syft/cdxgen과 역할이 보완적이므로, 소스 레벨 정밀도가 필요한 경우 병행 사용을 권장합니다.
 
 실제 Docker 실행 명령어, GitHub Actions CI/CD 설정, 샘플 프로젝트 실습은 [Docker·CI/CD 실행 가이드](./docker-cicd.md) 페이지를 참조합니다.
 
@@ -64,6 +77,7 @@ SBOM이 중요한 이유:
 ```
 
 주요 필드 설명:
+
 - `bomFormat`, `specVersion`: CycloneDX 포맷 식별자
 - `metadata.component`: 분석 대상 소프트웨어 정보
 - `components[]`: 의존성 목록 (라이선스, PURL 포함)
@@ -93,11 +107,11 @@ docker ps
 
 처음이라면 아래 샘플 중 하나를 선택한다:
 
-| 샘플 경로 | 언어 | 특징 | 학습 포인트 |
-|---------|------|------|-----------|
-| `samples/java-vulnerable/` | Java (Maven) | Log4Shell(CVE-2021-44228) 포함 | Critical 취약점 탐지 실습 |
-| `samples/python-mixed-license/` | Python (pip) | GPL + MIT 혼용 | Copyleft 라이선스 충돌 실습 |
-| `samples/nodejs-unlicensed/` | Node.js (npm) | 라이선스 미표기 패키지 | 라이선스 미식별 처리 실습 |
+| 샘플 경로                       | 언어          | 특징                           | 학습 포인트                 |
+| ------------------------------- | ------------- | ------------------------------ | --------------------------- |
+| `samples/java-vulnerable/`      | Java (Maven)  | Log4Shell(CVE-2021-44228) 포함 | Critical 취약점 탐지 실습   |
+| `samples/python-mixed-license/` | Python (pip)  | GPL + MIT 혼용                 | Copyleft 라이선스 충돌 실습 |
+| `samples/nodejs-unlicensed/`    | Node.js (npm) | 라이선스 미표기 패키지         | 라이선스 미식별 처리 실습   |
 
 > **권장**: `samples/java-vulnerable/` — Log4Shell 취약점을 직접 탐지하며 SBOM의 가치를 체감할 수 있습니다.
 
@@ -119,6 +133,7 @@ claude
 ```
 
 agent가 프로젝트 정보를 묻는 3가지 질문을 한다:
+
 - 프로젝트 경로 (예: `samples/java-vulnerable`)
 - 주 언어 (예: `Java`)
 - 패키지 매니저 (예: `Maven`)
@@ -171,28 +186,29 @@ docker run --rm \
 
 **각 단계 예상 결과:**
 
-| 단계 완료 후 | 예상 결과 |
-|------------|---------|
-| 4번 (sbom-guide) | `output/sbom/sbom-commands.sh` 생성됨 |
-| 5번 (스크립트 실행) | `output/sbom/sbom.cdx.json` 생성됨 (`components` 항목 있어야 정상) |
-| 7번 (sbom-analyst) | `output/sbom/license-report.md`, `output/sbom/copyleft-risk.md` 생성됨 |
+| 단계 완료 후        | 예상 결과                                                              |
+| ------------------- | ---------------------------------------------------------------------- |
+| 4번 (sbom-guide)    | `output/sbom/sbom-commands.sh` 생성됨                                  |
+| 5번 (스크립트 실행) | `output/sbom/sbom.cdx.json` 생성됨 (`components` 항목 있어야 정상)     |
+| 7번 (sbom-analyst)  | `output/sbom/license-report.md`, `output/sbom/copyleft-risk.md` 생성됨 |
 
 :::info 충족되는 표준 요구사항
 이 실습을 완료하면 아래 요구사항이 충족됩니다.
 
 **ISO/IEC 5230**
 
-| 항목 ID | 요구사항 | 자체인증 체크리스트 |
-|---|---|---|
-| 3.3.1 | SBOM 생성 및 관리 | Do you have a process for creating and managing a bill of materials for each supply software release? |
-| 3.3.2 | 라이선스 식별 및 분류 | Do you have a process for identifying the licenses applicable to supply software? |
-| 3.4.1 | 컴플라이언스 산출물 준비 | Do you have a process for creating the necessary compliance artifacts? |
+| 항목 ID | 요구사항                 | 자체인증 체크리스트                                                                                   |
+| ------- | ------------------------ | ----------------------------------------------------------------------------------------------------- |
+| 3.3.1   | SBOM 생성 및 관리        | Do you have a process for creating and managing a bill of materials for each supply software release? |
+| 3.3.2   | 라이선스 식별 및 분류    | Do you have a process for identifying the licenses applicable to supply software?                     |
+| 3.4.1   | 컴플라이언스 산출물 준비 | Do you have a process for creating the necessary compliance artifacts?                                |
 
 **ISO/IEC 18974**
 
-| 항목 ID | 요구사항 | 자체인증 체크리스트 |
-|---|---|---|
-| 4.3.1 | 공급 소프트웨어 SBOM | Do you have a process for creating and maintaining a SBOM for supply software? |
+| 항목 ID | 요구사항             | 자체인증 체크리스트                                                            |
+| ------- | -------------------- | ------------------------------------------------------------------------------ |
+| 4.3.1   | 공급 소프트웨어 SBOM | Do you have a process for creating and maintaining a SBOM for supply software? |
+
 :::
 
 ---
@@ -208,6 +224,7 @@ docker run --rm \
 - [ ] `output/sbom/copyleft-risk.md` 생성됨
 
 **java-vulnerable 샘플 실습 시 예상 결과:**
+
 - log4j-core 2.14.1 컴포넌트 탐지
 - Apache-2.0 라이선스 식별
 - CVE-2021-44228 (Log4Shell) 취약점 플래그 예상
