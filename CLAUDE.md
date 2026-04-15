@@ -180,7 +180,7 @@ ISO/IEC 5230과 18974는 섹션 번호 체계가 다르다. 혼용하면 verify.
 
 매 작업 세션 종료 전 아래를 순서대로 실행하라.
 
-- [ ] bash .claude/scripts/verify.sh 실행 후 9/9 모두 PASS 확인
+- [ ] bash .claude/scripts/verify.sh 실행 후 11/11 모두 PASS 확인
 - [ ] .claude/progress.md 업데이트
       (완료 항목 체크, 다음 작업 갱신)
 - [ ] 이번 세션에서 구조 변경이 있었으면 CLAUDE.md도 업데이트

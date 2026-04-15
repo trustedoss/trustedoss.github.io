@@ -13,9 +13,12 @@ import sys
 import glob
 
 # 프로젝트 루트 기준 output/ 경로
+# TRUSTEDOSS_OUTPUT_DIR 환경변수로 오버라이드 가능 (테스트용)
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.dirname(os.path.dirname(SCRIPT_DIR))
-OUTPUT_DIR = os.path.join(PROJECT_ROOT, "output")
+OUTPUT_DIR = os.environ.get(
+    "TRUSTEDOSS_OUTPUT_DIR", os.path.join(PROJECT_ROOT, "output")
+)
 
 # 챕터별 필수 파일 목록
 CHAPTER_FILES = {

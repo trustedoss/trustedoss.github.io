@@ -9,7 +9,7 @@ WARNINGS=()
 echo "===== trustedoss 자체 검증 시작 ====="
 
 # 검증 1: Docusaurus 빌드
-echo "[1/9] Docusaurus 빌드 확인..."
+echo "[1/11] Docusaurus 빌드 확인..."
 if npm run build --silent 2>/dev/null; then
   echo "  PASS: 빌드 성공"
   PASS=$((PASS+1))
@@ -19,7 +19,7 @@ else
 fi
 
 # 검증 2: 내부 링크 확인
-echo "[2/9] 내부 링크 확인..."
+echo "[2/11] 내부 링크 확인..."
 BROKEN=0
 while IFS= read -r file; do
   while IFS= read -r link; do
@@ -46,7 +46,7 @@ else
 fi
 
 # 검증 3: YAML front matter 콜론 확인
-echo "[3/9] Front matter YAML 형식 확인..."
+echo "[3/11] Front matter YAML 형식 확인..."
 FM_ERRORS=0
 while IFS= read -r file; do
   # front matter 추출 후 콜론 포함 값 따옴표 여부 확인
@@ -79,7 +79,7 @@ else
 fi
 
 # 검증 4: 필수 파일 존재 확인
-echo "[4/9] 필수 파일 존재 확인..."
+echo "[4/11] 필수 파일 존재 확인..."
 REQUIRED_FILES=(
   "CLAUDE.md"
   "README.md"
@@ -113,7 +113,7 @@ fi
 
 # 검증 5: 로컬 경로 노출 확인
 # (git ls-files 기준 — gitignore 된 파일 제외, verify.sh 자신 제외)
-echo "[5/9] 로컬 경로 노출 확인..."
+echo "[5/11] 로컬 경로 노출 확인..."
 LOCAL_PATH_HITS=$(git ls-files \
   -- '*.md' '*.sh' '*.yml' '*.yaml' '*.json' '*.ts' \
   2>/dev/null | \
@@ -138,7 +138,7 @@ fi
 
 # 검증 6: ISO/IEC 18974 섹션 번호 형식 확인
 # 18974는 §4.x.x 체계 — 아래 2가지 패턴으로 §3.x.x 오표기 탐지
-echo "[6/9] ISO/IEC 18974 섹션 번호 형식 확인..."
+echo "[6/11] ISO/IEC 18974 섹션 번호 형식 확인..."
 SPEC_ERRORS=0
 
 # 패턴 1: 본문 텍스트 "18974 3.x.x" 형식 (괄호·숫자 이전까지만 탐색)
@@ -173,7 +173,7 @@ fi
 
 # 검증 7: agent 실행 블록 admonition 누락 확인
 # docs/ 내 bash 블록에 'cd agents/'가 있으면 직전 10줄에 ':::tip 실행 전 확인'이 있어야 함
-echo "[7/9] agent 실행 admonition 누락 확인..."
+echo "[7/11] agent 실행 admonition 누락 확인..."
 ADMON_ERRORS=0
 while IFS= read -r result; do
   WARNINGS+=("admonition 누락: $result")
@@ -229,7 +229,7 @@ else
 fi
 
 # 검증 8: ISO 커버리지 정합성 (test-coverage.py)
-echo "[8/9] ISO 커버리지 정합성 확인..."
+echo "[8/11] ISO 커버리지 정합성 확인..."
 if python3 "$(dirname "$0")/test-coverage.py" 2>/dev/null; then
   echo "  PASS: ISO 커버리지 정합성 이상 없음"
   PASS=$((PASS+1))
@@ -239,12 +239,32 @@ else
 fi
 
 # 검증 9: output/ 산출물 완전성 (validate-output.py)
-echo "[9/9] output/ 산출물 완전성 확인..."
+echo "[9/11] output/ 산출물 완전성 확인..."
 if python3 "$(dirname "$0")/validate-output.py" 2>/dev/null; then
   echo "  PASS: output/ 산출물 완전성 이상 없음"
   PASS=$((PASS+1))
 else
   echo "  FAIL: output/ 산출물 미완료 항목 발견 — python3 .claude/scripts/validate-output.py 실행하여 상세 확인"
+  FAIL=$((FAIL+1))
+fi
+
+# 검증 10: Agent CLAUDE.md 스펙 구조 검증 (test-agent-specs.py)
+echo "[10/11] Agent 스펙 구조 확인..."
+if python3 "$(dirname "$0")/test-agent-specs.py" 2>/dev/null; then
+  echo "  PASS: Agent 스펙 구조 이상 없음"
+  PASS=$((PASS+1))
+else
+  echo "  FAIL: Agent 스펙 구조 오류 발견 — python3 .claude/scripts/test-agent-specs.py 실행하여 상세 확인"
+  FAIL=$((FAIL+1))
+fi
+
+# 검증 11: 골든 픽스처 회귀 테스트 (test-output-fixtures.py)
+echo "[11/11] 골든 픽스처 회귀 테스트..."
+if python3 "$(dirname "$0")/test-output-fixtures.py" 2>/dev/null; then
+  echo "  PASS: output-sample/ 골든 픽스처 유효"
+  PASS=$((PASS+1))
+else
+  echo "  FAIL: 골든 픽스처 검증 실패 — python3 .claude/scripts/test-output-fixtures.py 실행하여 상세 확인"
   FAIL=$((FAIL+1))
 fi
 

@@ -26,7 +26,7 @@ trustedoss에 기여해주셔서 감사합니다.
 
 ```
 Step 1   /qa changed                               # 품질 검증 (Claude 세션 필요)
-Step 2   bash .claude/scripts/verify.sh            # 9/9 PASS 확인
+Step 2   bash .claude/scripts/verify.sh            # 11/11 PASS 확인
 Step 3   .claude/progress.md 업데이트              # 완료 항목·다음 작업 갱신
 Step 4   git add -p && git commit -m "..."         # 변경 파일 선택적 스테이징
 Step 5   git push                                  # 모든 검증 통과 후에만
@@ -42,7 +42,7 @@ Step 5   git push                                  # 모든 검증 통과 후에
 | 명령어                                       | 역할                           | 소요시간 |
 | -------------------------------------------- | ------------------------------ | -------- |
 | `/qa changed`                                | 변경 파일 품질 자동 검사·수정  | ~2분     |
-| `bash .claude/scripts/verify.sh`             | 정적 검증 9항목 일괄 실행      | ~30초    |
+| `bash .claude/scripts/verify.sh`             | 정적 검증 11항목 일괄 실행     | ~30초    |
 | `python3 .claude/scripts/test-coverage.py`   | ISO G항목 커버리지 정합성 확인 | ~5초     |
 | `python3 .claude/scripts/validate-output.py` | output/ 산출물 완전성 확인     | ~5초     |
 | `/kwg-check`                                 | KWG 원본 싱크 상태 확인        | ~1분     |
@@ -51,7 +51,7 @@ Step 5   git push                                  # 모든 검증 통과 후에
 
 ## verify.sh FAIL 시 자주 발생하는 오류
 
-### [1/9] Docusaurus 빌드 실패
+### [1/11] Docusaurus 빌드 실패
 
 ```
 FAIL: Docusaurus 빌드 실패
@@ -62,7 +62,7 @@ FAIL: Docusaurus 빌드 실패
 
 ---
 
-### [2/9] 내부 링크 오류
+### [2/11] 내부 링크 오류
 
 ```
 FAIL: 깨진 링크 발견
@@ -73,7 +73,7 @@ FAIL: 깨진 링크 발견
 
 ---
 
-### [3/9] front matter YAML 오류
+### [3/11] front matter YAML 오류
 
 ```
 FAIL: front matter YAML 오류
@@ -84,7 +84,7 @@ FAIL: front matter YAML 오류
 
 ---
 
-### [5/9] 로컬 경로 노출
+### [5/11] 로컬 경로 노출
 
 ```
 FAIL: 로컬 사용자 경로 노출
@@ -95,7 +95,7 @@ FAIL: 로컬 사용자 경로 노출
 
 ---
 
-### [6/9] ISO 섹션 번호 형식 오류
+### [6/11] ISO 섹션 번호 형식 오류
 
 ```
 FAIL: 18974 섹션 번호 형식 오류
@@ -111,7 +111,7 @@ FAIL: 18974 섹션 번호 형식 오류
 
 ---
 
-### [7/9] agent 실행 admonition 누락
+### [7/11] agent 실행 admonition 누락
 
 ```
 FAIL: agent 실행 admonition 누락
