@@ -62,7 +62,7 @@ while IFS= read -r file; do
     if [ $in_fm -eq 1 ]; then
       # 키: 값 형태에서 값에 콜론이 있고 따옴표 없는 경우 감지
       if echo "$line" | grep -qE '^[a-zA-Z가-힣_-]+: .*:' && \
-         ! echo "$line" | grep -qE '^[a-zA-Z가-힣_-]+: "'; then
+         ! echo "$line" | grep -qE "^[a-zA-Z가-힣_-]+: [\"']"; then
         WARNINGS+=("따옴표 누락: $file → $line")
         FM_ERRORS=$((FM_ERRORS+1))
       fi
