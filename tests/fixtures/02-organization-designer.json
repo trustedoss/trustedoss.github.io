@@ -1,0 +1,16 @@
+{
+  "agent": "02-organization-designer",
+  "description": "조직/담당자 산출물 생성 기본 케이스 (겸직, 기여만)",
+  "model": "claude-sonnet-4-6",
+  "inputs": ["테스트 주식회사, 개발팀", "15", "겸직", "없음", "없음", "기여만"],
+  "expected_files": [
+    "organization/role-definition.md",
+    "organization/raci-matrix.md",
+    "organization/appointment-template.md"
+  ],
+  "expected_absent": [],
+  "content_patterns": {
+    "organization/role-definition.md": ["테스트 주식회사", "개발팀"],
+    "organization/raci-matrix.md": ["테스트 주식회사"]
+  }
+}

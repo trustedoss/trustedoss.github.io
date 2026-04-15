@@ -1,0 +1,15 @@
+{
+  "agent": "05-sbom-analyst",
+  "description": "SBOM 라이선스 분석 (SaaS 배포 방식)",
+  "model": "claude-sonnet-4-6",
+  "prerequisite_files": {
+    "sbom/fixture-sample.cdx.json": "__COPY_FROM_OUTPUT_SAMPLE__"
+  },
+  "inputs": ["output/sbom/fixture-sample.cdx.json", "SaaS"],
+  "expected_files": ["sbom/license-report.md", "sbom/copyleft-risk.md"],
+  "expected_absent": [],
+  "content_patterns": {
+    "sbom/license-report.md": ["MIT", "라이선스"],
+    "sbom/copyleft-risk.md": []
+  }
+}

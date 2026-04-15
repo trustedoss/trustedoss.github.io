@@ -1,0 +1,20 @@
+{
+  "agent": "05-sbom-management",
+  "description": "SBOM 관리 계획 생성 (외부 제공, CycloneDX, 주간 릴리즈)",
+  "model": "claude-sonnet-4-6",
+  "prerequisite_files": {
+    "sbom/fixture-sample.cdx.json": "__COPY_FROM_OUTPUT_SAMPLE__",
+    "sbom/license-report.md": "__COPY_FROM_OUTPUT_SAMPLE__",
+    "sbom/copyleft-risk.md": "__COPY_FROM_OUTPUT_SAMPLE__"
+  },
+  "inputs": ["예", "CycloneDX", "주간"],
+  "expected_files": [
+    "sbom/sbom-management-plan.md",
+    "sbom/sbom-sharing-template.md"
+  ],
+  "expected_absent": [],
+  "content_patterns": {
+    "sbom/sbom-management-plan.md": ["CycloneDX"],
+    "sbom/sbom-sharing-template.md": []
+  }
+}

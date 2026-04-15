@@ -1,0 +1,26 @@
+{
+  "agent": "04-process-designer",
+  "description": "프로세스 문서 생성 — 분기 B: Q5=아니오(기여 없음), Q6=아니오(공개 없음) → 조건부 파일 2개 미생성",
+  "model": "claude-sonnet-4-6",
+  "inputs": [
+    "Jenkins",
+    "월간",
+    "Jira",
+    "담당자 단독",
+    "아니오",
+    "아니오",
+    "예"
+  ],
+  "expected_files": [
+    "process/usage-approval.md",
+    "process/distribution-checklist.md",
+    "process/vulnerability-response.md",
+    "process/inquiry-response.md",
+    "process/process-diagram.md"
+  ],
+  "expected_absent": [
+    "process/contribution-process.md",
+    "process/project-publication-process.md"
+  ],
+  "content_patterns": {}
+}

@@ -1,0 +1,21 @@
+{
+  "agent": "06-training-manager",
+  "description": "교육 커리큘럼 생성 (개발자 10명, 혼합, 감사 대비)",
+  "model": "claude-sonnet-4-6",
+  "prerequisite_files": {
+    "policy/oss-policy.md": "__COPY_FROM_OUTPUT_SAMPLE__",
+    "organization/role-definition.md": "__COPY_FROM_OUTPUT_SAMPLE__"
+  },
+  "inputs": ["개발자 10명, 관리자 2명, 운영 3명", "혼합", "감사 대비"],
+  "expected_files": [
+    "training/curriculum.md",
+    "training/completion-tracker.md",
+    "training/resources.md"
+  ],
+  "expected_absent": [],
+  "content_patterns": {
+    "training/curriculum.md": ["개발자", "관리자"],
+    "training/completion-tracker.md": [],
+    "training/resources.md": ["LFC193"]
+  }
+}

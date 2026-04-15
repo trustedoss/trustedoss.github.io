@@ -73,10 +73,62 @@ python3 .claude/scripts/test-output-fixtures.py
 
 ---
 
-## Layer 3 (향후 추가 예정)
+## Layer 3: LLM 기반 E2E 대화 테스트
 
-Anthropic API를 사용한 실제 대화 흐름 + 파일 생성 E2E 테스트.
-각 agent에 mock 입력(tests/fixtures/)을 제공하고 생성된 output 파일을 검증합니다.
-API 비용이 발생하므로 verify.sh에는 포함하지 않고 별도 실행합니다.
+Anthropic API를 사용해 각 agent의 실제 대화 흐름을 시뮬레이션하고
+기대 파일 생성 여부 및 내용 패턴을 검증합니다.
 
-모델: `claude-sonnet-4-6`
+### 사전 준비
+
+```bash
+pip install anthropic
+export ANTHROPIC_API_KEY=sk-ant-...
+```
+
+### 실행 방법
+
+```bash
+# 단일 agent 테스트
+python3 .claude/scripts/test-agent-e2e.py --agent 02-organization-designer
+
+# 특정 fixture 파일로 테스트 (조건부 분기 등)
+python3 .claude/scripts/test-agent-e2e.py --fixture tests/fixtures/04-process-designer-branch-A.json
+python3 .claude/scripts/test-agent-e2e.py --fixture tests/fixtures/04-process-designer-branch-B.json
+
+# 전체 fixture 실행
+python3 .claude/scripts/test-agent-e2e.py --all
+
+# 상세 출력 (도구 호출 흐름 확인)
+python3 .claude/scripts/test-agent-e2e.py --agent 02-organization-designer --verbose
+```
+
+### 동작 방식
+
+1. `tests/fixtures/*.json` 픽스처 로드
+2. agent의 `CLAUDE.md` → system_prompt 설정
+3. `prerequisite_files`를 `output-sample/`에서 임시 디렉토리로 복사
+4. Anthropic API 멀티턴 대화 시작 (Write/Read/Edit/Bash mock 도구 제공)
+5. LLM 질문 → fixture `inputs[i]` 자동 답변
+6. LLM Write 도구 호출 → 임시 디렉토리에 파일 저장
+7. `expected_files` 존재 / `expected_absent` 미존재 / `content_patterns` 내용 검증
+
+### 픽스처 파일
+
+| 파일                                | 설명                               |
+| ----------------------------------- | ---------------------------------- |
+| `02-organization-designer.json`     | 조직 산출물 생성 기본 케이스       |
+| `03-policy-generator.json`          | 정책 문서 생성                     |
+| `04-process-designer-branch-A.json` | 프로세스 설계 (기여+공개 활성화)   |
+| `04-process-designer-branch-B.json` | 프로세스 설계 (기여+공개 비활성화) |
+| `05-sbom-analyst.json`              | SBOM 라이선스 분석                 |
+| `05-sbom-management.json`           | SBOM 관리 계획                     |
+| `05-vulnerability-analyst.json`     | 취약점 분석 리포트                 |
+| `06-training-manager.json`          | 교육 커리큘럼 생성                 |
+| `07-conformance-preparer.json`      | 갭 분석 및 인증 선언문             |
+
+### 주의 사항
+
+- API 비용 발생 (Sonnet 4.6 기준, agent당 약 $0.10~0.30 예상)
+- `verify.sh`에는 포함하지 않음 — 별도 실행 필요
+- GitHub Actions: `agent-e2e-test.yml` 워크플로우로 수동 실행 또는 `agents/*/CLAUDE.md` 변경 시 자동 실행
+- `ANTHROPIC_API_KEY` secret 필요 (GitHub Settings → Secrets)

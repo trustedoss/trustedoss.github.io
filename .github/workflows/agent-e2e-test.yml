@@ -1,0 +1,47 @@
+name: Agent E2E Test (Layer 3)
+
+on:
+  workflow_dispatch:
+    inputs:
+      agent:
+        description: "테스트할 agent 이름 (비우면 전체 실행)"
+        required: false
+        default: ""
+  pull_request:
+    paths:
+      - "agents/*/CLAUDE.md"
+      - "tests/fixtures/*.json"
+      - ".claude/scripts/test-agent-e2e.py"
+
+jobs:
+  e2e:
+    name: Agent E2E Test
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install anthropic
+
+      - name: Run E2E tests (single agent)
+        if: ${{ github.event.inputs.agent != '' }}
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          python3 .claude/scripts/test-agent-e2e.py \
+            --agent "${{ github.event.inputs.agent }}" \
+            --verbose
+
+      - name: Run E2E tests (all fixtures)
+        if: ${{ github.event.inputs.agent == '' }}
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          python3 .claude/scripts/test-agent-e2e.py --all --verbose

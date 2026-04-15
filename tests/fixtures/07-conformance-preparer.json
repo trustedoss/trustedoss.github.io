@@ -1,0 +1,37 @@
+{
+  "agent": "07-conformance-preparer",
+  "description": "갭 분석 및 인증 선언문 생성 (5230+18974 둘 다, 최초 인증)",
+  "model": "claude-sonnet-4-6",
+  "prerequisite_files": {
+    "organization/role-definition.md": "__COPY_FROM_OUTPUT_SAMPLE__",
+    "organization/raci-matrix.md": "__COPY_FROM_OUTPUT_SAMPLE__",
+    "organization/appointment-template.md": "__COPY_FROM_OUTPUT_SAMPLE__",
+    "policy/oss-policy.md": "__COPY_FROM_OUTPUT_SAMPLE__",
+    "policy/license-allowlist.md": "__COPY_FROM_OUTPUT_SAMPLE__",
+    "process/usage-approval.md": "__COPY_FROM_OUTPUT_SAMPLE__",
+    "process/distribution-checklist.md": "__COPY_FROM_OUTPUT_SAMPLE__",
+    "process/vulnerability-response.md": "__COPY_FROM_OUTPUT_SAMPLE__",
+    "process/inquiry-response.md": "__COPY_FROM_OUTPUT_SAMPLE__",
+    "sbom/fixture-sample.cdx.json": "__COPY_FROM_OUTPUT_SAMPLE__",
+    "sbom/sbom-management-plan.md": "__COPY_FROM_OUTPUT_SAMPLE__",
+    "sbom/license-report.md": "__COPY_FROM_OUTPUT_SAMPLE__",
+    "sbom/copyleft-risk.md": "__COPY_FROM_OUTPUT_SAMPLE__",
+    "sbom/sbom-sharing-template.md": "__COPY_FROM_OUTPUT_SAMPLE__",
+    "vulnerability/cve-report.md": "__COPY_FROM_OUTPUT_SAMPLE__",
+    "vulnerability/remediation-plan.md": "__COPY_FROM_OUTPUT_SAMPLE__",
+    "training/curriculum.md": "__COPY_FROM_OUTPUT_SAMPLE__",
+    "training/completion-tracker.md": "__COPY_FROM_OUTPUT_SAMPLE__"
+  },
+  "inputs": ["둘 다", "전사 소프트웨어 전체", "최초"],
+  "expected_files": [
+    "conformance/gap-analysis.md",
+    "conformance/declaration-draft.md",
+    "conformance/submission-guide.md"
+  ],
+  "expected_absent": [],
+  "content_patterns": {
+    "conformance/gap-analysis.md": ["ISO/IEC 5230", "ISO/IEC 18974"],
+    "conformance/declaration-draft.md": ["전사 소프트웨어 전체"],
+    "conformance/submission-guide.md": ["OpenChain"]
+  }
+}

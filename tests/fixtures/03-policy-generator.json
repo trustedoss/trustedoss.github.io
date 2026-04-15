@@ -1,0 +1,12 @@
+{
+  "agent": "03-policy-generator",
+  "description": "오픈소스 정책 생성 (SaaS, Node.js/npm, 기여 계획 없음)",
+  "model": "claude-sonnet-4-6",
+  "inputs": ["SaaS", "Node.js, npm", "아니오", "아니오", "없음"],
+  "expected_files": ["policy/oss-policy.md", "policy/license-allowlist.md"],
+  "expected_absent": [],
+  "content_patterns": {
+    "policy/oss-policy.md": ["SaaS"],
+    "policy/license-allowlist.md": ["MIT", "Apache"]
+  }
+}
