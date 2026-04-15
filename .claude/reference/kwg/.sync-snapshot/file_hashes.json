@@ -1,12 +1,12 @@
 {
-  "content/ko/guide/opensource_for_enterprise/_index.md": "6be623f93b37ad60a4c1e539cb0abdc7",
-  "content/ko/guide/opensource_for_enterprise/1-teams/_index.md": "7a785e33a085ab91d63d6b085d47e36a",
-  "content/ko/guide/opensource_for_enterprise/2-policy/_index.md": "f8ad17c905593805246c1b2f00139cad",
-  "content/ko/guide/opensource_for_enterprise/3-process/_index.md": "b542fb07281230eca01eac7b6fd6fc1c",
-  "content/ko/guide/opensource_for_enterprise/4-tool/_index.md": "70b68cf68c3a931173c448534d81d443",
-  "content/ko/guide/opensource_for_enterprise/5-training/_index.md": "50f74fa95205280db54c7fd977026135",
-  "content/ko/guide/opensource_for_enterprise/6-conforming/_index.md": "e1d523546d907b42cf7feae4dbbe5ecd",
-  "content/ko/guide/templates/1-policy/_index.md": "2a87dbd9fe14400027a3f121192de341",
-  "content/ko/guide/templates/1-policy/appendix/_index.md": "168b449a22971bca1da48f5a8d7aff83",
-  "content/ko/guide/templates/2-process-template/_index.md": "18d2a297631d036deb472f5dba95802c"
+  "content/ko/guide/opensource_for_enterprise/_index.md": "660cc2f2452cf0190af1530f090a14cc",
+  "content/ko/guide/opensource_for_enterprise/1-teams/_index.md": "41d26955bfb9eb8f4f0542b682039975",
+  "content/ko/guide/opensource_for_enterprise/2-policy/_index.md": "531f946c6d8100513a09d389fd97e589",
+  "content/ko/guide/opensource_for_enterprise/3-process/_index.md": "869f5b0583aaafc88f88dcdf89ca61fd",
+  "content/ko/guide/opensource_for_enterprise/4-tool/_index.md": "902d104f14b08ebedba96cc7a43554bb",
+  "content/ko/guide/opensource_for_enterprise/5-training/_index.md": "4ca2f83fee1a32876b75afb5ec7d9c3c",
+  "content/ko/guide/opensource_for_enterprise/6-conforming/_index.md": "02ef4af905a5c70e4331b3097d360eb3",
+  "content/ko/guide/templates/1-policy/_index.md": "245d3790dcd8ccc2f2440b15a8d14ba2",
+  "content/ko/guide/templates/1-policy/appendix/_index.md": "47fbea1c30a7945a9b3b404117084a05",
+  "content/ko/guide/templates/2-process-template/_index.md": "a73e281521e76f4b9fa573cb0836097a"
 }
