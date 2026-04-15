@@ -132,3 +132,44 @@ python3 .claude/scripts/test-agent-e2e.py --agent 02-organization-designer --ver
 - `verify.sh`에는 포함하지 않음 — 별도 실행 필요
 - GitHub Actions: `agent-e2e-test.yml` 워크플로우로 수동 실행 또는 `agents/*/CLAUDE.md` 변경 시 자동 실행
 - `ANTHROPIC_API_KEY` secret 필요 (GitHub Settings → Secrets)
+
+---
+
+## 어떤 Layer를 언제 실행해야 하나?
+
+### Layer별 보장 범위
+
+| 검증 항목                                 | Layer 1 | Layer 2 | Layer 3 |
+| ----------------------------------------- | :-----: | :-----: | :-----: |
+| CLAUDE.md 필수 구문 존재                  |   ✅    |    —    |    —    |
+| 출력 파일 목록 선언 일치                  |   ✅    |    —    |    —    |
+| `templates/` 파일 실존                    |   ✅    |    —    |    —    |
+| `output-sample/` 파일 완전성              |    —    |   ✅    |    —    |
+| `validate-output.py` 자체 정확성          |    —    |   ✅    |    —    |
+| LLM이 실제로 올바른 질문을 하는가         |   ❌    |   ❌    |   ✅    |
+| 조건부 분기 실제 동작 (Q5=예 → 파일 생성) |   ❌    |   ❌    |   ✅    |
+| 사용자 답변이 파일 내용에 반영되는가      |   ❌    |   ❌    |   ✅    |
+| Write 도구를 실제로 호출하는가            |   ❌    |   ❌    |   ✅    |
+
+Layer 1·2는 **정적 분석(linting)** 에 해당합니다.
+"문서가 올바르게 작성되어 있는가"는 보장하지만, "LLM이 실제로 올바르게 동작하는가"는 보장하지 못합니다.
+
+### 상황별 실행 가이드
+
+| 상황                                  | Layer 1+2 | Layer 3  |
+| ------------------------------------- | :-------: | :------: |
+| 일상적인 docs/ 수정, 링크·표현 교정   |  ✅ 필수  |  불필요  |
+| `output-sample/` 내용 갱신            |  ✅ 필수  |  불필요  |
+| `templates/` 파일 추가·수정           |  ✅ 필수  |  불필요  |
+| agent `CLAUDE.md` 소폭 수정           |  ✅ 필수  |   권장   |
+| agent `CLAUDE.md` 질문 순서·분기 변경 |  ✅ 필수  | **필수** |
+| 새 agent 추가                         |  ✅ 필수  | **필수** |
+| 릴리즈 전 최종 검증                   |  ✅ 필수  | **필수** |
+
+### 권장 운영 방식
+
+```
+일상 push        →  bash .claude/scripts/verify.sh  (Layer 1+2 포함)
+agents/ CLAUDE.md 수정  →  Layer 3 단일 agent 추가 실행
+릴리즈 전        →  python3 .claude/scripts/test-agent-e2e.py --all
+```
