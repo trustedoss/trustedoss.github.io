@@ -262,7 +262,7 @@ html[data-theme="dark"] {
   max-width: 1400px;
   width: 1400px;
   align-self: center;
-  font-weight: 300;
+  font-weight: 400;
 
   div[class*="docRoot"] {
     justify-content: center;
@@ -1348,7 +1348,7 @@ aside[class^="theme-doc-sidebar-container"] {
       line-height: 20px;
       font-size: 13px;
       padding: 4px 12px !important;
-      font-weight: 300;
+      font-weight: 400;
       color: var(--ifm-font-color-base);
     }
 
@@ -2402,4 +2402,3 @@ figcaption > p:last-child {
     white-space: nowrap;
   }
 }
-

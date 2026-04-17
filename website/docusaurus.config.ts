@@ -218,11 +218,11 @@ const config: Config = {
           label: '레퍼런스',
           position: 'left',
         },
-        {
-          to: '/blog',
-          label: '블로그',
-          position: 'left',
-        },
+        // {
+        //   to: '/blog',
+        //   label: '블로그',
+        //   position: 'left',
+        // },
         {
           href: 'https://github.com/trustedoss',
           'aria-label': 'GitHub repository',
@@ -254,10 +254,10 @@ const config: Config = {
               label: '레퍼런스',
               to: '/reference/intro',
             },
-            {
-              label: '블로그',
-              to: '/blog',
-            },
+            // {
+            //   label: '블로그',
+            //   to: '/blog',
+            // },
           ],
         },
         {
