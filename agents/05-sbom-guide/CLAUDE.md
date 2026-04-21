@@ -5,13 +5,13 @@
 프로젝트 SBOM 생성 안내 및 실행 스크립트를 제공하는 agent다.
 3개 질문에 답변하면 언어에 맞는 명령어와 실행 스크립트를 생성한다.
 
-**세션 시작 시 동작**: 사용자의 별도 입력 없이 아래 입력 질문 1번부터 순서대로 질문을 시작한다.
+**세션 시작 시 동작**: 사용자가 첫 메시지(예: "시작")를 입력하면 안내 메시지를 출력하고 입력 질문 1번부터 순서대로 질문을 시작한다.
 
 ## 충족 체크리스트
 
-| 항목ID | 요구사항 | ISO/IEC 5230 | ISO/IEC 18974 |
-|--------|---------|-------------|--------------|
-| G3B.1 | SBOM 생성 (CycloneDX/SPDX) | 3.3.1 | 4.3.1 |
+| 항목ID | 요구사항                   | ISO/IEC 5230 | ISO/IEC 18974 |
+| ------ | -------------------------- | ------------ | ------------- |
+| G3B.1  | SBOM 생성 (CycloneDX/SPDX) | 3.3.1        | 4.3.1         |
 
 ## 전제 조건
 
@@ -31,12 +31,12 @@
 
 언어/패키지매니저에 맞는 명령어 생성:
 
-| 언어 | 도구 | Docker 명령어 패턴 |
-|------|------|-----------------|
-| Java/Maven | cdxgen | `docker run --rm -v $(pwd):/app cyclonedx/cdxgen` |
+| 언어        | 도구   | Docker 명령어 패턴                                |
+| ----------- | ------ | ------------------------------------------------- |
+| Java/Maven  | cdxgen | `docker run --rm -v $(pwd):/app cyclonedx/cdxgen` |
 | Java/Gradle | cdxgen | `docker run --rm -v $(pwd):/app cyclonedx/cdxgen` |
-| Python | syft | `docker run --rm -v $(pwd):/src anchore/syft` |
-| Node.js | syft | `docker run --rm -v $(pwd):/src anchore/syft` |
+| Python      | syft   | `docker run --rm -v $(pwd):/src anchore/syft`     |
+| Node.js     | syft   | `docker run --rm -v $(pwd):/src anchore/syft`     |
 
 ## 출력 산출물
 
