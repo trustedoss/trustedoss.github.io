@@ -14,36 +14,24 @@ const sidebars: SidebarsConfig = {
       ],
     },
     {
-      type: 'category',
+      type: 'doc',
+      id: 'setup/index',
       label: '환경 준비',
-      collapsed: false,
-      items: [
-        'setup/index',
-      ],
     },
     {
-      type: 'category',
+      type: 'doc',
+      id: 'organization/index',
       label: '조직 구성',
-      collapsed: false,
-      items: [
-        'organization/index',
-      ],
     },
     {
-      type: 'category',
+      type: 'doc',
+      id: 'policy/index',
       label: '오픈소스 정책',
-      collapsed: false,
-      items: [
-        'policy/index',
-      ],
     },
     {
-      type: 'category',
+      type: 'doc',
+      id: 'process/index',
       label: '오픈소스 프로세스',
-      collapsed: false,
-      items: [
-        'process/index',
-      ],
     },
     {
       type: 'category',
@@ -58,20 +46,14 @@ const sidebars: SidebarsConfig = {
       ],
     },
     {
-      type: 'category',
+      type: 'doc',
+      id: 'training/index',
       label: '교육 체계',
-      collapsed: false,
-      items: [
-        'training/index',
-      ],
     },
     {
-      type: 'category',
+      type: 'doc',
+      id: 'conformance/index',
       label: '자체 인증',
-      collapsed: false,
-      items: [
-        'conformance/index',
-      ],
     },
     {
       type: 'category',
