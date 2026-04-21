@@ -13,13 +13,13 @@ sidebar_label: 인증 산출물
 
 ---
 
-## 갭 분析 리포트
+## 갭 분석 리포트
 
 > **생성 agent**: `07-conformance-preparer` | **저장 경로**: `output/conformance/gap-analysis.md`
 
 ---
 
-리포트 유형: 갭 분析 (ISO/IEC 5230 + ISO/IEC 18974)
+리포트 유형: 갭 분석 (ISO/IEC 5230 + ISO/IEC 18974)
 생성일: 2026-03-23
 대상 프로젝트: 테크유니콘 오픈소스 프로그램
 사용 도구: trustedoss agents/07-conformance-preparer
@@ -58,13 +58,13 @@ sidebar_label: 인증 산출물
 | 3.2.2.5 | 미준수 사례 검토 및 수정 절차         |  ✅  | [오픈소스 RACI 매트릭스](/reference/samples/organization#오픈소스-raci-매트릭스) §미준수 사례 검토 절차, [오픈소스 정책](/reference/samples/policy) §8                                                          |
 | 3.3.1.1 | SBOM 관리 절차                        |  ✅  | [SBOM 관리 계획](/reference/samples/sbom#sbom-관리-계획), [오픈소스 사용 승인 절차](/reference/samples/process) §6                                                                                              |
 | 3.3.1.2 | 컴포넌트 기록(SBOM 파일)              |  ✅  | output/sbom/java-vulnerable.cdx.json                                                                                                                                                                            |
-| 3.3.2.1 | 라이선스 사용 사례 처리 절차          |  ✅  | [SBOM 라이선스 분析 리포트](/reference/samples/sbom#sbom-라이선스-분析-리포트), [Copyleft 위험도 리포트](/reference/samples/sbom#copyleft-위험도-리포트), [오픈소스 사용 승인 절차](/reference/samples/process) |
+| 3.3.2.1 | 라이선스 사용 사례 처리 절차          |  ✅  | [SBOM 라이선스 분석 리포트](/reference/samples/sbom#sbom-라이선스-분석-리포트), [Copyleft 위험도 리포트](/reference/samples/sbom#copyleft-위험도-리포트), [오픈소스 사용 승인 절차](/reference/samples/process) |
 | 3.4.1.1 | 컴플라이언스 산출물 준비 및 배포 절차 |  ✅  | [배포 전 라이선스 컴플라이언스 체크리스트](/reference/samples/process#배포-전-라이선스-컴플라이언스-체크리스트)                                                                                                 |
 | 3.4.1.2 | 컴플라이언스 산출물 보관 절차         |  ✅  | [배포 전 라이선스 컴플라이언스 체크리스트](/reference/samples/process#배포-전-라이선스-컴플라이언스-체크리스트) §5                                                                                              |
 | 3.5.1.1 | 오픈소스 기여 정책                    |  ✅  | [오픈소스 정책](/reference/samples/policy) §5                                                                                                                                                                   |
 | 3.5.1.2 | 오픈소스 기여 관리 절차               |  ✅  | [오픈소스 정책](/reference/samples/policy) §5                                                                                                                                                                   |
 | 3.5.1.3 | 기여 정책 인식 절차                   |  ✅  | [오픈소스 정책](/reference/samples/policy) §7                                                                                                                                                                   |
-| 3.6.1.1 | 모든 요구사항 충족 확인 문서          |  ✅  | 갭 분析 리포트 (본 문서)                                                                                                                                                                                        |
+| 3.6.1.1 | 모든 요구사항 충족 확인 문서          |  ✅  | 갭 분석 리포트 (본 문서)                                                                                                                                                                                        |
 | 3.6.2.1 | 18개월 이내 요구사항 충족 확인 문서   |  ✅  | [오픈소스 컴플라이언스 자체 인증 선언문](/reference/samples/conformance#오픈소스-컴플라이언스-자체-인증-선언문)                                                                                                 |
 
 **ISO/IEC 5230 소계: ✅ 22개 / 🔶 3개 / ❌ 0개**
@@ -86,7 +86,7 @@ sidebar_label: 인증 산출물
 | 4.1.3.1 | 참여자 인식 평가 증거               |  🔶  | [오픈소스 교육 커리큘럼](/reference/samples/training#오픈소스-교육-커리큘럼) + [교육 이수 추적 시트](/reference/samples/training#교육-이수-추적-시트) (교육 미시작)               |
 | 4.1.4.1 | 프로그램 범위 문서                  |  ✅  | [오픈소스 정책](/reference/samples/policy) §1                                                                                                                                     |
 | 4.1.4.2 | 성과 메트릭                         |  ✅  | [오픈소스 정책](/reference/samples/policy) §3 (KPI 5개 항목)                                                                                                                      |
-| 4.1.4.3 | 지속적 개선 증거(감사 이력)         |  🔶  | 갭 분析 리포트 (본 문서, 1회차 감사 이력) ※시간 기반                                                                                                                              |
+| 4.1.4.3 | 지속적 개선 증거(감사 이력)         |  🔶  | 갭 분석 리포트 (본 문서, 1회차 감사 이력) ※시간 기반                                                                                                                              |
 | 4.1.5.1 | 취약점 대응 표준 절차               |  ✅  | [취약점 대응 절차](/reference/samples/process#취약점-대응-절차) (8가지 방법 모두 포함)                                                                                            |
 | 4.2.1.1 | 외부 취약점 문의 공개 채널          |  ✅  | [오픈소스 역할 및 책임 정의](/reference/samples/organization) §3 (security@sktelecom.com)                                                                                         |
 | 4.2.1.2 | 외부 문의 내부 대응 절차            |  ✅  | [취약점 대응 절차](/reference/samples/process#취약점-대응-절차) §7                                                                                                                |
@@ -97,8 +97,8 @@ sidebar_label: 인증 산출물
 | 4.3.1.1 | SBOM 수명주기 지속 기록 절차        |  ✅  | [SBOM 관리 계획](/reference/samples/sbom#sbom-관리-계획)                                                                                                                          |
 | 4.3.1.2 | 컴포넌트 기록(SBOM 파일)            |  ✅  | output/sbom/java-vulnerable.cdx.json                                                                                                                                              |
 | 4.3.2.1 | 취약점 탐지 및 해결 절차            |  ✅  | [취약점 대응 절차](/reference/samples/process#취약점-대응-절차) + [취약점 대응 계획](/reference/samples/vulnerability#취약점-대응-계획-remediation-plan)                          |
-| 4.3.2.2 | 취약점 및 조치 기록                 |  ✅  | [취약점 분析 리포트](/reference/samples/vulnerability#취약점-분析-리포트) (5개 CVE 기록) + [취약점 대응 계획](/reference/samples/vulnerability#취약점-대응-계획-remediation-plan) |
-| 4.4.1.1 | 모든 요구사항 충족 확인 문서        |  ✅  | 갭 분析 리포트 (본 문서)                                                                                                                                                          |
+| 4.3.2.2 | 취약점 및 조치 기록                 |  ✅  | [취약점 분석 리포트](/reference/samples/vulnerability#취약점-분석-리포트) (5개 CVE 기록) + [취약점 대응 계획](/reference/samples/vulnerability#취약점-대응-계획-remediation-plan) |
+| 4.4.1.1 | 모든 요구사항 충족 확인 문서        |  ✅  | 갭 분석 리포트 (본 문서)                                                                                                                                                          |
 | 4.4.2.1 | 18개월 이내 요구사항 충족 확인 문서 |  ✅  | [오픈소스 컴플라이언스 자체 인증 선언문](/reference/samples/conformance#오픈소스-컴플라이언스-자체-인증-선언문)                                                                   |
 
 **ISO/IEC 18974 소계: ✅ 17개 / 🔶 8개 / ❌ 0개**
@@ -144,7 +144,7 @@ sidebar_label: 인증 산출물
 | ---------------------------------- | ------------------------------------------------------------------------ | ---------------------------- |
 | 18974 §4.1.2.5 주기적 검토 증거    | oss-policy.md §9에 "다음 검토 예정일: 2027-03-23" 기록                   | 실제 검토 이력 1건 이상 축적 |
 | 18974 §4.1.2.6 모범 사례 일치 검증 | role-definition.md §6에 담당자 지정 및 최초 검토 예정일(2026-12-31) 기록 | 검토 결과 기록 1건 이상      |
-| 18974 §4.1.4.3 지속적 개선 증거    | 본 갭 분析(2026-03-23)을 1회차 감사 이력으로 기록                        | 감사 이력 2건 이상           |
+| 18974 §4.1.4.3 지속적 개선 증거    | 본 갭 분석(2026-03-23)을 1회차 감사 이력으로 기록                        | 감사 이력 2건 이상           |
 
 ---
 
@@ -219,13 +219,13 @@ sidebar_label: 인증 산출물
 | 3.2.2.5 | 미준수 사례 검토 및 수정 절차         |    ✅     | [오픈소스 RACI 매트릭스](/reference/samples/organization#오픈소스-raci-매트릭스) §미준수 사례 검토 절차                                               |
 | 3.3.1.1 | SBOM 관리 절차                        |    ✅     | [SBOM 관리 계획](/reference/samples/sbom#sbom-관리-계획)                                                                                              |
 | 3.3.1.2 | 컴포넌트 기록(SBOM 파일)              |    ✅     | output/sbom/java-vulnerable.cdx.json                                                                                                                  |
-| 3.3.2.1 | 라이선스 사용 사례 처리 절차          |    ✅     | [SBOM 라이선스 분析 리포트](/reference/samples/sbom#sbom-라이선스-분析-리포트), [오픈소스 사용 승인 절차](/reference/samples/process)                 |
+| 3.3.2.1 | 라이선스 사용 사례 처리 절차          |    ✅     | [SBOM 라이선스 분석 리포트](/reference/samples/sbom#sbom-라이선스-분석-리포트), [오픈소스 사용 승인 절차](/reference/samples/process)                 |
 | 3.4.1.1 | 컴플라이언스 산출물 준비 및 배포 절차 |    ✅     | [배포 전 라이선스 컴플라이언스 체크리스트](/reference/samples/process#배포-전-라이선스-컴플라이언스-체크리스트)                                       |
 | 3.4.1.2 | 컴플라이언스 산출물 보관 절차         |    ✅     | [배포 전 라이선스 컴플라이언스 체크리스트](/reference/samples/process#배포-전-라이선스-컴플라이언스-체크리스트) §5                                    |
 | 3.5.1.1 | 오픈소스 기여 정책                    |    ✅     | [오픈소스 정책](/reference/samples/policy) §5                                                                                                         |
 | 3.5.1.2 | 오픈소스 기여 관리 절차               |    ✅     | [오픈소스 정책](/reference/samples/policy) §5                                                                                                         |
 | 3.5.1.3 | 기여 정책 인식 절차                   |    ✅     | [오픈소스 정책](/reference/samples/policy) §7                                                                                                         |
-| 3.6.1.1 | 모든 요구사항 충족 확인 문서          |    ✅     | [갭 분析 리포트](/reference/samples/conformance#갭-분析-리포트)                                                                                       |
+| 3.6.1.1 | 모든 요구사항 충족 확인 문서          |    ✅     | [갭 분석 리포트](/reference/samples/conformance#갭-분석-리포트)                                                                                       |
 | 3.6.2.1 | 18개월 이내 요구사항 충족 확인        |    ✅     | 오픈소스 컴플라이언스 자체 인증 선언문 (본 문서)                                                                                                      |
 
 ---
@@ -247,7 +247,7 @@ sidebar_label: 인증 산출물
 | 4.1.3.1 | 참여자 인식 평가 증거           |    🔶     | [오픈소스 교육 커리큘럼](/reference/samples/training#오픈소스-교육-커리큘럼) + [교육 이수 추적 시트](/reference/samples/training#교육-이수-추적-시트)                             |
 | 4.1.4.1 | 프로그램 범위 문서              |    ✅     | [오픈소스 정책](/reference/samples/policy) §1                                                                                                                                     |
 | 4.1.4.2 | 성과 메트릭                     |    ✅     | [오픈소스 정책](/reference/samples/policy) §3 (KPI 5개 항목)                                                                                                                      |
-| 4.1.4.3 | 지속적 개선 증거(감사 이력)     |    🔶     | [갭 분析 리포트](/reference/samples/conformance#갭-분析-리포트) (1회차 감사 이력)                                                                                                 |
+| 4.1.4.3 | 지속적 개선 증거(감사 이력)     |    🔶     | [갭 분석 리포트](/reference/samples/conformance#갭-분석-리포트) (1회차 감사 이력)                                                                                                 |
 | 4.1.5.1 | 취약점 대응 표준 절차           |    ✅     | [취약점 대응 절차](/reference/samples/process#취약점-대응-절차)                                                                                                                   |
 | 4.2.1.1 | 외부 취약점 문의 공개 채널      |    ✅     | [오픈소스 역할 및 책임 정의](/reference/samples/organization) §3 (security@sktelecom.com)                                                                                         |
 | 4.2.1.2 | 외부 문의 내부 대응 절차        |    ✅     | [취약점 대응 절차](/reference/samples/process#취약점-대응-절차) §7                                                                                                                |
@@ -258,8 +258,8 @@ sidebar_label: 인증 산출물
 | 4.3.1.1 | SBOM 수명주기 지속 기록 절차    |    ✅     | [SBOM 관리 계획](/reference/samples/sbom#sbom-관리-계획)                                                                                                                          |
 | 4.3.1.2 | 컴포넌트 기록(SBOM 파일)        |    ✅     | output/sbom/java-vulnerable.cdx.json                                                                                                                                              |
 | 4.3.2.1 | 취약점 탐지 및 해결 절차        |    ✅     | [취약점 대응 절차](/reference/samples/process#취약점-대응-절차) + [취약점 대응 계획](/reference/samples/vulnerability#취약점-대응-계획-remediation-plan)                          |
-| 4.3.2.2 | 취약점 및 조치 기록             |    ✅     | [취약점 분析 리포트](/reference/samples/vulnerability#취약점-분析-리포트) (5개 CVE 기록) + [취약점 대응 계획](/reference/samples/vulnerability#취약점-대응-계획-remediation-plan) |
-| 4.4.1.1 | 모든 요구사항 충족 확인 문서    |    ✅     | [갭 분析 리포트](/reference/samples/conformance#갭-분析-리포트)                                                                                                                   |
+| 4.3.2.2 | 취약점 및 조치 기록             |    ✅     | [취약점 분석 리포트](/reference/samples/vulnerability#취약점-분석-리포트) (5개 CVE 기록) + [취약점 대응 계획](/reference/samples/vulnerability#취약점-대응-계획-remediation-plan) |
+| 4.4.1.1 | 모든 요구사항 충족 확인 문서    |    ✅     | [갭 분석 리포트](/reference/samples/conformance#갭-분석-리포트)                                                                                                                   |
 | 4.4.2.1 | 18개월 이내 요구사항 충족 확인  |    ✅     | 오픈소스 컴플라이언스 자체 인증 선언문 (본 문서)                                                                                                                                  |
 
 ---
@@ -392,12 +392,12 @@ OpenChain 등록 후 아래 증거를 보관한다:
 | 시점                        | 작업                                      |
 | --------------------------- | ----------------------------------------- |
 | 2026-09-23 (선언 6개월 후)  | 중간 점검 — 부분충족 항목 이행 확인       |
-| 2027-03-23 (선언 12개월 후) | 연간 갭 분析 재실행, gap-analysis.md 갱신 |
+| 2027-03-23 (선언 12개월 후) | 연간 갭 분석 재실행, gap-analysis.md 갱신 |
 | 2027-09-23 (선언 18개월 후) | 재선언 — OpenChain 사이트 재등록          |
 
 #### 수시 갱신 트리거
 
-아래 상황 발생 시 즉시 산출물 갱신 후 갭 분析 재실행:
+아래 상황 발생 시 즉시 산출물 갱신 후 갭 분석 재실행:
 
 | 트리거                   | 갱신 대상 산출물                    |
 | ------------------------ | ----------------------------------- |
