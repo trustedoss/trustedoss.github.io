@@ -46,16 +46,18 @@
 | 법무/구매   | 라이선스 상세 의무사항, 계약서 오픈소스 조항                            | 3시간     |
 | 보안 담당   | 취약점 식별 및 대응, CVSS 점수 해석, 18974 요구사항                     | 3시간     |
 
+> 실제 기업 교육 사례(SKT, 카카오, NC소프트 등)와 교육 자료는 [KWG 오픈소스 가이드 — 교육](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/5-training/)를 참조하세요.
+
 ## 4. 무료 교육 리소스 목록
 
-| 리소스                                | 제공 기관           | 수준      | 언어   | 링크                                              |
-| ------------------------------------- | ------------------- | --------- | ------ | ------------------------------------------------- |
-| OpenChain 교육 자료                   | OpenChain Project   | 초급~중급 | 영어   | https://www.openchainproject.org/resources        |
-| Open Source Licensing Basics (LFC193) | Linux Foundation    | 초급      | 영어   | LFC193 과정 (Linux Foundation Training)           |
-| NIPA 오픈소스 라이선스 가이드         | NIPA                | 초급~중급 | 한국어 | NIPA 공개SW 포털                                  |
-| OpenChain KWG 교육 자료               | OpenChain KWG       | 중급      | 한국어 | https://openchain-project.github.io/OpenChain-KWG |
-| SPDX 공식 문서                        | SPDX Community      | 중급      | 영어   | SPDX 공식 사이트 (spdx.dev)                       |
-| CycloneDX 공식 문서                   | CycloneDX Community | 중급      | 영어   | CycloneDX 공식 사이트 (cyclonedx.org)             |
+| 리소스                                | 제공 기관           | 수준      | 언어   | 링크                                                                                          |
+| ------------------------------------- | ------------------- | --------- | ------ | --------------------------------------------------------------------------------------------- |
+| OpenChain 교육 자료                   | OpenChain Project   | 초급~중급 | 영어   | https://www.openchainproject.org/resources                                                    |
+| Open Source Licensing Basics (LFC193) | Linux Foundation    | 초급      | 영어   | LFC193 과정 (Linux Foundation Training)                                                       |
+| NIPA 오픈소스 라이선스 가이드         | NIPA                | 초급~중급 | 한국어 | NIPA 공개SW 포털                                                                              |
+| OpenChain KWG 교육 자료               | OpenChain KWG       | 중급      | 한국어 | https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/5-training/ |
+| SPDX 공식 문서                        | SPDX Community      | 중급      | 영어   | SPDX 공식 사이트 (spdx.dev)                                                                   |
+| CycloneDX 공식 문서                   | CycloneDX Community | 중급      | 영어   | CycloneDX 공식 사이트 (cyclonedx.org)                                                         |
 
 ## 5. 교육 이수 기록 관리 방법
 

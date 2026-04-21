@@ -50,6 +50,8 @@ SBOM 생성에는 두 가지 접근 방식이 있습니다. **Dependency 분석*
 
 [SCANOSS](https://www.scanoss.com/)는 패키지 선언 없이 직접 복사·삽입된 오픈소스 코드 조각을 파일 레벨에서 탐지하는 데 강점이 있습니다. syft/cdxgen과 역할이 보완적이므로, 소스 레벨 정밀도가 필요한 경우 병행 사용을 권장합니다.
 
+> FOSSLight, SW360, FOSSology 등 SCA·컴플라이언스 도구의 도입 및 활용 가이드는 [KWG 오픈소스 가이드 — 도구](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/4-tool/)를 참조하세요.
+
 실제 Docker 실행 명령어, GitHub Actions CI/CD 설정, 샘플 프로젝트 실습은 [Docker·CI/CD 실행 가이드](./docker-cicd.md) 페이지를 참조합니다.
 
 ### CycloneDX JSON 형식 주요 필드
