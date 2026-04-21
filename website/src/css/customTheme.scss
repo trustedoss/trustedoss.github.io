@@ -1285,6 +1285,25 @@ aside[class^="theme-doc-sidebar-container"] {
     }
   }
 
+  // 계층 구분: 최상위 카테고리 섹션 간 시각적 분리
+  .theme-doc-sidebar-item-category-level-1 {
+    margin-top: 14px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  // 계층 구분: 최상위 doc 링크를 카테고리 헤더와 동일 시각적 무게로 표시
+  .theme-doc-sidebar-item-link-level-1 > .menu__link {
+    font-weight: 500;
+  }
+
+  // 계층 구분: 카테고리 하위 항목 인덴트로 부모-자식 관계 명시
+  .menu__list .menu__list .menu__list-item {
+    padding-left: 6px;
+  }
+
   @media only screen and (max-width: 1120px) {
     --doc-sidebar-width: 240px;
   }
@@ -1508,6 +1527,20 @@ div[class^="tableOfContents"] {
       font-weight: 700;
       color: var(--home-button-primary) !important;
     }
+  }
+
+  // 계층 구분: H2 항목 - 굵게, 기본 텍스트 색상
+  > li > .table-of-contents__link {
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--ifm-font-color-base);
+  }
+
+  // 계층 구분: H3 항목 - 작게, 흐리게, 추가 인덴트
+  > li > ul .table-of-contents__link {
+    font-size: 11px;
+    color: var(--subtle);
+    padding-left: 20px;
   }
 }
 
