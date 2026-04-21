@@ -151,10 +151,12 @@ cd agents/03-policy-generator
 claude
 ```
 
+**Step 3. Claude 프롬프트가 열리면 `시작` 을 입력합니다.**
+
 <details>
 <summary>Agent 대화 예시 (클릭해서 펼치기)</summary>
 
-아래는 실제 agent와의 대화 흐름 예시입니다. 실행 시 이런 형태로 진행됩니다.
+아래는 실제 agent와의 대화 흐름 예시입니다. 사용자가 `시작` 입력 시 이런 형태로 진행됩니다.
 
 **Agent 안내 메시지:**
 
@@ -199,8 +201,6 @@ claude
 - 정책 검토 주기 확정
 
 </details>
-
-**Step 3. Claude 프롬프트가 열리면 `시작` 을 입력합니다.**
 
 **Step 4. agent 질문에 순서대로 답변**
 agent가 5개 질문을 하나씩 물어본다. 준비한 답변을 바탕으로 대화합니다. 확실하지 않은 항목은 agent에게 가이드를 요청할 수 있습니다.
