@@ -163,7 +163,9 @@ cd agents/03-policy-generator
 claude
 ```
 
-:::details Agent 대화 예시 (클릭해서 펼치기)
+<details>
+<summary>Agent 대화 예시 (클릭해서 펼치기)</summary>
+
 아래는 실제 agent와의 대화 흐름 예시입니다. 실행 시 이런 형태로 진행됩니다.
 
 **Agent 안내 메시지:**
@@ -207,7 +209,8 @@ claude
 - 담당자 실제 성명 및 이메일
 - 정책 시행일
 - 정책 검토 주기 확정
-  :::
+
+</details>
 
 **Step 3. Claude 프롬프트가 열리면 `시작` 을 입력합니다.**
 

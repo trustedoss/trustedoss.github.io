@@ -2,8 +2,8 @@
 작성일: 2026-03-20
 버전: 1.0
 충족 체크리스트:
-  - "ISO/IEC 5230: G1.4 (3.1.2), G2.3 (3.1.3)"
-  - "ISO/IEC 18974: G1.4 (4.1.2), G2.3 (4.1.3)"
+  - 'ISO/IEC 5230: G1.4 (3.1.2), G2.3 (3.1.3)'
+  - 'ISO/IEC 18974: G1.4 (4.1.2), G2.3 (4.1.3)'
 셀프스터디 소요시간: 1시간
 ---
 
@@ -24,10 +24,12 @@
 ### ISO/IEC 5230과 18974의 교육 요구사항
 
 **ISO/IEC 5230 (라이선스 컴플라이언스)**
+
 - **3.1.2 (G1.4)**: 프로그램 참여자가 오픈소스 라이선스 컴플라이언스에 관한 정책의 존재를 인지하도록 해야 합니다.
 - **3.1.3 (G2.3)**: 프로그램 참여자가 정책 목표, 기여 및 관련 역할을 이해하도록 해야 합니다.
 
 **ISO/IEC 18974 (보안 보증)**
+
 - **3.1.2 (G1.4)**: 프로그램 참여자가 보안 보증 정책의 존재를 인지하도록 해야 합니다.
 - **3.1.3 (G2.3)**: 프로그램 참여자가 보안 보증 정책의 목표와 자신의 역할을 이해하도록 해야 합니다.
 
@@ -37,23 +39,23 @@
 
 ## 3. 직군별 필수 교육 내용
 
-| 직군 | 필수 교육 내용 | 권장 시간 |
-|------|--------------|----------|
-| 개발자 | 오픈소스 라이선스 기초, 사용 승인 프로세스, SBOM 개념, 취약점 대응 절차 | 4시간 |
-| 관리자/팀장 | 오픈소스 정책 개요, 법적 리스크 이해, 승인 절차에서의 역할 | 2시간 |
-| 법무/구매 | 라이선스 상세 의무사항, 계약서 오픈소스 조항 | 3시간 |
-| 보안 담당 | 취약점 식별 및 대응, CVSS 점수 해석, 18974 요구사항 | 3시간 |
+| 직군        | 필수 교육 내용                                                          | 권장 시간 |
+| ----------- | ----------------------------------------------------------------------- | --------- |
+| 개발자      | 오픈소스 라이선스 기초, 사용 승인 프로세스, SBOM 개념, 취약점 대응 절차 | 4시간     |
+| 관리자/팀장 | 오픈소스 정책 개요, 법적 리스크 이해, 승인 절차에서의 역할              | 2시간     |
+| 법무/구매   | 라이선스 상세 의무사항, 계약서 오픈소스 조항                            | 3시간     |
+| 보안 담당   | 취약점 식별 및 대응, CVSS 점수 해석, 18974 요구사항                     | 3시간     |
 
 ## 4. 무료 교육 리소스 목록
 
-| 리소스 | 제공 기관 | 수준 | 언어 | 링크 |
-|--------|----------|------|------|------|
-| OpenChain 교육 자료 | OpenChain Project | 초급~중급 | 영어 | https://www.openchainproject.org/resources |
-| Open Source Licensing Basics (LFC193) | Linux Foundation | 초급 | 영어 | LFC193 과정 (Linux Foundation Training) |
-| NIPA 오픈소스 라이선스 가이드 | NIPA | 초급~중급 | 한국어 | NIPA 공개SW 포털 |
-| OpenChain KWG 교육 자료 | OpenChain KWG | 중급 | 한국어 | https://openchain-project.github.io/OpenChain-KWG |
-| SPDX 공식 문서 | SPDX Community | 중급 | 영어 | SPDX 공식 사이트 (spdx.dev) |
-| CycloneDX 공식 문서 | CycloneDX Community | 중급 | 영어 | CycloneDX 공식 사이트 (cyclonedx.org) |
+| 리소스                                | 제공 기관           | 수준      | 언어   | 링크                                              |
+| ------------------------------------- | ------------------- | --------- | ------ | ------------------------------------------------- |
+| OpenChain 교육 자료                   | OpenChain Project   | 초급~중급 | 영어   | https://www.openchainproject.org/resources        |
+| Open Source Licensing Basics (LFC193) | Linux Foundation    | 초급      | 영어   | LFC193 과정 (Linux Foundation Training)           |
+| NIPA 오픈소스 라이선스 가이드         | NIPA                | 초급~중급 | 한국어 | NIPA 공개SW 포털                                  |
+| OpenChain KWG 교육 자료               | OpenChain KWG       | 중급      | 한국어 | https://openchain-project.github.io/OpenChain-KWG |
+| SPDX 공식 문서                        | SPDX Community      | 중급      | 영어   | SPDX 공식 사이트 (spdx.dev)                       |
+| CycloneDX 공식 문서                   | CycloneDX Community | 중급      | 영어   | CycloneDX 공식 사이트 (cyclonedx.org)             |
 
 ## 5. 교육 이수 기록 관리 방법
 
@@ -66,12 +68,13 @@
 
 `output/training/completion-tracker.md` 형식 예시:
 
-| 이름 | 직군 | 교육명 | 이수일 | 확인자 |
-|------|------|--------|--------|--------|
+| 이름   | 직군   | 교육명                 | 이수일     | 확인자          |
+| ------ | ------ | ---------------------- | ---------- | --------------- |
 | 홍길동 | 개발자 | 오픈소스 라이선스 기초 | 2026-03-20 | 오픈소스 담당자 |
-| 김철수 | 관리자 | 오픈소스 정책 개요 | 2026-03-21 | 오픈소스 담당자 |
+| 김철수 | 관리자 | 오픈소스 정책 개요     | 2026-03-21 | 오픈소스 담당자 |
 
 **자체 인증 시 completion-tracker.md 활용:**
+
 - 처음 인증할 때 교육 이수 전이라면 "교육 커리큘럼은 완성, 이수 예정"으로 부분충족 처리
 - 교육 완료 후 기록을 채워 완전 충족으로 전환
 - 신규 입사자 온보딩 시 교육 이수를 의무화하면 지속적인 컴플라이언스 유지 가능
@@ -95,14 +98,17 @@
 
 3. Claude 프롬프트가 열리면 **`시작`** 을 입력합니다.
 
-   :::details Agent 대화 예시 (클릭해서 펼치기)
+   <details>
+   <summary>Agent 대화 예시 (클릭해서 펼치기)</summary>
+
    아래는 실제 agent와의 대화 흐름 예시입니다. 실행 시 이런 형태로 진행됩니다.
 
    **Agent 안내 메시지:**
+
    > 안녕하세요! 교육 체계 산출물을 생성하는 agent입니다.
    > 3개 질문에 답변하시면 교육 문서 3개가 자동으로 생성됩니다.
 
-   ---
+   ***
 
    **질문 1/3** — 직군별 인원을 알려주세요. (개발자 N명 / 관리자 N명 / 운영 N명)
 
@@ -116,20 +122,21 @@
 
    `예시 답변: 인증 제출용`
 
-   ---
+   ***
 
    **생성 완료 시 출력 예시:**
 
-   | 파일 | 내용 |
-   |------|------|
-   | `output/training/curriculum.md` | 직군별 교육 커리큘럼 및 권장 시간 |
+   | 파일                                    | 내용                                        |
+   | --------------------------------------- | ------------------------------------------- |
+   | `output/training/curriculum.md`         | 직군별 교육 커리큘럼 및 권장 시간           |
    | `output/training/completion-tracker.md` | 이수 추적 시트 (빈 양식, 교육 후 직접 기입) |
-   | `output/training/resources.md` | 무료 교육 리소스 목록 |
+   | `output/training/resources.md`          | 무료 교육 리소스 목록                       |
 
    **직접 기입이 필요한 항목:**
    - 교육 시행 일정 (연간 계획)
    - 이수 증빙 방법 결정 (수료증 / 이메일 확인 / 서명)
-   :::
+
+   </details>
 
 4. agent가 순서대로 3가지 질문을 한다:
    - 직군별 인원 (개발자 N명 / 관리자 N명 / 운영 N명)
@@ -141,34 +148,37 @@
 실습을 완료하면 아래 3개 파일이 생성됩니다.
 
 **생성 파일:**
+
 - `output/training/curriculum.md`
 - `output/training/completion-tracker.md`
 - `output/training/resources.md`
 
 **파일 내 반드시 포함되어야 할 항목:**
+
 - 직군별 교육 항목과 권장 시간
 - 이수 증빙 방법 (수료증 / 서명 / 이메일 확인)
 - 정기 교육 일정 (연 1회 이상)
 
 > `completion-tracker.md`는 빈 양식으로 생성됩니다. 실제 교육 이수 후 직접 채워야 합니다.
-:::
+> :::
 
 :::info 충족되는 표준 요구사항
 이 실습을 완료하면 아래 요구사항이 충족됩니다.
 
 **ISO/IEC 5230**
 
-| 항목 ID | 요구사항 | 자체인증 체크리스트 |
-|---|---|---|
-| 3.1.2 | 역량 보유 증빙 | Do you have documented evidence that each program participant has completed the necessary training? |
-| 3.1.3 | 인식 평가 | Do you have documented evidence that your program participants are aware of your open source policy? |
+| 항목 ID | 요구사항       | 자체인증 체크리스트                                                                                  |
+| ------- | -------------- | ---------------------------------------------------------------------------------------------------- |
+| 3.1.2   | 역량 보유 증빙 | Do you have documented evidence that each program participant has completed the necessary training?  |
+| 3.1.3   | 인식 평가      | Do you have documented evidence that your program participants are aware of your open source policy? |
 
 **ISO/IEC 18974**
 
-| 항목 ID | 요구사항 | 자체인증 체크리스트 |
-|---|---|---|
-| 4.1.2 | 보안 역량 보유 증빙 | Do you have documented evidence that each program participant has the necessary competence for security assurance? |
-| 4.1.3 | 보안 인식 평가 | Do you have documented evidence that your program participants are aware of your open source security assurance policy? |
+| 항목 ID | 요구사항            | 자체인증 체크리스트                                                                                                     |
+| ------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| 4.1.2   | 보안 역량 보유 증빙 | Do you have documented evidence that each program participant has the necessary competence for security assurance?      |
+| 4.1.3   | 보안 인식 평가      | Do you have documented evidence that your program participants are aware of your open source security assurance policy? |
+
 :::
 
 ## 7. 생성되는 산출물

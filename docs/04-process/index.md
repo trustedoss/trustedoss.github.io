@@ -208,7 +208,9 @@ cd agents/04-process-designer
 claude
 ```
 
-:::details Agent 대화 예시 (클릭해서 펼치기)
+<details>
+<summary>Agent 대화 예시 (클릭해서 펼치기)</summary>
+
 아래는 실제 agent와의 대화 흐름 예시입니다. 실행 시 이런 형태로 진행됩니다.
 
 **Agent 안내 메시지:**
@@ -264,7 +266,8 @@ claude
 
 - GitHub Actions 워크플로우 파일 경로 확인
 - 승인자 이름 및 연락처
-  :::
+
+</details>
 
 **3단계**: Claude 프롬프트가 열리면 `시작` 을 입력합니다.
 
