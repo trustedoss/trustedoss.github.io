@@ -2,8 +2,8 @@
 작성일: 2026-03-20
 버전: 1.0
 충족 체크리스트:
-  - "ISO/IEC 5230: []"
-  - "ISO/IEC 18974: []"
+  - 'ISO/IEC 5230: []'
+  - 'ISO/IEC 18974: []'
 셀프스터디 소요시간: 30분~1시간
 ---
 
@@ -19,12 +19,12 @@
 
 ## 2. 필요한 도구 목록
 
-| 도구 | 용도 | 설치 필요 여부 | 버전 요구사항 |
-|------|------|--------------|-------------|
-| Docker Desktop | 모든 실습 도구(Dependency-Track 등) 실행 | 필수 | 24.x 이상 |
-| Git | 저장소 관리 및 버전 관리 | 필수 | 2.x 이상 |
-| Claude Code | AI 기반 실습 보조, agent 실행 | 필수 | 최신 버전 |
-| Node.js | Docusaurus 문서 사이트 빌드 | 선택 (문서 사이트 필요 시) | v18 LTS 이상 |
+| 도구           | 용도                                     | 설치 필요 여부             | 버전 요구사항 |
+| -------------- | ---------------------------------------- | -------------------------- | ------------- |
+| Docker Desktop | 모든 실습 도구(Dependency-Track 등) 실행 | 필수                       | 24.x 이상     |
+| Git            | 저장소 관리 및 버전 관리                 | 필수                       | 2.x 이상      |
+| Claude Code    | AI 기반 실습 보조, agent 실행            | 필수                       | 최신 버전     |
+| Node.js        | Docusaurus 문서 사이트 빌드              | 선택 (문서 사이트 필요 시) | v18 LTS 이상  |
 
 ## 3. 설치 안내 (OS별)
 
@@ -108,7 +108,7 @@ echo "모든 필수 도구가 설치되면 다음 단계로 진행하세요."
 ```bash
 # 저장소 클론
 git clone https://github.com/trustedoss/trustedoss.github.io.git
-cd trustedoss
+cd trustedoss.github.io
 
 # output 디렉토리 생성 (없는 경우)
 mkdir -p output
@@ -120,7 +120,7 @@ claude
 이미 클론한 경우:
 
 ```bash
-cd trustedoss
+cd trustedoss.github.io
 git pull
 claude
 ```
