@@ -109,6 +109,8 @@ bash .claude/scripts/verify.sh
 검증 항목: Docusaurus 빌드 / 내부 링크 / front matter YAML / 필수 파일 / 로컬 경로 노출 / **18974 섹션 번호 형식** / **agent 실행 admonition 누락** / ISO 커버리지 정합성 / **output/ 산출물 완전성**
 모든 항목 PASS 후에만 push 가능. push 전 5단계 절차는 `CONTRIBUTING.md` 참조.
 
+**verify.sh FAIL 처리 기준**: FAIL 항목이 이번 변경 이전부터 존재하던 것인지 먼저 확인하라. git diff로 해당 파일을 건드리지 않았다면 기존 이슈로 간주하고 조사하지 않는다. 새로 발생한 FAIL만 수정한다.
+
 ### 2. 경로 규칙
 
 | 구분     | 패턴                   | 예시                                     |
@@ -150,6 +152,13 @@ ISO/IEC 5230과 18974는 섹션 번호 체계가 다르다. 혼용하면 verify.
 | `settings.local.json` | 로컬 전용     | 사용 가능 | 금지 |
 
 로컬에서만 필요한 설정은 반드시 `settings.local.json` 에 작성하라.
+
+## 파일 탐색 원칙
+
+파일에서 특정 패턴(헤더, 키워드, 줄)을 찾을 때는 **Read 전에 Grep을 먼저** 사용하라.
+
+- 파일 전체가 필요한 경우에만 Read를 쓴다.
+- 사용자가 지목한 파일만 스코프에 포함한다. 관련이 있어 보여도 명시되지 않은 파일은 읽지 않는다.
 
 ## 막혔을 때
 
