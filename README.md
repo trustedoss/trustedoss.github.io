@@ -45,7 +45,7 @@
 git clone https://github.com/trustedoss/trustedoss.github.io.git
 
 # 2. 프로젝트 진입 및 Claude Code 실행
-cd trustedoss && claude
+cd trustedoss.github.io && claude
 
 # 3. 시작 안내 요청
 # "어디서 시작해야 해?" 입력

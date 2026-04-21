@@ -123,7 +123,7 @@ Claude Code 를 실행하는 환경을 전제합니다.
 - [ ] trustedoss 저장소를 클론했나요?
       `git clone https://github.com/trustedoss/trustedoss.github.io.git`
 - [ ] 터미널에서 프로젝트 루트에 있나요?
-      `cd trustedoss`
+      `cd trustedoss.github.io`
 - [ ] Claude Code 가 실행 중인가요?
       `claude`
 

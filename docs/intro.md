@@ -29,7 +29,7 @@ ISO/IEC 5230 & 18974 기반 기업 오픈소스 관리 체계 구축 실전 Kit
 
 ```bash
 git clone https://github.com/trustedoss/trustedoss.github.io.git
-cd trustedoss && claude
+cd trustedoss.github.io && claude
 # "어디서 시작해야 해?" 입력
 ```
 
@@ -42,18 +42,18 @@ cd trustedoss && claude
 
 ## 전체 챕터
 
-| 챕터 | 내용 |
-|------|------|
-| [개요](./00-overview/index.md) | 두 표준 개요 및 체크리스트 매핑 |
-| [공급망 보안](./00-overview/supply-chain.md) | 소프트웨어 공급망 보안 + SBOM 개념 |
-| [01 환경 준비](./01-setup/index.md) | Docker, Git, Claude Code 설치 |
-| [02 조직](./02-organization/index.md) | 조직 구성 및 담당자 지정 |
-| [03 정책](./03-policy/index.md) | 오픈소스 정책 수립 |
-| [04 프로세스](./04-process/index.md) | 오픈소스 프로세스 설계 |
-| 05 도구 | · [SBOM 생성](./05-tools/sbom-generation/index.md) <br /> · [SBOM 관리](./05-tools/sbom-management/index.md) <br />· [취약점](./05-tools/vulnerability/index.md) |
-| [06 교육](./06-training/index.md) | 교육 체계 구축 |
-| [07 인증](./07-conformance/index.md) | 자체 인증 선언 |
-| [08 개발자 가이드](./08-developer-guide/index.md) | Claude Code로 정책 자동 준수 (선택) |
+| 챕터                                              | 내용                                                                                                                                                             |
+| ------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [개요](./00-overview/index.md)                    | 두 표준 개요 및 체크리스트 매핑                                                                                                                                  |
+| [공급망 보안](./00-overview/supply-chain.md)      | 소프트웨어 공급망 보안 + SBOM 개념                                                                                                                               |
+| [01 환경 준비](./01-setup/index.md)               | Docker, Git, Claude Code 설치                                                                                                                                    |
+| [02 조직](./02-organization/index.md)             | 조직 구성 및 담당자 지정                                                                                                                                         |
+| [03 정책](./03-policy/index.md)                   | 오픈소스 정책 수립                                                                                                                                               |
+| [04 프로세스](./04-process/index.md)              | 오픈소스 프로세스 설계                                                                                                                                           |
+| 05 도구                                           | · [SBOM 생성](./05-tools/sbom-generation/index.md) <br /> · [SBOM 관리](./05-tools/sbom-management/index.md) <br />· [취약점](./05-tools/vulnerability/index.md) |
+| [06 교육](./06-training/index.md)                 | 교육 체계 구축                                                                                                                                                   |
+| [07 인증](./07-conformance/index.md)              | 자체 인증 선언                                                                                                                                                   |
+| [08 개발자 가이드](./08-developer-guide/index.md) | Claude Code로 정책 자동 준수 (선택)                                                                                                                              |
 
 ---
 

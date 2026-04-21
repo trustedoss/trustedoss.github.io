@@ -45,18 +45,18 @@ node --version
 
 ## 설치가 안 된 도구 발견 시
 
-| 도구 | 설치 방법 |
-|------|---------|
+| 도구           | 설치 방법                                      |
+| -------------- | ---------------------------------------------- |
 | Docker Desktop | https://www.docker.com/products/docker-desktop |
-| Git | https://git-scm.com/downloads |
-| Claude Code | `npm install -g @anthropic-ai/claude-code` |
-| Node.js | https://nodejs.org (LTS 버전 권장) |
+| Git            | https://git-scm.com/downloads                  |
+| Claude Code    | `npm install -g @anthropic-ai/claude-code`     |
+| Node.js        | https://nodejs.org (LTS 버전 권장)             |
 
 ## 저장소 클론
 
 ```bash
 git clone https://github.com/trustedoss/trustedoss.github.io.git
-cd trustedoss
+cd trustedoss.github.io
 ```
 
 ## 완료 기준
@@ -80,7 +80,6 @@ cd trustedoss
 4. `output/` 디렉토리 생성
 5. `claude` 실행하여 정상 동작 확인
 
-
 ## 자주 발생하는 문제
 
 **Q: Docker Desktop이 시작되지 않아요.**
@@ -98,8 +97,10 @@ A: WSL2 백엔드 사용 권장. Docker Desktop 설정 > General > Use WSL2 base
 ## 다음 단계
 
 환경 준비 완료 후:
+
 ```bash
 cd agents/02-organization-designer
 claude
 ```
+
 또는 `docs/02-organization/` 으로 이동하여 조직 설계 챕터를 읽은 뒤 진행.

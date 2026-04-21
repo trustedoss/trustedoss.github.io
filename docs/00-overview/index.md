@@ -2,8 +2,8 @@
 작성일: 2026-03-20
 버전: 1.0
 충족 체크리스트:
-  - "ISO/IEC 5230: []"
-  - "ISO/IEC 18974: []"
+  - 'ISO/IEC 5230: []'
+  - 'ISO/IEC 18974: []'
 셀프스터디 소요시간: 1시간
 slug: /
 ---
@@ -29,36 +29,36 @@ slug: /
 
 ```bash
 git clone https://github.com/trustedoss/trustedoss.github.io.git
-cd trustedoss && claude
+cd trustedoss.github.io && claude
 # "어디서 시작해야 해?" 입력
 ```
 
 ### 전체 챕터
 
-| 챕터 | 내용 |
-|------|------|
-| [00 시작하기](./index.md) | 배경, 체크리스트 매핑, 소프트웨어 공급망 보안 + SBOM 개념 |
-| [01 환경 준비](../01-setup/index.md) | Docker, Git, Claude Code 설치 |
-| [02 조직](../02-organization/index.md) | 조직 구성 및 담당자 지정 |
-| [03 정책](../03-policy/index.md) | 오픈소스 정책 수립 |
-| [04 프로세스](../04-process/index.md) | 오픈소스 프로세스 설계 |
-| 05 도구 | · [SBOM 생성](../05-tools/sbom-generation/index.md) <br /> · [SBOM 관리](../05-tools/sbom-management/index.md) <br />· [취약점](../05-tools/vulnerability/index.md) |
-| [06 교육](../06-training/index.md) | 교육 체계 구축 |
-| [07 인증](../07-conformance/index.md) | 자체 인증 선언 |
-| [08 개발자 가이드](../08-developer-guide/index.md) | Claude Code로 정책 자동 준수 (선택) |
+| 챕터                                               | 내용                                                                                                                                                                |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [00 시작하기](./index.md)                          | 배경, 체크리스트 매핑, 소프트웨어 공급망 보안 + SBOM 개념                                                                                                           |
+| [01 환경 준비](../01-setup/index.md)               | Docker, Git, Claude Code 설치                                                                                                                                       |
+| [02 조직](../02-organization/index.md)             | 조직 구성 및 담당자 지정                                                                                                                                            |
+| [03 정책](../03-policy/index.md)                   | 오픈소스 정책 수립                                                                                                                                                  |
+| [04 프로세스](../04-process/index.md)              | 오픈소스 프로세스 설계                                                                                                                                              |
+| 05 도구                                            | · [SBOM 생성](../05-tools/sbom-generation/index.md) <br /> · [SBOM 관리](../05-tools/sbom-management/index.md) <br />· [취약점](../05-tools/vulnerability/index.md) |
+| [06 교육](../06-training/index.md)                 | 교육 체계 구축                                                                                                                                                      |
+| [07 인증](../07-conformance/index.md)              | 자체 인증 선언                                                                                                                                                      |
+| [08 개발자 가이드](../08-developer-guide/index.md) | Claude Code로 정책 자동 준수 (선택)                                                                                                                                 |
 
 ### 완성 시 갖게 되는 산출물
 
-| 단계 | 산출물 파일 | 관련 표준 |
-|------|------------|----------|
-| 조직 | `role-definition.md`, `raci-matrix.md`, `appointment-template.md` — [예시 보기](/reference/samples/organization) | [공통] |
-| 정책 | `oss-policy.md`, `license-allowlist.md` — [예시 보기](/reference/samples/policy) | [공통] |
-| 프로세스 | `usage-approval.md`, `distribution-checklist.md`, `vulnerability-response.md`, `process-diagram.md` — [예시 보기](/reference/samples/process) | [공통] |
-| SBOM 생성 | `[project].cdx.json`, `sbom-commands.sh`, `license-report.md`, `copyleft-risk.md` — [예시 보기](/reference/samples/sbom) | [공통] |
-| SBOM 관리 | `sbom-management-plan.md`, `sbom-sharing-template.md` — [예시 보기](/reference/samples/sbom) | [공급망] |
-| 취약점 | `cve-report.md`, `remediation-plan.md` — [예시 보기](/reference/samples/vulnerability) | [18974] |
-| 교육 | `curriculum.md`, `completion-tracker.md`, `resources.md` — [예시 보기](/reference/samples/training) | [공통] |
-| 인증 | `gap-analysis.md`, `declaration-draft.md`, `submission-guide.md` — [예시 보기](/reference/samples/conformance) | [공통] |
+| 단계      | 산출물 파일                                                                                                                                   | 관련 표준 |
+| --------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| 조직      | `role-definition.md`, `raci-matrix.md`, `appointment-template.md` — [예시 보기](/reference/samples/organization)                              | [공통]    |
+| 정책      | `oss-policy.md`, `license-allowlist.md` — [예시 보기](/reference/samples/policy)                                                              | [공통]    |
+| 프로세스  | `usage-approval.md`, `distribution-checklist.md`, `vulnerability-response.md`, `process-diagram.md` — [예시 보기](/reference/samples/process) | [공통]    |
+| SBOM 생성 | `[project].cdx.json`, `sbom-commands.sh`, `license-report.md`, `copyleft-risk.md` — [예시 보기](/reference/samples/sbom)                      | [공통]    |
+| SBOM 관리 | `sbom-management-plan.md`, `sbom-sharing-template.md` — [예시 보기](/reference/samples/sbom)                                                  | [공급망]  |
+| 취약점    | `cve-report.md`, `remediation-plan.md` — [예시 보기](/reference/samples/vulnerability)                                                        | [18974]   |
+| 교육      | `curriculum.md`, `completion-tracker.md`, `resources.md` — [예시 보기](/reference/samples/training)                                           | [공통]    |
+| 인증      | `gap-analysis.md`, `declaration-draft.md`, `submission-guide.md` — [예시 보기](/reference/samples/conformance)                                | [공통]    |
 
 ---
 
@@ -66,15 +66,15 @@ cd trustedoss && claude
 
 ### 두 표준 비교
 
-| 항목 | ISO/IEC 5230 | ISO/IEC 18974 |
-|------|-------------|---------------|
-| 정식 명칭 | OpenChain License Compliance | OpenChain Security Assurance |
-| 최신 버전 | 2.1 (2023) | 1.0 (2023) |
-| 목적 | 오픈소스 라이선스 컴플라이언스 체계 수립 | 오픈소스 보안 취약점 보증 체계 수립 |
-| 초점 | 라이선스 의무사항 이행, BOM 관리 | 알려진 CVE 식별·추적·대응, SBOM 기반 보안 |
+| 항목          | ISO/IEC 5230                                                   | ISO/IEC 18974                                      |
+| ------------- | -------------------------------------------------------------- | -------------------------------------------------- |
+| 정식 명칭     | OpenChain License Compliance                                   | OpenChain Security Assurance                       |
+| 최신 버전     | 2.1 (2023)                                                     | 1.0 (2023)                                         |
+| 목적          | 오픈소스 라이선스 컴플라이언스 체계 수립                       | 오픈소스 보안 취약점 보증 체계 수립                |
+| 초점          | 라이선스 의무사항 이행, BOM 관리                               | 알려진 CVE 식별·추적·대응, SBOM 기반 보안          |
 | 핵심 요구사항 | 정책·조직·프로세스·BOM·컴플라이언스 산출물·기여 정책·준수 선언 | 정책·조직·SBOM·CVE 스캔·취약점 추적·대응·준수 선언 |
-| 인증 방식 | OpenChain 웹사이트 자체 선언 | OpenChain 웹사이트 자체 선언 |
-| 제정 배경 | 오픈소스 라이선스 분쟁 급증 대응 | SolarWinds·Log4Shell 등 공급망 보안 사고 대응 |
+| 인증 방식     | OpenChain 웹사이트 자체 선언                                   | OpenChain 웹사이트 자체 선언                       |
+| 제정 배경     | 오픈소스 라이선스 분쟁 급증 대응                               | SolarWinds·Log4Shell 등 공급망 보안 사고 대응      |
 
 > 유효 기간·관련 규제·상호 보완성 등 항목별 상세 비교는 [`checklist-mapping.md`](./checklist-mapping.md) 참조.
 
@@ -92,14 +92,14 @@ cd trustedoss && claude
 
 **항목 ID 체계:**
 
-| 접두사 | 의미 |
-|--------|------|
-| G1 | 프로그램 기반 (정책·조직·교육) |
-| G2 | 관련 업무 정의 (역할·채널·인식) |
-| G3-L | 라이선스 컴플라이언스 (ISO/IEC 5230 중심) |
-| G3-S | 보안 보증 (ISO/IEC 18974 중심) |
-| G3-B | SBOM 및 공급망 (공통) |
-| G4 | 준수 선언 및 유지 |
+| 접두사 | 의미                                      |
+| ------ | ----------------------------------------- |
+| G1     | 프로그램 기반 (정책·조직·교육)            |
+| G2     | 관련 업무 정의 (역할·채널·인식)           |
+| G3-L   | 라이선스 컴플라이언스 (ISO/IEC 5230 중심) |
+| G3-S   | 보안 보증 (ISO/IEC 18974 중심)            |
+| G3-B   | SBOM 및 공급망 (공통)                     |
+| G4     | 준수 선언 및 유지                         |
 
 **핵심 인사이트:** 전체 25개 항목 중 공통 항목이 10개다. 공통 항목 10개를 먼저 완성하면 두 표준을 동시에 40% 충족하므로, 중복 작업을 약 40% 절감할 수 있습니다. 이 키트는 공통 항목을 우선 처리하도록 설계되어 있습니다.
 
