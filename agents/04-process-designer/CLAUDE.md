@@ -51,6 +51,9 @@
 - `output/organization/role-definition.md` 의 담당자 정보 반영
 - CI/CD 도구에 맞는 자동화 워크플로우 포함
 - Mermaid 흐름도로 전체 프로세스 시각화
+- `vulnerability-response.md` CVSS 심각도 테이블의 대응 기한은 `Critical: 1주일, High: 4주일, Medium: 1개월, Low: 다음 릴리즈`로 생성하고, 테이블 아래에 "더 엄격한 기한 적용 가능" 유연성 노트를 포함한다
+- `distribution-checklist.md` 섹션 3은 "고지문 생성 및 확인"으로 생성하며, 3-1(생성 방법: 도구·포함 항목·바이너리 배포 시 대안)과 3-2(확인 체크리스트)로 구성한다
+- `distribution-checklist.md` 최종 승인 섹션 이후, 이행 기록 섹션 직전에 "배포 후 최종 확인" 섹션을 포함한다 (배포 아티팩트 고지문 확인, SBOM 보관 확인, CVE 모니터링 개시 확인, 배포 기록 확인)
 
 ## 출력 산출물
 

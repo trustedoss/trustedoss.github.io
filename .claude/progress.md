@@ -72,6 +72,12 @@
   - `.claude/scripts/sync-kwg-reference.sh` 신규 — KWG GitHub에서 md 파일 20개 다운로드
   - `.claude/reference/kwg/` 신규 — opensource_for_enterprise, templates, tools 원본
   - `.claude/harness-guide.md` 신규 — 하네스 전체 사용법·시나리오 가이드
+- **KWG 템플릿 정렬** (2026-04-21):
+  - 조직: output-sample·templates·agents/02 — `role-definition.md`에 OSRB·OSPO 선택 섹션 추가 (5인 이상 조건부)
+  - 정책: CVE KPI Critical 24h→1주·High 1주→4주 (KWG 기준선), 유연성 노트 추가, 프로그램 효과성 측정 서브섹션 추가 — output-sample·templates·agents/03·docs/03 반영
+  - 프로세스: `vulnerability-response.md` CVSS 테이블 동기화 (Critical 1주·High 4주), `distribution-checklist.md` 고지문 생성 절차(3-1/3-2) + 배포 후 최종 확인 섹션 추가 — output-sample·templates·agents/04·docs/04 반영
+  - website/reference/samples/ 3페이지 재생성 (organization, policy, process)
+  - 총 16개 파일 수정, 10/11 PASS (Docusaurus 빌드 FAIL은 기존 이슈)
 - **KWG 싱크 드리프트 탐지 시스템 구축** (2026-04-14):
   - `.claude/reference/kwg-mapping.yaml` 신규 — 4개 차원 KWG↔우리파일 매핑 (guide 7개, template 3개, tools 7종, iso_section 12개)
   - `.claude/scripts/check-kwg-drift.py` 신규 — 구조적 변경 감지 + 스냅샷 관리 (4개 차원)
