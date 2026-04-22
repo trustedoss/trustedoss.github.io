@@ -10,7 +10,7 @@ echo "===== trustedoss 자체 검증 시작 ====="
 
 # 검증 1: Docusaurus 빌드
 echo "[1/11] Docusaurus 빌드 확인..."
-if npm run build --silent 2>/dev/null; then
+if (cd website && npm run build --silent 2>/dev/null); then
   echo "  PASS: 빌드 성공"
   PASS=$((PASS+1))
 else
