@@ -19,7 +19,7 @@
 
 **수정 시 체크리스트:**
 
-1. 파일 수정 후 `bash .claude/scripts/verify.sh` — 8/8 PASS 확인
+1. 파일 수정 후 `bash .claude/scripts/verify.sh` — 11/11 PASS 확인
 2. `git commit`
 
 ---
@@ -87,3 +87,16 @@
   - `.claude/kwg-human-tasks.md` 신규 — 사람이 해야 할 일 상세 가이드
   - 초기 스냅샷 생성 및 차원 4 미매핑 섹션 보완 완료
   - "싱크 OK" 확인
+- **AI 코딩 가이드 개선** (2026-04-25):
+  - `website/ai-coding/strategy.md`: 3단계 핵심 수단을 SCA → DevSecOps 6개 영역(시크릿 탐지·SAST·SCA·IaC·컨테이너·AI 리뷰)으로 확대, 4단계에 AI 퍼징 추가
+  - `website/ai-coding/cicd-quick.mdx`: SCA 중심 최소 시작점 포지셔닝 명확화, 다음 단계 링크 7개로 확장
+  - `website/ai-coding/ai-security-review.md` 신규: AI 활용 의미론적 취약점 탐지 (역할 분담 테이블 + GitHub Actions 예시)
+  - `website/ai-coding/best-practice-repo.md` 신규: 1~4단계 구현 참조 저장소 안내
+  - `website/ai-coding/intro.md`: 새 페이지 2개 목록 추가, cicd-quick 설명 갱신
+  - `website/devsecops/intro.md`: AI 코딩 가이드 진입 경로 개선 (4단계 전략 → Quick CI/CD → DevSecOps)
+  - `github.com/trustedoss/ai-coding-best-practice` 신규 저장소 구성:
+    - 3단계 전체 (Gitleaks·Semgrep·CodeQL·syft+grype·Checkov·Trivy)
+    - 4단계 전체 (Dependabot·Renovate·OWASP ZAP·AI 퍼징)
+    - 정책 파일(.gitleaks.toml·.grype.yaml·.semgrep.yml), 샘플 앱(Flask), K8s 매니페스트
+  - `.claude/plan-ai-coding-improvement.md` 신규: 세션 연속성 보장용 작업 계획 문서
+  - 11/11 PASS 확인
