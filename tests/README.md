@@ -114,17 +114,22 @@ python3 .claude/scripts/test-agent-e2e.py --agent 02-organization-designer --ver
 
 ### 픽스처 파일
 
-| 파일                                | 설명                               |
-| ----------------------------------- | ---------------------------------- |
-| `02-organization-designer.json`     | 조직 산출물 생성 기본 케이스       |
-| `03-policy-generator.json`          | 정책 문서 생성                     |
-| `04-process-designer-branch-A.json` | 프로세스 설계 (기여+공개 활성화)   |
-| `04-process-designer-branch-B.json` | 프로세스 설계 (기여+공개 비활성화) |
-| `05-sbom-analyst.json`              | SBOM 라이선스 분석                 |
-| `05-sbom-management.json`           | SBOM 관리 계획                     |
-| `05-vulnerability-analyst.json`     | 취약점 분석 리포트                 |
-| `06-training-manager.json`          | 교육 커리큘럼 생성                 |
-| `07-conformance-preparer.json`      | 갭 분석 및 인증 선언문             |
+| 파일                                | 설명                                                         |
+| ----------------------------------- | ------------------------------------------------------------ |
+| `02-organization-designer.json`     | 조직 산출물 생성 기본 케이스                                 |
+| `03-policy-generator.json`          | 정책 문서 생성                                               |
+| `04-process-designer-branch-A.json` | 프로세스 설계 — 기여+공개 둘 다 활성화                       |
+| `04-process-designer-branch-B.json` | 프로세스 설계 — 기여+공개 둘 다 비활성화                     |
+| `04-process-designer-openwave.json` | 프로세스 설계 — OpenWave: 기여만(Q5=예)·공개 없음(Q6=아니오) |
+| `05-sbom-guide.json`                | SBOM 가이드 — Docker 없음, 샘플 SBOM 사용                    |
+| `05-sbom-analyst.json`              | SBOM 라이선스 분석 (SaaS 배포)                               |
+| `05-sbom-management.json`           | SBOM 관리 계획 — 납품처 있음(Q1=예), CycloneDX               |
+| `05-sbom-management-openwave.json`  | SBOM 관리 계획 — OpenWave: 납품처 없음(Q1=아니오), SaaS      |
+| `05-vulnerability-analyst.json`     | 취약점 분석 리포트                                           |
+| `06-training-manager.json`          | 교육 커리큘럼 생성                                           |
+| `07-conformance-preparer.json`      | 갭 분석 및 인증 선언문                                       |
+
+**OpenWave 분기 fixture 의도**: `04-process-designer-openwave`·`05-sbom-management-openwave`는 정적 시뮬레이션(Phase 2 B안)에서 수정한 조건 분기 로직을 실제로 검증하기 위해 추가되었습니다.
 
 ### 주의 사항
 
@@ -173,3 +178,72 @@ Layer 1·2는 **정적 분석(linting)** 에 해당합니다.
 agents/ CLAUDE.md 수정  →  Layer 3 단일 agent 추가 실행
 릴리즈 전        →  python3 .claude/scripts/test-agent-e2e.py --all
 ```
+
+---
+
+## 드라이런 — OpenWave 프로필 체인 테스트
+
+OpenWave 스타트업 프로필(SaaS·Python/pip·GitHub Actions·2주 배포·기여 계획 있음)을 기준으로
+agent 02~07 전체 체인을 테스트하는 전용 시스템입니다.
+
+### 구성 파일
+
+| 파일                                                    | 역할                           |
+| ------------------------------------------------------- | ------------------------------ |
+| `dry-run/run-dryrun.sh`                                 | 드라이런 오케스트레이터        |
+| `.claude/scripts/validate-chain.py`                     | agent 체인 전제 조건 연결 검증 |
+| `tests/fixtures/*-openwave.json` + `05-sbom-guide.json` | OpenWave 특화 fixture          |
+
+### 사용법
+
+```bash
+# 1. 체인 연결 검증만 (API 불필요, 즉시 실행)
+bash dry-run/run-dryrun.sh --chain-only
+
+# 2. 전체 E2E 드라이런 (ANTHROPIC_API_KEY 필요)
+export ANTHROPIC_API_KEY=sk-ant-...
+bash dry-run/run-dryrun.sh
+
+# 3. 특정 agent만
+bash dry-run/run-dryrun.sh --agent 04-process-designer
+
+# 4. 상세 출력
+bash dry-run/run-dryrun.sh --chain-only -v
+
+# 5. validate-chain.py 단독 실행
+python3 .claude/scripts/validate-chain.py --dir output-sample
+python3 .claude/scripts/validate-chain.py --dir output-sample --agent 05-sbom-analyst -v
+```
+
+### validate-chain.py 동작 방식
+
+`output-sample/`(또는 지정 디렉토리)를 기준으로 9개 agent 각각의:
+
+1. **전제 조건 파일** — 이전 agent가 생성해야 하는 파일이 존재하는가
+2. **출력 파일** — 이 agent가 생성해야 하는 파일이 존재하는가
+3. **조건부 출력** — 프로필에 따라 존재해야 하는 파일 (없으면 WARN, FAIL 아님)
+
+```
+[체인 연결 검증] 대상: output-sample/
+
+  [PASS] 02-organization-designer: 3개 통과, 0개 실패
+  [PASS] 03-policy-generator: 3개 통과, 0개 실패
+    WARN 조건부 출력 없음: process/contribution-process.md (기여 계획 있음)
+  [PASS] 04-process-designer: 7개 통과, 0개 실패 (경고 1개)
+  ...
+  PASS: 체인 연결 이상 없음 (경고 1개)
+```
+
+> **경고 1개 해설**: `output-sample/`이 "기여 없음" 프로필로 생성되어 `contribution-process.md`가 없습니다.
+> OpenWave는 기여 계획이 있으므로, output-sample을 OpenWave 프로필로 재생성하면 경고가 사라집니다.
+
+### Layer 3과의 관계
+
+| 항목             | Layer 3 (test-agent-e2e.py) | 드라이런 (run-dryrun.sh)  |
+| ---------------- | --------------------------- | ------------------------- |
+| 실행 대상        | 개별 fixture (agent 단위)   | OpenWave 프로필 전체 체인 |
+| 체인 연결 검증   | ❌ (격리 임시 디렉토리)     | ✅ (validate-chain.py)    |
+| 조건부 분기 검증 | ✅ (expected_absent)        | ✅ (fixture 선택으로)     |
+| API 없이 실행    | ❌                          | ✅ (--chain-only)         |
+
+`--chain-only`는 API 없이 즉시 실행 가능하므로 agent CLAUDE.md 수정 후 빠른 회귀 검사에 유용합니다.
