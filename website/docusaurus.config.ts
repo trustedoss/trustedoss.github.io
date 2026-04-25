@@ -264,6 +264,10 @@ const config: Config = {
           title: '커뮤니티',
           items: [
             {
+              label: '이 프로젝트에 대하여',
+              to: '/about',
+            },
+            {
               label: 'OpenChain KWG',
               href: 'https://openchain-project.github.io/OpenChain-KWG/',
             },
