@@ -7,7 +7,7 @@ sidebar_position: 8
 
 # Best Practice 저장소
 
-[4단계 전략](./strategy)의 1~4단계를 모두 구현한 참조 GitHub 저장소입니다.
+[5단계 전략](./strategy)의 1~5단계를 모두 구현한 참조 GitHub 저장소입니다.
 fork해서 즉시 사용하거나, 설정 파일을 복사해 기존 프로젝트에 적용할 수 있습니다.
 
 :::info 저장소
@@ -62,24 +62,29 @@ ai-coding-best-practice/
 
 ### 3단계 — CI/CD 자동 차단
 
-| 영역          | 구현 파일                | 설명                                             |
-| ------------- | ------------------------ | ------------------------------------------------ |
-| 시크릿 탐지   | `secret-detection.yml`   | Gitleaks — PR마다 API 키·토큰 하드코딩 탐지      |
-| SAST          | `sast.yml`               | Semgrep — OWASP Top 10 룰셋 + 커스텀 룰          |
-| SAST (심층)   | `codeql.yml`             | CodeQL — PR 및 주 1회 스케줄 정적 분석           |
-| SCA           | `oss-policy.yml`         | syft + grype — SBOM 생성·CVE 스캔·라이선스 검사  |
-| IaC 보안      | `iac-security.yml`       | Checkov — Dockerfile·Kubernetes 설정 오류 탐지   |
-| 컨테이너 보안 | `container-security.yml` | Trivy — Docker 이미지 취약점 스캔                |
-| AI 코드 리뷰  | `ai-review.yml`          | Claude API 의미론적 취약점 탐지 (비활성화, 선택) |
+| 영역          | 구현 파일                | 설명                                            |
+| ------------- | ------------------------ | ----------------------------------------------- |
+| 시크릿 탐지   | `secret-detection.yml`   | Gitleaks — PR마다 API 키·토큰 하드코딩 탐지     |
+| SAST          | `sast.yml`               | Semgrep — OWASP Top 10 룰셋 + 커스텀 룰         |
+| SAST (심층)   | `codeql.yml`             | CodeQL — PR 및 주 1회 스케줄 정적 분석          |
+| SCA           | `oss-policy.yml`         | syft + grype — SBOM 생성·CVE 스캔·라이선스 검사 |
+| IaC 보안      | `iac-security.yml`       | Checkov — Dockerfile·Kubernetes 설정 오류 탐지  |
+| 컨테이너 보안 | `container-security.yml` | Trivy — Docker 이미지 취약점 스캔               |
 
-### 4단계 — 지속적 모니터링·자동 교정
+### 4단계 — AI 방어 레이어
+
+| 항목              | 구현 파일        | 설명                                                         |
+| ----------------- | ---------------- | ------------------------------------------------------------ |
+| AI 코드 리뷰 (4a) | `ai-review.yml`  | Semgrep·grype findings → Claude 검증·심층 해석 → PR 코멘트   |
+| AI 퍼징 (4b)      | `ai-fuzzing.yml` | Claude가 엣지케이스 생성 → 앱 실행 → 5xx 탐지 (Push to main) |
+
+### 5단계 — 지속적 모니터링·자동 교정
 
 | 항목                 | 구현 파일        | 설명                                           |
 | -------------------- | ---------------- | ---------------------------------------------- |
 | 의존성 자동 업데이트 | `dependabot.yml` | 주간 의존성 업데이트 PR 자동 생성              |
 | 패치 자동 병합       | `renovate.json`  | Critical 패치 자동 병합, Major는 검토 알림     |
 | DAST                 | `dast.yml`       | OWASP ZAP Baseline — Push to main 시 동적 스캔 |
-| AI 퍼징              | `ai-fuzzing.yml` | Claude가 엣지케이스 생성 → 앱 실행 → 5xx 탐지  |
 
 ---
 
@@ -107,8 +112,9 @@ git commit -am "test: pipeline check"
 git push origin test/pipeline-check
 ```
 
-PR 생성 시 3단계 워크플로우 7개가 자동 실행됩니다.
-DAST와 AI 퍼징은 Push to main 또는 주간 스케줄에서 실행됩니다.
+PR 생성 시 3단계 워크플로우 6개가 자동 실행됩니다.
+4단계 AI 리뷰는 `ANTHROPIC_API_KEY` 등록 시 자동 활성화됩니다.
+AI 퍼징과 DAST는 Push to main 또는 주간 스케줄에서 실행됩니다.
 
 ---
 
