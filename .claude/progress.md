@@ -6,7 +6,7 @@
 | ----- | ----------------------------------------------------- | ----------------- |
 | 0     | 플랫폼 기반 구축 (Docusaurus, CI/CD, 기본 구조)       | ✅ 완료           |
 | 1     | 핵심 콘텐츠 작성 (docs 챕터 00~07, templates, agents) | ✅ 완료 (2026-03) |
-| 2     | Agent 구축 (산출물 자동 생성 파이프라인)              | ⏳ 대기           |
+| 2     | Agent 구축 (산출물 자동 생성 파이프라인)              | 🔄 진행중         |
 | 3     | 검증 시스템 강화 (verify.sh, CI 통합)                 | ⏳ 대기           |
 | 4     | 출시 및 배포 (퍼블리시, OpenChain 등록 안내)          | ⏳ 대기           |
 
@@ -99,4 +99,11 @@
     - 4단계 전체 (Dependabot·Renovate·OWASP ZAP·AI 퍼징)
     - 정책 파일(.gitleaks.toml·.grype.yaml·.semgrep.yml), 샘플 앱(Flask), K8s 매니페스트
   - `.claude/plan-ai-coding-improvement.md` 신규: 세션 연속성 보장용 작업 계획 문서
+  - 11/11 PASS 확인
+- **Phase 2 — Agent 체인 검증 1차** (2026-04-25):
+  - `validate-output.py` sbom 챕터 3개 파일 누락 수정 (license-report.md·copyleft-risk.md·sbom-sharing-template.md)
+  - `fixture-sample.cdx.json` 현실화: 2개→5개 컴포넌트, GPL-2.0 Copyleft + CVE 취약점 포함
+  - `05-sbom-guide` Docker 없이 진행하는 경우 fallback 추가
+  - `05-sbom-analyst`·`05-vulnerability-analyst` 샘플 SBOM 경로 힌트 추가
+  - `docs/sbom-generation` Docker 없이 진행 tip 블록 추가
   - 11/11 PASS 확인
