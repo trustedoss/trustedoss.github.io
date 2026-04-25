@@ -343,12 +343,12 @@ bash .claude/scripts/verify.sh
 - [x] A: `strategy.md` — 3단계 테이블·설명, 4단계 퍼징 추가
 - [x] B: `cicd-quick.mdx` — 상단 admonition, 다음 단계 링크 확장
 - [x] C: `ai-security-review.md` — 신규 페이지 생성 완료
-- [ ] D-pre: GitHub 저장소(`trustedoss/ai-coding-best-practice`) 생성 완료 ← 사용자 직접 생성 필요
+- [x] D-pre: GitHub 저장소(`trustedoss/ai-coding-best-practice`) 생성 및 파일 구성 완료
 - [x] D: `best-practice-repo.md` — 신규 페이지 생성 완료
 - [x] E: `ai-coding/intro.md` — 테이블 cicd-quick 설명 수정, 새 페이지 2개 추가
 - [x] F: `devsecops/intro.md` — 진입 경로 링크 수정
 - [x] 전체 verify.sh 11/11 PASS
-- [ ] git commit
+- [x] git commit
 
 ---
 
