@@ -51,9 +51,9 @@ ai-coding-best-practice/
         ├── oss-policy.yml             # 3단계: syft + grype + 라이선스
         ├── iac-security.yml           # 3단계: Checkov (Dockerfile·K8s)
         ├── container-security.yml     # 3단계: Trivy
-        ├── dast.yml                   # 4단계: OWASP ZAP (Push to main)
+        ├── ai-review.yml              # 4단계: findings-driven AI 리뷰 (ANTHROPIC_API_KEY 등록 시 자동 활성화)
         ├── ai-fuzzing.yml             # 4단계: AI 퍼징 (주 1회 + Push)
-        └── ai-review.yml             # 3단계 선택: AI 코드 리뷰 (기본 비활성화)
+        └── dast.yml                   # 5단계: OWASP ZAP (Push to main)
 ```
 
 ---
@@ -133,7 +133,7 @@ AI 퍼징과 DAST는 Push to main 또는 주간 스케줄에서 실행됩니다.
 
 ## 관련 가이드
 
-- [4단계 전략](./strategy) — 각 단계의 목적과 도입 순서
+- [5단계 전략](./strategy) — 각 단계의 목적과 도입 순서
 - [30분 완성 Quick CI/CD](./cicd-quick) — SCA 중심 최소 시작점
 - [AI 보안 코드 리뷰](./ai-security-review) — AI를 활용한 의미론적 취약점 탐지
 - [DevSecOps — 전사 파이프라인 설계](/devsecops/pipeline-design) — 멀티 저장소·정책 거버넌스
