@@ -181,6 +181,18 @@ agents/ CLAUDE.md 수정  →  Layer 3 단일 agent 추가 실행
 
 ---
 
+## CI/CD 통합 현황
+
+| 워크플로우           | 트리거                          | 포함 검증                                         |
+| -------------------- | ------------------------------- | ------------------------------------------------- |
+| `pre-merge.yml`      | PR → main                       | Layer 1+2, 체인 연결, ISO 커버리지, output 완전성 |
+| `agent-e2e-test.yml` | `agents/*/CLAUDE.md` 변경, 수동 | Layer 3 LLM E2E (ANTHROPIC_API_KEY 필요)          |
+| `deploy.yml`         | push/main                       | Docusaurus 빌드 + 배포                            |
+
+**Layer 3 수동 실행 방법**: GitHub → Actions → "Agent E2E Test (Layer 3)" → "Run workflow"
+
+---
+
 ## 드라이런 — OpenWave 프로필 체인 테스트
 
 OpenWave 스타트업 프로필(SaaS·Python/pip·GitHub Actions·2주 배포·기여 계획 있음)을 기준으로

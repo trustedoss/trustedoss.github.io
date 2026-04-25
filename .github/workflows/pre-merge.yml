@@ -81,3 +81,47 @@ jobs:
         working-directory: website
         env:
           NODE_OPTIONS: --max_old_space_size=8192
+
+  static-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "23"
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Build website (Docusaurus)
+        run: yarn build
+        working-directory: website
+        env:
+          NODE_OPTIONS: --max_old_space_size=8192
+
+      - name: Layer 1 — Agent 스펙 구조
+        run: python3 .claude/scripts/test-agent-specs.py
+
+      - name: Layer 2 — 골든 픽스처 회귀
+        run: python3 .claude/scripts/test-output-fixtures.py
+
+      - name: Layer 3-lite — 체인 연결
+        run: python3 .claude/scripts/validate-chain.py --dir output-sample
+
+      - name: ISO 커버리지 정합성
+        run: python3 .claude/scripts/test-coverage.py
+
+      - name: output/ 산출물 완전성
+        run: python3 .claude/scripts/validate-output.py

@@ -12,6 +12,8 @@ on:
       - "agents/*/CLAUDE.md"
       - "tests/fixtures/*.json"
       - ".claude/scripts/test-agent-e2e.py"
+      - "dry-run/run-dryrun.sh"
+      - ".claude/scripts/validate-chain.py"
 
 jobs:
   e2e:
