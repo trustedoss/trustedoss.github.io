@@ -114,3 +114,13 @@
   - `05-sbom-analyst`·`05-vulnerability-analyst` 샘플 SBOM 경로 힌트 추가
   - `docs/sbom-generation` Docker 없이 진행 tip 블록 추가
   - 11/11 PASS 확인
+- **Phase 2 — Agent 지시문 정적 검토 (B안)** (2026-04-25):
+  - OpenWave 스타트업 프로필(12명·SaaS·Python/pip·GitHub Actions·2주 배포) 기준 02~07 전체 정적 시뮬레이션
+  - 탐지 이슈 6건 수정:
+    - 02: Q4 법무 선택지 "활용 예정" 추가
+    - 03: Q4(납품 여부) 처리 방식 분기 누락 보완
+    - 04: Q2 배포 주기 "격주(2주 1회)" 선택지 추가
+    - 05-sbom-management: Q1 "아니오/미정" 시 Q2 건너뛰기 분기 추가
+    - 05-vulnerability-analyst: 완료 확인 `ls` 추가 (일관성)
+    - 06-training-manager: Q1 직군 예시 추가 (스타트업 모호성 해소)
+  - 11/11 PASS 확인
