@@ -3,26 +3,26 @@
   "specVersion": "1.4",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-03-23T00:00:00Z",
+    "timestamp": "2026-04-25T00:00:00Z",
     "tools": [
       {
-        "vendor": "CycloneDX",
-        "name": "cdxgen",
-        "version": "9.0.0"
+        "vendor": "anchore",
+        "name": "syft",
+        "version": "1.42.3"
       }
     ],
     "component": {
       "type": "application",
-      "name": "sample-app",
+      "name": "python-mixed-license",
       "version": "1.0.0"
     }
   },
   "components": [
     {
       "type": "library",
-      "name": "lodash",
-      "version": "4.17.21",
-      "purl": "pkg:npm/lodash@4.17.21",
+      "name": "PyYAML",
+      "version": "5.3.1",
+      "purl": "pkg:pypi/pyyaml@5.3.1",
       "licenses": [
         {
           "license": {
@@ -33,13 +33,52 @@
     },
     {
       "type": "library",
-      "name": "express",
-      "version": "4.18.2",
-      "purl": "pkg:npm/express@4.18.2",
+      "name": "requests",
+      "version": "2.27.0",
+      "purl": "pkg:pypi/requests@2.27.0",
       "licenses": [
         {
           "license": {
-            "id": "MIT"
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "celery",
+      "version": "5.2.0",
+      "purl": "pkg:pypi/celery@5.2.0",
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "mysql-connector-python",
+      "version": "8.1.0",
+      "purl": "pkg:pypi/mysql-connector-python@8.1.0",
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "Pillow",
+      "version": "9.0.0",
+      "purl": "pkg:pypi/pillow@9.0.0",
+      "licenses": [
+        {
+          "license": {
+            "id": "HPND"
           }
         }
       ]

@@ -23,6 +23,7 @@ generate-report skill을 적용하여 표준화된 형식의 리포트를 생성
 
 1. **분석할 SBOM 파일 경로**는?
    (예: `output/sbom/project.cdx.json` / 여러 파일이면 `output/sbom/` 폴더 전체)
+   (샘플 SBOM 사용 시: `output/sbom/fixture-sample.cdx.json`)
 2. **소프트웨어 배포 방식**은?
    (SaaS / 앱스토어 배포 / 임베디드 / 내부용 — Copyleft 위험도 판정 기준에 활용)
 

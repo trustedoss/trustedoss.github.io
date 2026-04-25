@@ -38,7 +38,10 @@ CHAPTER_FILES = {
         "inquiry-response.md",
     ],
     "sbom": [
+        "license-report.md",
+        "copyleft-risk.md",
         "sbom-management-plan.md",
+        "sbom-sharing-template.md",
     ],
     "vulnerability": [
         "cve-report.md",

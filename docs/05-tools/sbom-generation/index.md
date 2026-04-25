@@ -103,6 +103,18 @@ docker ps
 
 오류 없이 실행되면 Docker가 준비된 것입니다.
 
+:::tip Docker 없이 진행하는 경우
+Docker를 설치하지 않았거나 실습 목적으로 빠르게 진행하려면, 아래 명령어로 미리 준비된 샘플 SBOM을 사용합니다.
+
+```bash
+mkdir -p output/sbom
+cp output-sample/sbom/fixture-sample.cdx.json output/sbom/fixture-sample.cdx.json
+```
+
+샘플 SBOM에는 GPL-2.0 Copyleft 컴포넌트와 CVE 취약점이 있는 패키지가 포함되어 있어 이후 분석 실습이 가능합니다.
+이 경우 05-sbom-guide agent 실행을 건너뛰고 바로 **단계 5(분석 agent 실행)**로 이동합니다.
+:::
+
 **단계 2** — 분석할 프로젝트 선택
 
 본인의 프로젝트를 사용할 수도 있고, 샘플을 사용할 수도 있습니다.
