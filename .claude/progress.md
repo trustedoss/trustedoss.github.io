@@ -114,6 +114,15 @@
   - `05-sbom-analyst`·`05-vulnerability-analyst` 샘플 SBOM 경로 힌트 추가
   - `docs/sbom-generation` Docker 없이 진행 tip 블록 추가
   - 11/11 PASS 확인
+- **Phase 2 — Agent 드라이런 인프라 구축 (C안)** (2026-04-25):
+  - `dry-run/run-dryrun.sh` 신규: OpenWave 프로필 오케스트레이터 (--chain-only / --agent 지원)
+  - `.claude/scripts/validate-chain.py` 신규: agent 체인 전제 조건 연결 검증
+  - `tests/fixtures/05-sbom-guide.json` 신규: Docker 없이 샘플 SBOM 케이스 (기존 누락)
+  - `tests/fixtures/04-process-designer-openwave.json` 신규: Q5=예·Q6=아니오 분기 (기여만, 공개 없음)
+  - `tests/fixtures/05-sbom-management-openwave.json` 신규: Q1=아니오 분기 (SaaS 납품처 없음)
+  - `test-agent-e2e.py`: Bash mock에 cp·chmod 지원 추가 (05-sbom-guide E2E 가능)
+  - 드라이런 실행: `bash dry-run/run-dryrun.sh --chain-only` (PASS) / 전체 E2E는 ANTHROPIC_API_KEY 필요
+  - 11/11 PASS 확인
 - **Phase 2 — Agent 지시문 정적 검토 (B안)** (2026-04-25):
   - OpenWave 스타트업 프로필(12명·SaaS·Python/pip·GitHub Actions·2주 배포) 기준 02~07 전체 정적 시뮬레이션
   - 탐지 이슈 6건 수정:
