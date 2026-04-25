@@ -1,0 +1,32 @@
+{
+  "agent": "04-process-designer",
+  "description": "프로세스 문서 생성 — OpenWave 분기: Q5=예(기여), Q6=아니오(공개 없음) → contribution-process.md 생성, project-publication-process.md 미생성",
+  "model": "claude-sonnet-4-6",
+  "prerequisite_files": {
+    "policy/oss-policy.md": "__COPY_FROM_OUTPUT_SAMPLE__",
+    "organization/role-definition.md": "__COPY_FROM_OUTPUT_SAMPLE__"
+  },
+  "inputs": [
+    "GitHub Actions",
+    "격주(2주 1회)",
+    "GitHub Issues",
+    "담당자 단독",
+    "예",
+    "아니오",
+    "아직 없음"
+  ],
+  "expected_files": [
+    "process/usage-approval.md",
+    "process/distribution-checklist.md",
+    "process/vulnerability-response.md",
+    "process/inquiry-response.md",
+    "process/process-diagram.md",
+    "process/contribution-process.md"
+  ],
+  "expected_absent": ["process/project-publication-process.md"],
+  "content_patterns": {
+    "process/usage-approval.md": ["GitHub Actions"],
+    "process/contribution-process.md": [],
+    "process/inquiry-response.md": []
+  }
+}

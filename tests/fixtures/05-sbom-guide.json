@@ -1,0 +1,13 @@
+{
+  "agent": "05-sbom-guide",
+  "description": "SBOM 가이드 — Docker 없음, 샘플 SBOM 사용 (Python/pip)",
+  "model": "claude-sonnet-4-6",
+  "prerequisite_files": {},
+  "inputs": ["샘플 사용"],
+  "expected_files": ["sbom/fixture-sample.cdx.json", "sbom/sbom-commands.sh"],
+  "expected_absent": [],
+  "content_patterns": {
+    "sbom/sbom-commands.sh": ["fixture-sample"],
+    "sbom/fixture-sample.cdx.json": ["CycloneDX"]
+  }
+}

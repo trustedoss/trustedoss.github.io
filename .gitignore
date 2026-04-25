@@ -9,6 +9,7 @@ output/
 # Logs
 logs
 *.log
+dry-run/logs/
 yarn-debug.log*
 yarn-error.log*
 

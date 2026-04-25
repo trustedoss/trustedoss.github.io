@@ -236,12 +236,41 @@ def execute_tool(name: str, tool_input: dict, tmpdir: Path, verbose: bool) -> st
 
     elif name == "Bash":
         command = tool_input.get("command", "")
+        stripped = command.strip()
+
+        # cp 명령: output-sample/ → output/ 복사 처리
+        if stripped.startswith("cp "):
+            parts = stripped.split()
+            if len(parts) >= 3:
+                src_rel, dst_rel = parts[1], parts[2]
+                if src_rel.startswith("output-sample/"):
+                    src_path = PROJECT_ROOT / src_rel
+                elif src_rel.startswith("output/"):
+                    src_path = output_dir / src_rel[len("output/"):]
+                else:
+                    src_path = PROJECT_ROOT / src_rel
+                dst_path = resolve_output_path(dst_rel, output_dir)
+                dst_path.parent.mkdir(parents=True, exist_ok=True)
+                if src_path.exists():
+                    shutil.copy2(src_path, dst_path)
+                    if verbose:
+                        print(f"    cp {src_rel} → {dst_path.relative_to(tmpdir)}")
+                    return f"복사 완료: {src_rel} → {dst_rel}"
+                return f"(cp 오류: {src_rel} 없음)"
+            return "(cp: 인수 부족)"
+
+        # chmod 명령: 권한 설정 mock (항상 성공)
+        if stripped.startswith("chmod "):
+            return "권한 설정 완료"
+
         # 출력 확인용 ls / mkdir / echo 등만 허용
         safe_prefixes = ("ls ", "ls\n", "ls", "mkdir", "echo ", "cat ", "pwd")
-        if any(command.strip().startswith(p) for p in safe_prefixes):
+        if any(stripped.startswith(p) for p in safe_prefixes):
             # output/ 경로를 실제 output_dir로 치환
             safe_cmd = command.replace(" output/", f" {output_dir}/")
             safe_cmd = safe_cmd.replace('"output/', f'"{output_dir}/')
+            safe_cmd = safe_cmd.replace(">output/", f">{output_dir}/")
+            safe_cmd = safe_cmd.replace(">>output/", f">>{output_dir}/")
             try:
                 result = subprocess.run(
                     safe_cmd, shell=True, capture_output=True, text=True,

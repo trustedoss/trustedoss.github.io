@@ -1,0 +1,20 @@
+{
+  "agent": "05-sbom-management",
+  "description": "SBOM 관리 계획 생성 — OpenWave 분기: Q1=아니오(SaaS, 납품처 없음) → Q2 건너뜀, sbom-sharing-template은 최소 내용으로 생성",
+  "model": "claude-sonnet-4-6",
+  "prerequisite_files": {
+    "sbom/fixture-sample.cdx.json": "__COPY_FROM_OUTPUT_SAMPLE__",
+    "sbom/license-report.md": "__COPY_FROM_OUTPUT_SAMPLE__",
+    "sbom/copyleft-risk.md": "__COPY_FROM_OUTPUT_SAMPLE__"
+  },
+  "inputs": ["아니오", "격주(2주 1회)"],
+  "expected_files": [
+    "sbom/sbom-management-plan.md",
+    "sbom/sbom-sharing-template.md"
+  ],
+  "expected_absent": [],
+  "content_patterns": {
+    "sbom/sbom-management-plan.md": ["격주", "SBOM"],
+    "sbom/sbom-sharing-template.md": []
+  }
+}
