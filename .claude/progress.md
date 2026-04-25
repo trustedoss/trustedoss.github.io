@@ -100,6 +100,13 @@
     - 정책 파일(.gitleaks.toml·.grype.yaml·.semgrep.yml), 샘플 앱(Flask), K8s 매니페스트
   - `.claude/plan-ai-coding-improvement.md` 신규: 세션 연속성 보장용 작업 계획 문서
   - 11/11 PASS 확인
+- **AI 코딩 전략 5단계 개편** (2026-04-25):
+  - strategy.md: 4단계 → 5단계 (3: CI/CD / 4: AI 방어 레이어 / 5: 모니터링)
+  - 4단계 AI 방어: findings-driven AI 리뷰(4a) + AI 퍼징(4b) 독립 단계화
+  - ai-security-review.md: 전체 diff 방식 → Semgrep·grype findings 기반으로 전면 재작성
+  - best-practice-repo.md·intro.md: 5단계 구조 반영
+  - ai-coding-best-practice: ai-review.yml findings-driven으로 재작성 + README 5단계 반영
+  - 11/11 PASS 확인
 - **Phase 2 — Agent 체인 검증 1차** (2026-04-25):
   - `validate-output.py` sbom 챕터 3개 파일 누락 수정 (license-report.md·copyleft-risk.md·sbom-sharing-template.md)
   - `fixture-sample.cdx.json` 현실화: 2개→5개 컴포넌트, GPL-2.0 Copyleft + CVE 취약점 포함
