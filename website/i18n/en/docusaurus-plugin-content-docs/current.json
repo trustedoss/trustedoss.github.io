@@ -1,0 +1,42 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.docs.category.시작하기": {
+    "message": "시작하기",
+    "description": "The label for category '시작하기' in sidebar 'docs'"
+  },
+  "sidebar.docs.category.도구": {
+    "message": "도구",
+    "description": "The label for category '도구' in sidebar 'docs'"
+  },
+  "sidebar.docs.category.개발자 가이드 (선택)": {
+    "message": "개발자 가이드 (선택)",
+    "description": "The label for category '개발자 가이드 (선택)' in sidebar 'docs'"
+  },
+  "sidebar.docs.doc.환경 준비": {
+    "message": "환경 준비",
+    "description": "The label for the doc item '환경 준비' in sidebar 'docs', linking to the doc setup/index"
+  },
+  "sidebar.docs.doc.조직 구성": {
+    "message": "조직 구성",
+    "description": "The label for the doc item '조직 구성' in sidebar 'docs', linking to the doc organization/index"
+  },
+  "sidebar.docs.doc.오픈소스 정책": {
+    "message": "오픈소스 정책",
+    "description": "The label for the doc item '오픈소스 정책' in sidebar 'docs', linking to the doc policy/index"
+  },
+  "sidebar.docs.doc.오픈소스 프로세스": {
+    "message": "오픈소스 프로세스",
+    "description": "The label for the doc item '오픈소스 프로세스' in sidebar 'docs', linking to the doc process/index"
+  },
+  "sidebar.docs.doc.교육 체계": {
+    "message": "교육 체계",
+    "description": "The label for the doc item '교육 체계' in sidebar 'docs', linking to the doc training/index"
+  },
+  "sidebar.docs.doc.자체 인증": {
+    "message": "자체 인증",
+    "description": "The label for the doc item '자체 인증' in sidebar 'docs', linking to the doc conformance/index"
+  }
+}

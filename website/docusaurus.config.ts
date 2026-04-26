@@ -39,7 +39,11 @@ const config: Config = {
   titleDelimiter: '·',
   i18n: {
     defaultLocale: 'ko',
-    locales: ['ko'],
+    locales: ['ko', 'en'], // 'en' 추가
+    localeConfigs: {
+      ko: {label: '한국어'},
+      en: {label: 'English'},
+    },
   },
   onBrokenLinks: 'warn',
   markdown: {
