@@ -111,6 +111,9 @@ jobs:
         env:
           NODE_OPTIONS: --max_old_space_size=8192
 
+      - name: Install Python dependencies
+        run: pip install anthropic
+
       - name: Layer 1 — Agent 스펙 구조
         run: python3 .claude/scripts/test-agent-specs.py
 
@@ -119,6 +122,9 @@ jobs:
 
       - name: Layer 3-lite — 체인 연결
         run: python3 .claude/scripts/validate-chain.py --dir output-sample
+
+      - name: Layer 3 — E2E 카세트 재생
+        run: python3 .claude/scripts/test-agent-e2e.py --all --verbose
 
       - name: ISO 커버리지 정합성
         run: python3 .claude/scripts/test-coverage.py
