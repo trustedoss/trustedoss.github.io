@@ -1,126 +1,126 @@
 ---
 id: strategy
-title: 보장 수준별 5단계 전략
-sidebar_label: 5단계 전략
+title: 5-Stage Strategy by Assurance Level
+sidebar_label: 5-Stage Strategy
 sidebar_position: 2
 ---
 
-# 보장 수준별 5단계 전략
+# 5-Stage Strategy by Assurance Level
 
-## 개요
+## Overview
 
-| 단계  | 이름                      | 핵심 수단                                             | 보장 수준 | 권장 대상   |
-| ----- | ------------------------- | ----------------------------------------------------- | --------- | ----------- |
-| 1단계 | 프롬프트 의존             | 없음 (개인 기억)                                      | 낮음      | 개인 실험   |
-| 2단계 | AI 규칙 내재화            | CLAUDE.md · .cursorrules 등                           | 중간      | 팀 공동작업 |
-| 3단계 | CI/CD 자동 차단           | Gitleaks · Semgrep · CodeQL · grype · Trivy · Checkov | 높음      | 팀·조직     |
-| 4단계 | AI 방어 레이어            | findings-driven AI 리뷰 · AI 퍼징                     | 높음+     | 팀·조직     |
-| 5단계 | 지속적 모니터링·자동 교정 | Dependabot · Renovate · DAST                          | 매우 높음 | 조직·전사   |
+| Stage   | Name                                     | Core Method                                           | Assurance Level | Recommended For         |
+| ------- | ---------------------------------------- | ----------------------------------------------------- | --------------- | ----------------------- |
+| Stage 1 | Prompt Dependency                        | None (personal memory)                                | Low             | Individual experiments  |
+| Stage 2 | AI Rule Internalization                  | CLAUDE.md, .cursorrules, etc.                         | Medium          | Team collaboration      |
+| Stage 3 | CI/CD Auto Blocking                      | Gitleaks · Semgrep · CodeQL · grype · Trivy · Checkov | High            | Teams and organizations |
+| Stage 4 | AI Defense Layer                         | findings-driven AI review · AI fuzzing                | High+           | Teams and organizations |
+| Stage 5 | Continuous Monitoring & Auto-remediation | Dependabot · Renovate · DAST                          | Very high       | Organization-wide       |
 
-1단계는 지금 당장 시작할 수 있지만, 3단계부터 진정한 DevSecOps 게이트키퍼 역할을 합니다.
-**4단계는 AI 공격에 AI로 맞대응하는 방어 레이어**입니다.
+Stage 1 can be started immediately, but true DevSecOps gatekeeping begins at Stage 3.
+**Stage 4 is a defense layer that counters AI-driven attacks with AI.**
 
 ---
 
-## 1단계: 프롬프트 의존 (Manual / Ad-hoc)
+## Stage 1: Prompt Dependency (Manual / Ad-hoc)
 
-:::info 이 단계의 위치
-가장 도입이 쉽지만 가장 불안정합니다.
+:::info Where this stage stands
+It is the easiest to adopt but also the most unstable.
 :::
 
-AI 도구에 직접 "MIT 라이선스만 써줘"와 같은 프롬프트를 입력해 라이선스나 보안 정책을 지키는 방식입니다. 도구나 설정 없이 바로 시작할 수 있다는 장점이 있지만, 모든 것이 개발자 개인의 역량과 기억에 전적으로 의존합니다. AI 환각(Hallucination)으로 인해 GPL 코드가 무심코 혼입되거나, 알려진 취약점이 있는 패키지 버전이 추천될 위험이 항상 존재합니다. 개인 실험이나 학습 수준에서는 충분하지만, 팀 협업 환경에서는 일관성을 보장하기 어렵습니다.
+This approach enforces license or security policies by entering prompts directly into AI tools, such as "Use only MIT-licensed code." It can be started immediately without tools or settings, but everything depends entirely on each developer's memory and skill. There is always a risk that AI hallucination introduces GPL code unintentionally or recommends package versions with known vulnerabilities. It may be sufficient for individual learning or experiments, but it is hard to guarantee consistency in team collaboration.
 
 ---
 
-## 2단계: AI 규칙 내재화 (Tool-level Context Injection)
+## Stage 2: AI Rule Internalization (Tool-level Context Injection)
 
-:::tip 이 단계부터 팀 단위 적용 가능
+:::tip Team-level adoption starts here
 :::
 
-CLAUDE.md · .cursorrules · .clinerules 등 공통 규칙 파일을 저장소에 두어 AI가 코드를 작성할 때 자동으로 정책을 인지하도록 하는 방식입니다. 팀 전체가 동일한 규칙을 공유하고, 외부 라이브러리를 추가할 때 AI가 스스로 라이선스를 검토하거나 최신 안정 버전을 제안하는 효과를 기대할 수 있습니다. 다만 AI는 규칙을 어디까지나 "권장사항"으로 이해할 뿐, 100% 강제 차단(Hard Block)은 불가능합니다. 규칙 기반 공동작업을 바로 시작하고 싶다면 아래 링크를 참고하세요.
+This approach places common rule files such as CLAUDE.md, .cursorrules, and .clinerules in the repository so AI automatically recognizes policies while writing code. The whole team shares the same rules, and AI can be expected to check licenses or suggest the latest stable versions when adding external libraries. However, AI treats rules as guidance, so 100% enforced hard blocking is not possible. If you want to start rule-based collaboration right away, refer to the links below.
 
-- [공통 Rules 템플릿](./rules-template)
-- [도구별 설정](./tools/claude-code)
+- [Common Rules Template](./rules-template)
+- [Tool-specific Setup](./tools/claude-code)
 
 ---
 
-## 3단계: CI/CD 파이프라인 자동 차단 (Pipeline Enforcement)
+## Stage 3: CI/CD Pipeline Auto Blocking (Pipeline Enforcement)
 
-:::warning 이 단계부터 진정한 Hard Block
+:::warning True hard blocking starts at this stage
 :::
 
-PR 또는 Merge 전 파이프라인에서 아래 6개 영역을 기계적으로 검증하는 방식입니다. 개발자나 AI의 실수와 무관하게 정책 위반 코드를 원천 차단할 수 있으며, 이 시점부터 진정한 의미의 게이트키퍼가 작동합니다.
+At this stage, the pipeline mechanically verifies the six areas below before PR or merge. It can block policy-violating code at the source regardless of mistakes by developers or AI, and this is where true gatekeeping begins.
 
-| 영역          | 대표 도구        | 파이프라인 위치 | 탐지 대상                               |
-| ------------- | ---------------- | --------------- | --------------------------------------- |
-| 시크릿 탐지   | Gitleaks         | pre-commit · PR | API 키·토큰·비밀번호 하드코딩           |
-| SAST          | Semgrep · CodeQL | PR              | SQL 인젝션·논리 버그·취약 패턴          |
-| SCA           | syft · grype     | PR · 빌드       | 알려진 CVE·금지 라이선스                |
-| 컨테이너 보안 | Trivy            | 빌드            | 이미지 취약점 (컨테이너 사용 시)        |
-| IaC 보안      | Checkov          | PR              | 클라우드 인프라 설정 오류 (IaC 사용 시) |
+| Area               | Representative Tools | Pipeline Position | Detection Target                                       |
+| ------------------ | -------------------- | ----------------- | ------------------------------------------------------ |
+| Secret Detection   | Gitleaks             | pre-commit · PR   | Hardcoded API keys, tokens, passwords                  |
+| SAST               | Semgrep · CodeQL     | PR                | SQL injection, logic bugs, vulnerable patterns         |
+| SCA                | syft · grype         | PR · Build        | Known CVEs, prohibited licenses                        |
+| Container Security | Trivy                | Build             | Image vulnerabilities (when using containers)          |
+| IaC Security       | Checkov              | PR                | Cloud infrastructure misconfiguration (when using IaC) |
 
-AI 코딩 도구는 하드코딩된 값을 코드에 삽입하는 경우가 잦으므로, **시크릿 탐지는 3단계 도입 첫날부터 필수**입니다. 모든 영역을 한꺼번에 도입하기보다 시크릿 탐지 → SAST → SCA 순서로 안정화한 뒤 다음으로 넘어가는 방식을 권장합니다.
+AI coding tools frequently insert hardcoded values into code, so **secret detection is mandatory from day one of Stage 3**. Rather than introducing all areas at once, it is recommended to stabilize in this order: secret detection → SAST → SCA, then move on.
 
-- [30분 완성 Quick CI/CD](./cicd-quick) — SCA 중심 최소 시작점
-- [DevSecOps — 시크릿 탐지](/devsecops/secret-detection) · [SAST](/devsecops/sast) · [SCA](/devsecops/sca) · [컨테이너 보안](/devsecops/container-security) · [IaC 보안](/devsecops/iac-security)
-- [전사 파이프라인 설계](/devsecops/pipeline-design)
+- [30-Minute Quick CI/CD](./cicd-quick) — Minimal starting point focused on SCA
+- [DevSecOps — Secret Detection](/devsecops/secret-detection) · [SAST](/devsecops/sast) · [SCA](/devsecops/sca) · [Container Security](/devsecops/container-security) · [IaC Security](/devsecops/iac-security)
+- [Organization-wide Pipeline Design](/devsecops/pipeline-design)
 
 ---
 
-## 4단계: AI 방어 레이어 (AI-Augmented Defense)
+## Stage 4: AI Defense Layer (AI-Augmented Defense)
 
-:::info AI 공격에는 AI 방어로
-공격자도 AI를 활용해 새로운 취약점 패턴을 생성하고, 기존 룰셋을 우회하는 코드를 자동으로 만들어냅니다.
-3단계 도구들은 **알려진 패턴**을 정확하게 잡지만, AI가 만든 신종 패턴은 룰셋에 없어서 통과됩니다.
-4단계는 AI로 이 사각지대를 방어합니다.
+:::info Use AI defense against AI attacks
+Attackers also use AI to generate new vulnerability patterns and automatically produce code that bypasses existing rule sets.
+Stage 3 tools catch **known patterns** accurately, but novel AI-generated patterns can pass because they are not in the rule set.
+Stage 4 uses AI to defend this blind spot.
 :::
 
-3단계 도구들이 먼저 패턴 매칭으로 후보를 추려내고, AI는 그 결과물에 집중해 **의미론적 판단**과 **능동적 탐색**을 수행합니다.
+Stage 3 tools first narrow down candidates through pattern matching, and AI then focuses on those results to perform **semantic judgment** and **active exploration**.
 
-### 4a. Findings-Driven AI 리뷰
+### 4a. Findings-Driven AI Review
 
-전체 코드를 AI에게 보내는 대신, **3단계 도구가 플래그한 코드 조각**만 AI에게 전달합니다. 토큰을 절약하면서도 AI 판단이 필요한 영역에 집중할 수 있습니다.
+Instead of sending all code to AI, only **code snippets flagged by Stage 3 tools** are sent. This saves tokens while focusing on areas that require AI judgment.
 
-| AI 역할       | 입력                             | 출력                                                    |
-| ------------- | -------------------------------- | ------------------------------------------------------- |
-| **검증**      | Semgrep·CodeQL 결과 + 해당 코드  | FP/TP 판정, 실제 익스플로잇 가능성 평가                 |
-| **심층 해석** | grype CVE + 해당 컴포넌트 사용처 | "이 CVE가 우리 코드 실행 경로에서 실제로 도달 가능한가" |
-| **연관 발견** | 플래그된 패턴 + 인접 코드 블록   | 도구가 놓친 동일 유형의 인접 취약점                     |
+| AI Role                 | Input                                        | Output                                                       |
+| ----------------------- | -------------------------------------------- | ------------------------------------------------------------ |
+| **Validation**          | Semgrep/CodeQL results + related code        | FP/TP classification, exploitability assessment              |
+| **Deep Interpretation** | grype CVE + usage locations of the component | "Is this CVE actually reachable in our execution path?"      |
+| **Related Discovery**   | Flagged pattern + adjacent code blocks       | Neighboring vulnerabilities of the same type missed by tools |
 
-여러 도구가 동일 위치를 동시에 플래그하면 AI가 높은 우선순위로 상향 조정해 개발자에게 경보를 냅니다. AI 리뷰 결과는 **PR 코멘트로 게시**하며, 빌드를 강제로 실패시키지 않습니다(FP율이 높기 때문).
+When multiple tools flag the same location, AI raises priority and alerts developers. AI review results are **posted as PR comments**, and the build is not force-failed (because FP rates are high).
 
-### 4b. AI 퍼징
+### 4b. AI Fuzzing
 
-3단계 도구가 전혀 건드리지 않은 영역 — 비즈니스 로직, 엣지케이스 입력 처리 — 을 **AI가 능동적으로 탐색**합니다. Claude 등 LLM이 엔드포인트 시그니처를 분석해 경계값·이상 입력을 자동 생성하고, 앱에 직접 실행해 5xx 오류·비정상 동작을 탐지합니다. C/C++·Rust 저수준 코드는 OSS-Fuzz 연동을 권장합니다.
+AI **actively explores** areas untouched by Stage 3 tools, such as business logic and edge-case input handling. LLMs like Claude analyze endpoint signatures, generate boundary and abnormal inputs automatically, and execute them directly against the app to detect 5xx errors and abnormal behavior. For low-level C/C++ and Rust code, OSS-Fuzz integration is recommended.
 
-| 도구 조합         | 탐지 대상                       | 실행 주기       |
-| ----------------- | ------------------------------- | --------------- |
-| Claude + requests | 웹 API 엣지케이스·비정상 응답   | Push to main    |
-| Claude + AFL++    | 저수준 바이너리 크래시          | 주 1회 스케줄   |
-| Claude + OSS-Fuzz | 오픈소스 라이브러리 파서 취약점 | 프로젝트별 설정 |
+| Tool Combination  | Detection Target                                | Execution Cycle           |
+| ----------------- | ----------------------------------------------- | ------------------------- |
+| Claude + requests | Web API edge cases and abnormal responses       | Push to main              |
+| Claude + AFL++    | Low-level binary crashes                        | Weekly schedule           |
+| Claude + OSS-Fuzz | Parser vulnerabilities in open source libraries | Per-project configuration |
 
-- [AI 보안 코드 리뷰](./ai-security-review) — Findings-driven 구현 가이드 및 GitHub Actions 예시
-
----
-
-## 5단계: 지속적 모니터링·자동 교정 (Continuous & Auto-remediation)
-
-배포 이후에도 SBOM을 지속적으로 스캔하고, 신규 CVE가 발견되면 자동으로 패치 PR을 생성하는 단계입니다. Dependabot · Renovate와 연동해 중앙 집중식으로 공급망 보안(ISO/IEC 18974) 준수를 유지합니다. 정책 준수에 들어가는 인간의 개입이 최소화되고, AI가 유발한 위험을 자동화로 지속 통제하는 선순환 구조가 완성됩니다.
-
-- [지속적 모니터링·자동 교정](/devsecops/monitoring)
-- [DAST — 동적 분석](/devsecops/dast)
+- [AI Security Code Review](./ai-security-review) — Findings-driven implementation guide and GitHub Actions example
 
 ---
 
-## 우리 팀은 어디서 시작해야 할까?
+## Stage 5: Continuous Monitoring & Auto-remediation (Continuous & Auto-remediation)
 
-:::tip 단계 선택 가이드
+At this stage, SBOM is continuously scanned even after deployment, and patch PRs are generated automatically when new CVEs are discovered. Integration with Dependabot and Renovate maintains centralized supply chain security compliance (ISO/IEC 18974). Human intervention for policy compliance is minimized, creating a virtuous cycle that continuously controls AI-induced risk through automation.
+
+- [Continuous Monitoring & Auto-remediation](/devsecops/monitoring)
+- [DAST — Dynamic Analysis](/devsecops/dast)
+
+---
+
+## Where should our team start?
+
+:::tip Stage selection guide
 :::
 
-혼자 개발하거나 소규모 실험 중이라면 2단계부터 시작하는 것을 권장합니다. 별도 비용 없이 10분 이내에 설정을 완료할 수 있습니다.
+If you are developing alone or running a small-scale experiment, starting from Stage 2 is recommended. Setup can be completed within 10 minutes at no extra cost.
 
-팀이 이미 GitHub Actions를 사용하고 있다면 3단계 Quick CI/CD부터 도전해 보세요. 30분이면 기본 보안 게이트를 구성할 수 있습니다.
+If your team already uses GitHub Actions, try Stage 3 Quick CI/CD first. You can build a basic security gate in 30 minutes.
 
-3단계를 안정적으로 운영 중이라면 4단계 AI 방어 레이어를 추가하세요. ANTHROPIC_API_KEY 하나로 findings-driven 리뷰와 AI 퍼징을 모두 활성화할 수 있습니다.
+If you are operating Stage 3 stably, add the Stage 4 AI defense layer. A single `ANTHROPIC_API_KEY` can activate both findings-driven review and AI fuzzing.
 
-이미 4단계까지 운영 중이고 전담 보안팀이 있다면 5단계와 DevSecOps 가이드 전체를 검토해 조직 전체의 공급망 보안 수준을 높이세요.
+If you already operate up to Stage 4 and have a dedicated security team, review Stage 5 and the full DevSecOps guide to raise organization-wide supply chain security maturity.

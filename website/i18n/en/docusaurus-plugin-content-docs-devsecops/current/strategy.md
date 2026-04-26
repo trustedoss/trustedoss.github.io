@@ -1,102 +1,102 @@
 ---
 id: strategy
-title: DevSecOps 도입 전략
-sidebar_label: 도입 전략
+title: DevSecOps Introduction Strategy
+sidebar_label: Introduction Strategy
 sidebar_position: 2
 ---
 
-# DevSecOps 도입 전략
+# DevSecOps Introduction Strategy
 
-## DevSecOps란
+## What is DevSecOps?
 
-개발(Dev)·보안(Sec)·운영(Ops)을 통합해 소프트웨어 개발 생명주기 전반에 보안을 내재화하는 문화·방법론입니다. "보안은 나중에"가 아니라 코드 작성 시점부터 자동화된 검사로 위협을 조기에 차단하는 것이 핵심입니다.
+It is a culture and methodology that integrates development (Dev), security (Sec), and operations (Ops) to internalize security throughout the software development life cycle. The key is to block threats early with automated inspection from the time code is written, rather than “security comes later.”
 
 ---
 
-## Shift Left — 왜 빠를수록 좋은가
+## Shift Left — Why faster is better
 
-:::info 취약점 수정 비용은 발견 시점에 따라 수십 배 차이납니다
+:::info The cost of fixing a vulnerability varies dozens of times depending on when it is discovered.
 :::
 
-취약점은 코드 작성 단계에서 발견할수록 수정 비용과 시간이 기하급수적으로 줄어듭니다.
+As vulnerabilities are discovered at the code writing stage, the cost and time to fix them decreases exponentially.
 
-| 발견 시점                  | 상대적 수정 비용 | 담당자        |
-| -------------------------- | ---------------- | ------------- |
-| 코드 작성 (IDE·pre-commit) | 1x               | 개발자 본인   |
-| PR·코드 리뷰 (CI)          | 10x              | 개발자·리뷰어 |
-| 스테이징·QA                | 25x              | QA·DevOps     |
-| 프로덕션 배포 후           | 100x             | 전 팀·보안팀  |
+| When discovered               | relative cost of correction | Contact person          |
+| ----------------------------- | --------------------------- | ----------------------- |
+| Writing code (IDE·pre-commit) | 1x                          | Developer himself       |
+| PR/Code Review (CI)           | 10x                         | Developer/Reviewer      |
+| Staging·QA                    | 25x                         | QA/DevOps               |
+| After production deployment   | 100x                        | All Teams/Security Team |
 
-DevSecOps의 목표는 가능한 많은 검사를 왼쪽(코드 작성 단계)으로 이동시키는 것입니다.
-
----
-
-## 성숙도 모델 — 4단계
-
-| 단계  | 수준   | 특징                      | 주요 도구               |
-| ----- | ------ | ------------------------- | ----------------------- |
-| 1단계 | 없음   | 보안 검사 수동 또는 부재  | —                       |
-| 2단계 | 기본   | 핵심 영역 CI 자동화       | Gitleaks, grype         |
-| 3단계 | 체계화 | 전 영역 파이프라인 통합   | Semgrep, Trivy, Checkov |
-| 4단계 | 최적화 | 자동 교정·지속적 모니터링 | Dependabot + AI         |
-
-대부분의 팀은 2단계에서 시작해 6~12개월에 걸쳐 3단계로 이동하는 것이 현실적입니다.
+The goal of DevSecOps is to move as many checks to the left (code writing phase) as possible.
 
 ---
 
-## 단계별 도입 로드맵
+## Maturity Model — Stage 4
 
-:::tip 한 번에 모든 것을 도입하려 하지 마세요
-한 영역씩 안정화한 뒤 다음으로 넘어가는 것이 팀의 피로 없이 지속 가능한 방법입니다.
+| steps  | level           | Features                                    | Main tools              |
+| ------ | --------------- | ------------------------------------------- | ----------------------- |
+| Step 1 | None            | Security check manual or absent             | —                       |
+| Step 2 | Basic           | Key Areas CI Automation                     | Gitleaks, grype         |
+| Step 3 | Systematization | Full-area pipeline integration              | Semgrep, Trivy, Checkov |
+| Step 4 | Optimization    | Automatic calibration/continuous monitoring | Dependabot + AI         |
+
+For most teams, it is realistic to start in Stage 2 and move to Stage 3 over 6 to 12 months.
+
+---
+
+## Step-by-step introduction roadmap
+
+:::tip Don’t try to introduce everything at once
+Stabilizing one area at a time and then moving on to the next is a sustainable way to avoid team fatigue.
 :::
 
-1. **즉시 시작 (1~2주)**
-   시크릿 탐지(Gitleaks) + SCA 기본(grype)부터 적용합니다. 설정이 단순하고 효과가 즉각적입니다. 기존 코드베이스의 시크릿 누출과 Critical 취약점부터 차단합니다.
+1. **Start Immediately (1-2 Weeks)**
+   Secret detection (Gitleaks) + SCA is applied starting from basic (grype). The setup is simple and the effects are immediate. Blocks secret leaks and critical vulnerabilities in the existing code base.
 
-2. **코드 품질 강화 (1개월)**
-   SAST(Semgrep)를 추가합니다. 팀이 사용하는 언어에 맞는 룰셋을 선택하고, 처음에는 경고만 출력하다가 2~4주 후 빌드 차단으로 전환합니다.
+2. **Improvement of code quality (1 month)**
+   Add SAST(Semgrep). Choose a ruleset that matches the language your team uses, and initially print only a warning, then switch to block builds after 2-4 weeks.
 
-3. **빌드·인프라 보안 (2~3개월)**
-   컨테이너 보안(Trivy) + IaC 보안(Checkov)을 추가합니다. 컨테이너·클라우드 환경을 사용하는 팀에 해당합니다.
+3. **Build/Infrastructure Security (2~3 months)**
+   Add container security (Trivy) + IaC security (Checkov). Applies to teams that use container/cloud environments.
 
-4. **동적 분석·자동화 완성 (3~6개월)**
-   DAST(OWASP ZAP)를 추가합니다. 전 영역 파이프라인 통합 후 모니터링·자동 교정 체계를 구축합니다.
-
----
-
-## 파이프라인에서의 위치
-
-| 영역          | pre-commit | PR·CI | 빌드 | 배포 후 |
-| ------------- | ---------- | ----- | ---- | ------- |
-| 시크릿 탐지   | ✓          | ✓     | —    | —       |
-| SAST          | —          | ✓     | —    | —       |
-| SCA           | —          | ✓     | ✓    | ✓       |
-| 컨테이너 보안 | —          | —     | ✓    | ✓       |
-| IaC 보안      | —          | ✓     | —    | —       |
-| DAST          | —          | —     | —    | ✓       |
+4. **Completion of dynamic analysis and automation (3-6 months)**
+   Add DAST(OWASP ZAP). After integrating all areas of the pipeline, a monitoring and automatic correction system is established.
 
 ---
 
-## 셀프 스터디 — 단계별 agent
+## Location in the pipeline
 
-:::tip 각 단계를 Claude Code agent로 자동화
-아래 agent들을 순서대로 실행하면
-전략 페이지의 1~4단계를 실제로 구현할 수 있습니다.
+| area               | pre-commit | PR/CI | build | After Deployment |
+| ------------------ | ---------- | ----- | ----- | ---------------- |
+| Secret Detection   | ✓          | ✓     | —     | —                |
+| SAST               | —          | ✓     | —     | —                |
+| SCA                | —          | ✓     | ✓     | ✓                |
+| Container Security | —          | —     | ✓     | ✓                |
+| IaC security       | —          | ✓     | —     | —                |
+| DAST               | —          | —     | —     | ✓                |
+
+---
+
+## Self-study — step-by-step agent
+
+:::tip Automate each step with Claude Code agent
+If you run the agents below in order,
+You can actually implement steps 1-4 on the strategy page.
 :::
 
-**사전 조건**: [Trusted OSS 저장소](https://github.com/trustedoss/trustedoss.github.io) 클론 필요
+**Prerequisite**: Requires clone of [Trusted OSS repository](https://github.com/trustedoss/trustedoss.github.io)
 
-| 단계                     | agent                | 명령어                                                |
-| ------------------------ | -------------------- | ----------------------------------------------------- |
-| 2단계 — AI 규칙 내재화   | ai-coding-setup      | `cd agents/ai-coding-setup && claude`                 |
-| 3단계 — CI/CD 파이프라인 | devsecops-setup      | `cd agents/devsecops-setup && claude`                 |
-| 3단계 — PR 자동 코멘트   | level2-pr-comment    | `cd agents/level2-automation/pr-comment && claude`    |
-| 4단계 — 지속적 모니터링  | level2-issue-tracker | `cd agents/level2-automation/issue-tracker && claude` |
+| steps                             | agent                | command                                               |
+| --------------------------------- | -------------------- | ----------------------------------------------------- |
+| Step 2 — Internalize the AI rules | ai-coding-setup      | `cd agents/ai-coding-setup && claude`                 |
+| Step 3 — CI/CD Pipeline           | devsecops-setup      | `cd agents/devsecops-setup && claude`                 |
+| Step 3 — PR Auto Comment          | level2-pr-comment    | `cd agents/level2-automation/pr-comment && claude`    |
+| Step 4 — Continuous monitoring    | level2-issue-tracker | `cd agents/level2-automation/issue-tracker && claude` |
 
 ---
 
-## 다음 단계
+## Next steps
 
-- 즉시 시작하려면: [시크릿 탐지](./secret-detection), [SCA](./sca)
-- 코드 보안부터: [SAST](./sast)
-- 전체 파이프라인 설계: [파이프라인 설계](./pipeline-design)
+- To start immediately: [Secret Detection](./secret-detection), [SCA](./sca)
+- From code security: [SAST](./sast)
+- Entire pipeline design: [Pipeline design](./pipeline-design)

@@ -1,151 +1,151 @@
 ---
-작성일: 2026-03-20
-버전: 1.0
-충족 체크리스트:
+date: 2026-03-20
+version: '1.0'
+checklist:
   - 'ISO/IEC 5230: [3.1.1, 3.1.4, 3.5.1]'
   - 'ISO/IEC 18974: [4.1.1, 4.1.4]'
-셀프스터디 소요시간: 1시간
+self_study_time: 1 hour
 ---
 
-# 오픈소스 정책 수립: 법적 보호의 첫걸음
+# Establishment of open source policy:The first step to legal protection
 
-## 1. 이 챕터에서 하는 일
+## 1. What we do in this chapter
 
-이 챕터에서는 회사 맞춤형 오픈소스 정책 문서를 작성합니다. 오픈소스 정책은 단순한 내부 규정집이 아니다 — 라이선스 분쟁이나 취약점 사고가 발생했을 때 회사가 체계적인 컴플라이언스 관리를 해왔다는 법적 보호 수단이 됩니다. 납품처나 파트너사에서 오픈소스 관리 체계 증빙을 요구할 때도 즉시 제출할 수 있는 공식 문서가 됩니다.
+In this chapter, you will create a custom open source policy document for your company. An open source policy is not just an internal rulebook — it serves as a means of legal protection in the event of a licensing dispute or vulnerability incident, demonstrating that the company has systematically managed compliance. It becomes an official document that can be submitted immediately even when a supplier or partner company requests proof of an open source management system.
 
-`agents/03-policy-generator` 를 실행하면 회사의 배포 방식, 개발 언어, 납품 여부 등 5가지 질문에 대한 답변을 바탕으로 `output/policy/oss-policy.md` 와 `output/policy/license-allowlist.md` 두 가지 산출물을 자동 생성합니다.
+If you run `agents/03-policy-generator`, you will see your company's distribution method.,development language,Based on the answers to five questions, including delivery status, two outputs, `output/policy/oss-policy.md` and `output/policy/license-allowlist.md`, are automatically created.
 
 ---
 
-## 2. 배경 지식
+## 2. Background knowledge
 
-### 오픈소스 정책이 왜 필요한가
+### Why we need an open source policy
 
-오픈소스 라이선스 위반은 실제 법적 분쟁으로 이어진 사례가 있습니다.
+There are cases where open source license violations have led to actual legal disputes.
 
 **Artifex vs Hancom (2017)**
-한컴오피스는 GPL 라이선스로 배포되는 Ghostscript(PDF 렌더링 엔진)를 제품에 무단으로 사용했다. Artifex Software는 미국 캘리포니아 법원에 소송을 제기했고, 법원은 1심에서 GPL 라이선스가 계약으로서 법적 구속력을 가진다는 판결을 내렸다. 이 사건은 오픈소스 라이선스 위반이 단순한 저작권 문제를 넘어 계약 위반 책임까지 발생할 수 있음을 보여준다.
+Hancom Office uses Ghostscript distributed under the GPL license.(PDF rendering engine)was used in the product without permission. Artifex Software filed a lawsuit in a California court in the United States.,In the first trial, the court ruled that the GPL license was legally binding as a contract. This case shows that open source license violations go beyond simple copyright issues and can result in liability for breach of contract.
 
-**정책 부재 시 실무에서 발생하는 문제**
+**Problems that arise in practice in the absence of policy**
 
-- 라이선스 충돌: GPL 코드가 Apache-2.0 프로젝트에 섞이면 전체 배포가 불가능해질 수 있다
-- 고지 누락: Apache-2.0, MIT 등 Permissive 라이선스도 NOTICE 파일 또는 저작권 고지 의무가 있다
-- 취약점 방치: 오픈소스 컴포넌트의 알려진 CVE를 추적하지 않으면 제품에 보안 취약점이 방치된다
+- License conflict:If GPL code is mixed into the Apache-2.0 project, full distribution may become impossible.
+- Missing Notice: Apache-2.0,Permissive licenses such as MIT also require a NOTICE file or copyright notice.
+- Neglecting vulnerabilities:Failure to track known CVEs in open source components leaves your products vulnerable to security vulnerabilities.
 
-문서화된 정책이 있으면 위반 발생 시 "고의성 없음"을 입증하는 근거가 되고, 체계적인 절차를 운영했다는 증거로 활용됩니다.
-
----
-
-### 표준이 요구하는 정책 필수 구성 요소
-
-두 표준 모두 허용 범위, 라이선스 의무 이행 절차, 담당자, 위반 처리 절차, 검토 주기를 공통으로 요구합니다. ISO/IEC 18974는 여기에 더해 취약점 대응 절차, 보안 취약점 공개 정책, 프로그램 성과 지표(KPI)를 추가로 요구합니다. 또한 두 표준 모두 정책 문서의 존재만으로는 부족하며, 실제로 직원들이 접근할 수 있고 인지하고 있어야 한다고 요구합니다.
-
-> 정책에 포함해야 할 항목의 상세 설명과 예시 정책 문서는 [KWG 오픈소스 가이드 — 정책](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/2-policy/)를 참조하세요.
-
-#### ISO/IEC 18974 §4.1.4.2 — 프로그램 성과 지표
-
-ISO/IEC 18974는 오픈소스 보안 보증 프로그램이 **측정 가능한 성과 지표(KPI)**를 포함해야 한다고 요구합니다. 정책 문서에 아래 유형의 KPI를 명시하면 이 요구사항을 충족할 수 있습니다.
-
-| KPI 예시                              | 측정 방법                                               |
-| ------------------------------------- | ------------------------------------------------------- |
-| CVE 탐지 후 Critical 취약점 패치 기간 | 발견일 ~ 패치 배포일 (목표: 1주일 이내)                 |
-| SBOM 갱신 주기 준수율                 | 릴리즈 시 SBOM 업데이트 횟수 / 전체 릴리즈 수           |
-| CVE 정기 스캔 주기                    | 릴리즈마다 + 월 1회 정기 스캔                           |
-| 취약점 대응률                         | 기한 내 해소 90% 이상 (미해소 시 사유·완화 계획 문서화) |
-| 교육 이수율                           | 오픈소스 관련 직군 연간 100% 이수                       |
-| 오픈소스 사용 승인 처리 기간          | 승인 요청 대비 처리 기간 (목표: 3영업일 이내)           |
-
-> **참고**: 위 기한은 OpenChain KWG 가이드 기준선입니다. 조직의 리스크 프로파일에 따라 Critical 24시간·High 1주일 같은 더 엄격한 기한을 내부 SLA로 적용할 수 있습니다.
-
-agent가 생성하는 `oss-policy.md` 에는 위와 같은 KPI 섹션이 포함됩니다.
-
-#### AI 생성 코드 정책
-
-GitHub Copilot, ChatGPT 등 AI 코딩 도구가 생성한 코드를 제품에 포함할 경우, 학습 데이터로 사용된 오픈소스의 라이선스 의무가 적용될 수 있습니다. KWG 오픈소스 가이드는 이를 정책에 명시적으로 반영할 것을 권장합니다.
-
-- AI 생성 코드도 일반 오픈소스와 동일한 검토 절차를 적용
-- 소스 코드 스캔 도구(SCANOSS 등)를 활용한 스니펫 탐지 권장
-- 사용하는 AI 도구의 이용약관(저작권 귀속, 라이선스 조건) 확인 필요
-
-agent가 생성하는 `oss-policy.md` 에는 AI 생성 코드 정책 섹션이 포함됩니다. 조직에서 AI 코딩 도구를 사용하지 않는 경우에도 "해당 없음"으로 명시해두는 것이 좋습니다.
-
-#### 정책 전파 (Policy Communication)
-
-ISO/IEC 5230과 18974 모두 정책이 **관련 인원에게 전달되고 이해되었음**을 요구합니다. 단순히 문서를 작성하는 것으로는 부족합니다.
-
-정책 전파 방법:
-
-- 사내 위키(Confluence, Notion 등)에 정책 게시
-- 온보딩 교육 자료에 정책 링크 포함
-- 연 1회 전체 개발자 대상 정책 변경사항 공유
-- 담당자 임명장에 정책 인지 서명란 포함 (appointment-template.md 활용)
-
-> 이 단계는 ISO/IEC 5230 3.1.1 (오픈소스 정책 수립 및 문서화) 요구사항을 충족합니다.
+Having a written policy serves as a basis for proving “unintentional” in the event of a violation.,It is used as evidence that systematic procedures have been operated.
 
 ---
 
-### 라이선스 분류 이해
+### Policy prerequisites required by the standard
 
-오픈소스 라이선스는 의무사항의 강도에 따라 크게 세 가지로 분류됩니다. 회사의 배포 방식에 따라 각 분류의 적용 기준이 달라지므로 정책 작성 전에 반드시 이해해야 합니다.
+Acceptable ranges for both standards,Procedures for fulfilling license obligations,manager,Violation Processing Procedure,A common review cycle is required. ISO/IEC 18974 adds vulnerability response procedures,Security Vulnerability Disclosure Policy,Program Performance Indicators(KPI)Additional requests are made. Additionally, for both standards, the mere existence of a policy document is not enough;,In fact, it requires employees to be accessible and aware of it.
 
-| 분류            | 대표 라이선스        | 특징                            | 배포별 주의사항              |
-| --------------- | -------------------- | ------------------------------- | ---------------------------- |
-| Permissive      | MIT, Apache-2.0, BSD | 의무사항 적음, 상업적 사용 자유 | 거의 모든 배포 방식에서 안전 |
-| Weak Copyleft   | LGPL, MPL            | 수정 부분만 공개 의무           | 동적 링킹이면 대부분 안전    |
-| Strong Copyleft | GPL, AGPL            | 전체 소스 공개 의무 가능성      | SaaS는 GPL 안전, AGPL은 주의 |
+> Detailed descriptions of items to be included in the policy and example policy documents are available in [KWG Open Source Guide — Policy](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/2-policy/)See .
 
-**배포 방식별 영향**
+#### ISO/IEC 18974 §4.1.4.2 — Program performance indicators
 
-배포 방식은 라이선스 의무 발생 여부를 결정하는 핵심 요소다.
+ISO/IEC 18974 requires that open source security assurance programs have **measurable performance indicators.(KPI)Requires that ** be included. You can meet this requirement by specifying the types of KPIs below in your policy document:
 
-- **SaaS (서버 제공)**: GPL 코드를 서버에서 실행하는 것은 "배포"에 해당하지 않으므로 GPL 의무가 발생하지 않는다. 단, AGPL-3.0은 네트워크를 통한 서비스 제공에도 소스 공개 의무를 부여하므로 주의가 필요하다.
-- **앱스토어 배포 (모바일/데스크톱)**: 바이너리 형태로 사용자에게 배포되므로 Copyleft 라이선스 의무가 발생합니다. GPL 컴포넌트를 포함하면 전체 소스 공개 의무가 생길 수 있습니다.
-- **임베디드 (펌웨어/하드웨어)**: 가장 엄격한 케이스다. 바이너리 배포로 인해 GPL 의무가 발생하고, 하드웨어에 포함된 소프트웨어는 수정 후 재설치가 어렵다는 점 때문에 GPL 컴플라이언스가 더 까다롭다.
+| KPI example                                             | Measurement method                                                                                        |
+| ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| Critical vulnerability patch period after CVE detection | Discovery date ~ Patch distribution date(target:Within 1 week)                                            |
+| SBOM Renewal cycle compliance rate                      | SBOM Number of updates per release / Total number of releases                                             |
+| CVE regular scan cycle                                  | Regular scans per release + once a month                                                                  |
+| Vulnerability response rate                             | Over 90% resolved within deadline(Documentation of reasons and mitigation plan in case of non-resolution) |
+| Education Completion Rate                               | 100% annual completion of open source-related occupations                                                 |
+| Open source use approval processing period              | Processing time for approval request(target:Within 3 business days)                                       |
 
-> 이 단계는 ISO/IEC 5230 3.1.4 (프로그램 범위 정의) 요구사항을 충족합니다.
+> **reference**:The above deadline is the OpenChain KWG guide baseline. Depending on your organization's risk profile, more stringent deadlines, such as 24 hours for Critical or 1 week for High, can be applied as internal SLAs.
+
+The `oss-policy.md` generated by the agent will contain the same KPI section as above.
+
+#### AI Generated Code Policy
+
+GitHub Copilot,When code generated by an AI coding tool such as ChatGPT is included in the product,Licensing obligations for open sources used as training data may apply. KWG The open source guide recommends explicitly reflecting this in the policy.
+
+- The same review process as general open source applies to AI-generated code.
+- source code scan tool(SCANOSS etc.)Snippet detection using is recommended.
+- Terms and conditions for the AI ​​tools you use(Copyright Attribution,License Terms)Confirmation required
+
+The `oss-policy.md` generated by the agent contains the AI ​​generated code policy section. If your organization does not use AI coding tools, it is also a good idea to specify “Not Applicable.”
+
+#### policy dissemination(Policy Communication)
+
+Both ISO/IEC 5230 and 18974 require that policies are **communicated and understood** by relevant personnel. Simply writing a document is not enough.
+
+How to propagate policy:
+
+- in-house wiki(Confluence,Notion, etc.)Post policy on
+- Include policy links in onboarding training materials
+- Share policy changes with all developers once a year
+- Include a policy acknowledgment signature line on the appointment letter.(Utilizing appointment-template.md)
+
+> This step is ISO/IEC 5230 3.1.1(Establishing and documenting open source policies)Meets your requirements.
 
 ---
 
-:::note 실습 전 확인
-이 실습은 trustedoss 프로젝트 루트에서
-Claude Code 를 실행하는 환경을 전제합니다.
+### Understand license classifications
 
-- [ ] trustedoss 저장소를 클론했나요?
+Open source licenses are broadly classified into three categories depending on the strength of the obligations. The application criteria for each classification vary depending on the company's distribution method, so be sure to understand them before creating a policy.
+
+| Category        | Representative License | Features                                         | Precautions for each distribution    |
+| --------------- | ---------------------- | ------------------------------------------------ | ------------------------------------ |
+| Permissive      | MIT, Apache-2.0,BSD    | Few obligations,Free for commercial use          | Safe in almost any deployment method |
+| Weak Copyleft   | LGPL,MPL               | Obligation to disclose only the modified part    | Dynamic linking is mostly safe       |
+| Strong Copyleft | GPL,AGPL               | Possibility of full source disclosure obligation | SaaS is GPL safe,AGPL cautions       |
+
+**Impact by distribution method**
+
+Distribution method is a key factor in determining whether licensing obligations arise.
+
+- **SaaS (Server provided)**:Running GPL code on a server does not constitute “distribution” and therefore does not give rise to GPL obligations. step,AGPL-3.0 imposes an obligation to disclose sources even when providing services through a network, so caution is required.
+- **App Store distribution(Mobile/Desktop)**:Since it is distributed to users in binary form, copyleft licensing obligations arise. Inclusion of GPL components may result in full source disclosure obligations.
+- **Embedded(Firmware/Hardware)**:This is the strictest case. Distribution of binaries gives rise to GPL obligations and,GPL compliance is more stringent for software included in hardware because it is difficult to reinstall after modification.
+
+> This step is ISO/IEC 5230 3.1.4(Program scope definition)Meets your requirements.
+
+---
+
+:::note Check before practice
+This exercise is done in the trustedoss project root.
+It assumes an environment in which Claude Code runs.
+
+- [ ] Did you clone the trustedoss repository?
       `git clone https://github.com/trustedoss/trustedoss.github.io.git`
-- [ ] 터미널에서 프로젝트 루트에 있나요?
+- [ ] Are you in the project root in the terminal?
       `cd trustedoss.github.io`
-- [ ] Claude Code 가 실행 중인가요?
+- [ ] Is Claude Code running?
       `claude`
 
-모두 체크되지 않았다면
-→ [1. 환경 준비](../01-setup/index.md) 챕터를 먼저 진행하세요.
+If everything is not checked
+→ [1. Prepare the environment](../01-setup/index.md)Go through the chapters first.
 :::
 
-## 3. 셀프 스터디
+## 3. Self-study
 
-:::info 셀프스터디 모드 (약 1시간)
-agent와 대화하며 정책 문서를 생성합니다. 아래 5개 질문에 미리 답변을 준비해두면 빠르게 진행됩니다.
+:::info Self-study mode(About 1 hour)
+It interacts with the agent and creates policy documents. If you prepare answers to the five questions below in advance, the process will proceed quickly.
 :::
 
-**사전 준비: 5개 질문에 대한 답변 정리**
+**Advance preparation:Summary of answers to 5 questions**
 
-agent 실행 전에 아래 질문에 대한 회사 상황을 간단히 메모해두면 작업이 빠르게 진행됩니다.
+The process will proceed quickly if you briefly note the company's situation regarding the questions below before running the agent.
 
-1. **소프트웨어 배포 방식**: SaaS / 앱스토어(모바일·데스크톱) / 임베디드(펌웨어·하드웨어) / 내부 도구만 / 복합 (중복 선택 가능)
-2. **주요 개발 언어와 패키지 매니저**: 예) Python + pip, JavaScript + npm, Java + Maven 등
-3. **오픈소스 프로젝트 기여 계획**: GitHub 등 외부 오픈소스 프로젝트에 코드를 기여할 계획이 있는가
-4. **외부 고객/납품처에 납품 여부**: 제품이나 소프트웨어를 외부 고객에게 납품하거나 판매하는가
-5. **현재 라이선스 검토 절차 유무**: 현재 오픈소스 도입 시 라이선스를 검토하는 절차가 있는가
+1. **Software Distribution Method**:SaaS / App Store(Mobile/Desktop)/ embedded(Firmware/Hardware)/ Internal tools only / Complex(Duplicate selection possible)
+2. **Major development languages ​​and package managers**:yes) Python + pip, JavaScript + npm,Java + Maven, etc.
+3. **Open source project contribution plan**:Do you plan to contribute code to external open source projects such as GitHub?
+4. **Delivery to external customer/supplier**:Do you deliver or sell products or software to external customers?
+5. **Is there a current license review process**:Is there currently a procedure for reviewing licenses when introducing open source?
 
-**단계별 실습**
+**Step-by-step practice**
 
-**Step 1. 회사 상황 정리**
-위 5개 질문에 대한 답변을 미리 메모합니다.
+**Step 1. Summary of company situation**
+Write down the answers to the five questions above in advance.
 
-**Step 2. policy-generator agent 실행**
+**Step 2. Run policy-generator agent**
 
-:::tip 실행 전 확인
-현재 Claude 세션을 먼저 종료(`/exit` 또는 `Ctrl+C`)한 뒤, 새 터미널에서 아래 명령을 실행하세요.
+:::tip Check before execution
+Terminate the current Claude session first(`/exit` or `Ctrl+C`)After doing it,Run the command below in a new terminal.
 :::
 
 ```bash
@@ -153,154 +153,154 @@ cd agents/03-policy-generator
 claude
 ```
 
-**Step 3. Claude 프롬프트가 열리면 `시작` 을 입력합니다.**
+**Step 3. When the Claude prompt opens, enter `시작`.**
 
 <details>
-<summary>Agent 대화 예시 (클릭해서 펼치기)</summary>
+<summary>Agent conversation example(Click to expand)</summary>
 
-아래는 실제 agent와의 대화 흐름 예시입니다. 사용자가 `시작` 입력 시 이런 형태로 진행됩니다.
+Below is an example of a conversation flow with an actual agent. When the user enters `시작`, the process goes like this.
 
-**Agent 안내 메시지:**
+**Agent guidance message:**
 
-> 안녕하세요! 오픈소스 정책 산출물을 생성하는 agent입니다.
-> 5개 질문에 답변하시면 정책 문서 2개가 자동으로 생성됩니다.
-
----
-
-**질문 1/5** — 소프트웨어 배포 방식은? (SaaS / 앱스토어 배포 / 임베디드 / 내부용 / 복합)
-
-`예시 답변: SaaS`
-
-**질문 2/5** — 주로 사용하는 개발 언어와 패키지 매니저는?
-
-`예시 답변: Python + pip, JavaScript + npm`
-
-**질문 3/5** — 오픈소스 프로젝트에 기여할 계획이 있나요?
-
-`예시 답변: 없음 (내부 서비스 개발에 집중)`
-
-**질문 4/5** — 외부 고객/납품처에 소프트웨어를 납품하나요?
-
-`예시 답변: 없음 (자사 SaaS 서비스만 운영)`
-
-**질문 5/5** — 현재 라이선스 검토 절차가 있나요? (있음 / 없음 / 비공식적으로 있음)
-
-`예시 답변: 비공식적으로 있음`
+> hello! This is an agent that creates open source policy output.
+> If you answer 5 questions, 2 policy documents will be automatically generated.
 
 ---
 
-**생성 완료 시 출력 예시:**
+**Question 1/5** — How will the software be distributed?(SaaS / App Store Distribution / Embedded / Internal Use / Complex)
 
-| 파일                                 | 내용                                           |
-| ------------------------------------ | ---------------------------------------------- |
-| `output/policy/oss-policy.md`        | 오픈소스 정책 문서 (목적, 적용 범위, 의무사항) |
-| `output/policy/license-allowlist.md` | 배포 방식별 허용 라이선스 목록                 |
+`Sample answer: SaaS`
 
-**직접 기입이 필요한 항목:**
+**Question 2/5** — What development language and package manager do you mainly use?
 
-- 담당자 실제 성명 및 이메일
-- 정책 시행일
-- 정책 검토 주기 확정
+`Sample answer: Python + pip, JavaScript + npm`
+
+**Question 3/5** — Do you plan to contribute to open source projects?
+
+`Sample answer:doesn't exist(Focus on internal service development)`
+
+**Question 4/5** — Do you deliver software to external customers/suppliers?
+
+`Sample answer:doesn't exist(Operates only our own SaaS services)`
+
+**Question 5/5** — Do you currently have a license review process in place?(Yes / No / Informally present)
+
+`Sample answer:It exists unofficially.
+
+---
+
+**Example of output upon completion of creation:**
+
+| file                                 | Content                                                       |
+| ------------------------------------ | ------------------------------------------------------------- |
+| `output/policy/oss-policy.md`        | Open source policy document(purpose,applied area,Obligations) |
+| `output/policy/license-allowlist.md` | List of permitted licenses by distribution method             |
+
+**Items that require manual entry:**
+
+- Contact person's actual name and email
+- Policy enforcement date
+- Confirm policy review cycle
 
 </details>
 
-**Step 4. agent 질문에 순서대로 답변**
-agent가 5개 질문을 하나씩 물어본다. 준비한 답변을 바탕으로 대화합니다. 확실하지 않은 항목은 agent에게 가이드를 요청할 수 있습니다.
+**Step 4. Answer agent questions in order**
+The agent asks five questions one by one. We talk based on the answers we have prepared. If you are unsure about anything, you can ask your agent for guidance.
 
-**Step 5. oss-policy.md 검토**
+**Step 5. Review oss-policy.md**
 
 ```bash
 open output/policy/oss-policy.md
 ```
 
-- 회사명과 실제 담당자 이름이 반영되어 있는지 확인
-- 배포 방식에 맞는 라이선스 의무 이행 절차가 포함되어 있는지 확인
-- 정책 검토 주기(예: 연 1회)가 명시되어 있는지 확인
+- Check whether the company name and actual person in charge are reflected.
+- Ensure that procedures for enforcing licensing obligations are included for your deployment method.
+- Policy Review Cycle(yes:Once a year)Check if it is specified
 
-**Step 6. license-allowlist.md 검토 및 수정**
+**Step 6. Review and edit license-allowlist.md**
 
 ```bash
 open output/policy/license-allowlist.md
 ```
 
-- 우리 배포 방식에 맞는 분류가 적용되어 있는지 확인
-- 실제 사용 중인 라이선스가 목록에 포함되어 있는지 확인
-- 필요 시 항목 추가 또는 조건 수정
+- Ensure that the appropriate classification is applied for our deployment method
+- Verify that the license you are actually using is included in the list
+- Add items or modify conditions as needed
 
-**Step 7. 완료 확인 체크리스트 점검**
-아래 5번 섹션의 체크리스트를 항목별로 확인합니다.
+**Step 7. Check completion confirmation checklist**
+Check the checklist item by item in section 5 below.
 
-> 이 단계는 ISO/IEC 5230 3.5.1 (오픈소스 기여 정책 수립) 요구사항을 충족합니다.
+> This step is ISO/IEC 5230 3.5.1(Establishing an open source contribution policy)Meets your requirements.
 
 ---
 
-:::tip 예상 결과
-실습이 정상적으로 완료되면
-아래 파일이 생성됩니다.
+:::tip expected result
+When the practice is completed successfully
+The files below are created.
 
-**생성 파일:**
+**Created file:**
 
 - `output/policy/oss-policy.md`
 - `output/policy/license-allowlist.md`
 
-**파일 내 반드시 포함되어야 할 항목:**
+**Items that must be included in the file:**
 
-- 오픈소스 사용 허용 범위 및 제한
-- 라이선스 의무 이행 절차
-- 담당자 및 연락처
-- 정책 위반 시 처리 절차
-- 정책 검토 주기
-- 알려진 취약점 대응 절차 (18974 요구사항)
+- Acceptable scope and restrictions on open source use
+- Procedures for fulfilling license obligations
+- Person in charge and contact information
+- Procedures for handling policy violations
+- Policy Review Cycle
+- Known Vulnerability Response Procedures(18974 Requirements)
 
-생성된 파일을 열어 위 항목이 포함되어 있는지
-직접 확인하고 필요시 보완하세요.
+Open the created file and check if it contains the above items.
+Check it yourself and supplement if necessary.
 :::
 
-:::info 충족되는 표준 요구사항
-이 실습을 완료하면 아래 요구사항이 충족됩니다.
+:::info Standard requirements met
+Completing this lab will meet the requirements below:
 
 **ISO/IEC 5230**
 
-| 항목 ID | 요구사항                    | 자체인증 체크리스트                                             |
-| ------- | --------------------------- | --------------------------------------------------------------- |
-| 3.1.1   | 오픈소스 정책 문서화        | Do you have a documented open source policy?                    |
-| 3.1.4   | 프로그램 범위 정의          | Is the scope of your open source program documented?            |
-| 3.5.1   | 오픈소스 커뮤니티 참여 정책 | Do you have a policy for open source community participation?   |
-| 3.5.1   | 오픈소스 기여 프로세스      | Do you have a process for contributing to open source projects? |
+| Item ID | Requirements                               | Self-certification checklist                                    |
+| ------- | ------------------------------------------ | --------------------------------------------------------------- |
+| 3.1.1   | Open source policy documentation           | Do you have a documented open source policy?                    |
+| 3.1.4   | Program scope definition                   | Is the scope of your open source program documented?            |
+| 3.5.1   | Open source community participation policy | Do you have a policy for open source community participation?   |
+| 3.5.1   | Open source contribution process           | Do you have a process for contributing to open source projects? |
 
 **ISO/IEC 18974**
 
-| 항목 ID | 요구사항                | 자체인증 체크리스트                                                     |
-| ------- | ----------------------- | ----------------------------------------------------------------------- |
-| 4.1.1   | 보안 보증 정책 문서화   | Do you have a documented open source security assurance policy?         |
-| 4.1.4   | 보안 프로그램 범위 정의 | Is the scope of your open source security assurance program documented? |
+| Item ID | Requirements                          | Self-certification checklist                                            |
+| ------- | ------------------------------------- | ----------------------------------------------------------------------- |
+| 4.1.1   | Documenting Security Assurance Policy | Do you have a documented open source security assurance policy?         |
+| 4.1.4   | Security program scope definition     | Is the scope of your open source security assurance program documented? |
 
 :::
 
 ---
 
-## 4. 완료 확인 체크리스트
+## 4. Completion Confirmation Checklist
 
-agent 실행 후 사람이 직접 확인해야 할 항목들입니다. 체크리스트를 모두 통과해야 이 챕터가 완료됩니다.
+These are items that must be checked directly by a person after running the agent. You must pass all checklists to complete this chapter.
 
-**파일 생성 확인**
+**Confirm file creation**
 
-- [ ] `output/policy/oss-policy.md` 파일이 존재한다
-- [ ] `output/policy/license-allowlist.md` 파일이 존재한다
+- [ ] `output/policy/oss-policy.md` file exists
+- [ ] `output/policy/license-allowlist.md` file exists
 
-**정책 내용 확인**
+**Check policy details**
 
-- [ ] 정책에 회사명과 실제 담당자 이름이 반영되어 있다
-- [ ] 우리 배포 방식에 맞는 라이선스 분류와 의무사항이 적용되어 있다
-- [ ] 오픈소스 기여 정책이 포함되어 있다 (기여 계획이 있는 경우)
-- [ ] 취약점 대응 절차가 포함되어 있다 (ISO/IEC 18974 요구사항)
-- [ ] 정책 검토 주기가 명시되어 있다 (예: 연 1회)
+- [ ] The company name and actual person in charge are reflected in the policy.
+- [ ] License classification and obligations appropriate for our distribution method are applied.
+- [ ] Open source contribution policy is included(If you have a contribution plan)
+- [ ] Includes vulnerability response procedures(ISO/IEC 18974 requirements)
+- [ ] Policy review cycle is specified(yes:Once a year)
 
 ---
 
-**oss-policy.md 주요 섹션 목차 예시**
+**Example table of contents of main sections of oss-policy.md**
 
-생성된 정책 문서가 아래 섹션을 포함하고 있는지 확인합니다.
+Ensure that the generated policy document contains the sections below.
 
 ```
 1. 목적 및 적용 범위
@@ -315,9 +315,9 @@ agent 실행 후 사람이 직접 확인해야 할 항목들입니다. 체크리
 
 ---
 
-**license-allowlist.md 샘플 표 예시**
+**license-allowlist.md sample table example**
 
-생성된 허용 라이선스 목록이 배포 방식별로 올바르게 분류되어 있는지 아래 샘플과 비교합니다.
+Compare the generated allowed license list to the sample below to ensure it is correctly categorized by deployment method.
 
 ```markdown
 | 라이선스   | 분류            | 내부 사용 | SaaS 배포   | 앱 배포     | 임베디드    |
@@ -329,16 +329,16 @@ agent 실행 후 사람이 직접 확인해야 할 항목들입니다. 체크리
 | AGPL-3.0   | Strong Copyleft | ✓ 허용    | ✗ 검토 필요 | ✗ 검토 필요 | ✗ 검토 필요 |
 ```
 
-> 📋 **산출물 예시**: [정책 산출물 Best Practice](/reference/samples/policy)에서 생성된 파일의 실제 형식을 확인할 수 있습니다.
+> 📋 **Example of output**: [Policy Output Best Practice](/reference/samples/policy)You can check the actual format of the generated file at .
 
 ---
 
-## 5. 다음 단계
+## 5. Next steps
 
-이 챕터를 완료했으면 프로세스 설계 단계로 이동합니다. 오픈소스 프로세스는 정책에서 정의한 절차를 실제 업무 흐름으로 구체화하는 단계다.
+Once you have completed this chapter, move on to the process design phase. The open source process is the step of materializing the procedures defined in the policy into actual work flow.
 
-:::tip 실행 전 확인
-현재 Claude 세션을 먼저 종료(`/exit` 또는 `Ctrl+C`)한 뒤, 새 터미널에서 아래 명령을 실행하세요.
+:::tip Check before execution
+Terminate the current Claude session first(`/exit` or `Ctrl+C`)After doing it,Run the command below in a new terminal.
 :::
 
 ```bash
@@ -346,6 +346,6 @@ cd agents/04-process-designer
 claude
 ```
 
-또는 [오픈소스 프로세스: 사용부터 배포까지](../04-process/index.md)로 이동하여 챕터 문서를 읽고 진행합니다.
+or [open source process:From use to distribution](../04-process/index.md)Go to and read the chapter document to proceed.
 
-> 이 단계는 ISO/IEC 5230 3.1.1, 3.1.4, 3.5.1 및 ISO/IEC 18974 4.1.1 요구사항을 충족합니다.
+> This step is ISO/IEC 5230 3.1.1, 3.1.4,Meets 3.5.1 and ISO/IEC 18974 4.1.1 requirements.

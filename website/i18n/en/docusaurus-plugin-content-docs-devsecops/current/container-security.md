@@ -1,33 +1,33 @@
 ---
 id: container-security
-title: 컨테이너·이미지 보안
-sidebar_label: 컨테이너 보안
+title: Container/Image Security
+sidebar_label: container security
 sidebar_position: 6
 ---
 
-# 컨테이너·이미지 보안
+# Container/Image Security
 
-## 컨테이너 보안이란
+## What is container security?
 
-컨테이너 이미지에 포함된 OS 패키지·애플리케이션 의존성의 취약점, Dockerfile 설정 오류, 시크릿 노출을 배포 전에 탐지하는 보안 검사입니다. 이미지가 한 번 배포되면 전체 인스턴스에 동일한 취약점이 퍼지므로 빌드 단계 차단이 특히 중요합니다.
-
----
-
-## 도구 비교
-
-| 도구   | 특징                       | 탐지 범위                    | 라이선스   |
-| ------ | -------------------------- | ---------------------------- | ---------- |
-| Trivy  | 올인원·빠른 속도·설정 단순 | 이미지·파일시스템·IaC·시크릿 | Apache-2.0 |
-| Grype  | SBOM 연동 최적화           | 이미지·파일시스템            | Apache-2.0 |
-| Dockle | Dockerfile 모범 사례 검사  | 이미지 설정                  | Apache-2.0 |
-
-컨테이너 보안 단일 도구로는 Trivy를 권장하며, SCA 파이프라인에서 이미 grype를 사용 중이라면 이미지 스캔도 grype로 통일 가능합니다.
+This is a security check that detects vulnerabilities in OS package and application dependencies included in container images, Dockerfile configuration errors, and secret exposure before deployment. Blocking the build phase is especially important because once the image is deployed, the same vulnerability will spread across all instances.
 
 ---
 
-## Trivy 설정
+## Tool Comparison
 
-### 기본 사용법
+| tools  | Features                           | Detection range             | License    |
+| ------ | ---------------------------------- | --------------------------- | ---------- |
+| Trivy  | All-in-one·Fast speed·Simple setup | Image·Filesystem·IaC·Secret | Apache-2.0 |
+| Grype  | SBOM integration optimization      | Image/File System           | Apache-2.0 |
+| Dockle | Checking Dockerfile best practices | Image Settings              | Apache-2.0 |
+
+We recommend Trivy as a single container security tool, and if you are already using grype in your SCA pipeline, image scanning can also be unified with grype.
+
+---
+
+## Trivy settings
+
+### Basic usage
 
 ```bash
 # 로컬 이미지 스캔
@@ -128,10 +128,10 @@ container-security:
 
 ---
 
-## Trivy 정책 파일
+## Trivy policy file
 
-:::info ignore-unfixed 옵션으로 수정 불가 취약점을 제외하세요
-upstream에서 아직 패치가 없는 취약점은 개발팀이 수정할 수 없으므로 제외하면 실행 가능한 알림에 집중할 수 있습니다.
+Exclude unfixable vulnerabilities with :::info ignore-unfixed option
+Vulnerabilities that are not yet patched upstream cannot be fixed by the development team, so excluding them allows us to focus on actionable notifications.
 :::
 
 ```yaml
@@ -151,18 +151,18 @@ secrets:
 
 ---
 
-## Dockerfile 보안 모범 사례
+## Dockerfile security best practices
 
-1. **최소 베이스 이미지 사용:** `ubuntu` 대신 `alpine`·`distroless`를 선택합니다. 패키지 수가 적을수록 취약점 노출 면적이 줄어듭니다.
-2. **루트 실행 금지:** `USER` 명령어로 비루트 사용자를 지정합니다. 루트 실행은 컨테이너 탈출 시 피해를 확대합니다.
-3. **멀티 스테이지 빌드:** 빌드 도구·소스코드를 최종 이미지에서 제외합니다. 이미지 크기 축소와 공격 면적 감소를 동시에 달성합니다.
-4. **시크릿 ARG·ENV 금지:** 빌드 인수나 환경변수로 시크릿을 전달하지 않습니다. 이미지 레이어에 평문으로 남습니다.
-5. **버전 고정:** `FROM ubuntu:22.04`처럼 태그를 명시합니다. `latest` 사용 시 예상치 못한 취약점이 유입될 수 있습니다.
+1. **Use minimal base image:** Select `alpine`·`distroless` instead of `ubuntu`. Fewer packages reduce your vulnerability surface area.
+2. **Prohibit root execution:** Specify a non-root user with the `USER` command. Root execution magnifies the damage when a container escapes.
+3. **Multi-stage build:** Exclude build tools and source code from the final image. Image size reduction and attack surface reduction are achieved simultaneously.
+4. **No secret ARG/ENV:** Do not pass secrets as build arguments or environment variables. It remains as plain text in the image layer.
+5. **Version Fixed:** Specify tags like `FROM ubuntu:22.04`. When using `latest`, unexpected vulnerabilities may be introduced.
 
 ---
 
-## 다음 단계
+## Next steps
 
-- 인프라 코드 보안: [IaC 보안](./iac-security)
-- 전체 파이프라인 통합: [파이프라인 설계](./pipeline-design)
-- 배포 후 이미지 지속 모니터링: [모니터링·자동 교정](./monitoring)
+- Infrastructure code security: [IaC security](./iac-security)
+- Full pipeline integration: [Pipeline Design](./pipeline-design)
+- Continuous monitoring of images after distribution: [Monitoring·Automatic Correction](./monitoring)

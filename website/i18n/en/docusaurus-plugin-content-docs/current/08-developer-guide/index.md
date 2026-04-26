@@ -1,118 +1,118 @@
 ---
 id: 08-developer-guide
-title: '개발자 가이드: Claude Code에서 오픈소스 정책 자동 준수'
-sidebar_label: 개발자 가이드 (선택)
+title: 'Developer Guide:Automatic compliance with open source policies in Claude Code'
+sidebar_label: Developer Guide(select)
 sidebar_position: 8
-작성일: 2026-03-20
-버전: 1.0
-충족 체크리스트:
+date: 2026-03-20
+version: '1.0'
+checklist:
   - 'ISO/IEC 5230: (선택 챕터 - 필수 항목 없음, G1.6 운영 강화 지원)'
   - 'ISO/IEC 18974: (선택 챕터 - 필수 항목 없음, G3S.1 운영 강화 지원)'
-셀프스터디 소요시간: 2시간
+self_study_time: 2 hours
 ---
 
-# 개발자 가이드: Claude Code에서 오픈소스 정책 자동 준수
+# Developer Guide:Automatic compliance with open source policies in Claude Code
 
-## 1. 이 챕터에서 하는 일
+## 1. What we do in this chapter
 
-01~07챕터로 오픈소스 관리 체계 구축이 완료되었다.
-이제 남은 과제는 **일상적인 개발 과정에서 정책이 자동으로 지켜지게 하는 것**입니다.
+The establishment of the open source management system was completed in Chapters 01 to 07.
+The remaining task is **ensuring that the policy is automatically followed during the day-to-day development process**.
 
-담당자가 매번 모든 PR을 검토하는 방식은 지속 가능하지 않다.
-이 챕터는 Claude Code를 활용하여 **개발자가 무의식적으로 정책을 준수**하게 만드는 4가지 방법을 설명합니다.
+It is not sustainable for a person in charge to review every PR every time.
+This chapter describes four ways to leverage the Claude Code to force developers into unconscious policy compliance.
 
-> 목표: "담당자가 매번 검토하지 않아도 Claude Code가 정책을 지켜준다"
+> target:“Claude Code protects policies even if the person in charge doesn’t have to review them every time.”
 
-## 2. 배경: 왜 자동화가 필요한가
+## 2. Background:Why do you need automation?
 
-### 실제 발생하는 문제 상황
+### Problem situations that actually occur
 
-**시나리오 1: GPL 패키지 무심코 추가**
-개발자가 편리한 유틸리티 라이브러리를 발견합니다.
-`npm install some-gpl-utility`를 실행하고, PR을 올린다.
-담당자가 검토하기 전까지 GPL 오염 위험이 잠재됩니다.
-배포 후에 발견되면 소스코드 공개 의무가 발생할 수 있습니다.
+**Scenario 1:Adding GPL package inadvertently**
+Developers find the utility library handy.
+Run `npm install some-gpl-utility` and,Raise your PR.
+There is a potential risk of GPL contamination until it is reviewed by a responsible person.
+If discovered after distribution, source code disclosure obligations may arise.
 
-**시나리오 2: 취약한 버전 그대로 사용**
-의존성 업데이트 없이 오래된 버전을 계속 사용합니다.
-CVSS 9.0의 Critical 취약점이 공개되었지만 팀이 인지하지 못합니다.
-보안 사고 발생 시 "몰랐다"는 변명은 통하지 않는다.
+**Scenario 2:Use the vulnerable version as is**
+Continuing to use older versions without updating dependencies.
+A critical vulnerability in CVSS 9.0 has been disclosed, but the team is not aware of it.
+When a security incident occurs, the excuse “I didn’t know” does not work.
 
-**시나리오 3: 담당자 모르게 정책 위반**
-허용 라이선스 목록(`license-allowlist.md`)에 없는 라이선스를 가진 패키지가 추가됩니다.
-사용 승인 절차(`usage-approval.md`)를 거치지 않고 배포됩니다.
-인증 갱신 시점에서야 위반이 발견됩니다.
+**Scenario 3:Policy violation without the knowledge of the person in charge**
+Allowed License List(`license-allowlist.md`)Packages with licenses that are not in are added.
+Approval Process for Use(`usage-approval.md`)It is distributed without going through .
+It is only at the time of certification renewal that the violation is discovered.
 
-### 해결 원칙
+### Solving Principles
 
-정책 준수를 개발자의 **기억과 의지**에 맡기지 않는다.
-도구와 자동화가 **기본값**이 되게 합니다.
+Policy compliance is not left to the **memory and will** of the developer.
+Make tools and automation the **default**.
 
-## 3. 해결 방법 개요
+## 3. Solution overview
 
-아래 4가지 방법을 조합하여 적용합니다. 보장 수준이 높을수록 구현 복잡도도 높아진다.
+Apply a combination of the four methods below. The higher the level of coverage, the higher the complexity of implementation.
 
-| 방법                    | 설명                                                     | 보장 수준 | 구현 난이도 |
-| ----------------------- | -------------------------------------------------------- | --------- | ----------- |
-| **CLAUDE.md 정책 명시** | Claude Code에게 지켜야 할 정책을 직접 알린다             | 70%       | 매우 쉬움   |
-| **Skill 정의**          | 라이선스·취약점 확인 절차를 재사용 가능한 skill로 만든다 | 80%       | 쉬움        |
-| **Hooks 자동 검증**     | 의존성 파일 변경 시 자동으로 경고를 발생시킨다           | 90%       | 보통        |
-| **CI/CD 파이프라인**    | PR 시 자동 체크, 위반 시 머지 차단                       | 99%       | 다소 복잡   |
+| method                           | Description                                                          | Coverage Level | Implementation Difficulty |
+| -------------------------------- | -------------------------------------------------------------------- | -------------- | ------------------------- |
+| **CLAUDE.md Policy Statement**   | Directly inform Claude Code of the policies to be followed           | 70%            | Very Easy                 |
+| **Skill Definition**             | Make the license/vulnerability verification process a reusable skill | 80%            | Easy                      |
+| **Hooks automatic verification** | Automatically generates a warning when changing dependency files     | 90%            | Normal                    |
+| **CI/CD Pipeline**               | Automatic check during PR,Merge blocked in case of violation         | 99%            | somewhat complicated      |
 
-> **핵심 원칙:** 완벽한 보장을 위해서는 4가지를 모두 적용해야 합니다.
-> 각 방법은 독립적으로 작동하지만, 조합할수록 누락 위험이 줄어든다.
+> **Core Principles:** All four must be applied for complete coverage.
+> Each method works independently, but,The more you combine, the lower the risk of omission.
 
-## 4. 각 방법 상세 가이드
+## 4. Detailed guide to each method
 
-각 방법은 독립 페이지에서 자세히 설명합니다. 필요한 방법만 선택해서 적용해도 됩니다.
+Each method is explained in detail on its own independent page. You can select and apply only the method you need.
 
-| 방법                        | 문서                                        |
-| --------------------------- | ------------------------------------------- |
-| 방법 1: CLAUDE.md 정책 추가 | [method1-claude-md](./method1-claude-md.md) |
-| 방법 2: Skill 정의          | [method2-skill](./method2-skill.md)         |
-| 방법 3: Hooks 설정          | [method3-hooks](./method3-hooks.md)         |
-| 방법 4: CI/CD 파이프라인    | [method4-cicd](./method4-cicd.md)           |
+| method                        | document                                    |
+| ----------------------------- | ------------------------------------------- |
+| Method 1:Add CLAUDE.md policy | [method1-claude-md](./method1-claude-md.md) |
+| Method 2:Skill definition     | [method2-skill](./method2-skill.md)         |
+| Method 3:Hooks settings       | [method3-hooks](./method3-hooks.md)         |
+| Method 4:CI/CD Pipeline       | [method4-cicd](./method4-cicd.md)           |
 
-## 5. 상세 구현 안내
+## 5. Detailed implementation guidance
 
-:::info 상세 구현은 별도 프로젝트를 참조
-각 방법의 실제 구현 예시, 트러블슈팅, 다양한 언어·빌드 시스템별 설정을
-**claude-oss-policy-guard** 프로젝트에서 제공할 예정입니다.
-(준비 중)
+:::info For detailed implementation, refer to separate project.
+Actual implementation examples of each method,Troubleshooting,Settings for various languages ​​and build systems
+It will be provided by the **claude-oss-policy-guard** project.
+(preparing)
 :::
 
-이 챕터는 개념과 기본 예시를 제공합니다.
-실제 프로덕션 환경 적용, 예외 처리, 복잡한 모노레포 구성 등은
-`claude-oss-policy-guard` 프로젝트의 상세 가이드를 참조합니다.
+This chapter presents concepts and basic examples.
+Apply to actual production environment,Exception handling,Complex monorepo configuration, etc.
+Please refer to the detailed guide of the `claude-oss-policy-guard` project.
 
-## 6. 완료 확인
+## 6. Confirm completion
 
-:::info 셀프스터디 모드 (약 2시간)
-충분한 시간을 갖고 각 단계를 이해하며 진행합니다.
+:::info Self-study mode(About 2 hours)
+Take your time and understand each step.
 :::
 
-아래 항목을 모두 완료하면 이 챕터가 완성됩니다.
+Completing all of the items below will complete this chapter.
 
-- [ ] 프로젝트 `CLAUDE.md`에 오픈소스 정책 섹션 추가 완료
-- [ ] `.claude/skills/oss-policy-check.md` 생성 완료
-- [ ] `/oss-policy-check` 실행하여 동작 확인
-- [ ] `.claude/settings.json` Hook 설정 완료
-- [ ] 의존성 파일 수정 시 경고 메시지 출력 확인
-- [ ] `.github/workflows/oss-policy-check.yml` 생성 완료
-- [ ] 테스트 PR을 올려 라이선스·취약점 검사 자동 실행 확인
+- [ ] Completed adding open source policy section to project `CLAUDE.md`
+- [ ] `.claude/skills/oss-policy-check.md` creation completed
+- [ ] Run `/oss-policy-check` to check operation
+- [ ] `.claude/settings.json` Hook setup complete
+- [ ] Check warning message output when modifying dependency files
+- [ ] `.github/workflows/oss-policy-check.yml` creation completed
+- [ ] Confirm automatic execution of license/vulnerability check by uploading a test PR
 
-## 7. 다음 단계
+## 7. Next steps
 
-이 챕터까지 완료했다면, 오픈소스 관리 체계가 **구축을 넘어 운영**까지 완성된 것입니다.
+If you have completed this chapter,The open source management system has been completed beyond **construction to operation**.
 
-**유지 관리 권고:**
+**Maintenance Recommendation:**
 
-- 18개월마다 OpenChain 자체 인증 갱신 ([자체 인증 선언: 마지막 단계](../07-conformance/index.md) 참조)
-- 분기마다 `license-allowlist.md` 검토 및 갱신
-- 신규 CVE 발생 시 grype 재스캔
+- OpenChain self-certification renewal every 18 months([Self-certification declaration:final step](../07-conformance/index.md)reference)
+- Review and update `license-allowlist.md` quarterly
+- rescan grype when a new CVE occurs
 
-**더 나아가기:**
+**Go further:**
 
-- claude-oss-policy-guard 프로젝트 (준비 중)
-- [OpenChain 커뮤니티](https://www.openchainproject.org/) 참여
-- 공급망 파트너와 SBOM 공유 (`output/sbom/sbom-sharing-template.md` 활용)
+- claude-oss-policy-guard project(preparing)
+- [OpenChain Community](https://www.openchainproject.org/)participation
+- Share SBOM with supply chain partners(`output/sbom/sbom-sharing-template.md` Utilization)

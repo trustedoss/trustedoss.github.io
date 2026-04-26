@@ -1,193 +1,193 @@
 ---
-작성일: 2026-03-20
-버전: 1.0
-충족 체크리스트:
+date: 2026-03-20
+version: '1.0'
+checklist:
   - 'ISO/IEC 5230: G4.1 (3.6.1), G4.3 (3.6.2), G4.4 (3.6.2)'
   - 'ISO/IEC 18974: G4.2 (4.4.1), G4.3 (4.4.2), G4.4 (4.4.2)'
-셀프스터디 소요시간: 2시간
+self_study_time: 2 hours
 ---
 
-# 자체 인증 선언: 마지막 단계
+# Self-certification declaration:final step
 
-## 1. 이 챕터에서 하는 일
+## 1. What we do in this chapter
 
-여기까지 온 것을 축하합니다. 지금까지 조직 구성, 정책 수립, 프로세스 설계, SBOM 생성 및 관리, 취약점 분석, 교육 체계 구축까지 오픈소스 관리 체계의 모든 핵심 영역을 완성했다.
+Congratulations on making it this far. Organization structure so far,policy making,process design,SBOM creation and management,Vulnerability Analysis,All key areas of the open source management system, including the establishment of an education system, have been completed.
 
-지금까지 생성한 산출물 전체 목록을 보자. 이 모든 것이 갖춰졌다면 자체 인증 선언 준비가 된 것이다:
+Let's look at the full list of artifacts created so far. If you have all of this in place, you are ready to declare your self-certification.:
 
-| 폴더                    | 산출물                                                                                                                                                                              |
-| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `output/organization/`  | role-definition.md, raci-matrix.md, appointment-template.md                                                                                                                         |
-| `output/policy/`        | oss-policy.md, license-allowlist.md                                                                                                                                                 |
-| `output/process/`       | usage-approval.md, distribution-checklist.md, vulnerability-response.md, inquiry-response.md, process-diagram.md (+ contribution-process.md, project-publication-process.md 조건부) |
-| `output/sbom/`          | [project].cdx.json, sbom-commands.sh, license-report.md, copyleft-risk.md, sbom-management-plan.md, sbom-sharing-template.md                                                        |
-| `output/vulnerability/` | cve-report.md, remediation-plan.md                                                                                                                                                  |
-| `output/training/`      | curriculum.md, completion-tracker.md, resources.md                                                                                                                                  |
+| folder                  | output                                                                                                                                                                                  |
+| ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `output/organization/`  | role-definition.md, raci-matrix.md, appointment-template.md                                                                                                                             |
+| `output/policy/`        | oss-policy.md, license-allowlist.md                                                                                                                                                     |
+| `output/process/`       | usage-approval.md, distribution-checklist.md, vulnerability-response.md, inquiry-response.md, process-diagram.md (+ contribution-process.md,project-publication-process.md conditional) |
+| `output/sbom/`          | [project].cdx.json, sbom-commands.sh, license-report.md, copyleft-risk.md, sbom-management-plan.md, sbom-sharing-template.md                                                            |
+| `output/vulnerability/` | cve-report.md, remediation-plan.md                                                                                                                                                      |
+| `output/training/`      | curriculum.md, completion-tracker.md, resources.md                                                                                                                                      |
 
-이번 챕터에서는 이 산출물들을 바탕으로 갭 분석을 수행하고, 자체 인증 선언문을 완성하여 OpenChain 공식 등록까지 마무리합니다.
-
----
-
-## 2. 배경 지식: 자체 인증이란 무엇인가
-
-OpenChain 자체 인증(Self-Certification)은 제3자 감사 없이 조직 스스로 표준 요구사항을 충족함을 선언하는 방식입니다. 주요 특징은 다음과 같다:
-
-- **자기 선언 방식**: 외부 감사 기관 없이 조직이 직접 체크리스트를 점검하고 선언합니다.
-- **공식 인정**: OpenChain 웹사이트에 등록하면 OpenChain 프로젝트로부터 공식 인정을 받는다.
-- **법적 구속력 없음**: 법적 의무는 아니지만, 공급망 파트너에게 신뢰 신호로 활용됩니다.
-- **유효기간 18개월**: OpenChain 권고에 따라 18개월마다 재확인이 권장됩니다.
-
-ISO/IEC 5230(라이선스 컴플라이언스)과 ISO/IEC 18974(보안 보증) 두 표준 모두 자체 인증 경로를 제공하며, 동시 인증도 가능하다.
+In this chapter, we perform gap analysis based on these outputs and,Complete the self-certification declaration and complete OpenChain official registration.
 
 ---
 
-## 3. 자체 인증 전 최종 점검 (셀프 스터디)
+## 2. Background knowledge:What is self-certification?
 
-:::info 셀프스터디 모드 (약 2시간)
-갭 분석 결과에 따라 추가 작업이 필요할 수 있습니다. conformance-preparer agent가 자동으로 전체 output/ 폴더를 스캔하여 미충족 항목을 식별해 줍니다.
+OpenChain Self-authentication(Self-Certification)is a way for an organization to declare that it meets the standard requirements without a third-party audit. Key features include::
+
+- **Self-declaration method**:The organization itself checks and declares the checklist without an external audit agency.
+- **Official recognition**:By registering on the OpenChain website, you receive official recognition from the OpenChain project.
+- **Not legally binding**:Although it is not a legal obligation,It serves as a trust signal to supply chain partners.
+- **Validity period: 18 months**:Rechecking is recommended every 18 months as per OpenChain advisory.
+
+ISO/IEC 5230(License Compliance)and ISO/IEC 18974(security assurance)Both standards provide their own certification paths and,Simultaneous authentication is also possible.
+
+---
+
+## 3. Final inspection before self-certification(self study)
+
+:::info Self-study mode(About 2 hours)
+Additional work may be required depending on the results of the gap analysis. The conformance-preparer agent automatically scans the entire output/ folder to identify non-conformance items.
 :::
 
-다음 순서로 진행한다:
+Proceed in the following order:
 
-1. 이 문서를 끝까지 읽는다.
-2. conformance-preparer agent를 실행한다:
+1. Read this document until the end.
+2. Run conformance-preparer agent:
 
-   :::tip 실행 전 확인
-   현재 Claude 세션을 먼저 종료(`/exit` 또는 `Ctrl+C`)한 뒤, 새 터미널에서 아래 명령을 실행하세요.
+   :::tip Check before execution
+   Terminate the current Claude session first(`/exit` or `Ctrl+C`)After doing it,Run the command below in a new terminal.
    :::
 
    ```bash
    cd agents/07-conformance-preparer && claude
    ```
 
-   agent가 자동으로 `output/` 전체를 스캔하여 갭 분석 리포트를 생성합니다.
+   The agent automatically scans the entire `output/` and generates a gap analysis report.
 
-3. 생성된 `output/conformance/gap-analysis.md`를 열어 미충족 항목을 확인합니다.
-4. 미충족 항목이 있다면 해당 챕터로 돌아가 보완합니다.
-5. `output/conformance/declaration-draft.md` 선언문을 검토하고 수정합니다.
-6. `output/conformance/submission-guide.md`를 참고하여 OpenChain 웹사이트에 자체 인증을 등록합니다.
-
----
-
-## 4. 갭 분석 리포트 이해하기
-
-`output/conformance/gap-analysis.md`는 다음 구성으로 생성된다:
-
-| 섹션           | 내용                                             |
-| -------------- | ------------------------------------------------ |
-| 충족 항목 목록 | 요구사항을 완전히 충족한 항목과 근거 산출물      |
-| 부분충족 항목  | 일부 충족되었으나 보완이 필요한 항목과 보완 방법 |
-| 미충족 항목    | 아직 충족되지 않은 항목과 해당 챕터 링크         |
-| 전체 진행률    | 충족/부분충족/미충족 비율 (%)                    |
-
-갭 분석에서 미충족 항목이 나왔다고 당황하지 않아도 됩니다. 각 항목에는 어느 챕터로 돌아가면 되는지 링크가 포함되어 있습니다. 부분충족 항목은 작은 수정만으로도 충족으로 전환할 수 있는 경우가 많다.
-
-**§4.1.4.3 — 지속적 개선 감사 증거 처리 방법 (초기 인증):**
-
-ISO/IEC 18974 §4.1.4.3은 "지속적 개선을 입증하는 감사 증거"를 요구합니다. 초기 인증 시에는 아직 이력이 없으므로 다음과 같이 처리합니다.
-
-- **초기 인증**: conformance-preparer agent가 생성하는 `gap-analysis.md` 자체가 첫 번째 감사 이력입니다. gap-analysis.md에 이 사실을 명시하면 부분충족(🔶) 처리되어 인증 선언을 막지 않습니다.
-- **갱신 인증 (18개월 후)**: 2회 이상의 갭 분석 이력을 확보하면 완전 충족(✅)이 됩니다.
-
-**G4.5 — 배포 소프트웨어 알려진 취약점 없음 확인 (18974 §4.4.1.1) 처리 방법:**
-
-이 항목은 "배포 소프트웨어에 알려진 취약점이 없음을 검증·선언"하는 요구사항입니다. 취약점이 있는 경우 다음과 같이 처리한다:
-
-| 상황                                          | 처리 방법                                                                              |
-| --------------------------------------------- | -------------------------------------------------------------------------------------- |
-| 취약점이 **실제 배포 소프트웨어**에 있는 경우 | 배포 전 패치 완료 후 선언. `output/vulnerability/remediation-plan.md`에 조치 완료 기록 |
-| 취약점이 있지만 **완화 조치가 완료**된 경우   | 완화 조치 내용과 잔존 리스크를 `remediation-plan.md`에 문서화하고 조건부 선언 가능     |
-| **실습용 샘플**의 취약점인 경우               | 샘플은 실제 배포 소프트웨어가 아니므로, 실제 배포 대상 제품 기준으로 판단              |
-
-> 자체 인증은 특정 소프트웨어 "범위"에 대한 선언입니다. 범위(§3.1.4 / §4.1.4)를 명확히 정의하면 실습 샘플이 아닌 실제 제품에 대해 선언할 수 있습니다.
+3. Open the generated `output/conformance/gap-analysis.md` and check for unmet items.
+4. If any items are not met, go back to the relevant chapter and supplement them.
+5. Review and edit the `output/conformance/declaration-draft.md` declaration.
+6. Register your self-certification on the OpenChain website, referring to `output/conformance/submission-guide.md`.
 
 ---
 
-## 5. OpenChain 자체 인증 선언 절차
+## 4. Understanding the gap analysis report
 
-갭 분석이 완료되고 미충족 항목이 없거나 해소 계획이 마련되었다면 다음 절차로 공식 등록을 진행한다:
+`output/conformance/gap-analysis.md` is created with the following configuration::
 
-**1단계**: `output/conformance/declaration-draft.md` 내용을 최종 검토하고 확정합니다.
+| section                   | Content                                                                          |
+| ------------------------- | -------------------------------------------------------------------------------- |
+| List of meeting items     | Items and supporting deliverables that fully meet requirements                   |
+| Partially satisfied items | Items that are partially met but need supplementation and how to supplement them |
+| Items not met             | Items not yet met and their chapter links                                        |
+| Overall progress          | Satisfied/Partially Satisfied/Not Satisfied Ratio(%)                             |
 
-**2단계**: 브라우저에서 https://www.openchainproject.org/conformance 에 접속합니다.
+There is no need to panic if your gap analysis reveals unmet items. Each entry includes a link to return to which chapter. Partially satisfied items can often be converted to satisfied with only minor modifications.
 
-**3단계**: ISO/IEC 5230 또는 ISO/IEC 18974 중 인증할 표준을 선택합니다. (또는 두 표준 모두 선택)
+**§4.1.4.3 — How to handle continuous improvement audit evidence(initial authentication):**
 
-**4단계**: 온라인 자체 인증 체크리스트를 작성하고 제출합니다. `declaration-draft.md`의 내용을 참고하면 빠르게 완성할 수 있습니다.
+ISO/IEC 18974 §4.1.4.3 requires “audit evidence demonstrating continuous improvement.” During initial authentication, there is no history yet, so proceed as follows.
 
-**5단계**: 등록이 완료되면 OpenChain 로고 사용이 가능하며, 공식 인정 기업 목록에 등재됩니다.
+- **Initial Certification**:The `gap-analysis.md` itself generated by the conformance-preparer agent is the first audit trail. Partially satisfied if this fact is specified in gap-analysis.md(🔶)It is processed and does not prevent authentication declarations.
+- **Renewal Certification(18 months later)**:Fully satisfied if two or more gap analysis records are obtained.(✅)This happens.
 
-> 이 단계는 ISO/IEC 5230 G4.1 (3.6.1) 및 ISO/IEC 18974 G4.2 (4.4.1) 요구사항을 충족합니다.
+**G4.5 — Verify that distributed software has no known vulnerabilities(18974 §4.4.1.1)Processing method:**
 
-:::info 충족되는 표준 요구사항
-이 실습을 완료하면 아래 요구사항이 충족됩니다.
+This item is a requirement to “verify and declare that the distributed software has no known vulnerabilities.” If there is a vulnerability, handle it as follows::
+
+| Situation                                                         | Processing method                                                                                                        |
+| ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| If the vulnerability is in the **actual distributed software**    | Declared after patch completion before distribution. Log action completion in `output/vulnerability/remediation-plan.md` |
+| If a vulnerability exists but **mitigations have been completed** | Mitigation measures and remaining risks can be documented in `remediation-plan.md` and conditionally declared            |
+| In case of vulnerability in **Practice sample**                   | Samples are not actual distributed software.,Judgment based on actual distribution target product                        |
+
+> Self-certification is a declaration of specific software “scope”. range(§3.1.4 / §4.1.4)By clearly defining , you can make the declaration about actual products rather than practice samples.
+
+---
+
+## 5. OpenChain Self-certification declaration procedure
+
+If the gap analysis is completed and there are no unmet items or a resolution plan has been prepared, proceed with official registration through the following procedures.:
+
+**Step 1**:`output/conformance/declaration-draft.md` Final review and confirmation of contents.
+
+**Step 2**:https in browser:Access //www.openchainproject.org/conformance.
+
+**Step 3**:Select the standard you want to certify to: ISO/IEC 5230 or ISO/IEC 18974.(Or choose both standards)
+
+**Step 4**:Complete and submit the online self-certification checklist. You can complete it quickly by referring to the contents of `declaration-draft.md`.
+
+**Step 5**:Once registration is complete, you can use the OpenChain logo.,Listed on the list of officially recognized companies.
+
+> This step is ISO/IEC 5230 G4.1(3.6.1)and ISO/IEC 18974 G4.2(4.4.1)Meets your requirements.
+
+:::info Standard requirements met
+Completing this lab will meet the requirements below:
 
 **ISO/IEC 5230**
 
-| 항목 ID | 요구사항           | 자체인증 체크리스트                                                                                |
-| ------- | ------------------ | -------------------------------------------------------------------------------------------------- |
-| 3.6.1   | 자체 인증 선언     | Do you confirm that your program meets all the requirements of this specification?                 |
-| 3.6.2   | 인증 유효기간 관리 | Do you have a process to confirm the program meets the requirements at least once every 18 months? |
+| Item ID | Requirements                             | Self-certification checklist                                                                       |
+| ------- | ---------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| 3.6.1   | Self-certification declaration           | Do you confirm that your program meets all the requirements of this specification?                 |
+| 3.6.2   | Certification validity period management | Do you have a process to confirm the program meets the requirements at least once every 18 months? |
 
 **ISO/IEC 18974**
 
-| 항목 ID | 요구사항                | 자체인증 체크리스트                                                                                                   |
-| ------- | ----------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| 4.4.1   | 자체 인증 선언 (보안)   | Do you confirm that your security assurance program meets all the requirements of this specification?                 |
-| 4.4.2   | 보안 인증 유효기간 관리 | Do you have a process to confirm the security assurance program meets the requirements at least once every 18 months? |
+| Item ID | Requirements                                       | Self-certification checklist                                                                                          |
+| ------- | -------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| 4.4.1   | Self-certification declaration(security)           | Do you confirm that your security assurance program meets all the requirements of this specification?                 |
+| 4.4.2   | Security authentication validity period management | Do you have a process to confirm the security assurance program meets the requirements at least once every 18 months? |
 
 :::
 
 ---
 
-## 6. 두 표준 동시 인증 전략
+## 6. Two standards simultaneous authentication strategy
 
-ISO/IEC 5230과 ISO/IEC 18974는 많은 요구사항을 공유합니다. 동시 인증을 목표로 한다면 다음 전략이 효율적이다:
+ISO/IEC 5230 and ISO/IEC 18974 share many requirements. If simultaneous authentication is the goal, the following strategy is efficient::
 
-- **공통 항목 10개**: 두 표준이 공유하는 항목은 한 번의 작업으로 동시에 충족됩니다.
-- **5230 전용 6개**: 라이선스 컴플라이언스에 특화된 항목을 추가로 충족합니다.
-- **18974 전용 9개**: 보안 보증에 특화된 항목을 추가로 충족합니다.
+- **10 common items**:Items shared by both standards are met simultaneously in one operation.
+- **6 for 5230 only**:Additional requirements specific to license compliance are met.
+- **18974 only 9**:It additionally satisfies special security assurance requirements.
 
-권장 작업 순서: 공통 항목 먼저 완료 → ISO/IEC 5230 전용 항목 → ISO/IEC 18974 전용 항목 순으로 진행하면 약 **40% 작업 절감** 효과를 얻을 수 있습니다. 이 키트의 챕터 구성 자체가 이 순서를 따르도록 설계되어 있습니다.
-
----
-
-## 7. 인증 후 유지 관리
-
-자체 인증은 한 번으로 끝나지 않는다. 지속적인 유지 관리가 필요하다:
-
-- **연 1회 정책 검토**: `output/policy/oss-policy.md`와 `output/policy/license-allowlist.md`를 연 1회 검토하고 최신 상태로 유지합니다.
-- **담당자 변경 시 인수인계**: RACI 매트릭스와 임명장 템플릿을 활용하여 체계적인 인수인계 절차를 밟는다.
-- **새 버전 표준 출시 시 대응**: ISO/IEC 5230과 ISO/IEC 18974의 개정판이 출시되면 갭 분석을 재수행합니다.
-- **18개월마다 재확인**: OpenChain 권고에 따라 18개월 주기로 자체 인증을 재확인하고 필요 시 갱신 선언을 합니다.
-
-> 이 단계는 ISO/IEC 5230 G4.3 (3.6.2) 및 ISO/IEC 18974 G4.3 (4.4.2) 요구사항을 충족합니다.
+Recommended Order of Action:Complete common items first → ISO/IEC 5230 only items → By proceeding with ISO/IEC 18974-specific items, you can achieve approximately **40% work savings**. The organization of the chapters in this kit itself is designed to follow this order.
 
 ---
 
-## 8. 완료 확인 체크리스트
+## 7. Post-certification maintenance
 
-이 챕터를 마치기 전에 아래 항목을 모두 확인한다:
+Self-certification does not end once. Requires ongoing maintenance:
 
-- [ ] `output/conformance/gap-analysis.md` 생성됨
-- [ ] `output/conformance/declaration-draft.md` 생성됨
-- [ ] `output/conformance/submission-guide.md` 생성됨
-- [ ] 갭 분석에서 미충족 항목이 없거나 해소 계획이 있음
-- [ ] 자체 인증 선언문이 완성됨
+- **Policy review once a year**:Review `output/policy/oss-policy.md` and `output/policy/license-allowlist.md` once a year and keep them up to date.
+- **Handover when person in charge changes**:Follow a systematic handover process using the RACI matrix and appointment letter template.
+- **Response when new version standard is released**:We will re-perform the gap analysis when revisions to ISO/IEC 5230 and ISO/IEC 18974 are released.
+- **Recheck every 18 months**:OpenChain As recommended, we reconfirm our own certification every 18 months and declare renewal when necessary.
 
-> 📋 **산출물 예시**: [자체 인증 산출물 Best Practice](/reference/samples/conformance)에서 생성된 파일의 실제 형식을 확인할 수 있습니다.
+> This step is ISO/IEC 5230 G4.3(3.6.2)and ISO/IEC 18974 G4.3(4.4.2)Meets your requirements.
 
 ---
 
-## 9. 완료 축하 및 다음 단계
+## 8. Completion Confirmation Checklist
 
-이제 귀사의 오픈소스 관리 체계가 완성되었다.
+Check all items below before finishing this chapter:
 
-조직 구성부터 정책, 프로세스, SBOM, 취약점 관리, 교육, 그리고 자체 인증 선언까지 — ISO/IEC 5230과 ISO/IEC 18974가 요구하는 모든 요소를 체계적으로 갖추었다. 이 성과는 공급망 파트너와 고객에게 귀사의 오픈소스 관리 성숙도를 증명하는 강력한 신뢰 신호가 될 것입니다.
+- [ ] `output/conformance/gap-analysis.md` created
+- [ ] `output/conformance/declaration-draft.md` created
+- [ ] `output/conformance/submission-guide.md` created
+- [ ] There are no unmet items in the gap analysis or there are plans to resolve them.
+- [ ] Self-certification declaration completed
 
-인증 이후에도 오픈소스 생태계와 함께 성장할 수 있는 방법들:
+> 📋 **Example of output**: [Self-certified output Best Practice](/reference/samples/conformance)You can check the actual format of the generated file at .
 
-- **OpenChain KWG 커뮤니티 참여**: 국내 OpenChain 커뮤니티에서 다른 기업들과 경험을 공유합니다.
+---
+
+## 9. Celebrate completion and next steps
+
+Your open source management system is now complete.
+
+From organizational structure to policy,process, SBOM,Vulnerability Management,education,And even the self-certification declaration — all elements required by ISO/IEC 5230 and ISO/IEC 18974 were systematically met. This achievement will be a strong signal of confidence to your supply chain partners and customers that demonstrates your open source management maturity.
+
+Ways to grow with the open source ecosystem even after certification:
+
+- **OpenChain KWG Community Participation**:We share our experiences with other companies in the domestic OpenChain community.
   https://openchain-project.github.io/OpenChain-KWG
-- **사내 오픈소스 기여 정책 수립**: 소비에서 기여로 — 오픈소스 커뮤니티에 기여하는 정책을 수립합니다.
-- **OSPO(Open Source Program Office) 설립 검토**: 오픈소스 관리를 전담하는 조직을 공식화하여 장기적인 역량을 강화합니다.
+- **Establishment of an in-house open source contribution policy**:From consumption to contribution — Establish policies that contribute to the open source community.
+- **OSPO(Open Source Program Office)Establishment review**:Strengthen long-term capabilities by formalizing an organization dedicated to open source management.

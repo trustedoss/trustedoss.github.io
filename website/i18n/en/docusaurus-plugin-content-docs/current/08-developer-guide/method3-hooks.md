@@ -1,15 +1,15 @@
 ---
 sidebar_position: 4
-sidebar_label: '방법 3: Hooks 설정'
+sidebar_label: 'Method 3:Hooks settings'
 ---
 
-# 방법 3: Hooks 설정하기
+# Method 3:Setting up hooks
 
-:::info 셀프스터디 모드 (약 30분)
-의존성 파일이 변경될 때마다 자동으로 경고가 발생합니다.
+:::info Self-study mode(About 30 minutes)
+Alerts are automatically issued whenever dependency files change.
 :::
 
-`.claude/settings.json`에 아래 Hook을 추가합니다.
+Add the Hook below to `.claude/settings.json`.
 
 ```json
 {
@@ -29,12 +29,12 @@ sidebar_label: '방법 3: Hooks 설정'
 }
 ```
 
-> 이 단계는 `output/process/usage-approval.md`에 정의된 패키지 추가 승인 절차를 자동으로 환기시킵니다.
+> This step automatically invokes the package addition approval process defined in `output/process/usage-approval.md`.
 
-**효과:** Claude Code가 `package.json`, `requirements.txt`, `pom.xml`, `go.mod`, `Cargo.toml` 등을 수정할 때마다 자동으로 경고 메시지가 표시됩니다.
+**effect:** Claude Code `package.json`, `requirements.txt`, `pom.xml`, `go.mod`,Whenever you modify `Cargo.toml` etc. you will automatically see a warning message.
 
-**한계:** Claude Code 외부에서 파일을 수정하면 Hook이 실행되지 않는다. CI/CD로 보완합니다.
+**margin:** If you modify the file outside of Claude Code, the Hook will not be executed. Complemented by CI/CD.
 
 ---
 
-→ 다음: [방법 4: CI/CD 파이프라인](./method4-cicd.md)
+→ next: [Method 4:CI/CD pipeline](./method4-cicd.md)

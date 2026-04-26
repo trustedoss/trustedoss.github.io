@@ -1,45 +1,45 @@
 ---
 id: pipeline-design
-title: 전사 파이프라인 설계
-sidebar_label: 파이프라인 설계
+title: Transcription Pipeline Design
+sidebar_label: pipeline design
 sidebar_position: 9
 ---
 
-# 전사 파이프라인 설계
+# Transcription pipeline design
 
-SAST·SCA·시크릿 탐지·컨테이너 보안·IaC 보안·DAST 6개 영역을 하나의 파이프라인으로 통합하는 설계 방법을 안내합니다.
-각 영역 페이지에서 다룬 개별 설정을 실제 운영 환경에 맞게 조합하는 방법에 집중합니다.
+We guide you through a design method that integrates the six areas of SAST, SCA, secret detection, container security, IaC security, and DAST into one pipeline.
+We focus on how to combine the individual settings covered on each area page to suit your actual operating environment.
 
-## 파이프라인 설계 원칙
+## Pipeline design principles
 
-**병렬 실행**: 독립적인 검사는 병렬로 실행해 전체 파이프라인 소요 시간을 최소화합니다. SAST·SCA·시크릿 탐지는 서로 의존성이 없으므로 동시에 실행할 수 있습니다.
+**Parallel execution**: Independent tests run in parallel to minimize overall pipeline time. SAST, SCA, and Secret detection do not depend on each other, so they can run simultaneously.
 
-**단계별 게이트**: 빠른 검사(시크릿·SAST)를 앞에 두고 느린 검사(DAST)를 뒤에 배치합니다. 앞 단계가 실패하면 뒤 단계를 실행할 필요가 없으므로 불필요한 자원 소비를 줄입니다.
+**Step-by-step gate**: Place fast tests (Secret/SAST) at the front and slow tests (DAST) at the back. If the previous step fails, the later step does not need to be executed, thus reducing unnecessary resource consumption.
 
-**실패 정책 분리**: 즉시 차단(Hard Fail)과 경고만(Soft Fail)을 명확히 구분합니다. 팀이 수용 가능한 수준에서 시작해 점진적으로 강화하는 방식이 실제 도입 성공률을 높입니다.
+**Separation of failure policies**: Clear distinction between hard fail and warning only (soft fail). Starting at an acceptable level and gradually strengthening the team increases the success rate of actual adoption.
 
-**결과 보존**: 모든 검사 결과를 아티팩트로 보관합니다. 감사 대응·트렌드 분석·재현을 위해 일정 기간 유지하는 것이 중요합니다.
-
----
-
-## 파이프라인 전체 구조
-
-| 단계 | 검사 항목              | 실행 시점  | 실패 정책      | 소요 시간 |
-| ---- | ---------------------- | ---------- | -------------- | --------- |
-| 1    | 시크릿 탐지 (Gitleaks) | PR         | Hard Fail      | ~1분      |
-| 2    | SAST (Semgrep)         | PR         | Hard Fail      | 2~5분     |
-| 2    | SCA (syft+grype)       | PR         | Hard Fail      | 2~3분     |
-| 2    | IaC 보안 (Checkov)     | PR         | Hard Fail      | 1~2분     |
-| 3    | 컨테이너 보안 (Trivy)  | Push/Merge | Hard Fail      | 3~5분     |
-| 4    | DAST (ZAP Baseline)    | Push/Merge | Soft Fail→Hard | 5~10분    |
-
-2단계 검사들은 병렬 실행으로 전체 소요 시간을 5분 내로 유지할 수 있습니다.
+**Result Retention**: All test results are kept as artifacts. It is important to maintain it for a certain period of time for audit response, trend analysis, and reproduction.
 
 ---
 
-## GitHub Actions 통합 워크플로우
+## Pipeline overall structure
 
-### PR 단계 (병렬 실행)
+| steps | Inspection items            | When to run | failure policy | Time required |
+| ----- | --------------------------- | ----------- | -------------- | ------------- |
+| 1     | Secret detection (Gitleaks) | PR          | Hard Fail      | ~1 minute     |
+| 2     | SAST (Semgrep)              | PR          | Hard Fail      | 2~5 minutes   |
+| 2     | SCA (syft+grype)            | PR          | Hard Fail      | 2~3 minutes   |
+| 2     | IaC Security (Checkov)      | PR          | Hard Fail      | 1-2 minutes   |
+| 3     | Container Security (Trivy)  | Push/Merge  | Hard Fail      | 3~5 minutes   |
+| 4     | DAST (ZAP Baseline)         | Push/Merge  | Soft Fail→Hard | 5-10 minutes  |
+
+Two-stage tests can be run in parallel to keep the overall time within 5 minutes.
+
+---
+
+## GitHub Actions Integrated Workflow
+
+### PR phase (parallel execution)
 
 ```yaml
 # .github/workflows/devsecops-pr.yml
@@ -104,7 +104,7 @@ jobs:
           soft_fail: false
 ```
 
-### Push/Merge 단계 (컨테이너·DAST)
+### Push/Merge stage (Container·DAST)
 
 ```yaml
 # .github/workflows/devsecops-merge.yml
@@ -151,7 +151,7 @@ jobs:
 
 ---
 
-## GitLab CI 통합 파이프라인
+## GitLab CI integration pipeline
 
 ```yaml
 # .gitlab-ci.yml (전체 통합)
@@ -231,34 +231,34 @@ dast:
 
 ---
 
-## 멀티 저장소 정책 일관성
+## Multi-store policy consistency
 
-:::tip 재사용 가능한 워크플로우로 정책을 중앙 관리하세요
+:::tip Centrally manage policies with reusable workflows
 :::
 
-**GitHub Actions Reusable Workflow**: 공통 워크플로우를 별도 저장소(예: `your-org/security-workflows`)에 관리하고 각 프로젝트에서 `uses: your-org/security-workflows/.github/workflows/devsecops-pr.yml@main`으로 참조합니다. 정책 변경 시 한 곳만 수정하면 전체 저장소에 즉시 반영됩니다.
+**GitHub Actions Reusable Workflow**: Manage common workflows in a separate repository (e.g. `your-org/security-workflows`) and reference them as `uses: your-org/security-workflows/.github/workflows/devsecops-pr.yml@main` in each project. When a policy change is made in just one location, it is immediately reflected in the entire repository.
 
-**GitLab CI 템플릿**: `include:` 키워드로 중앙 저장소의 CI 템플릿을 참조합니다. 프로젝트별 오버라이드는 `extends:`로 처리하면 기본 정책을 유지하면서 예외를 허용할 수 있습니다.
+**GitLab CI Template**: References a CI template in the central repository with the `include:` keyword. Project-specific overrides can be handled with `extends:` to allow exceptions while maintaining the default policy.
 
-**정책 파일 동기화**: `.grype.yaml`·`.gitleaks.toml`·`.trivyignore.yaml` 등 정책 파일을 별도 저장소에서 관리하고 각 프로젝트에 git submodule 또는 파일 복사 스크립트로 배포합니다. 정책 파일의 버전 이력이 보존되어 감사 대응에 유리합니다.
+**Policy file synchronization**: Manage policy files such as `.grype.yaml`·`.gitleaks.toml`·`.trivyignore.yaml` in a separate repository and distribute them to each project using git submodule or file copy script. The version history of the policy file is preserved, which is advantageous for audit response.
 
 ---
 
-## 빌드 실패 시 개발자 안내
+## Developer guidance when build fails
 
-:::warning 빌드 실패 메시지는 개발자가 즉시 행동할 수 있어야 합니다
-"취약점 발견"만 알리면 개발자가 무엇을 해야 할지 모릅니다.
+:::warning Build failure messages should allow developers to act immediately
+All you have to do is report a “vulnerability found” and developers won’t know what to do.
 :::
 
-**명확한 실패 원인**: 어떤 패키지의 어떤 CVE인지, 어떤 파일의 어떤 라인인지 메시지에 포함합니다. 원인이 불분명한 실패는 개발자의 불신과 알림 무시로 이어집니다.
+**Clear cause of failure**: Include in the message which CVE in which package and which line in which file. Failures with unclear causes lead to developer distrust and ignoring notifications.
 
-**수정 방법 안내**: 가능하면 "이 버전으로 업그레이드하세요" 같은 구체적 조치를 메시지에 포함합니다. grype는 fix 버전을 자동으로 표시하므로 별도 작업 없이 수정 안내가 제공됩니다.
+**How ​​to Fix**: If possible, include a specific action in your message, such as “Upgrade to this version.” grype automatically displays the fix version, providing guidance on fixing it without any additional work.
 
-**예외 처리 경로**: 즉시 수정이 불가능한 경우 예외 신청 방법(담당자·문서 링크)을 빌드 실패 메시지에 안내합니다. 예외 경로가 없으면 개발자가 무력감을 느끼거나 보안 검사를 우회하려는 시도가 발생합니다.
+**Exception handling path**: If immediate correction is not possible, instructions on how to apply for an exception (person in charge/document link) will be provided in the build failure message. The absence of exception paths leaves developers feeling helpless or attempting to bypass security checks.
 
 ---
 
-## 다음 단계
+## Next steps
 
-- 배포 후 지속적 모니터링·자동 패치: [모니터링·자동 교정](./monitoring)
-- ISO/IEC 18974 요구사항 매핑: [ISO 표준 연계](./iso-mapping)
+- Continuous monitoring/automatic patching after deployment: [Monitoring/automatic correction](./monitoring)
+- ISO/IEC 18974 Requirements Mapping: [ISO Standard Linkage](./iso-mapping)

@@ -1,16 +1,16 @@
 ---
 sidebar_position: 5
-sidebar_label: '방법 4: CI/CD 파이프라인'
+sidebar_label: 'Method 4:CI/CD pipeline'
 ---
 
-# 방법 4: CI/CD 파이프라인 추가하기
+# Method 4:Adding a CI/CD Pipeline
 
-:::info 셀프스터디 모드 (약 45분)
-PR 단계에서 자동으로 차단하면 위반이 메인 브랜치에 들어오지 못합니다.
+:::info Self-study mode(About 45 minutes)
+Automatic blocking at the PR stage prevents violations from entering the main branch.
 :::
 
-`.github/workflows/oss-policy-check.yml`을 생성합니다.
-아래 예시는 **무료 오픈소스 도구만** 사용합니다 (syft, grype 모두 오픈소스).
+Generates `.github/workflows/oss-policy-check.yml`.
+The examples below use **free open source tools only**(syft,grype is all open source).
 
 ```yaml
 name: OSS Policy Check
@@ -79,16 +79,16 @@ jobs:
           path: results.sarif
 ```
 
-> 이 단계는 ISO/IEC 18974 G3S.1 (알려진 취약점 식별) 요구사항의 **자동화된 지속 검증**을 지원합니다.
+> This step is ISO/IEC 18974 G3S.1(Identify known vulnerabilities)Supports **automated continuous verification** of requirements.
 
-**효과:**
+**effect:**
 
-- 모든 PR에서 자동으로 라이선스 검사 실행
-- GPL 등 금지 라이선스 발견 시 PR 머지 차단
-- CVSS High(7.0) 이상 취약점 발견 시 머지 차단
-- 검사 결과가 PR 화면에 직접 표시됨
+- Run license check automatically on all PRs
+- Block PR merge when prohibited licenses such as GPL are found
+- CVSS High(7.0)Block merge when abnormal vulnerabilities are discovered
+- Test results are displayed directly on the PR screen
 
-**무료 도구 정보:**
+**Free Tool Information:**
 
-- [syft](https://github.com/anchore/syft): SBOM 생성 도구 (Apache-2.0)
-- [grype](https://github.com/anchore/grype): 취약점 스캐너 (Apache-2.0)
+- [syft](https://github.com/anchore/syft):SBOM Generation Tool(Apache-2.0)
+- [grype](https://github.com/anchore/grype):vulnerability scanner(Apache-2.0)

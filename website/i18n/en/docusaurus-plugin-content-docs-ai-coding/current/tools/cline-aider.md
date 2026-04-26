@@ -1,34 +1,34 @@
 ---
 id: cline-aider
-title: Cline / Aider 설정
+title: Cline / Aider Setup
 sidebar_label: Cline / Aider
 sidebar_position: 5
 ---
 
-# Cline / Aider 설정
+# Cline / Aider Setup
 
-## 개요
+## Overview
 
-Cline은 `.clinerules` 파일(루트 단일 파일 또는 `.clinerules/` 폴더)을 프로젝트 지침으로 읽어 AI 동작에 반영합니다. Aider는 `AGENTS.md` 또는 `.aider.conf.yml`의 `system_prompt` 항목을 통해 시스템 프롬프트를 보강할 수 있습니다. 두 도구 모두 프로젝트 단위로 규칙을 적용합니다.
+Cline reads `.clinerules` files (a single root file or `.clinerules/` folder) as project instructions and applies them to AI behavior. Aider can augment the system prompt through `AGENTS.md` or the `system_prompt` field in `.aider.conf.yml`. Both tools apply rules at the project level.
 
-Cline은 VS Code 확장으로 동작하는 에이전트형 AI 도구이며, Aider는 터미널 기반 CLI 도구입니다. 두 도구 모두 오픈소스이며 로컬 환경에서 실행되므로, 코드를 외부 서버에 전송하는 것을 꺼리는 팀에서 선호합니다. 오픈소스 정책을 각 설정 파일에 작성해 두면 AI가 패키지를 추가하거나 코드를 생성할 때 자동으로 정책을 고려합니다.
+Cline is an agent-style AI tool running as a VS Code extension, while Aider is a terminal-based CLI tool. Both are open source and run locally, so they are often preferred by teams that avoid sending code to external servers. If open source policy is written in each configuration file, AI automatically considers it when adding packages or generating code.
 
 ---
 
-## Cline 설정
+## Cline Setup
 
-### 설정 파일 위치
+### Configuration File Location
 
-- `.clinerules` (루트 단일 파일, 권장)
-- `.clinerules/` (폴더, 여러 파일 분리 가능)
+- `.clinerules` (single root file, recommended)
+- `.clinerules/` (folder, allows split files)
 
-### 적용 방법
+### How to Apply
 
-1. 프로젝트 루트에 `.clinerules` 파일을 생성합니다.
-2. [공통 Rules 템플릿](../rules-template)의 내용을 붙여넣습니다.
-3. 허용·금지 라이선스 목록을 사내 정책에 맞게 수정합니다.
+1. Create `.clinerules` in the project root.
+2. Paste content from the [Common Rules Template](../rules-template).
+3. Update the allow/deny license list to match internal policy.
 
-### 설정 예시
+### Configuration Example
 
 ```markdown
 ## 오픈소스 정책
@@ -67,22 +67,22 @@ Cline은 VS Code 확장으로 동작하는 에이전트형 AI 도구이며, Aide
 
 ---
 
-## Aider 설정
+## Aider Setup
 
-### 설정 파일 위치
+### Configuration File Location
 
-- `AGENTS.md` (루트, OpenAI Codex 에이전트 규격 호환)
-- `.aider.conf.yml` 의 `system_prompt` 항목
+- `AGENTS.md` (root, compatible with OpenAI Codex agent spec)
+- `system_prompt` field in `.aider.conf.yml`
 
-### 적용 방법
+### How to Apply
 
-1. 프로젝트 루트에 `AGENTS.md` 파일을 생성합니다.
-2. [공통 Rules 템플릿](../rules-template)의 내용을 붙여넣습니다.
-3. 간결한 설정을 원한다면 `.aider.conf.yml`의 `system_prompt`에 핵심 내용만 요약해 작성합니다.
+1. Create `AGENTS.md` in the project root.
+2. Paste content from the [Common Rules Template](../rules-template).
+3. If you prefer concise setup, summarize only key policy points in `.aider.conf.yml` under `system_prompt`.
 
-### 설정 예시
+### Configuration Example
 
-**AGENTS.md** — 공통 Rules 템플릿 전체를 그대로 포함합니다.
+**AGENTS.md** — Include the entire Common Rules Template as-is.
 
 ```markdown
 ## 오픈소스 정책
@@ -107,7 +107,7 @@ Cline은 VS Code 확장으로 동작하는 에이전트형 AI 도구이며, Aide
 - 의존성 변경 시 SBOM 업데이트 필요 (도구: cdxgen, syft)
 ```
 
-**.aider.conf.yml** — 핵심 내용만 요약해 사용합니다.
+**.aider.conf.yml** — Use a concise summary of key items only.
 
 ```yaml
 system_prompt: |
@@ -120,8 +120,8 @@ system_prompt: |
 
 ---
 
-## 주의사항
+## Notes
 
-:::info 알아두세요
-Cline과 Aider 모두 규칙을 Hard Block이 아닌 소프트 가이드라인으로 처리합니다. 정책 위반 패키지를 완전히 차단하려면 CI/CD 파이프라인을 함께 구성해야 합니다. Aider는 CLI 기반으로 동작하므로, `.aider.conf.yml`이 없으면 매 실행 시 `--system-prompt` 플래그로 정책 내용을 직접 전달할 수도 있습니다. 자동화된 CI/CD 게이트 구성 방법은 [Quick CI/CD](../cicd-quick)를 참고하세요.
+:::info Good to know
+Both Cline and Aider treat rules as soft guidance rather than hard blocking. To fully block policy-violating packages, configure a CI/CD pipeline in parallel. Since Aider is CLI-based, if `.aider.conf.yml` does not exist, you can pass policy directly on each run with `--system-prompt`. For automated CI/CD gate setup, refer to [Quick CI/CD](../cicd-quick).
 :::

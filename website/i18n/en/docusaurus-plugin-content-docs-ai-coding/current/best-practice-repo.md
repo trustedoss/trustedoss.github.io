@@ -1,22 +1,22 @@
 ---
 id: best-practice-repo
-title: Best Practice 저장소
-sidebar_label: Best Practice 저장소
+title: Best Practice Repository
+sidebar_label: Best Practice Repository
 sidebar_position: 8
 ---
 
-# Best Practice 저장소
+# Best Practice Repository
 
-[5단계 전략](./strategy)의 1~5단계를 모두 구현한 참조 GitHub 저장소입니다.
-fork해서 즉시 사용하거나, 설정 파일을 복사해 기존 프로젝트에 적용할 수 있습니다.
+This is a reference GitHub repository that implements all Stages 1-5 from the [5-Stage Strategy](./strategy).
+You can fork it for immediate use or copy configuration files into an existing project.
 
-:::info 저장소
+:::info Repository
 **[github.com/trustedoss/ai-coding-best-practice](http://github.com/trustedoss/ai-coding-best-practice)**
 :::
 
 ---
 
-## 저장소 구성
+## Repository Structure
 
 ```
 ai-coding-best-practice/
@@ -58,52 +58,52 @@ ai-coding-best-practice/
 
 ---
 
-## 단계별 구현 내용
+## Stage-by-stage Implementation
 
-### 3단계 — CI/CD 자동 차단
+### Stage 3 — CI/CD Auto Blocking
 
-| 영역          | 구현 파일                | 설명                                            |
-| ------------- | ------------------------ | ----------------------------------------------- |
-| 시크릿 탐지   | `secret-detection.yml`   | Gitleaks — PR마다 API 키·토큰 하드코딩 탐지     |
-| SAST          | `sast.yml`               | Semgrep — OWASP Top 10 룰셋 + 커스텀 룰         |
-| SAST (심층)   | `codeql.yml`             | CodeQL — PR 및 주 1회 스케줄 정적 분석          |
-| SCA           | `oss-policy.yml`         | syft + grype — SBOM 생성·CVE 스캔·라이선스 검사 |
-| IaC 보안      | `iac-security.yml`       | Checkov — Dockerfile·Kubernetes 설정 오류 탐지  |
-| 컨테이너 보안 | `container-security.yml` | Trivy — Docker 이미지 취약점 스캔               |
+| Area               | Implementation File      | Description                                                  |
+| ------------------ | ------------------------ | ------------------------------------------------------------ |
+| Secret Detection   | `secret-detection.yml`   | Gitleaks — Detects hardcoded API keys/tokens in every PR     |
+| SAST               | `sast.yml`               | Semgrep — OWASP Top 10 ruleset + custom rules                |
+| SAST (Deep)        | `codeql.yml`             | CodeQL — Static analysis on PRs and weekly schedule          |
+| SCA                | `oss-policy.yml`         | syft + grype — SBOM generation, CVE scan, and license checks |
+| IaC Security       | `iac-security.yml`       | Checkov — Detects Dockerfile/Kubernetes configuration issues |
+| Container Security | `container-security.yml` | Trivy — Docker image vulnerability scan                      |
 
-### 4단계 — AI 방어 레이어
+### Stage 4 — AI Defense Layer
 
-| 항목              | 구현 파일        | 설명                                                         |
-| ----------------- | ---------------- | ------------------------------------------------------------ |
-| AI 코드 리뷰 (4a) | `ai-review.yml`  | Semgrep·grype findings → Claude 검증·심층 해석 → PR 코멘트   |
-| AI 퍼징 (4b)      | `ai-fuzzing.yml` | Claude가 엣지케이스 생성 → 앱 실행 → 5xx 탐지 (Push to main) |
+| Item                | Implementation File | Description                                                                     |
+| ------------------- | ------------------- | ------------------------------------------------------------------------------- |
+| AI Code Review (4a) | `ai-review.yml`     | Semgrep/grype findings → Claude validation and deep interpretation → PR comment |
+| AI Fuzzing (4b)     | `ai-fuzzing.yml`    | Claude generates edge cases → runs app → detects 5xx errors (Push to main)      |
 
-### 5단계 — 지속적 모니터링·자동 교정
+### Stage 5 — Continuous Monitoring & Auto-remediation
 
-| 항목                 | 구현 파일        | 설명                                           |
-| -------------------- | ---------------- | ---------------------------------------------- |
-| 의존성 자동 업데이트 | `dependabot.yml` | 주간 의존성 업데이트 PR 자동 생성              |
-| 패치 자동 병합       | `renovate.json`  | Critical 패치 자동 병합, Major는 검토 알림     |
-| DAST                 | `dast.yml`       | OWASP ZAP Baseline — Push to main 시 동적 스캔 |
+| Item                         | Implementation File | Description                                              |
+| ---------------------------- | ------------------- | -------------------------------------------------------- |
+| Automatic Dependency Updates | `dependabot.yml`    | Automatically creates weekly dependency update PRs       |
+| Automatic Patch Merge        | `renovate.json`     | Auto-merges Critical patches, notifies for Major updates |
+| DAST                         | `dast.yml`          | OWASP ZAP Baseline — dynamic scan on Push to main        |
 
 ---
 
-## 시작하기
+## Getting Started
 
-**1. 저장소 fork**
+**1. Fork the repository**
 
 ```bash
 git clone https://github.com/YOUR-ORG/ai-coding-best-practice.git
 cd ai-coding-best-practice
 ```
 
-**2. GitHub Secrets 등록**
+**2. Add GitHub Secrets**
 
-| Secret 이름         | 용도                  | 필수 여부 |
-| ------------------- | --------------------- | --------- |
-| `ANTHROPIC_API_KEY` | AI 코드 리뷰, AI 퍼징 | 선택      |
+| Secret Name         | Usage                      | Required |
+| ------------------- | -------------------------- | -------- |
+| `ANTHROPIC_API_KEY` | AI code review, AI fuzzing | Optional |
 
-**3. PR을 열어 파이프라인 확인**
+**3. Open a PR to verify pipelines**
 
 ```bash
 git checkout -b test/pipeline-check
@@ -112,28 +112,28 @@ git commit -am "test: pipeline check"
 git push origin test/pipeline-check
 ```
 
-PR 생성 시 3단계 워크플로우 6개가 자동 실행됩니다.
-4단계 AI 리뷰는 `ANTHROPIC_API_KEY` 등록 시 자동 활성화됩니다.
-AI 퍼징과 DAST는 Push to main 또는 주간 스케줄에서 실행됩니다.
+When a PR is created, six Stage 3 workflows run automatically.
+Stage 4 AI review is enabled automatically when `ANTHROPIC_API_KEY` is configured.
+AI fuzzing and DAST run on Push to main or weekly schedules.
 
 ---
 
-## 커스터마이징 포인트
+## Customization Points
 
-| 파일             | 수정 포인트                                           |
-| ---------------- | ----------------------------------------------------- |
-| `CLAUDE.md`      | 팀 라이선스 정책, 금지 패키지 목록 반영               |
-| `.grype.yaml`    | 취약점 임계값 조정 (`high` ↔ `critical`)              |
-| `.gitleaks.toml` | 조직 내부 패턴 예외 처리 추가                         |
-| `.semgrep.yml`   | 언어·프레임워크별 룰셋 추가                           |
-| `renovate.json`  | 자동 병합 범위, 업데이트 주기 조정                    |
-| `dast.yml`       | 안정화 후 `fail_action: true`로 변경해 Hard fail 전환 |
+| File             | What to Customize                                                |
+| ---------------- | ---------------------------------------------------------------- |
+| `CLAUDE.md`      | Reflect team license policy and prohibited package list          |
+| `.grype.yaml`    | Adjust vulnerability thresholds (`high` ↔ `critical`)            |
+| `.gitleaks.toml` | Add internal organization pattern exceptions                     |
+| `.semgrep.yml`   | Add language/framework-specific rulesets                         |
+| `renovate.json`  | Adjust auto-merge scope and update cadence                       |
+| `dast.yml`       | After stabilization, change to `fail_action: true` for hard fail |
 
 ---
 
-## 관련 가이드
+## Related Guides
 
-- [5단계 전략](./strategy) — 각 단계의 목적과 도입 순서
-- [30분 완성 Quick CI/CD](./cicd-quick) — SCA 중심 최소 시작점
-- [AI 보안 코드 리뷰](./ai-security-review) — AI를 활용한 의미론적 취약점 탐지
-- [DevSecOps — 전사 파이프라인 설계](/devsecops/pipeline-design) — 멀티 저장소·정책 거버넌스
+- [5-Stage Strategy](./strategy) — Purpose and adoption sequence of each stage
+- [30-Minute Quick CI/CD](./cicd-quick) — Minimal starting point focused on SCA
+- [AI Security Code Review](./ai-security-review) — Semantic vulnerability detection with AI
+- [DevSecOps — Organization-wide Pipeline Design](/devsecops/pipeline-design) — Multi-repository policy governance

@@ -1,16 +1,16 @@
 ---
 id: ai-security-review
-title: AI 보안 코드 리뷰
-sidebar_label: AI 보안 리뷰
+title: AI Security Code Review
+sidebar_label: AI Security Review
 sidebar_position: 7
 ---
 
-# AI 보안 코드 리뷰 (4단계)
+# AI Security Code Review (Stage 4)
 
-## 왜 Findings-Driven인가
+## Why Findings-Driven?
 
-전체 코드를 AI에게 보내는 방식은 토큰 비용이 크고 노이즈가 많습니다.
-**3단계 도구(Semgrep·grype)가 먼저 후보를 추리고, AI는 그 결과에만 집중**하는 방식이 효율적입니다.
+Sending the entire codebase to AI causes high token costs and excessive noise.
+It is more efficient for **Stage 3 tools (Semgrep and grype) to narrow candidates first, and AI to focus only on those results**.
 
 ```
 [3단계] Semgrep · grype → findings.json
@@ -20,23 +20,23 @@ sidebar_position: 7
                        PR 코멘트 (빌드 차단 아님)
 ```
 
-| 도구           | 탐지 방식        | 강점                        | 한계                      |
-| -------------- | ---------------- | --------------------------- | ------------------------- |
-| Gitleaks       | 정규식 패턴 매칭 | 하드코딩 시크릿             | 변수에 담긴 시크릿 미탐지 |
-| grype          | CVE DB 대조      | 알려진 취약점               | 0-day·논리 버그 탐지 불가 |
-| Semgrep        | 코드 패턴 규칙   | 일반적 취약 패턴            | 비즈니스 로직 맥락 무시   |
-| **AI (4단계)** | 자연어 추론      | FP 판정·맥락 이해·연관 발견 | FP율 높음, API 비용 발생  |
+| Tool             | Detection Method           | Strengths                                                   | Limitations                               |
+| ---------------- | -------------------------- | ----------------------------------------------------------- | ----------------------------------------- |
+| Gitleaks         | Regex pattern matching     | Hardcoded secrets                                           | Cannot detect secrets hidden in variables |
+| grype            | CVE DB matching            | Known vulnerabilities                                       | Cannot detect 0-day or logic bugs         |
+| Semgrep          | Code pattern rules         | Common vulnerability patterns                               | Ignores business logic context            |
+| **AI (Stage 4)** | Natural language reasoning | FP classification, context understanding, related discovery | High FP rate, API costs                   |
 
-:::warning 빌드 차단이 아닌 리포트 용도로 운영하세요
-AI 리뷰는 FP(오탐)율이 높습니다. PR 코멘트 또는 Security 탭 리포트 생성 용도로만 사용하고,
-빌드를 강제로 실패시키는 용도로는 쓰지 않는 것을 권장합니다.
+:::warning Operate as reporting, not build blocking
+AI review has a high FP (false positive) rate. Use it only for PR comments or Security tab reporting,
+and avoid using it to force build failures.
 :::
 
 ---
 
-## GitHub Actions 구성 예시
+## GitHub Actions Configuration Example
 
-3단계 도구의 findings를 수집한 뒤, AI가 코드 컨텍스트와 함께 분석하는 워크플로우입니다.
+This workflow collects findings from Stage 3 tools, then has AI analyze them with code context.
 
 ```yaml
 # .github/workflows/ai-review.yml
@@ -192,7 +192,7 @@ jobs:
 
 ---
 
-## 워크플로우 동작 원리
+## Workflow Execution Flow
 
 ```
 PR 오픈
@@ -207,35 +207,35 @@ PR 오픈
                             PR 코멘트: TP/FP 판정 + 위험도
 ```
 
-**토큰 절약 포인트:**
+**Token-saving points:**
 
-- Semgrep findings 상위 8개 + 각 ±5줄 컨텍스트만 전송
-- grype Critical/High만 (Medium·Low 제외)
-- findings 없으면 API 호출 자체를 건너뜀
-
----
-
-## 활성화 방법
-
-1. `ANTHROPIC_API_KEY`를 GitHub Secrets에 등록
-2. 워크플로우의 `if: ${{ secrets.ANTHROPIC_API_KEY != '' }}` 조건이 자동으로 활성화
+- Send only the top 8 Semgrep findings with ±5 lines of context each
+- Include only grype Critical/High findings (exclude Medium/Low)
+- Skip API calls entirely when there are no findings
 
 ---
 
-## 주의사항
+## How to Enable
 
-**민감 코드의 외부 전송**
-
-Semgrep이 플래그한 코드 조각이 Anthropic 서버로 전송됩니다. 사내 보안 정책상 외부 API 전송이 제한된 경우 도입 전 정책 검토가 필요합니다. 온프레미스 LLM(Ollama 등)으로 대체하는 방안도 고려할 수 있습니다.
-
-**FP율과 비용**
-
-LLM 기반 판정은 오탐이 잦습니다. findings 수를 제한(`[:8]`, `[:5]`)해 비용을 통제하고, 팀 규모와 PR 빈도에 따라 월 API 비용을 사전에 추산하세요.
+1. Add `ANTHROPIC_API_KEY` to GitHub Secrets
+2. The workflow condition `if: ${{ secrets.ANTHROPIC_API_KEY != '' }}` is enabled automatically
 
 ---
 
-## 더 알아보기
+## Notes
 
-- [5단계 전략](./strategy) — 전체 단계 구조와 AI 방어 레이어 포지셔닝
-- [DevSecOps — SAST](/devsecops/sast) — 규칙 기반 정적 분석 (Semgrep · CodeQL)
-- [DevSecOps — 전사 파이프라인 설계](/devsecops/pipeline-design)
+**External transfer of sensitive code**
+
+Code snippets flagged by Semgrep are sent to Anthropic servers. If internal security policy restricts external API transfer, policy review is required before adoption. Replacing with an on-prem LLM (such as Ollama) can also be considered.
+
+**FP rate and cost**
+
+LLM-based judgments frequently produce false positives. Control cost by limiting findings (`[:8]`, `[:5]`) and estimate monthly API usage in advance based on team size and PR frequency.
+
+---
+
+## Learn More
+
+- [5-Stage Strategy](./strategy) — Full stage structure and AI defense layer positioning
+- [DevSecOps — SAST](/devsecops/sast) — Rule-based static analysis (Semgrep · CodeQL)
+- [DevSecOps — Organization-wide Pipeline Design](/devsecops/pipeline-design)

@@ -1,33 +1,33 @@
 ---
-title: 이 프로젝트에 대하여
-description: Trusted OSS는 OpenChain KWG가 만든 오픈소스 공급망 관리 체계 구축 실전 키트입니다.
+title: About This Project
+description: Trusted OSS is a practical toolkit created by OpenChain KWG to build an open source supply chain management framework.
 ---
 
-# 이 프로젝트에 대하여
+# About This Project
 
-## Trusted OSS란?
+## What is Trusted OSS?
 
-Trusted OSS는 **ISO/IEC 5230**(라이선스 컴플라이언스)과 **ISO/IEC 18974**(보안 보증) 자체 인증을 처음부터 끝까지 완성할 수 있도록 설계된 실전 키트입니다.
+Trusted OSS is a practical toolkit designed to help you complete self-certification for **ISO/IEC 5230** (license compliance) and **ISO/IEC 18974** (security assurance) from start to finish.
 
-오픈소스 관리 경험이 없는 담당자도 Claude Code Agent의 안내를 따라가면 정책·조직·프로세스·SBOM·교육·인증 산출물을 단계적으로 만들어 낼 수 있습니다.
+Even practitioners with no prior open source governance experience can follow the Claude Code Agent guidance to progressively produce policies, organizational setup, processes, SBOMs, training materials, and certification deliverables.
 
-## 만든 곳: OpenChain KWG
+## Built by OpenChain KWG
 
-이 프로젝트는 **[OpenChain KWG](https://openchain-project.github.io/OpenChain-KWG/)**(OpenChain Korea Work Group)가 제작했습니다.
+This project was created by **[OpenChain KWG](https://openchain-project.github.io/OpenChain-KWG/)** (OpenChain Korea Work Group).
 
-OpenChain KWG는 ISO/IEC 5230 국제 표준을 이끄는 [Linux Foundation OpenChain Project](https://www.openchainproject.org/)의 한국 워킹 그룹입니다. 국내 기업의 오픈소스 컴플라이언스 역량을 높이기 위해 가이드·도구·커뮤니티를 운영하고 있습니다.
+OpenChain KWG is the Korean working group of the [Linux Foundation OpenChain Project](https://www.openchainproject.org/), which leads the ISO/IEC 5230 international standard. It operates guides, tools, and a community to improve open source compliance capabilities for companies in Korea.
 
-## 라이선스
+## License
 
-이 사이트의 모든 콘텐츠는 **[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.ko)** 라이선스로 공개됩니다.
+All content on this site is released under the **[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.ko)** license.
 
-출처를 표기하면 자유롭게 복제·수정·재배포·상업적 활용이 가능합니다.
+With proper attribution, you can freely copy, modify, redistribute, and use it commercially.
 
-> 출처 표기 예시: "Trusted OSS (CC BY 4.0 · OpenChain KWG)"
+> Attribution example: "Trusted OSS (CC BY 4.0 · OpenChain KWG)"
 
-## 기여 방법
+## How to Contribute
 
-오탈자 수정, 내용 보완, 새로운 샘플 추가 등 어떤 기여도 환영합니다.
+All contributions are welcome, including typo fixes, content improvements, and new sample additions.
 
-- **GitHub**: [github.com/trustedoss](https://github.com/trustedoss) — Issue 또는 Pull Request
-- **커뮤니티**: [OpenChain KWG](https://openchain-project.github.io/OpenChain-KWG/) — 분기별 미팅 및 메일링 리스트
+- **GitHub**: [github.com/trustedoss](https://github.com/trustedoss) — issues or pull requests
+- **Community**: [OpenChain KWG](https://openchain-project.github.io/OpenChain-KWG/) — quarterly meetings and a mailing list

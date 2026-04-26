@@ -1,15 +1,15 @@
 ---
 sidebar_position: 3
-sidebar_label: '방법 2: Skill 정의'
+sidebar_label: 'Method 2:Skill definition'
 ---
 
-# 방법 2: Skill 정의하기
+# Method 2:Define Skill
 
-:::info 셀프스터디 모드 (약 20분)
-한 번 정의하면 모든 프로젝트에서 `/oss-policy-check`으로 즉시 호출할 수 있습니다.
+:::info Self-study mode(About 20 minutes)
+Define it once and you can immediately call it as `/oss-policy-check` from any project.
 :::
 
-`.claude/skills/oss-policy-check.md` 파일을 생성합니다.
+Create a `.claude/skills/oss-policy-check.md` file.
 
 ````markdown
 # Skill: OSS 정책 준수 검사 (oss-policy-check)
@@ -29,26 +29,26 @@ npx license-checker --summary --excludePrivatePackages
 ```
 ````
 
-Python 프로젝트:
+Python project:
 
 ```bash
 pip-licenses --format=markdown --with-urls
 ```
 
-Java/Maven 프로젝트:
+Java/Maven project:
 
 ```bash
 mvn license:aggregate-third-party-report
 ```
 
-### 2단계: 허용 목록 대조
+### Step 2:Whitelist matching
 
-output/policy/license-allowlist.md 의 허용 라이선스와 비교한다.
-목록에 없는 라이선스가 발견되면 즉시 경고한다.
+Compare with the allowed license in output/policy/license-allowlist.md.
+If a license that is not in the list is found, an immediate alert is issued.
 
-### 3단계: 취약점 조회 (OSV API)
+### Step 3:Vulnerability inquiry(OSV API)
 
-발견된 패키지에 대해 OSV API로 취약점을 조회한다:
+Search for vulnerabilities in discovered packages using OSV API:
 
 ```bash
 # grype 사용 (권장)
@@ -58,35 +58,35 @@ grype dir:. --fail-on high
 osv-scanner --recursive .
 ```
 
-### 4단계: 결과 보고 형식
+### Step 4:Results reporting format
 
-검사 결과를 아래 형식으로 보고한다:
+Report the test results in the format below.:
 
 ---
 
-## OSS 정책 검사 결과
+## OSS Policy check result
 
-**검사 일시:** YYYY-MM-DD
-**대상 프로젝트:** [프로젝트명]
+**Inspection date and time:** YYYY-MM-DD
+**Target project:** [Project Name]
 
-### 라이선스 현황
+### License Status
 
-| 라이선스   | 패키지 수 | 상태    |
-| ---------- | --------- | ------- |
-| MIT        | 45        | ✅ 허용 |
-| Apache-2.0 | 12        | ✅ 허용 |
-| GPL-3.0    | 1         | ❌ 위반 |
+| License    | number of packages | status       |
+| ---------- | ------------------ | ------------ |
+| MIT        | 45                 | ✅ Allowed   |
+| Apache-2.0 | 12                 | ✅ Allowed   |
+| GPL-3.0    | 1                  | ❌ Violation |
 
-### 취약점 현황
+### Vulnerability Status
 
-| CVE           | CVSS | 패키지         | 상태              |
-| ------------- | ---- | -------------- | ----------------- |
-| CVE-2024-XXXX | 9.1  | lodash@4.17.15 | ❌ 긴급 패치 필요 |
+| CVE           | CVSS | package        | status                 |
+| ------------- | ---- | -------------- | ---------------------- |
+| CVE-2024-XXXX | 9.1  | lodash@4.17.15 | ❌ Urgent patch needed |
 
-### 권고사항
+### Recommendation
 
-- [ ] GPL-3.0 패키지 대체 또는 사용 승인 요청
-- [ ] lodash 4.17.21 이상으로 업그레이드
+- [ ] Request for approval to replace or use GPL-3.0 package
+- [ ] Upgrade to lodash 4.17.21 or higher
 
 ---
 

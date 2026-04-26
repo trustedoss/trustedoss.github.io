@@ -7,24 +7,24 @@ sidebar_position: 2
 
 # Cursor
 
-## 개요
+## Overview
 
-Cursor는 `.cursor/rules/` 폴더 내 `.mdc` 파일을 규칙으로 인식해 AI 동작에 반영합니다. 파일별로 적용 범위(glob 패턴)를 지정할 수 있어 언어·폴더별로 규칙을 분리 관리할 수 있습니다. 적용 범위는 프로젝트 단위입니다.
+Cursor recognizes `.mdc` files under `.cursor/rules/` as rules and applies them to AI behavior. You can set scope (glob patterns) per file, so rules can be split and managed by language or folder. The scope is project-level.
 
-오픈소스 정책 규칙 파일을 `.cursor/rules/oss-policy.mdc`로 별도 분리해 두면, 다른 개발 가이드라인과 독립적으로 관리하고 필요 시 쉽게 비활성화할 수 있습니다. `globs` 패턴으로 적용 대상 파일을 한정하면 불필요한 컨텍스트 소비를 줄일 수 있습니다. 저장소에 커밋해 두면 팀 전체에 동일한 정책이 자동으로 적용됩니다. 규칙 파일이 여러 개인 경우 목적별로 파일명을 명확히 구분해 관리하면 유지보수가 쉬워집니다.
+If the open source policy is separated into `.cursor/rules/oss-policy.mdc`, it can be managed independently from other development guidelines and disabled easily when needed. Limiting target files with `globs` reduces unnecessary context usage. Committing it to the repository automatically applies the same policy across the team. If there are multiple rule files, clear purpose-based filenames make maintenance easier.
 
-## 설정 파일 위치
+## Configuration File Location
 
-- `.cursor/rules/oss-policy.mdc` (권장)
-- `.cursorrules` (루트 단일 파일, 레거시)
+- `.cursor/rules/oss-policy.mdc` (recommended)
+- `.cursorrules` (single root file, legacy)
 
-## 적용 방법
+## How to Apply
 
-1. `.cursor/rules/oss-policy.mdc` 파일을 생성합니다.
-2. [공통 Rules 템플릿](../rules-template)의 내용을 붙여넣습니다.
-3. 허용·금지 라이선스 목록을 사내 정책에 맞게 수정합니다.
+1. Create `.cursor/rules/oss-policy.mdc`.
+2. Paste content from the [Common Rules Template](../rules-template).
+3. Update the allow/deny license list to match internal policy.
 
-## 설정 예시
+## Configuration Example
 
 ```markdown
 ---
@@ -67,8 +67,8 @@ alwaysApply: true
 - 타 프로젝트 코드 복사 시 출처 및 라이선스 명시
 ```
 
-## 주의사항
+## Notes
 
-:::info 알아두세요
-`alwaysApply: true`로 설정하면 모든 파일에 규칙이 적용되어 토큰 사용량이 증가할 수 있습니다. 정책 규칙처럼 항상 적용이 필요한 경우에는 `alwaysApply: true`를, 특정 언어나 폴더에만 필요한 규칙은 `globs` 패턴으로 범위를 한정하는 것이 효율적입니다. `.cursorrules`(레거시)와 `.cursor/rules/`를 동시에 사용하는 경우 `.cursor/rules/`가 우선 적용되므로, 신규 프로젝트에서는 `.cursor/rules/` 방식을 권장합니다.
+:::info Good to know
+When `alwaysApply: true` is set, rules apply to all files and token usage may increase. For policies that must always apply, use `alwaysApply: true`; for rules needed only for specific languages or folders, limit scope with `globs` for efficiency. If both `.cursorrules` (legacy) and `.cursor/rules/` are used, `.cursor/rules/` takes precedence, so `.cursor/rules/` is recommended for new projects.
 :::

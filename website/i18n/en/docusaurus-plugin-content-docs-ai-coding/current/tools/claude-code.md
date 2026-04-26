@@ -7,25 +7,25 @@ sidebar_position: 1
 
 # Claude Code
 
-## 개요
+## Overview
 
-Claude Code는 프로젝트 루트의 `CLAUDE.md`를 세션 시작 시 자동으로 읽어 모든 작업에 컨텍스트로 활용합니다. 하위 폴더에도 `CLAUDE.md`를 둘 수 있으며, 해당 폴더에서 작업할 때 추가로 로드됩니다. 적용 범위는 프로젝트 단위이며, `~/.claude/CLAUDE.md`를 통해 글로벌 설정도 가능합니다.
+Claude Code automatically reads `CLAUDE.md` in the project root at session start and uses it as context for all work. You can also place `CLAUDE.md` in subfolders, and it is additionally loaded when working in those folders. The scope is project-level, and global settings are also possible through `~/.claude/CLAUDE.md`.
 
-오픈소스 정책을 `CLAUDE.md`에 작성해 두면, 개발자가 명시적으로 요청하지 않아도 Claude Code가 새 패키지를 추가하거나 코드를 생성할 때 라이선스·보안 정책을 자동으로 고려합니다. 팀 전체가 동일한 저장소를 사용하는 경우 `CLAUDE.md`를 커밋해 두면 모든 팀원에게 일관된 정책이 적용됩니다.
+If open source policies are written in `CLAUDE.md`, Claude Code automatically considers license and security policies when adding new packages or generating code, even without explicit developer prompts. If the team uses the same repository, committing `CLAUDE.md` applies consistent policy to all team members.
 
-## 설정 파일 위치
+## Configuration File Location
 
-- 프로젝트 루트: `CLAUDE.md` (권장)
-- 하위 폴더별: `{폴더명}/CLAUDE.md` (보조)
-- 글로벌: `~/.claude/CLAUDE.md` (모든 프로젝트 공통)
+- Project root: `CLAUDE.md` (recommended)
+- Per subfolder: `{folder_name}/CLAUDE.md` (supplementary)
+- Global: `~/.claude/CLAUDE.md` (shared across all projects)
 
-## 적용 방법
+## How to Apply
 
-1. 프로젝트 루트에 `CLAUDE.md` 파일을 생성하거나 기존 파일을 엽니다.
-2. [공통 Rules 템플릿](../rules-template)의 내용을 붙여넣습니다.
-3. 허용·금지 라이선스 목록을 사내 정책에 맞게 수정합니다.
+1. Create `CLAUDE.md` in the project root, or open the existing file.
+2. Paste content from the [Common Rules Template](../rules-template).
+3. Update the allow/deny license list to match internal policy.
 
-## 설정 예시
+## Configuration Example
 
 ```markdown
 # 프로젝트 가이드
@@ -70,8 +70,8 @@ Claude Code는 프로젝트 루트의 `CLAUDE.md`를 세션 시작 시 자동으
 ---
 ```
 
-## 주의사항
+## Notes
 
-:::warning AI 규칙의 한계
-`CLAUDE.md`는 프롬프트 토큰으로 소비되므로 내용이 너무 길면 컨텍스트 효율이 저하됩니다. 또한 Claude Code는 규칙을 "권장사항"으로 처리할 뿐, 정책 위반 코드를 Hard Block하지는 않습니다. 실질적인 차단이 필요하다면 CI/CD 파이프라인과 반드시 병행해야 합니다. 실제 게이트키퍼 역할은 파이프라인이 담당하고, `CLAUDE.md`는 AI가 올바른 방향으로 코드를 생성하도록 돕는 보조 수단으로 활용하세요.
+:::warning Limits of AI rules
+Because `CLAUDE.md` consumes prompt tokens, overly long content reduces context efficiency. Also, Claude Code treats rules as guidance and does not hard-block policy-violating code. If practical blocking is required, it must be paired with a CI/CD pipeline. The pipeline should serve as the real gatekeeper, while `CLAUDE.md` supports AI in generating code in the right direction.
 :::

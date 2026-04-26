@@ -1,39 +1,39 @@
 ---
-작성일: 2026-03-20
-버전: 1.0
-충족 체크리스트:
+date: 2026-03-20
+version: '1.0'
+checklist:
   - 'ISO/IEC 5230: [3.1.5, 3.2.1, 3.3.2, 3.4.1, 3.5.1]'
   - 'ISO/IEC 18974: [4.1.5, 4.2.1, 4.3.2]'
-셀프스터디 소요시간: 1~2시간
+self_study_time: 1 to 2 hours
 ---
 
-# 오픈소스 프로세스: 사용부터 배포까지
+# open source process:From use to distribution
 
-## 1. 이 챕터에서 하는 일
+## 1. What we do in this chapter
 
-이 챕터에서는 오픈소스 사용 승인, 배포 전 체크리스트, 취약점 대응 절차를 문서화합니다.
-정책이 "무엇을 해야 하는가"를 정의한다면, 프로세스는 "어떻게 실행하는가"를 정의합니다.
-정책 문서에 "AGPL 사용 시 소스 공개 검토 필요"라고 명시되어 있더라도, 실무에서 누가, 언제,
-어떤 양식으로 검토하는지를 정하지 않으면 정책은 선언에 그치고 만다.
+This chapter acknowledges the use of open source,Pre-deployment checklist,Document vulnerability response procedures.
+If a policy defines “what should be done”,A process defines “how it is done.”
+Even if the policy document states that “use of AGPL requires open source review.”,Who in practice,when,
+If you do not decide in what format it will be reviewed, the policy will end up being nothing more than a declaration.
 
-`agents/04-process-designer` agent와 대화하여 회사 환경에 맞는 4~7개 산출물을 생성합니다.
-CI/CD 파이프라인과의 통합 방안도 함께 다루며, 개발 흐름에 자연스럽게 내장되는
-지속 가능한 컴플라이언스 체계를 목표로 합니다.
+`agents/04-process-designer` Communicate with the agent to generate 4-7 deliverables tailored to your company environment.
+Integration with the CI/CD pipeline is also discussed.,Naturally embedded in the development flow
+We aim for a sustainable compliance system.
 
 ---
 
-## 2. 배경 지식
+## 2. Background knowledge
 
-### 프로세스가 필요한 이유
+### Why we need processes
 
-정책은 "무엇을"만 말하고 "어떻게"를 말하지 않습니다. 개발자가 실제로 행동하려면 누구에게 요청하고 어떤 양식으로 진행하는지 구체적인 절차가 필요합니다. 프로세스 문서는 이 공백을 채워 정책이 실제로 작동하게 만듭니다.
+Policies only say “what” and not “how.” For developers to actually take action, they need specific procedures for who to request and in what form. Process documentation fills this gap and makes the policy work in practice.
 
-> 오픈소스 프로세스 각 단계의 상세 설명과 실제 기업 사례는 [KWG 오픈소스 가이드 — 프로세스](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/3-process/)를 참조하세요.
+> Detailed explanations of each step of the open source process and actual corporate examples are [KWG Open Source Guide — Process].(https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/3-process/)See .
 
-### 오픈소스 라이프사이클 전체 흐름
+### Open source life cycle overall flow
 
-오픈소스 하나가 코드베이스에 들어오고 나가는 전체 흐름을 이해하면 어디에 어떤
-프로세스가 필요한지 명확해진다.
+If you understand the entire flow of open source entering and leaving the code base, you will know where and what
+It becomes clear whether a process is needed.
 
 ```mermaid
 flowchart TD
@@ -50,80 +50,80 @@ flowchart TD
     K --> J
 ```
 
-도입 시 승인, 배포 시 체크리스트, 운영 중 CVE 대응 — 이 세 지점에 아래 핵심 프로세스가 대응합니다.
+Approved upon introduction,Checklist for deployment,Operational CVE Response — These three points are addressed by the core processes below:
 
-### 핵심 프로세스 5가지
+### 5 core processes
 
-ISO/IEC 5230 §3.5는 오픈소스 커뮤니티 참여(기여 및 공개)에 대한 정책과 절차를 별도로 요구합니다. 기여나 공개 계획이 없는 조직도 "현재 해당 없음"을 명시한 정책 문서가 필요합니다.
+ISO/IEC 5230 §3.5 engages open source communities(Contribution and Disclosure)Separate policies and procedures are required. Organizations with no plans to contribute or disclose will also need a policy document stating “not currently applicable.”
 
-#### 3-1. 오픈소스 사용 승인 프로세스
+#### 3-1. Open source use approval process
 
-신규 오픈소스를 도입할 때는 라이선스 확인 → 취약점 확인 → 담당자 승인 순으로 진행합니다.
-사전에 허용 라이선스 목록(allowlist)을 정의해 두면, 목록 내 라이선스는 자동 승인으로
-처리하여 개발 속도에 미치는 영향을 최소화할 수 있습니다.
+Check license when introducing new open source → Check for vulnerabilities → Proceed in order of approval by the person in charge.
+List of pre-allowed licenses(allowlist)If you define,Licenses in the list are automatically approved
+processing to minimize impact on development speed.
 
-| 구분        | 기준                                            | 처리                |
-| ----------- | ----------------------------------------------- | ------------------- |
-| 허용        | 허용 라이선스 목록 내, 알려진 Critical CVE 없음 | 자동 승인           |
-| 조건부 허용 | Copyleft 라이선스, High CVE 있음                | 담당자 검토 후 승인 |
-| 금지        | 상용 불가 라이선스, Critical CVE 미패치         | 사용 금지           |
+| Category               | standards                                          | processing                                |
+| ---------------------- | -------------------------------------------------- | ----------------------------------------- |
+| allow                  | In the allowed license list,No known Critical CVEs | Automatic Approval                        |
+| Conditional acceptance | Copyleft License,Has High CVE                      | Approval after review by person in charge |
+| Ban                    | Non-commercial license,Critical CVE not patched    | Prohibited use                            |
 
-#### 3-2. 배포 전 컴플라이언스 체크
+#### 3-2. Compliance check before deployment
 
-소프트웨어를 외부에 배포하기 전에 반드시 아래 항목을 확인합니다. 이 체크리스트를
-통과하지 못하면 배포를 진행하지 않는다.
+Be sure to check the items below before distributing the software externally. this checklist
+If it does not pass, distribution will not proceed.
 
-- SBOM 최신화 확인 (마지막 업데이트 일시)
-- 고지문(NOTICE) 파일 포함 확인
-- Copyleft 라이선스 소스코드 공개 의무 이행 확인
-- 허용 라이선스 목록에 없는 라이선스 검토 완료 확인
+- SBOM Check for latest update(Last update date)
+- notice(NOTICE)Check file inclusion
+- Confirmation of compliance with copyleft license source code disclosure obligations
+- Verify that review of licenses not in the allowed license list has been completed
 
-#### 3-3. 취약점 대응 프로세스
+#### 3-3. Vulnerability response process
 
-SBOM이 있으면 신규 CVE가 발표되었을 때 자사 소프트웨어의 영향 여부를 빠르게 확인할 수
-있습니다. CVE 심각도에 따라 대응 기한을 차등 적용하여 리소스를 효율적으로 사용합니다.
+With SBOM, you can quickly check whether your software is affected when a new CVE is released.
+there is. We use resources efficiently by differentially applying response deadlines depending on the severity of the CVE.
 
-| 심각도   | CVSS 점수 | 대응 기한   | 조치                     |
-| -------- | --------- | ----------- | ------------------------ |
-| Critical | 9.0~10.0  | 1주일 내    | 즉시 패치 또는 사용 중단 |
-| High     | 7.0~8.9   | 4주일 내    | 우선 패치 계획 수립      |
-| Medium   | 4.0~6.9   | 1개월 내    | 다음 릴리즈에 포함       |
-| Low      | 0.1~3.9   | 다음 릴리즈 | 백로그 등록              |
+| Severity | CVSS score | Response Deadline | action                          |
+| -------- | ---------- | ----------------- | ------------------------------- |
+| Critical | 9.0~10.0   | within 1 week     | Patch or Deprecate Immediately  |
+| High     | 7.0~8.9    | Within 4 weeks    | Establish a priority patch plan |
+| Medium   | 4.0~6.9    | Within 1 month    | Included in next release        |
+| Low      | 0.1~3.9    | Next release      | Backlog registration            |
 
-> **참고**: 위 기한은 OpenChain KWG 가이드 기준선입니다. 조직의 리스크 프로파일에 따라 Critical 24시간·High 1주일 같은 더 엄격한 기한을 내부 SLA로 적용할 수 있습니다.
+> **reference**:The above deadline is the OpenChain KWG guide baseline. Depending on your organization's risk profile, more stringent deadlines, such as 24 hours for Critical or 1 week for High, can be applied as internal SLAs.
 
-#### 3-4. 오픈소스 기여 프로세스 (§3.5.1)
+#### 3-4. Open source contribution process(§3.5.1)
 
-외부 오픈소스 프로젝트에 코드·문서·버그 리포트를 기여하는 절차입니다.
+This is the process of contributing code, documents, and bug reports to external open source projects.
 
-**기여 시 주요 확인 항목:**
+**Key things to check when contributing:**
 
-- IP 보호: 기여 내용에 회사 기밀, 특허 기술, 제3자 IP가 포함되지 않았는지 법무 확인
-- CLA 처리: Contributor License Agreement 서명 여부 확인 및 기록
-- 승인 단계: 기여 전 오픈소스 담당자 및 팀장 승인 (기여 규모에 따라 차등 적용)
-- 기여 기록: 기여 내역(프로젝트, 내용, 담당자, 날짜)을 내부 대장에 관리
+- IP protection:Company Confidentiality in Your Contributions,patented technology,Legal confirmation that third party IP is not included
+- CLA processing:Verify and record whether the Contributor License Agreement has been signed
+- approval stage:Approval from open source manager and team leader before contribution(Differential application depending on contribution size)
+- Contribution History:Contribution History(project,detail,manager,date)administered to the internal colon
 
-기여 계획이 없는 경우에도 `contribution-process.md`에 "현재 기여 계획 없음 — 향후 계획 수립 시 이 절차를 따른다"는 선언적 문서를 작성해두면 §3.5.1 요구사항을 충족할 수 있습니다.
+Even if you do not have a plan to contribute, you can still meet the §3.5.1 requirement by writing a declarative document in `contribution-process.md` stating "No current plan to contribute — this process will be followed when making future plans."
 
-#### 3-5. 사내 프로젝트 공개 프로세스 (§3.5.1)
+#### 3-5. Internal project disclosure process(§3.5.1)
 
-내부에서 개발한 소프트웨어를 오픈소스로 공개하는 절차입니다.
+This is the process of releasing internally developed software as open source.
 
-**공개 전 주요 확인 항목:**
+**Major confirmation items before disclosure:**
 
-- IP 클리어런스: 공개 코드에 제3자 IP·고객 데이터·회사 기밀이 없는지 확인
-- 라이선스 선택: 공개할 소프트웨어에 적용할 오픈소스 라이선스 결정 (MIT, Apache-2.0 등)
-- 보안 스캔: 공개 전 취약점 및 하드코딩된 자격증명 스캔
-- 승인 단계: CTO 또는 지정 위원회 최종 승인
+- IP clearance:Ensure public code is free of third-party IP, customer data, and company secrets
+- Select license:Determine the open source license to apply to the software to be released(MIT,Apache-2.0, etc.)
+- security scan:Scan vulnerabilities and hard-coded credentials before disclosure
+- approval stage:CTO or designated committee final approval
 
-공개 계획이 없는 경우에도 `project-publication-process.md`에 "현재 공개 계획 없음 — 공개 결정 시 이 절차를 따른다"는 선언적 문서를 작성해두면 §3.5.1 요구사항을 충족할 수 있습니다.
+Even if you have no plans to disclose, you can still meet the §3.5.1 requirement by writing a declarative document in `project-publication-process.md` stating “No current plans to disclose — this procedure will be followed when making disclosure decisions.”
 
 ---
 
-### CI/CD 통합 포인트
+### CI/CD integration points
 
-프로세스가 개발 흐름에 자연스럽게 통합되어야 지속 가능하다. 수동 체크를 자동화하면
-담당자 부담이 줄고 누락 위험도 낮아진다.
+To be sustainable, the process must be naturally integrated into the development flow. Automating manual checks
+The burden on the person in charge is reduced and the risk of omission is also lowered.
 
 ```yaml
 # .github/workflows/oss-compliance.yml
@@ -148,47 +148,47 @@ jobs:
         run: echo "라이선스 검토 단계"
 ```
 
-주요 CI/CD 통합 지점은 다음과 같다.
+The main CI/CD integration points are as follows:
 
-- **PR 단계**: 새 의존성 추가 시 라이선스 자동 확인
-- **빌드 단계**: SBOM 자동 생성
-- **배포 전**: 배포 체크리스트 자동 실행
-- **주기적 스캔**: 알려진 CVE 모니터링 (cron 스케줄)
+- **PR Stage**:Automatically check license when adding new dependency
+- **Build Phase**:SBOM automatically generated
+- **Before deployment**:Auto-run deployment checklist
+- **Periodic scan**:Known CVE monitoring(cron schedule)
 
-CI/CD가 없는 환경에서도 수동 체크리스트 기반으로 동일한 프로세스를 운영할 수 있습니다.
-나중에 CI/CD를 도입하면 수동 단계를 순차적으로 자동화하면 됩니다.
+Even in an environment without CI/CD, the same process can be operated based on a manual checklist.
+When you introduce CI/CD later, you can simply automate manual steps sequentially.
 
 ---
 
-## 3. 셀프 스터디
+## 3. Self-study
 
-:::info 셀프스터디 모드 (약 1~2시간)
-프로세스는 회사 환경에 맞게 상당한 커스터마이징이 필요합니다. agent와 대화하며 진행합니다.
+:::info Self-study mode(About 1 to 2 hours)
+The process requires significant customization to fit the company's environment. You proceed by talking to the agent.
 :::
 
-### 사전 준비
+### advance preparation
 
-agent를 실행하기 전에 아래 4개 질문에 대한 회사 상황을 미리 정리해 두면 대화가 빠르게
-진행됩니다.
+Before running the agent, if you organize your company's situation in advance by answering the four questions below, the conversation can proceed quickly.
+It's going on.
 
-**agent가 묻는 7개 질문**
+**7 questions asked by agent**
 
-1. 현재 사용 중인 CI/CD 도구 (GitHub Actions / Jenkins / GitLab CI / 없음 / 기타)
-2. 소프트웨어 배포 주기 (매일 / 주간 / 월간 / 비정기)
-3. 이슈 트래커 사용 여부 (GitHub Issues / Jira / 없음 / 기타)
-4. 오픈소스 사용 승인 결재 단계 (담당자 단독 / 팀장 승인 / 위원회 승인)
-5. 외부 오픈소스 프로젝트에 기여할 계획이 있나요? (예 / 아니오)
-6. 사내 소프트웨어를 오픈소스로 공개할 계획이 있나요? (예 / 아니오)
-7. 외부 라이선스·취약점 문의 수신 채널이 준비되어 있나요? (채널 주소 또는 "아직 없음")
+1. CI/CD tools you are currently using(GitHub Actions / Jenkins / GitLab CI / None / Other)
+2. Software deployment cycle(Daily / Weekly / Monthly / Irregular)
+3. Whether to use issue tracker(GitHub Issues / Jira / None / Other)
+4. Approval stage for open source use(Only person in charge / approved by team leader / approved by committee)
+5. Do you plan to contribute to external open source projects?(yes/no)
+6. Do you have any plans to release your in-house software as open source?(yes/no)
+7. Do you have a channel in place to receive external license/vulnerability inquiries?(Channel address or "Not yet")
 
-### 단계별 실습
+### Step-by-step practice
 
-**1단계**: 위 7개 질문에 대한 회사 상황 정리
+**Step 1**:Summary of the company's situation in response to the above 7 questions
 
-**2단계**: agent 실행
+**Step 2**:run agent
 
-:::tip 실행 전 확인
-현재 Claude 세션을 먼저 종료(`/exit` 또는 `Ctrl+C`)한 뒤, 새 터미널에서 아래 명령을 실행하세요.
+:::tip Check before execution
+Terminate the current Claude session first(`/exit` or `Ctrl+C`)After doing it,Run the command below in a new terminal.
 :::
 
 ```bash
@@ -197,77 +197,77 @@ claude
 ```
 
 <details>
-<summary>Agent 대화 예시 (클릭해서 펼치기)</summary>
+<summary>Agent conversation example(Click to expand)</summary>
 
-아래는 실제 agent와의 대화 흐름 예시입니다. 실행 시 이런 형태로 진행됩니다.
+Below is an example of a conversation flow with an actual agent. When running, it goes like this.
 
-**Agent 안내 메시지:**
+**Agent guidance message:**
 
-> 안녕하세요! 오픈소스 프로세스 산출물을 생성하는 agent입니다.
-> 7개 질문에 답변하시면 프로세스 문서 4~7개가 자동으로 생성됩니다.
-
----
-
-**질문 1/7** — 현재 사용 중인 CI/CD 도구는? (GitHub Actions / Jenkins / GitLab CI / 없음 / 기타)
-
-`예시 답변: GitHub Actions`
-
-**질문 2/7** — 소프트웨어 배포 주기는? (매일 / 주간 / 월간 / 비정기)
-
-`예시 답변: 주간`
-
-**질문 3/7** — 이슈 트래커를 사용하나요? (GitHub Issues / Jira / 없음 / 기타)
-
-`예시 답변: GitHub Issues`
-
-**질문 4/7** — 오픈소스 사용 승인 결재 단계가 필요한가요? (담당자 단독 / 팀장 승인 / 위원회 승인)
-
-`예시 답변: 팀장 승인`
-
-**질문 5/7** — 외부 오픈소스 프로젝트에 기여할 계획이 있나요? (예 / 아니오)
-
-`예시 답변: 아니오`
-
-**질문 6/7** — 사내 소프트웨어를 오픈소스로 공개할 계획이 있나요? (예 / 아니오)
-
-`예시 답변: 아니오`
-
-**질문 7/7** — 외부 라이선스·취약점 문의 수신 채널이 준비되어 있나요?
-
-`예시 답변: opensource@example.com 운영 중`
+> hello! This is an agent that creates open source process output.
+> Answer 7 questions and 4 to 7 process documents will be automatically generated.
 
 ---
 
-**생성 완료 시 출력 예시:**
+**Question 1/7** — What CI/CD tools are you currently using?(GitHub Actions / Jenkins / GitLab CI / None / Other)
 
-| 파일                                            | 조건    | 내용                                   |
-| ----------------------------------------------- | ------- | -------------------------------------- |
-| `output/process/usage-approval.md`              | 상시    | 오픈소스 도입 승인 양식 및 절차        |
-| `output/process/distribution-checklist.md`      | 상시    | 배포 전 컴플라이언스 체크리스트        |
-| `output/process/vulnerability-response.md`      | 상시    | 취약점 대응 절차서 (CVD §8 포함)       |
-| `output/process/inquiry-response.md`            | 상시    | 외부 라이선스·보안 문의 대응 절차      |
-| `output/process/process-diagram.md`             | 상시    | Mermaid 흐름도 포함 전체 프로세스 개요 |
-| `output/process/contribution-process.md`        | Q5 "예" | 오픈소스 기여 절차 (CLA 처리 포함)     |
-| `output/process/project-publication-process.md` | Q6 "예" | 사내 프로젝트 공개 절차                |
+`Sample answer: GitHub Actions`
 
-**직접 기입이 필요한 항목:**
+**Question 2/7** — What is the software deployment cycle?(Daily / Weekly / Monthly / Irregular)
 
-- GitHub Actions 워크플로우 파일 경로 확인
-- 승인자 이름 및 연락처
+`Sample answer:Weekly`
+
+**Question 3/7** — Do you use an issue tracker?(GitHub Issues / Jira / None / Other)
+
+`Sample answer: GitHub Issues`
+
+**Question 4/7** — Is there a need for approval to use open source?(Only person in charge / approved by team leader / approved by committee)
+
+`Sample answer:Team leader approval`
+
+**Question 5/7** — Do you plan to contribute to external open source projects?(yes/no)
+
+`Sample answer:No`
+
+**Question 6/7** — Do you have any plans to release your in-house software as open source?(yes/no)
+
+`Sample answer:No`
+
+**Question 7/7** — Is there a channel prepared to receive external license/vulnerability inquiries?
+
+`Sample answer:opensource@example.com is in operation`
+
+---
+
+**Example of output upon completion of creation:**
+
+| file                                            | Conditions | Content                                                         |
+| ----------------------------------------------- | ---------- | --------------------------------------------------------------- |
+| `output/process/usage-approval.md`              | Always     | Open source introduction approval form and procedure            |
+| `output/process/distribution-checklist.md`      | Always     | Pre-deployment compliance checklist                             |
+| `output/process/vulnerability-response.md`      | Always     | Vulnerability response procedures(Includes CVD §8)              |
+| `output/process/inquiry-response.md`            | Always     | Procedure for responding to external license/security inquiries |
+| `output/process/process-diagram.md`             | Always     | Mermaid Complete Process Overview with Flow Chart               |
+| `output/process/contribution-process.md`        | Q5 “Yes”   | Open source contribution process(Includes CLA treatment)        |
+| `output/process/project-publication-process.md` | Q6 “Yes”   | Internal project disclosure procedure                           |
+
+**Items that require manual entry:**
+
+- Check GitHub Actions workflow file path
+- Approver name and contact information
 
 </details>
 
-**3단계**: Claude 프롬프트가 열리면 `시작` 을 입력합니다.
+**Step 3**: When the Claude prompt opens, type `시작`.
 
-**4단계**: 7개 질문에 순서대로 답변
+**Step 4**:Answer 7 questions in order
 
-**5단계**: 생성된 Mermaid 흐름도 검토
+**Step 5**:Review the generated Mermaid flowchart
 
-생성된 `output/process/process-diagram.md` 파일을 GitHub에서 열면 흐름도가 자동으로
-렌더링됩니다. 흐름도가 실제 업무 흐름과 일치하는지 검토합니다. 수정이 필요하면 agent에게
-추가 요청하거나 직접 파일을 편집합니다.
+When you open the generated `output/process/process-diagram.md` file on GitHub, the flowchart is automatically displayed.
+It is rendered. Review the flowchart to ensure it matches your actual workflow. If corrections are needed, contact the agent.
+Request additions or edit files directly.
 
-**6단계**: `output/process/` 디렉토리에 생성된 파일 확인
+**Step 6**:Check the files created in the `output/process/` directory.
 
 ```bash
 ls output/process/
@@ -280,71 +280,71 @@ ls output/process/
 # project-publication-process.md  (Q6 "예" 답변 시)
 ```
 
-**6단계**: CI/CD 통합 계획 수립
+**Step 6**:Establishment of CI/CD integrated plan
 
-현재 사용 중인 CI/CD 도구에 맞는 워크플로우 파일을 프로젝트에 추가하는 계획을 수립합니다.
-즉시 적용이 어렵다면 다음 스프린트 또는 다음 릴리즈 사이클에 포함하는 일정을 잡는다.
+Plan to add workflow files to your project that match the CI/CD tools you are currently using.
+If it is difficult to apply immediately, schedule it for inclusion in the next sprint or next release cycle.
 
-### 막혔을 때
+### When you get stuck
 
-- **CI/CD가 없으면**: "없음"으로 답변. agent가 수동 체크리스트 기반 프로세스를 생성합니다. 이후 CI/CD를 도입하면 단계적으로 자동화할 수 있습니다.
-- **결재 단계가 모호하면**: 현재 팀에서 실제로 사용하는 방식을 그대로 입력합니다. 나중에 수정 가능하다.
-- **Mermaid가 렌더링되지 않으면**: [mermaid.live](https://mermaid.live) 에서 직접 확인합니다.
+- **Without CI/CD**:Answer “None”. The agent creates a manual checklist-based process. After introducing CI/CD, it can be automated step by step.
+- **If the payment stage is ambiguous**:Enter exactly what your team actually uses. It can be modified later.
+- **If Mermaid does not render**: [mermaid.live](https://mermaid.live)Check it out for yourself.
 
-### 예상 결과물
+### expected output
 
-| 파일                                            | 내용                                    |
-| ----------------------------------------------- | --------------------------------------- |
-| `output/process/usage-approval.md`              | 오픈소스 도입 승인 양식 및 절차         |
-| `output/process/distribution-checklist.md`      | 배포 전 컴플라이언스 체크리스트         |
-| `output/process/vulnerability-response.md`      | 취약점 대응 절차서 (CVD 90일 원칙 포함) |
-| `output/process/inquiry-response.md`            | 외부 라이선스·보안 문의 대응 절차       |
-| `output/process/process-diagram.md`             | Mermaid 흐름도 포함 전체 프로세스 개요  |
-| `output/process/contribution-process.md`        | 기여 절차 (Q5 "예" 시 생성)             |
-| `output/process/project-publication-process.md` | 프로젝트 공개 절차 (Q6 "예" 시 생성)    |
+| file                                            | Content                                                         |
+| ----------------------------------------------- | --------------------------------------------------------------- |
+| `output/process/usage-approval.md`              | Open source introduction approval form and procedure            |
+| `output/process/distribution-checklist.md`      | Pre-deployment compliance checklist                             |
+| `output/process/vulnerability-response.md`      | Vulnerability response procedures(CVD 90-day rule included)     |
+| `output/process/inquiry-response.md`            | Procedure for responding to external license/security inquiries |
+| `output/process/process-diagram.md`             | Mermaid Complete Process Overview with Flow Chart               |
+| `output/process/contribution-process.md`        | Contribution Process(Q5 Created when “Yes”)                     |
+| `output/process/project-publication-process.md` | Project disclosure process(Q6 Created on “Yes”)                 |
 
-:::info 충족되는 표준 요구사항
-이 실습을 완료하면 아래 요구사항이 충족됩니다.
+:::info Standard requirements met
+Completing this lab will meet the requirements below:
 
 **ISO/IEC 5230**
 
-| 항목 ID | 요구사항                          | 자체인증 체크리스트                                                                                                                   |
-| ------- | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| 3.1.5   | 라이선스 의무사항 검토 절차       | Do you have a documented procedure to review and record the obligations, restrictions, and rights granted by each identified license? |
-| 3.2.1   | 외부 라이선스·보안 문의 수신 절차 | Do you have a documented procedure for receiving and handling inquiries about open source compliance?                                 |
-| 3.3.2   | 배포 전 컴플라이언스 준비         | Do you have a process for creating the necessary compliance artifacts for each distribution?                                          |
-| 3.4.1   | 컴플라이언스 산출물 관리          | Do you have a process to ensure compliance artifacts accompany each distribution?                                                     |
-| 3.5.1   | 오픈소스 기여 관리 절차           | Do you have a process for contributing to open source projects?                                                                       |
+| Item ID | Requirements                                                | Self-certification checklist                                                                                                          |
+| ------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| 3.1.5   | License Obligations Review Process                          | Do you have a documented procedure to review and record the obligations, restrictions, and rights granted by each identified license? |
+| 3.2.1   | Procedure for receiving external license/security inquiries | Do you have a documented procedure for receiving and handling inquiries about open source compliance?                                 |
+| 3.3.2   | Compliance preparation before deployment                    | Do you have a process for creating the necessary compliance artifacts for each distribution?                                          |
+| 3.4.1   | Compliance Output Management                                | Do you have a process to ensure compliance artifacts accompany each distribution?                                                     |
+| 3.5.1   | Open source contribution management process                 | Do you have a process for contributing to open source projects?                                                                       |
 
 **ISO/IEC 18974**
 
-| 항목 ID | 요구사항                        | 자체인증 체크리스트                                                                                            |
-| ------- | ------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| 4.1.5   | 취약점 탐지 및 대응 절차        | Do you have a documented procedure for handling known vulnerabilities in open source components?               |
-| 4.2.1   | 외부 보안 취약점 신고 대응 절차 | Do you have a documented procedure for receiving and handling reports of open source security vulnerabilities? |
+| Item ID | Requirements                                              | Self-certification checklist                                                                                   |
+| ------- | --------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| 4.1.5   | Vulnerability detection and response procedures           | Do you have a documented procedure for handling known vulnerabilities in open source components?               |
+| 4.2.1   | External security vulnerability report response procedure | Do you have a documented procedure for receiving and handling reports of open source security vulnerabilities? |
 
 :::
 
 ---
 
-## 4. 완료 확인 체크리스트
+## 4. Completion Confirmation Checklist
 
-아래 항목을 모두 완료해야 이 챕터가 완성됩니다.
+You must complete all of the items below to complete this chapter.
 
-- [ ] `output/process/usage-approval.md` 생성됨
-- [ ] `output/process/distribution-checklist.md` 생성됨
-- [ ] `output/process/vulnerability-response.md` 생성됨 (CVD §8 포함)
-- [ ] `output/process/inquiry-response.md` 생성됨 [필수]
-- [ ] `output/process/process-diagram.md` 생성됨 (Mermaid 흐름도 포함)
-- [ ] `output/process/contribution-process.md` 생성됨 (기여 계획 여부와 무관하게 선언 문서 작성)
-- [ ] `output/process/project-publication-process.md` 생성됨 (공개 계획 여부와 무관하게 선언 문서 작성)
-- [ ] 취약점 심각도별 대응 기한이 정의됨
-- [ ] 허용 라이선스 자동 승인 기준이 명시됨
-- [ ] 외부 문의 수신 채널(이메일)이 절차에 명시됨
+- [ ] `output/process/usage-approval.md` created
+- [ ] `output/process/distribution-checklist.md` created
+- [ ] `output/process/vulnerability-response.md` created(Includes CVD §8)
+- [ ] `output/process/inquiry-response.md` created [Required]
+- [ ] `output/process/process-diagram.md` created(Mermaid flow chart included)
+- [ ] `output/process/contribution-process.md` created(Complete a declaration document regardless of whether you plan to contribute or not.)
+- [ ] `output/process/project-publication-process.md` created(Prepare a declaration document whether or not you plan to make it public)
+- [ ] Response deadlines are defined for each vulnerability severity level
+- [ ] Criteria for automatic approval of permissive licenses are specified
+- [ ] External inquiry receiving channel(email)Specified in this procedure
 
-### process-diagram.md 예시 (일부)
+### process-diagram.md example(portion)
 
-생성된 흐름도가 아래와 유사한 구조를 포함하는지 확인합니다.
+Ensure that the generated flowchart contains a structure similar to the one below.
 
 ```mermaid
 flowchart TD
@@ -358,18 +358,18 @@ flowchart TD
     G --> I[SBOM 등록]
 ```
 
-> 이 단계는 ISO/IEC 5230 3.1.5, 3.2.1, 3.3.2, 3.4.1, 3.5.1 및 ISO/IEC 18974 4.1.5, 4.2.1 요구사항을 충족합니다.
+> This step is ISO/IEC 5230 3.1.5, 3.2.1, 3.3.2, 3.4.1,3.5.1 and ISO/IEC 18974 4.1.5,Meets 4.2.1 requirements.
 
-> 📋 **산출물 예시**: [프로세스 산출물 Best Practice](/reference/samples/process)에서 생성된 파일의 실제 형식을 확인할 수 있습니다.
+> 📋 **Example of output**: [Process Output Best Practice](/reference/samples/process)You can check the actual format of the generated file at .
 
 ---
 
-## 5. 다음 단계
+## 5. Next steps
 
-`output/process/` 4개 파일이 모두 생성되었으면 SBOM 생성 단계로 이동합니다.
+Once all 4 `output/process/` files have been created, move to the SBOM creation step.
 
-:::tip 실행 전 확인
-현재 Claude 세션을 먼저 종료(`/exit` 또는 `Ctrl+C`)한 뒤, 새 터미널에서 아래 명령을 실행하세요.
+:::tip Check before execution
+Terminate the current Claude session first(`/exit` or `Ctrl+C`)After doing it,Run the command below in a new terminal.
 :::
 
 ```bash
@@ -377,8 +377,8 @@ cd agents/05-sbom-guide
 claude
 ```
 
-또는 문서를 먼저 읽고 싶다면 [SBOM 생성: syft와 cdxgen으로 소프트웨어 구성 명세 만들기](../05-tools/sbom-generation/index.md)로 이동합니다.
+Or, if you want to read the documentation first, [Create SBOM:Creating a software configuration specification with syft and cdxgen](../05-tools/sbom-generation/index.md)Go to .
 
-SBOM(소프트웨어 명세서)은 이 챕터에서 만든 프로세스가 실제로 작동하는지 확인하는 핵심
-도구다. 어떤 오픈소스가 포함되어 있는지를 기계 가독 형식으로 기록하면, 라이선스 의무
-이행 여부와 취약점 영향 범위를 자동으로 확인할 수 있습니다.
+SBOM(software specifications)is the key to ensuring that the processes created in this chapter actually work.
+It's a tool. Recording in a machine-readable format which open sources are included,License Obligations
+You can automatically check compliance and the scope of impact of vulnerabilities.

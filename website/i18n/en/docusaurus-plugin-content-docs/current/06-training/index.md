@@ -1,216 +1,216 @@
 ---
-작성일: 2026-03-20
-버전: 1.0
-충족 체크리스트:
+date: 2026-03-20
+version: '1.0'
+checklist:
   - 'ISO/IEC 5230: G1.4 (3.1.2), G2.3 (3.1.3)'
   - 'ISO/IEC 18974: G1.4 (4.1.2), G2.3 (4.1.3)'
-셀프스터디 소요시간: 1시간
+self_study_time: 1 hour
 ---
 
-# 교육 체계: 조직 전체의 오픈소스 인식 높이기
+# education system:Raise open source awareness throughout your organization
 
-## 1. 이 챕터에서 하는 일
+## 1. What we do in this chapter
 
-직군별 교육 커리큘럼을 수립하고, 이수 추적 체계를 만들며, 무료로 활용할 수 있는 교육 리소스를 정리합니다. 이 챕터를 완료하면 조직 내 모든 관련 구성원이 오픈소스 정책과 프로세스를 이해하고 실천할 수 있는 기반이 마련됩니다.
+Establish training curriculum for each occupation,Creating a completion tracking system,We organize educational resources that you can use for free. Completing this chapter will provide a foundation for all relevant members of your organization to understand and implement open source policies and processes.
 
-두 표준 모두 담당자와 관련 구성원이 교육을 이수했다는 증빙을 요구합니다. 정책 문서와 프로세스 절차서를 아무리 잘 갖춰도, 구성원이 그 내용을 모른다면 실질적인 컴플라이언스는 이루어지지 않는다.
+Both standards require proof that personnel and relevant members have completed training. No matter how well you have policy documents and process procedures,,If members do not know the contents, actual compliance cannot be achieved.
 
-## 2. 배경 지식: 왜 교육이 표준 요구사항인가
+## 2. Background knowledge:Why training is a standard requirement
 
-### 정책과 프로세스만으로는 부족한 이유
+### Why policies and processes alone are not enough
 
-정책과 프로세스가 있어도 사람이 모르면 동작하지 않는다. ISO/IEC 5230과 18974는 단순히 문서 존재 여부만 확인하지 않는다. 실제로 해당 문서를 알고, 이해하고, 따를 수 있는 구성원이 있는지를 함께 점검합니다. 교육 이수 기록은 자체 인증의 핵심 증거 중 하나다.
+Even if there are policies and processes, they won’t work if people don’t know about them. ISO/IEC 5230 and 18974 do not simply check whether a document exists. actually know the document,understand,We check together to see if there are any members who can follow. Training completion records are one of the key pieces of evidence for self-certification.
 
-### ISO/IEC 5230과 18974의 교육 요구사항
+### Training requirements of ISO/IEC 5230 and 18974
 
-**ISO/IEC 5230 (라이선스 컴플라이언스)**
+**ISO/IEC 5230 (License Compliance)**
 
-- **3.1.2 (G1.4)**: 프로그램 참여자가 오픈소스 라이선스 컴플라이언스에 관한 정책의 존재를 인지하도록 해야 합니다.
-- **3.1.3 (G2.3)**: 프로그램 참여자가 정책 목표, 기여 및 관련 역할을 이해하도록 해야 합니다.
+- **3.1.2 (G1.4)**:Ensure that program participants are aware of the existence of policies regarding open source license compliance.
+- **3.1.3 (G2.3)**:Program participants have policy goals,Make sure they understand their contributions and relevant roles.
 
-**ISO/IEC 18974 (보안 보증)**
+**ISO/IEC 18974 (security assurance)**
 
-- **3.1.2 (G1.4)**: 프로그램 참여자가 보안 보증 정책의 존재를 인지하도록 해야 합니다.
-- **3.1.3 (G2.3)**: 프로그램 참여자가 보안 보증 정책의 목표와 자신의 역할을 이해하도록 해야 합니다.
+- **3.1.2 (G1.4)**:Ensure that program participants are aware of the existence of a security assurance policy.
+- **3.1.3 (G2.3)**:Ensure that program participants understand the goals of the security assurance policy and their roles.
 
-> 이 단계는 ISO/IEC 5230 G1.4 (3.1.2), G2.3 (3.1.3) 및 ISO/IEC 18974 G1.4 (4.1.2), G2.3 (4.1.3) 요구사항을 충족합니다.
+> This step is ISO/IEC 5230 G1.4(3.1.2), G2.3 (3.1.3)and ISO/IEC 18974 G1.4(4.1.2), G2.3 (4.1.3)Meets your requirements.
 
-**교육 이수 기록이 자체 인증의 증거가 됩니다.** 인증 심사 시 "누가, 언제, 어떤 교육을 받았는가"를 보여주는 기록이 있어야 합니다. 이 챕터에서 만드는 이수 추적 시트가 바로 그 증거 문서가 됩니다.
+**Records of training completion serve as evidence of self-certification.** When reviewing certification, “Who,when,You must have records showing “what kind of training you received.” The completion tracking sheet you create in this chapter will be the proof document.
 
-## 3. 직군별 필수 교육 내용
+## 3. Required training content for each job group
 
-| 직군        | 필수 교육 내용                                                          | 권장 시간 |
-| ----------- | ----------------------------------------------------------------------- | --------- |
-| 개발자      | 오픈소스 라이선스 기초, 사용 승인 프로세스, SBOM 개념, 취약점 대응 절차 | 4시간     |
-| 관리자/팀장 | 오픈소스 정책 개요, 법적 리스크 이해, 승인 절차에서의 역할              | 2시간     |
-| 법무/구매   | 라이선스 상세 의무사항, 계약서 오픈소스 조항                            | 3시간     |
-| 보안 담당   | 취약점 식별 및 대응, CVSS 점수 해석, 18974 요구사항                     | 3시간     |
+| Occupation          | Required training content                                                                           | Recommended Time |
+| ------------------- | --------------------------------------------------------------------------------------------------- | ---------------- |
+| Developer           | Open source licensing basics,Approval Process for Use,SBOM concept,Vulnerability Response Procedure | 4 hours          |
+| Manager/Team Leader | Open source policy overview,Understanding legal risks,Role in the Approval Process                  | 2 hours          |
+| Legal/Purchasing    | License Detailed Obligations,Contract Open Source Terms                                             | 3 hours          |
+| Security Manager    | Vulnerability identification and response,Interpreting CVSS scores,18974 Requirements               | 3 hours          |
 
-> 실제 기업 교육 사례(SKT, 카카오, NC소프트 등)와 교육 자료는 [KWG 오픈소스 가이드 — 교육](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/5-training/)를 참조하세요.
+> Real corporate training examples(SKT,cacao,NC Soft, etc.)and educational materials [KWG Open Source Guide — Education](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/5-training/)See .
 
-## 4. 무료 교육 리소스 목록
+## 4. List of free educational resources
 
-| 리소스                                | 제공 기관           | 수준      | 언어   | 링크                                                                                          |
-| ------------------------------------- | ------------------- | --------- | ------ | --------------------------------------------------------------------------------------------- |
-| OpenChain 교육 자료                   | OpenChain Project   | 초급~중급 | 영어   | https://www.openchainproject.org/resources                                                    |
-| Open Source Licensing Basics (LFC193) | Linux Foundation    | 초급      | 영어   | LFC193 과정 (Linux Foundation Training)                                                       |
-| NIPA 오픈소스 라이선스 가이드         | NIPA                | 초급~중급 | 한국어 | NIPA 공개SW 포털                                                                              |
-| OpenChain KWG 교육 자료               | OpenChain KWG       | 중급      | 한국어 | https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/5-training/ |
-| SPDX 공식 문서                        | SPDX Community      | 중급      | 영어   | SPDX 공식 사이트 (spdx.dev)                                                                   |
-| CycloneDX 공식 문서                   | CycloneDX Community | 중급      | 영어   | CycloneDX 공식 사이트 (cyclonedx.org)                                                         |
+| Resources                             | Provided by organization | level                 | language | Link                                                                                          |
+| ------------------------------------- | ------------------------ | --------------------- | -------- | --------------------------------------------------------------------------------------------- |
+| OpenChain Training Materials          | OpenChain Project        | Beginner~Intermediate | English  | https://www.openchainproject.org/resources                                                    |
+| Open Source Licensing Basics (LFC193) | Linux Foundation         | Beginner              | English  | LFC193 Course(Linux Foundation Training)                                                      |
+| NIPA Open Source License Guide        | NIPA                     | Beginner~Intermediate | Korean   | NIPA open SW portal                                                                           |
+| OpenChain KWG Training Materials      | OpenChain KWG            | Intermediate          | Korean   | https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/5-training/ |
+| SPDX official documentation           | SPDX Community           | Intermediate          | English  | SPDX Official Site(spdx.dev)                                                                  |
+| CycloneDX official documentation      | CycloneDX Community      | Intermediate          | English  | CycloneDX Official Site(cyclonedx.org)                                                        |
 
-## 5. 교육 이수 기록 관리 방법
+## 5. How to manage training completion records
 
-교육 이수 기록은 별도의 도구 없이 스프레드시트나 마크다운 파일로 간단하게 관리할 수 있습니다. 중요한 것은 형식이 아니라 기록 자체다.
+Training completion records can be easily managed using a spreadsheet or markdown file without any additional tools. What is important is not the format but the record itself.
 
-> ⚠️ **completion-tracker.md는 교육 실시 후 채우는 문서입니다.**
-> agent를 실행하면 빈 템플릿이 생성되는 것이 정상입니다.
-> 교육을 진행한 뒤 아래 형식으로 이수 기록을 추가하세요.
-> 이 파일이 ISO/IEC 5230 §3.1.2.3 (역량 평가 증거)와 18974 §4.1.2.4의 증거 문서가 됩니다.
+> ⚠️ **completion-tracker.md is a document filled in after training.**
+> When you run the agent, it is normal for an empty template to be created.
+> After completing the training, please add your completion record in the format below.
+> This file is ISO/IEC 5230 §3.1.2.3(Competency assessment evidence)and 18974 §4.1.2.4.
 
-`output/training/completion-tracker.md` 형식 예시:
+`output/training/completion-tracker.md` format example:
 
-| 이름   | 직군   | 교육명                 | 이수일     | 확인자          |
-| ------ | ------ | ---------------------- | ---------- | --------------- |
-| 홍길동 | 개발자 | 오픈소스 라이선스 기초 | 2026-03-20 | 오픈소스 담당자 |
-| 김철수 | 관리자 | 오픈소스 정책 개요     | 2026-03-21 | 오픈소스 담당자 |
+| Name          | Occupation    | Education name               | Soo-il Lee | Confirmer                  |
+| ------------- | ------------- | ---------------------------- | ---------- | -------------------------- |
+| Hong Gil-dong | Developer     | Open source licensing basics | 2026-03-20 | Open source representative |
+| Cheolsu Kim   | Administrator | Open source policy overview  | 2026-03-21 | Open source representative |
 
-**자체 인증 시 completion-tracker.md 활용:**
+**Use completion-tracker.md when self-authenticating:**
 
-- 처음 인증할 때 교육 이수 전이라면 "교육 커리큘럼은 완성, 이수 예정"으로 부분충족 처리
-- 교육 완료 후 기록을 채워 완전 충족으로 전환
-- 신규 입사자 온보딩 시 교육 이수를 의무화하면 지속적인 컴플라이언스 유지 가능
+- When first authenticating, if training has not been completed, “training curriculum is complete”,Partially satisfied as “to be completed”
+- After completing training, fill in the record and convert to fully satisfied
+- Continuous compliance can be maintained by requiring training completion when onboarding new employees.
 
-## 6. 셀프 스터디
+## 6. Self-study
 
-:::info 셀프스터디 모드 (약 1시간)
-충분한 시간을 갖고 각 단계를 이해하며 진행합니다.
+:::info Self-study mode(About 1 hour)
+Take your time and understand each step.
 :::
 
-1. 이 문서를 처음부터 끝까지 읽는다.
-2. 아래 명령어로 training-manager agent를 실행한다:
+1. Read this document from beginning to end.
+2. Run the training-manager agent with the command below::
 
-   :::tip 실행 전 확인
-   현재 Claude 세션을 먼저 종료(`/exit` 또는 `Ctrl+C`)한 뒤, 새 터미널에서 아래 명령을 실행하세요.
+   :::tip Check before execution
+   Terminate the current Claude session first(`/exit` or `Ctrl+C`)After doing it,Run the command below in a new terminal.
    :::
 
    ```bash
    cd agents/06-training-manager && claude
    ```
 
-3. Claude 프롬프트가 열리면 **`시작`** 을 입력합니다.
+3. When the Claude prompt opens, type **`시작`**.
 
    <details>
-   <summary>Agent 대화 예시 (클릭해서 펼치기)</summary>
+   <summary>Agent conversation example(Click to expand)</summary>
 
-   아래는 실제 agent와의 대화 흐름 예시입니다. 실행 시 이런 형태로 진행됩니다.
+   Below is an example of a conversation flow with an actual agent. When running, it goes like this.
 
-   **Agent 안내 메시지:**
+   **Agent guidance message:**
 
-   > 안녕하세요! 교육 체계 산출물을 생성하는 agent입니다.
-   > 3개 질문에 답변하시면 교육 문서 3개가 자동으로 생성됩니다.
-
-   ***
-
-   **질문 1/3** — 직군별 인원을 알려주세요. (개발자 N명 / 관리자 N명 / 운영 N명)
-
-   `예시 답변: 개발자 40명, 관리자 5명, 운영 5명`
-
-   **질문 2/3** — 선호하는 교육 형태는? (온라인 자율 / 오프라인 집합 / 혼합)
-
-   `예시 답변: 온라인 자율`
-
-   **질문 3/3** — 교육 이수 증빙이 필요한가요? (내부 기록용 / 감사 대비 / 인증 제출용)
-
-   `예시 답변: 인증 제출용`
+   > hello! It is an agent that creates education system output.
+   > Answer 3 questions and 3 training documents will be automatically created.
 
    ***
 
-   **생성 완료 시 출력 예시:**
+   **Question 1/3** — Please tell us the number of people in each job group.(N developers / N managers / N operations)
 
-   | 파일                                    | 내용                                        |
-   | --------------------------------------- | ------------------------------------------- |
-   | `output/training/curriculum.md`         | 직군별 교육 커리큘럼 및 권장 시간           |
-   | `output/training/completion-tracker.md` | 이수 추적 시트 (빈 양식, 교육 후 직접 기입) |
-   | `output/training/resources.md`          | 무료 교육 리소스 목록                       |
+   `Sample answer:40 developers,5 managers,5 people in operation
 
-   **직접 기입이 필요한 항목:**
-   - 교육 시행 일정 (연간 계획)
-   - 이수 증빙 방법 결정 (수료증 / 이메일 확인 / 서명)
+   **Question 2/3** — What is your preferred form of education?(Online Autonomous / Offline Aggregation / Mixed)
+
+   `Sample answer:Online autonomy`
+
+   **Question 3/3** — Do I need proof of training completion?(For internal records / for audit preparation / for certification submission)
+
+   `Sample answer:For certification submission`
+
+   ***
+
+   **Example of output upon completion of creation:**
+
+   | file                                    | Content                                                                |
+   | --------------------------------------- | ---------------------------------------------------------------------- |
+   | `output/training/curriculum.md`         | Training curriculum and recommended time for each occupation           |
+   | `output/training/completion-tracker.md` | Completion Tracking Sheet(blank form,Fill out directly after training) |
+   | `output/training/resources.md`          | List of Free Educational Resources                                     |
+
+   **Items that require manual entry:**
+   - Training implementation schedule(annual plan)
+   - Deciding how to prove completion(Certificate of Completion / Confirm Email / Signature)
 
    </details>
 
-4. agent가 순서대로 3가지 질문을 한다:
-   - 직군별 인원 (개발자 N명 / 관리자 N명 / 운영 N명)
-   - 선호하는 교육 형태 (온라인 자율 / 오프라인 집합 / 혼합)
-   - 교육 이수 증빙 목적 (내부 기록용 / 감사 대비 / 인증 제출용)
-5. agent가 산출물을 생성한 뒤 `output/training/` 폴더에서 결과를 확인합니다.
+4. The agent asks three questions in order.:
+   - Number of people by occupation(N developers / N managers / N operations)
+   - preferred form of education(Online Autonomous / Offline Aggregation / Mixed)
+   - Purpose of proof of training completion(For internal records / for audit preparation / for certification submission)
+5. After the agent generates the output, check the results in the `output/training/` folder.
 
-:::tip 예상 결과
-실습을 완료하면 아래 3개 파일이 생성됩니다.
+:::tip expected result
+Upon completing the exercise, the three files below will be created.
 
-**생성 파일:**
+**Created file:**
 
 - `output/training/curriculum.md`
 - `output/training/completion-tracker.md`
 - `output/training/resources.md`
 
-**파일 내 반드시 포함되어야 할 항목:**
+**Items that must be included in the file:**
 
-- 직군별 교육 항목과 권장 시간
-- 이수 증빙 방법 (수료증 / 서명 / 이메일 확인)
-- 정기 교육 일정 (연 1회 이상)
+- Training items and recommended times for each job type
+- How to prove completion(Certificate of Completion / Signature / Email Confirmation)
+- Regular training schedule(More than once a year)
 
-> `completion-tracker.md`는 빈 양식으로 생성됩니다. 실제 교육 이수 후 직접 채워야 합니다.
+> `completion-tracker.md` is created as an empty form. You must fill it out yourself after completing the actual training.
 > :::
 
-:::info 충족되는 표준 요구사항
-이 실습을 완료하면 아래 요구사항이 충족됩니다.
+:::info Standard requirements met
+Completing this lab will meet the requirements below:
 
 **ISO/IEC 5230**
 
-| 항목 ID | 요구사항       | 자체인증 체크리스트                                                                                  |
-| ------- | -------------- | ---------------------------------------------------------------------------------------------------- |
-| 3.1.2   | 역량 보유 증빙 | Do you have documented evidence that each program participant has completed the necessary training?  |
-| 3.1.3   | 인식 평가      | Do you have documented evidence that your program participants are aware of your open source policy? |
+| Item ID | Requirements         | Self-certification checklist                                                                         |
+| ------- | -------------------- | ---------------------------------------------------------------------------------------------------- |
+| 3.1.2   | Proof of competency  | Do you have documented evidence that each program participant has completed the necessary training?  |
+| 3.1.3   | Awareness Assessment | Do you have documented evidence that your program participants are aware of your open source policy? |
 
 **ISO/IEC 18974**
 
-| 항목 ID | 요구사항            | 자체인증 체크리스트                                                                                                     |
-| ------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| 4.1.2   | 보안 역량 보유 증빙 | Do you have documented evidence that each program participant has the necessary competence for security assurance?      |
-| 4.1.3   | 보안 인식 평가      | Do you have documented evidence that your program participants are aware of your open source security assurance policy? |
+| Item ID | Requirements                  | Self-certification checklist                                                                                            |
+| ------- | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| 4.1.2   | Proof of security competency  | Do you have documented evidence that each program participant has the necessary competence for security assurance?      |
+| 4.1.3   | Security Awareness Assessment | Do you have documented evidence that your program participants are aware of your open source security assurance policy? |
 
 :::
 
-## 7. 생성되는 산출물
+## 7. Output generated
 
-이 챕터를 완료하면 `output/training/` 폴더에 아래 파일이 생성된다:
+When you complete this chapter, the following files will be created in the `output/training/` folder.:
 
-- **curriculum.md**: 직군별 교육 커리큘럼 (교육 항목, 권장 시간, 우선순위 포함)
-- **completion-tracker.md**: 교육 이수 추적 시트 (자체 인증 증거 문서)
-- **resources.md**: 무료 교육 리소스 목록 (조직 상황에 맞게 선별)
+- **curriculum.md**:Training curriculum by occupation(educational items,recommended time,Includes priority)
+- **completion-tracker.md**:Training Completion Tracking Sheet(Self-certified evidence document)
+- **resources.md**:List of Free Educational Resources(Select according to organizational situation)
 
-## 8. 완료 확인 체크리스트
+## 8. Completion Confirmation Checklist
 
-- [ ] `output/training/curriculum.md` 생성됨
-- [ ] `output/training/completion-tracker.md` 생성됨
-- [ ] `output/training/resources.md` 생성됨
-- [ ] 직군별 교육 항목이 정의됨
-- [ ] 이수 증빙 방법이 결정됨
+- [ ] `output/training/curriculum.md` created
+- [ ] `output/training/completion-tracker.md` created
+- [ ] `output/training/resources.md` created
+- [ ] Training items are defined for each job group
+- [ ] Method of proof of completion has been decided
 
-> 📋 **산출물 예시**: [교육 산출물 Best Practice](/reference/samples/training)에서 생성된 파일의 실제 형식을 확인할 수 있습니다.
+> 📋 **Example of output**: [Educational Output Best Practices](/reference/samples/training)You can check the actual format of the generated file at .
 
-## 9. 다음 단계
+## 9. Next steps
 
-교육 체계 구축을 완료했다면, 이제 자체 인증 선언을 준비할 차례다.
+If you have completed building an education system,Now it’s time to prepare your self-certification declaration.
 
-마지막 챕터로 이동하거나 agent를 바로 실행한다:
+Go to the last chapter or run the agent immediately:
 
-먼저 챕터 문서를 읽으려면 [자체 인증 선언: 마지막 단계](../07-conformance/index.md)로 이동합니다.
+To read the chapter document first, go to [Self-certification declaration]:final step](../07-conformance/index.md)Go to .
 
-:::tip 실행 전 확인
-현재 Claude 세션을 먼저 종료(`/exit` 또는 `Ctrl+C`)한 뒤, 새 터미널에서 아래 명령을 실행하세요.
+:::tip Check before execution
+Terminate the current Claude session first(`/exit` or `Ctrl+C`)After doing it,Run the command below in a new terminal.
 :::
 
 ```bash

@@ -8,7 +8,7 @@
     "description": "The alt text of navbar logo"
   },
   "item.label.체계구축": {
-    "message": "체계구축",
+    "message": "System Setup",
     "description": "Navbar item with label 체계구축"
   },
   "item.label.DevSecOps": {
@@ -16,11 +16,11 @@
     "description": "Navbar item with label DevSecOps"
   },
   "item.label.AI코딩": {
-    "message": "AI코딩",
+    "message": "AI Coding",
     "description": "Navbar item with label AI코딩"
   },
   "item.label.레퍼런스": {
-    "message": "레퍼런스",
+    "message": "Reference",
     "description": "Navbar item with label 레퍼런스"
   }
 }

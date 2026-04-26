@@ -7,24 +7,24 @@ sidebar_position: 4
 
 # Windsurf
 
-## 개요
+## Overview
 
-Windsurf는 프로젝트 루트의 `.windsurfrules` 파일을 읽어 Cascade AI 에이전트의 동작 지침으로 활용합니다. 글로벌 규칙은 Windsurf 앱 설정(UI)에서 별도로 지정할 수 있습니다. 적용 범위는 프로젝트 단위이며, 글로벌 설정과 프로젝트 설정을 병행 사용할 수 있습니다.
+Windsurf reads `.windsurfrules` in the project root and uses it as behavior instructions for the Cascade AI agent. Global rules can be configured separately in the Windsurf app settings (UI). The scope is project-level, and global and project settings can be used together.
 
-글로벌 Rules에는 조직 공통 정책을 작성하고, `.windsurfrules`에는 프로젝트 특화 예외 사항이나 추가 규칙을 작성하는 방식으로 계층적으로 관리하면 효율적입니다. `.windsurfrules`를 저장소에 커밋하면 팀 전체에 동일한 정책이 적용됩니다. 글로벌 규칙과 프로젝트 규칙이 충돌할 경우 프로젝트 규칙이 우선합니다.
+It is efficient to manage rules in layers: put organization-wide policy in Global Rules and project-specific exceptions or additional rules in `.windsurfrules`. Committing `.windsurfrules` to the repository applies the same policy across the team. If global and project rules conflict, project rules take precedence.
 
-## 설정 파일 위치
+## Configuration File Location
 
-- 프로젝트: `.windsurfrules` (루트, 권장)
-- 글로벌: Windsurf 앱 설정 > Global Rules
+- Project: `.windsurfrules` (root, recommended)
+- Global: Windsurf app settings > Global Rules
 
-## 적용 방법
+## How to Apply
 
-1. 프로젝트 루트에 `.windsurfrules` 파일을 생성합니다.
-2. [공통 Rules 템플릿](../rules-template)의 내용을 붙여넣습니다.
-3. 허용·금지 라이선스 목록을 사내 정책에 맞게 수정합니다.
+1. Create `.windsurfrules` in the project root.
+2. Paste content from the [Common Rules Template](../rules-template).
+3. Update the allow/deny license list to match internal policy.
 
-## 설정 예시
+## Configuration Example
 
 ```markdown
 ## 오픈소스 정책
@@ -61,8 +61,8 @@ Windsurf는 프로젝트 루트의 `.windsurfrules` 파일을 읽어 Cascade AI 
 - 타 프로젝트 코드 복사 시 출처 및 라이선스 명시
 ```
 
-## 주의사항
+## Notes
 
-:::info 알아두세요
-`.windsurfrules`는 Cascade 에이전트 전용이며, 일반 코드 완성(Autocomplete) 기능에는 적용되지 않습니다. 에이전트 작업(파일 생성·수정·패키지 추가 등)에만 정책이 적용된다는 점을 인지하고 단순 코드 완성 사용 시에는 별도 주의가 필요합니다. 파일 크기가 클수록 응답 지연이 발생할 수 있으므로, 전체 템플릿 중 팀에 꼭 필요한 핵심 정책만 간결하게 유지하는 것을 권장합니다.
+:::info Good to know
+`.windsurfrules` is only for the Cascade agent and does not apply to standard code completion (Autocomplete). Keep in mind that policy applies only to agent actions (file creation/modification, package additions, etc.), and extra caution is needed when using plain completion. Larger files can increase response latency, so keep only essential team policies concise from the full template.
 :::

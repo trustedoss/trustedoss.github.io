@@ -1,37 +1,37 @@
 ---
-작성일: 2026-03-20
-버전: 1.0
-충족 체크리스트:
+date: 2026-03-20
+version: '1.0'
+checklist:
   - 'ISO/IEC 5230: []'
   - 'ISO/IEC 18974: []'
-셀프스터디 소요시간: 1시간
+self_study_time: 1 hour
 sidebar_position: 3
-sidebar_label: 공급망 보안
+sidebar_label: supply chain security
 ---
 
-# 소프트웨어 공급망 보안: 왜 지금 중요한가
+# Software Supply Chain Security:Why It Matters Now
 
-## 1. 이 챕터에서 하는 일
+## 1. What we do in this chapter
 
-이 챕터는 실습 없이 읽기만 하는 배경 지식 챕터다.
-소프트웨어 공급망 보안의 현실을 실제 사고 사례를 통해 이해하고,
-SBOM(Software Bill of Materials)이 왜 필수 도구가 되었는지,
-그리고 이를 요구하는 국제 규제의 흐름을 파악합니다.
+This chapter is a background knowledge chapter to be read only without practice.
+Understand the reality of software supply chain security through actual accident cases and,
+SBOM(Software Bill of Materials)Why this has become an essential tool,
+And we understand the flow of international regulations that require it.
 
-이 챕터를 읽고 나면 "왜 이 키트가 필요한가"에 대한 명확한 답을 얻을 수 있습니다.
-이후 챕터에서 수행하는 모든 작업 — 정책 수립, 프로세스 설계, SBOM 생성, 취약점 분석 —
-이 챕터의 맥락 위에서 그 목적이 더욱 선명해진다.
+After reading this chapter, you will get a clear answer to the question “Why do you need this kit?”
+Everything you do in later chapters — policy making,process design,Create SBOM,Vulnerability analysis —
+The purpose becomes clearer in the context of this chapter.
 
 ---
 
-## 2. 소프트웨어 공급망이란
+## 2. What is the software supply chain?
 
-### 오픈소스가 제품 안으로 들어오는 경로
+### How open source enters the product
 
-소프트웨어는 혼자 만들어지지 않는다.
-개발자는 npm, PyPI, Maven 같은 패키지 저장소에서 오픈소스 라이브러리를 가져다 쓰고,
-그 라이브러리는 또 다른 라이브러리에 의존합니다.
-이 연쇄 구조 전체가 **소프트웨어 공급망**입니다.
+Software is not created alone.
+Developer npm, PyPI,Use open source libraries from package repositories such as Maven,
+That library depends on another library.
+This entire chain structure is the **Software Supply Chain**.
 
 ```mermaid
 flowchart LR
@@ -44,172 +44,172 @@ flowchart LR
     style E fill:#e3f2fd
 ```
 
-현대 소프트웨어는 **70~90%가 오픈소스 컴포넌트**로 구성됩니다.
-자체 코드보다 외부에서 가져온 코드가 훨씬 많다는 뜻입니다.
-이는 개발 속도를 높이는 강점이지만, 동시에 외부 위협이 내부로 유입되는 통로이기도 하다.
+Modern software consists of **70-90% open source components**.
+This means that there is a lot more code coming from outside than our own code.
+This is an advantage that speeds up development, but,At the same time, it is also a conduit through which external threats flow internally.
 
-공급망 보안이란 이 경로 전체에서 발생할 수 있는 위험 — 취약점, 악성코드, 라이선스 위반 —
-을 식별하고 관리하는 체계를 말합니다.
+Supply chain security refers to the risks — vulnerabilities — that can arise throughout this path.,malware,License violation —
+refers to a system that identifies and manages
 
 ---
 
-## 3. 실제 공급망 공격 사례 3가지
+## 3. Three real-life supply chain attack cases
 
-다음 세 사례는 공급망 보안이 추상적 개념이 아님을 보여준다.
+The following three examples show that supply chain security is not an abstract concept.
 
 #### SolarWinds (2020)
 
-**사건 개요**
-공격자는 SolarWinds의 내부 빌드 파이프라인에 악성코드(Sunburst)를 삽입했다.
-정상적인 소프트웨어 업데이트 패키지(Orion 플랫폼)에 포함되어 배포되었기 때문에,
-기존 보안 도구로는 탐지가 극히 어려웠다.
+**Incident Overview**
+The attacker installed malware into SolarWinds' internal build pipeline.(Sunburst)inserted.
+Normal software update package(Orion Platform)Because it was distributed and included in,
+Detection was extremely difficult with existing security tools.
 
-**영향 범위**
-미국 재무부, 국무부 등 연방정부 기관을 포함해 전 세계 18,000개 이상의 조직이
-악성 업데이트를 설치했다. 수개월간 탐지되지 않은 채 내부 네트워크에 접근이 허용되었다.
+**Scope of Influence**
+us treasury,18 worldwide, including federal agencies such as the Department of State,More than 000 organizations
+A malicious update was installed. Access to the internal network was allowed undetected for months.
 
-**교훈**
-소프트웨어를 만드는 빌드 파이프라인 자체가 공격 대상이 될 수 있습니다.
-제품에 포함된 모든 컴포넌트가 어디서 왔는지, 빌드 과정이 안전한지 검증하는 체계가 필요하다.
+**lesson**
+The build pipeline that creates the software itself can be a target of attack.
+Where all the components included in the product come from,A system is needed to verify that the build process is safe.
 
 ---
 
 #### Log4Shell (2021, CVE-2021-44228)
 
-**사건 개요**
-Java 애플리케이션에서 거의 보편적으로 사용되는 로깅 라이브러리 Apache Log4j 2에서
-JNDI(Java Naming and Directory Interface) 인젝션 취약점이 발견되었다.
-공격자는 특수하게 조작된 문자열 하나로 원격 코드 실행(RCE)이 가능했다.
+**Incident Overview**
+In Apache Log4j 2, a logging library almost universally used in Java applications.
+JNDI(Java Naming and Directory Interface)An injection vulnerability was discovered.
+An attacker can execute remote code with a single specially crafted string.(RCE)This was possible.
 
-**영향 범위**
-전 세계 수억 개 시스템이 영향을 받았으며, Apple, Amazon, Tesla, 트위터 등
-사실상 모든 대형 기술기업의 서비스가 해당되었다.
-발견 직후 72시간 내에 수백만 건의 익스플로잇 시도가 탐지되었다.
+**Scope of Influence**
+Hundreds of millions of systems worldwide were affected., Apple, Amazon, Tesla,Twitter, etc.
+Virtually all large technology companies' services were covered.
+Millions of exploit attempts were detected within 72 hours of discovery.
 
-**교훈**
-어디서 어떤 오픈소스를 사용하는지 파악하지 못하면 패치조차 불가능하다.
-SBOM이 있었다면 Log4j를 사용하는 모든 시스템을 즉시 식별하고 대응할 수 있었을 것입니다.
+**lesson**
+Even patching is impossible if you don’t know where and which open source is being used.
+If we had SBOM, we would have been able to immediately identify and respond to all systems using Log4j.
 
 ---
 
 #### XZ Utils (2024, CVE-2024-3094)
 
-**사건 개요**
-공격자는 "Jia Tan"이라는 가명으로 2년간 XZ Utils 오픈소스 프로젝트에
-신뢰할 수 있는 기여자로 활동했다. 장기간 정상적인 기여를 통해 신뢰를 쌓은 뒤,
-sshd(SSH 데몬)에 백도어를 삽입하는 악성 코드를 커밋했다.
-배포 직전 한 개발자의 이상 징후 발견으로 전면 확산은 막았다.
+**Incident Overview**
+The attacker had been working on the XZ Utils open source project for two years under the pseudonym "Jia Tan".
+Acted as a reliable contributor. After building trust through regular contributions over a long period of time,,
+sshd(SSH daemon)committed malicious code to insert a backdoor into
+Full-scale spread was prevented due to the discovery of anomalies by a developer just before distribution.
 
-**영향 범위**
-Fedora, Debian, Ubuntu 등 다수의 주요 Linux 배포판에 이미 취약한 버전이 포함되어 있었다.
-발견이 수일만 늦었어도 수백만 대의 서버에 백도어가 심어졌을 것입니다.
+**Scope of Influence**
+Fedora, Debian,Many major Linux distributions, including Ubuntu, already included vulnerable versions.
+If discovery had been delayed by just a few days, backdoors would have been planted on millions of servers.
 
-**교훈**
-오픈소스 프로젝트 기여자의 신원과 장기적 행동 패턴을 모니터링해야 합니다.
-의존하는 오픈소스 프로젝트의 관리 상태(거버넌스, 메인테이너 활동)도 공급망 보안의 일부다.
+**lesson**
+The identity and long-term behavioral patterns of open source project contributors should be monitored.
+Management status of dependent open source projects(governance,Maintainer activities)It is also part of supply chain security.
 
 ---
 
-## 4. 국제 규제 동향
+## 4. International regulatory trends
 
-공급망 보안은 이제 자율적 모범 사례를 넘어 법적 요구사항이 되고 있습니다.
+Supply chain security is now moving beyond voluntary best practice and becoming a legal requirement.
 
-#### 미국 행정명령 EO 14028 (2021)
+#### U.S. Executive Order EO 14028(2021)
 
-**배경**
-SolarWinds, Microsoft Exchange 등 잇따른 대형 공급망 공격에 대응하여
-바이든 행정부가 2021년 5월 서명한 사이버보안 강화 행정명령입니다.
+**background**
+SolarWinds,In response to a series of large-scale supply chain attacks such as Microsoft Exchange,
+This is an executive order strengthening cybersecurity signed by the Biden administration in May 2021.
 
-**핵심 요구사항**
+**Key Requirements**
 
-- 연방정부에 납품하는 소프트웨어에 대해 **SBOM 제출 의무화**
-- NTIA(미국 통신정보청)가 정의한 **SBOM 최소 요소** 기준 준수
-- 소프트웨어 개발 보안 관행(Secure Software Development Practices) 준수 확인
+- Mandatory submission of **SBOM for software delivered to the federal government**
+- NTIA(U.S. Communications and Information Administration)Complies with the **SBOM minimum elements** criteria defined by
+- Software Development Security Practices(Secure Software Development Practices)Compliance confirmation
 
-**한국 기업 영향**
-미국 연방정부에 직접 납품하는 기업은 즉시 영향권에 있습니다.
-간접 공급망(납품 기업의 하청)도 동일한 요구사항을 전달받는 추세이므로,
-미국 시장에서 활동하는 기업은 대부분 영향을 받는다고 봐야 합니다.
+**Impact on Korean companies**
+Companies that supply directly to the U.S. federal government are immediately affected.
+indirect supply chain(Subcontracting by the delivery company)Since there is a trend of receiving the same requirements,,
+It should be assumed that most companies operating in the US market will be affected.
 
 ---
 
 #### EU Cyber Resilience Act - CRA (2024)
 
-**배경**
-EU 디지털 단일 시장에 출시되는 디지털 제품의 사이버보안을 강화하기 위해
-2024년 채택된 EU 전체 적용 규정입니다.
+**background**
+To strengthen the cybersecurity of digital products launched in the EU Digital Single Market
+This is an EU-wide regulation adopted in 2024.
 
-**핵심 요구사항**
+**Key Requirements**
 
-- EU 시장에 출시하는 디지털 제품(소프트웨어 포함)에 보안 요구사항 적용
-- 오픈소스 컴포넌트 목록 관리 및 취약점 대응 의무화
-- 2027년 전면 시행 예정
+- Digital products launching on the EU market(Software included)Apply security requirements to
+- Mandatory management of open source component list and response to vulnerabilities
+- Scheduled to be fully implemented in 2027
 
-**제재**
-불이행 시 최대 **1,500만 유로** 또는 **전 세계 연간 매출의 2.5%** 중 큰 금액 적용.
+**sanctions**
+Up to **1 in case of default,EUR 5 million** or **2.5% of annual global sales**, whichever is greater.
 
-**한국 기업 영향**
-EU에 소프트웨어 제품이나 서비스를 판매하는 **모든 기업**이 해당됩니다.
-클라우드 서비스, 모바일 앱, IoT 기기 등 디지털 요소가 있는 제품은 모두 적용 대상입니다.
-
----
-
-#### 국내 동향
-
-국내에서도 공급망 보안 의무화 논의가 빠르게 진행되고 있습니다.
-
-- **과기부/KISA 소프트웨어 공급망 보안 가이드라인 (2023)**: SBOM 도입을 권고하는 국내 최초 공식 가이드라인
-- **공공 SW 사업 SBOM 도입 검토**: 공공기관 발주 소프트웨어 사업에 SBOM 제출 요구 방안 검토 중
-- **국내 SBOM 의무화 논의**: EU CRA 시행 이후 국내 유사 규제 도입 가능성 높음
+**Impact on Korean companies**
+This applies to **any business** that sells software products or services in the EU.
+cloud service,mobile app,All products with digital elements, such as IoT devices, are eligible.
 
 ---
 
-## 5. 두 표준이 공급망 보안에 기여하는 방식
+#### domestic trends
 
-ISO/IEC 5230과 ISO/IEC 18974는 공급망 보안의 두 가지 핵심 위험을 각각 담당합니다.
+Discussions on mandatory supply chain security are also progressing rapidly in Korea.
 
-- **ISO/IEC 5230**: 오픈소스 사용의 투명성을 확보하여 라이선스 위반 위험을 제거한다
-- **ISO/IEC 18974**: 알려진 취약점을 식별하고 대응하여 보안 위험을 제거한다
-
-두 표준을 함께 준수하면 공급망 보안의 **라이선스**와 **보안** 양면을 모두 커버합니다.
-
-| 위험 유형     | 담당 표준     | 주요 도구            |
-| ------------- | ------------- | -------------------- |
-| 라이선스 위반 | ISO/IEC 5230  | SBOM + 라이선스 스캔 |
-| 보안 취약점   | ISO/IEC 18974 | SBOM + CVE 스캔      |
-
-두 표준의 공통 핵심 도구는 **SBOM**입니다.
-SBOM이 있어야 라이선스도 스캔할 수 있고, CVE도 조회할 수 있습니다.
-Log4Shell 사례에서 보았듯이, SBOM 없이는 어디에 무엇이 있는지조차 알 수 없습니다.
+- **Ministry of Science and Technology/KISA Software Supply Chain Security Guidelines(2023)**:Korea’s first official guideline recommending the introduction of SBOM
+- **Review of public SW project SBOM introduction**:We are considering a plan to require submission of SBOM for software projects ordered by public institutions.
+- **Discussion on mandatory domestic SBOM**:It is highly likely that similar domestic regulations will be introduced after the implementation of EU CRA.
 
 ---
 
-## 6. 셀프스터디 경로
+## 5. How both standards contribute to supply chain security
 
-:::info 셀프스터디 모드 (약 1시간)
-이 챕터는 읽기만 해도 됩니다. 개념 이해에 집중하세요.
+ISO/IEC 5230 and ISO/IEC 18974 each address two key risks in supply chain security.
+
+- **ISO/IEC 5230**:Eliminate the risk of license violations by ensuring transparency in the use of open source
+- **ISO/IEC 18974**:Eliminate security risks by identifying and responding to known vulnerabilities
+
+Compliance with both standards together covers both the **licensing** and **security** sides of supply chain security.
+
+| Risk type              | Responsible Standard | Main tools          |
+| ---------------------- | -------------------- | ------------------- |
+| License violation      | ISO/IEC 5230         | SBOM + License Scan |
+| Security vulnerability | ISO/IEC 18974        | SBOM + CVE scan     |
+
+The common core tool for both standards is **SBOM**.
+You must have SBOM to scan the license.,You can also search for CVEs.
+As we saw in the Log4Shell example:,Without SBOM you wouldn't even know where something is.
+
+---
+
+## 6. Self-study path
+
+:::info Self-study mode(About 1 hour)
+You can just read this chapter. Focus on understanding the concepts.
 :::
 
-1. 이 문서 읽기 — 공급망 보안 전체 맥락 파악
-2. 사고 사례 3가지 핵심 교훈 자신의 언어로 정리
-3. 국제 규제 중 자사에 해당하는 항목 확인
-4. `sbom-101.md` 읽기 → SBOM 기술 개념 상세 이해
+1. Read this article — Get the full context of supply chain security
+2. 3 key lessons from accident cases summarized in your own words
+3. Check which items apply to your company among international regulations
+4. Read `sbom-101.md` → SBOM Detailed understanding of technical concepts
 
 ---
 
-## 7. 완료 확인 체크리스트
+## 7. Completion Confirmation Checklist
 
-- [ ] 공급망 보안 사고 3가지(SolarWinds, Log4Shell, XZ Utils)를 설명할 수 있다
-- [ ] SBOM이 왜 필요한지 이해했다
-- [ ] EO 14028 / EU CRA 가 자사에 미치는 영향을 파악했다
-- [ ] 두 표준이 공급망 보안에서 담당하는 역할을 이해했다
+- [ ] 3 supply chain security incidents(SolarWinds, Log4Shell, XZ Utils)can explain
+- [ ] I understand why SBOM is needed
+- [ ] We identified the impact of EO 14028 / EU CRA on our company
+- [ ] Understand the role both standards play in supply chain security
 
 ---
 
-## 8. 다음 단계
+## 8. Next steps
 
-- **SBOM 기술 개념 학습**: `sbom-101.md` 로 이동하여 CycloneDX, SPDX 포맷과 SBOM 최소 요소를 학습한다
-- **환경 준비로 바로 이동**: `docs/01-setup/` 으로 이동하여 툴체인 설치를 시작한다
+- **SBOM Learn technical concepts**:Go to `sbom-101.md` and then CycloneDX,Learn SPDX format and SBOM minimum elements
+- **Go straight to environment preparation**:Go to `docs/01-setup/` and start installing the toolchain.
 
-개념 이해를 충분히 했다면 `docs/01-setup/` 부터 실습을 시작해도 좋다.
-이 챕터는 언제든지 다시 돌아와서 참고할 수 있습니다.
+If you have a sufficient understanding of the concept, you can start practicing from `docs/01-setup/`.
+You can come back to this chapter and refer to it at any time.

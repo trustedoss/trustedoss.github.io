@@ -4,7 +4,7 @@
     "description": "The label for version current"
   },
   "sidebar.aiCoding.category.도구별 설정": {
-    "message": "도구별 설정",
-    "description": "The label for category '도구별 설정' in sidebar 'aiCoding'"
+    "message": "Tool-Specific Setup",
+    "description": "The label for category 'Tool-Specific Setup' in sidebar 'aiCoding'"
   }
 }
