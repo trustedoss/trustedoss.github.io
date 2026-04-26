@@ -1,0 +1,77 @@
+{
+  "turn_count": 8,
+  "turns": [
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "# 오픈소스 프로세스 문서 생성기에 오신 것을 환영합니다! 🎉\n\n이 agent는 귀사의 **오픈소스 컴플라이언스 프로세스 문서**를 자동으로 생성합니다.\n\n## 📋 생성될 문서 (4~7개)\n\n| 문서 | 설명 | 생성 조건 |\n|------|------|-----------|\n| `usage-approval.md` | 오픈소스 사용 승인 절차 | 항상 생성 |\n| `distribution-checklist.md` | 배포 전 체크리스트 | 항상 생성 |\n| `vulnerability-response.md` | 취약점 대응 절차 | 항상 생성 |\n| `inquiry-response.md` | 외부 문의 대응 절차 | 항상 생성 |\n| `process-diagram.md` | Mermaid 흐름도 | 항상 생성 |\n| `contribution-process.md` | 오픈소스 기여 절차 | Q5 \"예\" 시 |\n| `project-publication-process.md` | 사내 프로젝트 공개 절차 | Q6 \"예\" 시 |\n\n## ✅ 충족되는 ISO 요건\n\n- **ISO/IEC 5230**: 라이선스 의무사항 검토·이행·보관·기여 절차\n- **ISO/IEC 18974**: 취약점 탐지·대응·CVD 절차\n\n---\n\n총 **7개의 질문**에 답변해 주시면 문서 생성을 시작합니다.\n\n그럼 첫 번째 질문을 시작하겠습니다! 👇\n\n---\n\n### ❓ 질문 1 / 7\n\n**현재 사용 중인 CI/CD 도구는 무엇인가요?**\n\n1. GitHub Actions\n2. Jenkins\n3. GitLab CI\n4. 없음\n5. 기타 (직접 입력)"
+        }
+      ],
+      "stop_reason": "end_turn"
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "감사합니다! ✅ **Jenkins** 로 기록했습니다.\n\n---\n\n### ❓ 질문 2 / 7\n\n**소프트웨어 배포 주기는 어떻게 되나요?**\n\n1. 매일\n2. 주간\n3. 격주 (2주 1회)\n4. 월간\n5. 비정기"
+        }
+      ],
+      "stop_reason": "end_turn"
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "감사합니다! ✅ **월간** 배포 주기로 기록했습니다.\n\n---\n\n### ❓ 질문 3 / 7\n\n**이슈 트래커를 사용하고 있나요?**\n\n1. GitHub Issues\n2. Jira\n3. 없음\n4. 기타 (직접 입력)"
+        }
+      ],
+      "stop_reason": "end_turn"
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "감사합니다! ✅ **Jira** 로 기록했습니다.\n\n---\n\n### ❓ 질문 4 / 7\n\n**오픈소스 사용 승인 결재 단계가 필요한가요?**\n\n1. 담당자 단독 결정\n2. 팀장 승인\n3. 위원회 승인"
+        }
+      ],
+      "stop_reason": "end_turn"
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "감사합니다! ✅ **담당자 단독** 승인으로 기록했습니다.\n\n---\n\n### ❓ 질문 5 / 7\n\n**외부 오픈소스 프로젝트에 기여할 계획이 있나요?**\n\n1. 예 — 기여 절차 문서 생성\n2. 아니오"
+        }
+      ],
+      "stop_reason": "end_turn"
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "감사합니다! ✅ **기여 절차 문서 생성 제외**로 기록했습니다.\n\n---\n\n### ❓ 질문 6 / 7\n\n**사내 소프트웨어를 오픈소스로 공개할 계획이 있나요?**\n\n1. 예 — 공개 절차 문서 생성\n2. 아니오"
+        }
+      ],
+      "stop_reason": "end_turn"
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "감사합니다! ✅ **공개 절차 문서 생성 제외**로 기록했습니다.\n\n---\n\n### ❓ 질문 7 / 7\n\n**외부 라이선스·취약점 문의 수신 채널이 준비되어 있나요?**\n\n1. 예 — 이미 운영 중인 이메일 주소 입력 (예: opensource@company.com)\n2. 아직 없음 — 절차 문서 생성 시 채널 설정 포함"
+        }
+      ],
+      "stop_reason": "end_turn"
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "운영 중인 **이메일 주소**를 입력해 주세요.\n\n(예: `opensource@company.com`)"
+        }
+      ],
+      "stop_reason": "end_turn"
+    }
+  ]
+}

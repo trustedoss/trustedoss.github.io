@@ -11,8 +11,14 @@ Anthropic API를 사용해 각 셀프스터디 agent의 실제 대화 흐름을 
   python3 .claude/scripts/test-agent-e2e.py --all
   python3 .claude/scripts/test-agent-e2e.py --all -v
 
+  # 카세트 녹화 (ANTHROPIC_API_KEY 필요)
+  python3 .claude/scripts/test-agent-e2e.py --all --record
+
+  # 카세트 재생 (API 키 불필요)
+  python3 .claude/scripts/test-agent-e2e.py --all
+
 환경변수:
-  ANTHROPIC_API_KEY  (필수)
+  ANTHROPIC_API_KEY  (--record 모드에서만 필수)
 """
 
 import argparse
@@ -22,7 +28,10 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import time
+from dataclasses import dataclass, field
 from pathlib import Path
+from typing import Optional
 
 try:
     import anthropic
@@ -32,8 +41,118 @@ except ImportError:
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 FIXTURES_DIR = PROJECT_ROOT / "tests" / "fixtures"
+CASSETTES_DIR = PROJECT_ROOT / "tests" / "cassettes"
 OUTPUT_SAMPLE_DIR = PROJECT_ROOT / "output-sample"
 AGENTS_DIR = PROJECT_ROOT / "agents"
+
+
+# ---------------------------------------------------------------------------
+# 카세트 재생용 Mock 응답 객체
+# ---------------------------------------------------------------------------
+
+@dataclass
+class _TextBlock:
+    text: str
+    type: str = "text"
+
+
+@dataclass
+class _ToolUseBlock:
+    id: str
+    name: str
+    input: dict
+    type: str = "tool_use"
+
+
+@dataclass
+class _MockResponse:
+    content: list
+    stop_reason: str
+
+
+# ---------------------------------------------------------------------------
+# 카세트 — 녹화/재생
+# ---------------------------------------------------------------------------
+
+class Cassette:
+    """API 응답을 JSON 파일로 녹화하고 재생한다."""
+
+    def __init__(self, path: Path, record: bool = False):
+        self.path = path
+        self._record = record
+        self._turns: list[dict] = []
+        self._index = 0
+        self.mode = "off"
+
+        if record:
+            if path.exists():
+                self.mode = "done"  # 이미 녹화됨 — 덮어쓰지 않음
+            else:
+                self.mode = "record"
+        elif path.exists():
+            data = json.loads(path.read_text(encoding="utf-8"))
+            self._turns = data.get("turns", [])
+            self.mode = "replay"
+        else:
+            self.mode = "skip"
+
+    @property
+    def available(self) -> bool:
+        return self.mode in ("record", "replay")
+
+    def call(self, client, **kwargs):
+        if self.mode == "record":
+            for attempt in range(5):
+                try:
+                    response = client.messages.create(**kwargs)
+                    self._turns.append(self._serialize(response))
+                    return response
+                except anthropic.RateLimitError:
+                    wait = 60 * (attempt + 1)
+                    print(f"\n  [rate limit] {wait}초 대기 후 재시도 ({attempt + 1}/5)...")
+                    time.sleep(wait)
+            raise RuntimeError("Rate limit 재시도 5회 소진 — 나중에 다시 시도하세요.")
+        elif self.mode == "replay":
+            if self._index >= len(self._turns):
+                raise RuntimeError(
+                    f"카세트 응답 소진 — turn {self._index + 1}번째 응답이 없습니다. "
+                    f"'--record'로 재녹화하세요."
+                )
+            turn = self._turns[self._index]
+            self._index += 1
+            return self._deserialize(turn)
+        raise RuntimeError(f"Cassette.call() called in mode={self.mode}")
+
+    def save(self):
+        if self.mode != "record":
+            return
+        self.path.parent.mkdir(parents=True, exist_ok=True)
+        data = {"turn_count": len(self._turns), "turns": self._turns}
+        self.path.write_text(
+            json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8"
+        )
+
+    def _serialize(self, response) -> dict:
+        blocks = []
+        for b in response.content:
+            if b.type == "text":
+                blocks.append({"type": "text", "text": b.text})
+            elif b.type == "tool_use":
+                blocks.append(
+                    {"type": "tool_use", "id": b.id, "name": b.name, "input": b.input}
+                )
+        return {"content": blocks, "stop_reason": response.stop_reason}
+
+    def _deserialize(self, data: dict) -> _MockResponse:
+        blocks = []
+        for b in data["content"]:
+            if b["type"] == "text":
+                blocks.append(_TextBlock(text=b["text"]))
+            elif b["type"] == "tool_use":
+                blocks.append(
+                    _ToolUseBlock(id=b["id"], name=b["name"], input=b["input"])
+                )
+        return _MockResponse(content=blocks, stop_reason=data["stop_reason"])
 
 
 # ---------------------------------------------------------------------------
@@ -47,7 +166,6 @@ def load_fixture(path: Path) -> dict:
 
 def find_fixture(agent_name: str) -> Path:
     """agent 이름으로 첫 번째 매칭 fixture 반환."""
-    # exact name match
     exact = FIXTURES_DIR / f"{agent_name}.json"
     if exact.exists():
         return exact
@@ -178,11 +296,9 @@ def resolve_output_path(file_path: str, output_dir: Path) -> Path:
         return output_dir / p[len("output/"):]
     if p.startswith("./output/"):
         return output_dir / p[len("./output/"):]
-    # 절대 경로지만 output/ 포함
     if "/output/" in p:
         idx = p.index("/output/")
         return output_dir / p[idx + len("/output/"):]
-    # 그 외: output_dir 아래로
     return output_dir / p
 
 
@@ -205,7 +321,6 @@ def execute_tool(name: str, tool_input: dict, tmpdir: Path, verbose: bool) -> st
         limit = tool_input.get("limit")
         offset = tool_input.get("offset", 0)
 
-        # 검색 순서: output_dir → project root (templates 등)
         candidates = [
             resolve_output_path(file_path, output_dir),
             PROJECT_ROOT / file_path.lstrip("/"),
@@ -238,7 +353,6 @@ def execute_tool(name: str, tool_input: dict, tmpdir: Path, verbose: bool) -> st
         command = tool_input.get("command", "")
         stripped = command.strip()
 
-        # cp 명령: output-sample/ → output/ 복사 처리
         if stripped.startswith("cp "):
             parts = stripped.split()
             if len(parts) >= 3:
@@ -259,14 +373,11 @@ def execute_tool(name: str, tool_input: dict, tmpdir: Path, verbose: bool) -> st
                 return f"(cp 오류: {src_rel} 없음)"
             return "(cp: 인수 부족)"
 
-        # chmod 명령: 권한 설정 mock (항상 성공)
         if stripped.startswith("chmod "):
             return "권한 설정 완료"
 
-        # 출력 확인용 ls / mkdir / echo 등만 허용
         safe_prefixes = ("ls ", "ls\n", "ls", "mkdir", "echo ", "cat ", "pwd")
         if any(stripped.startswith(p) for p in safe_prefixes):
-            # output/ 경로를 실제 output_dir로 치환
             safe_cmd = command.replace(" output/", f" {output_dir}/")
             safe_cmd = safe_cmd.replace('"output/', f'"{output_dir}/')
             safe_cmd = safe_cmd.replace(">output/", f">{output_dir}/")
@@ -281,7 +392,6 @@ def execute_tool(name: str, tool_input: dict, tmpdir: Path, verbose: bool) -> st
                 return "(timeout)"
             except Exception as e:
                 return f"(오류: {e})"
-        # 안전하지 않은 명령은 dry-run
         return f"(mock-bash: {command[:80]})"
 
     elif name == "Glob":
@@ -336,21 +446,23 @@ def run_conversation(
     inputs: list,
     tmpdir: Path,
     verbose: bool,
+    cassette: Cassette,
 ) -> None:
-    """Anthropic API 멀티턴 대화 실행."""
-    client = anthropic.Anthropic()
+    """멀티턴 대화 실행 — 카세트가 있으면 재생, 없으면 실제 API 호출."""
+    client = anthropic.Anthropic() if cassette.mode == "record" else None
     messages = []
     input_index = 0
     max_turns = 80
 
-    # 첫 번째 메시지: agent가 세션 시작 시 자동으로 질문을 시작하도록 유도
     messages.append({"role": "user", "content": "시작해주세요."})
 
     for turn in range(1, max_turns + 1):
         if verbose:
-            print(f"  [turn {turn}] API 호출 중... (input_index={input_index}/{len(inputs)})")
+            mode_label = f"[{cassette.mode}]"
+            print(f"  [turn {turn}] {mode_label} (input_index={input_index}/{len(inputs)})")
 
-        response = client.messages.create(
+        response = cassette.call(
+            client,
             model=model,
             max_tokens=8192,
             system=system_prompt,
@@ -358,10 +470,8 @@ def run_conversation(
             messages=messages,
         )
 
-        # assistant 응답 저장
         messages.append({"role": "assistant", "content": response.content})
 
-        # 도구 호출 처리
         tool_use_blocks = [b for b in response.content if b.type == "tool_use"]
         if tool_use_blocks:
             tool_results = []
@@ -373,9 +483,8 @@ def run_conversation(
                     "content": result,
                 })
             messages.append({"role": "user", "content": tool_results})
-            continue  # 도구 결과 후 다시 응답 대기
+            continue
 
-        # 텍스트 응답 — 다음 입력 제공 또는 종료
         if response.stop_reason == "end_turn":
             if input_index < len(inputs):
                 answer = inputs[input_index]
@@ -388,7 +497,6 @@ def run_conversation(
                     print("  모든 입력 소진 → 대화 종료")
                 break
         else:
-            # max_tokens 등 예외적 stop_reason
             if verbose:
                 print(f"  stop_reason={response.stop_reason} → 종료")
             break
@@ -423,7 +531,7 @@ def verify_output(fixture: dict, tmpdir: Path, verbose: bool) -> list:
     for rel_path, patterns in fixture.get("content_patterns", {}).items():
         fpath = output_dir / rel_path
         if not fpath.exists():
-            continue  # MISSING은 이미 위에서 기록
+            continue
         content = fpath.read_text(encoding="utf-8")
         for pattern in patterns:
             if pattern not in content:
@@ -438,25 +546,43 @@ def verify_output(fixture: dict, tmpdir: Path, verbose: bool) -> list:
 # 단일 fixture 실행
 # ---------------------------------------------------------------------------
 
-def run_fixture(fixture: dict, verbose: bool = False) -> bool:
-    """단일 fixture 실행. 성공 시 True."""
+def run_fixture(fixture: dict, fixture_path: Path, verbose: bool = False, record: bool = False) -> Optional[bool]:
+    """단일 fixture 실행. PASS→True / FAIL→False / SKIP→None."""
     agent_name = fixture["agent"]
     model = fixture.get("model", "claude-sonnet-4-6")
     inputs = fixture.get("inputs", [])
     desc = fixture.get("description", "")
 
+    # 카세트 이름: fixture 파일 stem 기준 — 동일 agent의 복수 fixture를 분리
+    cassette_path = CASSETTES_DIR / f"{fixture_path.stem}.json"
+    cassette = Cassette(cassette_path, record=record)
+
     print(f"\n{'='*60}")
-    print(f"Agent  : {agent_name}")
+    print(f"Agent  : {agent_name}  (fixture: {fixture_path.name})")
     if desc:
         print(f"설명   : {desc}")
-    print(f"모델   : {model}  입력수: {len(inputs)}")
+    print(f"모델   : {model}  입력수: {len(inputs)}  카세트: [{cassette.mode}]")
     print(f"{'='*60}")
+
+    if cassette.mode == "skip":
+        print("SKIP — 카세트 없음 (녹화하려면 --record 플래그 사용)")
+        return None
+
+    if cassette.mode == "done":
+        print("SKIP — 이미 녹화됨")
+        return None
 
     system_prompt = load_system_prompt(agent_name)
     tmpdir = setup_tmpdir(fixture)
 
     try:
-        run_conversation(system_prompt, model, inputs, tmpdir, verbose)
+        run_conversation(system_prompt, model, inputs, tmpdir, verbose, cassette)
+
+        if record:
+            cassette.save()
+            if verbose:
+                print(f"  카세트 저장 → {cassette_path.relative_to(PROJECT_ROOT)}")
+
         errors = verify_output(fixture, tmpdir, verbose)
 
         if errors:
@@ -478,7 +604,7 @@ def run_fixture(fixture: dict, verbose: bool = False) -> bool:
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Layer 3 E2E 테스트 — Anthropic API 기반 agent 대화 시뮬레이션",
+        description="Layer 3 E2E 테스트 — 카세트 재생(무료) 또는 실제 API 호출",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=__doc__,
     )
@@ -491,40 +617,53 @@ def main():
                        help="tests/fixtures/ 내 모든 fixture 실행")
     parser.add_argument("-v", "--verbose", action="store_true",
                         help="상세 출력 (도구 호출, 입력 흐름 등)")
+    parser.add_argument("--record", action="store_true",
+                        help="실제 API를 호출하여 카세트를 녹화/갱신 (ANTHROPIC_API_KEY 필요)")
     args = parser.parse_args()
 
-    if not os.environ.get("ANTHROPIC_API_KEY"):
-        print("ERROR: ANTHROPIC_API_KEY 환경변수를 설정하세요.")
-        sys.exit(1)
+    if args.record:
+        if not os.environ.get("ANTHROPIC_API_KEY"):
+            print("ERROR: --record 모드는 ANTHROPIC_API_KEY가 필요합니다.")
+            sys.exit(1)
+    else:
+        if not os.environ.get("ANTHROPIC_API_KEY"):
+            print("INFO: ANTHROPIC_API_KEY 없음 — 카세트 재생 모드로 실행합니다.")
 
-    # fixture 목록 수집
     fixture_paths: list[Path] = []
     if args.fixture:
         fixture_paths.append(Path(args.fixture))
     elif args.agent:
         fixture_paths.append(find_fixture(args.agent))
-    else:  # --all
+    else:
         fixture_paths = sorted(FIXTURES_DIR.glob("*.json"))
 
     if not fixture_paths:
         print("ERROR: 실행할 fixture가 없습니다.")
         sys.exit(1)
 
-    results: list[tuple[str, bool]] = []
+    results: list = []
     for fp in fixture_paths:
         fixture = load_fixture(fp)
-        passed = run_fixture(fixture, verbose=args.verbose)
-        results.append((fp.name, passed))
+        result = run_fixture(fixture, fixture_path=fp, verbose=args.verbose, record=args.record)
+        results.append((fp.name, result))
+
+    total = len(results)
+    passed = sum(1 for _, r in results if r is True)
+    failed = sum(1 for _, r in results if r is False)
+    skipped = sum(1 for _, r in results if r is None)
 
     print(f"\n{'='*60}")
-    total = len(results)
-    passed_count = sum(1 for _, p in results if p)
-    print(f"최종 결과: {passed_count}/{total} PASS")
-    for name, passed in results:
-        status = "PASS" if passed else "FAIL"
+    print(f"최종 결과: {passed} PASS / {failed} FAIL / {skipped} SKIP  (총 {total})")
+    for name, result in results:
+        if result is True:
+            status = "PASS"
+        elif result is False:
+            status = "FAIL"
+        else:
+            status = "SKIP"
         print(f"  [{status}] {name}")
 
-    sys.exit(0 if passed_count == total else 1)
+    sys.exit(0 if failed == 0 else 1)
 
 
 if __name__ == "__main__":

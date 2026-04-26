@@ -45,3 +45,7 @@ website/node_modules/
 !.yarn/versions
 docs/.claude/settings.local.json
 agents/**/settings.local.json
+
+# python
+venv/
+.venv

@@ -1,0 +1,264 @@
+{
+  "turn_count": 20,
+  "turns": [
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "# 오픈소스 프로세스 문서 생성기에 오신 것을 환영합니다! 🎉\n\n이 agent는 귀사의 **오픈소스 컴플라이언스 프로세스 문서**를 자동으로 생성합니다.\n\n---\n\n## 📋 생성될 문서 목록\n\n| 문서 | 설명 | 생성 조건 |\n|------|------|-----------|\n| `usage-approval.md` | 오픈소스 사용 승인 절차 | 상시 |\n| `distribution-checklist.md` | 배포 전 체크리스트 | 상시 |\n| `vulnerability-response.md` | 취약점 대응 절차 | 상시 |\n| `inquiry-response.md` | 외부 문의 대응 절차 | 상시 |\n| `process-diagram.md` | Mermaid 흐름도 | 상시 |\n| `contribution-process.md` | 오픈소스 기여 절차 | Q5 \"예\" 시 |\n| `project-publication-process.md` | 사내 프로젝트 공개 절차 | Q6 \"예\" 시 |\n\n---\n\n## 📝 7가지 질문에 순서대로 답변해 주세요.\n\n그럼 첫 번째 질문을 시작하겠습니다! 😊\n\n---\n\n### ❓ 질문 1 / 7\n\n## 현재 사용 중인 **CI/CD 도구**는 무엇인가요?\n\n| 번호 | 선택지 |\n|------|--------|\n| ① | GitHub Actions |\n| ② | Jenkins |\n| ③ | GitLab CI |\n| ④ | 없음 |\n| ⑤ | 기타 (직접 입력) |\n\n번호 또는 직접 입력해 주세요!"
+        }
+      ],
+      "stop_reason": "end_turn"
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "감사합니다! ✅ **GitHub Actions** 로 기록했습니다.\n\n---\n\n### ❓ 질문 2 / 7\n\n## 소프트웨어 **배포 주기**는 어떻게 되나요?\n\n| 번호 | 선택지 |\n|------|--------|\n| ① | 매일 |\n| ② | 주간 |\n| ③ | 격주 (2주 1회) |\n| ④ | 월간 |\n| ⑤ | 비정기 |\n\n번호 또는 직접 입력해 주세요!"
+        }
+      ],
+      "stop_reason": "end_turn"
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "감사합니다! ✅ **주간** 배포로 기록했습니다.\n\n---\n\n### ❓ 질문 3 / 7\n\n## **이슈 트래커**를 사용하고 계신가요?\n\n| 번호 | 선택지 |\n|------|--------|\n| ① | GitHub Issues |\n| ② | Jira |\n| ③ | 없음 |\n| ④ | 기타 (직접 입력) |\n\n번호 또는 직접 입력해 주세요!"
+        }
+      ],
+      "stop_reason": "end_turn"
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "감사합니다! ✅ **GitHub Issues** 로 기록했습니다.\n\n---\n\n### ❓ 질문 4 / 7\n\n## 오픈소스 사용 **승인 결재 단계**가 필요한가요?\n\n| 번호 | 선택지 | 설명 |\n|------|--------|------|\n| ① | 담당자 단독 | 오픈소스 담당자가 단독으로 승인 |\n| ② | 팀장 승인 | 담당자 검토 후 팀장 최종 승인 |\n| ③ | 위원회 승인 | 오픈소스 위원회 심의 후 승인 |\n\n번호 또는 직접 입력해 주세요!"
+        }
+      ],
+      "stop_reason": "end_turn"
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "감사합니다! ✅ **팀장 승인** 으로 기록했습니다.\n\n---\n\n### ❓ 질문 5 / 7\n\n## 외부 오픈소스 프로젝트에 **기여**할 계획이 있나요?\n\n| 번호 | 선택지 | 설명 |\n|------|--------|------|\n| ① | 예 | `contribution-process.md` 문서 추가 생성 |\n| ② | 아니오 | 해당 문서 생성 생략 |\n\n번호 또는 직접 입력해 주세요!"
+        }
+      ],
+      "stop_reason": "end_turn"
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "감사합니다! ✅ **기여 절차 문서 생성** 으로 기록했습니다.\n\n---\n\n### ❓ 질문 6 / 7\n\n## 사내 소프트웨어를 **오픈소스로 공개**할 계획이 있나요?\n\n| 번호 | 선택지 | 설명 |\n|------|--------|------|\n| ① | 예 | `project-publication-process.md` 문서 추가 생성 |\n| ② | 아니오 | 해당 문서 생성 생략 |\n\n번호 또는 직접 입력해 주세요!"
+        }
+      ],
+      "stop_reason": "end_turn"
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "감사합니다! ✅ **프로젝트 공개 절차 문서 생성** 으로 기록했습니다.\n\n---\n\n### ❓ 질문 7 / 7\n\n## 외부 라이선스·취약점 **문의 수신 채널**이 준비되어 있나요?\n\n| 번호 | 선택지 | 설명 |\n|------|--------|------|\n| ① | 예 | 이미 운영 중인 채널 있음 (예: opensource@company.com) |\n| ② | 아직 없음 | 절차 문서 생성 시 채널 설정 방법 포함 |\n\n번호 또는 운영 중인 이메일 주소를 직접 입력해 주세요!"
+        }
+      ],
+      "stop_reason": "end_turn"
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "감사합니다! ✅ **문의 수신 채널 운영 중** 으로 기록했습니다.\n\n---\n\n## 📊 입력 정보 최종 확인\n\n| 질문 | 답변 |\n|------|------|\n| CI/CD 도구 | GitHub Actions |\n| 배포 주기 | 주간 |\n| 이슈 트래커 | GitHub Issues |\n| 승인 결재 단계 | 팀장 승인 |\n| 외부 기여 계획 | 예 |\n| 오픈소스 공개 계획 | 예 |\n| 문의 수신 채널 | 운영 중 |\n\n---\n\n## 🚀 문서 생성을 시작합니다!\n\n총 **7개** 문서를 생성합니다. 잠시만 기다려 주세요...\n\n먼저 기존 정책 및 조직 문서를 참조하겠습니다."
+        },
+        {
+          "type": "tool_use",
+          "id": "toolu_01Uwxshkps564BhdoUjfdu4T",
+          "name": "Read",
+          "input": {
+            "file_path": "output/policy/oss-policy.md"
+          }
+        },
+        {
+          "type": "tool_use",
+          "id": "toolu_01HYvcSwto8YZN5d1mz4uzjZ",
+          "name": "Read",
+          "input": {
+            "file_path": "output/organization/role-definition.md"
+          }
+        }
+      ],
+      "stop_reason": "tool_use"
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "이제 템플릿 파일들을 확인하겠습니다."
+        },
+        {
+          "type": "tool_use",
+          "id": "toolu_01Du2HdoMYJVmgM6VpGhukbC",
+          "name": "Glob",
+          "input": {
+            "pattern": "templates/process/*.md"
+          }
+        }
+      ],
+      "stop_reason": "tool_use"
+    },
+    {
+      "content": [
+        {
+          "type": "tool_use",
+          "id": "toolu_01J84yxhU3jr9DNGbjxX5syz",
+          "name": "Bash",
+          "input": {
+            "command": "find templates/ -type f 2>/dev/null | head -50; ls -la output/ 2>/dev/null"
+          }
+        }
+      ],
+      "stop_reason": "tool_use"
+    },
+    {
+      "content": [
+        {
+          "type": "tool_use",
+          "id": "toolu_01LirqzF34m9V6GRCPBoBGy5",
+          "name": "Bash",
+          "input": {
+            "command": "mkdir -p output/process"
+          }
+        }
+      ],
+      "stop_reason": "tool_use"
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "정책 및 조직 정보를 확인했습니다. 이제 7개 문서를 순서대로 생성하겠습니다!"
+        },
+        {
+          "type": "tool_use",
+          "id": "toolu_011ABS4BZjhENYZqLX4K44m2",
+          "name": "Write",
+          "input": {
+            "file_path": "output/process/usage-approval.md",
+            "content": "# 오픈소스 사용 승인 절차\n<!-- 5230 §3.1.5.1, §3.3.2.1 -->\n\n**회사명**: SK텔레콤\n**버전**: 1.0\n**작성일**: 2026-03-23\n**작성자**: DevOps팀 오픈소스 담당자\n**승인자**: DevOps팀장\n**다음 검토 예정일**: 2027-03-23\n\n---\n\n## 1. 목적\n\n이 문서는 SK텔레콤 구성원이 오픈소스 소프트웨어를 신규 도입하거나 기존 버전을 변경할 때 거쳐야 할 승인 절차를 정의한다. 라이선스 의무사항을 사전에 파악하고, 적절한 승인을 통해 컴플라이언스 리스크를 최소화하는 것을 목적으로 한다.\n\n---\n\n## 2. 적용 범위\n\n- SK텔레콤이 개발·배포·운영하는 모든 소프트웨어에 포함되는 오픈소스 컴포넌트\n- 신규 도입, 버전 업그레이드, 라이선스 변경이 있는 모든 경우\n- 직접 사용 및 간접 의존성(transitive dependency) 포함\n\n---\n\n## 3. 역할 및 책임\n\n| 역할 | 담당자 | 책임 |\n|------|--------|------|\n| 신청자 | 개발팀 구성원 | 오픈소스 도입 요청 및 기초 정보 제공 |\n| 검토자 | DevOps팀 오픈소스 담당자 | 라이선스·보안 검토 및 의견 작성 |\n| 최종 승인자 | DevOps팀장 | 도입 최종 승인 또는 반려 |\n| 법무 자문 | 법무팀 | 비표준 라이선스 또는 분쟁 소지 있을 경우 자문 |\n\n---\n\n## 4. 승인 절차\n\n### 4-1. 전체 흐름\n\n```mermaid\nflowchart TD\n    A([오픈소스 도입 필요]) --> B[GitHub Issues에 승인 요청 등록]\n    B --> C[오픈소스 담당자 라이선스 검토]\n    C --> D{허용 라이선스 목록\\n포함 여부}\n    D -->|허용 목록 내| E[보안 취약점 스캔\\nGitHub Actions 자동 실행]\n    D -->|목록 외 / 불명확| F[법무팀 자문 요청]\n    F --> G{법무팀 검토 결과}\n    G -->|승인 가능| E\n    G -->|승인 불가| H([대안 컴포넌트 검토])\n    E --> I{Critical/High\\n취약점 존재?}\n    I -->|없음| J[팀장 최종 승인]\n    I -->|있음| K{대안 버전\\n존재?}\n    K -->|있음| L[대안 버전으로 재검토]\n    L --> E\n    K -->|없음| M[위험 수용 여부 결정\\n팀장 + 오픈소스 담당자]\n    M -->|수용| J\n    M -->|거부| H\n    J --> N[SBOM 업데이트]\n    N --> O[승인 기록 저장]\n    O --> P([도입 완료])\n```\n\n### 4-2. 단계별 세부 절차\n\n#### Step 1. 승인 요청 등록 (신청자)\n\n- **도구**: GitHub Issues (`oss-approval` 레이블 사용)\n- **등록 정보**:\n\n```markdown\n## 오픈소스 사용 승인 요청\n\n- **컴포넌트명**: (예: lodash)\n- **버전**: (예: 4.17.21)\n- **라이선스**: (예: MIT)\n- **출처 URL**: (예: https://github.com/lodash/lodash)\n- **사용 목적**: (예: 배열 유틸리티 함수 활용)\n- **사용 위치**: (예: frontend/src/utils/)\n- **배포 형태**: (예: SaaS / 앱스토어 / 임베디드 / 내부용)\n- **기존 대비 변경 사항**: (신규 도입 / 버전 업그레이드: x.x → x.x / 라이선스 변경)\n```\n\n#### Step 2. 라이선스 검토 (오픈소스 담당자)\n\n- `output/policy/license-allowlist.md` 대조 확인\n- 라이선스 분류 확인 (Permissive / Weak Copyleft / Strong Copyleft / Network Copyleft)\n- 배포 형태별 라이선스 적합성 판단\n- 검토 결과를 GitHub Issues 댓글로 기록\n\n| 라이선스 분류 | 조치 |\n|------------|------|\n| Permissive (MIT, Apache-2.0, BSD 등) | 즉시 보안 검토 진행 |\n| Weak Copyleft (LGPL, MPL 등) | 의무사항 이행 계획 첨부 후 진행 |\n| Strong Copyleft (GPL-2.0, GPL-3.0 등) | 배포 형태 확인 후 법무팀 자문 |\n| Network Copyleft (AGPL-3.0 등) | SaaS 배포 시 법무팀 자문 필수 |\n| 미확인/독점 라이선스 | 법무팀 자문 필수 |\n\n#### Step 3. 보안 취약점 스캔 (GitHub Actions 자동화)\n\n- Pull Request 생성 시 GitHub Actions 워크플로우 자동 실행\n- 사용 도구: `Trivy` 또는 `OWASP Dependency-Check`\n- 스캔 결과를 GitHub Issues에 자동 첨부\n\n**GitHub Actions 워크플로우 예시** (`.github/workflows/oss-scan.yml`):\n\n```yaml\nname: OSS License & Vulnerability Scan\n\non:\n  pull_request:\n    branches: [main, develop]\n  workflow_dispatch:\n\njobs:\n  scan:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n\n      - name: Run Trivy vulnerability scanner\n        uses: aquasecurity/trivy-action@master\n        with:\n          scan-type: 'fs'\n          scan-ref: '.'\n          format: 'table'\n          exit-code: '1'\n          severity: 'CRITICAL,HIGH'\n\n      - name: Upload scan results\n        uses: actions/upload-artifact@v4\n        if: always()\n        with:\n          name: trivy-results\n          path: trivy-results.sarif\n```\n\n#### Step 4. 팀장 최종 승인 (DevOps팀장)\n\n- 검토 결과 요약을 GitHub Issues에서 확인\n- 승인 또는 반려 의견을 GitHub Issues 댓글로 기록\n- 승인 시: 이슈에 `approved` 레이블 추가\n- 반려 시: 반려 사유 기재 후 `rejected` 레이블 추가\n\n**목표 처리 시간**:\n\n| 라이선스 분류 | 목표 처리 시간 |\n|------------|------------|\n| Permissive | 영업일 2일 이내 |\n| Copyleft (허용 목록 내) | 영업일 3일 이내 |\n| 법무 자문 필요 | 영업일 7일 이내 |\n\n#### Step 5. SBOM 업데이트 및 기록 저장\n\n- 승인 완료 후 SBOM(`output/sbom/`) 업데이트\n- 승인 이력은 GitHub Issues 이슈 번호로 추적\n- 라이선스 의무사항 이행 계획을 SBOM에 메모 추가\n\n---\n\n## 5. 긴급 도입 절차\n\n개발 일정 상 즉각적인 도입이 필요한 경우:\n\n1. 오픈소스 담당자에게 구두/메신저로 사전 협의\n2. 긴급 승인 후 48시간 이내 정식 승인 요청 등록\n3. 담당자와 팀장이 공동으로 검토 및 사후 승인 처리\n4. 긴급 도입 사유 반드시 GitHub Issues에 기록\n\n> ⚠️ 긴급 절차는 Permissive 라이선스에 한해 적용하며, Copyleft 계열은 반드시 사전 승인을 받아야 한다.\n\n---\n\n## 6. 버전 업그레이드 간소화 절차\n\n동일 컴포넌트의 마이너/패치 버전 업그레이드(예: 1.2.3 → 1.2.5)는 아래 조건 충족 시 간소화 절차 적용:\n\n- 라이선스 변경 없음 (자동 확인)\n- Critical/High 취약점 없음 (GitHub Actions 스캔 통과)\n- 오픈소스 담당자 단독 승인으로 처리 (팀장 승인 생략 가능)\n\n---\n\n## 7. 관련 문서\n\n| 문서 | 경로 |\n|------|------|\n| 오픈소스 정책 | `output/policy/oss-policy.md` |\n| 라이선스 허용 목록 | `output/policy/license-allowlist.md` |\n| 역할 정의 | `output/organization/role-definition.md` |\n| 배포 전 체크리스트 | `output/process/distribution-checklist.md` |\n| 취약점 대응 절차 | `output/process/vulnerability-response.md` |\n\n---\n\n## 8. 이력 관리\n\n| 버전 | 날짜 | 변경 내용 | 작성자 |\n|------|------|---------|--------|\n| 1.0 | 2026-03-23 | 최초 작성 | DevOps팀 오픈소스 담당자 |\n"
+          }
+        }
+      ],
+      "stop_reason": "tool_use"
+    },
+    {
+      "content": [
+        {
+          "type": "tool_use",
+          "id": "toolu_018ATJtAhqzs7TmnS21fRV6p",
+          "name": "Write",
+          "input": {
+            "file_path": "output/process/distribution-checklist.md",
+            "content": "# 배포 전 오픈소스 컴플라이언스 체크리스트\n<!-- 5230 §3.3.2.1, §3.4.1.1·§3.4.1.2 -->\n\n**회사명**: SK텔레콤\n**버전**: 1.0\n**작성일**: 2026-03-23\n**작성자**: DevOps팀 오픈소스 담당자\n**승인자**: DevOps팀장\n**배포 주기**: 주간 (매주 배포)\n**다음 검토 예정일**: 2027-03-23\n\n---\n\n## 1. 목적\n\n이 체크리스트는 SK텔레콤의 소프트웨어를 외부에 배포하기 전, 오픈소스 라이선스 의무사항 이행 여부를 체계적으로 확인하기 위해 사용한다. 주간 배포 주기에 맞춰 GitHub Actions를 통해 자동화 단계와 수동 확인 단계를 구분하여 운영한다.\n\n---\n\n## 2. SBOM 생성 및 검증\n\n### 2-1. SBOM 자동 생성 (GitHub Actions)\n\n배포 브랜치(`main`) Push 시 GitHub Actions 워크플로우가 자동으로 SBOM을 생성한다.\n\n```yaml\nname: Generate SBOM\n\non:\n  push:\n    branches: [main]\n  workflow_dispatch:\n\njobs:\n  sbom:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n\n      - name: Generate SBOM with Syft\n        uses: anchore/sbom-action@v0\n        with:\n          format: spdx-json\n          output-file: sbom.spdx.json\n\n      - name: Upload SBOM artifact\n        uses: actions/upload-artifact@v4\n        with:\n          name: sbom-${{ github.sha }}\n          path: sbom.spdx.json\n          retention-days: 1825  # 5년 보관\n```\n\n### 2-2. SBOM 검증 체크리스트\n\n| # | 확인 항목 | 담당 | 확인 |\n|---|----------|------|------|\n| 2-1 | SBOM이 최신 커밋 기준으로 생성되었는가? | 오픈소스 담당자 | ☐ |\n| 2-2 | 모든 직접 의존성이 SBOM에 포함되었는가? | 오픈소스 담당자 | ☐ |\n| 2-3 | 간접 의존성(transitive)이 포함되었는가? | 오픈소스 담당자 | ☐ |\n| 2-4 | 각 컴포넌트의 라이선스 정보가 기재되었는가? | 오픈소스 담당자 | ☐ |\n| 2-5 | SBOM 형식이 SPDX 2.3 이상인가? | 오픈소스 담당자 | ☐ |\n\n---\n\n## 3. 고지문 생성 및 확인\n\n### 3-1. 고지문 생성 방법\n\n#### 생성 도구\n\n| 도구 | 용도 | 명령어 예시 |\n|------|------|-----------|\n| `oss-review-toolkit (ORT)` | 다중 언어 프로젝트 고지문 생성 | `ort report -i analyzer-result.yml -o notices/` |\n| `licensee` | GitHub 기반 라이선스 탐지 | `licensee detect .` |\n| `FOSSA CLI` | 엔터프라이즈 라이선스 분석 | `fossa report attribution` |\n\n> **권장 도구**: ORT(OSS Review Toolkit) — Java, Python, JavaScript, Go 등 다중 언어 지원\n\n#### 고지문에 포함해야 할 항목\n\n| 항목 | 설명 | 필수 여부 |\n|------|------|---------|\n| 컴포넌트명 및 버전 | 사용된 오픈소스 이름과 버전 | 필수 |\n| 저작권 표시 | 원본 저작권자 정보 (Copyright © ...) | 필수 |\n| 라이선스 전문 | 해당 라이선스 원문 텍스트 | 필수 |\n| 출처 URL | 오픈소스 프로젝트 공식 URL | 권장 |\n| 수정 여부 | 원본 코드 수정 시 수정 사실 명시 (GPL/LGPL 등) | 조건부 |\n| 소스코드 입수 방법 | Copyleft 라이선스 적용 시 소스코드 제공 방법 | 조건부 |\n\n#### 바이너리 배포 시 대안\n\n소프트웨어를 바이너리 형태로 배포하여 고지문 파일을 직접 포함하기 어려운 경우, 아래 대안을 활용할 수 있다:\n\n| 배포 형태 | 대안 방법 |\n|---------|---------|\n| 모바일 앱 (iOS/Android) | 앱 내 \"오픈소스 라이선스\" 메뉴에서 고지문 표시 |\n| 임베디드 기기 | 기기 동봉 문서 또는 웹 URL로 고지문 제공 |\n| SaaS 서비스 | 서비스 내 `/oss-licenses` 페이지 또는 푸터 링크 |\n| 펌웨어 업데이트 | 업데이트 패키지 내 `NOTICES` 파일 포함 |\n\n> 📌 어떤 방식을 사용하더라도, 사용자가 라이선스 정보에 **쉽게 접근**할 수 있어야 한다.\n\n### 3-2. 고지문 확인 체크리스트\n\n| # | 확인 항목 | 담당 | 확인 |\n|---|----------|------|------|\n| 3-1 | 배포 대상 소프트웨어의 고지문이 생성되었는가? | 오픈소스 담당자 | ☐ |\n| 3-2 | 모든 오픈소스 컴포넌트가 고지문에 포함되었는가? | 오픈소스 담당자 | ☐ |\n| 3-3 | 각 컴포넌트의 저작권 표시가 정확한가? | 오픈소스 담당자 | ☐ |\n| 3-4 | 각 컴포넌트의 라이선스 전문이 포함되었는가? | 오픈소스 담당자 | ☐ |\n| 3-5 | Copyleft 컴포넌트의 소스코드 제공 방법이 명시되었는가? | 오픈소스 담당자 | ☐ |\n| 3-6 | 고지문이 사용자가 접근 가능한 위치에 배치되었는가? | 개발팀 대표 | ☐ |\n| 3-7 | 바이너리 배포 시 대안 방법이 적용되었는가? (해당 시) | 개발팀 대표 | ☐ |\n\n---\n\n## 4. 라이선스 의무사항 이행 확인\n\n### 4-1. 라이선스 유형별 의무사항 체크\n\n| 라이선스 유형 | 의무사항 | 확인 |\n|------------|---------|------|\n| Permissive (MIT, Apache-2.0, BSD 등) | 고지문에 저작권/라이선스 포함 | ☐ |\n| Weak Copyleft (LGPL) | 수정 파일 소스코드 공개 또는 링크 제공 | ☐ |\n| Weak Copyleft (MPL) | 수정된 MPL 파일 소스코드 공개 | ☐ |\n| Strong Copyleft (GPL-2.0/3.0) | 전체 소스코드 공개 (배포 시) | ☐ |\n| Network Copyleft (AGPL-3.0) | 네트워크 서비스 포함 소스코드 공개 | ☐ |\n| Apache-2.0 | NOTICE 파일 유지, 특허 조항 준수 | ☐ |\n\n### 4-2. 배포 형태별 추가 확인\n\n| 배포 형태 | 추가 확인 항목 | 확인 |\n|---------|------------|------|\n| SaaS | AGPL 컴포넌트 포함 여부 및 소스코드 공개 준비 | ☐ |\n| 앱스토어 | GPL 계열 컴포넌트 App Store 정책 충돌 여부 | ☐ |\n| 임베디드 | Copyleft 컴포넌트 소스코드 동봉 또는 URL 제공 | ☐ |\n| 내부용 | 재배포 의무 없음 확인 (내부 사용만인 경우) | ☐ |\n\n---\n\n## 5. 취약점 스캔 결과 확인\n\n### 5-1. 자동 스캔 결과 검토\n\n| # | 확인 항목 | 담당 | 확인 |\n|---|----------|------|------|\n| 5-1 | GitHub Actions 취약점 스캔이 완료되었는가? | 오픈소스 담당자 | ☐ |\n| 5-2 | Critical 취약점이 0건인가? | 보안팀 | ☐ |\n| 5-3 | High 취약점이 0건인가? (또는 완화 계획 수립 완료) | 보안팀 | ☐ |\n| 5-4 | Medium/Low 취약점 처리 계획이 수립되었는가? | 보안팀 | ☐ |\n\n> ⚠️ Critical 또는 High 취약점이 존재하는 경우, 팀장 및 오픈소스 담당자의 위험 수용 승인 없이 배포를 진행할 수 없다.\n\n---\n\n## 6. 최종 승인\n\n### 6-1. 배포 승인 체크리스트\n\n| # | 확인 항목 | 담당 | 확인 |\n|---|----------|------|------|\n| 6-1 | 모든 신규 오픈소스 컴포넌트가 사용 승인을 받았는가? | 오픈소스 담당자 | ☐ |\n| 6-2 | SBOM이 생성 및 검증되었는가? | 오픈소스 담당자 | ☐ |\n| 6-3 | 고지문이 준비되었는가? | 오픈소스 담당자 | ☐ |\n| 6-4 | 취약점 스캔이 완료되었는가? | 보안팀 | ☐ |\n| 6-5 | 라이선스 의무사항 이행이 완료되었는가? | 오픈소스 담당자 | ☐ |\n| 6-6 | 팀장 최종 승인을 받았는가? | DevOps팀장 | ☐ |\n\n### 6-2. 최종 승인 서명\n\n| 항목 | 내용 |\n|------|------|\n| 배포 버전 | |\n| 배포 일시 | |\n| 검토자 (오픈소스 담당자) | DevOps팀 오픈소스 담당자 |\n| 최종 승인자 (팀장) | DevOps팀장 |\n| 승인 날짜 | |\n| GitHub Actions 워크플로우 실행 번호 | |\n\n---\n\n## 7. 배포 후 최종 확인\n\n배포 완료 직후 아래 항목을 추가로 확인한다:\n\n| # | 확인 항목 | 담당 | 확인 |\n|---|----------|------|------|\n| 7-1 | 배포 아티팩트에 고지문이 올바르게 포함되어 있는가? | 오픈소스 담당자 | ☐ |\n| 7-2 | SBOM이 `output/sbom/` 에 저장 및 보관되었는가? | 오픈소스 담당자 | ☐ |\n| 7-3 | CVE 모니터링이 개시되었는가? (GitHub Dependabot 또는 보안팀 알림 설정) | 보안팀 | ☐ |\n| 7-4 | 배포 기록(버전, 날짜, 담당자)이 이력 관리 시스템에 등록되었는가? | 개발팀 대표 | ☐ |\n\n---\n\n## 8. 이행 기록 및 산출물 보관\n<!-- 5230 §3.4.1.1, §3.4.1.2 -->\n\n### 8-1. 보관 산출물 목록\n\n| 산출물 | 보관 위치 | 보관 기간 |\n|--------|---------|---------|\n| SBOM (SPDX JSON) | `output/sbom/{version}/sbom.spdx.json` | 최소 5년 |\n| 고지문 파일 | `output/notices/{version}/NOTICES.txt` | 최소 5년 |\n| 승인 기록 (GitHub Issues) | GitHub Issues 아카이브 | 최소 5년 |\n| 취약점 스캔 결과 | GitHub Actions Artifacts | 최소 3년 |\n| 소스코드 (GPL/LGPL 해당 시) | `output/source-offers/{version}/` | 배포 종료 후 3년 |\n| 배포 체크리스트 완성본 | `output/records/distribution/` | 최소 3년 |\n\n### 8-2. 보관 자동화\n\n```yaml\nname: Archive Compliance Artifacts\n\non:\n  release:\n    types: [published]\n\njobs:\n  archive:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n\n      - name: Create compliance archive\n        run: |\n          VERSION=${{ github.ref_name }}\n          mkdir -p compliance-archive\n          cp sbom.spdx.json compliance-archive/\n          cp NOTICES.txt compliance-archive/\n          tar -czf compliance-${VERSION}.tar.gz compliance-archive/\n\n      - name: Upload to release assets\n        uses: actions/upload-release-asset@v1\n        with:\n          upload_url: ${{ github.event.release.upload_url }}\n          asset_path: ./compliance-${{ github.ref_name }}.tar.gz\n          asset_name: compliance-${{ github.ref_name }}.tar.gz\n          asset_content_type: application/gzip\n```\n\n---\n\n## 9. 관련 문서\n\n| 문서 | 경로 |\n|------|------|\n| 오픈소스 정책 | `output/policy/oss-policy.md` |\n| 사용 승인 절차 | `output/process/usage-approval.md` |\n| 취약점 대응 절차 | `output/process/vulnerability-response.md` |\n| 역할 정의 | `output/organization/role-definition.md` |\n\n---\n\n## 10. 이력 관리\n\n| 버전 | 날짜 | 변경 내용 | 작성자 |\n|------|------|---------|--------|\n| 1.0 | 2026-03-23 | 최초 작성 | DevOps팀 오픈소스 담당자 |\n"
+          }
+        }
+      ],
+      "stop_reason": "tool_use"
+    },
+    {
+      "content": [
+        {
+          "type": "tool_use",
+          "id": "toolu_01B8gQyRcam9QTF4gzwgphQ8",
+          "name": "Write",
+          "input": {
+            "file_path": "output/process/vulnerability-response.md",
+            "content": "# 오픈소스 취약점 대응 절차\n<!-- 18974 §4.1.5.1, §4.2.1.1, §4.2.2.1·§4.2.2.2·§4.2.2.3 -->\n\n**회사명**: SK텔레콤\n**버전**: 1.0\n**작성일**: 2026-03-23\n**작성자**: DevOps팀 오픈소스 담당자\n**승인자**: DevOps팀장\n**다음 검토 예정일**: 2027-03-23\n\n---\n\n## 1. 목적\n\n이 문서는 SK텔레콤이 배포하는 소프트웨어에 포함된 오픈소스 컴포넌트에서 알려진 보안 취약점(CVE)이 발견되었을 때 신속하고 체계적으로 대응하기 위한 절차를 정의한다.\n\n---\n\n## 2. 적용 범위\n\n- SK텔레콤이 개발·배포·운영하는 모든 소프트웨어에 포함된 오픈소스 컴포넌트\n- 배포 전 사전 탐지 및 배포 후 신규 발견된 취약점 모두 포함\n- 외부 신고(CVD)를 통해 접수된 취약점 포함\n\n---\n\n## 3. 역할 및 책임\n\n| 역할 | 담당자 | 책임 |\n|------|--------|------|\n| 취약점 탐지 | 보안팀 / GitHub Actions (자동) | CVE 스캔, 신규 취약점 모니터링 |\n| 영향도 분석 | 보안팀 | CVSS 점수 확인, 영향 범위 파악 |\n| 패치 적용 | 개발팀 대표 | 취약 컴포넌트 업데이트/패치 |\n| 대외 소통 | DevOps팀 오픈소스 담당자 | 외부 신고 접수, 취약점 공개 대응 |\n| 최종 승인 | DevOps팀장 | 위험 수용 또는 긴급 배포 승인 |\n| 법률 자문 | 법무팀 | 취약점 공개 관련 법적 검토 (필요 시) |\n\n---\n\n## 4. CVSS 심각도별 대응 기한\n\n| 심각도 | CVSS 점수 | 대응 기한 | 비고 |\n|--------|---------|---------|------|\n| **Critical** | 9.0 ~ 10.0 | **1주일** | 즉시 대응 팀 구성 |\n| **High** | 7.0 ~ 8.9 | **4주일** | 우선순위 패치 |\n| **Medium** | 4.0 ~ 6.9 | **1개월** | 정기 패치 주기에 포함 |\n| **Low** | 0.1 ~ 3.9 | **다음 릴리즈** | 주간 배포 시 포함 |\n\n> 💡 **유연성 노트**: 위 기한은 기본 목표 기한이며, 비즈니스 중요도, 실제 공격 가능성(Exploitability), 취약 컴포넌트의 영향 범위 등을 고려하여 더 엄격한 기한을 적용할 수 있다. 특히 인터넷에 노출된 서비스나 고객 데이터를 처리하는 시스템의 경우, 팀장 및 보안팀 협의를 통해 Critical 취약점에 대해 24시간~72시간 이내 대응 기한을 적용할 수 있다.\n\n---\n\n## 5. 취약점 탐지 절차\n\n### 5-1. 사전 탐지 (배포 전)\n\n```mermaid\nflowchart TD\n    A([PR 생성 또는 배포 브랜치 Push]) --> B[GitHub Actions 자동 스캔\\nTrivy / Dependabot]\n    B --> C{취약점 발견?}\n    C -->|없음| D([배포 진행])\n    C -->|있음| E[CVSS 심각도 분류]\n    E --> F{Critical/High?}\n    F -->|예| G[보안팀 즉시 알림\\nGitHub Issues 등록]\n    F -->|아니오| H[Medium/Low 이슈 등록\\n다음 정기 패치에 포함]\n    G --> I[패치 가능 여부 확인]\n    I -->|패치 가능| J[패치 적용 후 재스캔]\n    I -->|패치 불가| K[위험 완화 조치 및\\n팀장 위험 수용 승인]\n    J --> D\n    K --> D\n```\n\n**GitHub Actions 자동 스캔 설정** (`.github/workflows/security-scan.yml`):\n\n```yaml\nname: Security Vulnerability Scan\n\non:\n  push:\n    branches: [main, develop]\n  pull_request:\n  schedule:\n    - cron: '0 9 * * 1'  # 매주 월요일 오전 9시 정기 스캔\n\njobs:\n  vulnerability-scan:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n\n      - name: Run Trivy vulnerability scanner\n        uses: aquasecurity/trivy-action@master\n        with:\n          scan-type: 'fs'\n          scan-ref: '.'\n          format: 'sarif'\n          output: 'trivy-results.sarif'\n          severity: 'CRITICAL,HIGH,MEDIUM,LOW'\n\n      - name: Upload Trivy scan results to GitHub Security tab\n        uses: github/codeql-action/upload-sarif@v3\n        with:\n          sarif_file: 'trivy-results.sarif'\n\n  dependabot-alerts:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - name: Check Dependabot alerts\n        run: |\n          echo \"Dependabot alerts enabled via GitHub repository settings\"\n          echo \"Review alerts at: https://github.com/${{ github.repository }}/security/dependabot\"\n```\n\n### 5-2. 사후 탐지 (배포 후 신규 CVE)\n\n- **GitHub Dependabot**: 저장소 설정에서 활성화, 신규 CVE 발견 시 자동 알림\n- **정기 스캔**: 매주 월요일 GitHub Actions 정기 스캔 실행\n- **외부 신고 접수**: security@sktelecom.com 수신 시 즉시 대응 팀에 전달\n- **CVE 데이터베이스 구독**: NVD(National Vulnerability Database), KrCERT 공지 모니터링\n\n---\n\n## 6. 취약점 대응 절차\n\n### 6-1. 단계별 대응 흐름\n\n```mermaid\nflowchart TD\n    A([취약점 탐지 / 신고 접수]) --> B[GitHub Issues에 취약점 이슈 등록\\n보안팀 담당]\n    B --> C[CVSS 점수 및 영향 범위 분석]\n    C --> D{Critical\\n9.0+?}\n    D -->|예| E[즉시 대응 팀 구성\\n보안팀 + 개발팀 + 오픈소스 담당자]\n    D -->|아니오| F[심각도별 대응 기한 설정]\n    E --> G[패치/업그레이드 적용]\n    F --> G\n    G --> H[패치 후 검증 스캔]\n    H --> I{취약점 해소\\n확인?}\n    I -->|완료| J[배포 승인 요청\\n팀장 승인]\n    I -->|미해소| K[추가 조치 검토\\n완화 조치 또는 컴포넌트 교체]\n    K --> G\n    J --> L[긴급 배포 또는\\n다음 주간 배포에 포함]\n    L --> M[이해관계자 통보\\n내부 및 외부]\n    M --> N[사후 분석 및 재발 방지]\n    N --> O([종료 및 기록 보관])\n```\n\n### 6-2. 단계별 세부 절차\n\n#### Step 1. 이슈 등록 및 분류 (보안팀)\n\nGitHub Issues에 취약점 이슈를 등록한다 (`security-vulnerability` 레이블 사용):\n\n```markdown\n## 보안 취약점 보고\n\n- **CVE ID**: CVE-XXXX-XXXXX\n- **영향 컴포넌트**: (예: log4j 2.14.1)\n- **CVSS 점수**: (예: 10.0 - Critical)\n- **영향 받는 제품/서비스**: (예: API 서버 v1.2.3)\n- **발견 경로**: (자동 스캔 / Dependabot / 외부 신고)\n- **패치 버전**: (예: log4j 2.17.1)\n- **참고 URL**: (NVD 링크 등)\n- **대응 기한**: (CVSS 기준 기한 명시)\n```\n\n#### Step 2. 영향도 분석 (보안팀 + 개발팀)\n\n- 취약한 컴포넌트를 사용하는 서비스/제품 목록 파악 (SBOM 참조)\n- 실제 취약점 경로(Attack Vector) 존재 여부 확인\n- 패치 버전 존재 여부 확인\n- 비즈니스 영향 범위 평가\n\n#### Step 3. 패치 적용 (개발팀)\n\n| 조치 유형 | 설명 |\n|---------|------|\n| 버전 업그레이드 | 취약점이 해결된 버전으로 업그레이드 |\n| 컴포넌트 교체 | 동일 기능의 안전한 대안 컴포넌트로 교체 |\n| 패치 적용 | 공식 패치 또는 백포트 패치 적용 |\n| 완화 조치 | 즉각 패치 불가 시 방화벽, 설정 변경 등 임시 완화 |\n\n#### Step 4. 검증 및 배포\n\n- 패치 적용 후 GitHub Actions 재스캔\n- 취약점 해소 확인 후 팀장 배포 승인\n- Critical/High: 긴급 배포 (주간 배포 주기 무관)\n- Medium/Low: 다음 주간 정기 배포에 포함\n\n---\n\n## 7. 조율된 취약점 공개(CVD) 절차\n<!-- 18974 §4.2.1.1 §8 CVD -->\n\n### 7-1. CVD 개요\n\nSK텔레콤은 외부 보안 연구자 및 사용자가 발견한 취약점을 책임감 있게 처리하기 위해 조율된 취약점 공개(Coordinated Vulnerability Disclosure, CVD) 정책을 운영한다.\n\n### 7-2. 외부 취약점 신고 수신\n\n- **신고 채널**: security@sktelecom.com\n- **응답 목표**: 영업일 기준 **5일 이내** 초기 응답\n- **신고자 신원**: 익명 신고 허용\n\n### 7-3. CVD 처리 흐름\n\n```mermaid\nflowchart TD\n    A([외부 취약점 신고 수신\\nsecurity@sktelecom.com]) --> B[보안팀 접수 확인\\n영업일 5일 이내 초기 응답]\n    B --> C[신고 유효성 검토]\n    C --> D{유효한 취약점?}\n    D -->|아니오| E[신고자에게 결과 통보\\n및 감사 인사]\n    D -->|예| F[CVE ID 요청\\n필요 시 MITRE에 신청]\n    F --> G[내부 수정 작업 시작]\n    G --> H{수정 완료?}\n    H -->|완료| I[신고자와 공개 일정 협의\\n기본 90일 이내]\n    H -->|미완료| J[신고자에게 진행 상황 업데이트\\n2주 간격]\n    J --> H\n    I --> K[패치 배포]\n    K --> L[보안 공지 발행\\n공개 채널에 게시]\n    L --> M[신고자 크레딧 부여\\n동의한 경우]\n    M --> N([종료])\n```\n\n### 7-4. 공개 일정 원칙\n\n| 원칙 | 내용 |\n|------|------|\n| 기본 공개 기한 | 신고 접수 후 **90일 이내** 패치 및 공개 |\n| 연장 요청 | 복잡한 수정 필요 시 신고자 동의 하에 30일 추가 연장 가능 |\n| 즉시 공개 | 이미 공개 악용(exploit) 중인 경우 즉시 공개 |\n| 부분 공개 | 패치 배포 완료 후 상세 기술 내용 공개 |\n\n### 7-5. 보안 공지 발행 채널\n\n- 사내 보안 공지: 내부 Wiki/이메일\n- 고객사 통보: 이메일 또는 계약상 통보 채널\n- 공개 공지: GitHub Security Advisory, 사내 블로그 (해당 시)\n\n---\n\n## 8. 취약점 대응 기록 보관\n\n| 기록 항목 | 보관 위치 | 보관 기간 |\n|---------|---------|---------|\n| 취약점 이슈 (GitHub Issues) | GitHub 저장소 | 최소 5년 |\n| 스캔 결과 리포트 | GitHub Actions Artifacts | 최소 3년 |\n| 외부 신고 이메일 | 이메일 아카이브 | 최소 5년 |\n| 패치 이력 (커밋/PR) | GitHub 저장소 | 영구 |\n| CVD 처리 기록 | `output/records/security/` | 최소 5년 |\n\n---\n\n## 9. 관련 문서\n\n| 문서 | 경로 |\n|------|------|\n| 오픈소스 정책 | `output/policy/oss-policy.md` |\n| 역할 정의 | `output/organization/role-definition.md` |\n| 배포 전 체크리스트 | `output/process/distribution-checklist.md` |\n| 외부 문의 대응 절차 | `output/process/inquiry-response.md` |\n\n---\n\n## 10. 이력 관리\n\n| 버전 | 날짜 | 변경 내용 | 작성자 |\n|------|------|---------|--------|\n| 1.0 | 2026-03-23 | 최초 작성 | DevOps팀 오픈소스 담당자 |\n"
+          }
+        }
+      ],
+      "stop_reason": "tool_use"
+    },
+    {
+      "content": [
+        {
+          "type": "tool_use",
+          "id": "toolu_01YK39sSaQggUNRPaAi7DDbT",
+          "name": "Write",
+          "input": {
+            "file_path": "output/process/inquiry-response.md",
+            "content": "# 외부 오픈소스 문의 대응 절차\n<!-- 5230 §3.2.1.1·§3.2.1.2 -->\n\n**회사명**: SK텔레콤\n**버전**: 1.0\n**작성일**: 2026-03-23\n**작성자**: DevOps팀 오픈소스 담당자\n**승인자**: DevOps팀장\n**다음 검토 예정일**: 2027-03-23\n\n---\n\n## 1. 목적\n\n이 문서는 SK텔레콤의 소프트웨어 배포와 관련하여 외부로부터 수신되는 오픈소스 라이선스 컴플라이언스 문의 및 보안 취약점 신고를 신속하고 일관되게 처리하기 위한 절차를 정의한다.\n\n---\n\n## 2. 적용 범위\n\n- 오픈소스 라이선스 고지 누락·오류에 관한 외부 문의\n- 소스코드 공개 요청 (GPL/LGPL 등 Copyleft 라이선스 의무 관련)\n- 오픈소스 사용 현황 확인 요청 (고객사, 감사 기관 등)\n- 저작권 침해 주장 또는 라이선스 위반 경고\n- 보안 취약점 신고 (security@sktelecom.com 수신 건)\n- 기타 오픈소스 관련 일반 문의\n\n---\n\n## 3. 외부 문의 채널\n\n| 문의 유형 | 수신 채널 | 담당자 |\n|---------|---------|--------|\n| 라이선스 컴플라이언스 일반 문의 | opensource@sktelecom.com | DevOps팀 오픈소스 담당자 |\n| 소스코드 공개 요청 | opensource@sktelecom.com | DevOps팀 오픈소스 담당자 |\n| 보안 취약점 신고 | security@sktelecom.com | 보안팀 |\n| 법적 분쟁·저작권 침해 주장 | opensource@sktelecom.com (1차 접수 후 법무팀 이관) | 법무팀 |\n\n> 📌 **공개 고지**: 배포 소프트웨어의 고지문 및 제품 페이지에 `opensource@sktelecom.com` 문의 채널을 명시한다.\n\n---\n\n## 4. 문의 유형별 대응 절차\n\n### 4-1. 전체 대응 흐름\n\n```mermaid\nflowchart TD\n    A([외부 문의 수신\\nopensource@sktelecom.com]) --> B[오픈소스 담당자 확인\\n1영업일 이내]\n    B --> C[문의 유형 분류]\n    C --> D{문의 유형}\n    D -->|일반 라이선스 문의| E[내용 검토 및 답변 준비]\n    D -->|소스코드 공개 요청| F[대상 제품·버전 확인\\nSBOM 참조]\n    D -->|저작권 침해 주장| G[법무팀 즉시 이관]\n    D -->|보안 취약점| H[보안팀 이관\\nvulnerability-response.md 절차]\n    E --> I[초기 응답 발송\\n5영업일 이내]\n    F --> I\n    G --> J[법무팀 초기 응답\\n5영업일 이내]\n    H --> K[취약점 대응 절차 진행]\n    I --> L{추가 조치 필요?}\n    L -->|예| M[조치 이행 및 결과 통보]\n    L -->|아니오| N[문의 종결 처리]\n    M --> N\n    N --> O[GitHub Issues에 기록]\n    O --> P([완료])\n```\n\n### 4-2. 일반 라이선스 문의\n\n**목표 응답 시간**: 영업일 기준 5일 이내 초기 응답\n\n**절차**:\n\n1. 이메일 수신 확인 후 1영업일 이내 접수 확인 응답 발송\n2. 문의 내용 검토 (SBOM 및 고지문 참조)\n3. 답변 초안 작성 → 오픈소스 담당자 검토\n4. 5영업일 이내 공식 답변 발송\n5. GitHub Issues에 처리 기록 등록 (`inquiry-log` 레이블)\n\n**초기 응답 템플릿**:\n\n```\n제목: Re: [오픈소스 문의] {원본 제목}\n\n안녕하세요,\n\nSK텔레콤 오픈소스 담당팀입니다.\n문의해 주셔서 감사합니다.\n\n접수하신 문의를 확인하였으며, 영업일 기준 5일 이내에 \n자세한 답변을 드리겠습니다.\n\n추가 문의 사항이 있으시면 언제든지 연락주시기 바랍니다.\n\nSK텔레콤 오픈소스 담당팀\nopensource@sktelecom.com\n```\n\n### 4-3. 소스코드 공개 요청 (Copyleft 의무)\n\nGPL, LGPL, AGPL 등 Copyleft 라이선스가 적용된 컴포넌트에 대한 소스코드 공개 요청 처리:\n\n**절차**:\n\n1. 요청 대상 제품명·버전 확인\n2. SBOM에서 해당 컴포넌트의 라이선스 및 수정 여부 확인\n3. 소스코드 공개 의무 이행 여부 검토\n\n| 공개 방법 | 적용 기준 |\n|---------|---------|\n| 소스코드 직접 제공 (이메일) | 소규모 패치·수정 파일 |\n| GitHub 저장소 링크 제공 | 공개 저장소에 이미 게시된 경우 |\n| 기록 매체 제공 | 요청자가 원하는 경우 (실비 청구 가능) |\n| 서면 제공 약속 | GPL §3(b) 방식: 3년간 소스코드 제공 약속 |\n\n4. 소스코드 제공 또는 링크 안내 후 종결\n\n**목표 처리 시간**: 요청 접수 후 영업일 기준 10일 이내\n\n### 4-4. 저작권 침해 주장·법적 경고\n\n**절차**:\n\n1. 이메일 수신 후 1영업일 이내 법무팀에 즉시 이관\n2. 법무팀 초기 검토 (영업일 3일 이내)\n3. 법무팀 주도로 오픈소스 담당자와 협력하여 대응\n4. 모든 소통은 법무팀 검토 후 발송\n5. 분쟁 해결 결과 및 개선 조치 기록\n\n> ⚠️ **주의**: 저작권 침해 주장이나 법적 경고 수신 시 오픈소스 담당자 단독으로 답변을 발송하지 않는다. 반드시 법무팀 검토 후 대응한다.\n\n### 4-5. 고객사 컴플라이언스 감사 요청\n\n외부 고객사가 납품 소프트웨어의 오픈소스 컴플라이언스 증빙을 요청하는 경우:\n\n| 제공 가능 자료 | 비고 |\n|------------|------|\n| SBOM (SPDX JSON 또는 CSV) | 요청 버전 기준 |\n| 오픈소스 고지문 (NOTICES.txt) | 요청 버전 기준 |\n| 라이선스 의무사항 이행 확인서 | 오픈소스 담당자 서명 |\n| 소스코드 (Copyleft 컴포넌트) | 해당 시 제공 |\n\n---\n\n## 5. 응답 시간 기준 (SLA)\n\n| 문의 유형 | 초기 응답 | 최종 처리 완료 |\n|---------|---------|-----------|\n| 일반 라이선스 문의 | 5영업일 이내 | 10영업일 이내 |\n| 소스코드 공개 요청 | 5영업일 이내 | 10영업일 이내 |\n| 저작권 침해 주장 | 3영업일 이내 | 법무팀 판단에 따라 |\n| 보안 취약점 신고 | 5영업일 이내 | 취약점 심각도에 따라 |\n| 고객사 감사 요청 | 5영업일 이내 | 10영업일 이내 |\n\n---\n\n## 6. 문의 처리 기록 관리\n\n모든 외부 문의 처리 기록은 아래와 같이 관리한다:\n\n| 기록 항목 | 저장 위치 | 보관 기간 |\n|---------|---------|---------|\n| 이메일 수신·발신 원본 | 이메일 아카이브 | 최소 5년 |\n| GitHub Issues 처리 기록 | GitHub 저장소 (`inquiry-log` 레이블) | 최소 5년 |\n| 소스코드 제공 기록 | `output/records/inquiry/` | 최소 5년 |\n| 법적 분쟁 기록 | 법무팀 보관 | 최소 10년 |\n\n### 기록 등록 형식 (GitHub Issues)\n\n```markdown\n## 외부 문의 처리 기록\n\n- **접수 일시**: YYYY-MM-DD\n- **문의 유형**: (일반 문의 / 소스코드 요청 / 저작권 주장 / 기타)\n- **문의자**: (기관명 또는 익명)\n- **대상 제품/버전**: (해당 시)\n- **처리 담당자**: DevOps팀 오픈소스 담당자\n- **초기 응답 일시**: YYYY-MM-DD\n- **최종 처리 일시**: YYYY-MM-DD\n- **처리 결과 요약**: (간략 기술)\n- **개선 조치**: (필요 시)\n```\n\n---\n\n## 7. 미해결 문의 에스컬레이션\n\n| 상황 | 에스컬레이션 대상 | 기준 |\n|------|--------------|------|\n| 초기 응답 기한 초과 | DevOps팀장 | SLA 초과 즉시 |\n| 기술적 판단 불확실 | 법무팀 자문 | 담당자 판단 |\n| 외부 법적 압박 | 법무팀 + 팀장 | 수신 즉시 |\n| 반복적 동일 문의 | 프로세스 개선 검토 | 3회 이상 동일 유형 |\n\n---\n\n## 8. 관련 문서\n\n| 문서 | 경로 |\n|------|------|\n| 오픈소스 정책 | `output/policy/oss-policy.md` |\n| 역할 정의 | `output/organization/role-definition.md` |\n| 취약점 대응 절차 | `output/process/vulnerability-response.md` |\n| 배포 전 체크리스트 | `output/process/distribution-checklist.md` |\n\n---\n\n## 9. 이력 관리\n\n| 버전 | 날짜 | 변경 내용 | 작성자 |\n|------|------|---------|--------|\n| 1.0 | 2026-03-23 | 최초 작성 | DevOps팀 오픈소스 담당자 |\n"
+          }
+        }
+      ],
+      "stop_reason": "tool_use"
+    },
+    {
+      "content": [
+        {
+          "type": "tool_use",
+          "id": "toolu_01QXdatf9StWfxp5sSUNECRq",
+          "name": "Write",
+          "input": {
+            "file_path": "output/process/contribution-process.md",
+            "content": "# 오픈소스 기여 절차\n<!-- 5230 §3.5.1.1·§3.5.1.2 -->\n\n**회사명**: SK텔레콤\n**버전**: 1.0\n**작성일**: 2026-03-23\n**작성자**: DevOps팀 오픈소스 담당자\n**승인자**: DevOps팀장\n**다음 검토 예정일**: 2027-03-23\n\n---\n\n## 1. 목적\n\n이 문서는 SK텔레콤 구성원이 외부 오픈소스 프로젝트에 기여할 때 준수해야 할 절차를 정의한다. 회사의 지식재산(IP) 보호, 법적 리스크 최소화, 그리고 오픈소스 커뮤니티와의 건전한 협력 관계를 유지하는 것을 목적으로 한다.\n\n---\n\n## 2. 적용 범위\n\n- 업무 시간 중 또는 업무와 관련하여 외부 오픈소스 프로젝트에 코드·문서·번역 등을 기여하는 모든 행위\n- Pull Request, 버그 리포트, 기능 제안, 문서 기여, 이슈 댓글 등 모든 형태의 기여\n- 개인 계정을 통한 기여라도 업무와 관련된 경우 포함\n\n---\n\n## 3. 역할 및 책임\n\n| 역할 | 담당자 | 책임 |\n|------|--------|------|\n| 기여 신청자 | 개발팀 구성원 | 기여 내용 준비 및 승인 요청 |\n| 검토자 | DevOps팀 오픈소스 담당자 | IP 확인, 라이선스 검토, CLA 확인 |\n| 법무 검토 | 법무팀 | 특허·영업비밀 관련 법적 검토 |\n| 최종 승인 | DevOps팀장 | 기여 최종 승인 |\n\n---\n\n## 4. 기여 유형별 절차\n\n### 4-1. 전체 기여 흐름\n\n```mermaid\nflowchart TD\n    A([기여 계획 수립]) --> B[GitHub Issues에 기여 승인 요청\\n'oss-contribution' 레이블]\n    B --> C[오픈소스 담당자 검토]\n    C --> D{기여 내용에\\n민감 정보 포함?}\n    D -->|예: 특허·영업비밀·고객정보| E[기여 불가\\n대안 방법 검토]\n    D -->|아니오| F{CLA\\n서명 필요?}\n    F -->|예| G[CLA 서명 절차 진행\\n법무팀 검토]\n    F -->|아니오| H[라이선스 양립성 확인]\n    G --> H\n    H --> I{라이선스\\n양립성 문제?}\n    I -->|있음| J[법무팀 자문]\n    I -->|없음| K[팀장 최종 승인]\n    J -->|해결 가능| K\n    J -->|해결 불가| E\n    K --> L[기여 실행\\nPR / Commit / Issue]\n    L --> M[기여 이력 기록\\nGitHub Issues 업데이트]\n    M --> N([완료])\n```\n\n### 4-2. 소규모 기여 (버그 수정, 문서 개선 등)\n\n소규모 기여(코드 10줄 이하의 버그 수정, 오타 수정, README 개선 등)는 간소화 절차 적용:\n\n1. GitHub Issues에 기여 내용 간략 등록\n2. 오픈소스 담당자 단독 승인으로 처리 (팀장 승인 생략 가능)\n3. 기여 후 이력 업데이트\n\n### 4-3. 대규모 기여 (신규 기능, 아키텍처 변경 등)\n\n1. GitHub Issues에 기여 상세 계획 등록\n2. 오픈소스 담당자 + 법무팀 공동 검토\n3. 팀장 최종 승인\n4. 기여 실행 및 이력 기록\n\n---\n\n## 5. 기여 승인 요청 양식\n\nGitHub Issues에 아래 양식으로 등록한다 (`oss-contribution` 레이블):\n\n```markdown\n## 오픈소스 기여 승인 요청\n\n### 기여 대상 프로젝트\n- **프로젝트명**: (예: kubernetes/kubernetes)\n- **저장소 URL**: (예: https://github.com/kubernetes/kubernetes)\n- **프로젝트 라이선스**: (예: Apache-2.0)\n\n### 기여 내용\n- **기여 유형**: (버그 수정 / 기능 추가 / 문서 개선 / 번역 / 기타)\n- **기여 설명**: (간략한 설명)\n- **관련 이슈/PR**: (해당 시 링크)\n\n### IP 확인 사항\n- [ ] 회사 기밀 정보 미포함 확인\n- [ ] 영업비밀 미포함 확인\n- [ ] 고객 데이터 미포함 확인\n- [ ] 특허 관련 코드 미포함 확인 (또는 법무팀 검토 완료)\n\n### CLA 정보\n- **CLA 필요 여부**: (예 / 아니오)\n- **CLA 유형**: (Individual CLA / Corporate CLA / 해당 없음)\n- **CLA 서명 상태**: (완료 / 진행 중 / 불필요)\n\n### 기여 예상 일정\n- **기여 예정일**: YYYY-MM-DD\n```\n\n---\n\n## 6. IP(지식재산) 확인 사항\n\n기여 전 반드시 아래 사항을 확인한다:\n\n| 확인 항목 | 설명 | 확인 |\n|---------|------|------|\n| 회사 기밀 정보 | 내부 알고리즘, 전략, 미공개 로드맵 포함 여부 | ☐ |\n| 영업비밀 | 핵심 비즈니스 로직, 독자 기술 포함 여부 | ☐ |\n| 고객 데이터 | 개인정보, 거래 데이터, 사용 패턴 포함 여부 | ☐ |\n| 특허 관련 코드 | 회사 보유 특허 또는 특허 출원 중인 기술 포함 여부 | ☐ |\n| 제3자 IP | 외부 라이선스가 적용된 코드 재사용 여부 | ☐ |\n| 수출 규제 | 수출 통제 대상 기술 포함 여부 | ☐ |\n\n---\n\n## 7. CLA(기여자 라이선스 계약) 처리\n\n| CLA 유형 | 처리 방법 |\n|---------|---------|\n| Individual CLA | 담당자 개인 서명 (법무팀 사전 검토 권장) |\n| Corporate CLA | 반드시 법무팀 검토 및 팀장 승인 후 회사 대표자 서명 |\n| DCO (Developer Certificate of Origin) | `git commit -s` 서명, 법무팀 검토 불필요 |\n| CLA 없음 | 라이선스 조건만 확인 후 진행 |\n\n---\n\n## 8. 기여 플랫폼별 주의사항\n\n### GitHub 기여\n\n- 회사 이메일 주소(`@sktelecom.com`)로 커밋 서명 권장\n- 개인 계정과 업무 계정 구분하여 사용\n- GitHub Actions 등 자동화 스크립트에 회사 비밀 정보 포함 금지\n\n**Git 설정 예시**:\n\n```bash\n# 특정 저장소에 회사 이메일 설정\ngit config user.email \"your-name@sktelecom.com\"\ngit config user.name \"Your Name (SKT)\"\n\n# 커밋 서명 (DCO 프로젝트)\ngit commit -s -m \"fix: correct null pointer exception in auth module\"\n```\n\n### 포럼·메일링 리스트 기여\n\n- 회사 업무 관련 기술 토론 시 소속 명시 (선택적)\n- 회사 입장으로 오인될 수 있는 발언 주의\n- 미공개 제품 정보, 출시 일정 등 비공개 정보 언급 금지\n\n---\n\n## 9. 기여 후 이력 관리\n\n### 9-1. 기여 이력 기록\n\n모든 승인된 기여는 GitHub Issues에 기록하고, 아래 정보를 업데이트한다:\n\n```markdown\n## 기여 완료 기록\n\n- **기여 일시**: YYYY-MM-DD\n- **기여 링크**: (PR URL / 커밋 URL)\n- **기여 내용 요약**: \n- **프로젝트에 반영 여부**: (Merged / Pending / Rejected)\n- **반영 버전**: (해당 시)\n```\n\n### 9-2. 연간 기여 현황 집계\n\n오픈소스 담당자는 연 1회 기여 현황을 집계하여 보고한다:\n\n| 집계 항목 | 내용 |\n|---------|------|\n| 기여 프로젝트 수 | 연간 기여한 외부 프로젝트 총 수 |\n| 기여 유형별 건수 | 버그 수정, 기능 추가, 문서 등 유형별 집계 |\n| Merged PR 수 | 실제 프로젝트에 반영된 기여 수 |\n| CLA 서명 현황 | 서명 완료된 CLA 목록 |\n\n---\n\n## 10. 기여 금지 사항\n\n다음에 해당하는 경우 기여를 진행할 수 없다:\n\n- ❌ 회사 내부 알고리즘, 핵심 비즈니스 로직 포함\n- ❌ 고객 개인정보 또는 거래 데이터 포함\n- ❌ 법무팀 검토 없이 특허 관련 코드 기여\n- ❌ 개인 계정을 통한 회사 업무 관련 기여 (사전 승인 없이)\n- ❌ 회사 서버·인프라 설정, 보안 설정 정보 포함\n- ❌ 미공개 제품 로드맵, 출시 일정 관련 정보 포함\n\n---\n\n## 11. 관련 문서\n\n| 문서 | 경로 |\n|------|------|\n| 오픈소스 정책 | `output/policy/oss-policy.md` |\n| 역할 정의 | `output/organization/role-definition.md` |\n| 프로젝트 공개 절차 | `output/process/project-publication-process.md` |\n\n---\n\n## 12. 이력 관리\n\n| 버전 | 날짜 | 변경 내용 | 작성자 |\n|------|------|---------|--------|\n| 1.0 | 2026-03-23 | 최초 작성 | DevOps팀 오픈소스 담당자 |\n"
+          }
+        }
+      ],
+      "stop_reason": "tool_use"
+    },
+    {
+      "content": [
+        {
+          "type": "tool_use",
+          "id": "toolu_01M1hoLu1haaYfNz6xnC6rCd",
+          "name": "Write",
+          "input": {
+            "file_path": "output/process/project-publication-process.md",
+            "content": "# 사내 프로젝트 오픈소스 공개 절차\n<!-- 5230 §3.5.1.1·§3.5.1.2 -->\n\n**회사명**: SK텔레콤\n**버전**: 1.0\n**작성일**: 2026-03-23\n**작성자**: DevOps팀 오픈소스 담당자\n**승인자**: DevOps팀장\n**다음 검토 예정일**: 2027-03-23\n\n---\n\n## 1. 목적\n\n이 문서는 SK텔레콤이 내부적으로 개발한 소프트웨어를 오픈소스로 외부에 공개할 때 준수해야 할 절차를 정의한다. 회사의 지식재산 보호, 라이선스 선정, 커뮤니티 운영 준비 등을 체계적으로 진행하기 위한 가이드라인을 제공한다.\n\n---\n\n## 2. 적용 범위\n\n- SK텔레콤이 개발한 소프트웨어를 GitHub 등 공개 플랫폼에 공개하는 경우\n- 기존 비공개 프로젝트를 오픈소스로 전환하는 경우\n- 외부 오픈소스 프로젝트에 사내 코드베이스를 기반으로 한 신규 프로젝트를 기부(donate)하는 경우\n\n---\n\n## 3. 역할 및 책임\n\n| 역할 | 담당자 | 책임 |\n|------|--------|------|\n| 공개 신청자 | 개발팀 구성원 / 팀장 | 공개 제안 및 준비 |\n| IP 검토 | 법무팀 | 특허, 영업비밀, 저작권 검토 |\n| 라이선스 선정 | DevOps팀 오픈소스 담당자 + 법무팀 | 적합한 오픈소스 라이선스 선택 |\n| 보안 검토 | 보안팀 | 민감 정보 포함 여부 확인 |\n| 최종 승인 | DevOps팀장 (+ 필요 시 상위 결재) | 공개 최종 승인 |\n| 커뮤니티 관리 | 오픈소스 담당자 + 개발팀 | 공개 후 저장소 운영 |\n\n---\n\n## 4. 프로젝트 공개 절차\n\n### 4-1. 전체 공개 흐름\n\n```mermaid\nflowchart TD\n    A([공개 제안 수립]) --> B[GitHub Issues에 공개 신청\\n'oss-publication' 레이블]\n    B --> C[오픈소스 담당자 1차 검토]\n    C --> D[IP 검토 요청\\n법무팀]\n    D --> E[보안 검토\\n보안팀]\n    E --> F{IP·보안\\n검토 통과?}\n    F -->|통과| G[라이선스 선정]\n    F -->|문제 발견| H[민감 정보 제거 또는\\n공개 범위 조정]\n    H --> E\n    G --> I[저장소 준비\\nREADME, CONTRIBUTING, LICENSE 등]\n    I --> J[팀장 최종 승인]\n    J --> K[GitHub 공개 저장소 생성\\nsktelecom organization]\n    K --> L[공개 발표\\n블로그, 소셜미디어 등]\n    L --> M[커뮤니티 운영 시작]\n    M --> N([지속적 유지보수])\n```\n\n### 4-2. 단계별 세부 절차\n\n#### Step 1. 공개 신청\n\nGitHub Issues에 아래 양식으로 등록한다 (`oss-publication` 레이블):\n\n```markdown\n## 오픈소스 공개 신청\n\n### 프로젝트 기본 정보\n- **프로젝트명**: \n- **설명**: (프로젝트의 목적과 기능을 2~3줄로 설명)\n- **주요 기술 스택**: (예: Python, FastAPI, PostgreSQL)\n- **개발 기간**: YYYY-MM ~ YYYY-MM\n\n### 공개 목적\n- [ ] 커뮤니티 기여 및 생태계 발전\n- [ ] 개발자 채용 및 브랜딩\n- [ ] 표준화 기여\n- [ ] 기타: ___\n\n### 포함 내용\n- **공개 대상 코드 범위**: (전체 / 특정 모듈)\n- **제외 예정 항목**: (설정파일, 인증키 등)\n\n### 잠재적 위험 자체 점검\n- [ ] 영업비밀 미포함 확인\n- [ ] 고객 데이터 미포함 확인\n- [ ] 하드코딩된 인증정보 미포함 확인\n- [ ] 특허 관련 기술 포함 여부 확인 (있음 / 없음)\n- [ ] 외부 라이선스 코드 포함 여부 확인 (있음 / 없음)\n\n### 희망 라이선스\n- (예: Apache-2.0 / MIT / 미정)\n\n### 커뮤니티 운영 계획\n- **메인테이너**: (담당자 이름/팀)\n- **지원 기간 계획**: (예: 최소 2년)\n- **기여 수용 계획**: (외부 PR 수용 여부)\n```\n\n#### Step 2. IP(지식재산) 검토 (법무팀)\n\n| 검토 항목 | 내용 | 확인 |\n|---------|------|------|\n| 특허 관련 기술 포함 여부 | 회사 보유 특허 또는 출원 중인 기술 | ☐ |\n| 영업비밀 포함 여부 | 핵심 알고리즘, 독자 기술 | ☐ |\n| 제3자 IP 포함 여부 | 외부 라이선스 코드 재사용 | ☐ |\n| 저작권 귀속 확인 | 프리랜서, 외주 개발 코드 포함 여부 | ☐ |\n| 수출 규제 대상 여부 | 암호화 기술 등 수출 통제 대상 | ☐ |\n\n#### Step 3. 보안 검토 (보안팀)\n\nGitHub Actions를 통한 자동 검사 + 수동 검토:\n\n```yaml\nname: Pre-Publication Security Scan\n\non:\n  workflow_dispatch:\n    inputs:\n      repo_path:\n        description: '공개 예정 프로젝트 경로'\n        required: true\n\njobs:\n  security-check:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n\n      - name: Scan for secrets and credentials\n        uses: trufflesecurity/trufflehog@main\n        with:\n          path: ./\n          base: main\n\n      - name: Check for hardcoded secrets\n        uses: gitleaks/gitleaks-action@v2\n\n      - name: License compatibility check\n        run: |\n          pip install licensecheck\n          licensecheck --zero\n\n      - name: Dependency vulnerability scan\n        uses: aquasecurity/trivy-action@master\n        with:\n          scan-type: 'fs'\n          severity: 'CRITICAL,HIGH'\n```\n\n수동 보안 검토 체크리스트:\n\n| 확인 항목 | 확인 |\n|---------|------|\n| 하드코딩된 API 키, 비밀번호, 토큰 | ☐ |\n| 내부 서버 IP, 도메인, 인프라 정보 | ☐ |\n| 고객 개인정보 또는 거래 데이터 샘플 | ☐ |\n| 내부 시스템 아키텍처 도면 | ☐ |\n| Git 커밋 히스토리의 민감 정보 | ☐ |\n\n#### Step 4. 라이선스 선정\n\n| 상황 | 권장 라이선스 | 이유 |\n|------|------------|------|\n| 최대한 넓은 활용 장려 | MIT, Apache-2.0 | 상업적 활용 포함 허용 |\n| 기여 코드도 오픈소스로 유지 희망 | Apache-2.0 | 특허 보호 조항 포함 |\n| 강력한 공개 의무 부여 | GPL-3.0 | 파생 코드 공개 강제 |\n| 라이브러리 공개 | Apache-2.0, LGPL | 상업 제품에도 활용 가능 |\n\n> 📌 **SK텔레콤 권장 라이선스**: **Apache-2.0** — 특허 관련 조항이 포함되어 있어 회사와 기여자 모두를 보호하며, 기업 생태계에서 널리 사용됨\n\n#### Step 5. 저장소 준비\n\n공개 전 아래 파일을 준비한다:\n\n| 파일 | 내용 | 필수 여부 |\n|------|------|---------|\n| `README.md` | 프로젝트 소개, 설치 방법, 사용 예시 | 필수 |\n| `LICENSE` | 선정된 라이선스 전문 | 필수 |\n| `CONTRIBUTING.md` | 기여 방법, 코드 스타일, PR 가이드 | 필수 |\n| `CODE_OF_CONDUCT.md` | 커뮤니티 행동 강령 | 권장 |\n| `SECURITY.md` | 보안 취약점 신고 방법 | 권장 |\n| `CHANGELOG.md` | 버전별 변경 내역 | 권장 |\n| `.github/ISSUE_TEMPLATE/` | 이슈 템플릿 | 권장 |\n| `.github/PULL_REQUEST_TEMPLATE.md` | PR 템플릿 | 권장 |\n\n**README.md 필수 포함 항목**:\n\n```markdown\n# 프로젝트명\n\n[한 줄 설명]\n\n## 개요\n## 주요 기능\n## 설치 방법\n## 사용 방법\n## 기여 방법\n## 라이선스\n## 연락처 / 커뮤니티\n```\n\n**SECURITY.md 템플릿**:\n\n```markdown\n# Security Policy\n\n## Supported Versions\n| Version | Supported |\n| ------- | --------- |\n| latest  | ✅        |\n\n## Reporting a Vulnerability\n보안 취약점 발견 시 아래 채널로 신고해 주세요:\n- Email: security@sktelecom.com\n- 응답 시간: 영업일 기준 5일 이내\n```\n\n#### Step 6. 최종 승인 및 공개\n\n| 승인 단계 | 담당자 | 확인 |\n|---------|--------|------|\n| IP 검토 완료 | 법무팀 | ☐ |\n| 보안 검토 완료 | 보안팀 | ☐ |\n| 라이선스 확정 | 오픈소스 담당자 | ☐ |\n| 저장소 준비 완료 | 개발팀 | ☐ |\n| 팀장 최종 승인 | DevOps팀장 | ☐ |\n\n---\n\n## 5. 공개 후 저장소 운영\n\n### 5-1. 커뮤니티 관리 원칙\n\n- **이슈 응답**: 외부 이슈 등록 후 영업일 7일 이내 응답 목표\n- **PR 검토**: 외부 PR 등록 후 영업일 14일 이내 검토 목표\n- **릴리즈 주기**: 주간 내부 배포 주기에 맞춰 태그/릴리즈 생성\n- **보안 패치**: 취약점 발견 시 `vulnerability-response.md` 절차 준수\n\n### 5-2. 저장소 품질 유지\n\n```yaml\nname: Repository Health Check\n\non:\n  schedule:\n    - cron: '0 9 * * 1'  # 매주 월요일\n\njobs:\n  health:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n\n      - name: Check for stale issues and PRs\n        uses: actions/stale@v9\n        with:\n          stale-issue-days: 60\n          stale-pr-days: 30\n          stale-issue-message: '이 이슈는 60일 동안 활동이 없어 stale 처리됩니다.'\n\n      - name: License compliance check\n        uses: fossa-contrib/fossa-action@v3\n```\n\n### 5-3. 공개 중단(Archiving) 기준\n\n아래 조건에 해당하는 경우 팀장 승인 후 저장소를 Archive 처리할 수 있다:\n\n- 메인테이너 부재로 6개월 이상 유지보수 불가\n- 비즈니스 전략 변경으로 프로젝트 중단\n- 보안 취약점 해결 불가로 인한 위험 소프트웨어 판단\n\nArchive 시 반드시 `README.md`에 중단 사유와 날짜를 명시한다.\n\n---\n\n## 6. 공개 현황 관리\n\n오픈소스 담당자는 공개 프로젝트 현황을 관리한다:\n\n| 관리 항목 | 주기 |\n|---------|------|\n| 공개 프로젝트 목록 업데이트 | 신규 공개 시 |\n| 저장소 활동 현황 모니터링 | 월간 |\n| 보안 취약점 모니터링 | 주간 (GitHub Actions) |\n| 라이선스 준수 현황 | 분기별 |\n| 연간 기여 현황 집계 | 연간 |\n\n---\n\n## 7. 관련 문서\n\n| 문서 | 경로 |\n|------|------|\n| 오픈소스 정책 | `output/policy/oss-policy.md` |\n| 역할 정의 | `output/organization/role-definition.md` |\n| 오픈소스 기여 절차 | `output/process/contribution-process.md` |\n| 취약점 대응 절차 | `output/process/vulnerability-response.md` |\n\n---\n\n## 8. 이력 관리\n\n| 버전 | 날짜 | 변경 내용 | 작성자 |\n|------|------|---------|--------|\n| 1.0 | 2026-03-23 | 최초 작성 | DevOps팀 오픈소스 담당자 |\n"
+          }
+        }
+      ],
+      "stop_reason": "tool_use"
+    },
+    {
+      "content": [
+        {
+          "type": "tool_use",
+          "id": "toolu_0143asJABHFLjH1ouHEh61iN",
+          "name": "Write",
+          "input": {
+            "file_path": "output/process/process-diagram.md",
+            "content": "# 오픈소스 컴플라이언스 프로세스 흐름도\n<!-- 5230 §3.1.5.1, §3.2.1.1, §3.3.2.1, §3.4.1.1, §3.5.1.1 -->\n<!-- 18974 §4.1.5.1, §4.2.1.1 -->\n\n**회사명**: SK텔레콤\n**버전**: 1.0\n**작성일**: 2026-03-23\n**작성자**: DevOps팀 오픈소스 담당자\n\n---\n\n## 개요\n\n이 문서는 SK텔레콤의 오픈소스 컴플라이언스 전체 프로세스를 Mermaid 흐름도로 시각화한다.\nGitHub에서 자동으로 렌더링되며, 각 프로세스 문서와 연계하여 활용한다.\n\n---\n\n## 1. 전체 오픈소스 컴플라이언스 라이프사이클\n\n```mermaid\nflowchart TD\n    subgraph PLAN[\"📋 계획 단계\"]\n        A([오픈소스 도입 필요]) --> B[라이선스 검토\\nusage-approval.md]\n    end\n\n    subgraph APPROVE[\"✅ 승인 단계\"]\n        B --> C{허용 라이선스?}\n        C -->|Yes| D[보안 스캔\\nGitHub Actions]\n        C -->|No| E[법무팀 자문]\n        E --> D\n        D --> F{취약점 없음?}\n        F -->|Yes| G[팀장 승인]\n        F -->|No| H[패치/대안 적용]\n        H --> D\n    end\n\n    subgraph BUILD[\"🔨 빌드 단계\"]\n        G --> I[SBOM 생성\\nSyft / SPDX]\n        I --> J[고지문 생성\\nORT / FOSSA]\n    end\n\n    subgraph RELEASE[\"🚀 배포 단계\"]\n        J --> K[배포 전 체크리스트\\ndistribution-checklist.md]\n        K --> L{모든 항목 통과?}\n        L -->|Yes| M[주간 배포 실행]\n        L -->|No| N[미비 항목 보완]\n        N --> K\n    end\n\n    subgraph MONITOR[\"🔍 모니터링 단계\"]\n        M --> O[CVE 모니터링\\nDependabot / Trivy 정기 스캔]\n        O --> P{신규 취약점?}\n        P -->|Yes| Q[취약점 대응\\nvulnerability-response.md]\n        P -->|No| O\n        Q --> R[패치 배포]\n        R --> O\n    end\n\n    subgraph EXTERNAL[\"📬 외부 대응\"]\n        S([외부 문의 수신\\nopensource@sktelecom.com]) --> T[문의 대응\\ninquiry-response.md]\n        U([취약점 신고\\nsecurity@sktelecom.com]) --> Q\n    end\n```\n\n---\n\n## 2. 오픈소스 사용 승인 절차 흐름도\n\n```mermaid\nflowchart TD\n    A([오픈소스 사용 요청]) --> B[GitHub Issues 등록\\noss-approval 레이블]\n    B --> C[오픈소스 담당자 라이선스 검토]\n    C --> D{허용 목록 내\\n라이선스?}\n    D -->|Permissive\\nMIT·Apache-2.0·BSD| E[보안 취약점 스캔]\n    D -->|Weak Copyleft\\nLGPL·MPL| F[의무사항 이행 계획 수립]\n    D -->|Strong/Network Copyleft\\nGPL·AGPL| G[법무팀 자문 필수]\n    D -->|미확인 라이선스| G\n    F --> E\n    G -->|승인| E\n    G -->|거부| Z([대안 컴포넌트 검토])\n    E --> H{Critical/High\\n취약점?}\n    H -->|없음| I[팀장 최종 승인]\n    H -->|있음| J{패치 버전\\n존재?}\n    J -->|예| K[패치 버전으로 재검토]\n    K --> E\n    J -->|아니오| L[위험 수용 여부 결정\\n팀장 + 담당자]\n    L -->|수용| I\n    L -->|거부| Z\n    I --> M[SBOM 업데이트]\n    M --> N[승인 완료\\nGitHub Issues approved]\n```\n\n---\n\n## 3. 주간 배포 전 체크리스트 흐름도\n\n```mermaid\nflowchart TD\n    A([주간 배포 예정\\n매주]) --> B[GitHub Actions 자동 실행\\nSBOM 생성 + 취약점 스캔]\n    B --> C{스캔 결과\\n이상 없음?}\n    C -->|이상 없음| D[오픈소스 담당자\\n수동 검토]\n    C -->|Critical/High 발견| E[배포 중단\\n취약점 대응 절차 실행]\n    E --> F[패치 적용]\n    F --> B\n    D --> G{SBOM 최신\\n상태?}\n    G -->|예| H{고지문\\n준비 완료?}\n    G -->|아니오| I[SBOM 업데이트]\n    I --> H\n    H -->|예| J{라이선스 의무\\n이행 완료?}\n    H -->|아니오| K[고지문 생성\\nORT/FOSSA]\n    K --> J\n    J -->|완료| L[팀장 최종 승인]\n    J -->|미완료| M[의무사항 이행]\n    M --> L\n    L --> N[배포 실행]\n    N --> O[배포 후 최종 확인\\n고지문·SBOM·CVE 모니터링]\n    O --> P[산출물 보관\\noutput/sbom/, output/notices/]\n    P --> Q([다음 주 배포 준비])\n```\n\n---\n\n## 4. 취약점 탐지 및 대응 흐름도\n\n```mermaid\nflowchart TD\n    subgraph DETECT[\"🔍 탐지\"]\n        A1[GitHub Actions\\n정기 스캔 월요일] --> D\n        A2[Dependabot\\n알림] --> D\n        A3[외부 신고\\nsecurity@sktelecom.com] --> D\n        D[취약점 식별\\nCVE ID 확인]\n    end\n\n    subgraph CLASSIFY[\"📊 분류\"]\n        D --> E{CVSS 심각도}\n        E -->|Critical 9.0+| F1[대응 기한: 1주일\\n즉시 팀 구성]\n        E -->|High 7.0~8.9| F2[대응 기한: 4주일\\n우선순위 패치]\n        E -->|Medium 4.0~6.9| F3[대응 기한: 1개월\\n정기 패치]\n        E -->|Low 0.1~3.9| F4[대응 기한: 다음 릴리즈]\n    end\n\n    subgraph RESPOND[\"🔧 대응\"]\n        F1 --> G[패치/업그레이드\\n적용]\n        F2 --> G\n        F3 --> G\n        F4 --> G\n        G --> H[검증 스캔]\n        H --> I{취약점\\n해소?}\n        I -->|Yes| J[팀장 승인 후 배포]\n        I -->|No| K[완화 조치 또는\\n컴포넌트 교체]\n        K --> G\n    end\n\n    subgraph NOTIFY[\"📢 통보\"]\n        J --> L[이해관계자 통보\\n내부/외부]\n        L --> M[사후 분석\\n재발 방지]\n        M --> N([기록 보관\\n최소 5년])\n    end\n```\n\n---\n\n## 5. 외부 문의 대응 흐름도\n\n```mermaid\nflowchart TD\n    A([외부 문의 수신\\nopensource@sktelecom.com]) --> B[1영업일 이내\\n접수 확인 응답]\n    B --> C{문의 유형 분류}\n    C -->|일반 라이선스 문의| D[담당자 검토\\n5영업일 이내 답변]\n    C -->|소스코드 공개 요청| E[SBOM 확인\\n공개 의무 검토]\n    C -->|저작권 침해 주장| F[법무팀 즉시 이관\\n3영업일 이내 초기 대응]\n    C -->|보안 취약점 신고| G[보안팀 이관\\nCVD 절차 실행]\n    D --> H[답변 발송\\n10영업일 이내 완료]\n    E --> I{공개 의무\\n존재?}\n    I -->|있음| J[소스코드 제공\\n또는 링크 안내]\n    I -->|없음| K[사유 설명 답변]\n    J --> H\n    K --> H\n    F --> L[법무팀 주도 대응]\n    G --> M[CVD 절차\\n90일 이내 공개]\n    H --> N[GitHub Issues\\n처리 기록 등록]\n    L --> N\n    M --> N\n    N --> O([완료 및 보관])\n```\n\n---\n\n## 6. 오픈소스 기여 승인 흐름도\n\n```mermaid\nflowchart TD\n    A([기여 계획 수립]) --> B[GitHub Issues 등록\\noss-contribution 레이블]\n    B --> C[오픈소스 담당자 검토]\n    C --> D{기여 유형}\n    D -->|소규모\\n버그수정·문서| E[담당자 단독 승인]\n    D -->|대규모\\n신규기능·아키텍처| F[법무팀 공동 검토]\n    E --> G{IP 문제 없음?}\n    F --> G\n    G -->|문제 없음| H{CLA\\n필요?}\n    G -->|IP 문제| I[기여 불가\\n대안 검토]\n    H -->|Corporate CLA| J[법무팀 검토\\n회사 대표자 서명]\n    H -->|Individual CLA / DCO| K[담당자 서명]\n    H -->|불필요| L[라이선스 양립성 확인]\n    J --> L\n    K --> L\n    L --> M{양립성\\n문제 없음?}\n    M -->|Yes| N[팀장 승인\\n대규모 기여 시]\n    M -->|No| I\n    N --> O[기여 실행\\nPR / Commit]\n    E --> O\n    O --> P[기여 이력 기록]\n    P --> Q([완료])\n```\n\n---\n\n## 7. 사내 프로젝트 오픈소스 공개 흐름도\n\n```mermaid\nflowchart TD\n    A([공개 제안]) --> B[GitHub Issues 등록\\noss-publication 레이블]\n    B --> C[오픈소스 담당자\\n1차 검토]\n    C --> D[IP 검토\\n법무팀]\n    C --> E[보안 검토\\n보안팀]\n    D --> F{IP 이슈 없음?}\n    E --> G{민감 정보 없음?}\n    F -->|이슈 있음| H[민감 코드 제거\\n또는 공개 범위 조정]\n    G -->|발견| H\n    H --> D\n    F -->|없음| I[라이선스 선정\\nApache-2.0 권장]\n    G -->|없음| I\n    I --> J[저장소 준비\\nREADME·LICENSE·CONTRIBUTING·SECURITY]\n    J --> K[GitHub Actions\\n공개 전 보안 스캔]\n    K --> L{스캔 통과?}\n    L -->|Yes| M[팀장 최종 승인]\n    L -->|No| H\n    M --> N[공개 저장소 생성\\nsktelecom organization]\n    N --> O[공개 발표]\n    O --> P[커뮤니티 운영\\n이슈·PR 대응]\n    P --> Q([지속적 유지보수])\n```\n\n---\n\n## 8. CI/CD 통합 자동화 흐름도 (GitHub Actions)\n\n```mermaid\nflowchart LR\n    subgraph DEV[\"💻 개발자\"]\n        A[코드 작성] --> B[Pull Request 생성]\n    end\n\n    subgraph CI[\"⚙️ GitHub Actions CI\"]\n        B --> C[라이선스 스캔\\nFOSSA / licensee]\n        C --> D[취약점 스캔\\nTrivy]\n        D --> E{모든 검사\\n통과?}\n        E -->|Pass| F[PR 머지 허용]\n        E -->|Fail| G[PR 차단\\n담당자 알림]\n    end\n\n    subgraph CD[\"🚀 GitHub Actions CD\"]\n        F --> H[main 브랜치 머지]\n        H --> I[SBOM 자동 생성\\nSyft]\n        I --> J[고지문 생성\\nORT]\n        J --> K[컴플라이언스 아카이브\\n생성 및 업로드]\n        K --> L[주간 배포 실행]\n    end\n\n    subgraph MONITOR[\"🔍 정기 모니터링\"]\n        M[매주 월요일\\n정기 스캔] --> N[신규 CVE 탐지]\n        N --> O{Critical/High?}\n        O -->|Yes| P[GitHub Issues\\n자동 생성 + 알림]\n        O -->|No| M\n        P --> Q[취약점 대응 절차]\n    end\n\n    L --> MONITOR\n```\n\n---\n\n## 참조 문서\n\n| 문서 | 경로 | 관련 흐름도 |\n|------|------|-----------|\n| 오픈소스 사용 승인 절차 | `output/process/usage-approval.md` | 흐름도 2 |\n| 배포 전 체크리스트 | `output/process/distribution-checklist.md` | 흐름도 3 |\n| 취약점 대응 절차 | `output/process/vulnerability-response.md` | 흐름도 4 |\n| 외부 문의 대응 절차 | `output/process/inquiry-response.md` | 흐름도 5 |\n| 오픈소스 기여 절차 | `output/process/contribution-process.md` | 흐름도 6 |\n| 사내 프로젝트 공개 절차 | `output/process/project-publication-process.md` | 흐름도 7 |\n\n---\n\n## 이력 관리\n\n| 버전 | 날짜 | 변경 내용 | 작성자 |\n|------|------|---------|--------|\n| 1.0 | 2026-03-23 | 최초 작성 | DevOps팀 오픈소스 담당자 |\n"
+          }
+        }
+      ],
+      "stop_reason": "tool_use"
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "모든 문서가 생성되었습니다! 최종 확인을 진행하겠습니다."
+        },
+        {
+          "type": "tool_use",
+          "id": "toolu_017tkmQBXUX1dRNtiJzP3yrj",
+          "name": "Bash",
+          "input": {
+            "command": "ls -la output/process/"
+          }
+        }
+      ],
+      "stop_reason": "tool_use"
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "7개 파일 모두 정상 생성되었습니다! 🎉\n\n---\n\n## ✅ 문서 생성 완료!\n\n### 📁 생성된 파일 목록 (`output/process/`)\n\n| 파일 | 크기 | 주요 내용 |\n|------|------|---------|\n| `usage-approval.md` | 6.9KB | 오픈소스 사용 승인 절차 (팀장 승인 2단계) |\n| `distribution-checklist.md` | 9.8KB | 배포 전 체크리스트 (주간 배포 기준) |\n| `vulnerability-response.md` | 9.7KB | 취약점 대응 절차 + CVD §8 포함 |\n| `inquiry-response.md` | 7.5KB | 외부 문의 대응 절차 (필수) |\n| `contribution-process.md` | 7.3KB | 오픈소스 기여 절차 |\n| `project-publication-process.md` | 9.6KB | 사내 프로젝트 공개 절차 |\n| `process-diagram.md` | 9.6KB | Mermaid 전체 흐름도 (8개 다이어그램) |\n\n---\n\n### 🔑 주요 반영 내용\n\n| 입력값 | 반영 내용 |\n|--------|---------|\n| **GitHub Actions** | 모든 문서에 워크플로우 YAML 예시 포함 (Trivy, Syft, FOSSA 등) |\n| **주간 배포** | 배포 체크리스트에 주간 주기 명시, 긴급 패치 기준 별도 정의 |\n| **GitHub Issues** | 승인 요청·기여 요청·취약점 이슈 등 레이블 기반 추적 체계 |\n| **팀장 승인** | 사용 승인, 배포 승인, 기여 승인 모두 팀장 최종 결재 포함 |\n| **기여 계획 있음** | `contribution-process.md` 생성 (IP 확인, CLA, 플랫폼별 가이드) |\n| **공개 계획 있음** | `project-publication-process.md` 생성 (저장소 준비, 라이선스 선정) |\n| **채널 운영 중** | `opensource@sktelecom.com`, `security@sktelecom.com` 반영 |\n\n---\n\n### 🎯 충족된 컴플라이언스 항목\n\n| 항목 | 요구사항 | 충족 문서 |\n|------|---------|---------|\n| G1.6 | 라이선스 의무사항 검토 절차 | `usage-approval.md` |\n| G2.2 | 외부 라이선스 문의 대응 절차 | `inquiry-response.md` |\n| G3L.2 | 라이선스 의무사항 이행 | `distribution-checklist.md` |\n| G3L.5 | 컴플라이언스 산출물 보관 | `distribution-checklist.md` §8 |\n| G3L.6 | 오픈소스 기여 관리 | `contribution-process.md` |\n| G3S.1~G3S.4 | 취약점 탐지·대응·CVD | `vulnerability-response.md` |\n\n---\n\n### ➡️ 다음 단계\n\n```bash\ncd agents/05-sbom-guide\nclaude\n```"
+        }
+      ],
+      "stop_reason": "end_turn"
+    }
+  ]
+}
