@@ -228,6 +228,10 @@ const config: Config = {
         //   position: 'left',
         // },
         {
+          type: 'localeDropdown',
+          position: 'right',
+        },
+        {
           href: 'https://github.com/trustedoss',
           'aria-label': 'GitHub repository',
           position: 'right',
