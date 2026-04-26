@@ -5,6 +5,7 @@
 
 import React from 'react';
 import GitHubButton from 'react-github-btn';
+import Translate, {translate} from '@docusaurus/Translate';
 import {useColorMode} from '@docusaurus/theme-common';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
@@ -28,23 +29,51 @@ function Hero() {
       </div>
       <div className={styles.content}>
         <div className={styles.shieldIcon}>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 90" width="80" height="90">
-            <path d="M40 5 L75 18 L75 48 Q75 72 40 85 Q5 72 5 48 L5 18 Z" fill="#1a7f5a" opacity="0.9"/>
-            <path d="M26 44 L35 53 L54 34" stroke="#ffffff" strokeWidth="5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 80 90"
+            width="80"
+            height="90">
+            <path
+              d="M40 5 L75 18 L75 48 Q75 72 40 85 Q5 72 5 48 L5 18 Z"
+              fill="#1a7f5a"
+              opacity="0.9"
+            />
+            <path
+              d="M26 44 L35 53 L54 34"
+              stroke="#ffffff"
+              strokeWidth="5"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
         </div>
         <h1 className={styles.title}>Trusted OSS</h1>
-        <h2 className={styles.subtitle}>신뢰할 수 있는 오픈소스 공급망 관리</h2>
+        <h2 className={styles.subtitle}>
+          <Translate id="homepage.hero.subtitle">
+            신뢰할 수 있는 오픈소스 공급망 관리
+          </Translate>
+        </h2>
         <p className={styles.description}>
-          ISO/IEC 5230 &amp; 18974 기반<br/>
-          기업 오픈소스 관리 체계 구축 실전 가이드
+          <Translate id="homepage.hero.description">
+            {
+              'ISO/IEC 5230 & 18974 기반\n기업 오픈소스 관리 체계 구축 실전 가이드'
+            }
+          </Translate>
         </p>
         <div className={styles.buttonContainer}>
           <a href={docsUrl} className={styles.primaryButton}>
-            체계구축 시작하기
+            {translate({
+              id: 'homepage.hero.cta.docs',
+              message: '체계구축 시작하기',
+            })}
           </a>
           <a href={aiCodingUrl} className={styles.secondaryButton}>
-            AI코딩 가이드
+            {translate({
+              id: 'homepage.hero.cta.aiCoding',
+              message: 'AI코딩 가이드',
+            })}
           </a>
         </div>
       </div>

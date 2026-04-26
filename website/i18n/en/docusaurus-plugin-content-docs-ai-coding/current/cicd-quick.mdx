@@ -1,0 +1,247 @@
+---
+id: cicd-quick
+title: CI/CD Automation
+sidebar_label: CI/CD Automation
+sidebar_position: 5
+---
+
+# CI/CD Automation
+
+:::info Scope of this page
+This page covers a minimal starting point focused on SCA (dependency vulnerabilities + licenses).
+If you need full coverage including secret detection, SAST, container security, and IaC security,
+see [DevSecOps — Organization-wide Pipeline Design](/devsecops/pipeline-design).
+:::
+
+## Why AI rules alone are not enough
+
+:::warning Hard Block is only possible in CI/CD
+:::
+
+AI rule files like `CLAUDE.md` or `.cursorrules` are ultimately just "recommendations." Even if developers intentionally ignore them or AI accidentally fails to follow them, nothing actually stops the result.
+
+In environments that rely only on rule files, policy-violating code can flow directly into production the moment a PR is merged. The faster AI tools generate code, the greater this risk becomes.
+
+CI/CD gates are the only safety net that can mechanically block policy violations regardless of human or AI mistakes. True Hard Block starts working from the 3-step strategy (see also the [4-step strategy](./strategy)).
+
+---
+
+## Minimum 3-tool combination
+
+| Role                  | Tool          | What it does                                                            |
+| --------------------- | ------------- | ----------------------------------------------------------------------- |
+| Generate SBOM         | syft          | Extracts all dependencies in CycloneDX/SPDX format                      |
+| Block vulnerabilities | grype         | Scans CVEs based on SBOM and fails the build when threshold is exceeded |
+| Block licenses        | syft + script | Fails the build when forbidden licenses are detected in SBOM            |
+
+All three tools are free open source and can be used immediately in GitHub Actions / GitLab CI without local installation.
+
+---
+
+## GitHub Actions
+
+### Full workflow
+
+```yaml
+# .github/workflows/oss-policy.yml
+name: OSS Policy Check
+
+on:
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  oss-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 1. SBOM 생성
+      - name: Generate SBOM
+        uses: anchore/sbom-action@v0
+        with:
+          format: cyclonedx-json
+          output-file: sbom.cdx.json
+
+      # 2. 취약점 스캔 — High 이상 발견 시 빌드 실패
+      - name: Scan vulnerabilities
+        uses: anchore/scan-action@v3
+        with:
+          sbom: sbom.cdx.json
+          fail-build: true
+          severity-cutoff: high
+
+      # 3. 금지 라이선스 검사
+      - name: Check licenses
+        run: |
+          FORBIDDEN="GPL AGPL SSPL"
+          FOUND=""
+          for license in $FORBIDDEN; do
+            if grep -qi "\"$license" sbom.cdx.json; then
+              FOUND="$FOUND $license"
+            fi
+          done
+          if [ -n "$FOUND" ]; then
+            echo "금지 라이선스 발견:$FOUND"
+            exit 1
+          fi
+          echo "라이선스 검사 통과"
+
+      # 4. SBOM 아티팩트 보관
+      - name: Upload SBOM
+        uses: actions/upload-artifact@v4
+        with:
+          name: sbom
+          path: sbom.cdx.json
+```
+
+---
+
+### Step-by-step explanation
+
+**1. Generate SBOM (anchore/sbom-action)**
+
+Analyzes source code and manifest files (such as package.json and requirements.txt) to generate an SBOM file in CycloneDX JSON format. It is available directly from GitHub Actions Marketplace and requires no separate installation.
+
+**2. Vulnerability scan (anchore/scan-action)**
+
+Checks vulnerabilities by comparing the generated SBOM against CVE databases. With `severity-cutoff: high`, the build automatically fails when High or Critical CVEs are found. Medium and below are reported as warnings while the build continues. For initial rollout, starting with `critical` and gradually tightening to `high` is recommended.
+
+**3. Forbidden license check (shell script)**
+
+Searches for GPL, AGPL, and SSPL strings in the SBOM JSON. If a forbidden license is found, the build fails with `exit 1`. You can modify the `FORBIDDEN` variable to sync with the forbidden list in the [Common Rules Template](./rules-template) or customize it for your team policy.
+
+**4. SBOM artifact retention**
+
+Stores the generated SBOM as an Actions artifact. You can use it for audit evidence and retain it as ISO/IEC 18974 evidence.
+
+---
+
+## GitLab CI
+
+:::info The tools are the same as GitHub Actions
+Only runner syntax differs; syft and grype are used as-is.
+:::
+
+### Full pipeline
+
+```yaml
+# .gitlab-ci.yml (oss-check 잡 부분)
+oss-check:
+  stage: test
+  image: ubuntu:22.04
+  script:
+    # 도구 설치
+    - curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin
+    - curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
+
+    # 1. SBOM 생성
+    - syft . -o cyclonedx-json=sbom.cdx.json
+
+    # 2. 취약점 스캔 — High 이상 빌드 실패
+    - grype sbom:sbom.cdx.json --fail-on high
+
+    # 3. 금지 라이선스 검사
+    - |
+      FORBIDDEN="GPL AGPL SSPL"
+      FOUND=""
+      for license in $FORBIDDEN; do
+        if grep -qi "\"$license" sbom.cdx.json; then
+          FOUND="$FOUND $license"
+        fi
+      done
+      if [ -n "$FOUND" ]; then
+        echo "금지 라이선스 발견:$FOUND"
+        exit 1
+      fi
+
+  artifacts:
+    paths:
+      - sbom.cdx.json
+    expire_in: 30 days
+
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+```
+
+---
+
+### Differences from GitHub Actions
+
+| Item               | GitHub Actions               | GitLab CI                      |
+| ------------------ | ---------------------------- | ------------------------------ |
+| SBOM generation    | anchore/sbom-action (Action) | Install and run syft directly  |
+| Vulnerability scan | anchore/scan-action (Action) | Install and run grype directly |
+| Trigger condition  | pull_request                 | merge_request_event            |
+| Artifact retention | upload-artifact              | artifacts.paths                |
+
+---
+
+## Policy customization
+
+:::tip At minimum, tailor these two items to your team policy
+:::
+
+**Vulnerability threshold**
+
+You can relax `severity-cutoff` (GitHub Actions) or `--fail-on` (GitLab CI) from the default `high` to `critical`, or tighten it to `medium`. When first introducing the pipeline, it is recommended to start at `critical`, observe build failure frequency, then gradually tighten.
+
+**Forbidden license list**
+
+Keep the `FORBIDDEN` variable synchronized with the forbidden license list in the [Common Rules Template](./rules-template). For caution licenses such as LGPL and MPL, you can add separate logic that emits warnings instead of failing the build, and connect that flow to legal review.
+
+---
+
+## Workflow generator
+
+Select platform, language, and security domains,
+and it generates a CI/CD pipeline file you can apply to your project immediately.
+An Anthropic API key is required.
+
+<iframe
+  src="/tools/workflow-generator.html"
+  width="100%"
+  height="920"
+  frameBorder="0"
+  style={{borderRadius: '12px', border: '1px solid #e2e0d8'}}
+/>
+
+---
+
+## Self-study
+
+:::tip Generate a project-tailored pipeline with Claude Code
+The generator above creates generic, option-based YAML.
+To analyze your real project structure,
+automatically detect whether containers/IaC are used,
+and generate an optimized pipeline, use the agent below.
+:::
+
+**Prerequisite**: Clone the [Trusted OSS repository](https://github.com/trustedoss/trustedoss.github.io)
+
+```bash
+cd agents/devsecops-setup
+claude
+```
+
+The agent automatically performs the following:
+
+- Automatically detects Dockerfile and IaC files and recommends security domains
+- Generates separated files based on GitHub Actions / GitLab CI selection
+- Generates policy files (`.grype.yaml`, `.gitleaks.toml`, etc.) together
+- Provides guidance to avoid conflicts with existing workflows
+
+---
+
+## Next steps
+
+After you set up the SCA gate, add the remaining domains in order.
+
+- [Expand AI code review](./ai-security-review) — Semantic vulnerability detection using AI (optional)
+- [DevSecOps — Secret Detection](/devsecops/secret-detection) — Gitleaks pre-commit and PR configuration
+- [DevSecOps — SAST](/devsecops/sast) — Semgrep and CodeQL PR gates
+- [DevSecOps — Container Security](/devsecops/container-security) — Trivy image scanning
+- [DevSecOps — IaC Security](/devsecops/iac-security) — Checkov infrastructure code scanning
+- [DevSecOps — Organization-wide Pipeline Design](/devsecops/pipeline-design) — Integrated all-domain design
+- [DevSecOps — Continuous Monitoring and Auto-remediation](/devsecops/monitoring)

@@ -1,0 +1,206 @@
+---
+id: sca
+title: Software Composition Analysis (SCA)
+sidebar_label: SCA
+sidebar_position: 4
+---
+
+# Software Composition Analysis (SCA)
+
+## What is SCA?
+
+SCA is a method for analyzing open-source components included in software to detect known vulnerabilities (CVEs). It tracks the full dependency graph based on an SBOM (Software Bill of Materials) and enables immediate response when new CVEs are discovered.
+
+---
+
+## SBOM Generation — syft
+
+### Basic Usage
+
+```bash
+# CycloneDX JSON 생성 (권장)
+syft . -o cyclonedx-json=sbom.cdx.json
+
+# SPDX JSON 생성
+syft . -o spdx-json=sbom.spdx.json
+
+# 컨테이너 이미지 분석
+syft nginx:latest -o cyclonedx-json=sbom.cdx.json
+```
+
+### Format Selection
+
+| Format         | Steward          | Recommended Use                                           |
+| -------------- | ---------------- | --------------------------------------------------------- |
+| CycloneDX JSON | OWASP            | Security and vulnerability management (grype integration) |
+| SPDX JSON      | Linux Foundation | Supply chain sharing and regulatory response              |
+
+For security pipeline-centric workflows, CycloneDX JSON is recommended.
+
+---
+
+## Vulnerability Scanning — grype
+
+### Full GitHub Actions Workflow
+
+```yaml
+# .github/workflows/sca.yml
+
+name: SCA — SBOM & Vulnerability Scan
+
+on:
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  sca:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate SBOM
+        uses: anchore/sbom-action@v0
+        with:
+          format: cyclonedx-json
+          output-file: sbom.cdx.json
+
+      - name: Scan vulnerabilities
+        uses: anchore/scan-action@v3
+        with:
+          sbom: sbom.cdx.json
+          fail-build: true
+          severity-cutoff: high
+          config: .grype.yaml
+
+      - name: Upload SBOM artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: sbom-${{ github.sha }}
+          path: sbom.cdx.json
+          retention-days: 90
+```
+
+### GitLab CI
+
+```yaml
+# .gitlab-ci.yml (sca 잡 부분)
+
+sca:
+  stage: test
+  image: ubuntu:22.04
+  script:
+    - curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh
+      | sh -s -- -b /usr/local/bin
+    - curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh
+      | sh -s -- -b /usr/local/bin
+    - syft . -o cyclonedx-json=sbom.cdx.json
+    - grype sbom:sbom.cdx.json --fail-on high --config .grype.yaml
+  artifacts:
+    paths:
+      - sbom.cdx.json
+    expire_in: 90 days
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+```
+
+---
+
+## Vulnerability Policy Design
+
+### Severity-Based SLA
+
+| Severity | CVSS Range | Recommended SLA | Build Block  |
+| -------- | ---------- | --------------- | ------------ |
+| Critical | 9.0–10.0   | 24 hours        | Block        |
+| High     | 7.0–8.9    | 7 days          | Block        |
+| Medium   | 4.0–6.9    | 30 days         | Warning only |
+| Low      | 0.1–3.9    | Next release    | Ignore       |
+
+At initial adoption, it is recommended to block only Critical issues, then expand to High after the team is accustomed.
+
+### grype Policy File
+
+:::info Always record reason and approval date for ignore rules
+For audit response, exceptions without evidence can become a compliance risk.
+:::
+
+```yaml
+# .grype.yaml
+
+fail-on-severity: high
+
+ignore:
+  # 실제 코드 경로 미사용 — 보안팀 승인 2024-01-15
+  - vulnerability: CVE-2023-XXXXX
+    reason: '해당 함수 미사용 확인'
+  # 테스트 전용 패키지
+  - package:
+      name: some-test-lib
+      type: npm
+```
+
+---
+
+## Using VEX
+
+**What is VEX (Vulnerability Exploitability eXchange)?** It is a machine-readable document that specifies whether a particular CVE is actually exploitable in a given product. It formally expresses cases like "the CVE exists, but the affected code path is not used," reducing unnecessary alerts across downstream supply chains.
+
+**Practical use:** Author it in CycloneDX VEX or OpenVEX format and distribute it with the SBOM. Adoption is still early, but its importance is growing as supply chain regulations tighten.
+
+---
+
+## SBOM Retention Policy
+
+**Storage location:** Store as CI/CD artifacts and connect to release tags to track SBOMs by version. Use GitHub Actions `upload-artifact` and GitLab `artifacts.paths`.
+
+**Retention period:** ISO/IEC 18974 requires retention for the life of the program. In practice, permanent retention per release version is recommended.
+
+**When to update:** Regenerate whenever dependencies change. Automatic generation at the PR level keeps it always up to date.
+
+---
+
+## Self-Study
+
+:::tip In-depth SBOM analysis with Claude Code
+The analyzer above is available directly in your browser.
+If you need deeper analysis and automatic `.grype.yaml` policy file generation,
+use the agent below.
+:::
+
+**Prerequisite**: Clone the [Trusted OSS repository](https://github.com/trustedoss/trustedoss.github.io)
+
+```bash
+cd agents/sbom-vuln-analyst
+claude
+```
+
+The agent automatically performs the following:
+
+- Auto-detects CycloneDX / SPDX / grype results
+- Classifies by severity and suggests fixed versions
+- Generates `.grype.yaml` exception handling examples
+- Provides CI/CD pipeline integration guidance
+
+---
+
+## SBOM Analyzer
+
+Upload SBOM files generated by syft, trivy, or cdxgen
+to automatically analyze vulnerabilities and generate response guidance.
+
+<iframe
+  src="/tools/sbom-analyzer.html"
+  width="100%"
+  height="900"
+  frameBorder="0"
+  style={{borderRadius: '12px', border: '1px solid #2a2f45'}}
+/>
+
+---
+
+## Next Steps
+
+- Prevent secret leakage: [Secret Detection](./secret-detection)
+- Container image vulnerabilities: [Container Security](./container-security)
+- Continuous post-deployment monitoring: [Monitoring & Auto-Remediation](./monitoring)
+- ISO/IEC 18974 alignment: [ISO Mapping](./iso-mapping)

@@ -4,6 +4,7 @@
  */
 
 import React from 'react';
+import Translate, {translate} from '@docusaurus/Translate';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 import styles from './styles.module.css';
@@ -11,28 +12,55 @@ import styles from './styles.module.css';
 const features = [
   {
     icon: '🏗️',
-    title: '체계구축',
-    description: 'ISO/IEC 5230 & 18974 기반으로 기업 오픈소스 관리 체계를 처음부터 완성까지 구축합니다.',
+    title: translate({id: 'homepage.cta.feature1.title', message: '체계구축'}),
+    description: translate({
+      id: 'homepage.cta.feature1.desc',
+      message:
+        'ISO/IEC 5230 & 18974 기반으로 기업 오픈소스 관리 체계를 처음부터 완성까지 구축합니다.',
+    }),
     link: '/docs',
-    linkLabel: '가이드 시작하기',
+    linkLabel: translate({
+      id: 'homepage.cta.feature1.link',
+      message: '가이드 시작하기',
+    }),
   },
   {
     icon: '🔒',
-    title: 'DevSecOps',
-    description: '개발 파이프라인에 보안을 통합합니다. SAST, SCA, 컨테이너 보안, CI/CD 자동화를 다룹니다.',
+    title: translate({id: 'homepage.cta.feature2.title', message: 'DevSecOps'}),
+    description: translate({
+      id: 'homepage.cta.feature2.desc',
+      message:
+        '개발 파이프라인에 보안을 통합합니다. SAST, SCA, 컨테이너 보안, CI/CD 자동화를 다룹니다.',
+    }),
     link: '/devsecops/intro',
-    linkLabel: 'DevSecOps 가이드',
+    linkLabel: translate({
+      id: 'homepage.cta.feature2.link',
+      message: 'DevSecOps 가이드',
+    }),
   },
   {
     icon: '🤖',
-    title: 'AI코딩',
-    description: 'Claude Code, Cursor, Copilot 등 AI 코딩 도구와 오픈소스 컴플라이언스를 함께 관리합니다.',
+    title: translate({id: 'homepage.cta.feature3.title', message: 'AI코딩'}),
+    description: translate({
+      id: 'homepage.cta.feature3.desc',
+      message:
+        'Claude Code, Cursor, Copilot 등 AI 코딩 도구와 오픈소스 컴플라이언스를 함께 관리합니다.',
+    }),
     link: '/ai-coding/intro',
-    linkLabel: 'AI코딩 가이드',
+    linkLabel: translate({
+      id: 'homepage.cta.feature3.link',
+      message: 'AI코딩 가이드',
+    }),
   },
 ];
 
-function FeatureCard({icon, title, description, link, linkLabel}: (typeof features)[0]) {
+function FeatureCard({
+  icon,
+  title,
+  description,
+  link,
+  linkLabel,
+}: (typeof features)[0]) {
   const url = useBaseUrl(link);
   return (
     <div className={styles.featureCard}>
@@ -56,13 +84,20 @@ function CallToAction() {
         ))}
       </div>
       <div className={styles.container}>
-        <h2 className={styles.title}>오픈소스 관리, 지금 시작하세요</h2>
+        <h2 className={styles.title}>
+          <Translate id="homepage.cta.section.title">
+            오픈소스 관리, 지금 시작하세요
+          </Translate>
+        </h2>
         <p className={styles.subtitle}>
-          OpenChain KWG 커뮤니티가 제공하는 무료 가이드로<br/>
-          ISO/IEC 5230 & 18974 자체 인증 선언까지 완성하세요.
+          <Translate id="homepage.cta.section.subtitle">
+            {
+              'OpenChain KWG 커뮤니티가 제공하는 무료 가이드로\nISO/IEC 5230 & 18974 자체 인증 선언까지 완성하세요.'
+            }
+          </Translate>
         </p>
         <a href={docsUrl} className={styles.primaryButton}>
-          체계구축 시작하기
+          <Translate id="homepage.cta.section.cta">체계구축 시작하기</Translate>
         </a>
       </div>
     </div>

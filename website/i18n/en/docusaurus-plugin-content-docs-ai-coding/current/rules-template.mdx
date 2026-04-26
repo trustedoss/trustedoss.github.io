@@ -1,0 +1,155 @@
+---
+id: rules-template
+title: Common Rules Template
+sidebar_label: Common Rules Template
+sidebar_position: 3
+---
+
+# Open Source Compliance Common Rules Template
+
+## Rules Generator
+
+Select options in the generator below to create a configuration file you can download immediately.
+
+<iframe
+  src="/tools/rules-generator.html"
+  width="100%"
+  height="820"
+  frameBorder="0"
+  style={{borderRadius: '12px', border: '1px solid #e5e5e5'}}
+/>
+
+---
+
+## Overview
+
+This template is a common ruleset that makes AI coding tools automatically recognize open source policy when generating code. Paste it into each tool's configuration file such as `CLAUDE.md`, `.cursorrules`, or `.clinerules`. Please modify the allowed/forbidden license lists to match your internal policy.
+
+---
+
+## Full template
+
+```markdown
+---
+## 오픈소스 정책
+
+### 라이선스 관리
+
+새로운 외부 패키지·라이브러리 추가 시 반드시 라이선스를 확인하고 명시할 것.
+
+**허용 라이선스**: MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC
+
+**주의 라이선스** (법무 검토 필요): LGPL, MPL
+
+**금지 라이선스** (사전 승인 없이 사용 불가): GPL, AGPL, SSPL, Commons Clause
+
+### 보안 관리
+
+- 알려진 CVE 취약점이 있는 패키지 버전 사용 금지
+- 의존성 추가 후 아래 명령어 중 하나를 실행할 것:
+  - npm: `npm audit`
+  - Python: `pip-audit`
+  - 컨테이너·범용: `trivy fs .`
+- 패키지 버전은 가능한 최신 안정 버전(Latest Stable) 사용
+
+### SBOM 관리
+
+- 의존성 변경 시 SBOM 업데이트 필요
+- 생성 도구: cdxgen, syft, trivy
+- 권장 포맷: CycloneDX (차선: SPDX)
+
+### 저작권
+
+- 기존 코드의 저작권 헤더 유지
+- 새 파일 생성 시 프로젝트 라이선스 헤더 포함
+- 타 프로젝트 코드 복사 시 출처 및 라이선스 명시
+---
+```
+
+Copy the content above and paste it into each tool's settings file. For tool-specific application steps, see the links below.
+
+---
+
+## Section-by-section explanation
+
+### Allowed, caution, and forbidden licenses
+
+Allowed licenses in the MIT, Apache-2.0, BSD, and ISC families generally permit commercial use, modification, and distribution with notice obligations only, making them safe for most enterprise projects.
+
+Caution licenses such as LGPL and MPL may trigger source disclosure obligations depending on how they are used, so legal review is required.
+
+GPL, AGPL, SSPL, and Commons Clause cannot be used without prior approval due to derivative-work disclosure obligations or commercial-use restrictions.
+
+| License        | Classification | Primary reason                                            |
+| -------------- | -------------- | --------------------------------------------------------- |
+| MIT            | Allowed        | Notice obligation only, no restrictions                   |
+| Apache-2.0     | Allowed        | Includes explicit patent grant                            |
+| BSD-2/3-Clause | Allowed        | Similar to MIT, no advertising clause                     |
+| ISC            | Allowed        | Simplified MIT-family variant                             |
+| LGPL           | Caution        | Possible source disclosure obligation for dynamic linking |
+| MPL            | Caution        | Source disclosure obligation for modified files           |
+| GPL            | Forbidden      | Full derivative source disclosure obligation              |
+| AGPL           | Forbidden      | Source disclosure obligation for network use as well      |
+| SSPL           | Forbidden      | Full service infrastructure disclosure obligation         |
+| Commons Clause | Forbidden      | Restricts commercial use                                  |
+
+---
+
+### Security management
+
+Because AI may recommend outdated versions based on its training data, it is important to run an audit command after adding packages and verify CVE exposure.
+
+Prioritize the latest stable versions that include security patches. If you must pin a specific version, verify that no known vulnerabilities affect that version before use.
+
+---
+
+### SBOM management
+
+An SBOM is a specification that records all dependencies used by a project and serves as the foundation for vulnerability tracking and license audits. For CI/CD integration, refer to [Quick CI/CD](./cicd-quick).
+
+---
+
+## Internal policy customization
+
+:::tip You should definitely customize this section
+:::
+
+When adding allowed licenses, include only licenses approved by your internal legal team in the allowed list.
+
+If you need to relax forbidden licenses and have an exception approved for a specific component, annotate that item with the approval reason and date.
+
+You can also add language-specific audit commands to match your environment. For example, add `cargo audit` for Rust, `govulncheck` for Go, and `dependency-check` for Java in the security management section.
+
+---
+
+## Tool-specific application
+
+- [Claude Code (CLAUDE.md)](./tools/claude-code)
+- [Cursor (.cursor/rules/)](./tools/cursor)
+- [GitHub Copilot](./tools/copilot)
+- [Windsurf](./tools/windsurf)
+- [Cline / Aider](./tools/cline-aider)
+
+---
+
+## Self-study
+
+:::tip Apply to a real project with Claude Code
+The generator above creates a generic template.
+To analyze real project dependencies and generate customized files,
+use the agent below.
+:::
+
+**Prerequisite**: Clone the [Trusted OSS repository](https://github.com/trustedoss/trustedoss.github.io)
+
+```bash
+cd agents/ai-coding-setup
+claude
+```
+
+The agent automatically performs the following:
+
+- Analyzes project dependency files (package.json, requirements.txt, etc.)
+- Pre-detects forbidden-license packages and suggests replacement packages
+- Generates customized Rules files per selected AI coding tool
+- Generates a license risk report

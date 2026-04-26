@@ -1,0 +1,211 @@
+---
+id: sast
+title: Static Analysis (SAST)
+sidebar_label: SAST
+sidebar_position: 3
+---
+
+# Static Analysis (SAST)
+
+## What is SAST?
+
+SAST is a technique that analyzes source code without executing it to detect patterns of security vulnerabilities such as SQL injection, XSS, and buffer overflows. Run it at the PR stage to block vulnerable code before it is merged into the main branch.
+
+---
+
+## Tool Comparison
+
+SAST tool selection criteria vary depending on supported languages and analysis depth. The following tools are widely used in the open-source ecosystem.
+
+| Tool     | Key Characteristics              | Supported Languages | License                |
+| -------- | -------------------------------- | ------------------- | ---------------------- |
+| Semgrep  | Easy custom rule authoring, fast | 30+ languages       | LGPL-2.1 (OSS version) |
+| CodeQL   | GitHub-native, deep analysis     | 12 major languages  | Free on GitHub Actions |
+| Bandit   | Python-only, lightweight         | Python              | Apache-2.0             |
+| SpotBugs | Java/Kotlin-focused              | Java, Kotlin, Scala | LGPL                   |
+
+For multi-language projects, Semgrep is usually the best fit. For teams using GitHub, CodeQL is often the best choice. For single-language projects, combining language-specific tools is recommended.
+
+---
+
+## Semgrep Setup
+
+Semgrep is easy to adopt quickly because it has rich public rulesets and straightforward custom rule authoring. With `semgrep-action`, you can run it directly in GitHub Actions without separate installation.
+
+### GitHub Actions
+
+```yaml
+# .github/workflows/sast-semgrep.yml
+
+name: SAST — Semgrep
+
+on:
+  pull_request:
+    branches: [main, develop]
+  push:
+    branches: [main]
+
+jobs:
+  semgrep:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Semgrep
+        uses: semgrep/semgrep-action@v1
+        with:
+          config: >-
+            p/owasp-top-ten
+            p/security-audit
+            p/secrets
+        env:
+          SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
+```
+
+### Ruleset Selection Guide
+
+| Ruleset          | Target | Description                          |
+| ---------------- | ------ | ------------------------------------ |
+| p/owasp-top-ten  | All    | Detects OWASP Top 10 vulnerabilities |
+| p/security-audit | All    | Comprehensive security audit ruleset |
+| p/secrets        | All    | Detects hardcoded secrets            |
+| p/python         | Python | Python-specific security rules       |
+| p/java           | Java   | Java-specific security rules         |
+| p/javascript     | JS/TS  | JS/TS-specific security rules        |
+
+### Writing Custom Rules
+
+You can add team-specific patterns as custom YAML rules in the `.semgrep/` folder. This is useful for defining internal prohibited coding patterns that are not covered by public rulesets.
+
+```yaml
+# .semgrep/custom-rules.yml
+
+rules:
+  - id: no-hardcoded-db-password
+    patterns:
+      - pattern: |
+          $DB = new PDO("...", "...", "$PASSWORD", ...)
+    message: |
+      하드코딩된 DB 패스워드가 감지됐습니다.
+      환경변수로 교체하세요.
+    languages: [php]
+    severity: ERROR
+```
+
+---
+
+## CodeQL Setup
+
+CodeQL is provided by GitHub and is available for free in GitHub Actions for public repositories and organizations subscribed to GitHub Advanced Security. It supports data flow analysis, enabling detection of indirect vulnerability paths.
+
+### GitHub Actions
+
+```yaml
+# .github/workflows/sast-codeql.yml
+
+name: SAST — CodeQL
+
+on:
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '0 2 * * 1' # 매주 월요일 새벽 2시 전체 스캔
+
+jobs:
+  codeql:
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: javascript, python
+          # 지원 언어: javascript, python, java,
+          #            cpp, csharp, go, ruby, swift
+
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v3
+
+      - name: Analyze
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: '/language:javascript'
+```
+
+### GitLab CI
+
+```yaml
+# .gitlab-ci.yml (semgrep 잡 부분)
+
+semgrep:
+  stage: test
+  image: semgrep/semgrep:latest
+  script:
+    - semgrep ci
+      --config p/owasp-top-ten
+      --config p/security-audit
+      --error
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+```
+
+---
+
+## Adoption Considerations
+
+:::warning Do not enable build blocking from day one
+:::
+
+**Gradual hardening:** For the first 2-4 weeks, output warnings only. After the team gets familiar with results, switch to build blocking. If hundreds of warnings appear at once, alert fatigue can cause the team to ignore the tool.
+
+**False positive management:** Semgrep can exclude specific files and paths using `.semgrepignore`. Excluding test code and third-party library paths is recommended.
+
+**Ruleset scope:** Start with only `p/owasp-top-ten`, then expand after stabilization. Enabling every ruleset at once can increase false positives and disrupt developer workflow.
+
+---
+
+## Self-Study
+
+:::tip In-depth SAST result analysis with Claude Code
+The analyzer above is available directly in your browser.
+If you need remediation code examples and `.semgrepignore` file generation,
+use the agent below.
+:::
+
+**Prerequisite**: Clone the [Trusted OSS repository](https://github.com/trustedoss/trustedoss.github.io)
+
+```bash
+cd agents/sast-analyst
+claude
+```
+
+The agent automatically performs the following:
+
+- Auto-detects Semgrep JSON / CodeQL SARIF
+- Generates direct remediation code examples by rule
+- Creates false-positive handling examples (`.semgrepignore`)
+- Provides a priority-based remediation roadmap
+
+---
+
+## SAST Result Analyzer
+
+Upload Semgrep/CodeQL result files
+to automatically generate vulnerability priorities and remediation guidance.
+
+<iframe
+  src="/tools/sast-analyzer.html"
+  width="100%"
+  height="900"
+  frameBorder="0"
+  style={{borderRadius: '12px', border: '1px solid #30363d'}}
+/>
+
+## Next Steps
+
+- Dependency vulnerability management: [SCA](./sca)
+- Integrate the full pipeline: [Pipeline Design](./pipeline-design)

@@ -1,0 +1,218 @@
+---
+id: iac-security
+title: IaC Security
+sidebar_label: IaC Security
+sidebar_position: 7
+---
+
+# IaC Security
+
+## What is IaC Security?
+
+IaC security checks detect security misconfigurations in infrastructure-as-code files (such as Terraform, CloudFormation, Kubernetes YAML, and Dockerfile) before deployment, including public S3 buckets, missing encryption, and overly broad permissions. Because infrastructure misconfigurations can cause broader damage than application vulnerabilities, blocking them at the code review stage is critical.
+
+---
+
+## Tool Comparison
+
+| Tool    | Key Characteristics                                    | Supported Targets                   | License    |
+| ------- | ------------------------------------------------------ | ----------------------------------- | ---------- |
+| Checkov | Broad coverage + custom policy support                 | Terraform, K8s, CF, Dockerfile, ARM | Apache-2.0 |
+| tfsec   | Terraform-focused + fast                               | Terraform                           | MIT        |
+| Trivy   | Includes IaC scan (integrated with container security) | Terraform, K8s, Dockerfile          | Apache-2.0 |
+| Kubesec | Kubernetes-only security scoring                       | Kubernetes YAML                     | Apache-2.0 |
+
+For multi-IaC environments, Checkov is recommended. If you only use Terraform, tfsec is a great fit. If you want integration with container security, Trivy is recommended.
+
+---
+
+## Checkov Setup
+
+Checkov provides more than 500 built-in policies and runs both locally and in CI without a separate server. It supports SARIF output, so integrating with the GitHub Security tab lets you review results directly in PRs.
+
+### Basic Usage
+
+```bash
+# 현재 디렉토리 전체 스캔
+checkov -d .
+
+# 특정 프레임워크만 스캔
+checkov -d . --framework terraform
+checkov -d . --framework kubernetes
+
+# 특정 검사 항목만 실행
+checkov -d . --check CKV_AWS_18,CKV_AWS_19
+
+# 결과를 JSON으로 출력
+checkov -d . -o json > checkov-report.json
+```
+
+### GitHub Actions
+
+```yaml
+# .github/workflows/iac-security.yml
+
+name: IaC Security — Checkov
+
+on:
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  checkov:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Checkov
+        uses: bridgecrewio/checkov-action@master
+        with:
+          directory: .
+          framework: terraform,kubernetes,dockerfile
+          soft_fail: false
+          output_format: cli,sarif
+          output_file_path: console,checkov-results.sarif
+
+      - name: Upload SARIF
+        uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: checkov-results.sarif
+```
+
+### GitLab CI
+
+```yaml
+# .gitlab-ci.yml (iac-security 잡 부분)
+
+iac-security:
+  stage: test
+  image: bridgecrew/checkov:latest
+  script:
+    - checkov -d .
+      --framework terraform,kubernetes,dockerfile
+      --output cli
+      --soft-fail false
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+```
+
+---
+
+## tfsec Setup (Terraform-only)
+
+tfsec is specialized for Terraform, runs quickly, and includes built-in security rules for major cloud providers such as AWS, Azure, and GCP. It is also useful alongside Checkov when you want deeper Terraform-specific checks.
+
+### GitHub Actions
+
+```yaml
+# .github/workflows/iac-security-tfsec.yml (Terraform 전용)
+
+name: IaC Security — tfsec
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  tfsec:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run tfsec
+        uses: aquasecurity/tfsec-action@v1.0.0
+        with:
+          soft_fail: false
+```
+
+---
+
+## Exception Handling
+
+:::info Keep exceptions traceable by declaring them inline in code
+:::
+
+If you must skip specific checks, document the reason with inline comments in infrastructure code.
+
+```hcl
+# Terraform 인라인 예외 예시
+
+resource "aws_s3_bucket" "logs" {
+  bucket = "my-log-bucket"
+
+  # checkov:skip=CKV_AWS_18:접근 로그 버킷은 자체 로깅 불필요
+  # checkov:skip=CKV_AWS_52:MFA 삭제는 로그 버킷 특성상 불필요
+}
+```
+
+```yaml
+# Kubernetes 인라인 예외 예시
+
+metadata:
+  annotations:
+    checkov.io/skip1: 'CKV_K8S_14=테스트 환경 전용 파드'
+```
+
+---
+
+## Key Checks
+
+:::warning The items below are major root causes of real incidents
+:::
+
+At initial adoption, enabling these checks first can quickly reduce real risk. After the team gets used to results, expand to the full policy set.
+
+| Item                   | Checkov ID | Description                             |
+| ---------------------- | ---------- | --------------------------------------- |
+| Block S3 public access | CKV_AWS_53 | Configure bucket public access blocking |
+| S3 encryption          | CKV_AWS_19 | Enable server-side encryption           |
+| Security group 0.0.0.0 | CKV_AWS_25 | Disallow SSH open to all                |
+| Prevent root in K8s    | CKV_K8S_6  | Block containers running as root        |
+| K8s resource limits    | CKV_K8S_11 | Set CPU/memory limits                   |
+| Latest API version     | CKV_K8S_35 | Disallow deprecated API versions        |
+
+---
+
+## Self-Study
+
+:::tip Generate IaC remediation code directly with Claude Code
+The fixer above is available directly in your browser.
+If you need full files generated with fixes directly applied
+to original `.tf` files, use the agent below.
+:::
+
+**Prerequisite**: Clone the [Trusted OSS repository](https://github.com/trustedoss/trustedoss.github.io)
+
+```bash
+cd agents/iac-fixer
+claude
+```
+
+The agent automatically performs the following:
+
+- Auto-detects Checkov / tfsec / Trivy IaC results
+- Generates direct remediation code for fixable findings
+- Inserts `checkov:skip` comments for non-fixable items
+- Generates full fixed files when originals are provided
+
+---
+
+## IaC Security Fixer
+
+Upload a Checkov result file
+to automatically generate fixed code for each violation.
+It provides directly applicable fixed files, not just reports.
+
+<iframe
+  src="/tools/iac-fixer.html"
+  width="100%"
+  height="960"
+  frameBorder="0"
+  style={{borderRadius: '12px', border: '1px solid #e0e5ec'}}
+/>
+
+## Next Steps
+
+- Verify after deployment with dynamic analysis: [DAST](./dast)
+- Integrate the full pipeline: [Pipeline Design](./pipeline-design)

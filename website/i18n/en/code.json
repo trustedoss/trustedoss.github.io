@@ -325,5 +325,77 @@
   "theme.tags.tagsPageTitle": {
     "message": "Tags",
     "description": "The title of the tag list page"
+  },
+  "homepage.hero.subtitle": {
+    "message": "Trusted Open Source Supply Chain Management",
+    "description": "Homepage hero subtitle"
+  },
+  "homepage.hero.description": {
+    "message": "ISO/IEC 5230 & 18974 Based\nEnterprise Open Source Management System Guide",
+    "description": "Homepage hero description"
+  },
+  "homepage.hero.cta.docs": {
+    "message": "Get Started",
+    "description": "Homepage hero primary CTA button"
+  },
+  "homepage.hero.cta.aiCoding": {
+    "message": "AI Coding Guide",
+    "description": "Homepage hero secondary CTA button"
+  },
+  "homepage.cta.feature1.title": {
+    "message": "Build Your System",
+    "description": "CTA feature card 1 title"
+  },
+  "homepage.cta.feature1.desc": {
+    "message": "Build an enterprise open source management system from scratch to completion, based on ISO/IEC 5230 & 18974.",
+    "description": "CTA feature card 1 description"
+  },
+  "homepage.cta.feature1.link": {
+    "message": "Start the Guide",
+    "description": "CTA feature card 1 link label"
+  },
+  "homepage.cta.feature2.title": {
+    "message": "DevSecOps",
+    "description": "CTA feature card 2 title"
+  },
+  "homepage.cta.feature2.desc": {
+    "message": "Integrate security into your development pipeline. Covers SAST, SCA, container security, and CI/CD automation.",
+    "description": "CTA feature card 2 description"
+  },
+  "homepage.cta.feature2.link": {
+    "message": "DevSecOps Guide",
+    "description": "CTA feature card 2 link label"
+  },
+  "homepage.cta.feature3.title": {
+    "message": "AI Coding",
+    "description": "CTA feature card 3 title"
+  },
+  "homepage.cta.feature3.desc": {
+    "message": "Manage AI coding tools like Claude Code, Cursor, and Copilot alongside open source compliance.",
+    "description": "CTA feature card 3 description"
+  },
+  "homepage.cta.feature3.link": {
+    "message": "AI Coding Guide",
+    "description": "CTA feature card 3 link label"
+  },
+  "homepage.cta.section.title": {
+    "message": "Start Managing Open Source Today",
+    "description": "CTA section heading"
+  },
+  "homepage.cta.section.subtitle": {
+    "message": "Complete your ISO/IEC 5230 & 18974 self-certification with this free guide from the OpenChain KWG community.",
+    "description": "CTA section subtitle"
+  },
+  "homepage.cta.section.cta": {
+    "message": "Get Started",
+    "description": "CTA section button"
+  },
+  "homepage.meta.title": {
+    "message": "Trusted OSS · Trusted Open Source Supply Chain Management",
+    "description": "Homepage meta title"
+  },
+  "homepage.meta.description": {
+    "message": "A practical guide to building an enterprise open source management system based on ISO/IEC 5230 & 18974",
+    "description": "Homepage meta description"
   }
 }
