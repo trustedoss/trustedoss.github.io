@@ -1,11 +1,11 @@
 {
-  "turn_count": 8,
+  "turn_count": 18,
   "turns": [
     {
       "content": [
         {
           "type": "text",
-          "text": "# 오픈소스 프로세스 문서 생성기에 오신 것을 환영합니다! 🎉\n\n이 agent는 귀사의 **오픈소스 컴플라이언스 프로세스 문서**를 자동으로 생성합니다.\n\n## 📋 생성될 문서 (4~7개)\n\n| 문서 | 설명 | 생성 조건 |\n|------|------|-----------|\n| `usage-approval.md` | 오픈소스 사용 승인 절차 | 항상 생성 |\n| `distribution-checklist.md` | 배포 전 체크리스트 | 항상 생성 |\n| `vulnerability-response.md` | 취약점 대응 절차 | 항상 생성 |\n| `inquiry-response.md` | 외부 문의 대응 절차 | 항상 생성 |\n| `process-diagram.md` | Mermaid 흐름도 | 항상 생성 |\n| `contribution-process.md` | 오픈소스 기여 절차 | Q5 \"예\" 시 |\n| `project-publication-process.md` | 사내 프로젝트 공개 절차 | Q6 \"예\" 시 |\n\n## ✅ 충족되는 ISO 요건\n\n- **ISO/IEC 5230**: 라이선스 의무사항 검토·이행·보관·기여 절차\n- **ISO/IEC 18974**: 취약점 탐지·대응·CVD 절차\n\n---\n\n총 **7개의 질문**에 답변해 주시면 문서 생성을 시작합니다.\n\n그럼 첫 번째 질문을 시작하겠습니다! 👇\n\n---\n\n### ❓ 질문 1 / 7\n\n**현재 사용 중인 CI/CD 도구는 무엇인가요?**\n\n1. GitHub Actions\n2. Jenkins\n3. GitLab CI\n4. 없음\n5. 기타 (직접 입력)"
+          "text": "# 오픈소스 프로세스 문서 생성기 🚀\n\n안녕하세요! **오픈소스 프로세스 문서 생성 Agent**입니다.\n\n7개의 질문에 답변해 주시면, 귀사 환경에 맞는 **4~7개의 프로세스 문서**를 자동으로 생성해 드립니다.\n\n생성되는 문서는 다음 국제 표준을 충족합니다:\n- 📋 **ISO/IEC 5230** (오픈소스 라이선스 컴플라이언스)\n- 🔒 **ISO/IEC 18974** (오픈소스 보안 보증)\n\n---\n\n## 📝 질문 1/7\n\n**현재 사용 중인 CI/CD 도구는 무엇인가요?**\n\n| 번호 | 옵션 |\n|------|------|\n| ① | GitHub Actions |\n| ② | Jenkins |\n| ③ | GitLab CI |\n| ④ | 없음 |\n| ⑤ | 기타 |\n\n번호 또는 직접 입력해 주세요."
         }
       ],
       "stop_reason": "end_turn"
@@ -14,7 +14,7 @@
       "content": [
         {
           "type": "text",
-          "text": "감사합니다! ✅ **Jenkins** 로 기록했습니다.\n\n---\n\n### ❓ 질문 2 / 7\n\n**소프트웨어 배포 주기는 어떻게 되나요?**\n\n1. 매일\n2. 주간\n3. 격주 (2주 1회)\n4. 월간\n5. 비정기"
+          "text": "확인했습니다! **Jenkins** 환경에 맞게 문서를 생성하겠습니다.\n\n---\n\n## 📝 질문 2/7\n\n**소프트웨어 배포 주기는 어떻게 되나요?**\n\n| 번호 | 옵션 |\n|------|------|\n| ① | 매일 |\n| ② | 주간 |\n| ③ | 격주 (2주 1회) |\n| ④ | 월간 |\n| ⑤ | 비정기 |\n\n번호 또는 직접 입력해 주세요."
         }
       ],
       "stop_reason": "end_turn"
@@ -23,7 +23,7 @@
       "content": [
         {
           "type": "text",
-          "text": "감사합니다! ✅ **월간** 배포 주기로 기록했습니다.\n\n---\n\n### ❓ 질문 3 / 7\n\n**이슈 트래커를 사용하고 있나요?**\n\n1. GitHub Issues\n2. Jira\n3. 없음\n4. 기타 (직접 입력)"
+          "text": "확인했습니다! **월간 배포** 주기로 문서를 생성하겠습니다.\n\n---\n\n## 📝 질문 3/7\n\n**이슈 트래커를 사용하고 계신가요?**\n\n| 번호 | 옵션 |\n|------|------|\n| ① | GitHub Issues |\n| ② | Jira |\n| ③ | 없음 |\n| ④ | 기타 |\n\n번호 또는 직접 입력해 주세요."
         }
       ],
       "stop_reason": "end_turn"
@@ -32,7 +32,7 @@
       "content": [
         {
           "type": "text",
-          "text": "감사합니다! ✅ **Jira** 로 기록했습니다.\n\n---\n\n### ❓ 질문 4 / 7\n\n**오픈소스 사용 승인 결재 단계가 필요한가요?**\n\n1. 담당자 단독 결정\n2. 팀장 승인\n3. 위원회 승인"
+          "text": "확인했습니다! **Jira** 이슈 트래커 환경에 맞게 문서를 생성하겠습니다.\n\n---\n\n## 📝 질문 4/7\n\n**오픈소스 사용 승인 결재 단계가 필요한가요?**\n\n| 번호 | 옵션 |\n|------|------|\n| ① | 담당자 단독 |\n| ② | 팀장 승인 |\n| ③ | 위원회 승인 |\n\n번호 또는 직접 입력해 주세요."
         }
       ],
       "stop_reason": "end_turn"
@@ -41,7 +41,7 @@
       "content": [
         {
           "type": "text",
-          "text": "감사합니다! ✅ **담당자 단독** 승인으로 기록했습니다.\n\n---\n\n### ❓ 질문 5 / 7\n\n**외부 오픈소스 프로젝트에 기여할 계획이 있나요?**\n\n1. 예 — 기여 절차 문서 생성\n2. 아니오"
+          "text": "확인했습니다! **담당자 단독 승인** 방식으로 문서를 생성하겠습니다.\n\n---\n\n## 📝 질문 5/7\n\n**외부 오픈소스 프로젝트에 기여할 계획이 있나요?**\n\n| 번호 | 옵션 |\n|------|------|\n| ① | 예 (기여 절차 문서 생성) |\n| ② | 아니오 |\n\n번호 또는 직접 입력해 주세요."
         }
       ],
       "stop_reason": "end_turn"
@@ -50,7 +50,7 @@
       "content": [
         {
           "type": "text",
-          "text": "감사합니다! ✅ **기여 절차 문서 생성 제외**로 기록했습니다.\n\n---\n\n### ❓ 질문 6 / 7\n\n**사내 소프트웨어를 오픈소스로 공개할 계획이 있나요?**\n\n1. 예 — 공개 절차 문서 생성\n2. 아니오"
+          "text": "확인했습니다! **기여 절차 문서는 생성하지 않겠습니다.**\n\n---\n\n## 📝 질문 6/7\n\n**사내 소프트웨어를 오픈소스로 공개할 계획이 있나요?**\n\n| 번호 | 옵션 |\n|------|------|\n| ① | 예 (공개 절차 문서 생성) |\n| ② | 아니오 |\n\n번호 또는 직접 입력해 주세요."
         }
       ],
       "stop_reason": "end_turn"
@@ -59,7 +59,7 @@
       "content": [
         {
           "type": "text",
-          "text": "감사합니다! ✅ **공개 절차 문서 생성 제외**로 기록했습니다.\n\n---\n\n### ❓ 질문 7 / 7\n\n**외부 라이선스·취약점 문의 수신 채널이 준비되어 있나요?**\n\n1. 예 — 이미 운영 중인 이메일 주소 입력 (예: opensource@company.com)\n2. 아직 없음 — 절차 문서 생성 시 채널 설정 포함"
+          "text": "확인했습니다! **프로젝트 공개 절차 문서는 생성하지 않겠습니다.**\n\n---\n\n## 📝 질문 7/7\n\n**외부 라이선스·취약점 문의 수신 채널이 준비되어 있나요?**\n\n| 번호 | 옵션 |\n|------|------|\n| ① | 예 (운영 중인 이메일 주소 입력) |\n| ② | 아직 없음 (절차 문서 생성 시 채널 설정 포함) |\n\n번호 또는 직접 입력해 주세요."
         }
       ],
       "stop_reason": "end_turn"
@@ -68,7 +68,175 @@
       "content": [
         {
           "type": "text",
-          "text": "운영 중인 **이메일 주소**를 입력해 주세요.\n\n(예: `opensource@company.com`)"
+          "text": "확인했습니다! **채널 설정 내용을 절차 문서에 포함**하겠습니다.\n\n---\n\n## 📋 입력 정보 요약\n\n| 항목 | 답변 |\n|------|------|\n| CI/CD 도구 | Jenkins |\n| 배포 주기 | 월간 |\n| 이슈 트래커 | Jira |\n| 승인 결재 | 담당자 단독 |\n| 외부 기여 | 아니오 |\n| 프로젝트 공개 | 아니오 |\n| 문의 채널 | 아직 없음 (설정 포함) |\n\n---\n\n이제 기존 정책 문서와 조직 정보를 확인한 후 프로세스 문서를 생성하겠습니다. 잠시만 기다려 주세요! ⚙️\n\n먼저 기존 문서를 읽어오겠습니다."
+        },
+        {
+          "type": "tool_use",
+          "id": "toolu_01NCEtLvLjHTqUDZL9LGy93A",
+          "name": "Read",
+          "input": {
+            "file_path": "output/policy/oss-policy.md"
+          }
+        },
+        {
+          "type": "tool_use",
+          "id": "toolu_0137hvsvmiqiNyNACt4J7dPW",
+          "name": "Read",
+          "input": {
+            "file_path": "output/organization/role-definition.md"
+          }
+        }
+      ],
+      "stop_reason": "tool_use"
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "이제 템플릿 파일들을 확인하겠습니다."
+        },
+        {
+          "type": "tool_use",
+          "id": "toolu_01CKsNumoTehg7gX9XTZLeTu",
+          "name": "Glob",
+          "input": {
+            "pattern": "templates/process/*.md"
+          }
+        }
+      ],
+      "stop_reason": "tool_use"
+    },
+    {
+      "content": [
+        {
+          "type": "tool_use",
+          "id": "toolu_01LXTKCHgwA58Ewa1TBkKCWX",
+          "name": "Bash",
+          "input": {
+            "command": "find . -type d | head -30 && ls -la"
+          }
+        }
+      ],
+      "stop_reason": "tool_use"
+    },
+    {
+      "content": [
+        {
+          "type": "tool_use",
+          "id": "toolu_01K2mAZF8M53BW17p8mmsDya",
+          "name": "Glob",
+          "input": {
+            "pattern": "**/*.md",
+            "path": "templates"
+          }
+        },
+        {
+          "type": "tool_use",
+          "id": "toolu_01FvnfP6o5nuXtLyStGJ6HqZ",
+          "name": "Bash",
+          "input": {
+            "command": "mkdir -p output/process"
+          }
+        }
+      ],
+      "stop_reason": "tool_use"
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "출력 디렉토리가 준비되었습니다. 이제 모든 프로세스 문서를 생성하겠습니다!"
+        },
+        {
+          "type": "tool_use",
+          "id": "toolu_01MLw2aDB2Nehdt2PvBG2A6G",
+          "name": "Write",
+          "input": {
+            "file_path": "output/process/usage-approval.md",
+            "content": "# 오픈소스 사용 승인 절차\n<!-- 5230 §3.1.5.1, §3.3.1.1 -->\n\n**회사명**: SK텔레콤  \n**버전**: 1.0  \n**작성일**: 2026-03-23  \n**작성자**: DevOps팀 오픈소스 담당자  \n**승인자**: DevOps팀장  \n**다음 검토 예정일**: 2027-03-23  \n\n---\n\n## 1. 목적\n\n이 문서는 SK텔레콤 구성원이 오픈소스 소프트웨어를 신규 도입하거나 버전을 변경할 때 따라야 하는 승인 절차를 정의한다. 라이선스 의무사항의 사전 검토와 알려진 취약점 확인을 통해 컴플라이언스 리스크와 보안 리스크를 최소화하는 것을 목적으로 한다.\n\n---\n\n## 2. 적용 범위\n\n- 신규 오픈소스 컴포넌트 도입 (직접 의존성)\n- 기존 오픈소스 컴포넌트의 버전 업그레이드 또는 다운그레이드\n- 간접 의존성(Transitive Dependency) 중 라이선스 변경이 발생한 경우\n- 외부 납품물·공개 배포물에 포함되는 모든 오픈소스\n\n> **참고**: 내부 전용(배포 없음) 개발·테스트 도구는 간소화 검토(라이선스 확인만)를 적용할 수 있다.\n\n---\n\n## 3. 승인 절차\n\n### 3-1. 승인 주체\n\n| 구분 | 승인자 | 비고 |\n|------|--------|------|\n| 일반 승인 | DevOps팀 오픈소스 담당자 | 담당자 단독 승인 |\n| 예외 심의 | 법무팀 + 오픈소스 담당자 | GPL·AGPL 등 Copyleft 계열, 불명확 라이선스 |\n\n### 3-2. 절차 흐름\n\n```\n[사용 요청] → [라이선스 확인] → [취약점 스캔] → [담당자 승인] → [SBOM 업데이트] → [Jenkins 파이프라인 반영]\n```\n\n### 3-3. 세부 단계\n\n#### Step 1. 사용 요청 (개발자)\n\n개발자는 Jira에 오픈소스 사용 요청 티켓을 생성한다.\n\n**Jira 티켓 필수 기재 항목**:\n\n| 항목 | 내용 |\n|------|------|\n| 컴포넌트명 | 예: `log4j-core` |\n| 버전 | 예: `2.20.0` |\n| 라이선스 | 예: `Apache-2.0` |\n| 출처(저장소 URL) | 예: `https://github.com/apache/logging-log4j2` |\n| 사용 목적 | 예: 로그 처리 라이브러리 |\n| 배포 포함 여부 | 예: 배포 포함 / 내부 전용 |\n| 배포 채널 | 예: SaaS / 앱스토어 / 임베디드 / 내부용 |\n\n**Jira 티켓 레이블**: `oss-approval`, `oss-review`\n\n#### Step 2. 라이선스 확인 (오픈소스 담당자)\n\n1. `output/policy/license-allowlist.md` 의 허용 라이선스 목록과 대조한다.\n2. 배포 채널별 제한 사항을 확인한다 (`oss-policy.md` §1 배포 채널별 기준 참조).\n3. Copyleft 라이선스의 경우 소스코드 공개 의무 이행 방법을 결정한다.\n\n| 라이선스 분류 | 허용 여부 | 조건 |\n|-------------|---------|------|\n| Permissive (MIT, Apache-2.0, BSD 등) | ✅ 허용 | 저작권 표시·라이선스 고지 |\n| Weak Copyleft (LGPL, MPL) | ✅ 조건부 허용 | 수정 파일 소스코드 공개 |\n| Strong Copyleft (GPL-2.0, GPL-3.0) | ⚠️ 제한적 허용 | 법무팀 검토 필수 |\n| Network Copyleft (AGPL-3.0) | ⚠️ SaaS 사용 제한 | 법무팀 검토 필수 |\n| 불명확/미확인 | ❌ 사용 불가 | 법무팀 검토 후 결정 |\n\n#### Step 3. 취약점 스캔 (오픈소스 담당자 / Jenkins 자동화)\n\nJenkins 파이프라인에서 OWASP Dependency-Check 또는 동등한 도구를 실행하여 CVE를 확인한다.\n\n```groovy\n// Jenkinsfile 예시 - 취약점 스캔 단계\nstage('OSS Vulnerability Scan') {\n    steps {\n        sh 'dependency-check.sh --project \"${PROJECT_NAME}\" --scan . --format JSON --out reports/'\n        script {\n            def report = readJSON file: 'reports/dependency-check-report.json'\n            def criticalCount = report.dependencies.findAll {\n                it.vulnerabilities?.any { v -> v.severity == 'CRITICAL' }\n            }.size()\n            if (criticalCount > 0) {\n                error \"Critical 취약점 ${criticalCount}건 발견 — 승인 불가\"\n            }\n        }\n    }\n}\n```\n\n**스캔 결과 판단 기준**:\n\n| CVSS 등급 | 처리 방법 |\n|----------|---------|\n| Critical (9.0~10.0) | 즉시 대안 컴포넌트 검토, 승인 불가 |\n| High (7.0~8.9) | 패치 버전 확인 후 대안 또는 완화 계획 수립 필요 |\n| Medium (4.0~6.9) | 완화 계획 수립 후 승인 가능 |\n| Low (0.1~3.9) | 다음 릴리즈에 패치 계획 수립 후 승인 가능 |\n| None | 이상 없음, 승인 진행 |\n\n#### Step 4. 담당자 단독 승인 (오픈소스 담당자)\n\n오픈소스 담당자는 Step 2~3의 검토 결과를 바탕으로 Jira 티켓에 승인/반려를 기록한다.\n\n**승인 기록 양식 (Jira 코멘트)**:\n\n```\n[OSS 승인 결과]\n- 검토일: YYYY-MM-DD\n- 라이선스: [라이선스명] — [허용/조건부 허용/반려]\n- 취약점 스캔: [이상 없음 / CVE-XXXX-XXXX 완화 계획 첨부]\n- 결정: [승인 / 조건부 승인 / 반려]\n- 담당자: [이름]\n```\n\n**예외 처리**: GPL·AGPL 계열 또는 라이선스 불명확 시 법무팀에 에스컬레이션하고 Jira 티켓에 `legal-review` 레이블 추가.\n\n#### Step 5. SBOM 업데이트 (개발자)\n\n승인 완료 후 개발자는 SBOM(Software Bill of Materials)을 업데이트한다.\n\n- SBOM 형식: SPDX 2.3 또는 CycloneDX 1.4\n- 업데이트 파일 위치: 각 프로젝트 루트 `sbom.spdx.json` 또는 `bom.xml`\n- SBOM 생성 도구: `syft`, `cdxgen`, `spdx-tools` 등\n\n#### Step 6. Jenkins 파이프라인 반영\n\n승인된 컴포넌트가 포함된 코드를 메인 브랜치에 병합하면 Jenkins 파이프라인이 자동으로 실행된다.\n\n```groovy\n// Jenkinsfile 예시 - SBOM 검증 단계\nstage('SBOM Validation') {\n    steps {\n        sh 'syft packages dir:. -o spdx-json > sbom.spdx.json'\n        sh 'grype sbom:sbom.spdx.json --fail-on critical'\n    }\n}\n```\n\n---\n\n## 4. 처리 기한\n\n| 단계 | 목표 처리 시간 |\n|------|-------------|\n| 라이선스 확인 | 영업일 1일 이내 |\n| 취약점 스캔 | 자동화 (즉시) / 수동 1일 이내 |\n| 담당자 승인 결정 | 영업일 2일 이내 |\n| 법무팀 에스컬레이션 (예외) | 영업일 5일 이내 |\n\n---\n\n## 5. 승인 기록 보관\n\n- **보관 위치**: Jira 프로젝트 `OSS-APPROVAL` 이슈 보드\n- **보관 기간**: 해당 소프트웨어 배포 종료 후 3년\n- **백업**: Jira 데이터 정기 백업 정책에 따름\n\n---\n\n## 6. 관련 문서\n\n| 문서 | 위치 |\n|------|------|\n| 오픈소스 정책 | `output/policy/oss-policy.md` |\n| 라이선스 허용 목록 | `output/policy/license-allowlist.md` |\n| 배포 전 체크리스트 | `output/process/distribution-checklist.md` |\n| 취약점 대응 절차 | `output/process/vulnerability-response.md` |\n| SBOM 가이드 | `output/sbom/sbom-guide.md` |\n"
+          }
+        }
+      ],
+      "stop_reason": "tool_use"
+    },
+    {
+      "content": [
+        {
+          "type": "tool_use",
+          "id": "toolu_016Pp3jEpZqgxkQFet5GRRsC",
+          "name": "Write",
+          "input": {
+            "file_path": "output/process/distribution-checklist.md",
+            "content": "# 배포 전 오픈소스 컴플라이언스 체크리스트\n<!-- 5230 §3.3.2.1, §3.4.1.1 -->\n\n**회사명**: SK텔레콤  \n**버전**: 1.0  \n**작성일**: 2026-03-23  \n**작성자**: DevOps팀 오픈소스 담당자  \n**승인자**: DevOps팀장  \n**배포 주기**: 월간  \n**다음 검토 예정일**: 2027-03-23  \n\n---\n\n## 1. 목적\n\n이 체크리스트는 SK텔레콤이 소프트웨어를 월간 주기로 배포하기 전에 오픈소스 라이선스 의무사항이 모두 이행되었는지, 알려진 취약점이 없는지 확인하기 위한 절차를 정의한다.\n\n---\n\n## 2. 배포 전 체크리스트 개요\n\n배포 담당자는 배포 예정일 **최소 5영업일 전**에 아래 섹션의 항목을 순서대로 확인한다.  \n각 항목에 **✅ 완료** 또는 **❌ 미완료(사유 기재)** 를 표시한다.\n\n---\n\n## 3. 고지문 생성 및 확인\n<!-- 5230 §3.3.2.1 -->\n\n### 3-1. 고지문 생성 방법\n\n#### 생성 도구\n\n| 도구 | 지원 형식 | 명령 예시 |\n|------|---------|---------|\n| `syft` | SPDX, CycloneDX | `syft packages dir:. -o spdx-json > sbom.spdx.json` |\n| `cdxgen` | CycloneDX | `cdxgen -o bom.xml` |\n| `oss-review-toolkit (ORT)` | 고지문 HTML/텍스트 | `ort report -f NoticeTemplate` |\n| `license-checker` (Node.js) | CSV, JSON | `license-checker --out licenses.csv` |\n\n#### 고지문 포함 항목\n\n고지문(NOTICE 파일 또는 오픈소스 고지문)에는 반드시 아래 항목이 포함되어야 한다:\n\n| 항목 | 설명 | 필수 여부 |\n|------|------|---------|\n| 컴포넌트명 | 오픈소스 패키지 이름 | ✅ 필수 |\n| 버전 | 사용된 정확한 버전 | ✅ 필수 |\n| 라이선스명 | SPDX 식별자 (예: Apache-2.0) | ✅ 필수 |\n| 저작권 표시 | Copyright (c) [연도] [저작자] | ✅ 필수 |\n| 라이선스 전문 | 해당 라이선스 원문 텍스트 | ✅ 필수 |\n| 소스코드 URL | Copyleft 컴포넌트에 한함 | ⚠️ Copyleft 필수 |\n| 수정 여부 | 원본 수정 시 수정 사실 명시 | ⚠️ 수정 시 필수 |\n\n#### Jenkins 자동화 — 고지문 생성\n\n```groovy\n// Jenkinsfile 예시 - 고지문 자동 생성\nstage('Generate OSS Notice') {\n    steps {\n        sh '''\n            # SBOM 생성\n            syft packages dir:. -o spdx-json > sbom.spdx.json\n            # 고지문 생성 (ORT)\n            ort report \\\n              --ort-file scanner-result.yml \\\n              -f NoticeTemplate \\\n              -o reports/oss-notice/\n        '''\n        archiveArtifacts artifacts: 'reports/oss-notice/**', fingerprint: true\n    }\n}\n```\n\n#### 바이너리 배포 시 고지문 대안\n\n소스코드를 포함하기 어려운 바이너리 배포(앱스토어, 임베디드 기기 등)의 경우 아래 대안을 사용할 수 있다:\n\n| 배포 유형 | 고지문 제공 방법 |\n|---------|--------------|\n| 모바일 앱 | 앱 내 \"오픈소스 라이선스\" 메뉴 제공 |\n| 임베디드 기기 | 기기 동봉 고지문 문서 또는 회사 웹페이지 URL 제공 |\n| SaaS | 서비스 내 오픈소스 고지 페이지 운영 |\n| 소프트웨어 패키지 | 배포 패키지 내 `NOTICE.txt` 또는 `LICENSE` 파일 포함 |\n\n> **GPL/LGPL 소스코드 제공 대안**: 바이너리 배포 시 소스코드를 직접 포함하기 어려운 경우, 배포일로부터 최소 3년간 소스코드를 요청 시 제공하겠다는 서면 약정(Written Offer)을 고지문에 포함한다.\n\n### 3-2. 고지문 확인 체크리스트\n\n| 번호 | 확인 항목 | 완료 여부 | 비고 |\n|------|---------|---------|------|\n| 3-2-1 | SBOM에 모든 직접·간접 의존성이 포함되어 있는가? | ☐ | |\n| 3-2-2 | 모든 컴포넌트의 라이선스가 정확히 식별되었는가? | ☐ | |\n| 3-2-3 | 고지문에 저작권 표시가 누락된 컴포넌트가 없는가? | ☐ | |\n| 3-2-4 | 고지문에 라이선스 전문이 누락된 컴포넌트가 없는가? | ☐ | |\n| 3-2-5 | Copyleft 컴포넌트의 소스코드 공개 URL이 유효한가? | ☐ | |\n| 3-2-6 | 수정된 컴포넌트에 수정 사실이 명시되어 있는가? | ☐ | |\n| 3-2-7 | 고지문이 배포 아티팩트에 올바르게 포함되었는가? | ☐ | |\n| 3-2-8 | 바이너리 배포 시 소스코드 제공 대안이 준비되었는가? | ☐ | N/A 가능 |\n\n---\n\n## 4. 라이선스 컴플라이언스 확인\n<!-- 5230 §3.3.2.1 -->\n\n| 번호 | 확인 항목 | 완료 여부 | 비고 |\n|------|---------|---------|------|\n| 4-1 | 모든 오픈소스 컴포넌트가 사용 승인 절차(`usage-approval.md`)를 통과했는가? | ☐ | |\n| 4-2 | `license-allowlist.md` 기준 비허용 라이선스가 포함되지 않았는가? | ☐ | |\n| 4-3 | GPL·AGPL 컴포넌트가 포함된 경우 법무팀 검토가 완료되었는가? | ☐ | N/A 가능 |\n| 4-4 | 배포 채널별 라이선스 제한 사항이 준수되었는가? | ☐ | |\n| 4-5 | 라이선스 의무사항 이행 계획이 수립되었는가? | ☐ | |\n| 4-6 | 라이선스 호환성 충돌이 없는가? | ☐ | |\n\n#### Jenkins 자동화 — 라이선스 스캔\n\n```groovy\n// Jenkinsfile 예시 - 라이선스 컴플라이언스 검사\nstage('License Compliance Check') {\n    steps {\n        sh '''\n            # 허용되지 않은 라이선스 검사\n            ort analyze -i . -o analyzer-result.yml\n            ort evaluate \\\n              -i analyzer-result.yml \\\n              --rules-file oss-rules.kts \\\n              -o evaluation-result.yml\n        '''\n        script {\n            def result = readYaml file: 'evaluation-result.yml'\n            if (result.violations?.any { it.severity == 'ERROR' }) {\n                error \"라이선스 위반 사항 발견 — 배포 중단\"\n            }\n        }\n    }\n}\n```\n\n---\n\n## 5. 취약점 보안 확인\n<!-- 18974 §4.1.5.1 -->\n\n| 번호 | 확인 항목 | 완료 여부 | 비고 |\n|------|---------|---------|------|\n| 5-1 | Jenkins 파이프라인에서 최신 CVE 스캔이 수행되었는가? | ☐ | |\n| 5-2 | Critical 취약점(CVSS 9.0+)이 모두 해소되었는가? | ☐ | |\n| 5-3 | High 취약점(CVSS 7.0~8.9)이 해소되거나 완화 계획이 수립되었는가? | ☐ | |\n| 5-4 | Medium/Low 취약점 대응 계획이 다음 릴리즈에 반영 예정인가? | ☐ | |\n| 5-5 | 취약점 스캔 보고서가 보관되었는가? (`reports/` 디렉토리) | ☐ | |\n\n#### Jenkins 자동화 — 취약점 스캔\n\n```groovy\n// Jenkinsfile 예시 - 취약점 스캔\nstage('Security Vulnerability Scan') {\n    steps {\n        sh '''\n            # OWASP Dependency-Check 실행\n            dependency-check.sh \\\n              --project \"${JOB_NAME}\" \\\n              --scan . \\\n              --format HTML,JSON \\\n              --out reports/vuln-scan/ \\\n              --failOnCVSS 9\n        '''\n    }\n    post {\n        always {\n            publishHTML(target: [\n                reportDir: 'reports/vuln-scan',\n                reportFiles: 'dependency-check-report.html',\n                reportName: 'OSS Vulnerability Report'\n            ])\n        }\n    }\n}\n```\n\n---\n\n## 6. 최종 승인\n\n| 항목 | 내용 |\n|------|------|\n| 배포 버전 | v_______ |\n| 배포 예정일 | YYYY-MM-DD |\n| 체크리스트 작성자 | |\n| 작성 완료일 | YYYY-MM-DD |\n| 오픈소스 담당자 확인 | ☐ 확인 완료 |\n| 담당자 서명 | |\n| 확인 일시 | YYYY-MM-DD |\n\n> **배포 보류 조건**: 섹션 3-2, 4, 5 중 하나라도 ❌ 미완료 항목이 있을 경우 오픈소스 담당자와 협의 후 배포 여부를 결정한다.\n\n---\n\n## 7. 배포 후 최종 확인\n\n배포 완료 후 아래 항목을 확인하고 기록한다:\n\n| 번호 | 확인 항목 | 완료 여부 | 확인 일시 |\n|------|---------|---------|---------|\n| 7-1 | 배포 아티팩트(앱/패키지/이미지)에 고지문이 정상 포함되어 있는가? | ☐ | |\n| 7-2 | 해당 릴리즈의 SBOM이 지정 저장소에 보관되었는가? | ☐ | |\n| 7-3 | 배포 후 CVE 모니터링이 개시되었는가? (Jenkins 스케줄 확인) | ☐ | |\n| 7-4 | 배포 기록(버전, 일시, 담당자)이 Jira에 등록되었는가? | ☐ | |\n\n---\n\n## 8. 이행 기록 보관\n<!-- 5230 §3.4.1.1 -->\n\n| 항목 | 내용 |\n|------|------|\n| 보관 문서 | 완료된 체크리스트, SBOM, 고지문, 취약점 스캔 보고서 |\n| 보관 위치 | Jira 티켓 첨부 + Jenkins 아티팩트 저장소 |\n| 보관 기간 | 해당 소프트웨어 배포 종료 후 3년 |\n| 담당자 | DevOps팀 오픈소스 담당자 |\n\n---\n\n## 9. 관련 문서\n\n| 문서 | 위치 |\n|------|------|\n| 오픈소스 정책 | `output/policy/oss-policy.md` |\n| 오픈소스 사용 승인 절차 | `output/process/usage-approval.md` |\n| 취약점 대응 절차 | `output/process/vulnerability-response.md` |\n| SBOM 가이드 | `output/sbom/sbom-guide.md` |\n"
+          }
+        }
+      ],
+      "stop_reason": "tool_use"
+    },
+    {
+      "content": [
+        {
+          "type": "tool_use",
+          "id": "toolu_01JGwYwaTHAjYyGpzsehpEyj",
+          "name": "Write",
+          "input": {
+            "file_path": "output/process/vulnerability-response.md",
+            "content": "# 오픈소스 취약점 대응 절차 (CVD 포함)\n<!-- 18974 §4.1.5.1, §4.2.1.1 -->\n\n**회사명**: SK텔레콤  \n**버전**: 1.0  \n**작성일**: 2026-03-23  \n**작성자**: DevOps팀 오픈소스 담당자  \n**승인자**: DevOps팀장  \n**다음 검토 예정일**: 2027-03-23  \n\n---\n\n## 1. 목적\n\n이 문서는 SK텔레콤이 배포하는 소프트웨어에 포함된 오픈소스 컴포넌트에서 알려진 보안 취약점(CVE)이 발견되었을 때, 이를 신속하고 체계적으로 대응하기 위한 절차를 정의한다. 또한 외부로부터 취약점을 신고받는 CVD(Coordinated Vulnerability Disclosure) 절차를 포함한다.\n\n---\n\n## 2. 취약점 탐지 체계\n<!-- 18974 §4.1.5.1 -->\n\n### 2-1. 자동 탐지 (Jenkins 파이프라인)\n\nJenkins는 월간 배포 파이프라인과 별도의 정기 스케줄 잡을 통해 취약점을 자동으로 탐지한다.\n\n```groovy\n// Jenkinsfile 예시 - 정기 취약점 모니터링 (주간 스케줄)\npipeline {\n    triggers {\n        cron('H 9 * * 1')  // 매주 월요일 오전 9시\n    }\n    stages {\n        stage('Scheduled CVE Scan') {\n            steps {\n                sh '''\n                    # SBOM 기반 취약점 스캔\n                    grype sbom:sbom.spdx.json \\\n                      --output json \\\n                      --file reports/cve-scan-$(date +%Y%m%d).json\n                    \n                    # Critical/High 취약점 발견 시 Jira 자동 티켓 생성\n                    python3 scripts/create-vuln-jira-ticket.py \\\n                      --report reports/cve-scan-$(date +%Y%m%d).json \\\n                      --jira-project OSS-SEC\n                '''\n            }\n        }\n    }\n    post {\n        failure {\n            // Jira 티켓 생성 및 담당자 알림\n            jiraNewIssue(\n                site: 'SKT-JIRA',\n                issue: [\n                    fields: [\n                        project: [key: 'OSS-SEC'],\n                        summary: \"CVE 스캔 실패 — ${env.BUILD_DATE}\",\n                        issuetype: [name: 'Bug'],\n                        priority: [name: 'High'],\n                        labels: ['cve-scan-failure', 'oss-security']\n                    ]\n                ]\n            )\n        }\n    }\n}\n```\n\n### 2-2. 탐지 소스\n\n| 소스 | 주기 | 담당 |\n|------|------|------|\n| Jenkins 파이프라인 (배포 전 스캔) | 매 배포 (월간) | 자동화 |\n| Jenkins 정기 스캔 잡 | 매주 월요일 | 자동화 |\n| NVD (국가 취약점 데이터베이스) | 실시간 구독 | 보안팀 |\n| GitHub Advisory Database | 실시간 | 자동화 |\n| KrCERT/CC 보안 공지 | 수시 | 보안팀 |\n| 외부 취약점 신고 (CVD) | 수시 | 오픈소스 담당자 |\n\n---\n\n## 3. CVSS 심각도별 대응 기한\n<!-- 18974 §4.2.1.1 -->\n\n| CVSS 등급 | 점수 범위 | 대응 기한 | 비고 |\n|----------|---------|---------|------|\n| **Critical** | 9.0 ~ 10.0 | **1주일** 이내 | 즉시 Jira 티켓 생성, 보안팀 알림 |\n| **High** | 7.0 ~ 8.9 | **4주일** 이내 | 월간 배포 전 해소 목표 |\n| **Medium** | 4.0 ~ 6.9 | **1개월** 이내 | 다음 정기 배포에 포함 |\n| **Low** | 0.1 ~ 3.9 | **다음 릴리즈** | 백로그 등록 후 계획적 처리 |\n\n> **💡 유연성 노트**: 위 기한은 기본 기준이며, 취약점의 실제 악용 가능성(Exploitability), 해당 컴포넌트의 비즈니스 중요도, 패치 가용성 등에 따라 **더 엄격한 기한을 적용**할 수 있다. Critical 취약점 중 실제 악용(Exploit) 사례가 확인된 경우에는 24시간 이내 대응을 목표로 한다.\n\n---\n\n## 4. 취약점 대응 절차\n<!-- 18974 §4.2.1.1 -->\n\n### 4-1. 취약점 접수 및 분류\n\n1. Jenkins 자동 스캔 또는 외부 신고를 통해 취약점 탐지\n2. Jira 프로젝트 `OSS-SEC`에 티켓 생성\n3. CVSS 점수 및 영향 범위 확인\n\n**Jira 티켓 필수 기재 항목**:\n\n| 항목 | 내용 |\n|------|------|\n| CVE ID | 예: CVE-2023-44487 |\n| 컴포넌트명 / 버전 | 예: netty / 4.1.86 |\n| CVSS 점수 / 등급 | 예: 7.5 / High |\n| 영향 제품/서비스 | 예: 서비스A, 서비스B |\n| 배포 채널 | 예: SaaS / 앱스토어 |\n| 패치 버전 가용 여부 | 예: 4.1.100 패치 가용 |\n| 레이블 | `cve`, `oss-security`, `[critical/high/medium/low]` |\n\n### 4-2. 영향 범위 분석\n\n보안팀과 오픈소스 담당자가 협력하여 아래를 분석한다:\n\n- 취약한 컴포넌트를 사용하는 제품/서비스 목록 확인 (SBOM 조회)\n- 취약점의 실제 악용 가능성 평가 (Attack Vector, Privileges Required 등)\n- 데이터 유출, 서비스 중단 등 비즈니스 영향 평가\n\n```bash\n# SBOM을 활용한 영향 범위 확인 예시\ngrype sbom:sbom.spdx.json --only-fixed | grep \"CVE-2023-XXXXX\"\n```\n\n### 4-3. 대응 방안 결정\n\n| 우선순위 | 대응 방안 | 적용 조건 |\n|---------|---------|---------|\n| 1순위 | **패치 버전 업그레이드** | 패치 버전 가용 시 |\n| 2순위 | **대안 컴포넌트 교체** | 패치 버전 없음, 대안 존재 시 |\n| 3순위 | **완화 조치 (Mitigation)** | 즉각 교체 불가, 임시 방어 가능 시 |\n| 4순위 | **위험 수용 (Risk Acceptance)** | Low 등급, 악용 불가 환경에 한해 법무·보안 승인 후 |\n\n### 4-4. 패치 적용 및 검증\n\n```groovy\n// Jenkinsfile 예시 - 긴급 패치 파이프라인\nstage('Emergency Patch Verification') {\n    steps {\n        sh '''\n            # 패치 적용 후 재스캔\n            grype sbom:sbom.spdx.json \\\n              --output json \\\n              --file reports/patch-verify-$(date +%Y%m%d).json\n            \n            # CVE 해소 확인\n            python3 scripts/verify-cve-fix.py \\\n              --cve \"${CVE_ID}\" \\\n              --report reports/patch-verify-$(date +%Y%m%d).json\n        '''\n    }\n}\n```\n\n### 4-5. 외부 고객 통보 (납품 소프트웨어)\n\n납품·배포된 소프트웨어에 Critical/High 취약점이 발견된 경우:\n\n1. 패치 준비 완료 후 영업일 **3일 이내** 고객사에 통보\n2. 통보 내용: CVE ID, 영향 범위, 패치 버전, 적용 방법\n3. 오픈소스 담당자가 통보 기록을 Jira에 보관\n\n### 4-6. 사후 처리 및 기록\n\n- Jira 티켓에 대응 결과, 패치 버전, 완료일 기록\n- Jenkins 빌드 번호 및 배포 일시 연결\n- 재발 방지를 위한 SBOM 업데이트 확인\n\n---\n\n## 5. CVD (Coordinated Vulnerability Disclosure) 절차\n<!-- 18974 §4.2.1.1 -->\n\n### 5-1. 외부 취약점 신고 수신 채널 설정\n\n> **⚠️ 채널 설정 필요**: 현재 외부 취약점 신고 채널이 미운영 상태입니다. 아래 절차에 따라 채널을 즉시 설정하십시오.\n\n#### 채널 설정 절차\n\n| 단계 | 작업 내용 | 담당자 | 기한 |\n|------|---------|--------|------|\n| 1 | `security@sktelecom.com` 이메일 계정 활성화 확인 | IT 운영팀 | 즉시 |\n| 2 | 보안팀 및 오픈소스 담당자 수신 설정 | 보안팀 | 즉시 |\n| 3 | 회사 웹사이트 및 GitHub 저장소에 채널 공개 | 오픈소스 담당자 | 1주일 이내 |\n| 4 | 자동 응답 메시지 설정 (접수 확인 안내) | IT 운영팀 | 1주일 이내 |\n| 5 | 수신 테스트 및 대응 절차 검증 | 오픈소스 담당자 | 2주일 이내 |\n\n#### 공개 채널 정보 (설정 완료 후)\n\n```\n보안 취약점 신고: security@sktelecom.com\n라이선스 문의: opensource@sktelecom.com\nPGP 키: [설정 후 등록]\n응답 기한: 영업일 기준 5일 이내\n```\n\n#### 웹사이트/README 게시 문구 (예시)\n\n```markdown\n## Security Vulnerability Reporting\n\nIf you discover a security vulnerability in our products, please report it to:\n**security@sktelecom.com**\n\nWe will acknowledge receipt within 5 business days and provide\na resolution timeline based on severity.\n\nPlease include: CVE ID (if known), affected component/version,\ndescription of the vulnerability, and steps to reproduce.\n```\n\n### 5-2. CVD 대응 절차 (§8 기준)\n\n외부로부터 취약점 신고를 받은 경우 아래 절차를 따른다:\n\n#### Phase 1: 접수 및 확인 (수신 후 영업일 5일 이내)\n\n1. `security@sktelecom.com` 수신 확인\n2. 신고자에게 접수 확인 회신 (자동 응답 또는 수동)\n3. Jira `OSS-SEC` 프로젝트에 CVD 티켓 생성\n4. 보안팀 + 오픈소스 담당자에게 즉시 공유\n\n**접수 확인 회신 템플릿**:\n\n```\n안녕하세요,\n\nSK텔레콤 보안팀입니다.\n취약점 신고를 접수했습니다. 감사합니다.\n\n[접수 번호]: CVD-YYYY-NNNN\n[접수 일시]: YYYY-MM-DD HH:MM (KST)\n[예상 검토 기간]: 영업일 기준 최대 10일\n\n검토 결과를 확인 후 연락드리겠습니다.\n신고해 주셔서 감사합니다.\n\nSK텔레콤 보안팀\nsecurity@sktelecom.com\n```\n\n#### Phase 2: 분석 및 재현 (영업일 10일 이내)\n\n1. 취약점 재현 및 영향 범위 분석\n2. CVSS 점수 산정\n3. 신고자에게 분석 결과 및 대응 계획 공유\n4. 공개 일정(Disclosure Timeline) 협의\n\n#### Phase 3: 패치 개발 및 배포\n\n1. 대응 방안 결정 (4-3 항목 참조)\n2. 패치 개발 및 테스트\n3. 월간 정기 배포 또는 긴급 패치 배포\n4. 신고자에게 패치 완료 사전 통보 (공개 7일 전)\n\n#### Phase 4: 공개 (Disclosure)\n\n1. 패치 배포 완료 확인\n2. 보안 공지 작성 및 게시\n3. 신고자와 합의된 일정에 따라 CVE 공개\n4. CVE 번호 미부여 시 MITRE에 신청\n\n**공개 보안 공지 템플릿**:\n\n```markdown\n# 보안 취약점 공지\n\n**CVE ID**: CVE-YYYY-XXXXX  \n**심각도**: [Critical/High/Medium/Low]  \n**영향 제품**: [제품명 v버전]  \n**패치 버전**: [v버전]  \n**공지 일자**: YYYY-MM-DD  \n\n## 요약\n[취약점 간략 설명]\n\n## 영향\n[영향을 받는 버전 범위]\n\n## 해결 방법\n[패치 버전으로 업그레이드 안내]\n\n## 신고자\n[신고자 동의 시 크레딧 표기]\n```\n\n### 5-3. CVD 기록 보관\n\n| 항목 | 내용 |\n|------|------|\n| 보관 문서 | CVD 티켓, 신고 이메일, 분석 보고서, 패치 내역, 공지 문서 |\n| 보관 위치 | Jira `OSS-SEC` 프로젝트 + 보안팀 내부 저장소 |\n| 보관 기간 | 최소 5년 |\n| 비밀 유지 | 패치 배포 전 취약점 상세 내용 외부 공개 금지 |\n\n---\n\n## 6. 역할 및 책임\n\n| 역할 | 담당자 | 주요 책임 |\n|------|--------|---------|\n| 취약점 1차 대응 | 보안팀 | CVE 탐지, 분류, 패치 검토 |\n| CVD 창구 운영 | 오픈소스 담당자 | 외부 신고 접수, 신고자 커뮤니케이션 |\n| 패치 적용 | 개발팀 대표 | 컴포넌트 업그레이드, 빌드 검증 |\n| 고객사 통보 | 오픈소스 담당자 | 납품 제품 취약점 통보 |\n| 법무 검토 | 법무팀 | 취약점 공개 관련 법적 검토 |\n\n---\n\n## 7. 관련 문서\n\n| 문서 | 위치 |\n|------|------|\n| 오픈소스 정책 | `output/policy/oss-policy.md` |\n| 외부 문의 대응 절차 | `output/process/inquiry-response.md` |\n| 배포 전 체크리스트 | `output/process/distribution-checklist.md` |\n| SBOM 가이드 | `output/sbom/sbom-guide.md` |\n"
+          }
+        }
+      ],
+      "stop_reason": "tool_use"
+    },
+    {
+      "content": [
+        {
+          "type": "tool_use",
+          "id": "toolu_017B9RoyD6L4ttehrohq1ECE",
+          "name": "Write",
+          "input": {
+            "file_path": "output/process/inquiry-response.md",
+            "content": "# 외부 오픈소스 문의 대응 절차\n<!-- 5230 §3.2.1.1 -->\n\n**회사명**: SK텔레콤  \n**버전**: 1.0  \n**작성일**: 2026-03-23  \n**작성자**: DevOps팀 오픈소스 담당자  \n**승인자**: DevOps팀장  \n**다음 검토 예정일**: 2027-03-23  \n\n---\n\n## 1. 목적\n\n이 문서는 SK텔레콤의 소프트웨어에 사용된 오픈소스와 관련하여 외부(고객사, 오픈소스 커뮤니티, 저작권자, 규제기관 등)로부터 접수되는 라이선스 컴플라이언스 문의 및 취약점 신고에 신속하고 일관되게 대응하기 위한 절차를 정의한다.\n\n---\n\n## 2. 문의 수신 채널 설정\n<!-- 5230 §3.2.1.1 -->\n\n> **⚠️ 채널 설정 필요**: 현재 외부 문의 수신 채널이 미운영 상태입니다. 아래 절차에 따라 즉시 설정하십시오.\n\n### 2-1. 채널 설정 절차\n\n| 단계 | 작업 내용 | 담당자 | 기한 |\n|------|---------|--------|------|\n| 1 | `opensource@sktelecom.com` 이메일 계정 활성화 | IT 운영팀 | **즉시** |\n| 2 | 오픈소스 담당자 및 법무팀 수신 설정 | IT 운영팀 | **즉시** |\n| 3 | 자동 응답 메시지 설정 | IT 운영팀 | 1주일 이내 |\n| 4 | 회사 웹사이트 \"오픈소스 고지\" 페이지에 채널 게시 | 오픈소스 담당자 | 1주일 이내 |\n| 5 | GitHub 조직 프로필 및 주요 저장소 README에 채널 게시 | 오픈소스 담당자 | 2주일 이내 |\n| 6 | 채널 수신·대응 테스트 | 오픈소스 담당자 | 2주일 이내 |\n\n### 2-2. 운영 채널 정보 (설정 완료 후)\n\n| 문의 유형 | 채널 | 운영 시간 |\n|---------|------|---------|\n| 라이선스 컴플라이언스 문의 | opensource@sktelecom.com | 영업일 09:00~18:00 (KST) |\n| 보안 취약점 신고 | security@sktelecom.com | 24시간 수신 (영업일 대응) |\n\n### 2-3. 채널 게시 문구 (웹사이트/README 예시)\n\n```markdown\n## 오픈소스 문의 (Open Source Inquiries)\n\nSK텔레콤 제품의 오픈소스 라이선스 컴플라이언스에 관한 문의는 아래로 연락 주세요:\n\n📧 **라이선스 문의**: opensource@sktelecom.com  \n🔒 **보안 취약점 신고**: security@sktelecom.com  \n\n응답 기한: 영업일 기준 5일 이내\n\n---\n\n## Open Source Inquiries\n\nFor questions about open source license compliance in SK Telecom products:\n\n📧 **License inquiries**: opensource@sktelecom.com  \n🔒 **Security vulnerability reports**: security@sktelecom.com  \n\nResponse time: Within 5 business days\n```\n\n### 2-4. 자동 응답 메시지 (이메일 설정 예시)\n\n```\n안녕하세요, SK텔레콤 오픈소스 담당팀입니다.\n\n문의해 주셔서 감사합니다. 이메일을 정상적으로 접수했습니다.\n\n[접수 번호]: OSS-INQUIRY-YYYY-NNNN\n[접수 일시]: {자동 입력}\n[예상 응답 기한]: 영업일 기준 5일 이내\n\n오픈소스 관련 법적 문의의 경우 처리 시간이 더 소요될 수 있습니다.\n추가 문의는 위 이메일로 연락 주세요.\n\nSK텔레콤 오픈소스 담당팀\nopensource@sktelecom.com\n\n---\n\nHello, this is the SK Telecom Open Source team.\n\nThank you for your inquiry. We have received your message.\n\n[Reference]: OSS-INQUIRY-YYYY-NNNN\n[Received]: {auto-filled}\n[Response SLA]: Within 5 business days\n\nSK Telecom Open Source Team\nopensource@sktelecom.com\n```\n\n---\n\n## 3. 문의 유형 분류\n\n| 문의 유형 | 설명 | 예시 |\n|---------|------|------|\n| **라이선스 고지 요청** | NOTICE 파일, 라이선스 텍스트 제공 요청 | \"귀사 제품에 사용된 OSS 목록을 요청합니다\" |\n| **소스코드 공개 요청** | GPL/LGPL 의무에 따른 소스코드 제공 요청 | \"GPL 컴포넌트의 소스코드를 요청합니다\" |\n| **라이선스 위반 주장** | 저작권자의 의무 위반 주장 | \"당사 저작물이 라이선스 위반으로 사용됨\" |\n| **보안 취약점 신고** | 외부 취약점 연구자의 신고 | \"CVE 관련 취약점을 발견했습니다\" |\n| **SBOM 제공 요청** | 납품처의 SBOM 제공 요청 | \"SBOM을 공유해 주세요\" |\n| **기타 일반 문의** | 위에 해당하지 않는 오픈소스 관련 문의 | 정책 안내 요청 등 |\n\n---\n\n## 4. 문의 대응 절차\n\n### 4-1. 접수 및 분류 (수신 후 영업일 1일 이내)\n\n1. `opensource@sktelecom.com` 수신 확인\n2. 문의 유형 분류 (섹션 3 참조)\n3. Jira 프로젝트 `OSS-INQUIRY`에 티켓 생성\n4. 접수 확인 회신 발송\n\n**Jira 티켓 레이블 규칙**:\n\n| 문의 유형 | Jira 레이블 |\n|---------|-----------|\n| 라이선스 고지 요청 | `inquiry-notice` |\n| 소스코드 공개 요청 | `inquiry-source` |\n| 라이선스 위반 주장 | `inquiry-violation` |\n| 보안 취약점 신고 | `inquiry-security` → `vulnerability-response.md` 절차로 이관 |\n| SBOM 제공 요청 | `inquiry-sbom` |\n| 기타 | `inquiry-general` |\n\n### 4-2. 문의 유형별 대응 절차\n\n#### A. 라이선스 고지 / SBOM 제공 요청\n\n```\n[접수] → [SBOM 조회] → [고지문 준비] → [5영업일 이내 회신]\n```\n\n1. 해당 제품의 최신 SBOM 및 고지문 파일 확인\n2. 요청자에게 적합한 형식으로 제공 (SPDX, CycloneDX, PDF 등)\n3. 영업일 **5일 이내** 회신\n\n**회신 템플릿 (라이선스 고지 요청)**:\n\n```\n안녕하세요,\n\n요청하신 [제품명 v버전]의 오픈소스 고지문을 첨부합니다.\n\n[첨부 파일]\n- NOTICE.txt : 오픈소스 고지문\n- sbom.spdx.json : SBOM (SPDX 형식)\n\n추가 문의 사항이 있으시면 알려주세요.\n\nSK텔레콤 오픈소스 담당팀\nopensource@sktelecom.com\n```\n\n#### B. 소스코드 공개 요청 (GPL/LGPL)\n\n```\n[접수] → [해당 컴포넌트 확인] → [소스코드 준비] → [법무팀 확인] → [10영업일 이내 제공]\n```\n\n1. 요청된 컴포넌트의 라이선스 및 버전 확인\n2. 소스코드 공개 의무 대상 여부 확인\n3. 소스코드 저장소 URL 또는 아카이브 파일 준비\n4. 법무팀 검토 (필요 시)\n5. 영업일 **10일 이내** 제공\n\n#### C. 라이선스 위반 주장\n\n```\n[접수] → [즉시 법무팀 에스컬레이션] → [법무팀 주도 대응] → [오픈소스 담당자 지원]\n```\n\n> **⚠️ 중요**: 라이선스 위반 주장은 법적 분쟁으로 발전할 수 있으므로, 접수 **즉시** 법무팀에 에스컬레이션한다. 담당자 개인이 임의로 회신하지 않는다.\n\n1. 수신 즉시 법무팀 및 오픈소스 담당자에게 Jira 티켓 공유\n2. 신고자에게 검토 중임을 안내 (법무팀 확인 후 회신 예정 명시)\n3. 법무팀 주도로 위반 여부 검토 및 대응 방안 결정\n4. 필요 시 외부 법무법인 연계\n\n**접수 확인 회신 (위반 주장 시)**:\n\n```\n안녕하세요,\n\n문의해 주신 내용을 접수했습니다.\n법무팀 검토 후 영업일 기준 10일 이내에 공식 답변 드리겠습니다.\n\nSK텔레콤 오픈소스 담당팀\nopensource@sktelecom.com\n```\n\n#### D. 보안 취약점 신고\n\n보안 취약점 신고는 `vulnerability-response.md`의 CVD 절차로 즉시 이관한다.\n\n```\n[접수] → [security@sktelecom.com 포워딩] → [취약점 대응 절차(vulnerability-response.md) 적용]\n```\n\n### 4-3. 대응 기한 요약\n\n| 문의 유형 | 접수 확인 | 최종 회신/해결 |\n|---------|---------|-------------|\n| 라이선스 고지 / SBOM 요청 | 영업일 1일 | 영업일 5일 |\n| 소스코드 공개 요청 | 영업일 1일 | 영업일 10일 |\n| 라이선스 위반 주장 | 영업일 1일 | 영업일 10일 (법무팀 주도) |\n| 보안 취약점 신고 | 영업일 1일 | `vulnerability-response.md` 기준 |\n| SBOM 제공 요청 | 영업일 1일 | 영업일 5일 |\n| 일반 문의 | 영업일 1일 | 영업일 5일 |\n\n---\n\n## 5. 미해결 문의 에스컬레이션\n\n영업일 **3일** 이내에 처리 방향이 결정되지 않는 경우:\n\n| 상황 | 에스컬레이션 대상 |\n|------|---------------|\n| 라이선스 불명확, 법적 판단 필요 | 법무팀 |\n| Critical 취약점 관련 | 보안팀 + DevOps팀장 |\n| 외부 기관(FSFE, SFC 등) 발신 문의 | 법무팀 + DevOps팀장 즉시 보고 |\n| 언론·SNS 노출 가능성 | 홍보팀 + DevOps팀장 즉시 보고 |\n\n---\n\n## 6. 문의 대응 기록 보관\n<!-- 5230 §3.2.1.1 -->\n\n| 항목 | 내용 |\n|------|------|\n| 보관 위치 | Jira 프로젝트 `OSS-INQUIRY` + 이메일 아카이브 |\n| 보관 항목 | 수신 이메일, 회신 이메일, Jira 티켓, 첨부 자료 |\n| 보관 기간 | 최소 3년 (법적 분쟁 관련 건은 종결 후 5년) |\n| 접근 권한 | 오픈소스 담당자, 법무팀 |\n\n---\n\n## 7. 역할 및 책임\n\n| 역할 | 담당자 | 주요 책임 |\n|------|--------|---------|\n| 문의 창구 운영 | 오픈소스 담당자 (DevOps팀) | 이메일 수신, 분류, 접수 확인 |\n| 라이선스 검토 | 오픈소스 담당자 | 고지문·SBOM 제공, 소스코드 공개 |\n| 법적 분쟁 대응 | 법무팀 (주도) + 오픈소스 담당자 (지원) | 위반 주장, 법적 문의 |\n| 취약점 대응 | 보안팀 | CVD 절차 수행 |\n\n---\n\n## 8. 관련 문서\n\n| 문서 | 위치 |\n|------|------|\n| 오픈소스 정책 | `output/policy/oss-policy.md` |\n| 역할 및 책임 정의 | `output/organization/role-definition.md` |\n| 취약점 대응 절차 | `output/process/vulnerability-response.md` |\n| 배포 전 체크리스트 | `output/process/distribution-checklist.md` |\n"
+          }
+        }
+      ],
+      "stop_reason": "tool_use"
+    },
+    {
+      "content": [
+        {
+          "type": "tool_use",
+          "id": "toolu_01Dv1pg4rTC4gZWPNrPZPTKP",
+          "name": "Write",
+          "input": {
+            "file_path": "output/process/process-diagram.md",
+            "content": "# 오픈소스 프로세스 흐름도\n<!-- 5230 §3.1.5.1, §3.2.1.1, §3.3.2.1, §3.4.1.1, 18974 §4.1.5.1, §4.2.1.1 -->\n\n**회사명**: SK텔레콤  \n**버전**: 1.0  \n**작성일**: 2026-03-23  \n**작성자**: DevOps팀 오픈소스 담당자  \n\n---\n\n## 1. 오픈소스 사용 승인 프로세스\n\n```mermaid\ngraph TD\n    A([오픈소스 사용 요청]) --> B[Jira 티켓 생성\\nOSS-APPROVAL 프로젝트]\n    B --> C{라이선스\\n허용 목록 확인}\n    C -->|Permissive\\nMIT·Apache-2.0·BSD| D[Jenkins 취약점 스캔\\nOWASP Dependency-Check]\n    C -->|Weak Copyleft\\nLGPL·MPL| D\n    C -->|Strong/Network Copyleft\\nGPL·AGPL| E[법무팀 에스컬레이션\\nJira legal-review 레이블]\n    C -->|불명확·미확인| E\n    E -->|법무팀 승인| D\n    E -->|법무팀 거부| F([사용 불가\\n대안 컴포넌트 검토])\n    D --> G{취약점 등급\\n확인}\n    G -->|Critical\\nCVSS 9.0+| H([즉시 거부\\n대안 검토])\n    G -->|High\\nCVSS 7.0~8.9| I[패치 버전 확인\\n및 완화 계획 수립]\n    G -->|Medium·Low\\n또는 없음| J[담당자 단독 승인\\nJira 코멘트 기록]\n    I --> J\n    J --> K[SBOM 업데이트\\nsbom.spdx.json]\n    K --> L[Jenkins 파이프라인\\n반영 및 빌드 검증]\n    L --> M([승인 완료\\n배포 프로세스 진행])\n\n    style A fill:#4CAF50,color:#fff\n    style F fill:#f44336,color:#fff\n    style H fill:#f44336,color:#fff\n    style M fill:#2196F3,color:#fff\n```\n\n---\n\n## 2. 월간 배포 전 체크리스트 프로세스\n\n```mermaid\ngraph TD\n    A([배포 예정 D-5\\n영업일 기준]) --> B[Jenkins 파이프라인\\n최종 빌드 실행]\n    B --> C[SBOM 자동 생성\\nsyft / cdxgen]\n    C --> D[라이선스 컴플라이언스\\n자동 검사 ORT]\n    D --> E{라이선스\\n위반 여부}\n    E -->|위반 없음| F[취약점 스캔\\ngrype / Dependency-Check]\n    E -->|위반 발견| G[담당자 검토\\n및 수정]\n    G --> D\n    F --> H{Critical·High\\n취약점 존재?}\n    H -->|없음| I[고지문 생성\\nORT NoticeTemplate]\n    H -->|있음| J[취약점 대응\\nvulnerability-response.md]\n    J -->|해소 완료| I\n    J -->|해소 불가| K([배포 보류\\n오픈소스 담당자 협의])\n    I --> L[고지문 확인\\n체크리스트 섹션 3-2]\n    L --> M[라이선스 컴플라이언스\\n확인 섹션 4]\n    M --> N[담당자 최종 승인\\nJira 기록]\n    N --> O([월간 배포 실행])\n    O --> P[배포 후 최종 확인\\n섹션 7]\n    P --> Q[SBOM 보관\\nJira 첨부 + Jenkins 아티팩트]\n    Q --> R([완료 및 CVE 모니터링 개시])\n\n    style A fill:#4CAF50,color:#fff\n    style K fill:#f44336,color:#fff\n    style O fill:#2196F3,color:#fff\n    style R fill:#9C27B0,color:#fff\n```\n\n---\n\n## 3. 취약점 대응 프로세스\n\n```mermaid\ngraph TD\n    A([취약점 탐지]) --> B{탐지 경로}\n    B -->|Jenkins 자동 스캔\\n매주 월요일| C[Jira OSS-SEC\\n자동 티켓 생성]\n    B -->|외부 신고\\nsecurity@sktelecom.com| D[CVD 접수\\n영업일 1일 이내 확인]\n    B -->|NVD·KrCERT\\n공지 모니터링| C\n    D --> E[접수 확인 회신\\n자동응답 or 수동]\n    E --> C\n    C --> F{CVSS 등급\\n분류}\n    F -->|Critical\\n9.0+| G[1주일 이내 대응\\n즉시 보안팀 알림]\n    F -->|High\\n7.0~8.9| H[4주일 이내 대응\\n월간 배포 전 해소]\n    F -->|Medium\\n4.0~6.9| I[1개월 이내 대응\\n다음 정기 배포]\n    F -->|Low\\n0.1~3.9| J[다음 릴리즈 반영\\n백로그 등록]\n    G --> K{대응 방안 결정}\n    H --> K\n    I --> K\n    J --> K\n    K -->|패치 버전 가용| L[컴포넌트 업그레이드\\nJenkins 재빌드·검증]\n    K -->|패치 없음| M[대안 컴포넌트 교체\\n또는 완화 조치]\n    K -->|Low 위험 수용| N[법무·보안 승인\\n위험 수용 기록]\n    L --> O[패치 검증\\nJenkins grype 재스캔]\n    M --> O\n    O --> P{납품·배포\\n소프트웨어?}\n    P -->|예| Q[고객사 통보\\n패치 완료 후 3일 이내]\n    P -->|아니오| R[Jira 티켓 종료\\n대응 결과 기록]\n    Q --> R\n    R --> S([완료\\nSBOM 업데이트])\n\n    style A fill:#4CAF50,color:#fff\n    style S fill:#2196F3,color:#fff\n```\n\n---\n\n## 4. 외부 문의 대응 프로세스\n\n```mermaid\ngraph TD\n    A([외부 문의 수신\\nopensource@sktelecom.com]) --> B[Jira OSS-INQUIRY\\n티켓 생성]\n    B --> C[접수 확인 회신\\n영업일 1일 이내]\n    C --> D{문의 유형\\n분류}\n    D -->|라이선스 고지\\nSBOM 요청| E[SBOM·고지문 준비\\n최신 버전 확인]\n    D -->|소스코드 공개\\n요청 GPL/LGPL| F[소스코드 아카이브\\n준비 및 법무팀 확인]\n    D -->|라이선스 위반\\n주장| G[즉시 법무팀\\n에스컬레이션]\n    D -->|보안 취약점\\n신고| H[vulnerability-response.md\\nCVD 절차로 이관]\n    D -->|일반 문의| I[담당자 검토 및\\n답변 작성]\n    E --> J[5영업일 이내 제공]\n    F --> K[10영업일 이내 제공]\n    G --> L[법무팀 주도\\n대응 10영업일]\n    H --> M([취약점 대응 절차\\n적용])\n    I --> N[5영업일 이내 회신]\n    J --> O[Jira 티켓\\n종료 및 기록]\n    K --> O\n    L --> O\n    N --> O\n    O --> P([완료\\n3년간 기록 보관])\n\n    style A fill:#4CAF50,color:#fff\n    style M fill:#FF9800,color:#fff\n    style P fill:#2196F3,color:#fff\n```\n\n---\n\n## 5. 전체 오픈소스 관리 프로세스 개요\n\n```mermaid\ngraph LR\n    subgraph \"도입 단계\"\n        A1[오픈소스 사용 요청] --> A2[라이선스 확인]\n        A2 --> A3[취약점 스캔]\n        A3 --> A4[담당자 승인\\n단독]\n        A4 --> A5[SBOM 업데이트]\n    end\n\n    subgraph \"개발 단계\"\n        B1[코드 개발] --> B2[Jenkins 파이프라인\\n자동 스캔]\n        B2 --> B3[라이선스·취약점\\n자동 검증]\n    end\n\n    subgraph \"배포 단계\\n월간\"\n        C1[배포 전 체크리스트\\nD-5] --> C2[고지문 생성·확인]\n        C2 --> C3[최종 승인]\n        C3 --> C4[배포 실행]\n        C4 --> C5[배포 후 확인]\n    end\n\n    subgraph \"운영 단계\"\n        D1[주간 CVE 모니터링\\nJenkins 자동] --> D2{취약점 발견?}\n        D2 -->|예| D3[취약점 대응\\n심각도별 기한]\n        D2 -->|아니오| D1\n        D3 --> D1\n    end\n\n    subgraph \"외부 대응\"\n        E1[외부 문의 수신\\nopensource@] --> E2[문의 유형 분류]\n        E2 --> E3[유형별 대응\\n5~10영업일]\n    end\n\n    A5 --> B1\n    B3 --> C1\n    C5 --> D1\n\n    style A4 fill:#2196F3,color:#fff\n    style C4 fill:#4CAF50,color:#fff\n    style D3 fill:#FF9800,color:#fff\n```\n\n---\n\n## 6. Jenkins 파이프라인 흐름도\n\n```mermaid\ngraph TD\n    A([코드 병합\\nmain 브랜치]) --> B[Stage: Checkout]\n    B --> C[Stage: Build\\nMaven/Gradle/npm]\n    C --> D[Stage: SBOM Generation\\nsyft → sbom.spdx.json]\n    D --> E[Stage: License Compliance\\nORT analyze + evaluate]\n    E --> F{라이선스\\n위반?}\n    F -->|Yes| G([빌드 실패\\nJira 자동 티켓])\n    F -->|No| H[Stage: Vulnerability Scan\\ngrype + Dependency-Check]\n    H --> I{Critical\\n취약점?}\n    I -->|Yes| J([빌드 실패\\nJira 보안 티켓])\n    I -->|No| K[Stage: OSS Notice Generation\\nORT report]\n    K --> L[Stage: Archive Artifacts\\nSBOM + Notice + Reports]\n    L --> M[Stage: Deploy to Staging]\n    M --> N[월간 배포 승인 게이트\\n담당자 승인]\n    N --> O([Stage: Deploy to Production\\n월간 배포])\n\n    style A fill:#4CAF50,color:#fff\n    style G fill:#f44336,color:#fff\n    style J fill:#f44336,color:#fff\n    style O fill:#2196F3,color:#fff\n```\n\n---\n\n## 7. 역할별 프로세스 참여도 (RACI)\n\n| 프로세스 | 오픈소스 담당자 | 보안팀 | 법무팀 | 개발팀 |\n|---------|:------------:|:-----:|:-----:|:-----:|\n| 오픈소스 사용 승인 | **R/A** | C | C | R |\n| 배포 전 체크리스트 | **A** | C | — | R |\n| 취약점 탐지 | C | **R** | — | I |\n| 취약점 대응 | R | **R/A** | C | R |\n| CVD 외부 신고 대응 | **R/A** | R | C | I |\n| 라이선스 문의 대응 | **R/A** | — | C | — |\n| 라이선스 위반 대응 | C | — | **R/A** | I |\n\n> **R**: Responsible (실행), **A**: Accountable (책임), **C**: Consulted (자문), **I**: Informed (통보)\n\n---\n\n## 관련 문서\n\n| 문서 | 위치 |\n|------|------|\n| 오픈소스 사용 승인 절차 | `output/process/usage-approval.md` |\n| 배포 전 체크리스트 | `output/process/distribution-checklist.md` |\n| 취약점 대응 절차 | `output/process/vulnerability-response.md` |\n| 외부 문의 대응 절차 | `output/process/inquiry-response.md` |\n| 오픈소스 정책 | `output/policy/oss-policy.md` |\n| 역할 및 책임 정의 | `output/organization/role-definition.md` |\n"
+          }
+        }
+      ],
+      "stop_reason": "tool_use"
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "이제 생성된 파일들을 최종 확인하겠습니다."
+        },
+        {
+          "type": "tool_use",
+          "id": "toolu_01Q1KxtTWoWtXpBM9HjMsGEj",
+          "name": "Bash",
+          "input": {
+            "command": "ls -la output/process/"
+          }
+        }
+      ],
+      "stop_reason": "tool_use"
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "모든 문서가 정상적으로 생성되었습니다! 📁\n\n---\n\n# ✅ 프로세스 문서 생성 완료\n\n## 생성된 문서 목록\n\n| 문서 | 파일 | 크기 | 충족 표준 |\n|------|------|------|---------|\n| 오픈소스 사용 승인 절차 | `usage-approval.md` | 6.5 KB | ISO 5230 §3.1.5 |\n| 배포 전 체크리스트 | `distribution-checklist.md` | 8.6 KB | ISO 5230 §3.3.2, §3.4.1 |\n| 취약점 대응 절차 (CVD 포함) | `vulnerability-response.md` | 10.8 KB | ISO 18974 §4.1.5, §4.2.1 |\n| 외부 문의 대응 절차 | `inquiry-response.md` | 9.1 KB | ISO 5230 §3.2.1 |\n| Mermaid 프로세스 흐름도 | `process-diagram.md` | 8.4 KB | 전체 프로세스 시각화 |\n\n> 기여 절차, 프로젝트 공개 절차는 Q5/Q6 \"아니오\" 답변으로 생성 제외되었습니다.\n\n---\n\n## 📌 환경 맞춤 적용 사항\n\n| 항목 | 적용 내용 |\n|------|---------|\n| **Jenkins** | 모든 문서에 Jenkinsfile Groovy 코드 예시 포함 |\n| **월간 배포** | 체크리스트에 \"배포 예정 D-5 영업일\" 기준 명시, 주간 CVE 모니터링 병행 |\n| **Jira** | 승인·문의·보안 티켓 모두 Jira 프로젝트별 관리 (OSS-APPROVAL, OSS-INQUIRY, OSS-SEC) |\n| **담당자 단독 승인** | 일반 컴포넌트는 오픈소스 담당자 단독, GPL/AGPL만 법무팀 에스컬레이션 |\n| **문의 채널 미설정** | `inquiry-response.md`, `vulnerability-response.md` 양쪽에 채널 설정 절차 및 기한 포함 |\n\n---\n\n## ⚠️ 즉시 조치가 필요한 항목\n\n1. **`opensource@sktelecom.com`** 이메일 채널 활성화 (즉시)\n2. **`security@sktelecom.com`** 이메일 채널 활성화 (즉시)\n3. 웹사이트/GitHub에 문의 채널 게시 (1주일 이내)\n4. Jenkins 정기 CVE 스캔 잡 설정 (매주 월요일)\n\n---\n\n## 다음 단계\n\n```bash\ncd agents/05-sbom-guide\nclaude\n```\n\nSBOM(Software Bill of Materials) 가이드 문서를 생성하려면 `05-sbom-guide` Agent를 실행하세요! 📦"
         }
       ],
       "stop_reason": "end_turn"

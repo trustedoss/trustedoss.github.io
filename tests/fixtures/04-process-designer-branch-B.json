@@ -9,7 +9,7 @@
     "담당자 단독",
     "아니오",
     "아니오",
-    "예"
+    "아직 없음"
   ],
   "expected_files": [
     "process/usage-approval.md",

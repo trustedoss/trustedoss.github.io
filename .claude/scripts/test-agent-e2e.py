@@ -77,7 +77,7 @@ class _MockResponse:
 class Cassette:
     """API 응답을 JSON 파일로 녹화하고 재생한다."""
 
-    def __init__(self, path: Path, record: bool = False):
+    def __init__(self, path: Path, record: bool = False, force: bool = False):
         self.path = path
         self._record = record
         self._turns: list[dict] = []
@@ -85,7 +85,7 @@ class Cassette:
         self.mode = "off"
 
         if record:
-            if path.exists():
+            if path.exists() and not force:
                 self.mode = "done"  # 이미 녹화됨 — 덮어쓰지 않음
             else:
                 self.mode = "record"
@@ -546,7 +546,7 @@ def verify_output(fixture: dict, tmpdir: Path, verbose: bool) -> list:
 # 단일 fixture 실행
 # ---------------------------------------------------------------------------
 
-def run_fixture(fixture: dict, fixture_path: Path, verbose: bool = False, record: bool = False) -> Optional[bool]:
+def run_fixture(fixture: dict, fixture_path: Path, verbose: bool = False, record: bool = False, force: bool = False) -> Optional[bool]:
     """단일 fixture 실행. PASS→True / FAIL→False / SKIP→None."""
     agent_name = fixture["agent"]
     model = fixture.get("model", "claude-sonnet-4-6")
@@ -555,7 +555,7 @@ def run_fixture(fixture: dict, fixture_path: Path, verbose: bool = False, record
 
     # 카세트 이름: fixture 파일 stem 기준 — 동일 agent의 복수 fixture를 분리
     cassette_path = CASSETTES_DIR / f"{fixture_path.stem}.json"
-    cassette = Cassette(cassette_path, record=record)
+    cassette = Cassette(cassette_path, record=record, force=force)
 
     print(f"\n{'='*60}")
     print(f"Agent  : {agent_name}  (fixture: {fixture_path.name})")
@@ -619,6 +619,8 @@ def main():
                         help="상세 출력 (도구 호출, 입력 흐름 등)")
     parser.add_argument("--record", action="store_true",
                         help="실제 API를 호출하여 카세트를 녹화/갱신 (ANTHROPIC_API_KEY 필요)")
+    parser.add_argument("--force", action="store_true",
+                        help="이미 존재하는 카세트도 덮어쓰기 (--record와 함께 사용)")
     args = parser.parse_args()
 
     if args.record:
@@ -644,7 +646,7 @@ def main():
     results: list = []
     for fp in fixture_paths:
         fixture = load_fixture(fp)
-        result = run_fixture(fixture, fixture_path=fp, verbose=args.verbose, record=args.record)
+        result = run_fixture(fixture, fixture_path=fp, verbose=args.verbose, record=args.record, force=args.force)
         results.append((fp.name, result))
 
     total = len(results)
