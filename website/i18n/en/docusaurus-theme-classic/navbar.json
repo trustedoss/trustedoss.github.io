@@ -7,20 +7,20 @@
     "message": "Trusted OSS Logo",
     "description": "The alt text of navbar logo"
   },
-  "item.label.Build Your System": {
-    "message": "System Setup",
-    "description": "Navbar item with label Build Your System"
+  "item.label.체계구축": {
+    "message": "Build Your System",
+    "description": "Navbar item with label 체계구축"
   },
   "item.label.DevSecOps": {
     "message": "DevSecOps",
     "description": "Navbar item with label DevSecOps"
   },
-  "item.label.AI Coding": {
+  "item.label.AI코딩": {
     "message": "AI Coding",
-    "description": "Navbar item with label AI Coding"
+    "description": "Navbar item with label AI코딩"
   },
-  "item.label.Reference": {
+  "item.label.레퍼런스": {
     "message": "Reference",
-    "description": "Navbar item with label Reference"
+    "description": "Navbar item with label 레퍼런스"
   }
 }

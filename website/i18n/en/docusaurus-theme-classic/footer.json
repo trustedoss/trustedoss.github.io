@@ -1,35 +1,35 @@
 {
-  "link.title.Guides": {
-    "message": "Guide",
-    "description": "The title of the footer links column with title=Guides in the footer"
+  "link.title.가이드": {
+    "message": "Guides",
+    "description": "The title of the footer links column with title=가이드 in the footer"
   },
-  "link.title.Community": {
+  "link.title.커뮤니티": {
     "message": "Community",
-    "description": "The title of the footer links column with title=Community in the footer"
+    "description": "The title of the footer links column with title=커뮤니티 in the footer"
   },
-  "link.title.Standards": {
+  "link.title.표준": {
     "message": "Standards",
-    "description": "The title of the footer links column with title=Standards in the footer"
+    "description": "The title of the footer links column with title=표준 in the footer"
   },
-  "link.item.label.Build Your System": {
-    "message": "System Setup",
-    "description": "The label of footer link with label=Build Your System linking to /docs"
+  "link.item.label.체계구축": {
+    "message": "Build Your System",
+    "description": "The label of footer link with label=체계구축 linking to /docs"
   },
   "link.item.label.DevSecOps": {
     "message": "DevSecOps",
     "description": "The label of footer link with label=DevSecOps linking to /devsecops/intro"
   },
-  "link.item.label.AI Coding": {
+  "link.item.label.AI코딩": {
     "message": "AI Coding",
-    "description": "The label of footer link with label=AI Coding linking to /ai-coding/intro"
+    "description": "The label of footer link with label=AI코딩 linking to /ai-coding/intro"
   },
-  "link.item.label.Reference": {
+  "link.item.label.레퍼런스": {
     "message": "Reference",
-    "description": "The label of footer link with label=Reference linking to /reference/intro"
+    "description": "The label of footer link with label=레퍼런스 linking to /reference/intro"
   },
-  "link.item.label.About this project": {
+  "link.item.label.이 프로젝트에 대하여": {
     "message": "About This Project",
-    "description": "The label of footer link with label=About this project linking to /about"
+    "description": "The label of footer link with label=이 프로젝트에 대하여 linking to /about"
   },
   "link.item.label.OpenChain KWG": {
     "message": "OpenChain KWG",
@@ -47,9 +47,9 @@
     "message": "ISO/IEC 18974",
     "description": "The label of footer link with label=ISO/IEC 18974 linking to https://www.iso.org/standard/86450.html"
   },
-  "link.item.label.OpenChain Self-Certification": {
+  "link.item.label.OpenChain 자체 인증": {
     "message": "OpenChain Self-Certification",
-    "description": "The label of footer link with label=OpenChain Self-Certification linking to https://www.openchainproject.org/conformance"
+    "description": "The label of footer link with label=OpenChain 자체 인증 linking to https://www.openchainproject.org/conformance"
   },
   "copyright": {
     "message": "CC BY 4.0 · OpenChain KWG · haksungjang",
