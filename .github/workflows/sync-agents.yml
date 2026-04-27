@@ -48,9 +48,9 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git remote set-url origin https://x-access-token:${AGENTS_REPO_TOKEN}@github.com/trustedoss/trustedoss-agents.git
           git add -A
-          if git diff --staged --quiet; then
+          if [ -z "$(git status --porcelain)" ]; then
             echo "변경 없음 — sync 스킵"
           else
             git commit -m "sync: trustedoss@${{ github.sha }}"
-            git push
+            git push origin HEAD:main
           fi
