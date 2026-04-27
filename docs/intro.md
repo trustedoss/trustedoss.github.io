@@ -28,8 +28,8 @@ ISO/IEC 5230 & 18974 기반 기업 오픈소스 관리 체계 구축 실전 Kit
 ### Claude Code 사용자 (권장)
 
 ```bash
-git clone https://github.com/trustedoss/trustedoss.github.io.git
-cd trustedoss.github.io && claude
+git clone https://github.com/trustedoss/trustedoss-agents.git
+cd trustedoss-agents && claude
 # "어디서 시작해야 해?" 입력
 ```
 

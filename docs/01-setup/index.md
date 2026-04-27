@@ -107,8 +107,8 @@ echo "모든 필수 도구가 설치되면 다음 단계로 진행하세요."
 
 ```bash
 # 저장소 클론
-git clone https://github.com/trustedoss/trustedoss.github.io.git
-cd trustedoss.github.io
+git clone https://github.com/trustedoss/trustedoss-agents.git
+cd trustedoss-agents
 
 # output 디렉토리 생성 (없는 경우)
 mkdir -p output
@@ -120,7 +120,7 @@ claude
 이미 클론한 경우:
 
 ```bash
-cd trustedoss.github.io
+cd trustedoss-agents
 git pull
 claude
 ```
@@ -150,7 +150,7 @@ Claude Code가 실행되면:
 
 ### git clone 권한 오류
 
-- HTTPS 방식으로 클론: `git clone https://github.com/trustedoss/trustedoss.github.io.git`
+- HTTPS 방식으로 클론: `git clone https://github.com/trustedoss/trustedoss-agents.git`
 - GitHub 인증 오류 시: `git config --global credential.helper store` 실행 후 재시도
 
 ### Node.js 버전이 너무 낮을 때 (v18 미만)

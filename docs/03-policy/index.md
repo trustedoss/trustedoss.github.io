@@ -111,9 +111,9 @@ ISO/IEC 5230과 18974 모두 정책이 **관련 인원에게 전달되고 이해
 Claude Code 를 실행하는 환경을 전제합니다.
 
 - [ ] trustedoss 저장소를 클론했나요?
-      `git clone https://github.com/trustedoss/trustedoss.github.io.git`
+      `git clone https://github.com/trustedoss/trustedoss-agents.git`
 - [ ] 터미널에서 프로젝트 루트에 있나요?
-      `cd trustedoss.github.io`
+      `cd trustedoss-agents`
 - [ ] Claude Code 가 실행 중인가요?
       `claude`
 
