@@ -1,140 +1,389 @@
-# React Native Documentation Style Guide
+[🇰🇷 한국어](#한국어) | [🇺🇸 English](#english)
 
-We believe everyone should be able to learn React Native, no matter what their technology platform, experience, country of origin, age, race, gender, etc. And our documentation guidelines reflect that.
+---
 
-## From “Zero to 360”
+<a id="한국어"></a>
 
-Part of what makes books like Effective JavaScript effective for new learners as well as advanced is that each section starts by assuming the reader has no knowledge of JavaScript. By the end of the chapter, the author has ramped up the content to speak at an expert level. That’s the sort of cadence we’re looking for in our documentation pages. Each page should start with the basics then ramp up to advanced ideas and concepts. Readers will, as with Effective JavaScript, revisit the content as their expertise and understanding grows.
+# 문서 스타일 가이드
 
-## Write for more than a React audience
+trustedoss 문서 작성 시 따르는 규칙입니다.
+이 가이드는 한국어 원본 문서(`docs/`, `website/`)와 영어 번역 파일(`website/i18n/en/`) 모두에 적용됩니다.
 
-It’s convenient to write as though the reader has the same background and perspective that you do. But in reality, our readers have a range of experience as well as come to us from many different fields including Android and iOS. We have to be inclusive of all learners, and that means taking nothing for granted!
+---
 
-- **Assume no knowledge of React.** 31% of visitors surveyed in September 2019 said they have no experience with React JS. When explaining React concepts, give a short explanation and then link to the appropriate React docs.
-- **Assume readers have no background in web development.** While 76% of our visitors surveyed in September 2019 said they had experience with web development before starting with React Native, that means 24% came in without any knowledge of web paradigms! 7.4% said they had no experience, meaning we can’t rely on Android, iOS, or web metaphors with those readers.
-- **Provide references to multiple technologies.** To help learners from Android and iOS backgrounds, it’s important that references also take those experiences into account and make comparisons for them in addition to web developers.
+## 1. 문서 구조 원칙
 
-### Example
+모든 챕터 문서는 **what / why / how** 3단 구성을 따릅니다.
 
-**Bad** “React Native is like React, but it uses native components instead of web components as building blocks.” This assumes a knowledge of the Web as well as React—and readers may lack one or both of those.
+| 섹션      | 내용                                | 필수 여부 |
+| --------- | ----------------------------------- | --------- |
+| **what**  | 이 챕터에서 무엇을 하는가           | 필수      |
+| **why**   | 왜 필요한가 (ISO 요구사항 연결)     | 필수      |
+| **how**   | 어떻게 실행하는가 (Agent 실행 단계) | 필수      |
+| 입증 자료 | ISO G항목 충족 근거 명시            | 권장      |
 
-**Good** “React Native is built with React. On the Web, React composes web components into UIs. Similarly, React Native uses native components as building blocks.”
+챕터 문서에는 해당 챕터가 충족하는 ISO/IEC 5230 및 18974 요구사항 항목을 front matter 또는 본문에 명시합니다.
 
-## Unpack “native”
+---
 
-Refer to non-web technologies by their proper nouns or as “apps,” not lumping them as “native.” Android and iOS developers do not think of their technologies as “native” nor what they build as “native apps.” Being more specific helps create an inclusive shared vocabulary for web and app devs to learn and collaborate with each other.
+## 2. 언어·용어 규칙
 
-### Example
+### 공식 용어
 
-**Bad** “Native App Accessibility (Android and iOS)” Qualifying “app” with “native” is redundant with “Android and “iOS” in the same phrase.
+한국어 원본에서는 아래 용어를 일관되게 사용합니다.
 
-**Good** “App Accessibility on Android and iOS” specifies both platforms and drops the confusing “native.”
+| 용어              | 사용 | 사용 금지                         |
+| ----------------- | ---- | --------------------------------- |
+| 오픈소스 정책     | O    | 오픈소스 방침, OSS 정책           |
+| 오픈소스 프로세스 | O    | 오픈소스 절차, OSS 프로세스       |
+| 자체 인증         | O    | 자가 인증, 셀프 인증              |
+| 산출물            | O    | 결과물, 아웃풋                    |
+| 담당자            | O    | 책임자, 관리자 (문맥에 따라 구분) |
+| 취약점            | O    | 보안 취약점 (중복 표현 주의)      |
+| 고지문            | O    | 고지서, 노티스                    |
 
-## Welcoming and mature
+### 한/영 대응 용어표
 
-Tone counts for a lot. Too familiar, and some folks might feel like they aren’t a part of a company of friends. Too formal and we risk alienating them with a robotic-sounding textbook! Our aim is to be welcoming and mature, like a senior developer who doesn’t take themselves too seriously.
+영어 번역 파일 작성 시 아래 용어표를 기준으로 일관성을 유지합니다.
 
-### Example
+| 한국어             | English                  |
+| ------------------ | ------------------------ |
+| 오픈소스 정책      | Open Source Policy       |
+| 오픈소스 프로세스  | Open Source Process      |
+| 조직 구성          | Organizational Structure |
+| 교육 체계          | Training Program         |
+| 자체 인증          | Self-Certification       |
+| 체계구축           | Build Your System        |
+| 공급망 보안        | Supply Chain Security    |
+| 취약점 분석        | Vulnerability Analysis   |
+| 산출물             | Deliverables             |
+| 담당자             | Program Manager          |
+| 고지문             | Attribution Notice       |
+| 거버넌스           | Governance               |
+| 허용 라이선스 목록 | Approved License List    |
+| 갭 분석            | Gap Analysis             |
+| 인증 선언문        | Conformance Declaration  |
 
-**Bad** “In accordance with the ancient traditions of our people, we must first build an app that does nothing except say ‘Hello, world!’” Pokes fun at ancient traditions of “our people” (whose people?) using a storytelling voice familiar to European English-language speakers that could be lost on people from other backgrounds.
+### 번역하지 않는 고유명사
 
-**Good** “As with so many other tutorials, you will first build an app that says ‘Hello, world!’” This is shorter, easier to read, and still keeps a friendly tone by acknowledging the proliferation of ‘hello world’ apps.
+다음은 번역 없이 원문 그대로 사용합니다.
 
-## In-jokes are out
+`OpenChain`, `KWG`, `trustedoss`, `SBOM`, `CycloneDX`, `SPDX`, `Syft`, `Grype`, `Trivy`, `NTIA`, `OSS`, `DevSecOps`, `CLAUDE.md`, `Claude Code`, `Cursor`, `Copilot`
 
-Cultural reference jokes, or “in-jokes,” don’t translate well across language and cultural divides. Even a reference to a popular British television drama like Downton Abbey can be lost on an American audience! What’s more, these reference tend to exclude people of different generations and age poorly. For instance, a Never Ending Story reference is lost on people born in the 90’s, and a Stranger Things reference will be outdated in five years, meaning more work for future documentation contributors to update.
+---
 
-## “you”, “we”, and “they”
+## 3. 코드 블록 규칙
 
-- “You” refers to the reader
-- “We” can be confusing and ambiguous. It could refer to the React Native community, React Native contributors, or the React Native Core team at Facebook. As such, only use “we” after explicitly referring to one of those groups.
-- “They” refers to people or organizations outside this “you/we” paradigm
-  - Set up who “they” are by referencing the person/org first
+- 셸 명령어, YAML, JSON 예시는 코드 블록(` ` ```)으로 감쌉니다.
+- 코드 블록 내부는 번역 시 변경하지 않습니다.
+- 코드 블록 내 주석(`#`)은 번역해도 됩니다.
+- 언어 식별자를 명시합니다: ` ```bash `, ` ```yaml `, ` ```json `
 
-### Example
+```bash
+# 올바른 예
+cd agents/03-policy-generator && claude
+```
 
-**Bad** “We can play around with sample code directly in these web simulators made by Genius Co. (You have built a wonderful tool!) Their contributions make it better and better. It’s great when they all work together!”
+---
 
-**Good** “You can play around with sample code directly in these web simulators made by Genius Co. (They have built a wonderful tool!) The React Native community’s contributions make it better and better. It’s great when we all work together!”
+## 4. 링크 규칙
 
-## Avoid pronouns
+### 내부 링크 (docs/ 내부)
 
-Pronouns are difficult to translate into some languages. They also tend to be gendered, which provides unnecessary bias.
+같은 docs/ 디렉토리 내 문서 간 링크는 상대 경로를 사용합니다.
 
-### Example
+```markdown
+<!-- 올바른 예 -->
 
-<!--alex ignore he-she retext-equality-->
+[정책 가이드](../03-policy/index.md)
 
-**Bad** “When he opens the app, he will see a loading screen.”
+<!-- 금지 -->
 
-**Good** “When the user opens the app, it will show a loading screen.”
+[정책 가이드](/Users/사용자명/projects/trustedoss/docs/03-policy/index.md)
+```
 
-## Prefer imperative to gerund
+### docs/ → reference/ 크로스 링크
 
-"To" forms of verbs are easier to translate.
+`docs/` 문서에서 `website/reference/` 페이지를 참조할 때는 Docusaurus 절대 경로를 사용합니다.
 
-### Example
+```markdown
+<!-- 올바른 예 -->
 
-**Bad** “Coding with React Native is fun!”
+[SBOM 샘플](/reference/samples/sbom)
 
-**Good** “It is fun to code with React Native!”
+<!-- 금지 -->
 
-## Shorter is better
+[SBOM 샘플](../../website/reference/samples/sbom.md)
+```
 
-Short sentences are easier to translate, for both machines and humans! Break clauses into multiple sentences.
+### 로컬 경로 금지
 
-### Example
+사용자명이 포함된 절대 경로는 절대 사용하지 않습니다.
 
-**Bad** “First of all, ES2015 (also known as ES6) is a set of improvements to JavaScript that is now part of the official standard, but not yet supported by all browsers, so often it isn't used yet in web development.”
+| 구분     | 형식                   | 예시                         |
+| -------- | ---------------------- | ---------------------------- |
+| **금지** | 사용자명 포함 절대경로 | `/Users/홍길동/projects/...` |
+| **허용** | 상대 경로              | `./docs/...`                 |
+| **허용** | 홈 디렉토리 약칭       | `~/projects/trustedoss`      |
+| **허용** | 일반화 예시 경로       | `/path/to/trustedoss`        |
 
-**Good** “ES2015 is a set of improvements to the official JavaScript standard. It is not yet supported by all browsers, so it isn't used yet in web development.”
+---
 
-# Technical documentation guidelines
+## 5. front matter 규칙
 
-## Format menu paths
+### 한국어 원본 문서 (docs/)
 
-When navigating operating system menus, the menu selection path should be **bold** and use carats to indicate submenus.
+`docs/` 하위 문서는 아래 4개 필드를 포함해야 합니다. `verify.sh [3/11]` 항목이 이를 검사합니다.
 
-### Example
+```yaml
+---
+작성일: YYYY-MM-DD
+버전: '1.0'
+충족 체크리스트:
+  - 'ISO/IEC 5230: [3.x.x, ...]'
+  - 'ISO/IEC 18974: [4.x.x, ...]'
+셀프스터디 소요시간: N시간
+---
+```
 
-**Bad** “Open Xcode’s ‘Preferences...’ menu and then click on ‘Components.’” Ambiguous. Relies on reader knowing that “Preferences” is a submenu of “Xcode.” Difficult to read at a glance.
+### 영어 번역 파일 (website/i18n/en/)
 
-**Good** “Open **Xcode > Preferences...** and select the **Components** tab.” Path is clearer to pick out from the surrounding copy.
+번역 파일에서 front matter 키는 영어로 변환합니다.
 
-## “Android” before “iOS”
+```yaml
+---
+date: YYYY-MM-DD
+version: '1.0'
+checklist:
+  - 'ISO/IEC 5230: [3.x.x, ...]'
+  - 'ISO/IEC 18974: [4.x.x, ...]'
+self_study_time: N hour(s)
+---
+```
 
-The number of Android developers surpasses iOS developers, and putting iOS in front of Android seems belittling and privileged. For consistency's sake at the very least, when listing technologies, Android comes before iOS.
+번역하지 않는 값: `id`, `slug`, `sidebar_position`, `tags`
 
-**Bad** “While we do our best to assume no prior knowledge of React, iOS, or Android development, these are valuable topics of study for the aspiring React Native developer.”
+---
 
-**Good** “While we do our best to assume no prior knowledge of React, Android, or iOS development, these are valuable topics of study for the aspiring React Native developer.”
+## 6. ISO 표준 번호 표기 규칙
 
-## When it comes to values, be explicit
+ISO/IEC 5230과 18974는 섹션 번호 체계가 다릅니다. 혼용하면 `verify.sh [6/11]`이 FAIL을 냅니다.
 
-When it comes to describing property values, be definitive in what is and is not allowed. If something is optional, say it is optional. If something can have multiple values, say which values it can accept.
+| 표준          | 섹션 번호 체계 | 올바른 예                 | 잘못된 예   |
+| ------------- | -------------- | ------------------------- | ----------- |
+| ISO/IEC 5230  | `3.x.x`        | `3.1.1`, `3.3.2`, `3.6.1` | —           |
+| ISO/IEC 18974 | `4.x.x`        | `4.1.1`, `4.3.2`, `4.4.1` | ~~`3.1.1`~~ |
 
-### Example
+---
 
-**Bad** “Should be an integer.” Implies that it could take other values. Leaves room for imagination.
+## 7. Admonition 규칙
 
-**Good** “Accepts integer values.” Leaves no doubt about what values this takes!
+Agent 실행 bash 코드블록 직전에는 세션 종료 안내 admonition을 반드시 추가합니다.
+`verify.sh [7/11]` 항목이 이를 검사합니다.
 
-## Other grammar policies
+````markdown
+:::tip 실행 전 확인
+현재 Claude 세션을 먼저 종료(`/exit` 또는 `Ctrl+C`)한 뒤, 새 터미널에서 아래 명령을 실행하세요.
+:::
 
-- Capitalize “Hooks.”
+```bash
+cd agents/03-policy-generator && claude
+```
+````
 
-## Empathize with readers
+````
 
-When writing step-by-step instructions (e.g. how to install something), try to forget everything you know about the topic to attain a "beginner's mindset." Imagine follow the instructions you write, one step at time. Often you will discover that there is implicit knowledge that you forgot to mention, or that there are missing or out-of-order steps in the instructions. UX research pro tip: ask _someone else_ to follow your instructions and see where they get stuck!
+---
 
-# Learn more
+<a id="english"></a>
 
-## Writing tips
+# Documentation Style Guide
 
-- Start with an outline, a table of contents of what you want to cover
-- Expand that outline into fully fledged content
-- Ensure your content answers Who, What, Where, When, Why and How
+These are the rules for writing trustedoss documentation.
+This guide applies to both the Korean source documents (`docs/`, `website/`) and the English translation files (`website/i18n/en/`).
 
-## Resources
+---
 
-- [React JS’s contributing guidelines](https://github.com/reactjs/reactjs.org/blob/main/CONTRIBUTING.md#guidelines-for-text), especially the [code examples guidelines](https://github.com/reactjs/reactjs.org/blob/master/CONTRIBUTING.md#guidelines-for-code-examples)
+## 1. Document Structure
+
+All chapter documents follow a **what / why / how** three-part structure.
+
+| Section | Content | Required |
+| ------- | ------- | -------- |
+| **what** | What this chapter covers | Required |
+| **why** | Why it matters (linked to ISO requirements) | Required |
+| **how** | How to execute (agent run steps) | Required |
+| Evidence | ISO requirement fulfillment notes | Recommended |
+
+Each chapter document must identify the ISO/IEC 5230 and 18974 requirements it satisfies, either in front matter or in the body.
+
+---
+
+## 2. Language & Terminology
+
+### Official Terms
+
+English translation files must use the following terms consistently.
+
+| Korean | English | Do Not Use |
+| ------ | ------- | ---------- |
+| 오픈소스 정책 | Open Source Policy | OSS Policy |
+| 오픈소스 프로세스 | Open Source Process | OSS Process |
+| 자체 인증 | Self-Certification | Self-Declaration, Self-Attestation |
+| 산출물 | Deliverables | Outputs, Artifacts |
+| 담당자 | Program Manager | Person in Charge |
+| 체계구축 | Build Your System | System Building, Framework Setup |
+| 고지문 | Attribution Notice | Notice, Notification |
+| 갭 분석 | Gap Analysis | — |
+| 인증 선언문 | Conformance Declaration | — |
+
+### Korean/English Glossary
+
+| Korean | English |
+| ------ | ------- |
+| 오픈소스 정책 | Open Source Policy |
+| 오픈소스 프로세스 | Open Source Process |
+| 조직 구성 | Organizational Structure |
+| 교육 체계 | Training Program |
+| 자체 인증 | Self-Certification |
+| 체계구축 | Build Your System |
+| 공급망 보안 | Supply Chain Security |
+| 취약점 분석 | Vulnerability Analysis |
+| 산출물 | Deliverables |
+| 담당자 | Program Manager |
+| 고지문 | Attribution Notice |
+| 거버넌스 | Governance |
+| 허용 라이선스 목록 | Approved License List |
+| 갭 분석 | Gap Analysis |
+| 인증 선언문 | Conformance Declaration |
+
+### Proper Nouns — Do Not Translate
+
+The following terms are always kept in their original form:
+
+`OpenChain`, `KWG`, `trustedoss`, `SBOM`, `CycloneDX`, `SPDX`, `Syft`, `Grype`, `Trivy`, `NTIA`, `OSS`, `DevSecOps`, `CLAUDE.md`, `Claude Code`, `Cursor`, `Copilot`
+
+---
+
+## 3. Code Block Rules
+
+- Wrap shell commands, YAML, and JSON examples in code blocks (` ``` `).
+- Do not modify the contents of code blocks during translation.
+- Comments inside code blocks (`#`) may be translated.
+- Always specify a language identifier: ` ```bash `, ` ```yaml `, ` ```json `
+
+```bash
+# Correct example
+cd agents/03-policy-generator && claude
+````
+
+---
+
+## 4. Link Rules
+
+### Internal Links (within docs/)
+
+Use relative paths for links between documents in the same `docs/` directory.
+
+```markdown
+<!-- Correct -->
+
+[Policy Guide](../03-policy/index.md)
+
+<!-- Forbidden -->
+
+[Policy Guide](/Users/username/projects/trustedoss/docs/03-policy/index.md)
+```
+
+### Cross-links from docs/ to reference/
+
+When referencing `website/reference/` pages from `docs/`, use Docusaurus absolute paths.
+
+```markdown
+<!-- Correct -->
+
+[SBOM Sample](/reference/samples/sbom)
+
+<!-- Forbidden -->
+
+[SBOM Sample](../../website/reference/samples/sbom.md)
+```
+
+### No Local Paths
+
+Never use absolute paths containing usernames.
+
+| Type          | Format                      | Example                    |
+| ------------- | --------------------------- | -------------------------- |
+| **Forbidden** | Absolute path with username | `/Users/john/projects/...` |
+| **Allowed**   | Relative path               | `./docs/...`               |
+| **Allowed**   | Home directory shorthand    | `~/projects/trustedoss`    |
+| **Allowed**   | Generalized example path    | `/path/to/trustedoss`      |
+
+---
+
+## 5. Front Matter Rules
+
+### Korean Source Documents (docs/)
+
+Documents under `docs/` must include the following 4 fields. `verify.sh [3/11]` checks for these.
+
+```yaml
+---
+작성일: YYYY-MM-DD
+버전: '1.0'
+충족 체크리스트:
+  - 'ISO/IEC 5230: [3.x.x, ...]'
+  - 'ISO/IEC 18974: [4.x.x, ...]'
+셀프스터디 소요시간: N시간
+---
+```
+
+### English Translation Files (website/i18n/en/)
+
+In translation files, convert front matter keys to English.
+
+```yaml
+---
+date: YYYY-MM-DD
+version: '1.0'
+checklist:
+  - 'ISO/IEC 5230: [3.x.x, ...]'
+  - 'ISO/IEC 18974: [4.x.x, ...]'
+self_study_time: N hour(s)
+---
+```
+
+Values that must not be translated: `id`, `slug`, `sidebar_position`, `tags`
+
+---
+
+## 6. ISO Standard Section Number Format
+
+ISO/IEC 5230 and 18974 use different section numbering schemes. Mixing them causes `verify.sh [6/11]` to fail.
+
+| Standard      | Numbering Scheme | Correct                   | Incorrect   |
+| ------------- | ---------------- | ------------------------- | ----------- |
+| ISO/IEC 5230  | `3.x.x`          | `3.1.1`, `3.3.2`, `3.6.1` | —           |
+| ISO/IEC 18974 | `4.x.x`          | `4.1.1`, `4.3.2`, `4.4.1` | ~~`3.1.1`~~ |
+
+---
+
+## 7. Admonition Rules
+
+A session-exit admonition must appear immediately before any agent execution bash code block.
+`verify.sh [7/11]` checks for this.
+
+````markdown
+:::tip Before Running
+First exit the current Claude session (`/exit` or `Ctrl+C`), then run the command below in a new terminal.
+:::
+
+```bash
+cd agents/03-policy-generator && claude
+```
+````
+
+```
+
+```

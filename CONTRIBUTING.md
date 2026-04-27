@@ -1,3 +1,9 @@
+[🇰🇷 한국어](#한국어) | [🇺🇸 English](#english)
+
+---
+
+<a id="한국어"></a>
+
 # 기여 가이드
 
 trustedoss에 기여해주셔서 감사합니다.
@@ -137,3 +143,147 @@ FAIL: agent 실행 admonition 누락
 | `.claude/scripts/verify.sh`      | 검증 항목 전체 소스                      |
 | `.claude/reference/iso-5230.md`  | ISO/IEC 5230 스펙 전문                   |
 | `.claude/reference/iso-18974.md` | ISO/IEC 18974 스펙 전문                  |
+
+---
+
+<a id="english"></a>
+
+# Contributing Guide
+
+Thank you for contributing to trustedoss.
+
+---
+
+## Scope of Work
+
+This project handles **content work only**.
+
+| Allowed (O)                    | Not Allowed (X)                                   |
+| ------------------------------ | ------------------------------------------------- |
+| `docs/`                        | `website/src/` (except CSS exceptions)            |
+| `agents/`                      | `website/static/`                                 |
+| `templates/`                   | `website/src/**/*.ts`, `*.tsx`                    |
+| `.claude/`                     | `*.js`, `*.css`, `*.scss` (except CSS exceptions) |
+| `CLAUDE.md`                    | All configuration files                           |
+| `website/ai-coding/` (md only) |                                                   |
+| `website/devsecops/` (md only) |                                                   |
+
+If design or code changes appear necessary, stop work and open an issue for discussion.
+
+---
+
+## 5 Required Steps Before Push
+
+```
+Step 1   /qa changed                               # Quality check (requires Claude session)
+Step 2   bash .claude/scripts/verify.sh            # Confirm 11/11 PASS
+Step 3   Update .claude/progress.md               # Check completed items, update next tasks
+Step 4   git add -p && git commit -m "..."         # Stage files selectively
+Step 5   git push                                  # Only after all checks pass
+```
+
+> **Note**: Use `git add -p` instead of `git add -A` or `git add .` to stage files selectively.
+> This prevents accidentally committing `.env`, local config files, or unnecessary binaries.
+
+---
+
+## Verification Command Reference
+
+| Command                                      | Role                                    | Time    |
+| -------------------------------------------- | --------------------------------------- | ------- |
+| `/qa changed`                                | Auto-check and fix changed file quality | ~2 min  |
+| `bash .claude/scripts/verify.sh`             | Run all 11 static validation checks     | ~30 sec |
+| `python3 .claude/scripts/test-coverage.py`   | Verify ISO requirement coverage         | ~5 sec  |
+| `python3 .claude/scripts/validate-output.py` | Verify output/ deliverable completeness | ~5 sec  |
+| `/kwg-check`                                 | Check sync status with KWG source       | ~1 min  |
+
+---
+
+## Common verify.sh FAIL Errors
+
+### [1/11] Docusaurus Build Failure
+
+```
+FAIL: Docusaurus 빌드 실패
+```
+
+**Cause**: Invalid Markdown syntax, broken imports, or front matter YAML errors  
+**Fix**: Check the build log for the error file and line number → fix the file
+
+---
+
+### [2/11] Broken Internal Links
+
+```
+FAIL: 깨진 링크 발견
+```
+
+**Cause**: Links not updated after file moves or deletions, or typos  
+**Fix**: Verify the target file path and correct the relative path
+
+---
+
+### [3/11] Front Matter YAML Error
+
+```
+FAIL: front matter YAML 오류
+```
+
+**Cause**: Missing or incorrectly indented fields among `작성일:`, `버전:`, `충족 체크리스트:`, `셀프스터디 소요시간:`  
+**Fix**: Confirm all 4 front matter fields exist in docs/ files
+
+---
+
+### [5/11] Local Path Exposed
+
+```
+FAIL: 로컬 사용자 경로 노출
+```
+
+**Cause**: Absolute paths containing `/Users/username` or `C:\Users\username`  
+**Fix**: Replace with relative paths (`./`) or generalized paths (`/path/to/trustedoss`)
+
+---
+
+### [6/11] ISO Section Number Format Error
+
+```
+FAIL: 18974 섹션 번호 형식 오류
+```
+
+**Cause**: ISO/IEC 18974 section numbers using `3.x.x` (mixing with the 5230 scheme)  
+**Fix**: ISO/IEC 18974 must always use the `4.x.x` scheme
+
+| Standard      | Correct Format | Incorrect Format |
+| ------------- | -------------- | ---------------- |
+| ISO/IEC 5230  | `3.1.1`        | —                |
+| ISO/IEC 18974 | `4.1.1`        | ~~`3.1.1`~~      |
+
+---
+
+### [7/11] Missing Agent Execution Admonition
+
+```
+FAIL: agent 실행 admonition 누락
+```
+
+**Cause**: No session-exit admonition immediately before a `cd agents/...` bash code block  
+**Fix**: Add the following admonition directly above the code block:
+
+```
+:::tip Before Running
+First exit the current Claude session (`/exit` or `Ctrl+C`), then run the command below in a new terminal.
+:::
+```
+
+---
+
+## Reference Documents
+
+| Document                         | Content                                 |
+| -------------------------------- | --------------------------------------- |
+| `CLAUDE.md`                      | Scope, path rules, skills & agent list  |
+| `.claude/harness-guide.md`       | QA harness slash command detailed usage |
+| `.claude/scripts/verify.sh`      | Full source for all validation checks   |
+| `.claude/reference/iso-5230.md`  | ISO/IEC 5230 full specification         |
+| `.claude/reference/iso-18974.md` | ISO/IEC 18974 full specification        |

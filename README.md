@@ -2,6 +2,12 @@
 [![OpenChain](https://img.shields.io/badge/OpenChain-ISO%2FIEC%205230%20%26%2018974-blue)](https://www.openchainproject.org/conformance)
 [![Site](https://img.shields.io/badge/Site-trustedoss.github.io-green)](https://trustedoss.github.io)
 
+[🇰🇷 한국어](#한국어) | [🇺🇸 English](#english)
+
+---
+
+<a id="한국어"></a>
+
 # Trusted OSS
 
 **신뢰할 수 있는 오픈소스 공급망 관리** — ISO/IEC 5230 & 18974 실전 키트 + AI 코딩·DevSecOps 자동화 가이드
@@ -179,5 +185,189 @@ OpenChain KWG 커뮤니티와 연계하여 운영됩니다. PR과 이슈 제출�
 ---
 
 ## 라이선스
+
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+
+---
+
+<a id="english"></a>
+
+# Trusted OSS — English
+
+**Trusted Open Source Supply Chain Management** — ISO/IEC 5230 & 18974 Practical Kit + AI Coding & DevSecOps Automation Guide
+
+Even those with no prior open source management experience can complete ISO/IEC 5230 and ISO/IEC 18974 self-certification declarations by following this kit. Agents automatically generate deliverables tailored to your organization, and the kit is designed for self-study.
+
+The web guide and browser-based tools are available at **[trustedoss.github.io/en](https://trustedoss.github.io/en)**.
+
+---
+
+## What We Offer
+
+| Section                                                      | Content                                                                                           |
+| ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------- |
+| [Build Your System](https://trustedoss.github.io/en/docs)    | Step-by-step guide to building an open source governance system based on ISO/IEC 5230 & 18974     |
+| [AI Coding](https://trustedoss.github.io/en/ai-coding/intro) | Automated open source policy compliance for AI coding tools like Claude Code, Cursor, and Copilot |
+| [DevSecOps](https://trustedoss.github.io/en/devsecops/intro) | CI/CD pipeline automation for SAST, SCA, secret detection, container, IaC, and DAST               |
+| [Reference](https://trustedoss.github.io/en/reference/intro) | Policy templates, SBOM samples, and self-certification checklists                                 |
+
+---
+
+## Quick Start
+
+### Use in the Browser (No Claude Code Required)
+
+Browser-based tools are available with just an Anthropic API key.
+
+| Tool               | Description                                                | Location                                                                                   |
+| ------------------ | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| Rules Generator    | Auto-generate open source policy files for AI coding tools | [AI Coding → Rules Template](https://trustedoss.github.io/en/ai-coding/rules-template)     |
+| Workflow Generator | Auto-generate DevSecOps CI/CD pipeline YAML                | [AI Coding → Quick CI/CD](https://trustedoss.github.io/en/ai-coding/cicd-quick)            |
+| SBOM Analyzer      | Upload SBOM file → vulnerability response report           | [DevSecOps → SCA](https://trustedoss.github.io/en/devsecops/sca)                           |
+| SAST Analyzer      | Semgrep/CodeQL results → fix guide                         | [DevSecOps → SAST](https://trustedoss.github.io/en/devsecops/sast)                         |
+| Secret Analyzer    | Gitleaks results → immediate response procedure            | [DevSecOps → Secret Detection](https://trustedoss.github.io/en/devsecops/secret-detection) |
+| IaC Fixer          | Checkov results → auto-generate fix code                   | [DevSecOps → IaC Security](https://trustedoss.github.io/en/devsecops/iac-security)         |
+
+### Run with Claude Code
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/trustedoss/trustedoss.github.io.git
+
+# 2. Enter the project and launch Claude Code
+cd trustedoss.github.io && claude
+
+# 3. Ask for guidance (type in Korean)
+# "어디서 시작해야 해?" (meaning: "Where should I start?")
+```
+
+---
+
+## Agent List
+
+### Compliance Agents (ISO/IEC 5230 & 18974)
+
+| Agent                             | Role                                      | How to Run                                     |
+| --------------------------------- | ----------------------------------------- | ---------------------------------------------- |
+| `agents/02-organization-designer` | Generate organization & role deliverables | `cd agents/02-organization-designer && claude` |
+| `agents/03-policy-generator`      | Generate open source policy document      | `cd agents/03-policy-generator && claude`      |
+| `agents/04-process-designer`      | Generate process documents & flowcharts   | `cd agents/04-process-designer && claude`      |
+| `agents/05-sbom-guide`            | Generate SBOM commands & scripts          | `cd agents/05-sbom-guide && claude`            |
+| `agents/05-sbom-analyst`          | Generate SBOM license analysis report     | `cd agents/05-sbom-analyst && claude`          |
+| `agents/05-sbom-management`       | Generate SBOM management plan & templates | `cd agents/05-sbom-management && claude`       |
+| `agents/05-vulnerability-analyst` | Generate vulnerability analysis report    | `cd agents/05-vulnerability-analyst && claude` |
+| `agents/06-training-manager`      | Generate training curriculum & tracking   | `cd agents/06-training-manager && claude`      |
+| `agents/07-conformance-preparer`  | Generate gap analysis & declaration draft | `cd agents/07-conformance-preparer && claude`  |
+
+### AI Coding & DevSecOps Agents (Level 1 — Config Generation)
+
+| Agent                    | Role                                              | How to Run                            |
+| ------------------------ | ------------------------------------------------- | ------------------------------------- |
+| `agents/ai-coding-setup` | Analyze project and generate custom Rules files   | `cd agents/ai-coding-setup && claude` |
+| `agents/devsecops-setup` | Analyze project and generate CI/CD pipeline files | `cd agents/devsecops-setup && claude` |
+
+### AI Coding & DevSecOps Agents (Level 1 — Result Analysis)
+
+| Agent                      | Role                                         | How to Run                              |
+| -------------------------- | -------------------------------------------- | --------------------------------------- |
+| `agents/sbom-vuln-analyst` | SBOM/grype results → vulnerability report    | `cd agents/sbom-vuln-analyst && claude` |
+| `agents/sast-analyst`      | Semgrep/CodeQL results → fix guide           | `cd agents/sast-analyst && claude`      |
+| `agents/secret-analyst`    | Gitleaks results → secret response procedure | `cd agents/secret-analyst && claude`    |
+| `agents/iac-fixer`         | Checkov results → auto-generate IaC fix code | `cd agents/iac-fixer && claude`         |
+
+### CI/CD Automation Agents (Level 2)
+
+| Agent                                    | Role                                                | How to Run                                            |
+| ---------------------------------------- | --------------------------------------------------- | ----------------------------------------------------- |
+| `agents/level2-automation/pr-comment`    | Generate PR security analysis auto-comment workflow | `cd agents/level2-automation/pr-comment && claude`    |
+| `agents/level2-automation/issue-tracker` | Generate scheduled scan issue auto-filing workflow  | `cd agents/level2-automation/issue-tracker && claude` |
+
+---
+
+## Repository Structure
+
+```
+trustedoss/
+├── docs/                    # Chapter-by-chapter guide documents
+├── agents/                  # Deliverable auto-generation agents
+│   ├── 02-organization-designer/
+│   ├── 03-policy-generator/
+│   ├── ...
+│   ├── ai-coding-setup/     # AI coding Rules file generation
+│   ├── devsecops-setup/     # DevSecOps pipeline file generation
+│   ├── sbom-vuln-analyst/   # SBOM vulnerability analysis
+│   ├── sast-analyst/        # SAST result analysis
+│   ├── secret-analyst/      # Secret detection result analysis
+│   ├── iac-fixer/           # IaC fix code generation
+│   └── level2-automation/   # CI/CD integration automation
+├── templates/               # Document templates
+├── samples/                 # Sample projects for practice
+├── output/                  # Generated deliverables (.gitignore)
+├── .claude/                 # Claude Code configuration & skills
+└── website/                 # Documentation website source (Docusaurus)
+```
+
+---
+
+## Chapter List
+
+| Chapter                  | Content                                        | Self-study |
+| ------------------------ | ---------------------------------------------- | ---------- |
+| 00-overview              | Overview of both standards & checklist mapping | 1 hour     |
+| 00-overview/supply-chain | Software supply chain security + SBOM concepts | 1 hour     |
+| 01-setup                 | Environment setup (Docker, Git, Claude Code)   | 30 min     |
+| 02-organization          | Organizational structure & role assignment     | 1 hour     |
+| 03-policy                | Open source policy establishment               | 1 hour     |
+| 04-process               | Open source process design                     | 1 hour     |
+| 05-tools/sbom-generation | SBOM generation                                | 1 hour     |
+| 05-tools/sbom-management | SBOM management & sharing                      | 1 hour     |
+| 05-tools/vulnerability   | Vulnerability analysis & response              | 1 hour     |
+| 06-training              | Training program setup                         | 30 min     |
+| 07-conformance           | Self-certification declaration                 | 30 min     |
+
+---
+
+## Deliverables
+
+| File                                          | Description                                 | Standard     |
+| --------------------------------------------- | ------------------------------------------- | ------------ |
+| `output/organization/role-definition.md`      | Open source program manager role definition | 5230 + 18974 |
+| `output/organization/raci-matrix.md`          | RACI responsibility matrix                  | 5230 + 18974 |
+| `output/organization/appointment-template.md` | Role appointment letter template            | 5230 + 18974 |
+| `output/policy/oss-policy.md`                 | Open source policy document                 | 5230 + 18974 |
+| `output/policy/license-allowlist.md`          | Approved license list                       | 5230         |
+| `output/process/usage-approval.md`            | Open source usage approval procedure        | 5230         |
+| `output/process/distribution-checklist.md`    | Pre-distribution checklist                  | 5230         |
+| `output/process/vulnerability-response.md`    | Vulnerability response procedure            | 18974        |
+| `output/process/process-diagram.md`           | End-to-end process diagram                  | 5230 + 18974 |
+| `output/sbom/[project].cdx.json`              | SBOM (CycloneDX format)                     | 5230 + 18974 |
+| `output/sbom/license-report.md`               | License analysis report                     | 5230         |
+| `output/sbom/copyleft-risk.md`                | Copyleft risk analysis                      | 5230         |
+| `output/sbom/sbom-management-plan.md`         | SBOM management plan                        | 18974        |
+| `output/vulnerability/cve-report.md`          | CVE vulnerability analysis report           | 18974        |
+| `output/vulnerability/remediation-plan.md`    | Vulnerability remediation plan              | 18974        |
+| `output/training/curriculum.md`               | Training curriculum                         | 5230 + 18974 |
+| `output/conformance/gap-analysis.md`          | Gap analysis report                         | 5230 + 18974 |
+| `output/conformance/declaration-draft.md`     | Self-certification declaration draft        | 5230 + 18974 |
+
+---
+
+## Links
+
+- [Trusted OSS Website](https://trustedoss.github.io/en)
+- [OpenChain KWG](https://openchain-project.github.io/OpenChain-KWG/)
+- [ISO/IEC 5230](https://www.iso.org/standard/81039.html)
+- [ISO/IEC 18974](https://www.iso.org/standard/86450.html)
+- [OpenChain Self-Certification Registration](https://www.openchainproject.org/conformance)
+
+---
+
+## Contributing
+
+This project is operated in collaboration with the OpenChain KWG community. Pull requests and issues are welcome.
+
+---
+
+## License
 
 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
