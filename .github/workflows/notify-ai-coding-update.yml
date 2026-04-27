@@ -1,0 +1,59 @@
+name: Notify ai-coding-best-practice Update
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "agents/ai-coding-setup/**"
+      - "website/ai-coding/**"
+  workflow_dispatch:
+
+jobs:
+  notify:
+    name: Create update issue in ai-coding-best-practice
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Collect changed files
+        id: changed
+        run: |
+          FILES=$(git diff --name-only HEAD~1 HEAD -- agents/ai-coding-setup/ website/ai-coding/ | head -20 | sed 's/^/- /' | tr '\n' '\n')
+          echo "files<<EOF" >> $GITHUB_OUTPUT
+          echo "$FILES" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Create issue in ai-coding-best-practice
+        env:
+          GH_TOKEN: ${{ secrets.AGENTS_REPO_TOKEN }}
+        run: |
+          gh issue create \
+            --repo trustedoss/ai-coding-best-practice \
+            --title "AI 코딩 전략 업데이트 — Rules 파일 재생성 필요" \
+            --body "## 변경 감지
+
+          trustedoss의 AI 코딩 전략이 업데이트되었습니다.
+          \`ai-coding-best-practice\`의 Rules 파일을 재생성해야 합니다.
+
+          **변경된 파일:**
+          ${{ steps.changed.outputs.files }}
+
+          **소스 커밋:** trustedoss/trustedoss.github.io@${{ github.sha }}
+
+          ## 조치 방법
+
+          \`\`\`bash
+          cd agents/ai-coding-setup
+          claude
+          \`\`\`
+
+          생성된 \`output/ai-coding/\` 파일을 이 저장소 루트에 복사하세요.
+
+          | 생성 파일 | 대상 |
+          |-----------|------|
+          | \`output/ai-coding/CLAUDE.md\` | \`CLAUDE.md\` |
+          | \`output/ai-coding/.cursorrules\` | \`.cursorrules\` |"
