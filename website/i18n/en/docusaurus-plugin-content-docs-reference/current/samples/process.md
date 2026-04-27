@@ -87,7 +87,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: License Scan
         run: |
-          # License scan 후 compare with allow list
+          # After license scan, compare with allow list
           npx license-checker --summary --excludePrivatePackages
       - name: vulnerability Scan
         run: |
@@ -529,8 +529,8 @@ Related Standards
 ```mermaid
 graph TD
     A[Open source usage request\nJira ticket generate] --> B{Allowed Licenses list\ncheck}
-    B -->|허용 list 내| C{determine risk level}
-    B -->|허용 list 외| D[committee Approved + legal 검토]
+    B -->|in allow list| C{determine risk level}
+    B -->|outside allow list| D[committee Approved + legal review]
     C -->|Low\nPermissive + CVE No| E[Program Manager single Approved]
     C -->|Medium\nWeak Copyleft or Medium CVE| F[Team Lead Approved]
     C -->|High\nStrong Copyleft or High/Critical CVE| D
@@ -553,7 +553,7 @@ graph TD
 graph TD
     A[Code commit] --> B{branch split}
     B -->|development branch\ndaily deployment| C[GitHub Actions / GitLab CI\nautomated scan]
-    B -->|production branch\nweekly deployment| D[Jenkins 전체 pipeline]
+    B -->|production branch\nweekly deployment| D[Jenkins full pipeline]
     C --> E{Critical/High CVE?}
     E -->|No| F[development deployment Approved]
     E -->|Yes| G[PR/commit merge blocked\nauto-create Jira ticket]
@@ -592,7 +592,7 @@ graph TD
     I --> J
     F --> J
     G --> J
-    J --> K[by rescanning\nvulnerability 해소 check]
+    J --> K[by rescanning\ncheck vulnerability resolution]
     K --> L[remediation-plan.md\nupdate records]
     L --> M[Jira ticket Done]
 ```

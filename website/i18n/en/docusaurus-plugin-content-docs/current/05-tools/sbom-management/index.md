@@ -250,7 +250,7 @@ Check all of the items below to complete this chapter.
 
 - **file naming convention:** `[project]-[version]-[date].cdx.json`
 - **storage location:** `output/sbom/` (Git managed)
-- **retention period:** release retention period + 1년
+- **retention period:** release retention period + 1 year
 
 ## 3. external sharing procedure
 

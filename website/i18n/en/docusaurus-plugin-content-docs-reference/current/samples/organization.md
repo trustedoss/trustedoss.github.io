@@ -61,7 +61,7 @@ Related Standards
 
 - **License compliance inquiries**: opensource@sktelecom.com
 - **Report security vulnerability**: security@sktelecom.com
-- **Response Person in Charge**: DevOps Team Open Source Person in Charge
+- **Response Program Manager**: DevOps Team Open Source Program Manager
 - **Target response time**: Within 5 business days
 
 ---

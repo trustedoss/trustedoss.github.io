@@ -64,7 +64,7 @@ Report the test results in the format below.:
 
 ---
 
-## OSS Policy check result
+## Open Source Policy Check Result
 
 **Inspection date and time:** YYYY-MM-DD
 **Target project:** [Project Name]

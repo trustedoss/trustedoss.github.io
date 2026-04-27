@@ -115,7 +115,7 @@ system_prompt: |
   Allowed Licenses: MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC
   Review Required Licenses (legal review required): LGPL, MPL
   Prohibited Licenses: GPL, AGPL, SSPL, Commons Clause
-  CVE vulnerability Version Use 금지. 의존성 addition 후 audit run 권장.
+  CVE vulnerability Version use is prohibited. After adding dependencies, running an audit is recommended.
 ```
 
 ---
