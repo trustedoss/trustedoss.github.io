@@ -3,40 +3,40 @@
     "message": "Next",
     "description": "The label for version current"
   },
-  "sidebar.docs.category.시작하기": {
+  "sidebar.docs.category.Getting Started": {
     "message": "Getting Started",
-    "description": "The label for category '시작하기' in sidebar 'docs'"
+    "description": "The label for category 'Getting Started' in sidebar 'docs'"
   },
-  "sidebar.docs.category.도구": {
+  "sidebar.docs.category.Tools": {
     "message": "Tools",
-    "description": "The label for category '도구' in sidebar 'docs'"
+    "description": "The label for category 'Tools' in sidebar 'docs'"
   },
-  "sidebar.docs.category.개발자 가이드 (선택)": {
+  "sidebar.docs.category.Developers Guides (optional)": {
     "message": "Developer Guide (Optional)",
-    "description": "The label for category '개발자 가이드 (선택)' in sidebar 'docs'"
+    "description": "The label for category 'Developers Guides (optional)' in sidebar 'docs'"
   },
-  "sidebar.docs.doc.환경 준비": {
+  "sidebar.docs.doc.Environment Setup": {
     "message": "Environment Setup",
-    "description": "The label for the doc item '환경 준비' in sidebar 'docs', linking to the doc setup/index"
+    "description": "The label for the doc item 'Environment Setup' in sidebar 'docs', linking to the doc setup/index"
   },
-  "sidebar.docs.doc.조직 구성": {
+  "sidebar.docs.doc.Organization Setup": {
     "message": "Organization Setup",
-    "description": "The label for the doc item '조직 구성' in sidebar 'docs', linking to the doc organization/index"
+    "description": "The label for the doc item 'Organization Setup' in sidebar 'docs', linking to the doc organization/index"
   },
-  "sidebar.docs.doc.오픈소스 정책": {
+  "sidebar.docs.doc.Open Source Policy": {
     "message": "Open Source Policy",
-    "description": "The label for the doc item '오픈소스 정책' in sidebar 'docs', linking to the doc policy/index"
+    "description": "The label for the doc item 'Open Source Policy' in sidebar 'docs', linking to the doc policy/index"
   },
-  "sidebar.docs.doc.오픈소스 프로세스": {
+  "sidebar.docs.doc.Open Source Process": {
     "message": "Open Source Process",
-    "description": "The label for the doc item '오픈소스 프로세스' in sidebar 'docs', linking to the doc process/index"
+    "description": "The label for the doc item 'Open Source Process' in sidebar 'docs', linking to the doc process/index"
   },
-  "sidebar.docs.doc.교육 체계": {
+  "sidebar.docs.doc.Training System": {
     "message": "Training Framework",
-    "description": "The label for the doc item '교육 체계' in sidebar 'docs', linking to the doc training/index"
+    "description": "The label for the doc item 'Training System' in sidebar 'docs', linking to the doc training/index"
   },
-  "sidebar.docs.doc.자체 인증": {
+  "sidebar.docs.doc.Self-Certification": {
     "message": "Self-Certification",
-    "description": "The label for the doc item '자체 인증' in sidebar 'docs', linking to the doc conformance/index"
+    "description": "The label for the doc item 'Self-Certification' in sidebar 'docs', linking to the doc conformance/index"
   }
 }

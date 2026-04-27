@@ -37,10 +37,10 @@ The table below shows how the DevSecOps pipeline implemented in this guide meets
 | 4.1.2              | Policy awareness and education        | Guidance and documentation of pipeline failures within the team | [Pipeline Design](./pipeline-design) |
 | 4.2.1              | Open source component identification  | syft SBOM auto-generated                                        | [SCA](./sca)                         |
 | 4.2.2              | Check for known vulnerabilities       | grype CVE Scan/PR blocking                                      | [SCA](./sca)                         |
-| 4.2.3              | Vulnerability Response Procedure      | SLA definition/exception handling process                       | [SCA](./sca)                         |
+| 4.2.3              | vulnerability Response Procedure      | SLA definition/exception handling process                       | [SCA](./sca)                         |
 | 4.3.1              | Compliance assurance activities       | Regular Scan·SBOM Artifact Storage                              | [Monitoring](./monitoring)           |
 | 4.3.2              | Data Preservation                     | SBOM Permanent storage by release                               | [Monitoring](./monitoring)           |
-| 4.4.1              | External Inquiry Response Procedure   | Vulnerability Response SLA·VEX Document                         | [SCA](./sca)                         |
+| 4.4.1              | External Inquiry Response Procedure   | vulnerability Response SLA·VEX Document                         | [SCA](./sca)                         |
 
 ---
 
@@ -62,11 +62,11 @@ You must be able to provide evidence when an audit is requested.
 - SBOM files automatically generated from CI/CD (kept by release version)
 - SBOM Creation tool/format/cycle specification document
 
-3. **Vulnerability management evidence**
+3. **vulnerability management evidence**
 
 - grype scan result artifacts
 - Exception handled CVE list and approval records (including .grype.yaml comments)
-- Vulnerability discovery → Modification history (GitHub Issues·PR)
+- vulnerability discovery → Modification history (GitHub Issues·PR)
 
 4. **Continuous monitoring evidence**
 

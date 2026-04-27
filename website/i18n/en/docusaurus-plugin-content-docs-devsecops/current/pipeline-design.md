@@ -51,7 +51,7 @@ on:
     branches: [main, develop]
 
 jobs:
-  # 1단계: 시크릿 탐지 (가장 먼저)
+  # Step 1: secret detection (first)
   secret-detection:
     runs-on: ubuntu-latest
     steps:
@@ -62,7 +62,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  # 2단계: 병렬 실행
+  # Step 2: run in parallel
   sast:
     runs-on: ubuntu-latest
     needs: secret-detection
@@ -141,7 +141,7 @@ jobs:
       - uses: zaproxy/action-baseline@v0.12.0
         with:
           target: http://localhost:8080
-          fail_action: false # 초기 도입 시 Soft Fail
+          fail_action: false # during initial adoption Soft Fail
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -154,7 +154,7 @@ jobs:
 ## GitLab CI integration pipeline
 
 ```yaml
-# .gitlab-ci.yml (전체 통합)
+# .gitlab-ci.yml (full integration)
 
 stages:
   - secret-scan
@@ -221,7 +221,7 @@ dast:
   script:
     - docker compose up -d && sleep 15
     - zap-baseline.py -t http://localhost:8080
-      -r zap-report.html -I # -I: 실패해도 계속 (Soft Fail)
+      -r zap-report.html -I # -I: continue on failure (Soft Fail)
   artifacts:
     paths: [zap-report.html]
     expire_in: 30 days

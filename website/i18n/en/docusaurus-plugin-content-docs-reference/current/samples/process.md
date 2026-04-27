@@ -46,23 +46,23 @@ Follow this procedure when introducing a new open source component or changing a
 | High       | Strong/Network Copyleft, High/Critical CVE, non-whitelist license | Committee approval                |
 
 ```
-오픈소스 도입 요청 (Jira 티켓 생성)
+Open source adoption request (create Jira ticket)
     ↓
-라이선스 확인 (허용 목록 대조)
+License check (compare with allow list)
     ↓
-리스크 수준 판정
+determine risk level
     ↓
-[낮음] → 담당자 승인
-[중간] → 팀장 승인
-[높음] → 위원회 승인 (법무팀 포함)
+[Low] → Program Manager Approved
+[Medium] → Team Lead Approved
+[High] → committee Approved (legal team included)
     ↓
-취약점 스캔 (CVE 확인)
+vulnerability scan (CVE check)
     ↓
-[Critical/High CVE?] → 대안 검색 또는 패치 확인
+[Critical/High CVE?] → Search alternatives or patch check
     ↓
-승인 완료 → SBOM 업데이트
+Approved completed → SBOM update
     ↓
-배포 전 distribution-checklist.md 완료
+before release distribution-checklist.md completed
 ```
 
 ---
@@ -75,7 +75,7 @@ Tech Unicorn uses GitHub Actions, Jenkins, and GitLab CI. In each pipeline, the 
 
 ```yaml
 # .github/workflows/oss-scan.yml
-name: OSS License & Vulnerability Scan
+name: OSS License & vulnerability Scan
 on:
   pull_request:
     branches: [main, develop]
@@ -87,11 +87,11 @@ jobs:
       - uses: actions/checkout@v4
       - name: License Scan
         run: |
-          # 라이선스 스캔 후 허용 목록 대조
+          # License scan 후 compare with allow list
           npx license-checker --summary --excludePrivatePackages
-      - name: Vulnerability Scan
+      - name: vulnerability Scan
         run: |
-          # CVE 스캔
+          # CVE scan
           npm audit --audit-level=high
 ```
 
@@ -105,10 +105,10 @@ stage('OSS Compliance') {
     }
     post {
         failure {
-            // Jira 티켓 자동 생성
+            // auto-create Jira ticket
             jiraNewIssue site: 'SKT-JIRA',
                          projectKey: 'OSS',
-                         summary: 'OSS 컴플라이언스 검사 실패'
+                         summary: 'OSS compliance check failed'
         }
     }
 }
@@ -313,7 +313,7 @@ Related Standards
 - 5230 §3.4.1.2
 ```
 
-- [ ] Have you kept a SBOM copy of this release? (Path: `output/sbom/{프로젝트}-{버전}.cdx.json`)
+- [ ] Have you kept a SBOM copy of this release? (Path: `output/sbom/{project}-{Version}.cdx.json`)
 - [ ] Have you kept a copy of the notice?
 - [ ] Are the storage location and storage period specified in the policy?
 
@@ -369,7 +369,7 @@ Once you complete this checklist, record it in the history below with the date.
 
 ---
 
-## Vulnerability response procedures
+## vulnerability response procedures
 
 Document: vulnerability-response.md
 
@@ -385,7 +385,7 @@ Related Standards
 
 ---
 
-### 1. Vulnerability detection method
+### 1. vulnerability detection method
 
 ```
 Related Standards
@@ -429,7 +429,7 @@ Related Standards
 - 18974 §4.1.5.1
 ```
 
-1. **Detection**: Vulnerability recognition through CI/CD automatic scanning (GitHub Actions/Jenkins/GitLab CI) or external reporting
+1. **Detection**: vulnerability recognition through CI/CD automatic scanning (GitHub Actions/Jenkins/GitLab CI) or external reporting
 2. **Record**: Record CVE ID, component, CVSS score in `output/vulnerability/cve-report.md`
 3. **Create Jira ticket**: Project **OSS-SEC** type, priority automatically set based on severity
 4. **Assessment**: Assign risk/impact scores and decide what to do
@@ -504,7 +504,7 @@ Related Standards
 Before weekly deployment of the commercial branch, perform the following items:
 
 - [ ] SBOM regeneration
-- [ ] Vulnerability scanning using OSV API or Dependency Track (Jenkins pipeline)
+- [ ] vulnerability scanning using OSV API or Dependency Track (Jenkins pipeline)
 - [ ] Confirm that there are no Critical/High vulnerabilities or establish a plan to resolve them
 - [ ] `output/process/distribution-checklist.md` Completed
 
@@ -528,21 +528,21 @@ Related Standards
 
 ```mermaid
 graph TD
-    A[오픈소스 사용 요청\nJira 티켓 생성] --> B{허용 라이선스 목록\n확인}
-    B -->|허용 목록 내| C{리스크 수준 판정}
-    B -->|허용 목록 외| D[위원회 승인 + 법무 검토]
-    C -->|낮음\nPermissive + CVE 없음| E[담당자 단독 승인]
-    C -->|중간\nWeak Copyleft or Medium CVE| F[팀장 승인]
-    C -->|높음\nStrong Copyleft or High/Critical CVE| D
-    D -->|승인| G[취약점 스캔\nGitHub Actions / Jenkins / GitLab CI]
+    A[Open source usage request\nJira ticket generate] --> B{Allowed Licenses list\ncheck}
+    B -->|허용 list 내| C{determine risk level}
+    B -->|허용 list 외| D[committee Approved + legal 검토]
+    C -->|Low\nPermissive + CVE No| E[Program Manager single Approved]
+    C -->|Medium\nWeak Copyleft or Medium CVE| F[Team Lead Approved]
+    C -->|High\nStrong Copyleft or High/Critical CVE| D
+    D -->|Approved| G[vulnerability scan\nGitHub Actions / Jenkins / GitLab CI]
     E --> G
     F --> G
-    G -->|Critical/High CVE 없음| H[승인 완료\nJira 티켓 Done]
-    G -->|Critical/High CVE 발견| I[패치 버전 변경\n또는 대안 검색]
+    G -->|Critical/High CVE No| H[Approved completed\nJira ticket Done]
+    G -->|Critical/High CVE found| I[Patched version changed\nor Search alternatives]
     I --> G
-    D -->|거부| J[도입 취소]
-    H --> K[SBOM 업데이트]
-    K --> L[배포 전 체크리스트 완료]
+    D -->|Rejected| J[adoption canceled]
+    H --> K[SBOM update]
+    K --> L[before release checklist completed]
 ```
 
 ---
@@ -551,50 +551,50 @@ graph TD
 
 ```mermaid
 graph TD
-    A[코드 커밋] --> B{브랜치 구분}
-    B -->|개발 브랜치\n매일 배포| C[GitHub Actions / GitLab CI\n자동 스캔]
-    B -->|상용 브랜치\n주간 배포| D[Jenkins 전체 파이프라인]
+    A[Code commit] --> B{branch split}
+    B -->|development branch\ndaily deployment| C[GitHub Actions / GitLab CI\nautomated scan]
+    B -->|production branch\nweekly deployment| D[Jenkins 전체 pipeline]
     C --> E{Critical/High CVE?}
-    E -->|없음| F[개발 배포 승인]
-    E -->|있음| G[PR/커밋 머지 차단\nJira 티켓 자동 생성]
-    G --> H[패치 적용]
+    E -->|No| F[development deployment Approved]
+    E -->|Yes| G[PR/commit merge blocked\nauto-create Jira ticket]
+    G --> H[Apply patch]
     H --> C
-    D --> I[SBOM 재생성]
-    I --> J[라이선스 검사]
-    J --> K{의무사항 이행\n완료?}
-    K -->|완료| L[취약점 스캔]
-    K -->|미완료| M[담당자 조치]
+    D --> I[SBOM Regenerate]
+    I --> J[License check]
+    J --> K{obligation fulfillment\ncompleted?}
+    K -->|completed| L[vulnerability scan]
+    K -->|incomplete| M[Program Manager Action]
     M --> J
     L --> N{Critical/High CVE?}
-    N -->|없음| O[배포 체크리스트\n완료]
-    N -->|있음| P[Jira 티켓 Blocker 등록\n핫픽스 또는 배포 연기]
+    N -->|No| O[deployment checklist\ncompleted]
+    N -->|Yes| P[Jira ticket Blocker register\nhotfix or deployment delay]
     P --> L
-    O --> Q[팀장 승인]
-    Q --> R[상용 배포]
+    O --> Q[Team Lead Approved]
+    Q --> R[Production release]
 ```
 
 ---
 
-### 3. Vulnerability response process
+### 3. vulnerability response process
 
 ```mermaid
 graph TD
-    A[취약점 탐지\nCI/CD 스캔 / 외부 신고] --> B[Jira 티켓 생성\nOSS-SEC 프로젝트]
-    B --> C{CVSS 심각도}
-    C -->|Critical 9.0+| D[24시간 이내 대응\nJira Blocker]
-    C -->|High 7.0~8.9| E[1주일 이내 대응\nJira Critical]
-    C -->|Medium 4.0~6.9| F[1개월 이내 대응\nJira Major]
-    C -->|Low ~3.9| G[다음 릴리즈 반영\nJira Minor]
-    D --> H{배포 소프트웨어\n영향?}
+    A[vulnerability detected\nCI/CD scan / external report] --> B[Jira ticket generate\nOSS-SEC project]
+    B --> C{CVSS Severity}
+    C -->|Critical 9.0+| D[respond within 24 hours\nJira Blocker]
+    C -->|High 7.0~8.9| E[respond within 1 week\nJira Critical]
+    C -->|Medium 4.0~6.9| F[respond within 1 month\nJira Major]
+    C -->|Low ~3.9| G[next release include\nJira Minor]
+    D --> H{deployed software\nimpact?}
     E --> H
-    H -->|영향 있음| I[고객/파트너 통보\nsecurity@sktelecom.com]
-    H -->|영향 없음| J[패치 적용]
+    H -->|impact yes| I[Notify customers/partners\nsecurity@sktelecom.com]
+    H -->|impact no| J[Apply patch]
     I --> J
     F --> J
     G --> J
-    J --> K[재스캔으로\n취약점 해소 확인]
-    K --> L[remediation-plan.md\n기록 갱신]
-    L --> M[Jira 티켓 Done]
+    J --> K[by rescanning\nvulnerability 해소 check]
+    K --> L[remediation-plan.md\nupdate records]
+    L --> M[Jira ticket Done]
 ```
 
 ---
@@ -603,18 +603,18 @@ graph TD
 
 ```mermaid
 graph TD
-    A[사용 요청] --> B[라이선스 검토]
-    B --> C[취약점 스캔]
-    C --> D[리스크 기반 승인\n담당자/팀장/위원회]
-    D --> E[SBOM 업데이트]
-    E --> F[개발 배포\n매일]
-    F --> G[상용 배포\n주간]
-    G --> H[출시 후 모니터링\n월 1회 재스캔]
-    H --> I{신규 취약점?}
-    I -->|있음| J[취약점 대응 절차]
-    J --> K[패치 릴리즈]
+    A[Use request] --> B[License review]
+    B --> C[vulnerability scan]
+    C --> D[risk-based Approved\nProgram Manager/Team Lead/committee]
+    D --> E[SBOM update]
+    E --> F[development deployment\ndaily]
+    F --> G[Production release\nweekly]
+    G --> H[post-release monitoring\nmonthly rescan]
+    H --> I{new vulnerability?}
+    I -->|Yes| J[vulnerability response procedure]
+    J --> K[Patch release]
     K --> G
-    I -->|없음| H
+    I -->|No| H
 ```
 
 ---
@@ -625,7 +625,7 @@ graph TD
 | ------------------------------ | ------------------------------------------ |
 | Approved for use               | `output/process/usage-approval.md`         |
 | Deployment Checklist           | `output/process/distribution-checklist.md` |
-| Vulnerability response         | `output/process/vulnerability-response.md` |
+| vulnerability response         | `output/process/vulnerability-response.md` |
 | Response to external inquiries | `output/process/inquiry-response.md`       |
 | License Policy                 | `output/policy/oss-policy.md`              |
 | Permissive License             | `output/policy/license-allowlist.md`       |
@@ -697,7 +697,7 @@ Related Standards
 | Conditions                          | Escalation target                                                                |
 | ----------------------------------- | -------------------------------------------------------------------------------- |
 | Lawsuit or threat of legal action   | Immediately report to legal representative                                       |
-| Report Critical Vulnerability       | Immediately report to security team + initiate vulnerability-response.md process |
+| Report Critical vulnerability       | Immediately report to security team + initiate vulnerability-response.md process |
 | Expected response deadline exceeded | After reporting to the team leader, we discussed extending the deadline          |
 
 ---

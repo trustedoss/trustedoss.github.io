@@ -38,7 +38,7 @@ Having a written policy serves as a basis for proving “unintentional” in the
 
 ### Policy prerequisites required by the standard
 
-Acceptable ranges for both standards,Procedures for fulfilling license obligations,manager,Violation Processing Procedure,A common review cycle is required. ISO/IEC 18974 adds vulnerability response procedures,Security Vulnerability Disclosure Policy,Program Performance Indicators(KPI)Additional requests are made. Additionally, for both standards, the mere existence of a policy document is not enough;,In fact, it requires employees to be accessible and aware of it.
+Acceptable ranges for both standards,Procedures for fulfilling license obligations,manager,Violation Processing Procedure,A common review cycle is required. ISO/IEC 18974 adds vulnerability response procedures,Security vulnerability Disclosure Policy,Program Performance Indicators(KPI)Additional requests are made. Additionally, for both standards, the mere existence of a policy document is not enough;,In fact, it requires employees to be accessible and aware of it.
 
 > Detailed descriptions of items to be included in the policy and example policy documents are available in [KWG Open Source Guide — Policy](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/2-policy/)See .
 
@@ -51,7 +51,7 @@ ISO/IEC 18974 requires that open source security assurance programs have **measu
 | Critical vulnerability patch period after CVE detection | Discovery date ~ Patch distribution date(target:Within 1 week)                                            |
 | SBOM Renewal cycle compliance rate                      | SBOM Number of updates per release / Total number of releases                                             |
 | CVE regular scan cycle                                  | Regular scans per release + once a month                                                                  |
-| Vulnerability response rate                             | Over 90% resolved within deadline(Documentation of reasons and mitigation plan in case of non-resolution) |
+| vulnerability response rate                             | Over 90% resolved within deadline(Documentation of reasons and mitigation plan in case of non-resolution) |
 | Education Completion Rate                               | 100% annual completion of open source-related occupations                                                 |
 | Open source use approval processing period              | Processing time for approval request(target:Within 3 business days)                                       |
 
@@ -250,7 +250,7 @@ The files below are created.
 - Person in charge and contact information
 - Procedures for handling policy violations
 - Policy Review Cycle
-- Known Vulnerability Response Procedures(18974 Requirements)
+- Known vulnerability Response Procedures(18974 Requirements)
 
 Open the created file and check if it contains the above items.
 Check it yourself and supplement if necessary.
@@ -303,14 +303,14 @@ These are items that must be checked directly by a person after running the agen
 Ensure that the generated policy document contains the sections below.
 
 ```
-1. 목적 및 적용 범위
-2. 정책 담당자 및 책임
-3. 오픈소스 사용 허용 기준
-4. 라이선스 의무 이행 절차
-5. 오픈소스 기여 정책
-6. 보안 취약점 대응 절차
-7. 정책 위반 처리
-8. 정책 검토 및 개정
+1. Purpose and scope
+2. Policy owner and responsibilities
+3. Open source usage approval criteria
+4. License obligation compliance procedure
+5. Open source contribution policy
+6. Security vulnerability response procedure
+7. Policy violation handling
+8. Policy review and revision
 ```
 
 ---
@@ -320,13 +320,13 @@ Ensure that the generated policy document contains the sections below.
 Compare the generated allowed license list to the sample below to ensure it is correctly categorized by deployment method.
 
 ```markdown
-| 라이선스   | 분류            | 내부 사용 | SaaS 배포   | 앱 배포     | 임베디드    |
-| ---------- | --------------- | --------- | ----------- | ----------- | ----------- |
-| MIT        | Permissive      | ✓ 허용    | ✓ 허용      | ✓ 허용      | ✓ 허용      |
-| Apache-2.0 | Permissive      | ✓ 허용    | ✓ 허용      | ✓ 허용      | ✓ 허용      |
-| LGPL-2.1   | Weak Copyleft   | ✓ 허용    | ✓ 허용      | △ 조건부    | △ 조건부    |
-| GPL-2.0    | Strong Copyleft | ✓ 허용    | ✓ 허용      | ✗ 검토 필요 | ✗ 검토 필요 |
-| AGPL-3.0   | Strong Copyleft | ✓ 허용    | ✗ 검토 필요 | ✗ 검토 필요 | ✗ 검토 필요 |
+| License    | Category        | Internal Use | SaaS Distribution | App distribution  | Embedded          |
+| ---------- | --------------- | ------------ | ----------------- | ----------------- | ----------------- |
+| MIT        | Permissive      | ✓ Allowed    | ✓ Allowed         | ✓ Allowed         | ✓ Allowed         |
+| Apache-2.0 | Permissive      | ✓ Allowed    | ✓ Allowed         | ✓ Allowed         | ✓ Allowed         |
+| LGPL-2.1   | Weak Copyleft   | ✓ Allowed    | ✓ Allowed         | △ Conditional     | △ Conditional     |
+| GPL-2.0    | Strong Copyleft | ✓ Allowed    | ✓ Allowed         | ✗ Review required | ✗ Review required |
+| AGPL-3.0   | Strong Copyleft | ✓ Allowed    | ✗ Review required | ✗ Review required | ✗ Review required |
 ```
 
 > 📋 **Example of output**: [Policy Output Best Practice](/reference/samples/policy)You can check the actual format of the generated file at .

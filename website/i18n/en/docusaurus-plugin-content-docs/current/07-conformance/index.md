@@ -11,7 +11,7 @@ self_study_time: 2 hours
 
 ## 1. What we do in this chapter
 
-Congratulations on making it this far. Organization structure so far,policy making,process design,SBOM creation and management,Vulnerability Analysis,All key areas of the open source management system, including the establishment of an education system, have been completed.
+Congratulations on making it this far. Organization structure so far,policy making,process design,SBOM creation and management,vulnerability Analysis,All key areas of the open source management system, including the establishment of an education system, have been completed.
 
 Let's look at the full list of artifacts created so far. If you have all of this in place, you are ready to declare your self-certification.:
 
@@ -183,7 +183,7 @@ Check all items below before finishing this chapter:
 
 Your open source management system is now complete.
 
-From organizational structure to policy,process, SBOM,Vulnerability Management,education,And even the self-certification declaration — all elements required by ISO/IEC 5230 and ISO/IEC 18974 were systematically met. This achievement will be a strong signal of confidence to your supply chain partners and customers that demonstrates your open source management maturity.
+From organizational structure to policy,process, SBOM,vulnerability Management,education,And even the self-certification declaration — all elements required by ISO/IEC 5230 and ISO/IEC 18974 were systematically met. This achievement will be a strong signal of confidence to your supply chain partners and customers that demonstrates your open source management maturity.
 
 Ways to grow with the open source ecosystem even after certification:
 

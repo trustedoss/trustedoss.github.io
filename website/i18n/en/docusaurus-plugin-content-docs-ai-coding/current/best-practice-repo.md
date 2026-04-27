@@ -20,40 +20,40 @@ You can fork it for immediate use or copy configuration files into an existing p
 
 ```
 ai-coding-best-practice/
-├── README.md                          # 배지 + 단계별 설명 + 가이드 링크
+├── README.md                          # badges + step-by-step explanation + guide links
 ├── src/
-│   └── app.py                         # 샘플 Python 웹 앱 (의존성 포함)
+│   └── app.py                         # sample Python web app (with dependencies)
 ├── requirements.txt
 ├── Dockerfile
-├── docker-compose.yml                 # DAST·AI 퍼징용 앱 기동
+├── docker-compose.yml                 # app startup for DAST/AI fuzzing
 │
-├── CLAUDE.md                          # 2단계: AI 규칙 내재화
-├── .cursorrules                       # 2단계: Cursor 규칙
+├── CLAUDE.md                          # Step 2: Embed AI rules
+├── .cursorrules                       # Step 2: Cursor rules
 │
-├── .gitleaks.toml                     # 3단계: 시크릿 탐지 설정
-├── .grype.yaml                        # 3단계: SCA 임계값 설정
-├── .semgrep.yml                       # 3단계: SAST 룰셋
+├── .gitleaks.toml                     # Step 3: secret detection settings
+├── .grype.yaml                        # Step 3: SCA threshold settings
+├── .semgrep.yml                       # Step 3: SAST ruleset
 │
-├── renovate.json                      # 4단계: Renovate 자동 업데이트
+├── renovate.json                      # Step 4: Renovate auto-updates
 │
 ├── k8s/
-│   └── deployment.yaml                # IaC 보안 스캔 대상 샘플 (Checkov)
+│   └── deployment.yaml                # sample target for IaC security scan (Checkov)
 │
 ├── scripts/
-│   └── ai-fuzz.py                     # AI 퍼징 실행 스크립트
+│   └── ai-fuzz.py                     # AI fuzzing run script
 │
 └── .github/
-    ├── dependabot.yml                 # 4단계: Dependabot 설정
+    ├── dependabot.yml                 # Step 4: Dependabot settings
     └── workflows/
-        ├── secret-detection.yml       # 3단계: Gitleaks
-        ├── sast.yml                   # 3단계: Semgrep
-        ├── codeql.yml                 # 3단계: CodeQL (PR + 주 1회)
-        ├── oss-policy.yml             # 3단계: syft + grype + 라이선스
-        ├── iac-security.yml           # 3단계: Checkov (Dockerfile·K8s)
-        ├── container-security.yml     # 3단계: Trivy
-        ├── ai-review.yml              # 4단계: findings-driven AI 리뷰 (ANTHROPIC_API_KEY 등록 시 자동 활성화)
-        ├── ai-fuzzing.yml             # 4단계: AI 퍼징 (주 1회 + Push)
-        └── dast.yml                   # 5단계: OWASP ZAP (Push to main)
+        ├── secret-detection.yml       # Step 3: Gitleaks
+        ├── sast.yml                   # Step 3: Semgrep
+        ├── codeql.yml                 # Step 3: CodeQL (PR + weekly)
+        ├── oss-policy.yml             # Step 3: syft + grype + licenses
+        ├── iac-security.yml           # Step 3: Checkov (Dockerfile/K8s)
+        ├── container-security.yml     # Step 3: Trivy
+        ├── ai-review.yml              # Step 4: findings-driven AI review (ANTHROPIC_API_KEY auto-enabled when configured)
+        ├── ai-fuzzing.yml             # Step 4: AI fuzzing (weekly + push)
+        └── dast.yml                   # Step 5: OWASP ZAP (Push to main)
 ```
 
 ---

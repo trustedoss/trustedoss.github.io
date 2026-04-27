@@ -6,8 +6,8 @@ sidebar_position: 2
 date: 2026-03-20
 version: '1.0'
 checklist:
-  - 'ISO/IEC 5230: 전체 (매핑 기준 문서)'
-  - 'ISO/IEC 18974: 전체 (매핑 기준 문서)'
+  - 'ISO/IEC 5230: Full (mapping reference document)'
+  - 'ISO/IEC 18974: Full (mapping reference document)'
 self_study_time: 1 hour
 ---
 
@@ -38,7 +38,7 @@ Find out which module creates it.
 | **Latest version**                | 2.1 (2023)                                                                                                  | 1.0 (2023)                                                                                               |
 | **Purpose**                       | Establishment of an open source license compliance system                                                   | Establishment of an open source security vulnerability assurance system                                  |
 | **Focus**                         | Fulfill license obligations, manage BOM, create notices                                                     | Identifying, tracking and responding to known CVEs, SBOM based security                                  |
-| **Key Requirements**              | Policy, Organization, Process, BOM, Compliance Deliverables, Contribution Policy, Declaration of Compliance | Policy, Organization, SBOM, CVE Scan, Vulnerability Tracking/Scoring/Response, Declaration of Compliance |
+| **Key Requirements**              | Policy, Organization, Process, BOM, Compliance Deliverables, Contribution Policy, Declaration of Compliance | Policy, Organization, SBOM, CVE Scan, vulnerability Tracking/Scoring/Response, Declaration of Compliance |
 | **Authentication Method**         | OpenChain Website self-declaration                                                                          | OpenChain Website self-declaration                                                                       |
 | **Validity Period**               | 18 months                                                                                                   | 18 months                                                                                                |
 | **Related regulations/standards** | SPDX, REUSE, EU CRA (licensing aspect)                                                                      | EO 14028, NTIA SBOM, EU CRA, NVD/CVSS                                                                    |
@@ -338,14 +338,14 @@ Risk of security incidents and legal liability if CVE vulnerabilities are not id
 | Proof ID       | Content                                                                               | output file                                |
 | -------------- | ------------------------------------------------------------------------------------- | ------------------------------------------ |
 | 18974 §4.1.5.1 | Standard vulnerability response procedures, including vulnerability detection methods | `output/process/vulnerability-response.md` |
-| 18974 §4.3.2.1 | Vulnerability detection and resolution procedures                                     | `output/vulnerability/cve-report.md`       |
+| 18974 §4.3.2.1 | vulnerability detection and resolution procedures                                     | `output/vulnerability/cve-report.md`       |
 | 18974 §4.3.2.2 | Record of vulnerabilities and actions taken                                           | `output/vulnerability/cve-report.md`       |
 
 - **Agent in Charge**: `05-vulnerability-analyst`
 
 ---
 
-#### G3S.2 — Vulnerability Tracking and Health Management `[18974]`
+#### G3S.2 — vulnerability Tracking and Health Management `[18974]`
 
 > ISO/IEC 18974 §4.3.2 · §4.1.5
 
@@ -354,7 +354,7 @@ Continuous tracking of identified vulnerabilities until response is completed; P
 | Proof ID       | Content                                                                     | output file                                |
 | -------------- | --------------------------------------------------------------------------- | ------------------------------------------ |
 | 18974 §4.1.5.1 | Standard response procedures, including how to follow up on vulnerabilities | `output/process/vulnerability-response.md` |
-| 18974 §4.3.2.1 | Vulnerability detection and resolution procedures                           | `output/vulnerability/cve-report.md`       |
+| 18974 §4.3.2.1 | vulnerability detection and resolution procedures                           | `output/vulnerability/cve-report.md`       |
 | 18974 §4.3.2.2 | Record of vulnerabilities and actions taken                                 | `output/vulnerability/cve-report.md`       |
 
 - **Agent in Charge**: `05-vulnerability-analyst`
@@ -369,14 +369,14 @@ CVSS score-based prioritization; Efficient resource allocation
 
 | Proof ID       | Content                                                                   | output file                          |
 | -------------- | ------------------------------------------------------------------------- | ------------------------------------ |
-| 18974 §4.3.2.1 | Vulnerability handling procedures, including risk/impact score assignment | `output/vulnerability/cve-report.md` |
+| 18974 §4.3.2.1 | vulnerability handling procedures, including risk/impact score assignment | `output/vulnerability/cve-report.md` |
 | 18974 §4.3.2.2 | Record identified vulnerabilities and risk scores                         | `output/vulnerability/cve-report.md` |
 
 - **Agent in Charge**: `05-vulnerability-analyst`
 
 ---
 
-#### G3S.4 — Vulnerability response and patching procedures `[18974]`
+#### G3S.4 — vulnerability response and patching procedures `[18974]`
 
 > ISO/IEC 18974 §4.3.2 · §4.1.5
 
@@ -385,7 +385,7 @@ Rapid patch, upgrade, and mitigation action system for discovered vulnerabilitie
 | Proof ID       | Content                                                                                | output file                                |
 | -------------- | -------------------------------------------------------------------------------------- | ------------------------------------------ |
 | 18974 §4.1.5.1 | Standard response procedures, including appropriate action methods for each risk level | `output/vulnerability/remediation-plan.md` |
-| 18974 §4.3.2.1 | Vulnerability remediation procedures                                                   | `output/vulnerability/remediation-plan.md` |
+| 18974 §4.3.2.1 | vulnerability remediation procedures                                                   | `output/vulnerability/remediation-plan.md` |
 | 18974 §4.3.2.2 | Records of actions taken                                                               | `output/vulnerability/remediation-plan.md` |
 
 - **Agent in Charge**: `05-vulnerability-analyst`
@@ -480,7 +480,7 @@ Immediately identify affected supply chain components when a new CVE is disclose
 | Proof ID       | Content                                                                        | output file                           |
 | -------------- | ------------------------------------------------------------------------------ | ------------------------------------- |
 | 18974 §4.3.2.1 | Response procedures including new vulnerability analysis methods after release | `output/sbom/sbom-management-plan.md` |
-| 18974 §4.3.2.2 | Vulnerability and Action Log                                                   | `output/sbom/sbom-management-plan.md` |
+| 18974 §4.3.2.2 | vulnerability and Action Log                                                   | `output/sbom/sbom-management-plan.md` |
 
 - **Agent in Charge**: `05-sbom-management`
 
@@ -589,7 +589,7 @@ If the `output/` folder is empty, start with the steps below.
 3. **Process Design** → `cd agents/04-process-designer && claude`
 4. **SBOM creation** → `cd agents/05-sbom-guide && claude`
 5. **License Analysis** → `cd agents/05-sbom-analyst && claude`
-6. **Vulnerability Analysis** → `cd agents/05-vulnerability-analyst && claude`
+6. **vulnerability Analysis** → `cd agents/05-vulnerability-analyst && claude`
 7. **SBOM Management Plan** → `cd agents/05-sbom-management && claude`
 8. **Education System** → `cd agents/06-training-manager && claude`
 9. **Certification Declaration** → `cd agents/07-conformance-preparer && claude`

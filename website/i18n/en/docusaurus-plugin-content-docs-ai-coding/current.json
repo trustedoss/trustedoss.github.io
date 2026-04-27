@@ -3,7 +3,7 @@
     "message": "Next",
     "description": "The label for version current"
   },
-  "sidebar.aiCoding.category.도구별 설정": {
+  "sidebar.aiCoding.category.Tool-specific setup": {
     "message": "Tool-Specific Setup",
     "description": "The label for category 'Tool-Specific Setup' in sidebar 'aiCoding'"
   }

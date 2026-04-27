@@ -60,7 +60,7 @@ Related Standards
 | M1        | Open source licensing basics (MIT·Apache·GPL·LGPL·AGPL)                 | Online Autonomy | 2h                        | Required          |
 | M2        | Understanding Tech Unicorn open source policy                           | Online Autonomy | 1h                        | Required          |
 | M3        | SBOM creation practice (Syft, CycloneDX)                                | offline set     | 3h                        | Required          |
-| M4        | Vulnerability scanning and CVE response practice                        | offline set     | 2h                        | Required          |
+| M4        | vulnerability scanning and CVE response practice                        | offline set     | 2h                        | Required          |
 | M5        | License obligations by distribution channel (SaaS, App Store, Embedded) | Online Autonomy | 1.5h                      | Required          |
 | M6        | Open source contribution process                                        | Online Autonomy | 1h                        | Select            |
 | **Total** | —                                                                       | —               | **10.5h (required 9.5h)** | —                 |
@@ -158,7 +158,7 @@ Related Standards
 ### How to use
 
 - **Completion date**: Based on course completion date (YYYY-MM-DD)
-- **Status**: `완료` / `진행중` / `미이수`
+- **Status**: `completed` / `In Progress` / `Not Completed`
 - **Proof**: Enter certificate file name or attendance list number
 - OpenChain When submitting certification, submit this sheet + supporting file in batches
 
@@ -315,7 +315,7 @@ Related Standards
 
 | Resources                             | target                  | Link                                                         |
 | ------------------------------------- | ----------------------- | ------------------------------------------------------------ |
-| NVD (National Vulnerability Database) | Developer/Administrator | https://nvd.nist.gov/                                        |
+| NVD (National vulnerability Database) | Developer/Administrator | https://nvd.nist.gov/                                        |
 | OSV (Open Source Vulnerabilities)     | Developer               | https://osv.dev/                                             |
 | CISA Known Exploited Vulnerabilities  | Administrator           | https://www.cisa.gov/known-exploited-vulnerabilities-catalog |
 
@@ -328,7 +328,7 @@ Related Standards
 | Tools/Materials         | Use                             | Link                             |
 | ----------------------- | ------------------------------- | -------------------------------- |
 | Syft (Anchor)           | SBOM creation practice          | https://github.com/anchore/syft  |
-| Grype (Anchor)          | Vulnerability scanning practice | https://github.com/anchore/grype |
+| Grype (Anchor)          | vulnerability scanning practice | https://github.com/anchore/grype |
 | CycloneDX Official Site | SBOM Understanding Standards    | https://cyclonedx.org/           |
 | FOSSA Blog              | License Compliance Case         | https://fossa.com/blog/          |
 | REUSE Specifications    | Source code license notation    | https://reuse.software/          |

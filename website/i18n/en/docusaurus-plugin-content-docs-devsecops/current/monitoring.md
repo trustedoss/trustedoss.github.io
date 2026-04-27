@@ -36,7 +36,7 @@ Adding `.github/dependabot.yml` to the GitHub repository automatically creates a
 
 version: 2
 updates:
-  # npm 의존성
+  # npm dependencies
   - package-ecosystem: npm
     directory: /
     schedule:
@@ -45,29 +45,29 @@ updates:
       time: '09:00'
     open-pull-requests-limit: 10
     groups:
-      # 마이너·패치 업데이트는 그룹으로 묶어 PR 수 감소
+      # Group minor/patch updates to reduce PR count
       minor-and-patch:
         update-types:
           - minor
           - patch
 
-  # Python 의존성
+  # Python dependencies
   - package-ecosystem: pip
     directory: /
     schedule:
       interval: weekly
     ignore:
-      # 메이저 업데이트는 수동 검토
+      # major updates require manual review
       - dependency-name: django
         update-types: [version-update:semver-major]
 
-  # Docker 베이스 이미지
+  # Docker base images
   - package-ecosystem: docker
     directory: /
     schedule:
       interval: weekly
 
-  # GitHub Actions 자체 업데이트
+  # GitHub Actions self-updates
   - package-ecosystem: github-actions
     directory: /
     schedule:
@@ -136,8 +136,8 @@ name: Scheduled Security Scan
 
 on:
   schedule:
-    - cron: '0 2 * * *' # 매일 새벽 2시
-  workflow_dispatch: # 수동 실행 가능
+    - cron: '0 2 * * *' # daily 2 AM
+  workflow_dispatch: # manual run available
 
 jobs:
   sca-scan:
@@ -163,7 +163,7 @@ jobs:
         with:
           name: sbom-scheduled-${{ github.run_id }}
           path: sbom.cdx.json
-          retention-days: 365 # 연간 보관
+          retention-days: 365 # retain yearly
 
   container-scan:
     runs-on: ubuntu-latest

@@ -57,14 +57,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # 1. SBOM 생성
+      # 1. Generate SBOM
       - name: Generate SBOM
         uses: anchore/sbom-action@v0
         with:
           format: cyclonedx-json
           output-file: sbom.cdx.json
 
-      # 2. 취약점 스캔 — High 이상 발견 시 빌드 실패
+      # 2. vulnerability scan — fail build on High or above
       - name: Scan vulnerabilities
         uses: anchore/scan-action@v3
         with:
@@ -72,7 +72,7 @@ jobs:
           fail-build: true
           severity-cutoff: high
 
-      # 3. 금지 라이선스 검사
+      # 3. Prohibited license check
       - name: Check licenses
         run: |
           FORBIDDEN="GPL AGPL SSPL"
@@ -83,12 +83,12 @@ jobs:
             fi
           done
           if [ -n "$FOUND" ]; then
-            echo "금지 라이선스 발견:$FOUND"
+            echo "Prohibited licenses found:$FOUND"
             exit 1
           fi
-          echo "라이선스 검사 통과"
+          echo "License check passed"
 
-      # 4. SBOM 아티팩트 보관
+      # 4. Store SBOM artifact
       - name: Upload SBOM
         uses: actions/upload-artifact@v4
         with:
@@ -104,7 +104,7 @@ jobs:
 
 Analyzes source code and manifest files (such as package.json and requirements.txt) to generate an SBOM file in CycloneDX JSON format. It is available directly from GitHub Actions Marketplace and requires no separate installation.
 
-**2. Vulnerability scan (anchore/scan-action)**
+**2. vulnerability scan (anchore/scan-action)**
 
 Checks vulnerabilities by comparing the generated SBOM against CVE databases. With `severity-cutoff: high`, the build automatically fails when High or Critical CVEs are found. Medium and below are reported as warnings while the build continues. For initial rollout, starting with `critical` and gradually tightening to `high` is recommended.
 
@@ -127,22 +127,22 @@ Only runner syntax differs; syft and grype are used as-is.
 ### Full pipeline
 
 ```yaml
-# .gitlab-ci.yml (oss-check 잡 부분)
+# .gitlab-ci.yml (oss-check job section)
 oss-check:
   stage: test
   image: ubuntu:22.04
   script:
-    # 도구 설치
+    # Install tools
     - curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin
     - curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
 
-    # 1. SBOM 생성
+    # 1. Generate SBOM
     - syft . -o cyclonedx-json=sbom.cdx.json
 
-    # 2. 취약점 스캔 — High 이상 빌드 실패
+    # 2. vulnerability scan — fail build on High or above
     - grype sbom:sbom.cdx.json --fail-on high
 
-    # 3. 금지 라이선스 검사
+    # 3. Prohibited license check
     - |
       FORBIDDEN="GPL AGPL SSPL"
       FOUND=""
@@ -152,7 +152,7 @@ oss-check:
         fi
       done
       if [ -n "$FOUND" ]; then
-        echo "금지 라이선스 발견:$FOUND"
+        echo "Prohibited licenses found:$FOUND"
         exit 1
       fi
 
@@ -172,7 +172,7 @@ oss-check:
 | Item               | GitHub Actions               | GitLab CI                      |
 | ------------------ | ---------------------------- | ------------------------------ |
 | SBOM generation    | anchore/sbom-action (Action) | Install and run syft directly  |
-| Vulnerability scan | anchore/scan-action (Action) | Install and run grype directly |
+| vulnerability scan | anchore/scan-action (Action) | Install and run grype directly |
 | Trigger condition  | pull_request                 | merge_request_event            |
 | Artifact retention | upload-artifact              | artifacts.paths                |
 
@@ -183,7 +183,7 @@ oss-check:
 :::tip At minimum, tailor these two items to your team policy
 :::
 
-**Vulnerability threshold**
+**vulnerability threshold**
 
 You can relax `severity-cutoff` (GitHub Actions) or `--fail-on` (GitLab CI) from the default `high` to `critical`, or tighten it to `medium`. When first introducing the pipeline, it is recommended to start at `critical`, observe build failure frequency, then gradually tighten.
 

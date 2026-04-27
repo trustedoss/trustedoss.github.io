@@ -55,7 +55,7 @@ example:
 ```
 output/sbom/myapp-v1.2.0-20260320.cdx.json
 output/sbom/myapp-v1.1.0-20260101.cdx.json
-output/sbom/myapp-latest.cdx.json  ← 항상 최신본 링크
+output/sbom/myapp-latest.cdx.json  ← always latest link
 ```
 
 `myapp-latest.cdx.json` always keeps pointing to the most recently created SBOM,Files for each release are managed in separate directories or tags according to the storage policy.
@@ -115,7 +115,7 @@ Make sure your SBOM is always up to date to immediately know if your software is
 
 **Monitoring method:**
 
-- **Dependency Track Notification:** Vulnerability Threshold(CVSS score, etc.)Notify by email or webhook when exceeded
+- **Dependency Track Notification:** vulnerability Threshold(CVSS score, etc.)Notify by email or webhook when exceeded
 - **GitHub Dependabot:** Automatic PR notification of dependency vulnerabilities in GitHub-based projects
 - **Subscribe to OSV.dev:** Subscribe to notifications from the open source vulnerability database operated by Google
 
@@ -123,7 +123,7 @@ Make sure your SBOM is always up to date to immediately know if your software is
 
 ```yaml
 # .github/workflows/vuln-scan.yml
-name: Weekly Vulnerability Scan
+name: Weekly vulnerability Scan
 on:
   schedule:
     - cron: '0 9 * * 1' # 매주 월요일 오전 9시
@@ -137,7 +137,7 @@ jobs:
           syft . -o cyclonedx-json > output/sbom/myapp-latest.cdx.json
       - name: Check SBOM for new CVEs
         run: |
-          # Dependency Track API 또는 grype 등으로 스캔
+          # Scan with Dependency-Track API or grype
           grype sbom:output/sbom/myapp-latest.cdx.json --fail-on high
 ```
 
@@ -189,14 +189,14 @@ cat output/sbom/sbom-management-plan.md
 **Step 5.** Fill in the shared template with actual company information.
 
 ```bash
-# 텍스트 에디터로 열어 [회사명], [담당자명] 등 플레이스홀더 교체
+# Open with a text editor and replace placeholders such as [Company Name], [Program Manager Name]
 open output/sbom/sbom-sharing-template.md
 ```
 
 **Step 6.** Apply the SBOM file naming convention to existing files.
 
 ```bash
-# 예: 기존 파일 이름 변경
+# Example: rename existing file
 mv output/sbom/myapp.cdx.json output/sbom/myapp-v1.0.0-20260320.cdx.json
 cp output/sbom/myapp-v1.0.0-20260320.cdx.json output/sbom/myapp-latest.cdx.json
 ```
@@ -238,32 +238,32 @@ Check all of the items below to complete this chapter.
 **sbom-management-plan.md example main sections:**
 
 ```markdown
-# SBOM 관리 계획
+# SBOM Management Plan
 
-## 1. SBOM 생성 및 갱신 정책
+## 1. SBOM Generation and Update Policy
 
-- **갱신 트리거 목록:** 신규 컴포넌트 추가, 버전 변경, 릴리즈, 보안 패치
-- **갱신 담당자:** [이름], [역할]
-- **갱신 절차:** PR 병합 시 CI/CD 자동 생성 → 담당자 검토 → 보관
+- **Update trigger list:** new Component addition, Version changed, release, security patches
+- **update owner:** [Name], [Role]
+- **update procedure:** On PR merge: auto-generate in CI/CD -> Program Manager review -> archive
 
-## 2. 버전 관리 전략
+## 2. versioning strategy
 
-- **파일 명명 규칙:** `[project]-[version]-[date].cdx.json`
-- **보관 위치:** `output/sbom/` (Git 관리)
-- **보관 기간:** 릴리즈 유지 기간 + 1년
+- **file naming convention:** `[project]-[version]-[date].cdx.json`
+- **storage location:** `output/sbom/` (Git managed)
+- **retention period:** release retention period + 1년
 
-## 3. 외부 공유 절차
+## 3. external sharing procedure
 
-- **공유 대상 및 조건:** [납품처명], 계약서 제X조 요건
-- **제공 포맷:** CycloneDX JSON
-- **제공 채널:** 보안 파일 공유 링크 (Box)
-- **제공 주기:** 릴리즈 시마다, 납품처 요청 시
+- **sharing recipients and conditions:** [customer name], contract Clause X requirements
+- **delivery format:** CycloneDX JSON
+- **delivery channel:** secure file-sharing link (Box)
+- **delivery frequency:** for each release and upon customer request
 
-## 4. 모니터링 계획
+## 4. monitoring plan
 
-- **신규 CVE 알림:** Dependency Track, CVSS 7.0 이상 즉시 알림
-- **정기 검토 주기:** 월 1회 담당자 검토
-- **자동 스캔:** 매주 월요일 GitHub Actions 실행
+- **new CVE alerts:** Dependency Track, CVSS 7.0 or later Immediate alerts
+- **regular review cycle:** monthly Program Manager review
+- **automated scan:** Run GitHub Actions every Monday
 ```
 
 > This step is ISO/IEC 18974 4.3.1,Meets 4.3.2 requirements.
@@ -285,6 +285,6 @@ cd agents/05-vulnerability-analyst
 claude
 ```
 
-or [Vulnerability Analysis:Find out the known risks of open source](../vulnerability/index.md)You can read the guide first by going to .
+or [vulnerability Analysis:Find out the known risks of open source](../vulnerability/index.md)You can read the guide first by going to .
 
 In the vulnerability analysis stage, the previously created `output/sbom/[project].cdx.json` is used as input.,We recommend that you check one more time to ensure that the SBOM file is up to date before proceeding.

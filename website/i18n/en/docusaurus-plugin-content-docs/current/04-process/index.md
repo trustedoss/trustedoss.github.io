@@ -37,16 +37,16 @@ It becomes clear whether a process is needed.
 
 ```mermaid
 flowchart TD
-    A[오픈소스 도입 검토] --> B[라이선스 확인]
-    B --> C[보안 취약점 확인]
-    C --> D{승인 여부}
-    D -->|승인| E[사용]
-    D -->|거부| F[대안 검색]
-    E --> G[SBOM 기록]
-    G --> H[배포 전 검토]
-    H --> I[고지문 포함 배포]
-    I --> J[취약점 모니터링]
-    J -->|신규 CVE 발견| K[취약점 대응 프로세스]
+    A[Open source adoption review] --> B[License check]
+    B --> C[security vulnerability check]
+    C --> D{Approval?}
+    D -->|Approved| E[Use]
+    D -->|Rejected| F[Search alternatives]
+    E --> G[Record SBOM]
+    G --> H[Pre-release review]
+    H --> I[Release with notices]
+    I --> J[vulnerability monitoring]
+    J -->|New CVE found| K[vulnerability response process]
     K --> J
 ```
 
@@ -78,7 +78,7 @@ If it does not pass, distribution will not proceed.
 - Confirmation of compliance with copyleft license source code disclosure obligations
 - Verify that review of licenses not in the allowed license list has been completed
 
-#### 3-3. Vulnerability response process
+#### 3-3. vulnerability response process
 
 With SBOM, you can quickly check whether your software is affected when a new CVE is released.
 there is. We use resources efficiently by differentially applying response deadlines depending on the severity of the CVE.
@@ -139,13 +139,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: SBOM 생성
+      - name: Generate SBOM
         run: |
           docker run --rm -v $(pwd):/project \
             anchore/syft:latest /project \
             --output cyclonedx-json > sbom.cdx.json
-      - name: 라이선스 확인
-        run: echo "라이선스 검토 단계"
+      - name: License check
+        run: echo "License review step"
 ```
 
 The main CI/CD integration points are as follows:
@@ -244,7 +244,7 @@ Below is an example of a conversation flow with an actual agent. When running, i
 | ----------------------------------------------- | ---------- | --------------------------------------------------------------- |
 | `output/process/usage-approval.md`              | Always     | Open source introduction approval form and procedure            |
 | `output/process/distribution-checklist.md`      | Always     | Pre-deployment compliance checklist                             |
-| `output/process/vulnerability-response.md`      | Always     | Vulnerability response procedures(Includes CVD §8)              |
+| `output/process/vulnerability-response.md`      | Always     | vulnerability response procedures(Includes CVD §8)              |
 | `output/process/inquiry-response.md`            | Always     | Procedure for responding to external license/security inquiries |
 | `output/process/process-diagram.md`             | Always     | Mermaid Complete Process Overview with Flow Chart               |
 | `output/process/contribution-process.md`        | Q5 “Yes”   | Open source contribution process(Includes CLA treatment)        |
@@ -276,8 +276,8 @@ ls output/process/
 # vulnerability-response.md
 # inquiry-response.md
 # process-diagram.md
-# contribution-process.md  (Q5 "예" 답변 시)
-# project-publication-process.md  (Q6 "예" 답변 시)
+# contribution-process.md  (Q5 "Yes" when answer is)
+# project-publication-process.md  (Q6 "Yes" when answer is)
 ```
 
 **Step 6**:Establishment of CI/CD integrated plan
@@ -297,7 +297,7 @@ If it is difficult to apply immediately, schedule it for inclusion in the next s
 | ----------------------------------------------- | --------------------------------------------------------------- |
 | `output/process/usage-approval.md`              | Open source introduction approval form and procedure            |
 | `output/process/distribution-checklist.md`      | Pre-deployment compliance checklist                             |
-| `output/process/vulnerability-response.md`      | Vulnerability response procedures(CVD 90-day rule included)     |
+| `output/process/vulnerability-response.md`      | vulnerability response procedures(CVD 90-day rule included)     |
 | `output/process/inquiry-response.md`            | Procedure for responding to external license/security inquiries |
 | `output/process/process-diagram.md`             | Mermaid Complete Process Overview with Flow Chart               |
 | `output/process/contribution-process.md`        | Contribution Process(Q5 Created when “Yes”)                     |
@@ -320,7 +320,7 @@ Completing this lab will meet the requirements below:
 
 | Item ID | Requirements                                              | Self-certification checklist                                                                                   |
 | ------- | --------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| 4.1.5   | Vulnerability detection and response procedures           | Do you have a documented procedure for handling known vulnerabilities in open source components?               |
+| 4.1.5   | vulnerability detection and response procedures           | Do you have a documented procedure for handling known vulnerabilities in open source components?               |
 | 4.2.1   | External security vulnerability report response procedure | Do you have a documented procedure for receiving and handling reports of open source security vulnerabilities? |
 
 :::
@@ -348,14 +348,14 @@ Ensure that the generated flowchart contains a structure similar to the one belo
 
 ```mermaid
 flowchart TD
-    A[개발자: 오픈소스 도입 요청] --> B[라이선스 확인]
-    B --> C{허용 목록 내?}
-    C -->|Yes| D[취약점 스캔]
-    C -->|No| E[컴플라이언스 담당자 검토]
+    A[Developer: Open source adoption request] --> B[License check]
+    B --> C{In allow list?}
+    C -->|Yes| D[vulnerability scan]
+    C -->|No| E[compliance Program Manager review]
     D --> F{Critical CVE?}
-    F -->|No| G[승인]
-    F -->|Yes| H[대안 탐색 또는 패치 후 재검토]
-    G --> I[SBOM 등록]
+    F -->|No| G[Approved]
+    F -->|Yes| H[Find alternative or re-review after patch]
+    G --> I[Register SBOM]
 ```
 
 > This step is ISO/IEC 5230 3.1.5, 3.2.1, 3.3.2, 3.4.1,3.5.1 and ISO/IEC 18974 4.1.5,Meets 4.2.1 requirements.

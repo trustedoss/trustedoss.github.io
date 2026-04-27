@@ -86,8 +86,8 @@ rules:
       - pattern: |
           $DB = new PDO("...", "...", "$PASSWORD", ...)
     message: |
-      하드코딩된 DB 패스워드가 감지됐습니다.
-      환경변수로 교체하세요.
+      A hardcoded DB password was detected.
+      Replace it with an environment variable.
     languages: [php]
     severity: ERROR
 ```
@@ -109,7 +109,7 @@ on:
   pull_request:
     branches: [main]
   schedule:
-    - cron: '0 2 * * 1' # 매주 월요일 새벽 2시 전체 스캔
+    - cron: '0 2 * * 1' # 매주 월요일 2 AM full scan
 
 jobs:
   codeql:
@@ -124,7 +124,7 @@ jobs:
         uses: github/codeql-action/init@v3
         with:
           languages: javascript, python
-          # 지원 언어: javascript, python, java,
+          # Supported languages: javascript, python, java,
           #            cpp, csharp, go, ruby, swift
 
       - name: Autobuild
@@ -139,7 +139,7 @@ jobs:
 ### GitLab CI
 
 ```yaml
-# .gitlab-ci.yml (semgrep 잡 부분)
+# .gitlab-ci.yml (semgrep job section)
 
 semgrep:
   stage: test

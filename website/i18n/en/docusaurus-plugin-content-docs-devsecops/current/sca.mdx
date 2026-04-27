@@ -18,13 +18,13 @@ SCA is a method for analyzing open-source components included in software to det
 ### Basic Usage
 
 ```bash
-# CycloneDX JSON 생성 (권장)
+# CycloneDX JSON generation (recommended)
 syft . -o cyclonedx-json=sbom.cdx.json
 
-# SPDX JSON 생성
+# SPDX JSON generate
 syft . -o spdx-json=sbom.spdx.json
 
-# 컨테이너 이미지 분석
+# analyze container image
 syft nginx:latest -o cyclonedx-json=sbom.cdx.json
 ```
 
@@ -39,14 +39,14 @@ For security pipeline-centric workflows, CycloneDX JSON is recommended.
 
 ---
 
-## Vulnerability Scanning — grype
+## vulnerability Scanning — grype
 
 ### Full GitHub Actions Workflow
 
 ```yaml
 # .github/workflows/sca.yml
 
-name: SCA — SBOM & Vulnerability Scan
+name: SCA — SBOM & vulnerability Scan
 
 on:
   pull_request:
@@ -83,7 +83,7 @@ jobs:
 ### GitLab CI
 
 ```yaml
-# .gitlab-ci.yml (sca 잡 부분)
+# .gitlab-ci.yml (sca job section)
 
 sca:
   stage: test
@@ -105,7 +105,7 @@ sca:
 
 ---
 
-## Vulnerability Policy Design
+## vulnerability Policy Design
 
 ### Severity-Based SLA
 
@@ -130,10 +130,10 @@ For audit response, exceptions without evidence can become a compliance risk.
 fail-on-severity: high
 
 ignore:
-  # 실제 코드 경로 미사용 — 보안팀 승인 2024-01-15
+  # not used in actual code paths — security team approved 2024-01-15
   - vulnerability: CVE-2023-XXXXX
-    reason: '해당 함수 미사용 확인'
-  # 테스트 전용 패키지
+    reason: 'confirmed function not used'
+  # test-only package
   - package:
       name: some-test-lib
       type: npm
@@ -143,7 +143,7 @@ ignore:
 
 ## Using VEX
 
-**What is VEX (Vulnerability Exploitability eXchange)?** It is a machine-readable document that specifies whether a particular CVE is actually exploitable in a given product. It formally expresses cases like "the CVE exists, but the affected code path is not used," reducing unnecessary alerts across downstream supply chains.
+**What is VEX (vulnerability Exploitability eXchange)?** It is a machine-readable document that specifies whether a particular CVE is actually exploitable in a given product. It formally expresses cases like "the CVE exists, but the affected code path is not used," reducing unnecessary alerts across downstream supply chains.
 
 **Practical use:** Author it in CycloneDX VEX or OpenVEX format and distribute it with the SBOM. Adoption is still early, but its importance is growing as supply chain regulations tighten.
 

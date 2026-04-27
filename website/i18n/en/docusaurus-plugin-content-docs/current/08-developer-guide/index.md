@@ -6,8 +6,8 @@ sidebar_position: 8
 date: 2026-03-20
 version: '1.0'
 checklist:
-  - 'ISO/IEC 5230: (선택 챕터 - 필수 항목 없음, G1.6 운영 강화 지원)'
-  - 'ISO/IEC 18974: (선택 챕터 - 필수 항목 없음, G3S.1 운영 강화 지원)'
+  - 'ISO/IEC 5230: (Optional chapter - no mandatory items, supports G1.6 operational enhancement)'
+  - 'ISO/IEC 18974: (Optional chapter - no mandatory items, supports G3S.1 operational enhancement)'
 self_study_time: 2 hours
 ---
 

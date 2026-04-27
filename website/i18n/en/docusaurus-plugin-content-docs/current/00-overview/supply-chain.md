@@ -19,7 +19,7 @@ SBOM(Software Bill of Materials)Why this has become an essential tool,
 And we understand the flow of international regulations that require it.
 
 After reading this chapter, you will get a clear answer to the question “Why do you need this kit?”
-Everything you do in later chapters — policy making,process design,Create SBOM,Vulnerability analysis —
+Everything you do in later chapters — policy making,process design,Create SBOM,vulnerability analysis —
 The purpose becomes clearer in the context of this chapter.
 
 ---
@@ -35,10 +35,10 @@ This entire chain structure is the **Software Supply Chain**.
 
 ```mermaid
 flowchart LR
-    A[오픈소스 커뮤니티] -->|소스코드/패키지| B[패키지 저장소\nnpm/PyPI/Maven]
-    B -->|의존성 설치| C[개발자\n내부 코드베이스]
-    C -->|빌드/배포| D[소프트웨어 제품]
-    D -->|납품/배포| E[고객/납품처]
+    A[Open source community] -->|Source code/packages| B[Package registries\nnpm/PyPI/Maven]
+    B -->|Install dependencies| C[Developers\nInternal codebase]
+    C -->|Build/Release| D[Software product]
+    D -->|Delivery/Distribution| E[Customers/Recipients]
 
     style A fill:#e8f5e9
     style E fill:#e3f2fd

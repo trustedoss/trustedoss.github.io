@@ -72,7 +72,7 @@ cd trustedoss.github.io && claude
 | Latest version        | 2.1 (2023)                                                                                   | 1.0 (2023)                                                                               |
 | Purpose               | Establishment of an open source license compliance system                                    | Establishment of an open source security vulnerability assurance system                  |
 | focus                 | Fulfillment of license obligations, BOM management                                           | Identifying, tracking and responding to known CVEs, SBOM based security                  |
-| Core Requirements     | Policy·Organization·Process·BOM·Compliance Output·Contribution Policy·Compliance Declaration | Policy·Organization·SBOM·CVE Scan·Vulnerability Tracking·Response·Compliance Declaration |
+| Core Requirements     | Policy·Organization·Process·BOM·Compliance Output·Contribution Policy·Compliance Declaration | Policy·Organization·SBOM·CVE Scan·vulnerability Tracking·Response·Compliance Declaration |
 | Authentication method | OpenChain Website self-declaration                                                           | OpenChain Website self-declaration                                                       |
 | enactment background  | Response to rapid increase in open source licensing disputes                                 | Response to supply chain security incidents such as SolarWinds·Log4Shell                 |
 

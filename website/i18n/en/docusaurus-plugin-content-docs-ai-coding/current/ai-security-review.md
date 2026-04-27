@@ -13,11 +13,11 @@ Sending the entire codebase to AI causes high token costs and excessive noise.
 It is more efficient for **Stage 3 tools (Semgrep and grype) to narrow candidates first, and AI to focus only on those results**.
 
 ```
-[3단계] Semgrep · grype → findings.json
+[Step 3] Semgrep · grype → findings.json
                                 ↓
-[4단계] AI: 코드 컨텍스트 + findings → 검증·심층 해석·연관 발견
+[Step 4] AI: code context + findings → validation, deep interpretation, and related finding discovery
                                 ↓
-                       PR 코멘트 (빌드 차단 아님)
+                       PR comment (does not block build)
 ```
 
 | Tool             | Detection Method           | Strengths                                                   | Limitations                               |
@@ -58,7 +58,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      # 3단계 도구 결과 수집 (경량 재실행)
+      # Step 3 Tools collect results (light rerun)
       - name: Run Semgrep (SARIF)
         run: |
           pip install semgrep -q
@@ -72,7 +72,7 @@ jobs:
             | sh -s -- -b /usr/local/bin
           grype dir:. -o json > grype.json || true
 
-      # AI: findings + 코드 컨텍스트 → 검증·해석
+      # AI: findings + code context → validation and interpretation
       - name: AI Findings Analysis
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -81,7 +81,7 @@ jobs:
           python3 << 'PYEOF'
           import json, pathlib, anthropic, sys
 
-          # Semgrep findings 파싱
+          # Semgrep findings parse
           semgrep_issues = []
           try:
               sarif = json.loads(pathlib.Path("semgrep.sarif").read_text())
@@ -93,7 +93,7 @@ jobs:
                       line = region.get("startLine", 0)
                       rule_id = result.get("ruleId", "")
                       msg = result.get("message", {}).get("text", "")
-                      # 해당 라인 컨텍스트 추출 (±5줄)
+                      # extract line context (±5 lines)
                       ctx = ""
                       try:
                           lines = pathlib.Path(uri).read_text().splitlines()
@@ -106,7 +106,7 @@ jobs:
           except Exception:
               pass
 
-          # grype CVE findings 파싱 (High/Critical만)
+          # grype CVE findings parse (High/Criticalonly)
           grype_issues = []
           try:
               grype = json.loads(pathlib.Path("grype.json").read_text())
@@ -125,26 +125,26 @@ jobs:
 
           if not semgrep_issues and not grype_issues:
               pathlib.Path("review_result.txt").write_text("PASS")
-              print("탐지된 findings 없음 — AI 분석 건너뜀")
+              print("No detected findings — skip AI analysis")
               sys.exit(0)
 
-          # 프롬프트 조립 (상위 10개로 제한)
+          # assemble prompt (limited to top 10)
           semgrep_block = "\n".join(
-              f"[Semgrep #{i+1}] {x['rule']} @ {x['file']}:{x['line']}\n메시지: {x['msg']}\n코드:\n{x['ctx']}"
+              f"[Semgrep #{i+1}] {x['rule']} @ {x['file']}:{x['line']}\nMessage: {x['msg']}\nCode:\n{x['ctx']}"
               for i, x in enumerate(semgrep_issues[:8])
           )
           grype_block = "\n".join(
-              f"[grype] {x['cve']} — {x['pkg']}@{x['ver']} ({x['severity']}) → 수정버전: {x['fixed']}"
+              f"[grype] {x['cve']} — {x['pkg']}@{x['ver']} ({x['severity']}) → Fixed version: {x['fixed']}"
               for x in grype_issues[:5]
           )
 
-          prompt = f"""아래는 정적 분석 도구(Semgrep)와 SCA 도구(grype)의 탐지 결과다.
-각 항목에 대해 아래 형식으로 판정하라.
+          prompt = f"""Below are detected results from static analysis tools (Semgrep) and SCA tools (grype).
+Assess each item using the format below.
 
-판정 형식:
-- **[항목번호]** 실제취약점(TP) 또는 오탐(FP) | 위험도: High/Medium/Low | 판정 근거 1~2문장
-- TP일 경우: 실제 익스플로잇 시나리오 1줄 추가
-- grype CVE는 해당 패키지가 실제 코드 실행 경로에서 사용되는지 판단
+Assessment format:
+- **[Item number]** Real vulnerability (TP) or false positive (FP) | Risk: High/Medium/Low | 1-2 sentence rationale
+- TPif TP: add one-line real exploit scenario
+- For grype CVEs, determine whether the package is used in actual runtime paths
 
 ---
 {semgrep_block}
@@ -152,7 +152,7 @@ jobs:
 {grype_block}
 ---
 
-탐지 항목이 없으면 PASS를 출력하라."""
+detected If there are no findings, output PASS."""
 
           client = anthropic.Anthropic()
           response = client.messages.create(
@@ -180,10 +180,10 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               body: [
-                '## 🔍 AI 보안 리뷰 (Findings-Driven)',
+                '## 🔍 AI Security Review (Findings-Driven)',
                 '',
-                '> 3단계 도구(Semgrep·grype) 탐지 결과를 AI가 검증·해석한 결과입니다.',
-                '> 오탐 가능성이 있으니 맥락을 고려해 판단하세요. 빌드 차단 기준이 아닙니다.',
+                '> Step 3 Tools(Semgrep·grype) detected Results validated and interpreted by AI.',
+                '> False positives are possible; evaluate with context. This is not a build-blocking criterion.',
                 '',
                 result
               ].join('\n')
@@ -195,16 +195,16 @@ jobs:
 ## Workflow Execution Flow
 
 ```
-PR 오픈
+PR opened
   │
-  ├─ [3단계] Semgrep → semgrep.sarif  ─┐
-  └─ [3단계] grype   → grype.json     ─┤
+  ├─ [Step 3] Semgrep → semgrep.sarif  ─┐
+  └─ [Step 3] grype   → grype.json     ─┤
                                         ↓
-                            findings 파싱 + 코드 컨텍스트 추출
+                            findings parse + code context extract
                                         ↓
-                            Claude API (상위 13개 findings만)
+                            Claude API (top 13 findings only)
                                         ↓
-                            PR 코멘트: TP/FP 판정 + 위험도
+                            PR comment: TP/FP assessment + risk level
 ```
 
 **Token-saving points:**

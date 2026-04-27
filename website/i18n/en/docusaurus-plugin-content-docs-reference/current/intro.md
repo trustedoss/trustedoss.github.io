@@ -32,7 +32,7 @@ This is an in-depth guide to free open source tools.
 | ---------------- | ------------------------------------------ | --------- |
 | syft             | SBOM Creation Advanced                     | Preparing |
 | cdxgen           | CycloneDX Conversion Advanced              | Preparing |
-| Dependency Track | Vulnerability management detailed settings | Preparing |
+| Dependency Track | vulnerability management detailed settings | Preparing |
 | OSV API          | How to use vulnerability search            | Preparing |
 
 ### License

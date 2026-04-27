@@ -3,7 +3,7 @@ date: 2026-03-20
 version: '1.0'
 checklist:
   - 'ISO/IEC 5230: []'
-  - 'ISO/IEC 18974: [G3B.1 배경]'
+  - 'ISO/IEC 18974: [G3B.1 Background]'
 self_study_time: 1 hour
 sidebar_position: 4
 sidebar_label: 'SBOM Default'
@@ -72,7 +72,7 @@ The U.S. National Telecommunications and Information Administration (NTIA) has d
 The Package URL (PURL) is a standard format that uniquely identifies a package globally.
 
 ```
-pkg:{타입}/{네임스페이스}/{이름}@{버전}
+pkg:{type}/{namespace}/{name}@{version}
 ```
 
 example:
@@ -100,7 +100,7 @@ There are currently two standard formats mainly used in the industry:
 ### Why choose CycloneDX in this kit?
 
 1. **Rich tool support**: syft and cdxgen both support CycloneDX as default output.
-2. **Security Specialized Field**: Vulnerability information (VEX) can be included directly in SBOM
+2. **Security Specialized Field**: vulnerability information (VEX) can be included directly in SBOM
 3. **JSON format**: Easy for humans to read and easy to connect with CI/CD pipeline and API
 4. **Dependency-Track integration**: Perfectly integrated with SBOM management platform
 
@@ -112,11 +112,11 @@ SBOM does not exist on its own. It leads to the flow of creation → management 
 
 ```mermaid
 flowchart LR
-    A[소스코드/\n빌드 결과물] -->|syft / cdxgen| B[SBOM 생성\nCycloneDX JSON]
-    B -->|업로드| C[Dependency Track\nSBOM 관리 플랫폼]
-    C -->|NVD/OSV 연동| D[취약점 분석\nCVE 식별]
-    C -->|라이선스 검사| E[라이선스 분석\nCopyleft 위험]
-    C -->|API/Export| F[공유\n납품처/고객]
+    A[Source code/\nbuild artifacts] -->|syft / cdxgen| B[Generate SBOM\nCycloneDX JSON]
+    B -->|Upload| C[Dependency Track\nSBOM Management platform]
+    C -->|NVD/OSV integration| D[vulnerability analysis\nCVE identification]
+    C -->|License check| E[License analysis\nCopyleft risk]
+    C -->|API/Export| F[Share\ncustomers/recipients]
 
     style A fill:#fff3e0
     style B fill:#e8f5e9
@@ -189,6 +189,6 @@ Next, go to `docs/01-setup/` to prepare your lab environment.
 Once you complete the installation of syft, cdxgen, and Dependency-Track, you can begin full-scale practice.
 
 ```bash
-# 다음 단계
+# next step
 cd docs/01-setup
 ```

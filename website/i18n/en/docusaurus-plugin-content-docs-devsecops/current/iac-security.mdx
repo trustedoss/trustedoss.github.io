@@ -33,17 +33,17 @@ Checkov provides more than 500 built-in policies and runs both locally and in CI
 ### Basic Usage
 
 ```bash
-# 현재 디렉토리 전체 스캔
+# scan entire current directory
 checkov -d .
 
-# 특정 프레임워크만 스캔
+# scan specific framework only
 checkov -d . --framework terraform
 checkov -d . --framework kubernetes
 
-# 특정 검사 항목만 실행
+# run specific checks only
 checkov -d . --check CKV_AWS_18,CKV_AWS_19
 
-# 결과를 JSON으로 출력
+# output results as JSON
 checkov -d . -o json > checkov-report.json
 ```
 
@@ -83,7 +83,7 @@ jobs:
 ### GitLab CI
 
 ```yaml
-# .gitlab-ci.yml (iac-security 잡 부분)
+# .gitlab-ci.yml (iac-security job section)
 
 iac-security:
   stage: test
@@ -106,7 +106,7 @@ tfsec is specialized for Terraform, runs quickly, and includes built-in security
 ### GitHub Actions
 
 ```yaml
-# .github/workflows/iac-security-tfsec.yml (Terraform 전용)
+# .github/workflows/iac-security-tfsec.yml (Terraform only)
 
 name: IaC Security — tfsec
 
@@ -136,22 +136,22 @@ jobs:
 If you must skip specific checks, document the reason with inline comments in infrastructure code.
 
 ```hcl
-# Terraform 인라인 예외 예시
+# Terraform inline exception example
 
 resource "aws_s3_bucket" "logs" {
   bucket = "my-log-bucket"
 
-  # checkov:skip=CKV_AWS_18:접근 로그 버킷은 자체 로깅 불필요
-  # checkov:skip=CKV_AWS_52:MFA 삭제는 로그 버킷 특성상 불필요
+  # checkov:skip=CKV_AWS_18:access-log bucket does not require self-logging
+  # checkov:skip=CKV_AWS_52:MFA delete protection unnecessary for log bucket
 }
 ```
 
 ```yaml
-# Kubernetes 인라인 예외 예시
+# Kubernetes inline exception example
 
 metadata:
   annotations:
-    checkov.io/skip1: 'CKV_K8S_14=테스트 환경 전용 파드'
+    checkov.io/skip1: 'CKV_K8S_14=test-environment-only pod'
 ```
 
 ---

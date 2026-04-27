@@ -32,15 +32,15 @@ Install and validate the tools you will use in all exercises in this kit.
 
 ```bash
 # Docker Desktop
-# https://www.docker.com/products/docker-desktop 에서 다운로드
+# https://www.docker.com/products/docker-desktop download from
 
-# Git (Homebrew 사용)
+# Git (Homebrew Use)
 brew install git
 
 # Claude Code
 npm install -g @anthropic-ai/claude-code
 
-# Node.js (선택 - Homebrew)
+# Node.js (optional - Homebrew)
 brew install node
 ```
 
@@ -49,8 +49,8 @@ brew install node
 We recommend using WSL2. When installing Docker Desktop, you must enable the WSL2 backend.
 
 ```powershell
-# Docker Desktop: https://www.docker.com/products/docker-desktop 에서 다운로드
-# WSL2 활성화 필요
+# Docker Desktop: https://www.docker.com/products/docker-desktop download from
+# WSL2 must be enabled
 
 # Git for Windows: https://git-scm.com/download/win
 
@@ -72,7 +72,7 @@ sudo apt-get install git
 # Claude Code
 npm install -g @anthropic-ai/claude-code
 
-# Node.js (선택 - nvm 사용 권장)
+# Node.js (optional - nvm recommended)
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 nvm install --lts
 ```
@@ -83,22 +83,22 @@ Run the script below to check whether all required tools are installed properly.
 
 ```bash
 #!/bin/bash
-echo "=== trustedoss 환경 확인 ==="
+echo "=== trustedoss environment check ==="
 
 echo -n "Docker: "
-docker --version 2>/dev/null || echo "❌ 미설치"
+docker --version 2>/dev/null || echo "❌ not installed"
 
 echo -n "Git: "
-git --version 2>/dev/null || echo "❌ 미설치"
+git --version 2>/dev/null || echo "❌ not installed"
 
 echo -n "Claude Code: "
-claude --version 2>/dev/null || echo "❌ 미설치"
+claude --version 2>/dev/null || echo "❌ not installed"
 
-echo -n "Node.js (선택): "
-node --version 2>/dev/null || echo "⚪ 미설치 (선택사항)"
+echo -n "Node.js (optional): "
+node --version 2>/dev/null || echo "⚪ not installed (optional)"
 
 echo ""
-echo "모든 필수 도구가 설치되면 다음 단계로 진행하세요."
+echo "Proceed to the next step when all required tools are installed."
 ```
 
 ## 5. Clone the repository and first run it
@@ -106,14 +106,14 @@ echo "모든 필수 도구가 설치되면 다음 단계로 진행하세요."
 If you're just starting out:
 
 ```bash
-# 저장소 클론
+# clone repository
 git clone https://github.com/trustedoss/trustedoss.github.io.git
 cd trustedoss.github.io
 
-# output 디렉토리 생성 (없는 경우)
+# output create directory if missing
 mkdir -p output
 
-# Claude Code 실행
+# Claude Code run
 claude
 ```
 

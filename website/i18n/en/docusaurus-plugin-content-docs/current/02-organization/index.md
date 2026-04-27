@@ -225,16 +225,16 @@ Completing this lab will meet the requirements below:
 ### role-definition.md sample
 
 ```markdown
-## 오픈소스 프로그램 관리자 (OSPM)
+## Open Source Program Manager (OSPM)
 
-**담당자**: 홍길동 (개발팀 시니어 엔지니어)
-**연락처**: opensource@example.com
+**Program Manager**: Hong Gil-dong (Senior Engineer, Development Team)
+**Contact**: opensource@example.com
 
-### 주요 책임
+### Key Responsibilities
 
-- 오픈소스 사용 승인 및 검토
-- 정책 문서 유지 관리
-- 외부 문의 수신 및 대응
+- Approve and review open source usage
+- Maintain policy documents
+- Receive and respond to external inquiries
 ```
 
 ### raci-matrix.md sample

@@ -12,17 +12,17 @@ Define it once and you can immediately call it as `/oss-policy-check` from any p
 Create a `.claude/skills/oss-policy-check.md` file.
 
 ````markdown
-# Skill: OSS 정책 준수 검사 (oss-policy-check)
+# Skill: OSS policy compliance check (oss-policy-check)
 
-## 트리거
+## Trigger
 
-개발자가 `/oss-policy-check` 또는 "오픈소스 정책 확인" 요청 시 실행
+Run when developers request `/oss-policy-check` or "check Open Source Policy".
 
-## 실행 절차
+## Execution Steps
 
-### 1단계: 라이선스 확인
+### Step 1: License check
 
-Node.js 프로젝트:
+Node.js project:
 
 ```bash
 npx license-checker --summary --excludePrivatePackages
@@ -46,15 +46,15 @@ mvn license:aggregate-third-party-report
 Compare with the allowed license in output/policy/license-allowlist.md.
 If a license that is not in the list is found, an immediate alert is issued.
 
-### Step 3:Vulnerability inquiry(OSV API)
+### Step 3:vulnerability inquiry(OSV API)
 
 Search for vulnerabilities in discovered packages using OSV API:
 
 ```bash
-# grype 사용 (권장)
+# use grype (recommended)
 grype dir:. --fail-on high
 
-# 또는 OSV-Scanner 사용
+# or use OSV-Scanner
 osv-scanner --recursive .
 ```
 
@@ -77,7 +77,7 @@ Report the test results in the format below.:
 | Apache-2.0 | 12                 | ✅ Allowed   |
 | GPL-3.0    | 1                  | ❌ Violation |
 
-### Vulnerability Status
+### vulnerability Status
 
 | CVE           | CVSS | package        | status                 |
 | ------------- | ---- | -------------- | ---------------------- |
@@ -92,9 +92,9 @@ Report the test results in the format below.:
 
 ```
 
-**효과:** 팀원 누구나 `/oss-policy-check` 명령으로 즉시 현황을 파악할 수 있습니다.
+**Impact:** Any team member can quickly check status with `/oss-policy-check`.
 
 ---
 
-→ 다음: [방법 3: Hooks 설정하기](./method3-hooks.md)
+→ Next: [Method 3: Set up Hooks](./method3-hooks.md)
 ```

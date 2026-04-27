@@ -62,10 +62,10 @@ Tool used: syft 1.42.3
 - **Action:** Enable license metadata when rerunning syft or cdxgen.
 
   ```bash
-  # syft: Maven POM 라이선스 정보 포함
+  # syft: include Maven POM license info
   syft /path/to/project --output cyclonedx-json
 
-  # cdxgen: 라이선스 정보 자동 수집
+  # cdxgen: auto-collect license information
   cdxgen -t java /path/to/project -o sbom.cdx.json
   ```
 
@@ -220,9 +220,9 @@ This document defines the SBOM management and maintenance plan to meet ISO/IEC 1
 If the supplier requests SPDX, CycloneDX → SPDX conversion is performed.
 
 ```bash
-# CycloneDX → SPDX 변환 (cdxgen 사용)
+# CycloneDX → SPDX convert (cdxgen Use)
 cdxgen -o sbom.cdx.json --format json .
-# SPDX 변환은 별도 도구(spdx-tools) 또는 납품처 지정 도구 활용
+# SPDX for conversion, use separate tools (spdx-tools) or customer-designated tools
 ```
 
 ---
@@ -232,13 +232,13 @@ cdxgen -o sbom.cdx.json --format json .
 #### 2.1 Update per release (main procedure)
 
 ```
-1. 기능 개발 완료 및 코드 프리즈
-2. 의존성 목록 최종 확정 (package.json / pom.xml / requirements.txt 등)
-3. SBOM 자동 생성 (CI/CD 파이프라인 연동)
-4. 라이선스 검토 (copyleft 신규 포함 여부 확인)
-5. 취약점 스캔 (OSV-Scanner / Grype)
-6. SBOM 파일 버전 태깅 및 저장
-7. 납품처 제출 필요 시 sbom-sharing-template.md 첨부하여 전달
+1. Feature development complete and code freeze
+2. Finalize dependency list (package.json / pom.xml / requirements.txt etc.)
+3. SBOM automatic generation (CI/CD pipeline integration)
+4. License review (copyleft check whether new items are included)
+5. vulnerability scan (OSV-Scanner / Grype)
+6. Tag and store SBOM file version
+7. When customer submission is required sbom-sharing-template.md attach and deliver
 ```
 
 #### 2.2 Emergency update (in case of security vulnerability)
@@ -257,7 +257,7 @@ Immediate update regardless of release cycle when Critical/High CVE occurs:
 
 ```yaml
 # .github/workflows/sbom.yml
-name: SBOM 생성
+name: Generate SBOM
 
 on:
   push:
@@ -270,17 +270,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: SBOM 생성 (CycloneDX)
+      - name: Generate SBOM (CycloneDX)
         run: |
-          # 프로젝트 빌드 환경에 맞는 명령어로 교체
+          # replace with commands for your project build environment
           npx @cyclonedx/cyclonedx-npm --output-file sbom.cdx.json
 
-      - name: 취약점 스캔
+      - name: vulnerability scan
         run: |
           curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
           grype sbom:sbom.cdx.json
 
-      - name: SBOM 저장
+      - name: Store SBOM
         uses: actions/upload-artifact@v4
         with:
           name: sbom-${{ github.sha }}
@@ -291,8 +291,8 @@ jobs:
 
 ```
 output/sbom/
-├── {프로젝트명}-{버전}.cdx.json    # CycloneDX 포맷
-├── {프로젝트명}-{버전}.spdx.json   # SPDX 포맷 (변환 시)
+├── {project-name}-{version}.cdx.json    # CycloneDX format
+├── {project-name}-{version}.spdx.json   # SPDX format (when converted)
 ├── sbom-management-plan.md
 └── sbom-sharing-template.md
 ```
@@ -313,17 +313,17 @@ output/sbom/
 #### 4.2 Monitoring automation settings
 
 ```bash
-# GitHub Dependabot 활성화 (.github/dependabot.yml)
+# GitHub Dependabot enable (.github/dependabot.yml)
 version: 2
 updates:
-  - package-ecosystem: "npm"   # 또는 maven, pip 등
+  - package-ecosystem: "npm"   # or maven, pip, etc.
     directory: "/"
     schedule:
       interval: "weekly"
     open-pull-requests-limit: 5
 ```
 
-#### 4.3 Vulnerability response standards
+#### 4.3 vulnerability response standards
 
 | Severity | Response Deadline             | action                                    |
 | -------- | ----------------------------- | ----------------------------------------- |
@@ -394,14 +394,14 @@ Created on: [ YYYY-MM-DD ]
 - Standard: CycloneDX Specification 1.5
 - Encoding: JSON
 - Creation tool: [Tool name and version used]
-- Verification: `cyclonedx-cli validate --input-file <파일명>`
+- Verification: `cyclonedx-cli validate --input-file <filename>`
 
 #### When submitting in SPDX format
 
 - Standard: SPDX 2.3
 - Encoding: JSON
 - Creation tool: [Tool name and version used]
-- Verification: `pyspdxtools validate <파일명>`
+- Verification: `pyspdxtools validate <filename>`
 
 ---
 
@@ -457,7 +457,7 @@ SBOM For related inquiries or additional requests, please contact below.
 The following materials can be provided upon request:
 
 - [ ] Open source notice (NOTICES.txt / ATTRIBUTION.md)
-- [ ] Vulnerability analysis report
+- [ ] vulnerability analysis report
 - [ ] License detailed analysis report
 - [ ] Source code (LGPL/GPL components)
 

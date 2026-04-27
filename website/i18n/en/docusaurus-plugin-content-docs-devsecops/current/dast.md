@@ -49,13 +49,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # 앱 실행 (예: Docker Compose)
+      # run app (e.g., Docker Compose)
       - name: Start application
         run: |
           docker compose up -d
-          sleep 10  # 앱 기동 대기
+          sleep 10  # wait for app startup
 
-      # ZAP Baseline 스캔 (수동 개입 없이 기본 취약점 탐지)
+      # ZAP Baseline scan (baseline vulnerability detection without manual intervention)
       - name: ZAP Baseline Scan
         uses: zaproxy/action-baseline@v0.12.0
         with:
@@ -63,7 +63,7 @@ jobs:
           rules_file_name: zap-rules.tsv
           fail_action: true
 
-      # ZAP API 스캔 (OpenAPI 명세 기반)
+      # ZAP API scan (based on OpenAPI spec)
       - name: ZAP API Scan
         uses: zaproxy/action-api-scan@v0.7.0
         with:
@@ -95,9 +95,9 @@ Rules to ignore or fail specific notifications are managed in the `zap-rules.tsv
 
 ```
 # zap-rules.tsv
-10016	IGNORE	(웹 브라우저 XSS 보호 헤더 — 레거시 브라우저 대응 불필요)
-10020	WARN	(X-Frame-Options 헤더 미설정)
-10021	FAIL	(Anti-CSRF 토큰 미설정)
+10016	IGNORE	(Browser XSS protection header — legacy browser support not required)
+10020	WARN	(X-Frame-Options header not set)
+10021	FAIL	(Anti-CSRF token not set)
 ```
 
 You can specify processing for each item at three levels: `IGNORE`·`WARN`·`FAIL`.

@@ -3,8 +3,8 @@
     "message": "Next",
     "description": "The label for version current"
   },
-  "sidebar.reference.category.산출물 Best Practice": {
+  "sidebar.reference.category.Deliverables Best Practices": {
     "message": "Output Best Practices",
-    "description": "The label for category '산출물 Best Practice' in sidebar 'reference'"
+    "description": "The label for category 'Deliverables Best Practices' in sidebar 'reference'"
   }
 }

@@ -31,38 +31,38 @@ Cline is an agent-style AI tool running as a VS Code extension, while Aider is a
 ### Configuration Example
 
 ```markdown
-## 오픈소스 정책
+## Open Source Policy
 
-### 라이선스 관리
+### License Management
 
-새로운 외부 패키지·라이브러리 추가 시 반드시 라이선스를 확인하고 명시할 것.
+When adding new external packages/libraries, always verify and document the license.
 
-**허용 라이선스**: MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC
+**Allowed Licenses**: MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC
 
-**주의 라이선스** (법무 검토 필요): LGPL, MPL
+**Review Required Licenses** (legal review required): LGPL, MPL
 
-**금지 라이선스** (사전 승인 없이 사용 불가): GPL, AGPL, SSPL, Commons Clause
+**Prohibited Licenses** (cannot be used without prior approval): GPL, AGPL, SSPL, Commons Clause
 
-### 보안 관리
+### Security Management
 
-- 알려진 CVE 취약점이 있는 패키지 버전 사용 금지
-- 의존성 추가 후 아래 명령어 중 하나를 실행할 것:
+- Do not use package versions with known CVEs
+- After adding dependencies, run one of the following commands:
   - npm: `npm audit`
   - Python: `pip-audit`
-  - 컨테이너·범용: `trivy fs .`
-- 패키지 버전은 가능한 최신 안정 버전(Latest Stable) 사용
+  - Container/General: `trivy fs .`
+- Use the latest stable package version whenever possible
 
-### SBOM 관리
+### SBOM Management
 
-- 의존성 변경 시 SBOM 업데이트 필요
-- 생성 도구: cdxgen, syft, trivy
-- 권장 포맷: CycloneDX (차선: SPDX)
+- SBOM update required when dependencies change
+- Generation tools: cdxgen, syft, trivy
+- Recommended format: CycloneDX (alternative: SPDX)
 
-### 저작권
+### Copyright
 
-- 기존 코드의 저작권 헤더 유지
-- 새 파일 생성 시 프로젝트 라이선스 헤더 포함
-- 타 프로젝트 코드 복사 시 출처 및 라이선스 명시
+- Keep existing code copyright headers
+- Include project license header when creating new files
+- When copying code from another project, include source and license
 ```
 
 ---
@@ -85,37 +85,37 @@ Cline is an agent-style AI tool running as a VS Code extension, while Aider is a
 **AGENTS.md** — Include the entire Common Rules Template as-is.
 
 ```markdown
-## 오픈소스 정책
+## Open Source Policy
 
-### 라이선스 관리
+### License Management
 
-새로운 외부 패키지·라이브러리 추가 시 반드시 라이선스를 확인하고 명시할 것.
+When adding new external packages/libraries, always verify and document the license.
 
-**허용 라이선스**: MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC
+**Allowed Licenses**: MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC
 
-**주의 라이선스** (법무 검토 필요): LGPL, MPL
+**Review Required Licenses** (legal review required): LGPL, MPL
 
-**금지 라이선스** (사전 승인 없이 사용 불가): GPL, AGPL, SSPL, Commons Clause
+**Prohibited Licenses** (cannot be used without prior approval): GPL, AGPL, SSPL, Commons Clause
 
-### 보안 관리
+### Security Management
 
-- 알려진 CVE 취약점이 있는 패키지 버전 사용 금지
-- 패키지 버전은 가능한 최신 안정 버전(Latest Stable) 사용
+- Do not use package versions with known CVEs
+- Use the latest stable package version whenever possible
 
-### SBOM 관리
+### SBOM Management
 
-- 의존성 변경 시 SBOM 업데이트 필요 (도구: cdxgen, syft)
+- SBOM update required when dependencies change (Tools: cdxgen, syft)
 ```
 
 **.aider.conf.yml** — Use a concise summary of key items only.
 
 ```yaml
 system_prompt: |
-  ## 오픈소스 정책
-  허용 라이선스: MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC
-  주의 라이선스 (법무 검토 필요): LGPL, MPL
-  금지 라이선스: GPL, AGPL, SSPL, Commons Clause
-  CVE 취약점 버전 사용 금지. 의존성 추가 후 audit 실행 권장.
+  ## Open Source Policy
+  Allowed Licenses: MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC
+  Review Required Licenses (legal review required): LGPL, MPL
+  Prohibited Licenses: GPL, AGPL, SSPL, Commons Clause
+  CVE vulnerability Version Use 금지. 의존성 addition 후 audit run 권장.
 ```
 
 ---

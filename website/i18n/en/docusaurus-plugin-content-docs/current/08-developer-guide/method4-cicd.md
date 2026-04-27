@@ -28,50 +28,50 @@ on:
 
 jobs:
   license-check:
-    name: 라이선스 정책 검사
+    name: License policy check
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: syft로 SBOM 생성
+      - name: Generate SBOM with syft
         uses: anchore/sbom-action@v0
         with:
           format: cyclonedx-json
           output-file: sbom.cdx.json
 
-      - name: 라이선스 추출 및 정책 검사
+      - name: License extract and policy check
         run: |
-          # syft로 라이선스 목록 추출
+          # Extract license list with syft
           syft . -o json | jq -r '.artifacts[].licenses[].value' | sort -u > detected-licenses.txt
 
-          echo "=== 감지된 라이선스 ==="
+          echo "=== Detected licenses ==="
           cat detected-licenses.txt
 
-          # 금지 라이선스 확인
+          # Check prohibited licenses
           FORBIDDEN="GPL-2.0\|GPL-3.0\|AGPL-3.0\|LGPL-2.0"
           if grep -qE "$FORBIDDEN" detected-licenses.txt; then
-            echo "::error::금지된 라이선스가 감지되었습니다. 담당자의 승인을 받거나 대체 패키지를 사용하세요."
+            echo "::error::Prohibited licenses detected. Obtain Program Manager approval or use an alternative package."
             grep -E "$FORBIDDEN" detected-licenses.txt
             exit 1
           fi
 
-          echo "✅ 라이선스 검사 통과"
+          echo "✅ License check passed"
 
   vulnerability-check:
-    name: 취약점 검사 (High 이상 차단)
+    name: vulnerability check (block High or above)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: grype로 취약점 스캔
+      - name: Scan vulnerabilities with grype
         uses: anchore/scan-action@v3
         with:
           path: '.'
           fail-build: true
-          severity-cutoff: high # High / Critical 취약점 발견 시 머지 차단
+          severity-cutoff: high # High / Critical vulnerability block merge if found
           output-format: table
 
-      - name: 취약점 보고서 업로드
+      - name: vulnerability upload report
         if: always()
         uses: actions/upload-artifact@v4
         with:

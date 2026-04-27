@@ -78,7 +78,7 @@ Related Standards
 
 ---
 
-### 5. Vulnerability remediation expertise
+### 5. vulnerability remediation expertise
 
 ```
 Related Standards
@@ -134,7 +134,7 @@ Related Standards
 | Review and approval for open source use                  |             A              |        R         |       C       |   C   |     I      |
 | License Compliance Review                                |             R              |        C         |       I       |   C   |     I      |
 | SBOM creation and management                             |             A              |        R         |       I       |   I   |     I      |
-| Vulnerability scanning and response                      |             C              |        R         |       R       |   I   |     I      |
+| vulnerability scanning and response                      |             C              |        R         |       R       |   I   |     I      |
 | Policy establishment and renewal                         |             R              |        C         |       C       |   C   |     A      |
 | Education program operation                              |             R              |        I         |       I       |   I   |     I      |
 | Response to external licensing inquiries                 |             R              |        C         |       I       |   C   |     I      |

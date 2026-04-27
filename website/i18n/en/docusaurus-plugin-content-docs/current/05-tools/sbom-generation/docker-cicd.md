@@ -21,10 +21,10 @@ This document describes the actual Docker execution commands for syft·cdxgen.,S
 full command(Same for each language,Adjust directories only):
 
 ```bash
-# output/sbom 폴더 생성
+# create output/sbom directory
 mkdir -p output/sbom
 
-# syft로 SBOM 생성
+# Generate SBOM with syft
 docker run --rm \
   -v $(pwd):/project \
   anchore/syft:latest \
@@ -93,7 +93,7 @@ Two sample projects are provided for practice.:
 - `samples/python-mixed-license/`:GPL mixed → Expect license conflict detection
 
 ```bash
-# java-vulnerable 샘플로 실습
+# practice with java-vulnerable sample
 docker run --rm \
   -v $(pwd)/samples/java-vulnerable:/project \
   anchore/syft:latest \

@@ -83,7 +83,7 @@ Key field descriptions:
 - `bomFormat`, `specVersion`:CycloneDX format identifier
 - `metadata.component`:Software information to be analyzed
 - `components[]`:Dependency list(license,Includes PURL)
-- `vulnerabilities[]`:Vulnerability information(If there is)
+- `vulnerabilities[]`:vulnerability information(If there is)
 
 ---
 

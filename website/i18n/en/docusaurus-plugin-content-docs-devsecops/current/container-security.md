@@ -30,17 +30,17 @@ We recommend Trivy as a single container security tool, and if you are already u
 ### Basic usage
 
 ```bash
-# 로컬 이미지 스캔
+# scan local image
 trivy image myapp:latest
 
-# 파일시스템 스캔 (빌드 전)
+# scan filesystem (before build)
 trivy fs .
 
-# SBOM 생성
+# Generate SBOM
 trivy image --format cyclonedx myapp:latest \
   -o sbom.cdx.json
 
-# 심각도 필터
+# Severity filter
 trivy image --severity HIGH,CRITICAL myapp:latest
 ```
 
@@ -99,7 +99,7 @@ jobs:
 ### GitLab CI
 
 ```yaml
-# .gitlab-ci.yml (container-security 잡 부분)
+# .gitlab-ci.yml (container-security job section)
 
 container-security:
   stage: test
@@ -111,13 +111,13 @@ container-security:
     IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
   script:
     - docker build -t $IMAGE_TAG .
-    # 취약점 스캔
+    # vulnerability scan
     - trivy image
       --severity HIGH,CRITICAL
       --exit-code 1
       --ignore-unfixed
       $IMAGE_TAG
-    # 시크릿 스캔
+    # secret scan
     - trivy image
       --scanners secret
       --exit-code 1
@@ -141,7 +141,7 @@ vulnerabilities:
   - id: CVE-2023-XXXXX
     paths:
       - usr/lib/some-lib
-    statement: '해당 경로 컨테이너 내 미사용 — 보안팀 승인 2024-02-01'
+    statement: 'Path unused in container — security team approved 2024-02-01'
 
 secrets:
   - id: aws-access-key-id

@@ -41,10 +41,10 @@ Even if there are policies and processes, they won’t work if people don’t kn
 
 | Occupation          | Required training content                                                                           | Recommended Time |
 | ------------------- | --------------------------------------------------------------------------------------------------- | ---------------- |
-| Developer           | Open source licensing basics,Approval Process for Use,SBOM concept,Vulnerability Response Procedure | 4 hours          |
+| Developer           | Open source licensing basics,Approval Process for Use,SBOM concept,vulnerability Response Procedure | 4 hours          |
 | Manager/Team Leader | Open source policy overview,Understanding legal risks,Role in the Approval Process                  | 2 hours          |
 | Legal/Purchasing    | License Detailed Obligations,Contract Open Source Terms                                             | 3 hours          |
-| Security Manager    | Vulnerability identification and response,Interpreting CVSS scores,18974 Requirements               | 3 hours          |
+| Security Manager    | vulnerability identification and response,Interpreting CVSS scores,18974 Requirements               | 3 hours          |
 
 > Real corporate training examples(SKT,cacao,NC Soft, etc.)and educational materials [KWG Open Source Guide — Education](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/5-training/)See .
 

@@ -57,7 +57,7 @@ This policy applies to the scope below:
 - **Applicable Personnel**: All members involved in the use of open source, including developers, managers, and purchasing/procurement personnel.
 - **Exclusions**: None
 
-#### 배포 채널별 적용 기준
+#### Criteria by distribution channel
 
 ```
 Related Standards
@@ -118,7 +118,7 @@ Related Standards
 | --------------------------- | ------------------------------------------------------------------ |
 | SBOM Latest                 | Attach the latest SBOM to every release                            |
 | License Compliance Rate     | 100% preliminary review of newly introduced components             |
-| Vulnerability Response Time | Critical: 1 week, High: within 4 weeks                             |
+| vulnerability Response Time | Critical: 1 week, High: within 4 weeks                             |
 | Education Completion Rate   | Completion of open source-related occupations at least once a year |
 | Update cycle                | Self-certification Revalidation every 18 months                    |
 

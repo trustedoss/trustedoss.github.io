@@ -12,37 +12,37 @@ If you add a policy to your project root CLAUDE.md, Claude Code will recognize i
 Add the section below to `CLAUDE.md` in the project root.
 
 ```markdown
-## 오픈소스 정책 (자동 준수)
+## Open Source Policy (automatic compliance)
 
-### 허용 라이선스
+### Allowed Licenses
 
-아래 라이선스만 신규 패키지에 사용 가능하다:
+Only the following licenses are allowed for new packages:
 
 - MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC
-- 전체 목록: output/policy/license-allowlist.md 참조
+- See full list: output/policy/license-allowlist.md
 
-### 금지 라이선스
+### Prohibited Licenses
 
-아래 라이선스는 사전 승인 없이 추가 금지:
+The following licenses cannot be added without prior approval:
 
-- GPL-2.0, GPL-3.0, AGPL-3.0 (Copyleft - 소스코드 공개 의무)
-- LGPL-2.0, LGPL-2.1, LGPL-3.0 (Weak Copyleft - 동적 링킹 검토 필요)
-- CC-BY-SA (소프트웨어에 부적합)
-- 상업적 사용 금지 조항이 있는 모든 라이선스
+- GPL-2.0, GPL-3.0, AGPL-3.0 (Copyleft - Source code disclosure obligation)
+- LGPL-2.0, LGPL-2.1, LGPL-3.0 (Weak Copyleft - dynamic linking review required)
+- CC-BY-SA (not suitable for software)
+- all licenses with non-commercial use restrictions
 
-### 취약점 정책
+### vulnerability policy
 
-- CVSS 7.0 이상(High/Critical) 취약점이 있는 패키지 사용 금지
-- 알려진 취약점이 있는 버전은 패치 버전으로 업그레이드
+- CVSS 7.0 or later(High/Critical) packages with these vulnerabilities are prohibited
+- Upgrade versions with known vulnerabilities to patched versions
 
-### 패키지 추가 시 확인 절차
+### Checks when adding packages
 
-새 패키지를 추가할 때는 반드시 아래 순서로 확인한다:
+When adding a new package, follow this sequence:
 
-1. 라이선스 확인: `license-checker` 또는 `/oss-policy-check` skill 실행
-2. 취약점 확인: OSV API 또는 `grype` 실행
-3. 허용 목록 비교: output/policy/license-allowlist.md 대조
-4. 위반 시: 담당자에게 사용 승인 요청 (output/process/usage-approval.md 참조)
+1. License check: `license-checker` or `/oss-policy-check` skill run
+2. vulnerability check: OSV API or `grype` run
+3. Allowlist comparison: output/policy/license-allowlist.md compare
+4. On violation: request usage approval from the Program Manager (output/process/usage-approval.md refer to)
 ```
 
 **effect:** When Claude Code helps you add packages, it automatically references this policy to alert you.
