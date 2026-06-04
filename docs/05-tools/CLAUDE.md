@@ -17,11 +17,11 @@
 sbom-generation → sbom-management → vulnerability
 ```
 
-| 순서 | 챕터 | 주요 산출물 |
-|------|------|-----------|
-| 5-1 | docs/05-tools/sbom-generation/ | [project].cdx.json |
-| 5-2 | docs/05-tools/sbom-management/ | sbom-management-plan.md |
-| 5-3 | docs/05-tools/vulnerability/ | cve-report.md |
+| 순서 | 챕터                           | 주요 산출물             |
+| ---- | ------------------------------ | ----------------------- |
+| 5-1  | docs/05-tools/sbom-generation/ | [project].cdx.json      |
+| 5-2  | docs/05-tools/sbom-management/ | sbom-management-plan.md |
+| 5-3  | docs/05-tools/vulnerability/   | cve-report.md           |
 
 ## 공통 전제 조건
 
@@ -30,12 +30,12 @@ sbom-generation → sbom-management → vulnerability
 
 ## 도구 목록
 
-| 도구 | 역할 | 실행 방식 |
-|------|------|---------|
-| syft | SBOM 생성 (Anchore) | Docker |
-| cdxgen | CycloneDX SBOM 생성 | Docker |
-| Dependency Track | 취약점 스캔 및 추적 | Docker Compose |
-| OSV API | 취약점 조회 (대안) | HTTP API (Docker 불필요) |
+| 도구             | 역할                | 실행 방식                |
+| ---------------- | ------------------- | ------------------------ |
+| syft             | SBOM 생성 (Anchore) | Docker                   |
+| cdxgen           | CycloneDX SBOM 생성 | Docker                   |
+| Dependency Track | 취약점 스캔 및 추적 | Docker Compose           |
+| OSV API          | 취약점 조회 (대안)  | HTTP API (Docker 불필요) |
 
 ## Docker 실행 확인
 

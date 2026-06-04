@@ -1,6 +1,6 @@
 ---
 sidebar_position: 5
-sidebar_label: "방법 4: CI/CD 파이프라인"
+sidebar_label: '방법 4: CI/CD 파이프라인'
 ---
 
 # 방법 4: CI/CD 파이프라인 추가하기
@@ -68,7 +68,7 @@ jobs:
         with:
           path: '.'
           fail-build: true
-          severity-cutoff: high   # High / Critical 취약점 발견 시 머지 차단
+          severity-cutoff: high # High / Critical 취약점 발견 시 머지 차단
           output-format: table
 
       - name: 취약점 보고서 업로드
@@ -82,11 +82,13 @@ jobs:
 > 이 단계는 ISO/IEC 18974 G3S.1 (알려진 취약점 식별) 요구사항의 **자동화된 지속 검증**을 지원합니다.
 
 **효과:**
+
 - 모든 PR에서 자동으로 라이선스 검사 실행
 - GPL 등 금지 라이선스 발견 시 PR 머지 차단
 - CVSS High(7.0) 이상 취약점 발견 시 머지 차단
 - 검사 결과가 PR 화면에 직접 표시됨
 
 **무료 도구 정보:**
+
 - [syft](https://github.com/anchore/syft): SBOM 생성 도구 (Apache-2.0)
 - [grype](https://github.com/anchore/grype): 취약점 스캐너 (Apache-2.0)

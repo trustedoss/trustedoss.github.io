@@ -9,11 +9,11 @@ syft 또는 cdxgen 도구를 사용하여 실제 프로젝트의 SBOM을 Cyclone
 
 ## 충족되는 체크리스트 항목
 
-| 항목ID | 요구사항 | ISO/IEC 5230 | ISO/IEC 18974 |
-|--------|---------|-------------|--------------|
-| G3B.1 | SBOM 생성 (CycloneDX/SPDX) | 3.3.1 | 4.3.1 |
-| G3L.1 | 라이선스 식별 및 분류 | 3.3.2 | — |
-| G3L.3 | 컴플라이언스 산출물 생성 | 3.4.1 | — |
+| 항목ID | 요구사항                   | ISO/IEC 5230 | ISO/IEC 18974 |
+| ------ | -------------------------- | ------------ | ------------- |
+| G3B.1  | SBOM 생성 (CycloneDX/SPDX) | 3.3.1        | 4.3.1         |
+| G3L.1  | 라이선스 식별 및 분류      | 3.3.2        | —             |
+| G3L.3  | 컴플라이언스 산출물 생성   | 3.4.1        | —             |
 
 > 이 단계는 ISO/IEC 5230 3.3.1, 3.3.2, 3.4.1 및 ISO/IEC 18974 4.3.1 요구사항을 충족합니다.
 
@@ -25,22 +25,24 @@ syft 또는 cdxgen 도구를 사용하여 실제 프로젝트의 SBOM을 Cyclone
 
 ## 언어별 분기 안내
 
-| 언어 | 패키지 매니저 | 권장 도구 | samples/ 프로젝트 |
-|------|------------|---------|----------------|
-| Java | Maven/Gradle | cdxgen | samples/java-vulnerable |
-| Python | pip/poetry | syft | samples/python-mixed-license |
-| Node.js | npm/yarn | syft | samples/nodejs-unlicensed |
-| Go | go mod | syft | — |
+| 언어    | 패키지 매니저 | 권장 도구 | samples/ 프로젝트            |
+| ------- | ------------- | --------- | ---------------------------- |
+| Java    | Maven/Gradle  | cdxgen    | samples/java-vulnerable      |
+| Python  | pip/poetry    | syft      | samples/python-mixed-license |
+| Node.js | npm/yarn      | syft      | samples/nodejs-unlicensed    |
+| Go      | go mod        | syft      | —                            |
 
 ## samples/ 프로젝트 활용
 
 실습할 프로젝트가 없다면:
+
 ```bash
 ls samples/
 # java-vulnerable, python-mixed-license, nodejs-unlicensed 중 선택
 ```
 
 각 샘플의 학습 포인트:
+
 - `java-vulnerable`: Log4Shell(CVE-2021-44228) Critical 취약점 탐지 실습
 - `python-mixed-license`: GPL + MIT 혼용 → Copyleft 충돌 실습
 - `nodejs-unlicensed`: 라이선스 미표기 패키지 처리 실습
@@ -53,6 +55,7 @@ claude
 ```
 
 agent가 아래 질문을 순서대로 한다:
+
 1. 분석할 프로젝트 경로
 2. 주요 개발 언어
 3. 패키지 매니저
@@ -60,6 +63,7 @@ agent가 아래 질문을 순서대로 한다:
 agent가 언어에 맞는 syft/cdxgen 명령어와 실행 스크립트를 생성한다.
 
 이후 라이선스 분석:
+
 ```bash
 cd agents/05-sbom-analyst
 claude
@@ -98,8 +102,10 @@ A: Java/Maven 프로젝트는 cdxgen, 나머지는 syft가 더 안정적이다.
 ## 다음 단계
 
 완료 후:
+
 ```bash
 cd agents/05-sbom-management
 claude
 ```
+
 또는 `docs/05-tools/sbom-management/` 로 이동.
