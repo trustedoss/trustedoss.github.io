@@ -48,10 +48,10 @@
 
 ```bash
 # 1. 저장소 클론
-git clone https://github.com/trustedoss/trustedoss.github.io.git
+git clone https://github.com/trustedoss/trustedoss-agents.git
 
 # 2. 프로젝트 진입 및 Claude Code 실행
-cd trustedoss.github.io && claude
+cd trustedoss-agents && claude
 
 # 3. 시작 안내 요청
 # "어디서 시작해야 해?" 입력
@@ -232,10 +232,10 @@ Browser-based tools are available with just an Anthropic API key.
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/trustedoss/trustedoss.github.io.git
+git clone https://github.com/trustedoss/trustedoss-agents.git
 
 # 2. Enter the project and launch Claude Code
-cd trustedoss.github.io && claude
+cd trustedoss-agents && claude
 
 # 3. Ask for guidance (type in Korean)
 # "어디서 시작해야 해?" (meaning: "Where should I start?")

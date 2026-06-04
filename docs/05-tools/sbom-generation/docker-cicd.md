@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-sidebar_label: "Docker·CI/CD 실행 가이드"
+sidebar_label: 'Docker·CI/CD 실행 가이드'
 ---
 
 # SBOM 생성: Docker 실행 가이드 및 CI/CD 자동화
@@ -11,12 +11,12 @@ sidebar_label: "Docker·CI/CD 실행 가이드"
 
 ## Docker로 syft 실행 — 언어/패키지매니저별 명령어
 
-| 언어 | 패키지매니저 | 명령어 |
-|------|------------|--------|
-| Java | Maven/Gradle | `docker run --rm -v $(pwd):/project anchore/syft:latest /project --output cyclonedx-json > output/sbom/sbom.cdx.json` |
-| Python | pip | `docker run --rm -v $(pwd):/project anchore/syft:latest /project --output cyclonedx-json > output/sbom/sbom.cdx.json` |
-| Node.js | npm | `docker run --rm -v $(pwd):/project anchore/syft:latest /project --output cyclonedx-json > output/sbom/sbom.cdx.json` |
-| Go | go mod | `docker run --rm -v $(pwd):/project anchore/syft:latest /project --output cyclonedx-json > output/sbom/sbom.cdx.json` |
+| 언어    | 패키지매니저 | 명령어                                                                                                                |
+| ------- | ------------ | --------------------------------------------------------------------------------------------------------------------- |
+| Java    | Maven/Gradle | `docker run --rm -v $(pwd):/project anchore/syft:latest /project --output cyclonedx-json > output/sbom/sbom.cdx.json` |
+| Python  | pip          | `docker run --rm -v $(pwd):/project anchore/syft:latest /project --output cyclonedx-json > output/sbom/sbom.cdx.json` |
+| Node.js | npm          | `docker run --rm -v $(pwd):/project anchore/syft:latest /project --output cyclonedx-json > output/sbom/sbom.cdx.json` |
+| Go      | go mod       | `docker run --rm -v $(pwd):/project anchore/syft:latest /project --output cyclonedx-json > output/sbom/sbom.cdx.json` |
 
 전체 명령어 (각 언어 동일, 디렉토리만 조정):
 
@@ -105,9 +105,9 @@ docker run --rm \
 
 ## 트러블슈팅
 
-| 증상 | 원인 | 해결 방법 |
-|------|------|---------|
+| 증상                               | 원인           | 해결 방법                                                  |
+| ---------------------------------- | -------------- | ---------------------------------------------------------- |
 | SBOM이 비어있음 (`components: []`) | lock 파일 없음 | `package-lock.json`, `requirements.txt`, `pom.xml` 등 확인 |
-| Docker 볼륨 마운트 오류 | 경로 문제 | 절대 경로로 변경: `-v /full/path:/project` |
-| Permission denied | 권한 문제 | `sudo` 또는 Docker 그룹 추가 |
-| 이미지 풀링 오래 걸림 | 네트워크 | 최초 실행 시 정상, 이후 캐시 사용 |
+| Docker 볼륨 마운트 오류            | 경로 문제      | 절대 경로로 변경: `-v /full/path:/project`                 |
+| Permission denied                  | 권한 문제      | `sudo` 또는 Docker 그룹 추가                               |
+| 이미지 풀링 오래 걸림              | 네트워크       | 최초 실행 시 정상, 이후 캐시 사용                          |

@@ -4,22 +4,27 @@ title: IaC 보안
 sidebar_label: IaC 보안
 sidebar_position: 7
 ---
+
 # IaC 보안
 
 ## IaC 보안이란
 
 Terraform·CloudFormation·Kubernetes YAML·Dockerfile 등 인프라를 코드로 정의하는 IaC 파일의 보안 설정 오류(퍼블릭 S3 버킷·암호화 미적용·과도한 권한 등)를 배포 전에 탐지하는 검사입니다. 잘못된 인프라 설정은 애플리케이션 취약점보다 더 넓은 범위의 피해를 유발할 수 있어 코드 리뷰 단계에서의 차단이 중요합니다.
 
+:::tip 아래 설정은 예시입니다 — 작동하는 전체 구현은 참조 저장소에
+이 페이지의 YAML·명령은 핵심을 보여주는 예시입니다. 복사해 바로 쓸 수 있는 전체 파이프라인(정책 파일·샘플 앱 포함)은 [Best Practice 저장소](/ai-coding/best-practice-repo)에서 확인하세요.
+:::
+
 ---
 
 ## 도구 비교
 
-| 도구 | 특징 | 지원 대상 | 라이선스 |
-|------|------|-----------|----------|
+| 도구    | 특징                               | 지원 대상                       | 라이선스   |
+| ------- | ---------------------------------- | ------------------------------- | ---------- |
 | Checkov | 광범위한 커버리지·커스텀 정책 지원 | Terraform·K8s·CF·Dockerfile·ARM | Apache-2.0 |
-| tfsec | Terraform 전용·빠른 속도 | Terraform | MIT |
-| Trivy | IaC 스캔 포함 (컨테이너와 통합) | Terraform·K8s·Dockerfile | Apache-2.0 |
-| Kubesec | Kubernetes 전용 보안 점수 | Kubernetes YAML | Apache-2.0 |
+| tfsec   | Terraform 전용·빠른 속도           | Terraform                       | MIT        |
+| Trivy   | IaC 스캔 포함 (컨테이너와 통합)    | Terraform·K8s·Dockerfile        | Apache-2.0 |
+| Kubesec | Kubernetes 전용 보안 점수          | Kubernetes YAML                 | Apache-2.0 |
 
 멀티 IaC 환경에는 Checkov, Terraform만 사용한다면 tfsec, 컨테이너 보안과 통합하려면 Trivy를 권장합니다.
 
@@ -150,7 +155,7 @@ resource "aws_s3_bucket" "logs" {
 
 metadata:
   annotations:
-    checkov.io/skip1: "CKV_K8S_14=테스트 환경 전용 파드"
+    checkov.io/skip1: 'CKV_K8S_14=테스트 환경 전용 파드'
 ```
 
 ---
@@ -162,14 +167,14 @@ metadata:
 
 처음 도입 시 아래 항목부터 우선 검사를 활성화하면 실질적인 리스크를 빠르게 줄일 수 있습니다. 팀이 결과에 익숙해진 뒤 전체 정책으로 확대하는 것을 권장합니다.
 
-| 항목 | Checkov ID | 설명 |
-|------|-----------|------|
-| S3 퍼블릭 접근 차단 | CKV_AWS_53 | 버킷 퍼블릭 접근 차단 설정 |
-| S3 암호화 | CKV_AWS_19 | 서버 사이드 암호화 활성화 |
-| 보안 그룹 0.0.0.0 | CKV_AWS_25 | SSH 포트 전체 개방 금지 |
-| K8s 루트 실행 금지 | CKV_K8S_6 | 컨테이너 루트 실행 차단 |
-| K8s 리소스 제한 | CKV_K8S_11 | CPU·메모리 limits 설정 |
-| 최신 API 버전 | CKV_K8S_35 | 지원 종료 API 버전 사용 금지 |
+| 항목                | Checkov ID | 설명                         |
+| ------------------- | ---------- | ---------------------------- |
+| S3 퍼블릭 접근 차단 | CKV_AWS_53 | 버킷 퍼블릭 접근 차단 설정   |
+| S3 암호화           | CKV_AWS_19 | 서버 사이드 암호화 활성화    |
+| 보안 그룹 0.0.0.0   | CKV_AWS_25 | SSH 포트 전체 개방 금지      |
+| K8s 루트 실행 금지  | CKV_K8S_6  | 컨테이너 루트 실행 차단      |
+| K8s 리소스 제한     | CKV_K8S_11 | CPU·메모리 limits 설정       |
+| 최신 API 버전       | CKV_K8S_35 | 지원 종료 API 버전 사용 금지 |
 
 ---
 
@@ -181,13 +186,15 @@ metadata:
 전체 파일 생성이 필요하면 아래 agent를 사용하세요.
 :::
 
-**사전 조건**: [Trusted OSS 저장소](https://github.com/trustedoss/trustedoss.github.io) 클론 필요
+**사전 조건**: [Trusted OSS 저장소](https://github.com/trustedoss/trustedoss-agents) 클론 필요
+
 ```bash
 cd agents/iac-fixer
 claude
 ```
 
 agent가 아래를 자동으로 수행합니다.
+
 - Checkov / tfsec / Trivy IaC 결과 자동 감지
 - 수정 가능 항목 → 수정 코드 직접 생성
 - 수정 불가 항목 → checkov:skip 주석 자동 삽입

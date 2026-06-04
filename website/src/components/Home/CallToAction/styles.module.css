@@ -24,10 +24,12 @@
   border-radius: 12px;
   padding: 2rem 1.5rem;
   text-align: left;
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
 }
 
-[data-theme='dark'] .featureCard {
+[data-theme="dark"] .featureCard {
   background: rgba(255, 255, 255, 0.04);
   border-color: rgba(255, 255, 255, 0.08);
 }

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-sidebar_label: "방법 3: Hooks 설정"
+sidebar_label: '방법 3: Hooks 설정'
 ---
 
 # 방법 3: Hooks 설정하기

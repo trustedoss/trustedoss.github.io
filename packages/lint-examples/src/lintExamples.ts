@@ -75,6 +75,16 @@ async function lintExamples({
 
   try {
     const mappings = await extractExamples(extension === 'tsx' ? 'tsx' : 'jsx');
+
+    // 추출된 예제가 0개면 린터를 실행하지 않는다.
+    // 이 저장소 docs/ 에는 SnackPlayer 코드 예제가 없어, 빈 입력에 eslint 를 돌리면
+    // 환경(eslint 버전)에 따라 "No files matching" 에러로 CI 가 막힌다(로컬은 통과).
+    // 린트할 예제가 없는 것은 실패가 아니므로 정상 종료한다.
+    if (mappings.length === 0) {
+      console.log('No code examples found to lint; skipping.');
+      return;
+    }
+
     process.exitCode = await runLinter(command, args ?? []);
 
     if (writeBack) {

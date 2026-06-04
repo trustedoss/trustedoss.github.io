@@ -29,7 +29,7 @@ Cursor는 `.cursor/rules/` 폴더 내 `.mdc` 파일을 규칙으로 인식해 AI
 ```markdown
 ---
 description: 오픈소스 라이선스 및 보안 정책
-globs: ["**/*.{js,ts,py,go,java}"]
+globs: ['**/*.{js,ts,py,go,java}']
 alwaysApply: true
 ---
 

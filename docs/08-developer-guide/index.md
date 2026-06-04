@@ -23,7 +23,14 @@ sidebar_position: 8
 
 > 목표: "담당자가 매번 검토하지 않아도 Claude Code가 정책을 지켜준다"
 
+:::note 이 챕터 vs AI코딩 Rules 템플릿
+이 챕터는 **앞서 구축한 우리 조직 정책**(`output/policy/`)을 개발 일상에 자동 적용하는 4가지 방법입니다.
+정책을 아직 안 세웠고 AI 코딩 도구용 Rules 파일만 빠르게 만들려면 [공통 Rules 템플릿](/ai-coding/rules-template)을 쓰세요.
+:::
+
 ## 2. 배경: 왜 자동화가 필요한가
+
+> SBOM·라이선스 관련 용어가 낯설면 [용어집](/reference/glossary)을 참고하세요.
 
 ### 실제 발생하는 문제 상황
 

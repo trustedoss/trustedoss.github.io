@@ -58,7 +58,7 @@ function Hero() {
         <p className={styles.description}>
           <Translate id="homepage.hero.description">
             {
-              'ISO/IEC 5230 & 18974 기반\n기업 오픈소스 관리 체계 구축 실전 가이드'
+              'ISO/IEC 5230 & 18974 기반\n기업 오픈소스 관리 체계 구축 실전 가이드 — 처음이어도 단계별로 안내합니다'
             }
           </Translate>
         </p>

@@ -228,6 +228,11 @@ const config: Config = {
         //   position: 'left',
         // },
         {
+          href: 'https://trustedoss.github.io/trustedoss-portal/',
+          label: 'Portal',
+          position: 'right',
+        },
+        {
           type: 'localeDropdown',
           position: 'right',
         },
@@ -261,6 +266,10 @@ const config: Config = {
             {
               label: '레퍼런스',
               to: '/reference/intro',
+            },
+            {
+              label: 'TrustedOSS Portal',
+              href: 'https://trustedoss.github.io/trustedoss-portal/',
             },
             // {
             //   label: '블로그',

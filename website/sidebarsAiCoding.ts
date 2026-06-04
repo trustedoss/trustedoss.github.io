@@ -17,6 +17,7 @@ const sidebars: SidebarsConfig = {
       ],
     },
     'cicd-quick',
+    'iso-mapping',
   ],
 };
 

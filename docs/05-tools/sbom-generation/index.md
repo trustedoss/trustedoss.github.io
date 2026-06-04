@@ -15,9 +15,16 @@
 
 생성된 SBOM은 이후 라이선스 분석(05-sbom-analyst)과 취약점 스캔(05-vulnerability-analyst)의 기반이 됩니다. SBOM이 정확할수록 컴플라이언스 리스크와 보안 취약점을 빠짐없이 파악할 수 있습니다.
 
+:::note SBOM · 취약점 분석 · SCA의 관계
+**SBOM**(소프트웨어 부품 명세서)은 입력, **취약점 분석**은 그 SBOM으로 위험을 찾는 산출 단계입니다.
+이 둘을 CI에서 자동으로 묶어 돌리는 것이 **SCA**(소프트웨어 구성 분석)입니다 — 자동화는 [DevSecOps → SCA](/devsecops/sca)에서 다룹니다.
+:::
+
 ---
 
 ## 2. 배경 지식
+
+> SBOM·CycloneDX·SPDX 등 낯선 약어는 [용어집](/reference/glossary)에서 쉬운 설명을 볼 수 있습니다.
 
 ### SBOM이란?
 
