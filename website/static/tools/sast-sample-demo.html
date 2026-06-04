@@ -1,0 +1,223 @@
+<!doctype html>
+<!--
+  무API키 샘플 체험 — SAST 결과 분석 미리보기 (canned)
+  입력: Semgrep 스캔 결과 예시. CWE 번호는 실제 분류, 규칙명은 대표 예시.
+  API 호출 없이 정적 데이터만 표시한다.
+-->
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SAST 분석 샘플 미리보기</title>
+    <style>
+      :root {
+        --border: #d7dbe0;
+        --muted: #5a6270;
+        --bg: #ffffff;
+        --surface: #f7f8fa;
+        --crit-bg: #fdecea;
+        --crit-fg: #a61b1b;
+        --high-bg: #fff1e6;
+        --high-fg: #9a4d00;
+        --med-bg: #e7f1fb;
+        --med-fg: #1b5aa6;
+        --text: #1f2430;
+        --accent: #2a64c4;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --border: #2a2f45;
+          --muted: #9aa3b2;
+          --bg: #1b1f2a;
+          --surface: #232838;
+          --crit-bg: #2f1b1b;
+          --crit-fg: #f3a6a6;
+          --high-bg: #2f2516;
+          --high-fg: #f0c48a;
+          --med-bg: #16233a;
+          --med-fg: #9cc3f0;
+          --text: #e7e9ee;
+        }
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family:
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+        color: var(--text);
+        background: var(--bg);
+        padding: 16px;
+        line-height: 1.55;
+      }
+      .panel {
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 12px 14px;
+        margin-bottom: 14px;
+        background: var(--surface);
+      }
+      .ptitle {
+        font-weight: 600;
+        margin-bottom: 6px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.9rem;
+      }
+      th,
+      td {
+        text-align: left;
+        padding: 5px 8px;
+        border-bottom: 1px solid var(--border);
+        vertical-align: top;
+      }
+      code {
+        background: rgba(127, 127, 127, 0.15);
+        padding: 0 4px;
+        border-radius: 4px;
+      }
+      .sev {
+        font-size: 0.78rem;
+        font-weight: 700;
+        padding: 1px 7px;
+        border-radius: 4px;
+        white-space: nowrap;
+      }
+      .crit {
+        background: var(--crit-bg);
+        color: var(--crit-fg);
+      }
+      .high {
+        background: var(--high-bg);
+        color: var(--high-fg);
+      }
+      .med {
+        background: var(--med-bg);
+        color: var(--med-fg);
+      }
+      button {
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 0.95rem;
+        padding: 8px 16px;
+        border-radius: 8px;
+        border: 1px solid var(--accent);
+        background: var(--accent);
+        color: #fff;
+      }
+      button:hover {
+        filter: brightness(1.08);
+      }
+      .note {
+        font-size: 0.85rem;
+        color: var(--muted);
+        margin-top: 10px;
+      }
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="panel">
+      <div class="ptitle">입력 — 샘플 Semgrep 스캔 결과 (3건)</div>
+      <table>
+        <thead>
+          <tr>
+            <th>위치</th>
+            <th>규칙</th>
+            <th>유형</th>
+            <th>심각도</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>app/db.py:42</code></td>
+            <td>formatted-sql-query</td>
+            <td>SQL 인젝션 (CWE-89)</td>
+            <td><span class="sev high">High</span></td>
+          </tr>
+          <tr>
+            <td><code>app/worker.py:88</code></td>
+            <td>dangerous-subprocess-use</td>
+            <td>명령 주입 (CWE-78)</td>
+            <td><span class="sev crit">Critical</span></td>
+          </tr>
+          <tr>
+            <td><code>app/util.py:15</code></td>
+            <td>insecure-hash-algorithm-md5</td>
+            <td>취약한 해시 (CWE-327)</td>
+            <td><span class="sev med">Medium</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <button id="runBtn" type="button" onclick="showResult()">
+      샘플 분석 결과 보기
+    </button>
+
+    <div id="result" class="hidden">
+      <div class="panel">
+        <div class="ptitle">결과 — 수정 가이드 (예시)</div>
+        <p>
+          <strong>우선순위</strong> — Critical 1건을 먼저 처리한 뒤 High, Medium
+          순으로 진행합니다.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>순위</th>
+              <th>문제</th>
+              <th>수정 방향</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td><code>worker.py:88</code> 명령 주입 (Critical)</td>
+              <td>
+                <code>shell=True</code>를 제거하고 인자를 리스트로 전달, 사용자
+                입력은 화이트리스트 검증
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td><code>db.py:42</code> SQL 인젝션 (High)</td>
+              <td>
+                문자열 포매팅 대신 파라미터 바인딩(<code
+                  >cursor.execute(sql, params)</code
+                >) 사용
+              </td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td><code>util.py:15</code> 취약한 해시 (Medium)</td>
+              <td>
+                MD5를 SHA-256 이상으로 교체, 비밀번호는 bcrypt·argon2 사용
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="note">
+          위 결과는 샘플 스캔 기준 예시입니다. 실제 결과는 아래 도구에서 본인
+          Semgrep·CodeQL 출력 파일을 업로드해 확인하세요.
+        </p>
+      </div>
+    </div>
+
+    <script>
+      function showResult() {
+        document.getElementById("result").classList.remove("hidden");
+        document.getElementById("runBtn").classList.add("hidden");
+      }
+    </script>
+  </body>
+</html>
