@@ -1,0 +1,219 @@
+<!doctype html>
+<!--
+  무API키 샘플 체험 — IaC 보안 수정 미리보기 (canned)
+  입력: Checkov 스캔 결과 예시. 체크 ID는 실제 Checkov AWS 체크.
+  API 호출 없이 정적 데이터만 표시한다.
+-->
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>IaC 보안 수정 샘플 미리보기</title>
+    <style>
+      :root {
+        --border: #d7dbe0;
+        --muted: #5a6270;
+        --bg: #ffffff;
+        --surface: #f7f8fa;
+        --high-bg: #fff1e6;
+        --high-fg: #9a4d00;
+        --med-bg: #e7f1fb;
+        --med-fg: #1b5aa6;
+        --low-bg: #eceff3;
+        --low-fg: #4a5260;
+        --text: #1f2430;
+        --accent: #2a64c4;
+        --codebg: #f0f2f5;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --border: #2a2f45;
+          --muted: #9aa3b2;
+          --bg: #1b1f2a;
+          --surface: #232838;
+          --high-bg: #2f2516;
+          --high-fg: #f0c48a;
+          --med-bg: #16233a;
+          --med-fg: #9cc3f0;
+          --low-bg: #262b38;
+          --low-fg: #aab2c0;
+          --text: #e7e9ee;
+          --codebg: #11151e;
+        }
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family:
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+        color: var(--text);
+        background: var(--bg);
+        padding: 16px;
+        line-height: 1.55;
+      }
+      .panel {
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 12px 14px;
+        margin-bottom: 14px;
+        background: var(--surface);
+      }
+      .ptitle {
+        font-weight: 600;
+        margin-bottom: 6px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.9rem;
+      }
+      th,
+      td {
+        text-align: left;
+        padding: 5px 8px;
+        border-bottom: 1px solid var(--border);
+        vertical-align: top;
+      }
+      code {
+        background: rgba(127, 127, 127, 0.15);
+        padding: 0 4px;
+        border-radius: 4px;
+      }
+      pre {
+        background: var(--codebg);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 10px 12px;
+        overflow-x: auto;
+        font-size: 0.85rem;
+      }
+      .sev {
+        font-size: 0.78rem;
+        font-weight: 700;
+        padding: 1px 7px;
+        border-radius: 4px;
+        white-space: nowrap;
+      }
+      .high {
+        background: var(--high-bg);
+        color: var(--high-fg);
+      }
+      .med {
+        background: var(--med-bg);
+        color: var(--med-fg);
+      }
+      .low {
+        background: var(--low-bg);
+        color: var(--low-fg);
+      }
+      button {
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 0.95rem;
+        padding: 8px 16px;
+        border-radius: 8px;
+        border: 1px solid var(--accent);
+        background: var(--accent);
+        color: #fff;
+      }
+      button:hover {
+        filter: brightness(1.08);
+      }
+      .note {
+        font-size: 0.85rem;
+        color: var(--muted);
+        margin-top: 10px;
+      }
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="panel">
+      <div class="ptitle">
+        입력 — 샘플 Checkov 스캔 결과 (S3 버킷, 3건 실패)
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>체크 ID</th>
+            <th>내용</th>
+            <th>심각도</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>CKV_AWS_19</code></td>
+            <td>S3 버킷 저장 데이터 암호화 미적용</td>
+            <td><span class="sev high">High</span></td>
+          </tr>
+          <tr>
+            <td><code>CKV_AWS_21</code></td>
+            <td>S3 버킷 버전 관리 미설정</td>
+            <td><span class="sev med">Medium</span></td>
+          </tr>
+          <tr>
+            <td><code>CKV_AWS_18</code></td>
+            <td>S3 버킷 액세스 로깅 미설정</td>
+            <td><span class="sev low">Low</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <button id="runBtn" type="button" onclick="showResult()">
+      샘플 수정 코드 보기
+    </button>
+
+    <div id="result" class="hidden">
+      <div class="panel">
+        <div class="ptitle">결과 — 수정된 Terraform (예시)</div>
+        <p>세 가지 위반을 모두 해소한 블록을 추가합니다.</p>
+        <pre>
+resource "aws_s3_bucket" "data" {
+  bucket = "my-app-data"
+}
+
+# CKV_AWS_19 — 저장 데이터 암호화
+resource "aws_s3_bucket_server_side_encryption_configuration" "data" {
+  bucket = aws_s3_bucket.data.id
+  rule {
+    apply_server_side_encryption_by_default { sse_algorithm = "aws:kms" }
+  }
+}
+
+# CKV_AWS_21 — 버전 관리
+resource "aws_s3_bucket_versioning" "data" {
+  bucket = aws_s3_bucket.data.id
+  versioning_configuration { status = "Enabled" }
+}
+
+# CKV_AWS_18 — 액세스 로깅
+resource "aws_s3_bucket_logging" "data" {
+  bucket        = aws_s3_bucket.data.id
+  target_bucket = aws_s3_bucket.logs.id
+  target_prefix = "s3-access/"
+}</pre
+        >
+        <p class="note">
+          위 결과는 샘플 스캔 기준 예시입니다. 실제 결과는 아래 도구에서 본인
+          Checkov 출력 파일을 업로드해 확인하세요.
+        </p>
+      </div>
+    </div>
+
+    <script>
+      function showResult() {
+        document.getElementById("result").classList.remove("hidden");
+        document.getElementById("runBtn").classList.add("hidden");
+      }
+    </script>
+  </body>
+</html>
