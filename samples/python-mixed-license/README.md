@@ -1,5 +1,13 @@
 # python-mixed-license — GPL + Permissive 라이선스 혼재 시연
 
+| 항목      | 내용                                                                     |
+| --------- | ------------------------------------------------------------------------ |
+| 학습 목표 | GPL과 Permissive 라이선스가 혼재할 때의 Copyleft 리스크를 식별           |
+| 예상 시간 | 약 20분                                                                  |
+| 난이도    | 입문                                                                     |
+| 선행 조건 | Docker Desktop 실행 (없으면 docs 05 챕터의 "Docker 없이 진행" 경로 사용) |
+| 관련 챕터 | 05 SBOM 생성·라이선스 분석, 03 정책(license-allowlist)                   |
+
 ## 실습 목적
 
 이 샘플은 **GPL 라이선스와 Permissive 라이선스가 혼재**할 때 발생하는
@@ -7,19 +15,21 @@
 
 ## 포함된 라이선스 현황
 
-| 패키지 | 버전 | 라이선스 | 배포 시 의무사항 |
-|--------|------|---------|----------------|
-| PyYAML | 6.0.1 | MIT | 저작권 고지 |
-| requests | 2.31.0 | Apache-2.0 | 저작권 고지, NOTICE 파일 |
-| celery | 5.3.4 | BSD | 저작권 고지 |
-| mysql-connector-python | 8.1.0 | GPL-2.0 | **소스코드 공개 의무** |
+| 패키지                 | 버전   | 라이선스   | 배포 시 의무사항         |
+| ---------------------- | ------ | ---------- | ------------------------ |
+| PyYAML                 | 6.0.1  | MIT        | 저작권 고지              |
+| requests               | 2.31.0 | Apache-2.0 | 저작권 고지, NOTICE 파일 |
+| celery                 | 5.3.4  | BSD        | 저작권 고지              |
+| mysql-connector-python | 8.1.0  | GPL-2.0    | **소스코드 공개 의무**   |
 
 ## 예상 실습 결과
 
 ### SBOM 생성 시
+
 - `mysql-connector-python` GPL-2.0 컴포넌트 탐지
 
 ### 라이선스 분석 시
+
 - **Copyleft 위험 항목 표시** (GPL-2.0)
 - 소스코드 공개 의무 검토 필요 표시
 
@@ -32,6 +42,7 @@
 ## GPL 라이선스 리스크 상세 설명
 
 GPL-2.0 의 "카피레프트(Copyleft)" 특성:
+
 - GPL 라이선스 코드를 포함하여 배포 시, 전체 소프트웨어의 소스코드를 공개해야 할 수 있다
 - 상업용 소프트웨어에 GPL 컴포넌트를 포함하는 것은 법적 검토 필수
 - LGPL은 라이브러리 형태로 링크 시 소스공개 의무가 완화됨
@@ -40,10 +51,10 @@ GPL-2.0 의 "카피레프트(Copyleft)" 특성:
 
 GPL 컴포넌트를 동등한 기능의 Permissive 라이선스 패키지로 교체 검토:
 
-| 현재 (GPL) | 대안 (Permissive) | 라이선스 |
-|-----------|-----------------|---------|
-| mysql-connector-python (GPL-2.0) | PyMySQL | MIT |
-| mysql-connector-python (GPL-2.0) | aiomysql | MIT |
+| 현재 (GPL)                       | 대안 (Permissive) | 라이선스 |
+| -------------------------------- | ----------------- | -------- |
+| mysql-connector-python (GPL-2.0) | PyMySQL           | MIT      |
+| mysql-connector-python (GPL-2.0) | aiomysql          | MIT      |
 
 또는 법무 검토 후 소스코드 공개 준비.
 

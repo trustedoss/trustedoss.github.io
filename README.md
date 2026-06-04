@@ -57,6 +57,11 @@ cd trustedoss-agents && claude
 # "어디서 시작해야 해?" 입력
 ```
 
+체계 구축은 두 가지 깊이로 진행할 수 있습니다.
+
+- **빠른 시작 (1~2시간)**: 시간이 부족하면 개요, 02 조직, 03 정책 세 챕터만 진행해 정책 초안까지 만듭니다.
+- **풀 코스 (8~12시간)**: 00~07 챕터를 순서대로 진행해 자체 인증 선언문까지 완성합니다.
+
 ---
 
 ## Agent 목록
@@ -240,6 +245,11 @@ cd trustedoss-agents && claude
 # 3. Ask for guidance (type in Korean)
 # "어디서 시작해야 해?" (meaning: "Where should I start?")
 ```
+
+You can build your program at two depths:
+
+- **Quick start (1–2 hours)**: short on time? Cover just the Overview, 02 Organization, and 03 Policy chapters to reach a policy draft.
+- **Full course (8–12 hours)**: work through chapters 00–07 in order to complete your self-certification statement.
 
 ---
 

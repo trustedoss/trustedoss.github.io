@@ -21,7 +21,7 @@ POSITIONING.md 정체성에 맞춰 시스템·콘텐츠 고도화. 계획은 승
 | 0     | 거버넌스·품질 기반        | ✅ 완료                         |
 | 1     | 메뉴 구조 + 커버리지 재검 | ✅ 완료 (1A 커버리지 + 1B 메뉴) |
 | 2     | 용어집 + 콘텐츠 직접 개선 | ✅ 완료                         |
-| 3     | 실습환경                  | ⏳ 대기                         |
+| 3     | 실습환경                  | ✅ 완료                         |
 | 4     | 데모환경                  | ⏳ 대기                         |
 
 > 순서 변경(2026-06-04): IA·커버리지를 먼저 확정해야 콘텐츠·실습·데모 작업 방향이 잡히므로 '메뉴 구조+커버리지 재검'을 Phase 1로 올림.
@@ -55,6 +55,16 @@ POSITIONING.md 정체성에 맞춰 시스템·콘텐츠 고도화. 계획은 승
 - ISO 번호 오표기(06 버그 유형) docs 전체 직접 스캔 → 잔존 없음(verify 검증6 PASS)
 - 관찰: 08-developer-guide는 125줄로 길이 밴드 하한(200) 미달이나, verbose 간결화 스코프 밖이라 최소 변경 원칙상 보류
 - 청크 단위로 각각 verify 12/12 통과 후 개별 커밋
+
+**Phase 3 완료 내역 (2026-06-04):**
+
+- samples 메타: 3개 README 상단에 학습 메타 표(목표, 예상 시간, 난이도, 선행 조건, 관련 챕터) 추가 + samples/README.md 인덱스 신설(비교 표, 공통 선행 조건, 사용 방법)
+- 상태감지 정합 버그 수정: 루트 CLAUDE.md 독자 상태감지 테이블이 05-analyst→vulnerability→management 순서로 어긋나 있던 것을 정본(analyst→management→vulnerability→training)으로 정렬. 근거는 05-vulnerability-analyst 전제조건(sbom-management-plan.md)과 validate-chain.py
+- agent 온보딩 메타: 9개 agent CLAUDE.md에 "예상 소요" 한 줄 추가(질문 수 + 검토 시간). 전제조건·다음명령은 기존 보유
+- Docker 미설치 경로: docs/01-setup에 안내 추가(Docker는 05에서만 사용, 미설치 시 샘플 SBOM 경로). 05-sbom-guide·05-sbom-generation의 Docker-없이 경로는 기존 보유
+- 온보딩 동선: docs/intro·README에 정직한 2경로(체계구축 agents vs 개발팀 도구 웹) + 빠른시작(1~2h)/풀코스(8~12h) 구분 추가. 무API키 웹 체험은 미구축이므로 약속하지 않고 Phase 4로 연기
+- 04-process Q5·Q6 입력형식은 agent와 docs 모두 예/아니오로 이미 정합(수정 불필요 확인)
+- 청크 7개로 분할(≤4파일/청크), 각각 verify 12/12 통과 후 커밋
 
 ---
 

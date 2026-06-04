@@ -45,16 +45,17 @@ ISO/IEC 5230 (라이선스 컴플라이언스)과 ISO/IEC 18974 (보안 보증) 
 
 "어디서 시작해야 해?" 또는 "다음에 뭘 해야 해?" 질문 시 `output/` 폴더를 스캔하고 아래 표로 안내한다.
 
-| output/ 상태                        | 안내                                                                                                                                                                                                               |
-| ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 비어있음                            | "시작하기 전에"(`docs/00-overview/index.md`) 및 "소프트웨어 공급망 보안: 왜 지금 중요한가"(`docs/00-overview/supply-chain.md`) 읽기 → 현재 Claude 세션 종료 후 `cd agents/02-organization-designer && claude` 실행 |
-| organization/ 있음, policy/ 없음    | 현재 Claude 세션 종료 후 `cd agents/03-policy-generator && claude` 실행                                                                                                                                            |
-| policy/ 있음, process/ 없음         | 현재 Claude 세션 종료 후 `cd agents/04-process-designer && claude` 실행                                                                                                                                            |
-| process/ 있음, sbom/ 없음           | 현재 Claude 세션 종료 후 `cd agents/05-sbom-guide && claude` 실행                                                                                                                                                  |
-| sbom/ 있음, vulnerability/ 없음     | 현재 Claude 세션 종료 후 `cd agents/05-sbom-analyst && claude` 실행 → 완료 후 `cd agents/05-vulnerability-analyst && claude` 실행                                                                                  |
-| vulnerability/ 있음, training/ 없음 | 현재 Claude 세션 종료 후 `cd agents/05-sbom-management && claude` 실행 → 완료 후 `cd agents/06-training-manager && claude` 실행                                                                                    |
-| training/ 있음, conformance/ 없음   | 현재 Claude 세션 종료 후 `cd agents/07-conformance-preparer && claude` 실행                                                                                                                                        |
-| conformance/ 있음                   | 완성 축하 → OpenChain 자체 인증 등록: https://www.openchainproject.org/conformance                                                                                                                                 |
+| output/ 상태                                      | 안내                                                                                                                                                                                                               |
+| ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 비어있음                                          | "시작하기 전에"(`docs/00-overview/index.md`) 및 "소프트웨어 공급망 보안: 왜 지금 중요한가"(`docs/00-overview/supply-chain.md`) 읽기 → 현재 Claude 세션 종료 후 `cd agents/02-organization-designer && claude` 실행 |
+| organization/ 있음, policy/ 없음                  | 현재 Claude 세션 종료 후 `cd agents/03-policy-generator && claude` 실행                                                                                                                                            |
+| policy/ 있음, process/ 없음                       | 현재 Claude 세션 종료 후 `cd agents/04-process-designer && claude` 실행                                                                                                                                            |
+| process/ 있음, sbom/ 없음                         | 현재 Claude 세션 종료 후 `cd agents/05-sbom-guide && claude` 실행                                                                                                                                                  |
+| sbom/ 있음, sbom-management-plan.md 없음          | 현재 Claude 세션 종료 후 `cd agents/05-sbom-analyst && claude` 실행 → 완료 후 `cd agents/05-sbom-management && claude` 실행                                                                                        |
+| sbom-management-plan.md 있음, vulnerability/ 없음 | 현재 Claude 세션 종료 후 `cd agents/05-vulnerability-analyst && claude` 실행                                                                                                                                       |
+| vulnerability/ 있음, training/ 없음               | 현재 Claude 세션 종료 후 `cd agents/06-training-manager && claude` 실행                                                                                                                                            |
+| training/ 있음, conformance/ 없음                 | 현재 Claude 세션 종료 후 `cd agents/07-conformance-preparer && claude` 실행                                                                                                                                        |
+| conformance/ 있음                                 | 완성 축하 → OpenChain 자체 인증 등록: https://www.openchainproject.org/conformance                                                                                                                                 |
 
 ## 사용 경로
 
