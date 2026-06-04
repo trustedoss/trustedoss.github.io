@@ -55,7 +55,7 @@ node --version
 ## 저장소 클론
 
 ```bash
-git clone https://github.com/trustedoss/trustedoss.github.io.git
+git clone https://github.com/trustedoss/trustedoss-agents.git
 cd trustedoss.github.io
 ```
 

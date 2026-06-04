@@ -4,6 +4,7 @@ title: 소프트웨어 구성 분석 (SCA)
 sidebar_label: SCA
 sidebar_position: 4
 ---
+
 # 소프트웨어 구성 분석 (SCA)
 
 ## SCA란
@@ -29,10 +30,10 @@ syft nginx:latest -o cyclonedx-json=sbom.cdx.json
 
 ### 포맷 선택
 
-| 포맷 | 주관 | 권장 용도 |
-|------|------|-----------|
-| CycloneDX JSON | OWASP | 보안·취약점 관리 (grype 연동) |
-| SPDX JSON | Linux Foundation | 공급망 공유·규제 대응 |
+| 포맷           | 주관             | 권장 용도                     |
+| -------------- | ---------------- | ----------------------------- |
+| CycloneDX JSON | OWASP            | 보안·취약점 관리 (grype 연동) |
+| SPDX JSON      | Linux Foundation | 공급망 공유·규제 대응         |
 
 보안 파이프라인 중심이라면 CycloneDX JSON을 권장합니다.
 
@@ -108,12 +109,12 @@ sca:
 
 ### 심각도별 SLA
 
-| 심각도 | CVSS 범위 | 권장 SLA | 빌드 차단 |
-|--------|-----------|----------|-----------|
-| Critical | 9.0–10.0 | 24시간 | 차단 |
-| High | 7.0–8.9 | 7일 | 차단 |
-| Medium | 4.0–6.9 | 30일 | 경고만 |
-| Low | 0.1–3.9 | 다음 릴리즈 | 무시 |
+| 심각도   | CVSS 범위 | 권장 SLA    | 빌드 차단 |
+| -------- | --------- | ----------- | --------- |
+| Critical | 9.0–10.0  | 24시간      | 차단      |
+| High     | 7.0–8.9   | 7일         | 차단      |
+| Medium   | 4.0–6.9   | 30일        | 경고만    |
+| Low      | 0.1–3.9   | 다음 릴리즈 | 무시      |
 
 처음 도입 시에는 Critical만 차단하고 팀이 익숙해진 뒤 High로 확대하는 것을 권장합니다.
 
@@ -131,7 +132,7 @@ fail-on-severity: high
 ignore:
   # 실제 코드 경로 미사용 — 보안팀 승인 2024-01-15
   - vulnerability: CVE-2023-XXXXX
-    reason: "해당 함수 미사용 확인"
+    reason: '해당 함수 미사용 확인'
   # 테스트 전용 패키지
   - package:
       name: some-test-lib
@@ -166,13 +167,15 @@ ignore:
 아래 agent를 사용하세요.
 :::
 
-**사전 조건**: [Trusted OSS 저장소](https://github.com/trustedoss/trustedoss.github.io) 클론 필요
+**사전 조건**: [Trusted OSS 저장소](https://github.com/trustedoss/trustedoss-agents) 클론 필요
+
 ```bash
 cd agents/sbom-vuln-analyst
 claude
 ```
 
 agent가 아래를 자동으로 수행합니다.
+
 - CycloneDX / SPDX / grype 결과 자동 감지
 - 심각도별 분류 및 수정 버전 제시
 - .grype.yaml 예외 처리 예시 생성

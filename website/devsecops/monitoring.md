@@ -42,7 +42,7 @@ updates:
     schedule:
       interval: weekly
       day: monday
-      time: "09:00"
+      time: '09:00'
     open-pull-requests-limit: 10
     groups:
       # 마이너·패치 업데이트는 그룹으로 묶어 PR 수 감소
@@ -115,13 +115,13 @@ self-hosted 방식으로 GitLab에서도 동일하게 사용 가능합니다.
 }
 ```
 
-| 항목 | Dependabot | Renovate |
-|------|-----------|----------|
-| 플랫폼 | GitHub 전용 | GitHub·GitLab·Bitbucket |
-| 설정 복잡도 | 낮음 | 높음 (유연성 높음) |
-| 자동 병합 | 제한적 | 세밀한 정책 설정 가능 |
-| 그룹 PR | 가능 | 가능 (더 세밀) |
-| 비용 | 무료 | 무료 (self-hosted) |
+| 항목        | Dependabot  | Renovate                |
+| ----------- | ----------- | ----------------------- |
+| 플랫폼      | GitHub 전용 | GitHub·GitLab·Bitbucket |
+| 설정 복잡도 | 낮음        | 높음 (유연성 높음)      |
+| 자동 병합   | 제한적      | 세밀한 정책 설정 가능   |
+| 그룹 PR     | 가능        | 가능 (더 세밀)          |
+| 비용        | 무료        | 무료 (self-hosted)      |
 
 ---
 
@@ -136,8 +136,8 @@ name: Scheduled Security Scan
 
 on:
   schedule:
-    - cron: '0 2 * * *'  # 매일 새벽 2시
-  workflow_dispatch:      # 수동 실행 가능
+    - cron: '0 2 * * *' # 매일 새벽 2시
+  workflow_dispatch: # 수동 실행 가능
 
 jobs:
   sca-scan:
@@ -163,7 +163,7 @@ jobs:
         with:
           name: sbom-scheduled-${{ github.run_id }}
           path: sbom.cdx.json
-          retention-days: 365  # 연간 보관
+          retention-days: 365 # 연간 보관
 
   container-scan:
     runs-on: ubuntu-latest
@@ -199,7 +199,7 @@ jobs:
 보안 분석을 완전히 자동화하는 워크플로우 파일을 생성합니다.
 :::
 
-**사전 조건**: [Trusted OSS 저장소](https://github.com/trustedoss/trustedoss.github.io) 클론 필요
+**사전 조건**: [Trusted OSS 저장소](https://github.com/trustedoss/trustedoss-agents) 클론 필요
 
 ### PR 보안 분석 자동 코멘트
 
@@ -212,6 +212,7 @@ claude
 ```
 
 생성 산출물:
+
 - `.github/workflows/pr-security-comment.yml` (GitHub Actions)
 - `gitlab-pr-comment.yml` (GitLab CI 변환 버전)
 
@@ -226,6 +227,7 @@ claude
 ```
 
 생성 산출물:
+
 - `.github/workflows/scheduled-security-scan.yml`
 - `.github/workflows/dependabot-analysis.yml`
 - `gitlab-scheduled-scan.yml` (GitLab CI 변환 버전)

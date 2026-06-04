@@ -4,6 +4,7 @@ title: 정적 분석 (SAST)
 sidebar_label: SAST
 sidebar_position: 3
 ---
+
 # 정적 분석 (SAST)
 
 ## SAST란
@@ -16,12 +17,12 @@ sidebar_position: 3
 
 SAST 도구는 지원 언어와 분석 깊이에 따라 선택 기준이 달라집니다. 오픈소스 생태계에서 널리 사용되는 도구는 다음과 같습니다.
 
-| 도구 | 특징 | 지원 언어 | 라이선스 |
-|------|------|-----------|----------|
-| Semgrep | 커스텀 룰 작성 용이, 빠른 속도 | 30+ 언어 | LGPL-2.1 (OSS 버전) |
-| CodeQL | GitHub 네이티브, 깊은 분석 | 12개 주요 언어 | GitHub Actions 무료 |
-| Bandit | Python 전용, 경량 | Python | Apache-2.0 |
-| SpotBugs | Java/Kotlin 전용 | Java, Kotlin, Scala | LGPL |
+| 도구     | 특징                           | 지원 언어           | 라이선스            |
+| -------- | ------------------------------ | ------------------- | ------------------- |
+| Semgrep  | 커스텀 룰 작성 용이, 빠른 속도 | 30+ 언어            | LGPL-2.1 (OSS 버전) |
+| CodeQL   | GitHub 네이티브, 깊은 분석     | 12개 주요 언어      | GitHub Actions 무료 |
+| Bandit   | Python 전용, 경량              | Python              | Apache-2.0          |
+| SpotBugs | Java/Kotlin 전용               | Java, Kotlin, Scala | LGPL                |
 
 멀티 언어 프로젝트에는 Semgrep, GitHub를 사용하는 팀에는 CodeQL이 가장 적합합니다. 단일 언어 프로젝트는 언어 전용 도구 병행을 권장합니다.
 
@@ -63,14 +64,14 @@ jobs:
 
 ### 룰셋 선택 가이드
 
-| 룰셋 | 대상 | 설명 |
-|------|------|------|
-| p/owasp-top-ten | 전체 | OWASP Top 10 취약점 탐지 |
-| p/security-audit | 전체 | 보안 감사용 포괄 룰셋 |
-| p/secrets | 전체 | 하드코딩된 시크릿 탐지 |
-| p/python | Python | Python 전용 보안 룰 |
-| p/java | Java | Java 전용 보안 룰 |
-| p/javascript | JS/TS | JS·TS 전용 보안 룰 |
+| 룰셋             | 대상   | 설명                     |
+| ---------------- | ------ | ------------------------ |
+| p/owasp-top-ten  | 전체   | OWASP Top 10 취약점 탐지 |
+| p/security-audit | 전체   | 보안 감사용 포괄 룰셋    |
+| p/secrets        | 전체   | 하드코딩된 시크릿 탐지   |
+| p/python         | Python | Python 전용 보안 룰      |
+| p/java           | Java   | Java 전용 보안 룰        |
+| p/javascript     | JS/TS  | JS·TS 전용 보안 룰       |
 
 ### 커스텀 룰 작성
 
@@ -108,7 +109,7 @@ on:
   pull_request:
     branches: [main]
   schedule:
-    - cron: '0 2 * * 1'  # 매주 월요일 새벽 2시 전체 스캔
+    - cron: '0 2 * * 1' # 매주 월요일 새벽 2시 전체 스캔
 
 jobs:
   codeql:
@@ -132,7 +133,7 @@ jobs:
       - name: Analyze
         uses: github/codeql-action/analyze@v3
         with:
-          category: "/language:javascript"
+          category: '/language:javascript'
 ```
 
 ### GitLab CI
@@ -175,13 +176,15 @@ semgrep:
 아래 agent를 사용하세요.
 :::
 
-**사전 조건**: [Trusted OSS 저장소](https://github.com/trustedoss/trustedoss.github.io) 클론 필요
+**사전 조건**: [Trusted OSS 저장소](https://github.com/trustedoss/trustedoss-agents) 클론 필요
+
 ```bash
 cd agents/sast-analyst
 claude
 ```
 
 agent가 아래를 자동으로 수행합니다.
+
 - Semgrep JSON / CodeQL SARIF 자동 감지
 - 규칙별 수정 코드 예시 직접 생성
 - 오탐 처리 예시 (.semgrepignore) 생성
