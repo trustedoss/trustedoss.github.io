@@ -89,7 +89,7 @@ SBOM 생성에는 두 가지 접근 방식이 있습니다. **Dependency 분석*
 
 - `bomFormat`, `specVersion`: CycloneDX 포맷 식별자
 - `metadata.component`: 분석 대상 소프트웨어 정보
-- `components[]`: 의존성 목록 (라이선스, PURL 포함)
+- `components[]`: 의존성 목록 (라이선스, PURL(Package URL, 패키지를 고유하게 식별하는 표준 문자열) 포함)
 - `vulnerabilities[]`: 취약점 정보 (있을 경우)
 
 ---
@@ -119,14 +119,14 @@ cp output-sample/sbom/fixture-sample.cdx.json output/sbom/fixture-sample.cdx.jso
 ```
 
 샘플 SBOM에는 GPL-2.0 Copyleft 컴포넌트와 CVE 취약점이 있는 패키지가 포함되어 있어 이후 분석 실습이 가능합니다.
-이 경우 05-sbom-guide agent 실행을 건너뛰고 바로 **단계 5(분석 agent 실행)**로 이동합니다.
+이 경우 SBOM을 직접 생성하는 단계 4~6(sbom-guide agent·스크립트 실행)을 건너뛰고 바로 **단계 7(라이선스 분석 실행)**로 이동합니다.
 :::
 
 **단계 2** — 분석할 프로젝트 선택
 
 본인의 프로젝트를 사용할 수도 있고, 샘플을 사용할 수도 있습니다.
 
-처음이라면 아래 샘플 중 하나를 선택한다:
+처음이라면 아래 샘플 중 하나를 선택합니다.
 
 | 샘플 경로                       | 언어          | 특징                           | 학습 포인트                 |
 | ------------------------------- | ------------- | ------------------------------ | --------------------------- |
@@ -153,7 +153,7 @@ cd agents/05-sbom-guide
 claude
 ```
 
-agent가 프로젝트 정보를 묻는 3가지 질문을 한다:
+agent가 프로젝트 정보를 묻는 3가지 질문을 합니다.
 
 - 프로젝트 경로 (예: `samples/java-vulnerable`)
 - 주 언어 (예: `Java`)
@@ -161,7 +161,7 @@ agent가 프로젝트 정보를 묻는 3가지 질문을 한다:
 
 **단계 5** — 생성된 스크립트 실행
 
-agent가 `output/sbom/sbom-commands.sh`를 생성하면 실행한다:
+agent가 `output/sbom/sbom-commands.sh`를 생성하면 실행합니다.
 
 ```bash
 bash output/sbom/sbom-commands.sh
@@ -236,7 +236,7 @@ docker run --rm \
 
 ## 4. 완료 확인 체크리스트
 
-아래 항목을 모두 확인한 후 다음 단계로 넘어간다.
+아래 항목을 모두 확인한 후 다음 단계로 넘어갑니다.
 
 - [ ] `output/sbom/[project].cdx.json` 생성됨
 - [ ] SBOM 파일에 `components` 배열이 비어있지 않음
@@ -252,13 +252,15 @@ docker run --rm \
 
 > 이 단계는 ISO/IEC 5230 3.3.1, 3.3.2, 3.4.1 및 ISO/IEC 18974 4.3.1 요구사항을 충족합니다.
 
-> 📋 **산출물 예시**: [SBOM 산출물 Best Practice](/reference/samples/sbom)에서 생성된 파일의 실제 형식을 확인할 수 있습니다.
+:::note 산출물 예시
+[SBOM 산출물 Best Practice](/reference/samples/sbom)에서 생성된 파일의 실제 형식을 확인할 수 있습니다.
+:::
 
 ---
 
 ## 5. 다음 단계
 
-SBOM 생성과 라이선스 분석이 완료되면, SBOM 관리 체계를 수립하는 단계로 넘어간다.
+SBOM 생성과 라이선스 분석이 완료되면, SBOM 관리 체계를 수립하는 단계로 넘어갑니다.
 
 :::tip 실행 전 확인
 현재 Claude 세션을 먼저 종료(`/exit` 또는 `Ctrl+C`)한 뒤, 새 터미널에서 아래 명령을 실행하세요.
