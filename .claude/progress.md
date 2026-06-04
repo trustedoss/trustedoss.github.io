@@ -88,6 +88,14 @@ POSITIONING.md 정체성에 맞춰 시스템·콘텐츠 고도화. 계획은 승
 
 **Phase 4 전체 완료**: 저위험 콘텐츠(API키 callout, nav 표준화, 포털 cross-link)와 컴포넌트 A(무API키 샘플 체험), B(샘플 다운로드), C(포털 연결 CTA)를 모두 반영. 호스팅된 공개 데모 인스턴스가 없다는 사실을 반영해 과장 없이 구성했다.
 
+**무API키 샘플 체험 확장 + walkthrough 검증 (2026-06-05):**
+
+- 무API키 샘플 체험을 SBOM에 이어 SAST·시크릿·IaC 3개 결과 분석기로 확장(동일 static HTML + iframe 패턴). 4개 결과 분석기 모두 "샘플 미리보기(키 불필요) → 실제 분석(키 입력)" 동선 제공
+  - SAST: Semgrep 결과 3건(CWE 분류 정확) → 우선순위·수정 가이드
+  - 시크릿: Gitleaks 결과 2건 → 키별 즉시 폐기·재발급 절차
+  - IaC: Checkov 결과 3건(실제 체크 ID CKV_AWS_19/21/18) → 수정 Terraform
+- 페르소나 walkthrough 육안 검증(로컬 빌드 서빙, served HTML 확인): 데모 4종 200·토글·입력/결과 렌더 정상, 4개 도구 페이지 미리보기 헤딩+데모 iframe+API키 callout 정상, SCA 포털 CTA(포털+read-only 데모 링크) 정상, intro 2경로 동선 정상, reference 샘플 다운로드 링크+파일 200 정상, SCA에서 미리보기가 실제 도구보다 먼저 배치됨 확인. (브라우저 렌더 MCP 부재로 픽셀 스크린샷은 아닌 served-HTML 수준 검증)
+
 **08-developer-guide 보강 (2026-06-04) — Phase 2 관찰사항 해소:**
 
 - 126 → 205줄로 길이 밴드(200~350) 진입. 채우기가 아닌 실질 콘텐츠로 보강
