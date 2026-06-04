@@ -24,6 +24,8 @@
 
 ## 2. 배경 지식
 
+> SBOM·CycloneDX·SPDX 등 낯선 약어는 [용어집](/reference/glossary)에서 쉬운 설명을 볼 수 있습니다.
+
 ### SBOM이란?
 
 SBOM(Software Bill of Materials)은 소프트웨어에 포함된 모든 구성 요소의 목록입니다. 식품 영양성분표처럼, 소프트웨어에 어떤 오픈소스가 어떤 버전으로 들어있는지 명시합니다. ISO/IEC 5230과 18974 모두 SBOM 생성을 핵심 요구사항으로 규정합니다 (G3B.1).
