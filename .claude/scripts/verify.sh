@@ -113,11 +113,13 @@ fi
 
 # 검증 5: 로컬 경로 노출 확인
 # (git ls-files 기준 — gitignore 된 파일 제외, verify.sh 자신 제외)
+# STYLEGUIDE.md 는 "금지 패턴" 자체를 예시로 문서화하므로 verify.sh 와 같은 이유로 제외한다.
 echo "[5/12] 로컬 경로 노출 확인..."
 LOCAL_PATH_HITS=$(git ls-files \
   -- '*.md' '*.sh' '*.yml' '*.yaml' '*.json' '*.ts' \
   2>/dev/null | \
   grep -v "^\.claude/scripts/verify\.sh$" | \
+  grep -v "^STYLEGUIDE\.md$" | \
   grep -v "settings\.local\.json$" | \
   grep -v "^\.claude/reference/kwg/" | \
   grep -v "^tests/cassettes/" | \
