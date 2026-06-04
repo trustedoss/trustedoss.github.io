@@ -11,6 +11,10 @@ sidebar_position: 3
 
 아래 생성기에서 옵션을 선택하면 바로 다운로드할 수 있는 설정 파일이 만들어집니다.
 
+:::info 이 도구는 Anthropic API 키가 필요합니다
+브라우저에서 직접 Anthropic API를 호출합니다. 본인의 [Anthropic API 키](https://console.anthropic.com/settings/keys)를 입력하면 바로 사용할 수 있으며, 키와 입력 내용은 브라우저에서 Anthropic으로만 전송됩니다(trustedoss 서버를 거치지 않습니다). 사용량은 본인 Anthropic 계정에 과금됩니다.
+:::
+
 <iframe
   src="/tools/rules-generator.html"
   width="100%"
@@ -158,3 +162,11 @@ agent가 아래를 자동으로 수행합니다.
 - 금지 라이선스 패키지 사전 감지 및 대체 패키지 제안
 - 선택한 AI 코딩 도구별 맞춤형 Rules 파일 생성
 - 라이선스 위험 리포트 생성
+
+---
+
+## 다음 단계
+
+- [보장 수준별 5단계 전략](./strategy) — Rules가 전체 전략에서 어디에 해당하는지
+- [CI/CD 자동화](./cicd-quick) — 생성한 정책을 파이프라인에서 자동 검사
+- [Best Practice 저장소](./best-practice-repo) — 복사해 바로 쓰는 전체 구현 예시
