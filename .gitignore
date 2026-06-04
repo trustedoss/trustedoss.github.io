@@ -2,6 +2,9 @@
 output/
 !output-sample/
 !output/level2/.gitkeep
+# 플러그인 테스트 픽스처(output/ 패턴에 걸리는 예외)
+!plugins/remark-snackplayer/tests/output/
+!plugins/remark-snackplayer/tests/output/*.html
 
 # 로컬 Claude 설정
 .claude/settings.local.json
