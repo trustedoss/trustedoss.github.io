@@ -1,0 +1,87 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.4",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-04-25T00:00:00Z",
+    "tools": [
+      {
+        "vendor": "anchore",
+        "name": "syft",
+        "version": "1.42.3"
+      }
+    ],
+    "component": {
+      "type": "application",
+      "name": "python-mixed-license",
+      "version": "1.0.0"
+    }
+  },
+  "components": [
+    {
+      "type": "library",
+      "name": "PyYAML",
+      "version": "5.3.1",
+      "purl": "pkg:pypi/pyyaml@5.3.1",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "requests",
+      "version": "2.27.0",
+      "purl": "pkg:pypi/requests@2.27.0",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "celery",
+      "version": "5.2.0",
+      "purl": "pkg:pypi/celery@5.2.0",
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "mysql-connector-python",
+      "version": "8.1.0",
+      "purl": "pkg:pypi/mysql-connector-python@8.1.0",
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "Pillow",
+      "version": "9.0.0",
+      "purl": "pkg:pypi/pillow@9.0.0",
+      "licenses": [
+        {
+          "license": {
+            "id": "HPND"
+          }
+        }
+      ]
+    }
+  ]
+}

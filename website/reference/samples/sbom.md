@@ -8,6 +8,14 @@ sidebar_position: 4
 [05 도구 챕터](/docs/tools/sbom-generation)에서 생성하는 SBOM 관련 산출물 예시입니다.
 샘플 프로젝트(`java-vulnerable`, Log4Shell CVE-2021-44228 포함)를 기준으로 작성된 실제 출력 예시를 확인할 수 있습니다.
 
+:::tip 샘플 SBOM 내려받기
+분석을 직접 시험해 볼 수 있는 샘플 SBOM(CycloneDX 형식, GPL-2.0 카피레프트 컴포넌트 + 취약 버전 포함)을 제공합니다. 내려받아 [SCA 분석기](/devsecops/sca)나 로컬 도구(grype 등)에 넣어 보세요.
+
+<a href="/samples/fixture-sample.cdx.json" download>fixture-sample.cdx.json 내려받기</a>
+
+아래 각 코드 블록은 오른쪽 위 복사 버튼으로 그대로 복사할 수 있습니다.
+:::
+
 ---
 
 ## SBOM 라이선스 분석 리포트
