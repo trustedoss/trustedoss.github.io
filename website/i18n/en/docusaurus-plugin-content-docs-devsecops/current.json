@@ -2,5 +2,21 @@
   "version.label": {
     "message": "Next",
     "description": "The label for version current"
+  },
+  "sidebar.devSecOps.category.시작하기": {
+    "message": "Getting Started",
+    "description": "The label for category '시작하기' in sidebar 'devSecOps'"
+  },
+  "sidebar.devSecOps.category.보안 게이트": {
+    "message": "Security Gates",
+    "description": "The label for category '보안 게이트' in sidebar 'devSecOps'"
+  },
+  "sidebar.devSecOps.category.파이프라인": {
+    "message": "Pipeline",
+    "description": "The label for category '파이프라인' in sidebar 'devSecOps'"
+  },
+  "sidebar.devSecOps.category.표준 연계": {
+    "message": "Standard Alignment",
+    "description": "The label for category '표준 연계' in sidebar 'devSecOps'"
   }
 }

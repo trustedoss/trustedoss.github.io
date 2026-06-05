@@ -96,18 +96,19 @@ navbar·config 링크도 `CLAUDE.md` 스코프 완화로 가드레일 하에 가
 
 ## 6. 근거 패리티 (브랜드 일관성 증거)
 
-| 신호             | 가이드                             | 포털                                                 |
-| ---------------- | ---------------------------------- | ---------------------------------------------------- |
-| 라이선스         | CC BY 4.0                          | Apache-2.0                                           |
-| 표준/포맷        | OpenChain · ISO 5230 · 18974       | OpenSSF Best Practices · CycloneDX · SPDX · VEX      |
-| 실행 주권        | 직접 클론 → Claude Code 실행       | self-hosted (`docker-compose`/Helm), no per-seat     |
-| 언어             | KO 기본 + EN (`defaultLocale: ko`) | EN + KO ("internationalized from day one")           |
-| 주색상 (현재)    | `#06bcee` (시안)                   | `#0f172a` (딥 네이비) — _수렴 시 중립 공용 토큰으로_ |
-| 본문 폰트 (현재) | Optimistic Display                 | Inter                                                |
+| 신호             | 가이드                             | 포털                                                        |
+| ---------------- | ---------------------------------- | ----------------------------------------------------------- |
+| 라이선스         | CC BY 4.0                          | Apache-2.0                                                  |
+| 표준/포맷        | OpenChain · ISO 5230 · 18974       | OpenSSF Best Practices · CycloneDX · SPDX · VEX             |
+| 실행 주권        | 직접 클론 → Claude Code 실행       | self-hosted (`docker-compose`/Helm), no per-seat            |
+| 언어             | KO 기본 + EN (`defaultLocale: ko`) | EN + KO ("internationalized from day one")                  |
+| 주색상 (현재)    | `#1a73e8` (Material/Google 블루)   | `#0f172a` (딥 네이비) — _가이드는 중립 공용 토큰 채택 완료_ |
+| 본문 폰트 (현재) | Roboto (Material/Gemini)           | Inter                                                       |
 
 > 위 값은 실측 기준(가이드: `website/src/css/customTheme.scss`·`docusaurus.config.ts`,
-> 포털: README·`docs-site/`). 색·폰트의 현재 불일치는 §5 기준에 따라 *제품 정본 채택이 아니라
-> 중립 공용 토큰 합의*로 좁힌다.
+> 포털: README·`docs-site/`).
+>
+> **수렴 현황(2026-06):** 가이드는 §5 원칙에 따라 브랜드 주색을 기존 시안(`#06bcee`)에서 중립 Material/Google 블루(`--g-blue-600` = `#1a73e8`)로, 폰트를 Optimistic Display에서 Roboto로 이미 수렴했다(Gemini look&feel). 포털 팔레트(딥 네이비)를 채택한 것이 아니라 특정 벤더로 읽히지 않는 공용 토큰을 택한 것이므로 §5의 "중립 공용 토큰" 기준을 충족한다. 포털 측 수렴은 별도 과제로 남는다.
 
 ---
 

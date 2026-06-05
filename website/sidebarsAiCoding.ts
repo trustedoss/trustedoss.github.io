@@ -2,9 +2,11 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
 
 const sidebars: SidebarsConfig = {
   aiCoding: [
-    'intro',
-    'strategy',
-    'rules-template',
+    {
+      type: 'category',
+      label: '시작하기',
+      items: ['intro', 'strategy', 'rules-template'],
+    },
     {
       type: 'category',
       label: '도구별 설정',
@@ -16,8 +18,21 @@ const sidebars: SidebarsConfig = {
         'tools/cline-aider',
       ],
     },
-    'cicd-quick',
-    'iso-mapping',
+    {
+      type: 'category',
+      label: '실전 적용',
+      items: [
+        'cicd-quick',
+        'ai-security-review',
+        'iso42001',
+        'best-practice-repo',
+      ],
+    },
+    {
+      type: 'category',
+      label: '표준 연계',
+      items: ['iso-mapping'],
+    },
   ],
 };
 

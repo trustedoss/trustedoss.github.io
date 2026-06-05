@@ -14,38 +14,36 @@ slug: intro
 규모별(스타트업 / 중소기업 / 대기업) 3가지 프로필을 제공합니다.
 자신의 `output/` 폴더 결과물과 비교하여 빠진 항목을 확인하세요.
 
-| 산출물                                                                    | 대응 Agent            | 바로가기                              |
-| ------------------------------------------------------------------------- | --------------------- | ------------------------------------- |
-| 조직 (role-definition, raci-matrix, appointment-template)                 | organization-designer | [조직 산출물](./samples/organization) |
-| 정책 (oss-policy, license-allowlist)                                      | policy-generator      | [정책 산출물](./samples/policy)       |
-| 프로세스 (usage-approval, distribution-checklist, vulnerability-response) | process-designer      | [프로세스 산출물](./samples/process)  |
-| 교육 (curriculum, completion-tracker, resources)                          | training-manager      | [교육 산출물](./samples/training)     |
-| 인증 (gap-analysis, declaration-draft, submission-guide)                  | conformance-preparer  | [인증 산출물](./samples/conformance)  |
+| 산출물                                                                    | 대응 Agent            | 바로가기                                 |
+| ------------------------------------------------------------------------- | --------------------- | ---------------------------------------- |
+| 조직 (role-definition, raci-matrix, appointment-template)                 | organization-designer | [조직 산출물](./samples/organization)    |
+| 정책 (oss-policy, license-allowlist)                                      | policy-generator      | [정책 산출물](./samples/policy)          |
+| 프로세스 (usage-approval, distribution-checklist, vulnerability-response) | process-designer      | [프로세스 산출물](./samples/process)     |
+| SBOM (sbom.cdx.json, license-report, copyleft-risk)                       | sbom-guide / analyst  | [SBOM 산출물](./samples/sbom)            |
+| 취약점 (cve-report, remediation-plan)                                     | vulnerability-analyst | [취약점 산출물](./samples/vulnerability) |
+| 교육 (curriculum, completion-tracker, resources)                          | training-manager      | [교육 산출물](./samples/training)        |
+| 인증 (gap-analysis, declaration-draft, submission-guide)                  | conformance-preparer  | [인증 산출물](./samples/conformance)     |
 
-## 다룰 내용 (준비 중)
+## 개념 심화
 
-### 도구 가이드
+본문에서 링크하는 정본 개념 페이지입니다. 정책·프로세스·도구 챕터는 여기를 기준으로 합니다.
 
-무료 오픈소스 도구 심화 가이드입니다.
+| 문서                                                        | 내용                                                 |
+| ----------------------------------------------------------- | ---------------------------------------------------- |
+| [라이선스 분류](./concepts/license-classification)          | 분류 기준, 배포 방식별 영향, 배포 채널 허용 매트릭스 |
+| [취약점 대응 기한과 VEX](./concepts/vulnerability-response) | CVSS 심각도별 대응 기한(KWG 기준선·조직 SLA), VEX    |
+| [용어집](./glossary)                                        | 라이선스·SBOM·보안·조직 용어 풀이                    |
 
-| 도구             | 내용                  | 상태    |
-| ---------------- | --------------------- | ------- |
-| syft             | SBOM 생성 심화        | 준비 중 |
-| cdxgen           | CycloneDX 변환 심화   | 준비 중 |
-| Dependency Track | 취약점 관리 상세 설정 | 준비 중 |
-| OSV API          | 취약점 조회 활용법    | 준비 중 |
+## 에이전트 선택 가이드
 
-### 라이선스
+어느 상황에 어느 에이전트를 쓰는지, 에이전트와 챕터와 산출물의 매핑은 [AI 에이전트로 산출물 만들기](/docs/overview/agents)에 정리돼 있습니다.
 
-| 문서                         | 내용                    | 상태                                    |
-| ---------------------------- | ----------------------- | --------------------------------------- |
-| 라이선스 호환성 매트릭스     | 주요 라이선스 간 호환성 | 준비 중                                 |
-| SKT 오픈소스 라이선스 가이드 | 상세 의무사항           | [바로가기](https://sktelecom.github.io) |
+## 도구와 규제 더 알아보기
 
-### 규제 동향
-
-| 규제          | 내용                      | 상태    |
-| ------------- | ------------------------- | ------- |
-| EU CRA        | Cyber Resilience Act 요약 | 준비 중 |
-| 미국 EO 14028 | SBOM 의무화 행정명령      | 준비 중 |
-| 국내 동향     | 정부 가이드라인 현황      | 준비 중 |
+| 주제                  | 바로가기                                                                                                                                              |
+| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| SBOM 생성 도구 심화   | [SBOM 생성](/docs/tools/sbom-generation) (syft, cdxgen)                                                                                               |
+| 취약점 관리 도구 심화 | [취약점 분석과 대응](/docs/tools/vulnerability) (grype, OSV)                                                                                          |
+| KWG 생태계 도구       | [KWG 오픈소스 가이드 — 도구](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/4-tool/) (FOSSLight, SW360, FOSSology) |
+| 규제 동향             | [소프트웨어 공급망 보안](/docs/overview/supply-chain) (EU CRA, EO 14028, 국내 SBOM 동향)                                                              |
+| SKT 오픈소스 가이드   | [바로가기](https://sktelecom.github.io)                                                                                                               |
