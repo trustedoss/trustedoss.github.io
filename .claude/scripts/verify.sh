@@ -33,7 +33,7 @@ while IFS= read -r file; do
       WARNINGS+=("깨진 링크: $file → $link")
       BROKEN=$((BROKEN+1))
     fi
-  done < <(grep -Eo '\]\([^)]+\)' "$file" | sed 's/\](\(.*\))/\1/' | grep -v "^http" | grep -v "^/")
+  done < <(grep -Eo '\]\([^)]+\)' "$file" | sed 's/\](\(.*\))/\1/' | grep -v "^http" | grep -v "^/" | grep -v "^pathname:")
 done < <(find docs README.md workshop -name "*.md" \
          2>/dev/null)
 

@@ -23,9 +23,13 @@ CI/CD 통합 방안도 함께 다뤄, 개발 흐름에 자연스럽게 내장되
 
 ## 2. 배경 지식
 
-> SBOM·CVE·CVSS 등 낯선 약어는 [용어집](/reference/glossary)에서 쉬운 설명을 볼 수 있습니다.
+:::tip
+SBOM·CVE·CVSS 등 낯선 약어는 [용어집](/reference/glossary)에서 쉬운 설명을 볼 수 있습니다.
+:::
 
-> 각 단계의 상세 설명과 실제 기업 사례는 [KWG 오픈소스 가이드 — 프로세스](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/3-process/)를 참조하세요.
+:::tip
+각 단계의 상세 설명과 실제 기업 사례는 [KWG 오픈소스 가이드 — 프로세스](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/3-process/)를 참조하세요.
+:::
 
 ### 오픈소스 라이프사이클 전체 흐름
 
@@ -75,19 +79,18 @@ ISO/IEC 5230 §3.5는 오픈소스 커뮤니티 참여(기여 및 공개)에 대
 - Copyleft(2차 저작물도 같은 라이선스로 공개해야 하는 의무) 라이선스의 소스코드 공개 의무 이행 확인
 - 허용 라이선스 목록에 없는 라이선스 검토 완료 확인
 
+:::tip 고지문 자동 생성 — onot
+배포 전 고지문(NOTICE)은 손으로 작성하면 누락이 잦습니다. [onot](https://github.com/sktelecom/onot)은 SBOM(SPDX 문서)을 입력받아 OSS 고지문을 자동 생성하는 도구입니다(Kakao와 SK텔레콤 공동 개발). 앞 단계에서 만든 SBOM을 그대로 이어 써서 고지문 작성을 자동화할 수 있습니다.
+:::
+
 #### 3-3. 취약점 대응 프로세스
 
 SBOM이 있으면 신규 CVE가 발표되었을 때 자사 소프트웨어의 영향 여부를 빠르게 확인할 수
-있습니다. CVE 심각도에 따라 대응 기한을 차등 적용하여 리소스를 효율적으로 사용합니다.
+있습니다. CVE 심각도(CVSS 점수)에 따라 대응 기한을 차등 적용하여 리소스를 효율적으로 사용합니다.
 
-| 심각도   | CVSS 점수 | 대응 기한   | 조치                     |
-| -------- | --------- | ----------- | ------------------------ |
-| Critical | 9.0~10.0  | 1주일 내    | 즉시 패치 또는 사용 중단 |
-| High     | 7.0~8.9   | 4주일 내    | 우선 패치 계획 수립      |
-| Medium   | 4.0~6.9   | 1개월 내    | 다음 릴리즈에 포함       |
-| Low      | 0.1~3.9   | 다음 릴리즈 | 백로그 등록              |
-
-> **참고**: 위 기한은 OpenChain KWG 가이드 기준선입니다. 조직의 리스크 프로파일에 따라 Critical 24시간·High 1주일 같은 더 엄격한 기한을 내부 SLA로 적용할 수 있습니다.
+:::tip 대응 기한의 정본
+CVSS 심각도별 대응 기한표(KWG 기준선과 조직별 SLA 강화안)와 VEX 개념은 [취약점 대응 기한과 VEX](/reference/concepts/vulnerability-response)에 정리돼 있습니다. 프로세스 산출물 `vulnerability-response.md`는 이 기준을 회사 SLA로 문서화합니다.
+:::
 
 #### 3-4. 오픈소스 기여 프로세스 (§3.5.1)
 

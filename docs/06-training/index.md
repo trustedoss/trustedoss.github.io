@@ -39,7 +39,9 @@
 
 ## 3. 직군별 필수 교육 내용
 
-> SBOM·CVSS 등 낯선 약어는 [용어집](/reference/glossary)에서 쉬운 설명을 볼 수 있습니다.
+:::tip
+SBOM·CVSS 등 낯선 약어는 [용어집](/reference/glossary)에서 쉬운 설명을 볼 수 있습니다.
+:::
 
 | 직군        | 필수 교육 내용                                                          | 권장 시간 |
 | ----------- | ----------------------------------------------------------------------- | --------- |
@@ -48,7 +50,9 @@
 | 법무/구매   | 라이선스 상세 의무사항, 계약서 오픈소스 조항                            | 3시간     |
 | 보안 담당   | 취약점 식별 및 대응, CVSS 점수 해석, 18974 요구사항                     | 3시간     |
 
-> 실제 기업 교육 사례(SKT, 카카오, NC소프트 등)와 교육 자료는 [KWG 오픈소스 가이드 — 교육](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/5-training/)를 참조하세요.
+:::tip
+실제 기업 교육 사례(SKT, 카카오, NC소프트 등)와 교육 자료는 [KWG 오픈소스 가이드 — 교육](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/5-training/)를 참조하세요.
+:::
 
 ## 4. 무료 교육 리소스 목록
 
@@ -65,9 +69,10 @@
 
 교육 이수 기록은 별도의 도구 없이 스프레드시트나 마크다운 파일로 간단하게 관리할 수 있습니다. 중요한 것은 형식이 아니라 기록 자체다.
 
-> ⚠️ **completion-tracker.md는 교육 실시 후 채우는 문서입니다.**
-> agent를 실행하면 빈 템플릿이 생성되는 것이 정상입니다.
-> 교육을 진행한 뒤 아래 형식으로 이수 기록을 추가하세요.
+:::info[completion-tracker.md 안내]
+completion-tracker.md는 교육 실시 후 채우는 문서입니다. agent를 실행하면 빈 템플릿이 생성되는 것이 정상입니다. 교육을 진행한 뒤 아래 형식으로 이수 기록을 추가하세요.
+:::
+
 > 이 파일이 ISO/IEC 5230 §3.1.2.3 (역량 평가 증거)와 18974 §4.1.2.4의 증거 문서가 됩니다.
 
 `output/training/completion-tracker.md` 형식 예시:
@@ -201,7 +206,9 @@
 - [ ] 직군별 교육 항목이 정의됨
 - [ ] 이수 증빙 방법이 결정됨
 
-> 📋 **산출물 예시**: [교육 산출물 Best Practice](/reference/samples/training)에서 생성된 파일의 실제 형식을 확인할 수 있습니다.
+:::tip[산출물 예시]
+[교육 산출물 Best Practice](/reference/samples/training)에서 생성된 파일의 실제 형식을 확인할 수 있습니다.
+:::
 
 ## 9. 다음 단계
 

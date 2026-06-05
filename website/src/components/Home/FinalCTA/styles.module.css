@@ -1,0 +1,101 @@
+/**
+ * trustedoss.dev FinalCTA styles — Google AI Studio풍 밝은 카드
+ */
+
+.section {
+  padding: 0 0 var(--space-section);
+  background: var(--ifm-background-color);
+}
+
+.band {
+  position: relative;
+  overflow: hidden;
+  padding: 3.5rem 2rem;
+  border-radius: 16px;
+  text-align: center;
+  background: color-mix(
+    in srgb,
+    var(--ifm-color-primary) 6%,
+    var(--ifm-background-color)
+  );
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.title {
+  margin: 0 0 0.7rem;
+  font-size: clamp(1.4rem, 2.6vw, 1.85rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--ifm-heading-color);
+}
+
+.subtitle {
+  max-width: 50ch;
+  margin: 0 auto 1.75rem;
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.primary,
+.secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1.5rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.primary {
+  background: var(--ifm-color-primary);
+  color: #fff;
+  border: 1px solid var(--ifm-color-primary);
+}
+
+[data-theme="dark"] .primary {
+  color: #062330;
+}
+
+.primary:hover {
+  background: var(--ifm-color-primary-dark);
+  border-color: var(--ifm-color-primary-dark);
+  text-decoration: none;
+}
+
+.secondary {
+  background: var(--ifm-background-color);
+  color: var(--ifm-color-emphasis-900);
+  border: 1px solid var(--ifm-color-emphasis-300);
+}
+
+.secondary:hover {
+  border-color: var(--ifm-color-emphasis-400);
+  background: var(--ifm-color-emphasis-100);
+  color: var(--ifm-color-emphasis-900);
+  text-decoration: none;
+}
+
+@media (max-width: 640px) {
+  .band {
+    padding: 2.75rem 1.25rem;
+  }
+
+  .ctas {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

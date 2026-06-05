@@ -9,6 +9,8 @@ sidebar_label: 프로세스 산출물
 `process-designer` agent가 생성하는 4~7개 산출물의 완성 예시입니다.
 자신의 `output/process/` 파일과 비교하여 빠진 항목을 확인하는 용도로 활용하세요.
 
+> 아래 프로세스 문서는 OpenChain KWG 프로세스 가이드의 6대 프로세스(오픈소스 관리, 보안 취약점 관리, 외부 문의 대응, 기여, 사내 공개, 교육과 평가)와 ISO/IEC 5230과 18974를 기준으로 작성됩니다. KWG 가이드는 CC BY 4.0 라이선스입니다.
+
 > **레퍼런스 바로가기:** [오픈소스 프로세스 챕터 가이드](/docs/process)
 
 ---
@@ -418,7 +420,9 @@ CVSS v3.1 기준 심각도 분류:
 | 🟡 Medium   | 4.0 ~ 6.9  | 1개월 이내  | 다음 정기 릴리즈에 포함   | Major         |
 | 🟢 Low      | 0.1 ~ 3.9  | 다음 릴리즈 | 정기 업데이트 시 반영     | Minor         |
 
-> **참고**: 위 기한은 OpenChain KWG 가이드 기준선입니다. 운영 중인 서비스의 리스크 프로파일에 따라 Critical 24시간·High 1주일 같은 더 엄격한 기한을 내부 SLA로 적용할 수 있습니다.
+:::info[참고]
+위 기한은 OpenChain KWG 가이드 기준선입니다. 운영 중인 서비스의 리스크 프로파일에 따라 Critical 24시간·High 1주일 같은 더 엄격한 기한을 내부 SLA로 적용할 수 있습니다.
+:::
 
 ---
 
@@ -716,7 +720,9 @@ graph TD
 
 ## 오픈소스 기여 절차
 
-> **조건부 생성**: `process-designer` agent Q5 "예" 답변 시 생성됩니다.
+:::note[조건부 생성]
+`process-designer` agent Q5 "예" 답변 시 생성됩니다.
+:::
 
 문서: contribution-process.md
 
@@ -774,7 +780,9 @@ graph TD
 
 ## 사내 프로젝트 공개 절차
 
-> **조건부 생성**: `process-designer` agent Q6 "예" 답변 시 생성됩니다.
+:::note[조건부 생성]
+`process-designer` agent Q6 "예" 답변 시 생성됩니다.
+:::
 
 문서: project-publication-process.md
 

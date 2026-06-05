@@ -7,10 +7,13 @@ const sidebars: SidebarsConfig = {
       label: '시작하기',
       collapsed: false,
       items: [
+        'overview/quick-start',
+        'overview/start-path',
         'overview/index',
-        'overview/checklist-mapping',
         'overview/supply-chain',
         'overview/sbom-101',
+        'overview/checklist-mapping',
+        'overview/agents',
       ],
     },
     {
@@ -35,8 +38,9 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: '5. 도구 (약 3시간)',
+      label: '5. 도구: SBOM과 취약점 (약 3시간)',
       collapsed: false,
+      link: {type: 'doc', id: 'tools/index'},
       items: [
         'tools/sbom-generation/index',
         'tools/sbom-generation/docker-cicd',

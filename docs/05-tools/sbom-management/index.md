@@ -268,7 +268,9 @@ cp output/sbom/myapp-v1.0.0-20260320.cdx.json output/sbom/myapp-latest.cdx.json
 
 > 이 단계는 ISO/IEC 18974 4.3.1, 4.3.2 요구사항을 충족합니다.
 
-> 📋 **산출물 예시**: [SBOM 산출물 Best Practice](/reference/samples/sbom)에서 생성된 파일의 실제 형식을 확인할 수 있습니다.
+:::tip[산출물 예시]
+[SBOM 산출물 Best Practice](/reference/samples/sbom)에서 생성된 파일의 실제 형식을 확인할 수 있습니다.
+:::
 
 ---
 

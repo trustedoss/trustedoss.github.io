@@ -24,7 +24,9 @@
 
 ## 2. 배경 지식
 
-> SBOM·CycloneDX·SPDX 등 낯선 약어는 [용어집](/reference/glossary)에서 쉬운 설명을 볼 수 있습니다.
+:::tip
+SBOM·CycloneDX·SPDX 등 낯선 약어는 [용어집](/reference/glossary)에서 쉬운 설명을 볼 수 있습니다.
+:::
 
 ### SBOM이란?
 
@@ -57,7 +59,13 @@ SBOM 생성에는 두 가지 접근 방식이 있습니다. **Dependency 분석*
 
 [SCANOSS](https://www.scanoss.com/)는 패키지 선언 없이 직접 복사·삽입된 오픈소스 코드 조각을 파일 레벨에서 탐지하는 데 강점이 있습니다. syft/cdxgen과 역할이 보완적이므로, 소스 레벨 정밀도가 필요한 경우 병행 사용을 권장합니다.
 
-> FOSSLight, SW360, FOSSology 등 SCA·컴플라이언스 도구의 도입 및 활용 가이드는 [KWG 오픈소스 가이드 — 도구](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/4-tool/)를 참조하세요.
+:::tip 국내 통합 옵션 — SK텔레콤 sbom-tools
+여러 언어와 분석 대상(소스, Docker 이미지, 바이너리, RootFS)을 한 번에 처리해야 한다면 [SK텔레콤 sbom-tools](https://github.com/sktelecom/sbom-tools)가 편리합니다. 내부적으로 cdxgen과 syft 파이프라인에 Trivy 위험 분석을 더해 CycloneDX SBOM과 고지문(NOTICE)을 함께 만들어 주는 Apache-2.0 도구입니다. 이 챕터의 메인 도구는 syft로 두고, 국내 환경에 맞는 통합 래퍼가 필요할 때 대안으로 고려하세요.
+:::
+
+:::tip
+FOSSLight, SW360, FOSSology 등 SCA·컴플라이언스 도구의 도입 및 활용 가이드는 [KWG 오픈소스 가이드 — 도구](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/4-tool/)를 참조하세요.
+:::
 
 실제 Docker 실행 명령어, GitHub Actions CI/CD 설정, 샘플 프로젝트 실습은 [Docker·CI/CD 실행 가이드](./docker-cicd.md) 페이지를 참조합니다.
 

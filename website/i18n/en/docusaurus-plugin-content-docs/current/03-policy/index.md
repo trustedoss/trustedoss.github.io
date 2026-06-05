@@ -86,23 +86,13 @@ How to propagate policy:
 
 ### Understand license classifications
 
-Open source licenses are broadly classified into three categories depending on the strength of the obligations. The application criteria for each classification vary depending on the company's distribution method, so be sure to understand them before creating a policy.
+Open source licenses are classified by the strength of their obligations into Permissive, Weak Copyleft, Strong Copyleft, and Network Copyleft. Even for the same code, whether an obligation arises depends on the company's distribution method (SaaS/App Store/Embedded), so be sure to understand this before writing a policy.
 
-| Category        | Representative License | Features                                         | Precautions for each distribution    |
-| --------------- | ---------------------- | ------------------------------------------------ | ------------------------------------ |
-| Permissive      | MIT, Apache-2.0,BSD    | Few obligations,Free for commercial use          | Safe in almost any deployment method |
-| Weak Copyleft   | LGPL,MPL               | Obligation to disclose only the modified part    | Dynamic linking is mostly safe       |
-| Strong Copyleft | GPL,AGPL               | Possibility of full source disclosure obligation | SaaS is GPL safe,AGPL cautions       |
+:::tip Canonical classification reference
+Representative licenses per category, core obligations, impact by distribution method, and the distribution-channel allow matrix are consolidated in [License classification](/reference/concepts/license-classification). The `policy-generator` agent turns this into an allow list tailored to your distribution method.
+:::
 
-**Impact by distribution method**
-
-Distribution method is a key factor in determining whether licensing obligations arise.
-
-- **SaaS (Server provided)**:Running GPL code on a server does not constitute “distribution” and therefore does not give rise to GPL obligations. step,AGPL-3.0 imposes an obligation to disclose sources even when providing services through a network, so caution is required.
-- **App Store distribution(Mobile/Desktop)**:Since it is distributed to users in binary form, copyleft licensing obligations arise. Inclusion of GPL components may result in full source disclosure obligations.
-- **Embedded(Firmware/Hardware)**:This is the strictest case. Distribution of binaries gives rise to GPL obligations and,GPL compliance is more stringent for software included in hardware because it is difficult to reinstall after modification.
-
-> This step is ISO/IEC 5230 3.1.4(Program scope definition)Meets your requirements.
+> This step satisfies ISO/IEC 5230 3.1.4 (Program scope definition).
 
 ---
 

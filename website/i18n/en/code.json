@@ -342,6 +342,46 @@
     "message": "AI Coding Guide",
     "description": "Homepage hero secondary CTA button"
   },
+  "homepage.hero.badges.label": {
+    "message": "Standards and license compliance",
+    "description": "Homepage hero badges aria label"
+  },
+  "homepage.trustbar.thesis": {
+    "message": "Trust open source — without outsourcing that trust to a vendor.",
+    "description": "TrustBar brand thesis"
+  },
+  "homepage.trustbar.pillar1.title": {
+    "message": "Open Standards",
+    "description": "TrustBar pillar 1 title"
+  },
+  "homepage.trustbar.pillar1.desc": {
+    "message": "OpenChain · ISO/IEC 5230 · 18974",
+    "description": "TrustBar pillar 1 description"
+  },
+  "homepage.trustbar.pillar2.title": {
+    "message": "Open Tools",
+    "description": "TrustBar pillar 2 title"
+  },
+  "homepage.trustbar.pillar2.desc": {
+    "message": "Self-operated, no commercial SCA lock-in",
+    "description": "TrustBar pillar 2 description"
+  },
+  "homepage.trustbar.pillar3.title": {
+    "message": "Free Self-Study",
+    "description": "TrustBar pillar 3 title"
+  },
+  "homepage.trustbar.pillar3.desc": {
+    "message": "CC BY 4.0 · no vendor consulting required",
+    "description": "TrustBar pillar 3 description"
+  },
+  "homepage.cta.eyebrow": {
+    "message": "Three practical guides",
+    "description": "CTA section eyebrow"
+  },
+  "homepage.cta.intro.title": {
+    "message": "From standards to pipeline, all in one place",
+    "description": "CTA section intro title"
+  },
   "homepage.cta.feature1.title": {
     "message": "Build Your System",
     "description": "CTA feature card 1 title"
@@ -389,6 +429,246 @@
   "homepage.cta.section.cta": {
     "message": "Get Started",
     "description": "CTA section button"
+  },
+  "homepage.hero.subtitle.portal": {
+    "message": "Trust open source — without outsourcing that trust to a vendor. Build an ISO/IEC 5230 & 18974 open source management system yourself, with no vendor consulting, all the way to a self-certification declaration — guided step by step, even from zero.",
+    "description": "Homepage hero subtitle (portal-style)"
+  },
+  "homepage.hero.stat1.label": {
+    "message": "ISO/IEC standards for license compliance and security assurance self-certification",
+    "description": "Homepage hero stat 1 label"
+  },
+  "homepage.hero.stat2.value": {
+    "message": "9-step",
+    "description": "Homepage hero stat 2 value"
+  },
+  "homepage.hero.stat2.label": {
+    "message": "Agent chain that generates artifacts from org design to self-certification",
+    "description": "Homepage hero stat 2 label"
+  },
+  "homepage.hero.stat3.label": {
+    "message": "Bilingual guide · CC BY 4.0 · vendor-neutral",
+    "description": "Homepage hero stat 3 label"
+  },
+  "homepage.feature1.audience": {
+    "message": "For governance",
+    "description": "Feature 1 audience label"
+  },
+  "homepage.feature2.audience": {
+    "message": "For dev & security",
+    "description": "Feature 2 audience label"
+  },
+  "homepage.feature3.audience": {
+    "message": "For AI coding",
+    "description": "Feature 3 audience label"
+  },
+  "homepage.feature.more": {
+    "message": "Learn more →",
+    "description": "Feature card link label"
+  },
+  "homepage.features.title": {
+    "message": "One guide, three paths",
+    "description": "Features section title"
+  },
+  "homepage.features.subtitle": {
+    "message": "A standards-based management system, a security pipeline, and AI coding compliance — follow the path that fits your role.",
+    "description": "Features section subtitle"
+  },
+  "homepage.showcase.title": {
+    "message": "Real artifacts the agents produce",
+    "description": "Showcase section title"
+  },
+  "homepage.showcase.subtitle": {
+    "message": "Preview the artifacts auto-generated for your company through these best-practice samples.",
+    "description": "Showcase section subtitle"
+  },
+  "homepage.showcase.policy.caption": {
+    "message": "Policy & org — license approval tiers and the RACI responsibility matrix",
+    "description": "Showcase policy caption"
+  },
+  "homepage.showcase.sbom.caption": {
+    "message": "SBOM & vulnerabilities — CycloneDX analysis and triage reports",
+    "description": "Showcase sbom caption"
+  },
+  "homepage.showcase.conformance.caption": {
+    "message": "Self-certification — conformance checklist and declaration draft",
+    "description": "Showcase conformance caption"
+  },
+  "homepage.whykwg.title": {
+    "message": "Why TrustedOSS, together with KWG",
+    "description": "WhyKwg section title"
+  },
+  "homepage.whykwg.subtitle": {
+    "message": "Not competition, but completion. KWG points the way with standards and blank templates; TrustedOSS turns that into executable artifacts with AI and automation.",
+    "description": "WhyKwg section subtitle"
+  },
+  "homepage.whykwg.kwg.badge": {
+    "message": "What & why",
+    "description": "WhyKwg KWG badge"
+  },
+  "homepage.whykwg.kwg.title": {
+    "message": "OpenChain KWG",
+    "description": "WhyKwg KWG card title"
+  },
+  "homepage.whykwg.kwg.desc": {
+    "message": "Tells you what the standard requires and why. Provides the international standards, an enterprise OSS management guide, and blank templates.",
+    "description": "WhyKwg KWG card description"
+  },
+  "homepage.whykwg.kwg.point1": {
+    "message": "ISO/IEC 5230 and 18974 standard guides",
+    "description": "WhyKwg KWG point 1"
+  },
+  "homepage.whykwg.kwg.point2": {
+    "message": "Blank policy and process templates",
+    "description": "WhyKwg KWG point 2"
+  },
+  "homepage.whykwg.kwg.point3": {
+    "message": "Tool guides and links",
+    "description": "WhyKwg KWG point 3"
+  },
+  "homepage.whykwg.toss.badge": {
+    "message": "How, automatically",
+    "description": "WhyKwg TrustedOSS badge"
+  },
+  "homepage.whykwg.toss.title": {
+    "message": "TrustedOSS",
+    "description": "WhyKwg TrustedOSS card title"
+  },
+  "homepage.whykwg.toss.desc": {
+    "message": "Helps you actually achieve the standard with AI and automation, on a single path from zero to self-certification.",
+    "description": "WhyKwg TrustedOSS card description"
+  },
+  "homepage.whykwg.toss.point1": {
+    "message": "AI agents auto-generate company-tailored artifacts",
+    "description": "WhyKwg TrustedOSS point 1"
+  },
+  "homepage.whykwg.toss.point2": {
+    "message": "Copy-paste CI workflows and Rules, no-API-key demos",
+    "description": "WhyKwg TrustedOSS point 2"
+  },
+  "homepage.whykwg.toss.point3": {
+    "message": "Extends to DevSecOps and AI coding governance",
+    "description": "WhyKwg TrustedOSS point 3"
+  },
+  "homepage.whykwg.note": {
+    "message": "TrustedOSS synchronizes KWG content and attributes it under CC BY 4.0.",
+    "description": "WhyKwg footer note"
+  },
+  "homepage.whykwg.note.link": {
+    "message": "View the OpenChain KWG guide",
+    "description": "WhyKwg footer note link"
+  },
+  "homepage.hero.eyebrow": {
+    "message": "Free self-study guide by OpenChain KWG",
+    "description": "Hero eyebrow"
+  },
+  "homepage.hero.title": {
+    "message": "Build open source trust, yourself",
+    "description": "Hero title"
+  },
+  "homepage.hero.title.line1": {
+    "message": "Open source trust,",
+    "description": "Hero title line 1"
+  },
+  "homepage.hero.title.line2": {
+    "message": "built by you.",
+    "description": "Hero title line 2"
+  },
+  "homepage.finalcta.title": {
+    "message": "Start with step one, today",
+    "description": "Final CTA title"
+  },
+  "homepage.finalcta.subtitle": {
+    "message": "A free OpenChain KWG guide, all the way to self-certification. No install, no cost, no vendor lock-in.",
+    "description": "Final CTA subtitle"
+  },
+  "homepage.finalcta.cta": {
+    "message": "Start the guide",
+    "description": "Final CTA primary"
+  },
+  "homepage.finalcta.cta2": {
+    "message": "See artifact samples",
+    "description": "Final CTA secondary"
+  },
+  "homepage.hero.subtitle.content": {
+    "message": "Build an ISO/IEC 5230 & 18974 open source management system step by step, with no vendor consulting — all the way to a self-certification declaration. No prior experience needed.",
+    "description": "Hero subtitle"
+  },
+  "homepage.hero.cta.start": {
+    "message": "Start the guide",
+    "description": "Hero primary CTA"
+  },
+  "homepage.roadmap.title": {
+    "message": "From zero to self-certification, step by step",
+    "description": "Roadmap section title"
+  },
+  "homepage.roadmap.subtitle": {
+    "message": "Just follow the order. An agent at each step generates company-specific artifacts for you.",
+    "description": "Roadmap section subtitle"
+  },
+  "homepage.roadmap.s0.title": {
+    "message": "Get started",
+    "description": "Roadmap step 0 title"
+  },
+  "homepage.roadmap.s0.desc": {
+    "message": "Grasp the big picture of supply chain security and the two standards.",
+    "description": "Roadmap step 0 desc"
+  },
+  "homepage.roadmap.s1.title": {
+    "message": "Set up",
+    "description": "Roadmap step 1 title"
+  },
+  "homepage.roadmap.s1.desc": {
+    "message": "Prepare the foundation for self-study and artifact generation.",
+    "description": "Roadmap step 1 desc"
+  },
+  "homepage.roadmap.s2.title": {
+    "message": "Organization",
+    "description": "Roadmap step 2 title"
+  },
+  "homepage.roadmap.s2.desc": {
+    "message": "Define governance owners with a responsibility (RACI) model.",
+    "description": "Roadmap step 2 desc"
+  },
+  "homepage.roadmap.s3.title": {
+    "message": "OSS policy",
+    "description": "Roadmap step 3 title"
+  },
+  "homepage.roadmap.s3.desc": {
+    "message": "Establish license approval tiers and policy documents.",
+    "description": "Roadmap step 3 desc"
+  },
+  "homepage.roadmap.s4.title": {
+    "message": "Process",
+    "description": "Roadmap step 4 title"
+  },
+  "homepage.roadmap.s4.desc": {
+    "message": "Design operating procedures: review, approval, disclosure.",
+    "description": "Roadmap step 4 desc"
+  },
+  "homepage.roadmap.s5.title": {
+    "message": "SBOM & vulnerabilities",
+    "description": "Roadmap step 5 title"
+  },
+  "homepage.roadmap.s5.desc": {
+    "message": "Generate and analyze SBOMs and manage vulnerabilities with tools.",
+    "description": "Roadmap step 5 desc"
+  },
+  "homepage.roadmap.s6.title": {
+    "message": "Training",
+    "description": "Roadmap step 6 title"
+  },
+  "homepage.roadmap.s6.desc": {
+    "message": "Build the capability to keep the system running over time.",
+    "description": "Roadmap step 6 desc"
+  },
+  "homepage.roadmap.s7.title": {
+    "message": "Self-certification",
+    "description": "Roadmap step 7 title"
+  },
+  "homepage.roadmap.s7.desc": {
+    "message": "Check conformance and complete a self-certification declaration.",
+    "description": "Roadmap step 7 desc"
   },
   "homepage.meta.title": {
     "message": "Trusted OSS · Trusted Open Source Supply Chain Management",

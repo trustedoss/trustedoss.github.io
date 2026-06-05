@@ -49,9 +49,9 @@ sidebar_position: 4
 | log4j-core          | 2.14.1 | org.apache.logging.log4j | Apache-2.0 | Permissive | Maven Central (보완) |
 | vulnerable-java-app | 1.0.0  | com.example              | Unknown    | Unknown    | SBOM 미기재          |
 
-> **참고:** SBOM 생성 시 라이선스 정보가 포함되지 않았습니다.
-> syft 재실행 시 `--source-name`, Maven Central 메타데이터 활성화 여부를 확인하거나
-> `cdxgen` 도구를 병행 사용하여 라이선스 필드를 보완하는 것을 권장합니다.
+:::info[참고]
+SBOM 생성 시 라이선스 정보가 포함되지 않았습니다. syft 재실행 시 `--source-name`, Maven Central 메타데이터 활성화 여부를 확인하거나 `cdxgen` 도구를 병행 사용하여 라이선스 필드를 보완하는 것을 권장합니다.
+:::
 
 ### 3. 라이선스 분류 요약
 
