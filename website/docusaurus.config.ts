@@ -309,6 +309,10 @@ const config: Config = {
               label: 'GitHub',
               href: 'https://github.com/trustedoss',
             },
+            {
+              label: '기여 가이드',
+              href: 'https://github.com/trustedoss/trustedoss.github.io/blob/main/CONTRIBUTING.md',
+            },
           ],
         },
         {

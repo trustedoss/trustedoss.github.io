@@ -13,6 +13,7 @@ import Mermaid from '@theme/Mermaid';
 
 import JourneyProgress from '@site/src/components/JourneyProgress';
 import Prerequisite from '@site/src/components/Prerequisite';
+import Term from '@site/src/components/Term';
 
 import type {MDXComponentsObject} from '@theme/MDXComponents';
 
@@ -20,6 +21,7 @@ const MDXComponents: MDXComponentsObject = {
   Head,
   JourneyProgress,
   Prerequisite,
+  Term,
   details: MDXDetails, // For MD mode support, see https://github.com/facebook/docusaurus/issues/9092#issuecomment-1602902274
   Details: MDXDetails,
   code: MDXCode,
