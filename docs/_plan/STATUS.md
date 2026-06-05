@@ -33,21 +33,21 @@ task 고유 수용 기준 + `cd website && npm run build`(ko/en) + `verify.sh` 1
 
 마일스톤: **P0-0(#13, #14), P0(#15, #16, #17), P1(#18), 마무리(#19) 전부 완료.** 계획의 P0부터 마무리까지 범위 종료. 남은 것은 아래 "후속(미완)"의 선택 항목뿐.
 
-## 후속(미완) 항목
+## 후속(미완) 항목 — 전부 처리 완료
 
-- 정책 부록 A/B·추적성 헤더 다운스트림 반영은 **#18에서 완료**(output-sample/policy, reference/samples/policy). 남은 것: 프로세스 소스 템플릿(templates/process/\*)에 가시적 추적성 헤더 note 표면화(현재 HTML 주석만). reference/samples/process는 §10 등 구버전 drift도 함께 있어 sync 워크플로로 일괄 재생성 권장.
+- 프로세스 템플릿 추적성 헤더: **완료**(`4f4cbb4`). templates/process/\* 6개 + output-sample/process 5개 + reference/samples/process에 KWG 6대 프로세스 정렬 헤더 표면화.
+- 정책 샘플 §10 drift: **완료**(`4f4cbb4`). reference/samples/policy에 §10(정책 변경 요청·운영) 보강.
+- en 패리티: **완료**(`7ed96f7`). 정본 2페이지 EN 번역, 본문 4개 단일출처 동기화, 온보딩 4페이지 번역. en i18n quirk(4건)는 미번역 폴백이 원인이었고 번역 추가로 해소 — 이제 **ko/en 모두 broken link 0**.
+- ko-style 잔재: **완료**(`9739f49`). 가운뎃점 나열 S2 7건 정리(checklist-mapping, devsecops/intro, POSITIONING §1~3). 07-conformance §감사이력의 부분충족 표시 기호(다이아몬드 이모지)는 gap-analysis 산출물의 상태 범례(충족/부분충족/미충족)와 일치하는 의미 기호라 보존. S3 화살표 장식 25건은 권고 수준이라 보류.
 - `00-overview/index.md` 본문 축약 보류 — 온보딩 진입은 quick-start + 랜딩 CTA + 에이전트 허브로 달성.
-- **en 로케일 i18n quirk(기존)**: en 브로큰링크 체커가 상대 `.md` 링크를 slug 무시하고 경로로 해석해 false-positive 경고(현재 4건). 런타임 정상, KO 0 broken, verify 12/12. en 정합은 별도 과제.
-- 기존 ko-style 잔재(07-conformance, checklist-mapping, devsecops/intro의 이모지와 가운뎃점)는 내가 건드린 라인이 아니라서 보류한다. 필요하면 별도로 정리한다.
 
-## 다음 작업 (계획 본범위 종료 — 선택 후속만 남음)
+## 다음 작업 (계획 전 범위 + 후속 종료)
 
-계획의 P0-0부터 마무리(#19)까지 전부 완료. 아래는 모두 "후속(미완)"의 선택 항목이며 본범위 외다.
+계획의 P0-0부터 마무리(#19)까지, 그리고 위 후속 4건까지 전부 완료. 추가 지시 없으면 작업 없음. 잔여 후보(선택): S3 화살표(→) 산문 정리, en 본문의 산발적 미번역 코드주석.
 
-1. **en 패리티**: 정본 2페이지(reference/concepts/\*) EN 번역 미생성(현재 ko 폴백, 빌드 통과). en 본문 단일 출처화 동기화. en i18n quirk(4건 false-positive)도 별도 과제.
-2. **프로세스 템플릿 추적성 헤더**: templates/process/\* 에 가시적 헤더 note 표면화(현재 HTML 주석만).
-3. **reference/samples/process drift**: §10 누락 등 구버전 → sync 워크플로 일괄 재생성.
-4. 기존 ko-style 잔재(POSITIONING §1~6, 07-conformance 등) 정리.
+### 후속에서 완료한 것 (참고)
+
+- #10 프로세스 템플릿 추적성 헤더, #11 정책 샘플 §10, #12 en 패리티(quirk 해소 포함), #13 ko-style 가운뎃점 정리.
 
 ### #19에서 완료한 것 (참고)
 
