@@ -31,7 +31,15 @@ task 고유 수용 기준 + `cd website && npm run build`(ko/en) + `verify.sh` 1
 | 18  | P1: 단일 출처, 검색, 매핑 정본                   | 완료 |
 | 19  | 도구(onot/sbom-tools) + POSITIONING 차별화       | 완료 |
 
-마일스톤: **P0-0(#13, #14), P0(#15, #16, #17), P1(#18), 마무리(#19) 전부 완료.** 계획의 P0부터 마무리까지 범위 종료. 남은 것은 아래 "후속(미완)"의 선택 항목뿐.
+마일스톤: **P0-0(#13, #14), P0(#15, #16, #17), P1(#18), 마무리(#19), P2 완성도(#9·#10·#11) + 브랜드 수렴 전부 완료.**
+
+## P2 완성도 + 브랜드 (브랜치 feat/p2-completeness)
+
+- DevSecOps/AI코딩 사이드바 대칭화(P2 #11, `6c25e52`): 양쪽 4카테고리 정합 + AI코딩 orphan 3페이지 편입.
+- 진행 가시화(P2 #10, `003c521`): JourneyProgress(7단계 진행률, localStorage) + Prerequisite(전제조건 배지). MDXComponents 전역 등록.
+- 레퍼런스 정합(P2 #9, `0c46ca0`): Best Practice 표 보완, "준비 중" 8곳 실제 링크화, 에이전트 가이드 링크, 용어집 보강.
+- 브랜드 토큰(`56cc53a`): 수렴은 이미 코드에 적용돼 있었음(주색 Material/Google 블루 #1a73e8, 폰트 Roboto). POSITIONING §6 기록만 실제와 일치시킴. 색 변경 없음. 포털 측 수렴은 별도 과제.
+- 검증: verify.sh 12/12, ko/en 빌드 0 broken.
 
 ## 후속(미완) 항목 — 전부 처리 완료
 
