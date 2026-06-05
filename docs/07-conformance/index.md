@@ -193,3 +193,10 @@ ISO/IEC 5230과 ISO/IEC 18974는 많은 요구사항을 공유합니다. 동시 
   https://openchain-project.github.io/OpenChain-KWG
 - **사내 오픈소스 기여 정책 수립**: 소비에서 기여로 — 오픈소스 커뮤니티에 기여하는 정책을 수립합니다.
 - **OSPO(Open Source Program Office) 설립 검토**: 오픈소스 관리를 전담하는 조직을 공식화하여 장기적인 역량을 강화합니다.
+
+### 다음: 자동화로 확장
+
+인증으로 무엇을 할지가 정해졌다면, 다음은 그것을 개발 일상에 자동으로 강제하는 단계입니다.
+
+- [AI 코딩 도구와 오픈소스 컴플라이언스](/ai-coding/intro): Cursor, Copilot, Claude Code 같은 AI 코딩 도구가 우리 정책을 지키도록 Rules로 통제합니다.
+- [DevSecOps](/devsecops/intro): SBOM 생성과 취약점 스캔을 CI 파이프라인 게이트로 만들어 정책 위반을 자동으로 차단합니다.

@@ -1,7 +1,7 @@
 ---
 id: checklist-mapping
 title: 요구사항 체크리스트 통합 매핑
-sidebar_label: 체크리스트 매핑
+sidebar_label: 표준 요구사항 한눈에
 sidebar_position: 2
 작성일: 2026-03-20
 버전: 1.0

@@ -466,5 +466,7 @@ ISO/IEC 18974 연계 → [매핑 정본]
 - **P0-0 마일스톤 완료**(#13+#14).
 - 완료: #15 온보딩 — `docs/00-overview/quick-start.md`, `start-path.md` 신설, 사이드바 등록, 랜딩 1차 CTA "처음이세요? 5분 시작". KO build 0 broken, verify 12/12, 캡처 확인. 정적 데모는 `pathname://` 링크. (후속: index 본문 축약, en i18n quirk는 STATUS 참조.)
 - 완료: #16 AI 에이전트 허브 `docs/00-overview/agents.md` — 에이전트↔챕터↔산출물 매핑표 + 상황별 추천 + 공통 실행. 사이드바 등록, KO 0 broken, verify 12/12, 캡처 확인.
-- 다음: #17 05-tools 통합 인덱스 + 세 기둥 cross-link.
+- 완료: #17 — `docs/05-tools/index.md` 신설(카테고리 link 연결, 라벨 "5. 도구: SBOM과 취약점"), 07-conformance에 "자동화로 확장" 분기, devsecops→AI코딩 상호 링크(AI코딩→devsecops는 기존), checklist-mapping 라벨 "표준 요구사항 한눈에". KO 0 broken, verify 12/12, 캡처 확인.
+- **P0 마일스톤 완료**(#15·#16·#17).
+- 다음: #18 P1(단일 출처, Diátaxis, 검색, 매핑 정본).
 - 작업 브랜치: `feat/ia-kwg-revamp`.

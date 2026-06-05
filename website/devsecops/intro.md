@@ -60,3 +60,8 @@ AI 코딩 가이드의 Quick CI/CD는 개발자가 30분 안에 기본 게이트
   → [ISO 표준 연계](./iso-mapping)부터
   (단, SCA 페이지를 먼저 읽을 것을 권장)
   :::
+
+## 함께 보기
+
+- 표준 기반 관리 체계를 처음부터 세우려면 [오픈소스 관리 가이드](/docs)를 보세요.
+- AI 코딩 도구(Cursor, Copilot, Claude Code 등)에 정책을 적용하려면 [AI 코딩 거버넌스](/ai-coding/intro)를 보세요.
