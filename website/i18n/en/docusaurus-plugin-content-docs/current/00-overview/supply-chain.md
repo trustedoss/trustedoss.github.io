@@ -9,29 +9,21 @@ sidebar_position: 3
 sidebar_label: supply chain security
 ---
 
-# Software Supply Chain Security:Why It Matters Now
+# Software Supply Chain Security: Why It Matters Now
 
-## 1. What we do in this chapter
+## 1. What this chapter covers
 
-This chapter is a background knowledge chapter to be read only without practice.
-Understand the reality of software supply chain security through actual accident cases and,
-SBOM(Software Bill of Materials)Why this has become an essential tool,
-And we understand the flow of international regulations that require it.
+This is a background chapter — read it, no hands-on work required. Through real-world incidents, you will see what software supply chain security looks like in practice, why an SBOM (Software Bill of Materials) has become an essential tool, and how international regulations now require it.
 
-After reading this chapter, you will get a clear answer to the question “Why do you need this kit?”
-Everything you do in later chapters — policy making,process design,Create SBOM,vulnerability analysis —
-The purpose becomes clearer in the context of this chapter.
+After reading this chapter, you will have a clear answer to the question "Why do I need this kit?" Everything you do in later chapters — writing policy, designing processes, creating an SBOM, analyzing vulnerabilities — makes more sense in the context laid out here.
 
 ---
 
 ## 2. What is the software supply chain?
 
-### How open source enters the product
+### How open source enters a product
 
-Software is not created alone.
-Developer npm, PyPI,Use open source libraries from package repositories such as Maven,
-That library depends on another library.
-This entire chain structure is the **Software Supply Chain**.
+Software is never built in isolation. Developers pull open source libraries from package registries such as npm, PyPI, and Maven, and each of those libraries depends on still other libraries. This entire chain is the **software supply chain**.
 
 ```mermaid
 flowchart LR
@@ -44,167 +36,147 @@ flowchart LR
     style E fill:#e3f2fd
 ```
 
-Modern software consists of **70-90% open source components**.
-This means that there is a lot more code coming from outside than our own code.
-This is an advantage that speeds up development, but,At the same time, it is also a conduit through which external threats flow internally.
+Modern software is **70-90% open source components**. In other words, far more code comes from outside than your team writes itself. This speeds up development, but it is also a conduit through which external threats can flow inward.
 
-Supply chain security refers to the risks — vulnerabilities — that can arise throughout this path.,malware,License violation —
-refers to a system that identifies and manages
+Supply chain security is the discipline of identifying and managing the risks that can arise anywhere along this path — vulnerabilities, malware, and license violations.
 
 ---
 
-## 3. Three real-life supply chain attack cases
+## 3. Three real-world supply chain attacks
 
-The following three examples show that supply chain security is not an abstract concept.
+The following three cases show that supply chain security is anything but an abstract concept.
 
 #### SolarWinds (2020)
 
-**Incident Overview**
-The attacker installed malware into SolarWinds' internal build pipeline.(Sunburst)inserted.
-Normal software update package(Orion Platform)Because it was distributed and included in,
-Detection was extremely difficult with existing security tools.
+**What happened**
+Attackers inserted malware (Sunburst) into SolarWinds' internal build pipeline. Because it was bundled into a legitimate software update (the Orion Platform) and distributed that way, existing security tools had an extremely hard time detecting it.
 
-**Scope of Influence**
-us treasury,18 worldwide, including federal agencies such as the Department of State,More than 000 organizations
-A malicious update was installed. Access to the internal network was allowed undetected for months.
+**Scope of impact**
+More than 18,000 organizations worldwide — including federal agencies such as the U.S. Treasury and the Department of State — installed the malicious update. Attackers had undetected access to internal networks for months.
 
-**lesson**
-The build pipeline that creates the software itself can be a target of attack.
-Where all the components included in the product come from,A system is needed to verify that the build process is safe.
+**Lesson**
+The build pipeline that produces the software can itself be a target. You need a system that verifies where every component in the product comes from and that the build process is safe.
 
 ---
 
 #### Log4Shell (2021, CVE-2021-44228)
 
-**Incident Overview**
-In Apache Log4j 2, a logging library almost universally used in Java applications.
-JNDI(Java Naming and Directory Interface)An injection vulnerability was discovered.
-An attacker can execute remote code with a single specially crafted string.(RCE)This was possible.
+**What happened**
+An injection vulnerability was found in Apache Log4j 2, a logging library used almost universally across Java applications. It abused JNDI (Java Naming and Directory Interface), letting an attacker achieve remote code execution (RCE) with a single specially crafted string.
 
-**Scope of Influence**
-Hundreds of millions of systems worldwide were affected., Apple, Amazon, Tesla,Twitter, etc.
-Virtually all large technology companies' services were covered.
-Millions of exploit attempts were detected within 72 hours of discovery.
+**Scope of impact**
+Hundreds of millions of systems worldwide were affected, covering the services of virtually every major technology company — Apple, Amazon, Tesla, Twitter, and more. Millions of exploit attempts were detected within 72 hours of disclosure.
 
-**lesson**
-Even patching is impossible if you don’t know where and which open source is being used.
-If we had SBOM, we would have been able to immediately identify and respond to all systems using Log4j.
+**Lesson**
+You cannot even patch what you cannot find. With an SBOM, every system using Log4j could have been identified and remediated immediately.
 
 ---
 
 #### XZ Utils (2024, CVE-2024-3094)
 
-**Incident Overview**
-For two years, an attacker using the pseudonym "Jia Tan" contributed to the XZ Utils open source project as a seemingly reliable contributor. After building trust through regular contributions over a long period, they committed malicious code that inserted a backdoor into sshd (the SSH daemon). Full-scale spread was prevented when a developer noticed anomalies just before distribution.
+**What happened**
+Over two years, an attacker using the pseudonym "Jia Tan" contributed to the XZ Utils open source project, posing as a trustworthy maintainer. After building credibility through steady contributions, they committed malicious code that planted a backdoor in sshd (the SSH daemon). A widespread compromise was averted only because a developer noticed anomalies just before the release shipped.
 
-**Scope of Influence**
-Fedora, Debian,Many major Linux distributions, including Ubuntu, already included vulnerable versions.
-If discovery had been delayed by just a few days, backdoors would have been planted on millions of servers.
+**Scope of impact**
+Major Linux distributions including Fedora, Debian, and Ubuntu had already pulled in the vulnerable versions. Had discovery been delayed by even a few days, backdoors would have landed on millions of servers.
 
-**lesson**
-The identity and long-term behavioral patterns of open source project contributors should be monitored.
-Management status of dependent open source projects(governance,Maintainer activities)It is also part of supply chain security.
+**Lesson**
+The identity and long-term behavior of open source contributors deserve scrutiny. The health of the open source projects you depend on — their governance and maintainer activity — is also part of supply chain security.
 
 ---
 
 ## 4. International regulatory trends
 
-Supply chain security is now moving beyond voluntary best practice and becoming a legal requirement.
+Supply chain security is moving beyond voluntary best practice and becoming a legal requirement.
 
-#### U.S. Executive Order EO 14028(2021)
+#### U.S. Executive Order EO 14028 (2021)
 
-**background**
-SolarWinds,In response to a series of large-scale supply chain attacks such as Microsoft Exchange,
-This is an executive order strengthening cybersecurity signed by the Biden administration in May 2021.
+**Background**
+In response to a series of large-scale supply chain attacks such as SolarWinds and Microsoft Exchange, the Biden administration signed this cybersecurity executive order in May 2021.
 
-**Key Requirements**
+**Key requirements**
 
-- Mandatory submission of **SBOM for software delivered to the federal government**
-- NTIA(U.S. Communications and Information Administration)Complies with the **SBOM minimum elements** criteria defined by
-- Software Development Security Practices(Secure Software Development Practices)Compliance confirmation
+- Mandatory submission of an **SBOM for software delivered to the federal government**
+- Conformance with the **SBOM minimum elements** defined by the NTIA (National Telecommunications and Information Administration)
+- Confirmation of compliance with secure software development practices
 
-**Impact on Korean companies**
-Companies that supply directly to the U.S. federal government are immediately affected. Because the same requirements increasingly flow down the indirect supply chain (through subcontracting by the supplying company), most companies operating in the U.S. market should assume they will be affected too.
-
----
-
-#### EU Cyber Resilience Act - CRA (2024)
-
-**background**
-To strengthen the cybersecurity of digital products launched in the EU Digital Single Market
-This is an EU-wide regulation adopted in 2024.
-
-**Key Requirements**
-
-- Digital products launching on the EU market(Software included)Apply security requirements to
-- Mandatory management of open source component list and response to vulnerabilities
-- Scheduled to be fully implemented in 2027
-
-**sanctions**
-Up to **1 in case of default,EUR 5 million** or **2.5% of annual global sales**, whichever is greater.
-
-**Impact on Korean companies**
-This applies to **any business** that sells software products or services in the EU.
-cloud service,mobile app,All products with digital elements, such as IoT devices, are eligible.
+**Impact on companies**
+Companies that supply the U.S. federal government directly are affected immediately. Because the same requirements increasingly flow down the indirect supply chain (through subcontracting by the supplier), most companies operating in the U.S. market should assume they will be affected too.
 
 ---
 
-#### domestic trends
+#### EU Cyber Resilience Act — CRA (2024)
 
-Discussions on mandatory supply chain security are also progressing rapidly in Korea.
+**Background**
+An EU-wide regulation adopted in 2024 to strengthen the cybersecurity of digital products placed on the EU Digital Single Market.
 
-- **Ministry of Science and Technology/KISA Software Supply Chain Security Guidelines(2023)**:Korea’s first official guideline recommending the introduction of SBOM
-- **Review of public SW project SBOM introduction**:We are considering a plan to require submission of SBOM for software projects ordered by public institutions.
-- **Discussion on mandatory domestic SBOM**:It is highly likely that similar domestic regulations will be introduced after the implementation of EU CRA.
+**Key requirements**
+
+- Apply security requirements to digital products placed on the EU market (software included)
+- Mandatory management of the open source component list and remediation of vulnerabilities
+- Full enforcement scheduled for 2027
+
+**Penalties**
+For non-compliance, up to **EUR 15 million** or **2.5% of annual global turnover**, whichever is greater.
+
+**Impact on companies**
+This applies to **any business** that sells software products or services in the EU. All products with digital elements — cloud services, mobile apps, IoT devices — are in scope.
+
+---
+
+#### Trends in Korea
+
+Discussions on mandating supply chain security are advancing quickly in Korea as well.
+
+- **MSIT/KISA Software Supply Chain Security Guidelines (2023)**: Korea's first official guideline recommending the adoption of SBOM.
+- **Review of SBOM for public-sector software projects**: Authorities are considering requiring an SBOM for software procured by public institutions.
+- **Discussion of a domestic SBOM mandate**: Similar domestic regulation is likely to follow once the EU CRA takes effect.
 
 ---
 
 ## 5. How both standards contribute to supply chain security
 
-ISO/IEC 5230 and ISO/IEC 18974 each address two key risks in supply chain security.
+ISO/IEC 5230 and ISO/IEC 18974 each address one of the two key risks in supply chain security.
 
-- **ISO/IEC 5230**:Eliminate the risk of license violations by ensuring transparency in the use of open source
-- **ISO/IEC 18974**:Eliminate security risks by identifying and responding to known vulnerabilities
+- **ISO/IEC 5230**: removes the risk of license violations by ensuring transparency in open source use.
+- **ISO/IEC 18974**: removes security risk by identifying and responding to known vulnerabilities.
 
-Compliance with both standards together covers both the **licensing** and **security** sides of supply chain security.
+Conforming to both standards together covers both the **licensing** and the **security** side of supply chain security.
 
 | Risk type              | Responsible Standard | Main tools          |
 | ---------------------- | -------------------- | ------------------- |
 | License violation      | ISO/IEC 5230         | SBOM + License Scan |
 | Security vulnerability | ISO/IEC 18974        | SBOM + CVE scan     |
 
-The common core tool for both standards is **SBOM**.
-You must have SBOM to scan the license.,You can also search for CVEs.
-As we saw in the Log4Shell example:,Without SBOM you wouldn't even know where something is.
+The core tool shared by both standards is the **SBOM**. You need an SBOM to scan licenses, and you need it to look up CVEs. As the Log4Shell case showed, without an SBOM you cannot even tell where a component is being used.
 
 ---
 
 ## 6. Self-study path
 
-:::info Self-study mode(About 1 hour)
-You can just read this chapter. Focus on understanding the concepts.
+:::info Self-study mode (about 1 hour)
+You can simply read this chapter. Focus on understanding the concepts.
 :::
 
-1. Read this article — Get the full context of supply chain security
-2. 3 key lessons from accident cases summarized in your own words
-3. Check which items apply to your company among international regulations
-4. Read `sbom-101.md` → SBOM Detailed understanding of technical concepts
+1. Read this page — get the full context of supply chain security
+2. Summarize, in your own words, the three key lessons from the incidents
+3. Identify which international regulations apply to your company
+4. Read `sbom-101.md` for a detailed understanding of SBOM technical concepts
 
 ---
 
-## 7. Completion Confirmation Checklist
+## 7. Completion checklist
 
-- [ ] 3 supply chain security incidents(SolarWinds, Log4Shell, XZ Utils)can explain
-- [ ] I understand why SBOM is needed
-- [ ] We identified the impact of EO 14028 / EU CRA on our company
-- [ ] Understand the role both standards play in supply chain security
+- [ ] I can explain the three supply chain security incidents (SolarWinds, Log4Shell, XZ Utils)
+- [ ] I understand why an SBOM is needed
+- [ ] I have identified how EO 14028 and the EU CRA affect my company
+- [ ] I understand the role each standard plays in supply chain security
 
 ---
 
 ## 8. Next steps
 
-- **SBOM Learn technical concepts**:Go to `sbom-101.md` and then CycloneDX,Learn SPDX format and SBOM minimum elements
-- **Go straight to environment preparation**:Go to `docs/01-setup/` and start installing the toolchain.
+- **Learn the SBOM technical concepts**: go to `sbom-101.md` to learn the CycloneDX and SPDX formats and the SBOM minimum elements.
+- **Go straight to environment preparation**: go to `docs/01-setup/` and start installing the toolchain.
 
-If you have a sufficient understanding of the concept, you can start practicing from `docs/01-setup/`.
-You can come back to this chapter and refer to it at any time.
+Once you understand the concepts well enough, you can begin the hands-on work in `docs/01-setup/`. You can return to this chapter for reference at any time.

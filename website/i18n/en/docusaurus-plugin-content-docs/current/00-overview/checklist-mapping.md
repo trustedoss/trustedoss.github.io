@@ -15,18 +15,16 @@ self_study_time: 1 hour
 
 ## Purpose of this document
 
-This document complies with **ISO/IEC 5230** (license compliance) and **ISO/IEC 18974** (security assurance).
-It is a compass for the entire project that integrates self-certification checklist items from both standards into one mapping table.
+This document brings the self-certification checklist items of **ISO/IEC 5230** (license compliance) and **ISO/IEC 18974** (security assurance) together into a single mapping table. It serves as a compass for the whole project.
 
-Every agent's CLAUDE.md refers to this document and produces output that meets certain standard requirements.
-Find out which module creates it.
+Every agent's CLAUDE.md refers to this document to produce output that meets specific standard requirements, so you can see at a glance which module produces what.
 
 ### How to read this document
 
-1. **Comparison table of two standards** → First understand the purpose and scope of each standard
-2. **Integrated mapping** → Check the proving materials, output, and agent in charge in the item block for each G1~G4 group.
-3. **Tag** → Quickly understand the nature of each item with `[Common]` `[5230]` `[18974]` `[Supply Chain]` `[Regulation]`
-4. **Summary statistics** → Check the overall status in numbers at the bottom of the document
+1. **Comparison of the two standards** → first understand the purpose and scope of each standard
+2. **Integrated mapping** → for each G1-G4 group, check the evidence, output files, and responsible agent in each item block
+3. **Tags** → quickly grasp the nature of each item from `[Common]` `[5230]` `[18974]` `[Supply Chain]` `[Regulation]`
+4. **Summary statistics** → see the overall status in numbers at the bottom of the document
 
 ---
 
@@ -49,15 +47,15 @@ Find out which module creates it.
 
 ---
 
-## Remarks Column notation rules
+## Tag notation rules
 
-| Tags             | meaning                                                              |
-| ---------------- | -------------------------------------------------------------------- |
-| `[Common]`       | Required by both standards                                           |
-| `[5230]`         | ISO/IEC 5230 only                                                    |
-| `[18974]`        | ISO/IEC 18974 only (security specialized)                            |
-| `[Supply Chain]` | Software supply chain security related                               |
-| `[Regulation]`   | International regulatory linkage items (EO 14028, EU CRA, NTIA SBOM) |
+| Tag              | Meaning                                                                 |
+| ---------------- | ----------------------------------------------------------------------- |
+| `[Common]`       | Required by both standards                                              |
+| `[5230]`         | ISO/IEC 5230 only                                                       |
+| `[18974]`        | ISO/IEC 18974 only (security-specific)                                  |
+| `[Supply Chain]` | Related to software supply chain security                               |
+| `[Regulation]`   | Items linked to international regulations (EO 14028, EU CRA, NTIA SBOM) |
 
 ---
 
@@ -71,7 +69,7 @@ Find out which module creates it.
 
 > ISO/IEC 5230 §3.1.1 · ISO/IEC 18974 §4.1.1
 
-Systematic compliance cannot be established without policy; The basis for all activities
+Without a policy you cannot establish systematic compliance; it is the basis for every activity.
 
 | Proof ID                       | Content                        | output file                     |
 | ------------------------------ | ------------------------------ | ------------------------------- |
@@ -86,7 +84,7 @@ Systematic compliance cannot be established without policy; The basis for all ac
 
 > ISO/IEC 18974 §4.1.1
 
-18974 further requires a regular review process to ensure policies and methods of communication are always up to date.
+18974 additionally requires a regular review process to keep the policy and its communication channels current.
 
 | Proof ID       | Content                                                         | output file                          |
 | -------------- | --------------------------------------------------------------- | ------------------------------------ |
@@ -101,7 +99,7 @@ Systematic compliance cannot be established without policy; The basis for all ac
 
 > ISO/IEC 5230 §3.1.2 · ISO/IEC 18974 §4.1.2
 
-Without a clear sense of responsibility, a decision-making vacuum arises.
+Without clear ownership, decision-making stalls.
 
 | Proof ID                       | Content                                            | output file                              |
 | ------------------------------ | -------------------------------------------------- | ---------------------------------------- |
@@ -112,8 +110,8 @@ Without a clear sense of responsibility, a decision-making vacuum arises.
 | 18974 §4.1.2.5                 | Periodic review and evidence of process changes ⚠️ | `output/conformance/gap-analysis.md`     |
 | 18974 §4.1.2.6                 | Internal best practice alignment verification ⚠️   | `output/conformance/gap-analysis.md`     |
 
-> ⚠️ **§4.1.2.5 · §4.1.2.6 Processing upon initial certification**: At first certification, there is no review history, so it is processed as partially satisfied (🔶).
-> Record “review cycle plan” and “designation of person in charge” in gap-analysis.md and meet with actual history upon renewal after 18 months.
+> ⚠️ **§4.1.2.5 · §4.1.2.6 at initial certification**: at first certification there is no review history, so these are treated as partially satisfied (🔶).
+> Record the "review-cycle plan" and "owner assignment" in gap-analysis.md, and satisfy them with actual history at the 18-month renewal.
 
 - **Agent in Charge**: `02-organization-designer`
 
@@ -123,7 +121,7 @@ Without a clear sense of responsibility, a decision-making vacuum arises.
 
 > ISO/IEC 5230 §3.1.2 · ISO/IEC 18974 §4.1.2 (education and training aspects)
 
-Securing and continuously maintaining staff capacity; All standards require proof of training completion
+Building and continuously maintaining staff competency; both standards require evidence of training completion.
 
 | Proof ID                       | Content                            | output file                             |
 | ------------------------------ | ---------------------------------- | --------------------------------------- |
@@ -138,7 +136,7 @@ Securing and continuously maintaining staff capacity; All standards require proo
 
 > ISO/IEC 5230 §3.1.4 · ISO/IEC 18974 §4.1.4
 
-Efficient resource allocation possible by clarifying target software/products
+Clarifying the target software and products enables efficient resource allocation.
 
 | Proof ID                       | Content                                | output file                          |
 | ------------------------------ | -------------------------------------- | ------------------------------------ |
@@ -146,7 +144,7 @@ Efficient resource allocation possible by clarifying target software/products
 | 18974 §4.1.4.2                 | Performance Metrics                    | `output/policy/oss-policy.md`        |
 | 18974 §4.1.4.3                 | Evidence of continuous improvement ⚠️  | `output/conformance/gap-analysis.md` |
 
-> ⚠️ **§4.1.4.3 Processing upon initial certification**: There is no history of improvement upon first certification. The initial gap analysis execution itself is recorded in gap-analysis.md as a one-time audit history, and when renewed after 18 months, the history is satisfied at least twice.
+> ⚠️ **§4.1.4.3 at initial certification**: there is no improvement history at first certification. Record the initial gap analysis itself in gap-analysis.md as a one-time audit record; by the 18-month renewal you will have at least two such records to satisfy this item.
 
 - **Agent in Charge**: `03-policy-generator`
 
@@ -156,7 +154,7 @@ Efficient resource allocation possible by clarifying target software/products
 
 > ISO/IEC 5230 §3.1.5
 
-Prevent license violations before distribution; Copyleft Source code disclosure obligation, etc.
+Prevent license violations before distribution; covers obligations such as copyleft source-code disclosure.
 
 | Proof ID      | Content                                                                                                  | output file                        |
 | ------------- | -------------------------------------------------------------------------------------------------------- | ---------------------------------- |
@@ -170,7 +168,7 @@ Prevent license violations before distribution; Copyleft Source code disclosure 
 
 > ISO/IEC 5230 §3.1.3 · ISO/IEC 18974 §4.1.3
 
-Individually document whether each person in each role understands the policies, goals, and ways to contribute; Key supporting information during audits
+Document, per role, whether each person understands the policy, the goals, and how to contribute; this is key evidence during an audit.
 
 | Proof ID                       | Content                                                                                                       | output file                             |
 | ------------------------------ | ------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
@@ -188,7 +186,7 @@ Individually document whether each person in each role understands the policies,
 
 > ISO/IEC 5230 §3.2.2 · ISO/IEC 18974 §4.2.2
 
-Clarification of open source activity subject, approval, and review system; Prevent work gaps
+Clarify who performs, approves, and reviews open source activities; prevent gaps in ownership.
 
 | Proof ID                       | Content                                                     | output file                                                                    |
 | ------------------------------ | ----------------------------------------------------------- | ------------------------------------------------------------------------------ |
@@ -207,7 +205,7 @@ Clarification of open source activity subject, approval, and review system; Prev
 
 > ISO/IEC 5230 §3.2.1 · ISO/IEC 18974 §4.2.1
 
-Official channel obligations to request fulfillment of license obligations and report security vulnerabilities
+An official channel is required so third parties can request fulfillment of license obligations and report security vulnerabilities.
 
 | Proof ID                       | Content                                                | output file                                                                      |
 | ------------------------------ | ------------------------------------------------------ | -------------------------------------------------------------------------------- |
@@ -222,7 +220,7 @@ Official channel obligations to request fulfillment of license obligations and r
 
 > ISO/IEC 5230 §3.1.3 · ISO/IEC 18974 §4.1.3
 
-Effectiveness of compliance is ensured when all members know and follow the policy.
+Compliance is only effective when every member knows and follows the policy.
 
 | Proof ID                       | Content                                                                                                     | output file                                                             |
 | ------------------------------ | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
@@ -240,7 +238,7 @@ Effectiveness of compliance is ensured when all members know and follow the poli
 
 > ISO/IEC 5230 §3.3.1 · §3.3.2
 
-Identify license status for each SBOM-based component; Copyleft risk identification
+Identify the license of each component from the SBOM; flag copyleft risk.
 
 | Proof ID      | Content                                                                 | output file                                                     |
 | ------------- | ----------------------------------------------------------------------- | --------------------------------------------------------------- |
@@ -256,7 +254,7 @@ Identify license status for each SBOM-based component; Copyleft risk identificat
 
 > ISO/IEC 5230 §3.3.2
 
-Fulfillment of copyleft license obligations such as GPL, LGPL, AGPL, etc.; Manage permitted license list
+Fulfill copyleft license obligations such as GPL, LGPL, and AGPL; maintain an allowlist of permitted licenses.
 
 | Proof ID      | Content                                                            | output file                                                                      |
 | ------------- | ------------------------------------------------------------------ | -------------------------------------------------------------------------------- |
@@ -270,7 +268,7 @@ Fulfillment of copyleft license obligations such as GPL, LGPL, AGPL, etc.; Manag
 
 > ISO/IEC 5230 §3.4.1
 
-Obligation to provide files proving the fulfillment of legal obligations, such as notices and source codes, when distributing
+Obligation to provide, at distribution time, the files that demonstrate fulfillment of legal obligations, such as notices and source code.
 
 | Proof ID      | Content                                                           | output file                     |
 | ------------- | ----------------------------------------------------------------- | ------------------------------- |
@@ -285,7 +283,7 @@ Obligation to provide files proving the fulfillment of legal obligations, such a
 
 > ISO/IEC 5230 §3.5.1
 
-Prevents IP leakage and license contamination risks when contributing upstream
+Prevents IP leakage and license-contamination risk when contributing upstream.
 
 | Proof ID      | Content                                   | output file                     |
 | ------------- | ----------------------------------------- | ------------------------------- |
@@ -300,7 +298,7 @@ Prevents IP leakage and license contamination risks when contributing upstream
 
 > ISO/IEC 5230 §3.4.1
 
-Verification that all license obligations (source code disclosure, inclusion of notices, etc.) have actually been fulfilled prior to distribution; Acts as a deployment approval gateway
+Verify before distribution that all license obligations (source-code disclosure, inclusion of notices, and so on) have actually been met; acts as a release approval gate.
 
 | Proof ID      | Content                                                           | output file                                |
 | ------------- | ----------------------------------------------------------------- | ------------------------------------------ |
@@ -315,7 +313,7 @@ Verification that all license obligations (source code disclosure, inclusion of 
 
 > ISO/IEC 5230 §3.5.1
 
-Specific procedures for implementing the policy (G3L.4); Contribution review, approval, and submission workflow; Policy alone cannot control actual contributions
+Concrete procedures for implementing the policy (G3L.4): the contribution review, approval, and submission workflow. Policy alone cannot govern actual contributions.
 
 | Proof ID      | Content                                     | output file                                                                           |
 | ------------- | ------------------------------------------- | ------------------------------------------------------------------------------------- |
@@ -325,7 +323,7 @@ Specific procedures for implementing the policy (G3L.4); Contribution review, ap
 
 ---
 
-### G3-S: Security assurance (based on ISO/IEC 18974)
+### G3-S: Security assurance (ISO/IEC 18974 focus)
 
 ---
 
@@ -333,7 +331,7 @@ Specific procedures for implementing the policy (G3L.4); Contribution review, ap
 
 > ISO/IEC 18974 §4.3.2 · §4.1.5
 
-Risk of security incidents and legal liability if CVE vulnerabilities are not identified; EO 14028 Requirements
+Failing to identify CVEs invites security incidents and legal liability; this is an EO 14028 requirement.
 
 | Proof ID       | Content                                                                               | output file                                |
 | -------------- | ------------------------------------------------------------------------------------- | ------------------------------------------ |
@@ -345,11 +343,11 @@ Risk of security incidents and legal liability if CVE vulnerabilities are not id
 
 ---
 
-#### G3S.2 — vulnerability Tracking and Health Management `[18974]`
+#### G3S.2 — Vulnerability tracking and status management `[18974]`
 
 > ISO/IEC 18974 §4.3.2 · §4.1.5
 
-Continuous tracking of identified vulnerabilities until response is completed; Prevention of omission and neglect
+Continuously track identified vulnerabilities until remediation is complete; prevent items from being missed or left unattended.
 
 | Proof ID       | Content                                                                     | output file                                |
 | -------------- | --------------------------------------------------------------------------- | ------------------------------------------ |
@@ -365,7 +363,7 @@ Continuous tracking of identified vulnerabilities until response is completed; P
 
 > ISO/IEC 18974 §4.3.2
 
-CVSS score-based prioritization; Efficient resource allocation
+Prioritize by CVSS score; allocate resources efficiently.
 
 | Proof ID       | Content                                                                   | output file                          |
 | -------------- | ------------------------------------------------------------------------- | ------------------------------------ |
@@ -376,11 +374,11 @@ CVSS score-based prioritization; Efficient resource allocation
 
 ---
 
-#### G3S.4 — vulnerability response and patching procedures `[18974]`
+#### G3S.4 — Vulnerability response and patching procedures `[18974]`
 
 > ISO/IEC 18974 §4.3.2 · §4.1.5
 
-Rapid patch, upgrade, and mitigation action system for discovered vulnerabilities
+A system for rapidly patching, upgrading, or mitigating discovered vulnerabilities.
 
 | Proof ID       | Content                                                                                | output file                                |
 | -------------- | -------------------------------------------------------------------------------------- | ------------------------------------------ |
@@ -392,11 +390,11 @@ Rapid patch, upgrade, and mitigation action system for discovered vulnerabilitie
 
 ---
 
-#### G3S.5 — Security Artifact Deployment Process `[18974,supply chain]`
+#### G3S.5 — Security artifact delivery process `[18974,supply chain]`
 
 > ISO/IEC 18974 §4.3.1
 
-SBOM·Formal procedures for delivering security outputs such as CVE reports to supply chain partners and customers; Response to EO 14028·EU CRA disclosure obligation
+Formal procedures for delivering security outputs such as the SBOM and CVE reports to supply chain partners and customers; addresses the EO 14028 and EU CRA disclosure obligations.
 
 | Proof ID       | Content                                                                          | output file                            |
 | -------------- | -------------------------------------------------------------------------------- | -------------------------------------- |
@@ -411,7 +409,7 @@ SBOM·Formal procedures for delivering security outputs such as CVE reports to s
 
 > ISO/IEC 18974 §4.3.2
 
-Procedures to verify that response, patch, and mitigation measures for identified and tracked vulnerabilities have actually been completed; Confirmation of actual implementation rather than formal declaration
+Procedures to verify that the response, patch, and mitigation actions for identified and tracked vulnerabilities were actually completed; confirms real implementation rather than a mere declaration.
 
 | Proof ID       | Content                                                                     | output file                                |
 | -------------- | --------------------------------------------------------------------------- | ------------------------------------------ |
@@ -426,11 +424,11 @@ Procedures to verify that response, patch, and mitigation measures for identifie
 
 ---
 
-#### G3B.1 — create SBOM (CycloneDX/SPDX)`[Common,supply chain]`
+#### G3B.1 — Create an SBOM (CycloneDX/SPDX) `[Common,supply chain]`
 
 > ISO/IEC 5230 §3.3.1 · ISO/IEC 18974 §4.3.1
 
-Starting point for ensuring component transparency; Inputs for both license and security analysis
+The starting point for component transparency; the input for both license and security analysis.
 
 | Proof ID                       | Content                                                                 | output file                      |
 | ------------------------------ | ----------------------------------------------------------------------- | -------------------------------- |
@@ -441,11 +439,11 @@ Starting point for ensuring component transparency; Inputs for both license and 
 
 ---
 
-#### G3B.2 — SBOM Management and Maintenance `[Common,supply chain]`
+#### G3B.2 — SBOM management and maintenance `[Common,supply chain]`
 
 > ISO/IEC 5230 §3.3.1 · ISO/IEC 18974 §4.3.1
 
-Maintain SBOM up-to-date when released/updated; Configuration management integration
+Keep the SBOM current on every release and update; integrate it with configuration management.
 
 | Proof ID                       | Content                              | output file                           |
 | ------------------------------ | ------------------------------------ | ------------------------------------- |
@@ -456,11 +454,11 @@ Maintain SBOM up-to-date when released/updated; Configuration management integra
 
 ---
 
-#### G3B.3 — SBOM Share (Supply Chain Partner)`[Supply chain,regulation]`
+#### G3B.3 — Share the SBOM (with supply chain partners) `[Supply chain,regulation]`
 
 > ISO/IEC 18974 §4.3.1
 
-Transparency down the supply chain; NTIA·Response to EU CRA supply chain disclosure obligation
+Transparency down the supply chain; addresses the NTIA and EU CRA supply chain disclosure obligations.
 
 | Proof ID       | Content                                                                            | output file                            |
 | -------------- | ---------------------------------------------------------------------------------- | -------------------------------------- |
@@ -475,7 +473,7 @@ Transparency down the supply chain; NTIA·Response to EU CRA supply chain disclo
 
 > ISO/IEC 18974 §4.3.2
 
-Immediately identify affected supply chain components when a new CVE is disclosed
+When a new CVE is disclosed, immediately identify which supply chain components are affected.
 
 | Proof ID       | Content                                                                        | output file                           |
 | -------------- | ------------------------------------------------------------------------------ | ------------------------------------- |
@@ -494,7 +492,7 @@ Immediately identify affected supply chain components when a new CVE is disclose
 
 > ISO/IEC 5230 §3.6.1
 
-Official declaration of license compliance capability; Secure supply chain partner trust
+Official declaration of license compliance capability; earns the trust of supply chain partners.
 
 | Proof ID      | Content                                                                              | output file                               |
 | ------------- | ------------------------------------------------------------------------------------ | ----------------------------------------- |
@@ -508,7 +506,7 @@ Official declaration of license compliance capability; Secure supply chain partn
 
 > ISO/IEC 18974 §4.4.1
 
-Official declaration of security assurance capability; Proof of EO 14028 and EU CRA response
+Official declaration of security assurance capability; evidence of EO 14028 and EU CRA compliance.
 
 | Proof ID       | Content                                                                              | output file                               |
 | -------------- | ------------------------------------------------------------------------------------ | ----------------------------------------- |
@@ -522,7 +520,7 @@ Official declaration of security assurance capability; Proof of EO 14028 and EU 
 
 > ISO/IEC 5230 §3.6.2 · ISO/IEC 18974 §4.4.2
 
-Both standards require redeclaration every 18 months; Avoid automatic expiration
+Both standards require re-declaration every 18 months; this avoids automatic expiration.
 
 | Proof ID                       | Content                                                                                               | output file                              |
 | ------------------------------ | ----------------------------------------------------------------------------------------------------- | ---------------------------------------- |
@@ -536,7 +534,7 @@ Both standards require redeclaration every 18 months; Avoid automatic expiration
 
 > ISO/IEC 5230 §3.6.2 · ISO/IEC 18974 §4.4.2
 
-Implementation of the system according to changes in the technological and regulatory environment; Required before renewal declaration
+Evolve the system as the technical and regulatory environment changes; required before a renewal declaration.
 
 | Proof ID                       | Content                                                           | output file                          |
 | ------------------------------ | ----------------------------------------------------------------- | ------------------------------------ |
@@ -550,7 +548,7 @@ Implementation of the system according to changes in the technological and regul
 
 > ISO/IEC 18974 §4.4.1 · §4.3.2
 
-Verify and declare before distribution that there are no known vulnerabilities in externally distributed software; Practical prerequisites for declaration of certification
+Before distribution, verify and declare that externally distributed software has no known vulnerabilities; a practical prerequisite for the certification declaration.
 
 | Proof ID       | Content                                                          | output file                               |
 | -------------- | ---------------------------------------------------------------- | ----------------------------------------- |
@@ -572,28 +570,27 @@ Verify and declare before distribution that there are no known vulnerabilities i
 | Number of regulatory linkage items (`[Regulation]` tag)     | 1               |
 | **Total number of items**                                   | **31**          |
 
-> **Note:** Common entries (11) are counted in both 5230 (20) and 18974 (23).
-> Preparing both standards simultaneously saves approximately 35% by working on common items only once.
+> **Note:** the common entries (11) are counted in both the 5230 total (20) and the 18974 total (23).
+> Preparing both standards at once saves roughly 35% by handling the common items only once.
 
 ---
 
-## next steps
+## Next steps
 
 :::info Self-study mode (about 1 hour)
-Once you have this mapping document figured out, start creating the actual output.
-If the `output/` folder is empty, start with the steps below.
+Once you understand this mapping document, start producing the actual outputs.
+If the `output/` folder is empty, begin with the steps below.
 :::
 
-1. **Organizational Design** → `cd agents/02-organization-designer && claude`
-2. **Create Policy** → `cd agents/03-policy-generator && claude`
-3. **Process Design** → `cd agents/04-process-designer && claude`
-4. **SBOM creation** → `cd agents/05-sbom-guide && claude`
-5. **License Analysis** → `cd agents/05-sbom-analyst && claude`
-6. **vulnerability Analysis** → `cd agents/05-vulnerability-analyst && claude`
-7. **SBOM Management Plan** → `cd agents/05-sbom-management && claude`
-8. **Education System** → `cd agents/06-training-manager && claude`
-9. **Certification Declaration** → `cd agents/07-conformance-preparer && claude`
+1. **Organization design** → `cd agents/02-organization-designer && claude`
+2. **Create policy** → `cd agents/03-policy-generator && claude`
+3. **Process design** → `cd agents/04-process-designer && claude`
+4. **Create SBOM** → `cd agents/05-sbom-guide && claude`
+5. **License analysis** → `cd agents/05-sbom-analyst && claude`
+6. **Vulnerability analysis** → `cd agents/05-vulnerability-analyst && claude`
+7. **SBOM management plan** → `cd agents/05-sbom-management && claude`
+8. **Training program** → `cd agents/06-training-manager && claude`
+9. **Certification declaration** → `cd agents/07-conformance-preparer && claude`
 
-> This document contains the ISO/IEC 5230 **Full** and ISO/IEC 18974 **Full** requirements.
-> This is the mapping standard document within the project.
-> This file is referenced in each agent's CLAUDE.md.
+> This document covers the **full** ISO/IEC 5230 and **full** ISO/IEC 18974 requirements.
+> It is the canonical mapping reference within the project, and each agent's CLAUDE.md refers to it.
