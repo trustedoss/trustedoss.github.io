@@ -60,6 +60,10 @@ cd trustedoss-agents && claude
 | 교육      | `curriculum.md`, `completion-tracker.md`, `resources.md` — [예시 보기](/reference/samples/training)                                           | [공통]    |
 | 인증      | `gap-analysis.md`, `declaration-draft.md`, `submission-guide.md` — [예시 보기](/reference/samples/conformance)                                | [공통]    |
 
+아래는 0에서 자체 인증까지 7단계 여정입니다. 각 단계를 마칠 때마다 체크해 진행 상황을 추적하세요(이 브라우저에만 저장됩니다).
+
+<JourneyProgress />
+
 ---
 
 ## 2. 배경 지식

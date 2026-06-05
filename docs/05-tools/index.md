@@ -11,6 +11,8 @@ sidebar_label: 도구 개요
 
 # 도구: SBOM과 취약점 관리
 
+<Prerequisite items={[{label: '4. 오픈소스 프로세스', href: '/docs/process'}]}>+ Docker 실행 환경</Prerequisite>
+
 이 챕터는 제품에 포함된 오픈소스를 자동으로 파악하고(SBOM), 관리하고, 취약점을 찾아 대응하는 도구를 다룹니다. 아래 세 단계 흐름으로 진행합니다.
 
 ## 진행 흐름

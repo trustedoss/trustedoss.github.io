@@ -1,0 +1,121 @@
+/**
+ * trustedoss JourneyProgress styles — 중립 공용 토큰(POSITIONING §5)
+ */
+
+.journey {
+  margin: 1.5rem 0;
+  padding: 1.4rem 1.5rem;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 12px;
+  background: var(--ifm-color-emphasis-100);
+}
+
+.header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 0.7rem;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ifm-heading-color);
+}
+
+.count {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ifm-color-primary);
+}
+
+.bar {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--ifm-color-emphasis-200);
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--ifm-color-primary);
+  transition: width 0.25s ease;
+}
+
+.steps {
+  list-style: none;
+  margin: 1.1rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.5rem;
+}
+
+.step,
+.stepDone {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.4rem 0.55rem;
+  border-radius: 8px;
+  background: var(--ifm-background-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.stepDone {
+  border-color: var(--ifm-color-primary);
+  background: color-mix(in srgb, var(--ifm-color-primary) 6%, transparent);
+}
+
+.check {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  border: 1.5px solid var(--ifm-color-emphasis-400);
+  background: var(--ifm-background-color);
+  color: var(--ifm-color-primary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease;
+}
+
+.stepDone .check {
+  border-color: var(--ifm-color-primary);
+  background: color-mix(in srgb, var(--ifm-color-primary) 14%, transparent);
+}
+
+.check:hover:not(:disabled) {
+  border-color: var(--ifm-color-primary);
+}
+
+.check:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+
+.stepLabel {
+  font-size: 0.85rem;
+  color: var(--ifm-font-color-base);
+  text-decoration: none;
+}
+
+.stepLabel:hover {
+  color: var(--ifm-color-primary);
+  text-decoration: none;
+}
+
+.stepDone .stepLabel {
+  color: var(--ifm-color-emphasis-600);
+}
+
+.note {
+  margin: 1rem 0 0;
+  font-size: 0.8rem;
+  color: var(--ifm-color-emphasis-600);
+}
