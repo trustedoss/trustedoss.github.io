@@ -13,6 +13,7 @@ const sidebars: SidebarsConfig = {
         'overview/supply-chain',
         'overview/sbom-101',
         'overview/checklist-mapping',
+        'overview/agents',
       ],
     },
     {

@@ -464,5 +464,7 @@ ISO/IEC 18974 연계 → [매핑 정본]
 - 완료: #13 KWG 커버리지 매트릭스 → `.claude/reference/kwg-coverage-matrix.md`. 발견: 산출물 세트 전체로는 KWG 거의 전 절 충족, 실제 갭 3개(용어 정의, 사내 공개 조건부, 추적성). #14 범위 축소됨.
 - 완료: #14 정책 소스 템플릿 KWG 정렬 — 부록 A(용어 정의, KWG §2), 부록 B(사내 공개, KWG §8), "KWG 정책 템플릿 §1~11 기준" 추적성 헤더 추가. verify 12/12. 후속: 다운스트림 샘플(output-sample, reference/samples) 반영 + 프로세스 템플릿 추적성 헤더.
 - **P0-0 마일스톤 완료**(#13+#14).
-- 다음: #15 온보딩(5분 빠른 시작 + 내게 맞는 시작 경로).
+- 완료: #15 온보딩 — `docs/00-overview/quick-start.md`, `start-path.md` 신설, 사이드바 등록, 랜딩 1차 CTA "처음이세요? 5분 시작". KO build 0 broken, verify 12/12, 캡처 확인. 정적 데모는 `pathname://` 링크. (후속: index 본문 축약, en i18n quirk는 STATUS 참조.)
+- 완료: #16 AI 에이전트 허브 `docs/00-overview/agents.md` — 에이전트↔챕터↔산출물 매핑표 + 상황별 추천 + 공통 실행. 사이드바 등록, KO 0 broken, verify 12/12, 캡처 확인.
+- 다음: #17 05-tools 통합 인덱스 + 세 기둥 cross-link.
 - 작업 브랜치: `feat/ia-kwg-revamp`.
