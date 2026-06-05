@@ -83,14 +83,9 @@ If it does not pass, distribution will not proceed.
 With SBOM, you can quickly check whether your software is affected when a new CVE is released.
 there is. We use resources efficiently by differentially applying response deadlines depending on the severity of the CVE.
 
-| Severity | CVSS score | Response Deadline | action                          |
-| -------- | ---------- | ----------------- | ------------------------------- |
-| Critical | 9.0~10.0   | within 1 week     | Patch or Deprecate Immediately  |
-| High     | 7.0~8.9    | Within 4 weeks    | Establish a priority patch plan |
-| Medium   | 4.0~6.9    | Within 1 month    | Included in next release        |
-| Low      | 0.1~3.9    | Next release      | Backlog registration            |
-
-> **reference**:The above deadline is the OpenChain KWG guide baseline. Depending on your organization's risk profile, more stringent deadlines, such as 24 hours for Critical or 1 week for High, can be applied as internal SLAs.
+:::tip Canonical response deadlines
+The CVSS-severity response-deadline table (the KWG baseline plus a stricter organizational SLA option) and the VEX concept are consolidated in [Vulnerability response deadlines and VEX](/reference/concepts/vulnerability-response). The process output `vulnerability-response.md` documents these as your company SLA.
+:::
 
 #### 3-4. Open source contribution process(§3.5.1)
 

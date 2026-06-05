@@ -66,17 +66,15 @@ cd trustedoss.github.io && claude
 
 ### Compare two standards
 
-| Item                  | ISO/IEC 5230                                                                                 | ISO/IEC 18974                                                                            |
-| --------------------- | -------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| Official name         | OpenChain License Compliance                                                                 | OpenChain Security Assurance                                                             |
-| Latest version        | 2.1 (2023)                                                                                   | 1.0 (2023)                                                                               |
-| Purpose               | Establishment of an open source license compliance system                                    | Establishment of an open source security vulnerability assurance system                  |
-| focus                 | Fulfillment of license obligations, BOM management                                           | Identifying, tracking and responding to known CVEs, SBOM based security                  |
-| Core Requirements     | Policy·Organization·Process·BOM·Compliance Output·Contribution Policy·Compliance Declaration | Policy·Organization·SBOM·CVE Scan·vulnerability Tracking·Response·Compliance Declaration |
-| Authentication method | OpenChain Website self-declaration                                                           | OpenChain Website self-declaration                                                       |
-| enactment background  | Response to rapid increase in open source licensing disputes                                 | Response to supply chain security incidents such as SolarWinds·Log4Shell                 |
+| Item                 | ISO/IEC 5230                                               | ISO/IEC 18974                                                            |
+| -------------------- | ---------------------------------------------------------- | ------------------------------------------------------------------------ |
+| Official name        | OpenChain License Compliance                               | OpenChain Security Assurance                                             |
+| Purpose              | Establish an open source license compliance system         | Establish an open source security vulnerability assurance system         |
+| Enactment background | Response to rapid increase in open source license disputes | Response to supply chain security incidents such as SolarWinds·Log4Shell |
 
-> For detailed comparison of items such as validity period, related regulations, and mutual complementarity, refer to [`checklist-mapping.md`](./checklist-mapping.md).
+:::tip
+The full comparison — including version, focus, core requirements, authentication method, validity period, related regulations, and mutual complementarity — is canonical in [Standard requirements at a glance](./checklist-mapping.md).
+:::
 
 ### What is self-certification?
 

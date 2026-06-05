@@ -6,5 +6,9 @@
   "sidebar.reference.category.Deliverables Best Practices": {
     "message": "Output Best Practices",
     "description": "The label for category 'Deliverables Best Practices' in sidebar 'reference'"
+  },
+  "sidebar.reference.category.개념 심화": {
+    "message": "Concepts",
+    "description": "The label for category '개념 심화' in sidebar 'reference'"
   }
 }
