@@ -30,8 +30,8 @@ TrustedOSS는 그 둘을 **열린 표준 + 열린 도구**로 대체한다.
 
 - 대상 표준: OpenChain · ISO/IEC **5230**(라이선스 컴플라이언스) + **18974**(보안 보증)
 - 방식: 무료 셀프스터디 `docs/` 로 _왜·무엇을_ 가르치고, `agents/` 가 회사 맞춤 산출물
-  (정책·프로세스·RACI·SBOM 분석·취약점 리포트·선언문 초안)을 자동 생성
-- 정체성: **에버그린 · 벤더중립 · CC BY 4.0 · 셀프스터디**
+  (정책, 프로세스, RACI, SBOM 분석, 취약점 리포트, 선언문 초안)을 자동 생성
+- 정체성: **에버그린, 벤더중립, CC BY 4.0, 셀프스터디**
 - 사이트: `https://trustedoss.github.io/` (루트, org-pages 레포 = 이 레포)
 
 ---
@@ -48,7 +48,7 @@ products, no vendor lock-in"을 자기 정의로 박아둔 제품.
   신규 CVE 자동 재탐지)하고, 라이선스를 분류·승인 워크플로우로 돌리고, SBOM을 살아있게
   export하고, CI 빌드를 게이트로 막는 것(Critical CVE/금지 라이선스 → exit 1).
 - 이건 문서나 1회 리포트가 아니라 **돌아가는 제품**이 해야 하는 일이다
-  (FastAPI · PostgreSQL · Celery · RBAC · audit log).
+  (FastAPI, PostgreSQL, Celery, RBAC, audit log).
 - 그 운영 계층을 사려면 보통 **상용 SCA**를 사야 하고, 그게 바로 TrustedOSS가 없애려는 락인.
 
 → 포털은 그 간극을 **상용 SCA 없이 닫는 열린 실행 엔진**으로 태어났다.
