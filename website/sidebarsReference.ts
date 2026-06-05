@@ -17,6 +17,14 @@ const sidebars: SidebarsConfig = {
         'samples/conformance',
       ],
     },
+    {
+      type: 'category',
+      label: '개념 심화',
+      items: [
+        'concepts/license-classification',
+        'concepts/vulnerability-response',
+      ],
+    },
   ],
 };
 

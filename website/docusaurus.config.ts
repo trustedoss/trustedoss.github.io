@@ -49,7 +49,24 @@ const config: Config = {
   markdown: {
     mermaid: true,
   },
-  themes: ['@docusaurus/theme-mermaid'],
+  themes: [
+    '@docusaurus/theme-mermaid',
+    [
+      require.resolve('@easyops-cn/docusaurus-search-local'),
+      {
+        hashed: true,
+        language: ['ko', 'en'],
+        indexDocs: true,
+        indexBlog: true,
+        indexPages: false,
+        // 체계구축(docs) 외 별도 content-docs 인스턴스도 검색에 포함
+        docsRouteBasePath: ['/docs', '/devsecops', '/ai-coding', '/reference'],
+        highlightSearchTermsOnTargetPage: true,
+        searchResultLimits: 8,
+        searchResultContextMaxLength: 50,
+      },
+    ],
+  ],
   headTags: [
     {
       tagName: 'script',

@@ -468,5 +468,7 @@ ISO/IEC 18974 연계 → [매핑 정본]
 - 완료: #16 AI 에이전트 허브 `docs/00-overview/agents.md` — 에이전트↔챕터↔산출물 매핑표 + 상황별 추천 + 공통 실행. 사이드바 등록, KO 0 broken, verify 12/12, 캡처 확인.
 - 완료: #17 — `docs/05-tools/index.md` 신설(카테고리 link 연결, 라벨 "5. 도구: SBOM과 취약점"), 07-conformance에 "자동화로 확장" 분기, devsecops→AI코딩 상호 링크(AI코딩→devsecops는 기존), checklist-mapping 라벨 "표준 요구사항 한눈에". KO 0 broken, verify 12/12, 캡처 확인.
 - **P0 마일스톤 완료**(#15·#16·#17).
-- 다음: #18 P1(단일 출처, Diátaxis, 검색, 매핑 정본).
+- 완료: #18 P1 — 단일 출처화(라이선스 분류, CVSS 대응 기한·VEX를 `reference/concepts/` 정본으로 신설, 본문은 링크; 5230↔18974 비교표는 checklist-mapping 정본 + index 축약), 검색 도입(`@easyops-cn/docusaurus-search-local`, ko/en), 매핑 정본(이미 충족 확인). 발견: CVSS 기한표가 04-process와 05-tools/vulnerability에서 값이 달라 정본 통합으로 해소. KO build 0 broken, en 기존 4 false-positive, verify 12/12, 검색 인덱스·UI 확인.
+- **P1 마일스톤 완료**(#18).
+- 다음: #19 마무리(도구 큐레이션 + POSITIONING 차별화 + 최종 end-to-end 검증).
 - 작업 브랜치: `feat/ia-kwg-revamp`.

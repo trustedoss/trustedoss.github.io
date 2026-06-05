@@ -28,25 +28,30 @@ task 고유 수용 기준 + `cd website && npm run build`(ko/en) + `verify.sh` 1
 | 15  | 온보딩: 5분 빠른 시작 + 내게 맞는 시작 경로      | 완료     |
 | 16  | AI 에이전트 허브 페이지                          | 완료     |
 | 17  | 05-tools 통합 인덱스 + 세 기둥 cross-link        | 완료     |
-| 18  | P1: 단일 출처, Diátaxis, 검색, 매핑 정본         | **다음** |
-| 19  | 도구(onot/sbom-tools) + POSITIONING 차별화       | 대기     |
+| 18  | P1: 단일 출처, 검색, 매핑 정본                   | 완료     |
+| 19  | 도구(onot/sbom-tools) + POSITIONING 차별화       | **다음** |
 
-마일스톤: **P0-0(#13, #14) 완료, P0(#15, #16, #17) 완료**. 남음: P1(#18), 마무리(#19 + 최종 end-to-end 검증).
+마일스톤: **P0-0(#13, #14) 완료, P0(#15, #16, #17) 완료, P1(#18) 완료**. 남음: 마무리(#19 + 최종 end-to-end 검증).
 
 ## 후속(미완) 항목
 
-- 정책 템플릿(#14) 부록 A/B·추적성 헤더를 다운스트림 샘플(`output-sample/policy`, `website/reference/samples/policy`)에 반영 + 프로세스 템플릿 추적성 헤더. (#18 또는 sync 시)
+- 정책 부록 A/B·추적성 헤더 다운스트림 반영은 **#18에서 완료**(output-sample/policy, reference/samples/policy). 남은 것: 프로세스 소스 템플릿(templates/process/\*)에 가시적 추적성 헤더 note 표면화(현재 HTML 주석만). reference/samples/process는 §10 등 구버전 drift도 함께 있어 sync 워크플로로 일괄 재생성 권장.
 - `00-overview/index.md` 본문 축약 보류 — 온보딩 진입은 quick-start + 랜딩 CTA + 에이전트 허브로 달성.
 - **en 로케일 i18n quirk(기존)**: en 브로큰링크 체커가 상대 `.md` 링크를 slug 무시하고 경로로 해석해 false-positive 경고(현재 4건). 런타임 정상, KO 0 broken, verify 12/12. en 정합은 별도 과제.
 - 기존 ko-style 잔재(07-conformance, checklist-mapping, devsecops/intro의 이모지와 가운뎃점)는 내가 건드린 라인이 아니라서 보류한다. 필요하면 별도로 정리한다.
 
-## 다음 작업 (#18 P1: 단일 출처, Diátaxis, 검색, 매핑 정본)
+## 다음 작업 (#19 마무리: 도구 큐레이션 + POSITIONING 차별화 + 최종 end-to-end)
 
-1. 단일 출처화: 라이선스 분류표·CVE 대응 기한표·5230↔18974 비교표 중복을 reference 한 곳에 정의하고 본문은 링크. (실행 전 grep으로 실제 중복 위치 재확인 — 계획 §주의)
-2. 검색 도입: `@easyops-cn/docusaurus-search-local` 추가(포털 docs-site 선례, 한국어 토크나이저). package.json + docusaurus.config.ts.
-3. 매핑 정본 1개: `checklist-mapping`을 마스터로, devsecops/ai-coding의 iso-mapping은 마스터 참조.
-4. 정책 템플릿 부록 A/B를 다운스트림 샘플에 반영(후속 항목 처리).
-5. build(ko 0 broken)/verify 12/12.
+1. 도구 3계층 큐레이션 반영(계획 §도구 선정): onot(고지문, distribution-checklist §3) + SKT sbom-tools(5.1 SBOM 생성 보완), KWG 생태계(FOSSLight/SW360/FOSSology) 배치. 작업별 "메인 1개 + 대안" 큐레이션.
+2. `POSITIONING.md` 차별화 명문화 + 랜딩 "왜 KWG와 함께 TrustedOSS인가" 노출(계획 §차별화).
+3. 최종 end-to-end 검증: 전 페이지 빌드(ko 0 broken), 내부 링크, 온보딩 클릭 테스트, 완전성 비평 1회(실행 규약 §9).
+
+### #18에서 완료한 것 (참고)
+
+- 단일 출처화: `reference/concepts/license-classification`, `reference/concepts/vulnerability-response` 정본 신설(사이드바 "개념 심화" 등록). 03-policy·04-process·05-tools/vulnerability 본문은 표 제거 후 정본 링크. 00-overview/index 비교표는 핵심 3행으로 축약 + checklist-mapping 정본 링크.
+- 검색: `@easyops-cn/docusaurus-search-local` 테마 추가(language ko/en, docs와 devsecops, ai-coding, reference 인스턴스 인덱싱). ko/en search-index 생성과 navbar 검색창 렌더 확인.
+- 매핑 정본: devsecops/ai-coding iso-mapping이 이미 checklist-mapping을 정본 참조 중(추가 작업 불필요).
+- 정책 부록 A/B + 추적성 헤더를 output-sample/policy, reference/samples/policy에 반영.
 
 ## 핵심 결정 (drift 방지용 고정값)
 
@@ -67,3 +72,4 @@ task 고유 수용 기준 + `cd website && npm run build`(ko/en) + `verify.sh` 1
 - #15: 정적 데모는 `pathname://` 링크 + verify.sh가 이를 스킵하도록 수정. en i18n quirk 확인(ko 무관).
 - #16: AI 에이전트 허브(`docs/00-overview/agents.md`) 신설.
 - #17: `docs/05-tools/index.md` 신설(카테고리 link로 연결). 07-conformance에 "자동화로 확장" 분기, devsecops→AI코딩 상호 링크, checklist-mapping 라벨 "표준 요구사항 한눈에".
+- #18: 단일 출처화 핵심 발견 — CVSS 대응 기한표가 04-process(KWG 기준선 Critical 1주)와 05-tools/vulnerability(운영 SLA Critical 24h)에서 값이 **달랐음**. 정본 페이지에서 "기준선 + 조직 SLA 강화안"으로 통합해 불일치 해소. 매핑 정본(#8)은 이미 두 iso-mapping이 checklist-mapping을 정본 참조 중이라 추가 작업 불필요였음. Diátaxis(#6)는 단일 출처용 reference 개념 페이지 신설로 부분 달성(개념=reference, 본문=링크).
