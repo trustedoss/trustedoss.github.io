@@ -2,6 +2,7 @@
 id: intro
 title: 레퍼런스
 slug: intro
+description: '산출물 Best Practice, 정본 개념 페이지(라이선스 분류, 취약점 대응 기한), 용어집, 에이전트 선택 가이드를 모은 레퍼런스.'
 ---
 
 # 레퍼런스

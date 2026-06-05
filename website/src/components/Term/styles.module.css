@@ -1,0 +1,60 @@
+/**
+ * trustedoss Term styles — 점선 밑줄 + 호버/포커스 툴팁 (중립 토큰)
+ */
+
+.term {
+  position: relative;
+  border-bottom: 1px dotted var(--ifm-color-emphasis-500);
+  cursor: help;
+  outline: none;
+}
+
+.tip {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 8px);
+  transform: translateX(-50%) translateY(4px);
+  z-index: 30;
+  width: max-content;
+  max-width: 280px;
+  padding: 0.55rem 0.7rem;
+  border-radius: 8px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  background: var(--ifm-background-surface-color, var(--ifm-background-color));
+  color: var(--ifm-font-color-base);
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+  white-space: normal;
+  box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.14s ease,
+    transform 0.14s ease;
+}
+
+.tip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: var(--ifm-color-emphasis-300);
+}
+
+.term:hover .tip,
+.term:focus-visible .tip,
+.term:focus .tip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+@media (max-width: 480px) {
+  .tip {
+    max-width: 220px;
+  }
+}
