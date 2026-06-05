@@ -7,126 +7,126 @@ checklist:
 self_study_time: 1 hour
 ---
 
-# SBOM Management:Creating is not the end; management is the beginning.
+# SBOM management: creating it is not the end; managing it is the beginning
 
 ## 1. What we do in this chapter
 
-Creating SBOM once is not enough. Software is constantly changing and,New vulnerabilities are disclosed every day. In this chapter, the created SBOM is updated according to the release cycle.,Stored by version,Establish a process to systematically share with external customers or suppliers.
+Creating an SBOM once is not enough. Software changes constantly, and new vulnerabilities are disclosed every day. In this chapter, you establish a process to update the SBOM in step with your release cycle, store it by version, and share it systematically with external customers or suppliers.
 
-`agents/05-sbom-management` Running the agent produces two outputs::`output/sbom/sbom-management-plan.md`, which defines the renewal cycle and responsible person, and `output/sbom/sbom-sharing-template.md`, a cover document for providing the supplier. Once these two documents are completed, the basis for the SBOM management system is established.
+Running the `agents/05-sbom-management` agent produces two outputs: `output/sbom/sbom-management-plan.md`, which defines the update cycle and the responsible owner, and `output/sbom/sbom-sharing-template.md`, a cover document for delivering the SBOM to a supplier. Once these two documents are complete, the foundation for your SBOM management system is in place.
 
 ---
 
 ## 2. Background knowledge
 
-### SBOM is not something you make once and that’s it.
+### An SBOM is not something you make once and forget
 
-Whenever the software changes, SBOM must also change. An old, unmaintained SBOM can be more dangerous than nothing at all. Trusting SBOM that is not up to date creates security blind spots due to inconsistencies between actual components and documentation.
+Whenever the software changes, the SBOM must change with it. A stale, unmaintained SBOM can be more dangerous than none at all. Trusting an out-of-date SBOM creates security blind spots, because the actual components and the documentation no longer match.
 
-**Real life examples:** Trusted SBOM created 6 months ago,There may be cases where vulnerable libraries added in the meantime are not found. Even after the CVE was disclosed in that library, the organization was unaware that it was affected.,The customer discovered the problem first and lost trust.
-
----
-
-### SBOM Update trigger
-
-SBOM must be updated whenever the event below occurs.
-
-| Event                             | When to renew                 | Remarks                          |
-| --------------------------------- | ----------------------------- | -------------------------------- |
-| Add new open source components    | immediately(When merging PRs) | CI/CD automation recommended     |
-| Change existing component version | immediately(When merging PRs) | Especially when security patches |
-| Software Release                  | Just before release           | Release SBOM stored separately   |
-| Security vulnerability patch      | Upon completion of patch      | Purpose of proof of response     |
-
-The most important of these is **right before software release**. SBOM at the time of release is the official documentation of the components for that version, so,They should be kept separately and clearly tagged with versions.
+**Real-world example:** an organization trusted an SBOM created six months earlier and failed to notice the vulnerable libraries added since then. Even after a CVE was disclosed in one of those libraries, the organization did not realize it was affected — the customer discovered the problem first, and trust was lost.
 
 ---
 
-### SBOM Version management strategy
+### SBOM update triggers
 
-File naming convention for Git-based SBOM versioning:
+The SBOM must be updated whenever one of the events below occurs.
+
+| Event                                | When to update             | Notes                           |
+| ------------------------------------ | -------------------------- | ------------------------------- |
+| Add a new open source component      | Immediately (on PR merge)  | CI/CD automation recommended    |
+| Change an existing component version | Immediately (on PR merge)  | Especially for security patches |
+| Software release                     | Just before release        | Release SBOM stored separately  |
+| Security vulnerability patch         | When the patch is complete | Serves as proof of response     |
+
+The most important of these is **right before a software release**. The SBOM at release time is the official record of that version's components, so it should be stored separately and clearly tagged with the version.
+
+---
+
+### SBOM version management strategy
+
+A file naming convention for Git-based SBOM versioning:
 
 ```
 output/sbom/[project]-[version]-[date].cdx.json
 ```
 
-example:
+Example:
 
 ```
 output/sbom/myapp-v1.2.0-20260320.cdx.json
 output/sbom/myapp-v1.1.0-20260101.cdx.json
-output/sbom/myapp-latest.cdx.json  ← always latest link
+output/sbom/myapp-latest.cdx.json  ← always points to the latest
 ```
 
-`myapp-latest.cdx.json` always keeps pointing to the most recently created SBOM,Files for each release are managed in separate directories or tags according to the storage policy.
+`myapp-latest.cdx.json` always points to the most recently created SBOM, while the per-release files are kept in separate directories or tags according to your storage policy.
 
-**Why you should keep release-specific SBOM:**
+**Why you should keep release-specific SBOMs:**
 
-- Components can be proven at a specific point in time when responding to regulations
-- When a vulnerability is discovered, the scope of affected versions can be quickly determined.
-- EU CRA,Can respond to the requirements of emerging regulations such as EO 14028
+- You can prove a version's components at a specific point in time when responding to regulations
+- When a vulnerability is found, you can quickly determine the range of affected versions
+- You can meet the requirements of emerging regulations such as the EU CRA and EO 14028
 
-Recommended storage period:Maintenance period of the software release + 1 year or more
+Recommended retention period: the software release's maintenance period plus at least one year.
 
 ---
 
-### Provide SBOM to suppliers/customers
+### Providing the SBOM to suppliers and customers
 
-**When to provide SBOM:**
+**When to provide an SBOM:**
 
-- When the supplier explicitly requests
-- When the contract contains a clause providing SBOM
-- EO 14028 applies to(When delivered to the U.S. federal government)
-- EU CRA applies(Scheduled for launch in EU market,Implementation in 2027)
-- When participating in a large enterprise supply chain management program(samsung,Increasing trend, including Hyundai Motors)
+- When the supplier explicitly requests one
+- When the contract includes a clause requiring SBOM delivery
+- When EO 14028 applies (delivery to the U.S. federal government)
+- When the EU CRA applies (entering the EU market; enforcement in 2027)
+- When participating in a large enterprise supply chain management program (an increasing trend, including Samsung and Hyundai Motor)
 
 **Pros and cons of each delivery method:**
 
-| method                                 | suitable situation                            | Precautions                                                 |
-| -------------------------------------- | --------------------------------------------- | ----------------------------------------------------------- |
-| Email Attachment                       | small scale,Occasional offer                  | Version management is difficult and there is a risk of loss |
-| Secure file sharing(Google Drive, Box) | medium scale,Regular offer                    | Access rights management required                           |
-| API provided                           | large scale,Automation needed                 | Initial development cost required                           |
-| Portal/Web                             | Simultaneously provided to multiple customers | Infrastructure construction and maintenance costs required  |
+| Method                                  | Best suited for                  | Cautions                                      |
+| --------------------------------------- | -------------------------------- | --------------------------------------------- |
+| Email attachment                        | Small scale, occasional delivery | Hard to version, risk of loss                 |
+| Secure file sharing (Google Drive, Box) | Medium scale, regular delivery   | Requires access control                       |
+| API                                     | Large scale, automation needed   | Requires initial development effort           |
+| Portal / web                            | Serving many customers at once   | Requires infrastructure setup and maintenance |
 
-**SBOM Information to include when providing**(Included in `sbom-sharing-template.md`):
+**Information to include when providing an SBOM** (covered by `sbom-sharing-template.md`):
 
-- SBOM file body(CycloneDX JSON or SPDX format)
-- SBOM Generation tool name and version
-- Creation date and time(ISO 8601 format recommended)
-- Applied software version
-- Contact name and contact information
+- The SBOM file itself (CycloneDX JSON or SPDX format)
+- The SBOM generation tool name and version
+- The creation date and time (ISO 8601 format recommended)
+- The applicable software version
+- A contact name and contact details
 
 ---
 
-### After deployment(Post-Release)Continuous monitoring of vulnerabilities
+### Continuous vulnerability monitoring after deployment (post-release)
 
-ISO/IEC 18974 §4.3.2 requires pre-deployment vulnerability scanning as well as the ability to continuously monitor and respond to new vulnerabilities **post-deployment**. This is because after deployment, versions affected by a publicly disclosed CVE may still be in production for customers.
+ISO/IEC 18974 §4.3.2 requires not only pre-deployment vulnerability scanning but also the ability to continuously monitor and respond to new vulnerabilities **after deployment**. This is because, once shipped, versions affected by a newly disclosed CVE may still be running in customer production environments.
 
-**Processing flow when new CVE is discovered after distribution:**
+**Workflow when a new CVE is discovered after release:**
 
-1. monitoring tools(Dependency Track, etc.)Receive notifications from
-2. `output/process/vulnerability-response.md` Severity assessment according to procedure
-3. Critical/High:Immediately schedule patch releases + decide whether to notify customers
-4. When Customer Notification Is Required:List of affected versions,Temporary Mitigation Measures,Share expected patch date
-5. Maintain records of SBOM updates and responses after patch deployment
+1. Receive an alert from a monitoring tool (Dependency Track, etc.)
+2. Assess severity following the `output/process/vulnerability-response.md` procedure
+3. Critical/High: schedule a patch release immediately and decide whether to notify customers
+4. When customer notification is required: share the list of affected versions, temporary mitigations, and the expected patch date
+5. Keep records of the SBOM update and the response after the patch is deployed
 
-Make sure your SBOM is always up to date to immediately know if your software is affected when a new CVE is released. If SBOM is outdated, the monitoring tool will not generate the correct notification.
+Keep your SBOM up to date so you can immediately tell whether your software is affected when a new CVE is disclosed. If the SBOM is stale, the monitoring tool will not raise the correct alert.
 
-**Monitoring method:**
+**Monitoring methods:**
 
-- **Dependency Track Notification:** vulnerability Threshold(CVSS score, etc.)Notify by email or webhook when exceeded
-- **GitHub Dependabot:** Automatic PR notification of dependency vulnerabilities in GitHub-based projects
-- **Subscribe to OSV.dev:** Subscribe to notifications from the open source vulnerability database operated by Google
+- **Dependency Track alerts:** notify by email or webhook when a vulnerability exceeds a threshold (CVSS score, etc.)
+- **GitHub Dependabot:** automatic PR alerts for dependency vulnerabilities in GitHub-based projects
+- **OSV.dev subscription:** subscribe to alerts from the open source vulnerability database operated by Google
 
-**CI/CD automatic monitoring example(weekly scan):**
+**CI/CD automated monitoring example (weekly scan):**
 
 ```yaml
 # .github/workflows/vuln-scan.yml
 name: Weekly vulnerability Scan
 on:
   schedule:
-    - cron: '0 9 * * 1' # 매주 월요일 오전 9시
+    - cron: '0 9 * * 1' # every Monday at 9 AM
 jobs:
   scan:
     runs-on: ubuntu-latest
@@ -141,30 +141,30 @@ jobs:
           grype sbom:output/sbom/myapp-latest.cdx.json --fail-on high
 ```
 
-This workflow automatically scans for vulnerabilities based on the latest SBOM every week.,If a high-severity vulnerability is discovered, the CI build can be failed and the team can be notified.
+This workflow automatically scans for vulnerabilities against the latest SBOM every week. If a high-severity vulnerability is found, the CI build can be failed and the team notified.
 
 ---
 
 ## 3. Self-study
 
-:::info Self-study mode(About 45 minutes)
-Interact with the agent to create SBOM management plans and ship-to sharing templates. The agent asks three questions in order,A document is automatically created based on the answers.
+:::info Self-study mode (about 45 minutes)
+Work with the agent to create an SBOM management plan and a sharing template for recipients. The agent asks three questions in order and generates a document automatically from your answers.
 :::
 
-**Advance preparation — If you understand the three things below in advance, it will proceed quickly.:**
+**Preparation — knowing the three things below in advance makes this go faster:**
 
-1. SBOM external(Customer/Supplier)Whether it must be provided to
-2. SBOM format required by the supplier(CycloneDX / SPDX / irrelevant)
-3. Software release cycle(yes:Once a month,Once a quarter,irregular)
+1. Whether the SBOM must be provided externally (to customers/suppliers)
+2. The SBOM format the supplier requires (CycloneDX / SPDX / no preference)
+3. Your software release cycle (e.g. monthly, quarterly, irregular)
 
 **Step-by-step practice:**
 
-**Step 1.** Briefly note your situation regarding the three questions above.
+**Step 1.** Briefly note your situation for the three questions above.
 
 **Step 2.** Run the agent.
 
 :::tip Check before execution
-Terminate the current Claude session first(`/exit` or `Ctrl+C`)After doing it,Run the command below in a new terminal.
+Terminate the current Claude session first (`/exit` or `Ctrl+C`), then run the command below in a new terminal.
 :::
 
 ```bash
@@ -172,13 +172,13 @@ cd agents/05-sbom-management
 claude
 ```
 
-**Step 3.** Answer the three questions asked by the agent in order.
+**Step 3.** Answer the agent's three questions in order.
 
-| Question                               | Sample Answer                                                   |
-| -------------------------------------- | --------------------------------------------------------------- |
-| Should SBOM be provided externally?    | "yes,Supplier A requests it” or “No.,"Internal management only" |
-| What format does the supplier require? | "CycloneDX JSON" or "irrelevant"                                |
-| What is the release cycle?             | “Once a Quarter” or “Irregularly as Function Completes”         |
+| Question                                | Sample answer                                            |
+| --------------------------------------- | -------------------------------------------------------- |
+| Should the SBOM be provided externally? | "Yes, Supplier A requests it" or "No, internal use only" |
+| What format does the supplier require?  | "CycloneDX JSON" or "No preference"                      |
+| What is your release cycle?             | "Quarterly" or "Irregular, as features are completed"    |
 
 **Step 4.** Review the generated document.
 
@@ -201,12 +201,12 @@ mv output/sbom/myapp.cdx.json output/sbom/myapp-v1.0.0-20260320.cdx.json
 cp output/sbom/myapp-v1.0.0-20260320.cdx.json output/sbom/myapp-latest.cdx.json
 ```
 
-**When stuck:** If there is no supplier or the requirements are unclear, the answer is “No external provision.” The agent creates an internal management-oriented plan.
+**When stuck:** if there is no supplier or the requirements are unclear, answer "No external provision." The agent will create an internally-focused plan.
 
 **Expected results:**
 
-- `output/sbom/sbom-management-plan.md`:renewal trigger,renewal cycle,responsible person,Storage Policy,Includes monitoring plan
-- `output/sbom/sbom-sharing-template.md`:Cover document provided to delivery address(Includes company information placeholder)
+- `output/sbom/sbom-management-plan.md`: includes update triggers, update cycle, responsible owner, storage policy, and monitoring plan
+- `output/sbom/sbom-sharing-template.md`: cover document for the recipient (includes company information placeholders)
 
 :::info Standard requirements met
 Completing this lab will meet the requirements below:
@@ -222,20 +222,20 @@ Completing this lab will meet the requirements below:
 
 ---
 
-## 4. Completion Confirmation Checklist
+## 4. Completion checklist
 
 Check all of the items below to complete this chapter.
 
 - [ ] `output/sbom/sbom-management-plan.md` file created
 - [ ] `output/sbom/sbom-sharing-template.md` file created
-- [ ] SBOM List of update triggers specified in management-plan
-- [ ] SBOM The update cycle is defined in conjunction with the release cycle.
-- [ ] Name and contact information of person in charge are specified in management-plan
-- [ ] Documented external delivery procedures(If there is no delivery destination, indicate “not applicable”)
-- [ ] File naming convention(`[project]-[version]-[date].cdx.json`)is defined
-- [ ] Retention period policy defined
+- [ ] The list of SBOM update triggers is specified in the management plan
+- [ ] The SBOM update cycle is defined in relation to the release cycle
+- [ ] The name and contact details of the responsible owner are specified in the management plan
+- [ ] The external delivery procedure is documented (if there is no recipient, mark it "not applicable")
+- [ ] The file naming convention (`[project]-[version]-[date].cdx.json`) is defined
+- [ ] The retention period policy is defined
 
-**sbom-management-plan.md example main sections:**
+**Main sections of an example sbom-management-plan.md:**
 
 ```markdown
 # SBOM Management Plan
@@ -266,18 +266,18 @@ Check all of the items below to complete this chapter.
 - **automated scan:** Run GitHub Actions every Monday
 ```
 
-> This step is ISO/IEC 18974 4.3.1,Meets 4.3.2 requirements.
+> This step meets ISO/IEC 18974 4.3.1 and 4.3.2 requirements.
 
-> 📋 **Example of output**: [SBOM Output Best Practice](/reference/samples/sbom)You can check the actual format of the generated file at .
+> 📋 **Example output**: see the actual format of the generated file at [SBOM output best practice](/reference/samples/sbom).
 
 ---
 
 ## 5. Next steps
 
-SBOM If a management system is in place,Go to the vulnerability analysis step. Based on SBOM, we analyze the CVEs affected by the current software and,This is the stage of establishing a response plan.
+Once your SBOM management system is in place, move on to the vulnerability analysis step. There, you use the SBOM to analyze which CVEs affect your current software and establish a response plan.
 
 :::tip Check before execution
-Terminate the current Claude session first(`/exit` or `Ctrl+C`)After doing it,Run the command below in a new terminal.
+Terminate the current Claude session first (`/exit` or `Ctrl+C`), then run the command below in a new terminal.
 :::
 
 ```bash
@@ -285,6 +285,6 @@ cd agents/05-vulnerability-analyst
 claude
 ```
 
-or [vulnerability Analysis:Find out the known risks of open source](../vulnerability/index.md)You can read the guide first by going to .
+Or read the guide first at [Vulnerability analysis: uncover the known risks in open source](../vulnerability/index.md).
 
-In the vulnerability analysis stage, the previously created `output/sbom/[project].cdx.json` is used as input.,We recommend that you check one more time to ensure that the SBOM file is up to date before proceeding.
+The vulnerability analysis stage uses the `output/sbom/[project].cdx.json` you created earlier as its input, so we recommend double-checking that the SBOM file is up to date before you proceed.

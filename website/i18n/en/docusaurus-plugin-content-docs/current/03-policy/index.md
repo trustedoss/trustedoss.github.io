@@ -7,135 +7,135 @@ checklist:
 self_study_time: 1 hour
 ---
 
-# Establishment of open source policy:The first step to legal protection
+# Establishing an open source policy: The first step to legal protection
 
 ## 1. What we do in this chapter
 
-In this chapter, you will create a custom open source policy document for your company. An open source policy is not just an internal rulebook — it serves as a means of legal protection in the event of a licensing dispute or vulnerability incident, demonstrating that the company has systematically managed compliance. It becomes an official document that can be submitted immediately even when a supplier or partner company requests proof of an open source management system.
+In this chapter, you will create an open source policy document tailored to your company. An open source policy is not just an internal rulebook — it serves as a means of legal protection in a licensing dispute or vulnerability incident, demonstrating that the company has managed compliance systematically. It becomes an official document you can submit immediately when a customer or partner requests proof of an open source management system.
 
-If you run `agents/03-policy-generator`, you will see your company's distribution method.,development language,Based on the answers to five questions, including delivery status, two outputs, `output/policy/oss-policy.md` and `output/policy/license-allowlist.md`, are automatically created.
+When you run `agents/03-policy-generator`, it asks five questions — including your distribution method, development languages, and delivery situation — and based on your answers automatically generates two outputs: `output/policy/oss-policy.md` and `output/policy/license-allowlist.md`.
 
 ---
 
 ## 2. Background knowledge
 
-### Why we need an open source policy
+### Why you need an open source policy
 
-There are cases where open source license violations have led to actual legal disputes.
+There are cases where open source license violations have led to real legal disputes.
 
-**Artifex vs Hancom (2017)**
-Hancom Office uses Ghostscript distributed under the GPL license.(PDF rendering engine)was used in the product without permission. Artifex Software filed a lawsuit in a California court in the United States.,In the first trial, the court ruled that the GPL license was legally binding as a contract. This case shows that open source license violations go beyond simple copyright issues and can result in liability for breach of contract.
+**Artifex vs. Hancom (2017)**
+Hancom Office used Ghostscript (a PDF rendering engine) distributed under the GPL license in its product without permission. Artifex Software filed suit in a California court, and in the first trial the court ruled that the GPL license was legally binding as a contract. This case shows that an open source license violation goes beyond a simple copyright issue and can result in liability for breach of contract.
 
-**Problems that arise in practice in the absence of policy**
+**Problems that arise in practice without a policy**
 
-- License conflict:If GPL code is mixed into the Apache-2.0 project, full distribution may become impossible.
-- Missing Notice: Apache-2.0,Permissive licenses such as MIT also require a NOTICE file or copyright notice.
-- Neglecting vulnerabilities:Failure to track known CVEs in open source components leaves your products vulnerable to security vulnerabilities.
+- License conflict: If GPL code is mixed into an Apache-2.0 project, full distribution may become impossible.
+- Missing notice: Permissive licenses such as Apache-2.0 and MIT also require a NOTICE file or a copyright notice.
+- Neglected vulnerabilities: Failing to track known CVEs in open source components leaves your products exposed to security vulnerabilities.
 
-Having a written policy serves as a basis for proving “unintentional” in the event of a violation.,It is used as evidence that systematic procedures have been operated.
+Having a written policy provides a basis for proving that a violation was "unintentional," and it serves as evidence that you have operated systematic procedures.
 
 ---
 
 ### Policy prerequisites required by the standard
 
-Acceptable ranges for both standards,Procedures for fulfilling license obligations,manager,Violation Processing Procedure,A common review cycle is required. ISO/IEC 18974 adds vulnerability response procedures,Security vulnerability Disclosure Policy,Program Performance Indicators(KPI)Additional requests are made. Additionally, for both standards, the mere existence of a policy document is not enough;,In fact, it requires employees to be accessible and aware of it.
+Both standards require a common set of items: the acceptable scope of use, procedures for fulfilling license obligations, the person in charge, a violation-handling procedure, and a review cycle. ISO/IEC 18974 additionally requires vulnerability response procedures, a security vulnerability disclosure policy, and program performance indicators (KPIs). For both standards, the mere existence of a policy document is not enough; employees must actually be able to access it and be aware of it.
 
-> Detailed descriptions of items to be included in the policy and example policy documents are available in [KWG Open Source Guide — Policy](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/2-policy/)See .
+> Detailed descriptions of the items a policy should include, along with an example policy document, are available in the [KWG Open Source Guide — Policy](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/2-policy/).
 
 #### ISO/IEC 18974 §4.1.4.2 — Program performance indicators
 
-ISO/IEC 18974 requires that open source security assurance programs have **measurable performance indicators.(KPI)Requires that ** be included. You can meet this requirement by specifying the types of KPIs below in your policy document:
+ISO/IEC 18974 requires that an open source security assurance program include **measurable performance indicators (KPIs)**. You can meet this requirement by specifying the KPI types below in your policy document:
 
-| KPI example                                             | Measurement method                                                                                        |
-| ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| Critical vulnerability patch period after CVE detection | Discovery date ~ Patch distribution date(target:Within 1 week)                                            |
-| SBOM Renewal cycle compliance rate                      | SBOM Number of updates per release / Total number of releases                                             |
-| CVE regular scan cycle                                  | Regular scans per release + once a month                                                                  |
-| vulnerability response rate                             | Over 90% resolved within deadline(Documentation of reasons and mitigation plan in case of non-resolution) |
-| Education Completion Rate                               | 100% annual completion of open source-related occupations                                                 |
-| Open source use approval processing period              | Processing time for approval request(target:Within 3 business days)                                       |
+| KPI example                                           | Measurement method                                                                              |
+| ----------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| Critical vulnerability patch time after CVE detection | Detection date to patch release date (target: within 1 week)                                    |
+| SBOM update cycle compliance rate                     | Number of SBOM updates per release / total number of releases                                   |
+| CVE periodic scan cycle                               | Per-release scan plus once a month                                                              |
+| Vulnerability response rate                           | Over 90% resolved within the deadline (document the reason and a mitigation plan if unresolved) |
+| Training completion rate                              | 100% annual completion for open-source-related roles                                            |
+| Open source usage approval turnaround time            | Processing time for an approval request (target: within 3 business days)                        |
 
-> **reference**:The above deadline is the OpenChain KWG guide baseline. Depending on your organization's risk profile, more stringent deadlines, such as 24 hours for Critical or 1 week for High, can be applied as internal SLAs.
+> **Note**: The deadlines above are the OpenChain KWG guide baseline. Depending on your organization's risk profile, you can apply stricter deadlines as internal SLAs — for example, 24 hours for Critical or 1 week for High.
 
 The `oss-policy.md` generated by the agent will contain the same KPI section as above.
 
-#### AI Generated Code Policy
+#### AI-generated code policy
 
-GitHub Copilot,When code generated by an AI coding tool such as ChatGPT is included in the product,Licensing obligations for open sources used as training data may apply. KWG The open source guide recommends explicitly reflecting this in the policy.
+When code generated by an AI coding tool such as GitHub Copilot or ChatGPT is included in a product, license obligations for the open source used as training data may apply. The KWG Open Source Guide recommends reflecting this explicitly in your policy.
 
-- The same review process as general open source applies to AI-generated code.
-- source code scan tool(SCANOSS etc.)Snippet detection using is recommended.
-- Terms and conditions for the AI ​​tools you use(Copyright Attribution,License Terms)Confirmation required
+- The same review process used for general open source applies to AI-generated code.
+- Snippet detection using a source code scanning tool (SCANOSS, etc.) is recommended.
+- Confirm the terms and conditions of the AI tools you use (copyright attribution, license terms).
 
-The `oss-policy.md` generated by the agent contains the AI ​​generated code policy section. If your organization does not use AI coding tools, it is also a good idea to specify “Not Applicable.”
+The `oss-policy.md` generated by the agent contains an AI-generated code policy section. If your organization does not use AI coding tools, it is fine to mark this "Not Applicable."
 
-#### policy dissemination(Policy Communication)
+#### Policy communication
 
-Both ISO/IEC 5230 and 18974 require that policies are **communicated and understood** by relevant personnel. Simply writing a document is not enough.
+Both ISO/IEC 5230 and 18974 require that policies are **communicated to and understood** by the relevant personnel. Simply writing a document is not enough.
 
-How to propagate policy:
+How to communicate the policy:
 
-- in-house wiki(Confluence,Notion, etc.)Post policy on
-- Include policy links in onboarding training materials
-- Share policy changes with all developers once a year
-- Include a policy acknowledgment signature line on the appointment letter.(Utilizing appointment-template.md)
+- Post the policy on an internal wiki (Confluence, Notion, etc.).
+- Include policy links in onboarding training materials.
+- Share policy changes with all developers once a year.
+- Include a policy acknowledgment signature line on the appointment letter (using appointment-template.md).
 
-> This step is ISO/IEC 5230 3.1.1(Establishing and documenting open source policies)Meets your requirements.
+> This step meets the ISO/IEC 5230 3.1.1 (establishing and documenting an open source policy) requirement.
 
 ---
 
 ### Understand license classifications
 
-Open source licenses are classified by the strength of their obligations into Permissive, Weak Copyleft, Strong Copyleft, and Network Copyleft. Even for the same code, whether an obligation arises depends on the company's distribution method (SaaS/App Store/Embedded), so be sure to understand this before writing a policy.
+Open source licenses are classified by the strength of their obligations into Permissive, Weak Copyleft, Strong Copyleft, and Network Copyleft. For the same code, whether an obligation arises depends on the company's distribution method (SaaS / App Store / Embedded), so be sure to understand this before writing your policy.
 
 :::tip Canonical classification reference
 Representative licenses per category, core obligations, impact by distribution method, and the distribution-channel allow matrix are consolidated in [License classification](/reference/concepts/license-classification). The `policy-generator` agent turns this into an allow list tailored to your distribution method.
 :::
 
-> This step satisfies ISO/IEC 5230 3.1.4 (Program scope definition).
+> This step satisfies ISO/IEC 5230 3.1.4 (program scope definition).
 
 ---
 
-:::note Check before practice
+:::note Check before the exercise
 This exercise is done in the trustedoss project root.
-It assumes an environment in which Claude Code runs.
+It assumes an environment where Claude Code is running.
 
 - [ ] Did you clone the trustedoss repository?
       `git clone https://github.com/trustedoss/trustedoss.github.io.git`
-- [ ] Are you in the project root in the terminal?
+- [ ] Are you in the project root in your terminal?
       `cd trustedoss.github.io`
 - [ ] Is Claude Code running?
       `claude`
 
-If everything is not checked
-→ [1. Prepare the environment](../01-setup/index.md)Go through the chapters first.
+If any of these are not checked,
+→ go through the [1. Environment setup](../01-setup/index.md) chapter first.
 :::
 
 ## 3. Self-study
 
-:::info Self-study mode(About 1 hour)
-It interacts with the agent and creates policy documents. If you prepare answers to the five questions below in advance, the process will proceed quickly.
+:::info Self-study mode (about 1 hour)
+You interact with the agent and create the policy documents. If you prepare answers to the five questions below in advance, the process will move quickly.
 :::
 
-**Advance preparation:Summary of answers to 5 questions**
+**Preparation: answers to the 5 questions**
 
-The process will proceed quickly if you briefly note the company's situation regarding the questions below before running the agent.
+The process moves quickly if you jot down your company's situation for the questions below before running the agent.
 
-1. **Software Distribution Method**:SaaS / App Store(Mobile/Desktop)/ embedded(Firmware/Hardware)/ Internal tools only / Complex(Duplicate selection possible)
-2. **Major development languages ​​and package managers**:yes) Python + pip, JavaScript + npm,Java + Maven, etc.
-3. **Open source project contribution plan**:Do you plan to contribute code to external open source projects such as GitHub?
-4. **Delivery to external customer/supplier**:Do you deliver or sell products or software to external customers?
-5. **Is there a current license review process**:Is there currently a procedure for reviewing licenses when introducing open source?
+1. **Software distribution method**: SaaS / App Store (mobile/desktop) / Embedded (firmware/hardware) / Internal tools only / Mixed (multiple choices allowed)
+2. **Main development languages and package managers**: e.g., Python + pip, JavaScript + npm, Java + Maven, etc.
+3. **Open source contribution plans**: Do you plan to contribute code to external open source projects such as those on GitHub?
+4. **Delivery to external customers/suppliers**: Do you deliver or sell products or software to external customers?
+5. **Existing license review process**: Do you currently have a procedure for reviewing licenses when adopting open source?
 
-**Step-by-step practice**
+**Step-by-step exercise**
 
-**Step 1. Summary of company situation**
-Write down the answers to the five questions above in advance.
+**Step 1. Summarize your company's situation**
+Write down your answers to the five questions above in advance.
 
-**Step 2. Run policy-generator agent**
+**Step 2. Run the policy-generator agent**
 
-:::tip Check before execution
-Terminate the current Claude session first(`/exit` or `Ctrl+C`)After doing it,Run the command below in a new terminal.
+:::tip Check before running
+First terminate the current Claude session (`/exit` or `Ctrl+C`), then run the command below in a new terminal.
 :::
 
 ```bash
@@ -143,59 +143,59 @@ cd agents/03-policy-generator
 claude
 ```
 
-**Step 3. When the Claude prompt opens, enter `시작`.**
+**Step 3. When the Claude prompt opens, enter `시작` ("start").**
 
 <details>
-<summary>Agent conversation example(Click to expand)</summary>
+<summary>Agent conversation example (click to expand)</summary>
 
-Below is an example of a conversation flow with an actual agent. When the user enters `시작`, the process goes like this.
+Below is an example of a conversation flow with the actual agent. When the user enters `시작`, it proceeds like this.
 
 **Agent guidance message:**
 
-> hello! This is an agent that creates open source policy output.
-> If you answer 5 questions, 2 policy documents will be automatically generated.
+> Hello! This is the agent that creates the open source policy deliverables.
+> Answer 5 questions and 2 policy documents will be generated automatically.
 
 ---
 
-**Question 1/5** — How will the software be distributed?(SaaS / App Store Distribution / Embedded / Internal Use / Complex)
+**Question 1/5** — How will the software be distributed? (SaaS / App Store distribution / Embedded / Internal use / Mixed)
 
 `Sample answer: SaaS`
 
-**Question 2/5** — What development language and package manager do you mainly use?
+**Question 2/5** — What development languages and package managers do you mainly use?
 
 `Sample answer: Python + pip, JavaScript + npm`
 
 **Question 3/5** — Do you plan to contribute to open source projects?
 
-`Sample answer:doesn't exist(Focus on internal service development)`
+`Sample answer: No (focused on internal service development)`
 
 **Question 4/5** — Do you deliver software to external customers/suppliers?
 
-`Sample answer:doesn't exist(Operates only our own SaaS services)`
+`Sample answer: No (we operate only our own SaaS service)`
 
-**Question 5/5** — Do you currently have a license review process in place?(Yes / No / Informally present)
+**Question 5/5** — Do you currently have a license review process in place? (Yes / No / Informally)
 
-`Sample answer:It exists unofficially.
+`Sample answer: Informally`
 
 ---
 
-**Example of output upon completion of creation:**
+**Example output on completion:**
 
-| file                                 | Content                                                       |
-| ------------------------------------ | ------------------------------------------------------------- |
-| `output/policy/oss-policy.md`        | Open source policy document(purpose,applied area,Obligations) |
-| `output/policy/license-allowlist.md` | List of permitted licenses by distribution method             |
+| File                                 | Content                                                   |
+| ------------------------------------ | --------------------------------------------------------- |
+| `output/policy/oss-policy.md`        | Open source policy document (purpose, scope, obligations) |
+| `output/policy/license-allowlist.md` | List of permitted licenses by distribution method         |
 
-**Items that require manual entry:**
+**Items you must fill in manually:**
 
-- Contact person's actual name and email
-- Policy enforcement date
-- Confirm policy review cycle
+- The contact person's actual name and email
+- The policy's effective date
+- Confirm the policy review cycle
 
 </details>
 
-**Step 4. Answer agent questions in order**
-The agent asks five questions one by one. We talk based on the answers we have prepared. If you are unsure about anything, you can ask your agent for guidance.
+**Step 4. Answer the agent's questions in order**
+The agent asks the five questions one at a time. Respond based on the answers you prepared. If you are unsure about anything, you can ask the agent for guidance.
 
 **Step 5. Review oss-policy.md**
 
@@ -203,9 +203,9 @@ The agent asks five questions one by one. We talk based on the answers we have p
 open output/policy/oss-policy.md
 ```
 
-- Check whether the company name and actual person in charge are reflected.
-- Ensure that procedures for enforcing licensing obligations are included for your deployment method.
-- Policy Review Cycle(yes:Once a year)Check if it is specified
+- Check that the company name and the actual person in charge are reflected.
+- Ensure that procedures for fulfilling license obligations are included for your distribution method.
+- Check that the policy review cycle (e.g., once a year) is specified.
 
 **Step 6. Review and edit license-allowlist.md**
 
@@ -213,45 +213,44 @@ open output/policy/oss-policy.md
 open output/policy/license-allowlist.md
 ```
 
-- Ensure that the appropriate classification is applied for our deployment method
-- Verify that the license you are actually using is included in the list
-- Add items or modify conditions as needed
+- Ensure the appropriate classification is applied for your distribution method.
+- Verify that the licenses you actually use are included in the list.
+- Add items or adjust conditions as needed.
 
-**Step 7. Check completion confirmation checklist**
+**Step 7. Go through the completion checklist**
 Check the checklist item by item in section 5 below.
 
-> This step is ISO/IEC 5230 3.5.1(Establishing an open source contribution policy)Meets your requirements.
+> This step meets the ISO/IEC 5230 3.5.1 (establishing an open source contribution policy) requirement.
 
 ---
 
-:::tip expected result
-When the practice is completed successfully
-The files below are created.
+:::tip Expected result
+When the exercise completes successfully, the files below are created.
 
-**Created file:**
+**Created files:**
 
 - `output/policy/oss-policy.md`
 - `output/policy/license-allowlist.md`
 
-**Items that must be included in the file:**
+**Items the files must include:**
 
-- Acceptable scope and restrictions on open source use
+- The acceptable scope of, and restrictions on, open source use
 - Procedures for fulfilling license obligations
-- Person in charge and contact information
+- The person in charge and contact details
 - Procedures for handling policy violations
-- Policy Review Cycle
-- Known vulnerability Response Procedures(18974 Requirements)
+- The policy review cycle
+- Known-vulnerability response procedures (18974 requirement)
 
-Open the created file and check if it contains the above items.
-Check it yourself and supplement if necessary.
+Open the created files and check that they contain the items above.
+Verify them yourself and supplement as needed.
 :::
 
 :::info Standard requirements met
-Completing this lab will meet the requirements below:
+Completing this exercise meets the requirements below:
 
 **ISO/IEC 5230**
 
-| Item ID | Requirements                               | Self-certification checklist                                    |
+| Item ID | Requirement                                | Self-certification checklist                                    |
 | ------- | ------------------------------------------ | --------------------------------------------------------------- |
 | 3.1.1   | Open source policy documentation           | Do you have a documented open source policy?                    |
 | 3.1.4   | Program scope definition                   | Is the scope of your open source program documented?            |
@@ -260,18 +259,18 @@ Completing this lab will meet the requirements below:
 
 **ISO/IEC 18974**
 
-| Item ID | Requirements                          | Self-certification checklist                                            |
-| ------- | ------------------------------------- | ----------------------------------------------------------------------- |
-| 4.1.1   | Documenting Security Assurance Policy | Do you have a documented open source security assurance policy?         |
-| 4.1.4   | Security program scope definition     | Is the scope of your open source security assurance program documented? |
+| Item ID | Requirement                             | Self-certification checklist                                            |
+| ------- | --------------------------------------- | ----------------------------------------------------------------------- |
+| 4.1.1   | Documenting a security assurance policy | Do you have a documented open source security assurance policy?         |
+| 4.1.4   | Security program scope definition       | Is the scope of your open source security assurance program documented? |
 
 :::
 
 ---
 
-## 4. Completion Confirmation Checklist
+## 4. Completion checklist
 
-These are items that must be checked directly by a person after running the agent. You must pass all checklists to complete this chapter.
+These are items a person must check directly after running the agent. You must pass the entire checklist to complete this chapter.
 
 **Confirm file creation**
 
@@ -280,15 +279,15 @@ These are items that must be checked directly by a person after running the agen
 
 **Check policy details**
 
-- [ ] The company name and actual person in charge are reflected in the policy.
-- [ ] License classification and obligations appropriate for our distribution method are applied.
-- [ ] Open source contribution policy is included(If you have a contribution plan)
-- [ ] Includes vulnerability response procedures(ISO/IEC 18974 requirements)
-- [ ] Policy review cycle is specified(yes:Once a year)
+- [ ] The company name and the actual person in charge are reflected in the policy.
+- [ ] The license classifications and obligations appropriate for your distribution method are applied.
+- [ ] The open source contribution policy is included (if you have a contribution plan).
+- [ ] Vulnerability response procedures are included (ISO/IEC 18974 requirement).
+- [ ] The policy review cycle is specified (e.g., once a year).
 
 ---
 
-**Example table of contents of main sections of oss-policy.md**
+**Example table of contents for the main sections of oss-policy.md**
 
 Ensure that the generated policy document contains the sections below.
 
@@ -305,9 +304,9 @@ Ensure that the generated policy document contains the sections below.
 
 ---
 
-**license-allowlist.md sample table example**
+**license-allowlist.md sample table**
 
-Compare the generated allowed license list to the sample below to ensure it is correctly categorized by deployment method.
+Compare the generated allowed-license list against the sample below to confirm it is correctly categorized by distribution method.
 
 ```markdown
 | License    | Category        | Internal Use | SaaS Distribution | App distribution  | Embedded          |
@@ -319,16 +318,16 @@ Compare the generated allowed license list to the sample below to ensure it is c
 | AGPL-3.0   | Strong Copyleft | ✓ Allowed    | ✗ Review required | ✗ Review required | ✗ Review required |
 ```
 
-> 📋 **Example of output**: [Policy Output Best Practice](/reference/samples/policy)You can check the actual format of the generated file at .
+> 📋 **Example output**: See the actual format of the generated files in [Policy output best practices](/reference/samples/policy).
 
 ---
 
 ## 5. Next steps
 
-Once you have completed this chapter, move on to the process design phase. The open source process is the step of materializing the procedures defined in the policy into actual work flow.
+Once you have completed this chapter, move on to the process design phase. The open source process is the step where you turn the procedures defined in the policy into an actual workflow.
 
-:::tip Check before execution
-Terminate the current Claude session first(`/exit` or `Ctrl+C`)After doing it,Run the command below in a new terminal.
+:::tip Check before running
+First terminate the current Claude session (`/exit` or `Ctrl+C`), then run the command below in a new terminal.
 :::
 
 ```bash
@@ -336,6 +335,6 @@ cd agents/04-process-designer
 claude
 ```
 
-or [open source process:From use to distribution](../04-process/index.md)Go to and read the chapter document to proceed.
+Or go to [Open source process: From use to distribution](../04-process/index.md) and read the chapter to proceed.
 
-> This step is ISO/IEC 5230 3.1.1, 3.1.4,Meets 3.5.1 and ISO/IEC 18974 4.1.1 requirements.
+> This step meets the ISO/IEC 5230 3.1.1, 3.1.4, and 3.5.1, and ISO/IEC 18974 4.1.1 requirements.
