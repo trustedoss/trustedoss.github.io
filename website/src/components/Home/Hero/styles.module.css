@@ -82,11 +82,12 @@
 }
 
 .titleAccent {
+  /* 폴백: background-clip:text 미지원 시 보이는 라이트 블루 */
+  color: #8ab4f8;
   background: linear-gradient(90deg, #aecbfa 0%, #8ab4f8 42%, #c2a8ff 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: transparent;
 }
 
 .subtitle {

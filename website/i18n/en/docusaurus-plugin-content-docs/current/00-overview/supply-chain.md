@@ -95,10 +95,7 @@ If we had SBOM, we would have been able to immediately identify and respond to a
 #### XZ Utils (2024, CVE-2024-3094)
 
 **Incident Overview**
-The attacker had been working on the XZ Utils open source project for two years under the pseudonym "Jia Tan".
-Acted as a reliable contributor. After building trust through regular contributions over a long period of time,,
-sshd(SSH daemon)committed malicious code to insert a backdoor into
-Full-scale spread was prevented due to the discovery of anomalies by a developer just before distribution.
+For two years, an attacker using the pseudonym "Jia Tan" contributed to the XZ Utils open source project as a seemingly reliable contributor. After building trust through regular contributions over a long period, they committed malicious code that inserted a backdoor into sshd (the SSH daemon). Full-scale spread was prevented when a developer noticed anomalies just before distribution.
 
 **Scope of Influence**
 Fedora, Debian,Many major Linux distributions, including Ubuntu, already included vulnerable versions.
@@ -127,9 +124,7 @@ This is an executive order strengthening cybersecurity signed by the Biden admin
 - Software Development Security Practices(Secure Software Development Practices)Compliance confirmation
 
 **Impact on Korean companies**
-Companies that supply directly to the U.S. federal government are immediately affected.
-indirect supply chain(Subcontracting by the delivery company)Since there is a trend of receiving the same requirements,,
-It should be assumed that most companies operating in the US market will be affected.
+Companies that supply directly to the U.S. federal government are immediately affected. Because the same requirements increasingly flow down the indirect supply chain (through subcontracting by the supplying company), most companies operating in the U.S. market should assume they will be affected too.
 
 ---
 
