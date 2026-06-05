@@ -7,13 +7,13 @@ checklist:
 self_study_time: 1.5 hours
 ---
 
-# Create SBOM:Creating a software configuration specification with syft and cdxgen
+# Create SBOM: Build a software bill of materials with syft and cdxgen
 
 ## 1. What we do in this chapter
 
-In this chapter, you use syft and cdxgen to(Software Bill of Materials)generates . Both tools run with Docker, so no separate installation is required.,With a few lines of commands, you can create your project's entire dependency list as a JSON file.
+In this chapter, you use syft and cdxgen to generate an SBOM (Software Bill of Materials). Both tools run with Docker, so no separate installation is required. With a few lines of commands, you can produce your project's entire dependency list as a JSON file.
 
-The generated SBOM is later analyzed for license(05-sbom-analyst)and vulnerability scanning(05-vulnerability-analyst)It becomes the basis of. The more accurate SBOM is, the better you can identify compliance risks and security vulnerabilities.
+The generated SBOM later becomes the basis for license analysis (05-sbom-analyst) and vulnerability scanning (05-vulnerability-analyst). The more accurate the SBOM, the better you can identify compliance risks and security vulnerabilities.
 
 ---
 
@@ -21,38 +21,38 @@ The generated SBOM is later analyzed for license(05-sbom-analyst)and vulnerabili
 
 ### What is SBOM?
 
-SBOM(Software Bill of Materials)is a list of all components included in the software. Like the food nutrition facts table,Specifies which open sources and versions are included in the software. Both ISO/IEC 5230 and 18974 specify the generation of SBOM as a core requirement(G3B.1).
+An SBOM (Software Bill of Materials) is a list of every component included in the software. Like a food nutrition label, it specifies which open source packages and versions the software contains. Both ISO/IEC 5230 and 18974 specify SBOM generation as a core requirement (G3B.1).
 
-Why SBOM is important:
+Why SBOM matters:
 
-- Know what open source licenses are included(compliance)
-- Check if you have a vulnerable version of a library(security)
-- Providing software configuration information to customers or regulatory agencies when distributing products
+- Know which open source licenses are included (compliance)
+- Check whether you ship a vulnerable version of a library (security)
+- Provide software composition information to customers or regulators when distributing products
 
-### Introduction to tools used
+### The tools used
 
-There are two approaches to generating SBOM: **Dependency Analysis** is a package manager file(pom.xml,package-lock.json, etc.)Identify declared dependencies based on,**Source Code Scan** detects open source embedded directly within your code at the file level. By combining the two methods, you can create a more complete SBOM that includes copied/inserted code fragments without package declarations.
+There are two approaches to generating an SBOM. **Dependency analysis** identifies dependencies declared in package manager files (pom.xml, package-lock.json, etc.), while **source code scanning** detects open source embedded directly in your code at the file level. By combining the two, you can build a more complete SBOM that also covers copied or pasted code fragments that have no package declaration.
 
-**Dependency Analysis Tool**(Exercises in this chapter)
+**Dependency analysis tools** (used in this chapter)
 
-| tools  | Production company | Features                                               | suitable situation                                   |
-| ------ | ------------------ | ------------------------------------------------------ | ---------------------------------------------------- |
-| syft   | Anchore            | fast and light,single binary,Multiple language support | Python, Node.js, Go                                  |
-| cdxgen | CycloneDX          | CycloneDX only,Detailed analysis by language           | Java(Maven/Gradle),When precise analysis is required |
+| Tool   | Vendor    | Features                                            | Best suited for                                        |
+| ------ | --------- | --------------------------------------------------- | ------------------------------------------------------ |
+| syft   | Anchore   | Fast and lightweight, single binary, many languages | Python, Node.js, Go                                    |
+| cdxgen | CycloneDX | CycloneDX only, detailed per-language analysis      | Java (Maven/Gradle), when precise analysis is required |
 
 Both tools can output CycloneDX JSON; this chapter uses CycloneDX as the standard format.
 
-**Source Code Scan Tool**(optional)
+**Source code scanning tool** (optional)
 
-| tools   | Operating entity | Features                                                                     | suitable situation                                                    |
-| ------- | ---------------- | ---------------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| SCANOSS | SCANOSS          | File-by-file snippet scanning,Cloud + On-Premise,API integration,create SBOM | Source code direct embedding detection,Precise License Identification |
+| Tool    | Vendor  | Features                                                                        | Best suited for                                                         |
+| ------- | ------- | ------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| SCANOSS | SCANOSS | File-by-file snippet scanning, cloud + on-premise, API integration, SBOM output | Detecting directly embedded source code, precise license identification |
 
-[SCANOSS](https://www.scanoss.com/)has the advantage of detecting open source code fragments copied and inserted directly without package declaration at the file level. Because its role is complementary to syft/cdxgen, parallel use is recommended when source-level precision is required.
+[SCANOSS](https://www.scanoss.com/) excels at detecting open source code fragments that were copied and pasted directly, without any package declaration, at the file level. Because its role complements syft/cdxgen, using it in parallel is recommended when source-level precision is required.
 
-> FOSSLight, SW360,For a guide to the introduction and use of SCA and compliance tools such as FOSSology, see [KWG Open Source Guide — Tools](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/4-tool/)See .
+> For a guide to adopting and using SCA and compliance tools such as FOSSLight, SW360, and FOSSology, see [KWG Open Source Guide — Tools](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/4-tool/).
 
-Actual Docker execution command,GitHub Actions CI/CD Settings,Sample project practice is [Docker·CI/CD execution guide](./docker-cicd.md)Please refer to the page.
+For the actual Docker commands, GitHub Actions CI/CD setup, and the sample project walkthrough, see the [Docker and CI/CD execution guide](./docker-cicd.md).
 
 ### CycloneDX JSON format main fields
 
@@ -80,17 +80,17 @@ Actual Docker execution command,GitHub Actions CI/CD Settings,Sample project pra
 
 Key field descriptions:
 
-- `bomFormat`, `specVersion`:CycloneDX format identifier
-- `metadata.component`:Software information to be analyzed
-- `components[]`:Dependency list(license,Includes PURL)
-- `vulnerabilities[]`:vulnerability information(If there is)
+- `bomFormat`, `specVersion`: CycloneDX format identifiers
+- `metadata.component`: information about the software being analyzed
+- `components[]`: the dependency list (includes license and PURL)
+- `vulnerabilities[]`: vulnerability information (if present)
 
 ---
 
 ## 3. Self-study
 
-:::info Self-study mode(Approximately 1 hour and 30 minutes)
-The first run may take an additional 10-15 minutes due to Docker image pulling.
+:::info Self-study mode (approximately 1 hour 30 minutes)
+The first run may take an extra 10-15 minutes while Docker images are pulled.
 :::
 
 Step-by-step practice:
@@ -111,23 +111,23 @@ mkdir -p output/sbom
 cp output-sample/sbom/fixture-sample.cdx.json output/sbom/fixture-sample.cdx.json
 ```
 
-Sample SBOM includes GPL-2.0 Copyleft components and packages with CVE vulnerabilities, allowing for subsequent analysis practice.
-In this case, skip running the 05-sbom-guide agent and go directly to **step 5.(Run analysis agent)Go to **.
+The sample SBOM includes GPL-2.0 copyleft components and packages with CVE vulnerabilities, so you can still practice the later analysis steps.
+In this case, skip running the 05-sbom-guide agent and jump straight to **Step 5 (run the analysis agent)**.
 :::
 
-**Step 2** — Select projects to analyze
+**Step 2** — Select a project to analyze
 
-You can also use your own project,Samples are also available.
+You can use your own project, or one of the bundled samples.
 
-If this is your first time, choose one of the samples below::
+If this is your first time, choose one of the samples below:
 
-| sample path                     | language      | Features                          | Learning Points                            |
-| ------------------------------- | ------------- | --------------------------------- | ------------------------------------------ |
-| `samples/java-vulnerable/`      | Java (Maven)  | Log4Shell(CVE-2021-44228)Included | Critical vulnerability detection practice  |
-| `samples/python-mixed-license/` | Python (pip)  | GPL + MIT mixed use               | Copyleft License Conflict Practice         |
-| `samples/nodejs-unlicensed/`    | Node.js (npm) | Unlicensed package                | License identification processing practice |
+| Sample path                     | Language      | Features                            | Learning points                           |
+| ------------------------------- | ------------- | ----------------------------------- | ----------------------------------------- |
+| `samples/java-vulnerable/`      | Java (Maven)  | Includes Log4Shell (CVE-2021-44228) | Critical vulnerability detection practice |
+| `samples/python-mixed-license/` | Python (pip)  | Mixed GPL + MIT use                 | Copyleft license conflict practice        |
+| `samples/nodejs-unlicensed/`    | Node.js (npm) | Unlicensed package                  | License identification practice           |
 
-> **Recommended**:`samples/java-vulnerable/` — Detect Log4Shell vulnerabilities directly and experience the value of SBOM.
+> **Recommended**: `samples/java-vulnerable/` — detect the Log4Shell vulnerability firsthand and see the value of an SBOM.
 
 **Step 3** — Create output folder
 
@@ -138,7 +138,7 @@ mkdir -p output/sbom
 **Step 4** — Run the sbom-guide agent
 
 :::tip Check before execution
-Terminate the current Claude session first(`/exit` or `Ctrl+C`)After doing it,Run the command below in a new terminal.
+Terminate the current Claude session first (`/exit` or `Ctrl+C`), then run the command below in a new terminal.
 :::
 
 ```bash
@@ -146,11 +146,11 @@ cd agents/05-sbom-guide
 claude
 ```
 
-The agent asks three questions asking for project information.:
+The agent asks three questions about your project:
 
-- project path(yes: `samples/java-vulnerable`)
-- main language(yes: `Java`)
-- package manager(yes: `Maven`)
+- Project path (e.g. `samples/java-vulnerable`)
+- Main language (e.g. `Java`)
+- Package manager (e.g. `Maven`)
 
 **Step 5** — Run the generated script
 
@@ -168,10 +168,10 @@ ls -lh output/sbom/*.cdx.json
 
 If the file exists and its size is greater than 0, it's OK. Open the file and check that the `components` array is not empty.
 
-**Step 7** — Run License Analysis
+**Step 7** — Run license analysis
 
 :::tip Check before execution
-Terminate the current Claude session first(`/exit` or `Ctrl+C`)After doing it,Run the command below in a new terminal.
+Terminate the current Claude session first (`/exit` or `Ctrl+C`), then run the command below in a new terminal.
 :::
 
 ```bash
@@ -179,7 +179,7 @@ cd agents/05-sbom-analyst
 claude
 ```
 
-**Step 8** — Check analysis results
+**Step 8** — Check the analysis results
 
 ```bash
 ls output/sbom/license-report.md output/sbom/copyleft-risk.md
@@ -187,7 +187,7 @@ ls output/sbom/license-report.md output/sbom/copyleft-risk.md
 
 **When stuck:**
 
-If `output/sbom/sbom.cdx.json` is empty, the existence of a lock file is first checked.(`package-lock.json`, `requirements.txt`,`pom.xml` etc.). If the lock file is not found, switch to cdxgen and retry.
+If `output/sbom/sbom.cdx.json` is empty, first check whether a lock file exists (`package-lock.json`, `requirements.txt`, `pom.xml`, etc.). If no lock file is found, switch to cdxgen and retry.
 
 ```bash
 docker run --rm \
@@ -198,13 +198,13 @@ docker run --rm \
   -o /app/output/sbom/java-vulnerable-cdxgen.cdx.json
 ```
 
-**Expected results of each step:**
+**Expected result of each step:**
 
-| After completing the steps | Expected results                                                         |
-| -------------------------- | ------------------------------------------------------------------------ |
-| Number 4(sbom-guide)       | `output/sbom/sbom-commands.sh` created                                   |
-| Number 5(run script)       | `output/sbom/sbom.cdx.json` created(`components` entry should be normal) |
-| Number 7(sbom-analyst)     | `output/sbom/license-report.md`,`output/sbom/copyleft-risk.md` created   |
+| After completing the step | Expected result                                                              |
+| ------------------------- | ---------------------------------------------------------------------------- |
+| Step 4 (sbom-guide)       | `output/sbom/sbom-commands.sh` created                                       |
+| Step 5 (run script)       | `output/sbom/sbom.cdx.json` created (`components` entries should be present) |
+| Step 7 (sbom-analyst)     | `output/sbom/license-report.md` and `output/sbom/copyleft-risk.md` created   |
 
 :::info Standard requirements met
 Completing this lab will meet the requirements below:
@@ -227,34 +227,34 @@ Completing this lab will meet the requirements below:
 
 ---
 
-## 4. Completion Confirmation Checklist
+## 4. Completion checklist
 
-After checking all the items below, proceed to the next step.
+Confirm all of the items below before moving on to the next step.
 
 - [ ] `output/sbom/[project].cdx.json` created
-- [ ] The `components` array in the SBOM file is not empty.
+- [ ] The `components` array in the SBOM file is not empty
 - [ ] `output/sbom/sbom-commands.sh` created
 - [ ] `output/sbom/license-report.md` created
 - [ ] `output/sbom/copyleft-risk.md` created
 
-**Expected results when practicing the java-vulnerable sample:**
+**Expected results when practicing with the java-vulnerable sample:**
 
-- log4j-core 2.14.1 component detection
-- Apache-2.0 License Identification
-- CVE-2021-44228 (Log4Shell)Expect vulnerability flags
+- log4j-core 2.14.1 component detected
+- Apache-2.0 license identified
+- CVE-2021-44228 (Log4Shell) flagged as a vulnerability
 
-> This step is ISO/IEC 5230 3.3.1, 3.3.2,Meets 3.4.1 and ISO/IEC 18974 4.3.1 requirements.
+> This step meets ISO/IEC 5230 3.3.1, 3.3.2, and 3.4.1, and ISO/IEC 18974 4.3.1 requirements.
 
-> 📋 **Example of output**: [SBOM Output Best Practice](/reference/samples/sbom)You can check the actual format of the generated file at .
+> 📋 **Example output**: see the actual format of the generated file at [SBOM output best practice](/reference/samples/sbom).
 
 ---
 
 ## 5. Next steps
 
-Once SBOM creation and license analysis are complete, move on to establishing an SBOM management system.
+Once SBOM creation and license analysis are complete, move on to setting up an SBOM management system.
 
 :::tip Check before execution
-Terminate the current Claude session first(`/exit` or `Ctrl+C`)After doing it,Run the command below in a new terminal.
+Terminate the current Claude session first (`/exit` or `Ctrl+C`), then run the command below in a new terminal.
 :::
 
 ```bash
@@ -262,12 +262,12 @@ cd agents/05-sbom-management
 claude
 ```
 
-or [SBOM Management:Creating is not the end; management is the beginning.](../sbom-management/index.md)Go to to view the guide.
+Or read the guide at [SBOM management: creating it is not the end; managing it is the beginning](../sbom-management/index.md).
 
-To proceed with vulnerability analysis first::
+To do vulnerability analysis first:
 
 :::tip Check before execution
-Terminate the current Claude session first(`/exit` or `Ctrl+C`)After doing it,Run the command below in a new terminal.
+Terminate the current Claude session first (`/exit` or `Ctrl+C`), then run the command below in a new terminal.
 :::
 
 ```bash
@@ -275,4 +275,4 @@ cd agents/05-vulnerability-analyst
 claude
 ```
 
-After completion, update `output/progress.md` to record progress.
+When you are done, update `output/progress.md` to record your progress.

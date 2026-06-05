@@ -7,33 +7,30 @@ checklist:
 self_study_time: 1 to 2 hours
 ---
 
-# open source process:From use to distribution
+# Open source process: From use to distribution
 
 ## 1. What we do in this chapter
 
-This chapter acknowledges the use of open source,Pre-deployment checklist,Document vulnerability response procedures.
-If a policy defines “what should be done”,A process defines “how it is done.”
-Even if the policy document states that “use of AGPL requires open source review.”,Who in practice,when,
-If you do not decide in what format it will be reviewed, the policy will end up being nothing more than a declaration.
+This chapter documents the approval of open source use, the pre-release checklist, and the vulnerability response procedures.
+If a policy defines "what should be done," a process defines "how it is done."
+Even if the policy document states that "using AGPL requires open source review," the policy ends up as nothing more than a declaration unless you decide who in practice reviews it, when, and in what form.
 
-`agents/04-process-designer` Communicate with the agent to generate 4-7 deliverables tailored to your company environment.
-Integration with the CI/CD pipeline is also discussed.,Naturally embedded in the development flow
-We aim for a sustainable compliance system.
+Work with the `agents/04-process-designer` agent to generate 4–7 deliverables tailored to your company's environment.
+You also discuss integration with the CI/CD pipeline, aiming for a sustainable compliance system that is naturally embedded in the development flow.
 
 ---
 
 ## 2. Background knowledge
 
-### Why we need processes
+### Why you need processes
 
-Policies only say “what” and not “how.” For developers to actually take action, they need specific procedures for who to request and in what form. Process documentation fills this gap and makes the policy work in practice.
+A policy says only "what," not "how." For developers to actually take action, they need specific procedures: who to ask and in what form. Process documentation fills this gap and makes the policy work in practice.
 
-> Detailed explanations of each step of the open source process and actual corporate examples are [KWG Open Source Guide — Process].(https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/3-process/)See .
+> Detailed explanations of each step in the open source process, along with real corporate examples, are available in the [KWG Open Source Guide — Process](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/3-process/).
 
-### Open source life cycle overall flow
+### The overall open source lifecycle flow
 
-If you understand the entire flow of open source entering and leaving the code base, you will know where and what
-It becomes clear whether a process is needed.
+Once you understand the full flow of open source entering and leaving the codebase, it becomes clear where and what kind of process is needed.
 
 ```mermaid
 flowchart TD
@@ -50,75 +47,72 @@ flowchart TD
     K --> J
 ```
 
-Approved upon introduction,Checklist for deployment,Operational CVE Response — These three points are addressed by the core processes below:
+Approval on adoption, a checklist for distribution, and operational CVE response — these three points are addressed by the core processes below.
 
-### 5 core processes
+### The 5 core processes
 
-ISO/IEC 5230 §3.5 engages open source communities(Contribution and Disclosure)Separate policies and procedures are required. Organizations with no plans to contribute or disclose will also need a policy document stating “not currently applicable.”
+ISO/IEC 5230 §3.5 requires separate policies and procedures for engaging with open source communities (contribution and disclosure). Even organizations with no plans to contribute or disclose need a policy document stating "not currently applicable."
 
-#### 3-1. Open source use approval process
+#### 3-1. Open source usage approval process
 
-Check license when introducing new open source → Check for vulnerabilities → Proceed in order of approval by the person in charge.
-List of pre-allowed licenses(allowlist)If you define,Licenses in the list are automatically approved
-processing to minimize impact on development speed.
+When adopting new open source, proceed in order: check the license → check for vulnerabilities → obtain approval from the person in charge.
+If you define a list of pre-approved licenses (an allow list), licenses on the list are approved automatically, minimizing the impact on development speed.
 
-| Category               | standards                                          | processing                                |
-| ---------------------- | -------------------------------------------------- | ----------------------------------------- |
-| allow                  | In the allowed license list,No known Critical CVEs | Automatic Approval                        |
-| Conditional acceptance | Copyleft License,Has High CVE                      | Approval after review by person in charge |
-| Ban                    | Non-commercial license,Critical CVE not patched    | Prohibited use                            |
+| Category               | Criteria                                            | Handling                          |
+| ---------------------- | --------------------------------------------------- | --------------------------------- |
+| Allowed                | On the allowed-license list, no known Critical CVEs | Automatic approval                |
+| Conditionally accepted | Copyleft license, or has a High CVE                 | Approval after review by the lead |
+| Prohibited             | Non-commercial license, or unpatched Critical CVE   | Use prohibited                    |
 
-#### 3-2. Compliance check before deployment
+#### 3-2. Pre-release compliance check
 
-Be sure to check the items below before distributing the software externally. this checklist
-If it does not pass, distribution will not proceed.
+Be sure to check the items below before distributing the software externally. If it does not pass this checklist, distribution does not proceed.
 
-- SBOM Check for latest update(Last update date)
-- notice(NOTICE)Check file inclusion
-- Confirmation of compliance with copyleft license source code disclosure obligations
-- Verify that review of licenses not in the allowed license list has been completed
+- Check that the SBOM has been updated recently (last update date)
+- Check that the NOTICE file is included
+- Confirm compliance with copyleft license source code disclosure obligations
+- Verify that the review of licenses not on the allowed-license list has been completed
 
-#### 3-3. vulnerability response process
+#### 3-3. Vulnerability response process
 
-With SBOM, you can quickly check whether your software is affected when a new CVE is released.
-there is. We use resources efficiently by differentially applying response deadlines depending on the severity of the CVE.
+With an SBOM, you can quickly check whether your software is affected when a new CVE is released.
+You use resources efficiently by applying different response deadlines based on the severity of the CVE.
 
 :::tip Canonical response deadlines
 The CVSS-severity response-deadline table (the KWG baseline plus a stricter organizational SLA option) and the VEX concept are consolidated in [Vulnerability response deadlines and VEX](/reference/concepts/vulnerability-response). The process output `vulnerability-response.md` documents these as your company SLA.
 :::
 
-#### 3-4. Open source contribution process(§3.5.1)
+#### 3-4. Open source contribution process (§3.5.1)
 
-This is the process of contributing code, documents, and bug reports to external open source projects.
+This is the process of contributing code, documentation, and bug reports to external open source projects.
 
 **Key things to check when contributing:**
 
-- IP protection:Company Confidentiality in Your Contributions,patented technology,Legal confirmation that third party IP is not included
-- CLA processing:Verify and record whether the Contributor License Agreement has been signed
-- approval stage:Approval from open source manager and team leader before contribution(Differential application depending on contribution size)
-- Contribution History:Contribution History(project,detail,manager,date)administered to the internal colon
+- IP protection: Legally confirm that your contributions do not include company confidential information, patented technology, or third-party IP.
+- CLA handling: Verify and record whether the Contributor License Agreement has been signed.
+- Approval stage: Obtain approval from the open source manager and team lead before contributing (apply differently depending on the size of the contribution).
+- Contribution history: Record the contribution history (project, details, person in charge, date) in an internal log.
 
-Even if you do not have a plan to contribute, you can still meet the §3.5.1 requirement by writing a declarative document in `contribution-process.md` stating "No current plan to contribute — this process will be followed when making future plans."
+Even if you have no plans to contribute, you can still meet the §3.5.1 requirement by writing a declarative document in `contribution-process.md` stating "No current plan to contribute — this process will be followed when future plans are made."
 
-#### 3-5. Internal project disclosure process(§3.5.1)
+#### 3-5. Internal project disclosure process (§3.5.1)
 
 This is the process of releasing internally developed software as open source.
 
-**Major confirmation items before disclosure:**
+**Key things to check before disclosure:**
 
-- IP clearance:Ensure public code is free of third-party IP, customer data, and company secrets
-- Select license:Determine the open source license to apply to the software to be released(MIT,Apache-2.0, etc.)
-- security scan:Scan vulnerabilities and hard-coded credentials before disclosure
-- approval stage:CTO or designated committee final approval
+- IP clearance: Ensure the public code is free of third-party IP, customer data, and company secrets.
+- License selection: Determine the open source license to apply to the software being released (MIT, Apache-2.0, etc.).
+- Security scan: Scan for vulnerabilities and hard-coded credentials before disclosure.
+- Approval stage: Final approval from the CTO or a designated committee.
 
-Even if you have no plans to disclose, you can still meet the §3.5.1 requirement by writing a declarative document in `project-publication-process.md` stating “No current plans to disclose — this procedure will be followed when making disclosure decisions.”
+Even if you have no plans to disclose, you can still meet the §3.5.1 requirement by writing a declarative document in `project-publication-process.md` stating "No current plan to disclose — this procedure will be followed when a disclosure decision is made."
 
 ---
 
 ### CI/CD integration points
 
-To be sustainable, the process must be naturally integrated into the development flow. Automating manual checks
-The burden on the person in charge is reduced and the risk of omission is also lowered.
+To be sustainable, the process must be integrated naturally into the development flow. Automating manual checks reduces the burden on the person in charge and lowers the risk of omissions.
 
 ```yaml
 # .github/workflows/oss-compliance.yml
@@ -127,7 +121,7 @@ name: OSS Compliance Check
 on:
   pull_request:
   schedule:
-    - cron: '0 9 * * 1' # 매주 월요일 오전 9시
+    - cron: '0 9 * * 1' # Every Monday at 9 AM
 
 jobs:
   license-check:
@@ -145,45 +139,44 @@ jobs:
 
 The main CI/CD integration points are as follows:
 
-- **PR Stage**:Automatically check license when adding new dependency
-- **Build Phase**:SBOM automatically generated
-- **Before deployment**:Auto-run deployment checklist
-- **Periodic scan**:Known CVE monitoring(cron schedule)
+- **PR stage**: Automatically check the license when a new dependency is added.
+- **Build stage**: Generate the SBOM automatically.
+- **Before deployment**: Run the deployment checklist automatically.
+- **Periodic scan**: Monitor for known CVEs (on a cron schedule).
 
-Even in an environment without CI/CD, the same process can be operated based on a manual checklist.
-When you introduce CI/CD later, you can simply automate manual steps sequentially.
+Even in an environment without CI/CD, you can run the same process based on a manual checklist.
+When you introduce CI/CD later, you can simply automate the manual steps one at a time.
 
 ---
 
 ## 3. Self-study
 
-:::info Self-study mode(About 1 to 2 hours)
-The process requires significant customization to fit the company's environment. You proceed by talking to the agent.
+:::info Self-study mode (about 1 to 2 hours)
+The process requires significant customization to fit your company's environment. You proceed by talking with the agent.
 :::
 
-### advance preparation
+### Preparation
 
-Before running the agent, if you organize your company's situation in advance by answering the four questions below, the conversation can proceed quickly.
-It's going on.
+Before running the agent, organizing your company's situation in advance by answering the questions below will let the conversation move quickly.
 
-**7 questions asked by agent**
+**The 7 questions the agent asks**
 
-1. CI/CD tools you are currently using(GitHub Actions / Jenkins / GitLab CI / None / Other)
-2. Software deployment cycle(Daily / Weekly / Monthly / Irregular)
-3. Whether to use issue tracker(GitHub Issues / Jira / None / Other)
-4. Approval stage for open source use(Only person in charge / approved by team leader / approved by committee)
-5. Do you plan to contribute to external open source projects?(yes/no)
-6. Do you have any plans to release your in-house software as open source?(yes/no)
-7. Do you have a channel in place to receive external license/vulnerability inquiries?(Channel address or "Not yet")
+1. The CI/CD tools you currently use (GitHub Actions / Jenkins / GitLab CI / None / Other)
+2. Your software release cycle (Daily / Weekly / Monthly / Irregular)
+3. Whether you use an issue tracker (GitHub Issues / Jira / None / Other)
+4. The approval stage for open source use (Lead only / team lead approval / committee approval)
+5. Do you plan to contribute to external open source projects? (yes/no)
+6. Do you plan to release your in-house software as open source? (yes/no)
+7. Do you have a channel in place to receive external license/vulnerability inquiries? (Channel address or "Not yet")
 
-### Step-by-step practice
+### Step-by-step exercise
 
-**Step 1**:Summary of the company's situation in response to the above 7 questions
+**Step 1**: Summarize your company's situation in response to the 7 questions above.
 
-**Step 2**:run agent
+**Step 2**: Run the agent.
 
-:::tip Check before execution
-Terminate the current Claude session first(`/exit` or `Ctrl+C`)After doing it,Run the command below in a new terminal.
+:::tip Check before running
+First terminate the current Claude session (`/exit` or `Ctrl+C`), then run the command below in a new terminal.
 :::
 
 ```bash
@@ -192,77 +185,75 @@ claude
 ```
 
 <details>
-<summary>Agent conversation example(Click to expand)</summary>
+<summary>Agent conversation example (click to expand)</summary>
 
-Below is an example of a conversation flow with an actual agent. When running, it goes like this.
+Below is an example of a conversation flow with the actual agent. When you run it, it proceeds like this.
 
 **Agent guidance message:**
 
-> hello! This is an agent that creates open source process output.
-> Answer 7 questions and 4 to 7 process documents will be automatically generated.
+> Hello! This is the agent that creates the open source process deliverables.
+> Answer 7 questions and 4 to 7 process documents will be generated automatically.
 
 ---
 
-**Question 1/7** — What CI/CD tools are you currently using?(GitHub Actions / Jenkins / GitLab CI / None / Other)
+**Question 1/7** — What CI/CD tools do you currently use? (GitHub Actions / Jenkins / GitLab CI / None / Other)
 
 `Sample answer: GitHub Actions`
 
-**Question 2/7** — What is the software deployment cycle?(Daily / Weekly / Monthly / Irregular)
+**Question 2/7** — What is your software release cycle? (Daily / Weekly / Monthly / Irregular)
 
-`Sample answer:Weekly`
+`Sample answer: Weekly`
 
-**Question 3/7** — Do you use an issue tracker?(GitHub Issues / Jira / None / Other)
+**Question 3/7** — Do you use an issue tracker? (GitHub Issues / Jira / None / Other)
 
 `Sample answer: GitHub Issues`
 
-**Question 4/7** — Is there a need for approval to use open source?(Only person in charge / approved by team leader / approved by committee)
+**Question 4/7** — What approval is required to use open source? (Lead only / team lead approval / committee approval)
 
-`Sample answer:Team leader approval`
+`Sample answer: Team lead approval`
 
-**Question 5/7** — Do you plan to contribute to external open source projects?(yes/no)
+**Question 5/7** — Do you plan to contribute to external open source projects? (yes/no)
 
-`Sample answer:No`
+`Sample answer: No`
 
-**Question 6/7** — Do you have any plans to release your in-house software as open source?(yes/no)
+**Question 6/7** — Do you plan to release your in-house software as open source? (yes/no)
 
-`Sample answer:No`
+`Sample answer: No`
 
-**Question 7/7** — Is there a channel prepared to receive external license/vulnerability inquiries?
+**Question 7/7** — Do you have a channel in place to receive external license/vulnerability inquiries?
 
-`Sample answer:opensource@example.com is in operation`
+`Sample answer: opensource@example.com is in operation`
 
 ---
 
-**Example of output upon completion of creation:**
+**Example output on completion:**
 
-| file                                            | Conditions | Content                                                         |
-| ----------------------------------------------- | ---------- | --------------------------------------------------------------- |
-| `output/process/usage-approval.md`              | Always     | Open source introduction approval form and procedure            |
-| `output/process/distribution-checklist.md`      | Always     | Pre-deployment compliance checklist                             |
-| `output/process/vulnerability-response.md`      | Always     | vulnerability response procedures(Includes CVD §8)              |
-| `output/process/inquiry-response.md`            | Always     | Procedure for responding to external license/security inquiries |
-| `output/process/process-diagram.md`             | Always     | Mermaid Complete Process Overview with Flow Chart               |
-| `output/process/contribution-process.md`        | Q5 “Yes”   | Open source contribution process(Includes CLA treatment)        |
-| `output/process/project-publication-process.md` | Q6 “Yes”   | Internal project disclosure procedure                           |
+| File                                            | Condition | Content                                                         |
+| ----------------------------------------------- | --------- | --------------------------------------------------------------- |
+| `output/process/usage-approval.md`              | Always    | Open source adoption approval form and procedure                |
+| `output/process/distribution-checklist.md`      | Always    | Pre-release compliance checklist                                |
+| `output/process/vulnerability-response.md`      | Always    | Vulnerability response procedure (includes CVD §8)              |
+| `output/process/inquiry-response.md`            | Always    | Procedure for responding to external license/security inquiries |
+| `output/process/process-diagram.md`             | Always    | Complete process overview as a Mermaid flowchart                |
+| `output/process/contribution-process.md`        | Q5 "Yes"  | Open source contribution process (includes CLA handling)        |
+| `output/process/project-publication-process.md` | Q6 "Yes"  | Internal project disclosure procedure                           |
 
-**Items that require manual entry:**
+**Items you must fill in manually:**
 
-- Check GitHub Actions workflow file path
-- Approver name and contact information
+- Confirm the GitHub Actions workflow file path
+- The approver's name and contact details
 
 </details>
 
-**Step 3**: When the Claude prompt opens, type `시작`.
+**Step 3**: When the Claude prompt opens, type `시작` ("start").
 
-**Step 4**:Answer 7 questions in order
+**Step 4**: Answer the 7 questions in order.
 
-**Step 5**:Review the generated Mermaid flowchart
+**Step 5**: Review the generated Mermaid flowchart.
 
-When you open the generated `output/process/process-diagram.md` file on GitHub, the flowchart is automatically displayed.
-It is rendered. Review the flowchart to ensure it matches your actual workflow. If corrections are needed, contact the agent.
-Request additions or edit files directly.
+When you open the generated `output/process/process-diagram.md` file on GitHub, the flowchart is rendered automatically. Review it to make sure it matches your actual workflow. If corrections are needed, ask the agent to add to it or edit the file directly.
 
-**Step 6**:Check the files created in the `output/process/` directory.
+**Step 6**: Check the files created in the `output/process/` directory.
 
 ```bash
 ls output/process/
@@ -271,73 +262,73 @@ ls output/process/
 # vulnerability-response.md
 # inquiry-response.md
 # process-diagram.md
-# contribution-process.md  (Q5 "Yes" when answer is)
-# project-publication-process.md  (Q6 "Yes" when answer is)
+# contribution-process.md  (when Q5 is answered "Yes")
+# project-publication-process.md  (when Q6 is answered "Yes")
 ```
 
-**Step 6**:Establishment of CI/CD integrated plan
+**Step 7**: Plan your CI/CD integration.
 
-Plan to add workflow files to your project that match the CI/CD tools you are currently using.
-If it is difficult to apply immediately, schedule it for inclusion in the next sprint or next release cycle.
+Plan to add workflow files matching the CI/CD tools you currently use to your project.
+If immediate adoption is difficult, schedule it for the next sprint or the next release cycle.
 
 ### When you get stuck
 
-- **Without CI/CD**:Answer “None”. The agent creates a manual checklist-based process. After introducing CI/CD, it can be automated step by step.
-- **If the payment stage is ambiguous**:Enter exactly what your team actually uses. It can be modified later.
-- **If Mermaid does not render**: [mermaid.live](https://mermaid.live)Check it out for yourself.
+- **No CI/CD**: Answer "None." The agent creates a process based on a manual checklist. After you introduce CI/CD, you can automate it step by step.
+- **Ambiguous approval stage**: Enter exactly what your team actually uses. You can change it later.
+- **Mermaid won't render**: Check it yourself at [mermaid.live](https://mermaid.live).
 
-### expected output
+### Expected output
 
-| file                                            | Content                                                         |
+| File                                            | Content                                                         |
 | ----------------------------------------------- | --------------------------------------------------------------- |
-| `output/process/usage-approval.md`              | Open source introduction approval form and procedure            |
-| `output/process/distribution-checklist.md`      | Pre-deployment compliance checklist                             |
-| `output/process/vulnerability-response.md`      | vulnerability response procedures(CVD 90-day rule included)     |
+| `output/process/usage-approval.md`              | Open source adoption approval form and procedure                |
+| `output/process/distribution-checklist.md`      | Pre-release compliance checklist                                |
+| `output/process/vulnerability-response.md`      | Vulnerability response procedure (includes the CVD 90-day rule) |
 | `output/process/inquiry-response.md`            | Procedure for responding to external license/security inquiries |
-| `output/process/process-diagram.md`             | Mermaid Complete Process Overview with Flow Chart               |
-| `output/process/contribution-process.md`        | Contribution Process(Q5 Created when “Yes”)                     |
-| `output/process/project-publication-process.md` | Project disclosure process(Q6 Created on “Yes”)                 |
+| `output/process/process-diagram.md`             | Complete process overview as a Mermaid flowchart                |
+| `output/process/contribution-process.md`        | Contribution process (created when Q5 is "Yes")                 |
+| `output/process/project-publication-process.md` | Project disclosure process (created when Q6 is "Yes")           |
 
 :::info Standard requirements met
-Completing this lab will meet the requirements below:
+Completing this exercise meets the requirements below:
 
 **ISO/IEC 5230**
 
-| Item ID | Requirements                                                | Self-certification checklist                                                                                                          |
+| Item ID | Requirement                                                 | Self-certification checklist                                                                                                          |
 | ------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| 3.1.5   | License Obligations Review Process                          | Do you have a documented procedure to review and record the obligations, restrictions, and rights granted by each identified license? |
+| 3.1.5   | License obligations review process                          | Do you have a documented procedure to review and record the obligations, restrictions, and rights granted by each identified license? |
 | 3.2.1   | Procedure for receiving external license/security inquiries | Do you have a documented procedure for receiving and handling inquiries about open source compliance?                                 |
-| 3.3.2   | Compliance preparation before deployment                    | Do you have a process for creating the necessary compliance artifacts for each distribution?                                          |
-| 3.4.1   | Compliance Output Management                                | Do you have a process to ensure compliance artifacts accompany each distribution?                                                     |
+| 3.3.2   | Compliance preparation before distribution                  | Do you have a process for creating the necessary compliance artifacts for each distribution?                                          |
+| 3.4.1   | Compliance artifact management                              | Do you have a process to ensure compliance artifacts accompany each distribution?                                                     |
 | 3.5.1   | Open source contribution management process                 | Do you have a process for contributing to open source projects?                                                                       |
 
 **ISO/IEC 18974**
 
-| Item ID | Requirements                                              | Self-certification checklist                                                                                   |
+| Item ID | Requirement                                               | Self-certification checklist                                                                                   |
 | ------- | --------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| 4.1.5   | vulnerability detection and response procedures           | Do you have a documented procedure for handling known vulnerabilities in open source components?               |
+| 4.1.5   | Vulnerability detection and response procedures           | Do you have a documented procedure for handling known vulnerabilities in open source components?               |
 | 4.2.1   | External security vulnerability report response procedure | Do you have a documented procedure for receiving and handling reports of open source security vulnerabilities? |
 
 :::
 
 ---
 
-## 4. Completion Confirmation Checklist
+## 4. Completion checklist
 
-You must complete all of the items below to complete this chapter.
+You must complete all of the items below to finish this chapter.
 
 - [ ] `output/process/usage-approval.md` created
 - [ ] `output/process/distribution-checklist.md` created
-- [ ] `output/process/vulnerability-response.md` created(Includes CVD §8)
+- [ ] `output/process/vulnerability-response.md` created (includes CVD §8)
 - [ ] `output/process/inquiry-response.md` created [Required]
-- [ ] `output/process/process-diagram.md` created(Mermaid flow chart included)
-- [ ] `output/process/contribution-process.md` created(Complete a declaration document regardless of whether you plan to contribute or not.)
-- [ ] `output/process/project-publication-process.md` created(Prepare a declaration document whether or not you plan to make it public)
+- [ ] `output/process/process-diagram.md` created (includes a Mermaid flowchart)
+- [ ] `output/process/contribution-process.md` created (complete a declarative document regardless of whether you plan to contribute)
+- [ ] `output/process/project-publication-process.md` created (complete a declarative document regardless of whether you plan to disclose)
 - [ ] Response deadlines are defined for each vulnerability severity level
 - [ ] Criteria for automatic approval of permissive licenses are specified
-- [ ] External inquiry receiving channel(email)Specified in this procedure
+- [ ] An external inquiry receiving channel (email) is specified in the procedure
 
-### process-diagram.md example(portion)
+### process-diagram.md example (excerpt)
 
 Ensure that the generated flowchart contains a structure similar to the one below.
 
@@ -353,18 +344,18 @@ flowchart TD
     G --> I[Register SBOM]
 ```
 
-> This step is ISO/IEC 5230 3.1.5, 3.2.1, 3.3.2, 3.4.1,3.5.1 and ISO/IEC 18974 4.1.5,Meets 4.2.1 requirements.
+> This step meets the ISO/IEC 5230 3.1.5, 3.2.1, 3.3.2, 3.4.1, and 3.5.1, and ISO/IEC 18974 4.1.5 and 4.2.1 requirements.
 
-> 📋 **Example of output**: [Process Output Best Practice](/reference/samples/process)You can check the actual format of the generated file at .
+> 📋 **Example output**: See the actual format of the generated files in [Process output best practices](/reference/samples/process).
 
 ---
 
 ## 5. Next steps
 
-Once all 4 `output/process/` files have been created, move to the SBOM creation step.
+Once all `output/process/` files have been created, move on to the SBOM creation step.
 
-:::tip Check before execution
-Terminate the current Claude session first(`/exit` or `Ctrl+C`)After doing it,Run the command below in a new terminal.
+:::tip Check before running
+First terminate the current Claude session (`/exit` or `Ctrl+C`), then run the command below in a new terminal.
 :::
 
 ```bash
@@ -372,8 +363,7 @@ cd agents/05-sbom-guide
 claude
 ```
 
-Or, if you want to read the documentation first, [Create SBOM:Creating a software configuration specification with syft and cdxgen](../05-tools/sbom-generation/index.md)Go to .
+Or, if you want to read the documentation first, go to [Create SBOM: Building a software bill of materials with syft and cdxgen](../05-tools/sbom-generation/index.md).
 
-SBOM(software specifications)is the key to ensuring that the processes created in this chapter actually work.
-It's a tool. Recording in a machine-readable format which open sources are included,License Obligations
-You can automatically check compliance and the scope of impact of vulnerabilities.
+An SBOM (software bill of materials) is the key tool for making the processes created in this chapter actually work.
+By recording which open source is included in a machine-readable format, you can automatically check license obligation compliance and the scope of impact of vulnerabilities.

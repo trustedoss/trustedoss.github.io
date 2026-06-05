@@ -11,103 +11,103 @@ checklist:
 self_study_time: 1 hour
 ---
 
-# organizational structure:Designating open source personnel and defining roles
+# Organizational structure: Designating open source personnel and defining roles
 
 ## 1. What we do in this chapter
 
-This chapter designates open source management personnel and,Document roles and responsibilities.
-When you run `organization-designer` agent, the three outputs below are automatically generated.
+This chapter designates the people responsible for open source management and documents their roles and responsibilities.
+When you run the `organization-designer` agent, the three outputs below are generated automatically.
 
 - `output/organization/role-definition.md` — Role definition for each person in charge
-- `output/organization/raci-matrix.md` — Activity-specific responsibility matrix
-- `output/organization/appointment-template.md` — Contact person appointment template
+- `output/organization/raci-matrix.md` — Responsibility matrix by activity
+- `output/organization/appointment-template.md` — Appointment letter template for the contact person
 
-> This step is ISO/IEC 5230 G1.3(3.1.2), G2.1 (3.2.2), G2.2 (3.2.1)and ISO/IEC 18974 equivalent requirements.
+> This step corresponds to ISO/IEC 5230 G1.3 (3.1.2), G2.1 (3.2.2), and G2.2 (3.2.1), and the equivalent ISO/IEC 18974 requirements.
 
 ---
 
 ## 2. Why designating a person in charge comes first
 
-Open source management is an activity that requires decision making. “Can I use this library?”,“How do we respond to this vulnerability?” — Somebody has to answer these questions. If there is no responsibility, there is no policy,The process doesn't actually work either.
+Open source management is an activity that requires decision-making. "Can we use this library?" "How do we respond to this vulnerability?" — someone has to answer these questions. Without clear responsibility, there is no policy, and the process does not actually work either.
 
-That's why the standard requires designation of a contact person in the first place. Without organization, all subsequent activities fall into disarray.
+That is why the standard requires designating a contact person first of all. Without an organization in place, every activity that follows falls into disarray.
 
-In actual open source dispute cases, the consequences of the absence of a person in charge are specific.
+In real-world open source disputes, the consequences of having no one in charge are concrete.
 
-- **In case of violation of GPL license**:Since there is no one to respond to, you are left with the risk of litigation. Who will release the source code?,Golden time is lost because it has not been decided who will take legal action.
-- **Upon announcement of a CVE vulnerability**:Responses are delayed by weeks due to the inability to identify components affected by their products. If there is no SBOM and no person in charge, the issue will be recognized late.
-- **Delivery destination SBOM upon request**:There is an increasing number of cases where SBOM submission clauses are included in contracts. Without a person in charge and a process, submission itself is impossible, resulting in contract disruption.
+- **GPL license violation**: With no one to respond, you are left exposed to litigation risk. Because no one has decided who will release the source code or who will handle the legal response, the golden window for action is lost.
+- **CVE vulnerability disclosure**: Response is delayed by weeks because you cannot identify which components in your products are affected. Without an SBOM and a person in charge, the issue is recognized late.
+- **SBOM requested by a customer**: A growing number of contracts include clauses requiring SBOM submission. Without a person in charge and a process, submission itself is impossible, and the contract stalls.
 
 ---
 
 ## 3. Roles required by the standard
 
-ISO/IEC 5230 and ISO/IEC 18974 have two things in common:
+ISO/IEC 5230 and ISO/IEC 18974 share two things in common:
 
-1. **Designate a person in charge**(G1.3 / 3.1.2):The person or group responsible for managing the open source program must be clearly identified.
-2. **External inquiry receiving channel**(G2.2 / 3.2.1):There must be a formal channel to receive requests for fulfillment of license obligations and reports of vulnerabilities.
+1. **Designate a person in charge** (G1.3 / 3.1.2): The person or group responsible for managing the open source program must be clearly identified.
+2. **Channel for receiving external inquiries** (G2.2 / 3.2.1): There must be a formal channel to receive requests regarding license obligations and reports of vulnerabilities.
 
-OSPM in common to meet both standards(Open Source Program Manager),legal affairs,security officer,A Development Representative role is required.
+To meet both standards, you commonly need an OSPM (Open Source Program Manager), a legal role, a security role, and a development representative.
 
-> Detailed responsibilities and required competencies for each role are defined in [KWG Open Source Guide — Organization].(https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/1-teams/)See .
+> Detailed responsibilities and required competencies for each role are defined in the [KWG Open Source Guide — Organization](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/1-teams/).
 
-### External inquiry receiving channel(G2.2 Requirements)
+### Channel for receiving external inquiries (G2.2 requirement)
 
-You must specify an official email or channel to receive requests for fulfillment of license obligations and vulnerability reports. This is an explicit requirement of the standard and,It is as important as designating a person in charge.
+You must specify an official email address or channel to receive requests regarding license obligations and vulnerability reports. This is an explicit requirement of the standard, and it is as important as designating a person in charge.
 
-example:
+Examples:
 
 - `opensource@company.com` — External inquiries regarding licensing
-- `security@company.com` — Receive vulnerability reports
+- `security@company.com` — Receiving vulnerability reports
 
-Integrating the two channels and operating them under a single address is also a realistic option for small organizations.
+Combining the two channels and operating them under a single address is also a realistic option for small organizations.
 
-### Contribution and Project Disclosure Contact Person(G3L.6 / §3.5.1)
+### Contribution and project disclosure contact (G3L.6 / §3.5.1)
 
-If you plan to contribute to an external open source project or release an internal project as open source,You need to add the roles below to your RACI matrix:
+If you plan to contribute to an external open source project or release an internal project as open source, you need to add the roles below to your RACI matrix:
 
-| Activities                                                        | Primary Contact               | Approver              |
-| ----------------------------------------------------------------- | ----------------------------- | --------------------- |
-| Executing open source contribution activities                     | development representative(R) | OSPM (A)              |
-| Public review of in-house projects                                | development representative(R) | OSPM·Legal Affairs(A) |
-| Comprehensive response to external license and security inquiries | OSPM(R)                       | —                     |
+| Activity                                                    | Primary contact (R)        | Approver (A)   |
+| ----------------------------------------------------------- | -------------------------- | -------------- |
+| Carrying out open source contribution activities            | Development representative | OSPM           |
+| Public review of internal projects                          | Development representative | OSPM and Legal |
+| Overall response to external license and security inquiries | OSPM                       | —              |
 
-### Gather evidence for periodic review(ISO/IEC 18974 §4.1.2.5·§4.1.2.6)
+### Gather evidence for periodic review (ISO/IEC 18974 §4.1.2.5, §4.1.2.6)
 
-ISO/IEC 18974 requires **periodic review** and **evidence of internal best practice conformance** of open source programs. During initial certification, partial fulfillment is permitted by establishing a review plan;,renewal certification(18 months later)Fully satisfied with actual review history.
+ISO/IEC 18974 requires **periodic review** of the open source program and **evidence of conformance with internal best practices**. During initial certification, partial fulfillment is permitted by establishing a review plan; at renewal certification (18 months later), it must be fully satisfied with an actual review history.
 
 `role-definition.md` must contain the following:
 
-- Designate a reviewer
-- review cycle(Recommended once a year)
-- Review history table(Initially written as a blank row,Fill upon renewal)
+- The designated reviewer
+- The review cycle (annually is recommended)
+- A review history table (initially left as a blank row, filled in at renewal)
 
 ---
 
-## 4. Realistic composition plan by company size
+## 4. Realistic structures by company size
 
-| scale                                       | Structure plan                                                                | Minimum number of people | Recommended                       |
-| ------------------------------------------- | ----------------------------------------------------------------------------- | ------------------------ | --------------------------------- |
-| Startup/Small(Less than 10 developers)      | One person can hold OSPM + Legal + Security positions                         | 1 person                 | CTO or senior developer in charge |
-| small business(10~100 people)               | 1 person dedicated to OSPM,Concurrent positions in legal affairs and security | 2~3 people               | Legal affairs use external advice |
-| Medium/Large Enterprise(100 or more people) | Recommend forming a dedicated team,Separation by role                         | 4 or more people         | OSPO officially established       |
+| Scale                                | Structure                                                          | Minimum headcount | Recommendation                  |
+| ------------------------------------ | ------------------------------------------------------------------ | ----------------- | ------------------------------- |
+| Startup / small (fewer than 10 devs) | One person can hold the OSPM, Legal, and Security roles            | 1 person          | CTO or a senior developer leads |
+| Small business (10–100 people)       | One person dedicated to OSPM; Legal and Security held concurrently | 2–3 people        | Use external counsel for legal  |
+| Mid-size / large enterprise (100+)   | Form a dedicated team; separate the roles                          | 4 or more people  | Establish a formal OSPO         |
 
-**importance**:It is okay for roles to overlap in a small organization. The important thing is to be clear about who is responsible.
+**Important**: It is fine for roles to overlap in a small organization. What matters is being clear about who is responsible.
 
 ---
 
 ## 5. Self-study
 
-:::info Self-study mode(About 1 hour)
-It interacts with agents and creates organizational artifacts.
+:::info Self-study mode (about 1 hour)
+You interact with the agent and create the organizational deliverables.
 :::
 
-1. Read this article — Understand the concept of roles
-2. Decide on a configuration plan that suits your company’s size and situation(See section 4)
-3. run agent:
+1. Read this chapter to understand the concept of the roles.
+2. Decide on a structure that suits your company's size and situation (see section 4).
+3. Run the agent:
 
-   :::tip Check before execution
-   Terminate the current Claude session first(`/exit` or `Ctrl+C`)After doing it,Run the command below in a new terminal.
+   :::tip Check before running
+   First terminate the current Claude session (`/exit` or `Ctrl+C`), then run the command below in a new terminal.
    :::
 
    ```bash
@@ -115,106 +115,106 @@ It interacts with agents and creates organizational artifacts.
    claude
    ```
 
-4. When the Claude prompt opens, type **`시작`**. The agent asks the six questions in order.
+4. When the Claude prompt opens, type **`시작`** ("start"). The agent walks through the six questions in order.
 
    <details>
-   <summary>Agent conversation example(Click to expand)</summary>
+   <summary>Agent conversation example (click to expand)</summary>
 
-   Below is an example of a conversation flow with an actual agent. When the user enters `시작`, the process goes like this.
+   Below is an example of a conversation flow with the actual agent. When the user enters `시작`, it proceeds like this.
 
    **Agent guidance message:**
 
-   > hello! This is an agent that creates organization/personnel output.
-   > If you answer 6 questions, 3 deliverable files will be automatically created.
+   > Hello! This is the agent that creates the organization and personnel deliverables.
+   > Answer 6 questions and 3 deliverable files will be created automatically.
 
    ***
 
-   **Question 1/5** — Please tell us your company name and department name.
+   **Question 1/5** — Tell us your company name and department name.
 
-   `Sample answer: (main)Tech start,Development Team`
+   `Sample answer: TechStart Inc., Development Team`
 
-   **Question 2/5** — How many developers are there in total?
+   **Question 2/5** — How many developers do you have in total?
 
-   `Sample answer:50 people
+   `Sample answer: 50 people`
 
-   **Question 3/5** — Is there a dedicated staff member dedicated to open source work?(Concurrent duties / 1 person in charge / 2 to 5 people / 5 or more people)
+   **Question 3/5** — Do you have anyone who can be dedicated to open source work? (Concurrent role / 1 dedicated person / 2–5 people / 5 or more people)
 
-   `Sample answer:Concurrent duties`
+   `Sample answer: Concurrent role`
 
-   **Question 4/5** — Do you have legal advice?(None / Own legal team / Utilization of external legal firm)
+   **Question 4/5** — Do you have legal counsel? (None / In-house legal team / External law firm)
 
-   `Sample answer:Utilization of an external legal firm`
+   `Sample answer: External law firm`
 
-   **Question 5/5** — Do you have any security team advice?(None / Own security team / Utilization of external security consulting)
+   **Question 5/5** — Do you have security team support? (None / In-house security team / External security consulting)
 
-   `Sample answer:None`
+   `Sample answer: None`
 
-   **Question 6/6** — Do you plan to contribute to external open source projects or release internal projects as open source?(Contribution only / Public only / Both / None)
+   **Question 6/6** — Do you plan to contribute to external open source projects or release internal projects as open source? (Contribution only / Disclosure only / Both / Neither)
 
-   `Sample answer:None`
+   `Sample answer: Neither`
 
    ***
 
-   **Example of output upon completion of creation:**
+   **Example output on completion:**
 
-   | file                                          | Content                                                      |
-   | --------------------------------------------- | ------------------------------------------------------------ |
-   | `output/organization/role-definition.md`      | Defining Roles and Responsibilities,External Inquiry Channel |
-   | `output/organization/raci-matrix.md`          | RACI Matrix,Person in charge by role                         |
-   | `output/organization/appointment-template.md` | Officer Appointment Letter Template                          |
+   | File                                          | Content                                              |
+   | --------------------------------------------- | ---------------------------------------------------- |
+   | `output/organization/role-definition.md`      | Roles and responsibilities, external inquiry channel |
+   | `output/organization/raci-matrix.md`          | RACI matrix, person in charge by role                |
+   | `output/organization/appointment-template.md` | Appointment letter template for the contact person   |
 
-   **Items that require manual entry:**
-   - Contact person's actual name
-   - Development team representative email
-   - Open source tools and education budget status
+   **Items you must fill in manually:**
+   - The contact person's actual name
+   - The development team's representative email
+   - The status of open source tooling and the training budget
 
    </details>
 
-5. Answer 6 questions from agent:
+5. Answer the agent's 6 questions:
    - Company name and department name
    - Total number of developers
-   - Dedicated staff size(Concurrent duties / 1 person in charge / 2 to 5 people / 5 or more people)
-   - Legal advice available(None / Own legal team / Utilization of external legal firm)
-   - Security team consultation(None / Own security team / Utilization of external security consulting)
-   - Whether there is a plan to contribute/disclose
-6. Confirm creation of `output/organization/`
+   - Dedicated headcount (Concurrent role / 1 dedicated person / 2–5 people / 5 or more people)
+   - Legal counsel (None / In-house legal team / External law firm)
+   - Security team support (None / In-house security team / External security consulting)
+   - Whether you plan to contribute or disclose
+6. Confirm that `output/organization/` was created.
 
-:::tip expected result
-Upon completing the exercise, the three files below will be created.
+:::tip Expected result
+When the exercise is complete, the three files below will be created.
 
-**Created file:**
+**Created files:**
 
 - `output/organization/role-definition.md`
 - `output/organization/raci-matrix.md`
 - `output/organization/appointment-template.md`
 
-**Items that must be included in the file:**
+**Items the files must include:**
 
-- Open source contact name and contact information
-- Responsibilities by role(R/A/C/I)definition
-- External license inquiry and vulnerability reporting channel(email)
+- Open source contact name and contact details
+- Responsibility definitions by role (R/A/C/I)
+- Channel (email) for external license inquiries and vulnerability reports
 
-In the generated files, make sure placeholders such as `{assignee name}` and `{email address}` are filled with actual values.
+In the generated files, make sure placeholders such as `{assignee name}` and `{email address}` are filled in with actual values.
 :::
 
 :::info Standard requirements met
-Completing this lab will meet the requirements below:
+Completing this exercise meets the requirements below:
 
 **ISO/IEC 5230**
 
-| Item ID | Requirements                       | Self-certification checklist                                                         |
+| Item ID | Requirement                        | Self-certification checklist                                                         |
 | ------- | ---------------------------------- | ------------------------------------------------------------------------------------ |
-| 3.1.2   | Defining Contact Persons and Roles | Do you have documented roles and responsibilities for your open source program?      |
-| 3.2.1   | External inquiry reception channel | Do you have a publicly visible contact method for open source compliance inquiries?  |
-| 3.2.2   | Role/Responsibility Matrix         | Do you have a process for reviewing and remediating open source license obligations? |
+| 3.1.2   | Defining contact persons and roles | Do you have documented roles and responsibilities for your open source program?      |
+| 3.2.1   | External inquiry receiving channel | Do you have a publicly visible contact method for open source compliance inquiries?  |
+| 3.2.2   | Role/responsibility matrix         | Do you have a process for reviewing and remediating open source license obligations? |
 
 **ISO/IEC 18974**
 
-| Item ID | Requirements                             | Self-certification checklist                                                                            |
+| Item ID | Requirement                              | Self-certification checklist                                                                            |
 | ------- | ---------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | 4.1.2   | Define security personnel and roles      | Do you have documented roles and responsibilities for your open source security assurance program?      |
 | 4.2.1   | External vulnerability reporting channel | Do you have a publicly visible contact method for open source vulnerability reporting?                  |
-| 4.2.2   | Security Role/Responsibility Matrix      | Do you have a process for assigning responsibilities for handling open source security vulnerabilities? |
+| 4.2.2   | Security role/responsibility matrix      | Do you have a process for assigning responsibilities for handling open source security vulnerabilities? |
 
 :::
 
@@ -239,35 +239,35 @@ Completing this lab will meet the requirements below:
 
 ### raci-matrix.md sample
 
-| Activities                      | OSPM | Legal | Security | development |
-| ------------------------------- | ---- | ----- | -------- | ----------- |
-| Approved for use of open source | R, A | C     | C        | I           |
-| License Review                  | A    | R     | I        | C           |
-| Response to CVE vulnerabilities | A    | I     | R        | C           |
-| create SBOM                     | A    | I     | C        | R           |
+| Activity                       | OSPM | Legal | Security | Development |
+| ------------------------------ | ---- | ----- | -------- | ----------- |
+| Approve open source usage      | R, A | C     | C        | I           |
+| License review                 | A    | R     | I        | C           |
+| Respond to CVE vulnerabilities | A    | I     | R        | C           |
+| Create SBOM                    | A    | I     | C        | R           |
 
-_(R=Run,A=Final responsibility,C=negotiation,I=Information sharing)_
+_(R = Responsible, A = Accountable, C = Consulted, I = Informed)_
 
 ---
 
-## 7. Completion Confirmation Checklist
+## 7. Completion checklist
 
 - [ ] `output/organization/role-definition.md` created
 - [ ] `output/organization/raci-matrix.md` created
 - [ ] `output/organization/appointment-template.md` created
-- [ ] Open source contact name and contact information defined
+- [ ] Open source contact name and contact details defined
 - [ ] External inquiry email/channel specified
 
-> 📋 **Example of output**: [Organizational Output Best Practices](/reference/samples/organization)You can check the actual format of the generated file at .
+> 📋 **Example output**: See the actual format of the generated files in [Organizational output best practices](/reference/samples/organization).
 
 ---
 
 ## 8. Next steps
 
-Once you've completed organizing your organization, move on to establishing open source policies.
+Once you have organized your organization, move on to establishing your open source policy.
 
-:::tip Check before execution
-Terminate the current Claude session first(`/exit` or `Ctrl+C`)After doing it,Run the command below in a new terminal.
+:::tip Check before running
+First terminate the current Claude session (`/exit` or `Ctrl+C`), then run the command below in a new terminal.
 :::
 
 ```bash
@@ -275,4 +275,4 @@ cd agents/03-policy-generator
 claude
 ```
 
-or [Establishment of open source policy:The first step to legal protection](../03-policy/index.md)You can go to and read the policy chapter first before proceeding.
+Or go to [Establishing an open source policy: The first step to legal protection](../03-policy/index.md) to read the policy chapter first before proceeding.
