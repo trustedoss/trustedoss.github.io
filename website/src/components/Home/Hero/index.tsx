@@ -38,10 +38,18 @@ function Hero() {
           </Translate>
         </p>
         <div className={styles.ctas}>
-          <Link className="button button--primary button--lg" to="/docs">
+          <Link
+            className="button button--primary button--lg"
+            to="/docs/overview/quick-start">
+            {translate({
+              id: 'homepage.hero.cta.quickstart',
+              message: '처음이세요? 5분 빠른 시작',
+            })}
+          </Link>
+          <Link className="button button--secondary button--lg" to="/docs">
             {translate({
               id: 'homepage.hero.cta.start',
-              message: '가이드 시작하기',
+              message: '전체 가이드 보기',
             })}
           </Link>
           <Link

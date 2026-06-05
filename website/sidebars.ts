@@ -7,10 +7,12 @@ const sidebars: SidebarsConfig = {
       label: '시작하기',
       collapsed: false,
       items: [
+        'overview/quick-start',
+        'overview/start-path',
         'overview/index',
-        'overview/checklist-mapping',
         'overview/supply-chain',
         'overview/sbom-101',
+        'overview/checklist-mapping',
       ],
     },
     {
