@@ -66,6 +66,36 @@ function Hero() {
             </li>
           ))}
         </ul>
+        <div className={styles.visual} aria-hidden="true">
+          <div className={styles.window}>
+            <div className={styles.windowBar}>
+              <i />
+              <i />
+              <i />
+              <span className={styles.windowTitle}>
+                agents/03-policy-generator
+              </span>
+            </div>
+            <div className={styles.windowBody}>
+              <p className={styles.cmd}>
+                <span className={styles.prompt}>$</span> claude
+              </p>
+              <p className={styles.muted}>회사 상황 5개 질문에 답하는 중…</p>
+              <p className={styles.gen}>
+                <span className={styles.check}>✓</span> oss-policy.md
+              </p>
+              <p className={styles.gen}>
+                <span className={styles.check}>✓</span> license-allowlist.md
+              </p>
+              <div className={styles.chips}>
+                <span>정책</span>
+                <span>SBOM</span>
+                <span>취약점</span>
+                <span>선언문</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </header>
   );
