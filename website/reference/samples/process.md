@@ -418,7 +418,9 @@ CVSS v3.1 기준 심각도 분류:
 | 🟡 Medium   | 4.0 ~ 6.9  | 1개월 이내  | 다음 정기 릴리즈에 포함   | Major         |
 | 🟢 Low      | 0.1 ~ 3.9  | 다음 릴리즈 | 정기 업데이트 시 반영     | Minor         |
 
-> **참고**: 위 기한은 OpenChain KWG 가이드 기준선입니다. 운영 중인 서비스의 리스크 프로파일에 따라 Critical 24시간·High 1주일 같은 더 엄격한 기한을 내부 SLA로 적용할 수 있습니다.
+:::info[참고]
+위 기한은 OpenChain KWG 가이드 기준선입니다. 운영 중인 서비스의 리스크 프로파일에 따라 Critical 24시간·High 1주일 같은 더 엄격한 기한을 내부 SLA로 적용할 수 있습니다.
+:::
 
 ---
 
@@ -716,7 +718,9 @@ graph TD
 
 ## 오픈소스 기여 절차
 
-> **조건부 생성**: `process-designer` agent Q5 "예" 답변 시 생성됩니다.
+:::note[조건부 생성]
+`process-designer` agent Q5 "예" 답변 시 생성됩니다.
+:::
 
 문서: contribution-process.md
 
@@ -774,7 +778,9 @@ graph TD
 
 ## 사내 프로젝트 공개 절차
 
-> **조건부 생성**: `process-designer` agent Q6 "예" 답변 시 생성됩니다.
+:::note[조건부 생성]
+`process-designer` agent Q6 "예" 답변 시 생성됩니다.
+:::
 
 문서: project-publication-process.md
 

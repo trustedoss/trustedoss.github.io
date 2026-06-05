@@ -7,7 +7,7 @@ import type * as PluginContentDocs from '@docusaurus/plugin-content-docs';
 import type * as Preset from '@docusaurus/preset-classic';
 import type {Config} from '@docusaurus/types';
 
-import prismTheme from './core/PrismTheme';
+import {themes as prismThemes} from 'prism-react-renderer';
 
 // See https://docs.netlify.com/configure-builds/environment-variables/
 const isProductionDeployment =
@@ -27,7 +27,7 @@ const config: Config = {
   projectName: 'trustedoss.github.io',
   url: 'https://trustedoss.github.io/',
   baseUrl: '/',
-  clientModules: ['./modules/jumpToFragment.ts'],
+  clientModules: ['./modules/jumpToFragment.ts', './modules/fonts.ts'],
   trailingSlash: false,
   scripts: [
     {
@@ -75,7 +75,7 @@ const config: Config = {
         docs: {
           path: '../docs',
           sidebarPath: require.resolve('./sidebars'),
-          breadcrumbs: false,
+          breadcrumbs: true,
           showLastUpdateAuthor: false,
           showLastUpdateTime: false,
           editUrl:
@@ -125,7 +125,7 @@ const config: Config = {
         path: 'ai-coding',
         routeBasePath: '/ai-coding',
         sidebarPath: require.resolve('./sidebarsAiCoding'),
-        breadcrumbs: false,
+        breadcrumbs: true,
         showLastUpdateAuthor: false,
         showLastUpdateTime: false,
       } satisfies PluginContentDocs.Options,
@@ -137,7 +137,7 @@ const config: Config = {
         path: 'devsecops',
         routeBasePath: 'devsecops',
         sidebarPath: require.resolve('./sidebarsDevSecOps'),
-        breadcrumbs: false,
+        breadcrumbs: true,
         showLastUpdateAuthor: false,
         showLastUpdateTime: false,
       } satisfies PluginContentDocs.Options,
@@ -149,7 +149,7 @@ const config: Config = {
         path: 'reference',
         routeBasePath: 'reference',
         sidebarPath: require.resolve('./sidebarsReference'),
-        breadcrumbs: false,
+        breadcrumbs: true,
         showLastUpdateAuthor: false,
         showLastUpdateTime: false,
       } satisfies PluginContentDocs.Options,
@@ -163,7 +163,8 @@ const config: Config = {
     },
     prism: {
       defaultLanguage: 'bash',
-      theme: prismTheme,
+      theme: prismThemes.github,
+      darkTheme: prismThemes.vsDark,
       additionalLanguages: [
         'diff',
         'bash',
@@ -200,11 +201,10 @@ const config: Config = {
         src: 'img/header_logo.svg',
         alt: 'Trusted OSS Logo',
       },
-      style: 'dark',
       items: [
         {
           to: '/docs',
-          label: '체계구축',
+          label: '오픈소스 관리',
           position: 'left',
         },
         {
@@ -214,7 +214,7 @@ const config: Config = {
         },
         {
           to: '/ai-coding/intro',
-          label: 'AI코딩',
+          label: 'AI 코딩 거버넌스',
           position: 'left',
         },
         {
@@ -252,7 +252,7 @@ const config: Config = {
           title: '가이드',
           items: [
             {
-              label: '체계구축',
+              label: '오픈소스 관리',
               to: '/docs',
             },
             {
@@ -260,7 +260,7 @@ const config: Config = {
               to: '/devsecops/intro',
             },
             {
-              label: 'AI코딩',
+              label: 'AI 코딩 거버넌스',
               to: '/ai-coding/intro',
             },
             {

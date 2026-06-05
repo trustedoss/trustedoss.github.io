@@ -1,83 +1,65 @@
 /**
- * trustedoss.dev Hero Component
+ * trustedoss.dev Hero — Vercel풍 (고대비 모노크롬, 큰 타이포, 미세 그리드)
  * CC BY 4.0 · OpenChain KWG · haksungjang
  */
 
 import React from 'react';
-import GitHubButton from 'react-github-btn';
+import clsx from 'clsx';
+import Link from '@docusaurus/Link';
 import Translate, {translate} from '@docusaurus/Translate';
-import {useColorMode} from '@docusaurus/theme-common';
-import useBaseUrl from '@docusaurus/useBaseUrl';
 
 import styles from './styles.module.css';
 
+const meta = ['ISO/IEC 5230', 'ISO/IEC 18974', 'CC BY 4.0', '벤더중립'];
+
 function Hero() {
-  const {colorMode} = useColorMode();
-  const docsUrl = useBaseUrl('/docs');
-  const aiCodingUrl = useBaseUrl('/ai-coding/intro');
   return (
-    <div className={styles.container}>
-      <div className={styles.socialLinks}>
-        <GitHubButton
-          href="https://github.com/trustedoss/trustedoss.github.io"
-          data-icon="octicon-star"
-          data-size="large"
-          data-color-scheme={colorMode}
-          aria-label="Star trustedoss/trustedoss.github.io on GitHub">
-          Star
-        </GitHubButton>
-      </div>
-      <div className={styles.content}>
-        <div className={styles.shieldIcon}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 80 90"
-            width="80"
-            height="90">
-            <path
-              d="M40 5 L75 18 L75 48 Q75 72 40 85 Q5 72 5 48 L5 18 Z"
-              fill="#1a7f5a"
-              opacity="0.9"
-            />
-            <path
-              d="M26 44 L35 53 L54 34"
-              stroke="#ffffff"
-              strokeWidth="5"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </div>
-        <h1 className={styles.title}>Trusted OSS</h1>
-        <h2 className={styles.subtitle}>
-          <Translate id="homepage.hero.subtitle">
-            신뢰할 수 있는 오픈소스 공급망 관리
-          </Translate>
-        </h2>
-        <p className={styles.description}>
-          <Translate id="homepage.hero.description">
-            {
-              'ISO/IEC 5230 & 18974 기반\n기업 오픈소스 관리 체계 구축 실전 가이드 — 처음이어도 단계별로 안내합니다'
-            }
+    <header className={styles.hero}>
+      <div className={clsx('container', styles.container)}>
+        <p className={styles.eyebrow}>
+          <span className={styles.dot} aria-hidden="true" />
+          <Translate id="homepage.hero.eyebrow">
+            OpenChain KWG · 무료 셀프스터디 가이드
           </Translate>
         </p>
-        <div className={styles.buttonContainer}>
-          <a href={docsUrl} className={styles.primaryButton}>
+        <h1 className={styles.title}>
+          <Translate id="homepage.hero.title.line1">오픈소스 신뢰를,</Translate>
+          <br />
+          <span className={styles.titleAccent}>
+            <Translate id="homepage.hero.title.line2">
+              스스로 세웁니다.
+            </Translate>
+          </span>
+        </h1>
+        <p className={styles.subtitle}>
+          <Translate id="homepage.hero.subtitle.content">
+            ISO/IEC 5230 & 18974 기반 오픈소스 관리 체계를 벤더 컨설팅 없이
+            단계별로 구축하고, 자체 인증 선언까지 도달합니다.
+          </Translate>
+        </p>
+        <div className={styles.ctas}>
+          <Link className="button button--primary button--lg" to="/docs">
             {translate({
-              id: 'homepage.hero.cta.docs',
-              message: '체계구축 시작하기',
+              id: 'homepage.hero.cta.start',
+              message: '가이드 시작하기',
             })}
-          </a>
-          <a href={aiCodingUrl} className={styles.secondaryButton}>
-            {translate({
-              id: 'homepage.hero.cta.aiCoding',
-              message: 'AI코딩 가이드',
-            })}
-          </a>
+          </Link>
+          <Link
+            className="button button--secondary button--lg"
+            href="https://github.com/trustedoss/trustedoss.github.io">
+            <span className={styles.ghIcon} aria-hidden="true" />
+            GitHub
+          </Link>
         </div>
+        <ul className={styles.meta}>
+          {meta.map(item => (
+            <li key={item} className={styles.metaItem}>
+              {item}
+            </li>
+          ))}
+        </ul>
       </div>
-    </div>
+    </header>
   );
 }
 

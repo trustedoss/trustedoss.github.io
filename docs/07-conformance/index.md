@@ -175,7 +175,9 @@ ISO/IEC 5230과 ISO/IEC 18974는 많은 요구사항을 공유합니다. 동시 
 - [ ] 갭 분석에서 미충족 항목이 없거나 해소 계획이 있음
 - [ ] 자체 인증 선언문이 완성됨
 
-> 📋 **산출물 예시**: [자체 인증 산출물 Best Practice](/reference/samples/conformance)에서 생성된 파일의 실제 형식을 확인할 수 있습니다.
+:::tip[산출물 예시]
+[자체 인증 산출물 Best Practice](/reference/samples/conformance)에서 생성된 파일의 실제 형식을 확인할 수 있습니다.
+:::
 
 ---
 

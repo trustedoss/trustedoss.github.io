@@ -1,128 +1,84 @@
 /**
- * Copyright (c) Meta Platforms, Inc. and affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
+ * Prism 구문 강조 테마 — Gemini docs 스타일.
+ * 라이트(기본)와 다크를 분리해 라이트 모드에서 라이트 코드가 나오게 한다.
  */
 
 import type {ThemeConfig} from '@docusaurus/preset-classic';
 
-const theme: ThemeConfig['prism']['theme'] = {
+type PrismTheme = ThemeConfig['prism']['theme'];
+
+/** 라이트 코드 테마 (Gemini docs 톤: 밝은 배경 + 차분한 구문색) */
+export const lightTheme: PrismTheme = {
   plain: {
-    color: '#FFFFFF',
-    backgroundColor: '#282C34',
+    color: '#383a42',
+    backgroundColor: '#f8f9fa',
   },
   styles: [
     {
-      types: ['property'],
-      style: {
-        color: '#2aa198',
-      },
+      types: ['comment', 'prolog', 'doctype', 'cdata'],
+      style: {color: '#5f6368', fontStyle: 'italic'},
+    },
+    {types: ['punctuation'], style: {color: '#383a42'}},
+    {types: ['namespace'], style: {opacity: 0.7}},
+    {
+      types: ['keyword', 'atrule', 'selector'],
+      style: {color: '#8430ce'},
     },
     {
-      types: ['attr-name', 'comment', 'prolog', 'doctype', 'cdata'],
-      style: {
-        color: '#93a1a1',
-      },
+      types: ['string', 'char', 'attr-value', 'inserted'],
+      style: {color: '#188038'},
     },
     {
-      types: ['punctuation'],
-      style: {
-        color: '#657b83',
-      },
+      types: ['number', 'boolean', 'constant', 'symbol', 'deleted'],
+      style: {color: '#c5221f'},
     },
     {
-      types: ['namespace'],
-      style: {
-        opacity: 0.7,
-      },
+      types: ['function', 'class-name', 'builtin'],
+      style: {color: '#1a73e8'},
     },
-    {
-      types: ['selector', 'char', 'builtin', 'url'],
-      style: {
-        color: '#2aa198',
-      },
-    },
-    {
-      types: ['entity'],
-      style: {
-        color: '#2aa198',
-      },
-    },
-    {
-      types: ['atrule', 'inserted'],
-      style: {
-        color: '#859900',
-      },
-    },
-    {
-      types: ['important', 'variable', 'deleted'],
-      style: {
-        color: '#cb4b16',
-      },
-    },
-    {
-      types: ['important', 'bold'],
-      style: {
-        fontWeight: 'bold',
-      },
-    },
-    {
-      types: ['italic'],
-      style: {
-        fontStyle: 'italic',
-      },
-    },
-    {
-      types: ['entity'],
-      style: {
-        cursor: 'help',
-      },
-    },
-    // react-native theme
-    {
-      types: ['attr-name', 'keyword'],
-      style: {
-        color: '#c5a5c5',
-      },
-    },
-    {
-      types: ['string', 'regex', 'attr-value'],
-      style: {
-        color: '#8dc891',
-      },
-    },
-    {
-      types: ['number', 'constant', 'symbol'],
-      style: {
-        color: '#5a9bcf',
-      },
-    },
-    {
-      types: ['boolean'],
-      style: {
-        color: '#ff8b50',
-      },
-    },
-    {
-      types: ['class-name'],
-      style: {
-        color: '#fac863',
-      },
-    },
-    {
-      types: ['function'],
-      style: {
-        color: '#79b6f2',
-      },
-    },
-    {
-      types: ['operator', 'tag'],
-      style: {
-        color: '#fc929e',
-      },
-    },
+    {types: ['variable', 'attr-name'], style: {color: '#b06000'}},
+    {types: ['operator', 'tag'], style: {color: '#383a42'}},
+    {types: ['url', 'entity'], style: {color: '#1a73e8'}},
+    {types: ['important', 'bold'], style: {fontWeight: 'bold'}},
+    {types: ['italic'], style: {fontStyle: 'italic'}},
   ],
 };
 
-export default theme;
+/** 다크 코드 테마 (다크 모드용) */
+export const darkTheme: PrismTheme = {
+  plain: {
+    color: '#e3e3e3',
+    backgroundColor: '#1f1f1f',
+  },
+  styles: [
+    {
+      types: ['comment', 'prolog', 'doctype', 'cdata'],
+      style: {color: '#9aa0a6', fontStyle: 'italic'},
+    },
+    {types: ['punctuation'], style: {color: '#e3e3e3'}},
+    {types: ['namespace'], style: {opacity: 0.7}},
+    {
+      types: ['keyword', 'atrule', 'selector'],
+      style: {color: '#c58af9'},
+    },
+    {
+      types: ['string', 'char', 'attr-value', 'inserted'],
+      style: {color: '#7ee787'},
+    },
+    {
+      types: ['number', 'boolean', 'constant', 'symbol', 'deleted'],
+      style: {color: '#ff8a80'},
+    },
+    {
+      types: ['function', 'class-name', 'builtin'],
+      style: {color: '#8ab4f8'},
+    },
+    {types: ['variable', 'attr-name'], style: {color: '#fdd663'}},
+    {types: ['operator', 'tag'], style: {color: '#e3e3e3'}},
+    {types: ['url', 'entity'], style: {color: '#8ab4f8'}},
+    {types: ['important', 'bold'], style: {fontWeight: 'bold'}},
+    {types: ['italic'], style: {fontStyle: 'italic'}},
+  ],
+};
+
+export default lightTheme;

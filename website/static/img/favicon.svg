@@ -1,7 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40">
-  <!-- Background -->
-  <rect width="40" height="40" rx="8" fill="#1a7f5a"/>
-  <!-- Shield icon -->
-  <path d="M10 8 L20 6 L30 8 L30 19 Q30 27 20 33 Q10 27 10 19 Z" fill="#fff" opacity="0.9"/>
-  <path d="M15 18 L19 22 L26 15" stroke="#1a7f5a" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <rect width="32" height="32" rx="7" fill="#1b1f27"/>
+  <path d="M16 5 L25 9 V16 C25 21 21 25 16 27 C11 25 7 21 7 16 V9 Z" fill="#1a73e8"/>
+  <path d="M11.5 16.5 L14.5 19.5 L20.5 12.5" stroke="#1b1f27" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

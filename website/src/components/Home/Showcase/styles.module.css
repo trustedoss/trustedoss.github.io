@@ -1,0 +1,121 @@
+/**
+ * trustedoss.dev Showcase styles — Vercel풍 코드 카드
+ */
+
+.showcase {
+  padding: var(--space-section) 0;
+  background: var(--ifm-background-color);
+}
+
+.sectionHeader {
+  max-width: 60ch;
+  margin-bottom: 2.75rem;
+}
+
+.sectionHeader h2 {
+  margin: 0 0 0.55rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--ifm-heading-color);
+}
+
+.sectionHeader p {
+  margin: 0;
+  color: var(--ifm-color-emphasis-600);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.shot {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.frame {
+  display: block;
+  overflow: hidden;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 12px;
+  background: var(--ifm-background-color);
+  text-decoration: none;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.frame:hover,
+.frame:focus-visible {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 2px 12px rgba(26, 115, 232, 0.12);
+  text-decoration: none;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 0.85rem;
+  background: var(--ifm-color-emphasis-100);
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.dots {
+  display: inline-flex;
+  gap: 5px;
+}
+
+.dots i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--ifm-color-emphasis-300);
+}
+
+.file {
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.74rem;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.preview {
+  margin: 0;
+  padding: 1.1rem 1.25rem;
+  background: var(--ifm-color-emphasis-100);
+  border: 0;
+  border-radius: 0;
+  font-size: 0.78rem;
+  line-height: 1.65;
+  min-height: 9.5rem;
+  white-space: pre;
+  overflow-x: auto;
+  color: var(--ifm-color-emphasis-800);
+}
+
+.preview code {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  font-family: var(--ifm-font-family-monospace);
+}
+
+.caption {
+  margin: 0.9rem 0 0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--ifm-color-emphasis-600);
+}
+
+@media (max-width: 860px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

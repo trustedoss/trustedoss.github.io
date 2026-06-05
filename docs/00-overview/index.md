@@ -76,7 +76,9 @@ cd trustedoss-agents && claude
 | 인증 방식     | OpenChain 웹사이트 자체 선언                                   | OpenChain 웹사이트 자체 선언                       |
 | 제정 배경     | 오픈소스 라이선스 분쟁 급증 대응                               | SolarWinds·Log4Shell 등 공급망 보안 사고 대응      |
 
-> 유효 기간·관련 규제·상호 보완성 등 항목별 상세 비교는 [`checklist-mapping.md`](./checklist-mapping.md) 참조.
+:::tip
+유효 기간·관련 규제·상호 보완성 등 항목별 상세 비교는 [`checklist-mapping.md`](./checklist-mapping.md) 참조.
+:::
 
 ### 자체 인증이란 무엇인가
 
