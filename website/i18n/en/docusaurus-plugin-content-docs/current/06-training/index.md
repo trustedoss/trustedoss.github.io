@@ -13,7 +13,7 @@ self_study_time: 1 hour
 
 Establish training curriculum for each occupation,Creating a completion tracking system,We organize educational resources that you can use for free. Completing this chapter will provide a foundation for all relevant members of your organization to understand and implement open source policies and processes.
 
-Both standards require proof that personnel and relevant members have completed training. No matter how well you have policy documents and process procedures,,If members do not know the contents, actual compliance cannot be achieved.
+Both standards require proof that personnel and relevant members have completed training. No matter how good your policy documents and process procedures are, if members don't know their contents, real compliance cannot be achieved.
 
 ## 2. Background knowledge:Why training is a standard requirement
 

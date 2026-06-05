@@ -40,7 +40,7 @@ There are two approaches to generating SBOM: **Dependency Analysis** is a packag
 | syft   | Anchore            | fast and light,single binary,Multiple language support | Python, Node.js, Go                                  |
 | cdxgen | CycloneDX          | CycloneDX only,Detailed analysis by language           | Java(Maven/Gradle),When precise analysis is required |
 
-Both tools can output in CycloneDX JSON format,,This chapter uses CycloneDX as the standard format.
+Both tools can output CycloneDX JSON; this chapter uses CycloneDX as the standard format.
 
 **Source Code Scan Tool**(optional)
 
@@ -48,7 +48,7 @@ Both tools can output in CycloneDX JSON format,,This chapter uses CycloneDX as t
 | ------- | ---------------- | ---------------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | SCANOSS | SCANOSS          | File-by-file snippet scanning,Cloud + On-Premise,API integration,create SBOM | Source code direct embedding detection,Precise License Identification |
 
-[SCANOSS](https://www.scanoss.com/)has the advantage of detecting open source code fragments copied and inserted directly without package declaration at the file level. Because their roles are complementary to syft/cdxgen,,Parallel use is recommended when source level precision is required.
+[SCANOSS](https://www.scanoss.com/)has the advantage of detecting open source code fragments copied and inserted directly without package declaration at the file level. Because its role is complementary to syft/cdxgen, parallel use is recommended when source-level precision is required.
 
 > FOSSLight, SW360,For a guide to the introduction and use of SCA and compliance tools such as FOSSology, see [KWG Open Source Guide — Tools](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/4-tool/)See .
 
@@ -104,7 +104,7 @@ docker ps
 If it runs without errors, Docker is ready.
 
 :::tip When proceeding without Docker
-If you don't have Docker installed or just want to get started quickly for lab purposes,,Use the pre-prepared sample SBOM with the command below.
+If you don't have Docker installed, or just want to get started quickly for lab purposes, use the pre-prepared sample SBOM with the command below.
 
 ```bash
 mkdir -p output/sbom
@@ -251,7 +251,7 @@ After checking all the items below, proceed to the next step.
 
 ## 5. Next steps
 
-When SBOM creation and license analysis are completed,,SBOM Moves to the stage of establishing a management system.
+Once SBOM creation and license analysis are complete, move on to establishing an SBOM management system.
 
 :::tip Check before execution
 Terminate the current Claude session first(`/exit` or `Ctrl+C`)After doing it,Run the command below in a new terminal.
