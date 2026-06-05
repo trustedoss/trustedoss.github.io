@@ -494,6 +494,70 @@
     "message": "Self-certification — conformance checklist and declaration draft",
     "description": "Showcase conformance caption"
   },
+  "homepage.whykwg.title": {
+    "message": "Why TrustedOSS, together with KWG",
+    "description": "WhyKwg section title"
+  },
+  "homepage.whykwg.subtitle": {
+    "message": "Not competition, but completion. KWG points the way with standards and blank templates; TrustedOSS turns that into executable artifacts with AI and automation.",
+    "description": "WhyKwg section subtitle"
+  },
+  "homepage.whykwg.kwg.badge": {
+    "message": "What & why",
+    "description": "WhyKwg KWG badge"
+  },
+  "homepage.whykwg.kwg.title": {
+    "message": "OpenChain KWG",
+    "description": "WhyKwg KWG card title"
+  },
+  "homepage.whykwg.kwg.desc": {
+    "message": "Tells you what the standard requires and why. Provides the international standards, an enterprise OSS management guide, and blank templates.",
+    "description": "WhyKwg KWG card description"
+  },
+  "homepage.whykwg.kwg.point1": {
+    "message": "ISO/IEC 5230 and 18974 standard guides",
+    "description": "WhyKwg KWG point 1"
+  },
+  "homepage.whykwg.kwg.point2": {
+    "message": "Blank policy and process templates",
+    "description": "WhyKwg KWG point 2"
+  },
+  "homepage.whykwg.kwg.point3": {
+    "message": "Tool guides and links",
+    "description": "WhyKwg KWG point 3"
+  },
+  "homepage.whykwg.toss.badge": {
+    "message": "How, automatically",
+    "description": "WhyKwg TrustedOSS badge"
+  },
+  "homepage.whykwg.toss.title": {
+    "message": "TrustedOSS",
+    "description": "WhyKwg TrustedOSS card title"
+  },
+  "homepage.whykwg.toss.desc": {
+    "message": "Helps you actually achieve the standard with AI and automation, on a single path from zero to self-certification.",
+    "description": "WhyKwg TrustedOSS card description"
+  },
+  "homepage.whykwg.toss.point1": {
+    "message": "AI agents auto-generate company-tailored artifacts",
+    "description": "WhyKwg TrustedOSS point 1"
+  },
+  "homepage.whykwg.toss.point2": {
+    "message": "Copy-paste CI workflows and Rules, no-API-key demos",
+    "description": "WhyKwg TrustedOSS point 2"
+  },
+  "homepage.whykwg.toss.point3": {
+    "message": "Extends to DevSecOps and AI coding governance",
+    "description": "WhyKwg TrustedOSS point 3"
+  },
+  "homepage.whykwg.note": {
+    "message": "TrustedOSS synchronizes KWG content and attributes it under CC BY 4.0.",
+    "description": "WhyKwg footer note"
+  },
+  "homepage.whykwg.note.link": {
+    "message": "View the OpenChain KWG guide",
+    "description": "WhyKwg footer note link"
+  },
   "homepage.hero.eyebrow": {
     "message": "Free self-study guide by OpenChain KWG",
     "description": "Hero eyebrow"

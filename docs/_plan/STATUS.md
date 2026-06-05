@@ -20,18 +20,18 @@ task 고유 수용 기준 + `cd website && npm run build`(ko/en) + `verify.sh` 1
 
 ## 진행 상태
 
-| #   | 작업                                             | 상태     |
-| --- | ------------------------------------------------ | -------- |
-| 12  | 메뉴 라벨(오픈소스 관리, AI 코딩 거버넌스)       | 완료     |
-| 13  | KWG 커버리지 매트릭스                            | 완료     |
-| 14  | 정책 템플릿 KWG 정렬(용어 정의·사내 공개·추적성) | 완료     |
-| 15  | 온보딩: 5분 빠른 시작 + 내게 맞는 시작 경로      | 완료     |
-| 16  | AI 에이전트 허브 페이지                          | 완료     |
-| 17  | 05-tools 통합 인덱스 + 세 기둥 cross-link        | 완료     |
-| 18  | P1: 단일 출처, 검색, 매핑 정본                   | 완료     |
-| 19  | 도구(onot/sbom-tools) + POSITIONING 차별화       | **다음** |
+| #   | 작업                                             | 상태 |
+| --- | ------------------------------------------------ | ---- |
+| 12  | 메뉴 라벨(오픈소스 관리, AI 코딩 거버넌스)       | 완료 |
+| 13  | KWG 커버리지 매트릭스                            | 완료 |
+| 14  | 정책 템플릿 KWG 정렬(용어 정의·사내 공개·추적성) | 완료 |
+| 15  | 온보딩: 5분 빠른 시작 + 내게 맞는 시작 경로      | 완료 |
+| 16  | AI 에이전트 허브 페이지                          | 완료 |
+| 17  | 05-tools 통합 인덱스 + 세 기둥 cross-link        | 완료 |
+| 18  | P1: 단일 출처, 검색, 매핑 정본                   | 완료 |
+| 19  | 도구(onot/sbom-tools) + POSITIONING 차별화       | 완료 |
 
-마일스톤: **P0-0(#13, #14) 완료, P0(#15, #16, #17) 완료, P1(#18) 완료**. 남음: 마무리(#19 + 최종 end-to-end 검증).
+마일스톤: **P0-0(#13, #14), P0(#15, #16, #17), P1(#18), 마무리(#19) 전부 완료.** 계획의 P0부터 마무리까지 범위 종료. 남은 것은 아래 "후속(미완)"의 선택 항목뿐.
 
 ## 후속(미완) 항목
 
@@ -40,11 +40,22 @@ task 고유 수용 기준 + `cd website && npm run build`(ko/en) + `verify.sh` 1
 - **en 로케일 i18n quirk(기존)**: en 브로큰링크 체커가 상대 `.md` 링크를 slug 무시하고 경로로 해석해 false-positive 경고(현재 4건). 런타임 정상, KO 0 broken, verify 12/12. en 정합은 별도 과제.
 - 기존 ko-style 잔재(07-conformance, checklist-mapping, devsecops/intro의 이모지와 가운뎃점)는 내가 건드린 라인이 아니라서 보류한다. 필요하면 별도로 정리한다.
 
-## 다음 작업 (#19 마무리: 도구 큐레이션 + POSITIONING 차별화 + 최종 end-to-end)
+## 다음 작업 (계획 본범위 종료 — 선택 후속만 남음)
 
-1. 도구 3계층 큐레이션 반영(계획 §도구 선정): onot(고지문, distribution-checklist §3) + SKT sbom-tools(5.1 SBOM 생성 보완), KWG 생태계(FOSSLight/SW360/FOSSology) 배치. 작업별 "메인 1개 + 대안" 큐레이션.
-2. `POSITIONING.md` 차별화 명문화 + 랜딩 "왜 KWG와 함께 TrustedOSS인가" 노출(계획 §차별화).
-3. 최종 end-to-end 검증: 전 페이지 빌드(ko 0 broken), 내부 링크, 온보딩 클릭 테스트, 완전성 비평 1회(실행 규약 §9).
+계획의 P0-0부터 마무리(#19)까지 전부 완료. 아래는 모두 "후속(미완)"의 선택 항목이며 본범위 외다.
+
+1. **en 패리티**: 정본 2페이지(reference/concepts/\*) EN 번역 미생성(현재 ko 폴백, 빌드 통과). en 본문 단일 출처화 동기화. en i18n quirk(4건 false-positive)도 별도 과제.
+2. **프로세스 템플릿 추적성 헤더**: templates/process/\* 에 가시적 헤더 note 표면화(현재 HTML 주석만).
+3. **reference/samples/process drift**: §10 누락 등 구버전 → sync 워크플로 일괄 재생성.
+4. 기존 ko-style 잔재(POSITIONING §1~6, 07-conformance 등) 정리.
+
+### #19에서 완료한 것 (참고)
+
+- 도구 큐레이션: onot(04-process 배포 전 고지문, SPDX 입력 OSS 고지문 생성, github.com/sktelecom/onot), SKT sbom-tools(05-tools/sbom-generation 보완, cdxgen·syft 파이프라인+Trivy, 메인은 syft 유지). FOSSLight/SW360/FOSSology는 기존 KWG tools 링크로 이미 연결됨.
+- POSITIONING.md §7 "OpenChain KWG와의 관계(보완 레이어)" 신설 — KWG=무엇을·왜 / TrustedOSS=어떻게·자동으로, 차별점 5축 표.
+- 랜딩 WhyKwg 섹션 신설(`website/src/components/Home/WhyKwg`, Showcase와 FinalCTA 사이). 중립 Infima 토큰(POSITIONING §5), en code.json 번역 추가. ko/en 홈에서 렌더 확인.
+- 독립 검수(doc-qa): high 0. med 1건(03-policy 샘플 AGPL Strong→Network Copyleft) 즉시 수정.
+- 최종: build ko/en SUCCESS, KO 0 broken, verify 12/12.
 
 ### #18에서 완료한 것 (참고)
 
@@ -72,4 +83,5 @@ task 고유 수용 기준 + `cd website && npm run build`(ko/en) + `verify.sh` 1
 - #15: 정적 데모는 `pathname://` 링크 + verify.sh가 이를 스킵하도록 수정. en i18n quirk 확인(ko 무관).
 - #16: AI 에이전트 허브(`docs/00-overview/agents.md`) 신설.
 - #17: `docs/05-tools/index.md` 신설(카테고리 link로 연결). 07-conformance에 "자동화로 확장" 분기, devsecops→AI코딩 상호 링크, checklist-mapping 라벨 "표준 요구사항 한눈에".
+- #19: 도구 사실 확인(WebSearch/WebFetch) — onot은 github.com/sktelecom/onot(SPDX 입력으로 OSS 고지문 생성, Kakao와 SKT 공동), sbom-tools는 github.com/sktelecom/sbom-tools(내부 cdxgen과 syft 파이프라인에 Trivy, CycloneDX 1.6, 소스/Docker/바이너리/RootFS 분석, Apache-2.0). 계획의 "syft, cdxgen 래핑" 주장 사실 확인됨. FOSSLight, SW360, FOSSology는 이미 KWG tools 링크로 연결돼 추가 불필요. POSITIONING은 가이드 대 포털(SCA 제품) 축이라 KWG 차별화는 별도 §7로 신설. yarn과 corepack, playwright가 없어 락 immutable과 픽셀 캡처는 직접 검증 못 함(빌드 HTML로 UI 확인, yarn.lock은 정상 포맷으로 판단).
 - #18: 단일 출처화 핵심 발견 — CVSS 대응 기한표가 04-process(KWG 기준선 Critical 1주)와 05-tools/vulnerability(운영 SLA Critical 24h)에서 값이 **달랐음**. 정본 페이지에서 "기준선 + 조직 SLA 강화안"으로 통합해 불일치 해소. 매핑 정본(#8)은 이미 두 iso-mapping이 checklist-mapping을 정본 참조 중이라 추가 작업 불필요였음. Diátaxis(#6)는 단일 출처용 reference 개념 페이지 신설로 부분 달성(개념=reference, 본문=링크).

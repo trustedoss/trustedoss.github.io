@@ -9,6 +9,7 @@ import Hero from './Hero';
 import Roadmap from './Roadmap';
 import Features from './Features';
 import Showcase from './Showcase';
+import WhyKwg from './WhyKwg';
 import FinalCTA from './FinalCTA';
 
 export default function Home() {
@@ -19,6 +20,7 @@ export default function Home() {
         <Roadmap />
         <Features />
         <Showcase />
+        <WhyKwg />
         <FinalCTA />
       </main>
     </>
