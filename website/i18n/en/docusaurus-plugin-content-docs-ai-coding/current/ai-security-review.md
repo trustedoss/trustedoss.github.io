@@ -13,9 +13,9 @@ Sending the entire codebase to AI causes high token costs and excessive noise.
 It is more efficient for **Stage 3 tools (Semgrep and grype) to narrow candidates first, and AI to focus only on those results**.
 
 ```
-[Step 3] Semgrep · grype → findings.json
+[Stage 3] Semgrep · grype → findings.json
                                 ↓
-[Step 4] AI: code context + findings → validation, deep interpretation, and related finding discovery
+[Stage 4] AI: code context + findings → validation, deep interpretation, and related finding discovery
                                 ↓
                        PR comment (does not block build)
 ```
@@ -58,7 +58,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      # Step 3 Tools collect results (light rerun)
+      # Stage 3 tools collect results (light rerun)
       - name: Run Semgrep (SARIF)
         run: |
           pip install semgrep -q
@@ -106,7 +106,7 @@ jobs:
           except Exception:
               pass
 
-          # grype CVE findings parse (High/Criticalonly)
+          # grype CVE findings parse (High/Critical only)
           grype_issues = []
           try:
               grype = json.loads(pathlib.Path("grype.json").read_text())
@@ -143,7 +143,7 @@ Assess each item using the format below.
 
 Assessment format:
 - **[Item number]** Real vulnerability (TP) or false positive (FP) | Risk: High/Medium/Low | 1-2 sentence rationale
-- TPif TP: add one-line real exploit scenario
+- If TP: add a one-line real exploit scenario
 - For grype CVEs, determine whether the package is used in actual runtime paths
 
 ---
@@ -152,7 +152,7 @@ Assessment format:
 {grype_block}
 ---
 
-detected If there are no findings, output PASS."""
+If there are no detected items, output PASS."""
 
           client = anthropic.Anthropic()
           response = client.messages.create(
@@ -182,7 +182,7 @@ detected If there are no findings, output PASS."""
               body: [
                 '## 🔍 AI Security Review (Findings-Driven)',
                 '',
-                '> Step 3 Tools(Semgrep·grype) detected Results validated and interpreted by AI.',
+                '> AI validates and interprets the detection results from Stage 3 tools (Semgrep·grype).',
                 '> False positives are possible; evaluate with context. This is not a build-blocking criterion.',
                 '',
                 result
@@ -197,8 +197,8 @@ detected If there are no findings, output PASS."""
 ```
 PR opened
   │
-  ├─ [Step 3] Semgrep → semgrep.sarif  ─┐
-  └─ [Step 3] grype   → grype.json     ─┤
+  ├─ [Stage 3] Semgrep → semgrep.sarif  ─┐
+  └─ [Stage 3] grype   → grype.json     ─┤
                                         ↓
                             findings parse + code context extract
                                         ↓

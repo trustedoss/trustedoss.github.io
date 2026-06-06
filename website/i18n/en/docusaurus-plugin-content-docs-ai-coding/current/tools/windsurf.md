@@ -64,5 +64,5 @@ When adding new external packages/libraries, always verify and document the lice
 ## Notes
 
 :::info Good to know
-`.windsurfrules` is only for the Cascade agent and does not apply to standard code completion (Autocomplete). Keep in mind that policy applies only to agent actions (file creation/modification, package additions, etc.), and extra caution is needed when using plain completion. Larger files can increase response latency, so keep only essential team policies concise from the full template.
+`.windsurfrules` is only for the Cascade agent and does not apply to standard code completion (Autocomplete). Keep in mind that policy applies only to agent actions (file creation/modification, package additions, etc.), and extra caution is needed when using plain completion. Larger files can increase response latency, so trim the full template down to only the essential team policies.
 :::

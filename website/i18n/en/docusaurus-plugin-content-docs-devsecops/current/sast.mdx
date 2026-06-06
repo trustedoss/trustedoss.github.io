@@ -109,7 +109,7 @@ on:
   pull_request:
     branches: [main]
   schedule:
-    - cron: '0 2 * * 1' # 매주 월요일 2 AM full scan
+    - cron: '0 2 * * 1' # full scan every Monday at 2 AM
 
 jobs:
   codeql:

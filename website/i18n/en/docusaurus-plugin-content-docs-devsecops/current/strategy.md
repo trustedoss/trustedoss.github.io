@@ -9,89 +9,89 @@ sidebar_position: 2
 
 ## What is DevSecOps?
 
-It is a culture and methodology that integrates development (Dev), security (Sec), and operations (Ops) to internalize security throughout the software development life cycle. The key is to block threats early with automated inspection from the time code is written, rather than “security comes later.”
+A culture and methodology that integrates development (Dev), security (Sec), and operations (Ops) to build security into the entire software development lifecycle. The core idea is to block threats early with automated checks from the moment code is written, rather than treating security as something to handle later.
 
 ---
 
 ## Shift Left — Why faster is better
 
-:::info The cost of fixing a vulnerability varies dozens of times depending on when it is discovered.
+:::info The cost of fixing a vulnerability can vary by orders of magnitude depending on when it is discovered.
 :::
 
-As vulnerabilities are discovered at the code writing stage, the cost and time to fix them decreases exponentially.
+The earlier a vulnerability is found in the code-writing stage, the more the cost and time to fix it drop exponentially.
 
-| When discovered               | relative cost of correction | Contact person          |
-| ----------------------------- | --------------------------- | ----------------------- |
-| Writing code (IDE·pre-commit) | 1x                          | Developer himself       |
-| PR/Code Review (CI)           | 10x                         | Developer/Reviewer      |
-| Staging·QA                    | 25x                         | QA/DevOps               |
-| After production deployment   | 100x                        | All Teams/Security Team |
+| When discovered               | Relative fix cost | Responsible               |
+| ----------------------------- | ----------------- | ------------------------- |
+| Writing code (IDE·pre-commit) | 1x                | The developer             |
+| PR · code review (CI)         | 10x               | Developer · reviewer      |
+| Staging · QA                  | 25x               | QA · DevOps               |
+| After production deployment   | 100x              | All teams · security team |
 
-The goal of DevSecOps is to move as many checks to the left (code writing phase) as possible.
+The goal of DevSecOps is to shift as many checks as possible to the left (the code-writing stage).
 
 ---
 
 ## Maturity Model — Stage 4
 
-| steps  | level           | Features                                    | Main tools              |
-| ------ | --------------- | ------------------------------------------- | ----------------------- |
-| Step 1 | None            | Security check manual or absent             | —                       |
-| Step 2 | Basic           | Key Areas CI Automation                     | Gitleaks, grype         |
-| Step 3 | Systematization | Full-area pipeline integration              | Semgrep, Trivy, Checkov |
-| Step 4 | Optimization    | Automatic calibration/continuous monitoring | Dependabot + AI         |
+| Stage   | Level        | Characteristics                          | Main tools              |
+| ------- | ------------ | ---------------------------------------- | ----------------------- |
+| Stage 1 | None         | Security checks manual or absent         | —                       |
+| Stage 2 | Basic        | CI automation in key areas               | Gitleaks, grype         |
+| Stage 3 | Systematized | Pipeline integration across all areas    | Semgrep, Trivy, Checkov |
+| Stage 4 | Optimized    | Auto-remediation · continuous monitoring | Dependabot + AI         |
 
-For most teams, it is realistic to start in Stage 2 and move to Stage 3 over 6 to 12 months.
+For most teams, it is realistic to start at Stage 2 and move to Stage 3 over 6 to 12 months.
 
 ---
 
 ## Step-by-step introduction roadmap
 
-:::tip Don’t try to introduce everything at once
-Stabilizing one area at a time and then moving on to the next is a sustainable way to avoid team fatigue.
+:::tip Don't try to adopt everything at once
+Stabilizing one area at a time before moving to the next is the sustainable way to avoid team fatigue.
 :::
 
-1. **Start Immediately (1-2 Weeks)**
-   Secret detection (Gitleaks) + SCA is applied starting from basic (grype). The setup is simple and the effects are immediate. Blocks secret leaks and critical vulnerabilities in the existing code base.
+1. **Start immediately (1-2 weeks)**
+   Begin with secret detection (Gitleaks) and basic SCA (grype). The setup is simple and the effect is immediate. This blocks secret leaks and critical vulnerabilities in the existing codebase.
 
-2. **Improvement of code quality (1 month)**
-   Add SAST(Semgrep). Choose a ruleset that matches the language your team uses, and initially print only a warning, then switch to block builds after 2-4 weeks.
+2. **Strengthen code quality (1 month)**
+   Add SAST (Semgrep). Choose a ruleset that matches the languages your team uses; initially emit warnings only, then switch to blocking builds after 2-4 weeks.
 
-3. **Build/Infrastructure Security (2~3 months)**
-   Add container security (Trivy) + IaC security (Checkov). Applies to teams that use container/cloud environments.
+3. **Build and infrastructure security (2-3 months)**
+   Add container security (Trivy) and IaC security (Checkov). This applies to teams that use container or cloud environments.
 
-4. **Completion of dynamic analysis and automation (3-6 months)**
-   Add DAST(OWASP ZAP). After integrating all areas of the pipeline, a monitoring and automatic correction system is established.
+4. **Complete dynamic analysis and automation (3-6 months)**
+   Add DAST (OWASP ZAP). After integrating all areas of the pipeline, establish a monitoring and auto-remediation system.
 
 ---
 
 ## Location in the pipeline
 
-| area               | pre-commit | PR/CI | build | After Deployment |
+| Area               | pre-commit | PR/CI | Build | After deployment |
 | ------------------ | ---------- | ----- | ----- | ---------------- |
 | Secret Detection   | ✓          | ✓     | —     | —                |
 | SAST               | —          | ✓     | —     | —                |
 | SCA                | —          | ✓     | ✓     | ✓                |
 | Container Security | —          | —     | ✓     | ✓                |
-| IaC security       | —          | ✓     | —     | —                |
+| IaC Security       | —          | ✓     | —     | —                |
 | DAST               | —          | —     | —     | ✓                |
 
 ---
 
 ## Self-study — step-by-step agent
 
-:::tip Automate each step with Claude Code agent
-If you run the agents below in order,
-You can actually implement steps 1-4 on the strategy page.
+:::tip Automate each stage with a Claude Code agent
+Run the agents below in order to actually implement
+Stages 1-4 from the strategy page.
 :::
 
-**Prerequisite**: Requires clone of [Trusted OSS repository](https://github.com/trustedoss/trustedoss.github.io)
+**Prerequisite**: Clone the [Trusted OSS repository](https://github.com/trustedoss/trustedoss-agents)
 
-| steps                             | agent                | command                                               |
-| --------------------------------- | -------------------- | ----------------------------------------------------- |
-| Step 2 — Internalize the AI rules | ai-coding-setup      | `cd agents/ai-coding-setup && claude`                 |
-| Step 3 — CI/CD Pipeline           | devsecops-setup      | `cd agents/devsecops-setup && claude`                 |
-| Step 3 — PR Auto Comment          | level2-pr-comment    | `cd agents/level2-automation/pr-comment && claude`    |
-| Step 4 — Continuous monitoring    | level2-issue-tracker | `cd agents/level2-automation/issue-tracker && claude` |
+| Stage                              | agent                | Command                                               |
+| ---------------------------------- | -------------------- | ----------------------------------------------------- |
+| Stage 2 — Internalize the AI rules | ai-coding-setup      | `cd agents/ai-coding-setup && claude`                 |
+| Stage 3 — CI/CD pipeline           | devsecops-setup      | `cd agents/devsecops-setup && claude`                 |
+| Stage 3 — PR auto-comment          | level2-pr-comment    | `cd agents/level2-automation/pr-comment && claude`    |
+| Stage 4 — Continuous monitoring    | level2-issue-tracker | `cd agents/level2-automation/issue-tracker && claude` |
 
 ---
 
