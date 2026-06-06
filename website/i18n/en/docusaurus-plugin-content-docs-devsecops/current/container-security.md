@@ -9,23 +9,23 @@ sidebar_position: 6
 
 ## What is container security?
 
-This is a security check that detects vulnerabilities in OS package and application dependencies included in container images, Dockerfile configuration errors, and secret exposure before deployment. Blocking the build phase is especially important because once the image is deployed, the same vulnerability will spread across all instances.
+Container security scanning detects vulnerabilities in the OS packages and application dependencies bundled into a container image, along with Dockerfile misconfigurations and exposed secrets, before deployment. Blocking these at the build stage is especially important because once an image is deployed, the same vulnerability propagates to every instance.
 
 ---
 
 ## Tool Comparison
 
-| tools  | Features                           | Detection range             | License    |
-| ------ | ---------------------------------- | --------------------------- | ---------- |
-| Trivy  | All-in-one·Fast speed·Simple setup | Image·Filesystem·IaC·Secret | Apache-2.0 |
-| Grype  | SBOM integration optimization      | Image/File System           | Apache-2.0 |
-| Dockle | Checking Dockerfile best practices | Image Settings              | Apache-2.0 |
+| Tool   | Features                         | Detection range             | License    |
+| ------ | -------------------------------- | --------------------------- | ---------- |
+| Trivy  | All-in-one, fast, simple setup   | Image·Filesystem·IaC·Secret | Apache-2.0 |
+| Grype  | Optimized for SBOM integration   | Image/Filesystem            | Apache-2.0 |
+| Dockle | Checks Dockerfile best practices | Image configuration         | Apache-2.0 |
 
-We recommend Trivy as a single container security tool, and if you are already using grype in your SCA pipeline, image scanning can also be unified with grype.
+We recommend Trivy as a single container security tool. If you already use Grype in your SCA pipeline, you can unify image scanning on Grype as well.
 
 ---
 
-## Trivy settings
+## Trivy setup
 
 ### Basic usage
 
@@ -130,8 +130,8 @@ container-security:
 
 ## Trivy policy file
 
-Exclude unfixable vulnerabilities with :::info ignore-unfixed option
-Vulnerabilities that are not yet patched upstream cannot be fixed by the development team, so excluding them allows us to focus on actionable notifications.
+:::info Exclude unfixable vulnerabilities with the ignore-unfixed option
+Vulnerabilities not yet patched upstream cannot be fixed by the development team, so excluding them lets you focus on actionable findings.
 :::
 
 ```yaml
@@ -153,11 +153,11 @@ secrets:
 
 ## Dockerfile security best practices
 
-1. **Use minimal base image:** Select `alpine`·`distroless` instead of `ubuntu`. Fewer packages reduce your vulnerability surface area.
-2. **Prohibit root execution:** Specify a non-root user with the `USER` command. Root execution magnifies the damage when a container escapes.
-3. **Multi-stage build:** Exclude build tools and source code from the final image. Image size reduction and attack surface reduction are achieved simultaneously.
-4. **No secret ARG/ENV:** Do not pass secrets as build arguments or environment variables. It remains as plain text in the image layer.
-5. **Version Fixed:** Specify tags like `FROM ubuntu:22.04`. When using `latest`, unexpected vulnerabilities may be introduced.
+1. **Use a minimal base image:** Choose `alpine` or `distroless` over `ubuntu`. Fewer packages mean a smaller vulnerability surface.
+2. **Avoid running as root:** Specify a non-root user with the `USER` instruction. Running as root amplifies the damage if a container is compromised.
+3. **Multi-stage builds:** Keep build tools and source code out of the final image. This reduces both image size and attack surface at once.
+4. **No secrets in ARG/ENV:** Never pass secrets as build arguments or environment variables. They persist as plain text in the image layers.
+5. **Pin versions:** Use explicit tags like `FROM ubuntu:22.04`. Using `latest` can silently introduce unexpected vulnerabilities.
 
 ---
 
@@ -165,4 +165,4 @@ secrets:
 
 - Infrastructure code security: [IaC security](./iac-security)
 - Full pipeline integration: [Pipeline Design](./pipeline-design)
-- Continuous monitoring of images after distribution: [Monitoring·Automatic Correction](./monitoring)
+- Continuous monitoring of images after deployment: [Monitoring and Automated Remediation](./monitoring)

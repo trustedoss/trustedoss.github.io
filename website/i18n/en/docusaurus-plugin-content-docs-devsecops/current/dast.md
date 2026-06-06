@@ -13,24 +13,24 @@ sidebar_position: 8
 SAST looks at the code and DAST looks at the running app. The two must be applied together to reduce blind spots.
 :::
 
-**Definition:** Sends actual HTTP requests to a running application to detect runtime vulnerabilities such as SQL injection, XSS, authentication bypass, and sensitive information disclosure.
+**Definition:** DAST sends real HTTP requests to a running application to detect runtime vulnerabilities such as SQL injection, XSS, authentication bypass, and sensitive information disclosure.
 
-**Differences from SAST:** SAST detects quickly during the code writing phase but cannot determine runtime behavior. DAST verifies actual behavior after deployment, helping you discover vulnerabilities that SAST misses.
+**How it differs from SAST:** SAST scans quickly during the coding phase but cannot observe runtime behavior. DAST verifies actual behavior after deployment, helping you find vulnerabilities that SAST misses.
 
 ---
 
 ## Tool Comparison
 
-| tools     | Features                                             | Main uses                             | License    |
-| --------- | ---------------------------------------------------- | ------------------------------------- | ---------- |
-| OWASP ZAP | Supports all industry standards, GUI, and automation | Full scan of web app/API              | Apache-2.0 |
-| Nuclei    | Template-based, fast, lightweight                    | Scan for known vulnerability patterns | MIT        |
+| Tool      | Features                                      | Main uses                                 | License    |
+| --------- | --------------------------------------------- | ----------------------------------------- | ---------- |
+| OWASP ZAP | Industry-standard, GUI and automation support | Full scan of web apps/APIs                | Apache-2.0 |
+| Nuclei    | Template-based, fast, lightweight             | Scanning for known vulnerability patterns | MIT        |
 
-We recommend OWASP ZAP for deep web app scanning, and Nuclei for quick checks for known CVE·unconfigured vulnerabilities.
+We recommend OWASP ZAP for in-depth web application scanning, and Nuclei for quick checks of known CVEs and misconfigurations.
 
 ---
 
-## OWASP ZAP settings
+## OWASP ZAP setup
 
 ### GitHub Actions
 
@@ -81,17 +81,17 @@ jobs:
 
 ### Select scan type
 
-| Scan Type | Action           | Time required | Recommended Situation                 |
-| --------- | ---------------- | ------------- | ------------------------------------- |
-| Baseline  | action-baseline  | 2~5 minutes   | Basic inspection per PR               |
-| API Scan  | action-api-scan  | 5~15 minutes  | OpenAPI When there is a specification |
-| Full Scan | action-full-scan | 20 minutes+   | In-depth pre-release inspection       |
+| Scan Type | Action           | Time required | Recommended situation                |
+| --------- | ---------------- | ------------- | ------------------------------------ |
+| Baseline  | action-baseline  | 2~5 minutes   | Basic check per PR                   |
+| API Scan  | action-api-scan  | 5~15 minutes  | When an OpenAPI specification exists |
+| Full Scan | action-full-scan | 20 minutes+   | In-depth pre-release check           |
 
-We recommend a dual strategy of running Baseline during the PR phase and Full Scan before release.
+We recommend a two-tier strategy: run Baseline during the PR phase and Full Scan before release.
 
-### Rules file settings
+### Rules file configuration
 
-Rules to ignore or fail specific notifications are managed in the `zap-rules.tsv` file.
+Rules that ignore or fail specific alerts are managed in the `zap-rules.tsv` file.
 
 ```
 # zap-rules.tsv
@@ -100,11 +100,11 @@ Rules to ignore or fail specific notifications are managed in the `zap-rules.tsv
 10021	FAIL	(Anti-CSRF token not set)
 ```
 
-You can specify processing for each item at three levels: `IGNORE`·`WARN`·`FAIL`.
+You can set the handling for each item at three levels: `IGNORE`·`WARN`·`FAIL`.
 
 ---
 
-## Nuclei settings
+## Nuclei setup
 
 ### GitHub Actions
 
@@ -149,27 +149,27 @@ jobs:
 | Category         | Description                         |
 | ---------------- | ----------------------------------- |
 | cves             | Known CVE vulnerability patterns    |
-| misconfiguration | Security settings error             |
+| misconfiguration | Security misconfigurations          |
 | exposures        | Sensitive information/file exposure |
-| default-logins   | Default account/password            |
-| takeovers        | Possibility of subdomain hijacking  |
+| default-logins   | Default accounts/passwords          |
+| takeovers        | Potential subdomain takeover        |
 
 ---
 
-## Precautions when introducing DAST
+## Precautions when adopting DAST
 
-:::warning Be sure to run DAST in an isolated test environment.
+:::warning Always run DAST in an isolated test environment.
 :::
 
-**Environment Separation:** Because DAST sends actual HTTP requests, running it in a production environment may cause data corruption and service disruption. Be sure to run it only in a staging/testing environment.
+**Environment separation:** Because DAST sends real HTTP requests, running it against production can corrupt data and disrupt service. Always run it only in a staging or test environment.
 
-**Authentication Settings:** Endpoints that require authentication must pass a token through ZAP's authentication settings or Nuclei's header option to ensure coverage.
+**Authentication setup:** For endpoints that require authentication, pass a token through ZAP's authentication settings or Nuclei's header option to ensure full coverage.
 
-**False positive management:** DAST has a higher false positive rate than SAST. We recommend a phased approach, starting with `WARN` and switching to `FAIL` after reviewing the results.
+**False positive management:** DAST has a higher false positive rate than SAST. We recommend a phased approach: start with `WARN` and switch to `FAIL` after reviewing the results.
 
 ---
 
 ## Next steps
 
 - Full security pipeline integration: [Pipeline Design](./pipeline-design)
-- Continuous security monitoring after deployment: [Monitoring·Automatic Correction](./monitoring)
+- Continuous security monitoring after deployment: [Monitoring and Automated Remediation](./monitoring)

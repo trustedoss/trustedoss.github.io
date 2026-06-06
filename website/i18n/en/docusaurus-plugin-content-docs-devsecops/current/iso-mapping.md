@@ -5,87 +5,85 @@ sidebar_label: 'ISO/IEC 18974 Linkage'
 sidebar_position: 11
 ---
 
-# ISO/IEC 5230 · 18974 Linkage
+# ISO/IEC 18974 Linkage (DevSecOps Implementation)
 
 This page focuses on **ISO/IEC 18974 (Open Source Security Assurance)**.
-You can check which of the standard requirements your implementation meets in this DevSecOps guide.
+It shows which of the standard's requirements the implementation in this DevSecOps guide satisfies.
 The license compliance standard ISO/IEC 5230 is outside the scope of this guide.
 
 ## What is ISO/IEC 18974?
 
 :::info ISO/IEC 18974 is an international standard for open source security assurance
-Hosted by OpenChain Project
-Through self-certification
-Anyone can authenticate for free.
+Hosted by the OpenChain Project, it lets anyone self-certify for free.
 :::
 
-**Purpose**: Define the minimum core requirements to identify, track, and respond to known security vulnerabilities (CVE, etc.) in open source software. We focus on minimum standards so organizations of all sizes can adopt without burden.
+**Purpose**: To define the minimum core requirements for identifying, tracking, and responding to known security vulnerabilities (such as CVEs) in open source software. It focuses on a minimal baseline so that organizations of any size can adopt it without undue burden.
 
-**Organization**: Consists of four sections: Program establishment, definition of related tasks, compliance assurance, and data provision. Each requirement is numbered in the format 4.x.x.
+**Structure**: Consists of four sections — program establishment, definition of related tasks, compliance assurance, and data provision. Each requirement is numbered in the format 4.x.x.
 
-**Authentication Method**: Complete and submit a self-certification checklist on the OpenChain official site. Since the organization declares itself without external audit, the procedure is simple and there is no cost.
+**Certification method**: Complete and submit a self-certification checklist on the official OpenChain site. Because the organization declares conformance itself without an external audit, the process is simple and free.
 
 ---
 
-## DevSecOps Implementation and requirements mapping
+## Mapping the DevSecOps implementation to requirements
 
-The table below shows how the DevSecOps pipeline implemented in this guide meets the key requirements of ISO/IEC 18974.
+The table below shows how the DevSecOps pipeline built in this guide meets the key requirements of ISO/IEC 18974.
 
-| Requirement Number | Requirements (Summary)                | Implementation method                                           | Related Pages                        |
-| ------------------ | ------------------------------------- | --------------------------------------------------------------- | ------------------------------------ |
-| 4.1.1              | Documenting Security Assurance Policy | DevSecOps Strategy/SLA Policy Document                          | [Introduction Strategy](./strategy)  |
-| 4.1.2              | Policy awareness and education        | Guidance and documentation of pipeline failures within the team | [Pipeline Design](./pipeline-design) |
-| 4.2.1              | Open source component identification  | syft SBOM auto-generated                                        | [SCA](./sca)                         |
-| 4.2.2              | Check for known vulnerabilities       | grype CVE Scan/PR blocking                                      | [SCA](./sca)                         |
-| 4.2.3              | vulnerability Response Procedure      | SLA definition/exception handling process                       | [SCA](./sca)                         |
-| 4.3.1              | Compliance assurance activities       | Regular Scan·SBOM Artifact Storage                              | [Monitoring](./monitoring)           |
-| 4.3.2              | Data Preservation                     | SBOM Permanent storage by release                               | [Monitoring](./monitoring)           |
-| 4.4.1              | External Inquiry Response Procedure   | vulnerability Response SLA·VEX Document                         | [SCA](./sca)                         |
+| Requirement | Requirement (summary)                  | Implementation                                       | Related pages                        |
+| ----------- | -------------------------------------- | ---------------------------------------------------- | ------------------------------------ |
+| 4.1.1       | Document the security assurance policy | DevSecOps strategy / SLA policy document             | [Introduction Strategy](./strategy)  |
+| 4.1.2       | Policy awareness and training          | Team guidance and documentation of pipeline failures | [Pipeline Design](./pipeline-design) |
+| 4.2.1       | Identify open source components        | Auto-generated syft SBOM                             | [SCA](./sca)                         |
+| 4.2.2       | Check for known vulnerabilities        | grype CVE scan / PR blocking                         | [SCA](./sca)                         |
+| 4.2.3       | Vulnerability response procedure       | SLA definition / exception-handling process          | [SCA](./sca)                         |
+| 4.3.1       | Compliance assurance activities        | Scheduled scans · SBOM artifact storage              | [Monitoring](./monitoring)           |
+| 4.3.2       | Data preservation                      | Permanent SBOM storage by release                    | [Monitoring](./monitoring)           |
+| 4.4.1       | External inquiry response procedure    | Vulnerability response SLA · VEX document            | [SCA](./sca)                         |
 
 ---
 
 ## Self-certification preparation checklist
 
-:::tip Prepare a trace file that satisfies each item in advance
-OpenChain Self-certification is a declaration method, but
-You must be able to provide evidence when an audit is requested.
+:::tip Prepare evidence files for each item in advance
+OpenChain self-certification is declaration-based, but
+you must be able to provide evidence if an audit is requested.
 :::
 
-1. **Security Policy Document**
+1. **Security policy documents**
 
-- DevSecOps Introduction Strategy Document (based on strategy.md)
+- DevSecOps introduction strategy document (based on strategy.md)
 - SLA definition document by vulnerability severity
-- Exception handling approval process document
+- Exception-handling approval process document
 
-2. **SBOM Accumulation**
+2. **SBOM accumulation**
 
-- SBOM files automatically generated from CI/CD (kept by release version)
-- SBOM Creation tool/format/cycle specification document
+- SBOM files automatically generated by CI/CD (retained by release version)
+- SBOM generation tool / format / cadence specification document
 
-3. **vulnerability management evidence**
+3. **Vulnerability management evidence**
 
 - grype scan result artifacts
-- Exception handled CVE list and approval records (including .grype.yaml comments)
-- vulnerability discovery → Modification history (GitHub Issues·PR)
+- List of CVEs handled via exception and their approval records (including .grype.yaml comments)
+- Vulnerability discovery → remediation history (GitHub Issues·PRs)
 
 4. **Continuous monitoring evidence**
 
-- Regular scan workflow execution log
+- Scheduled scan workflow execution logs
 - Dependabot·Renovate PR history
-- New CVE Notification → Response Timeline
+- New CVE alert → response timeline
 
 ---
 
 ## Certification registration process
 
-1. **Self-Assessment**: Self-assess ISO/IEC 18974 items from the OpenChain official checklist and ensure that all requirements are met.
-2. **Declaration**: After confirming that all requirements are met, declare that OpenChain has an eligible program. It is also recommended that this be stated in organizational policy documents.
-3. **Registration**: Register the organization name in OpenChain Community of Conformance. Although optional, it helps improve supply chain reliability.
+1. **Self-assessment**: Self-assess the ISO/IEC 18974 items against the official OpenChain checklist and confirm that all requirements are met.
+2. **Declaration**: Once you have confirmed that all requirements are met, declare that your organization has a conforming program. Stating this in organizational policy documents is also recommended.
+3. **Registration**: Register your organization in the OpenChain Community of Conformance. This is optional but helps improve supply chain trust.
 
 ---
 
 ## Limitations and precautions
 
-**DevSecOps Scope**: This guide's implementation of DevSecOps focuses on the open source security assurances of ISO/IEC 18974. Additional areas such as SAST, DAST, and IaC security are security enhancement activities that go beyond standard requirements and are optional improvements beyond the scope of certification.
+**DevSecOps scope**: The DevSecOps implementation in this guide focuses on the open source security assurance of ISO/IEC 18974. Additional areas such as SAST, DAST, and IaC security are security-hardening activities that go beyond the standard's requirements; they are optional improvements outside the scope of certification.
 
-**ISO/IEC 5230 Separate preparation required**: The license compliance standard, ISO/IEC 5230, is outside the scope of this guide. Please refer to Trusted OSS’s Enterprise Open Source Governance Guide.
+**ISO/IEC 5230 requires separate preparation**: The license compliance standard ISO/IEC 5230 is outside the scope of this guide. Please refer to Trusted OSS's Enterprise Open Source Governance Guide.

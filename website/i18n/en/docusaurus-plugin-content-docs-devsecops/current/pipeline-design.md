@@ -1,30 +1,30 @@
 ---
 id: pipeline-design
-title: Transcription Pipeline Design
-sidebar_label: pipeline design
+title: Enterprise-wide Pipeline Design
+sidebar_label: Pipeline Design
 sidebar_position: 9
 ---
 
-# Transcription pipeline design
+# Enterprise-wide pipeline design
 
-We guide you through a design method that integrates the six areas of SAST, SCA, secret detection, container security, IaC security, and DAST into one pipeline.
-We focus on how to combine the individual settings covered on each area page to suit your actual operating environment.
+This page walks through how to integrate the six areas — SAST, SCA, secret detection, container security, IaC security, and DAST — into a single pipeline.
+It focuses on how to combine the individual configurations covered on each area page to fit your actual operating environment.
 
 ## Pipeline design principles
 
-**Parallel execution**: Independent tests run in parallel to minimize overall pipeline time. SAST, SCA, and Secret detection do not depend on each other, so they can run simultaneously.
+**Parallel execution**: Run independent scans in parallel to minimize overall pipeline time. SAST, SCA, and secret detection have no dependencies on each other, so they can run simultaneously.
 
-**Step-by-step gate**: Place fast tests (Secret/SAST) at the front and slow tests (DAST) at the back. If the previous step fails, the later step does not need to be executed, thus reducing unnecessary resource consumption.
+**Staged gating**: Place fast scans (secret/SAST) at the front and slow scans (DAST) at the back. If an earlier stage fails, later stages don't need to run, which reduces wasted resources.
 
-**Separation of failure policies**: Clear distinction between hard fail and warning only (soft fail). Starting at an acceptable level and gradually strengthening the team increases the success rate of actual adoption.
+**Separate failure policies**: Clearly distinguish hard fail from warning-only (soft fail). Starting at a tolerable level and tightening gradually increases the success rate of real-world adoption.
 
-**Result Retention**: All test results are kept as artifacts. It is important to maintain it for a certain period of time for audit response, trend analysis, and reproduction.
+**Result retention**: Keep all scan results as artifacts. Retaining them for a defined period is important for audit response, trend analysis, and reproduction.
 
 ---
 
-## Pipeline overall structure
+## Overall pipeline structure
 
-| steps | Inspection items            | When to run | failure policy | Time required |
+| Stage | Checks                      | When to run | Failure policy | Time required |
 | ----- | --------------------------- | ----------- | -------------- | ------------- |
 | 1     | Secret detection (Gitleaks) | PR          | Hard Fail      | ~1 minute     |
 | 2     | SAST (Semgrep)              | PR          | Hard Fail      | 2~5 minutes   |
@@ -33,11 +33,11 @@ We focus on how to combine the individual settings covered on each area page to 
 | 3     | Container Security (Trivy)  | Push/Merge  | Hard Fail      | 3~5 minutes   |
 | 4     | DAST (ZAP Baseline)         | Push/Merge  | Soft Fail→Hard | 5-10 minutes  |
 
-Two-stage tests can be run in parallel to keep the overall time within 5 minutes.
+The stage-2 scans can run in parallel to keep the overall time within 5 minutes.
 
 ---
 
-## GitHub Actions Integrated Workflow
+## GitHub Actions integrated workflow
 
 ### PR phase (parallel execution)
 
@@ -104,7 +104,7 @@ jobs:
           soft_fail: false
 ```
 
-### Push/Merge stage (Container·DAST)
+### Push/Merge stage (Container, DAST)
 
 ```yaml
 # .github/workflows/devsecops-merge.yml
@@ -141,7 +141,7 @@ jobs:
       - uses: zaproxy/action-baseline@v0.12.0
         with:
           target: http://localhost:8080
-          fail_action: false # during initial adoption Soft Fail
+          fail_action: false # Soft Fail during initial adoption
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -231,34 +231,34 @@ dast:
 
 ---
 
-## Multi-store policy consistency
+## Cross-repository policy consistency
 
-:::tip Centrally manage policies with reusable workflows
+:::tip Manage policies centrally with reusable workflows
 :::
 
-**GitHub Actions Reusable Workflow**: Manage common workflows in a separate repository (e.g. `your-org/security-workflows`) and reference them as `uses: your-org/security-workflows/.github/workflows/devsecops-pr.yml@main` in each project. When a policy change is made in just one location, it is immediately reflected in the entire repository.
+**GitHub Actions reusable workflows**: Keep common workflows in a dedicated repository (e.g. `your-org/security-workflows`) and reference them from each project as `uses: your-org/security-workflows/.github/workflows/devsecops-pr.yml@main`. A policy change made in one place is immediately reflected across every repository.
 
-**GitLab CI Template**: References a CI template in the central repository with the `include:` keyword. Project-specific overrides can be handled with `extends:` to allow exceptions while maintaining the default policy.
+**GitLab CI templates**: Reference a CI template in a central repository with the `include:` keyword. Project-specific overrides can be handled with `extends:`, allowing exceptions while keeping the default policy intact.
 
-**Policy file synchronization**: Manage policy files such as `.grype.yaml`·`.gitleaks.toml`·`.trivyignore.yaml` in a separate repository and distribute them to each project using git submodule or file copy script. The version history of the policy file is preserved, which is advantageous for audit response.
+**Policy file synchronization**: Keep policy files such as `.grype.yaml`·`.gitleaks.toml`·`.trivyignore.yaml` in a dedicated repository and distribute them to each project via git submodule or a file-copy script. Preserving the version history of policy files is advantageous for audit response.
 
 ---
 
-## Developer guidance when build fails
+## Developer guidance when a build fails
 
-:::warning Build failure messages should allow developers to act immediately
-All you have to do is report a “vulnerability found” and developers won’t know what to do.
+:::warning Build failure messages should let developers act immediately
+Simply reporting "vulnerability found" leaves developers unsure what to do.
 :::
 
-**Clear cause of failure**: Include in the message which CVE in which package and which line in which file. Failures with unclear causes lead to developer distrust and ignoring notifications.
+**Clear cause of failure**: State which CVE, in which package, on which line of which file. Failures with unclear causes erode developer trust and lead to ignored alerts.
 
-**How ​​to Fix**: If possible, include a specific action in your message, such as “Upgrade to this version.” grype automatically displays the fix version, providing guidance on fixing it without any additional work.
+**How to fix**: Where possible, include a concrete action in the message, such as "upgrade to this version." Grype automatically shows the fixed version, providing remediation guidance with no extra effort.
 
-**Exception handling path**: If immediate correction is not possible, instructions on how to apply for an exception (person in charge/document link) will be provided in the build failure message. The absence of exception paths leaves developers feeling helpless or attempting to bypass security checks.
+**Exception path**: When an immediate fix isn't possible, the build failure message should include how to request an exception (owner and document link). Without an exception path, developers feel stuck or try to bypass the security checks.
 
 ---
 
 ## Next steps
 
-- Continuous monitoring/automatic patching after deployment: [Monitoring/automatic correction](./monitoring)
-- ISO/IEC 18974 Requirements Mapping: [ISO Standard Linkage](./iso-mapping)
+- Continuous monitoring and automated patching after deployment: [Monitoring and Automated Remediation](./monitoring)
+- ISO/IEC 18974 requirements mapping: [ISO Standard Linkage](./iso-mapping)

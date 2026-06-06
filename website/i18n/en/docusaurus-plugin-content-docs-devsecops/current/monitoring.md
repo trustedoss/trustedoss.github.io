@@ -1,35 +1,35 @@
 ---
 id: monitoring
-title: Continuous monitoring and automatic correction
-sidebar_label: Monitoring and automatic correction
+title: Continuous Monitoring and Automated Remediation
+sidebar_label: Monitoring and Automated Remediation
 sidebar_position: 10
 ---
 
-# Continuous monitoring and automatic correction
+# Continuous monitoring and automated remediation
 
-The CI/CD gate checks the code state at the time of deployment, but cannot respond to new vulnerabilities that occur after deployment.
-Dependabot·Renovate·The combination of regular scans allows you to continuously detect vulnerabilities in your production environment and automatically generate patch PRs.
+A CI/CD gate checks the state of the code at deployment time but cannot respond to new vulnerabilities that emerge afterward.
+Combining Dependabot·Renovate with scheduled scans lets you continuously detect vulnerabilities in production and automatically generate patch PRs.
 
 ## Why post-deployment monitoring is necessary
 
-:::info The CI/CD gate only checks snapshots at the time of deployment
-The new CVE discovered after distribution is
-The pipeline cannot detect it.
+:::info A CI/CD gate only checks a snapshot taken at deployment time
+The pipeline cannot detect a new CVE
+discovered after deployment.
 :::
 
-**Characteristics of the new CVE**: Code deployed today may be vulnerable to the new CVE tomorrow. A representative example is Log4Shell, where a library that has been used for years becomes a Critical vulnerability overnight. Scan results at the time of distribution lose meaning over time.
+**Nature of new CVEs**: Code deployed today may become vulnerable to a new CVE tomorrow. Log4Shell is a classic example, where a library used for years turned into a Critical vulnerability overnight. Scan results taken at deployment time lose their meaning over time.
 
-**Limitations of a pipeline without monitoring**: Even code that passes the PR stage may have vulnerabilities after 30 days. Without continuous scanning, your service will operate without awareness of risks in your production environment.
+**Limits of a pipeline without monitoring**: Even code that passed the PR stage may have vulnerabilities 30 days later. Without continuous scanning, your service runs unaware of the risks in production.
 
-**Need for automation**: Manually tracking hundreds of dependencies is not realistically possible. The key is to minimize human intervention and speed up patching with automated tools like Dependabot·Renovate.
+**Need for automation**: Manually tracking hundreds of dependencies is not realistic. The key is to minimize human intervention and accelerate patching with automated tools like Dependabot·Renovate.
 
 ---
 
-## Dependabot settings
+## Dependabot setup
 
-###Default settings
+### Basic configuration
 
-Adding `.github/dependabot.yml` to the GitHub repository automatically creates a dependency update/security patch PR.
+Adding `.github/dependabot.yml` to a GitHub repository automatically opens dependency-update and security-patch PRs.
 
 ```yaml
 # .github/dependabot.yml
@@ -74,17 +74,17 @@ updates:
       interval: weekly
 ```
 
-### Automatically enable security notifications
+### Enable security alerts
 
-Dependabot Security Alerts on GitHub work automatically when you enable them in your repository settings.
-Without separate settings, a PR is immediately created when a Critical or High vulnerability is discovered based on the GitHub Advisory Database.
+Dependabot security alerts on GitHub work automatically once you enable them in your repository settings.
+With no further configuration, a PR is opened immediately when a Critical or High vulnerability is found based on the GitHub Advisory Database.
 
 ---
 
-## Renovate settings
+## Renovate setup
 
-Renovate allows more detailed policy settings than Dependabot, and supports all GitHub·GitLab·Bitbucket.
-The same can be used in GitLab in a self-hosted manner.
+Renovate allows finer-grained policy configuration than Dependabot and supports GitHub·GitLab·Bitbucket alike.
+It can also be run self-hosted on GitLab.
 
 ```json
 // renovate.json
@@ -117,17 +117,17 @@ The same can be used in GitLab in a self-hosted manner.
 
 | Item             | Dependabot  | Renovate                          |
 | ---------------- | ----------- | --------------------------------- |
-| platform         | GitHub only | GitHub·GitLab·Bitbucket           |
-| Setup complexity | low         | High (high flexibility)           |
-| Auto Merge       | LIMITED     | Detailed policy settings possible |
-| Group PR         | possible    | Possible (more detailed)          |
-| cost             | Free        | Free (self-hosted)                |
+| Platform         | GitHub only | GitHub·GitLab·Bitbucket           |
+| Setup complexity | Low         | High (very flexible)              |
+| Auto-merge       | Limited     | Configurable with detailed policy |
+| Grouped PRs      | Supported   | Supported (more granular)         |
+| Cost             | Free        | Free (self-hosted)                |
 
 ---
 
-## Automate regular scans
+## Automate scheduled scans
 
-In addition to the PR phase, we separately operate a scheduled workflow that periodically scans distributed code.
+Beyond the PR phase, run a separate scheduled workflow that periodically scans deployed code.
 
 ```yaml
 # .github/workflows/scheduled-scan.yml
@@ -181,30 +181,30 @@ jobs:
 
 ## Notification and response system
 
-:::tip Notifications must be delivered to the person in charge immediately
+:::tip Alerts must reach the responsible owner immediately
 :::
 
-**GitHub Utilize the Security tab**: Dependabot·Code scan results are automatically aggregated to the repository Security tab. When a critical finding is made, response time can be greatly shortened by linking email and Slack notifications to the person in charge.
+**Use the GitHub Security tab**: Dependabot and code-scan results are automatically aggregated in the repository's Security tab. For critical findings, wiring email and Slack notifications to the owner can greatly shorten response time.
 
-**Automatically create issues**: When a new vulnerability is discovered in a schedule scan, an issue is automatically created with GitHub Actions to enable assigning a person in charge and tracking SLA. Once vulnerabilities are managed as issues, patch progress can be shared with the entire team.
+**Create issues automatically**: When a scheduled scan finds a new vulnerability, automatically open an issue via GitHub Actions so you can assign an owner and track the SLA. Once vulnerabilities are managed as issues, patch progress can be shared across the whole team.
 
-**SBOM Archive by Year**: Permanently archive SBOM generated from regular scans by release version. ISO/IEC 18974 Can be used as an audit response trace, and is also useful for reproducing the dependency status at a specific point in time.
+**Archive SBOMs by year**: Permanently archive the SBOMs produced by scheduled scans, organized by release version. These serve as an audit-response trail for ISO/IEC 18974 and are also useful for reproducing the dependency state at a specific point in time.
 
 ---
 
 ## Self-Study — Level 2 Automation
 
-:::tip Create automation workflow with Claude Code
+:::tip Build automation workflows with Claude Code
 The agents below work in conjunction with the CI/CD pipeline.
-Create workflow files to fully automate security analysis.
+They generate workflow files that fully automate security analysis.
 :::
 
-**Prerequisite**: Requires clone of [Trusted OSS repository](https://github.com/trustedoss/trustedoss.github.io)
+**Prerequisite**: Clone the [Trusted OSS repository](https://github.com/trustedoss/trustedoss.github.io)
 
-### PR Security Analysis Automatic Comments
+### Automated PR security-analysis comments
 
-Every time a PR is created, Claude analyzes the security scan results and
-Automatically post comments to PR.
+Each time a PR is opened, Claude analyzes the security scan results and
+automatically posts a comment on the PR.
 
 ```bash
 cd agents/level2-automation/pr-comment
@@ -216,10 +216,10 @@ Generated output:
 - `.github/workflows/pr-security-comment.yml` (GitHub Actions)
 - `gitlab-pr-comment.yml` (GitLab CI conversion version)
 
-### Automatic issue registration + Dependabot analysis
+### Automatic issue creation + Dependabot analysis
 
-Automatically creates issues when High/Critical vulnerabilities are found in regular scans
-Dependabot Automatically publish impact analysis comments to PR.
+Automatically opens issues when scheduled scans find High/Critical vulnerabilities,
+and automatically posts impact-analysis comments on Dependabot PRs.
 
 ```bash
 cd agents/level2-automation/issue-tracker
@@ -233,13 +233,13 @@ Generated output:
 - `gitlab-scheduled-scan.yml` (GitLab CI conversion version)
 
 :::info GitHub Actions vs GitLab CI
-GitHub Actions provides YAML that has been verified to actually work.
-GitLab CI contains conversion patterns and annotations for the same function.
-Both platforms require ANTHROPIC_API_KEY to be registered as Secret/Variable.
+GitHub Actions provides YAML verified to actually work.
+GitLab CI provides conversion patterns and annotations for the same functionality.
+Both platforms require ANTHROPIC_API_KEY to be registered as a Secret/Variable.
 :::
 
 ---
 
 ## Next steps
 
-- ISO/IEC 18974 Requirements and implementation mapping: [ISO standard linkage](./iso-mapping)
+- Mapping ISO/IEC 18974 requirements to implementation: [ISO Standard Linkage](./iso-mapping)
