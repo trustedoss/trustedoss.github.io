@@ -1105,6 +1105,7 @@ a[class*="tagRegular"] {
     border-radius: 6px;
     padding-inline: 12px;
     cursor: pointer;
+    white-space: nowrap;
     transition-property: scale;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 0.15s;
