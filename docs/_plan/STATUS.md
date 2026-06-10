@@ -19,7 +19,7 @@
       OSV Maven name을 `org.apache.logging.log4j:log4j-core`로 수정
       (tools-setup.md 74·88행, vulnerability/CLAUDE.md 65행, en tools-setup.md 74·88행).
       주의: sbom-generation index·sbom-101의 `log4j-core`는 SBOM name 필드라 수정 금지
-- [ ] **청크 3 (m1~m9)**: 01-setup 도구 표 Docker "필수"→"챕터 05만 사용(대체 경로 있음)"(m1),
+- [x] **청크 3 (m1~m9)**: 01-setup 도구 표 Docker "필수"→"챕터 05만 사용(대체 경로 있음)"(m1),
       체크리스트 docker 항목 생략 단서(m2), quick-start Term 풀이 openchain·자체인증(m3,
       필요 시 `website/src/data/glossary.ts` 키 추가), sbom-generation licenses 빈 값
       주의문(m4), vulnerability 예시 "12개"→"4개"(m5), docker-cicd cdxgen 폴백 출력 경로

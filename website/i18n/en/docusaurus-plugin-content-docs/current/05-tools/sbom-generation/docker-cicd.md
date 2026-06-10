@@ -105,9 +105,10 @@ docker run --rm \
 
 ## Troubleshooting
 
-| Symptoms                        | Cause             | Solution                                                     |
-| ------------------------------- | ----------------- | ------------------------------------------------------------ |
-| SBOM is empty(`components: []`) | no lock file      | `package-lock.json`, `requirements.txt`,Check `pom.xml` etc. |
-| Docker volume mount error       | path problem      | change to absolute path: `-v /full/path:/project`            |
-| Permission denied               | Permission issues | Add `sudo` or Docker group                                   |
-| Image pulling takes a long time | network           | Normal on first run,Use cache after                          |
+| Symptoms                        | Cause                                                                                    | Solution                                                                                                                              |
+| ------------------------------- | ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| SBOM is empty(`components: []`) | no lock file                                                                             | `package-lock.json`, `requirements.txt`,Check `pom.xml` etc.                                                                          |
+| SBOM is empty but no error      | Docker file sharing restriction — the mount appears as an empty directory (colima, etc.) | Check that your working directory is included in Docker Desktop > Settings > Resources > File Sharing (or your colima mount settings) |
+| Docker volume mount error       | path problem                                                                             | change to absolute path: `-v /full/path:/project`                                                                                     |
+| Permission denied               | Permission issues                                                                        | Add `sudo` or Docker group                                                                                                            |
+| Image pulling takes a long time | network                                                                                  | Normal on first run,Use cache after                                                                                                   |

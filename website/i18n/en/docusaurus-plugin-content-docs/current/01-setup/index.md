@@ -19,12 +19,16 @@ Install and verify the tools you will use across all exercises in this kit.
 
 ## 2. Tools you will need
 
-| Tool           | Use                                              | Installation                              | Version requirement |
-| -------------- | ------------------------------------------------ | ----------------------------------------- | ------------------- |
-| Docker Desktop | Runs all hands-on tools (Dependency-Track, etc.) | Required                                  | 24.x or later       |
-| Git            | Repository and version management                | Required                                  | 2.x or later        |
-| Claude Code    | AI-assisted practice; runs the agents            | Required                                  | Latest version      |
-| Node.js        | Builds the Docusaurus documentation site         | Optional (only if you need the docs site) | v18 LTS or later    |
+| Tool           | Use                                                     | Installation                                 | Version requirement |
+| -------------- | ------------------------------------------------------- | -------------------------------------------- | ------------------- |
+| Docker Desktop | Runs chapter 05 hands-on tools (Dependency-Track, etc.) | Chapter 05 only (alternative path available) | 24.x or later       |
+| Git            | Repository and version management                       | Required                                     | 2.x or later        |
+| Claude Code    | AI-assisted practice; runs the agents                   | Required                                     | Latest version      |
+| Node.js        | Builds the Docusaurus documentation site                | Optional (only if you need the docs site)    | v18 LTS or later    |
+
+:::tip If you cannot install Docker
+Docker is used only in chapter 05 (SBOM and vulnerability tool exercises). If installation is difficult, for example due to company policy, you can continue with a pre-built sample SBOM via the "When proceeding without Docker" path in chapter 05. The remaining chapters (02 Organization through 04 Process, 06 Training through 07 Conformance) run on agent conversations alone, without Docker.
+:::
 
 ## 3. Installation instructions (by OS)
 
@@ -107,8 +111,8 @@ If you are just starting out:
 
 ```bash
 # Clone the repository
-git clone https://github.com/trustedoss/trustedoss.github.io.git
-cd trustedoss.github.io
+git clone https://github.com/trustedoss/trustedoss-agents.git
+cd trustedoss-agents
 
 # Create the output directory if it is missing
 mkdir -p output
@@ -120,7 +124,7 @@ claude
 If you have already cloned it:
 
 ```bash
-cd trustedoss.github.io
+cd trustedoss-agents
 git pull
 claude
 ```
@@ -150,7 +154,7 @@ When Claude Code starts:
 
 ### git clone permission error
 
-- Clone over HTTPS: `git clone https://github.com/trustedoss/trustedoss.github.io.git`
+- Clone over HTTPS: `git clone https://github.com/trustedoss/trustedoss-agents.git`
 - If you hit a GitHub authentication error, run `git config --global credential.helper store` and retry.
 
 ### When your Node.js version is too old (below v18)
@@ -171,7 +175,7 @@ The time required varies depending on your tool installation situation.
 
 ## 9. Completion checklist
 
-- [ ] `docker --version` outputs normally
+- [ ] `docker --version` outputs normally (skip if you chose the no-Docker path)
 - [ ] `git --version` outputs normally
 - [ ] `claude --version` outputs normally
 - [ ] Repository clone complete (or already exists)
@@ -192,3 +196,5 @@ First terminate the current Claude session (`/exit` or `Ctrl+C`), then run the c
 cd agents/02-organization-designer
 claude
 ```
+
+After the agent finishes, check the outputs: `ls output/organization/` — three files (role definition, RACI matrix, appointment template) mean success.

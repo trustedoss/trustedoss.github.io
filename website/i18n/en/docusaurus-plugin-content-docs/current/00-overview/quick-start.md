@@ -11,7 +11,7 @@ sidebar_label: 5-minute quick start
 
 # 5-minute quick start
 
-TrustedOSS uses AI agents to automatically generate company-tailored OpenChain 2026 (ISO/IEC 5230 and 18974) enterprise open source management outputs, helping you reach a self-certification declaration as fast as possible. Even if this is your first time taking on open source management, you can follow along step by step.
+TrustedOSS uses AI agents to automatically generate company-tailored OpenChain 2026 (ISO/IEC 5230 and 18974) enterprise open source management outputs, helping you reach a self-certification declaration (declaring conformance yourself, with no external audit) as fast as possible. Even if this is your first time taking on open source management, you can follow along step by step.
 
 ## When to use this
 
@@ -48,6 +48,8 @@ First terminate the current Claude session (`/exit` or `Ctrl+C`), then run the c
 cd agents/02-organization-designer
 claude
 ```
+
+After the agent finishes, check the outputs: `ls output/organization/` — three files mean success.
 
 ## Next steps
 

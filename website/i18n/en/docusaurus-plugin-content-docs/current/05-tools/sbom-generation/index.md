@@ -112,7 +112,7 @@ cp output-sample/sbom/fixture-sample.cdx.json output/sbom/fixture-sample.cdx.jso
 ```
 
 The sample SBOM includes GPL-2.0 copyleft components and packages with CVE vulnerabilities, so you can still practice the later analysis steps.
-In this case, skip running the 05-sbom-guide agent and jump straight to **Step 5 (run the analysis agent)**.
+In this case, skip the SBOM generation steps 4-6 (the sbom-guide agent and script) and jump straight to **Step 7 (run the license analysis)**.
 :::
 
 **Step 2** — Select a project to analyze
@@ -191,10 +191,10 @@ If `output/sbom/sbom.cdx.json` is empty, first check whether a lock file exists 
 
 ```bash
 docker run --rm \
-  -v $(pwd)/samples/java-vulnerable:/app \
+  -v $(pwd):/app \
   -w /app \
   ghcr.io/cyclonedx/cdxgen:latest \
-  -r /app \
+  -r /app/samples/java-vulnerable \
   -o /app/output/sbom/java-vulnerable-cdxgen.cdx.json
 ```
 
@@ -239,13 +239,15 @@ Confirm all of the items below before moving on to the next step.
 
 **Expected results when practicing with the java-vulnerable sample:**
 
-- log4j-core 2.14.1 component detected
-- Apache-2.0 license identified
+- log4j-core 2.14.1 component detected (4 components with syft)
 - CVE-2021-44228 (Log4Shell) flagged as a vulnerability
+- License identification: the `licenses` field in the tool output may be empty when packages declare no license, as in this sample. The 05-sbom-analyst agent in Step 7 fills in the Apache-2.0 identification in `license-report.md`.
 
 > This step meets ISO/IEC 5230 3.3.1, 3.3.2, and 3.4.1, and ISO/IEC 18974 4.3.1 requirements.
 
-> 📋 **Example output**: see the actual format of the generated file at [SBOM output best practice](/reference/samples/sbom).
+:::note Example output
+See the actual format of the generated files at [SBOM output best practice](/reference/samples/sbom).
+:::
 
 ---
 

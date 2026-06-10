@@ -56,7 +56,7 @@ node --version
 
 ```bash
 git clone https://github.com/trustedoss/trustedoss-agents.git
-cd trustedoss.github.io
+cd trustedoss-agents
 ```
 
 ## 완료 기준

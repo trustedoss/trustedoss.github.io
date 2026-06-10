@@ -206,10 +206,10 @@ ls output/sbom/license-report.md output/sbom/copyleft-risk.md
 
 ```bash
 docker run --rm \
-  -v $(pwd)/samples/java-vulnerable:/app \
+  -v $(pwd):/app \
   -w /app \
   ghcr.io/cyclonedx/cdxgen:latest \
-  -r /app \
+  -r /app/samples/java-vulnerable \
   -o /app/output/sbom/java-vulnerable-cdxgen.cdx.json
 ```
 
@@ -254,9 +254,9 @@ docker run --rm \
 
 **java-vulnerable 샘플 실습 시 예상 결과:**
 
-- log4j-core 2.14.1 컴포넌트 탐지
-- Apache-2.0 라이선스 식별
+- log4j-core 2.14.1 컴포넌트 탐지 (syft 기준 components 4개)
 - CVE-2021-44228 (Log4Shell) 취약점 플래그 예상
+- 라이선스 식별: 도구 출력의 `licenses` 필드는 이 샘플처럼 패키지에 라이선스 선언이 없으면 비어 있을 수 있습니다. Apache-2.0 식별은 단계 7의 05-sbom-analyst가 보완해 `license-report.md`에 기록합니다.
 
 > 이 단계는 ISO/IEC 5230 3.3.1, 3.3.2, 3.4.1 및 ISO/IEC 18974 4.3.1 요구사항을 충족합니다.
 

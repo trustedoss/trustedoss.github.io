@@ -12,7 +12,7 @@ sidebar_label: 5분 빠른 시작
 
 # 5분 빠른 시작
 
-TrustedOSS는 AI 에이전트로 OpenChain 2026(ISO/IEC 5230·18974) 기업 오픈소스 관리 산출물을 회사 맞춤으로 자동 생성해, 자체 인증 선언까지 가장 빠르게 도달하도록 돕습니다. 오픈소스 관리를 처음 맡으셨어도 단계별로 따라오면 됩니다.
+TrustedOSS는 AI 에이전트로 <Term k="openchain">OpenChain 2026</Term>(ISO/IEC 5230·18974) 기업 오픈소스 관리 산출물을 회사 맞춤으로 자동 생성해, <Term k="self-certification">자체 인증</Term> 선언까지 가장 빠르게 도달하도록 돕습니다. 오픈소스 관리를 처음 맡으셨어도 단계별로 따라오면 됩니다.
 
 ## 언제 쓰나요
 
@@ -49,6 +49,8 @@ cd trustedoss-agents
 cd agents/02-organization-designer
 claude
 ```
+
+에이전트가 끝나면 산출물을 확인하세요: `ls output/organization/` — 파일 3개가 보이면 성공입니다.
 
 ## 다음 단계
 
