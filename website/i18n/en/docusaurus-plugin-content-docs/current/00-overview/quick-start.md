@@ -33,6 +33,13 @@ If you are curious about the actual form of the generated outputs, also see [Pol
 
 The first output you create is the definition of your organization's roles and responsibilities. The agent asks questions and generates documents tailored to your company.
 
+If you have not cloned the repository yet, get it first. Skip this step if you have already completed [Environment setup: Install the tools needed for the exercises](../01-setup/index.md).
+
+```bash
+git clone https://github.com/trustedoss/trustedoss-agents.git
+cd trustedoss-agents
+```
+
 :::tip Check before running
 First terminate the current Claude session (`/exit` or `Ctrl+C`), then run the command below in a new terminal.
 :::
