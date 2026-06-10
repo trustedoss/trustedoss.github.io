@@ -106,6 +106,13 @@ POSITIONING.md 정체성에 맞춰 시스템·콘텐츠 고도화. 계획은 승
 
 ---
 
+**콜드스타트 실사용자 검증 + 발견 수정 (2026-06-10):**
+
+- 사전 지식 차단 에이전트 2개(P1 스타트업/Docker 불가, P2 중견기업/풀코스)가 공개 사이트만 보고 00→07 실측 → major 4건, minor 9건 발견 (`docs/_plan/cold-start-findings.md`)
+- 13건 전부 수정: sync-agents.yml에 samples/와 output-sample/ 동기화 추가(M1, M2), quick-start 클론 안내(M3), OSV Maven 패키지명 groupId:artifactId(M4, curl 실측), m1~m9는 ko와 en 쌍으로 수정(cdxgen 폴백 Docker 실측 포함)
+- 독립 게이트(gate-verifier) 13/13 PASS, verify 12/12, 커밋 4개(6f8ce51~56e21eb)
+- 남은 일: push 후 sync 워크플로우 완료 시 trustedoss-agents 새 클론으로 M1·M2 최종 확인. 후속 후보: en sbom-101.md `__ISO13__` 플레이스홀더 4건
+
 ## 현재 단계 — 사용자 테스트 & 버그 리포트 대응
 
 사용자가 가이드를 직접 따라가며 실습 동작을 검증하는 단계.
