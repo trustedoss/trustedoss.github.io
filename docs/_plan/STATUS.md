@@ -26,10 +26,11 @@
       output/sbom/ 일치(m6, 수정 후 Docker 실측), 트러블슈팅 파일 공유 행 추가(m7),
       05-tools index grype→OSV·Dependency-Track(m8), agent 완료 확인 `ls output/organization/`
       한 줄(quick-start·01-setup, m9). **전부 en 쌍 동일 수정**
-- [ ] **청크 4 (최종 게이트)**: quality-gate:gate-verifier에 13개 발견 ID 체크리스트를 넘겨
-      항목별 PASS/FAIL 판정 (마지막 처리 항목·en 동기화 우선 검사). FAIL은 수정 후 재판정.
-      M4 curl·m6 cdxgen 실측 재검 포함. 통과 후 cold-start-findings.md에 처리 결과 표시,
-      이 섹션을 "완료"로 갱신
+- [x] **청크 4 (최종 게이트)**: gate-verifier 독립 판정 **13/13 PASS** (역순 검사, OSV curl
+      실호출 확인, verify.sh 12/12). M4 curl 실측(7건 반환)·m6 cdxgen 실측(output/sbom/ 생성,
+      components 2) 완료. cold-start-findings.md에 처리 결과 기록.
+      게이트가 발견한 범위 밖 기존 결함: en sbom-101.md `__ISO13__` 플레이스홀더 4건
+      (커밋 052d283 유입) — 후속 후보로 등록
 - [ ] **push 후 검증** (push는 사용자 확인 후): sync-agents 워크플로우 완료 대기 →
       trustedoss-agents 새로 클론 → `git ls-files | grep -E '^(samples|output-sample)/'`
       매치 + `cp output-sample/sbom/fixture-sample.cdx.json` 재현으로 M1·M2 최종 확정
