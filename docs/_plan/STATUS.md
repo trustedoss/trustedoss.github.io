@@ -3,6 +3,37 @@
 > 목적: 긴 세션에서 히스토리가 유실돼도 이 파일만 보면 즉시 재개 가능. 매 task 후 갱신·커밋한다.
 > 최종 갱신: 2026-06-10
 
+## 콜드스타트 발견 수정 작업 (2026-06-10) — 진행 중
+
+> **재개 방법**: 아래 미체크 청크부터 진행. DoD = 해당 항목 수정 + en 쌍 동기화 +
+> `verify.sh` 12/12 + (glossary/Term 변경 시 `cd website && npm run build`) 통과 후 커밋.
+> 발견 상세·근거는 `docs/_plan/cold-start-findings.md` (M1~M4, m1~m9).
+
+### 청크 체크리스트
+
+- [x] **청크 0**: 이 작업 로그 신설 + 커밋
+- [ ] **청크 1 (M1·M2)**: `.github/workflows/sync-agents.yml`에 samples/, output-sample/
+      추가 (on.push.paths + rsync 2줄, 기존 패턴 그대로). `.github/agents-repo/README.md`가
+      구조를 나열하면 두 디렉토리 항목 추가
+- [ ] **청크 2 (M3·M4)**: quick-start.md §2 `:::tip` 직전에 클론 선행 안내+명령 추가 /
+      OSV Maven name을 `org.apache.logging.log4j:log4j-core`로 수정
+      (tools-setup.md 74·88행, vulnerability/CLAUDE.md 65행, en tools-setup.md 74·88행).
+      주의: sbom-generation index·sbom-101의 `log4j-core`는 SBOM name 필드라 수정 금지
+- [ ] **청크 3 (m1~m9)**: 01-setup 도구 표 Docker "필수"→"챕터 05만 사용(대체 경로 있음)"(m1),
+      체크리스트 docker 항목 생략 단서(m2), quick-start Term 풀이 openchain·자체인증(m3,
+      필요 시 `website/src/data/glossary.ts` 키 추가), sbom-generation licenses 빈 값
+      주의문(m4), vulnerability 예시 "12개"→"4개"(m5), docker-cicd cdxgen 폴백 출력 경로
+      output/sbom/ 일치(m6, 수정 후 Docker 실측), 트러블슈팅 파일 공유 행 추가(m7),
+      05-tools index grype→OSV·Dependency-Track(m8), agent 완료 확인 `ls output/organization/`
+      한 줄(quick-start·01-setup, m9). **전부 en 쌍 동일 수정**
+- [ ] **청크 4 (최종 게이트)**: quality-gate:gate-verifier에 13개 발견 ID 체크리스트를 넘겨
+      항목별 PASS/FAIL 판정 (마지막 처리 항목·en 동기화 우선 검사). FAIL은 수정 후 재판정.
+      M4 curl·m6 cdxgen 실측 재검 포함. 통과 후 cold-start-findings.md에 처리 결과 표시,
+      이 섹션을 "완료"로 갱신
+- [ ] **push 후 검증** (push는 사용자 확인 후): sync-agents 워크플로우 완료 대기 →
+      trustedoss-agents 새로 클론 → `git ls-files | grep -E '^(samples|output-sample)/'`
+      매치 + `cp output-sample/sbom/fixture-sample.cdx.json` 재현으로 M1·M2 최종 확정
+
 ## 콜드스타트 실사용자 검증 (2026-06-10) — 발견 보고 완료, 수정은 후속
 
 사전 지식 차단 에이전트 2개(P1 스타트업/Docker 불가, P2 중견기업/풀코스)가 공개 사이트만
