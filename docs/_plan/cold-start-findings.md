@@ -1,6 +1,6 @@
 # 콜드스타트 시뮬레이션 발견 보고서 — 실사용자 검증
 
-> 실행일: 2026-06-10. 상태: 13건 전부 수정 완료, push 후 M1·M2 최종 확인만 남음. 빌드 비대상(`_plan/`).
+> 실행일: 2026-06-10. 상태: 13건 전부 수정 완료, push 후 M1·M2 최종 확인까지 종료. 빌드 비대상(`_plan/`).
 
 ## 처리 결과 (2026-06-10)
 
@@ -12,7 +12,8 @@
 
 독립 게이트(quality-gate:gate-verifier) 판정: **13/13 PASS** — ko·en 반영 여부를 항목별 grep으로
 확인, OSV curl 실제 호출 확인, verify.sh 12/12, ko/en 클론 URL 불일치 잔존 0건.
-M1·M2는 push 후 sync 워크플로우 완료 시점에 trustedoss-agents 새 클론으로 최종 확인한다.
+M1·M2는 push 후 sync 워크플로우(success) 완료 뒤 trustedoss-agents 새 클론으로 최종
+확정했다 — samples/와 output-sample/ 추적 파일 37개, 문서의 cp 명령 재현 성공(components 5).
 
 게이트 검증 중 범위 밖 기존 결함 1건 발견 (후속 후보로 등록): en sbom-101.md에 번역
 플레이스홀더 `__ISO13__` 4건 잔존 (2026-04-26 커밋 052d283 유입).

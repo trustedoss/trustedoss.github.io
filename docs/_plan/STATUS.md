@@ -3,7 +3,7 @@
 > 목적: 긴 세션에서 히스토리가 유실돼도 이 파일만 보면 즉시 재개 가능. 매 task 후 갱신·커밋한다.
 > 최종 갱신: 2026-06-10
 
-## 콜드스타트 발견 수정 작업 (2026-06-10) — 진행 중
+## 콜드스타트 발견 수정 작업 (2026-06-10) — 완료
 
 > **재개 방법**: 아래 미체크 청크부터 진행. DoD = 해당 항목 수정 + en 쌍 동기화 +
 > `verify.sh` 12/12 + (glossary/Term 변경 시 `cd website && npm run build`) 통과 후 커밋.
@@ -31,9 +31,9 @@
       components 2) 완료. cold-start-findings.md에 처리 결과 기록.
       게이트가 발견한 범위 밖 기존 결함: en sbom-101.md `__ISO13__` 플레이스홀더 4건
       (커밋 052d283 유입) — 후속 후보로 등록
-- [ ] **push 후 검증** (push는 사용자 확인 후): sync-agents 워크플로우 완료 대기 →
-      trustedoss-agents 새로 클론 → `git ls-files | grep -E '^(samples|output-sample)/'`
-      매치 + `cp output-sample/sbom/fixture-sample.cdx.json` 재현으로 M1·M2 최종 확정
+- [x] **push 후 검증**: sync 워크플로우(run 27249199927) success → trustedoss-agents 새 클론에
+      samples/와 output-sample/ 추적 파일 37개 확인, 샘플 3종 존재, 문서 명령
+      `cp output-sample/sbom/fixture-sample.cdx.json output/sbom/` 성공(components 5) — M1·M2 최종 확정
 
 ## 콜드스타트 실사용자 검증 (2026-06-10) — 발견 보고 완료, 수정은 후속
 
