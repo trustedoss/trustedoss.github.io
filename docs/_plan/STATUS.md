@@ -12,7 +12,7 @@
 ### 청크 체크리스트
 
 - [x] **청크 0**: 이 작업 로그 신설 + 커밋
-- [ ] **청크 1 (M1·M2)**: `.github/workflows/sync-agents.yml`에 samples/, output-sample/
+- [x] **청크 1 (M1·M2)**: `.github/workflows/sync-agents.yml`에 samples/, output-sample/
       추가 (on.push.paths + rsync 2줄, 기존 패턴 그대로). `.github/agents-repo/README.md`가
       구조를 나열하면 두 디렉토리 항목 추가
 - [ ] **청크 2 (M3·M4)**: quick-start.md §2 `:::tip` 직전에 클론 선행 안내+명령 추가 /

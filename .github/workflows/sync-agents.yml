@@ -6,6 +6,8 @@ on:
     paths:
       - "agents/**"
       - "templates/**"
+      - "samples/**"
+      - "output-sample/**"
       - ".claude/skills/**"
       - ".claude/reference/**"
       - ".github/agents-repo/**"
@@ -28,8 +30,10 @@ jobs:
 
       - name: Sync files
         run: |
-          rsync -av --delete agents/    /tmp/trustedoss-agents/agents/
-          rsync -av --delete templates/ /tmp/trustedoss-agents/templates/
+          rsync -av --delete agents/        /tmp/trustedoss-agents/agents/
+          rsync -av --delete templates/     /tmp/trustedoss-agents/templates/
+          rsync -av --delete samples/       /tmp/trustedoss-agents/samples/
+          rsync -av --delete output-sample/ /tmp/trustedoss-agents/output-sample/
 
           mkdir -p /tmp/trustedoss-agents/.claude/skills
           mkdir -p /tmp/trustedoss-agents/.claude/reference

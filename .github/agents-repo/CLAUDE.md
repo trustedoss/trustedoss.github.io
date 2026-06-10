@@ -16,6 +16,8 @@ cd agents && claude
 | -------------------- | ------------------------------------ |
 | `agents/`            | 단계별 AI Agent (CLAUDE.md 포함)     |
 | `templates/`         | 산출물 문서 템플릿                   |
+| `samples/`           | 실습용 샘플 프로젝트 3종             |
+| `output-sample/`     | 산출물 예시 (샘플 SBOM 포함)         |
 | `.claude/skills/`    | Agent 공통 skill 정의                |
 | `.claude/reference/` | ISO 5230 · 18974 스펙 참조           |
 | `output/`            | 생성된 산출물 (로컬 생성, gitignore) |
