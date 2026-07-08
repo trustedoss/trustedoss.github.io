@@ -1,7 +1,26 @@
 # TrustedOSS 개편 — 실행 현황 (resume용)
 
 > 목적: 긴 세션에서 히스토리가 유실돼도 이 파일만 보면 즉시 재개 가능. 매 task 후 갱신·커밋한다.
-> 최종 갱신: 2026-06-10
+> 최종 갱신: 2026-07-09
+
+## Summit 대비 사이트 개선 검토 (2026-07-09) — 보고 완료, 수정은 승인 후
+
+Open Source Summit Korea 발표 대비 전수 검토. 결과: `docs/_plan/summit-review-findings.md`.
+방법: 로컬 하네스 점검 + 독립 검토 에이전트 7개(최신성 3, 구조 2, 가치 1, 일관성 1) + gate-verifier 교차 검증.
+
+- **P0 6묶음 (발표 전 필수)**: 브라우저 도구 6종이 은퇴 모델(claude-sonnet-4-20250514, 2026-06-15 retired)
+  하드코딩으로 불능 추정 / devsecops iso-mapping 의 18974 매핑 표 스펙 불일치(존재하지 않는 §4.2.3 포함) /
+  따라 하면 동작 안 하는 안내 7건(Aider, hooks, Skill 형식, semgrep-action, nuclei-action, secrets-if, cdxgen 이미지) /
+  og:image 가 미해석 도메인(trustedoss.dev) / en navbar 한국어 노출 + `__ISO13__` 4건 /
+  KWG 동기화 2026-04-15 정지(이후 70커밋, AI SBOM 가이드 등 미반영)
+- **P1 17건**: AI 코딩 도구 지형(AGENTS.md 표준화, Cursor 형식, Copilot 조직 지침, Windsurf 소속),
+  EO 14028 낡음, Node20 액션 일괄, ISO 인용 오매핑 3건, 법적 사례 서술, 고아 페이지 2건,
+  iso42001 KWG 전재 + 출처 미표기, 수치 불일치(verify.sh 11/11 표기 등), CC BY 표기 미완
+- **P2 40여 건**: 도구 명령 소소한 낡음, docs/website 구조 다듬기, en 품질, ko-style 잔여(S2 35, S3 78)
+- 잘 유지되는 것: 61페이지 중 53페이지 고유 가치 명확, ISO 존재하지 않는 조항 인용 0건, verify.sh 12/12
+
+다음 작업: 보고서 승인 후 "권고 실행 순서"(보고서 말미) 1번부터 — 즉시 항목은 모델 ID 교체,
+og:image 도메인, en navbar 키, 18974 매핑 표, `__ISO13__` 4건.
 
 ## 콜드스타트 발견 수정 작업 (2026-06-10) — 완료
 
