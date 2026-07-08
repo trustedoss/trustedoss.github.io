@@ -3,7 +3,7 @@
 > 목적: 긴 세션에서 히스토리가 유실돼도 이 파일만 보면 즉시 재개 가능. 매 task 후 갱신·커밋한다.
 > 최종 갱신: 2026-07-09
 
-## Summit P0 수정 작업 (2026-07-09) — 진행 중
+## Summit P0 수정 작업 (2026-07-09) — 완료
 
 > 재개 방법: 아래 미체크 청크부터. DoD = 해당 수정 + en 쌍 동기화 + verify.sh 12/12,
 > 전 청크 완료 후 ko/en 빌드 + gate-verifier 역순 판정. 근거는 summit-review-findings.md P0 절.
@@ -19,7 +19,9 @@
       (b) 통합 매핑 항목 수 표기 정정 25→31, 공통 10→11, 40%→약 35%
       (00-overview index+CLAUDE, intro, 07-conformance index+CLAUDE, en 쌍 3파일).
       표준별 입증자료 25개 표기(samples/conformance, 07 agent)는 상류 공식 집계와 일치해 유지.
-- [ ] 최종 게이트: ko/en 빌드 + verify 12/12 + 독립 역순 검증 + STATUS 마감
+- [x] 최종 게이트: gate-verifier 역순 독립 판정 **청크 1~6 전 항목 PASS** + verify.sh 12/12
+      (ko/en 빌드는 커밋 게이트가 매 커밋 강제 — 전 커밋 통과). P0 종료.
+      다음 작업: 보고서 P1 17건 (사용자 지시 대기), 위 "KWG 갭 분석 — 검토 후 결정" 7건.
 
 ### KWG 갭 분석 — 검토 후 결정 항목 (후속, 사용자 방향 필요)
 
