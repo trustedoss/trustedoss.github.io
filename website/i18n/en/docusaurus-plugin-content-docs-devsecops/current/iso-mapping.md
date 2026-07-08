@@ -19,7 +19,7 @@ Hosted by the OpenChain Project, it lets anyone self-certify for free.
 
 **Purpose**: To define the minimum core requirements for identifying, tracking, and responding to known security vulnerabilities (such as CVEs) in open source software. It focuses on a minimal baseline so that organizations of any size can adopt it without undue burden.
 
-**Structure**: Consists of four sections — program establishment, definition of related tasks, compliance assurance, and data provision. Each requirement is numbered in the format 4.x.x.
+**Structure**: Consists of four sections — Program Foundation (4.1), Relevant Tasks Defined and Supported (4.2), Open Source Software Content Review and Approval (4.3), and Adherence to the Specification Requirements (4.4). Each requirement is numbered in the format 4.x.x.
 
 **Certification method**: Complete and submit a self-certification checklist on the official OpenChain site. Because the organization declares conformance itself without an external audit, the process is simple and free.
 
@@ -29,16 +29,21 @@ Hosted by the OpenChain Project, it lets anyone self-certify for free.
 
 The table below shows how the DevSecOps pipeline built in this guide meets the key requirements of ISO/IEC 18974.
 
-| Requirement | Requirement (summary)                  | Implementation                                       | Related pages                        |
-| ----------- | -------------------------------------- | ---------------------------------------------------- | ------------------------------------ |
-| 4.1.1       | Document the security assurance policy | DevSecOps strategy / SLA policy document             | [Introduction Strategy](./strategy)  |
-| 4.1.2       | Policy awareness and training          | Team guidance and documentation of pipeline failures | [Pipeline Design](./pipeline-design) |
-| 4.2.1       | Identify open source components        | Auto-generated syft SBOM                             | [SCA](./sca)                         |
-| 4.2.2       | Check for known vulnerabilities        | grype CVE scan / PR blocking                         | [SCA](./sca)                         |
-| 4.2.3       | Vulnerability response procedure       | SLA definition / exception-handling process          | [SCA](./sca)                         |
-| 4.3.1       | Compliance assurance activities        | Scheduled scans · SBOM artifact storage              | [Monitoring](./monitoring)           |
-| 4.3.2       | Data preservation                      | Permanent SBOM storage by release                    | [Monitoring](./monitoring)           |
-| 4.4.1       | External inquiry response procedure    | Vulnerability response SLA · VEX document            | [SCA](./sca)                         |
+| Requirement | Requirement (summary)                          | Implementation                                             | Related pages                            |
+| ----------- | ---------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------- |
+| 4.1.1       | Document the security assurance policy         | DevSecOps strategy / SLA policy document                   | [Introduction Strategy](./strategy)      |
+| 4.1.3       | Participant awareness of policy and procedures | Pipeline failure guidance and documented procedures        | [Pipeline Design](./pipeline-design)     |
+| 4.3.1       | Continuous SBOM recording and archiving        | Auto-generated syft SBOM, archived per release             | [SCA](./sca), [Monitoring](./monitoring) |
+| 4.3.2       | Detect and act on known vulnerabilities        | grype CVE scan with PR blocking, SLA and exception process | [SCA](./sca)                             |
+| 4.3.2       | Post-release monitoring and new-CVE response   | Scheduled scans, Dependabot and Renovate tracking          | [Monitoring](./monitoring)               |
+| 4.4.1       | Evidence that all requirements are met         | Scan results and SBOM artifacts retained as evidence       | [Monitoring](./monitoring)               |
+
+:::note Clauses the pipeline does not cover
+Organizational requirements — a public channel for third-party vulnerability inquiries (§4.2.1) and
+documented roles, staffing, and budget (§4.2.2) — are covered by the governance-track deliverables,
+not by the CI pipeline. Use [Requirements at a Glance](/docs/overview/checklist-mapping) as the
+canonical reference for the full item list and evidence.
+:::
 
 ---
 
