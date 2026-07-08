@@ -3,7 +3,20 @@
 > 목적: 긴 세션에서 히스토리가 유실돼도 이 파일만 보면 즉시 재개 가능. 매 task 후 갱신·커밋한다.
 > 최종 갱신: 2026-07-09
 
-## Summit 대비 사이트 개선 검토 (2026-07-09) — 보고 완료, 수정은 승인 후
+## Summit P0 수정 작업 (2026-07-09) — 진행 중
+
+> 재개 방법: 아래 미체크 청크부터. DoD = 해당 수정 + en 쌍 동기화 + verify.sh 12/12,
+> 전 청크 완료 후 ko/en 빌드 + gate-verifier 역순 판정. 근거는 summit-review-findings.md P0 절.
+
+- [ ] 청크 1 (P0-1): static/tools 6종 모델 ID 교체 (claude-sonnet-5)
+- [ ] 청크 2 (P0-2): devsecops/iso-mapping.md 18974 표 재작성 + en 쌍
+- [ ] 청크 3 (P0-3): 동작 불능 안내 9건 교정 (a~g + Dependency-Track 설정값 + method4 sarif 모순)
+- [ ] 청크 4 (P0-4): og:image 도메인 교체
+- [ ] 청크 5 (P0-5): en navbar 키, **ISO13** 4건, Hero Translate
+- [ ] 청크 6 (P0-6): KWG 재동기화 + /kwg-check full + 스냅샷 reset (신규 가이드 콘텐츠 반영은 방향 보고 후)
+- [ ] 최종 게이트: ko/en 빌드 + verify 12/12 + 독립 역순 검증 + STATUS 마감
+
+## Summit 대비 사이트 개선 검토 (2026-07-09) — 보고 완료, 수정 진행 중 (위 작업 로그)
 
 Open Source Summit Korea 발표 대비 전수 검토. 결과: `docs/_plan/summit-review-findings.md`.
 방법: 로컬 하네스 점검 + 독립 검토 에이전트 7개(최신성 3, 구조 2, 가치 1, 일관성 1) + gate-verifier 교차 검증.
