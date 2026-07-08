@@ -148,7 +148,7 @@ ISO/IEC 5230 and ISO/IEC 18974 share many requirements. If simultaneous certific
 - **6 items for 5230 only**: Additional requirements specific to license compliance are met.
 - **9 items for 18974 only**: Additional requirements specific to security assurance are met.
 
-Recommended order of work: complete the common items first → then the ISO/IEC 5230-only items → then the ISO/IEC 18974-specific items. This can save roughly **40% of the work**. The way the chapters in this kit are organized is designed to follow this order.
+Recommended order of work: complete the common items first → then the ISO/IEC 5230-only items → then the ISO/IEC 18974-specific items. This can save roughly **35% of the work**. The way the chapters in this kit are organized is designed to follow this order.
 
 ---
 

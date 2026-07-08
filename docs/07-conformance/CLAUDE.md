@@ -46,7 +46,7 @@ cd agents/07-conformance-preparer
 claude
 ```
 
-agent가 output/ 전체를 스캔하고 25개 체크리스트 항목과 대조하여 갭 분석을 실행한다.
+agent가 output/ 전체를 스캔하고 표준별 25개 입증자료(총 50개)와 대조하여 갭 분석을 실행한다.
 
 ## 자체 인증 등록 절차
 

@@ -18,7 +18,7 @@ ISO/IEC 5230 & 18974 based enterprise open source management system construction
 New contacts with no experience in open source management can follow the kit to complete the **ISO/IEC 5230 **(License Compliance) and **ISO/IEC 18974 **(Security Assurance) self-certification declarations.
 
 - Agent will automatically create **23 deliverables **for your situation
-- **Achieve both standards at the same time **(save 40% on common base)
+- **Achieve both standards at the same time** (save about 35% on the common base)
 - **Self-study**
 
 ---

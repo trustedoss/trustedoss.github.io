@@ -8,13 +8,31 @@
 > 재개 방법: 아래 미체크 청크부터. DoD = 해당 수정 + en 쌍 동기화 + verify.sh 12/12,
 > 전 청크 완료 후 ko/en 빌드 + gate-verifier 역순 판정. 근거는 summit-review-findings.md P0 절.
 
-- [ ] 청크 1 (P0-1): static/tools 6종 모델 ID 교체 (claude-sonnet-5)
-- [ ] 청크 2 (P0-2): devsecops/iso-mapping.md 18974 표 재작성 + en 쌍
-- [ ] 청크 3 (P0-3): 동작 불능 안내 9건 교정 (a~g + Dependency-Track 설정값 + method4 sarif 모순)
-- [ ] 청크 4 (P0-4): og:image 도메인 교체
-- [ ] 청크 5 (P0-5): en navbar 키, **ISO13** 4건, Hero Translate
-- [ ] 청크 6 (P0-6): KWG 재동기화 + /kwg-check full + 스냅샷 reset (신규 가이드 콘텐츠 반영은 방향 보고 후)
+- [x] 청크 1 (P0-1): static/tools 6종 모델 ID 교체 (claude-sonnet-5) — `18e986d`
+- [x] 청크 2 (P0-2): devsecops/iso-mapping.md 18974 표 재작성 + en 쌍 — `df27f07`
+- [x] 청크 3 (P0-3): 동작 불능 안내 9건 교정 + en 쌍 6파일 — `c0f89f2`
+- [x] 청크 4 (P0-4): og:image 도메인 교체 — `b1f3192`
+- [x] 청크 5 (P0-5): en navbar 키, `__ISO13__` 4건, Hero Translate — `5a6af66`
+- [x] 청크 6 (P0-6): KWG 재동기화(`8ba6b83`) + 의미론적 갭 분석 + 즉시 반영 2건 + 스냅샷 reset.
+      즉시 반영: (a) kwg-mapping.yaml — 도구 10종과 18974 §4.x.x 매핑 추가,
+      드리프트 오탐 2건(정책 템플릿 자체 절 번호, ISO 42001 조항)을 제외 목적으로 등재,
+      (b) 통합 매핑 항목 수 표기 정정 25→31, 공통 10→11, 40%→약 35%
+      (00-overview index+CLAUDE, intro, 07-conformance index+CLAUDE, en 쌍 3파일).
+      표준별 입증자료 25개 표기(samples/conformance, 07 agent)는 상류 공식 집계와 일치해 유지.
 - [ ] 최종 게이트: ko/en 빌드 + verify 12/12 + 독립 역순 검증 + STATUS 마감
+
+### KWG 갭 분석 — 검토 후 결정 항목 (후속, 사용자 방향 필요)
+
+1. 동기화 범위 확장: 상류 신규 가이드 5종(ai-sbom_guide, finance-oss-guide, iso5230/18974/42001_guide)이
+   sync-kwg-reference.sh 범위 밖. 최소 ai-sbom_guide 추가 권고(발표 주제 직결).
+2. templates/process/vulnerability-response.md — CVSS v3.1/v4.0 병기, EPSS와 CISA KEV 보조 지표,
+   KISA KNVD, VEX 통지 형식 (상류 요구 상향 반영).
+3. templates/policy/oss-policy.md — OSPO/OSPM/OSRB 용어 정의 (coverage-matrix 갭 #1과 묶어 처리).
+4. 02-organization — §4.1.2.6 검증 담당 역할, 팀별 1인 챔피언, 실명 표기 권고.
+5. website/ai-coding — AI 생성 코드 저작권 귀속, 공급자 IP 보증, EU AI Act §50/한국 AI 기본법
+   표시 의무 3주제 보강 (현재 미커버, 상류 7-ai-compliance §5 신설 대응).
+6. docs/05-tools — 상류 신규 도구 가이드 3종(cdxgen-dt, scanoss, onot) 외부 링크 추가.
+7. kwg-mapping.yaml guide_mappings 에 0-openchain, 7-ai-compliance 항목 추가(감시 사각지대 해소).
 
 ## Summit 대비 사이트 개선 검토 (2026-07-09) — 보고 완료, 수정 진행 중 (위 작업 로그)
 

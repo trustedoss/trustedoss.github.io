@@ -14,7 +14,7 @@ slug: /
 
 Taking on this responsibility without a management system invites trouble: product shipments halted by a missed GPL obligation, incidents like Log4Shell where you cannot even determine the scope of impact without an SBOM, or being unable to deliver an SBOM to customers as required by regulations such as the EU Cyber Resilience Act and US EO 14028.
 
-This kit is designed to help **people with no open source management experience** build a system from start to finish. A Claude Code agent asks about your company's situation and automatically generates the policy, organization, process, SBOM, training, and certification outputs. ISO/IEC 5230 (license compliance) and ISO/IEC 18974 (security assurance) share a common foundation, so building both at once cuts duplicate work by about 40%.
+This kit is designed to help **people with no open source management experience** build a system from start to finish. A Claude Code agent asks about your company's situation and automatically generates the policy, organization, process, SBOM, training, and certification outputs. ISO/IEC 5230 (license compliance) and ISO/IEC 18974 (security assurance) share a common foundation, so building both at once cuts duplicate work by about 35%.
 
 ---
 
@@ -23,7 +23,7 @@ This kit is designed to help **people with no open source management experience*
 Even if today is your first day as an open source lead, you can complete the ISO/IEC 5230 and ISO/IEC 18974 self-certification declarations by following this kit. This chapter lays out the purpose and structure of the entire journey.
 
 - The agent automatically generates **23 deliverables** tailored to your company's situation.
-- **Achieve both standards at once** (about 40% savings from the shared foundation)
+- **Achieve both standards at once** (about 35% savings from the shared foundation)
 
 ### Quick start
 
@@ -86,7 +86,7 @@ Both standards use **self-certification**. You make the declaration directly on 
 
 ### How to read `checklist-mapping.md`
 
-`docs/00-overview/checklist-mapping.md` is a map that organizes all 25 requirements of the two standards into a single table.
+`docs/00-overview/checklist-mapping.md` is a map that organizes all 31 requirements of the two standards into a single table.
 
 **Item ID scheme:**
 
@@ -99,7 +99,7 @@ Both standards use **self-certification**. You make the declaration directly on 
 | G3-B   | SBOM and supply chain (common)                      |
 | G4     | Declaring and maintaining compliance                |
 
-**Key insight:** Of the 25 items, 10 are common to both standards. By completing those 10 common items first, you satisfy a large share of both standards at once and save roughly 40% of the duplicate work. The kit is designed to prioritize the common items.
+**Key insight:** Of the 31 items, 11 are common to both standards. By completing those 11 common items first, you satisfy a large share of both standards at once and save roughly 35% of the duplicate work. The kit is designed to prioritize the common items.
 
 ---
 
@@ -110,7 +110,7 @@ Take your time to understand and work through each document on your own. We reco
 :::
 
 1. Read this page (`index.md`) — get an overview of the whole journey
-2. Read `checklist-mapping.md` — understand the structure of all 25 items
+2. Read `checklist-mapping.md` — understand the structure of all 31 items
 3. Read `supply-chain.md` — build background on software supply chain security
 4. Go to `docs/01-setup/` — start preparing your environment
 
