@@ -76,7 +76,7 @@ This sample open source policy was written with reference to the following two m
 3. **알려진 취약점 (Known Vulnerability)**:
    - 이전에 발견된 공개적으로 사용 가능한 보안 취약점을 의미합니다. 이는 NVD, CVE 등과 같은 데이터베이스에서 확인할 수 있습니다.
 4. **새로 발견된 취약점 (Newly Discovered Vulnerability)**:
-   - 이전에 발견되지 않았던 새로운 보안 취약점을 의미합니다. 이는 소프트웨어 사용 중에 발견되거나, 외부 연구자에 의해 보고될 수 있습니다.
+   - 이전에 발견되지 않았던 새로운 보안 취약점을 의미합니다. 이는 소프트웨어 사용 중에 발견되거나, 외부 연구자가 보고할 수 있습니다.
 5. **보안 보증 (Security Assurance)**:
    - 시스템이 보안 모범 사례에 대한 요구사항을 충족하고, 알려진 취약점에 대해 복원력을 갖추고 있다는 확신을 의미합니다.
 6. **검증 자료 (Verification Material)**:
@@ -95,6 +95,18 @@ This sample open source policy was written with reference to the following two m
 ## 3. 역할 및 책임
 
 이 섹션에서는 오픈소스 소프트웨어 관리와 관련된 주요 역할과 책임을 정의합니다. 각 역할은 조직의 오픈소스 라이선스 컴플라이언스와 보안 보증을 보장하기 위해 필수적입니다.
+
+{{% alert title="OSPO · OSPM · OSRB 용어 정의" color="info" %}}
+오픈소스 거버넌스에서 자주 혼용되는 세 용어를 다음과 같이 구분합니다.
+
+| 용어     | 영문                        | 의미                                                          | 본 정책에서의 역할                             |
+| -------- | --------------------------- | ------------------------------------------------------------- | ---------------------------------------------- |
+| **OSPO** | Open Source Program Office  | 오픈소스 프로그램 운영 **조직 단위**                          | 본 정책 §3.1 모든 역할의 상위 운영 조직 (선택) |
+| **OSPM** | Open Source Program Manager | 오픈소스 프로그램 **총괄 책임자** (1인 또는 팀 리더)          | §3.1.1 의 역할 — 일상 운영 책임                |
+| **OSRB** | Open Source Review Board    | 오픈소스 **의사결정 협의체** (가상 조직, 분기 또는 월간 운영) | §3.1.7 의 역할 — 정책·예외 승인 권한           |
+
+작은 조직에서는 OSPM이 OSPO 기능까지 겸할 수 있으며, OSRB는 OSPM, 법무, 보안, 사업 부서 대표로 구성된 의사결정 회의체로 운영합니다.
+{{% /alert %}}
 
 ### 3.1 역할 설명
 
@@ -185,7 +197,7 @@ This sample open source policy was written with reference to the following two m
 
 ### 3.4 담당자 현황
 
-각 역할의 담당 조직과 담당자는 [[부록 A: 담당자 현황]](./appendix/\_index.md)에서 확인할 수 있습니다. 필요에 따라 명단은 업데이트됩니다.
+각 역할의 담당 조직과 담당자는 [부록 A: 담당자 현황](./appendix/_index.md)에서 확인할 수 있습니다. 필요에 따라 명단은 업데이트됩니다.
 
 ## 4. 오픈소스 라이선스 컴플라이언스
 
@@ -238,7 +250,7 @@ This sample open source policy was written with reference to the following two m
 1. **SBOM 생성**:
    - 공급 소프트웨어를 구성하는 모든 오픈소스 컴포넌트의 SBOM(Software Bill of Materials)을 생성합니다.
    - SBOM에는 각 컴포넌트의 이름, 버전, 라이선스 정보, 다운로드 위치 등이 포함됩니다.
-   - SBOM은 SPDX 또는 CycloneDX 표준 형식 중 하나를 채택하여 생성합니다. (ISO/IEC 18974 §3.3.1.2)
+   - SBOM은 SPDX 또는 CycloneDX 표준 형식 중 하나를 채택하여 생성합니다. (ISO/IEC 18974 §4.3.1.2)
 2. **SBOM 유지 및 업데이트**:
    - SBOM은 소프트웨어 릴리스마다 업데이트되며, 최신 상태를 유지합니다.
    - SBOM은 내부 저장소에서 안전하게 관리되며, 외부 요청 시 제공할 수 있도록 준비됩니다.
@@ -271,18 +283,20 @@ This sample open source policy was written with reference to the following two m
 
 1. **취약점 탐지**:
    - SCA(Software Composition Analysis) 도구를 활용하여 SBOM에 포함된 각 오픈소스 컴포넌트의 알려진 취약점을 탐지합니다.
-   - NVD(국가 취약점 데이터베이스), CVE(Common Vulnerabilities and Exposures) 등과 같은 취약점 데이터베이스를 정기적으로 업데이트하여 최신 정보를 확인합니다.
+   - 복수의 취약점 데이터베이스를 병행 조회하여 누락을 최소화합니다: NVD(미국 NIST), OSV.dev(Google), GitHub Security Advisories(GHSA), KISA KNVD(Korea National Vulnerability Database, 한국인터넷진흥원).
 2. **취약점 심각도 평가**:
-   - CVSS(Common Vulnerability Scoring System) 점수를 활용하여 취약점의 심각도를 평가합니다.
+   - CVSS(Common Vulnerability Scoring System) v3.1 또는 v4.0 점수를 활용하여 취약점의 심각도를 평가합니다.
+   - EPSS(Exploit Prediction Scoring System)와 CISA KEV(Known Exploited Vulnerabilities) 등재 여부를 보조 지표로 활용합니다.
    - 취약점의 익스플로잇 가능성, 영향 범위, 그리고 시스템에 미치는 잠재적인 영향을 고려하여 대응 우선순위를 결정합니다.
 3. **대응 조치**:
-   - 고위험 취약점에 대해서는 즉시 패치를 적용하거나 완화 조치를 수행합니다.
+   - 고위험 취약점은 즉시 패치를 적용하거나 완화 조치를 수행합니다.
    - 고객에게 영향을 미칠 수 있는 경우, 고객에게 통지하고 해결 방안을 제시합니다.
-   - 취약점 심각도에 따라 다음 기한 내에 조치합니다: Critical(CVSS 9.0 이상) 1주 이내, High(CVSS 7.0~8.9) 4주 이내. (ISO/IEC 18974 §3.3.2.1)
+   - 공급망 파트너·고객에게 영향 여부를 통지할 때는 **VEX**(Vulnerability Exploitability eXchange) 표준 형식(CSAF 2.0 또는 CycloneDX VEX)을 사용합니다. 4가지 상태값 — `not_affected`(영향 없음·justification 필수) / `affected`(영향 있음) / `fixed`(패치 완료) / `under_investigation`(조사 중).
+   - 취약점 심각도에 따라 다음 기한 내에 조치합니다: Critical(CVSS 9.0 이상) 1주 이내, High(CVSS 7.0~8.9) 4주 이내. (ISO/IEC 18974 §4.3.2.1)
 4. **대응 기록 유지**:
    - 모든 취약점과 대응 조치는 데이터베이스에 기록되며, 정기적으로 보고서를 생성합니다.
    - 대응 기록은 향후 유사한 문제 발생 시 참고 자료로 활용됩니다.
-   - 취약점 대응 기록은 해당 공급 소프트웨어의 마지막 배포 시점으로부터 최소 3년간 보관합니다. (ISO/IEC 18974 §3.3.2.2)
+   - 취약점 대응 기록은 해당 공급 소프트웨어의 마지막 배포 시점으로부터 최소 3년간 보관합니다. (ISO/IEC 18974 §4.3.2.2)
 
 ### 5.2 새로 발견된 취약점 대응 절차
 
@@ -368,7 +382,7 @@ This sample open source policy was written with reference to the following two m
    - 모든 교육 이수 기록과 평가 결과는 최소 3년간 보관됩니다.
    - 이를 통해 프로그램 참여자가 정책과 프로세스를 충분히 이해하고 있음을 입증할 수 있습니다.
 2. **인식 평가 증거 보관 절차**:
-   - 역량 평가의 증거는 다음 형태 중 하나 이상으로 수집하고 보관합니다: 테스트 점수, 교육 이수 확인서, 정책 인식 확인 서명. (ISO/IEC 5230 §3.1.3, ISO/IEC 18974 §3.1.3)
+   - 역량 평가의 증거는 다음 형태 중 하나 이상으로 수집하고 보관합니다: 테스트 점수, 교육 이수 확인서, 정책 인식 확인 서명. (ISO/IEC 5230 §3.1.3, ISO/IEC 18974 §4.1.3)
    - 증거는 사내 문서 관리 시스템(예: Learning Portal, HR 시스템)에 등록하여 감사 시 즉시 제출 가능한 상태로 유지합니다.
    - 보관 기간 만료 후에는 개인정보 보호 정책에 따라 파기합니다.
 3. **정기적인 검토 및 업데이트**:
@@ -418,8 +432,12 @@ This sample open source policy was written with reference to the following two m
 1. **저작권 표기**:
    - 프로그램 참여자가 외부 오픈소스 프로젝트에 코드를 기여할 때, 회사의 저작권을 명시해야 합니다.
    - 파일 상단에 다음과 같이 저작권과 라이선스를 표기합니다:
-     `textCopyright (c) [Year] [Company Name]
-  SPDX-License-Identifier: [SPDX_license_name]`
+
+     ```text
+     Copyright (c) [Year] [Company Name]
+     SPDX-License-Identifier: [SPDX_license_name]
+     ```
+
 2. **회사 이메일 사용**:
    - 오픈소스 프로젝트에 기여할 때는 개인 이메일을 사용하지 말고, 회사 이메일을 사용해야 합니다.
    - 이를 통해 회사를 대표하여 커뮤니티와 소통한다는 책임감을 갖게 됩니다.
@@ -529,7 +547,7 @@ This sample open source policy was written with reference to the following two m
    - 대응 후, 외부 문의자에게 피드백을 제공하며, 필요 시 개선 방안을 제안합니다.
    - 반복적인 문제를 방지하기 위해 대응 기록을 분석하고 프로세스를 개선합니다.
 4. **대응 기록 보관**:
-   - 외부 문의 대응 기록은 해당 문의가 종결된 날로부터 최소 3년간 보관합니다. (ISO/IEC 18974 §3.2.1.2)
+   - 외부 문의 대응 기록은 해당 문의가 종결된 날로부터 최소 3년간 보관합니다. (ISO/IEC 18974 §4.2.1.2)
 
 ## 10. 프로그램 효과성 측정 및 개선
 
@@ -571,7 +589,7 @@ This sample open source policy was written with reference to the following two m
    - 개선 활동의 진행 상황은 모니터링되고 문서화됩니다.
 3. **개선 결과 반영**:
    - 개선 결과를 다음 평가 주기에 반영하여 프로그램의 효과성을 지속적으로 향상시킵니다.
-   - 개선 결과는 프로그램 참여자에게 공유되어 지속적인 개선 의지를 고취시킵니다.
+   - 개선 결과는 프로그램 참여자에게 공유하여 지속적인 개선 의지를 고취시킵니다.
 
 ### 10.4 내부 모범 사례 통합 및 개선
 
@@ -603,8 +621,13 @@ This sample open source policy was written with reference to the following two m
 
 1. **준수 선언**:
    - 회사는 이 정책을 통해 ISO/IEC 5230(오픈소스 라이선스 컴플라이언스)와 ISO/IEC 18974(오픈소스 보안 보증)의 모든 요구사항을 충족함을 선언합니다.
-   - 선언 일자와 유효 기간(18개월)을 명확히 기재합니다.
+   - 선언 일자를 명확히 기재합니다. **갱신 주기는 18개월**이며, "지난 18개월 동안 요구사항을 충족해 왔음"을 회고형으로 확인하는 §3.6.2 / §4.4.2 의미입니다(미래형 보장 선언이 아님).
    - 준수 선언은 Linux Foundation의 OpenChain 프로젝트의 Self Certification을 통해 이루어질 수 있습니다.
+   - **충족 입증자료 매핑** (인증 심사 시 명시적으로 제출):
+     - ISO/IEC 5230 §3.6.1.1 — 모든 요구사항을 충족하였음을 확인하는 문서
+     - ISO/IEC 5230 §3.6.2.1 — 지난 18개월 이내 요구사항 충족을 확인하는 문서
+     - ISO/IEC 18974 §4.4.1.1 — 모든 요구사항을 충족하였음을 확인하는 문서
+     - ISO/IEC 18974 §4.4.2.1 — 지난 18개월 이내 요구사항 충족을 확인하는 문서
 2. **증거 문서화**:
    - 오픈소스 프로그램 매니저(OSPM)는 각 요구사항에 대한 충족 증거를 문서화하고 유지합니다.
    - 증거 문서에는 정책 문서, 프로세스 설명, 교육 기록, 컴플라이언스 산출물, 보안 취약점 관리 기록 등이 포함됩니다.
@@ -620,7 +643,7 @@ This sample open source policy was written with reference to the following two m
 
 1. **정기적인 검토**:
    - OSRB는 최소 연 1회 이상 ISO/IEC 5230 및 ISO/IEC 18974의 모든 요구사항에 대한 내부 검토를 수행합니다.
-   - 검토 결과는 문서화하여 보관하며, 미충족 항목에 대해서는 개선 계획을 수립합니다.
+   - 검토 결과는 문서화하여 보관하며, 미충족 항목은 개선 계획을 수립합니다.
 2. **정기적인 내부 감사**:
    - 내부 감사는 프로그램 참여자의 역할 수행 여부, 컴플라이언스 산출물의 적합성, 그리고 보안 보증 활동의 효과성을 평가합니다.
    - 감사 결과에 따라 개선 영역을 식별하고, 필요한 조치를 취합니다.

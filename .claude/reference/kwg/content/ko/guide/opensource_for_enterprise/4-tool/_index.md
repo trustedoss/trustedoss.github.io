@@ -8,6 +8,11 @@ tags: ['도구']
 description: >
 ---
 
+{{% alert title="이 섹션이 다루는 요구사항" color="success" %}}
+**ISO/IEC 5230**: 3.3.1.2  
+**ISO/IEC 18974**: 4.3.1.2
+{{% /alert %}}
+
 ## 1. 소스 코드 스캔 도구
 
 오픈소스 프로세스의 오픈소스 식별 및 검사 단계에서는 소스 코드 스캔 도구를 사용할 수 있습니다. 소스 코드 스캔 도구는 공급 소프트웨어에 포함된 오픈소스를 식별하고, 라이선스 및 저작권 정보를 추출하는 데 도움을 줍니다. 이러한 도구는 무료로 사용할 수 있는 오픈소스 기반 도구부터 상용 도구까지 다양합니다. 각 도구는 특장점이 있지만, 어떤 도구도 모든 문제를 해결할 수 있는 완벽한 기능을 제공하지 않습니다. 따라서 기업은 공급 소프트웨어의 특성과 요구사항에 맞는 적합한 도구를 선택해야 합니다.
@@ -46,6 +51,8 @@ FOSSology의 설치 및 사용 방법은 [FOSSology 가이드](../../tools/1-fos
 - SBOM(Software Bill of Materials) 생성
 
 SCANOSS는 무료 버전과 유료 버전을 제공하며, 클라우드 기반 서비스와 온프레미스 솔루션을 모두 지원합니다.
+
+SCANOSS의 설치 및 사용 방법은 [SCANOSS 가이드](../../tools/9-scanoss/)를 참조하시기 바랍니다.
 
 이러한 소스 코드 스캔 도구를 활용하여 공급 소프트웨어의 오픈소스 컴포넌트를 효과적으로 식별하고 관리할 수 있습니다. 그러나 도구의 결과만을 전적으로 신뢰하기보다는, 프로그램 참여자의 전문적인 검토와 판단이 함께 이루어져야 합니다.
 
@@ -124,7 +131,7 @@ Syft의 설치 및 사용 방법은 [Syft 가이드](../../tools/6-syft/)를 참
 
 {{% alert title="ISO/IEC 18974 - Security Assurance" color="warning" %}}
 
-- 3.3.1.2: Open Source Software Component Records for the Supplied Software that demonstrates the documented procedure was properly followed.<br>`문서화된 절차가 적절히 준수되었음을 보여주는 공급 소프트웨어에 대한 오픈소스 소프트웨어 컴포넌트 기록`
+- 4.3.1.2: Open Source Software Component Records for the Supplied Software that demonstrates the documented procedure was properly followed.<br>`문서화된 절차가 적절히 준수되었음을 보여주는 공급 소프트웨어에 대한 오픈소스 소프트웨어 컴포넌트 기록`
 
 {{% /alert %}}
 
@@ -183,11 +190,13 @@ FOSSLight의 설치 및 사용 방법은 [FOSSLight 가이드](../../tools/3-fos
 
 Dependency-Track의 설치 및 사용 방법은 [Dependency-Track 가이드](../../tools/7-dependency-track/)를 참조하시기 바랍니다.
 
+> **빠른 시작**: cdxgen으로 SBOM을 생성하고 Dependency-Track에 업로드하여 라이선스 정책 및 취약점 모니터링 환경을 처음부터 구축하려면 [오픈소스 관리 자동화 환경 구성: cdxgen + Dependency-Track](../../tools/8-cdxgen-dt/)을 참조하시기 바랍니다.
+
 이러한 도구들을 활용하여 기업은 효과적으로 오픈소스 거버넌스를 수행하고 SBOM을 관리할 수 있으며, ISO/IEC 5230과 ISO/IEC 18974의 요구사항을 충족할 수 있습니다.
 
-## 4. 오픈소스 보안취약점 관리 도구
+## 4. 오픈소스 보안 취약점 관리 도구
 
-공급 소프트웨어에 포함된 알려진 취약점 또는 새로 발견된 취약점을 효과적으로 관리하기 위해 기업은 자동화된 도구 환경을 구축해야 합니다. 여기서는 세 가지 주요 오픈소스 보안취약점 관리 도구를 소개합니다.
+공급 소프트웨어에 포함된 알려진 취약점 또는 새로 발견된 취약점을 효과적으로 관리하기 위해 기업은 자동화된 도구 환경을 구축해야 합니다. 여기서는 세 가지 주요 오픈소스 보안 취약점 관리 도구를 소개합니다.
 
 ### (1) OWASP Dependency-Check
 
@@ -211,11 +220,11 @@ Dependency-Track의 설치 및 사용 방법은 [Dependency-Track 가이드](../
 - 프로젝트별 보안 취약점 조회
 - 새로 공개된 취약점의 기존 제품 영향 추적
 
-SW360으로 보안취약점을 관리하는 방법은 [SW360 가이드](../../tools/2-sw360/)를 참고할 수 있습니다.
+SW360으로 보안 취약점을 관리하는 방법은 [SW360 가이드](../../tools/2-sw360/)를 참고할 수 있습니다.
 
 ### (3) FOSSLight
 
-[FOSSLight](https://fosslight.org/ko/)도 이와 유사하게 보안취약점 정보를 자동으로 취득하고, 보안취약점이 검출된 프로젝트 정보를 자동으로 확인하여 필요 시 메일 등 알림을 제공합니다.
+[FOSSLight](https://fosslight.org/ko/)도 이와 유사하게 보안 취약점 정보를 자동으로 취득하고, 보안 취약점이 검출된 프로젝트 정보를 자동으로 확인하여 필요 시 메일 등 알림을 제공합니다.
 
 ### (4) OSV-SCALIBR
 
@@ -250,6 +259,8 @@ OSV-SCALIBR의 설치 및 사용 방법은 [OSV-SCALIBR 가이드](../../tools/4
 
 <center><i>onot 생성 오픈소스 고지문 샘플</i></center><br>
 
+onot의 설치 및 사용 방법은 [onot 가이드](../../tools/10-onot/)를 참조하시기 바랍니다.
+
 ### (2) FOSSLight
 
 [FOSSLight](https://fosslight.org/)도 취득한 SBOM을 기반으로 오픈소스 고지문을 자동으로 생성하는 기능을 제공합니다.
@@ -263,7 +274,7 @@ OSV-SCALIBR의 설치 및 사용 방법은 [OSV-SCALIBR 가이드](../../tools/4
 
 ## 6. 오픈소스 컴플라이언스 산출물 보관
 
-오픈소스 컴플라이언스 산출물을 체계적으로 보관하고 관리하는 것은 오픈소스 라이선스 컴플라이언스를 위해 매우 중요합니다. 특히 GPL, LGPL 등 소스 코드 공개를 요구하는 라이선스의 경우, 공급 소프트웨어 배포 후 최소 3년간 소스 코드를 제공할 수 있어야 합니다.
+오픈소스 컴플라이언스 산출물을 체계적으로 보관하고 관리하는 것은 오픈소스 라이선스 컴플라이언스를 위해 중요합니다. 특히 GPL, LGPL 등 소스 코드 공개를 요구하는 라이선스의 경우, 공급 소프트웨어 배포 후 최소 3년간 소스 코드를 제공할 수 있어야 합니다.
 
 이를 위해 ISO/IEC 5230 표준은 다음과 같이 배포용 소프트웨어의 컴플라이언스 산출물 사본을 보관하기 위한 문서화된 절차를 요구합니다.
 
@@ -323,7 +334,7 @@ GitHub Pages를 활용하여 오픈소스 컴플라이언스 산출물을 보관
 - [OWASP Dependency-Check Plugin](https://plugins.jenkins.io/dependency-check-jenkins-plugin/): 알려진 취약점 또는 새로 발견된 취약점 검사를 자동화합니다.
 - [SW360 Plugin](https://github.com/eclipse/sw360/tree/main/jenkins-pipeline): SW360와 Jenkins를 연동하여 SBOM 관리를 자동화합니다.
 
-Jenkins 파이프라인 예시:
+Jenkins 파이프라인 예시 (**개념도 — 실제 적용 시 각 플러그인의 공식 문서를 참조하여 검증된 step 이름과 파라미터로 교체 필요**):
 
 ```groovy
 pipeline {
@@ -364,7 +375,7 @@ pipeline {
 
 [GitLab CI/CD](https://docs.gitlab.com/ee/ci/)는 GitLab에 내장된 지속적 통합/배포 도구로, `.gitlab-ci.yml` 파일을 통해 파이프라인을 정의합니다.
 
-GitLab CI/CD 파이프라인 예시:
+GitLab CI/CD 파이프라인 예시 (**개념도 — 실제 적용 시 공식 이미지·CLI 명령을 참조하여 검증된 명령으로 교체 필요**):
 
 ```yaml
 stages:
@@ -420,7 +431,7 @@ CI/CD 파이프라인에 이러한 프로세스를 통합함으로써, 오픈소
 
 2. 오픈소스 거버넌스 및 SBOM 관리 도구를 사용하여 공급 소프트웨어의 오픈소스 컴포넌트를 체계적으로 관리하고 추적할 수 있습니다.
 
-3. 오픈소스 보안취약점 관리 도구를 통해 알려진 취약점 또는 새로 발견된 취약점을 지속적으로 모니터링하고 대응할 수 있습니다.
+3. 오픈소스 보안 취약점 관리 도구를 통해 알려진 취약점 또는 새로 발견된 취약점을 지속적으로 모니터링하고 대응할 수 있습니다.
 
 4. 오픈소스 컴플라이언스 산출물 생성 및 보관 도구를 활용하여 라이선스 의무사항을 준수하는 데 필요한 문서를 효율적으로 생성하고 관리할 수 있습니다.
 
@@ -437,3 +448,9 @@ CI/CD 파이프라인에 이러한 프로세스를 통합함으로써, 오픈소
 > - [§3.4.1 컴플라이언스 산출물](../../iso5230_guide/4-artifacts/1-compliance-artifacts/) — 산출물 보관 기간·버전 관리 절차
 > - [§4.1.5 표준 관행 구현](../../iso18974_guide/1-program-foundation/5-standard-practice/) — SCA·SAST·DAST 도구 활용 방법
 > - [§4.3.2 보안 보증](../../iso18974_guide/3-content-review/2-security-assurance/) — SBOM 기반 취약점 탐지 및 기록
+>
+> **AI 사용 시 추가 고려:**
+>
+> - [§7. AI 컴플라이언스](../7-ai-compliance/) — AI 코딩 도구 사용 정책·CI/CD 자동 차단
+> - [AI SBOM 가이드](../../iso42001_guide/4-operation/2-ai-sbom/) — cdxgen·Syft·Dependency-Track으로 AI SBOM 생성
+> - [§6.3 OpenSSF Model Signing](../../iso42001_guide/4-operation/3-supply-chain/#63-openssf-model-signing-도입-절차) — 모델 가중치 서명 도구

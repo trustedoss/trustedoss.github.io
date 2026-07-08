@@ -10,7 +10,7 @@ tags: ['sw360']
 
 오픈소스를 포함하는 제품을 개발하고 배포하는 기업이라면 각 제품과 릴리스 버전마다 사용한 오픈소스의 버전, 라이선스 등의 정보를 수집하고 추적해야 한다. 이를 통해 기업은 올바른 오픈소스 컴플라이언스 활동을 수행할 수 있다.
 
-특히, NVD \(https://nvd.nist.gov/vuln\)에서 특정 오픈소스 버전에 보안 취약점이 보고 되었을때, 해당 버전을 사용하고 있는 제품이 무엇인지 추적을 할 수 없다면, 그 기업은 어느 제품에 보안 패치를 적용해야 할 지 알 수 없는 상황에 처하게 되고, 그 기업의 제품들은 보안취약점에 그대로 노출이 될 수 밖에 없다.
+특히, NVD \(https://nvd.nist.gov/vuln\)에서 특정 오픈소스 버전에 보안 취약점이 보고 되었을때, 해당 버전을 사용하고 있는 제품이 무엇인지 추적을 할 수 없다면, 그 기업은 어느 제품에 보안 패치를 적용해야 할 지 알 수 없는 상황에 처하게 되고, 그 기업의 제품들은 보안 취약점에 그대로 노출이 될 수 밖에 없다.
 
 이렇듯, 오픈소스 정보를 추적하는 활동은 꼭 필요하다. 기업들은 이를 위해 자체 시스템을 구축하거나, 상용 서비스를 구매하여 사용하기도 한다. SW360은 Eclipse 재단에서 후원하는 오픈소스로서 소프트웨어 BOM에 대한 정보를 수집 및 추적하기 위한 웹 애플리케이션 및 저장소를 제공한다.
 
@@ -268,7 +268,7 @@ Component는 다음과 같은 정보를 포함한다.
 
 Release는 Component에서 하나의 Version을 가리키는 단위이다. 따라서 하나의 Component는 여러 개의 Release를 가질 수 있다. Release는 하나의 Component 하위에 생성되어 관리된다.
 
-Release는 다음과 같은 정보들을 포함한다.
+Release는 다음과 같은 정보를 포함한다.
 
 - Component Name
 - Version
@@ -330,7 +330,7 @@ SW360은 등록된 Release에 대해 보안 취약점이 있는지 자동으로 
 
 ![](https://lh5.googleusercontent.com/lGeLbWHIBk6y2OSOXskcp4A2c5od0eTH6n7U5YG0p4cwTrrX02b6TpeRqJ7VXg5aUE7qDP2X2f8o4Rj1JsPHhZ-CUdLiy80O532Cgw-h_P9r-jHdL61QaXhFOPxIjTlX1cg9XPk5)
 
-이와 같은 방법으로 기업에서 개발/배포하는 소프트웨어를 SW360에 등록하여 관리한다면, 오픈소스 컴플라이언스뿐만 아니라 보안 취약점에 대해서도 리스크를 최소화할 수 있는 형태로 관리가 가능하다.
+이와 같은 방법으로 기업에서 개발/배포하는 소프트웨어를 SW360에 등록하여 관리한다면, 오픈소스 컴플라이언스뿐만 아니라 보안 취약점에 대해서도 리스크를 최소화하는 형태로 관리할 수 있다.
 
 또한 SW360은 위와 같은 Web Interface 뿐만 아니라 대부분의 기능을 REST API로 제공하여서 FOSSology 등의 다른 도구와의 연동이 가능하다. : [https://github.com/eclipse/sw360/wiki/Dev-REST-API](https://github.com/eclipse/sw360/wiki/Dev-REST-API)
 
