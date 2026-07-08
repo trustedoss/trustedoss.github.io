@@ -52,15 +52,15 @@ Without an SBOM, the following questions are hard to answer.
 
 The U.S. National Telecommunications and Information Administration (NTIA) has defined seven minimum elements that SBOM must include.
 
-| Element                 | English name             | Description                                           | Example                                                   |
-| ----------------------- | ------------------------ | ----------------------------------------------------- | --------------------------------------------------------- |
-| Supplier name           | Supplier Name            | Organization or individual that created the component | Apache Software Foundation                                |
-| Component name          | Component Name           | Package or library name                               | log4j-core                                                |
-| Version                 | Version                  | Exact version string                                  | 2.14.1                                                    |
-| Unique identifier       | Other Unique Identifiers | CPE, PURL, hash, etc.                                 | `pkg:maven/org.apache.logging.log4j/log4j-core@__ISO13__` |
-| Dependency relationship | Dependency Relationship  | Relationships with other components                   | spring-boot depends on log4j-core                         |
-| SBOM author             | Author of SBOM Data      | The tool or person that created the SBOM              | syft v0.86.0                                              |
-| Timestamp               | Timestamp                | Date and time the SBOM was created                    | 2024-01-15T09:30:00Z                                      |
+| Element                 | English name             | Description                                           | Example                                                |
+| ----------------------- | ------------------------ | ----------------------------------------------------- | ------------------------------------------------------ |
+| Supplier name           | Supplier Name            | Organization or individual that created the component | Apache Software Foundation                             |
+| Component name          | Component Name           | Package or library name                               | log4j-core                                             |
+| Version                 | Version                  | Exact version string                                  | 2.14.1                                                 |
+| Unique identifier       | Other Unique Identifiers | CPE, PURL, hash, etc.                                 | `pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1` |
+| Dependency relationship | Dependency Relationship  | Relationships with other components                   | spring-boot depends on log4j-core                      |
+| SBOM author             | Author of SBOM Data      | The tool or person that created the SBOM              | syft v0.86.0                                           |
+| Timestamp               | Timestamp                | Date and time the SBOM was created                    | 2024-01-15T09:30:00Z                                   |
 
 > This step satisfies the conceptual understanding required by ISO/IEC 18974 [G3B.1 Background].
 
@@ -74,9 +74,9 @@ pkg:{type}/{namespace}/{name}@{version}
 
 Examples:
 
-- `pkg:npm/lodash@__ISO13__` — npm package
-- `pkg:pypi/requests@__ISO13__` — Python package
-- `pkg:maven/org.springframework/spring-core@__ISO13__` — Java Maven package
+- `pkg:npm/lodash@4.17.21` — npm package
+- `pkg:pypi/requests@2.28.0` — Python package
+- `pkg:maven/org.springframework/spring-core@6.0.0` — Java Maven package
 
 With a PURL, you can automatically match components against vulnerability databases (NVD, OSV) to find CVEs.
 

@@ -677,5 +677,9 @@
   "homepage.meta.description": {
     "message": "A practical guide to building an enterprise open source management system based on ISO/IEC 5230 & 18974",
     "description": "Homepage meta description"
+  },
+  "homepage.hero.meta.vendorNeutral": {
+    "message": "Vendor-neutral",
+    "description": "Hero meta chip: vendor neutrality"
   }
 }

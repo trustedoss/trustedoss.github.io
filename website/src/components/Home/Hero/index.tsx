@@ -10,9 +10,13 @@ import Translate, {translate} from '@docusaurus/Translate';
 
 import styles from './styles.module.css';
 
-const meta = ['ISO/IEC 5230', 'ISO/IEC 18974', 'CC BY 4.0', '벤더중립'];
-
 function Hero() {
+  const meta = [
+    'ISO/IEC 5230',
+    'ISO/IEC 18974',
+    'CC BY 4.0',
+    translate({id: 'homepage.hero.meta.vendorNeutral', message: '벤더중립'}),
+  ];
   return (
     <header className={styles.hero}>
       <div className={clsx('container', styles.container)}>
