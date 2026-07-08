@@ -338,12 +338,12 @@ const config: Config = {
     metadata: [
       {
         property: 'og:image',
-        content: 'https://trustedoss.dev/img/logo-share.png',
+        content: 'https://trustedoss.github.io/img/logo-share.png',
       },
       {name: 'twitter:card', content: 'summary_large_image'},
       {
         name: 'twitter:image',
-        content: 'https://trustedoss.dev/img/logo-share.png',
+        content: 'https://trustedoss.github.io/img/logo-share.png',
       },
       {name: 'mobile-web-app-capable', content: 'yes'},
     ],
