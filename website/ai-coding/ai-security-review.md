@@ -51,15 +51,18 @@ permissions:
 
 jobs:
   ai-review:
-    if: ${{ secrets.ANTHROPIC_API_KEY != '' }}
     runs-on: ubuntu-latest
+    # job 수준 if 에서는 secrets 컨텍스트를 쓸 수 없어 env 로 옮겨 step 에서 검사합니다.
+    env:
+      HAS_ANTHROPIC_KEY: ${{ secrets.ANTHROPIC_API_KEY != '' }}
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      # 3단계 도구 결과 수집 (경량 재실행)
+      # 3단계 도구 결과 수집 (경량 재실행) — 키가 없으면 전체 건너뜀
       - name: Run Semgrep (SARIF)
+        if: env.HAS_ANTHROPIC_KEY == 'true'
         run: |
           pip install semgrep -q
           semgrep --config=auto --sarif-output=semgrep.sarif \
@@ -67,6 +70,7 @@ jobs:
             --include='*.go' --include='*.java' || true
 
       - name: Run grype (JSON)
+        if: env.HAS_ANTHROPIC_KEY == 'true'
         run: |
           curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh \
             | sh -s -- -b /usr/local/bin
@@ -74,6 +78,7 @@ jobs:
 
       # AI: findings + 코드 컨텍스트 → 검증·해석
       - name: AI Findings Analysis
+        if: env.HAS_ANTHROPIC_KEY == 'true'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
@@ -166,6 +171,7 @@ jobs:
           PYEOF
 
       - name: Post PR comment
+        if: env.HAS_ANTHROPIC_KEY == 'true'
         uses: actions/github-script@v9
         with:
           script: |
@@ -218,7 +224,7 @@ PR 오픈
 ## 활성화 방법
 
 1. `ANTHROPIC_API_KEY`를 GitHub Secrets에 등록
-2. 워크플로우의 `if: ${{ secrets.ANTHROPIC_API_KEY != '' }}` 조건이 자동으로 활성화
+2. 워크플로우가 키 존재 여부를 `env`로 옮겨 각 단계에서 확인하므로, 키를 등록하면 자동으로 활성화 (키가 없으면 각 단계를 건너뜀)
 
 ---
 

@@ -9,14 +9,20 @@ sidebar_label: '방법 2: Skill 정의'
 한 번 정의하면 모든 프로젝트에서 `/oss-policy-check`으로 즉시 호출할 수 있습니다.
 :::
 
-`.claude/skills/oss-policy-check.md` 파일을 생성합니다.
+`.claude/skills/oss-policy-check/SKILL.md` 파일을 생성합니다.
+Skill은 디렉토리 단위로 정의하며, 파일 상단의 frontmatter(name, description)가 있어야 인식됩니다.
+
+```bash
+mkdir -p .claude/skills/oss-policy-check
+```
 
 ````markdown
-# Skill: OSS 정책 준수 검사 (oss-policy-check)
+---
+name: oss-policy-check
+description: 오픈소스 정책 준수 검사. 개발자가 /oss-policy-check 또는 "오픈소스 정책 확인"을 요청할 때 실행한다.
+---
 
-## 트리거
-
-개발자가 `/oss-policy-check` 또는 "오픈소스 정책 확인" 요청 시 실행
+# OSS 정책 준수 검사
 
 ## 실행 절차
 

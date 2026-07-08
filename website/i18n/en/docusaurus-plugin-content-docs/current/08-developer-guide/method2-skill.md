@@ -9,14 +9,20 @@ sidebar_label: 'Method 2:Skill definition'
 Define it once and you can immediately call it as `/oss-policy-check` from any project.
 :::
 
-Create a `.claude/skills/oss-policy-check.md` file.
+Create a `.claude/skills/oss-policy-check/SKILL.md` file.
+Skills are defined as directories, and the frontmatter (name, description) at the top of the file is required for recognition.
+
+```bash
+mkdir -p .claude/skills/oss-policy-check
+```
 
 ````markdown
-# Skill: OSS policy compliance check (oss-policy-check)
+---
+name: oss-policy-check
+description: Open source policy compliance check. Run when developers request /oss-policy-check or "check Open Source Policy".
+---
 
-## Trigger
-
-Run when developers request `/oss-policy-check` or "check Open Source Policy".
+# OSS policy compliance check
 
 ## Execution Steps
 

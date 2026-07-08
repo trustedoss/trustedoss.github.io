@@ -184,7 +184,7 @@ on:
 아래 항목을 모두 완료하면 이 챕터가 완성됩니다.
 
 - [ ] 프로젝트 `CLAUDE.md`에 오픈소스 정책 섹션 추가 완료
-- [ ] `.claude/skills/oss-policy-check.md` 생성 완료
+- [ ] `.claude/skills/oss-policy-check/SKILL.md` 생성 완료
 - [ ] `/oss-policy-check` 실행하여 동작 확인
 - [ ] `.claude/settings.json` Hook 설정 완료
 - [ ] 의존성 파일 수정 시 경고 메시지 출력 확인

@@ -66,11 +66,13 @@ jobs:
   sast:
     runs-on: ubuntu-latest
     needs: secret-detection
+    container:
+      image: semgrep/semgrep
     steps:
       - uses: actions/checkout@v4
-      - uses: semgrep/semgrep-action@v1
-        with:
-          config: p/owasp-top-ten p/security-audit
+      - run: semgrep ci
+        env:
+          SEMGREP_RULES: p/owasp-top-ten p/security-audit
 
   sca:
     runs-on: ubuntu-latest

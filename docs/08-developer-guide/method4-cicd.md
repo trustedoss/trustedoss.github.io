@@ -69,7 +69,7 @@ jobs:
           path: '.'
           fail-build: true
           severity-cutoff: high # High / Critical 취약점 발견 시 머지 차단
-          output-format: table
+          output-format: sarif # 아래 업로드 단계의 results.sarif 를 생성
 
       - name: 취약점 보고서 업로드
         if: always()

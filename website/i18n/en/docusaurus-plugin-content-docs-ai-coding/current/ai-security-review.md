@@ -51,8 +51,10 @@ permissions:
 
 jobs:
   ai-review:
-    if: ${{ secrets.ANTHROPIC_API_KEY != '' }}
     runs-on: ubuntu-latest
+    # The secrets context is not available in a job-level if; move it to env and check per step.
+    env:
+      HAS_ANTHROPIC_KEY: ${{ secrets.ANTHROPIC_API_KEY != '' }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -60,6 +62,7 @@ jobs:
 
       # Stage 3 tools collect results (light rerun)
       - name: Run Semgrep (SARIF)
+        if: env.HAS_ANTHROPIC_KEY == 'true'
         run: |
           pip install semgrep -q
           semgrep --config=auto --sarif-output=semgrep.sarif \
@@ -67,6 +70,7 @@ jobs:
             --include='*.go' --include='*.java' || true
 
       - name: Run grype (JSON)
+        if: env.HAS_ANTHROPIC_KEY == 'true'
         run: |
           curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh \
             | sh -s -- -b /usr/local/bin
@@ -74,6 +78,7 @@ jobs:
 
       # AI: findings + code context → validation and interpretation
       - name: AI Findings Analysis
+        if: env.HAS_ANTHROPIC_KEY == 'true'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
@@ -166,6 +171,7 @@ If there are no detected items, output PASS."""
           PYEOF
 
       - name: Post PR comment
+        if: env.HAS_ANTHROPIC_KEY == 'true'
         uses: actions/github-script@v9
         with:
           script: |
@@ -218,7 +224,7 @@ PR opened
 ## How to Enable
 
 1. Add `ANTHROPIC_API_KEY` to GitHub Secrets
-2. The workflow condition `if: ${{ secrets.ANTHROPIC_API_KEY != '' }}` is enabled automatically
+2. The workflow moves the key check to `env` and gates each step, so registering the key enables it automatically (steps are skipped when the key is missing)
 
 ---
 

@@ -9,7 +9,7 @@ sidebar_position: 5
 
 ## 개요
 
-Cline은 `.clinerules` 파일(루트 단일 파일 또는 `.clinerules/` 폴더)을 프로젝트 지침으로 읽어 AI 동작에 반영합니다. Aider는 `AGENTS.md` 또는 `.aider.conf.yml`의 `system_prompt` 항목을 통해 시스템 프롬프트를 보강할 수 있습니다. 두 도구 모두 프로젝트 단위로 규칙을 적용합니다.
+Cline은 `.clinerules` 파일(루트 단일 파일 또는 `.clinerules/` 폴더)을 프로젝트 지침으로 읽어 AI 동작에 반영합니다. Aider는 정책 문서(관례상 `CONVENTIONS.md`)를 `--read` 옵션이나 `.aider.conf.yml`의 `read` 항목으로 읽어 매 세션의 컨텍스트에 포함합니다. 두 도구 모두 프로젝트 단위로 규칙을 적용합니다.
 
 Cline은 VS Code 확장으로 동작하는 에이전트형 AI 도구이며, Aider는 터미널 기반 CLI 도구입니다. 두 도구 모두 오픈소스이며 로컬 환경에서 실행되므로, 코드를 외부 서버에 전송하는 것을 꺼리는 팀에서 선호합니다. 오픈소스 정책을 각 설정 파일에 작성해 두면 AI가 패키지를 추가하거나 코드를 생성할 때 자동으로 정책을 고려합니다.
 
@@ -71,18 +71,19 @@ Cline은 VS Code 확장으로 동작하는 에이전트형 AI 도구이며, Aide
 
 ### 설정 파일 위치
 
-- `AGENTS.md` (루트, OpenAI Codex 에이전트 규격 호환)
-- `.aider.conf.yml` 의 `system_prompt` 항목
+- `CONVENTIONS.md` (루트, 파일명은 자유 — Aider 공식 문서의 관례)
+- `.aider.conf.yml` 의 `read` 항목 (위 파일을 자동 로드하도록 등록)
 
 ### 적용 방법
 
-1. 프로젝트 루트에 `AGENTS.md` 파일을 생성합니다.
+1. 프로젝트 루트에 `CONVENTIONS.md` 파일을 생성합니다.
 2. [공통 Rules 템플릿](../rules-template)의 내용을 붙여넣습니다.
-3. 간결한 설정을 원한다면 `.aider.conf.yml`의 `system_prompt`에 핵심 내용만 요약해 작성합니다.
+3. `.aider.conf.yml`에 `read: CONVENTIONS.md`를 추가해 매 실행 시 자동으로 읽히게 합니다.
+   (일회성으로는 `aider --read CONVENTIONS.md`)
 
 ### 설정 예시
 
-**AGENTS.md** — 공통 Rules 템플릿 전체를 그대로 포함합니다.
+**CONVENTIONS.md** — 공통 Rules 템플릿 전체를 그대로 포함합니다.
 
 ```markdown
 ## 오픈소스 정책
@@ -107,15 +108,11 @@ Cline은 VS Code 확장으로 동작하는 에이전트형 AI 도구이며, Aide
 - 의존성 변경 시 SBOM 업데이트 필요 (도구: cdxgen, syft)
 ```
 
-**.aider.conf.yml** — 핵심 내용만 요약해 사용합니다.
+**.aider.conf.yml** — 정책 문서를 읽기 전용 컨텍스트로 항상 로드합니다.
 
 ```yaml
-system_prompt: |
-  ## 오픈소스 정책
-  허용 라이선스: MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC
-  주의 라이선스 (법무 검토 필요): LGPL, MPL
-  금지 라이선스: GPL, AGPL, SSPL, Commons Clause
-  CVE 취약점 버전 사용 금지. 의존성 추가 후 audit 실행 권장.
+# 매 세션 시작 시 정책 문서를 읽기 전용으로 포함
+read: CONVENTIONS.md
 ```
 
 ---
@@ -123,5 +120,5 @@ system_prompt: |
 ## 주의사항
 
 :::info 알아두세요
-Cline과 Aider 모두 규칙을 Hard Block이 아닌 소프트 가이드라인으로 처리합니다. 정책 위반 패키지를 완전히 차단하려면 CI/CD 파이프라인을 함께 구성해야 합니다. Aider는 CLI 기반으로 동작하므로, `.aider.conf.yml`이 없으면 매 실행 시 `--system-prompt` 플래그로 정책 내용을 직접 전달할 수도 있습니다. 자동화된 CI/CD 게이트 구성 방법은 [Quick CI/CD](../cicd-quick)를 참고하세요.
+Cline과 Aider 모두 규칙을 Hard Block이 아닌 소프트 가이드라인으로 처리합니다. 정책 위반 패키지를 완전히 차단하려면 CI/CD 파이프라인을 함께 구성해야 합니다. Aider는 CLI 기반으로 동작하므로, `.aider.conf.yml`이 없으면 매 실행 시 `aider --read CONVENTIONS.md`로 정책 문서를 직접 지정할 수도 있습니다. 자동화된 CI/CD 게이트 구성 방법은 [Quick CI/CD](../cicd-quick)를 참고하세요.
 :::

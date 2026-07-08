@@ -7,7 +7,7 @@ sidebar_position: 9
 
 # 전사 파이프라인 설계
 
-SAST·SCA·시크릿 탐지·컨테이너 보안·IaC 보안·DAST 6개 영역을 하나의 파이프라인으로 통합하는 설계 방법을 안내합니다.
+SAST, SCA, 시크릿 탐지, 컨테이너 보안, IaC 보안, DAST 6개 영역을 하나의 파이프라인으로 통합하는 설계 방법을 안내합니다.
 각 영역 페이지에서 다룬 개별 설정을 실제 운영 환경에 맞게 조합하는 방법에 집중합니다.
 
 :::tip 아래 설정은 예시입니다 — 작동하는 전체 구현은 참조 저장소에
@@ -70,11 +70,13 @@ jobs:
   sast:
     runs-on: ubuntu-latest
     needs: secret-detection
+    container:
+      image: semgrep/semgrep
     steps:
       - uses: actions/checkout@v4
-      - uses: semgrep/semgrep-action@v1
-        with:
-          config: p/owasp-top-ten p/security-audit
+      - run: semgrep ci
+        env:
+          SEMGREP_RULES: p/owasp-top-ten p/security-audit
 
   sca:
     runs-on: ubuntu-latest

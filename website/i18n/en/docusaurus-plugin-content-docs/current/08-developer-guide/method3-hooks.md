@@ -20,7 +20,7 @@ Add the Hook below to `.claude/settings.json`.
         "hooks": [
           {
             "type": "command",
-            "command": "node -e \"\nconst fs = require('fs');\nconst result = process.env.CLAUDE_TOOL_RESULT || '';\nconst changedFiles = ['package.json', 'requirements.txt', 'pom.xml', 'go.mod', 'Cargo.toml'];\nconst hasDepChange = changedFiles.some(f => result.includes(f));\nif (hasDepChange) {\n  console.error('[OSS Policy Warning] Dependency files were changed.');\n  console.error('Always check licenses and vulnerabilities for new packages.');\n  console.error('How to check: run /oss-policy-check');\n}\n\""
+            "command": "node -e \"\nlet raw = '';\nprocess.stdin.on('data', (c) => (raw += c));\nprocess.stdin.on('end', () => {\n  const hook = JSON.parse(raw);\n  const file = (hook.tool_input && hook.tool_input.file_path) || '';\n  const depFiles = ['package.json', 'requirements.txt', 'pom.xml', 'go.mod', 'Cargo.toml'];\n  if (depFiles.some((f) => file.endsWith(f))) {\n    console.error('[OSS Policy Warning] Dependency files were changed.');\n    console.error('Always check licenses and vulnerabilities for new packages.');\n    console.error('How to check: run /oss-policy-check');\n    process.exit(2);\n  }\n});\n\""
           }
         ]
       }
@@ -31,9 +31,14 @@ Add the Hook below to `.claude/settings.json`.
 
 > This step automatically invokes the package addition approval process defined in `output/process/usage-approval.md`.
 
-**effect:** Claude Code `package.json`, `requirements.txt`, `pom.xml`, `go.mod`,Whenever you modify `Cargo.toml` etc. you will automatically see a warning message.
+The hook command receives the tool-call information as JSON (`tool_name`, `tool_input`, `tool_response`) on standard input.
+The example above checks `tool_input.file_path` for dependency files and exits with code 2 so the warning is delivered to Claude.
 
-**margin:** If you modify the file outside of Claude Code, the Hook will not be executed. Complemented by CI/CD.
+**Effect:** whenever Claude Code modifies `package.json`, `requirements.txt`, `pom.xml`, `go.mod`, `Cargo.toml`, and similar files, Claude sees the warning and prompts a license and vulnerability check.
+
+**Stronger control:** to block the modification itself, register the same script as a `PreToolUse` hook. In PreToolUse, exit code 2 blocks the tool call before it runs.
+
+**Limitation:** if a file is modified outside Claude Code, the hook does not run. Complement it with CI/CD.
 
 ---
 

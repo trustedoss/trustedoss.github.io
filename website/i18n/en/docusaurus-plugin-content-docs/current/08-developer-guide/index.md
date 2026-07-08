@@ -94,7 +94,7 @@ Take your time and understand each step.
 Completing all of the items below will complete this chapter.
 
 - [ ] Completed adding open source policy section to project `CLAUDE.md`
-- [ ] `.claude/skills/oss-policy-check.md` creation completed
+- [ ] `.claude/skills/oss-policy-check/SKILL.md` creation completed
 - [ ] Run `/oss-policy-check` to check operation
 - [ ] `.claude/settings.json` Hook setup complete
 - [ ] Check warning message output when modifying dependency files

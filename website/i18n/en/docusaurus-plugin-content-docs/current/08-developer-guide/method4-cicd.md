@@ -69,7 +69,7 @@ jobs:
           path: '.'
           fail-build: true
           severity-cutoff: high # High / Critical vulnerability block merge if found
-          output-format: table
+          output-format: sarif # produces results.sarif for the upload step below
 
       - name: vulnerability upload report
         if: always()

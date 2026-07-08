@@ -60,12 +60,12 @@ Copyleft 리스크와 실제 CVE 취약점이 탐지된다.
 
 언어/패키지매니저에 맞는 명령어 생성:
 
-| 언어        | 도구   | Docker 명령어 패턴                                |
-| ----------- | ------ | ------------------------------------------------- |
-| Java/Maven  | cdxgen | `docker run --rm -v $(pwd):/app cyclonedx/cdxgen` |
-| Java/Gradle | cdxgen | `docker run --rm -v $(pwd):/app cyclonedx/cdxgen` |
-| Python      | syft   | `docker run --rm -v $(pwd):/src anchore/syft`     |
-| Node.js     | syft   | `docker run --rm -v $(pwd):/src anchore/syft`     |
+| 언어        | 도구   | Docker 명령어 패턴                                        |
+| ----------- | ------ | --------------------------------------------------------- |
+| Java/Maven  | cdxgen | `docker run --rm -v $(pwd):/app ghcr.io/cyclonedx/cdxgen` |
+| Java/Gradle | cdxgen | `docker run --rm -v $(pwd):/app ghcr.io/cyclonedx/cdxgen` |
+| Python      | syft   | `docker run --rm -v $(pwd):/src anchore/syft`             |
+| Node.js     | syft   | `docker run --rm -v $(pwd):/src anchore/syft`             |
 
 ## 출력 산출물
 

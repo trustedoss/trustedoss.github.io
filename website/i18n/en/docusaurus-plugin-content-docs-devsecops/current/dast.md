@@ -129,12 +129,12 @@ jobs:
           sleep 10
 
       - name: Run Nuclei
-        uses: projectdiscovery/nuclei-action@main
+        uses: projectdiscovery/nuclei-action@v3
         with:
           target: http://localhost:8080
-          templates: cves,misconfiguration,exposures
-          severity: medium,high,critical
-          fail-on-severity: high
+          # Since v3, individual inputs such as templates/severity were removed;
+          # pass nuclei CLI flags directly via flags.
+          flags: '-t cves/ -t misconfiguration/ -t exposures/ -severity medium,high,critical -o nuclei.log'
 
       - name: Upload Nuclei report
         uses: actions/upload-artifact@v4

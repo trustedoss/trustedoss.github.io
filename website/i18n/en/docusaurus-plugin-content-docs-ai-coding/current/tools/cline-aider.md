@@ -9,7 +9,7 @@ sidebar_position: 5
 
 ## Overview
 
-Cline reads `.clinerules` files (a single root file or `.clinerules/` folder) as project instructions and applies them to AI behavior. Aider can augment the system prompt through `AGENTS.md` or the `system_prompt` field in `.aider.conf.yml`. Both tools apply rules at the project level.
+Cline reads `.clinerules` files (a single root file or `.clinerules/` folder) as project instructions and applies them to AI behavior. Aider includes a policy document (conventionally `CONVENTIONS.md`) in every session's context via the `--read` option or the `read` field in `.aider.conf.yml`. Both tools apply rules at the project level.
 
 Cline is an agent-style AI tool running as a VS Code extension, while Aider is a terminal-based CLI tool. Both are open source and run locally, so they are often preferred by teams that avoid sending code to external servers. If open source policy is written in each configuration file, AI automatically considers it when adding packages or generating code.
 
@@ -71,18 +71,19 @@ When adding new external packages/libraries, always verify and document the lice
 
 ### Configuration File Location
 
-- `AGENTS.md` (root, compatible with OpenAI Codex agent spec)
-- `system_prompt` field in `.aider.conf.yml`
+- `CONVENTIONS.md` (root; the file name is free — this is the convention in Aider's official docs)
+- `read` field in `.aider.conf.yml` (registers the file so it loads automatically)
 
 ### How to Apply
 
-1. Create `AGENTS.md` in the project root.
+1. Create `CONVENTIONS.md` in the project root.
 2. Paste content from the [Common Rules Template](../rules-template).
-3. If you prefer concise setup, summarize only key policy points in `.aider.conf.yml` under `system_prompt`.
+3. Add `read: CONVENTIONS.md` to `.aider.conf.yml` so it loads on every run.
+   (For a one-off run, use `aider --read CONVENTIONS.md`.)
 
 ### Configuration Example
 
-**AGENTS.md** — Include the entire Common Rules Template as-is.
+**CONVENTIONS.md** — Include the entire Common Rules Template as-is.
 
 ```markdown
 ## Open Source Policy
@@ -110,12 +111,8 @@ When adding new external packages/libraries, always verify and document the lice
 **.aider.conf.yml** — Use a concise summary of key items only.
 
 ```yaml
-system_prompt: |
-  ## Open Source Policy
-  Allowed Licenses: MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC
-  Review Required Licenses (legal review required): LGPL, MPL
-  Prohibited Licenses: GPL, AGPL, SSPL, Commons Clause
-  CVE vulnerability Version use is prohibited. After adding dependencies, running an audit is recommended.
+# Load the policy document as read-only context at session start
+read: CONVENTIONS.md
 ```
 
 ---
@@ -123,5 +120,5 @@ system_prompt: |
 ## Notes
 
 :::info Good to know
-Both Cline and Aider treat rules as soft guidance rather than hard blocking. To fully block policy-violating packages, configure a CI/CD pipeline in parallel. Since Aider is CLI-based, if `.aider.conf.yml` does not exist, you can pass policy directly on each run with `--system-prompt`. For automated CI/CD gate setup, refer to [Quick CI/CD](../cicd-quick).
+Both Cline and Aider treat rules as soft guidance rather than hard blocking. To fully block policy-violating packages, configure a CI/CD pipeline in parallel. Since Aider is CLI-based, if `.aider.conf.yml` does not exist, you can point to the policy document directly on each run with `aider --read CONVENTIONS.md`. For automated CI/CD gate setup, refer to [Quick CI/CD](../cicd-quick).
 :::

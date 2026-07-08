@@ -30,7 +30,7 @@ For multi-language projects, Semgrep is usually the best fit. For teams using Gi
 
 ## Semgrep Setup
 
-Semgrep is easy to adopt quickly because it has rich public rulesets and straightforward custom rule authoring. With `semgrep-action`, you can run it directly in GitHub Actions without separate installation.
+Semgrep is easy to adopt quickly because it has rich public rulesets and straightforward custom rule authoring. Running `semgrep ci` in the official `semgrep/semgrep` container works directly in GitHub Actions without separate installation. (The old `semgrep-action` was deprecated in 2024.)
 
 ### GitHub Actions
 
@@ -48,18 +48,18 @@ on:
 jobs:
   semgrep:
     runs-on: ubuntu-latest
+    container:
+      image: semgrep/semgrep
     steps:
       - uses: actions/checkout@v4
 
       - name: Run Semgrep
-        uses: semgrep/semgrep-action@v1
-        with:
-          config: >-
+        run: semgrep ci
+        env:
+          SEMGREP_RULES: >-
             p/owasp-top-ten
             p/security-audit
             p/secrets
-        env:
-          SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
 ```
 
 ### Ruleset Selection Guide
