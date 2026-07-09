@@ -3,18 +3,22 @@
 > 목적: 긴 세션에서 히스토리가 유실돼도 이 파일만 보면 즉시 재개 가능. 매 task 후 갱신·커밋한다.
 > 최종 갱신: 2026-07-09
 
-## Summit P1 수정 작업 (2026-07-09) — 진행 중
+## Summit P1 수정 작업 (2026-07-09) — 완료
 
 > 근거: summit-review-findings.md P1 절. 범위: 동작·정확성 계열 13건 + Node20 액션 일괄.
 > 구조 다듬기 4건(고아 페이지, iso42001 축약, mdx 순서, SLA 정본 참조)과 P2, KWG 잔여 4건은 발표 후 후속.
-> DoD = 수정 + en 쌍 + verify 12/12(커밋 게이트), 최종 gate-verifier 역순 판정.
 
-- [ ] 청크 1: AI 코딩 도구 지형 5건 (Cursor 형식, Copilot 조직 지침, Windsurf 소속, AGENTS.md, ISO 42001 조항)
-- [ ] 청크 2: 규제 서술 (EO 14028 재서술, CRA 2026-09 보고 의무)
-- [ ] 청크 3: 사실 정확성 (ISO 인용 3곳, Artifex, XZ, Log4Shell)
-- [ ] 청크 4: 허위 안내·불일치 (reference 프로필, sbom-101 bash, 04-process 6번째 프로세스, 수치·CC BY 일괄)
-- [ ] 청크 5: Node20 액션 버전 일괄 상향
-- [ ] 최종 게이트: gate-verifier 역순 판정 + STATUS 마감
+- [x] 청크 1: AI 코딩 도구 지형 5건 — agent 산출물 .cursor/rules 와 .windsurf/rules, CONVENTIONS.md 로 전환,
+      Copilot 조직 지침·경로 한정 지침·AGENTS.md 반영, Windsurf 소속 정정(Cognition), AGENTS.md 공통 트랙,
+      ISO 42001 조항 A.6/A.7/A.10 정정 — `29813b7`
+- [x] 청크 2: EO 14028 재서술(EO 14306, OMB M-26-05, 위험 기반 전환) + CRA 2026-09-11 보고 의무 — `9ffcc57`
+- [x] 청크 3: ISO 인용 3곳(3.3.2 사용 사례 처리, 교육 역량 문구, en 4.x 표기) + Artifex 소각하 기각·합의,
+      Log4Shell 약 80만 건, XZ 개발·베타 한정 — `7728772`
+- [x] 청크 4: reference 프로필 허위 안내 삭제, sbom-101 링크화, 04-process 6번째 프로세스 신설,
+      verify 12/12 표기 일괄, README 시간·메뉴·산출물 표 정합(23문서+SBOM), KWG 출처와 CC BY 표기 — `3bf349a`
+- [x] 청크 5: Node20 액션 일괄 상향(checkout v7, upload-artifact v7, gitleaks v3, codeql v4 + build-mode,
+      scan-action v7 + outputs 경로) — `4703d83`
+- [x] 최종 게이트: gate-verifier 역순 판정 **전 청크 PASS** + verify.sh 12/12
 
 ## AI SBOM 동기화 + 법적 고려 보강 (2026-07-09) — 완료
 
