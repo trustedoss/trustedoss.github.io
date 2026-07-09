@@ -234,3 +234,13 @@ POSITIONING.md 정체성에 맞춰 시스템·콘텐츠 고도화. 계획은 승
     - 05-vulnerability-analyst: 완료 확인 `ls` 추가 (일관성)
     - 06-training-manager: Q1 직군 예시 추가 (스타트업 모호성 해소)
   - 11/11 PASS 확인
+- **Summit 대비 전수 검토 + P0/P1/P2 + 후속 확장** (2026-07-09):
+  - 사이트 전수 검토(에이전트 7 + gate-verifier): P0 6묶음, P1 17건, P2 40여 건 발견 → 전부 수정 완료
+    (상세: docs/\_plan/summit-review-findings.md, STATUS.md 작업 로그 5개)
+  - 핵심 수정: 브라우저 도구 은퇴 모델 교체, 18974 매핑 표 스펙 정합, 동작 불능 안내 9건,
+    KWG 재동기화(70커밋)와 drift 하네스 결함 2건 수정, AI 코딩 도구 지형 2026 갱신,
+    Node20 액션 일괄 상향, 수치·문체·en 품질 일괄
+  - 신규 콘텐츠: legal-considerations(AI 생성 코드 법적 고려), 5.4 AI SBOM 실습 챕터(BomLens 실측 포함),
+    agent-governance(에이전트·MCP 도구 거버넌스) — 전부 1차 출처 사실 검증 + 독립 게이트 판정
+  - BomLens 소개(구 sbom-tools 명칭 갱신), KWG 갭 잔여 반영(취약점 템플릿 상향, 용어 부록, 챔피언 모델)
+  - 12/12 PASS 확인 (verify.sh 12항목 체계로 표기 일괄 정정 포함)
