@@ -4,7 +4,7 @@
 >
 > 이 문서는 cross-link·브랜드 토큰·URL/배포 같은 후속 결정의 기준점이다. 매번 원점에서
 > 재논쟁하지 않도록 합의된 포지셔닝을 고정한다. 형제 문서: 포털측
-> `trustedoss-portal/docs/site-strategy-two-sites.md`.
+> `trusca/docs/site-strategy-two-sites.md` (저장소 개명: trustedoss-portal → trusca, 2026-07-08).
 
 ---
 
@@ -38,7 +38,7 @@ TrustedOSS는 그 둘을 **열린 표준 + 열린 도구**로 대체한다.
 
 ## 3. 포털의 역할 + 생긴 이유 — how · 엔진
 
-**TrustedOSS Portal** = Apache-2.0 self-hosted SCA. "alternative to commercial SCA
+**TRUSCA** (구 TrustedOSS Portal) = Apache-2.0 self-hosted SCA. "alternative to commercial SCA
 products, no vendor lock-in"을 자기 정의로 박아둔 제품.
 
 **왜 생겼나 — 가이드만으로는 닫히지 않는 간극:**
@@ -52,7 +52,7 @@ products, no vendor lock-in"을 자기 정의로 박아둔 제품.
 - 그 운영 계층을 사려면 보통 **상용 SCA**를 사야 하고, 그게 바로 TrustedOSS가 없애려는 락인.
 
 → 포털은 그 간극을 **상용 SCA 없이 닫는 열린 실행 엔진**으로 태어났다.
-사이트: `https://trustedoss.github.io/trustedoss-portal/` (프로젝트 레포 하위 경로).
+사이트: `https://trustedoss.github.io/trusca/` (프로젝트 레포 하위 경로).
 
 ---
 
@@ -81,7 +81,7 @@ products, no vendor lock-in"을 자기 정의로 박아둔 제품.
 | 사안                                              | 입장                 | 근거                                                                |
 | ------------------------------------------------- | -------------------- | ------------------------------------------------------------------- |
 | 같은 도메인 공존 (`trustedoss.github.io`)         | **찬성**             | 인지·SEO·신뢰 전이 이득, 비용 0                                     |
-| 포털 하위 경로 (`/trustedoss-portal/`)            | **찬성**             | GitHub Pages 토폴로지의 의도된 결과                                 |
+| 포털 하위 경로 (`/trusca/`)                       | **찬성**             | GitHub Pages 토폴로지의 의도된 결과                                 |
 | 양방향 cross-link                                 | **찬성 (우선 진행)** | why→how 퍼널의 핵심. 저비용·상호이득                                |
 | cross-link을 리브랜딩 후행 조건으로 묶기          | **반대**             | 값싼 이득을 비싼 결정에 인질 잡지 않는다                            |
 | 가이드 브랜드를 **제품 정본**에 굴복(디자인 정합) | **반대**             | 벤더중립이 가이드의 유일 자산. 제품 색을 입으면 훼손                |

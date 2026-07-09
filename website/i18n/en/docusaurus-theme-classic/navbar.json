@@ -23,8 +23,8 @@
     "message": "Reference",
     "description": "Navbar item with label 레퍼런스"
   },
-  "item.label.Portal": {
-    "message": "Portal",
-    "description": "Navbar item with label Portal"
+  "item.label.TRUSCA": {
+    "message": "TRUSCA",
+    "description": "Navbar item with label TRUSCA"
   }
 }

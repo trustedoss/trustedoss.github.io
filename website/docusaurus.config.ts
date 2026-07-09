@@ -245,8 +245,8 @@ const config: Config = {
         //   position: 'left',
         // },
         {
-          href: 'https://trustedoss.github.io/trustedoss-portal/',
-          label: 'Portal',
+          href: 'https://trustedoss.github.io/trusca/',
+          label: 'TRUSCA',
           position: 'right',
         },
         {
@@ -285,8 +285,8 @@ const config: Config = {
               to: '/reference/intro',
             },
             {
-              label: 'TrustedOSS Portal',
-              href: 'https://trustedoss.github.io/trustedoss-portal/',
+              label: 'TRUSCA',
+              href: 'https://trustedoss.github.io/trusca/',
             },
             // {
             //   label: '블로그',
