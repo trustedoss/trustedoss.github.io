@@ -52,6 +52,10 @@ It includes a cdxgen run that demonstrates the license-information gaps of AI co
 
 ## 3. Self-study path
 
+:::info Self-study mode (about 1 hour)
+The hands-on work requires a running Docker environment and a network connection.
+:::
+
 The hands-on tool is [BomLens](https://github.com/sktelecom/sbom-tools). Given a HuggingFace model
 identifier, it produces a CycloneDX 1.7 ML-BOM, an open source notice, and a risk report — all
 locally on Docker.
@@ -73,7 +77,8 @@ docker pull ghcr.io/sktelecom/bomlens:latest
 
 - Put a HuggingFace model identifier in `--model` — replace it with the model you are reviewing.
 - The dedicated model-scan image (`ghcr.io/sktelecom/bomlens-aibom`) is pulled automatically.
-- Deliverables: `bert-base_1.0.0_bom.json` (CycloneDX 1.7 ML-BOM), a notice, and a risk report.
+- Deliverables land in the `bert-base_1.0.0/` subfolder: `bert-base_1.0.0_bom.json` (CycloneDX 1.7
+  ML-BOM), a notice, a risk report, and an NTIA minimum-elements conformance check.
   No security report is produced — a model has no package CVEs.
 
 ### Step 3 — Read the ML-BOM
