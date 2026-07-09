@@ -10,13 +10,16 @@ echo "===== trustedoss 자체 검증 시작 ====="
 
 # 검증 1: Docusaurus 빌드
 echo "[1/12] Docusaurus 빌드 확인..."
-if (cd website && npm run build --silent 2>/dev/null); then
+BUILD_ERR_LOG=$(mktemp)
+if (cd website && npm run build --silent 2>"$BUILD_ERR_LOG"); then
   echo "  PASS: 빌드 성공"
   PASS=$((PASS+1))
 else
-  echo "  FAIL: 빌드 실패"
+  echo "  FAIL: 빌드 실패 — stderr 마지막 30줄:"
+  tail -30 "$BUILD_ERR_LOG" | sed 's/^/    /'
   FAIL=$((FAIL+1))
 fi
+rm -f "$BUILD_ERR_LOG"
 
 # 검증 2: 내부 링크 확인
 echo "[2/12] 내부 링크 확인..."
