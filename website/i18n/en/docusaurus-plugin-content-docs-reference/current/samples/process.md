@@ -451,6 +451,13 @@ Related Standards
 7. **Record Update**: Record action completed on `output/vulnerability/remediation-plan.md`
 8. **Jira ticket closure**: Done after confirming action completion
 
+#### Temporary mitigation when an immediate patch is hard
+
+When compatibility or release timing prevents an immediate patch, lower exploitability first with
+access restrictions, virtual patching (WAF rules / input filters), isolation, or disabling unused
+features, and record the planned patch date. If the finding is judged not exploitable, mark it
+`not_affected` via VEX.
+
 ---
 
 ### 4. Response standards for each distribution cycle
