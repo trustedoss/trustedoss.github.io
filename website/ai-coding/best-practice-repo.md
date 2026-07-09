@@ -28,7 +28,7 @@ ai-coding-best-practice/
 ├── docker-compose.yml                 # DAST·AI 퍼징용 앱 기동
 │
 ├── CLAUDE.md                          # 2단계: AI 규칙 내재화
-├── .cursorrules                       # 2단계: Cursor 규칙
+├── .cursor/rules/                     # 2단계: Cursor 규칙
 │
 ├── .gitleaks.toml                     # 3단계: 시크릿 탐지 설정
 ├── .grype.yaml                        # 3단계: SCA 임계값 설정

@@ -15,7 +15,9 @@ If open source policy is written in this file, Copilot automatically recognizes 
 
 ## Configuration File Location
 
-- `.github/copilot-instructions.md` (single file, applied to whole repository)
+- `.github/copilot-instructions.md` — single file, applied to the whole repository
+- `.github/instructions/*.instructions.md` — path-scoped via the `applyTo` frontmatter pattern (good for per-language or per-folder rules)
+- `AGENTS.md` — common rules file at the root (nearest file wins)
 
 ## How to Apply
 
@@ -63,5 +65,5 @@ When adding new external packages/libraries, always verify and document the lice
 ## Notes
 
 :::info Good to know
-Common instructions at the organization level are not supported separately, so `.github/copilot-instructions.md` must be copied into each repository. If you manage multiple repositories, maintain this file as a shared template and sync updates across all repositories to prevent policy drift. It applies to both Copilot Chat and code completion, though there may be a short delay after changes.
+Organization settings support organization-wide custom instructions. Their scope is limited to Copilot Chat, code review, and the coding agent on GitHub.com, so to stay consistent across IDEs, also manage per-repository instruction files from a shared template. Custom instructions apply to Chat, code review, and the coding agent; application to inline code completion is not guaranteed. There may be a short delay after changes.
 :::

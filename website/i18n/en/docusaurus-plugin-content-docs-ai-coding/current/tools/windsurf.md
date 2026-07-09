@@ -9,18 +9,18 @@ sidebar_position: 4
 
 ## Overview
 
-Windsurf reads `.windsurfrules` in the project root and uses it as behavior instructions for the Cascade AI agent. Global rules can be configured separately in the Windsurf app settings (UI). The scope is project-level, and global and project settings can be used together.
+Windsurf reads workspace rules from the `.windsurf/rules/` directory (the legacy single-file `.windsurfrules` is still recognized) and uses them as behavior instructions for the Cascade AI agent. Global rules can be configured separately in the Windsurf app settings (UI). The scope is project-level, and global and project settings can be used together.
 
-It is efficient to manage rules in layers: put organization-wide policy in Global Rules and project-specific exceptions or additional rules in `.windsurfrules`. Committing `.windsurfrules` to the repository applies the same policy across the team. If global and project rules conflict, project rules take precedence.
+It is efficient to manage rules in layers: put organization-wide policy in Global Rules and project-specific exceptions or additional rules in `.windsurf/rules/`. Committing the rules directory to the repository applies the same policy across the team. If global and project rules conflict, project rules take precedence.
 
 ## Configuration File Location
 
-- Project: `.windsurfrules` (root, recommended)
-- Global: Windsurf app settings > Global Rules
+- Project: `.windsurf/rules/` directory (recommended — 12,000-character limit per file; the legacy single-file `.windsurfrules` is still recognized). `AGENTS.md` is also supported
+- Global: `~/.codeium/windsurf/memories/global_rules.md` (6,000-character limit)
 
 ## How to Apply
 
-1. Create `.windsurfrules` in the project root.
+1. Create `.windsurf/rules/oss-policy.md` in the project.
 2. Paste content from the [Common Rules Template](../rules-template).
 3. Update the allow/deny license list to match internal policy.
 
@@ -64,5 +64,5 @@ When adding new external packages/libraries, always verify and document the lice
 ## Notes
 
 :::info Good to know
-`.windsurfrules` is only for the Cascade agent and does not apply to standard code completion (Autocomplete). Keep in mind that policy applies only to agent actions (file creation/modification, package additions, etc.), and extra caution is needed when using plain completion. Larger files can increase response latency, so trim the full template down to only the essential team policies.
+Windsurf has been merging into Devin Desktop since Cognition (the maker of Devin) acquired it in 2025, and the official docs moved to docs.devin.ai. Newer docs recommend the `.devin/rules/` directory first, so check for rule-path changes when the tool updates. Larger rule files can increase response latency (12,000-character limit per file), so trim the full template down to only the essential team policies.
 :::

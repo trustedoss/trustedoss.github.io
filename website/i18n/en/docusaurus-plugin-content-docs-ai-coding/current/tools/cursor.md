@@ -17,6 +17,7 @@ If the open source policy is separated into `.cursor/rules/oss-policy.mdc`, it c
 
 - `.cursor/rules/oss-policy.mdc` (recommended)
 - `.cursorrules` (single root file, legacy)
+- `AGENTS.md` (supported at the root and nested in subdirectories — a common-rules-file alternative)
 
 ## How to Apply
 

@@ -17,6 +17,7 @@ Cursor는 `.cursor/rules/` 폴더 내 `.mdc` 파일을 규칙으로 인식해 AI
 
 - `.cursor/rules/oss-policy.mdc` (권장)
 - `.cursorrules` (루트 단일 파일, 레거시)
+- `AGENTS.md` (루트와 하위 디렉토리 중첩 지원 — 공통 규칙 파일 대안)
 
 ## 적용 방법
 

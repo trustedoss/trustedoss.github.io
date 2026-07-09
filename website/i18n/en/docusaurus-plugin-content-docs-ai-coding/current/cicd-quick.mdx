@@ -18,7 +18,7 @@ see [DevSecOps — Organization-wide Pipeline Design](/devsecops/pipeline-design
 :::warning Hard Block is only possible in CI/CD
 :::
 
-AI rule files like `CLAUDE.md` or `.cursorrules` are ultimately just "recommendations." Even if developers intentionally ignore them or AI accidentally fails to follow them, nothing actually stops the result.
+AI rule files like `CLAUDE.md` or `.cursor/rules` are ultimately just "recommendations." Even if developers intentionally ignore them or AI accidentally fails to follow them, nothing actually stops the result.
 
 In environments that rely only on rule files, policy-violating code can flow directly into production the moment a PR is merged. The faster AI tools generate code, the greater this risk becomes.
 

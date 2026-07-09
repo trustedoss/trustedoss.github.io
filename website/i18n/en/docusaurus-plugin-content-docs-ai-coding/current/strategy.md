@@ -12,7 +12,7 @@ sidebar_position: 2
 | Stage   | Name                                     | Core Method                                           | Assurance Level | Recommended For         |
 | ------- | ---------------------------------------- | ----------------------------------------------------- | --------------- | ----------------------- |
 | Stage 1 | Prompt Dependency                        | None (personal memory)                                | Low             | Individual experiments  |
-| Stage 2 | AI Rule Internalization                  | CLAUDE.md, .cursorrules, etc.                         | Medium          | Team collaboration      |
+| Stage 2 | AI Rule Internalization                  | CLAUDE.md, .cursor/rules, AGENTS.md, etc.             | Medium          | Team collaboration      |
 | Stage 3 | CI/CD Auto Blocking                      | Gitleaks · Semgrep · CodeQL · grype · Trivy · Checkov | High            | Teams and organizations |
 | Stage 4 | AI Defense Layer                         | findings-driven AI review · AI fuzzing                | High+           | Teams and organizations |
 | Stage 5 | Continuous Monitoring & Auto-remediation | Dependabot · Renovate · DAST                          | Very high       | Organization-wide       |
@@ -37,7 +37,7 @@ This approach enforces license or security policies by entering prompts directly
 :::tip Team-level adoption starts here
 :::
 
-This approach places common rule files such as CLAUDE.md, .cursorrules, and .clinerules in the repository so AI automatically recognizes policies while writing code. The whole team shares the same rules, and AI can be expected to check licenses or suggest the latest stable versions when adding external libraries. However, AI treats rules as guidance, so 100% enforced hard blocking is not possible. If you want to start rule-based collaboration right away, refer to the links below.
+This approach places common rule files such as CLAUDE.md, .cursor/rules, and AGENTS.md in the repository so AI automatically recognizes policies while writing code. The whole team shares the same rules, and AI can be expected to check licenses or suggest the latest stable versions when adding external libraries. However, AI treats rules as guidance, so 100% enforced hard blocking is not possible. If you want to start rule-based collaboration right away, refer to the links below.
 
 - [Common Rules Template](./rules-template)
 - [Tool-specific Setup](./tools/claude-code)

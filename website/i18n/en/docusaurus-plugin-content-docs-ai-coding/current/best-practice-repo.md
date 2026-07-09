@@ -28,7 +28,7 @@ ai-coding-best-practice/
 ├── docker-compose.yml                 # app startup for DAST/AI fuzzing
 │
 ├── CLAUDE.md                          # Step 2: Embed AI rules
-├── .cursorrules                       # Step 2: Cursor rules
+├── .cursor/rules/                     # Step 2: Cursor rules
 │
 ├── .gitleaks.toml                     # Step 3: secret detection settings
 ├── .grype.yaml                        # Step 3: SCA threshold settings
