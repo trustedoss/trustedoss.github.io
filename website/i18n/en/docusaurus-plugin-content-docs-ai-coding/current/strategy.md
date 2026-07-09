@@ -42,6 +42,8 @@ This approach places common rule files such as CLAUDE.md, .cursor/rules, and AGE
 - [Common Rules Template](./rules-template)
 - [Tool-specific Setup](./tools/claude-code)
 
+If your agents call external tools over MCP, rule internalization needs tool-side controls alongside it — see [Agent and MCP Tool Governance](./agent-governance).
+
 ---
 
 ## Stage 3: CI/CD Pipeline Auto Blocking (Pipeline Enforcement)

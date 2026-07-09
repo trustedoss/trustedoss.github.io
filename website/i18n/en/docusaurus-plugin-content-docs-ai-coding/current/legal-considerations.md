@@ -117,4 +117,5 @@ This page is based on §5 of the OpenChain KWG
 - EU AI Act, [Article 50](https://artificialintelligenceact.eu/article/50/) / Korea, [Framework Act on the Development of Artificial Intelligence and Establishment of Trust](https://www.law.go.kr/lsInfoP.do?lsiSeq=268543), Article 31
 
 For linkage to the ISO/IEC standards, see [ISO Standards Linkage](./iso-mapping); for compliance
-of AI systems themselves, see [AI System Compliance (ISO 42001)](./iso42001).
+of AI systems themselves, see [AI System Compliance (ISO 42001)](./iso42001); for security controls
+on the tools agents call, see [Agent and MCP Tool Governance](./agent-governance).
