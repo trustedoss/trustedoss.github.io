@@ -3,7 +3,7 @@
 > 목적: 긴 세션에서 히스토리가 유실돼도 이 파일만 보면 즉시 재개 가능. 매 task 후 갱신·커밋한다.
 > 최종 갱신: 2026-07-09
 
-## 에이전트·MCP 도구 거버넌스 페이지 (2026-07-09 승인) — 진행 중
+## 에이전트·MCP 도구 거버넌스 페이지 (2026-07-09 승인) — 완료
 
 > 근거: The Hacker News 2026-07-07 기고 분석에서 확인한 신규 갭 (에이전트가 호출하는 MCP 도구의
 > provenance·프롬프트 인젝션이 빌드 입력이라는 위협 모델 — KWG 미커버, 우리 트랙 고유 확장).
@@ -11,10 +11,11 @@
 > 도구 큐레이션: 스캔 mcp-scan(대안 Cisco mcp-scanner, Snyk agent-scan) / 중앙 통제 ToolHive
 > (대안 agentic-community Gateway) / 클라이언트·산출물은 기존 자산(hooks, CI 게이트) 재결선.
 
-- [ ] M1: 사실 검증 (도구 4종 명령 실측 인용, 5.5% 수치 원 출처, Microsoft 경고, OWASP, MCP 스펙, Claude Code 조직 통제)
-- [ ] M2: 페이지 작성 + 결선 (사이드바, intro 표, strategy·legal 상호 링크, kwg-mapping)
-- [ ] M3: en 쌍
-- [ ] M4: 게이트 + STATUS 마감
+- [x] M1: 사실 검증 — 정정 다수 확보 (mcp-scan 은 Snyk agent-scan 으로 승계, Cisco 는 3엔진 조합,
+      ToolHive 는 접근 정책 표현, 5.5% 는 arXiv 2506.13538 의 1,899개 표본, OWASP MCP Top 10 은 Incubator)
+- [x] M2: 페이지 작성 + 결선 — `99cfa27`
+- [x] M3: en 쌍 + 결선 — `66f4b3c`
+- [x] M4: gate-verifier 판정 전 항목 PASS (사실 충실성 7건 표본 대조 포함), 주의 1건(역방향 링크) 반영
 
 미착수 잔여(같은 기사 분석에서): supply-chain.md Shai-Hulud 사례 추가, CI 게이트의 프롬프트 인젝션
 최후 방어선 프레임 한 줄 — 사용자 승인 범위는 1번(이 페이지)만.

@@ -116,7 +116,8 @@ Claude Code 는 조직이 배포하는 관리 설정(`managed-settings.json` —
 
 ## 7. 표준 연계와 출처
 
-ISO/IEC 표준과의 연계는 [ISO 표준 연계](./iso-mapping)를 참조하세요. 이 주제는 OpenChain KWG
+ISO/IEC 표준과의 연계는 [ISO 표준 연계](./iso-mapping)를, AI 생성 코드의 저작권과 규제는
+[AI 생성 코드의 법적 고려](./legal-considerations)를 참조하세요. 이 주제는 OpenChain KWG
 가이드가 아직 다루지 않는 영역으로, 아래 1차 출처를 기반으로 작성했습니다(2026-07 기준).
 
 - MCP 스펙 — [Security Best Practices](https://modelcontextprotocol.io/specification/2025-06-18/basic/security_best_practices) 및 본문의 Security and Trust & Safety 절

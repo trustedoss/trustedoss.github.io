@@ -125,7 +125,8 @@ between.
 
 ## 7. Standards linkage and sources
 
-For linkage to the ISO/IEC standards, see [ISO Standards Linkage](./iso-mapping). The OpenChain
+For linkage to the ISO/IEC standards, see [ISO Standards Linkage](./iso-mapping); for copyright
+and regulation of AI-generated code, see [Legal Considerations](./legal-considerations). The OpenChain
 KWG guide does not yet cover this topic; this page is based on the primary sources below (as of
 2026-07).
 
