@@ -124,3 +124,5 @@ If your team already uses GitHub Actions, try Stage 3 Quick CI/CD first. You can
 If you are operating Stage 3 stably, add the Stage 4 AI defense layer. A single `ANTHROPIC_API_KEY` can activate both findings-driven review and AI fuzzing.
 
 If you already operate up to Stage 4 and have a dedicated security team, review Stage 5 and the full DevSecOps guide to raise organization-wide supply chain security maturity.
+
+Regardless of stage, adopting an AI coding tool requires three legal decisions: copyright attribution, vendor IP indemnification, and AI-use disclosure. Review [Legal Considerations for AI-Generated Code](./legal-considerations) alongside your rollout.
