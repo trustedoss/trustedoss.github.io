@@ -3,19 +3,24 @@
 > 목적: 긴 세션에서 히스토리가 유실돼도 이 파일만 보면 즉시 재개 가능. 매 task 후 갱신·커밋한다.
 > 최종 갱신: 2026-07-09
 
-## AI SBOM 동기화 + 법적 고려 보강 (2026-07-09) — 진행 중
+## AI SBOM 동기화 + 법적 고려 보강 (2026-07-09) — 완료
 
-> 계획 승인본: `docs/_plan/ai-compliance-sync-plan.md`. 재개 시 미체크 청크부터.
-> DoD = 수정 + en 쌍 + verify.sh 12/12 (빌드는 커밋 게이트 강제), 최종 gate-verifier 역순 판정.
+> 계획 승인본: `docs/_plan/ai-compliance-sync-plan.md`.
 
-- [ ] 청크 A1: sync-kwg-reference.sh 에 ai-sbom_guide 추가 + 동기화 + 커밋
-- [ ] 청크 A2: kwg-mapping.yaml guide_mappings 3건(ai-sbom_guide, 0-openchain, 7-ai-compliance) + 오탐 등재 + drift reset
-- [ ] 청크 A3: sbom-101 "AI SBOM" 절 + iso42001 링크 (ko/en)
-- [ ] 청크 B0: 법적 고려 사실 검증 (에이전트 진행 중)
-- [ ] 청크 B1: website/ai-coding/legal-considerations.md 작성
-- [ ] 청크 B2: 결선 — 사이드바, intro 표, strategy 링크, templates/policy §5 보강
-- [ ] 청크 B3: en 쌍 번역
-- [ ] 최종 게이트: gate-verifier 역순 판정 + STATUS 마감
+- [x] 청크 A1: sync-kwg-reference.sh 에 ai-sbom_guide 추가 + 19파일 동기화 — `31ffc42`
+- [x] 청크 A2: kwg-mapping.yaml guide_mappings 3건 + drift 기준점 — `206d383`.
+      게이트가 발견한 결함 2건 후속 수정: 스냅샷이 삭제 상태로 커밋돼 콜드 스타트 감지 불능(`8abd64e`
+      복구), drift 스크립트가 매 실행 기준선을 재기록해 drift 은폐와 트리 오염 유발(`6ee0fa5` 읽기 전용화)
+- [x] 청크 A3: sbom-101 "AI SBOM" 절 + iso42001 링크, en 쌍 — `3ca635f`
+- [x] 청크 B0: 사실 검증 — KWG 원문 대비 정정 4건 확인(정량 귀속 기준 없음, Anthropic 제도명은
+      Commercial ToS Section K, Microsoft 필터 조건 2026-04 제외, 표시 의무 주체는 제공 사업자)
+- [x] 청크 B1+B2: legal-considerations.md 신설 + 사이드바, intro 표(누락 2행 보완), strategy 링크,
+      templates/policy §5 원칙 4~6 추가 — `b46210b`
+- [x] 청크 B3: en 쌍 — `8dbda10`
+- [x] 최종 게이트: gate-verifier 역순 판정 1차 미통과(A2) 후 수정, **재판정 통과** + verify.sh 12/12
+
+잔여 후속(선택): 상류 finance-oss-guide 와 iso 표준별 가이드 3종의 동기화 여부, AI SBOM 독자
+전용 챕터(실습 포함), verify.sh 가 단계별 stderr 를 버려 실패 원인을 남기지 않는 문제 개선.
 
 ## Summit P0 수정 작업 (2026-07-09) — 완료
 
