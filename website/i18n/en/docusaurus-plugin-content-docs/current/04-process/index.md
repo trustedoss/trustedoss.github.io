@@ -64,6 +64,22 @@ If you define a list of pre-approved licenses (an allow list), licenses on the l
 | Conditionally accepted | Copyleft license, or has a High CVE                 | Approval after review by the lead |
 | Prohibited             | Non-commercial license, or unpatched Critical CVE   | Use prohibited                    |
 
+:::tip Pre-flight ingest gate — developers see only what is verified
+Instead of judging each approval after the fact, many teams enforce it through repository
+structure. Rather than pulling directly from public repositories (npm, PyPI, etc.), you first
+**ingest** into an internal repository while checking license, vulnerabilities, and source
+integrity, and register only versions that pass. Developers and CI see only the verified internal
+repository, which cuts off the entry path for supply chain attacks such as dependency confusion and
+typosquatting.
+
+```
+Public repo → [SCA checks: license, CVE, integrity] → register in internal repo on pass → developers and CI use internal only
+```
+
+Build the internal repository on an artifact repository such as Nexus or Artifactory, and wire the
+check step to the scanning in [5.3 Vulnerability Analysis and Response](../05-tools/vulnerability/index.md).
+:::
+
 #### 3-2. Pre-release compliance check
 
 Be sure to check the items below before distributing the software externally. If it does not pass this checklist, distribution does not proceed.
