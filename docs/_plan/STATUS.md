@@ -3,17 +3,20 @@
 > 목적: 긴 세션에서 히스토리가 유실돼도 이 파일만 보면 즉시 재개 가능. 매 task 후 갱신·커밋한다.
 > 최종 갱신: 2026-07-09
 
-## TRUSCA 명칭 갱신 + 웨비나 갭 반영 + 로드맵 (2026-07-09 승인) — 진행 중
+## TRUSCA 명칭 갱신 + 웨비나 갭 반영 + 로드맵 (2026-07-09 승인) — 완료
 
 > 근거: Black Duck OSSRA 2026 웨비나 질문 90건 분석. 질문 다수가 "상용 SCA 도입 장벽"(예산·인력·폐쇄망·
 > 구축 공수)이며, TRUSCA(github.com/trustedoss/trusca, Apache-2.0 self-hosted SCA)가 그 대안.
 > 발견: 저장소가 trustedoss-portal → trusca 로 개명됐고(2026-07-08), 구 URL trustedoss-portal 은 404 —
 > 사이트 navbar Portal 링크가 현재 깨져 있음(발표 전 필수).
 
-- [ ] A1: TRUSCA 명칭·URL 갱신 (navbar/footer 깨진 링크 수정, sca.mdx ko/en, navbar.json, POSITIONING)
-- [ ] A2: 웨비나 갭 문서화 4건 (임시 완화 절, 반입 프로세스 패턴, 협력사 SBOM 검증, 폐쇄망 self-hosted)
-- [ ] B: TRUSCA 로드맵 제안서 (수요 순: reachability, 에이전트 시점 검증/MCP, operational risk 등)
-- [ ] 게이트 + STATUS 마감
+- [x] A1: TRUSCA 명칭·URL 갱신 — `35578f3`. 구 URL 404였던 navbar/footer 링크 복구, en navbar 키,
+      sca.mdx tip ko/en. POSITIONING 은 개명 이력 주석으로 구 이름 1건 의도적 보존
+- [x] A2: 갭 문서화 — 임시 완화 절(`aef4178`), 반입 게이트 패턴(`c63b556`), 협력사 SBOM 수신 검증(`9b95200`).
+      폐쇄망은 A1 의 TRUSCA self-hosted tip 과 sbom-management 로 반영(별도 큰 문서는 KWG 금융권 범위)
+- [x] B: 로드맵 제안서 `docs/_plan/trusca-roadmap.md` — `6245d70`. 웨비나 질문 근거 8항목,
+      착수 순서 1위는 에이전트 pre-flight 정책 API + MCP 서버(사이트 agent-governance 와 결합)
+- [x] 게이트: gate-verifier 판정 A1/A2/B + verify 12/12 전 항목 PASS (README 표본 대조 포함)
 
 ## 에이전트·MCP 도구 거버넌스 페이지 (2026-07-09 승인) — 완료
 
