@@ -19,6 +19,11 @@ This document brings the self-certification checklist items of **ISO/IEC 5230** 
 
 Every agent's CLAUDE.md refers to this document to produce output that meets specific standard requirements, so you can see at a glance which module produces what.
 
+**Source basis**: for the original-text commentary and templates behind each item, see the OpenChain
+KWG (CC BY 4.0) [Enterprise Open Source Guide](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/)
+and [Policy and Process Templates](https://openchain-project.github.io/OpenChain-KWG/guide/templates/).
+The chapter and deliverable structure of this mapping is reworked from those guides.
+
 ### How to read this document
 
 1. **Comparison of the two standards** → first understand the purpose and scope of each standard

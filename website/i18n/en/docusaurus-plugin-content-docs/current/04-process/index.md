@@ -26,7 +26,7 @@ You also discuss integration with the CI/CD pipeline, aiming for a sustainable c
 
 A policy says only "what," not "how." For developers to actually take action, they need specific procedures: who to ask and in what form. Process documentation fills this gap and makes the policy work in practice.
 
-> Detailed explanations of each step in the open source process, along with real corporate examples, are available in the [KWG Open Source Guide — Process](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/3-process/).
+> Detailed explanations of each step in the open source process, along with real corporate examples, are available in the [KWG Open Source Guide — Process](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/3-process/). This chapter's structure and requirement descriptions are reworked from that KWG guide (CC BY 4.0).
 
 ### The overall open source lifecycle flow
 
@@ -49,7 +49,7 @@ flowchart TD
 
 Approval on adoption, a checklist for distribution, and operational CVE response — these three points are addressed by the core processes below.
 
-### The 5 core processes
+### The 6 core processes
 
 ISO/IEC 5230 §3.5 requires separate policies and procedures for engaging with open source communities (contribution and disclosure). Even organizations with no plans to contribute or disclose need a policy document stating "not currently applicable."
 
@@ -148,6 +148,14 @@ Even in an environment without CI/CD, you can run the same process based on a ma
 When you introduce CI/CD later, you can simply automate the manual steps one at a time.
 
 ---
+
+#### 3-6. External inquiry response process (§3.2.1)
+
+This is the channel and procedure for receiving open-source-related inquiries from outside —
+customers, the community, or license holders. It consists of a published intake channel (email or a
+web form), acknowledgement, triage into compliance vs. security inquiries, assignment and response,
+and record keeping. The external inquiry channel designated in chapter 02 is the entry point, and
+the deliverable is generated as `inquiry-response.md`.
 
 ## 3. Self-study
 

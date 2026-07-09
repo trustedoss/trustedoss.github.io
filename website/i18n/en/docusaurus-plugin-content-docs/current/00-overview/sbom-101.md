@@ -198,9 +198,5 @@ A: By following this kit, you can generate an SBOM in CycloneDX JSON format. If 
 
 Having read this document, you now have a solid grasp of SBOM concepts and the surrounding ecosystem.
 
-Next, go to `docs/01-setup/` to prepare your lab environment. Once you have installed syft, cdxgen, and Dependency-Track, you can begin the hands-on work in earnest.
-
-```bash
-# next step
-cd docs/01-setup
-```
+- To finish the background reading, continue to [Requirements at a Glance](./checklist-mapping.md).
+- To start the hands-on work, install syft, cdxgen, and Dependency-Track in [Environment Setup](../01-setup/index.md).

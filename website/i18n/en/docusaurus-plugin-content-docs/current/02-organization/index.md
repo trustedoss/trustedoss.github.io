@@ -49,7 +49,7 @@ ISO/IEC 5230 and ISO/IEC 18974 share two things in common:
 
 To meet both standards, you commonly need an OSPM (Open Source Program Manager), a legal role, a security role, and a development representative.
 
-> Detailed responsibilities and required competencies for each role are defined in the [KWG Open Source Guide — Organization](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/1-teams/).
+> Detailed responsibilities and required competencies for each role are defined in the [KWG Open Source Guide — Organization](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/1-teams/). This chapter's structure and requirement descriptions are reworked from that KWG guide (CC BY 4.0).
 
 ### Channel for receiving external inquiries (G2.2 requirement)
 

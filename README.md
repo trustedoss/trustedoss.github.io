@@ -20,12 +20,12 @@
 
 ## 무엇을 제공하나요?
 
-| 메뉴                                                      | 내용                                                                 |
-| --------------------------------------------------------- | -------------------------------------------------------------------- |
-| [체계구축](https://trustedoss.github.io/docs)             | ISO/IEC 5230 & 18974 기반 오픈소스 거버넌스 체계 구축 단계별 가이드  |
-| [AI 코딩](https://trustedoss.github.io/ai-coding/intro)   | Claude Code·Cursor·Copilot 등 AI 코딩 도구의 오픈소스 정책 자동 준수 |
-| [DevSecOps](https://trustedoss.github.io/devsecops/intro) | SAST·SCA·시크릿 탐지·컨테이너·IaC·DAST CI/CD 파이프라인 자동화       |
-| [레퍼런스](https://trustedoss.github.io/reference/intro)  | 정책 템플릿·SBOM 샘플·자체 인증 체크리스트                           |
+| 메뉴                                                             | 내용                                                                 |
+| ---------------------------------------------------------------- | -------------------------------------------------------------------- |
+| [오픈소스 관리](https://trustedoss.github.io/docs)               | ISO/IEC 5230 & 18974 기반 오픈소스 거버넌스 체계 구축 단계별 가이드  |
+| [AI 코딩 거버넌스](https://trustedoss.github.io/ai-coding/intro) | Claude Code·Cursor·Copilot 등 AI 코딩 도구의 오픈소스 정책 자동 준수 |
+| [DevSecOps](https://trustedoss.github.io/devsecops/intro)        | SAST·SCA·시크릿 탐지·컨테이너·IaC·DAST CI/CD 파이프라인 자동화       |
+| [레퍼런스](https://trustedoss.github.io/reference/intro)         | 정책 템플릿·SBOM 샘플·자체 인증 체크리스트                           |
 
 ---
 
@@ -60,7 +60,7 @@ cd trustedoss-agents && claude
 체계 구축은 두 가지 깊이로 진행할 수 있습니다.
 
 - **빠른 시작 (1~2시간)**: 시간이 부족하면 개요, 02 조직, 03 정책 세 챕터만 진행해 정책 초안까지 만듭니다.
-- **풀 코스 (8~12시간)**: 00~07 챕터를 순서대로 진행해 자체 인증 선언문까지 완성합니다.
+- **풀 코스 (약 12~14시간)**: 00~07 챕터를 순서대로 진행해 자체 인증 선언문까지 완성합니다.
 
 ---
 
@@ -136,15 +136,16 @@ trustedoss/
 | ------------------------ | ------------------------------------ | ---------- |
 | 00-overview              | 두 표준 개요 및 체크리스트 매핑      | 1시간      |
 | 00-overview/supply-chain | 소프트웨어 공급망 보안 + SBOM 개념   | 1시간      |
-| 01-setup                 | 환경 준비 (Docker, Git, Claude Code) | 30분       |
+| 01-setup                 | 환경 준비 (Docker, Git, Claude Code) | 30분~1시간 |
 | 02-organization          | 조직 구성 및 담당자 지정             | 1시간      |
 | 03-policy                | 오픈소스 정책 수립                   | 1시간      |
-| 04-process               | 오픈소스 프로세스 설계               | 1시간      |
-| 05-tools/sbom-generation | SBOM 생성                            | 1시간      |
+| 04-process               | 오픈소스 프로세스 설계               | 1~2시간    |
+| 05-tools/sbom-generation | SBOM 생성                            | 1.5시간    |
 | 05-tools/sbom-management | SBOM 관리 및 공유                    | 1시간      |
 | 05-tools/vulnerability   | 취약점 분석 및 대응                  | 1시간      |
-| 06-training              | 교육 체계 구축                       | 30분       |
-| 07-conformance           | 자체 인증 선언                       | 30분       |
+| 06-training              | 교육 체계 구축                       | 1시간      |
+| 07-conformance           | 자체 인증 선언                       | 2시간      |
+| 08-developer-guide       | 개발자 정책 적용 (선택)              | 2시간      |
 
 ---
 
@@ -160,16 +161,22 @@ trustedoss/
 | `output/process/usage-approval.md`            | 오픈소스 사용 승인 절차   | 5230         |
 | `output/process/distribution-checklist.md`    | 배포 전 체크리스트        | 5230         |
 | `output/process/vulnerability-response.md`    | 취약점 대응 절차          | 18974        |
+| `output/process/inquiry-response.md`          | 외부 문의 대응 절차       | 5230 + 18974 |
+| `output/process/contribution-process.md`      | 오픈소스 기여 프로세스    | 5230         |
 | `output/process/process-diagram.md`           | 전체 프로세스 다이어그램  | 5230 + 18974 |
 | `output/sbom/[project].cdx.json`              | SBOM (CycloneDX 형식)     | 5230 + 18974 |
 | `output/sbom/license-report.md`               | 라이선스 분석 리포트      | 5230         |
 | `output/sbom/copyleft-risk.md`                | Copyleft 위험 분석        | 5230         |
 | `output/sbom/sbom-management-plan.md`         | SBOM 관리 계획            | 18974        |
+| `output/sbom/sbom-sharing-template.md`        | SBOM 공유 템플릿          | 5230 + 18974 |
 | `output/vulnerability/cve-report.md`          | CVE 취약점 분석 리포트    | 18974        |
 | `output/vulnerability/remediation-plan.md`    | 취약점 대응 계획          | 18974        |
 | `output/training/curriculum.md`               | 교육 커리큘럼             | 5230 + 18974 |
+| `output/training/completion-tracker.md`       | 교육 이수 추적            | 5230 + 18974 |
+| `output/training/resources.md`                | 교육 리소스 목록          | 5230 + 18974 |
 | `output/conformance/gap-analysis.md`          | 갭 분석 보고서            | 5230 + 18974 |
 | `output/conformance/declaration-draft.md`     | 자체 인증 선언문 초안     | 5230 + 18974 |
+| `output/conformance/submission-guide.md`      | 인증 등록 안내            | 5230 + 18974 |
 
 ---
 
@@ -209,12 +216,12 @@ The web guide and browser-based tools are available at **[trustedoss.github.io/e
 
 ## What We Offer
 
-| Section                                                      | Content                                                                                           |
-| ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------- |
-| [Build Your System](https://trustedoss.github.io/en/docs)    | Step-by-step guide to building an open source governance system based on ISO/IEC 5230 & 18974     |
-| [AI Coding](https://trustedoss.github.io/en/ai-coding/intro) | Automated open source policy compliance for AI coding tools like Claude Code, Cursor, and Copilot |
-| [DevSecOps](https://trustedoss.github.io/en/devsecops/intro) | CI/CD pipeline automation for SAST, SCA, secret detection, container, IaC, and DAST               |
-| [Reference](https://trustedoss.github.io/en/reference/intro) | Policy templates, SBOM samples, and self-certification checklists                                 |
+| Section                                                                 | Content                                                                                           |
+| ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| [Open Source Management](https://trustedoss.github.io/en/docs)          | Step-by-step guide to building an open source governance system based on ISO/IEC 5230 & 18974     |
+| [AI Coding Governance](https://trustedoss.github.io/en/ai-coding/intro) | Automated open source policy compliance for AI coding tools like Claude Code, Cursor, and Copilot |
+| [DevSecOps](https://trustedoss.github.io/en/devsecops/intro)            | CI/CD pipeline automation for SAST, SCA, secret detection, container, IaC, and DAST               |
+| [Reference](https://trustedoss.github.io/en/reference/intro)            | Policy templates, SBOM samples, and self-certification checklists                                 |
 
 ---
 
@@ -249,7 +256,7 @@ cd trustedoss-agents && claude
 You can build your program at two depths:
 
 - **Quick start (1–2 hours)**: short on time? Cover just the Overview, 02 Organization, and 03 Policy chapters to reach a policy draft.
-- **Full course (8–12 hours)**: work through chapters 00–07 in order to complete your self-certification statement.
+- **Full course (about 12–14 hours)**: work through chapters 00–07 in order to complete your self-certification statement.
 
 ---
 
@@ -321,19 +328,20 @@ trustedoss/
 
 ## Chapter List
 
-| Chapter                  | Content                                        | Self-study |
-| ------------------------ | ---------------------------------------------- | ---------- |
-| 00-overview              | Overview of both standards & checklist mapping | 1 hour     |
-| 00-overview/supply-chain | Software supply chain security + SBOM concepts | 1 hour     |
-| 01-setup                 | Environment setup (Docker, Git, Claude Code)   | 30 min     |
-| 02-organization          | Organizational structure & role assignment     | 1 hour     |
-| 03-policy                | Open source policy establishment               | 1 hour     |
-| 04-process               | Open source process design                     | 1 hour     |
-| 05-tools/sbom-generation | SBOM generation                                | 1 hour     |
-| 05-tools/sbom-management | SBOM management & sharing                      | 1 hour     |
-| 05-tools/vulnerability   | Vulnerability analysis & response              | 1 hour     |
-| 06-training              | Training program setup                         | 30 min     |
-| 07-conformance           | Self-certification declaration                 | 30 min     |
+| Chapter                  | Content                                        | Self-study    |
+| ------------------------ | ---------------------------------------------- | ------------- |
+| 00-overview              | Overview of both standards & checklist mapping | 1 hour        |
+| 00-overview/supply-chain | Software supply chain security + SBOM concepts | 1 hour        |
+| 01-setup                 | Environment setup (Docker, Git, Claude Code)   | 30 min–1 hour |
+| 02-organization          | Organizational structure & role assignment     | 1 hour        |
+| 03-policy                | Open source policy establishment               | 1 hour        |
+| 04-process               | Open source process design                     | 1–2 hours     |
+| 05-tools/sbom-generation | SBOM generation                                | 1.5 hours     |
+| 05-tools/sbom-management | SBOM management & sharing                      | 1 hour        |
+| 05-tools/vulnerability   | Vulnerability analysis & response              | 1 hour        |
+| 06-training              | Training program setup                         | 1 hour        |
+| 07-conformance           | Self-certification declaration                 | 2 hours       |
+| 08-developer-guide       | Developer policy enforcement (optional)        | 2 hours       |
 
 ---
 
@@ -349,16 +357,22 @@ trustedoss/
 | `output/process/usage-approval.md`            | Open source usage approval procedure        | 5230         |
 | `output/process/distribution-checklist.md`    | Pre-distribution checklist                  | 5230         |
 | `output/process/vulnerability-response.md`    | Vulnerability response procedure            | 18974        |
+| `output/process/inquiry-response.md`          | External inquiry response procedure         | 5230 + 18974 |
+| `output/process/contribution-process.md`      | Open source contribution process            | 5230         |
 | `output/process/process-diagram.md`           | End-to-end process diagram                  | 5230 + 18974 |
 | `output/sbom/[project].cdx.json`              | SBOM (CycloneDX format)                     | 5230 + 18974 |
 | `output/sbom/license-report.md`               | License analysis report                     | 5230         |
 | `output/sbom/copyleft-risk.md`                | Copyleft risk analysis                      | 5230         |
 | `output/sbom/sbom-management-plan.md`         | SBOM management plan                        | 18974        |
+| `output/sbom/sbom-sharing-template.md`        | SBOM sharing template                       | 5230 + 18974 |
 | `output/vulnerability/cve-report.md`          | CVE vulnerability analysis report           | 18974        |
 | `output/vulnerability/remediation-plan.md`    | Vulnerability remediation plan              | 18974        |
 | `output/training/curriculum.md`               | Training curriculum                         | 5230 + 18974 |
+| `output/training/completion-tracker.md`       | Training completion tracker                 | 5230 + 18974 |
+| `output/training/resources.md`                | Training resource list                      | 5230 + 18974 |
 | `output/conformance/gap-analysis.md`          | Gap analysis report                         | 5230 + 18974 |
 | `output/conformance/declaration-draft.md`     | Self-certification declaration draft        | 5230 + 18974 |
+| `output/conformance/submission-guide.md`      | Certification registration guide            | 5230 + 18974 |
 
 ---
 

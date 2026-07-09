@@ -120,7 +120,7 @@ POSITIONING.md 정체성에 맞춰 시스템·콘텐츠 고도화. 계획은 승
 
 **수정 시 체크리스트:**
 
-1. 파일 수정 후 `bash .claude/scripts/verify.sh` — 11/11 PASS 확인
+1. 파일 수정 후 `bash .claude/scripts/verify.sh` — 12/12 PASS 확인
 2. `git commit`
 
 ---

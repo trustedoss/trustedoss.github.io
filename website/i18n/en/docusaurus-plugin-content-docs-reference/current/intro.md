@@ -11,7 +11,6 @@ This section contains reference materials needed to build an open source managem
 ## Output Best Practice
 
 This is a complete example of the output produced by the agent at each stage.
-We provide 3 profiles by size (startup / small business / large company).
 Check the missing items by comparing them with the results of your `output/` folder.
 
 | output                                                                   | Response Agent        | Go to                                           |

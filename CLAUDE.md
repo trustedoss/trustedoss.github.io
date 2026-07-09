@@ -22,7 +22,7 @@ ISO/IEC 5230 (라이선스 컴플라이언스)과 ISO/IEC 18974 (보안 보증) 
 
 1. **브랜드** — `POSITIONING.md §5` 준수. 제품(포털) 팔레트에 굴복 금지, 중립 공용 토큰 원칙. 브랜드 토큰(주색상·폰트·로고) 변경 시 POSITIONING 근거를 명시한다.
 2. **최소 변경** — 무분별한 재디자인 금지. 고도화 목표에 직접 기여하는 변경만 한다.
-3. **검증** — 변경 후 `verify.sh` 11/11, 디자인/코드 변경 시 `cd website && npm run build` 통과.
+3. **검증** — 변경 후 `verify.sh` 12/12, 디자인/코드 변경 시 `cd website && npm run build` 통과.
 4. **큰 변경은 확인** — 대규모 구조·디자인 변경은 방향을 사용자에게 먼저 확인한다.
 
 `website/src/css/customTheme.scss` 의 sidebar 계층·테이블 가독성 CSS는 위 가드레일과 무관하게 계속 허용한다.
@@ -110,7 +110,7 @@ bash .claude/scripts/verify.sh
 bash .claude/scripts/verify.sh
 ```
 
-검증 항목: Docusaurus 빌드 / 내부 링크 / front matter YAML / 필수 파일 / 로컬 경로 노출 / **18974 섹션 번호 형식** / **agent 실행 admonition 누락** / ISO 커버리지 정합성 / **output/ 산출물 완전성**
+검증 항목: Docusaurus 빌드 / 내부 링크 / front matter YAML / 필수 파일 / 로컬 경로 노출 / **18974 섹션 번호 형식** / **agent 실행 admonition 누락** / ISO 커버리지 정합성 / **output/ 산출물 완전성** / Agent 스펙 구조 / 골든 픽스처 회귀 / agent 체인 연결
 모든 항목 PASS 후에만 push 가능. push 전 5단계 절차는 `CONTRIBUTING.md` 참조.
 
 **verify.sh FAIL 처리 기준**: FAIL 항목이 이번 변경 이전부터 존재하던 것인지 먼저 확인하라. git diff로 해당 파일을 건드리지 않았다면 기존 이슈로 간주하고 조사하지 않는다. 새로 발생한 FAIL만 수정한다.
@@ -193,7 +193,7 @@ ISO/IEC 5230과 18974는 섹션 번호 체계가 다르다. 혼용하면 verify.
 
 매 작업 세션 종료 전 아래를 순서대로 실행하라.
 
-- [ ] bash .claude/scripts/verify.sh 실행 후 11/11 모두 PASS 확인
+- [ ] bash .claude/scripts/verify.sh 실행 후 12/12 모두 PASS 확인
 - [ ] .claude/progress.md 업데이트
       (완료 항목 체크, 다음 작업 갱신)
 - [ ] 이번 세션에서 구조 변경이 있었으면 CLAUDE.md도 업데이트

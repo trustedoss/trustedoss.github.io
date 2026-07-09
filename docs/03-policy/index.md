@@ -48,7 +48,7 @@ CVE·SBOM·Copyleft 등 낯선 약어는 [용어집](/reference/glossary)에서 
 두 표준 모두 허용 범위, 라이선스 의무 이행 절차, 담당자, 위반 처리 절차, 검토 주기를 공통으로 요구합니다. ISO/IEC 18974는 여기에 더해 취약점 대응 절차, 보안 취약점 공개 정책, 프로그램 성과 지표(KPI)를 추가로 요구합니다. 또한 두 표준 모두 정책 문서의 존재만으로는 부족하며, 실제로 직원들이 접근할 수 있고 인지하고 있어야 한다고 요구합니다.
 
 :::tip
-정책에 포함해야 할 항목의 상세 설명과 예시 정책 문서는 [KWG 오픈소스 가이드 — 정책](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/2-policy/)를 참조하세요.
+정책에 포함해야 할 항목의 상세 설명과 예시 정책 문서는 [KWG 오픈소스 가이드 — 정책](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/2-policy/)를 참조하세요. 이 챕터의 구조와 요구사항 설명은 해당 KWG 가이드(CC BY 4.0)를 기반으로 재구성했습니다.
 :::
 
 #### ISO/IEC 18974 §4.1.4.2 — 프로그램 성과 지표

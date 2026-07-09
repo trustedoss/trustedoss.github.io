@@ -32,7 +32,7 @@ trustedoss에 기여해주셔서 감사합니다.
 
 ```
 Step 1   /qa changed                               # 품질 검증 (Claude 세션 필요)
-Step 2   bash .claude/scripts/verify.sh            # 11/11 PASS 확인
+Step 2   bash .claude/scripts/verify.sh            # 12/12 PASS 확인
 Step 3   .claude/progress.md 업데이트              # 완료 항목·다음 작업 갱신
 Step 4   git add -p && git commit -m "..."         # 변경 파일 선택적 스테이징
 Step 5   git push                                  # 모든 검증 통과 후에만
@@ -57,7 +57,7 @@ Step 5   git push                                  # 모든 검증 통과 후에
 
 ## verify.sh FAIL 시 자주 발생하는 오류
 
-### [1/11] Docusaurus 빌드 실패
+### [1/12] Docusaurus 빌드 실패
 
 ```
 FAIL: Docusaurus 빌드 실패
@@ -68,7 +68,7 @@ FAIL: Docusaurus 빌드 실패
 
 ---
 
-### [2/11] 내부 링크 오류
+### [2/12] 내부 링크 오류
 
 ```
 FAIL: 깨진 링크 발견
@@ -79,7 +79,7 @@ FAIL: 깨진 링크 발견
 
 ---
 
-### [3/11] front matter YAML 오류
+### [3/12] front matter YAML 오류
 
 ```
 FAIL: front matter YAML 오류
@@ -90,7 +90,7 @@ FAIL: front matter YAML 오류
 
 ---
 
-### [5/11] 로컬 경로 노출
+### [5/12] 로컬 경로 노출
 
 ```
 FAIL: 로컬 사용자 경로 노출
@@ -101,7 +101,7 @@ FAIL: 로컬 사용자 경로 노출
 
 ---
 
-### [6/11] ISO 섹션 번호 형식 오류
+### [6/12] ISO 섹션 번호 형식 오류
 
 ```
 FAIL: 18974 섹션 번호 형식 오류
@@ -117,7 +117,7 @@ FAIL: 18974 섹션 번호 형식 오류
 
 ---
 
-### [7/11] agent 실행 admonition 누락
+### [7/12] agent 실행 admonition 누락
 
 ```
 FAIL: agent 실행 admonition 누락
@@ -176,7 +176,7 @@ If design or code changes appear necessary, stop work and open an issue for disc
 
 ```
 Step 1   /qa changed                               # Quality check (requires Claude session)
-Step 2   bash .claude/scripts/verify.sh            # Confirm 11/11 PASS
+Step 2   bash .claude/scripts/verify.sh            # Confirm 12/12 PASS
 Step 3   Update .claude/progress.md               # Check completed items, update next tasks
 Step 4   git add -p && git commit -m "..."         # Stage files selectively
 Step 5   git push                                  # Only after all checks pass
@@ -201,7 +201,7 @@ Step 5   git push                                  # Only after all checks pass
 
 ## Common verify.sh FAIL Errors
 
-### [1/11] Docusaurus Build Failure
+### [1/12] Docusaurus Build Failure
 
 ```
 FAIL: Docusaurus 빌드 실패
@@ -212,7 +212,7 @@ FAIL: Docusaurus 빌드 실패
 
 ---
 
-### [2/11] Broken Internal Links
+### [2/12] Broken Internal Links
 
 ```
 FAIL: 깨진 링크 발견
@@ -223,7 +223,7 @@ FAIL: 깨진 링크 발견
 
 ---
 
-### [3/11] Front Matter YAML Error
+### [3/12] Front Matter YAML Error
 
 ```
 FAIL: front matter YAML 오류
@@ -234,7 +234,7 @@ FAIL: front matter YAML 오류
 
 ---
 
-### [5/11] Local Path Exposed
+### [5/12] Local Path Exposed
 
 ```
 FAIL: 로컬 사용자 경로 노출
@@ -245,7 +245,7 @@ FAIL: 로컬 사용자 경로 노출
 
 ---
 
-### [6/11] ISO Section Number Format Error
+### [6/12] ISO Section Number Format Error
 
 ```
 FAIL: 18974 섹션 번호 형식 오류
@@ -261,7 +261,7 @@ FAIL: 18974 섹션 번호 형식 오류
 
 ---
 
-### [7/11] Missing Agent Execution Admonition
+### [7/12] Missing Agent Execution Admonition
 
 ```
 FAIL: agent 실행 admonition 누락

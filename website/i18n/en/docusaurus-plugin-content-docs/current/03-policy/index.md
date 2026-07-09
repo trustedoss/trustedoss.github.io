@@ -40,7 +40,7 @@ Having a written policy provides a basis for proving that a violation was "unint
 
 Both standards require a common set of items: the acceptable scope of use, procedures for fulfilling license obligations, the person in charge, a violation-handling procedure, and a review cycle. ISO/IEC 18974 additionally requires vulnerability response procedures, a security vulnerability disclosure policy, and program performance indicators (KPIs). For both standards, the mere existence of a policy document is not enough; employees must actually be able to access it and be aware of it.
 
-> Detailed descriptions of the items a policy should include, along with an example policy document, are available in the [KWG Open Source Guide — Policy](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/2-policy/).
+> Detailed descriptions of the items a policy should include, along with an example policy document, are available in the [KWG Open Source Guide — Policy](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/2-policy/). This chapter's structure and requirement descriptions are reworked from that KWG guide (CC BY 4.0).
 
 #### ISO/IEC 18974 §4.1.4.2 — Program performance indicators
 

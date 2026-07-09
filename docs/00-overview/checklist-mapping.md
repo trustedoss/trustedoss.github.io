@@ -21,6 +21,11 @@ sidebar_position: 2
 모든 agent의 CLAUDE.md는 이 문서를 참조하여 어떤 표준 요구사항을 충족하는 산출물을
 어느 모듈에서 생성하는지 파악합니다.
 
+**원문 근거**: 각 항목의 표준 원문 해설과 템플릿은 OpenChain KWG(CC BY 4.0)의
+[기업 오픈소스 관리 가이드](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/)와
+[정책·프로세스 템플릿](https://openchain-project.github.io/OpenChain-KWG/guide/templates/)을 참조하세요.
+이 매핑의 챕터·산출물 구조는 해당 가이드를 기반으로 재구성한 것입니다.
+
 ### 이 문서를 읽는 방법
 
 1. **두 표준 비교 표** → 각 표준의 목적과 범위를 먼저 파악한다
