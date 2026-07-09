@@ -97,6 +97,25 @@ Recommended retention period: the software release's maintenance period plus at 
 - The applicable software version
 - A contact name and contact details
 
+### Conversely, receiving SBOMs from suppliers and outsourced deliverables
+
+Just as important as providing an SBOM is requesting and verifying the SBOM of software you
+**receive** from outside. Code developed by a supplier also contains open source, and its risk
+becomes your product's risk.
+
+- **Put it in the contract**: require an SBOM (CycloneDX or SPDX) to accompany deliverables as a
+  contract or purchase-order condition.
+- **Verify the received SBOM**: do not take it on faith — re-check licenses and vulnerabilities
+  with an SCA tool. When you cannot obtain the source, scan the delivered binary or container with
+  SCA and cross-check.
+- **Handle mismatches**: if the SBOM differs from the actual composition or a risk is found, share
+  it with the supplier and require resolution.
+
+To connect a received SBOM to vulnerability management, see
+[5.3 Vulnerability Analysis and Response](../vulnerability/index.md); for continuous operational
+verification, [TRUSCA](https://github.com/trustedoss/trusca) (a self-hosted SCA that ingests a
+received SBOM, scores its conformance, and tracks vulnerabilities) can help.
+
 ---
 
 ### Continuous vulnerability monitoring after deployment (post-release)
