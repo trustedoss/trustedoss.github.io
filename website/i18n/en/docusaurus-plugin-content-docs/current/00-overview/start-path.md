@@ -17,7 +17,7 @@ The fastest route differs depending on your goal. Choose the case closest to you
 
 This is the path of building a standards-based management system from scratch all the way to an OpenChain self-certification declaration.
 
-Grasp the full journey in the [Overview](./index.md) and proceed in order starting from [Environment preparation](../01-setup/index.md). The core outputs are the [Open source policy](../03-policy/index.md) and the [Self-certification declaration](../07-conformance/index.md).
+Grasp the full journey in the [Overview](./index.md) and proceed in order starting from [Environment preparation](../01-setup/index.md). The core outputs are the [Open source policy](../03-policy/index.md) and the [Self-certification declaration](../07-conformance/index.md). The full course takes about 12–14 hours; if you are short on time, a 1–2 hour quick start covers just the overview, chapter 02 (organization), and chapter 03 (policy).
 
 ## 2. All the way to automation with your dev team
 
