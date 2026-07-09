@@ -211,11 +211,11 @@ Completing this lab will meet the requirements below:
 
 **ISO/IEC 5230**
 
-| Item ID | Requirements                              | Self-certification checklist                                                                          |
-| ------- | ----------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| 3.3.1   | SBOM creation and management              | Do you have a process for creating and managing a bill of materials for each supply software release? |
-| 3.3.2   | License Identification and Classification | Do you have a process for identifying the licenses applicable to supply software?                     |
-| 3.4.1   | Preparing compliance deliverables         | Do you have a process for creating the necessary compliance artifacts?                                |
+| Item ID | Requirements                      | Self-certification checklist                                                                          |
+| ------- | --------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| 3.3.1   | SBOM creation and management      | Do you have a process for creating and managing a bill of materials for each supply software release? |
+| 3.3.2   | Handling of license use cases     | Do you have a documented procedure for handling the common open source license use cases?             |
+| 3.4.1   | Preparing compliance deliverables | Do you have a process for creating the necessary compliance artifacts?                                |
 
 **ISO/IEC 18974**
 

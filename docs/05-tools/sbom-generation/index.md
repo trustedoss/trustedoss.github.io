@@ -229,7 +229,7 @@ docker run --rm \
 | 항목 ID | 요구사항                 | 자체인증 체크리스트                                                                                   |
 | ------- | ------------------------ | ----------------------------------------------------------------------------------------------------- |
 | 3.3.1   | SBOM 생성 및 관리        | Do you have a process for creating and managing a bill of materials for each supply software release? |
-| 3.3.2   | 라이선스 식별 및 분류    | Do you have a process for identifying the licenses applicable to supply software?                     |
+| 3.3.2   | 라이선스 사용 사례 처리  | Do you have a documented procedure for handling the common open source license use cases?             |
 | 3.4.1   | 컴플라이언스 산출물 준비 | Do you have a process for creating the necessary compliance artifacts?                                |
 
 **ISO/IEC 18974**

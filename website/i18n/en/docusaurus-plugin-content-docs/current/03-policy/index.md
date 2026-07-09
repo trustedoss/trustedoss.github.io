@@ -24,7 +24,7 @@ When you run `agents/03-policy-generator`, it asks five questions — including 
 There are cases where open source license violations have led to real legal disputes.
 
 **Artifex vs. Hancom (2017)**
-Hancom Office used Ghostscript (a PDF rendering engine) distributed under the GPL license in its product without permission. Artifex Software filed suit in a California court, and in the first trial the court ruled that the GPL license was legally binding as a contract. This case shows that an open source license violation goes beyond a simple copyright issue and can result in liability for breach of contract.
+Hancom Office used Ghostscript (a PDF rendering engine) distributed under the GPL license in its product without permission. Artifex Software filed suit in a California court, and the court denied the motion to dismiss, holding that a GPL violation can proceed as a breach-of-contract claim. The case was later settled. This case shows that an open source license violation goes beyond a simple copyright issue and can result in liability for breach of contract.
 
 **Problems that arise in practice without a policy**
 

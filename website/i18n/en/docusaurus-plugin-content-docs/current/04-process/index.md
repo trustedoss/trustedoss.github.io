@@ -298,7 +298,7 @@ Completing this exercise meets the requirements below:
 | ------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
 | 3.1.5   | License obligations review process                          | Do you have a documented procedure to review and record the obligations, restrictions, and rights granted by each identified license? |
 | 3.2.1   | Procedure for receiving external license/security inquiries | Do you have a documented procedure for receiving and handling inquiries about open source compliance?                                 |
-| 3.3.2   | Compliance preparation before distribution                  | Do you have a process for creating the necessary compliance artifacts for each distribution?                                          |
+| 3.3.2   | Procedure for handling license use cases                    | Do you have a documented procedure for handling the common open source license use cases for the components in your supply software?  |
 | 3.4.1   | Compliance artifact management                              | Do you have a process to ensure compliance artifacts accompany each distribution?                                                     |
 | 3.5.1   | Open source contribution management process                 | Do you have a process for contributing to open source projects?                                                                       |
 

@@ -273,7 +273,7 @@ ls output/process/
 | ------- | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
 | 3.1.5   | 라이선스 의무사항 검토 절차       | Do you have a documented procedure to review and record the obligations, restrictions, and rights granted by each identified license? |
 | 3.2.1   | 외부 라이선스·보안 문의 수신 절차 | Do you have a documented procedure for receiving and handling inquiries about open source compliance?                                 |
-| 3.3.2   | 배포 전 컴플라이언스 준비         | Do you have a process for creating the necessary compliance artifacts for each distribution?                                          |
+| 3.3.2   | 라이선스 사용 사례 처리 절차      | Do you have a documented procedure for handling the common open source license use cases for the components in your supply software?  |
 | 3.4.1   | 컴플라이언스 산출물 관리          | Do you have a process to ensure compliance artifacts accompany each distribution?                                                     |
 | 3.5.1   | 오픈소스 기여 관리 절차           | Do you have a process for contributing to open source projects?                                                                       |
 

@@ -25,13 +25,13 @@ Even when policies and processes exist, they will not work if people do not know
 
 **ISO/IEC 5230 (License Compliance)**
 
-- **3.1.2 (G1.4)**: Ensure that program participants are aware of the existence of the open source license compliance policy.
+- **3.1.2 (G1.4)**: Ensure that program participants have the competence needed for their roles, with documented evidence such as completed training.
 - **3.1.3 (G2.3)**: Ensure that program participants understand the policy goals, their contributions, and their relevant roles.
 
 **ISO/IEC 18974 (Security Assurance)**
 
-- **3.1.2 (G1.4)**: Ensure that program participants are aware of the existence of a security assurance policy.
-- **3.1.3 (G2.3)**: Ensure that program participants understand the goals of the security assurance policy and their roles.
+- **4.1.2 (G1.4)**: Ensure that program participants have the competence needed for their security assurance roles, with documented evidence.
+- **4.1.3 (G2.3)**: Ensure that program participants understand the goals of the security assurance policy and their roles.
 
 > This step meets the requirements of ISO/IEC 5230 G1.4 (3.1.2), G2.3 (3.1.3) and ISO/IEC 18974 G1.4 (4.1.2), G2.3 (4.1.3).
 

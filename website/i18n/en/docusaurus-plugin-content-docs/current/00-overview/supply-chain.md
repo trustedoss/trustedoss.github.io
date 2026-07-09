@@ -65,7 +65,7 @@ The build pipeline that produces the software can itself be a target. You need a
 An injection vulnerability was found in Apache Log4j 2, a logging library used almost universally across Java applications. It abused JNDI (Java Naming and Directory Interface), letting an attacker achieve remote code execution (RCE) with a single specially crafted string.
 
 **Scope of impact**
-Hundreds of millions of systems worldwide were affected, covering the services of virtually every major technology company — Apple, Amazon, Tesla, Twitter, and more. Millions of exploit attempts were detected within 72 hours of disclosure.
+Hundreds of millions of systems worldwide were affected, covering the services of virtually every major technology company — Apple, Amazon, Tesla, Twitter, and more. About 800,000 exploit attempts were detected within 72 hours of disclosure, and millions over the following weeks.
 
 **Lesson**
 You cannot even patch what you cannot find. With an SBOM, every system using Log4j could have been identified and remediated immediately.
@@ -78,7 +78,7 @@ You cannot even patch what you cannot find. With an SBOM, every system using Log
 Over two years, an attacker using the pseudonym "Jia Tan" contributed to the XZ Utils open source project, posing as a trustworthy maintainer. After building credibility through steady contributions, they committed malicious code that planted a backdoor in sshd (the SSH daemon). A widespread compromise was averted only because a developer noticed anomalies just before the release shipped.
 
 **Scope of impact**
-Major Linux distributions including Fedora, Debian, and Ubuntu had already pulled in the vulnerable versions. Had discovery been delayed by even a few days, backdoors would have landed on millions of servers.
+Development and beta channels of major distributions — Fedora beta, Debian testing, openSUSE Tumbleweed — had pulled in the vulnerable versions, and the discovery came just before stable releases. Had discovery been delayed by even a few days, backdoors would have landed on millions of servers.
 
 **Lesson**
 The identity and long-term behavior of open source contributors deserve scrutiny. The health of the open source projects you depend on — their governance and maintainer activity — is also part of supply chain security.
