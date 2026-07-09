@@ -140,7 +140,7 @@ jobs:
   license-check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: SBOM 생성
         run: |
           docker run --rm -v $(pwd):/project \

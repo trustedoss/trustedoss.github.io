@@ -31,7 +31,7 @@ jobs:
     name: 라이선스 정책 검사
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: syft로 SBOM 생성
         uses: anchore/sbom-action@v0
@@ -61,22 +61,24 @@ jobs:
     name: 취약점 검사 (High 이상 차단)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: grype로 취약점 스캔
-        uses: anchore/scan-action@v3
+        id: scan
+        uses: anchore/scan-action@v7
         with:
           path: '.'
           fail-build: true
           severity-cutoff: high # High / Critical 취약점 발견 시 머지 차단
-          output-format: sarif # 아래 업로드 단계의 results.sarif 를 생성
+          output-format: sarif # 결과 파일 경로는 아래에서 outputs 로 참조
 
       - name: 취약점 보고서 업로드
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: vulnerability-report
-          path: results.sarif
+          # v6부터 결과 파일이 임시 경로에 생성되어 outputs 로 참조합니다.
+          path: ${{ steps.scan.outputs.sarif }}
 ```
 
 > 이 단계는 ISO/IEC 18974 G3S.1 (알려진 취약점 식별) 요구사항의 **자동화된 지속 검증**을 지원합니다.

@@ -31,7 +31,7 @@ jobs:
     name: License policy check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Generate SBOM with syft
         uses: anchore/sbom-action@v0
@@ -61,10 +61,11 @@ jobs:
     name: vulnerability check (block High or above)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Scan vulnerabilities with grype
-        uses: anchore/scan-action@v3
+        id: scan
+        uses: anchore/scan-action@v7
         with:
           path: '.'
           fail-build: true
@@ -73,10 +74,11 @@ jobs:
 
       - name: vulnerability upload report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: vulnerability-report
-          path: results.sarif
+          # Since v6 the result file is written to a temp path; reference it via outputs.
+          path: ${{ steps.scan.outputs.sarif }}
 ```
 
 > This step is ISO/IEC 18974 G3S.1(Identify known vulnerabilities)Supports **automated continuous verification** of requirements.

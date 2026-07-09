@@ -55,7 +55,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       # 1. SBOM 생성
       - name: Generate SBOM
@@ -66,7 +66,7 @@ jobs:
 
       # 2. 취약점 스캔 — High 이상 발견 시 빌드 실패
       - name: Scan vulnerabilities
-        uses: anchore/scan-action@v3
+        uses: anchore/scan-action@v7
         with:
           sbom: sbom.cdx.json
           fail-build: true
@@ -90,7 +90,7 @@ jobs:
 
       # 4. SBOM 아티팩트 보관
       - name: Upload SBOM
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: sbom
           path: sbom.cdx.json

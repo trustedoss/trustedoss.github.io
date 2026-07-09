@@ -68,7 +68,7 @@ jobs:
   sbom:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Generate SBOM with syft
         run: |
           docker run --rm \
@@ -77,7 +77,7 @@ jobs:
             /project --output cyclonedx-json \
             > sbom.cdx.json
       - name: Upload SBOM as artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: sbom
           path: sbom.cdx.json

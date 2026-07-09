@@ -147,7 +147,7 @@ jobs:
   sca-scan:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Generate SBOM
         uses: anchore/sbom-action@v0
@@ -156,14 +156,14 @@ jobs:
           output-file: sbom.cdx.json
 
       - name: Scan for new CVEs
-        uses: anchore/scan-action@v3
+        uses: anchore/scan-action@v7
         with:
           sbom: sbom.cdx.json
           fail-build: true
           severity-cutoff: critical
 
       - name: Upload SBOM
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: sbom-scheduled-${{ github.run_id }}
           path: sbom.cdx.json

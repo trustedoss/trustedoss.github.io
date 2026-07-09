@@ -86,7 +86,7 @@ jobs:
   oss-check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: License Scan
         run: |
           # 라이선스 스캔 후 허용 목록 대조

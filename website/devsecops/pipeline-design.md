@@ -59,10 +59,10 @@ jobs:
   secret-detection:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
-      - uses: gitleaks/gitleaks-action@v2
+      - uses: gitleaks/gitleaks-action@v3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -73,7 +73,7 @@ jobs:
     container:
       image: semgrep/semgrep
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - run: semgrep ci
         env:
           SEMGREP_RULES: p/owasp-top-ten p/security-audit
@@ -82,18 +82,18 @@ jobs:
     runs-on: ubuntu-latest
     needs: secret-detection
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: anchore/sbom-action@v0
         with:
           format: cyclonedx-json
           output-file: sbom.cdx.json
-      - uses: anchore/scan-action@v3
+      - uses: anchore/scan-action@v7
         with:
           sbom: sbom.cdx.json
           fail-build: true
           severity-cutoff: high
           config: .grype.yaml
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: sbom-${{ github.sha }}
           path: sbom.cdx.json
@@ -102,7 +102,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: secret-detection
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: bridgecrewio/checkov-action@master
         with:
           directory: .
@@ -125,7 +125,7 @@ jobs:
   container-security:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Build image
         run: docker build -t myapp:${{ github.sha }} .
       - uses: aquasecurity/trivy-action@master
@@ -139,7 +139,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: container-security
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Start application
         run: |
           docker compose up -d
@@ -148,7 +148,7 @@ jobs:
         with:
           target: http://localhost:8080
           fail_action: false # 초기 도입 시 Soft Fail
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: zap-report-${{ github.sha }}

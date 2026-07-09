@@ -65,7 +65,7 @@ jobs:
   trivy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Build image
         run: docker build -t myapp:${{ github.sha }} .
@@ -93,7 +93,7 @@ jobs:
           format: cyclonedx
           output: sbom.cdx.json
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: container-sbom-${{ github.sha }}
           path: sbom.cdx.json

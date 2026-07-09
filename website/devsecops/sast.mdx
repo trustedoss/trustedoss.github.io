@@ -55,7 +55,7 @@ jobs:
     container:
       image: semgrep/semgrep
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Run Semgrep
         run: semgrep ci
@@ -122,20 +122,20 @@ jobs:
       security-events: write
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@v3
+        uses: github/codeql-action/init@v4
         with:
           languages: javascript, python
+          # 인터프리터 언어는 빌드가 불필요합니다.
+          # 컴파일 언어(java, cpp 등)는 build-mode: autobuild 를 사용하세요.
+          build-mode: none
           # 지원 언어: javascript, python, java,
           #            cpp, csharp, go, ruby, swift
 
-      - name: Autobuild
-        uses: github/codeql-action/autobuild@v3
-
       - name: Analyze
-        uses: github/codeql-action/analyze@v3
+        uses: github/codeql-action/analyze@v4
         with:
           category: '/language:javascript'
 ```

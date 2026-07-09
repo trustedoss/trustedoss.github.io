@@ -51,7 +51,7 @@ jobs:
   zap:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       # 앱 실행 (예: Docker Compose)
       - name: Start application
@@ -76,7 +76,7 @@ jobs:
           fail_action: true
 
       - name: Upload ZAP report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         if: always()
         with:
           name: zap-report
@@ -125,7 +125,7 @@ jobs:
   nuclei:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Start application
         run: |
@@ -141,7 +141,7 @@ jobs:
           flags: '-t cves/ -t misconfiguration/ -t exposures/ -severity medium,high,critical -o nuclei.log'
 
       - name: Upload Nuclei report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         if: always()
         with:
           name: nuclei-report

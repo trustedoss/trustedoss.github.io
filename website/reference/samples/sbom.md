@@ -276,7 +276,7 @@ jobs:
   generate-sbom:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: SBOM 생성 (CycloneDX)
         run: |
@@ -289,7 +289,7 @@ jobs:
           grype sbom:sbom.cdx.json
 
       - name: SBOM 저장
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: sbom-${{ github.sha }}
           path: sbom.cdx.json
