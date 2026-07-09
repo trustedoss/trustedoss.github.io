@@ -143,6 +143,7 @@ trustedoss/
 | 05-tools/sbom-generation | SBOM 생성                            | 1.5시간    |
 | 05-tools/sbom-management | SBOM 관리 및 공유                    | 1시간      |
 | 05-tools/vulnerability   | 취약점 분석 및 대응                  | 1시간      |
+| 05-tools/ai-sbom         | AI SBOM — 모델 ML-BOM 생성 (선택)    | 1시간      |
 | 06-training              | 교육 체계 구축                       | 1시간      |
 | 07-conformance           | 자체 인증 선언                       | 2시간      |
 | 08-developer-guide       | 개발자 정책 적용 (선택)              | 2시간      |
@@ -339,6 +340,7 @@ trustedoss/
 | 05-tools/sbom-generation | SBOM generation                                | 1.5 hours     |
 | 05-tools/sbom-management | SBOM management & sharing                      | 1 hour        |
 | 05-tools/vulnerability   | Vulnerability analysis & response              | 1 hour        |
+| 05-tools/ai-sbom         | AI SBOM — model ML-BOM generation (optional)   | 1 hour        |
 | 06-training              | Training program setup                         | 1 hour        |
 | 07-conformance           | Self-certification declaration                 | 2 hours       |
 | 08-developer-guide       | Developer policy enforcement (optional)        | 2 hours       |
