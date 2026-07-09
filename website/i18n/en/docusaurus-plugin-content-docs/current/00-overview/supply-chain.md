@@ -94,14 +94,20 @@ Supply chain security is moving beyond voluntary best practice and becoming a le
 **Background**
 In response to a series of large-scale supply chain attacks such as SolarWinds and Microsoft Exchange, the Biden administration signed this cybersecurity executive order in May 2021.
 
-**Key requirements**
+**Key content and what changed since**
 
-- Mandatory submission of an **SBOM for software delivered to the federal government**
-- Conformance with the **SBOM minimum elements** defined by the NTIA (National Telecommunications and Information Administration)
-- Confirmation of compliance with secure software development practices
+- It directed agencies to establish SBOM guidance for software delivered to the federal government,
+  and the **SBOM minimum elements** defined by the NTIA (National Telecommunications and Information
+  Administration) date from this effort.
+- The administration's course has since changed: EO 14306 (2025-06) removed the SBOM artifact
+  requirements, and OMB M-26-05 (2026-02) rescinded the blanket attestation mandates, moving to a
+  **risk-based, per-agency approach**.
 
 **Impact on companies**
-Companies that supply the U.S. federal government directly are affected immediately. Because the same requirements increasingly flow down the indirect supply chain (through subcontracting by the supplier), most companies operating in the U.S. market should assume they will be affected too.
+The blanket SBOM mandate for U.S. federal procurement has been relaxed, but the NTIA minimum
+elements remain the de facto SBOM standard, and the practical SBOM demands now come from the EU CRA
+and customer procurement contracts. Companies active in the U.S. market should prepare for
+contract-level requirements.
 
 ---
 
@@ -114,7 +120,8 @@ An EU-wide regulation adopted in 2024 to strengthen the cybersecurity of digital
 
 - Apply security requirements to digital products placed on the EU market (software included)
 - Mandatory management of the open source component list and remediation of vulnerabilities
-- Full enforcement scheduled for 2027
+- **Reporting duties for actively exploited vulnerabilities and severe incidents apply first, from
+  2026-09-11**; the essential requirements apply in full from 2027-12-11.
 
 **Penalties**
 For non-compliance, up to **EUR 15 million** or **2.5% of annual global turnover**, whichever is greater.
