@@ -3,6 +3,24 @@
 > 목적: 긴 세션에서 히스토리가 유실돼도 이 파일만 보면 즉시 재개 가능. 매 task 후 갱신·커밋한다.
 > 최종 갱신: 2026-07-09
 
+## 후속 작업 (followup-plan, 2026-07-09) — 진행 중
+
+> 계획 승인본: docs/\_plan/followup-plan.md. 재개 시 미체크 청크부터.
+> DoD = 수정 + en 쌍 + verify 12/12(커밋 게이트), 순위 종료마다 gate-verifier 역순 판정.
+
+- [ ] 1순위 S1: 고아 페이지 2건 삭제 (docs/intro, 01-setup/method1 + en 쌍)
+- [ ] 1순위 S2: iso42001.md 전재 축약 (60~80행 재구성 + CC BY)
+- [ ] 1순위 S3: devsecops mdx 4종 섹션 순서 (분석기를 설정 직후로)
+- [ ] 1순위 S4: SLA·VEX 정본 참조 (sca 강화안 명시 + concepts 링크)
+- [ ] 1순위 게이트
+- [ ] 2순위 B1~B3: BomLens 소개 (sbom-generation, glossary, sbom-101, en)
+- [ ] 3순위 K1: 취약점 템플릿 상향 + 다운스트림 재생성
+- [ ] 3순위 K2: 정책 용어 부록 (본문 단일 표기 유지)
+- [ ] 3순위 K3: 조직 챔피언 모델·검증 담당 역할
+- [ ] 2·3순위 게이트
+- [ ] 4순위 P2-a~d: minor 일괄 (도구 명령 / 구조·문체 / en / Rules 단일화·하네스)
+- [ ] 최종 게이트 + STATUS 마감
+
 ## Summit P1 수정 작업 (2026-07-09) — 완료
 
 > 근거: summit-review-findings.md P1 절. 범위: 동작·정확성 계열 13건 + Node20 액션 일괄.
