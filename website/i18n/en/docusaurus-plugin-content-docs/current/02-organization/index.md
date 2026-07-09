@@ -1,7 +1,7 @@
 ---
 id: index
-title: organizational structure
-sidebar_label: organizational structure
+title: Organizational Structure
+sidebar_label: Organizational Structure
 sidebar_position: 1
 date: 2026-03-20
 version: '1.0'
@@ -270,7 +270,9 @@ _(R = Responsible, A = Accountable, C = Consulted, I = Informed)_
 - [ ] Open source contact name and contact details defined
 - [ ] External inquiry email/channel specified
 
-> 📋 **Example output**: See the actual format of the generated files in [Organizational output best practices](/reference/samples/organization).
+:::tip[Example output]
+See the actual format of the generated files in [Organizational output best practices](/reference/samples/organization).
+:::
 
 ---
 

@@ -240,6 +240,40 @@ This policy is reviewed and updated at the following intervals or when reasons a
 
 ---
 
+### Appendix A. Definitions
+
+```
+Related Standards
+- KWG policy template §2 (Definitions)
+```
+
+| Term                     | Definition                                                                                                                                                                                    |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| SBOM                     | Software Bill of Materials. A list of the open source components, their versions, and licenses included in a product (SPDX or CycloneDX format).                                              |
+| License obligations      | Conditions that must be fulfilled when using open source, such as attribution, copyright notices, and source code disclosure.                                                                 |
+| Copyleft                 | A license type that requires derivative works to be released under the same license (GPL, AGPL, etc.).                                                                                        |
+| Permissive               | A license type with few restrictions, centered on notice obligations (MIT, Apache-2.0, BSD, etc.).                                                                                            |
+| Vulnerability (CVE)      | A publicly identified security flaw. Severity is expressed as a CVSS score.                                                                                                                   |
+| Distribution participant | A member involved in providing the company's software to external parties.                                                                                                                    |
+| Self-certification       | The procedure of declaring on one's own that the OpenChain (ISO/IEC 5230 and 18974) requirements are met.                                                                                     |
+| OSPO                     | Open Source Program Office. The industry-standard name for a dedicated open source management organization. Corresponds to the "open source organization" in this policy.                     |
+| OSPM                     | Open Source Program Manager. The industry-standard name for the manager of an open source program. Corresponds to the "open source manager" in this policy.                                   |
+| OSRB                     | Open Source Review Board. The industry-standard name for a review board that deliberates on open source use and release. Small organizations may substitute a review by the person in charge. |
+
+> The body of this policy uses the single terms "open source manager" and "open source organization" for beginner readability.
+> Refer to the mapping above when comparing this policy with external documents or the KWG template.
+
+### Appendix B. Releasing internal projects as open source
+
+```
+Related Standards
+- KWG policy template §8 (Open-sourcing internal projects)
+```
+
+When software developed inside Tech Unicorn is released as open source, it goes through prior approval, intellectual property and security review, license selection, notice preparation, and post-release management. The detailed procedure follows `output/process/project-publication-process.md` (process deliverable).
+
+---
+
 ## List of permitted licenses
 
 Document: license-allowlist.md

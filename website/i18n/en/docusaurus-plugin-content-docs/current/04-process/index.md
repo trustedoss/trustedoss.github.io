@@ -354,7 +354,9 @@ flowchart TD
 
 > This step meets the ISO/IEC 5230 3.1.5, 3.2.1, 3.3.2, 3.4.1, and 3.5.1, and ISO/IEC 18974 4.1.5 and 4.2.1 requirements.
 
-> 📋 **Example output**: See the actual format of the generated files in [Process output best practices](/reference/samples/process).
+:::tip[Example output]
+See the actual format of the generated files in [Process output best practices](/reference/samples/process).
+:::
 
 ---
 

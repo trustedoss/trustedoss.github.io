@@ -318,7 +318,9 @@ Compare the generated allowed-license list against the sample below to confirm i
 | AGPL-3.0   | Strong Copyleft | ✓ Allowed    | ✗ Review required | ✗ Review required | ✗ Review required |
 ```
 
-> 📋 **Example output**: See the actual format of the generated files in [Policy output best practices](/reference/samples/policy).
+:::tip[Example output]
+See the actual format of the generated files in [Policy output best practices](/reference/samples/policy).
+:::
 
 ---
 

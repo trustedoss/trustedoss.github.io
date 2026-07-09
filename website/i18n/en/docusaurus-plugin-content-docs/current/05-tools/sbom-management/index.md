@@ -268,7 +268,9 @@ Check all of the items below to complete this chapter.
 
 > This step meets ISO/IEC 18974 4.3.1 and 4.3.2 requirements.
 
-> 📋 **Example output**: see the actual format of the generated file at [SBOM output best practice](/reference/samples/sbom).
+:::tip[Example output]
+See the actual format of the generated file at [SBOM output best practice](/reference/samples/sbom).
+:::
 
 ---
 

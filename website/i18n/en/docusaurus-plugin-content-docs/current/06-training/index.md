@@ -199,7 +199,9 @@ When you complete this chapter, the following files will be created in the `outp
 - [ ] Training items are defined for each job group
 - [ ] Method of proving completion has been decided
 
-> 📋 **Example output**: You can see the actual format of the generated files in [Training Output Best Practices](/reference/samples/training).
+:::tip[Example output]
+You can see the actual format of the generated files in [Training Output Best Practices](/reference/samples/training).
+:::
 
 ## 9. Next steps
 

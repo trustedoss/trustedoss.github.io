@@ -175,7 +175,9 @@ Check all items below before finishing this chapter:
 - [ ] There are no unmet items in the gap analysis, or there are plans to resolve them
 - [ ] Self-certification declaration completed
 
-> 📋 **Example output**: You can see the actual format of the generated files in [Self-certification Output Best Practices](/reference/samples/conformance).
+:::tip[Example output]
+You can see the actual format of the generated files in [Self-certification Output Best Practices](/reference/samples/conformance).
+:::
 
 ---
 
