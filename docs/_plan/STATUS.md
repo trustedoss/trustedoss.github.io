@@ -3,6 +3,18 @@
 > 목적: 긴 세션에서 히스토리가 유실돼도 이 파일만 보면 즉시 재개 가능. 매 task 후 갱신·커밋한다.
 > 최종 갱신: 2026-07-09
 
+## TRUSCA 명칭 갱신 + 웨비나 갭 반영 + 로드맵 (2026-07-09 승인) — 진행 중
+
+> 근거: Black Duck OSSRA 2026 웨비나 질문 90건 분석. 질문 다수가 "상용 SCA 도입 장벽"(예산·인력·폐쇄망·
+> 구축 공수)이며, TRUSCA(github.com/trustedoss/trusca, Apache-2.0 self-hosted SCA)가 그 대안.
+> 발견: 저장소가 trustedoss-portal → trusca 로 개명됐고(2026-07-08), 구 URL trustedoss-portal 은 404 —
+> 사이트 navbar Portal 링크가 현재 깨져 있음(발표 전 필수).
+
+- [ ] A1: TRUSCA 명칭·URL 갱신 (navbar/footer 깨진 링크 수정, sca.mdx ko/en, navbar.json, POSITIONING)
+- [ ] A2: 웨비나 갭 문서화 4건 (임시 완화 절, 반입 프로세스 패턴, 협력사 SBOM 검증, 폐쇄망 self-hosted)
+- [ ] B: TRUSCA 로드맵 제안서 (수요 순: reachability, 에이전트 시점 검증/MCP, operational risk 등)
+- [ ] 게이트 + STATUS 마감
+
 ## 에이전트·MCP 도구 거버넌스 페이지 (2026-07-09 승인) — 완료
 
 > 근거: The Hacker News 2026-07-07 기고 분석에서 확인한 신규 갭 (에이전트가 호출하는 MCP 도구의
