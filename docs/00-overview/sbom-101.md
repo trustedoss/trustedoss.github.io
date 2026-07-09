@@ -144,6 +144,21 @@ flowchart LR
 
 두 도구 모두 `05-tools/sbom-generation` 챕터에서 실습합니다.
 
+### AI SBOM: 모델과 데이터셋까지 담는 확장
+
+AI 시스템을 개발하는 조직에는 일반 SBOM만으로 부족합니다. 코드 의존성 외에
+사전 훈련 모델(Llama 등)과 학습 데이터셋도 라이선스 의무가 있는 공급망 구성 요소이기 때문입니다.
+이를 담는 확장이 **AI SBOM**입니다.
+
+사실상의 산업 표준 형식은 두 가지입니다. **SPDX 3.0 AI Profile**은 라이선스와 저작권 표현이
+정밀하고, **CycloneDX 1.6 ML-BOM**은 모델 카드(성능, 윤리, 보안) 메타데이터가 풍부합니다.
+조직은 한쪽 또는 양쪽을 채택할 수 있습니다.
+
+이 키트의 실습(챕터 05)은 일반 SBOM을 대상으로 합니다. AI 시스템까지 다루려면 조항 체크리스트,
+단계별 구축 로드맵, 도구 사용법(OWASP AIBOM Generator, cdxgen)을 담은
+[KWG AI SBOM 컴플라이언스 가이드](https://openchain-project.github.io/OpenChain-KWG/guide/ai-sbom_guide/)를
+참조하세요. AI 코딩 도구 사용 시의 법적 고려는 [AI 코딩 거버넌스](/ai-coding/intro)에서 다룹니다.
+
 ---
 
 ## 6. 자주 묻는 질문

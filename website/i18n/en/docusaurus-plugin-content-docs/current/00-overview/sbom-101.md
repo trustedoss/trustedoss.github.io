@@ -141,6 +141,22 @@ flowchart LR
 
 You will practice with both tools in chapter `05-tools/sbom-generation`.
 
+### AI SBOM: extending the SBOM to models and datasets
+
+For organizations building AI systems, a conventional SBOM is not enough. Beyond code
+dependencies, pre-trained models (such as Llama) and training datasets are also supply chain
+components with license obligations. The extension that captures them is the **AI SBOM**.
+
+Two formats are the de facto industry standards: **SPDX 3.0 AI Profile** offers precise
+license and copyright expression, while **CycloneDX 1.6 ML-BOM** carries rich model-card
+metadata (performance, ethics, security). Organizations can adopt either or both.
+
+The hands-on work in this kit (chapter 05) targets conventional SBOMs. To cover AI systems,
+refer to the [KWG AI SBOM Compliance Guide](https://openchain-project.github.io/OpenChain-KWG/guide/ai-sbom_guide/),
+which provides a clause checklist, a phased roadmap, and tool walkthroughs (OWASP AIBOM
+Generator, cdxgen). Legal considerations for AI coding tools are covered in
+[AI Coding Governance](/ai-coding/intro).
+
 ---
 
 ## 6. Frequently asked questions
