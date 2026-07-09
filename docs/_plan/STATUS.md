@@ -3,6 +3,22 @@
 > 목적: 긴 세션에서 히스토리가 유실돼도 이 파일만 보면 즉시 재개 가능. 매 task 후 갱신·커밋한다.
 > 최종 갱신: 2026-07-09
 
+## 에이전트·MCP 도구 거버넌스 페이지 (2026-07-09 승인) — 진행 중
+
+> 근거: The Hacker News 2026-07-07 기고 분석에서 확인한 신규 갭 (에이전트가 호출하는 MCP 도구의
+> provenance·프롬프트 인젝션이 빌드 입력이라는 위협 모델 — KWG 미커버, 우리 트랙 고유 확장).
+> 설계: website/ai-coding/agent-governance.md, 실전 적용 카테고리 (ai-security-review 다음).
+> 도구 큐레이션: 스캔 mcp-scan(대안 Cisco mcp-scanner, Snyk agent-scan) / 중앙 통제 ToolHive
+> (대안 agentic-community Gateway) / 클라이언트·산출물은 기존 자산(hooks, CI 게이트) 재결선.
+
+- [ ] M1: 사실 검증 (도구 4종 명령 실측 인용, 5.5% 수치 원 출처, Microsoft 경고, OWASP, MCP 스펙, Claude Code 조직 통제)
+- [ ] M2: 페이지 작성 + 결선 (사이드바, intro 표, strategy·legal 상호 링크, kwg-mapping)
+- [ ] M3: en 쌍
+- [ ] M4: 게이트 + STATUS 마감
+
+미착수 잔여(같은 기사 분석에서): supply-chain.md Shai-Hulud 사례 추가, CI 게이트의 프롬프트 인젝션
+최후 방어선 프레임 한 줄 — 사용자 승인 범위는 1번(이 페이지)만.
+
 ## 5.4 AI SBOM 실습 챕터 (2026-07-09 승인) — 완료 (실측 포함)
 
 > 설계: followup-plan.md "추가 승인 과제" 절. 메인 BomLens, 대안 OWASP AIBOM Generator(KWG 링크).
