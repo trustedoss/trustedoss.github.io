@@ -42,6 +42,8 @@ CLAUDE.md, .cursor/rules, AGENTS.md 같은 공통 규칙 파일을 저장소에 
 - [공통 Rules 템플릿](./rules-template)
 - [도구별 설정](./tools/claude-code)
 
+에이전트가 MCP 로 외부 도구를 호출하는 환경이라면, 규칙 내재화와 함께 도구 측 통제도 필요합니다 — [에이전트와 MCP 도구 거버넌스](./agent-governance)를 참조하세요.
+
 ---
 
 ## 3단계: CI/CD 파이프라인 자동 차단 (Pipeline Enforcement)

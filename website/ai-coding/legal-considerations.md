@@ -110,4 +110,5 @@ AI 코딩 도구를 사내 개발에 쓰는 것만으로 코드에 표시할 법
 - EU AI Act, [Article 50](https://artificialintelligenceact.eu/article/50/) / 한국, [인공지능 발전과 신뢰 기반 조성 등에 관한 기본법](https://www.law.go.kr/lsInfoP.do?lsiSeq=268543) 제31조
 
 ISO/IEC 표준과의 연계는 [ISO 표준 연계](./iso-mapping)를, AI 시스템 자체의 컴플라이언스는
-[AI 시스템 컴플라이언스 (ISO 42001)](./iso42001)를 참조하세요.
+[AI 시스템 컴플라이언스 (ISO 42001)](./iso42001)를, 에이전트가 호출하는 도구의 보안 통제는
+[에이전트와 MCP 도구 거버넌스](./agent-governance)를 참조하세요.

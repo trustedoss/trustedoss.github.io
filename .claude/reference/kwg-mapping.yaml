@@ -100,6 +100,7 @@ guide_mappings:
     our_files:
       - "website/ai-coding/iso42001.md"
       - "website/ai-coding/legal-considerations.md"
+      - "website/ai-coding/agent-governance.md"
     description: "AI 컴플라이언스 (AI 코딩 도구, 저작권 귀속, IP 보증, 표시 의무 포함)"
     watch_for:
       - "AI 코딩 도구 위험·전략 변경"

@@ -35,6 +35,7 @@ AI 코딩 도구(Claude Code, Cursor, GitHub Copilot, Windsurf, OpenAI Codex, Ge
 | [Cline / Aider](./tools/cline-aider)               | 오픈소스 CLI/VS Code 기반 AI 에이전트                            |
 | [30분 완성 Quick CI/CD](./cicd-quick)              | SCA·라이선스 중심 CI/CD 최소 시작점                              |
 | [AI 보안 코드 리뷰](./ai-security-review)          | 4단계 — findings-driven AI 검증·심층 해석                        |
+| [에이전트·MCP 도구 거버넌스](./agent-governance)   | MCP 서버 allowlist, 도입 전 스캔, 프롬프트 인젝션 방어선         |
 | [AI 생성 코드의 법적 고려](./legal-considerations) | 저작권 귀속, 공급자 IP 보증, AI 사용 표시                        |
 | [AI 시스템 컴플라이언스](./iso42001)               | ISO/IEC 42001과 오픈소스의 교차점                                |
 | [Best Practice 저장소](./best-practice-repo)       | 1~5단계 모두 구현한 참조 GitHub 저장소                           |

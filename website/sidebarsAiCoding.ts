@@ -24,6 +24,7 @@ const sidebars: SidebarsConfig = {
       items: [
         'cicd-quick',
         'ai-security-review',
+        'agent-governance',
         'legal-considerations',
         'iso42001',
         'best-practice-repo',
