@@ -86,6 +86,37 @@ guide_mappings:
       - "인증 절차 변경"
       - "자체 선언 방식 변경"
 
+  - id: guide-openchain-intro
+    kwg_file: "content/ko/guide/opensource_for_enterprise/0-openchain/_index.md"
+    our_files:
+      - "docs/00-overview/index.md"
+    description: "OpenChain 프로젝트·표준 소개 (감시 사각지대 해소, 2026-07-09 추가)"
+    watch_for:
+      - "표준 버전·명칭 변경"
+      - "conformance 방식 변경"
+
+  - id: guide-ai-compliance
+    kwg_file: "content/ko/guide/opensource_for_enterprise/7-ai-compliance/_index.md"
+    our_files:
+      - "website/ai-coding/iso42001.md"
+      - "website/ai-coding/legal-considerations.md"
+    description: "AI 컴플라이언스 (AI 코딩 도구, 저작권 귀속, IP 보증, 표시 의무 포함)"
+    watch_for:
+      - "AI 코딩 도구 위험·전략 변경"
+      - "저작권 귀속 기준 변경 (US Copyright Office)"
+      - "공급자 IP 보증 제도 변경"
+      - "AI 규제(EU AI Act, 한국 AI 기본법) 의무 변경"
+
+  - id: guide-ai-sbom
+    kwg_file: "content/ko/guide/ai-sbom_guide/_index.md"
+    our_files:
+      - "docs/00-overview/sbom-101.md"
+    description: "AI SBOM 컴플라이언스 가이드 (참조 전용 동기화 — 대응 전용 챕터는 후속 후보)"
+    watch_for:
+      - "AI SBOM 표준 형식 변경 (SPDX AI Profile, CycloneDX ML-BOM)"
+      - "조항 구성 변경"
+      - "도구 가이드 추가"
+
 # ─────────────────────────────────────────────────────────────
 # 차원 2: KWG 문서 템플릿 → 우리 templates/
 # ─────────────────────────────────────────────────────────────
