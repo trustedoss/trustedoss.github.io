@@ -21,6 +21,7 @@ sidebar_label: 도구 개요
 1. **SBOM 생성** — 제품에 어떤 오픈소스가 들어 있는지 명세서(SBOM)를 만듭니다. 도구는 syft와 cdxgen입니다. [SBOM 생성](./sbom-generation/index.md)으로 이동하세요.
 2. **SBOM 관리** — 생성한 SBOM을 갱신·보관하고 공급망과 공유합니다. [SBOM 관리](./sbom-management/index.md)로 이동하세요.
 3. **취약점 분석과 대응** — SBOM을 기반으로 알려진 취약점(CVE)을 찾아 대응합니다. 도구는 OSV API와 Dependency-Track입니다. [취약점 관리](./vulnerability/index.md)로 이동하세요.
+4. **AI SBOM (선택)** — AI 시스템을 다루는 조직은 모델과 데이터셋까지 SBOM 범위를 확장합니다. 도구는 BomLens입니다. [AI SBOM](./ai-sbom/index.md)으로 이동하세요.
 
 ## 바로 체험 (무설치·무API키)
 

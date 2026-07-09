@@ -73,6 +73,11 @@ const sidebars: SidebarsConfig = {
               link: {type: 'doc', id: 'tools/vulnerability/index'},
               items: ['tools/vulnerability/tools-setup'],
             },
+            {
+              type: 'doc',
+              id: 'tools/ai-sbom/index',
+              label: '5.4 AI SBOM (선택)',
+            },
           ],
         },
         {

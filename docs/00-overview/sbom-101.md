@@ -154,7 +154,7 @@ AI 시스템을 개발하는 조직에는 일반 SBOM만으로 부족합니다. 
 정밀하고, **CycloneDX 1.6 ML-BOM**은 모델 카드(성능, 윤리, 보안) 메타데이터가 풍부합니다.
 조직은 한쪽 또는 양쪽을 채택할 수 있습니다.
 
-HuggingFace 모델의 ML-BOM 을 로컬에서 생성하려면 [BomLens](https://github.com/sktelecom/sbom-tools) 같은 도구를 활용할 수 있습니다.
+직접 만들어 보려면 이 키트의 [5.4 AI SBOM 실습](../05-tools/ai-sbom/index.md)에서 [BomLens](https://github.com/sktelecom/sbom-tools)로 HuggingFace 모델의 ML-BOM 을 생성해 볼 수 있습니다.
 
 이 키트의 실습(챕터 05)은 일반 SBOM을 대상으로 합니다. AI 시스템까지 다루려면 조항 체크리스트,
 단계별 구축 로드맵, 도구 사용법(OWASP AIBOM Generator, cdxgen)을 담은
