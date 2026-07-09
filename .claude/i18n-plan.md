@@ -122,13 +122,11 @@ URL 패턴:
 
 | 원본 경로                                      | i18n 경로                                         |
 | ---------------------------------------------- | ------------------------------------------------- |
-| `docs/intro.md`                                | `current/intro.md`                                |
 | `docs/00-overview/index.md`                    | `current/00-overview/index.md`                    |
 | `docs/00-overview/checklist-mapping.md`        | `current/00-overview/checklist-mapping.md`        |
 | `docs/00-overview/supply-chain.md`             | `current/00-overview/supply-chain.md`             |
 | `docs/00-overview/sbom-101.md`                 | `current/00-overview/sbom-101.md`                 |
 | `docs/01-setup/index.md`                       | `current/01-setup/index.md`                       |
-| `docs/01-setup/method1-claude-md.md`           | `current/01-setup/method1-claude-md.md`           |
 | `docs/02-organization/index.md`                | `current/02-organization/index.md`                |
 | `docs/03-policy/index.md`                      | `current/03-policy/index.md`                      |
 | `docs/04-process/index.md`                     | `current/04-process/index.md`                     |

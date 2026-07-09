@@ -464,6 +464,7 @@ Notify customers or supply chain partners in the following cases:
 - When a Critical/High vulnerability affects already deployed software
 - Notification method: Email (security@sktelecom.com) / Security Bulletin / Release Notes
 - Notification deadline: Critical — within 24 hours after recognition, High — within 3 business days after recognition
+- Formal statement of non-impact: when a component carries a CVE that is not exploitable in the product, state it in a VEX document (CycloneDX VEX or OpenVEX; status values affected / not_affected / fixed / under_investigation) delivered with the SBOM
 
 ---
 
