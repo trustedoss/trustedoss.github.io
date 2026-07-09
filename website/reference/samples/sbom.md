@@ -18,6 +18,13 @@ sidebar_position: 4
 
 ---
 
+**이 페이지에 수록된 산출물**
+
+- SBOM 라이선스 분석 리포트
+- Copyleft 위험도 리포트
+- SBOM 관리 계획
+- SBOM 제출 안내문 (납품처 제출용 템플릿)
+
 ## SBOM 라이선스 분석 리포트
 
 > **생성 agent**: `05-sbom-analyst` | **저장 경로**: `output/sbom/license-report.md`

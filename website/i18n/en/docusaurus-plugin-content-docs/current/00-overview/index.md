@@ -5,6 +5,7 @@ checklist:
   - 'ISO/IEC 5230: []'
   - 'ISO/IEC 18974: []'
 self_study_time: 1 hour
+sidebar_label: 'Overview: the two standards and the full journey'
 slug: /
 ---
 

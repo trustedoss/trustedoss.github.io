@@ -34,7 +34,7 @@ ai-coding-best-practice/
 ├── .grype.yaml                        # Step 3: SCA threshold settings
 ├── .semgrep.yml                       # Step 3: SAST ruleset
 │
-├── renovate.json                      # Step 4: Renovate auto-updates
+├── renovate.json                      # Step 5: Renovate auto-updates
 │
 ├── k8s/
 │   └── deployment.yaml                # sample target for IaC security scan (Checkov)
@@ -43,7 +43,7 @@ ai-coding-best-practice/
 │   └── ai-fuzz.py                     # AI fuzzing run script
 │
 └── .github/
-    ├── dependabot.yml                 # Step 4: Dependabot settings
+    ├── dependabot.yml                 # Step 5: Dependabot settings
     └── workflows/
         ├── secret-detection.yml       # Step 3: Gitleaks
         ├── sast.yml                   # Step 3: Semgrep

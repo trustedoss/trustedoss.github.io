@@ -11,7 +11,7 @@ sidebar_position: 8
 fork해서 즉시 사용하거나, 설정 파일을 복사해 기존 프로젝트에 적용할 수 있습니다.
 
 :::info 저장소
-**[github.com/trustedoss/ai-coding-best-practice](http://github.com/trustedoss/ai-coding-best-practice)**
+**[github.com/trustedoss/ai-coding-best-practice](https://github.com/trustedoss/ai-coding-best-practice)**
 :::
 
 ---
@@ -34,7 +34,7 @@ ai-coding-best-practice/
 ├── .grype.yaml                        # 3단계: SCA 임계값 설정
 ├── .semgrep.yml                       # 3단계: SAST 룰셋
 │
-├── renovate.json                      # 4단계: Renovate 자동 업데이트
+├── renovate.json                      # 5단계: Renovate 자동 업데이트
 │
 ├── k8s/
 │   └── deployment.yaml                # IaC 보안 스캔 대상 샘플 (Checkov)
@@ -43,7 +43,7 @@ ai-coding-best-practice/
 │   └── ai-fuzz.py                     # AI 퍼징 실행 스크립트
 │
 └── .github/
-    ├── dependabot.yml                 # 4단계: Dependabot 설정
+    ├── dependabot.yml                 # 5단계: Dependabot 설정
     └── workflows/
         ├── secret-detection.yml       # 3단계: Gitleaks
         ├── sast.yml                   # 3단계: Semgrep

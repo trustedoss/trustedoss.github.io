@@ -6,6 +6,7 @@ description: 'ISO/IEC 5230과 18974 기반 기업 오픈소스 관리 체계를 
   - 'ISO/IEC 5230: []'
   - 'ISO/IEC 18974: []'
 셀프스터디 소요시간: 1시간
+sidebar_label: '개요: 두 표준과 전체 여정'
 slug: /
 ---
 

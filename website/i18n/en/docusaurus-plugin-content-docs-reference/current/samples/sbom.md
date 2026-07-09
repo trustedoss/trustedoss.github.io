@@ -10,6 +10,13 @@ You can check actual output examples based on sample projects (including `java-v
 
 ---
 
+**Deliverables on this page**
+
+- SBOM License Analysis Report
+- Copyleft Risk Report
+- SBOM Management Plan
+- SBOM Submission notice (template for submission to delivery address)
+
 ## SBOM License Analysis Report
 
 > **generating agent**: `05-sbom-analyst` | **Save Path**: `output/sbom/license-report.md`

@@ -91,7 +91,7 @@ Stages 1-4 from the strategy page.
 | Stage 2 — Internalize the AI rules | ai-coding-setup      | `cd agents/ai-coding-setup && claude`                 |
 | Stage 3 — CI/CD pipeline           | devsecops-setup      | `cd agents/devsecops-setup && claude`                 |
 | Stage 3 — PR auto-comment          | level2-pr-comment    | `cd agents/level2-automation/pr-comment && claude`    |
-| Stage 4 — Continuous monitoring    | level2-issue-tracker | `cd agents/level2-automation/issue-tracker && claude` |
+| Stage 5 — Continuous monitoring    | level2-issue-tracker | `cd agents/level2-automation/issue-tracker && claude` |
 
 ---
 

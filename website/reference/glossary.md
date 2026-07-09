@@ -70,4 +70,4 @@ sidebar_position: 2
 | onot     | SPDX 문서로 OSS 고지문을 자동 생성(Kakao와 SK텔레콤)                                  |
 | BomLens  | SK텔레콤의 local-first 통합 SBOM 생성·위험 평가 도구 (소스, 컨테이너, 펌웨어, ML-BOM) |
 
-> 이 표에 없는 새 용어가 필요하면 `STYLEGUIDE.md`의 약어 표에 먼저 추가하고 이 페이지와 동기화합니다.
+<!-- 유지보수 규칙: 이 표에 없는 새 용어가 필요하면 STYLEGUIDE.md 약어 표에 먼저 추가하고 이 페이지와 동기화한다. -->

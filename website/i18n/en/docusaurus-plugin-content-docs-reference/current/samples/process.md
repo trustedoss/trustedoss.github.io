@@ -13,6 +13,16 @@ Use it to check missing items by comparing it with your `output/process/` file.
 
 ---
 
+**Deliverables on this page**
+
+- Open source use approval process
+- Pre-deployment license compliance checklist
+- vulnerability response procedures
+- Open source process flow chart
+- External inquiry response procedure
+- Open source contribution process
+- Internal project disclosure procedures
+
 ## Open source use approval process
 
 Document: usage-approval.md

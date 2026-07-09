@@ -1,12 +1,12 @@
 ---
 id: intro
-title: AI 코딩 도구 소개
+title: AI 코딩 거버넌스
 sidebar_label: 소개
 sidebar_position: 1
 slug: intro
 ---
 
-# AI 코딩 도구와 오픈소스 컴플라이언스
+# AI 코딩 거버넌스 — 도구와 오픈소스 컴플라이언스
 
 :::note 선택 단계 — 개발팀이 있다면
 이 섹션은 [체계구축](/docs)으로 만든 정책을 **AI 코딩 도구·CI에 자동 적용**하는 선택 단계입니다.
