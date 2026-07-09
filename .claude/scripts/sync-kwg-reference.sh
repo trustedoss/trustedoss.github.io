@@ -6,6 +6,7 @@
 #   - content/ko/guide/opensource_for_enterprise/ (기업 오픈소스 관리 가이드)
 #   - content/ko/guide/templates/                (정책·프로세스 템플릿)
 #   - content/ko/guide/tools/                   (도구 가이드)
+#   - content/ko/guide/ai-sbom_guide/           (AI SBOM 컴플라이언스 가이드)
 #
 # 규칙:
 #   - .md 파일만 다운로드 (PNG 등 이미지는 Claude 컨텍스트에 불필요)
@@ -45,6 +46,7 @@ declare -a SYNC_DIRS=(
   "${BASE_CONTENT_PATH}/opensource_for_enterprise"
   "${BASE_CONTENT_PATH}/templates"
   "${BASE_CONTENT_PATH}/tools"
+  "${BASE_CONTENT_PATH}/ai-sbom_guide"
 )
 
 # 통계
@@ -159,6 +161,7 @@ bash .claude/scripts/sync-kwg-reference.sh
 | `opensource_for_enterprise/` | ISO 표준 기반 기업 오픈소스 관리 가이드 |
 | `templates/` | 오픈소스 정책·프로세스 문서 템플릿 |
 | `tools/` | SBOM 도구, 취약점 분석 도구 가이드 |
+| `ai-sbom_guide/` | AI SBOM 컴플라이언스 가이드 (AI 모델·데이터셋 관리) |
 EOF
 
 for dir in "${SYNC_DIRS[@]}"; do
