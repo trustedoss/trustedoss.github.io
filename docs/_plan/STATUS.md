@@ -3,6 +3,15 @@
 > 목적: 긴 세션에서 히스토리가 유실돼도 이 파일만 보면 즉시 재개 가능. 매 task 후 갱신·커밋한다.
 > 최종 갱신: 2026-07-09
 
+## 5.4 AI SBOM 실습 챕터 (2026-07-09 승인) — 진행 중
+
+> 설계: followup-plan.md "추가 승인 과제" 절. 메인 BomLens, 대안 OWASP AIBOM Generator(KWG 링크).
+
+- [ ] C1: BomLens 모델 스캔 실측
+- [ ] C2: docs/05-tools/ai-sbom/index.md + 사이드바 5.4 + 결선(05-tools index, sbom-101, iso42001)
+- [ ] C3: en 쌍
+- [ ] C4: 게이트
+
 ## 후속 작업 (followup-plan, 2026-07-09) — 완료
 
 > 계획 승인본: docs/\_plan/followup-plan.md. 재개 시 미체크 청크부터.

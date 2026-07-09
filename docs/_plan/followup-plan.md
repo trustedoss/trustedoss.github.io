@@ -76,6 +76,18 @@ STATUS 선커밋, 청크별 DoD(수정 + en 쌍 + verify.sh 12/12 — 빌드는 
 - 청크 P2-d — Rules 템플릿 7곳 중복 단일화(발췌 + 정본 링크 또는 MDX partial) + 도구 페이지 공통 구조
   보완("적용 확인" 절) + 하네스 개선(verify.sh 단계별 실패 원인 기록).
 
+## 추가 승인 과제 — 5.4 AI SBOM 실습 챕터 (2026-07-09 승인)
+
+보류였던 "AI SBOM 독자 전용 챕터"를 사용자 승인으로 진행한다. 설계 확정:
+
+- 위치: docs/05-tools/ai-sbom/index.md — 사이드바 "5.4 AI SBOM (선택)".
+- 실습 메인 도구: BomLens (HuggingFace 모델 입력, CycloneDX 1.7 ML-BOM + 고지문 + 위험 리포트 출력,
+  전용 aibom 이미지 자동 pull). 표준 중립 대안으로 OWASP AIBOM Generator 를 KWG 가이드 링크로 병기.
+- cdxgen 은 별도 실습 없이 "코드 SBOM(5.1)과의 관계 + KWG 실측(라이선스 공백 실증)" 링크로만.
+- 구성: create-doc 표준 5절 + 보기(KWG 가이드·샘플) / 해보기(BomLens 실측 명령) / 자동화(CI 한 단락).
+- 청크: C1 실측(Docker 로 BomLens 모델 스캔 실행, 실패 시 한계 명시) → C2 챕터+사이드바+결선(ko)
+  → C3 en 쌍 → C4 게이트(verify 12/12 + doc-qa 또는 gate-verifier 판정).
+
 ## 보류 (별도 결정 대기)
 
 - KWG 동기화 범위 추가 확장 — 사용자 지시로 제외 (2026-07-09)
