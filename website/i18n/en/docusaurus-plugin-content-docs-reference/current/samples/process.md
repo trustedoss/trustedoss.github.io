@@ -392,13 +392,14 @@ Related Standards
 - 18974 §4.1.5.1
 ```
 
-| Detection method                               | Tools/Channel                   | cycle                                    |
-| ---------------------------------------------- | ------------------------------- | ---------------------------------------- |
-| SBOM-based automatic scanning (GitHub Actions) | OSV API / Dependabot            | Upon commit/PR, development branch daily |
-| Auto scan based on SBOM (Jenkins)              | OSV API / Dependency Track      | Regular weekly scans at build time       |
-| SBOM based automatic scanning (GitLab CI)      | OSV API / GitLab Security       | When making a merge request              |
-| Supplier Security Advisory                     | NVD, GitHub Security Advisories | Real-time subscription                   |
-| External reporting                             | security@sktelecom.com          | Always                                   |
+| Detection method                               | Tools/Channel                            | cycle                                    |
+| ---------------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| SBOM-based automatic scanning (GitHub Actions) | OSV API / Dependabot                     | Upon commit/PR, development branch daily |
+| Auto scan based on SBOM (Jenkins)              | OSV API / Dependency Track               | Regular weekly scans at build time       |
+| SBOM based automatic scanning (GitLab CI)      | OSV API / GitLab Security                | When making a merge request              |
+| Supplier Security Advisory                     | NVD, GitHub Security Advisories, OSV.dev | Real-time subscription                   |
+| Domestic vulnerability feed                    | KISA KNVD (Korean SW vulnerability DB)   | Weekly check                             |
+| External reporting                             | security@sktelecom.com                   | Always                                   |
 
 ---
 
@@ -409,7 +410,7 @@ Related Standards
 - 18974 §4.1.5.1·§4.3.2
 ```
 
-CVSS Severity classification as of v3.1:
+Severity classification by CVSS v3.1 or v4.0 (when both scores exist, the **higher** one governs):
 
 | Severity    | CVSS Score | Response Deadline | What to do                                                     | Jira priorities |
 | ----------- | ---------- | ----------------- | -------------------------------------------------------------- | --------------- |
@@ -419,6 +420,8 @@ CVSS Severity classification as of v3.1:
 | 🟢Low       | 0.1 ~ 3.9  | Next release      | Reflected during regular updates                               | Minor           |
 
 > **Note**: The above deadlines are the OpenChain KWG guide baseline. Depending on the risk profile of the service you are operating, stricter deadlines such as 24 hours for Critical or 1 week for High can be applied as an internal SLA.
+
+Adjust priority with auxiliary signals: raise the response priority one level for vulnerabilities with an EPSS (exploitation probability) of 0.1 or higher, or listed in CISA KEV (known exploited vulnerabilities).
 
 ---
 
