@@ -93,9 +93,9 @@ sca:
   stage: test
   image: ubuntu:22.04
   script:
-    - curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh
+    - curl -sSfL https://get.anchore.io/syft
       | sh -s -- -b /usr/local/bin
-    - curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh
+    - curl -sSfL https://get.anchore.io/grype
       | sh -s -- -b /usr/local/bin
     - syft . -o cyclonedx-json=sbom.cdx.json
     - grype sbom:sbom.cdx.json --fail-on high --config .grype.yaml

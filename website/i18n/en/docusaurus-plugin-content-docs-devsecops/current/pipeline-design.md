@@ -124,7 +124,7 @@ jobs:
       - uses: actions/checkout@v7
       - name: Build image
         run: docker build -t myapp:${{ github.sha }} .
-      - uses: aquasecurity/trivy-action@master
+      - uses: aquasecurity/trivy-action@0.36.0
         with:
           image-ref: myapp:${{ github.sha }}
           exit-code: 1
@@ -140,7 +140,7 @@ jobs:
         run: |
           docker compose up -d
           sleep 15
-      - uses: zaproxy/action-baseline@v0.12.0
+      - uses: zaproxy/action-baseline@v0.15.0
         with:
           target: http://localhost:8080
           fail_action: false # Soft Fail during initial adoption
@@ -169,9 +169,9 @@ variables:
 
 secret-detection:
   stage: secret-scan
-  image: zricethezav/gitleaks:latest
+  image: ghcr.io/gitleaks/gitleaks:latest
   script:
-    - gitleaks detect --source . --exit-code 1
+    - gitleaks git . --exit-code 1
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
 
@@ -187,9 +187,9 @@ sca:
   stage: code-scan
   image: ubuntu:22.04
   script:
-    - curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh
+    - curl -sSfL https://get.anchore.io/syft
       | sh -s -- -b /usr/local/bin
-    - curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh
+    - curl -sSfL https://get.anchore.io/grype
       | sh -s -- -b /usr/local/bin
     - syft . -o cyclonedx-json=sbom.cdx.json
     - grype sbom:sbom.cdx.json --fail-on high --config .grype.yaml
@@ -242,7 +242,7 @@ dast:
 
 **GitLab CI templates**: Reference a CI template in a central repository with the `include:` keyword. Project-specific overrides can be handled with `extends:`, allowing exceptions while keeping the default policy intact.
 
-**Policy file synchronization**: Keep policy files such as `.grype.yaml`·`.gitleaks.toml`·`.trivyignore.yaml` in a dedicated repository and distribute them to each project via git submodule or a file-copy script. Preserving the version history of policy files is advantageous for audit response.
+**Policy file synchronization**: Keep policy files such as `.grype.yaml`, `.gitleaks.toml`, and `.trivyignore` (only the plain-text form is auto-loaded; the YAML form needs `--ignorefile`) in a dedicated repository and distribute them to each project via git submodule or a file-copy script. Preserving the version history of policy files is advantageous for audit response.
 
 ---
 

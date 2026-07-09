@@ -59,7 +59,7 @@ The U.S. National Telecommunications and Information Administration (NTIA) has d
 | Version                 | Version                  | Exact version string                                  | 2.14.1                                                 |
 | Unique identifier       | Other Unique Identifiers | CPE, PURL, hash, etc.                                 | `pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1` |
 | Dependency relationship | Dependency Relationship  | Relationships with other components                   | spring-boot depends on log4j-core                      |
-| SBOM author             | Author of SBOM Data      | The tool or person that created the SBOM              | syft v0.86.0                                           |
+| SBOM author             | Author of SBOM Data      | The tool or person that created the SBOM              | syft v1.x                                              |
 | Timestamp               | Timestamp                | Date and time the SBOM was created                    | 2024-01-15T09:30:00Z                                   |
 
 > This step satisfies the conceptual understanding required by ISO/IEC 18974 [G3B.1 Background].

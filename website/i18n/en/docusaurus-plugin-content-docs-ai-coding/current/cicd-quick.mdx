@@ -133,8 +133,8 @@ oss-check:
   image: ubuntu:22.04
   script:
     # Install tools
-    - curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin
-    - curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
+    - curl -sSfL https://get.anchore.io/syft | sh -s -- -b /usr/local/bin
+    - curl -sSfL https://get.anchore.io/grype | sh -s -- -b /usr/local/bin
 
     # 1. Generate SBOM
     - syft . -o cyclonedx-json=sbom.cdx.json

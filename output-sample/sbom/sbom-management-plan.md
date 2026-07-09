@@ -92,7 +92,7 @@ jobs:
 
       - name: 취약점 스캔
         run: |
-          curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
+          curl -sSfL https://get.anchore.io/grype | sh -s -- -b /usr/local/bin
           grype sbom:sbom.cdx.json
 
       - name: SBOM 저장

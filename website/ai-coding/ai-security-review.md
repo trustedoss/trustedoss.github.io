@@ -72,7 +72,7 @@ jobs:
       - name: Run grype (JSON)
         if: env.HAS_ANTHROPIC_KEY == 'true'
         run: |
-          curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh \
+          curl -sSfL https://get.anchore.io/grype \
             | sh -s -- -b /usr/local/bin
           grype dir:. -o json > grype.json || true
 

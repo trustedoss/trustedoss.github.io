@@ -71,7 +71,7 @@ jobs:
         run: docker build -t myapp:${{ github.sha }} .
 
       - name: Scan image — vulnerability
-        uses: aquasecurity/trivy-action@master
+        uses: aquasecurity/trivy-action@0.36.0
         with:
           image-ref: myapp:${{ github.sha }}
           format: table
@@ -80,14 +80,14 @@ jobs:
           ignore-unfixed: true
 
       - name: Scan image — secret
-        uses: aquasecurity/trivy-action@master
+        uses: aquasecurity/trivy-action@0.36.0
         with:
           image-ref: myapp:${{ github.sha }}
           scanners: secret
           exit-code: 1
 
       - name: Upload SBOM
-        uses: aquasecurity/trivy-action@master
+        uses: aquasecurity/trivy-action@0.36.0
         with:
           image-ref: myapp:${{ github.sha }}
           format: cyclonedx
@@ -164,6 +164,10 @@ secrets:
 5. **버전 고정:** `FROM ubuntu:22.04`처럼 태그를 명시합니다. `latest` 사용 시 예상치 못한 취약점이 유입될 수 있습니다.
 
 ---
+
+:::note 버전 고정 권장
+Trivy 는 2026-03 저장소 탈취로 악성 버전이 배포된 이력이 있습니다(현재 복구 완료). `latest` 나 `master` 같은 이동 참조 대신 버전 태그(가능하면 커밋 다이제스트)로 고정하세요.
+:::
 
 ## 다음 단계
 

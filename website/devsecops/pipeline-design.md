@@ -128,7 +128,7 @@ jobs:
       - uses: actions/checkout@v7
       - name: Build image
         run: docker build -t myapp:${{ github.sha }} .
-      - uses: aquasecurity/trivy-action@master
+      - uses: aquasecurity/trivy-action@0.36.0
         with:
           image-ref: myapp:${{ github.sha }}
           exit-code: 1
@@ -144,7 +144,7 @@ jobs:
         run: |
           docker compose up -d
           sleep 15
-      - uses: zaproxy/action-baseline@v0.12.0
+      - uses: zaproxy/action-baseline@v0.15.0
         with:
           target: http://localhost:8080
           fail_action: false # 초기 도입 시 Soft Fail
@@ -173,9 +173,9 @@ variables:
 
 secret-detection:
   stage: secret-scan
-  image: zricethezav/gitleaks:latest
+  image: ghcr.io/gitleaks/gitleaks:latest
   script:
-    - gitleaks detect --source . --exit-code 1
+    - gitleaks git . --exit-code 1
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
 
@@ -191,9 +191,9 @@ sca:
   stage: code-scan
   image: ubuntu:22.04
   script:
-    - curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh
+    - curl -sSfL https://get.anchore.io/syft
       | sh -s -- -b /usr/local/bin
-    - curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh
+    - curl -sSfL https://get.anchore.io/grype
       | sh -s -- -b /usr/local/bin
     - syft . -o cyclonedx-json=sbom.cdx.json
     - grype sbom:sbom.cdx.json --fail-on high --config .grype.yaml
@@ -246,7 +246,7 @@ dast:
 
 **GitLab CI 템플릿**: `include:` 키워드로 중앙 저장소의 CI 템플릿을 참조합니다. 프로젝트별 오버라이드는 `extends:`로 처리하면 기본 정책을 유지하면서 예외를 허용할 수 있습니다.
 
-**정책 파일 동기화**: `.grype.yaml`·`.gitleaks.toml`·`.trivyignore.yaml` 등 정책 파일을 별도 저장소에서 관리하고 각 프로젝트에 git submodule 또는 파일 복사 스크립트로 배포합니다. 정책 파일의 버전 이력이 보존되어 감사 대응에 유리합니다.
+**정책 파일 동기화**: `.grype.yaml`, `.gitleaks.toml`, `.trivyignore`(플레인 텍스트만 자동 로드, YAML 형식은 `--ignorefile` 지정 필요) 같은 정책 파일을 별도 저장소에서 관리하고 각 프로젝트에 git submodule 또는 파일 복사 스크립트로 배포합니다. 정책 파일의 버전 이력이 보존되어 감사 대응에 유리합니다.
 
 ---
 

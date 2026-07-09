@@ -21,12 +21,12 @@ sidebar_position: 3
 
 SAST 도구는 지원 언어와 분석 깊이에 따라 선택 기준이 달라집니다. 오픈소스 생태계에서 널리 사용되는 도구는 다음과 같습니다.
 
-| 도구     | 특징                           | 지원 언어           | 라이선스            |
-| -------- | ------------------------------ | ------------------- | ------------------- |
-| Semgrep  | 커스텀 룰 작성 용이, 빠른 속도 | 30+ 언어            | LGPL-2.1 (OSS 버전) |
-| CodeQL   | GitHub 네이티브, 깊은 분석     | 12개 주요 언어      | GitHub Actions 무료 |
-| Bandit   | Python 전용, 경량              | Python              | Apache-2.0          |
-| SpotBugs | Java/Kotlin 전용               | Java, Kotlin, Scala | LGPL                |
+| 도구     | 특징                           | 지원 언어           | 라이선스                                                 |
+| -------- | ------------------------------ | ------------------- | -------------------------------------------------------- |
+| Semgrep  | 커스텀 룰 작성 용이, 빠른 속도 | 30+ 언어            | LGPL-2.1 (Community Edition — 관리 룰셋은 별도 라이선스) |
+| CodeQL   | GitHub 네이티브, 깊은 분석     | 12개 주요 언어      | GitHub Actions 무료                                      |
+| Bandit   | Python 전용, 경량              | Python              | Apache-2.0                                               |
+| SpotBugs | Java/Kotlin 전용               | Java, Kotlin, Scala | LGPL                                                     |
 
 멀티 언어 프로젝트에는 Semgrep, GitHub를 사용하는 팀에는 CodeQL이 가장 적합합니다. 단일 언어 프로젝트는 언어 전용 도구 병행을 권장합니다.
 
@@ -100,7 +100,7 @@ rules:
 
 ## CodeQL 설정
 
-CodeQL은 GitHub에서 제공하는 도구로, GitHub Actions에서 퍼블릭 저장소 및 GitHub Advanced Security 구독 조직에 무료로 제공됩니다. 데이터플로우 분석을 지원해 간접적인 취약점 경로도 탐지할 수 있습니다.
+CodeQL은 GitHub에서 제공하는 도구로, GitHub Actions에서 퍼블릭 저장소 및 GitHub Code Security(구 GitHub Advanced Security 의 분리 제품) 구독 조직에 무료로 제공됩니다. 데이터플로우 분석을 지원해 간접적인 취약점 경로도 탐지할 수 있습니다.
 
 ### GitHub Actions
 

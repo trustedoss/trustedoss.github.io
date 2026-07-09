@@ -17,12 +17,12 @@ SAST is a technique that analyzes source code without executing it to detect pat
 
 SAST tool selection criteria vary depending on supported languages and analysis depth. The following tools are widely used in the open-source ecosystem.
 
-| Tool     | Key Characteristics              | Supported Languages | License                |
-| -------- | -------------------------------- | ------------------- | ---------------------- |
-| Semgrep  | Easy custom rule authoring, fast | 30+ languages       | LGPL-2.1 (OSS version) |
-| CodeQL   | GitHub-native, deep analysis     | 12 major languages  | Free on GitHub Actions |
-| Bandit   | Python-only, lightweight         | Python              | Apache-2.0             |
-| SpotBugs | Java/Kotlin-focused              | Java, Kotlin, Scala | LGPL                   |
+| Tool     | Key Characteristics              | Supported Languages | License                                                                |
+| -------- | -------------------------------- | ------------------- | ---------------------------------------------------------------------- |
+| Semgrep  | Easy custom rule authoring, fast | 30+ languages       | LGPL-2.1 (Community Edition — managed rulesets use a separate license) |
+| CodeQL   | GitHub-native, deep analysis     | 12 major languages  | Free on GitHub Actions                                                 |
+| Bandit   | Python-only, lightweight         | Python              | Apache-2.0                                                             |
+| SpotBugs | Java/Kotlin-focused              | Java, Kotlin, Scala | LGPL                                                                   |
 
 For multi-language projects, Semgrep is usually the best fit. For teams using GitHub, CodeQL is often the best choice. For single-language projects, combining language-specific tools is recommended.
 
@@ -96,7 +96,7 @@ rules:
 
 ## CodeQL Setup
 
-CodeQL is provided by GitHub and is available for free in GitHub Actions for public repositories and organizations subscribed to GitHub Advanced Security. It supports data flow analysis, enabling detection of indirect vulnerability paths.
+CodeQL is provided by GitHub and is available for free in GitHub Actions for public repositories and organizations subscribed to GitHub Code Security (the product split out of GitHub Advanced Security). It supports data flow analysis, enabling detection of indirect vulnerability paths.
 
 ### GitHub Actions
 

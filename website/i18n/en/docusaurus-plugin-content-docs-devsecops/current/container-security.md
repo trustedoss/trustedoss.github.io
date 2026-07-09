@@ -67,7 +67,7 @@ jobs:
         run: docker build -t myapp:${{ github.sha }} .
 
       - name: Scan image — vulnerability
-        uses: aquasecurity/trivy-action@master
+        uses: aquasecurity/trivy-action@0.36.0
         with:
           image-ref: myapp:${{ github.sha }}
           format: table
@@ -76,14 +76,14 @@ jobs:
           ignore-unfixed: true
 
       - name: Scan image — secret
-        uses: aquasecurity/trivy-action@master
+        uses: aquasecurity/trivy-action@0.36.0
         with:
           image-ref: myapp:${{ github.sha }}
           scanners: secret
           exit-code: 1
 
       - name: Upload SBOM
-        uses: aquasecurity/trivy-action@master
+        uses: aquasecurity/trivy-action@0.36.0
         with:
           image-ref: myapp:${{ github.sha }}
           format: cyclonedx
@@ -160,6 +160,10 @@ secrets:
 5. **Pin versions:** Use explicit tags like `FROM ubuntu:22.04`. Using `latest` can silently introduce unexpected vulnerabilities.
 
 ---
+
+:::note Pin your versions
+Trivy's repository was hijacked in 2026-03 and malicious versions were briefly published (since recovered). Pin action and image references to version tags (ideally commit digests) instead of moving refs like `latest` or `master`.
+:::
 
 ## Next steps
 

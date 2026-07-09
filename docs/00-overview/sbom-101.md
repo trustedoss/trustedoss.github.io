@@ -62,7 +62,7 @@ SBOM 없이는 다음 질문에 답하기 어렵다.
 | 버전        | Version                  | 정확한 버전 문자열             | 2.14.1                                                 |
 | 고유 식별자 | Other Unique Identifiers | CPE, PURL, 해시 등             | `pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1` |
 | 의존성 관계 | Dependency Relationship  | 다른 컴포넌트와의 관계         | spring-boot가 log4j-core에 의존                        |
-| SBOM 작성자 | Author of SBOM Data      | SBOM을 생성한 도구 또는 사람   | syft v0.86.0                                           |
+| SBOM 작성자 | Author of SBOM Data      | SBOM을 생성한 도구 또는 사람   | syft v1.x                                              |
 | 생성 시각   | Timestamp                | SBOM이 생성된 날짜와 시간      | 2024-01-15T09:30:00Z                                   |
 
 > 이 단계는 ISO/IEC 18974 [G3B.1 배경] 요구사항의 이해 기반을 충족합니다.

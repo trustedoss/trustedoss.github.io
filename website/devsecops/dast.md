@@ -61,7 +61,7 @@ jobs:
 
       # ZAP Baseline 스캔 (수동 개입 없이 기본 취약점 탐지)
       - name: ZAP Baseline Scan
-        uses: zaproxy/action-baseline@v0.12.0
+        uses: zaproxy/action-baseline@v0.15.0
         with:
           target: http://localhost:8080
           rules_file_name: zap-rules.tsv
@@ -69,7 +69,7 @@ jobs:
 
       # ZAP API 스캔 (OpenAPI 명세 기반)
       - name: ZAP API Scan
-        uses: zaproxy/action-api-scan@v0.7.0
+        uses: zaproxy/action-api-scan@v0.10.0
         with:
           target: http://localhost:8080/api/openapi.json
           format: openapi
