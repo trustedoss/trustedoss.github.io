@@ -17,11 +17,12 @@
 sbom-generation → sbom-management → vulnerability
 ```
 
-| 순서 | 챕터                           | 주요 산출물             |
-| ---- | ------------------------------ | ----------------------- |
-| 5-1  | docs/05-tools/sbom-generation/ | [project].cdx.json      |
-| 5-2  | docs/05-tools/sbom-management/ | sbom-management-plan.md |
-| 5-3  | docs/05-tools/vulnerability/   | cve-report.md           |
+| 순서 | 챕터                           | 주요 산출물                    |
+| ---- | ------------------------------ | ------------------------------ |
+| 5-1  | docs/05-tools/sbom-generation/ | [project].cdx.json             |
+| 5-2  | docs/05-tools/sbom-management/ | sbom-management-plan.md        |
+| 5-3  | docs/05-tools/vulnerability/   | cve-report.md                  |
+| 5-4  | docs/05-tools/ai-sbom/ (선택)  | 모델 ML-BOM (AI 시스템 조직만) |
 
 ## 공통 전제 조건
 

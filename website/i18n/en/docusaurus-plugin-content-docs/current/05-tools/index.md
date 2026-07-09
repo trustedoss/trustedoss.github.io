@@ -18,6 +18,7 @@ This chapter covers the tools that automatically identify the open source in you
 1. **SBOM creation** — Create a bill of materials (SBOM) that captures which open source is included in your product. The tools are syft and cdxgen. Go to [SBOM creation](./sbom-generation/index.md).
 2. **SBOM management** — Update and store the SBOM you created, and share it across your supply chain. Go to [SBOM management](./sbom-management/index.md).
 3. **Vulnerability analysis and response** — Use the SBOM to find and respond to known vulnerabilities (CVEs). The tools are the OSV API and Dependency-Track. Go to [Vulnerability management](./vulnerability/index.md).
+4. **AI SBOM (optional)** — Organizations working with AI systems extend the SBOM scope to models and datasets. The tool is BomLens. Go to [AI SBOM](./ai-sbom/index.md).
 
 ## Try it right away (no install, no API key)
 
