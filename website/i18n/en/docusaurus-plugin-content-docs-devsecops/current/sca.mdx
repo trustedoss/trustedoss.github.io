@@ -109,12 +109,16 @@ sca:
 
 ### Severity-Based SLA
 
-| Severity | CVSS Range | Recommended SLA | Build Block  |
-| -------- | ---------- | --------------- | ------------ |
-| Critical | 9.0–10.0   | 24 hours        | Block        |
-| High     | 7.0–8.9    | 7 days          | Block        |
-| Medium   | 4.0–6.9    | 30 days         | Warning only |
-| Low      | 0.1–3.9    | Next release    | Ignore       |
+The table below is an **example of a hardened, organization-level SLA** tuned for CI gates. For the
+KWG baseline (Critical 1 week, High 4 weeks) and the canonical response deadlines, see
+[Vulnerability response deadlines and VEX](/reference/concepts/vulnerability-response).
+
+| Severity | CVSS Range | Hardened SLA Example | Build Block  |
+| -------- | ---------- | -------------------- | ------------ |
+| Critical | 9.0–10.0   | 24 hours             | Block        |
+| High     | 7.0–8.9    | 7 days               | Block        |
+| Medium   | 4.0–6.9    | 30 days              | Warning only |
+| Low      | 0.1–3.9    | Next release         | Ignore       |
 
 At initial adoption, it is recommended to block only Critical issues, then expand to High after the team is accustomed.
 
@@ -145,7 +149,7 @@ ignore:
 
 **What is VEX (vulnerability Exploitability eXchange)?** It is a machine-readable document that specifies whether a particular CVE is actually exploitable in a given product. It formally expresses cases like "the CVE exists, but the affected code path is not used," reducing unnecessary alerts across downstream supply chains.
 
-**Practical use:** Author it in CycloneDX VEX or OpenVEX format and distribute it with the SBOM. Adoption is still early, but its importance is growing as supply chain regulations tighten.
+**Practical use:** Author it in CycloneDX VEX or OpenVEX format and distribute it with the SBOM. Adoption is still early, but its importance is growing as supply chain regulations tighten. For the concepts, including the four status values, [Vulnerability response deadlines and VEX](/reference/concepts/vulnerability-response) is the canonical reference.
 
 ---
 
