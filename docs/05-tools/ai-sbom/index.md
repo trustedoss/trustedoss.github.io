@@ -62,6 +62,11 @@ cd sbom-tools
 docker pull ghcr.io/sktelecom/bomlens:latest
 ```
 
+:::warning macOS/Windows 는 Docker 파일 공유 경로에서 실행하세요
+`/tmp` 처럼 Docker Desktop 파일 공유 밖 경로에서 실행하면 스캔은 성공해도 산출물이 호스트로
+복사되지 않습니다(도구가 안내 메시지를 출력합니다). 홈 디렉토리 아래에서 클론해 실행하세요.
+:::
+
 ### 2단계 — 모델 스캔으로 ML-BOM 생성
 
 ```bash
@@ -72,8 +77,8 @@ docker pull ghcr.io/sktelecom/bomlens:latest
 - `--model` 에 HuggingFace 모델 식별자를 넣습니다. 자신이 검토할 모델로 바꿔 실행하세요.
 - 모델 스캔용 전용 이미지(`ghcr.io/sktelecom/bomlens-aibom`)가 자동으로 내려받아집니다.
 - 산출물은 `bert-base_1.0.0/` 하위 폴더에 생성됩니다: `bert-base_1.0.0_bom.json`(CycloneDX 1.7 ML-BOM),
-  고지문(notice), 위험 리포트(risk-report), 그리고 NTIA 최소 요소 적합성 점검 결과.
-  모델에는 패키지 CVE 가 없으므로 보안(security) 리포트는 생성되지 않습니다.
+  고지문(notice), 위험 리포트(risk-report), 보안(security) 리포트, NTIA 최소 요소 적합성 점검 결과.
+  모델에는 패키지 CVE 가 없으므로 보안 리포트는 취약점 0건으로 나오는 것이 정상입니다.
 
 ### 3단계 — ML-BOM 읽기
 

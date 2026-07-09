@@ -68,6 +68,12 @@ cd sbom-tools
 docker pull ghcr.io/sktelecom/bomlens:latest
 ```
 
+:::warning On macOS/Windows, run from a Docker file-sharing path
+If you run from a path outside Docker Desktop file sharing (such as `/tmp`), the scan succeeds but
+the deliverables are not copied back to the host (the tool prints a hint). Clone and run under your
+home directory.
+:::
+
 ### Step 2 — Scan a model to generate the ML-BOM
 
 ```bash
@@ -78,8 +84,8 @@ docker pull ghcr.io/sktelecom/bomlens:latest
 - Put a HuggingFace model identifier in `--model` — replace it with the model you are reviewing.
 - The dedicated model-scan image (`ghcr.io/sktelecom/bomlens-aibom`) is pulled automatically.
 - Deliverables land in the `bert-base_1.0.0/` subfolder: `bert-base_1.0.0_bom.json` (CycloneDX 1.7
-  ML-BOM), a notice, a risk report, and an NTIA minimum-elements conformance check.
-  No security report is produced — a model has no package CVEs.
+  ML-BOM), a notice, a risk report, a security report, and an NTIA minimum-elements conformance
+  check. A model has no package CVEs, so a security report with zero findings is expected.
 
 ### Step 3 — Read the ML-BOM
 
