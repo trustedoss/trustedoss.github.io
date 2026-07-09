@@ -61,6 +61,9 @@
 
 ### KWG 갭 분석 — 검토 후 결정 항목 (후속, 사용자 방향 필요)
 
+> 갱신(2026-07-09): 아래 1번(동기화 범위 확장)은 사용자 지시로 후속 과제에서 제외.
+> 나머지의 실행 계획은 docs/\_plan/followup-plan.md 참조 (BomLens 소개 과제 추가됨).
+
 1. 동기화 범위 확장: 상류 신규 가이드 5종(ai-sbom_guide, finance-oss-guide, iso5230/18974/42001_guide)이
    sync-kwg-reference.sh 범위 밖. 최소 ai-sbom_guide 추가 권고(발표 주제 직결).
 2. templates/process/vulnerability-response.md — CVSS v3.1/v4.0 병기, EPSS와 CISA KEV 보조 지표,
