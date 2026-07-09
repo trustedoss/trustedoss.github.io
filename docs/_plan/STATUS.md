@@ -3,6 +3,20 @@
 > 목적: 긴 세션에서 히스토리가 유실돼도 이 파일만 보면 즉시 재개 가능. 매 task 후 갱신·커밋한다.
 > 최종 갱신: 2026-07-09
 
+## AI SBOM 동기화 + 법적 고려 보강 (2026-07-09) — 진행 중
+
+> 계획 승인본: `docs/_plan/ai-compliance-sync-plan.md`. 재개 시 미체크 청크부터.
+> DoD = 수정 + en 쌍 + verify.sh 12/12 (빌드는 커밋 게이트 강제), 최종 gate-verifier 역순 판정.
+
+- [ ] 청크 A1: sync-kwg-reference.sh 에 ai-sbom_guide 추가 + 동기화 + 커밋
+- [ ] 청크 A2: kwg-mapping.yaml guide_mappings 3건(ai-sbom_guide, 0-openchain, 7-ai-compliance) + 오탐 등재 + drift reset
+- [ ] 청크 A3: sbom-101 "AI SBOM" 절 + iso42001 링크 (ko/en)
+- [ ] 청크 B0: 법적 고려 사실 검증 (에이전트 진행 중)
+- [ ] 청크 B1: website/ai-coding/legal-considerations.md 작성
+- [ ] 청크 B2: 결선 — 사이드바, intro 표, strategy 링크, templates/policy §5 보강
+- [ ] 청크 B3: en 쌍 번역
+- [ ] 최종 게이트: gate-verifier 역순 판정 + STATUS 마감
+
 ## Summit P0 수정 작업 (2026-07-09) — 완료
 
 > 재개 방법: 아래 미체크 청크부터. DoD = 해당 수정 + en 쌍 동기화 + verify.sh 12/12,
