@@ -50,6 +50,10 @@ Both tools can output CycloneDX JSON; this chapter uses CycloneDX as the standar
 
 [SCANOSS](https://www.scanoss.com/) excels at detecting open source code fragments that were copied and pasted directly, without any package declaration, at the file level. Because its role complements syft/cdxgen, using it in parallel is recommended when source-level precision is required.
 
+:::tip Integrated option from Korea — BomLens (SK Telecom)
+If you need to handle many languages and scan targets in one run, [BomLens](https://github.com/sktelecom/sbom-tools) is convenient. It accepts source code, container images, binaries and RootFS, firmware, SBOMs you received (for reassessment), and even HuggingFace models (ML-BOM), and produces a CycloneDX SBOM together with an open source notice (NOTICE) and a license/security risk report. It wraps syft, cdxgen, and Trivy under the hood, is Apache-2.0, and runs entirely locally on Docker with no data leaving your machine. Besides the CLI it offers a web UI and desktop installers. Keep syft as this chapter's main tool and consider BomLens when you need an integrated run.
+:::
+
 > For a guide to adopting and using SCA and compliance tools such as FOSSLight, SW360, and FOSSology, see [KWG Open Source Guide — Tools](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/4-tool/).
 
 For the actual Docker commands, GitHub Actions CI/CD setup, and the sample project walkthrough, see the [Docker and CI/CD execution guide](./docker-cicd.md).

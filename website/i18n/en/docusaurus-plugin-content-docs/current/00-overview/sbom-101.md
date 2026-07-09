@@ -151,6 +151,8 @@ Two formats are the de facto industry standards: **SPDX 3.0 AI Profile** offers 
 license and copyright expression, while **CycloneDX 1.6 ML-BOM** carries rich model-card
 metadata (performance, ethics, security). Organizations can adopt either or both.
 
+To generate an ML-BOM for HuggingFace models locally, tools such as [BomLens](https://github.com/sktelecom/sbom-tools) can help.
+
 The hands-on work in this kit (chapter 05) targets conventional SBOMs. To cover AI systems,
 refer to the [KWG AI SBOM Compliance Guide](https://openchain-project.github.io/OpenChain-KWG/guide/ai-sbom_guide/),
 which provides a clause checklist, a phased roadmap, and tool walkthroughs (OWASP AIBOM
