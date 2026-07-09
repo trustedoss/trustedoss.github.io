@@ -107,7 +107,7 @@ def count_tool_dirs(tools_dir: Path) -> list[str]:
 
 # ── 메인 로직 ──────────────────────────────────────────────
 
-def check_drift(mapping: dict, verbose: bool) -> list[dict]:
+def check_drift(mapping: dict, verbose: bool, save_snapshot: bool = False) -> list[dict]:
     """4개 차원 드리프트 감지. 변경 항목 리스트 반환."""
     changes = []
 
@@ -283,10 +283,14 @@ def check_drift(mapping: dict, verbose: bool) -> list[dict]:
             print(f"  ✅ 모든 ISO 섹션 매핑됨 ({len(found_sections)}개)")
 
     # ── 스냅샷 갱신 ──
-    save_json(HEADINGS_SNAP, curr_headings)
-    save_json(ISO_SNAP, curr_iso)
-    save_json(TOOLS_SNAP, {"dirs": curr_tools, "updated": datetime.utcnow().isoformat()})
-    save_json(HASH_SNAP, curr_hashes)
+    # 기준 스냅샷은 첫 실행(또는 --reset 직후)에만 저장한다.
+    # 매 검사마다 저장하면 (1) 변경 감지 후 재실행 시 기준선이 몰래 전진해 drift 가 가려지고,
+    # (2) updated 타임스탬프 때문에 git 작업 트리가 매번 더러워진다.
+    if save_snapshot:
+        save_json(HEADINGS_SNAP, curr_headings)
+        save_json(ISO_SNAP, curr_iso)
+        save_json(TOOLS_SNAP, {"dirs": curr_tools, "updated": datetime.utcnow().isoformat()})
+        save_json(HASH_SNAP, curr_hashes)
 
     return changes
 
@@ -366,7 +370,7 @@ def main():
         print("   다음 sync-kwg-reference.sh 실행 시부터 변경 감지가 활성화됩니다.\n")
 
     mapping = load_yaml(MAPPING_FILE)
-    changes = check_drift(mapping, args.verbose)
+    changes = check_drift(mapping, args.verbose, save_snapshot=is_first_run)
     print_report(changes)
 
     if is_first_run:
