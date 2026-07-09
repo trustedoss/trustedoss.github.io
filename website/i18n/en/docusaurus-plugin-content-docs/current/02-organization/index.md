@@ -94,6 +94,18 @@ ISO/IEC 18974 requires **periodic review** of the open source program and **evid
 
 **Important**: It is fine for roles to overlap in a small organization. What matters is being clear about who is responsible.
 
+### Assign people by name — the per-team champion model
+
+The standard's evidence requires the responsible person's **name**, so a department name or
+"everyone" in the role table does not satisfy the requirement. For roles that involve whole
+business units, designate a **per-team champion** — one named person in each development team who
+acts as the open source contact — and record the names.
+
+Also consider designating an **internal best-practice verification owner** who periodically checks
+that the role list and processes match internal best practice; this naturally accumulates the
+review evidence required at recertification. In small organizations the open source manager can
+hold this role concurrently.
+
 ---
 
 ## 5. Self-study
