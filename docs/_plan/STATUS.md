@@ -17,7 +17,12 @@
 - [ ] 6순위 회수 대장 (ko만 고친 P0의 en 대응분): en checklist-mapping 5230 연도,
       en 01-setup 로그인 안내, en 05-sbom-management 주간 워크플로, en devsecops·ai-coding
       GitLab CI 예시(curl, dind, gitleaks, CKV ID), en 08 method2/method4는 D2 재번역에 포함
-- [ ] 2순위 B1~B3: 정본 정합성 클러스터 (G항목 매핑, templates↔샘플↔agent 스펙) + 게이트 2
+- [x] 2순위 B1~B3 완료 — B1 `eceb1e7`(공통 12, 산출물 24, 39%, 담당 5쌍 양방향), B2 `4a365d7`
+      (conformance 템플릿 조항 ID 체계 통일, oss-policy §5 선택화, curriculum 3직군, CVD와 검토
+      이력 샘플 보강), B3 `f66b0f9`(04 조건부 정합과 3-6 위치, 4.3.1 문구 단일화, 02 라벨과
+      frontmatter). 게이트 2 전 항목 PASS + test-coverage 6/6 + verify 12/12.
+      en 회수 대장 추가: en checklist-mapping, index, 07의 수치(12/8/11, 39%, 24), en 04-process
+      조건부 서술, en 02 대화 라벨, en 05 4.3.1 문구
 - [ ] 3순위 H1~H3: 검증 하네스 강화 (verify.sh 확장 등) + 게이트 3
 - [ ] 4순위 C1~C4: 영역별 P1 잔여 (docs, agents, website 콘텐츠, 디자인·UX) + 게이트 4
 - [ ] 5순위 S1~S4: P2 스타일·일관성 sweep + 게이트 5
