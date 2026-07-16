@@ -24,8 +24,8 @@ slug: /
 
 오늘 처음 오픈소스 담당자가 됐어도 이 키트를 따라가면 ISO/IEC 5230과 ISO/IEC 18974 자체 인증 선언까지 완성할 수 있습니다. 이 챕터에서는 전체 여정의 목적과 구조를 파악합니다.
 
-- Agent가 회사 상황에 맞는 **23개 산출물**을 자동으로 생성합니다
-- **두 가지 표준을 동시에** 달성합니다 (공통 기반 약 35% 절약)
+- Agent가 회사 상황에 맞는 **24개 산출물**을 자동으로 생성합니다
+- **두 가지 표준을 동시에** 달성합니다 (공통 기반 약 39% 절약)
 
 ### 빠른 시작
 
@@ -51,16 +51,16 @@ cd trustedoss-agents && claude
 
 ### 완성 시 갖게 되는 산출물
 
-| 단계      | 산출물 파일                                                                                                                                   | 관련 표준 |
-| --------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
-| 조직      | `role-definition.md`, `raci-matrix.md`, `appointment-template.md` — [예시 보기](/reference/samples/organization)                              | [공통]    |
-| 정책      | `oss-policy.md`, `license-allowlist.md` — [예시 보기](/reference/samples/policy)                                                              | [공통]    |
-| 프로세스  | `usage-approval.md`, `distribution-checklist.md`, `vulnerability-response.md`, `process-diagram.md` — [예시 보기](/reference/samples/process) | [공통]    |
-| SBOM 생성 | `[project].cdx.json`, `sbom-commands.sh`, `license-report.md`, `copyleft-risk.md` — [예시 보기](/reference/samples/sbom)                      | [공통]    |
-| SBOM 관리 | `sbom-management-plan.md`, `sbom-sharing-template.md` — [예시 보기](/reference/samples/sbom)                                                  | [공급망]  |
-| 취약점    | `cve-report.md`, `remediation-plan.md` — [예시 보기](/reference/samples/vulnerability)                                                        | [18974]   |
-| 교육      | `curriculum.md`, `completion-tracker.md`, `resources.md` — [예시 보기](/reference/samples/training)                                           | [공통]    |
-| 인증      | `gap-analysis.md`, `declaration-draft.md`, `submission-guide.md` — [예시 보기](/reference/samples/conformance)                                | [공통]    |
+| 단계      | 산출물 파일                                                                                                                                                          | 관련 표준 |
+| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| 조직      | `role-definition.md`, `raci-matrix.md`, `appointment-template.md` — [예시 보기](/reference/samples/organization)                                                     | [공통]    |
+| 정책      | `oss-policy.md`, `license-allowlist.md` — [예시 보기](/reference/samples/policy)                                                                                     | [공통]    |
+| 프로세스  | `usage-approval.md`, `distribution-checklist.md`, `vulnerability-response.md`, `inquiry-response.md`, `process-diagram.md` — [예시 보기](/reference/samples/process) | [공통]    |
+| SBOM 생성 | `[project].cdx.json`, `sbom-commands.sh`, `license-report.md`, `copyleft-risk.md` — [예시 보기](/reference/samples/sbom)                                             | [공통]    |
+| SBOM 관리 | `sbom-management-plan.md`, `sbom-sharing-template.md` — [예시 보기](/reference/samples/sbom)                                                                         | [공급망]  |
+| 취약점    | `cve-report.md`, `remediation-plan.md` — [예시 보기](/reference/samples/vulnerability)                                                                               | [18974]   |
+| 교육      | `curriculum.md`, `completion-tracker.md`, `resources.md` — [예시 보기](/reference/samples/training)                                                                  | [공통]    |
+| 인증      | `gap-analysis.md`, `declaration-draft.md`, `submission-guide.md` — [예시 보기](/reference/samples/conformance)                                                       | [공통]    |
 
 아래는 0에서 자체 인증까지 7단계 여정입니다. 각 단계를 마칠 때마다 체크해 진행 상황을 추적하세요(이 브라우저에만 저장됩니다).
 
@@ -105,7 +105,7 @@ cd trustedoss-agents && claude
 | G3-B   | SBOM 및 공급망 (공통)                     |
 | G4     | 준수 선언 및 유지                         |
 
-**핵심 인사이트:** 전체 31개 항목 중 공통 항목이 11개입니다. 공통 항목 11개를 먼저 완성하면 두 표준을 동시에 충족하므로, 중복 작업을 약 35% 절감할 수 있습니다. 이 키트는 공통 항목을 우선 처리하도록 설계되어 있습니다.
+**핵심 인사이트:** 전체 31개 항목 중 공통 항목이 12개입니다. 공통 항목 12개를 먼저 완성하면 두 표준을 동시에 충족하므로, 중복 작업을 약 39% 절감할 수 있습니다. 이 키트는 공통 항목을 우선 처리하도록 설계되어 있습니다.
 
 ---
 
@@ -126,7 +126,7 @@ cd trustedoss-agents && claude
 
 - [ ] 두 표준(ISO/IEC 5230, ISO/IEC 18974)의 차이점과 공통점을 설명할 수 있다
 - [ ] `checklist-mapping.md` 의 G1~G4 항목 ID 체계를 파악했다
-- [ ] 공통 항목 10개가 두 표준을 동시에 충족한다는 점을 이해했다
+- [ ] 공통 항목 12개가 두 표준을 동시에 충족한다는 점을 이해했다
 - [ ] 셀프스터디 경로를 확인했다
 - [ ] 다음 단계(공급망 보안 학습 또는 챕터 `01`)로 이동할 준비가 됐다
 

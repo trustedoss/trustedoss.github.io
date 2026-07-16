@@ -16,16 +16,16 @@ TrustedOSS의 핵심은 **AI 에이전트가 회사 상황을 묻고, OpenChain 
 
 ## 에이전트 한눈에 보기
 
-| 챕터        | 에이전트 (`agents/…`)              | 생성 산출물                                                                                                                   |
-| ----------- | ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| 2 조직      | `02-organization-designer`         | role-definition, raci-matrix, appointment-template                                                                            |
-| 3 정책      | `03-policy-generator`              | oss-policy, license-allowlist                                                                                                 |
-| 4 프로세스  | `04-process-designer`              | usage-approval, distribution-checklist, vulnerability-response, inquiry-response, (조건부) contribution / project-publication |
-| 5 SBOM 생성 | `05-sbom-guide`, `05-sbom-analyst` | SBOM(cdx.json), sbom-commands, license-report, copyleft-risk                                                                  |
-| 5 SBOM 관리 | `05-sbom-management`               | sbom-management-plan, sbom-sharing-template                                                                                   |
-| 5 취약점    | `05-vulnerability-analyst`         | cve-report, remediation-plan                                                                                                  |
-| 6 교육      | `06-training-manager`              | curriculum, completion-tracker, resources                                                                                     |
-| 7 인증      | `07-conformance-preparer`          | gap-analysis, declaration-draft, submission-guide                                                                             |
+| 챕터        | 에이전트 (`agents/…`)              | 생성 산출물                                                                                                                                    |
+| ----------- | ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2 조직      | `02-organization-designer`         | role-definition, raci-matrix, appointment-template                                                                                             |
+| 3 정책      | `03-policy-generator`              | oss-policy, license-allowlist                                                                                                                  |
+| 4 프로세스  | `04-process-designer`              | usage-approval, distribution-checklist, vulnerability-response, inquiry-response, process-diagram, (조건부) contribution / project-publication |
+| 5 SBOM 생성 | `05-sbom-guide`, `05-sbom-analyst` | SBOM(cdx.json), sbom-commands, license-report, copyleft-risk                                                                                   |
+| 5 SBOM 관리 | `05-sbom-management`               | sbom-management-plan, sbom-sharing-template                                                                                                    |
+| 5 취약점    | `05-vulnerability-analyst`         | cve-report, remediation-plan                                                                                                                   |
+| 6 교육      | `06-training-manager`              | curriculum, completion-tracker, resources                                                                                                      |
+| 7 인증      | `07-conformance-preparer`          | gap-analysis, declaration-draft, submission-guide                                                                                              |
 
 생성된 산출물의 실제 형태는 [정책 산출물 Best Practice](/reference/samples/policy)에서 확인할 수 있습니다.
 
