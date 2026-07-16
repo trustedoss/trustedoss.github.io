@@ -191,6 +191,8 @@ sca:
   stage: code-scan
   image: ubuntu:22.04
   script:
+    # ubuntu 기본 이미지에는 curl이 없음
+    - apt-get update -qq && apt-get install -y -qq curl ca-certificates
     - curl -sSfL https://get.anchore.io/syft
       | sh -s -- -b /usr/local/bin
     - curl -sSfL https://get.anchore.io/grype
@@ -213,8 +215,16 @@ iac-security:
 
 container-security:
   stage: build-scan
-  image: aquasec/trivy:latest
+  image: docker:27
+  services:
+    - docker:27-dind
+  variables:
+    DOCKER_TLS_CERTDIR: '/certs'
   script:
+    # docker 이미지에는 trivy가 없으므로 설치
+    - apk add --no-cache curl
+    - curl -sSfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh
+      | sh -s -- -b /usr/local/bin
     - docker build -t $IMAGE_TAG .
     - trivy image --severity HIGH,CRITICAL
       --exit-code 1 --ignore-unfixed $IMAGE_TAG
@@ -225,8 +235,9 @@ dast:
   stage: dast
   image: ghcr.io/zaproxy/zaproxy:stable
   script:
-    - docker compose up -d && sleep 15
-    - zap-baseline.py -t http://localhost:8080
+    # DAST는 배포된 환경을 대상으로 실행 (CI 잡 안에서 앱을 직접 띄우지 않음)
+    # STAGING_URL은 CI/CD 변수로 등록 (예: https://staging.example.com)
+    - zap-baseline.py -t $STAGING_URL
       -r zap-report.html -I # -I: 실패해도 계속 (Soft Fail)
   artifacts:
     paths: [zap-report.html]

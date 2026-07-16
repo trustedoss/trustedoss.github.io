@@ -93,6 +93,8 @@ sca:
   stage: test
   image: ubuntu:22.04
   script:
+    # ubuntu 기본 이미지에는 curl이 없음
+    - apt-get update -qq && apt-get install -y -qq curl ca-certificates
     - curl -sSfL https://get.anchore.io/syft
       | sh -s -- -b /usr/local/bin
     - curl -sSfL https://get.anchore.io/grype

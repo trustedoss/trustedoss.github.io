@@ -107,13 +107,17 @@ jobs:
 
 container-security:
   stage: test
-  image: aquasec/trivy:latest
+  image: docker:27
   services:
-    - docker:dind
+    - docker:27-dind
   variables:
-    DOCKER_HOST: tcp://docker:2376
+    DOCKER_TLS_CERTDIR: '/certs'
     IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
   script:
+    # docker 이미지에는 trivy가 없으므로 설치
+    - apk add --no-cache curl
+    - curl -sSfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh
+      | sh -s -- -b /usr/local/bin
     - docker build -t $IMAGE_TAG .
     # 취약점 스캔
     - trivy image
