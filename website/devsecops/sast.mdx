@@ -66,6 +66,25 @@ jobs:
             p/secrets
 ```
 
+### GitLab CI
+
+```yaml
+# .gitlab-ci.yml (semgrep 잡 부분)
+
+semgrep:
+  stage: test
+  image: semgrep/semgrep:latest
+  script:
+    - semgrep ci
+      --config p/owasp-top-ten
+      --config p/security-audit
+      --error
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+```
+
+---
+
 ### 룰셋 선택 가이드
 
 | 룰셋             | 대상   | 설명                     |
@@ -100,7 +119,7 @@ rules:
 
 ## CodeQL 설정
 
-CodeQL은 GitHub에서 제공하는 도구로, GitHub Actions에서 퍼블릭 저장소 및 GitHub Code Security(구 GitHub Advanced Security 의 분리 제품) 구독 조직에 무료로 제공됩니다. 데이터플로우 분석을 지원해 간접적인 취약점 경로도 탐지할 수 있습니다.
+CodeQL은 GitHub 전용 도구로(GitLab CI에서는 위 Semgrep의 GitLab 예시를 사용), GitHub Actions에서 퍼블릭 저장소 및 GitHub Code Security(구 GitHub Advanced Security 의 분리 제품) 구독 조직에 무료로 제공됩니다. 데이터플로우 분석을 지원해 간접적인 취약점 경로도 탐지할 수 있습니다.
 
 ### GitHub Actions
 
@@ -139,25 +158,6 @@ jobs:
         with:
           category: '/language:javascript'
 ```
-
-### GitLab CI
-
-```yaml
-# .gitlab-ci.yml (semgrep 잡 부분)
-
-semgrep:
-  stage: test
-  image: semgrep/semgrep:latest
-  script:
-    - semgrep ci
-      --config p/owasp-top-ten
-      --config p/security-audit
-      --error
-  rules:
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-```
-
----
 
 ## 도입 시 주의사항
 

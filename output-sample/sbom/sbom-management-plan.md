@@ -35,10 +35,13 @@
 납품처가 SPDX를 요구하는 경우 CycloneDX → SPDX 변환을 수행한다.
 
 ```bash
-# CycloneDX → SPDX 변환 (cdxgen 사용)
-cdxgen -o sbom.cdx.json --format json .
-# SPDX 변환은 별도 도구(spdx-tools) 또는 납품처 지정 도구 활용
+# CycloneDX → SPDX 변환 (cyclonedx-cli 사용)
+cyclonedx convert --input-file sbom.cdx.json \
+  --output-file sbom.spdx.json --output-format spdxjson
 ```
+
+cdxgen은 SBOM 생성 도구로 포맷 간 변환 기능이 없으므로, 변환에는 cyclonedx-cli
+(`docker run --rm -v $(pwd):/data cyclonedx/cyclonedx-cli convert ...`) 또는 납품처 지정 도구를 사용한다.
 
 ---
 

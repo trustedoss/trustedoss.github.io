@@ -64,8 +64,8 @@ graph TD
 graph TD
     A[취약점 탐지\nCI/CD 스캔 / 외부 신고] --> B[Jira 티켓 생성\nOSS-SEC 프로젝트]
     B --> C{CVSS 심각도}
-    C -->|Critical 9.0+| D[24시간 이내 대응\nJira Blocker]
-    C -->|High 7.0~8.9| E[1주일 이내 대응\nJira Critical]
+    C -->|Critical 9.0+| D[1주일 이내 대응\nJira Blocker]
+    C -->|High 7.0~8.9| E[4주일 이내 대응\nJira Critical]
     C -->|Medium 4.0~6.9| F[1개월 이내 대응\nJira Major]
     C -->|Low ~3.9| G[다음 릴리즈 반영\nJira Minor]
     D --> H{배포 소프트웨어\n영향?}

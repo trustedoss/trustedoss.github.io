@@ -31,10 +31,11 @@ bash .claude/scripts/verify.sh
 
 ### organization.md — Type A
 
-| 섹션 이름 (H2)             | 파일명             | output-sample 경로              |
-| -------------------------- | ------------------ | ------------------------------- |
-| 오픈소스 역할 및 책임 정의 | role-definition.md | organization/role-definition.md |
-| 오픈소스 RACI 매트릭스     | raci-matrix.md     | organization/raci-matrix.md     |
+| 섹션 이름 (H2)             | 파일명                  | output-sample 경로                   |
+| -------------------------- | ----------------------- | ------------------------------------ |
+| 오픈소스 역할 및 책임 정의 | role-definition.md      | organization/role-definition.md      |
+| 오픈소스 RACI 매트릭스     | raci-matrix.md          | organization/raci-matrix.md          |
+| 오픈소스 담당자 임명장     | appointment-template.md | organization/appointment-template.md |
 
 ---
 
@@ -143,7 +144,9 @@ YAML front matter가 있고, 파일명을 섹션 헤더로 쓰는 파일군.
 ```
 ## {파일명}
 
-> **생성 agent**: `{agent-name}` | **저장 경로**: `output/{폴더}/{파일명}`
+:::info
+**생성 agent**: `{agent-name}` | **저장 경로**: `output/{폴더}/{파일명}`
+:::
 
 ---
 
@@ -151,6 +154,8 @@ YAML front matter가 있고, 파일명을 섹션 헤더로 쓰는 파일군.
 
 ---
 ```
+
+(기존 페이지가 `> **생성 agent**...` 인용 표기를 쓰고 있으면 admonition 형식으로 교체한다 — 인용(>) 금지 규칙)
 
 ---
 

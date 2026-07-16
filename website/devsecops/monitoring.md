@@ -80,8 +80,10 @@ updates:
 
 ### 보안 알림 자동 활성화
 
-GitHub의 Dependabot Security Alerts는 저장소 설정에서 활성화하면 자동으로 작동합니다.
-별도 설정 없이 GitHub Advisory Database 기반으로 Critical·High 취약점 발견 시 즉시 PR을 생성합니다.
+GitHub의 Dependabot은 두 가지 설정을 구분해 활성화합니다. **Security Alerts**는 GitHub
+Advisory Database 기반으로 취약한 의존성을 알림으로 알려주고, 수정 PR까지 자동으로 만들려면
+**Dependabot security updates**를 추가로 켜야 합니다. 둘 다 저장소 Settings의
+Code security 메뉴에서 활성화합니다.
 
 ---
 
@@ -222,8 +224,9 @@ claude
 
 ### 이슈 자동 등록 + Dependabot 분석
 
-정기 스캔에서 High/Critical 취약점 발견 시 Issue를 자동 생성하고
-Dependabot PR에 영향 분석 코멘트를 자동으로 게시합니다.
+보안 스캔 결과(grype, Semgrep, 라이선스 위반)에서 설정한 심각도 이상을
+GitHub·GitLab Issues로 자동 등록하는 워크플로우를 생성합니다.
+CVE ID 기준 중복 방지 로직을 포함합니다.
 
 ```bash
 cd agents/level2-automation/issue-tracker
@@ -232,9 +235,9 @@ claude
 
 생성 산출물:
 
-- `.github/workflows/scheduled-security-scan.yml`
-- `.github/workflows/dependabot-analysis.yml`
-- `gitlab-scheduled-scan.yml` (GitLab CI 변환 버전)
+- `.github/workflows/security-issue-tracker.yml`
+- `gitlab-issue-tracker.yml` (GitLab CI 변환 버전)
+- `ISSUE-TRACKER-SETUP.md` (토큰 권한·라벨·비용 설정 가이드)
 
 :::info GitHub Actions vs GitLab CI
 GitHub Actions는 실제 동작 검증된 YAML을 제공합니다.
