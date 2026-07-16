@@ -5,8 +5,8 @@ sidebar_position: 1
 작성일: 2026-03-20
 버전: 1.0
 충족 체크리스트:
-  - 'ISO/IEC 5230: [G1.3, G2.1, G2.2]'
-  - 'ISO/IEC 18974: [G1.3, G2.1, G2.2]'
+  - 'ISO/IEC 5230: G1.3 (3.1.2), G2.1 (3.2.2), G2.2 (3.2.1)'
+  - 'ISO/IEC 18974: G1.3 (4.1.2), G2.1 (4.2.2), G2.2 (4.2.1)'
 셀프스터디 소요시간: 1시간
 ---
 
@@ -142,23 +142,23 @@ agent와 대화하며 조직 산출물을 생성합니다.
 
    ***
 
-   **질문 1/5** — 회사명과 담당 부서명을 알려주세요.
+   **질문 1/6** — 회사명과 담당 부서명을 알려주세요.
 
    `예시 답변: (주)테크스타트, 개발팀`
 
-   **질문 2/5** — 전체 개발자 수는 몇 명인가요?
+   **질문 2/6** — 전체 개발자 수는 몇 명인가요?
 
    `예시 답변: 50명`
 
-   **질문 3/5** — 오픈소스 업무를 전담할 수 있는 인원이 있나요? (겸무 / 1인 전담 / 2인~5인 / 5인 이상)
+   **질문 3/6** — 오픈소스 업무를 전담할 수 있는 인원이 있나요? (겸무 / 1인 전담 / 2인~5인 / 5인 이상)
 
    `예시 답변: 겸무`
 
-   **질문 4/5** — 법무 자문이 있나요? (없음 / 자체 법무팀 / 외부 법무 법인 활용)
+   **질문 4/6** — 법무 자문이 있나요? (없음 / 자체 법무팀 / 외부 법무 법인 활용)
 
    `예시 답변: 외부 법무 법인 활용`
 
-   **질문 5/5** — 보안팀 자문이 있나요? (없음 / 자체 보안팀 / 외부 보안 컨설팅 활용)
+   **질문 5/6** — 보안팀 자문이 있나요? (없음 / 자체 보안팀 / 외부 보안 컨설팅 활용)
 
    `예시 답변: 없음`
 
@@ -215,11 +215,11 @@ agent와 대화하며 조직 산출물을 생성합니다.
 
 **ISO/IEC 5230**
 
-| 항목 ID | 요구사항            | 자체인증 체크리스트                                                                  |
-| ------- | ------------------- | ------------------------------------------------------------------------------------ |
-| 3.1.2   | 담당자 및 역할 정의 | Do you have documented roles and responsibilities for your open source program?      |
-| 3.2.1   | 외부 문의 수신 채널 | Do you have a publicly visible contact method for open source compliance inquiries?  |
-| 3.2.2   | 역할·책임 매트릭스  | Do you have a process for reviewing and remediating open source license obligations? |
+| 항목 ID | 요구사항            | 자체인증 체크리스트                                                                               |
+| ------- | ------------------- | ------------------------------------------------------------------------------------------------- |
+| 3.1.2   | 담당자 및 역할 정의 | Do you have documented roles and responsibilities for your open source program?                   |
+| 3.2.1   | 외부 문의 수신 채널 | Do you have a publicly visible contact method for open source compliance inquiries?               |
+| 3.2.2   | 역할·책임 매트릭스  | Do you have a documented list of roles and responsibilities with personnel assigned to each role? |
 
 **ISO/IEC 18974**
 

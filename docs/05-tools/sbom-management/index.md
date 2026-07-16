@@ -232,10 +232,10 @@ cp output/sbom/myapp-v1.0.0-20260320.cdx.json output/sbom/myapp-latest.cdx.json
 
 **ISO/IEC 18974**
 
-| 항목 ID | 요구사항                  | 자체인증 체크리스트                                                                                   |
-| ------- | ------------------------- | ----------------------------------------------------------------------------------------------------- |
-| 4.3.1   | SBOM 관리 및 갱신         | Do you have a process for maintaining and updating the SBOM when supply software changes?             |
-| 4.3.2   | SBOM 기반 취약점 모니터링 | Do you have a process for continuously monitoring supply software components for new vulnerabilities? |
+| 항목 ID | 요구사항                  | 자체인증 체크리스트                                                                                                |
+| ------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| 4.3.1   | SBOM 관리 및 갱신         | Do you have a documented process for creating and maintaining a SBOM for supply software throughout its lifecycle? |
+| 4.3.2   | SBOM 기반 취약점 모니터링 | Do you have a process for continuously monitoring supply software components for new vulnerabilities?              |
 
 :::
 

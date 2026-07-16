@@ -202,7 +202,7 @@ ls output/sbom/license-report.md output/sbom/copyleft-risk.md
 
 **막혔을 때:**
 
-`output/sbom/sbom.cdx.json`이 비어있으면 lock 파일 존재 여부를 먼저 확인합니다 (`package-lock.json`, `requirements.txt`, `pom.xml` 등). lock 파일이 없으면 cdxgen으로 전환하여 재시도합니다.
+`output/sbom/[project].cdx.json`이 비어있으면 lock 파일 존재 여부를 먼저 확인합니다 (`package-lock.json`, `requirements.txt`, `pom.xml` 등). lock 파일이 없으면 cdxgen으로 전환하여 재시도합니다.
 
 ```bash
 docker run --rm \
@@ -215,11 +215,11 @@ docker run --rm \
 
 **각 단계 예상 결과:**
 
-| 단계 완료 후        | 예상 결과                                                              |
-| ------------------- | ---------------------------------------------------------------------- |
-| 4번 (sbom-guide)    | `output/sbom/sbom-commands.sh` 생성됨                                  |
-| 5번 (스크립트 실행) | `output/sbom/sbom.cdx.json` 생성됨 (`components` 항목 있어야 정상)     |
-| 7번 (sbom-analyst)  | `output/sbom/license-report.md`, `output/sbom/copyleft-risk.md` 생성됨 |
+| 단계 완료 후        | 예상 결과                                                               |
+| ------------------- | ----------------------------------------------------------------------- |
+| 4번 (sbom-guide)    | `output/sbom/sbom-commands.sh` 생성됨                                   |
+| 5번 (스크립트 실행) | `output/sbom/[project].cdx.json` 생성됨 (`components` 항목 있어야 정상) |
+| 7번 (sbom-analyst)  | `output/sbom/license-report.md`, `output/sbom/copyleft-risk.md` 생성됨  |
 
 :::info 충족되는 표준 요구사항
 이 실습을 완료하면 아래 요구사항이 충족됩니다.
@@ -234,9 +234,9 @@ docker run --rm \
 
 **ISO/IEC 18974**
 
-| 항목 ID | 요구사항             | 자체인증 체크리스트                                                            |
-| ------- | -------------------- | ------------------------------------------------------------------------------ |
-| 4.3.1   | 공급 소프트웨어 SBOM | Do you have a process for creating and maintaining a SBOM for supply software? |
+| 항목 ID | 요구사항             | 자체인증 체크리스트                                                                                                |
+| ------- | -------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| 4.3.1   | 공급 소프트웨어 SBOM | Do you have a documented process for creating and maintaining a SBOM for supply software throughout its lifecycle? |
 
 :::
 

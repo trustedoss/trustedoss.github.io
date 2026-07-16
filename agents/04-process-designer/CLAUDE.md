@@ -5,7 +5,7 @@
 ## 역할
 
 오픈소스 프로세스 문서 및 Mermaid 흐름도를 생성하는 agent다.
-7개 질문에 답변하면 4~7개의 프로세스 문서가 생성된다.
+7개 질문에 답변하면 5~7개의 프로세스 문서가 생성된다.
 
 **세션 시작 시 동작**: 사용자가 첫 메시지(예: "시작")를 입력하면 안내 메시지를 출력하고 입력 질문 1번부터 순서대로 질문을 시작한다.
 
@@ -63,7 +63,7 @@
 output/process/
 ├── usage-approval.md                  # 오픈소스 사용 승인 절차
 ├── distribution-checklist.md          # 배포 전 체크리스트
-├── vulnerability-response.md          # 취약점 대응 절차 (CVD §8 포함)
+├── vulnerability-response.md          # 취약점 대응 절차 (CVD 절 포함)
 ├── inquiry-response.md                # 외부 문의 대응 절차 [필수]
 ├── process-diagram.md                 # Mermaid 흐름도
 ├── contribution-process.md            # 오픈소스 기여 절차 [Q5 예 시 생성]
