@@ -3,23 +3,24 @@
  * PostToolUse hook: Write/Edit 직후 실행.
  * docs/ 파일에 cd agents/ 블록이 있으나 직전 admonition이 없으면 경고 출력.
  *
- * 환경변수: CLAUDE_TOOL_OUTPUT (수정된 파일 경로 포함 JSON 문자열)
+ * 입력: Claude Code 훅 페이로드는 stdin으로 JSON이 전달된다.
+ *       (tool_input.file_path 에 수정된 파일 경로가 담긴다)
  */
 
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 
-// 파일 경로 추출
-const toolOutput = process.env.CLAUDE_TOOL_OUTPUT || '';
+// stdin에서 훅 페이로드 읽어 파일 경로 추출
 let filePath = '';
-
 try {
-  const parsed = JSON.parse(toolOutput);
-  filePath = parsed.filePath || parsed.path || '';
+  const payload = JSON.parse(fs.readFileSync(0, 'utf8'));
+  filePath =
+    (payload.tool_input && payload.tool_input.file_path) ||
+    (payload.tool_response && payload.tool_response.filePath) ||
+    '';
 } catch {
-  // JSON이 아니면 문자열에서 경로 추출 시도
-  const match = toolOutput.match(/docs\/[^\s"']+\.md/);
-  if (match) filePath = match[0];
+  // stdin이 비었거나 JSON이 아니면 검사할 대상 없음
+  process.exit(0);
 }
 
 // docs/ 파일만 검사
@@ -58,6 +59,6 @@ if (hasViolation) {
   console.warn(
     `\n⚠️  [check-admonition] ${filePath}\n` +
       `   라인 ${violations.join(', ')}: cd agents/ 블록 직전에 :::tip 실행 전 확인 admonition 없음.\n` +
-      `   verify.sh [7/8] FAIL 원인이 됩니다. doc-fixer 또는 수동으로 admonition을 추가하세요.\n`
+      `   verify.sh [7/12] FAIL 원인이 됩니다. doc-fixer 또는 수동으로 admonition을 추가하세요.\n`
   );
 }

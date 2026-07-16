@@ -45,7 +45,7 @@ const config: Config = {
       en: {label: 'English'},
     },
   },
-  onBrokenLinks: 'warn',
+  onBrokenLinks: 'throw',
   markdown: {
     mermaid: true,
   },

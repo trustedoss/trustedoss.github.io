@@ -36,6 +36,7 @@ CHAPTER_FILES = {
         "distribution-checklist.md",
         "vulnerability-response.md",
         "inquiry-response.md",
+        "process-diagram.md",
     ],
     "sbom": [
         "license-report.md",
@@ -50,9 +51,12 @@ CHAPTER_FILES = {
     "training": [
         "curriculum.md",
         "completion-tracker.md",
+        "resources.md",
     ],
     "conformance": [
         "gap-analysis.md",
+        "declaration-draft.md",
+        "submission-guide.md",
     ],
 }
 

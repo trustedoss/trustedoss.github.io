@@ -30,15 +30,19 @@ while IFS= read -r file; do
     filepath=$(echo "$link" | sed 's/#.*//')
     [ -z "$filepath" ] && continue
     # 상대 경로 기준 실제 파일 존재 여부 확인
+    # Docusaurus id 링크(확장자 생략)도 허용: ./page → page.md / page.mdx / page/index.md
     dir=$(dirname "$file")
     if [ ! -e "$dir/$filepath" ] && \
-       [ ! -e "$filepath" ]; then
+       [ ! -e "$filepath" ] && \
+       [ ! -e "$dir/$filepath.md" ] && \
+       [ ! -e "$dir/$filepath.mdx" ] && \
+       [ ! -e "$dir/$filepath/index.md" ]; then
       WARNINGS+=("깨진 링크: $file → $link")
       BROKEN=$((BROKEN+1))
     fi
   done < <(grep -Eo '\]\([^)]+\)' "$file" | sed 's/\](\(.*\))/\1/' | grep -v "^http" | grep -v "^/" | grep -v "^pathname:")
-done < <(find docs README.md workshop -name "*.md" \
-         2>/dev/null)
+done < <(find docs README.md workshop website/ai-coding website/devsecops website/reference -name "*.md" -o -name "*.mdx" \
+         2>/dev/null | grep -v "^website/reference/node_modules")
 
 if [ $BROKEN -eq 0 ]; then
   echo "  PASS: 내부 링크 이상 없음"
@@ -119,14 +123,18 @@ fi
 # STYLEGUIDE.md 는 "금지 패턴" 자체를 예시로 문서화하므로 verify.sh 와 같은 이유로 제외한다.
 echo "[5/12] 로컬 경로 노출 확인..."
 LOCAL_PATH_HITS=$(git ls-files \
-  -- '*.md' '*.sh' '*.yml' '*.yaml' '*.json' '*.ts' \
+  -- '*.md' '*.mdx' '*.sh' '*.yml' '*.yaml' '*.json' '*.ts' '*.tsx' '*.py' '*.js' '*.scss' \
   2>/dev/null | \
   grep -v "^\.claude/scripts/verify\.sh$" | \
   grep -v "^STYLEGUIDE\.md$" | \
+  grep -v "^CLAUDE\.md$" | \
+  grep -v "^CONTRIBUTING\.md$" | \
+  grep -v "^docs/_plan/" | \
   grep -v "settings\.local\.json$" | \
   grep -v "^\.claude/reference/kwg/" | \
   grep -v "^tests/cassettes/" | \
-  xargs grep -ln "/Users/[^/]*/\|/home/[^/]*/" 2>/dev/null || true)
+  grep -v "^website/node_modules/" | \
+  xargs grep -ln "/Users/[^/]*/\|/home/[^/]*/\|[Cc]:\\\\Users\\\\" 2>/dev/null || true)
 
 LOCAL_PATH_COUNT=$(echo "$LOCAL_PATH_HITS" | grep -c . || true)
 
@@ -153,10 +161,10 @@ while IFS= read -r match; do
   WARNINGS+=("18974 번호 오류 (§4.x.x 이어야 함): $match")
   SPEC_ERRORS=$((SPEC_ERRORS+1))
 done < <(grep -rn "18974[^(0-9]*3\.[1-9]\.[0-9]" \
-    docs/ agents/ \
-    --include="*.md" \
+    docs/ agents/ templates/ output-sample/ website/ai-coding/ website/devsecops/ \
+    --include="*.md" --include="*.mdx" \
     2>/dev/null | \
-    grep -v "\.claude/reference/")
+    grep -v "\.claude/reference/" | grep -v "^docs/_plan/")
 
 # 패턴 2: 괄호/대괄호 안 "18974 G?.? (3.x.x)" 또는 "[3.x.x]" 형식
 # [\[(]3\.: [ 또는 ( 바로 뒤에 3.이 오는 경우만 탐지 — "§4.3.1" 형태는 오탐 없음
@@ -164,10 +172,30 @@ while IFS= read -r match; do
   WARNINGS+=("18974 번호 오류 (§4.x.x 이어야 함): $match")
   SPEC_ERRORS=$((SPEC_ERRORS+1))
 done < <(grep -rn "18974[^)]*[\[(]3\.[1-9]" \
-    docs/ agents/ \
-    --include="*.md" \
+    docs/ agents/ templates/ output-sample/ website/ai-coding/ website/devsecops/ \
+    --include="*.md" --include="*.mdx" \
     2>/dev/null | \
-    grep -v "\.claude/reference/")
+    grep -v "\.claude/reference/" | grep -v "^docs/_plan/")
+
+# 패턴 3 (역방향): "5230 ... 4.x.x" — 5230은 §3.x.x 체계이므로 4.x.x가 오면 혼용
+while IFS= read -r match; do
+  WARNINGS+=("5230 번호 오류 (§3.x.x 이어야 함): $match")
+  SPEC_ERRORS=$((SPEC_ERRORS+1))
+done < <(grep -rn "5230[^(0-9]*4\.[1-9]\.[0-9]" \
+    docs/ agents/ templates/ output-sample/ website/ai-coding/ website/devsecops/ \
+    --include="*.md" --include="*.mdx" \
+    2>/dev/null | \
+    grep -v "\.claude/reference/" | grep -v "^docs/_plan/")
+
+# 패턴 4 (역방향): 괄호/대괄호 안 "5230 ... (4.x" 또는 "[4.x" 형식
+while IFS= read -r match; do
+  WARNINGS+=("5230 번호 오류 (§3.x.x 이어야 함): $match")
+  SPEC_ERRORS=$((SPEC_ERRORS+1))
+done < <(grep -rn "5230[^)]*[\[(]4\.[1-9]" \
+    docs/ agents/ templates/ output-sample/ website/ai-coding/ website/devsecops/ \
+    --include="*.md" --include="*.mdx" \
+    2>/dev/null | \
+    grep -v "\.claude/reference/" | grep -v "^docs/_plan/")
 
 if [ $SPEC_ERRORS -eq 0 ]; then
   echo "  PASS: 18974 섹션 번호 형식 이상 없음"
