@@ -23,7 +23,12 @@
       frontmatter). 게이트 2 전 항목 PASS + test-coverage 6/6 + verify 12/12.
       en 회수 대장 추가: en checklist-mapping, index, 07의 수치(12/8/11, 39%, 24), en 04-process
       조건부 서술, en 02 대화 라벨, en 05 4.3.1 문구
-- [ ] 3순위 H1~H3: 검증 하네스 강화 (verify.sh 확장 등) + 게이트 3
+- [x] 3순위 H1~H3 완료 — `4fc1e47`, `f4c0b10`. verify.sh [2/12] website 스캔과 id 링크 폴백,
+      [5/12] Windows 패턴과 5개 확장자, [6/12] 역방향 검사와 범위 확장, onBrokenLinks 'throw',
+      validate-output 4파일, check-admonition 훅 소생(stdin JSON + ESM — 기존엔 이중으로 죽어
+      있었음), 인라인 훅 2개 stdin 전환, sync-kwg 경로 절대화. 강화 검사 신규 위반 0건.
+      게이트 3 전 항목 PASS(임시 위반 파일 역검증 포함) + verify 12/12.
+      참고: 빌드 로그의 "not valid JSON" 78건은 변경 전에도 동일한 기존 이슈(조사 보류)
 - [ ] 4순위 C1~C4: 영역별 P1 잔여 (docs, agents, website 콘텐츠, 디자인·UX) + 게이트 4
 - [ ] 5순위 S1~S4: P2 스타일·일관성 sweep + 게이트 5
 - [ ] 6순위 D1~D4: en 패리티 전면 동기화 (ko 확정 후) + 게이트 6
