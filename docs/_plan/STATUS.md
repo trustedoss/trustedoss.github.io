@@ -29,7 +29,13 @@
       있었음), 인라인 훅 2개 stdin 전환, sync-kwg 경로 절대화. 강화 검사 신규 위반 0건.
       게이트 3 전 항목 PASS(임시 위반 파일 역검증 포함) + verify 12/12.
       참고: 빌드 로그의 "not valid JSON" 78건은 변경 전에도 동일한 기존 이슈(조사 보류)
-- [ ] 4순위 C1~C4: 영역별 P1 잔여 (docs, agents, website 콘텐츠, 디자인·UX) + 게이트 4
+- [x] 4순위 C1~C4 완료 — C1 `8e40c5b`(인용 전환, open 교체, 펜스 복구, 버전 표), C2 `324cc01`
+      (경로 기준 문단 9개 agent, Go와 기타 분기), C3 `e34876d`(도구 페이지 정정, output-sample
+      원본 수정, 스킬 매핑에 임명장 추가와 admonition 형식, reference 7페이지 재생성),
+      C4 `b45ff9e`(CLAUDE.md 빌드 제외, gtag 제거, Showcase 라벨, FinalCTA 과장 완화,
+      quick-start 정리). 게이트 4는 1차 미통과(cdxgen 표 행 잔존, `1bee88b` 정정) 후 재판정 통과.
+      게이트가 5순위 S2 대상으로 넘긴 잔여 인용 6곳: 05-sbom-gen:145, 07:111, 08 index:24,
+      supply-chain:214, 06-training:78, method3-hooks:32
 - [ ] 5순위 S1~S4: P2 스타일·일관성 sweep + 게이트 5
 - [ ] 6순위 D1~D4: en 패리티 전면 동기화 (ko 확정 후) + 게이트 6
 - [ ] 마무리: 최종 검증 + 콜드스타트 walkthrough + 결산
