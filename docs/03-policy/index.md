@@ -214,8 +214,10 @@ agent가 5개 질문을 하나씩 물어봅니다. 준비한 답변을 바탕으
 
 **Step 4. oss-policy.md 검토**
 
+사용하는 텍스트 편집기로 `output/policy/oss-policy.md` 를 엽니다.
+
 ```bash
-open output/policy/oss-policy.md
+cat output/policy/oss-policy.md
 ```
 
 - 회사명과 실제 담당자 이름이 반영되어 있는지 확인
@@ -224,8 +226,10 @@ open output/policy/oss-policy.md
 
 **Step 5. license-allowlist.md 검토 및 수정**
 
+사용하는 텍스트 편집기로 `output/policy/license-allowlist.md` 를 엽니다.
+
 ```bash
-open output/policy/license-allowlist.md
+cat output/policy/license-allowlist.md
 ```
 
 - 우리 배포 방식에 맞는 분류가 적용되어 있는지 확인

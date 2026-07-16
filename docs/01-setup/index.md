@@ -137,7 +137,9 @@ Claude Code가 실행되면:
 2. 처음 실행이라면 `output/` 폴더가 비어있으므로 `02-organization-designer` agent 안내를 받게 된다
 3. Claude Code는 `CLAUDE.md`를 자동으로 읽어 프로젝트 맥락을 이해한다
 
-> Claude Code는 각 챕터 폴더의 `CLAUDE.md`도 함께 읽어 해당 단계의 맥락을 파악합니다.
+:::info
+Claude Code는 각 챕터 폴더의 `CLAUDE.md`도 함께 읽어 해당 단계의 맥락을 파악합니다.
+:::
 
 ## 7. 트러블슈팅
 

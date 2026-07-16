@@ -6,7 +6,7 @@ sidebar_label: '방법 2: Skill 정의'
 # 방법 2: Skill 정의하기
 
 :::info 셀프스터디 모드 (약 20분)
-한 번 정의하면 모든 프로젝트에서 `/oss-policy-check`으로 즉시 호출할 수 있습니다.
+한 번 정의하면 이 프로젝트 어디서나 `/oss-policy-check`으로 즉시 호출할 수 있습니다. 모든 프로젝트에서 쓰려면 같은 내용을 `~/.claude/skills/`에 두면 됩니다.
 :::
 
 `.claude/skills/oss-policy-check/SKILL.md` 파일을 생성합니다.
