@@ -95,8 +95,9 @@ const config: Config = {
           breadcrumbs: true,
           showLastUpdateAuthor: false,
           showLastUpdateTime: false,
-          editUrl:
-            'https://github.com/trustedoss/trustedoss.github.io/edit/main/',
+          // docs가 website 밖(../docs)에 있어 문자열 형식이면 '../docs'가 URL에 섞여 404가 된다
+          editUrl: ({docPath}) =>
+            `https://github.com/trustedoss/trustedoss.github.io/edit/main/docs/${docPath}`,
         },
         blog: {
           path: 'blog',

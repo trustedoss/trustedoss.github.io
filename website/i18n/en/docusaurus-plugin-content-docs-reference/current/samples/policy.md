@@ -145,7 +145,7 @@ The company systematically identifies, tracks, and responds to known vulnerabili
 - Perform SBOM based vulnerability scan before every release
 - Critical/high vulnerabilities must be resolved or a mitigation plan established before deployment.
 - If new vulnerabilities are discovered after deployment, respond according to `output/process/vulnerability-response.md` procedures
-- Operation of external vulnerability reporting channel: security@sktelecom.com
+- Operation of external vulnerability reporting channel: security@techunicorn.example
 
 ---
 

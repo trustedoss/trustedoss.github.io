@@ -85,7 +85,7 @@ stage('OSS Compliance') {
     post {
         failure {
             // Jira 티켓 자동 생성
-            jiraNewIssue site: 'SKT-JIRA',
+            jiraNewIssue site: 'TU-JIRA',
                          projectKey: 'OSS',
                          summary: 'OSS 컴플라이언스 검사 실패'
         }

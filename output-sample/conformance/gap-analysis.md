@@ -11,7 +11,7 @@
 
 - 분석 대상: ISO/IEC 5230:2020 (25개 항목) + ISO/IEC 18974:2023 (25개 항목) = 총 50개 입증자료
 - **ISO/IEC 5230**: 충족 ✅ 22개 / 부분충족 🔶 3개 / 미충족 ❌ 0개
-- **ISO/IEC 18974**: 충족 ✅ 17개 / 부분충족 🔶 8개 / 미충족 ❌ 0개
+- **ISO/IEC 18974**: 충족 ✅ 18개 / 부분충족 🔶 7개 / 미충족 ❌ 0개
 - ❌ 미충족(인증 차단) 항목 없음 → **자체 인증 선언 가능**
 - 즉시 조치 권고: 담당자 실명 기입(raci-matrix.md), 교육 이수 개시(completion-tracker.md)
 - 시간 기반 🔶 항목 3개는 초기 인증 시 정상(18개월 갱신 시 충족)
@@ -30,7 +30,7 @@
 | 3.1.3.1 | 참여자 인식 평가 증거                 |  🔶  | curriculum.md + completion-tracker.md (교육 미시작)     |
 | 3.1.4.1 | 프로그램 적용 범위                    |  ✅  | oss-policy.md §1                                        |
 | 3.1.5.1 | 라이선스 의무사항 검토 절차           |  ✅  | usage-approval.md §4, license-allowlist.md              |
-| 3.2.1.1 | 외부 문의 공개 채널                   |  ✅  | role-definition.md §3 (opensource@sktelecom.com)        |
+| 3.2.1.1 | 외부 문의 공개 채널                   |  ✅  | role-definition.md §3 (opensource@techunicorn.example)  |
 | 3.2.1.2 | 외부 문의 내부 대응 절차              |  ✅  | role-definition.md §3, usage-approval.md                |
 | 3.2.2.1 | 역할 담당자 이름 문서                 |  🔶  | raci-matrix.md (역할 구조 완비, 실명 미기입)            |
 | 3.2.2.2 | 역할 배치 및 예산 확인                |  ✅  | raci-matrix.md §예산 배분 현황                          |
@@ -69,7 +69,7 @@
 | 4.1.4.2 | 성과 메트릭                         |  ✅  | oss-policy.md §3 (KPI 5개 항목)                                      |
 | 4.1.4.3 | 지속적 개선 증거(감사 이력)         |  🔶  | 본 갭 분석 = 1회차 감사 이력 ※시간 기반                              |
 | 4.1.5.1 | 취약점 대응 표준 절차               |  ✅  | vulnerability-response.md (8가지 방법 모두 포함)                     |
-| 4.2.1.1 | 외부 취약점 문의 공개 채널          |  ✅  | role-definition.md §3 (security@sktelecom.com)                       |
+| 4.2.1.1 | 외부 취약점 문의 공개 채널          |  ✅  | role-definition.md §3 (security@techunicorn.example)                 |
 | 4.2.1.2 | 외부 문의 내부 대응 절차            |  ✅  | vulnerability-response.md §7                                         |
 | 4.2.2.1 | 역할 담당자 이름 문서               |  🔶  | raci-matrix.md (역할 구조 완비, 실명 미기입)                         |
 | 4.2.2.2 | 역할 배치 및 예산 확인              |  ✅  | raci-matrix.md §예산 배분 현황                                       |
@@ -82,7 +82,7 @@
 | 4.4.1.1 | 모든 요구사항 충족 확인 문서        |  ✅  | 본 문서(gap-analysis.md)                                             |
 | 4.4.2.1 | 18개월 이내 요구사항 충족 확인 문서 |  ✅  | declaration-draft.md                                                 |
 
-**ISO/IEC 18974 소계: ✅ 17개 / 🔶 8개 / ❌ 0개**
+**ISO/IEC 18974 소계: ✅ 18개 / 🔶 7개 / ❌ 0개**
 
 ---
 

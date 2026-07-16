@@ -149,7 +149,7 @@ sidebar_label: 정책 산출물
 - 모든 릴리즈 전 SBOM 기반 취약점 스캔 수행
 - Critical/High 취약점은 배포 전 반드시 해소 또는 완화 계획 수립
 - 배포 후 신규 취약점 발견 시 `output/process/vulnerability-response.md` 절차에 따라 대응
-- 외부 취약점 신고 채널 운영: security@sktelecom.com
+- 외부 취약점 신고 채널 운영: security@techunicorn.example
 
 ---
 

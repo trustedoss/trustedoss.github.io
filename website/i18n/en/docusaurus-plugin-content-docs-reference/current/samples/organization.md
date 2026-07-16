@@ -59,8 +59,8 @@ Related Standards
 - 18974 §4.2.1.1
 ```
 
-- **License compliance inquiries**: opensource@sktelecom.com
-- **Report security vulnerability**: security@sktelecom.com
+- **License compliance inquiries**: opensource@techunicorn.example
+- **Report security vulnerability**: security@techunicorn.example
 - **Response Program Manager**: DevOps Team Open Source Program Manager
 - **Target response time**: Within 5 business days
 
@@ -150,12 +150,12 @@ Related Standards
 - 5230 §3.2.2.1·§3.2.2.2
 ```
 
-| Role                            | Contact name                             | Department       | Email                    | Dedicated/Concurrent Position |
-| ------------------------------- | ---------------------------------------- | ---------------- | ------------------------ | ----------------------------- |
-| Open source representative      | (Enter the person in charge)             | DevOps Team      | opensource@sktelecom.com | Concurrent position           |
-| Development team representative | (Enter the name of the person in charge) | Development Team | (Enter email)            | Concurrent position           |
-| Security Manager                | (Enter the name of the person in charge) | Security Team    | security@sktelecom.com   | Concurrent position           |
-| Legal Affairs                   | (Enter the name of the person in charge) | Legal Team       | (Enter email)            | Always                        |
+| Role                            | Contact name                             | Department       | Email                          | Dedicated/Concurrent Position |
+| ------------------------------- | ---------------------------------------- | ---------------- | ------------------------------ | ----------------------------- |
+| Open source representative      | (Enter the person in charge)             | DevOps Team      | opensource@techunicorn.example | Concurrent position           |
+| Development team representative | (Enter the name of the person in charge) | Development Team | (Enter email)                  | Concurrent position           |
+| Security Manager                | (Enter the name of the person in charge) | Security Team    | security@techunicorn.example   | Concurrent position           |
+| Legal Affairs                   | (Enter the name of the person in charge) | Legal Team       | (Enter email)                  | Always                        |
 
 ---
 

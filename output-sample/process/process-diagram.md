@@ -1,4 +1,5 @@
 # 오픈소스 프로세스 흐름도
+
 <!-- 5230 §3.1.5.1, §3.3.1.1, §3.4.1.1 -->
 
 **회사명**: 테크유니콘
@@ -69,7 +70,7 @@ graph TD
     C -->|Low ~3.9| G[다음 릴리즈 반영\nJira Minor]
     D --> H{배포 소프트웨어\n영향?}
     E --> H
-    H -->|영향 있음| I[고객/파트너 통보\nsecurity@sktelecom.com]
+    H -->|영향 있음| I[고객/파트너 통보\nsecurity@techunicorn.example]
     H -->|영향 없음| J[패치 적용]
     I --> J
     F --> J
@@ -103,10 +104,10 @@ graph LR
 
 ## 참조 문서
 
-| 프로세스 | 상세 절차 문서 |
-|---------|-------------|
-| 사용 승인 | `output/process/usage-approval.md` |
+| 프로세스        | 상세 절차 문서                             |
+| --------------- | ------------------------------------------ |
+| 사용 승인       | `output/process/usage-approval.md`         |
 | 배포 체크리스트 | `output/process/distribution-checklist.md` |
-| 취약점 대응 | `output/process/vulnerability-response.md` |
-| 라이선스 정책 | `output/policy/oss-policy.md` |
-| 허용 라이선스 | `output/policy/license-allowlist.md` |
+| 취약점 대응     | `output/process/vulnerability-response.md` |
+| 라이선스 정책   | `output/policy/oss-policy.md`              |
+| 허용 라이선스   | `output/policy/license-allowlist.md`       |

@@ -116,7 +116,7 @@ stage('OSS Compliance') {
     post {
         failure {
             // auto-create Jira ticket
-            jiraNewIssue site: 'SKT-JIRA',
+            jiraNewIssue site: 'TU-JIRA',
                          projectKey: 'OSS',
                          summary: 'OSS compliance check failed'
         }
@@ -409,7 +409,7 @@ Related Standards
 | SBOM based automatic scanning (GitLab CI)      | OSV API / GitLab Security                | When making a merge request              |
 | Supplier Security Advisory                     | NVD, GitHub Security Advisories, OSV.dev | Real-time subscription                   |
 | Domestic vulnerability feed                    | KISA KNVD (Korean SW vulnerability DB)   | Weekly check                             |
-| External reporting                             | security@sktelecom.com                   | Always                                   |
+| External reporting                             | security@techunicorn.example             | Always                                   |
 
 ---
 
@@ -479,7 +479,7 @@ Related Standards
 Notify customers or supply chain partners in the following cases:
 
 - When a Critical/High vulnerability affects already deployed software
-- Notification method: Email (security@sktelecom.com) / Security Bulletin / Release Notes
+- Notification method: Email (security@techunicorn.example) / Security Bulletin / Release Notes
 - Notification deadline: Critical — within 24 hours after recognition, High — within 3 business days after recognition
 - Formal statement of non-impact: when a component carries a CVE that is not exploitable in the product, state it in a VEX document (CycloneDX VEX or OpenVEX; status values affected / not_affected / fixed / under_investigation) delivered with the SBOM
 
@@ -508,7 +508,7 @@ Related Standards
 
 When receiving a vulnerability report from outside:
 
-1. **Attn**: security@sktelecom.com
+1. **Attn**: security@techunicorn.example
 2. **Confirmation response**: Receipt confirmation reply within 2 business days
 3. **Handling**: 3. Same as follow-up procedure.
 4. **Result Notification**: Results are shared with the reporter after action is completed.
@@ -608,7 +608,7 @@ graph TD
     C -->|Low ~3.9| G[next release include\nJira Minor]
     D --> H{deployed software\nimpact?}
     E --> H
-    H -->|impact yes| I[Notify customers/partners\nsecurity@sktelecom.com]
+    H -->|impact yes| I[Notify customers/partners\nsecurity@techunicorn.example]
     H -->|impact no| J[Apply patch]
     I --> J
     F --> J

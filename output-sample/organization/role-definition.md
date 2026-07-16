@@ -35,8 +35,8 @@
 
 <!-- 5230 §3.2.1.1, 18974 §4.2.1.1 -->
 
-- **라이선스 컴플라이언스 문의**: opensource@sktelecom.com
-- **보안 취약점 신고**: security@sktelecom.com
+- **라이선스 컴플라이언스 문의**: opensource@techunicorn.example
+- **보안 취약점 신고**: security@techunicorn.example
 - **대응 담당자**: DevOps팀 오픈소스 담당자
 - **응답 목표 시간**: 영업일 기준 5일 이내
 

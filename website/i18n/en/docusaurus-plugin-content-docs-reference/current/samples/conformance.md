@@ -30,7 +30,7 @@ Tools used: trustedoss agents/07-conformance-preparer
 
 - Analysis target: ISO/IEC 5230:2020 (25 items) + ISO/IEC 18974:2023 (25 items) = A total of 50 supporting materials
 - **ISO/IEC 5230**: Satisfied ✅ 22 / Partially satisfied 🔶 3 / Not satisfied ❌ 0
-- **ISO/IEC 18974**: Satisfied ✅ 17 / Partially satisfied 🔶 8 / Not satisfied ❌ 0
+- **ISO/IEC 18974**: Satisfied ✅ 18 / Partially satisfied 🔶 7 / Not satisfied ❌ 0
 - ❌ No items not met (certification blocked) → **Self-certification declaration possible**
 - Immediate action recommendation: Enter the real name of the person in charge (raci-matrix.md), begin training (completion-tracker.md)
 - Time-based 🔶 3 items normal upon initial certification (met upon 18-month renewal)
@@ -49,7 +49,7 @@ Tools used: trustedoss agents/07-conformance-preparer
 | 3.1.3.1 | Participant Perception Assessment Evidence                     |    🔶    | [Open source training curriculum](/reference/samples/training) + [Training completion tracking sheet](/reference/samples/training) (Training has not started)              |
 | 3.1.4.1 | Program coverage                                               |    ✅    | [Open Source Policy](/reference/samples/policy) §1                                                                                                                         |
 | 3.1.5.1 | License Obligations Review Process                             |    ✅    | [Open source use approval procedure](/reference/samples/process) §4, [Permitted license list](/reference/samples/policy)                                                   |
-| 3.2.1.1 | External inquiry public channel                                |    ✅    | [Open source role and responsibility definition](/reference/samples/organization) §3 (opensource@sktelecom.com)                                                            |
+| 3.2.1.1 | External inquiry public channel                                |    ✅    | [Open source role and responsibility definition](/reference/samples/organization) §3 (opensource@techunicorn.example)                                                      |
 | 3.2.1.2 | Internal response procedures for external inquiries            |    ✅    | [Definition of open source roles and responsibilities](/reference/samples/organization) §3, [Open source use approval process](/reference/samples/process)                 |
 | 3.2.2.1 | Role Assignee Name Document                                    |    🔶    | [Open source RACI matrix](/reference/samples/organization) (complete role structure, real name not entered)                                                                |
 | 3.2.2.2 | Place roles and check budget                                   |    ✅    | [Open source RACI matrix](/reference/samples/organization) §Budget allocation status                                                                                       |
@@ -88,7 +88,7 @@ Tools used: trustedoss agents/07-conformance-preparer
 | 4.1.4.2 | Performance Metrics                                            |    ✅    | [Open source policy](/reference/samples/policy) §3 (5 KPI items)                                                                                                          |
 | 4.1.4.3 | Evidence of continuous improvement (audit history)             |    🔶    | Gap analysis report (this document, 1st audit history) ※Time-based                                                                                                        |
 | 4.1.5.1 | vulnerability response standard procedures                     |    ✅    | [vulnerability Response Procedure](/reference/samples/process) (Includes all 8 methods)                                                                                   |
-| 4.2.1.1 | External vulnerability inquiry public channel                  |    ✅    | [Open source role and responsibility definition](/reference/samples/organization) §3 (security@sktelecom.com)                                                             |
+| 4.2.1.1 | External vulnerability inquiry public channel                  |    ✅    | [Open source role and responsibility definition](/reference/samples/organization) §3 (security@techunicorn.example)                                                       |
 | 4.2.1.2 | Internal response procedures for external inquiries            |    ✅    | [vulnerability response procedures](/reference/samples/process) §7                                                                                                        |
 | 4.2.2.1 | Role Assignee Name Document                                    |    🔶    | [Open source RACI matrix](/reference/samples/organization) (complete role structure, real name not entered)                                                               |
 | 4.2.2.2 | Place roles and check budget                                   |    ✅    | [Open source RACI matrix](/reference/samples/organization) §Budget allocation status                                                                                      |
@@ -101,7 +101,7 @@ Tools used: trustedoss agents/07-conformance-preparer
 | 4.4.1.1 | Confirmation document that all requirements are met            |    ✅    | Gap Analysis Report (this document)                                                                                                                                       |
 | 4.4.2.1 | Document confirming that requirements are met within 18 months |    ✅    | [Open Source Compliance Self-Certification Statement](/reference/samples/conformance)                                                                                     |
 
-**ISO/IEC 18974 Subtotal: ✅ 17 items / 🔶 8 items / ❌ 0 items**
+**ISO/IEC 18974 Subtotal: ✅ 18 items / 🔶 7 items / ❌ 0 items**
 
 ---
 
@@ -172,7 +172,7 @@ The three items below are items for which evidence cannot be created upon initia
 | ------------------------- | ------------------------------------- |
 | **Declared Company Name** | Tech Unicorn                          |
 | **Declaration Officer**   | DevOps Team Open Source Manager       |
-| **Contact Email**         | opensource@sktelecom.com              |
+| **Contact Email**         | opensource@techunicorn.example        |
 | **Date of declaration**   | 2026-03-23 ​​                         |
 | **Validity Period**       | 2026-03-23 ​​~ 2027-09-23 (18 months) |
 | **Re-declaration date**   | 2027-09-23                            |
@@ -249,7 +249,7 @@ We declare that all 25 supporting documents below are met.
 | 4.1.4.2 | Performance Metrics                                            |        ✅        | [Open source policy](/reference/samples/policy) §3 (5 KPI items)                                                                                              |
 | 4.1.4.3 | Evidence of continuous improvement (audit history)             |        🔶        | [Gap Analysis Report](/reference/samples/conformance) (1st audit history)                                                                                     |
 | 4.1.5.1 | vulnerability response standard procedures                     |        ✅        | [vulnerability response procedures](/reference/samples/process)                                                                                               |
-| 4.2.1.1 | External vulnerability inquiry public channel                  |        ✅        | [Open source role and responsibility definition](/reference/samples/organization) §3 (security@sktelecom.com)                                                 |
+| 4.2.1.1 | External vulnerability inquiry public channel                  |        ✅        | [Open source role and responsibility definition](/reference/samples/organization) §3 (security@techunicorn.example)                                           |
 | 4.2.1.2 | Internal response procedures for external inquiries            |        ✅        | [vulnerability response procedures](/reference/samples/process) §7                                                                                            |
 | 4.2.2.1 | Role Assignee Name Document                                    |        🔶        | [Open source RACI matrix](/reference/samples/organization) (real name entry in progress)                                                                      |
 | 4.2.2.2 | Place roles and check budget                                   |        ✅        | [Open source RACI matrix](/reference/samples/organization) §Budget allocation status                                                                          |
@@ -339,9 +339,9 @@ After completing the items below, proceed with the registration process.
 | ------------ | ----------------------------------------------------- |
 | Company name | Tech Unicorn                                          |
 | Contact name | Real name of DevOps team open source person in charge |
-| Email        | opensource@sktelecom.com                              |
+| Email        | opensource@techunicorn.example                        |
 | country      | Korea (South)                                         |
-| website      | https://www.sktelecom.com                             |
+| website      | https://www.techunicorn.example                       |
 
 #### Step 4 — Check checklist items
 
@@ -413,8 +413,8 @@ If the following situations occur, immediately update the output and rerun the g
 
 | Type                          | Contact Us                       |
 | ----------------------------- | -------------------------------- |
-| License compliance inquiry    | opensource@sktelecom.com         |
-| Report security vulnerability | security@sktelecom.com           |
+| License compliance inquiry    | opensource@techunicorn.example   |
+| Report security vulnerability | security@techunicorn.example     |
 | OpenChain Project Official    | https://www.openchainproject.org |
 
 ---
