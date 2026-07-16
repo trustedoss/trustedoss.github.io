@@ -10,6 +10,10 @@ sidebar_position: 9
 This page walks through how to integrate the six areas — SAST, SCA, secret detection, container security, IaC security, and DAST — into a single pipeline.
 It focuses on how to combine the individual configurations covered on each area page to fit your actual operating environment.
 
+:::tip The configuration below is an example — a fully working implementation lives in the reference repository
+The YAML and commands on this page are examples that show the essentials. For a complete, copy-and-run pipeline (including policy files and a sample app), see the [Best Practice repository](/ai-coding/best-practice-repo).
+:::
+
 ## Pipeline design principles
 
 **Parallel execution**: Run independent scans in parallel to minimize overall pipeline time. SAST, SCA, and secret detection have no dependencies on each other, so they can run simultaneously.
@@ -187,6 +191,8 @@ sca:
   stage: code-scan
   image: ubuntu:22.04
   script:
+    # The base ubuntu image does not include curl
+    - apt-get update -qq && apt-get install -y -qq curl ca-certificates
     - curl -sSfL https://get.anchore.io/syft
       | sh -s -- -b /usr/local/bin
     - curl -sSfL https://get.anchore.io/grype
@@ -209,8 +215,16 @@ iac-security:
 
 container-security:
   stage: build-scan
-  image: aquasec/trivy:latest
+  image: docker:27
+  services:
+    - docker:27-dind
+  variables:
+    DOCKER_TLS_CERTDIR: '/certs'
   script:
+    # the docker image does not include trivy, so install it
+    - apk add --no-cache curl
+    - curl -sSfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh
+      | sh -s -- -b /usr/local/bin
     - docker build -t $IMAGE_TAG .
     - trivy image --severity HIGH,CRITICAL
       --exit-code 1 --ignore-unfixed $IMAGE_TAG
@@ -221,8 +235,9 @@ dast:
   stage: dast
   image: ghcr.io/zaproxy/zaproxy:stable
   script:
-    - docker compose up -d && sleep 15
-    - zap-baseline.py -t http://localhost:8080
+    # DAST runs against a deployed environment (do not start the app inside the CI job)
+    # Register STAGING_URL as a CI/CD variable (e.g. https://staging.example.com)
+    - zap-baseline.py -t $STAGING_URL
       -r zap-report.html -I # -I: continue on failure (Soft Fail)
   artifacts:
     paths: [zap-report.html]
@@ -263,4 +278,4 @@ Simply reporting "vulnerability found" leaves developers unsure what to do.
 ## Next steps
 
 - Continuous monitoring and automated patching after deployment: [Monitoring and Automated Remediation](./monitoring)
-- ISO/IEC 18974 requirements mapping: [ISO Standard Linkage](./iso-mapping)
+- ISO/IEC 18974 requirements mapping: [ISO Standard Mapping](./iso-mapping)

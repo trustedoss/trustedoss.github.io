@@ -6,7 +6,7 @@ checklist:
   - 'ISO/IEC 18974: []'
 self_study_time: 1 hour
 sidebar_position: 3
-sidebar_label: supply chain security
+sidebar_label: Supply chain security
 ---
 
 # Software Supply Chain Security: Why It Matters Now
@@ -36,7 +36,7 @@ flowchart LR
     style E fill:#e3f2fd
 ```
 
-Modern software is **70-90% open source components**. In other words, far more code comes from outside than your team writes itself. This speeds up development, but it is also a conduit through which external threats can flow inward.
+Modern software is **70-80% open source components**. In other words, far more code comes from outside than your team writes itself. This speeds up development, but it is also a conduit through which external threats can flow inward.
 
 Supply chain security is the discipline of identifying and managing the risks that can arise anywhere along this path — vulnerabilities, malware, and license violations.
 
@@ -103,7 +103,7 @@ In response to a series of large-scale supply chain attacks such as SolarWinds a
   requirements, and OMB M-26-05 (2026-02) rescinded the blanket attestation mandates, moving to a
   **risk-based, per-agency approach**.
 
-**Impact on companies**
+**Impact on Korean companies**
 The blanket SBOM mandate for U.S. federal procurement has been relaxed, but the NTIA minimum
 elements remain the de facto SBOM standard, and the practical SBOM demands now come from the EU CRA
 and customer procurement contracts. Companies active in the U.S. market should prepare for
@@ -126,7 +126,7 @@ An EU-wide regulation adopted in 2024 to strengthen the cybersecurity of digital
 **Penalties**
 For non-compliance, up to **EUR 15 million** or **2.5% of annual global turnover**, whichever is greater.
 
-**Impact on companies**
+**Impact on Korean companies**
 This applies to **any business** that sells software products or services in the EU. All products with digital elements — cloud services, mobile apps, IoT devices — are in scope.
 
 ---
@@ -159,7 +159,38 @@ The core tool shared by both standards is the **SBOM**. You need an SBOM to scan
 
 ---
 
-## 6. Self-study path
+## 6. Assessing your organization's supply chain risk
+
+Now that you know the incidents and the regulations, the next question is "So how much risk does my organization carry?" Below is a simple assessment framework you can start with, no tools required.
+
+### The four assessment axes
+
+Gauge each open source component (or the product as a whole) along the four axes below. The higher the rating, the greater the risk.
+
+| Assessment axis      | Key question                                                                                   | High-risk case                                                   |
+| -------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| **Dependency depth** | Did you pull it in directly, or was it pulled in by another library (a transitive dependency)? | When a large share of dependencies are invisible transitive ones |
+| **Exposure surface** | Does it process external input directly (parsers, networking, deserialization)?                | When it processes external input                                 |
+| **Project health**   | Are the maintainers active? Are there recent releases and contributors?                        | When the project is unmaintained (the XZ Utils lesson)           |
+| **Blast radius**     | If it is compromised, how far does the damage reach (authentication, payments, customer data)? | When it can reach critical assets                                |
+
+### Dependency depth — the most commonly missed risk
+
+Libraries you pull in directly (direct dependencies) are visible, but the **transitive dependencies** they pull in — dependencies of dependencies — are not. For both Log4Shell and XZ Utils, the reaction in many organizations was "but I never used that directly." An SBOM lays out all of these transitive dependencies, which makes it the starting point for risk assessment.
+
+### A three-step assessment procedure
+
+1. **Get the inventory** — use an SBOM to build a component list that includes transitive dependencies ([Create SBOM](../05-tools/sbom-generation/index.md)).
+2. **Identify high risk** — rate each component high/medium/low along the four axes above and single out the high-risk ones.
+3. **Apply first where it matters** — apply policy (approved licenses and approvals), vulnerability response, and continuous monitoring to the high-risk components first.
+
+:::info Regular reviews
+This assessment is not a one-time exercise. Dependencies and threats keep changing, so revisit it regularly.
+:::
+
+---
+
+## 7. Self-study
 
 :::info Self-study mode (about 1 hour)
 You can simply read this chapter. Focus on understanding the concepts.
@@ -172,16 +203,17 @@ You can simply read this chapter. Focus on understanding the concepts.
 
 ---
 
-## 7. Completion checklist
+## 8. Completion checklist
 
 - [ ] I can explain the three supply chain security incidents (SolarWinds, Log4Shell, XZ Utils)
 - [ ] I understand why an SBOM is needed
 - [ ] I have identified how EO 14028 and the EU CRA affect my company
 - [ ] I understand the role each standard plays in supply chain security
+- [ ] I can gauge my organization's high-risk components using the four assessment axes
 
 ---
 
-## 8. Next steps
+## 9. Next steps
 
 - **Learn the SBOM technical concepts**: go to `sbom-101.md` to learn the CycloneDX and SPDX formats and the SBOM minimum elements.
 - **Go straight to environment preparation**: go to `docs/01-setup/` and start installing the toolchain.

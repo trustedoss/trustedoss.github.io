@@ -1,4 +1,5 @@
 ---
+description: 'Choose the start path that matches your goal: self-certification only, together with your dev team, or already have a policy.'
 date: 2026-06-05
 version: '1.0'
 checklist:
@@ -17,13 +18,13 @@ The fastest route differs depending on your goal. Choose the case closest to you
 
 This is the path of building a standards-based management system from scratch all the way to an OpenChain self-certification declaration.
 
-Grasp the full journey in the [Overview](./index.md) and proceed in order starting from [Environment preparation](../01-setup/index.md). The core outputs are the [Open source policy](../03-policy/index.md) and the [Self-certification declaration](../07-conformance/index.md). The full course takes about 12–14 hours; if you are short on time, a 1–2 hour quick start covers just the overview, chapter 02 (organization), and chapter 03 (policy).
+Grasp the full journey in the [Overview](./index.md) and proceed in order starting from [Environment preparation](../01-setup/index.md). The core deliverables are the [Open Source Policy](../03-policy/index.md) and the [Self-certification declaration](../07-conformance/index.md). The full course takes about 12–14 hours; if you are short on time, a condensed 1–2 hour course covers just the overview, chapter 02 (organization), and chapter 03 (policy).
 
 ## 2. All the way to automation with your dev team
 
 This is for when you want to set up a policy and then automatically apply it to daily development and CI.
 
-First create the [Open source policy](../03-policy/index.md), apply the policy to your development tools with [AI coding governance](/ai-coding/intro), and then enforce it in your CI pipeline with [DevSecOps](/devsecops/intro).
+First create the [Open Source Policy](../03-policy/index.md), apply the policy to your development tools with [AI coding governance](/ai-coding/intro), and then enforce it in your CI pipeline with [DevSecOps](/devsecops/intro).
 
 ## 3. When you already have a policy
 

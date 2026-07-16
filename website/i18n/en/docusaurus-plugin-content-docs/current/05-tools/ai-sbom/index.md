@@ -56,15 +56,15 @@ It includes a cdxgen run that demonstrates the license-information gaps of AI co
 The hands-on work requires a running Docker environment and a network connection.
 :::
 
-The hands-on tool is [BomLens](https://github.com/sktelecom/sbom-tools). Given a HuggingFace model
-identifier, it produces a CycloneDX 1.7 ML-BOM, an open source notice, and a risk report — all
+The hands-on tool is [BomLens](https://github.com/sktelecom/bomlens). Given a HuggingFace model
+identifier, it produces a CycloneDX 1.7 ML-BOM, an attribution notice, and a risk report — all
 locally on Docker.
 
 ### Step 1 — Prepare BomLens
 
 ```bash
-git clone https://github.com/sktelecom/sbom-tools.git
-cd sbom-tools
+git clone https://github.com/sktelecom/bomlens.git
+cd bomlens
 docker pull ghcr.io/sktelecom/bomlens:latest
 ```
 

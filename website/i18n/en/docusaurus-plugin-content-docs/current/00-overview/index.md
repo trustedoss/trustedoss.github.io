@@ -51,7 +51,7 @@ cd trustedoss-agents && claude
 
 ### Deliverables upon completion
 
-| Step            | Output file                                                                                                                                                            | Related standards |
+| Step            | Deliverable files                                                                                                                                                      | Related standards |
 | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
 | Organization    | `role-definition.md`, `raci-matrix.md`, `appointment-template.md` — [See example](/reference/samples/organization)                                                     | [Common]          |
 | Policy          | `oss-policy.md`, `license-allowlist.md` — [See example](/reference/samples/policy)                                                                                     | [Common]          |

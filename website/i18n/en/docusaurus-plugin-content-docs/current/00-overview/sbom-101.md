@@ -3,13 +3,13 @@ date: 2026-03-20
 version: '1.0'
 checklist:
   - 'ISO/IEC 5230: []'
-  - 'ISO/IEC 18974: [G3B.1 Background]'
+  - 'ISO/IEC 18974: []'
 self_study_time: 1 hour
 sidebar_position: 4
-sidebar_label: 'SBOM Default'
+sidebar_label: 'SBOM Basics'
 ---
 
-# SBOM Basics: Introduction to Software Composition Specifications
+# SBOM Basics: An Introduction to the Software Bill of Materials
 
 ## 1. What this chapter covers
 
@@ -17,7 +17,7 @@ In this chapter you will learn what an SBOM is, its minimum required elements, t
 
 There is no hands-on work. Just read and understand.
 
-This background will serve as the basis for creating a real SBOM in later chapters. The goal is to understand "Why are we using this tool?" and "What is this file?" before you run a command.
+This background will serve as the basis for creating a real SBOM in the `05-tools/sbom-generation` chapter. The goal is to understand "Why are we using this tool?" and "What is this file?" before you run a command.
 
 ---
 
@@ -33,7 +33,7 @@ A food package lists "flour, sugar, eggs, butter..." An SBOM is the ingredient l
 
 > "This software includes React 18.2.0, axios 1.4.0, and log4j 2.14.0."
 
-Consumers — suppliers, customers, and regulators — read this list to check safety and licensing.
+Consumers — recipients, customers, and regulators — read this list to check safety and licensing.
 
 ### What you cannot answer without an SBOM
 
@@ -48,9 +48,9 @@ Without an SBOM, the following questions are hard to answer.
 
 ---
 
-## 3. SBOM minimum required elements (based on NTIA)
+## 3. SBOM minimum required elements (per NTIA)
 
-The U.S. National Telecommunications and Information Administration (NTIA) has defined seven minimum elements that SBOM must include.
+The U.S. National Telecommunications and Information Administration (NTIA) has defined seven minimum elements that an SBOM must include.
 
 | Element                 | English name             | Description                                           | Example                                                |
 | ----------------------- | ------------------------ | ----------------------------------------------------- | ------------------------------------------------------ |
@@ -89,7 +89,7 @@ Two standard formats are mainly used in the industry today.
 | Item           | SPDX                                            | CycloneDX                                              |
 | -------------- | ----------------------------------------------- | ------------------------------------------------------ |
 | Maintained by  | Linux Foundation                                | OWASP                                                  |
-| Latest version | 2.3                                             | 1.5                                                    |
+| Latest version | 3.0                                             | 1.6                                                    |
 | Strengths      | License compliance focus, ISO/IEC 5962 standard | Security-specific fields, supports JSON/XML/Protobuf   |
 | Tooling        | fossology, reuse, spdx-tools                    | syft, cdxgen, Dependency-Track                         |
 | Main uses      | License audit, open source contribution         | Security vulnerability analysis, supply chain security |
@@ -110,8 +110,8 @@ An SBOM does not stand alone. It flows through a cycle of creation → managemen
 ```mermaid
 flowchart LR
     A[Source code/\nbuild artifacts] -->|syft / cdxgen| B[Generate SBOM\nCycloneDX JSON]
-    B -->|Upload| C[Dependency Track\nSBOM Management platform]
-    C -->|NVD/OSV integration| D[vulnerability analysis\nCVE identification]
+    B -->|Upload| C[Dependency-Track\nSBOM management platform]
+    C -->|NVD/OSV integration| D[Vulnerability analysis\nCVE identification]
     C -->|License check| E[License analysis\nCopyleft risk]
     C -->|API/Export| F[Share\ncustomers/recipients]
 
@@ -130,7 +130,7 @@ flowchart LR
 - Maintained by: Anchore
 - Purpose: generate an SBOM from Docker images, containers, and filesystems
 - Strengths: simple to install and automatically detects a wide range of language runtimes
-- Command: `syft <target> -o cyclonedx-json`
+- Command: `syft <image> -o cyclonedx-json`
 
 **cdxgen**
 
@@ -139,7 +139,7 @@ flowchart LR
 - Strengths: automatically recognizes language-specific files such as `package.json`, `pom.xml`, and `requirements.txt`
 - Command: `cdxgen -o bom.json`
 
-You will practice with both tools in chapter `05-tools/sbom-generation`.
+You will practice with both tools in the `05-tools/sbom-generation` chapter.
 
 ### AI SBOM: extending the SBOM to models and datasets
 
@@ -151,7 +151,7 @@ Two formats are the de facto industry standards: **SPDX 3.0 AI Profile** offers 
 license and copyright expression, while **CycloneDX 1.6 ML-BOM** carries rich model-card
 metadata (performance, ethics, security). Organizations can adopt either or both.
 
-To build one yourself, this kit's [5.4 AI SBOM hands-on](../05-tools/ai-sbom/index.md) walks through generating an ML-BOM for a HuggingFace model with [BomLens](https://github.com/sktelecom/sbom-tools).
+To build one yourself, this kit's [5.4 AI SBOM hands-on](../05-tools/ai-sbom/index.md) walks through generating an ML-BOM for a HuggingFace model with [BomLens](https://github.com/sktelecom/bomlens).
 
 The hands-on work in this kit (chapter 05) targets conventional SBOMs. To cover AI systems,
 refer to the [KWG AI SBOM Compliance Guide](https://openchain-project.github.io/OpenChain-KWG/guide/ai-sbom_guide/),
@@ -183,7 +183,7 @@ A: We recommend updating it at least once per release. Integrate it into your CI
 
 **Q: What should I do if a customer requests an SBOM?**
 
-A: By following this kit, you can generate an SBOM in CycloneDX JSON format. If the customer requires a different format, you can use a conversion tool or coordinate with your open source lead to adjust.
+A: By following this kit, you can generate an SBOM in CycloneDX JSON format. If the customer requires a different format, you can use a conversion tool or coordinate with the Program Manager to adjust.
 
 ---
 
@@ -200,5 +200,5 @@ A: By following this kit, you can generate an SBOM in CycloneDX JSON format. If 
 
 Having read this document, you now have a solid grasp of SBOM concepts and the surrounding ecosystem.
 
-- To finish the background reading, continue to [Requirements at a Glance](./checklist-mapping.md).
-- To start the hands-on work, install syft, cdxgen, and Dependency-Track in [Environment Setup](../01-setup/index.md).
+- To finish the background reading, continue to [Standard requirements at a glance](./checklist-mapping.md).
+- To start the hands-on work, install syft, cdxgen, and Dependency-Track in [Environment preparation](../01-setup/index.md).

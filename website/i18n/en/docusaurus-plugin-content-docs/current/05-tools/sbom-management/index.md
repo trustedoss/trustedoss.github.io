@@ -124,7 +124,7 @@ ISO/IEC 18974 §4.3.2 requires not only pre-deployment vulnerability scanning bu
 
 **Workflow when a new CVE is discovered after release:**
 
-1. Receive an alert from a monitoring tool (Dependency Track, etc.)
+1. Receive an alert from a monitoring tool (Dependency-Track, etc.)
 2. Assess severity following the `output/process/vulnerability-response.md` procedure
 3. Critical/High: schedule a patch release immediately and decide whether to notify customers
 4. When customer notification is required: share the list of affected versions, temporary mitigations, and the expected patch date
@@ -134,7 +134,7 @@ Keep your SBOM up to date so you can immediately tell whether your software is a
 
 **Monitoring methods:**
 
-- **Dependency Track alerts:** notify by email or webhook when a vulnerability exceeds a threshold (CVSS score, etc.)
+- **Dependency-Track alerts:** notify by email or webhook when a vulnerability exceeds a threshold (CVSS score, etc.)
 - **GitHub Dependabot:** automatic PR alerts for dependency vulnerabilities in GitHub-based projects
 - **OSV.dev subscription:** subscribe to alerts from the open source vulnerability database operated by Google
 
@@ -142,21 +142,26 @@ Keep your SBOM up to date so you can immediately tell whether your software is a
 
 ```yaml
 # .github/workflows/vuln-scan.yml
-name: Weekly vulnerability Scan
+name: Weekly Vulnerability Scan
 on:
   schedule:
-    - cron: '0 9 * * 1' # every Monday at 9 AM
+    - cron: '0 9 * * 1' # every Monday 09:00 UTC (18:00 KST)
 jobs:
   scan:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+      - name: Install syft and grype
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin
+          curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
       - name: Generate fresh SBOM
         run: |
+          mkdir -p output/sbom
           syft . -o cyclonedx-json > output/sbom/myapp-latest.cdx.json
       - name: Check SBOM for new CVEs
         run: |
-          # Scan with Dependency-Track API or grype
+          # Scan with the Dependency-Track API, grype, or similar
           grype sbom:output/sbom/myapp-latest.cdx.json --fail-on high
 ```
 
@@ -205,7 +210,7 @@ claude
 cat output/sbom/sbom-management-plan.md
 ```
 
-**Step 5.** Fill in the shared template with actual company information.
+**Step 5.** Fill in the sharing template with your actual company information.
 
 ```bash
 # Open with a text editor and replace placeholders such as [Company Name], [Program Manager Name]
@@ -232,10 +237,10 @@ Completing this lab will meet the requirements below:
 
 **ISO/IEC 18974**
 
-| Item ID | Requirements                        | Self-certification checklist                                                                          |
-| ------- | ----------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| 4.3.1   | SBOM Management and Updates         | Do you have a process for maintaining and updating the SBOM when supply software changes?             |
-| 4.3.2   | SBOM-based vulnerability monitoring | Do you have a process for continuously monitoring supply software components for new vulnerabilities? |
+| Item ID | Requirements                        | Self-certification checklist                                                                                       |
+| ------- | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| 4.3.1   | SBOM management and updates         | Do you have a documented process for creating and maintaining a SBOM for supply software throughout its lifecycle? |
+| 4.3.2   | SBOM-based vulnerability monitoring | Do you have a process for continuously monitoring supply software components for new vulnerabilities?              |
 
 :::
 
@@ -261,34 +266,34 @@ Check all of the items below to complete this chapter.
 
 ## 1. SBOM Generation and Update Policy
 
-- **Update trigger list:** new Component addition, Version changed, release, security patches
-- **update owner:** [Name], [Role]
-- **update procedure:** On PR merge: auto-generate in CI/CD -> Program Manager review -> archive
+- **Update triggers:** new component added, component version changed, release, security patch
+- **Update owner:** [Name], [Role]
+- **Update procedure:** auto-generate in CI/CD on PR merge → owner review → archive
 
-## 2. versioning strategy
+## 2. Version Management Strategy
 
-- **file naming convention:** `[project]-[version]-[date].cdx.json`
-- **storage location:** `output/sbom/` (Git managed)
-- **retention period:** release retention period + 1 year
+- **File naming convention:** `[project]-[version]-[date].cdx.json`
+- **Storage location:** `output/sbom/` (managed in Git)
+- **Retention period:** release maintenance period + 1 year
 
-## 3. external sharing procedure
+## 3. External Sharing Procedure
 
-- **sharing recipients and conditions:** [customer name], contract Clause X requirements
-- **delivery format:** CycloneDX JSON
-- **delivery channel:** secure file-sharing link (Box)
-- **delivery frequency:** for each release and upon customer request
+- **Recipients and conditions:** [supplier name], per contract Clause X
+- **Delivery format:** CycloneDX JSON
+- **Delivery channel:** secure file-sharing link (Box)
+- **Delivery frequency:** on every release, and upon supplier request
 
-## 4. monitoring plan
+## 4. Monitoring Plan
 
-- **new CVE alerts:** Dependency Track, CVSS 7.0 or later Immediate alerts
-- **regular review cycle:** monthly Program Manager review
-- **automated scan:** Run GitHub Actions every Monday
+- **New CVE alerts:** Dependency-Track, immediate alert for CVSS 7.0 and above
+- **Regular review cycle:** monthly owner review
+- **Automated scan:** GitHub Actions run every Monday
 ```
 
 > This step meets ISO/IEC 18974 4.3.1 and 4.3.2 requirements.
 
-:::tip[Example output]
-See the actual format of the generated file at [SBOM output best practice](/reference/samples/sbom).
+:::tip Example deliverables
+See the actual format of the generated files at [SBOM deliverables best practice](/reference/samples/sbom).
 :::
 
 ---

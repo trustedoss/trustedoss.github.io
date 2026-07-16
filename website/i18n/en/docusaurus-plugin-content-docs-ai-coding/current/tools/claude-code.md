@@ -28,7 +28,7 @@ If open source policies are written in `CLAUDE.md`, Claude Code automatically co
 ## Configuration Example
 
 ```markdown
-# project Guides
+# Project Guide
 
 (existing project guidance content)
 

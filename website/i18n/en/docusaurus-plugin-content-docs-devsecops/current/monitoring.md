@@ -10,6 +10,10 @@ sidebar_position: 10
 A CI/CD gate checks the state of the code at deployment time but cannot respond to new vulnerabilities that emerge afterward.
 Combining Dependabot·Renovate with scheduled scans lets you continuously detect vulnerabilities in production and automatically generate patch PRs.
 
+:::tip The configuration below is an example — a fully working implementation lives in the reference repository
+The YAML and commands on this page are examples that show the essentials. For a complete, copy-and-run pipeline (including policy files and a sample app), see the [Best Practice repository](/ai-coding/best-practice-repo).
+:::
+
 ## Why post-deployment monitoring is necessary
 
 :::info A CI/CD gate only checks a snapshot taken at deployment time
@@ -76,8 +80,10 @@ updates:
 
 ### Enable security alerts
 
-Dependabot security alerts on GitHub work automatically once you enable them in your repository settings.
-With no further configuration, a PR is opened immediately when a Critical or High vulnerability is found based on the GitHub Advisory Database.
+GitHub's Dependabot has two separate settings to enable. **Security Alerts** notify you of vulnerable
+dependencies based on the GitHub Advisory Database; to have fix PRs opened automatically as well, you
+must additionally enable **Dependabot security updates**. Both are enabled in the Code security menu
+of the repository Settings.
 
 ---
 
@@ -91,7 +97,7 @@ It can also be run self-hosted on GitLab.
 
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base"],
+  "extends": ["config:recommended"],
   "schedule": ["every weekend"],
   "vulnerabilityAlerts": {
     "enabled": true,
@@ -199,7 +205,7 @@ The agents below work in conjunction with the CI/CD pipeline.
 They generate workflow files that fully automate security analysis.
 :::
 
-**Prerequisite**: Clone the [Trusted OSS repository](https://github.com/trustedoss/trustedoss.github.io)
+**Prerequisite**: Clone the [Trusted OSS repository](https://github.com/trustedoss/trustedoss-agents)
 
 ### Automated PR security-analysis comments
 
@@ -218,8 +224,9 @@ Generated output:
 
 ### Automatic issue creation + Dependabot analysis
 
-Automatically opens issues when scheduled scans find High/Critical vulnerabilities,
-and automatically posts impact-analysis comments on Dependabot PRs.
+Generates a workflow that automatically registers findings from security scan results
+(grype, Semgrep, license violations) at or above a configured severity as GitHub or GitLab Issues.
+It includes deduplication logic keyed by CVE ID.
 
 ```bash
 cd agents/level2-automation/issue-tracker
@@ -228,9 +235,9 @@ claude
 
 Generated output:
 
-- `.github/workflows/scheduled-security-scan.yml`
-- `.github/workflows/dependabot-analysis.yml`
-- `gitlab-scheduled-scan.yml` (GitLab CI conversion version)
+- `.github/workflows/security-issue-tracker.yml`
+- `gitlab-issue-tracker.yml` (GitLab CI conversion version)
+- `ISSUE-TRACKER-SETUP.md` (guide to token permissions, labels, and cost settings)
 
 :::info GitHub Actions vs GitLab CI
 GitHub Actions provides YAML verified to actually work.
@@ -242,4 +249,4 @@ Both platforms require ANTHROPIC_API_KEY to be registered as a Secret/Variable.
 
 ## Next steps
 
-- Mapping ISO/IEC 18974 requirements to implementation: [ISO Standard Linkage](./iso-mapping)
+- Mapping ISO/IEC 18974 requirements to implementation: [ISO Standard Mapping](./iso-mapping)

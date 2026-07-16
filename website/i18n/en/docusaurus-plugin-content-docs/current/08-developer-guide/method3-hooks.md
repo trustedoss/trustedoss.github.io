@@ -1,12 +1,18 @@
 ---
 sidebar_position: 4
-sidebar_label: 'Method 3:Hooks settings'
+sidebar_label: 'Method 3: Hooks Setup'
+date: 2026-03-20
+version: '1.0'
+checklist:
+  - 'ISO/IEC 5230: []'
+  - 'ISO/IEC 18974: []'
+self_study_time: 30 minutes
 ---
 
-# Method 3:Setting up hooks
+# Method 3: Setting Up Hooks
 
-:::info Self-study mode(About 30 minutes)
-Alerts are automatically issued whenever dependency files change.
+:::info Self-study mode (about 30 minutes)
+A warning is raised automatically whenever a dependency file changes.
 :::
 
 Add the Hook below to `.claude/settings.json`.
@@ -20,7 +26,7 @@ Add the Hook below to `.claude/settings.json`.
         "hooks": [
           {
             "type": "command",
-            "command": "node -e \"\nlet raw = '';\nprocess.stdin.on('data', (c) => (raw += c));\nprocess.stdin.on('end', () => {\n  const hook = JSON.parse(raw);\n  const file = (hook.tool_input && hook.tool_input.file_path) || '';\n  const depFiles = ['package.json', 'requirements.txt', 'pom.xml', 'go.mod', 'Cargo.toml'];\n  if (depFiles.some((f) => file.endsWith(f))) {\n    console.error('[OSS Policy Warning] Dependency files were changed.');\n    console.error('Always check licenses and vulnerabilities for new packages.');\n    console.error('How to check: run /oss-policy-check');\n    process.exit(2);\n  }\n});\n\""
+            "command": "node -e \"\nlet raw = '';\nprocess.stdin.on('data', (c) => (raw += c));\nprocess.stdin.on('end', () => {\n  const hook = JSON.parse(raw);\n  const file = (hook.tool_input && hook.tool_input.file_path) || '';\n  const depFiles = ['package.json', 'requirements.txt', 'pom.xml', 'go.mod', 'Cargo.toml'];\n  if (depFiles.some((f) => file.endsWith(f))) {\n    console.error('[OSS Policy Warning] A dependency file was changed.');\n    console.error('Always check the licenses and vulnerabilities of new packages.');\n    console.error('How to check: run /oss-policy-check');\n    process.exit(2);\n  }\n});\n\""
           }
         ]
       }
@@ -29,17 +35,18 @@ Add the Hook below to `.claude/settings.json`.
 }
 ```
 
-> This step automatically invokes the package addition approval process defined in `output/process/usage-approval.md`.
+This Hook serves as an automatic reminder of the package addition approval procedure defined in `output/process/usage-approval.md`.
 
-The hook command receives the tool-call information as JSON (`tool_name`, `tool_input`, `tool_response`) on standard input.
-The example above checks `tool_input.file_path` for dependency files and exits with code 2 so the warning is delivered to Claude.
+The Hook command receives the tool-call information as JSON (`tool_name`, `tool_input`, `tool_response`) on standard input.
+The example above uses `tool_input.file_path` to determine whether a dependency file is involved, and if so exits with code 2
+so that the warning message is delivered to Claude.
 
-**Effect:** whenever Claude Code modifies `package.json`, `requirements.txt`, `pom.xml`, `go.mod`, `Cargo.toml`, and similar files, Claude sees the warning and prompts a license and vulnerability check.
+**Effect:** Whenever Claude Code modifies `package.json`, `requirements.txt`, `pom.xml`, `go.mod`, `Cargo.toml`, and similar files, Claude sees the warning and guides you through the license and vulnerability check.
 
-**Stronger control:** to block the modification itself, register the same script as a `PreToolUse` hook. In PreToolUse, exit code 2 blocks the tool call before it runs.
+**Stronger control:** To block the modification itself, register the same script as a `PreToolUse` Hook. In PreToolUse, exit code 2 blocks the tool call before it runs.
 
-**Limitation:** if a file is modified outside Claude Code, the hook does not run. Complement it with CI/CD.
+**Limitation:** If a file is modified outside Claude Code, the Hook does not run. Complement it with CI/CD.
 
 ---
 
-→ next: [Method 4:CI/CD pipeline](./method4-cicd.md)
+→ Next: [Method 4: CI/CD Pipeline](./method4-cicd.md)

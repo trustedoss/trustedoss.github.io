@@ -1,16 +1,22 @@
 ---
 sidebar_position: 3
-sidebar_label: 'Method 2:Skill definition'
+sidebar_label: 'Method 2: Skill Definition'
+date: 2026-03-20
+version: '1.0'
+checklist:
+  - 'ISO/IEC 5230: []'
+  - 'ISO/IEC 18974: []'
+self_study_time: 20 minutes
 ---
 
-# Method 2:Define Skill
+# Method 2: Defining a Skill
 
-:::info Self-study mode(About 20 minutes)
-Define it once and you can immediately call it as `/oss-policy-check` from any project.
+:::info Self-study mode (about 20 minutes)
+Define it once and you can invoke it instantly anywhere in this project with `/oss-policy-check`. To use it in every project, put the same content in `~/.claude/skills/`.
 :::
 
-Create a `.claude/skills/oss-policy-check/SKILL.md` file.
-Skills are defined as directories, and the frontmatter (name, description) at the top of the file is required for recognition.
+Create the file `.claude/skills/oss-policy-check/SKILL.md`.
+Skills are defined per directory, and the frontmatter (name, description) at the top of the file is required for the skill to be recognized.
 
 ```bash
 mkdir -p .claude/skills/oss-policy-check
@@ -19,12 +25,12 @@ mkdir -p .claude/skills/oss-policy-check
 ````markdown
 ---
 name: oss-policy-check
-description: Open source policy compliance check. Run when developers request /oss-policy-check or "check Open Source Policy".
+description: Open source policy compliance check. Run when a developer requests /oss-policy-check or asks to "check the open source policy".
 ---
 
-# OSS policy compliance check
+# OSS Policy Compliance Check
 
-## Execution Steps
+## Execution steps
 
 ### Step 1: License check
 
@@ -33,7 +39,6 @@ Node.js project:
 ```bash
 npx license-checker --summary --excludePrivatePackages
 ```
-````
 
 Python project:
 
@@ -47,60 +52,56 @@ Java/Maven project:
 mvn license:aggregate-third-party-report
 ```
 
-### Step 2:Whitelist matching
+### Step 2: Allowlist comparison
 
-Compare with the allowed license in output/policy/license-allowlist.md.
-If a license that is not in the list is found, an immediate alert is issued.
+Compare against the allowed licenses in output/policy/license-allowlist.md.
+If a license not on the list is found, issue a warning immediately.
 
-### Step 3:vulnerability inquiry(OSV API)
+### Step 3: Vulnerability lookup (OSV API)
 
-Search for vulnerabilities in discovered packages using OSV API:
+Look up vulnerabilities for the discovered packages via the OSV API:
 
 ```bash
-# use grype (recommended)
+# Use grype (recommended)
 grype dir:. --fail-on high
 
-# or use OSV-Scanner
+# Or use OSV-Scanner
 osv-scanner --recursive .
 ```
 
-### Step 4:Results reporting format
+### Step 4: Report format
 
-Report the test results in the format below.:
+Report the check results in the following format:
 
 ---
 
-## Open Source Policy Check Result
+## OSS Policy Check Results
 
-**Inspection date and time:** YYYY-MM-DD
-**Target project:** [Project Name]
+**Check date:** YYYY-MM-DD
+**Target project:** [project name]
 
-### License Status
+### License status
 
-| License    | number of packages | status       |
-| ---------- | ------------------ | ------------ |
-| MIT        | 45                 | ✅ Allowed   |
-| Apache-2.0 | 12                 | ✅ Allowed   |
-| GPL-3.0    | 1                  | ❌ Violation |
+| License    | Package count | Status       |
+| ---------- | ------------- | ------------ |
+| MIT        | 45            | ✅ Allowed   |
+| Apache-2.0 | 12            | ✅ Allowed   |
+| GPL-3.0    | 1             | ❌ Violation |
 
-### vulnerability Status
+### Vulnerability status
 
-| CVE           | CVSS | package        | status                 |
+| CVE           | CVSS | Package        | Status                 |
 | ------------- | ---- | -------------- | ---------------------- |
 | CVE-2024-XXXX | 9.1  | lodash@4.17.15 | ❌ Urgent patch needed |
 
-### Recommendation
+### Recommendations
 
-- [ ] Request for approval to replace or use GPL-3.0 package
-- [ ] Upgrade to lodash 4.17.21 or higher
+- [ ] Replace the GPL-3.0 package or request usage approval
+- [ ] Upgrade lodash to 4.17.21 or later
+````
 
----
-
-```
-
-**Impact:** Any team member can quickly check status with `/oss-policy-check`.
+**Effect:** Any team member can get the current status instantly with the `/oss-policy-check` command.
 
 ---
 
-→ Next: [Method 3: Set up Hooks](./method3-hooks.md)
-```
+→ Next: [Method 3: Setting Up Hooks](./method3-hooks.md)

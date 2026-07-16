@@ -11,6 +11,10 @@ sidebar_position: 7
 
 IaC security checks detect security misconfigurations in infrastructure-as-code files (such as Terraform, CloudFormation, Kubernetes YAML, and Dockerfile) before deployment, including public S3 buckets, missing encryption, and overly broad permissions. Because infrastructure misconfigurations can cause broader damage than application vulnerabilities, blocking them at the code review stage is critical.
 
+:::tip The configuration below is an example — a fully working implementation lives in the reference repository
+The YAML and commands on this page are examples that show the essentials. For a complete, copy-and-run pipeline (including policy files and a sample app), see the [Best Practice repository](/ai-coding/best-practice-repo).
+:::
+
 ---
 
 ## Tool Comparison
@@ -22,7 +26,7 @@ IaC security checks detect security misconfigurations in infrastructure-as-code 
 | Trivy   | Includes IaC scan (integrated with container security) | Terraform, K8s, Dockerfile          | Apache-2.0 |
 | Kubesec | Kubernetes-only security scoring                       | Kubernetes YAML                     | Apache-2.0 |
 
-For multi-IaC environments, Checkov is recommended. If you only use Terraform, tfsec is a great fit. If you want integration with container security, Trivy is recommended.
+For multi-IaC environments, Checkov is recommended; for integration with container security, use Trivy. Maintenance of tfsec is being migrated to Trivy, so if you need Terraform-only checks, consider `trivy config` first.
 
 ---
 
@@ -89,10 +93,10 @@ iac-security:
   stage: test
   image: bridgecrew/checkov:latest
   script:
+    # exit 1 on violations (hard fail) is the default behavior
     - checkov -d .
       --framework terraform,kubernetes,dockerfile
       --output cli
-      --soft-fail false
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
 ```
@@ -101,7 +105,7 @@ iac-security:
 
 ## tfsec Setup (Terraform-only)
 
-tfsec is specialized for Terraform, runs quickly, and includes built-in security rules for major cloud providers such as AWS, Azure, and GCP. It is also useful alongside Checkov when you want deeper Terraform-specific checks.
+tfsec is specialized for Terraform, runs quickly, and includes built-in security rules for major cloud providers such as AWS, Azure, and GCP. However, its maintenance is being migrated to Trivy, so for new adoption consider `trivy config` first. It is also useful alongside Checkov when you want deeper Terraform-specific checks.
 
 ### GitHub Actions
 
@@ -163,14 +167,14 @@ metadata:
 
 At initial adoption, enabling these checks first can quickly reduce real risk. After the team gets used to results, expand to the full policy set.
 
-| Item                   | Checkov ID | Description                             |
-| ---------------------- | ---------- | --------------------------------------- |
-| Block S3 public access | CKV_AWS_53 | Configure bucket public access blocking |
-| S3 encryption          | CKV_AWS_19 | Enable server-side encryption           |
-| Security group 0.0.0.0 | CKV_AWS_25 | Disallow SSH open to all                |
-| Prevent root in K8s    | CKV_K8S_6  | Block containers running as root        |
-| K8s resource limits    | CKV_K8S_11 | Set CPU/memory limits                   |
-| Latest API version     | CKV_K8S_35 | Disallow deprecated API versions        |
+| Item                   | Checkov ID              | Description                                         |
+| ---------------------- | ----------------------- | --------------------------------------------------- |
+| Block S3 public access | CKV_AWS_53              | Configure bucket public access blocking             |
+| S3 encryption          | CKV_AWS_19              | Enable server-side encryption                       |
+| Security group 0.0.0.0 | CKV_AWS_24              | Disallow SSH port (22) open to the world            |
+| Prevent root in K8s    | CKV_K8S_23              | Block containers running as root                    |
+| K8s resource limits    | CKV_K8S_11 · CKV_K8S_13 | Set CPU limits and memory limits                    |
+| K8s secret management  | CKV_K8S_35              | Inject secrets as files instead of environment vars |
 
 ---
 
@@ -180,12 +184,36 @@ Upload a Checkov result file
 to automatically generate fixed code for each violation.
 It provides directly applicable fixed files, not just reports.
 
+### Preview with a sample first (no API key required)
+
+You can view the fixed code for a pre-built sample scan result right away, without an API key. Get a feel for what the tool produces first, then run a real analysis on your own results below.
+
+<iframe
+  src="/tools/iac-sample-demo.html"
+  width="100%"
+  height="680"
+  frameBorder="0"
+  style={{
+    borderRadius: '12px',
+    border: '1px solid var(--ifm-color-emphasis-300)',
+  }}
+/>
+
+### Fix your own results
+
+:::info This tool requires an Anthropic API key
+It calls the Anthropic API directly from your browser. Enter your own [Anthropic API key](https://console.anthropic.com/settings/keys) to use it right away. Your key and inputs are sent only from your browser to Anthropic (they never pass through a trustedoss server). Usage is billed to your own Anthropic account.
+:::
+
 <iframe
   src="/tools/iac-fixer.html"
   width="100%"
   height="960"
   frameBorder="0"
-  style={{borderRadius: '12px', border: '1px solid #e0e5ec'}}
+  style={{
+    borderRadius: '12px',
+    border: '1px solid var(--ifm-color-emphasis-300)',
+  }}
 />
 
 ## Self-Study
@@ -196,7 +224,7 @@ If you need full files generated with fixes directly applied
 to original `.tf` files, use the agent below.
 :::
 
-**Prerequisite**: Clone the [Trusted OSS repository](https://github.com/trustedoss/trustedoss.github.io)
+**Prerequisite**: Clone the [Trusted OSS repository](https://github.com/trustedoss/trustedoss-agents)
 
 ```bash
 cd agents/iac-fixer
@@ -205,7 +233,7 @@ claude
 
 The agent automatically performs the following:
 
-- Auto-detects Checkov / tfsec / Trivy IaC results
+- Automatically parses Checkov result files (JSON)
 - Generates direct remediation code for fixable findings
 - Inserts `checkov:skip` comments for non-fixable items
 - Generates full fixed files when originals are provided

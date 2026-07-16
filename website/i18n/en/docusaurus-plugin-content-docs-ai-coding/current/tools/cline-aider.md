@@ -82,7 +82,7 @@ Copy the full text from the [Common Rules Template](../rules-template). When the
 
 Copy the full text from the [Common Rules Template](../rules-template). When the allow/deny lists change, update only the canonical template and paste it into each tool file again.
 
-**.aider.conf.yml** — Use a concise summary of key items only.
+**.aider.conf.yml** — Always loads the policy document as read-only context.
 
 ```yaml
 # Load the policy document as read-only context at session start

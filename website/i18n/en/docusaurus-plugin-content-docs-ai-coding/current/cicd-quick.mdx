@@ -104,7 +104,7 @@ jobs:
 
 Analyzes source code and manifest files (such as package.json and requirements.txt) to generate an SBOM file in CycloneDX JSON format. It is available directly from GitHub Actions Marketplace and requires no separate installation.
 
-**2. vulnerability scan (anchore/scan-action)**
+**2. Vulnerability scan (anchore/scan-action)**
 
 Checks vulnerabilities by comparing the generated SBOM against CVE databases. With `severity-cutoff: high`, the build automatically fails when High or Critical CVEs are found. Medium and below are reported as warnings while the build continues. For initial rollout, starting with `critical` and gradually tightening to `high` is recommended.
 
@@ -173,7 +173,7 @@ oss-check:
 | Item               | GitHub Actions               | GitLab CI                      |
 | ------------------ | ---------------------------- | ------------------------------ |
 | SBOM generation    | anchore/sbom-action (Action) | Install and run syft directly  |
-| vulnerability scan | anchore/scan-action (Action) | Install and run grype directly |
+| Vulnerability scan | anchore/scan-action (Action) | Install and run grype directly |
 | Trigger condition  | pull_request                 | merge_request_event            |
 | Artifact retention | upload-artifact              | artifacts.paths                |
 
@@ -184,7 +184,7 @@ oss-check:
 :::tip At minimum, tailor these two items to your team policy
 :::
 
-**vulnerability threshold**
+**Vulnerability threshold**
 
 You can relax `severity-cutoff` (GitHub Actions) or `--fail-on` (GitLab CI) from the default `high` to `critical`, or tighten it to `medium`. When first introducing the pipeline, it is recommended to start at `critical`, observe build failure frequency, then gradually tighten.
 

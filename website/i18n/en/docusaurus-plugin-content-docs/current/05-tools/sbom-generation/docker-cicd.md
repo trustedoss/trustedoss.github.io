@@ -1,30 +1,36 @@
 ---
 sidebar_position: 2
-sidebar_label: 'Docker·CI/CD execution guide'
+sidebar_label: 'Docker and CI/CD execution guide'
+date: 2026-06-05
+version: '1.0'
+checklist:
+  - 'ISO/IEC 5230: []'
+  - 'ISO/IEC 18974: []'
+self_study_time: 30 minutes
 ---
 
-# Create SBOM:Docker implementation guide and CI/CD automation
+# Create SBOM: Docker execution guide and CI/CD automation
 
-This document describes the actual Docker execution commands for syft·cdxgen.,Setting up GitHub Actions automation,Sample Project Practice,It contains troubleshooting.
+This page contains the actual Docker commands for syft and cdxgen, the GitHub Actions automation setup, the sample project walkthrough, and troubleshooting.
 
 ---
 
-## Running syft with Docker — Commands for each language/package manager
+## Running syft with Docker — commands per language/package manager
 
-| language | Package Manager | command                                                                                                               |
+| Language | Package manager | Command                                                                                                               |
 | -------- | --------------- | --------------------------------------------------------------------------------------------------------------------- |
 | Java     | Maven/Gradle    | `docker run --rm -v $(pwd):/project anchore/syft:latest /project --output cyclonedx-json > output/sbom/sbom.cdx.json` |
 | Python   | pip             | `docker run --rm -v $(pwd):/project anchore/syft:latest /project --output cyclonedx-json > output/sbom/sbom.cdx.json` |
 | Node.js  | npm             | `docker run --rm -v $(pwd):/project anchore/syft:latest /project --output cyclonedx-json > output/sbom/sbom.cdx.json` |
 | Go       | go mod          | `docker run --rm -v $(pwd):/project anchore/syft:latest /project --output cyclonedx-json > output/sbom/sbom.cdx.json` |
 
-full command(Same for each language,Adjust directories only):
+Full command (identical for every language; only the directory changes):
 
 ```bash
-# create output/sbom directory
+# Create the output/sbom folder
 mkdir -p output/sbom
 
-# Generate SBOM with syft
+# Generate the SBOM with syft
 docker run --rm \
   -v $(pwd):/project \
   anchore/syft:latest \
@@ -35,7 +41,7 @@ docker run --rm \
 
 ---
 
-## Running cdxgen with Docker(When more precise analysis is needed)
+## Running cdxgen with Docker (when more precise analysis is needed)
 
 ```bash
 docker run --rm \
@@ -46,13 +52,13 @@ docker run --rm \
   -o /app/output/sbom/sbom-cdxgen.cdx.json
 ```
 
-Recommended for Java Maven projects. Dependency tracking is more precise than syft,transitive dependency(transitive dependencies)Until more fully collected.
+Recommended for Java Maven projects. Its dependency resolution is more precise than syft's, and it collects transitive dependencies more completely.
 
 ---
 
-## Automate GitHub Actions
+## GitHub Actions automation
 
-Integrating SBOM generation into your CI/CD pipeline will automatically generate the latest SBOM for every release.
+Integrating SBOM generation into your CI/CD pipeline gives you an up-to-date SBOM automatically for every release.
 
 ```yaml
 # .github/workflows/sbom.yml
@@ -85,15 +91,16 @@ jobs:
 
 ---
 
-## Practice with samples/ project
+## Practicing with the samples/ projects
 
-Two sample projects are provided for practice.:
+Three sample projects are provided for practice:
 
-- `samples/java-vulnerable/`:log4j-core includes 2.14.1 → Expected detection of CVE-2021-44228
-- `samples/python-mixed-license/`:GPL mixed → Expect license conflict detection
+- `samples/java-vulnerable/`: includes log4j-core 2.14.1 → expect CVE-2021-44228 to be detected
+- `samples/python-mixed-license/`: mixed GPL use → expect a license conflict to be detected
+- `samples/nodejs-unlicensed/`: local package with no declared license → expect an unidentified license (NOASSERTION) to be detected
 
 ```bash
-# practice with java-vulnerable sample
+# Practice with the java-vulnerable sample
 docker run --rm \
   -v $(pwd)/samples/java-vulnerable:/project \
   anchore/syft:latest \
@@ -105,10 +112,10 @@ docker run --rm \
 
 ## Troubleshooting
 
-| Symptoms                        | Cause                                                                                    | Solution                                                                                                                              |
-| ------------------------------- | ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| SBOM is empty(`components: []`) | no lock file                                                                             | `package-lock.json`, `requirements.txt`,Check `pom.xml` etc.                                                                          |
-| SBOM is empty but no error      | Docker file sharing restriction — the mount appears as an empty directory (colima, etc.) | Check that your working directory is included in Docker Desktop > Settings > Resources > File Sharing (or your colima mount settings) |
-| Docker volume mount error       | path problem                                                                             | change to absolute path: `-v /full/path:/project`                                                                                     |
-| Permission denied               | Permission issues                                                                        | Add `sudo` or Docker group                                                                                                            |
-| Image pulling takes a long time | network                                                                                  | Normal on first run,Use cache after                                                                                                   |
+| Symptom                             | Cause                                                                                     | Solution                                                                                                                             |
+| ----------------------------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| SBOM is empty (`components: []`)    | No lock file                                                                              | Check for `package-lock.json`, `requirements.txt`, `pom.xml`, etc.                                                                   |
+| SBOM is empty but there is no error | Docker file-sharing restriction — the mount resolves to an empty directory (colima, etc.) | Check that the working directory is included in Docker Desktop > Settings > Resources > File Sharing (or your colima mount settings) |
+| Docker volume mount error           | Path problem                                                                              | Switch to an absolute path: `-v /full/path:/project`                                                                                 |
+| Permission denied                   | Permission problem                                                                        | Use `sudo` or add yourself to the Docker group                                                                                       |
+| Image pull takes a long time        | Network                                                                                   | Normal on the first run; the cache is used afterwards                                                                                |
