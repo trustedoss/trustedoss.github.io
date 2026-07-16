@@ -5,7 +5,7 @@ sidebar_position: 4
 
 # SBOM Output Best Practice
 
-[05 Tools Chapter] This is an example of SBOM-related output generated from (/docs/tools/sbom-generation).
+This is an example of SBOM-related output generated from the [05 Tools Chapter](/docs/tools/sbom-generation).
 You can check actual output examples based on sample projects (including `java-vulnerable`, Log4Shell CVE-2021-44228).
 
 ---
