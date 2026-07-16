@@ -83,7 +83,7 @@
 | ------------------------------------- | ----------------- | --------- | -------- |
 | OpenChain 교육 자료                   | OpenChain Project | 초급~중급 | 자율     |
 | LFC193 오픈소스 라이선스 컴플라이언스 | Linux Foundation  | 초급      | 3시간    |
-| LFD106x 오픈소스 개발 기초            | Linux Foundation  | 초급      | 자율     |
+| LFD102 오픈소스 개발 기초             | Linux Foundation  | 초급      | 자율     |
 | OpenChain KWG 교육 자료               | OpenChain KWG     | 중급      | 자율     |
 | SPDX 공식 문서                        | SPDX Community    | 중급      | 자율     |
 

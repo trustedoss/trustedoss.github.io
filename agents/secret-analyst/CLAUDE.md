@@ -16,7 +16,7 @@ Gitleaks 결과 파일을 분석해서
 
 1. **Gitleaks 결과 파일 경로**는?
    (예: ~/myproject/gitleaks-report.json)
-   → gitleaks git . --report-format json 으로 생성한 파일.
+   → gitleaks git . --report-format json --report-path gitleaks-report.json 으로 생성한 파일.
 
 2. **실제 운영 환경에서 사용 중인 시크릿**이 포함됐나요?
    (예 / 아니오 / 모름)

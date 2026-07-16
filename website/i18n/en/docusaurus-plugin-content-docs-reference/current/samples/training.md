@@ -285,17 +285,17 @@ Related Standards
 | Course name                                          | Course Code | target                  | time | Certificate      | Link                                                                                                |
 | ---------------------------------------------------- | ----------- | ----------------------- | ---- | ---------------- | --------------------------------------------------------------------------------------------------- |
 | Open Source Compliance in the Enterprise             | LFC193      | Developer/Administrator | ~3h  | Available (free) | https://training.linuxfoundation.org/training/open-source-compliance-in-the-enterprise/             |
-| Open Source Licensing Basics for Software Developers | LFD106x     | Developer               | ~3h  | Available (free) | https://training.linuxfoundation.org/training/open-source-licensing-basics-for-software-developers/ |
+| Open Source Licensing Basics for Software Developers | LFC191      | Developer               | ~3h  | Available (free) | https://training.linuxfoundation.org/training/open-source-licensing-basics-for-software-developers/ |
 | Secure Software Development Fundamentals             | LFD121      | Developer               | ~12h | Available (free) | https://training.linuxfoundation.org/training/developing-secure-software-lfd121/                    |
 | Kubernetes and Cloud Native Security Associate       | —           | Operations              | —    | Paid             | —                                                                                                   |
 
 **Curriculum Linkage**:
 
 - LFC193 → Developer M2, Administrator M1·M2 key data
-- LFD106x → Developer M1 core data
+- LFC191 → Developer M1 core data
 - LFD121 → Developer M4 supplementary material
 
-> **Use of certificate**: LFC193·LFD106x certificate can be used as proof of submission of OpenChain self-certification
+> **Use of certificate**: LFC193·LFC191 certificate can be used as proof of submission of OpenChain self-certification
 
 ---
 
@@ -351,8 +351,8 @@ Related Standards
 
 ### Resource Selection Guide
 
-| Occupation    | Priority Resources                                           | Use of certificate                  |
-| ------------- | ------------------------------------------------------------ | ----------------------------------- |
-| Developer     | LFD106x → LFC193 → Syft Practice                             | Submit LFD106x + LFC193 certificate |
-| Administrator | LFC193 → OpenChain Curriculum → ISO 5230/18974 Specification | Submit LFC193 certificate           |
-| Operations    | OpenChain e-Learning                                         | Replaced with completion record     |
+| Occupation    | Priority Resources                                           | Use of certificate                 |
+| ------------- | ------------------------------------------------------------ | ---------------------------------- |
+| Developer     | LFC191 → LFC193 → Syft Practice                              | Submit LFC191 + LFC193 certificate |
+| Administrator | LFC193 → OpenChain Curriculum → ISO 5230/18974 Specification | Submit LFC193 certificate          |
+| Operations    | OpenChain e-Learning                                         | Replaced with completion record    |

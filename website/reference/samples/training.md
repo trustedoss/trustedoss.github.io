@@ -285,17 +285,17 @@ sidebar_label: 교육 산출물
 | 과정명                                               | 과정 코드 | 대상          | 시간 | 수료증      | 링크                                                                                                |
 | ---------------------------------------------------- | --------- | ------------- | ---- | ----------- | --------------------------------------------------------------------------------------------------- |
 | Open Source Compliance in the Enterprise             | LFC193    | 개발자·관리자 | ~3h  | 있음 (무료) | https://training.linuxfoundation.org/training/open-source-compliance-in-the-enterprise/             |
-| Open Source Licensing Basics for Software Developers | LFD106x   | 개발자        | ~3h  | 있음 (무료) | https://training.linuxfoundation.org/training/open-source-licensing-basics-for-software-developers/ |
+| Open Source Licensing Basics for Software Developers | LFC191    | 개발자        | ~3h  | 있음 (무료) | https://training.linuxfoundation.org/training/open-source-licensing-basics-for-software-developers/ |
 | Secure Software Development Fundamentals             | LFD121    | 개발자        | ~12h | 있음 (무료) | https://training.linuxfoundation.org/training/developing-secure-software-lfd121/                    |
 | Kubernetes and Cloud Native Security Associate       | —         | 운영          | —    | 유료        | —                                                                                                   |
 
 **커리큘럼 연계**:
 
 - LFC193 → 개발자 M2, 관리자 M1·M2 핵심 자료
-- LFD106x → 개발자 M1 핵심 자료
+- LFC191 → 개발자 M1 핵심 자료
 - LFD121 → 개발자 M4 보조 자료
 
-> **수료증 활용**: LFC193·LFD106x 수료증은 OpenChain 자체 인증 제출 증빙으로 사용 가능
+> **수료증 활용**: LFC193·LFC191 수료증은 OpenChain 자체 인증 제출 증빙으로 사용 가능
 
 ---
 
@@ -351,8 +351,8 @@ sidebar_label: 교육 산출물
 
 ### 리소스 선택 가이드
 
-| 직군   | 최우선 리소스                                       | 수료증 활용                  |
-| ------ | --------------------------------------------------- | ---------------------------- |
-| 개발자 | LFD106x → LFC193 → Syft 실습                        | LFD106x + LFC193 수료증 제출 |
-| 관리자 | LFC193 → OpenChain Curriculum → ISO 5230/18974 사양 | LFC193 수료증 제출           |
-| 운영   | OpenChain e-Learning                                | 이수 기록으로 대체           |
+| 직군   | 최우선 리소스                                       | 수료증 활용                 |
+| ------ | --------------------------------------------------- | --------------------------- |
+| 개발자 | LFC191 → LFC193 → Syft 실습                         | LFC191 + LFC193 수료증 제출 |
+| 관리자 | LFC193 → OpenChain Curriculum → ISO 5230/18974 사양 | LFC193 수료증 제출          |
+| 운영   | OpenChain e-Learning                                | 이수 기록으로 대체          |

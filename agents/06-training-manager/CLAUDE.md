@@ -41,7 +41,7 @@
 - 무료 교육 리소스 목록 (링크 포함):
   - OpenChain 교육 자료
   - Linux Foundation LFC193 (오픈소스 컴플라이언스)
-  - Linux Foundation LFD106x (오픈소스 개발 기초)
+  - Linux Foundation LFD102 (오픈소스 개발 기초)
   - SPDX 교육
 
 ## 출력 산출물
