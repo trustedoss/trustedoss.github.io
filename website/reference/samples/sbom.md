@@ -374,11 +374,10 @@ updates:
 
 ### 6. 준거 표준
 
-| 표준          | 요구사항                            |
-| ------------- | ----------------------------------- |
-| ISO/IEC 18974 | 4.3.1 — SBOM 관리 및 유지보수       |
-| ISO/IEC 18974 | 4.3.1 — SBOM 공유 (공급망 파트너)   |
-| ISO/IEC 18974 | 4.3.2 — 공급망 취약점 지속 모니터링 |
+| 표준          | 요구사항                                                               |
+| ------------- | ---------------------------------------------------------------------- |
+| ISO/IEC 18974 | 4.3.1 — 오픈소스 컴포넌트의 수명주기 지속 기록 (SBOM 관리 및 유지보수) |
+| ISO/IEC 18974 | 4.3.2 — 공급망 취약점 지속 모니터링                                    |
 
 ---
 
@@ -409,7 +408,7 @@ updates:
 | 제품명       | [ 제품명 또는 소프트웨어명 ]           |
 | 버전         | [ v0.0.0 ]                             |
 | 빌드 일시    | [ YYYY-MM-DD HH:MM ]                   |
-| SBOM 포맷    | [ CycloneDX 1.5 JSON / SPDX 2.3 JSON ] |
+| SBOM 포맷    | [ CycloneDX 1.6 JSON / SPDX 2.3 JSON ] |
 | 파일명       | [ 예: myproduct-v1.0.0.cdx.json ]      |
 | SHA-256 해시 | [ 파일 해시값 ]                        |
 
@@ -419,7 +418,7 @@ updates:
 
 #### CycloneDX 포맷 제출 시
 
-- 표준: CycloneDX Specification 1.5
+- 표준: CycloneDX Specification 1.6
 - 인코딩: JSON
 - 생성 도구: [ 사용한 도구명 및 버전 ]
 - 검증: `cyclonedx-cli validate --input-file <파일명>`

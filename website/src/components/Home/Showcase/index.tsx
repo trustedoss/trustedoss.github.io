@@ -1,5 +1,5 @@
 /**
- * trustedoss.dev Showcase — 에이전트 산출물 미리보기 (Vercel풍 코드 카드)
+ * trustedoss.github.io Showcase — 에이전트 산출물 미리보기 (Vercel풍 코드 카드)
  * CC BY 4.0 · OpenChain KWG · haksungjang
  */
 

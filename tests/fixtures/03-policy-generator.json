@@ -2,6 +2,9 @@
   "agent": "03-policy-generator",
   "description": "오픈소스 정책 생성 (SaaS, Node.js/npm, 기여 계획 없음)",
   "model": "claude-sonnet-4-6",
+  "prerequisite_files": {
+    "organization/role-definition.md": "__COPY_FROM_OUTPUT_SAMPLE__"
+  },
   "inputs": ["SaaS", "Node.js, npm", "아니오", "아니오", "없음"],
   "expected_files": ["policy/oss-policy.md", "policy/license-allowlist.md"],
   "expected_absent": [],

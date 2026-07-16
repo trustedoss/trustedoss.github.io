@@ -27,7 +27,7 @@ agents/CLAUDE.md (마스터 agent)
 8. output/process/inquiry-response.md — 외부 라이선스·보안 문의 대응 절차 (5230 §3.2.1.2) [**필수**]
 9. output/process/contribution-process.md — 오픈소스 기여 관리 절차 (5230 §3.5.1.2) [**조건부**: 기여 계획 없을 시 N/A]
 
-### SBOM (G3B.1, G3B.2, G3L.1, G3L.3)
+### SBOM (G3B.1~G3B.4, G3L.1, G3L.3, G3S.5)
 
 10. output/sbom/\*.cdx.json — SBOM 파일 (5230 §3.3.1.2, 18974 §4.3.1.2)
 11. output/sbom/license-report.md — 라이선스 분석·컴플라이언스 산출물 (5230 §3.4.1.1, §3.3.2.1)
@@ -35,7 +35,7 @@ agents/CLAUDE.md (마스터 agent)
 13. output/sbom/sbom-management-plan.md — SBOM 관리·모니터링 계획 (5230 §3.3.1.1, 18974 §4.3.1.1)
 14. output/sbom/sbom-sharing-template.md — 공급망 SBOM 공유 절차 (18974 §4.3.1.1)
 
-### 취약점 (G3S.1~G3S.4)
+### 취약점 (G3S.1~G3S.4, G3S.6)
 
 15. output/vulnerability/cve-report.md — 취약점 분석 리포트 (18974 §4.3.2.1, §4.3.2.2)
 16. output/vulnerability/remediation-plan.md — 취약점 대응·패치 계획 (18974 §4.1.5.1, §4.3.2.1)

@@ -29,11 +29,10 @@ while IFS= read -r file; do
     # 앵커(#) 제거 후 파일 경로만 추출
     filepath=$(echo "$link" | sed 's/#.*//')
     [ -z "$filepath" ] && continue
-    # 상대 경로 기준 실제 파일 존재 여부 확인
+    # 상대 경로 기준 실제 파일 존재 여부 확인 (문서 디렉토리 기준으로만 판정)
     # Docusaurus id 링크(확장자 생략)도 허용: ./page → page.md / page.mdx / page/index.md
     dir=$(dirname "$file")
     if [ ! -e "$dir/$filepath" ] && \
-       [ ! -e "$filepath" ] && \
        [ ! -e "$dir/$filepath.md" ] && \
        [ ! -e "$dir/$filepath.mdx" ] && \
        [ ! -e "$dir/$filepath/index.md" ]; then
@@ -230,8 +229,9 @@ for root, dirs, files in os.walk(docs_dir):
             lines = f.readlines()
         i = 0
         while i < len(lines):
-            # bash 블록 시작 탐지
-            if lines[i].strip() == '```bash':
+            # bash/sh 계열 블록 시작 탐지 (```bash title="..." / ```sh / ```shell 포함)
+            stripped = lines[i].strip()
+            if stripped.startswith('```bash') or stripped.startswith('```sh'):
                 block_start = i
                 block_lines = []
                 j = i + 1

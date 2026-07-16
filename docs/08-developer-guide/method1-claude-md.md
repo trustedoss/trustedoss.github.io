@@ -1,6 +1,12 @@
 ---
 sidebar_position: 2
 sidebar_label: '방법 1: CLAUDE.md 정책'
+작성일: 2026-03-20
+버전: 1.0
+충족 체크리스트:
+  - 'ISO/IEC 5230: []'
+  - 'ISO/IEC 18974: []'
+셀프스터디 소요시간: 15분
 ---
 
 # 방법 1: CLAUDE.md에 정책 추가하기

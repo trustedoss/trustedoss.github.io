@@ -1,5 +1,5 @@
 /**
- * trustedoss.dev Home Component
+ * trustedoss.github.io Home Component
  * CC BY 4.0 · OpenChain KWG · haksungjang
  */
 

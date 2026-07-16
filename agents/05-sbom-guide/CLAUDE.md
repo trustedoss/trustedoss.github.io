@@ -104,3 +104,5 @@ ls output/sbom/
 cd agents/05-sbom-analyst
 claude
 ```
+
+Claude 프롬프트가 열리면 `시작`을 입력한다.

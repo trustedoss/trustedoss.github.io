@@ -66,7 +66,7 @@ python3 .claude/scripts/check-kwg-drift.py
 
 완료 후:
   /qa changed           # 품질 검증
-  bash .claude/scripts/verify.sh  # 8/8 PASS 확인
+  bash .claude/scripts/verify.sh  # 12/12 PASS 확인
   python3 .claude/scripts/check-kwg-drift.py --reset  # 기준점 재설정
 ```
 

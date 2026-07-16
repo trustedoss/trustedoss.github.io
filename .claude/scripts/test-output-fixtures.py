@@ -6,9 +6,10 @@ output-sample/을 임시 디렉토리에 복사하여 validate-output.py가 PASS
 output-sample/이 실제로 유효한 골든 픽스처임을 보장하며,
 향후 agent 출력 변경 시 회귀를 탐지한다.
 
-verify.sh [11/11]에서 호출되며, 독립 실행도 가능.
+verify.sh [11/12]에서 호출되며, 독립 실행도 가능.
 """
 
+import importlib.util
 import json
 import os
 import shutil
@@ -20,6 +21,14 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.dirname(os.path.dirname(SCRIPT_DIR))
 OUTPUT_SAMPLE_DIR = os.path.join(PROJECT_ROOT, "output-sample")
 VALIDATE_SCRIPT = os.path.join(SCRIPT_DIR, "validate-output.py")
+
+
+def load_chapter_files():
+    """validate-output.py의 CHAPTER_FILES를 단일 소스로 로드."""
+    spec = importlib.util.spec_from_file_location("validate_output", VALIDATE_SCRIPT)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module.CHAPTER_FILES
 
 
 def prepare_fixture(tmpdir):
@@ -73,26 +82,9 @@ def run_validate(output_dir):
 def check_fixture_completeness():
     """
     output-sample/의 파일이 각 챕터별 예상 파일을 포함하는지 확인.
-    validate-output.py CHAPTER_FILES 기준.
+    validate-output.py CHAPTER_FILES를 import하여 단일 소스로 사용.
     """
-    CHAPTER_FILES = {
-        "organization": [
-            "role-definition.md",
-            "raci-matrix.md",
-            "appointment-template.md",
-        ],
-        "policy": ["oss-policy.md", "license-allowlist.md"],
-        "process": [
-            "usage-approval.md",
-            "distribution-checklist.md",
-            "vulnerability-response.md",
-            "inquiry-response.md",
-        ],
-        "sbom": ["sbom-management-plan.md"],
-        "vulnerability": ["cve-report.md", "remediation-plan.md"],
-        "training": ["curriculum.md", "completion-tracker.md"],
-        "conformance": ["gap-analysis.md"],
-    }
+    CHAPTER_FILES = load_chapter_files()
 
     issues = []
     for chapter, files in CHAPTER_FILES.items():

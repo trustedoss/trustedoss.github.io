@@ -1,6 +1,12 @@
 ---
 sidebar_position: 3
 sidebar_label: '방법 2: Skill 정의'
+작성일: 2026-03-20
+버전: 1.0
+충족 체크리스트:
+  - 'ISO/IEC 5230: []'
+  - 'ISO/IEC 18974: []'
+셀프스터디 소요시간: 20분
 ---
 
 # 방법 2: Skill 정의하기

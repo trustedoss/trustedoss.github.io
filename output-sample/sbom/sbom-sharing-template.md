@@ -19,7 +19,7 @@
 | 제품명       | [ 제품명 또는 소프트웨어명 ]           |
 | 버전         | [ v0.0.0 ]                             |
 | 빌드 일시    | [ YYYY-MM-DD HH:MM ]                   |
-| SBOM 포맷    | [ CycloneDX 1.5 JSON / SPDX 2.3 JSON ] |
+| SBOM 포맷    | [ CycloneDX 1.6 JSON / SPDX 2.3 JSON ] |
 | 파일명       | [ 예: myproduct-v1.0.0.cdx.json ]      |
 | SHA-256 해시 | [ 파일 해시값 ]                        |
 
@@ -29,7 +29,7 @@
 
 ### CycloneDX 포맷 제출 시
 
-- 표준: CycloneDX Specification 1.5
+- 표준: CycloneDX Specification 1.6
 - 인코딩: JSON
 - 생성 도구: [ 사용한 도구명 및 버전 ]
 - 검증: `cyclonedx-cli validate --input-file <파일명>`

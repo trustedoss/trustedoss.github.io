@@ -97,7 +97,7 @@
   제안: nodejs-unlicensed를 추가해 3개로 맞추고 문장을 '제공됩니다'로 고친다.
 - [P1|docs-05-vuln-ai] docs/05-tools/vulnerability/index.md:194 — 본문 충족 표는 ISO/IEC 18974 4.1.5와 4.3.2 두 항목을 충족한다고 안내하지만 frontmatter 충족 체크리스트에는 4.3.2만 있어 두 곳이 불일치한다.
   제안: frontmatter에 4.1.5를 추가하거나 본문 표에서 4.1.5를 제거해 두 곳을 일치시키고, 4.1.5를 유지한다면 스펙 명칭(표준 관행 구현)과 정합하게 표기한다.
-- [P1|docs-05-vuln-ai] docs/05-tools/vulnerability/index.md:41 — '두 가지 도구를 사용합니다'라고 쓰고 바로 아래 표에는 도구 3개(OSV, Dependency Track, NVD)가 나열되어 숫자가 맞지 않는다.
+- [P1|docs-05-vuln-ai] docs/05-tools/vulnerability/index.md:41 — '두 가지 도구를 사용합니다'라고 쓰고 바로 아래 표에는 도구 3개(OSV, Dependency-Track, NVD)가 나열되어 숫자가 맞지 않는다.
   제안: NVD를 표에서 분리해 참조 데이터로 별도 문장 처리하거나, 본문을 '도구 두 가지와 참조 데이터베이스 하나'로 고쳐 숫자를 일치시킨다.
 - [P1|docs-05-vuln-ai] docs/05-tools/vulnerability/index.md:29 — 프로젝트 규칙이 금지하는 마크다운 인용(>)을 장식용 인용문에 사용했고, 인용문 안에서 존댓말과 반말이 섞여 있다.
   제안: 인용 블록을 admonition(:::note 등)이나 평문으로 바꾸고 문장 종결을 존댓말로 통일한다.
@@ -393,7 +393,7 @@
   제안: 전제 조건과 validate-chain.py inputs에 sbom/copyleft-risk.md를 추가해 처리 방식·fixture와 일치시킨다.
 - [P2|agents-05] agents/05-vulnerability-analyst/CLAUDE.md:42 — CVSS 심각도 분류에 이모지 불릿(빨강/주황/노랑/초록 원형)을 사용해, 생성 리포트에도 그대로 전파된다(ko-style 이모지 장식 금지 규칙 위반).
   제안: 이모지를 제거하고 Critical/High/Medium/Low 텍스트 라벨만 쓰도록 스펙과 output-sample을 함께 정리한다.
-- [P2|agents-05] agents/05-vulnerability-analyst/CLAUDE.md:40 — 제품명 'Dependency Track'은 정식 명칭 'Dependency-Track'(OWASP, 하이픈 포함)과 다르게 표기됐다(40행·73행).
+- [P2|agents-05] agents/05-vulnerability-analyst/CLAUDE.md:40 — 제품명 'Dependency-Track'은 정식 명칭 'Dependency-Track'(OWASP, 하이픈 포함)과 다르게 표기됐다(40행·73행).
   제안: 두 곳 모두 'Dependency-Track'으로 수정한다.
 - [P2|agents-05] agents/05-vulnerability-analyst/CLAUDE.md:92 — '다음 단계' 뒤의 "Claude 프롬프트가 열리면 `시작`을 입력한다" 안내가 이 agent에만 있고, 같은 체인의 05-sbom-guide·05-sbom-analyst·05-sbom-management 다음 단계에는 없다.
   제안: 네 agent의 다음 단계 안내 문구를 동일한 형식으로 통일한다.

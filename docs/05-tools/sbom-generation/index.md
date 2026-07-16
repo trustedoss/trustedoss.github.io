@@ -60,7 +60,7 @@ SBOM 생성에는 두 가지 접근 방식이 있습니다. **Dependency 분석*
 [SCANOSS](https://www.scanoss.com/)는 패키지 선언 없이 직접 복사·삽입된 오픈소스 코드 조각을 파일 레벨에서 탐지하는 데 강점이 있습니다. syft/cdxgen과 역할이 보완적이므로, 소스 레벨 정밀도가 필요한 경우 병행 사용을 권장합니다.
 
 :::tip 국내 통합 옵션 — BomLens (SK텔레콤)
-여러 언어와 분석 대상을 한 번에 처리해야 한다면 [BomLens](https://github.com/sktelecom/sbom-tools)가 편리합니다. 소스, 컨테이너 이미지, 바이너리와 RootFS, 펌웨어는 물론 이미 받은 SBOM 재평가와 HuggingFace 모델(ML-BOM)까지 입력으로 받아, CycloneDX SBOM과 고지문(NOTICE), 라이선스·보안 위험 리포트를 함께 만들어 줍니다. 내부적으로 syft, cdxgen, Trivy 를 래핑한 Apache-2.0 도구이고, 전 과정이 로컬(Docker)에서 실행되어 외부 전송이 없습니다. CLI 외에 웹 UI와 데스크톱 설치본도 제공합니다. 이 챕터의 메인 도구는 syft로 두고, 통합 실행이 필요할 때 대안으로 고려하세요.
+여러 언어와 분석 대상을 한 번에 처리해야 한다면 [BomLens](https://github.com/sktelecom/bomlens)가 편리합니다. 소스, 컨테이너 이미지, 바이너리와 RootFS, 펌웨어는 물론 이미 받은 SBOM 재평가와 HuggingFace 모델(ML-BOM)까지 입력으로 받아, CycloneDX SBOM과 고지문(NOTICE), 라이선스·보안 위험 리포트를 함께 만들어 줍니다. 내부적으로 syft, cdxgen, Trivy 를 래핑한 Apache-2.0 도구이고, 전 과정이 로컬(Docker)에서 실행되어 외부 전송이 없습니다. CLI 외에 웹 UI와 데스크톱 설치본도 제공합니다. 이 챕터의 메인 도구는 syft로 두고, 통합 실행이 필요할 때 대안으로 고려하세요.
 :::
 
 :::tip
@@ -142,7 +142,9 @@ cp output-sample/sbom/fixture-sample.cdx.json output/sbom/fixture-sample.cdx.jso
 | `samples/python-mixed-license/` | Python (pip)  | GPL + MIT 혼용                 | Copyleft 라이선스 충돌 실습 |
 | `samples/nodejs-unlicensed/`    | Node.js (npm) | 라이선스 미표기 패키지         | 라이선스 미식별 처리 실습   |
 
-> **권장**: `samples/java-vulnerable/` — Log4Shell 취약점을 직접 탐지하며 SBOM의 가치를 체감할 수 있습니다.
+:::tip 권장 샘플
+`samples/java-vulnerable/` — Log4Shell 취약점을 직접 탐지하며 SBOM의 가치를 체감할 수 있습니다.
+:::
 
 **단계 3** — 출력 폴더 생성
 
@@ -260,7 +262,7 @@ docker run --rm \
 
 > 이 단계는 ISO/IEC 5230 3.3.1, 3.3.2, 3.4.1 및 ISO/IEC 18974 4.3.1 요구사항을 충족합니다.
 
-:::note 산출물 예시
+:::tip 산출물 예시
 [SBOM 산출물 Best Practice](/reference/samples/sbom)에서 생성된 파일의 실제 형식을 확인할 수 있습니다.
 :::
 

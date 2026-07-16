@@ -1,5 +1,5 @@
 /**
- * trustedoss.dev Features — 세 트랙 (Vercel풍 카드)
+ * trustedoss.github.io Features — 세 트랙 (Vercel풍 카드)
  * CC BY 4.0 · OpenChain KWG · haksungjang
  */
 
@@ -83,7 +83,7 @@ const TRACKS: Track[] = [
   {
     id: 'aicoding',
     icon: 'aicoding',
-    title: translate({id: 'homepage.cta.feature3.title', message: 'AI코딩'}),
+    title: translate({id: 'homepage.cta.feature3.title', message: 'AI 코딩'}),
     desc: translate({
       id: 'homepage.cta.feature3.desc',
       message:

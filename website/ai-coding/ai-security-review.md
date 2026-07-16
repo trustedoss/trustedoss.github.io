@@ -133,7 +133,7 @@ jobs:
               print("탐지된 findings 없음 — AI 분석 건너뜀")
               sys.exit(0)
 
-          # 프롬프트 조립 (상위 10개로 제한)
+          # 프롬프트 조립 (상위 13개로 제한 — Semgrep 8개 + grype 5개)
           semgrep_block = "\n".join(
               f"[Semgrep #{i+1}] {x['rule']} @ {x['file']}:{x['line']}\n메시지: {x['msg']}\n코드:\n{x['ctx']}"
               for i, x in enumerate(semgrep_issues[:8])

@@ -7,7 +7,7 @@ test-agent-specs.py — Agent CLAUDE.md 스펙 구조 검증 (Layer 1)
 2. 출력 산출물 선언과 validate-output.py 필수 파일 목록 정합성 확인
 3. 참조된 templates/ 파일 실제 존재 여부 확인 (WARNING 처리)
 
-verify.sh [10/11]에서 호출되며, 독립 실행도 가능.
+verify.sh [10/12]에서 호출되며, 독립 실행도 가능.
 """
 
 import os
@@ -28,6 +28,19 @@ AGENTS = [
     "05-vulnerability-analyst",
     "06-training-manager",
     "07-conformance-preparer",
+]
+
+# 체인 밖 독립 도구 agent 목록 (DevSecOps·AI 코딩 트랙)
+# 출력 산출물이 선택 조합에 따라 달라지므로 필수 섹션 존재 여부만 검증한다.
+TOOL_AGENTS = [
+    "ai-coding-setup",
+    "devsecops-setup",
+    "iac-fixer",
+    "sast-analyst",
+    "sbom-vuln-analyst",
+    "secret-analyst",
+    "level2-automation/issue-tracker",
+    "level2-automation/pr-comment",
 ]
 
 # 각 agent의 CLAUDE.md에 선언되어야 할 필수 output 파일명
@@ -189,6 +202,30 @@ def check_agent(agent_name):
     return passes, fails, warns
 
 
+def check_tool_agent(agent_name):
+    """체인 밖 도구 agent 검증 — 필수 섹션 구문만 확인. (passes, fails, warns) 반환."""
+    claude_md = os.path.join(PROJECT_ROOT, "agents", agent_name, "CLAUDE.md")
+
+    passes = []
+    fails = []
+    warns = []
+
+    if not os.path.isfile(claude_md):
+        fails.append(f"CLAUDE.md 없음: agents/{agent_name}/CLAUDE.md")
+        return passes, fails, warns
+
+    with open(claude_md, encoding="utf-8") as f:
+        content = f.read()
+
+    for phrase in REQUIRED_PHRASES:
+        if phrase in content:
+            passes.append(f"필수 구문 확인: '{phrase}'")
+        else:
+            fails.append(f"필수 구문 누락: '{phrase}'")
+
+    return passes, fails, warns
+
+
 def main():
     print("[Agent 스펙 구조 검증]")
 
@@ -196,8 +233,11 @@ def main():
     total_fail = 0
     total_warn = 0
 
-    for agent in AGENTS:
-        passes, fails, warns = check_agent(agent)
+    for agent in AGENTS + TOOL_AGENTS:
+        if agent in TOOL_AGENTS:
+            passes, fails, warns = check_tool_agent(agent)
+        else:
+            passes, fails, warns = check_agent(agent)
         total_pass += len(passes)
         total_fail += len(fails)
         total_warn += len(warns)

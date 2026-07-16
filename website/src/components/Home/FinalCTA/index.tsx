@@ -1,5 +1,5 @@
 /**
- * trustedoss.dev FinalCTA — 클로징 밴드 (Vercel풍 고대비)
+ * trustedoss.github.io FinalCTA — 클로징 밴드 (Vercel풍 고대비)
  * CC BY 4.0 · OpenChain KWG · haksungjang
  */
 

@@ -2,6 +2,10 @@
   "agent": "04-process-designer",
   "description": "프로세스 문서 생성 — 분기 B: Q5=아니오(기여 없음), Q6=아니오(공개 없음) → 조건부 파일 2개 미생성",
   "model": "claude-sonnet-4-6",
+  "prerequisite_files": {
+    "policy/oss-policy.md": "__COPY_FROM_OUTPUT_SAMPLE__",
+    "organization/role-definition.md": "__COPY_FROM_OUTPUT_SAMPLE__"
+  },
   "inputs": [
     "Jenkins",
     "월간",

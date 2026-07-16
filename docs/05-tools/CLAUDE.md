@@ -35,7 +35,7 @@ sbom-generation → sbom-management → vulnerability
 | ---------------- | ------------------- | ------------------------ |
 | syft             | SBOM 생성 (Anchore) | Docker                   |
 | cdxgen           | CycloneDX SBOM 생성 | Docker                   |
-| Dependency Track | 취약점 스캔 및 추적 | Docker Compose           |
+| Dependency-Track | 취약점 스캔 및 추적 | Docker Compose           |
 | OSV API          | 취약점 조회 (대안)  | HTTP API (Docker 불필요) |
 
 ## Docker 실행 확인

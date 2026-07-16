@@ -5,7 +5,7 @@ validate-output.py — output/ 산출물 완전성 검증
 output/이 없거나 비어있으면 SKIP (아직 진행 전)
 output/에 파일이 존재하면 각 챕터의 필수 파일 완성도 검증
 
-verify.sh [9/9]에서 호출되며, 독립 실행도 가능.
+verify.sh [9/12]에서 호출되며, 독립 실행도 가능.
 """
 
 import os

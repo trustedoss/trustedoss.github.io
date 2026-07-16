@@ -1,6 +1,12 @@
 ---
 sidebar_position: 2
 sidebar_label: 'Docker·CI/CD 실행 가이드'
+작성일: 2026-06-05
+버전: 1.0
+충족 체크리스트:
+  - 'ISO/IEC 5230: []'
+  - 'ISO/IEC 18974: []'
+셀프스터디 소요시간: 30분
 ---
 
 # SBOM 생성: Docker 실행 가이드 및 CI/CD 자동화

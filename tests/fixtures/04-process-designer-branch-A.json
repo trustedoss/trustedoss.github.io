@@ -2,6 +2,10 @@
   "agent": "04-process-designer",
   "description": "프로세스 문서 생성 — 분기 A: Q5=예(기여), Q6=예(공개) → 조건부 파일 2개 추가 생성",
   "model": "claude-sonnet-4-6",
+  "prerequisite_files": {
+    "policy/oss-policy.md": "__COPY_FROM_OUTPUT_SAMPLE__",
+    "organization/role-definition.md": "__COPY_FROM_OUTPUT_SAMPLE__"
+  },
   "inputs": [
     "GitHub Actions",
     "주간",

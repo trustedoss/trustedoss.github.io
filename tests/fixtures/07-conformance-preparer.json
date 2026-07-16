@@ -12,6 +12,7 @@
     "process/distribution-checklist.md": "__COPY_FROM_OUTPUT_SAMPLE__",
     "process/vulnerability-response.md": "__COPY_FROM_OUTPUT_SAMPLE__",
     "process/inquiry-response.md": "__COPY_FROM_OUTPUT_SAMPLE__",
+    "process/process-diagram.md": "__COPY_FROM_OUTPUT_SAMPLE__",
     "sbom/fixture-sample.cdx.json": "__COPY_FROM_OUTPUT_SAMPLE__",
     "sbom/sbom-management-plan.md": "__COPY_FROM_OUTPUT_SAMPLE__",
     "sbom/license-report.md": "__COPY_FROM_OUTPUT_SAMPLE__",

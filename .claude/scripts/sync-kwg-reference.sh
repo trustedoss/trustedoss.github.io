@@ -34,10 +34,8 @@ TARGET_DIR="$ROOT/.claude/reference/kwg"
 API_BASE="https://api.github.com/repos/${OWNER}/${REPO}/contents"
 RAW_BASE="https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}"
 
-# GitHub API 헤더 (토큰 있으면 포함)
-AUTH_HEADER=""
+# GITHUB_TOKEN 안내 (실제 인증 헤더는 api_get 함수가 처리)
 if [ -n "${GITHUB_TOKEN:-}" ]; then
-  AUTH_HEADER="-H \"Authorization: Bearer ${GITHUB_TOKEN}\""
   echo "✅ GITHUB_TOKEN 사용 (rate limit: 5000 req/hour)"
 else
   echo "ℹ️  GITHUB_TOKEN 없음 (rate limit: 60 req/hour)"

@@ -1,5 +1,5 @@
 /**
- * trustedoss.dev - Trusted OSS Supply Chain Management Guide
+ * trustedoss.github.io - Trusted OSS Supply Chain Management Guide
  * CC BY 4.0 · OpenChain KWG · haksungjang
  */
 
@@ -48,6 +48,9 @@ const config: Config = {
   onBrokenLinks: 'throw',
   markdown: {
     mermaid: true,
+    hooks: {
+      onBrokenMarkdownLinks: 'throw',
+    },
   },
   themes: [
     '@docusaurus/theme-mermaid',

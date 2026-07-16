@@ -59,7 +59,11 @@ CHAIN_SPEC = [
             {
                 "file": "process/contribution-process.md",
                 "condition": "기여 계획 있음 (Q5=예) — 없으면 WARNING",
-            }
+            },
+            {
+                "file": "process/project-publication-process.md",
+                "condition": "공개 계획 있음 (Q6=예) — 없으면 WARNING",
+            },
         ],
     },
     {
@@ -83,6 +87,7 @@ CHAIN_SPEC = [
         "agent": "05-sbom-management",
         "inputs": [
             "sbom/license-report.md",
+            "sbom/copyleft-risk.md",
         ],
         "glob_inputs": ["sbom/*.cdx.json"],
         "outputs": [

@@ -8,21 +8,6 @@
 @use "shared";
 
 :root {
-  /* ── 중립 시안 원시 팔레트 (단일 소스) ──────────────────────────
-     POSITIONING §5: 벤더중립 "중립 공용 토큰" 원칙.
-     색의 값은 여기에만 존재한다. 모든 의미 토큰은 이 변수를 참조한다.
-     주색 --toss-cyan-500(#06bcee)은 가이드의 기존 주색.            */
-  --toss-cyan-50: #e6f9fe;
-  --toss-cyan-100: #c0f0fc;
-  --toss-cyan-200: #8ae4fa;
-  --toss-cyan-300: #4fd4f5;
-  --toss-cyan-400: #20c4ef;
-  --toss-cyan-500: #06bcee;
-  --toss-cyan-600: #0596c0;
-  --toss-cyan-700: #07769a;
-  --toss-cyan-800: #0a5e7c;
-  --toss-cyan-900: #0c4a62;
-
   /* 중립 딥 배경 — 포털 주색(#0f172a)과 의도적으로 구분된 중립 톤 */
   --toss-deep-900: #0a0e16;
   --toss-deep-800: #0e131d;
@@ -31,7 +16,7 @@
 
   /* ── 랜딩 토큰 (모노크롬 · 테마 인지) ──────────────────────────
      Hero는 페이지 배경과 이어지는 라이트/다크 인지 표면.
-     색 악센트는 시안(--toss-cyan-*)을 미세하게만 사용.            */
+     색 악센트는 주색 팔레트(--g-blue-*, 단일 소스)를 미세하게만 사용. */
   --hero-bg: linear-gradient(
     180deg,
     var(--ifm-background-color) 0%,
@@ -357,43 +342,15 @@ html[data-theme="dark"] {
 /* Font */
 
 @font-face {
-  font-family: "Optimistic Display";
-  src: url("/static/fonts/Optimistic-Display-Light.woff2") format("woff2");
-  font-weight: 300;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Optimistic Display";
-  src: url("/static/fonts/Optimistic-Display-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Optimistic Display";
-  src: url("/static/fonts/Optimistic-Display-Medium.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Optimistic Display";
-  src: url("/static/fonts/Optimistic-Display-Bold.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
   font-family: "Source Code Pro";
-  src: url("/static/fonts/Source-Code-Pro-Regular.woff2") format("woff2");
+  src: url("/fonts/Source-Code-Pro-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Source Code Pro";
-  src: url("/static/fonts/Source-Code-Pro-Bold.woff2") format("woff2");
+  src: url("/fonts/Source-Code-Pro-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
 }

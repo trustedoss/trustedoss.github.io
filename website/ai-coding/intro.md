@@ -19,7 +19,7 @@ AI 코딩 도구(Claude Code, Cursor, GitHub Copilot, Windsurf, OpenAI Codex, Ge
 ## 왜 AI 코딩 도구에서 오픈소스 관리가 중요한가?
 
 - **AI는 오픈소스 코드를 학습하여 유사한 코드를 생성합니다** — 저작권 및 라이선스 이슈가 발생할 수 있습니다.
-- **AI가 제안하는 의존성 패키지**도 SBOM 및 취약점 관리 대상입니다.
+- **AI가 제안하는 의존성 패키지**도 SBOM(소프트웨어 부품 명세서 — 소프트웨어에 들어간 모든 구성요소 목록) 및 취약점 관리 대상입니다.
 - **Rules/Prompt 설정**으로 오픈소스 컴플라이언스 요구사항을 AI에게 사전 안내할 수 있습니다.
 
 ## 이 섹션에서 다루는 내용
@@ -33,7 +33,7 @@ AI 코딩 도구(Claude Code, Cursor, GitHub Copilot, Windsurf, OpenAI Codex, Ge
 | [GitHub Copilot](./tools/copilot)                  | GitHub의 AI 페어 프로그래머                                      |
 | [Windsurf](./tools/windsurf)                       | Cognition의 AI 코딩 에이전트 (구 Codeium, Devin Desktop 통합 중) |
 | [Cline / Aider](./tools/cline-aider)               | 오픈소스 CLI/VS Code 기반 AI 에이전트                            |
-| [30분 완성 Quick CI/CD](./cicd-quick)              | SCA·라이선스 중심 CI/CD 최소 시작점                              |
+| [30분 완성 Quick CI/CD](./cicd-quick)              | SCA(소프트웨어 구성 분석)·라이선스 중심 CI/CD 최소 시작점        |
 | [AI 보안 코드 리뷰](./ai-security-review)          | 4단계 — findings-driven AI 검증·심층 해석                        |
 | [에이전트·MCP 도구 거버넌스](./agent-governance)   | MCP 서버 allowlist, 도입 전 스캔, 프롬프트 인젝션 방어선         |
 | [AI 생성 코드의 법적 고려](./legal-considerations) | 저작권 귀속, 공급자 IP 보증, AI 사용 표시                        |

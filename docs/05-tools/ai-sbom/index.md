@@ -45,20 +45,20 @@ AI SBOM 자체가 필수 요구는 아닙니다. 다만 모델·데이터셋을 
 라이선스 정보 공백을 실증한 사례도 실려 있습니다.
 :::
 
-## 3. 셀프스터디 경로
+## 3. 셀프 스터디
 
 :::info 셀프스터디 모드 (약 1시간)
 실습에는 Docker 실행 환경과 네트워크 연결이 필요합니다.
 :::
 
-실습 도구는 [BomLens](https://github.com/sktelecom/sbom-tools)를 사용합니다. HuggingFace 모델
+실습 도구는 [BomLens](https://github.com/sktelecom/bomlens)를 사용합니다. HuggingFace 모델
 식별자를 입력하면 CycloneDX 1.7 ML-BOM 과 고지문, 위험 리포트를 로컬(Docker)에서 생성합니다.
 
 ### 1단계 — BomLens 준비
 
 ```bash
-git clone https://github.com/sktelecom/sbom-tools.git
-cd sbom-tools
+git clone https://github.com/sktelecom/bomlens.git
+cd bomlens
 docker pull ghcr.io/sktelecom/bomlens:latest
 ```
 

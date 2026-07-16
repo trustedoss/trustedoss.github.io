@@ -1,6 +1,12 @@
 ---
 sidebar_position: 4
 sidebar_label: '방법 3: Hooks 설정'
+작성일: 2026-03-20
+버전: 1.0
+충족 체크리스트:
+  - 'ISO/IEC 5230: []'
+  - 'ISO/IEC 18974: []'
+셀프스터디 소요시간: 30분
 ---
 
 # 방법 3: Hooks 설정하기
@@ -29,7 +35,7 @@ sidebar_label: '방법 3: Hooks 설정'
 }
 ```
 
-> 이 단계는 `output/process/usage-approval.md`에 정의된 패키지 추가 승인 절차를 자동으로 환기시킵니다.
+이 Hook은 `output/process/usage-approval.md`에 정의된 패키지 추가 승인 절차를 자동으로 환기시킵니다.
 
 Hook 커맨드는 표준 입력(stdin)으로 도구 호출 정보가 담긴 JSON(`tool_name`, `tool_input`, `tool_response`)을 받습니다.
 위 예시는 `tool_input.file_path`로 의존성 파일 여부를 판단하고, 해당하면 exit code 2로 종료해
@@ -39,7 +45,7 @@ Hook 커맨드는 표준 입력(stdin)으로 도구 호출 정보가 담긴 JSON
 
 **더 강한 통제:** 수정 자체를 차단하려면 같은 스크립트를 `PreToolUse` Hook으로 등록하세요. PreToolUse에서 exit code 2는 도구 호출을 실행 전에 차단합니다.
 
-**한계:** Claude Code 외부에서 파일을 수정하면 Hook이 실행되지 않는다. CI/CD로 보완합니다.
+**한계:** Claude Code 외부에서 파일을 수정하면 Hook이 실행되지 않습니다. CI/CD로 보완합니다.
 
 ---
 

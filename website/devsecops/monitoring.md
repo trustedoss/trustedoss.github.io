@@ -97,7 +97,7 @@ self-hosted 방식으로 GitLab에서도 동일하게 사용 가능합니다.
 
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base"],
+  "extends": ["config:recommended"],
   "schedule": ["every weekend"],
   "vulnerabilityAlerts": {
     "enabled": true,

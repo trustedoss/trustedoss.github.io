@@ -215,4 +215,4 @@ HTML 주석 `<!-- 5230 §... -->` 을 코드블록으로 변환한다:
 
 - output-sample/에 없는 파일이 있으면 해당 섹션은 재생성하지 않고 기존 내용을 유지한다.
 - 먼저 `bash .claude/scripts/sync-output-samples.sh`를 실행하여 output-sample/을 최신화한 후 이 스킬을 실행하는 것을 권장한다.
-- 완료 후 반드시 `bash .claude/scripts/verify.sh`를 실행하여 7개 항목 PASS를 확인한다.
+- 완료 후 반드시 `bash .claude/scripts/verify.sh`를 실행하여 12개 항목 PASS를 확인한다.

@@ -26,6 +26,7 @@ SBOM 관리 계획 및 외부 공유 템플릿을 생성하는 agent다.
 
 - `output/sbom/*.cdx.json` 완료 (05-sbom-guide 실행 후)
 - `output/sbom/license-report.md` 완료 (05-sbom-analyst 실행 후 — 라이선스 분석 결과 반영)
+- `output/sbom/copyleft-risk.md` 완료 (05-sbom-analyst 실행 후 — Copyleft 위험 분석 반영)
 
 ## 입력 질문 (순서대로)
 
@@ -75,5 +76,7 @@ ls output/sbom/
 cd agents/05-vulnerability-analyst
 claude
 ```
+
+Claude 프롬프트가 열리면 `시작`을 입력한다.
 
 > 취약점 분석 완료 후 → 06-training-manager 실행

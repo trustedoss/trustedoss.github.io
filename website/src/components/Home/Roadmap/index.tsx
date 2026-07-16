@@ -1,5 +1,5 @@
 /**
- * trustedoss.dev Roadmap Component — 셀프스터디 학습 여정(우리 고유 콘텐츠)
+ * trustedoss.github.io Roadmap Component — 셀프스터디 학습 여정(우리 고유 콘텐츠)
  * CC BY 4.0 · OpenChain KWG · haksungjang
  */
 

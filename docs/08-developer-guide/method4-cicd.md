@@ -1,6 +1,12 @@
 ---
 sidebar_position: 5
 sidebar_label: '방법 4: CI/CD 파이프라인'
+작성일: 2026-03-20
+버전: 1.0
+충족 체크리스트:
+  - 'ISO/IEC 5230: []'
+  - 'ISO/IEC 18974: []'
+셀프스터디 소요시간: 45분
 ---
 
 # 방법 4: CI/CD 파이프라인 추가하기
@@ -94,3 +100,7 @@ jobs:
 
 - [syft](https://github.com/anchore/syft): SBOM 생성 도구 (Apache-2.0)
 - [grype](https://github.com/anchore/grype): 취약점 스캐너 (Apache-2.0)
+
+---
+
+→ 다음: [완료 확인](./index.md#6-완료-확인)

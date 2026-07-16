@@ -47,7 +47,11 @@ output/ 스캔은 `.claude/skills/validate-checklist.md` 의 순서를 따른다
 | output/training/ 있음, output/conformance/ 없음                      | → agents/07-conformance-preparer                                 |
 | output/conformance/ 있음                                             | 완성 축하 메시지 출력                                            |
 
-## 전체 Agent 목록
+## 셀프스터디 Agent 목록
+
+ISO 자체 인증 여정(02~07)의 체인 agent 목록이다. 이 밖의 agent(ai-coding-setup, devsecops-setup,
+sast-analyst, sbom-vuln-analyst, secret-analyst, iac-fixer, level2-automation/)는
+DevSecOps·AI 코딩 트랙의 독립 도구 agent로, 이 체인에 속하지 않는다.
 
 | Agent                    | 역할                          | 실행 명령                                      |
 | ------------------------ | ----------------------------- | ---------------------------------------------- |

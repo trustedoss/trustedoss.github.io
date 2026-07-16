@@ -22,12 +22,12 @@ G3B 계열(SBOM)의 범위를 AI 컴포넌트로 확장 적용하는 취지다.
 
 ## 도구
 
-- 메인: BomLens (github.com/sktelecom/sbom-tools) — `--model` 옵션으로 HuggingFace 모델 스캔
+- 메인: BomLens (github.com/sktelecom/bomlens) — `--model` 옵션으로 HuggingFace 모델 스캔
 - 대안: OWASP AIBOM Generator — KWG AI SBOM 가이드 참조
 
 ## 산출물
 
-실습 산출물은 sbom-tools 클론 디렉토리에 생성된다 (`{project}_{version}_bom.json` 등).
+실습 산출물은 bomlens 클론 디렉토리에 생성된다 (`{project}_{version}_bom.json` 등).
 output/ 필수 산출물 체계에는 포함되지 않는다 (선택 챕터).
 
 ## 자주 발생하는 문제

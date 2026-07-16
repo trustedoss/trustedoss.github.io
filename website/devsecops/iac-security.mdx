@@ -167,14 +167,14 @@ metadata:
 
 처음 도입 시 아래 항목부터 우선 검사를 활성화하면 실질적인 리스크를 빠르게 줄일 수 있습니다. 팀이 결과에 익숙해진 뒤 전체 정책으로 확대하는 것을 권장합니다.
 
-| 항목                | Checkov ID | 설명                               |
-| ------------------- | ---------- | ---------------------------------- |
-| S3 퍼블릭 접근 차단 | CKV_AWS_53 | 버킷 퍼블릭 접근 차단 설정         |
-| S3 암호화           | CKV_AWS_19 | 서버 사이드 암호화 활성화          |
-| 보안 그룹 0.0.0.0   | CKV_AWS_24 | SSH 포트(22) 전체 개방 금지        |
-| K8s 루트 실행 금지  | CKV_K8S_23 | 컨테이너 루트 실행 차단            |
-| K8s 리소스 제한     | CKV_K8S_11 | CPU·메모리 limits 설정             |
-| K8s 시크릿 관리     | CKV_K8S_35 | 시크릿을 환경변수 대신 파일로 주입 |
+| 항목                | Checkov ID            | 설명                               |
+| ------------------- | --------------------- | ---------------------------------- |
+| S3 퍼블릭 접근 차단 | CKV_AWS_53            | 버킷 퍼블릭 접근 차단 설정         |
+| S3 암호화           | CKV_AWS_19            | 서버 사이드 암호화 활성화          |
+| 보안 그룹 0.0.0.0   | CKV_AWS_24            | SSH 포트(22) 전체 개방 금지        |
+| K8s 루트 실행 금지  | CKV_K8S_23            | 컨테이너 루트 실행 차단            |
+| K8s 리소스 제한     | CKV_K8S_11·CKV_K8S_13 | CPU limits·메모리 limits 설정      |
+| K8s 시크릿 관리     | CKV_K8S_35            | 시크릿을 환경변수 대신 파일로 주입 |
 
 ---
 
@@ -193,7 +193,10 @@ API 키 없이 미리 만든 샘플 스캔 결과의 수정 코드를 바로 확
   width="100%"
   height="680"
   frameBorder="0"
-  style={{borderRadius: '12px', border: '1px solid #e0e5ec'}}
+  style={{
+    borderRadius: '12px',
+    border: '1px solid var(--ifm-color-emphasis-300)',
+  }}
 />
 
 ### 내 결과로 실제 수정하기
@@ -207,7 +210,10 @@ API 키 없이 미리 만든 샘플 스캔 결과의 수정 코드를 바로 확
   width="100%"
   height="960"
   frameBorder="0"
-  style={{borderRadius: '12px', border: '1px solid #e0e5ec'}}
+  style={{
+    borderRadius: '12px',
+    border: '1px solid var(--ifm-color-emphasis-300)',
+  }}
 />
 
 ## 셀프 스터디

@@ -33,9 +33,9 @@ validate-checklist skill과 generate-report skill을 모두 적용한다.
 - output/process/ (G1.6, G2.2, G3L.2, G3L.5, G3L.6)
   - 필수: inquiry-response.md
   - 조건부: contribution-process.md (기여 계획 있을 경우)
-- output/sbom/ (G3B.1~G3B.4, G3L.1, G3L.3)
-- output/vulnerability/ (G3S.1~G3S.4)
-- output/training/ (G1.4, G2.3)
+- output/sbom/ (G3B.1~G3B.4, G3L.1, G3L.3, G3S.5)
+- output/vulnerability/ (G3S.1~G3S.4, G3S.6)
+- output/training/ (G1.4, G1.7, G2.3)
 
 일부 미완료 상태에서도 실행 가능하다. 갭 분석에서 미충족 항목이 표시된다.
 

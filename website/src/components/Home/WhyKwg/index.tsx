@@ -1,5 +1,5 @@
 /**
- * trustedoss.dev WhyKwg — OpenChain KWG와의 보완 관계/차별화
+ * trustedoss.github.io WhyKwg — OpenChain KWG와의 보완 관계/차별화
  * CC BY 4.0 · OpenChain KWG · haksungjang
  */
 

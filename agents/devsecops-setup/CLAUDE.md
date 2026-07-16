@@ -10,12 +10,12 @@
 
 ## 충족 체크리스트
 
-| 항목 | 내용 |
-|------|------|
-| 파이프라인 | PR·Merge 단계 워크플로우 생성 |
-| 취약점 정책 | SLA 기준·예외처리 규칙 포함 |
-| 시크릿 정책 | 탐지 예외 규칙 포함 |
-| SBOM | 아티팩트 보관 설정 포함 |
+| 항목        | 내용                          |
+| ----------- | ----------------------------- |
+| 파이프라인  | PR·Merge 단계 워크플로우 생성 |
+| 취약점 정책 | SLA 기준·예외처리 규칙 포함   |
+| 시크릿 정책 | 탐지 예외 규칙 포함           |
+| SBOM        | 아티팩트 보관 설정 포함       |
 
 ## 입력 질문 (순서대로)
 
@@ -23,7 +23,7 @@
    (예: ~/myproject 또는 ../myproject)
    → 입력받은 경로의 파일 구조를 즉시 분석한다.
    → package.json / requirements.txt / go.mod / Dockerfile /
-     *.tf / *.yaml(K8s) 자동 감지.
+   _.tf / _.yaml(K8s) 자동 감지.
 
 2. **CI/CD 플랫폼**은?
    (GitHub Actions / GitLab CI / 둘 다)
@@ -50,8 +50,9 @@
 ### 1. 프로젝트 분석
 
 질문 1 답변 후 즉시:
+
 - Dockerfile 존재 여부 → 컨테이너 보안 자동 권장
-- *.tf / k8s *.yaml 존재 여부 → IaC 보안 자동 권장
+- _.tf / k8s _.yaml 존재 여부 → IaC 보안 자동 권장
 - 언어·패키지 매니저 감지 → SCA audit 명령어 자동 설정
 - 기존 .github/workflows/ 또는 .gitlab-ci.yml 존재 여부 확인
   → 있으면 충돌 가능성 안내
@@ -61,14 +62,14 @@
 선택된 보안 영역에 따라 자동으로 단계를 설계한다:
 
 PR 단계 (병렬 실행):
-  시크릿 탐지 → SAST + SCA + IaC (병렬) 순서
+시크릿 탐지 → SAST + SCA + IaC (병렬) 순서
 
 Merge/Push 단계:
-  컨테이너 보안 → DAST 순서
-  (컨테이너·DAST 미선택 시 이 파일은 생성 안 함)
+컨테이너 보안 → DAST 순서
+(컨테이너·DAST 미선택 시 이 파일은 생성 안 함)
 
 정기 스캔 (스케줄 선택 시):
-  SCA + 컨테이너 스캔 + 아티팩트 보관
+SCA + 컨테이너 스캔 + 아티팩트 보관
 
 ### 3. 파일 생성
 
@@ -81,7 +82,7 @@ output/devsecops/
 ├── .github/
 │   └── workflows/
 │       ├── devsecops-pr.yml       ← PR 단계 (GitHub 선택 시)
-│       ├── devsecops-merge.yml    ← Merge 단계 (GitHub 선택 시)
+│       ├── devsecops-merge.yml    ← Merge 단계 (GitHub + 컨테이너/DAST 선택 시)
 │       └── devsecops-schedule.yml ← 정기 스캔 (스케줄 선택 시)
 ├── .gitlab-ci.yml                 ← GitLab 선택 시
 ├── .grype.yaml                    ← SCA 선택 시

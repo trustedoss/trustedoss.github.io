@@ -3,13 +3,13 @@
 버전: 1.0
 충족 체크리스트:
   - 'ISO/IEC 5230: []'
-  - 'ISO/IEC 18974: [G3B.1 배경]'
+  - 'ISO/IEC 18974: []'
 셀프스터디 소요시간: 1시간
 sidebar_position: 4
 sidebar_label: 'SBOM 기본'
 ---
 
-# SBOM 기본: 소프트웨어 구성 명세서 입문
+# SBOM 기본: 소프트웨어 부품 명세서 입문
 
 ## 1. 이 챕터에서 하는 일
 
@@ -53,7 +53,7 @@ SBOM 없이는 다음 질문에 답하기 어렵습니다.
 
 ## 3. SBOM 최소 필수 요소 (NTIA 기준)
 
-미국 NTIA(National Telecommunications and Information Administration)는 SBOM이 반드시 포함해야 할 7가지 최소 요소를 정의했습니다.
+NTIA(미국 통신정보관리청, National Telecommunications and Information Administration)는 SBOM이 반드시 포함해야 할 7가지 최소 요소를 정의했습니다.
 
 | 요소        | 영문명                   | 설명                           | 예시                                                   |
 | ----------- | ------------------------ | ------------------------------ | ------------------------------------------------------ |
@@ -113,7 +113,7 @@ SBOM은 단독으로 존재하지 않습니다. 생성 → 관리 → 분석 →
 ```mermaid
 flowchart LR
     A[소스코드/\n빌드 결과물] -->|syft / cdxgen| B[SBOM 생성\nCycloneDX JSON]
-    B -->|업로드| C[Dependency Track\nSBOM 관리 플랫폼]
+    B -->|업로드| C[Dependency-Track\nSBOM 관리 플랫폼]
     C -->|NVD/OSV 연동| D[취약점 분석\nCVE 식별]
     C -->|라이선스 검사| E[라이선스 분석\nCopyleft 위험]
     C -->|API/Export| F[공유\n납품처/고객]
@@ -154,7 +154,7 @@ AI 시스템을 개발하는 조직에는 일반 SBOM만으로 부족합니다. 
 정밀하고, **CycloneDX 1.6 ML-BOM**은 모델 카드(성능, 윤리, 보안) 메타데이터가 풍부합니다.
 조직은 한쪽 또는 양쪽을 채택할 수 있습니다.
 
-직접 만들어 보려면 이 키트의 [5.4 AI SBOM 실습](../05-tools/ai-sbom/index.md)에서 [BomLens](https://github.com/sktelecom/sbom-tools)로 HuggingFace 모델의 ML-BOM 을 생성해 볼 수 있습니다.
+직접 만들어 보려면 이 키트의 [5.4 AI SBOM 실습](../05-tools/ai-sbom/index.md)에서 [BomLens](https://github.com/sktelecom/bomlens)로 HuggingFace 모델의 ML-BOM 을 생성해 볼 수 있습니다.
 
 이 키트의 실습(챕터 05)은 일반 SBOM을 대상으로 합니다. AI 시스템까지 다루려면 조항 체크리스트,
 단계별 구축 로드맵, 도구 사용법(OWASP AIBOM Generator, cdxgen)을 담은

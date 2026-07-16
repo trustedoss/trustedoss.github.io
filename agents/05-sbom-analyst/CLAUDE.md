@@ -77,4 +77,6 @@ cd agents/05-sbom-management
 claude
 ```
 
+Claude 프롬프트가 열리면 `시작`을 입력한다.
+
 > 05-sbom-management 완료 후 → 05-vulnerability-analyst 실행
