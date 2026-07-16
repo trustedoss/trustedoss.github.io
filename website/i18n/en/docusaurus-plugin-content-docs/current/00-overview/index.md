@@ -16,7 +16,7 @@ slug: /
 
 Taking on this responsibility without a management system invites trouble: product shipments halted by a missed GPL obligation, incidents like Log4Shell where you cannot even determine the scope of impact without an SBOM, or being unable to deliver an SBOM as required by the EU Cyber Resilience Act or customer procurement contracts.
 
-This kit is designed to help **people with no open source management experience** build a system from start to finish. A Claude Code agent asks about your company's situation and automatically generates the policy, organization, process, <Term k="sbom">SBOM</Term>, training, and certification outputs. ISO/IEC 5230 (license compliance) and ISO/IEC 18974 (security assurance) share a common foundation, so building both at once cuts duplicate work by about 35%.
+This kit is designed to help **people with no open source management experience** build a system from start to finish. A Claude Code agent asks about your company's situation and automatically generates the policy, organization, process, <Term k="sbom">SBOM</Term>, training, and certification outputs. ISO/IEC 5230 (license compliance) and ISO/IEC 18974 (security assurance) share a common foundation, so building both at once cuts duplicate work by about 39%.
 
 ---
 

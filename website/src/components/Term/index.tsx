@@ -6,6 +6,7 @@
  */
 
 import React from 'react';
+import {translate} from '@docusaurus/Translate';
 import {GLOSSARY} from '@site/src/data/glossary';
 
 import styles from './styles.module.css';
@@ -19,7 +20,12 @@ function Term({
   def?: string;
   children: React.ReactNode;
 }) {
-  const text = def ?? (k ? GLOSSARY[k] : undefined);
+  // 로케일별 풀이는 code.json의 glossary.<k> 키로 조회 (없으면 ko 원문)
+  const text =
+    def ??
+    (k && GLOSSARY[k]
+      ? translate({id: `glossary.${k}`, message: GLOSSARY[k]})
+      : undefined);
   if (!text) {
     return <>{children}</>;
   }

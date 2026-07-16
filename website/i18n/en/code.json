@@ -681,5 +681,68 @@
   "homepage.hero.meta.vendorNeutral": {
     "message": "Vendor-neutral",
     "description": "Hero meta chip: vendor neutrality"
+  },
+  "journey.title": {
+    "message": "From zero to self-certification"
+  },
+  "journey.step.organization": {
+    "message": "2. Organization"
+  },
+  "journey.step.policy": {
+    "message": "3. Open Source Policy"
+  },
+  "journey.step.process": {
+    "message": "4. Processes"
+  },
+  "journey.step.sbom": {
+    "message": "5. SBOM Generation"
+  },
+  "journey.step.vulnerability": {
+    "message": "5. Vulnerability Response"
+  },
+  "journey.step.training": {
+    "message": "6. Training Program"
+  },
+  "journey.step.conformance": {
+    "message": "7. Self-Certification"
+  },
+  "journey.toggle": {
+    "message": "Toggle completion for {label}"
+  },
+  "journey.note": {
+    "message": "Checkmarks are stored only in this browser. Mark each step as you finish it to track your progress."
+  },
+  "glossary.sbom": {
+    "message": "Software Bill of Materials — a list of every open source component in a product, with versions and licenses."
+  },
+  "glossary.spdx": {
+    "message": "A standard format for SBOMs and licensing data (Linux Foundation)."
+  },
+  "glossary.cyclonedx": {
+    "message": "One of the standard SBOM formats (OWASP)."
+  },
+  "glossary.copyleft": {
+    "message": "Copyleft — a license family that requires derivative works to be released under the same license (GPL, AGPL, etc.)."
+  },
+  "glossary.permissive": {
+    "message": "Permissive license — few obligations beyond attribution (MIT, Apache-2.0, BSD)."
+  },
+  "glossary.cve": {
+    "message": "Common Vulnerabilities and Exposures — the unique identifier assigned to a known vulnerability."
+  },
+  "glossary.cvss": {
+    "message": "Vulnerability severity score — risk expressed on a 0-10 scale."
+  },
+  "glossary.vex": {
+    "message": "Vulnerability Exploitability eXchange — states whether a vulnerability actually affects your product."
+  },
+  "glossary.sca": {
+    "message": "Software Composition Analysis — checks open source components for vulnerabilities and license issues."
+  },
+  "glossary.openchain": {
+    "message": "The international open source compliance standards project (ISO/IEC 5230 and 18974)."
+  },
+  "glossary.self-certification": {
+    "message": "Declaring on your own, without an external audit, that you meet the OpenChain requirements."
   }
 }

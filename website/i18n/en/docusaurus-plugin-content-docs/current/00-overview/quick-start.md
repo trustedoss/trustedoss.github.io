@@ -50,7 +50,7 @@ cd agents/02-organization-designer
 claude
 ```
 
-After the agent finishes, check the deliverables: `ls output/organization/` — three files mean success.
+After the agent finishes, return to the repo root (`cd ../..`) and check the deliverables: `ls output/organization/` — three files mean success.
 
 ## Next steps
 

@@ -171,9 +171,11 @@ agent가 프로젝트 정보를 묻는 3가지 질문을 합니다.
 
 **단계 5** — 생성된 스크립트 실행
 
-agent가 `output/sbom/sbom-commands.sh`를 생성하면 실행합니다.
+agent가 `output/sbom/sbom-commands.sh`를 생성하면, 레포 루트로 돌아와(`cd ../..`) 실행합니다.
+단계 6 이후의 확인 명령도 모두 레포 루트 기준입니다.
 
 ```bash
+cd ../..
 bash output/sbom/sbom-commands.sh
 ```
 
@@ -208,7 +210,7 @@ ls output/sbom/license-report.md output/sbom/copyleft-risk.md
 
 ```bash
 docker run --rm \
-  -v $(pwd):/app \
+  -v "$(pwd)":/app \
   -w /app \
   ghcr.io/cyclonedx/cdxgen:latest \
   -r /app/samples/java-vulnerable \

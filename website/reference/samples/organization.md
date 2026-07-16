@@ -9,7 +9,9 @@ sidebar_label: 조직 산출물
 `organization-designer` agent가 생성하는 3개 산출물의 완성 예시입니다.
 자신의 `output/organization/` 파일과 비교하여 빠진 항목을 확인하는 용도로 활용하세요.
 
-> **레퍼런스 바로가기:** [조직 구성 챕터 가이드](/docs/organization)
+:::info 레퍼런스 바로가기
+[조직 구성 챕터 가이드](/docs/organization)
+:::
 
 ---
 

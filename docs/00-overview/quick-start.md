@@ -50,7 +50,7 @@ cd agents/02-organization-designer
 claude
 ```
 
-에이전트가 끝나면 산출물을 확인하세요: `ls output/organization/` — 파일 3개가 보이면 성공입니다.
+에이전트가 끝나면 레포 루트로 돌아와(`cd ../..`) 산출물을 확인하세요: `ls output/organization/` — 파일 3개가 보이면 성공입니다.
 
 ## 다음 단계
 

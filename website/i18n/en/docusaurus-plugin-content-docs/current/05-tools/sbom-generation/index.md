@@ -171,9 +171,11 @@ The agent asks three questions about your project:
 
 **Step 5** — Run the generated script
 
-When the agent has generated `output/sbom/sbom-commands.sh`, run it:
+When the agent has generated `output/sbom/sbom-commands.sh`, return to the repo root (`cd ../..`) and run it.
+The verification commands from step 6 onward are also repo-root relative.
 
 ```bash
+cd ../..
 bash output/sbom/sbom-commands.sh
 ```
 
@@ -208,7 +210,7 @@ If `output/sbom/[project].cdx.json` is empty, first check whether a lock file ex
 
 ```bash
 docker run --rm \
-  -v $(pwd):/app \
+  -v "$(pwd)":/app \
   -w /app \
   ghcr.io/cyclonedx/cdxgen:latest \
   -r /app/samples/java-vulnerable \
