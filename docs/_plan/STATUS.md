@@ -41,16 +41,20 @@
       (참조 0건과 ko·en 빌드 통과를 독립 재확인). 게이트 5 표본 15/15 + 회귀 5종 + 인프라
       스크립트 4종 + verify 12/12 전부 PASS. 정보성 관찰: reference 샘플 미러의 규정 문체는
       산출물 특성으로 보존
-- [~] 6순위 진행 중 — en 동기화 워크플로우(10유닛)가 세션 사용량 한도(22:50 KST 리셋)로 중단.
-  완료: ref-core(en reference intro 재번역, concepts 2, glossary 신규). 나머지 9유닛은 부분
-  진행 상태(28개 en 파일 갱신됨, 빌드·verify 12/12 통과 확인 후 커밋). ai-coding/iso-mapping
-  en 신규는 미착수.
-  재개 방법: 한도 리셋 후 Workflow 재실행 —
-  scriptPath: (세션 workflows/scripts/en-parity-sync-wf_7bcb1d3b-e0d.js), resumeFromRunId:
-  wf_7bcb1d3b-e0d. 완료된 유닛은 캐시로 스킵되고 실패 유닛만 재실행된다. 재실행 에이전트에는
-  "이미 부분 갱신된 파일은 ko와 대조해 남은 차이만 반영"이 자연 지시로 포함돼 있음(동기화
-  방식이라 멱등). 이후 게이트 6(en 빌드 + 패리티 표본 판정)과 최종 결산 진행
-- [ ] 마무리: 최종 검증 + 콜드스타트 walkthrough + 결산
+- [x] 6순위 완료 — 부분 `b589254`(한도 중단분 안전 커밋) + 완료 `eadd77b`. 10유닛 전부 종료:
+      en 신규 2(ai-coding/iso-mapping, reference/glossary), 재번역 6(docker-cicd, tools-setup,
+      08 index + method 4종, reference intro), 전 트리 diff 동기화(수치, URL, admonition,
+      데모 iframe 절, 번역 json 키, 샘플 7페이지 'X Output' 라벨). 게이트 6 전 항목 PASS
+      (파일 패리티 전수 누락 0·고아 0, P1 표본 13건, 잔존 결함 4종 스캔 0건, 수치 표본).
+- [x] 마무리 — 콜드스타트 walkthrough(빌드 HTML 기준, 9단계): 차단급 0, 발견 6건(절감률
+      35% 잔존 1곳, cd 후 확인 명령의 작업 디렉토리 함정 2곳, en 컴포넌트 한국어 렌더,
+      샘플 페이지 인용 형식, pwd 따옴표) 전부 수정 — `e33395a`. en JourneyProgress·Term은
+      code.json 키 21개 추가로 해소(빌드 HTML에서 영어 렌더 확인). verify 12/12.
+
+**이니셔티브 결산**: 감사 발견 252건 중 반박 4건 제외 전량 처리(P0 24, P1 확정 110 + 미검증
+13 검증 후 처리, P2 101). 게이트 6회 전부 독립 판정 통과(게이트 4는 1차 반려 후 재판정).
+커밋 약 30개. 하네스 개선: verify.sh 맹점 4종 보강, 죽어 있던 admonition 훅 소생, 도구
+agent 8종 스펙 검증 신설, onBrokenLinks/MarkdownLinks 'throw'.
 
 ## TRUSCA 명칭 갱신 + 웨비나 갭 반영 + 로드맵 (2026-07-09 승인) — 완료
 

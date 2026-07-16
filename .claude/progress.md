@@ -113,6 +113,19 @@ POSITIONING.md 정체성에 맞춰 시스템·콘텐츠 고도화. 계획은 승
 - 독립 게이트(gate-verifier) 13/13 PASS, verify 12/12, 커밋 4개(6f8ce51~56e21eb)
 - 남은 일: push 후 sync 워크플로우 완료 시 trustedoss-agents 새 클론으로 M1·M2 최종 확인. 후속 후보: en sbom-101.md `__ISO13__` 플레이스홀더 4건
 
+**전 영역 완성도 상향 이니셔티브 (2026-07-16) — 완료:**
+
+- 멀티 에이전트 전수 감사(finder 22유닛 + 적대적 검증, 160 에이전트)로 252건 발견 →
+  6순위 실행 계획 수립(`docs/_plan/excellence-plan.md`) 후 반박 4건 제외 전량 처리
+- 1순위 P0 24건(동작 불능 명령, CI 예시, 실기업 정보, 샘플 전제 오류, editUrl 404) →
+  2순위 정본 정합성(공통 12개, 산출물 24개, 39%, 담당 Agent 5쌍 양방향, 템플릿 조항 ID 체계) →
+  3순위 하네스 강화(verify.sh 맹점 4종, 훅 소생, onBrokenLinks 'throw') →
+  4순위 영역별 P1(도구 페이지, reference 재생성, 디자인·UX) →
+  5순위 P2 sweep 101건 + STYLEGUIDE §7 상태·심각도 기호 예외 명문화 →
+  6순위 en 패리티 전면 동기화(신규 2, 재번역 6, 전 트리 diff, code.json 21키)
+- 게이트 6회 전부 독립 판정(gate-verifier) 통과, 마무리 콜드스타트 walkthrough 발견 6건 수정
+- 상세: `docs/_plan/STATUS.md`, 발견 전문: `docs/_plan/full-audit-findings-2026-07.md`
+
 ## 현재 단계 — 사용자 테스트 & 버그 리포트 대응
 
 사용자가 가이드를 직접 따라가며 실습 동작을 검증하는 단계.
