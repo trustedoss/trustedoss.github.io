@@ -22,13 +22,13 @@
 
 ### 1.2 생성 도구
 
-| 빌드 환경   | 도구                       | 생성 포맷        |
-| ----------- | -------------------------- | ---------------- |
-| Java/Maven  | `cyclonedx-maven-plugin`   | CycloneDX JSON   |
-| Java/Gradle | `cyclonedx-gradle-plugin`  | CycloneDX JSON   |
-| Node.js     | `@cyclonedx/cyclonedx-npm` | CycloneDX JSON   |
-| Python      | `cyclonedx-bom`            | CycloneDX JSON   |
-| 포맷 변환   | `cdxgen`, `spdx-tools`     | CycloneDX ↔ SPDX |
+| 빌드 환경   | 도구                          | 생성 포맷        |
+| ----------- | ----------------------------- | ---------------- |
+| Java/Maven  | `cyclonedx-maven-plugin`      | CycloneDX JSON   |
+| Java/Gradle | `cyclonedx-gradle-plugin`     | CycloneDX JSON   |
+| Node.js     | `@cyclonedx/cyclonedx-npm`    | CycloneDX JSON   |
+| Python      | `cyclonedx-bom`               | CycloneDX JSON   |
+| 포맷 변환   | `cyclonedx-cli`, `spdx-tools` | CycloneDX ↔ SPDX |
 
 ### 1.3 포맷 변환
 
