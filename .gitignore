@@ -52,3 +52,6 @@ agents/**/settings.local.json
 # python
 venv/
 .venv
+
+# 훅 생성 로컬 로그
+.claude/progress-infra.md
