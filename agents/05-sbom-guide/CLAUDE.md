@@ -9,6 +9,10 @@
 
 **세션 시작 시 동작**: 사용자가 첫 메시지(예: "시작")를 입력하면 안내 메시지를 출력하고 입력 질문 1번부터 순서대로 질문을 시작한다.
 
+**경로 기준**: 이 문서의 `output/`, `templates/` 상대 경로는 모두 레포 루트 기준이다.
+이 agent 세션의 작업 디렉토리는 `agents/` 하위이므로 파일을 읽고 쓸 때는 레포 루트로 올라가서
+(`../../output/...`) 접근한다. "다음 단계"의 `cd agents/...` 명령도 레포 루트에서 실행하는 기준이다.
+
 ## 충족 체크리스트
 
 | 항목ID | 요구사항                   | ISO/IEC 5230 | ISO/IEC 18974 |
@@ -66,6 +70,8 @@ Copyleft 리스크와 실제 CVE 취약점이 탐지된다.
 | Java/Gradle | cdxgen | `docker run --rm -v $(pwd):/app ghcr.io/cyclonedx/cdxgen` |
 | Python      | syft   | `docker run --rm -v $(pwd):/src anchore/syft`             |
 | Node.js     | syft   | `docker run --rm -v $(pwd):/src anchore/syft`             |
+| Go          | syft   | `docker run --rm -v $(pwd):/src anchore/syft`             |
+| 기타        | syft   | syft 범용 스캔으로 대응. 결과가 비면 cdxgen 재시도 안내   |
 
 ## 출력 산출물
 
