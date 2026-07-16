@@ -146,8 +146,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+      - name: Install syft and grype
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin
+          curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
       - name: Generate fresh SBOM
         run: |
+          mkdir -p output/sbom
           syft . -o cyclonedx-json > output/sbom/myapp-latest.cdx.json
       - name: Check SBOM for new CVEs
         run: |

@@ -33,7 +33,6 @@ Node.js 프로젝트:
 ```bash
 npx license-checker --summary --excludePrivatePackages
 ```
-````
 
 Python 프로젝트:
 
@@ -93,14 +92,10 @@ osv-scanner --recursive .
 
 - [ ] GPL-3.0 패키지 대체 또는 사용 승인 요청
 - [ ] lodash 4.17.21 이상으로 업그레이드
-
----
-
-```
+````
 
 **효과:** 팀원 누구나 `/oss-policy-check` 명령으로 즉시 현황을 파악할 수 있습니다.
 
 ---
 
 → 다음: [방법 3: Hooks 설정하기](./method3-hooks.md)
-```

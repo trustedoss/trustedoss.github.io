@@ -149,7 +149,7 @@ Claude Code가 실행되면:
 
 ### Claude Code 로그인 안 될 때
 
-- `claude login` 실행하여 Anthropic 계정으로 인증
+- `claude` 실행 후 세션 안에서 `/login` 을 입력하여 Anthropic 계정으로 인증
 - 브라우저가 자동으로 열리지 않으면 터미널에 표시된 URL을 복사하여 수동 접속
 
 ### git clone 권한 오류

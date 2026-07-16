@@ -41,14 +41,14 @@ jobs:
 
       - name: 라이선스 추출 및 정책 검사
         run: |
-          # syft로 라이선스 목록 추출
-          syft . -o json | jq -r '.artifacts[].licenses[].value' | sort -u > detected-licenses.txt
+          # 앞 단계에서 생성한 SBOM(sbom.cdx.json)에서 라이선스 목록 추출
+          jq -r '.components[]?.licenses[]? | (.license.id // .license.name // .expression) // empty' sbom.cdx.json | sort -u > detected-licenses.txt
 
           echo "=== 감지된 라이선스 ==="
           cat detected-licenses.txt
 
-          # 금지 라이선스 확인
-          FORBIDDEN="GPL-2.0\|GPL-3.0\|AGPL-3.0\|LGPL-2.0"
+          # 금지 라이선스 확인 (grep -E 확장 정규식, -only/-or-later 변형도 부분 일치로 감지)
+          FORBIDDEN='GPL-2\.0|GPL-3\.0|AGPL-3\.0|LGPL-2\.0'
           if grep -qE "$FORBIDDEN" detected-licenses.txt; then
             echo "::error::금지된 라이선스가 감지되었습니다. 담당자의 승인을 받거나 대체 패키지를 사용하세요."
             grep -E "$FORBIDDEN" detected-licenses.txt

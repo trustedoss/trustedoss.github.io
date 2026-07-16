@@ -43,7 +43,7 @@
 - [P0|web-devsecops] website/devsecops/secret-detection.mdx:75 — GitLab CI의 'gitleaks git . --source .' 명령은 v8.19+에서 제거된 --source 플래그를 새 git 서브커맨드(위치 인자 방식)와 섞어 써서 unknown flag 오류로 실패합니다.
   제안: 'gitleaks git . --config .gitleaks.toml --exit-code 1'처럼 --source를 제거합니다.
 - [P0|web-reference] website/reference/samples/conformance.md:33 — 갭 분석 요약·소계의 18974 집계(충족 17 / 부분충족 8)가 같은 페이지 표의 실제 집계(충족 18 / 부분충족 7)와 다릅니다.
-  제안: 표 기준으로 요약·소계를 ✅ 18개 / 🔶 7개로 고치고, 원본 output-sample 갭 분석도 함께 수정합니다.
+  제안: 표 기준으로 요약과 소계를 충족 18개 / 부분충족 7개로 고치고, 원본 output-sample 갭 분석도 함께 수정합니다.
 - [P0|web-design] website/docusaurus.config.ts:98 — docs preset의 editUrl이 문자열 베이스라서 모든 문서의 '이 페이지 편집' 링크가 `edit/main/../docs/...` 형태로 생성되어 404가 됩니다.
   제안: editUrl을 함수형(`({docPath}) => \`https://github.com/trustedoss/trustedoss.github.io/edit/main/docs/${docPath}\``)으로 바꿔 올바른 저장소 경로를 생성합니다.
 - [P0|en-docs] website/i18n/en/docusaurus-plugin-content-docs/current/05-tools/vulnerability/tools-setup.md:103 — 트러블슈팅 표의 진단 명령이 번역 과정에서 깨져 `curl -I https://Check connection with api.osv.dev` 라는 실행 불가능한 문자열이 됐다.
@@ -125,9 +125,9 @@
   제안: 각 agent CLAUDE.md에 '모든 경로는 레포 루트 기준이며 산출물은 ../../output/에 쓴다' 같은 기준 문장을 추가한다.
 - [P1|agents-core] agents/02-organization-designer/CLAUDE.md:66 — '다음 단계'의 `cd agents/03-policy-generator`는 독자가 실제로 위치한 agents/02-organization-designer 디렉토리에서 실행하면 실패한다 (03·04의 다음 단계 블록도 동일 패턴).
   제안: `cd ../03-policy-generator` 형태로 바꾸거나 '레포 루트에서 실행' 전제를 명시한다.
-- [P1|agents-05] agents/05-sbom-guide/.claude/settings.local.json:4 — settings.local.json이 git에 커밋돼 있고 내부에 사용자명 포함 절대경로(/Users/1112821/...)가 노출된다. 같은 문제가 스코프 내 4개 agent(05-sbom-analyst, 05-sbom-management, 05-vulnerability-analyst) 전부에 있다.
+- [P1|agents-05] agents/05-sbom-guide/.claude/settings.local.json:4 — settings.local.json이 git에 커밋돼 있고 내부에 사용자명이 포함된 절대경로가 노출된다. 같은 문제가 스코프 내 4개 agent(05-sbom-analyst, 05-sbom-management, 05-vulnerability-analyst) 전부에 있다.
   제안: git rm --cached로 4개 파일의 추적을 해제하고, 공용으로 필요한 권한은 사용자명 없는 형태로 settings.json에 옮긴다.
-- [P1|agents-05] agents/05-sbom-guide/CLAUDE.md:63 — Q2 선택지에 Go와 '기타'를 제시하면서 처리 방식 명령어 매핑 표에는 Java(Maven/Gradle)·Python·Node.js 4행만 있어 Go·기타 선택 시 분기가 정의되지 않는다.
+- [P1|agents-05] agents/05-sbom-guide/CLAUDE.md:63 — Q2 선택지에 Go와 '기타'를 제시하면서 처리 방식 명령어 매핑 표에는 Java(Maven/Gradle), Python, Node.js 4행만 있어 Go와 기타 선택 시 분기가 정의되지 않는다.
   제안: 표에 Go(syft 등) 행과 '기타' 언어 처리 규칙(예: syft 범용 스캔으로 대응)을 추가하거나 선택지를 표와 일치시킨다.
 - [P1|agents-05] agents/05-sbom-guide/CLAUDE.md:32 — 'Docker 없이 진행' 샘플 명령 블록과 '완료 후 확인'의 상대 경로(output/, output-sample/)가 레포 루트 기준인데, 이 agent의 실행 위치는 agents/05-sbom-guide여서 그대로 실행하면 잘못된 위치에 output/이 생기거나 cp가 실패한다.
   제안: 블록 앞에 '레포 루트에서 실행' 안내를 넣거나 경로를 ../../output-sample, ../../output 형태 또는 루트 기준임을 명시하는 문구로 고정한다.
@@ -169,7 +169,7 @@
   제안: appointment-template.md 섹션을 페이지에 추가하거나 산출물 개수 안내를 실제 수록 내용과 일치시킵니다.
 - [P1|web-reference] website/reference/samples/organization.md:63 — 가상 기업 '테크유니콘' 산출물 예시에 실제 SK텔레콤 도메인·자산(opensource@sktelecom.com, security@sktelecom.com, www.sktelecom.com, 'SKT-JIRA')이 쓰여 있어, 템플릿을 복사한 독자가 실제 회사로 문의하게 되고 페이지 간 도메인도 3종으로 혼재합니다.
   제안: 가상 기업용 도메인(techunicorn.com 또는 example.com) 하나로 전 산출물을 통일하고 실제 기업 도메인·시스템명을 제거합니다.
-- [P1|web-reference] website/reference/samples/conformance.md:358 — 부분충족(🔶) 상태 항목까지 OpenChain 공식 제출 폼에서 "체크"하라고 안내하고, 선언문도 🔶 항목을 포함한 채 "25개 입증자료를 모두 충족함을 선언한다"고 적어 자체 인증 요건과 모순됩니다.
+- [P1|web-reference] website/reference/samples/conformance.md:358 — 부분충족 상태 항목까지 OpenChain 공식 제출 폼에서 "체크"하라고 안내하고, 선언문도 부분충족 항목을 포함한 채 "25개 입증자료를 모두 충족함을 선언한다"고 적어 자체 인증 요건과 모순됩니다.
   제안: 부분충족 항목을 충족 완료로 전환한 뒤 제출하도록 절차 순서를 바꾸거나, '진행 중 상태로 체크' 안내를 삭제합니다.
 - [P1|web-reference] website/reference/concepts/license-classification.md:47 — ISO/IEC 5230 3.3.2를 "라이선스 의무사항 식별·분류"로 설명했으나, 스펙에서 3.3.2는 '일반 라이선스 사용 사례 처리(라이선스 컴플라이언스)'이고 의무사항 식별·기록은 3.1.5입니다.
   제안: 매핑을 3.1.5(라이선스 의무)로 바꾸거나 3.3.2의 괄호 설명을 '라이선스 사용 사례 처리'로 정정합니다.
@@ -224,10 +224,10 @@
 - [P1|en-docs] website/i18n/en/docusaurus-plugin-content-docs/current/00-overview/index.md:63 — ko에 있는 7단계 진행 추적 컴포넌트 <JourneyProgress />와 안내 문장이 en에 누락됐다.
   제안: 안내 문장을 번역하고 <JourneyProgress />를 같은 위치에 추가한다.
 - [P1|en-docs] website/i18n/en/docusaurus-plugin-content-docs/current/05-tools/index.md:14 — ko의 선행 조건 배너 <Prerequisite>(4. 오픈소스 프로세스 + Docker 환경)가 en에 누락됐다.
-  제안: en에도 Prerequisite 배너를 추가하고, 같은 누락이 있는 02·03·04·06·07 챕터 en index에도 일괄 반영한다.
+  제안: en에도 Prerequisite 배너를 추가하고, 같은 누락이 있는 02, 03, 04, 06, 07 챕터 en index에도 일괄 반영한다.
 - [P1|en-web] website/i18n/en/docusaurus-plugin-content-docs-reference/current/intro.md:7 — H1이 "#Reference"로 #과 제목 사이 공백이 없어 헤딩으로 렌더되지 않고 본문에 '#Reference' 문자 그대로 노출된다.
   제안: "# Reference"로 공백을 추가한다.
-- [P1|en-web] website/i18n/en/docusaurus-plugin-content-docs-reference/current/intro.md:25 — en 레퍼런스 인트로가 구버전 그대로다: ko가 삭제한 "수록 예정(in preparation)" 섹션이 남아 있고, ko의 개념 심화·용어집·에이전트 선택 가이드·도구와 규제 섹션이 없으며, 산출물 표에서 SBOM·취약점 2개 행이 빠졌다.
+- [P1|en-web] website/i18n/en/docusaurus-plugin-content-docs-reference/current/intro.md:25 — en 레퍼런스 인트로가 구버전 그대로다: ko가 삭제한 "수록 예정(in preparation)" 섹션이 남아 있고, ko의 개념 심화, 용어집, 에이전트 선택 가이드, 도구와 규제 섹션이 없으며, 산출물 표에서 SBOM과 취약점 2개 행이 빠졌다.
   제안: ko 최신 intro.md 기준으로 en 페이지를 재번역한다.
 - [P1|en-web] website/ai-coding/iso-mapping.md — ai-coding 사이드바에 노출되는 iso-mapping 문서의 en 번역 파일이 없어 영어 사이트에서 이 페이지가 한국어 원문으로 표시된다.
   제안: ko 원본을 번역해 en current/ 폴더에 iso-mapping.md를 추가한다.
@@ -239,7 +239,7 @@
   제안: 키를 "sidebar.reference.category.산출물 Best Practice"로 바꾼다.
 - [P1|en-web] website/i18n/en/docusaurus-plugin-content-docs-devsecops/current/sast.mdx:10 — ko devsecops 8개 페이지 전부에 추가된 ':::tip 아래 설정은 예시입니다 — 작동하는 전체 구현은 참조 저장소에' admonition(Best Practice 저장소 링크)이 en 8개 페이지 모두에서 빠져 있다.
   제안: 8개 en 페이지에 해당 tip admonition을 번역해 추가한다.
-- [P1|en-web] website/i18n/en/docusaurus-plugin-content-docs-devsecops/current/sast.mdx:171 — 브라우저 분석기 데모 개편이 en에 미반영: sast·sca·secret-detection·iac-security 4개 en 페이지에 '먼저 샘플로 미리보기'(sample-demo iframe)와 '내 결과로 실제 분석하기' 하위 섹션 및 Anthropic API 키 안내 :::info admonition(과금·전송 고지)이 없다.
+- [P1|en-web] website/i18n/en/docusaurus-plugin-content-docs-devsecops/current/sast.mdx:171 — 브라우저 분석기 데모 개편이 en에 미반영: sast, sca, secret-detection, iac-security 4개 en 페이지에 '먼저 샘플로 미리보기'(sample-demo iframe)와 '내 결과로 실제 분석하기' 하위 섹션 및 Anthropic API 키 안내 :::info admonition(과금과 전송 고지)이 없다.
   제안: 샘플 미리보기 iframe 섹션과 API 키·과금 고지 admonition을 en 4개(+cicd-quick) 페이지에 반영한다.
 - [P1|en-web] website/i18n/en/docusaurus-plugin-content-docs-ai-coding/current/rules-template.mdx:12 — en rules-template에 ko의 Anthropic API 키 안내 :::info, '이 템플릿 vs 개발자 가이드' :::note, 그리고 문서 마지막 '## 다음 단계' 섹션이 모두 빠져 있다.
   제안: 세 블록을 번역해 en 파일에 추가한다.
@@ -249,9 +249,9 @@
   제안: 해당 note를 번역해 추가한다.
 - [P1|harness] .claude/scripts/verify.sh:129 — [5/12] 로컬 경로 노출 검사가 CLAUDE.md가 금지하는 Windows 경로(C:\Users\...)를 전혀 탐지하지 못하고, 검사 대상 확장자에서 _.py, _.js, _.mdx, _.tsx, \*.scss가 빠져 있다.
   제안: grep 패턴에 [Cc]:\\Users 계열을 추가하고 ls-files 확장자 목록에 py/js/mdx/tsx/scss를 포함한다.
-- [P1|harness] .claude/scripts/verify.sh:155 — [6/12] 섹션 번호 검사가 '18974를 3.x.x로 표기'한 방향만 잡고, 반대 방향인 '5230을 4.x.x로 표기'한 혼용은 전혀 검사하지 않으며, 스캔 범위도 docs/·agents/뿐이라 templates/(18974 참조 파일 15개)·output-sample/·website/\*.md는 대상에서 빠진다.
+- [P1|harness] .claude/scripts/verify.sh:155 — [6/12] 섹션 번호 검사가 '18974를 3.x.x로 표기'한 방향만 잡고, 반대 방향인 '5230을 4.x.x로 표기'한 혼용은 전혀 검사하지 않으며, 스캔 범위도 docs/와 agents/뿐이라 templates/(18974 참조 파일 15개), output-sample/, website/\*.md는 대상에서 빠진다.
   제안: 5230+4.x.x 역방향 패턴을 추가하고 스캔 범위에 templates/, output-sample/, website/ai-coding/, website/devsecops/를 포함한다.
-- [P1|harness] .claude/scripts/verify.sh:39 — [2/12] 링크 검사 범위가 docs/·README.md·workshop/뿐이고 /로 시작하는 절대 경로 링크는 건너뛰는데, Docusaurus 빌드는 onBrokenLinks: 'warn'이라 website/ai-coding·devsecops·reference의 깨진 링크와 잘못된 /reference/... 절대 경로 링크가 어느 검사에서도 FAIL이 되지 않는다.
+- [P1|harness] .claude/scripts/verify.sh:39 — [2/12] 링크 검사 범위가 docs/, README.md, workshop/뿐이고 /로 시작하는 절대 경로 링크는 건너뛰는데, Docusaurus 빌드는 onBrokenLinks: 'warn'이라 website/ai-coding, devsecops, reference의 깨진 링크와 잘못된 /reference/... 절대 경로 링크가 어느 검사에서도 FAIL이 되지 않는다.
   제안: onBrokenLinks를 'throw'로 올리거나(빌드가 잡게), 링크 검사에 website md 스캔과 /reference/... 경로의 실제 파일 매칭을 추가한다.
 - [P1|harness] .claude/scripts/validate-output.py:24 — CHAPTER_FILES 기대 목록이 validate-chain.py CHAIN_SPEC·output-sample 실물과 어긋난다: process/process-diagram.md, training/resources.md, conformance/declaration-draft.md, conformance/submission-guide.md 4개 파일이 빠져 있어 사용자의 output/에서 이 파일들이 누락돼도 verify.sh [9/12]가 PASS한다.
   제안: CHAPTER_FILES에 누락된 4개 파일을 추가해 CHAIN_SPEC과 단일 기준으로 맞춘다.
@@ -355,7 +355,7 @@
   제안: 두 챕터의 산출물 예시 안내를 동일한 admonition 타입·제목 문법으로 통일한다.
 - [P2|docs-05-sbom] docs/05-tools/sbom-generation/index.md:145 — ISO 충족 표기 관례가 아닌 일반 안내('권장: java-vulnerable 샘플')에 마크다운 인용(>)을 사용했다.
   제안: :::tip admonition으로 바꾼다.
-- [P2|docs-05-sbom] docs/05-tools/sbom-generation/docker-cicd.md:1 — docker-cicd.md의 front matter에 STYLEGUIDE §5가 요구하는 4개 필수 필드(작성일·버전·충족 체크리스트·셀프스터디 소요시간)가 없다.
+- [P2|docs-05-sbom] docs/05-tools/sbom-generation/docker-cicd.md:1 — docker-cicd.md의 front matter에 STYLEGUIDE §5가 요구하는 4개 필수 필드(작성일, 버전, 충족 체크리스트, 셀프스터디 소요시간)가 없다.
   제안: 4개 필드를 추가하거나, 하위 실행 가이드 예외를 STYLEGUIDE에 명문화한다.
 - [P2|docs-05-vuln-ai] docs/05-tools/ai-sbom/index.md:54 — BomLens 저장소 URL이 옛 이름(github.com/sktelecom/sbom-tools)으로 표기되어 있으며 실제 저장소는 github.com/sktelecom/bomlens로 이전(rename)되었다.
   제안: 저장소 정식 URL(github.com/sktelecom/bomlens)로 갱신하고 clone 후 cd 경로도 새 디렉토리명 기준으로 맞춘다.
@@ -373,8 +373,8 @@
   제안: 4번 단계는 "agent의 3가지 질문에 답합니다(위 대화 예시 참조)" 한 줄로 축약한다.
 - [P2|docs-06-07] docs/07-conformance/index.md:104 — 정형 충족 표기가 아닌 일반 보충 설명에 마크다운 인용(>)을 사용했다.
   제안: :::info admonition 또는 평문으로 전환한다.
-- [P2|docs-08] docs/08-developer-guide/method1-claude-md.md:1 — method1~method4 네 문서 모두 STYLEGUIDE §5가 docs/ 하위 문서 필수로 규정한 front matter 4개 필드(작성일·버전·충족 체크리스트·셀프스터디 소요시간)가 없습니다.
-  제안: 네 method 파일에 작성일·버전·충족 체크리스트·셀프스터디 소요시간 필드를 추가해 다른 하위 문서와 형식을 맞춥니다.
+- [P2|docs-08] docs/08-developer-guide/method1-claude-md.md:1 — method1~method4 네 문서 모두 STYLEGUIDE §5가 docs/ 하위 문서 필수로 규정한 front matter 4개 필드(작성일, 버전, 충족 체크리스트, 셀프스터디 소요시간)가 없습니다.
+  제안: 네 method 파일에 작성일, 버전, 충족 체크리스트, 셀프스터디 소요시간 필드를 추가해 다른 하위 문서와 형식을 맞춥니다.
 - [P2|docs-08] docs/08-developer-guide/index.md:24 — 본문에서 마크다운 인용(>)으로 목표 문장을 강조하고 있어, 인용 대신 admonition을 쓰는 프로젝트 규칙과 어긋납니다.
   제안: :::info 또는 :::tip admonition으로 바꿉니다.
 - [P2|docs-08] docs/08-developer-guide/method4-cicd.md:97 — method1~3은 문서 끝에 '→ 다음' 이동 링크가 있지만 method4는 아무 연결 없이 끝나, 독자가 index의 완료 확인·다음 단계 섹션으로 돌아갈 경로가 없습니다.
@@ -391,7 +391,7 @@
   제안: conditional_outputs에 project-publication-process.md(조건: 공개 계획 있음, Q6=예)를 추가한다.
 - [P2|agents-05] agents/05-sbom-management/CLAUDE.md:23 — 처리 방식(37행)과 e2e fixture는 copyleft-risk.md를 입력으로 사용하는데 전제 조건 목록과 validate-chain.py inputs에는 license-report.md만 있다.
   제안: 전제 조건과 validate-chain.py inputs에 sbom/copyleft-risk.md를 추가해 처리 방식·fixture와 일치시킨다.
-- [P2|agents-05] agents/05-vulnerability-analyst/CLAUDE.md:42 — CVSS 심각도 분류에 이모지 불릿(🔴🟠🟡🟢)을 사용해, 생성 리포트에도 그대로 전파된다(ko-style 이모지 장식 금지 규칙 위반).
+- [P2|agents-05] agents/05-vulnerability-analyst/CLAUDE.md:42 — CVSS 심각도 분류에 이모지 불릿(빨강/주황/노랑/초록 원형)을 사용해, 생성 리포트에도 그대로 전파된다(ko-style 이모지 장식 금지 규칙 위반).
   제안: 이모지를 제거하고 Critical/High/Medium/Low 텍스트 라벨만 쓰도록 스펙과 output-sample을 함께 정리한다.
 - [P2|agents-05] agents/05-vulnerability-analyst/CLAUDE.md:40 — 제품명 'Dependency Track'은 정식 명칭 'Dependency-Track'(OWASP, 하이픈 포함)과 다르게 표기됐다(40행·73행).
   제안: 두 곳 모두 'Dependency-Track'으로 수정한다.
@@ -427,17 +427,17 @@
   제안: 설명을 'CPU limits 설정'으로 좁히거나 CKV_K8S_13을 함께 표기합니다.
 - [P2|web-reference] website/reference/concepts/vulnerability-response.md:18 — "대응 기한 (KWG 기준선)" 열이 4개 행 전체를 KWG 출처로 표기하지만 KWG 가이드는 Critical 1주·High 4주만 정의하며, Medium(1개월)은 High(4주일)와 사실상 같은 기한이라 심각도 차등이 무의미해 보입니다.
   제안: Medium·Low 행은 trustedoss 권고임을 구분 표기하고, High(4주)와 Medium(1개월)의 기한 차이를 명확히 벌립니다.
-- [P2|web-reference] website/reference/concepts/license-classification.md:44 — 허용 매트릭스의 기호 의미가 혼란스럽습니다: '✗ 검토 필요'는 금지 기호에 검토 라벨을 붙였고 '△ 조건부'와의 차이가 설명되지 않으며, 정책 샘플 페이지는 ✅/⚠️/❌ 다른 체계를 씁니다.
+- [P2|web-reference] website/reference/concepts/license-classification.md:44 — 허용 매트릭스의 기호 의미가 혼란스럽습니다: 'X표 검토 필요'는 금지 기호에 검토 라벨을 붙였고 '△ 조건부'와의 차이가 설명되지 않으며, 정책 샘플 페이지는 ✅/⚠️/❌ 다른 체계를 씁니다.
   제안: 정본 페이지에 기호 범례를 추가하고 정책 샘플과 같은 3단계 표기 체계로 통일합니다.
 - [P2|web-reference] website/reference/samples/organization.md:46 — §1 역할 목록에는 '팀별 챔피언'이 있으나 §2 역할별 필요 역량 표에는 해당 행이 없어, 역할별 역량 문서(5230 3.1.2.2·18974 4.1.2.2) 예시로서 불완전합니다.
   제안: 역량 표에 팀별 챔피언 행을 추가하고 원본 산출물도 함께 갱신합니다.
-- [P2|web-reference] website/reference/samples/training.md:182 — 이수 추적 시트에서 샘플 레코드는 '완료'(홍길동·이영희·박지수)로 표시돼 있는데 바로 아래 이수 현황 요약은 완료 0명·이수율 0%로 집계돼 서로 모순돼 보입니다.
+- [P2|web-reference] website/reference/samples/training.md:182 — 이수 추적 시트에서 샘플 레코드는 '완료'(홍길동, 이영희, 박지수)로 표시돼 있는데 바로 아래 이수 현황 요약은 완료 0명, 이수율 0%로 집계돼 서로 모순돼 보입니다.
   제안: 샘플 레코드 행에 '집계 제외 예시' 표시를 하거나 요약 수치를 샘플 포함 기준으로 맞춥니다.
 - [P2|web-reference] website/reference/samples/sbom.md:369 — 준거 표준 표에 4.3.1이 두 행으로 중복 기재되고 두 번째 행의 "SBOM 공유 (공급망 파트너)"는 4.3.1 입증자료 정의에 없는 내용입니다.
   제안: 중복 행을 합치고 요구사항 요약을 스펙 문구(수명주기 지속 기록)에 맞게 정정합니다.
 - [P2|web-reference] website/reference/samples/sbom.md:399 — 같은 페이지에서 SBOM 포맷 버전이 혼재합니다: 리포트·픽스처는 CycloneDX 1.6인데 제출 템플릿 예시는 CycloneDX 1.5를 기준으로 안내합니다.
   제안: 템플릿 예시의 CycloneDX 버전을 1.6으로 통일합니다.
-- [P2|web-reference] website/reference/glossary.md:64 — 용어집에 있는 cdxgen·OSV·onot·BomLens가 정본 출처인 STYLEGUIDE 약어 표에 없어, '표에 먼저 추가 후 용어집과 동기화'라는 유지보수 규칙과 어긋납니다.
+- [P2|web-reference] website/reference/glossary.md:64 — 용어집에 있는 cdxgen, OSV, onot, BomLens가 정본 출처인 STYLEGUIDE 약어 표에 없어, '표에 먼저 추가 후 용어집과 동기화'라는 유지보수 규칙과 어긋납니다.
   제안: STYLEGUIDE 약어 표에 4개 용어를 추가해 두 문서를 동기화합니다.
 - [P2|web-design] website/src/css/customTheme.scss:361 — @font-face의 폰트 URL이 `/static/fonts/...`로 되어 있으나 빌드 산출물은 `/fonts/...`에 배치되어 요청 시 404가 나며, 'Optimistic Display' 선언 자체가 Roboto 수렴(POSITIONING §6) 이후 어디서도 사용되지 않는 잔재입니다.
   제안: 미사용 Optimistic Display @font-face를 제거하고, Source Code Pro를 유지하려면 경로를 `/fonts/...`로 고칩니다.
