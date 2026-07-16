@@ -55,9 +55,9 @@ const SHOTS: Shot[] = [
     file: 'conformance.md',
     preview: `ISO/IEC 5230 적합성 선언문
 조직: ____________________
-[v] 3.1 정책 수립 · 공개
-[v] 3.2 책임자 지정
-[v] 3.3 역량 · 절차 확보`,
+[v] 3.1 프로그램 기반 수립
+[v] 3.2 업무 지원 · 책임 지정
+[v] 3.3 콘텐츠 검토 · 승인`,
     caption: translate({
       id: 'homepage.showcase.conformance.caption',
       message: '자체 인증 — 적합성 체크리스트와 자체 인증 선언문 초안',

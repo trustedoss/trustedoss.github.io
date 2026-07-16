@@ -12,7 +12,7 @@ sidebar_label: 5분 빠른 시작
 
 # 5분 빠른 시작
 
-TrustedOSS는 AI 에이전트로 <Term k="openchain">OpenChain 2026</Term>(ISO/IEC 5230·18974) 기업 오픈소스 관리 산출물을 회사 맞춤으로 자동 생성해, <Term k="self-certification">자체 인증</Term> 선언까지 가장 빠르게 도달하도록 돕습니다. 오픈소스 관리를 처음 맡으셨어도 단계별로 따라오면 됩니다.
+TrustedOSS는 AI 에이전트로 <Term k="openchain">OpenChain</Term>(ISO/IEC 5230·18974) 기업 오픈소스 관리 산출물을 회사 맞춤으로 자동 생성해, <Term k="self-certification">자체 인증</Term> 선언까지 가장 빠르게 도달하도록 돕습니다. 오픈소스 관리를 처음 맡으셨어도 단계별로 따라오면 됩니다.
 
 ## 언제 쓰나요
 
@@ -22,7 +22,7 @@ TrustedOSS는 AI 에이전트로 <Term k="openchain">OpenChain 2026</Term>(ISO/I
 
 ## 지금 해보기
 
-### 1. 결과부터 보기 (무설치·무API키)
+### 1. 결과부터 보기 (무설치·무API키, 5분)
 
 설치 없이 브라우저에서 SBOM 분석 결과를 바로 확인해 보세요.
 
@@ -30,7 +30,7 @@ TrustedOSS는 AI 에이전트로 <Term k="openchain">OpenChain 2026</Term>(ISO/I
 
 생성되는 산출물의 실제 형태가 궁금하면 [정책 산출물 Best Practice](/reference/samples/policy)도 참고하세요.
 
-### 2. 내 산출물 만들기 (AI 에이전트)
+### 2. 내 산출물 만들기 (AI 에이전트, 약 15분)
 
 가장 먼저 만드는 산출물은 조직의 역할과 책임 정의입니다. 에이전트가 질문하고 회사 맞춤 문서를 생성합니다.
 
@@ -42,7 +42,7 @@ cd trustedoss-agents
 ```
 
 :::tip 실행 전 확인
-현재 Claude 세션을 먼저 종료(`/exit` 또는 `Ctrl+C`)한 뒤, 새 터미널에서 아래 명령을 실행하세요.
+Claude 세션이 열려 있다면 먼저 종료(`/exit` 또는 `Ctrl+C`)하세요. 아래 명령은 위에서 이동해 둔 `trustedoss-agents` 저장소 루트에서 실행합니다. (새 터미널을 열었다면 먼저 `cd trustedoss-agents`)
 :::
 
 ```bash

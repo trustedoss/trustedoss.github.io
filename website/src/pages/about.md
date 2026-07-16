@@ -23,7 +23,9 @@ OpenChain KWG는 ISO/IEC 5230 국제 표준을 이끄는 [Linux Foundation OpenC
 
 출처를 표기하면 자유롭게 복제·수정·재배포·상업적 활용이 가능합니다.
 
-> 출처 표기 예시: "Trusted OSS (CC BY 4.0 · OpenChain KWG)"
+:::info 출처 표기 예시
+"Trusted OSS (CC BY 4.0 · OpenChain KWG)"
+:::
 
 ## 기여 방법
 

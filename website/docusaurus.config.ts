@@ -91,6 +91,15 @@ const config: Config = {
       {
         docs: {
           path: '../docs',
+          // 내부 지침 파일은 독자 비노출 (빌드·검색 인덱스 제외)
+          // exclude를 지정하면 기본 제외 목록이 덮어써지므로 기본값(_* 등)도 함께 나열한다
+          exclude: [
+            '**/_*.{js,jsx,ts,tsx,md,mdx}',
+            '**/_*/**',
+            '**/*.test.{js,jsx,ts,tsx}',
+            '**/__tests__/**',
+            '**/CLAUDE.md',
+          ],
           sidebarPath: require.resolve('./sidebars'),
           breadcrumbs: true,
           showLastUpdateAuthor: false,
@@ -115,9 +124,6 @@ const config: Config = {
             require.resolve('./src/css/customTheme.scss'),
             require.resolve('./src/css/index.scss'),
           ],
-        },
-        gtag: {
-          trackingID: 'G-TRUSTEDOSS01',
         },
       } satisfies Preset.Options,
     ],
