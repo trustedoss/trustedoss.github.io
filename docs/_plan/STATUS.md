@@ -11,7 +11,12 @@
 > 사용자 결정: 전 영역 균형 상향, 대상 4개 영역 전부, 일정 제약 없음, 전수 감사 방식.
 
 - [x] 전수 감사 실행 + 발견 문서화 + 6순위 실행 계획 수립
-- [ ] 1순위 A1~A6: P0 24건 (동작 불능, 사실 오류, 실기업 정보) + 게이트 1
+- [x] 1순위 A1~A6: P0 24건 완료 — A1 `f247fcf`, A2 `15b472d`, A3 `82d2eb8`, A4 `71154d7`,
+      A5 `bb82edb`, A6 `807c45c`. 게이트 1(gate-verifier 역순 판정) 전 항목 PASS + verify 12/12.
+      게이트 참고 1건: sktelecom.github.io 링크는 실재 공개 가이드 인용이라 예외 판정(보존)
+- [ ] 6순위 회수 대장 (ko만 고친 P0의 en 대응분): en checklist-mapping 5230 연도,
+      en 01-setup 로그인 안내, en 05-sbom-management 주간 워크플로, en devsecops·ai-coding
+      GitLab CI 예시(curl, dind, gitleaks, CKV ID), en 08 method2/method4는 D2 재번역에 포함
 - [ ] 2순위 B1~B3: 정본 정합성 클러스터 (G항목 매핑, templates↔샘플↔agent 스펙) + 게이트 2
 - [ ] 3순위 H1~H3: 검증 하네스 강화 (verify.sh 확장 등) + 게이트 3
 - [ ] 4순위 C1~C4: 영역별 P1 잔여 (docs, agents, website 콘텐츠, 디자인·UX) + 게이트 4
