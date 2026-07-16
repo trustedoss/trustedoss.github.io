@@ -1,50 +1,49 @@
 ---
 id: intro
-title: reference
+title: Reference
 slug: intro
+description: 'Reference materials: deliverable best practices, canonical concept pages (license classification, vulnerability response deadlines), a glossary, and an agent selection guide.'
 ---
 
-#Reference
+# Reference
 
-This section contains reference materials needed to build an open source management system.
+This section collects the reference materials you need to build an open source management system.
 
-## Output Best Practice
+## Deliverable Best Practices
 
-This is a complete example of the output produced by the agent at each stage.
-Check the missing items by comparing them with the results of your `output/` folder.
+Completed examples of the deliverables each stage's agent generates (based on a fictional company).
+Compare them with the results in your own `output/` folder to spot missing items.
 
-| output                                                                   | Response Agent        | Go to                                           |
-| ------------------------------------------------------------------------ | --------------------- | ----------------------------------------------- |
-| Organization (role-definition, raci-matrix, appointment-template)        | organization-designer | [Organizational Output](./samples/organization) |
-| policy (oss-policy, license-allowlist)                                   | policy-generator      | [Policy Output](./samples/policy)               |
-| process (usage-approval, distribution-checklist, vulnerability-response) | process-designer      | [Process Output](./samples/process)             |
-| Education (curriculum, completion-tracker, resources)                    | training-manager      | [Education output](./samples/training)          |
-| Certification (gap-analysis, declaration-draft, submission-guide)        | conformance-preparer  | [Certification Output](./samples/conformance)   |
+| Deliverable                                                                                                 | Agent                          | Link                                                  |
+| ----------------------------------------------------------------------------------------------------------- | ------------------------------ | ----------------------------------------------------- |
+| Organization (role-definition, raci-matrix, appointment-template)                                           | organization-designer          | [Organization deliverables](./samples/organization)   |
+| Policy (oss-policy, license-allowlist)                                                                      | policy-generator               | [Policy deliverables](./samples/policy)               |
+| Process (usage-approval, distribution-checklist, vulnerability-response, inquiry-response, process-diagram) | process-designer               | [Process deliverables](./samples/process)             |
+| SBOM (license-report, copyleft-risk, sbom-management-plan, sbom-sharing-template)                           | sbom-analyst / sbom-management | [SBOM deliverables](./samples/sbom)                   |
+| Vulnerability (cve-report, remediation-plan)                                                                | vulnerability-analyst          | [Vulnerability deliverables](./samples/vulnerability) |
+| Training (curriculum, completion-tracker, resources)                                                        | training-manager               | [Training deliverables](./samples/training)           |
+| Conformance (gap-analysis, declaration-draft, submission-guide)                                             | conformance-preparer           | [Conformance deliverables](./samples/conformance)     |
 
-## Contents to be covered (in preparation)
+## Concepts in Depth
 
-### Tool Guide
+Canonical concept pages linked from the main guide. The policy, process, and tools chapters treat these pages as the source of truth.
 
-This is an in-depth guide to free open source tools.
+| Document                                                                      | Contents                                                                                  |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| [License Classification](./concepts/license-classification)                   | Classification criteria, impact by distribution method, distribution channel allow matrix |
+| [Vulnerability Response Deadlines and VEX](./concepts/vulnerability-response) | Response deadlines by CVSS severity (KWG baseline and organizational SLA), VEX            |
+| [Glossary](./glossary)                                                        | Plain-language definitions of license, SBOM, security, and organization terms             |
 
-| tools            | Content                                    | status    |
-| ---------------- | ------------------------------------------ | --------- |
-| syft             | SBOM Creation Advanced                     | Preparing |
-| cdxgen           | CycloneDX Conversion Advanced              | Preparing |
-| Dependency Track | vulnerability management detailed settings | Preparing |
-| OSV API          | How to use vulnerability search            | Preparing |
+## Agent Selection Guide
 
-### License
+Which agent to use in which situation, and how agents map to chapters and deliverables, is covered in [Creating Deliverables with AI Agents](/docs/overview/agents).
 
-| document                      | Content                              | status                                  |
-| ----------------------------- | ------------------------------------ | --------------------------------------- |
-| License Compatibility Matrix  | Compatibility between major licenses | Preparing                               |
-| SKT Open Source License Guide | Detailed Obligations                 | [Shortcut](https://sktelecom.github.io) |
+## More on Tools and Regulations
 
-### Regulatory trends
-
-| regulation      | Content                         | status    |
-| --------------- | ------------------------------- | --------- |
-| EU CRA          | Cyber ​​Resilience Act Summary  | Preparing |
-| US EO 14028     | SBOM Mandatory Executive Order  | Preparing |
-| Domestic trends | Status of government guidelines | Preparing |
+| Topic                                   | Link                                                                                                                                                     |
+| --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| SBOM generation tools in depth          | [SBOM Generation](/docs/tools/sbom-generation) (syft, cdxgen)                                                                                            |
+| Vulnerability management tools in depth | [Vulnerability Analysis and Response](/docs/tools/vulnerability) (grype, OSV)                                                                            |
+| KWG ecosystem tools                     | [KWG Open Source Guide — Tools](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/4-tool/) (FOSSLight, SW360, FOSSology) |
+| Regulatory trends                       | [Software Supply Chain Security](/docs/overview/supply-chain) (EU CRA, EO 14028, Korean SBOM trends)                                                     |
+| SKT Open Source Guide                   | [Link](https://sktelecom.github.io)                                                                                                                      |

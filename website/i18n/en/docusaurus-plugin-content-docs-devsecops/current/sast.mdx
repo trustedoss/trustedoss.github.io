@@ -11,6 +11,10 @@ sidebar_position: 3
 
 SAST is a technique that analyzes source code without executing it to detect patterns of security vulnerabilities such as SQL injection, XSS, and buffer overflows. Run it at the PR stage to block vulnerable code before it is merged into the main branch.
 
+:::tip The configuration below is an example — a fully working implementation lives in the reference repository
+The YAML and commands on this page are examples that show the essentials. For a complete, copy-and-run pipeline (including policy files and a sample app), see the [Best Practice repository](/ai-coding/best-practice-repo).
+:::
+
 ---
 
 ## Tool Comparison
@@ -62,6 +66,25 @@ jobs:
             p/secrets
 ```
 
+### GitLab CI
+
+```yaml
+# .gitlab-ci.yml (semgrep job section)
+
+semgrep:
+  stage: test
+  image: semgrep/semgrep:latest
+  script:
+    - semgrep ci
+      --config p/owasp-top-ten
+      --config p/security-audit
+      --error
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+```
+
+---
+
 ### Ruleset Selection Guide
 
 | Ruleset          | Target | Description                          |
@@ -96,7 +119,7 @@ rules:
 
 ## CodeQL Setup
 
-CodeQL is provided by GitHub and is available for free in GitHub Actions for public repositories and organizations subscribed to GitHub Code Security (the product split out of GitHub Advanced Security). It supports data flow analysis, enabling detection of indirect vulnerability paths.
+CodeQL is a GitHub-only tool (on GitLab CI, use the Semgrep GitLab example above). It is available for free in GitHub Actions for public repositories and organizations subscribed to GitHub Code Security (the product split out of GitHub Advanced Security). It supports data flow analysis, enabling detection of indirect vulnerability paths.
 
 ### GitHub Actions
 
@@ -136,25 +159,6 @@ jobs:
           category: '/language:javascript'
 ```
 
-### GitLab CI
-
-```yaml
-# .gitlab-ci.yml (semgrep job section)
-
-semgrep:
-  stage: test
-  image: semgrep/semgrep:latest
-  script:
-    - semgrep ci
-      --config p/owasp-top-ten
-      --config p/security-audit
-      --error
-  rules:
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-```
-
----
-
 ## Adoption Considerations
 
 :::warning Do not enable build blocking from day one
@@ -173,12 +177,36 @@ semgrep:
 Upload Semgrep/CodeQL result files
 to automatically generate vulnerability priorities and remediation guidance.
 
+### Preview with a sample first (no API key required)
+
+You can view the analysis of a pre-built sample scan result right away, without an API key. Get a feel for what the tool produces first, then run a real analysis on your own results below.
+
+<iframe
+  src="/tools/sast-sample-demo.html"
+  width="100%"
+  height="560"
+  frameBorder="0"
+  style={{
+    borderRadius: '12px',
+    border: '1px solid var(--ifm-color-emphasis-300)',
+  }}
+/>
+
+### Run a real analysis on your own results
+
+:::info This tool requires an Anthropic API key
+It calls the Anthropic API directly from your browser. Enter your own [Anthropic API key](https://console.anthropic.com/settings/keys) to use it right away. Your key and inputs are sent only from your browser to Anthropic (they never pass through a trustedoss server). Usage is billed to your own Anthropic account.
+:::
+
 <iframe
   src="/tools/sast-analyzer.html"
   width="100%"
   height="900"
   frameBorder="0"
-  style={{borderRadius: '12px', border: '1px solid #30363d'}}
+  style={{
+    borderRadius: '12px',
+    border: '1px solid var(--ifm-color-emphasis-300)',
+  }}
 />
 
 ## Self-Study
@@ -189,7 +217,7 @@ If you need remediation code examples and `.semgrepignore` file generation,
 use the agent below.
 :::
 
-**Prerequisite**: Clone the [Trusted OSS repository](https://github.com/trustedoss/trustedoss.github.io)
+**Prerequisite**: Clone the [Trusted OSS repository](https://github.com/trustedoss/trustedoss-agents)
 
 ```bash
 cd agents/sast-analyst

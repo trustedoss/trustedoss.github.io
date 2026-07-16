@@ -3,40 +3,64 @@
     "message": "Next",
     "description": "The label for version current"
   },
-  "sidebar.docs.category.Getting Started": {
+  "sidebar.docs.category.시작하기": {
     "message": "Getting Started",
-    "description": "The label for category 'Getting Started' in sidebar 'docs'"
+    "description": "The label for category '시작하기' in sidebar 'docs'"
   },
-  "sidebar.docs.category.Tools": {
-    "message": "Tools",
-    "description": "The label for category 'Tools' in sidebar 'docs'"
+  "sidebar.docs.category.배경 지식": {
+    "message": "Background",
+    "description": "The label for category '배경 지식' in sidebar 'docs'"
   },
-  "sidebar.docs.category.Developers Guides (optional)": {
+  "sidebar.docs.category.단계별 체계 구축": {
+    "message": "Build Your System Step by Step",
+    "description": "The label for category '단계별 체계 구축' in sidebar 'docs'"
+  },
+  "sidebar.docs.category.5. 도구: SBOM과 취약점": {
+    "message": "5. Tools: SBOM and Vulnerabilities",
+    "description": "The label for category '5. 도구: SBOM과 취약점' in sidebar 'docs'"
+  },
+  "sidebar.docs.category.5.1 SBOM 생성": {
+    "message": "5.1 SBOM Generation",
+    "description": "The label for category '5.1 SBOM 생성' in sidebar 'docs'"
+  },
+  "sidebar.docs.category.5.3 취약점 분석과 대응": {
+    "message": "5.3 Vulnerability Analysis and Response",
+    "description": "The label for category '5.3 취약점 분석과 대응' in sidebar 'docs'"
+  },
+  "sidebar.docs.category.개발자 가이드 (선택)": {
     "message": "Developer Guide (Optional)",
-    "description": "The label for category 'Developers Guides (optional)' in sidebar 'docs'"
+    "description": "The label for category '개발자 가이드 (선택)' in sidebar 'docs'"
   },
-  "sidebar.docs.doc.Environment Setup": {
-    "message": "Environment Setup",
-    "description": "The label for the doc item 'Environment Setup' in sidebar 'docs', linking to the doc setup/index"
+  "sidebar.docs.doc.1. 환경 준비": {
+    "message": "1. Environment Setup",
+    "description": "The label for the doc item '1. 환경 준비' in sidebar 'docs', linking to the doc setup/index"
   },
-  "sidebar.docs.doc.Organization Setup": {
-    "message": "Organization Setup",
-    "description": "The label for the doc item 'Organization Setup' in sidebar 'docs', linking to the doc organization/index"
+  "sidebar.docs.doc.2. 조직 구성": {
+    "message": "2. Organizational Structure",
+    "description": "The label for the doc item '2. 조직 구성' in sidebar 'docs', linking to the doc organization/index"
   },
-  "sidebar.docs.doc.Open Source Policy": {
-    "message": "Open Source Policy",
-    "description": "The label for the doc item 'Open Source Policy' in sidebar 'docs', linking to the doc policy/index"
+  "sidebar.docs.doc.3. 오픈소스 정책": {
+    "message": "3. Open Source Policy",
+    "description": "The label for the doc item '3. 오픈소스 정책' in sidebar 'docs', linking to the doc policy/index"
   },
-  "sidebar.docs.doc.Open Source Process": {
-    "message": "Open Source Process",
-    "description": "The label for the doc item 'Open Source Process' in sidebar 'docs', linking to the doc process/index"
+  "sidebar.docs.doc.4. 오픈소스 프로세스": {
+    "message": "4. Open Source Process",
+    "description": "The label for the doc item '4. 오픈소스 프로세스' in sidebar 'docs', linking to the doc process/index"
   },
-  "sidebar.docs.doc.Training System": {
-    "message": "Training Framework",
-    "description": "The label for the doc item 'Training System' in sidebar 'docs', linking to the doc training/index"
+  "sidebar.docs.doc.5.2 SBOM 관리와 공유": {
+    "message": "5.2 SBOM Management and Sharing",
+    "description": "The label for the doc item '5.2 SBOM 관리와 공유' in sidebar 'docs', linking to the doc tools/sbom-management/index"
   },
-  "sidebar.docs.doc.Self-Certification": {
-    "message": "Self-Certification",
-    "description": "The label for the doc item 'Self-Certification' in sidebar 'docs', linking to the doc conformance/index"
+  "sidebar.docs.doc.5.4 AI SBOM (선택)": {
+    "message": "5.4 AI SBOM (Optional)",
+    "description": "The label for the doc item '5.4 AI SBOM (선택)' in sidebar 'docs', linking to the doc tools/ai-sbom/index"
+  },
+  "sidebar.docs.doc.6. 교육 체계": {
+    "message": "6. Training Program",
+    "description": "The label for the doc item '6. 교육 체계' in sidebar 'docs', linking to the doc training/index"
+  },
+  "sidebar.docs.doc.7. 자체 인증": {
+    "message": "7. Self-Certification",
+    "description": "The label for the doc item '7. 자체 인증' in sidebar 'docs', linking to the doc conformance/index"
   }
 }

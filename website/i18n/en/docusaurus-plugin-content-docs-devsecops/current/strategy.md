@@ -1,11 +1,11 @@
 ---
 id: strategy
-title: DevSecOps Introduction Strategy
-sidebar_label: Introduction Strategy
+title: DevSecOps Adoption Strategy
+sidebar_label: Adoption Strategy
 sidebar_position: 2
 ---
 
-# DevSecOps Introduction Strategy
+# DevSecOps Adoption Strategy
 
 ## What is DevSecOps?
 
@@ -31,7 +31,7 @@ The goal of DevSecOps is to shift as many checks as possible to the left (the co
 
 ---
 
-## Maturity Model — Stage 4
+## Maturity Model — 4 Stages
 
 | Stage   | Level        | Characteristics                          | Main tools              |
 | ------- | ------------ | ---------------------------------------- | ----------------------- |
@@ -44,7 +44,7 @@ For most teams, it is realistic to start at Stage 2 and move to Stage 3 over 6 t
 
 ---
 
-## Step-by-step introduction roadmap
+## Step-by-step adoption roadmap
 
 :::tip Don't try to adopt everything at once
 Stabilizing one area at a time before moving to the next is the sustainable way to avoid team fatigue.
@@ -77,20 +77,22 @@ Stabilizing one area at a time before moving to the next is the sustainable way 
 
 ---
 
-## Self-study — step-by-step agent
+## Self-study — step-by-step agents
 
 :::tip Automate each stage with a Claude Code agent
-Run the agents below in order to actually implement
-Stages 1-4 from the strategy page.
+Running the agents below in order lets you actually implement
+each stage of the strategy roadmap.
 :::
 
 **Prerequisite**: Clone the [Trusted OSS repository](https://github.com/trustedoss/trustedoss-agents)
+
+The stage numbers below follow the framework of [AI Coding — 5-Stage Strategy by Assurance Level](/ai-coding/strategy).
 
 | Stage                              | agent                | Command                                               |
 | ---------------------------------- | -------------------- | ----------------------------------------------------- |
 | Stage 2 — Internalize the AI rules | ai-coding-setup      | `cd agents/ai-coding-setup && claude`                 |
 | Stage 3 — CI/CD pipeline           | devsecops-setup      | `cd agents/devsecops-setup && claude`                 |
-| Stage 3 — PR auto-comment          | level2-pr-comment    | `cd agents/level2-automation/pr-comment && claude`    |
+| Stage 4 — PR auto-comment          | level2-pr-comment    | `cd agents/level2-automation/pr-comment && claude`    |
 | Stage 5 — Continuous monitoring    | level2-issue-tracker | `cd agents/level2-automation/issue-tracker && claude` |
 
 ---

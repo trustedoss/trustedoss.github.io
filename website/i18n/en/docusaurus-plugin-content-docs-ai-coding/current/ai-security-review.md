@@ -60,7 +60,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      # Stage 3 tools collect results (light rerun)
+      # Collect Stage 3 tool results (light rerun) — skipped entirely when the key is missing
       - name: Run Semgrep (SARIF)
         if: env.HAS_ANTHROPIC_KEY == 'true'
         run: |
@@ -133,7 +133,7 @@ jobs:
               print("No detected findings — skip AI analysis")
               sys.exit(0)
 
-          # assemble prompt (limited to top 10)
+          # assemble prompt (limited to top 13 — 8 Semgrep + 5 grype)
           semgrep_block = "\n".join(
               f"[Semgrep #{i+1}] {x['rule']} @ {x['file']}:{x['line']}\nMessage: {x['msg']}\nCode:\n{x['ctx']}"
               for i, x in enumerate(semgrep_issues[:8])

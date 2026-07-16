@@ -11,21 +11,25 @@
     "message": "Standards",
     "description": "The title of the footer links column with title=표준 in the footer"
   },
-  "link.item.label.체계구축": {
-    "message": "Build Your System",
-    "description": "The label of footer link with label=체계구축 linking to /docs"
+  "link.item.label.오픈소스 관리": {
+    "message": "Open Source Management",
+    "description": "The label of footer link with label=오픈소스 관리 linking to /docs"
   },
   "link.item.label.DevSecOps": {
     "message": "DevSecOps",
     "description": "The label of footer link with label=DevSecOps linking to /devsecops/intro"
   },
-  "link.item.label.AI코딩": {
-    "message": "AI Coding",
-    "description": "The label of footer link with label=AI코딩 linking to /ai-coding/intro"
+  "link.item.label.AI 코딩 거버넌스": {
+    "message": "AI Coding Governance",
+    "description": "The label of footer link with label=AI 코딩 거버넌스 linking to /ai-coding/intro"
   },
   "link.item.label.레퍼런스": {
     "message": "Reference",
     "description": "The label of footer link with label=레퍼런스 linking to /reference/intro"
+  },
+  "link.item.label.TRUSCA": {
+    "message": "TRUSCA",
+    "description": "The label of footer link with label=TRUSCA linking to https://trustedoss.github.io/trusca/"
   },
   "link.item.label.이 프로젝트에 대하여": {
     "message": "About This Project",
@@ -38,6 +42,10 @@
   "link.item.label.GitHub": {
     "message": "GitHub",
     "description": "The label of footer link with label=GitHub linking to https://github.com/trustedoss"
+  },
+  "link.item.label.기여 가이드": {
+    "message": "Contribution Guide",
+    "description": "The label of footer link with label=기여 가이드 linking to https://github.com/trustedoss/trustedoss.github.io/blob/main/CONTRIBUTING.md"
   },
   "link.item.label.ISO/IEC 5230": {
     "message": "ISO/IEC 5230",

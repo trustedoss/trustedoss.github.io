@@ -3,9 +3,9 @@
     "message": "Next",
     "description": "The label for version current"
   },
-  "sidebar.reference.category.Deliverables Best Practices": {
-    "message": "Output Best Practices",
-    "description": "The label for category 'Deliverables Best Practices' in sidebar 'reference'"
+  "sidebar.reference.category.산출물 Best Practice": {
+    "message": "Deliverables Best Practices",
+    "description": "The label for category '산출물 Best Practice' in sidebar 'reference'"
   },
   "sidebar.reference.category.개념 심화": {
     "message": "Concepts",

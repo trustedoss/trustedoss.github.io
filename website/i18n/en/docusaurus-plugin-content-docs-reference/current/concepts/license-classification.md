@@ -1,53 +1,63 @@
 ---
 id: license-classification
-title: License classification
-sidebar_label: License classification
+title: License Classification
+sidebar_label: License Classification
 sidebar_position: 1
 ---
 
-# License classification
+# License Classification
 
-> This page is the **canonical reference** for open source license classification. When the policy, process, or SBOM chapters cover license classification, they use this table and link here.
+> This page is the **canonical reference** for open source license classification. When the policy, process, or SBOM chapters cover license classification, they use this table as the baseline and link here.
 
-Open source licenses fall into four categories by the strength of their obligations. Because the application criteria for each category depend on your company's distribution method, understand them before writing a policy.
+Open source licenses fall into four broad categories by the strength of their obligations. Because the application criteria for each category depend on your company's distribution method, understand them before writing a policy.
 
-## Classification table
+## Classification Table
 
-| Category         | Representative licenses | Core obligation                              | Distribution caution                                  |
-| ---------------- | ----------------------- | -------------------------------------------- | ----------------------------------------------------- |
-| Permissive       | MIT, Apache-2.0, BSD    | Copyright and license notice                 | Safe in almost every distribution method              |
-| Weak Copyleft    | LGPL, MPL               | Disclose source only for modified files/libs | Mostly safe with dynamic linking                      |
-| Strong Copyleft  | GPL-2.0, GPL-3.0        | Disclose the full source of derivative works | No obligation for SaaS; arises on binary distribution |
-| Network Copyleft | AGPL-3.0                | Disclose source even for network use (SaaS)  | Obligation arises even for SaaS — review before use   |
+| Category         | Representative licenses | Core obligation                                       | Distribution caution                                         |
+| ---------------- | ----------------------- | ----------------------------------------------------- | ------------------------------------------------------------ |
+| Permissive       | MIT, Apache-2.0, BSD    | Copyright and license notice                          | Safe in almost every distribution method                     |
+| Weak Copyleft    | LGPL, MPL               | Disclose source only for modified files and libraries | Mostly safe with dynamic linking                             |
+| Strong Copyleft  | GPL-2.0, GPL-3.0        | Disclose the full source of derivative works          | No obligation for SaaS; arises on binary distribution        |
+| Network Copyleft | AGPL-3.0                | Disclose source even for network provision (SaaS)     | Obligation arises even for SaaS — review required before use |
 
 :::info[Key insight]
-For the same code, whether an obligation arises depends on the **distribution method**. In particular, GPL does not count server execution (SaaS) as "distribution," so no obligation arises, whereas AGPL imposes an obligation even for network provision.
+For the same code, whether an obligation arises depends on the **distribution method**. In particular, GPL does not treat server execution (SaaS) as "distribution," so no obligation arises, whereas AGPL imposes an obligation even for network provision.
 :::
 
-## Impact by distribution method
+## Impact by Distribution Method
 
 Distribution method is the key factor that determines whether a license obligation arises.
 
-- **SaaS (server-provided)**: Running GPL code on a server is not "distribution," so GPL obligations do not arise. However, AGPL-3.0 imposes a source-disclosure obligation even when providing a service over a network, so caution is required.
-- **App store distribution (mobile/desktop)**: Because it is distributed to users as a binary, copyleft obligations arise. Including a GPL component may create a full source-disclosure obligation.
+- **SaaS (server-provided)**: Running GPL code on a server does not count as "distribution," so GPL obligations do not arise. However, AGPL-3.0 imposes a source-disclosure obligation even when providing a service over a network, so caution is required.
+- **App store distribution (mobile/desktop)**: Because the software is distributed to users as a binary, copyleft obligations arise. Including a GPL component may create a full source-disclosure obligation.
 - **Embedded (firmware/hardware)**: The strictest case. Binary distribution triggers GPL obligations, and because software embedded in hardware is hard to modify and reinstall, GPL compliance is more demanding.
 
-## Distribution channel × license allow matrix
+## Distribution Channel × License Allow Matrix
 
-A matrix to consult when deciding which categories to allow per channel. The actual allow list for a company policy is generated by the `policy-generator` agent according to the distribution method.
+A matrix to consult when deciding which categories to allow per channel. The actual allow list for your company policy is generated by the `policy-generator` agent to match your distribution method.
 
-| License    | Category         | Internal use | SaaS distribution | App distribution | Embedded        |
-| ---------- | ---------------- | ------------ | ----------------- | ---------------- | --------------- |
-| MIT        | Permissive       | ✓ Allowed    | ✓ Allowed         | ✓ Allowed        | ✓ Allowed       |
-| Apache-2.0 | Permissive       | ✓ Allowed    | ✓ Allowed         | ✓ Allowed        | ✓ Allowed       |
-| LGPL-2.1   | Weak Copyleft    | ✓ Allowed    | ✓ Allowed         | △ Conditional    | △ Conditional   |
-| GPL-2.0    | Strong Copyleft  | ✓ Allowed    | ✓ Allowed         | ✗ Review needed  | ✗ Review needed |
-| AGPL-3.0   | Network Copyleft | ✓ Allowed    | ✗ Review needed   | ✗ Review needed  | ✗ Review needed |
+| License    | Category         | Internal use | SaaS distribution | App distribution | Embedded       |
+| ---------- | ---------------- | ------------ | ----------------- | ---------------- | -------------- |
+| MIT        | Permissive       | ✅ Allowed   | ✅ Allowed        | ✅ Allowed       | ✅ Allowed     |
+| Apache-2.0 | Permissive       | ✅ Allowed   | ✅ Allowed        | ✅ Allowed       | ✅ Allowed     |
+| LGPL-2.1   | Weak Copyleft    | ✅ Allowed   | ✅ Allowed        | ⚠️ Conditional   | ⚠️ Conditional |
+| GPL-2.0    | Strong Copyleft  | ✅ Allowed   | ✅ Allowed        | ❌ Prohibited    | ❌ Prohibited  |
+| AGPL-3.0   | Network Copyleft | ✅ Allowed   | ❌ Prohibited     | ❌ Prohibited    | ❌ Prohibited  |
 
-> This classification is foundational knowledge for ISO/IEC 5230 3.1.4 (program scope definition) and 3.3.2 (identifying and classifying license obligations).
+The symbols follow the same three-level notation as the [Policy Deliverable Best Practices](/reference/samples/policy).
 
-## Related documents
+| Symbol         | Meaning                                                                                   |
+| -------------- | ----------------------------------------------------------------------------------------- |
+| ✅ Allowed     | Usable without separate approval                                                          |
+| ⚠️ Conditional | Usable after prior review and approval by the open source Program Manager                 |
+| ❌ Prohibited  | Prohibited in principle (exceptions require review by the Program Manager and legal team) |
 
-- [Open source policy chapter guide](/docs/policy) — turn this classification into an allow list tailored to your distribution method
-- [Policy output best practices](/reference/samples/policy) — a completed example reflecting per-channel allow principles
+:::info
+This classification is foundational knowledge for ISO/IEC 5230 3.1.4 (program scope definition), 3.1.5 (identifying and reviewing license obligations), and 3.3.2 (handling license use cases).
+:::
+
+## Related Documents
+
+- [Open Source Policy chapter guide](/docs/policy) — turn this classification into an allow list tailored to your company's distribution method
+- [Policy Deliverable Best Practices](/reference/samples/policy) — a completed example reflecting per-channel allow principles
 - [Glossary](/reference/glossary) — definitions of Copyleft, Permissive, and other terms

@@ -51,7 +51,7 @@ If your agents call external tools over MCP, rule internalization needs tool-sid
 :::warning True hard blocking starts at this stage
 :::
 
-At this stage, the pipeline mechanically verifies the six areas below before PR or merge. It can block policy-violating code at the source regardless of mistakes by developers or AI, and this is where true gatekeeping begins.
+At this stage, the pipeline mechanically verifies the five areas below before PR or merge. It can block policy-violating code at the source regardless of mistakes by developers or AI, and this is where true gatekeeping begins.
 
 | Area               | Representative Tools | Pipeline Position | Detection Target                                       |
 | ------------------ | -------------------- | ----------------- | ------------------------------------------------------ |

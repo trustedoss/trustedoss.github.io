@@ -11,6 +11,10 @@ sidebar_position: 3
 
 Select options in the generator below to create a configuration file you can download immediately.
 
+:::info This tool requires an Anthropic API key
+It calls the Anthropic API directly from your browser. Enter your own [Anthropic API key](https://console.anthropic.com/settings/keys) to use it right away; your key and inputs are sent only from your browser to Anthropic (they never pass through a trustedoss server). Usage is billed to your own Anthropic account.
+:::
+
 <iframe
   src="/tools/rules-generator.html"
   width="100%"
@@ -24,6 +28,11 @@ Select options in the generator below to create a configuration file you can dow
 ## Overview
 
 This template is a common ruleset that makes AI coding tools automatically recognize open source policy when generating code. Paste it into each tool's configuration file such as `CLAUDE.md`, `.cursor/rules`, or `.clinerules`. As of 2026, Cursor, GitHub Copilot, Windsurf, and Cline all officially support the common rules file `AGENTS.md`, so you can also keep a single AGENTS.md as the baseline and let per-tool files carry only the differences. Please modify the allowed/forbidden license lists to match your internal policy.
+
+:::note This template vs the Developer Guide
+This page is a quick-start template for creating Rules files for AI coding tools **on the spot**.
+If you have already established an organizational Open Source Policy, see the [Developer Guide](/docs/developer-guide/) for automatically applying that policy to development.
+:::
 
 ---
 
@@ -140,7 +149,7 @@ To analyze real project dependencies and generate customized files,
 use the agent below.
 :::
 
-**Prerequisite**: Clone the [Trusted OSS repository](https://github.com/trustedoss/trustedoss.github.io)
+**Prerequisite**: Clone the [Trusted OSS repository](https://github.com/trustedoss/trustedoss-agents)
 
 ```bash
 cd agents/ai-coding-setup
@@ -153,3 +162,11 @@ The agent automatically performs the following:
 - Pre-detects forbidden-license packages and suggests replacement packages
 - Generates customized Rules files per selected AI coding tool
 - Generates a license risk report
+
+---
+
+## Next steps
+
+- [5-Stage Strategy by Assurance Level](./strategy) — Where Rules fit in the overall strategy
+- [CI/CD Automation](./cicd-quick) — Automatically check the generated policy in your pipeline
+- [Best Practice Repository](./best-practice-repo) — A full implementation example you can copy and use as-is

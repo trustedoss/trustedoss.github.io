@@ -11,7 +11,7 @@ This is a reference GitHub repository that implements all Stages 1-5 from the [5
 You can fork it for immediate use or copy configuration files into an existing project.
 
 :::info Repository
-**[github.com/trustedoss/ai-coding-best-practice](http://github.com/trustedoss/ai-coding-best-practice)**
+**[github.com/trustedoss/ai-coding-best-practice](https://github.com/trustedoss/ai-coding-best-practice)**
 :::
 
 ---
@@ -27,14 +27,14 @@ ai-coding-best-practice/
 ├── Dockerfile
 ├── docker-compose.yml                 # app startup for DAST/AI fuzzing
 │
-├── CLAUDE.md                          # Step 2: Embed AI rules
-├── .cursor/rules/                     # Step 2: Cursor rules
+├── CLAUDE.md                          # Stage 2: Embed AI rules
+├── .cursor/rules/                     # Stage 2: Cursor rules
 │
-├── .gitleaks.toml                     # Step 3: secret detection settings
-├── .grype.yaml                        # Step 3: SCA threshold settings
-├── .semgrep.yml                       # Step 3: SAST ruleset
+├── .gitleaks.toml                     # Stage 3: secret detection settings
+├── .grype.yaml                        # Stage 3: SCA threshold settings
+├── .semgrep.yml                       # Stage 3: SAST ruleset
 │
-├── renovate.json                      # Step 5: Renovate auto-updates
+├── renovate.json                      # Stage 5: Renovate auto-updates
 │
 ├── k8s/
 │   └── deployment.yaml                # sample target for IaC security scan (Checkov)
@@ -43,17 +43,17 @@ ai-coding-best-practice/
 │   └── ai-fuzz.py                     # AI fuzzing run script
 │
 └── .github/
-    ├── dependabot.yml                 # Step 5: Dependabot settings
+    ├── dependabot.yml                 # Stage 5: Dependabot settings
     └── workflows/
-        ├── secret-detection.yml       # Step 3: Gitleaks
-        ├── sast.yml                   # Step 3: Semgrep
-        ├── codeql.yml                 # Step 3: CodeQL (PR + weekly)
-        ├── oss-policy.yml             # Step 3: syft + grype + licenses
-        ├── iac-security.yml           # Step 3: Checkov (Dockerfile/K8s)
-        ├── container-security.yml     # Step 3: Trivy
-        ├── ai-review.yml              # Step 4: findings-driven AI review (ANTHROPIC_API_KEY auto-enabled when configured)
-        ├── ai-fuzzing.yml             # Step 4: AI fuzzing (weekly + push)
-        └── dast.yml                   # Step 5: OWASP ZAP (Push to main)
+        ├── secret-detection.yml       # Stage 3: Gitleaks
+        ├── sast.yml                   # Stage 3: Semgrep
+        ├── codeql.yml                 # Stage 3: CodeQL (PR + weekly)
+        ├── oss-policy.yml             # Stage 3: syft + grype + licenses
+        ├── iac-security.yml           # Stage 3: Checkov (Dockerfile/K8s)
+        ├── container-security.yml     # Stage 3: Trivy
+        ├── ai-review.yml              # Stage 4: findings-driven AI review (ANTHROPIC_API_KEY auto-enabled when configured)
+        ├── ai-fuzzing.yml             # Stage 4: AI fuzzing (weekly + push)
+        └── dast.yml                   # Stage 5: OWASP ZAP (Push to main)
 ```
 
 ---

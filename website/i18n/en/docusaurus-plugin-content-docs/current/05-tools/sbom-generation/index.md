@@ -11,13 +11,22 @@ self_study_time: 1.5 hours
 
 ## 1. What we do in this chapter
 
-In this chapter, you use syft and cdxgen to generate an SBOM (Software Bill of Materials). Both tools run with Docker, so no separate installation is required. With a few lines of commands, you can produce your project's entire dependency list as a JSON file.
+In this chapter, you use syft and cdxgen to generate a CycloneDX-format SBOM (Software Bill of Materials) for your project. Both tools run with Docker, so no separate installation is required. With a few lines of commands, you can produce your project's entire dependency list as a JSON file.
 
 The generated SBOM later becomes the basis for license analysis (05-sbom-analyst) and vulnerability scanning (05-vulnerability-analyst). The more accurate the SBOM, the better you can identify compliance risks and security vulnerabilities.
+
+:::note How SBOM, vulnerability analysis, and SCA relate
+The **SBOM** (software bill of materials) is the input; **vulnerability analysis** is the step that uses that SBOM to find risks.
+Running both together automatically in CI is **SCA** (Software Composition Analysis) — automation is covered in [DevSecOps → SCA](/devsecops/sca).
+:::
 
 ---
 
 ## 2. Background knowledge
+
+:::tip
+For plain-language explanations of unfamiliar acronyms such as SBOM, CycloneDX, and SPDX, see the [glossary](/reference/glossary).
+:::
 
 ### What is SBOM?
 
@@ -51,10 +60,12 @@ Both tools can output CycloneDX JSON; this chapter uses CycloneDX as the standar
 [SCANOSS](https://www.scanoss.com/) excels at detecting open source code fragments that were copied and pasted directly, without any package declaration, at the file level. Because its role complements syft/cdxgen, using it in parallel is recommended when source-level precision is required.
 
 :::tip Integrated option from Korea — BomLens (SK Telecom)
-If you need to handle many languages and scan targets in one run, [BomLens](https://github.com/sktelecom/sbom-tools) is convenient. It accepts source code, container images, binaries and RootFS, firmware, SBOMs you received (for reassessment), and even HuggingFace models (ML-BOM), and produces a CycloneDX SBOM together with an open source notice (NOTICE) and a license/security risk report. It wraps syft, cdxgen, and Trivy under the hood, is Apache-2.0, and runs entirely locally on Docker with no data leaving your machine. Besides the CLI it offers a web UI and desktop installers. Keep syft as this chapter's main tool and consider BomLens when you need an integrated run.
+If you need to handle many languages and scan targets in one run, [BomLens](https://github.com/sktelecom/bomlens) is convenient. It accepts source code, container images, binaries and RootFS, firmware, SBOMs you received (for reassessment), and even HuggingFace models (ML-BOM), and produces a CycloneDX SBOM together with an attribution notice (NOTICE) and a license/security risk report. It wraps syft, cdxgen, and Trivy under the hood, is Apache-2.0, and runs entirely locally on Docker with no data leaving your machine. Besides the CLI it offers a web UI and desktop installers. Keep syft as this chapter's main tool and consider BomLens when you need an integrated run.
 :::
 
-> For a guide to adopting and using SCA and compliance tools such as FOSSLight, SW360, and FOSSology, see [KWG Open Source Guide — Tools](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/4-tool/).
+:::tip
+For a guide to adopting and using SCA and compliance tools such as FOSSLight, SW360, and FOSSology, see [KWG Open Source Guide — Tools](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/4-tool/).
+:::
 
 For the actual Docker commands, GitHub Actions CI/CD setup, and the sample project walkthrough, see the [Docker and CI/CD execution guide](./docker-cicd.md).
 
@@ -86,7 +97,7 @@ Key field descriptions:
 
 - `bomFormat`, `specVersion`: CycloneDX format identifiers
 - `metadata.component`: information about the software being analyzed
-- `components[]`: the dependency list (includes license and PURL)
+- `components[]`: the dependency list (includes license and PURL (Package URL, a standard string that uniquely identifies a package))
 - `vulnerabilities[]`: vulnerability information (if present)
 
 ---
@@ -131,9 +142,11 @@ If this is your first time, choose one of the samples below:
 | `samples/python-mixed-license/` | Python (pip)  | Mixed GPL + MIT use                 | Copyleft license conflict practice        |
 | `samples/nodejs-unlicensed/`    | Node.js (npm) | Unlicensed package                  | License identification practice           |
 
-> **Recommended**: `samples/java-vulnerable/` — detect the Log4Shell vulnerability firsthand and see the value of an SBOM.
+:::tip Recommended sample
+`samples/java-vulnerable/` — detect the Log4Shell vulnerability firsthand and see the value of an SBOM.
+:::
 
-**Step 3** — Create output folder
+**Step 3** — Create the output folder
 
 ```bash
 mkdir -p output/sbom
@@ -158,13 +171,13 @@ The agent asks three questions about your project:
 
 **Step 5** — Run the generated script
 
-Executes when the agent generates `output/sbom/sbom-commands.sh`:
+When the agent has generated `output/sbom/sbom-commands.sh`, run it:
 
 ```bash
 bash output/sbom/sbom-commands.sh
 ```
 
-**Step 6** — Verify existence of SBOM file
+**Step 6** — Verify the SBOM file exists
 
 ```bash
 ls -lh output/sbom/*.cdx.json
@@ -191,7 +204,7 @@ ls output/sbom/license-report.md output/sbom/copyleft-risk.md
 
 **When stuck:**
 
-If `output/sbom/sbom.cdx.json` is empty, first check whether a lock file exists (`package-lock.json`, `requirements.txt`, `pom.xml`, etc.). If no lock file is found, switch to cdxgen and retry.
+If `output/sbom/[project].cdx.json` is empty, first check whether a lock file exists (`package-lock.json`, `requirements.txt`, `pom.xml`, etc.). If no lock file is found, switch to cdxgen and retry.
 
 ```bash
 docker run --rm \
@@ -204,11 +217,11 @@ docker run --rm \
 
 **Expected result of each step:**
 
-| After completing the step | Expected result                                                              |
-| ------------------------- | ---------------------------------------------------------------------------- |
-| Step 4 (sbom-guide)       | `output/sbom/sbom-commands.sh` created                                       |
-| Step 5 (run script)       | `output/sbom/sbom.cdx.json` created (`components` entries should be present) |
-| Step 7 (sbom-analyst)     | `output/sbom/license-report.md` and `output/sbom/copyleft-risk.md` created   |
+| After completing the step | Expected result                                                                   |
+| ------------------------- | --------------------------------------------------------------------------------- |
+| Step 4 (sbom-guide)       | `output/sbom/sbom-commands.sh` created                                            |
+| Step 5 (run script)       | `output/sbom/[project].cdx.json` created (`components` entries should be present) |
+| Step 7 (sbom-analyst)     | `output/sbom/license-report.md` and `output/sbom/copyleft-risk.md` created        |
 
 :::info Standard requirements met
 Completing this lab will meet the requirements below:
@@ -223,9 +236,9 @@ Completing this lab will meet the requirements below:
 
 **ISO/IEC 18974**
 
-| Item ID | Requirements           | Self-certification checklist                                                   |
-| ------- | ---------------------- | ------------------------------------------------------------------------------ |
-| 4.3.1   | Supplied Software SBOM | Do you have a process for creating and maintaining a SBOM for supply software? |
+| Item ID | Requirements           | Self-certification checklist                                                                                       |
+| ------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| 4.3.1   | Supplied Software SBOM | Do you have a documented process for creating and maintaining a SBOM for supply software throughout its lifecycle? |
 
 :::
 
@@ -244,13 +257,13 @@ Confirm all of the items below before moving on to the next step.
 **Expected results when practicing with the java-vulnerable sample:**
 
 - log4j-core 2.14.1 component detected (4 components with syft)
-- CVE-2021-44228 (Log4Shell) flagged as a vulnerability
+- CVE-2021-44228 (Log4Shell) expected to be flagged as a vulnerability
 - License identification: the `licenses` field in the tool output may be empty when packages declare no license, as in this sample. The 05-sbom-analyst agent in Step 7 fills in the Apache-2.0 identification in `license-report.md`.
 
 > This step meets ISO/IEC 5230 3.3.1, 3.3.2, and 3.4.1, and ISO/IEC 18974 4.3.1 requirements.
 
-:::note Example output
-See the actual format of the generated files at [SBOM output best practice](/reference/samples/sbom).
+:::tip Example deliverables
+See the actual format of the generated files at [SBOM deliverables best practice](/reference/samples/sbom).
 :::
 
 ---

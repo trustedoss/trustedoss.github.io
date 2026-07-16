@@ -36,8 +36,20 @@
       quick-start 정리). 게이트 4는 1차 미통과(cdxgen 표 행 잔존, `1bee88b` 정정) 후 재판정 통과.
       게이트가 5순위 S2 대상으로 넘긴 잔여 인용 6곳: 05-sbom-gen:145, 07:111, 08 index:24,
       supply-chain:214, 06-training:78, method3-hooks:32
-- [ ] 5순위 S1~S4: P2 스타일·일관성 sweep + 게이트 5
-- [ ] 6순위 D1~D4: en 패리티 전면 동기화 (ko 확정 후) + 게이트 6
+- [x] 5순위 완료 — `f5360d9` (89파일). 병렬 sweep 3개(docs 36건, agents·인프라 28건, website 22건) + STYLEGUIDE §7 상태·심각도 기호 예외 명문화 + Dependency-Track 표기 전면 표준화 +
+      reference organization 페이지 §6 재동기화. 웹 sweep이 미참조 포크 잔재 4파일을 삭제
+      (참조 0건과 ko·en 빌드 통과를 독립 재확인). 게이트 5 표본 15/15 + 회귀 5종 + 인프라
+      스크립트 4종 + verify 12/12 전부 PASS. 정보성 관찰: reference 샘플 미러의 규정 문체는
+      산출물 특성으로 보존
+- [~] 6순위 진행 중 — en 동기화 워크플로우(10유닛)가 세션 사용량 한도(22:50 KST 리셋)로 중단.
+  완료: ref-core(en reference intro 재번역, concepts 2, glossary 신규). 나머지 9유닛은 부분
+  진행 상태(28개 en 파일 갱신됨, 빌드·verify 12/12 통과 확인 후 커밋). ai-coding/iso-mapping
+  en 신규는 미착수.
+  재개 방법: 한도 리셋 후 Workflow 재실행 —
+  scriptPath: (세션 workflows/scripts/en-parity-sync-wf_7bcb1d3b-e0d.js), resumeFromRunId:
+  wf_7bcb1d3b-e0d. 완료된 유닛은 캐시로 스킵되고 실패 유닛만 재실행된다. 재실행 에이전트에는
+  "이미 부분 갱신된 파일은 ko와 대조해 남은 차이만 반영"이 자연 지시로 포함돼 있음(동기화
+  방식이라 멱등). 이후 게이트 6(en 빌드 + 패리티 표본 판정)과 최종 결산 진행
 - [ ] 마무리: 최종 검증 + 콜드스타트 walkthrough + 결산
 
 ## TRUSCA 명칭 갱신 + 웨비나 갭 반영 + 로드맵 (2026-07-09 승인) — 완료

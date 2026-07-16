@@ -29,7 +29,7 @@ The Quick CI/CD of the AI Coding guide aims to help developers create a basic ga
 
 | Page                                          | Contents covered                                    | Recommended Readers    |
 | --------------------------------------------- | --------------------------------------------------- | ---------------------- |
-| [Introduction Strategy](./strategy)           | Maturity model · step-by-step roadmap               | Team Lead · Architect  |
+| [Adoption Strategy](./strategy)               | Maturity model · step-by-step roadmap               | Team Lead · Architect  |
 | [SAST](./sast)                                | Static analysis — CodeQL · Semgrep                  | Developer · DevOps     |
 | [SCA](./sca)                                  | Dependency analysis — syft · grype · SBOM           | DevOps · Security Team |
 | [Secret Detection](./secret-detection)        | Prevent key/token leakage — Gitleaks                | Developer · DevOps     |
@@ -46,20 +46,16 @@ The Quick CI/CD of the AI Coding guide aims to help developers create a basic ga
 
 :::tip Starting point by role
 
-- New to DevSecOps
-  → Start with [Introduction Strategy](./strategy)
-- Want to catch code quality and security vulnerabilities at the code stage
-  → Start with [SAST](./sast)
-- Concerned about open source dependency vulnerabilities
-  → Start with [SCA](./sca)
-- An API key or token has been exposed in code
-  → Start with [Secret Detection](./secret-detection)
-- Running a container environment
-  → Start with [Container Security](./container-security)
-- Preparing for ISO/IEC 18974 certification
-  → Start with [ISO Standard Mapping](./iso-mapping)
-  (we recommend reading the SCA page first)
-  :::
+| Situation                                                                 | Starting point                                                                  |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| New to DevSecOps                                                          | [Adoption Strategy](./strategy)                                                 |
+| Want to catch code quality and security vulnerabilities at the code stage | [SAST](./sast)                                                                  |
+| Concerned about open source dependency vulnerabilities                    | [SCA](./sca)                                                                    |
+| An API key or token has been exposed in code before                       | [Secret Detection](./secret-detection)                                          |
+| Running a container environment                                           | [Container Security](./container-security)                                      |
+| Preparing for ISO/IEC 18974 certification                                 | [ISO Standard Mapping](./iso-mapping) — we recommend reading the SCA page first |
+
+:::
 
 ## See also
 

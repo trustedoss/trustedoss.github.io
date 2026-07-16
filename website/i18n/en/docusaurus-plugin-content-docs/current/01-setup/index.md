@@ -137,7 +137,9 @@ When Claude Code starts:
 2. On your first run, the `output/` folder is empty, so it will direct you to the `02-organization-designer` agent.
 3. Claude Code automatically reads `CLAUDE.md` to understand the project context.
 
-> Claude Code also reads the `CLAUDE.md` in each chapter folder to pick up the context for that step.
+:::info
+Claude Code also reads the `CLAUDE.md` in each chapter folder to pick up the context for that step.
+:::
 
 ## 7. Troubleshooting
 
@@ -149,7 +151,7 @@ When Claude Code starts:
 
 ### When you can't log in to Claude Code
 
-- Run `claude login` to authenticate with your Anthropic account.
+- Run `claude`, then type `/login` inside the session to authenticate with your Anthropic account.
 - If the browser does not open automatically, copy the URL shown in the terminal and open it manually.
 
 ### git clone permission error

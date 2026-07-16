@@ -23,7 +23,9 @@ All content on this site is released under the **[CC BY 4.0](https://creativecom
 
 With proper attribution, you can freely copy, modify, redistribute, and use it commercially.
 
-> Attribution example: "Trusted OSS (CC BY 4.0 · OpenChain KWG)"
+:::info Attribution Example
+"Trusted OSS (CC BY 4.0 · OpenChain KWG)"
+:::
 
 ## How to Contribute
 

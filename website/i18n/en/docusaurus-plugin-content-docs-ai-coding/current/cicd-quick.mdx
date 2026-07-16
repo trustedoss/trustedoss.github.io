@@ -34,7 +34,7 @@ CI/CD gates are the only safety net that can mechanically block policy violation
 | Block vulnerabilities | grype         | Scans CVEs based on SBOM and fails the build when threshold is exceeded |
 | Block licenses        | syft + script | Fails the build when forbidden licenses are detected in SBOM            |
 
-All three tools are free open source and can be used immediately in GitHub Actions / GitLab CI without local installation.
+All three tools are free open source. In GitHub Actions you can use them immediately as Marketplace Actions with no installation; in GitLab CI you install them with a single script line.
 
 ---
 
@@ -132,7 +132,8 @@ oss-check:
   stage: test
   image: ubuntu:22.04
   script:
-    # Install tools
+    # Install tools (the base ubuntu image does not include curl)
+    - apt-get update -qq && apt-get install -y -qq curl ca-certificates
     - curl -sSfL https://get.anchore.io/syft | sh -s -- -b /usr/local/bin
     - curl -sSfL https://get.anchore.io/grype | sh -s -- -b /usr/local/bin
 
@@ -197,7 +198,10 @@ Keep the `FORBIDDEN` variable synchronized with the forbidden license list in th
 
 Select platform, language, and security domains,
 and it generates a CI/CD pipeline file you can apply to your project immediately.
-An Anthropic API key is required.
+
+:::info This tool requires an Anthropic API key
+It calls the Anthropic API directly from your browser. Enter your own [Anthropic API key](https://console.anthropic.com/settings/keys) to use it right away; your key and inputs are sent only from your browser to Anthropic (they never pass through a trustedoss server). Usage is billed to your own Anthropic account.
+:::
 
 <iframe
   src="/tools/workflow-generator.html"
@@ -218,7 +222,7 @@ automatically detect whether containers/IaC are used,
 and generate an optimized pipeline, use the agent below.
 :::
 
-**Prerequisite**: Clone the [Trusted OSS repository](https://github.com/trustedoss/trustedoss.github.io)
+**Prerequisite**: Clone the [Trusted OSS repository](https://github.com/trustedoss/trustedoss-agents)
 
 ```bash
 cd agents/devsecops-setup

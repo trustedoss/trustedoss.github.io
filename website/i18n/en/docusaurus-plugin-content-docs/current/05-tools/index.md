@@ -1,4 +1,5 @@
 ---
+description: 'Create SBOMs and respond to vulnerabilities with free open source tools. Integrated index for the syft, cdxgen, and OSV hands-on labs.'
 date: 2026-06-05
 version: '1.0'
 checklist:
@@ -11,7 +12,9 @@ sidebar_label: Tools overview
 
 # Tools: SBOM and vulnerability management
 
-This chapter covers the tools that automatically identify the open source in your product (SBOM), manage it, and find and respond to vulnerabilities. It follows the three-step flow below.
+<Prerequisite items={[{label: '4. Open Source Process', href: '/docs/process'}]}>+ a running Docker environment</Prerequisite>
+
+This chapter covers the tools that automatically identify the open source in your product (SBOM), manage it, and find and respond to vulnerabilities. It follows the three-step flow below; organizations working with AI systems additionally complete the optional AI SBOM step.
 
 ## The flow
 
@@ -24,11 +27,11 @@ This chapter covers the tools that automatically identify the open source in you
 
 See SBOM analysis results right in your browser first, with no installation.
 
-- [SBOM analyzer sample experience](pathname:///tools/sbom-sample-demo.html)
+- [Try the SBOM analyzer sample](pathname:///tools/sbom-sample-demo.html)
 
 ## Automatic generation with AI agents
 
-The outputs of each step can be generated automatically with AI agents. For the full mapping, see [Create outputs with AI agents](../00-overview/agents.md).
+The deliverables of each step can be generated automatically with AI agents. For the full mapping, see [Create deliverables with AI agents](../00-overview/agents.md).
 
 - SBOM creation: `05-sbom-guide`, `05-sbom-analyst`
 - SBOM management: `05-sbom-management`
