@@ -9,8 +9,12 @@
   "dependencies": {
     "express": "^4.18.2",
     "lodash": "^4.17.21",
-    "nightmare": "^3.0.2"
+    "legacy-parser": "file:./vendor/legacy-parser"
   },
-  "keywords": ["sample", "unlicensed", "oss-kit"],
+  "keywords": [
+    "sample",
+    "unlicensed",
+    "oss-kit"
+  ],
   "author": "trustedoss"
 }

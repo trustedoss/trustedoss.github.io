@@ -6,7 +6,7 @@ trustedoss 가이드 [챕터 05 — 도구 실습](../docs/05-tools/sbom-generat
 | ----------------------------------------------- | ------------- | ---------------------------------------------- | ------ | --------- |
 | [java-vulnerable](./java-vulnerable/)           | Java (Maven)  | Log4Shell(CVE-2021-44228) Critical 취약점 탐지 | 입문   | 약 20분   |
 | [python-mixed-license](./python-mixed-license/) | Python (pip)  | GPL + Permissive 혼재 Copyleft 리스크          | 입문   | 약 20분   |
-| [nodejs-unlicensed](./nodejs-unlicensed/)       | Node.js (npm) | 라이선스 미명시(UNLICENSED) 패키지 처리        | 중급   | 약 25분   |
+| [nodejs-unlicensed](./nodejs-unlicensed/)       | Node.js (npm) | 라이선스 미명시(NOASSERTION) 패키지 처리       | 중급   | 약 25분   |
 
 ## 공통 선행 조건
 

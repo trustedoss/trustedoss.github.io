@@ -61,6 +61,9 @@ GPL 컴포넌트를 동등한 기능의 Permissive 라이선스 패키지로 교
 ## SBOM 생성 명령어
 
 ```bash
+# 출력 디렉토리 생성 (fresh clone 직후에는 없음)
+mkdir -p ../../output/sbom
+
 docker run --rm -v $(pwd):/project \
   anchore/syft:latest \
   /project --output cyclonedx-json \

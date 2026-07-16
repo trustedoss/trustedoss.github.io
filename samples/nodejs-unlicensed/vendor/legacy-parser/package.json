@@ -1,0 +1,7 @@
+{
+  "name": "legacy-parser",
+  "version": "1.2.0",
+  "description": "사내에 굴러다니던 출처 불명의 파서 — license 필드가 없다 (실습용 시나리오)",
+  "main": "index.js",
+  "author": "unknown"
+}
