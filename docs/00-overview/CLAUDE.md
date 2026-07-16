@@ -31,16 +31,16 @@ ISO/IEC 5230 (라이선스 컴플라이언스)과 ISO/IEC 18974 (보안 보증) 
 
 이 키트를 완료하면 아래 산출물이 생성된다:
 
-| 단계      | 산출물                                                                                      |
-| --------- | ------------------------------------------------------------------------------------------- |
-| 조직      | role-definition.md, raci-matrix.md, appointment-template.md                                 |
-| 정책      | oss-policy.md, license-allowlist.md                                                         |
-| 프로세스  | usage-approval.md, distribution-checklist.md, vulnerability-response.md, process-diagram.md |
-| SBOM      | [project].cdx.json, sbom-commands.sh, license-report.md, copyleft-risk.md                   |
-| SBOM 관리 | sbom-management-plan.md, sbom-sharing-template.md                                           |
-| 취약점    | cve-report.md, remediation-plan.md                                                          |
-| 교육      | curriculum.md, completion-tracker.md, resources.md                                          |
-| 인증      | gap-analysis.md, declaration-draft.md, submission-guide.md                                  |
+| 단계      | 산출물                                                                                                           |
+| --------- | ---------------------------------------------------------------------------------------------------------------- |
+| 조직      | role-definition.md, raci-matrix.md, appointment-template.md                                                      |
+| 정책      | oss-policy.md, license-allowlist.md                                                                              |
+| 프로세스  | usage-approval.md, distribution-checklist.md, vulnerability-response.md, inquiry-response.md, process-diagram.md |
+| SBOM      | [project].cdx.json, sbom-commands.sh, license-report.md, copyleft-risk.md                                        |
+| SBOM 관리 | sbom-management-plan.md, sbom-sharing-template.md                                                                |
+| 취약점    | cve-report.md, remediation-plan.md                                                                               |
+| 교육      | curriculum.md, completion-tracker.md, resources.md                                                               |
+| 인증      | gap-analysis.md, declaration-draft.md, submission-guide.md                                                       |
 
 ## 전제 조건
 

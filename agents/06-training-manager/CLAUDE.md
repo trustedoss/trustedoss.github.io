@@ -34,6 +34,7 @@
 
 ## 처리 방식
 
+- `templates/training/` 의 템플릿 참조 (curriculum.md, completion-tracker.md). 템플릿의 선택 직군(법무/구매, 보안 담당)은 해당 직군이 있는 조직만 포함한다
 - `output/policy/oss-policy.md` 의 정책 내용 반영
 - 직군별 맞춤 커리큘럼 구성:
   - 개발자: 라이선스 기초, SBOM 도구, 취약점 대응

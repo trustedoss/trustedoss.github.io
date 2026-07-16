@@ -1,93 +1,106 @@
 # 갭 분석 리포트
 
-<!-- 5230 §3.6.2.1, 18974 §4.4.2.1, §4.1.2.5, §4.1.2.6, §4.1.4.3 -->
+<!-- 5230 §3.6.1.1, §3.6.2.1 · 18974 §4.4.1.1, §4.4.2.1, §4.1.2.5, §4.1.2.6, §4.1.4.3 -->
+<!-- 이 템플릿은 07-conformance-preparer가 생성하는 갭 분석과 같은 구조다:
+     표준별 입증자료 25개(두 표준 모두 선택 시 총 50개)를 조항 ID 기준으로 대조한다.
+     G항목(G1~G4) 지도는 docs/00-overview/checklist-mapping.md 가 정본이다. -->
 
 ---
 
-리포트 유형: 갭 분석
-생성일: YYYY-MM-DD HH:MM
-분석 대상: output/ 전체 산출물
-표준: ISO/IEC 5230 + ISO/IEC 18974
+리포트 유형: 갭 분석 ({ISO/IEC 5230 / ISO/IEC 18974 / 둘 다})
+생성일: YYYY-MM-DD
+대상 프로젝트: {회사명} 오픈소스 프로그램
+사용 도구: trustedoss agents/07-conformance-preparer
 
 ---
 
-## 요약
+## 1. 요약
 
-| 구분            | 항목 수  |
-| --------------- | -------- |
-| ✅ 충족         | {N}개    |
-| 🔶 부분충족     | {N}개    |
-| ❌ 미충족       | {N}개    |
-| **전체 진행률** | **{N}%** |
-
----
-
-## 항목별 상세
-
-### G1: 프로그램 기반
-
-| 항목                              | 상태     | 산출물                                | 비고 |
-| --------------------------------- | -------- | ------------------------------------- | ---- |
-| G1.1 오픈소스 정책 수립           | ✅/🔶/❌ | output/policy/oss-policy.md           |      |
-| G1.2 보안 보증 정책 검토 프로세스 | ✅/🔶/❌ | output/policy/oss-policy.md           |      |
-| G1.3 담당자 및 조직 지정          | ✅/🔶/❌ | output/organization/                  |      |
-| G1.4 교육 프로그램 수립           | ✅/🔶/❌ | output/training/curriculum.md         |      |
-| G1.5 프로그램 범위 정의           | ✅/🔶/❌ | output/policy/oss-policy.md           |      |
-| G1.6 라이선스 의무사항 검토 절차  | ✅/🔶/❌ | output/process/usage-approval.md      |      |
-| G1.7 참여자 인식 기록             | ✅/🔶/❌ | output/training/completion-tracker.md |      |
-
-### G2: 관련 업무 정의
-
-| 항목                     | 상태     | 산출물                                 | 비고 |
-| ------------------------ | -------- | -------------------------------------- | ---- |
-| G2.1 역할과 책임 (RACI)  | ✅/🔶/❌ | output/organization/raci-matrix.md     |      |
-| G2.2 외부 문의 수신 채널 | ✅/🔶/❌ | output/organization/role-definition.md |      |
-| G2.3 인식 제고 프로그램  | ✅/🔶/❌ | output/training/                       |      |
-
-### G3-L: 라이선스 컴플라이언스
-
-| 항목                              | 상태     | 산출물                                   | 비고 |
-| --------------------------------- | -------- | ---------------------------------------- | ---- |
-| G3L.1 라이선스 식별 및 분류       | ✅/🔶/❌ | output/sbom/license-report.md            |      |
-| G3L.2 라이선스 의무사항 이행      | ✅/🔶/❌ | output/process/distribution-checklist.md |      |
-| G3L.3 컴플라이언스 산출물 생성    | ✅/🔶/❌ | output/sbom/license-report.md            |      |
-| G3L.4 오픈소스 기여 정책          | ✅/🔶/❌ | output/policy/oss-policy.md              |      |
-| G3L.5 라이선스 의무사항 충족 확인 | ✅/🔶/❌ | output/process/distribution-checklist.md |      |
-| G3L.6 오픈소스 기여 프로세스      | ✅/🔶/❌ | output/policy/oss-policy.md              |      |
-
-### G3-S: 보안 보증
-
-| 항목                                | 상태     | 산출물                                   | 비고 |
-| ----------------------------------- | -------- | ---------------------------------------- | ---- |
-| G3S.1 알려진 취약점 식별 (CVE 스캔) | ✅/🔶/❌ | output/vulnerability/cve-report.md       |      |
-| G3S.2 취약점 추적 및 상태 관리      | ✅/🔶/❌ | output/vulnerability/cve-report.md       |      |
-| G3S.3 CVE 위험 점수 평가 (CVSS)     | ✅/🔶/❌ | output/vulnerability/cve-report.md       |      |
-| G3S.4 취약점 대응 및 패치 절차      | ✅/🔶/❌ | output/vulnerability/remediation-plan.md |      |
-| G3S.5 보안 산출물 배포 프로세스     | ✅/🔶/❌ | output/sbom/sbom-sharing-template.md     |      |
-| G3S.6 보안 의무사항 충족 확인       | ✅/🔶/❌ | output/vulnerability/remediation-plan.md |      |
-
-### G3-B: SBOM 및 공급망
-
-| 항목                              | 상태     | 산출물                               | 비고 |
-| --------------------------------- | -------- | ------------------------------------ | ---- |
-| G3B.1 SBOM 생성                   | ✅/🔶/❌ | output/sbom/\*.cdx.json              |      |
-| G3B.2 SBOM 관리 및 유지보수       | ✅/🔶/❌ | output/sbom/sbom-management-plan.md  |      |
-| G3B.3 SBOM 공유 (공급망 파트너)   | ✅/🔶/❌ | output/sbom/sbom-sharing-template.md |      |
-| G3B.4 공급망 취약점 지속 모니터링 | ✅/🔶/❌ | output/sbom/sbom-management-plan.md  |      |
-
-### G4: 준수 선언
-
-| 항목                                    | 상태     | 산출물                                  | 비고 |
-| --------------------------------------- | -------- | --------------------------------------- | ---- |
-| G4.1 ISO/IEC 5230 자체 인증 선언        | ✅/🔶/❌ | output/conformance/declaration-draft.md |      |
-| G4.2 ISO/IEC 18974 자체 인증 선언       | ✅/🔶/❌ | output/conformance/declaration-draft.md |      |
-| G4.3 인증 유효기간 관리 (18개월)        | ✅/🔶/❌ | output/conformance/submission-guide.md  |      |
-| G4.4 정기 갭 분석 및 정책 갱신          | ✅/🔶/❌ | 이 파일                                 |      |
-| G4.5 배포 소프트웨어 알려진 취약점 없음 | ✅/🔶/❌ | output/vulnerability/cve-report.md      |      |
+- 분석 대상: ISO/IEC 5230:2020 (25개 항목) + ISO/IEC 18974:2023 (25개 항목) = 총 50개 입증자료
+- **ISO/IEC 5230**: 충족 ✅ {N}개 / 부분충족 🔶 {N}개 / 미충족 ❌ {N}개
+- **ISO/IEC 18974**: 충족 ✅ {N}개 / 부분충족 🔶 {N}개 / 미충족 ❌ {N}개
+- ❌ 미충족(인증 차단) 항목: {없음 → 자체 인증 선언 가능 / N개 → 아래 조치사항 참조}
+- 시간 기반 🔶 항목 3개는 초기 인증 시 정상 (18개월 갱신 시 충족)
 
 ---
 
-## 시간 기반 항목 처리 현황
+## 2. ISO/IEC 5230:2020 항목별 충족 현황
+
+| 항목 ID | 내용 요약                             |   판정   | 근거 산출물                                             |
+| ------- | ------------------------------------- | :------: | ------------------------------------------------------- |
+| 3.1.1.1 | 문서화된 오픈소스 정책                | ✅/🔶/❌ | output/policy/oss-policy.md                             |
+| 3.1.1.2 | 정책 전파 절차                        | ✅/🔶/❌ | oss-policy.md §7, curriculum.md                         |
+| 3.1.2.1 | 역할과 책임 목록                      | ✅/🔶/❌ | role-definition.md §1                                   |
+| 3.1.2.2 | 역할별 역량 기술 문서                 | ✅/🔶/❌ | role-definition.md §2                                   |
+| 3.1.2.3 | 역량 평가 증거                        | ✅/🔶/❌ | completion-tracker.md                                   |
+| 3.1.3.1 | 참여자 인식 평가 증거                 | ✅/🔶/❌ | curriculum.md + completion-tracker.md                   |
+| 3.1.4.1 | 프로그램 적용 범위                    | ✅/🔶/❌ | oss-policy.md §1                                        |
+| 3.1.5.1 | 라이선스 의무사항 검토 절차           | ✅/🔶/❌ | usage-approval.md §4, license-allowlist.md              |
+| 3.2.1.1 | 외부 문의 공개 채널                   | ✅/🔶/❌ | role-definition.md §3                                   |
+| 3.2.1.2 | 외부 문의 내부 대응 절차              | ✅/🔶/❌ | role-definition.md §3, usage-approval.md                |
+| 3.2.2.1 | 역할 담당자 이름 문서                 | ✅/🔶/❌ | raci-matrix.md                                          |
+| 3.2.2.2 | 역할 배치 및 예산 확인                | ✅/🔶/❌ | raci-matrix.md §예산 배분 현황                          |
+| 3.2.2.3 | 법률 자문 접근 방법                   | ✅/🔶/❌ | role-definition.md §4                                   |
+| 3.2.2.4 | 내부 책임 할당 절차                   | ✅/🔶/❌ | raci-matrix.md §내부 책임 할당 절차                     |
+| 3.2.2.5 | 미준수 사례 검토 및 수정 절차         | ✅/🔶/❌ | raci-matrix.md §미준수 사례 검토 절차, oss-policy.md §8 |
+| 3.3.1.1 | SBOM 관리 절차                        | ✅/🔶/❌ | sbom-management-plan.md, usage-approval.md §6           |
+| 3.3.1.2 | 컴포넌트 기록(SBOM 파일)              | ✅/🔶/❌ | output/sbom/[project].cdx.json                          |
+| 3.3.2.1 | 라이선스 사용 사례 처리 절차          | ✅/🔶/❌ | license-report.md, copyleft-risk.md, usage-approval.md  |
+| 3.4.1.1 | 컴플라이언스 산출물 준비 및 배포 절차 | ✅/🔶/❌ | distribution-checklist.md                               |
+| 3.4.1.2 | 컴플라이언스 산출물 보관 절차         | ✅/🔶/❌ | distribution-checklist.md §5                            |
+| 3.5.1.1 | 오픈소스 기여 정책                    | ✅/🔶/❌ | oss-policy.md §5                                        |
+| 3.5.1.2 | 오픈소스 기여 관리 절차               | ✅/🔶/❌ | oss-policy.md §5                                        |
+| 3.5.1.3 | 기여 정책 인식 절차                   | ✅/🔶/❌ | oss-policy.md §7                                        |
+| 3.6.1.1 | 모든 요구사항 충족 확인 문서          | ✅/🔶/❌ | gap-analysis.md (본 문서)                               |
+| 3.6.2.1 | 18개월 이내 요구사항 충족 확인 문서   | ✅/🔶/❌ | declaration-draft.md                                    |
+
+**ISO/IEC 5230 소계: ✅ {N}개 / 🔶 {N}개 / ❌ {N}개**
+
+---
+
+## 3. ISO/IEC 18974:2023 항목별 충족 현황
+
+| 항목 ID | 내용 요약                           |   판정   | 근거 산출물                                                          |
+| ------- | ----------------------------------- | :------: | -------------------------------------------------------------------- |
+| 4.1.1.1 | 보안 보증 정책                      | ✅/🔶/❌ | oss-policy.md §4                                                     |
+| 4.1.1.2 | 정책 전파 절차                      | ✅/🔶/❌ | oss-policy.md §7, curriculum.md                                      |
+| 4.1.2.1 | 역할과 책임 목록                    | ✅/🔶/❌ | role-definition.md §1                                                |
+| 4.1.2.2 | 역할별 역량 기술 문서               | ✅/🔶/❌ | role-definition.md §2                                                |
+| 4.1.2.3 | 참여자 목록 및 역할                 | ✅/🔶/❌ | raci-matrix.md §역할별 담당자                                        |
+| 4.1.2.4 | 역량 평가 증거                      | ✅/🔶/❌ | completion-tracker.md                                                |
+| 4.1.2.5 | 주기적 검토 및 변경 증거            | ✅/🔶/❌ | oss-policy.md §9 (검토 계획 수립, 이력 미축적) ※시간 기반            |
+| 4.1.2.6 | 내부 모범 사례 일치 검증 담당자     | ✅/🔶/❌ | role-definition.md §6 (담당자 지정, 검토 예정 2026-12-31) ※시간 기반 |
+| 4.1.3.1 | 참여자 인식 평가 증거               | ✅/🔶/❌ | curriculum.md + completion-tracker.md                                |
+| 4.1.4.1 | 프로그램 범위 문서                  | ✅/🔶/❌ | oss-policy.md §1                                                     |
+| 4.1.4.2 | 성과 메트릭                         | ✅/🔶/❌ | oss-policy.md §3 (KPI 5개 항목)                                      |
+| 4.1.4.3 | 지속적 개선 증거(감사 이력)         | ✅/🔶/❌ | 본 갭 분석 = 1회차 감사 이력 ※시간 기반                              |
+| 4.1.5.1 | 취약점 대응 표준 절차               | ✅/🔶/❌ | vulnerability-response.md (8가지 방법 모두 포함)                     |
+| 4.2.1.1 | 외부 취약점 문의 공개 채널          | ✅/🔶/❌ | role-definition.md §3 (security@techunicorn.example)                 |
+| 4.2.1.2 | 외부 문의 내부 대응 절차            | ✅/🔶/❌ | vulnerability-response.md §7                                         |
+| 4.2.2.1 | 역할 담당자 이름 문서               | ✅/🔶/❌ | raci-matrix.md                                                       |
+| 4.2.2.2 | 역할 배치 및 예산 확인              | ✅/🔶/❌ | raci-matrix.md §예산 배분 현황                                       |
+| 4.2.2.3 | 취약점 해결 전문성 명시             | ✅/🔶/❌ | role-definition.md §5 (보안팀, KrCERT)                               |
+| 4.2.2.4 | 내부 책임 할당 절차                 | ✅/🔶/❌ | raci-matrix.md §내부 책임 할당 절차                                  |
+| 4.3.1.1 | SBOM 수명주기 지속 기록 절차        | ✅/🔶/❌ | sbom-management-plan.md                                              |
+| 4.3.1.2 | 컴포넌트 기록(SBOM 파일)            | ✅/🔶/❌ | output/sbom/[project].cdx.json                                       |
+| 4.3.2.1 | 취약점 탐지 및 해결 절차            | ✅/🔶/❌ | vulnerability-response.md + remediation-plan.md                      |
+| 4.3.2.2 | 취약점 및 조치 기록                 | ✅/🔶/❌ | cve-report.md (5개 CVE 기록) + remediation-plan.md                   |
+| 4.4.1.1 | 모든 요구사항 충족 확인 문서        | ✅/🔶/❌ | gap-analysis.md (본 문서)                                            |
+| 4.4.2.1 | 18개월 이내 요구사항 충족 확인 문서 | ✅/🔶/❌ | declaration-draft.md                                                 |
+
+**ISO/IEC 18974 소계: ✅ {N}개 / 🔶 {N}개 / ❌ {N}개**
+
+---
+
+## 4. 조치사항 (미충족·부분충족 해소 계획)
+
+| 항목 ID | 해소 방법                          | 담당자 | 목표일     |
+| ------- | ---------------------------------- | ------ | ---------- |
+| {항목}  | {해당 agent 재실행 또는 수동 보완} | {이름} | YYYY-MM-DD |
+
+---
+
+## 5. 시간 기반 항목 처리 (초기 인증 정상)
 
 <!-- 초기 인증 시 부분충족이 정상인 항목 -->
 
@@ -99,18 +112,13 @@
 
 ---
 
-## 미충족 항목 해소 계획
-
-| 항목          | 해소 방법                          | 담당자 | 목표일     |
-| ------------- | ---------------------------------- | ------ | ---------- |
-| {미충족 항목} | {해당 agent 재실행 또는 수동 보완} | {이름} | YYYY-MM-DD |
-
----
-
-## 감사 이력
+## 6. 갱신 일정 및 감사 이력
 
 <!-- 18974 §4.1.4.3 지속적 개선 증거 -->
 
 | 회차       | 실시일     | 담당자 | 주요 발견사항     | 후속 조치             |
 | ---------- | ---------- | ------ | ----------------- | --------------------- |
 | 1회 (최초) | YYYY-MM-DD | {이름} | 초기 갭 분석 완료 | 미충족 항목 보완 진행 |
+
+- 자체 인증 유효기간: 선언일로부터 18개월
+- 재선언(갱신) 예정일: YYYY-MM-DD
