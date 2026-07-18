@@ -309,6 +309,13 @@ task 고유 수용 기준 + `cd website && npm run build`(ko/en) + `verify.sh` 1
 갱신(2026-07-18): 다음 이니셔티브로 사이트 운영 인프라 상향(검색, 웹폰트, 측정, 잔존 이슈)을
 착수한다. 계획과 진행 기준: `docs/_plan/site-ops-uplift-plan.md`.
 
+진행(2026-07-18): 검색 전환 완료. DocSearch가 신청 승인 대기 방식이 아니라 셀프서브로 바뀌어
+당일 완료했다. Algolia 계정 가입(사용자), 도메인 인증(메타 태그, 커밋 827f58b), 크롤러 생성과
+전체 색인(레코드 13,749개, 에러 0), 주 1회(월요일) 크롤링 스케줄, 사이트 연동 배포까지 반영.
+실사이트에서 한국어와 영어 검색 동작을 확인했다. 남은 것: GoatCounter 가입(사용자),
+crawler 설정에 Docusaurus facet 추가 후 contextualSearch 활성화(선택), Phase 1 웹폰트,
+Phase 2 측정 인프라, Phase 0의 broken anchor 수정.
+
 ### 후속에서 완료한 것 (참고)
 
 - #10 프로세스 템플릿 추적성 헤더, #11 정책 샘플 §10, #12 en 패리티(quirk 해소 포함), #13 ko-style 가운뎃점 정리.
