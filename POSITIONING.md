@@ -103,12 +103,14 @@ navbar·config 링크도 `CLAUDE.md` 스코프 완화로 가드레일 하에 가
 | 실행 주권        | 직접 클론 → Claude Code 실행       | self-hosted (`docker-compose`/Helm), no per-seat            |
 | 언어             | KO 기본 + EN (`defaultLocale: ko`) | EN + KO ("internationalized from day one")                  |
 | 주색상 (현재)    | `#1a73e8` (Material/Google 블루)   | `#0f172a` (딥 네이비) — _가이드는 중립 공용 토큰 채택 완료_ |
-| 본문 폰트 (현재) | Roboto (Material/Gemini)           | Inter                                                       |
+| 본문 폰트 (현재) | Roboto (라틴) + Pretendard (한글)  | Inter                                                       |
 
 > 위 값은 실측 기준(가이드: `website/src/css/customTheme.scss`·`docusaurus.config.ts`,
 > 포털: README·`docs-site/`).
 >
 > **수렴 현황(2026-06):** 가이드는 §5 원칙에 따라 브랜드 주색을 기존 시안(`#06bcee`)에서 중립 Material/Google 블루(`--g-blue-600` = `#1a73e8`)로, 폰트를 Optimistic Display에서 Roboto로 이미 수렴했다(Gemini look&feel). 포털 팔레트(딥 네이비)를 채택한 것이 아니라 특정 벤더로 읽히지 않는 공용 토큰을 택한 것이므로 §5의 "중립 공용 토큰" 기준을 충족한다. 포털 측 수렴은 별도 과제로 남는다.
+>
+> **갱신(2026-07-18):** 한글 렌더링을 시스템 폰트 폴백에서 Pretendard Variable(SIL OFL 오픈소스, 셀프호스트)로 교체했다. OS별 렌더링 차이를 없애기 위한 것으로, 라틴 우선 폰트는 Roboto를 유지한다. Pretendard는 특정 벤더에 귀속되지 않는 오픈소스 폰트이므로 §5의 중립 공용 토큰 기준을 충족한다.
 
 ---
 

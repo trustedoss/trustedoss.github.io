@@ -64,10 +64,11 @@
   --docsearch-footer-height: 46px;
   --docsearch-soft-primary-color: var(--sidebar-active-item-background);
 
-  /* Material/Gemini docs 타이포 — Roboto(라틴) + 시스템 한글 폴백 */
+  /* Material/Gemini docs 타이포 — Roboto(라틴) + Pretendard(한글, 셀프호스트)
+     폴백은 글리프 단위로 동작하므로 라틴은 Roboto, 한글은 Pretendard로 렌더된다 */
   --ifm-font-family-base:
-    "Roboto", system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo",
-    "Malgun Gothic", sans-serif;
+    "Roboto", "Pretendard Variable", system-ui, -apple-system, "Segoe UI",
+    "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
   --ifm-font-family-monospace:
     "Roboto Mono", "Source Code Pro", SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
