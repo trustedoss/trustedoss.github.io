@@ -434,6 +434,10 @@ hr {
 }
 
 .markdown {
+  /* 한국어 단어 단위 줄바꿈 — 긴 영문 식별자(URL·패키지명)는 강제 줄바꿈 허용 */
+  word-break: keep-all;
+  overflow-wrap: break-word;
+
   h2:first-child {
     margin-top: 0;
   }
@@ -876,13 +880,13 @@ html[data-theme="dark"] .avatar__name a {
    무력화해 페이지 제목(article header h1) ≥ 모든 본문 헤딩 보장 (Gemini 톤) */
 .markdown > h1 {
   font-size: 28px;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 36px;
 }
 
 .markdown > h2 {
   font-size: 24px;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 32px;
 }
 
@@ -899,7 +903,7 @@ html[data-theme="dark"] .avatar__name a {
 
 article header h1 {
   font-size: 34px !important;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 40px;
 }
 
@@ -972,6 +976,8 @@ a[class*="tagRegular"] {
 /* 우측 TOC (이 페이지의 내용) — Gemini 톤: 가벼운 굵기 */
 .table-of-contents {
   font-size: 14px;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 .table-of-contents,
@@ -1554,6 +1560,8 @@ aside[class^="theme-doc-sidebar-container"] {
     padding: 5px 12px;
     font-size: 13px;
     line-height: 1.45;
+    word-break: keep-all;
+    overflow-wrap: break-word;
   }
 
   .menu__list-item {
@@ -2126,6 +2134,16 @@ td .color-box {
 }
 
 /* Labels */
+
+/* 공용 필 라벨 스타일이 Mermaid SVG 내부 g.label에 적용돼 노드 글자가
+   작아지는 충돌 방지. Mermaid는 렌더 전 임시 영역에서 라벨 크기를 측정하므로
+   컨테이너가 아니라 svg 범위로 지정해야 측정·표시 크기가 일치한다 */
+svg .label {
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  padding: 0;
+}
 
 .label {
   display: inline-block;

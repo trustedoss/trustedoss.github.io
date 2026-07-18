@@ -188,6 +188,19 @@ const config: Config = {
       disableSwitch: false,
       respectPrefersColorScheme: true,
     },
+    mermaid: {
+      options: {
+        fontSize: 18,
+        themeVariables: {
+          fontSize: '18px',
+        },
+        flowchart: {
+          padding: 12,
+          nodeSpacing: 30,
+          rankSpacing: 30,
+        },
+      },
+    },
     prism: {
       defaultLanguage: 'bash',
       theme: prismThemes.github,
