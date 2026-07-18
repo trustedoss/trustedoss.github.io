@@ -907,6 +907,12 @@ article header h1 {
   line-height: 40px;
 }
 
+/* 페이지 제목과 첫 본문 요소 사이 간격 — h1 하단 마진이 header 밖으로
+   전달되지 않아 제목과 첫 헤딩이 붙는 문제 보정 */
+.markdown > header {
+  margin-bottom: 24px;
+}
+
 article header h2 {
   line-height: 32px;
 
