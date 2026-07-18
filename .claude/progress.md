@@ -133,7 +133,8 @@ POSITIONING.md 정체성에 맞춰 시스템·콘텐츠 고도화. 계획은 승
 
 최근 반영 (2026-07-18, 디자인 검토): 본문 h1/h2 굵기 300에서 400으로 조정, 한국어
 `word-break: keep-all` 적용(본문, TOC, 사이드바), Mermaid 라벨 크기 개선
-(`svg .label` 충돌 해소, fontSize 18px, 노드 간격 축소).
+(`svg .label` 충돌 해소, fontSize 18px, 노드 간격 축소), 페이지 제목과 첫 본문
+사이 간격 24px 확보(`.markdown > header`). 본문 폭 제한은 사용자 결정으로 보류.
 
 **수정 시 체크리스트:**
 
