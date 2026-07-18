@@ -52,25 +52,15 @@ const config: Config = {
       onBrokenMarkdownLinks: 'throw',
     },
   },
-  themes: [
-    '@docusaurus/theme-mermaid',
-    [
-      require.resolve('@easyops-cn/docusaurus-search-local'),
-      {
-        hashed: true,
-        language: ['ko', 'en'],
-        indexDocs: true,
-        indexBlog: true,
-        indexPages: false,
-        // 체계구축(docs) 외 별도 content-docs 인스턴스도 검색에 포함
-        docsRouteBasePath: ['/docs', '/devsecops', '/ai-coding', '/reference'],
-        highlightSearchTermsOnTargetPage: true,
-        searchResultLimits: 8,
-        searchResultContextMaxLength: 50,
-      },
-    ],
-  ],
+  themes: ['@docusaurus/theme-mermaid'],
   headTags: [
+    {
+      tagName: 'meta',
+      attributes: {
+        name: 'algolia-site-verification',
+        content: '2C9FABE2918A1DC5',
+      },
+    },
     {
       tagName: 'script',
       attributes: {
@@ -200,6 +190,15 @@ const config: Config = {
           rankSpacing: 30,
         },
       },
+    },
+    algolia: {
+      appId: 'CGMCR0DQPT',
+      // 검색 전용 공개 키 — 프런트엔드 노출이 전제라 커밋해도 안전
+      apiKey: 'c68e85986b1ff600b47ac302143d484c',
+      indexName: 'Trusted OSS Docs',
+      // 크롤러가 Docusaurus 전용 facet(docusaurus_tag) 없이 색인하므로
+      // contextualSearch를 켜면 결과가 전부 걸러진다. 크롤러 설정 개편 전까지 false 유지
+      contextualSearch: false,
     },
     prism: {
       defaultLanguage: 'bash',
