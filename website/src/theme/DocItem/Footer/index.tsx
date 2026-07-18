@@ -10,7 +10,6 @@ import TagsListInline, {
   Props as TagsListInlineProps,
 } from '@theme/TagsListInline';
 
-import type {EditUrlButton} from '../../../../docusaurus.config';
 import styles from './styles.module.css';
 import DocsRating from '../../../../core/DocsRating';
 
@@ -39,14 +38,19 @@ function EditPage({label, href}: {label: string; href: string}) {
     </Link>
   );
 }
+type EditUrlButton = {label: string; href: string};
+
 function EditMetaRow({editUrl, lastUpdatedAt, lastUpdatedBy}) {
   const buttons = React.useMemo((): EditUrlButton[] => {
-    try {
-      return JSON.parse(editUrl);
-    } catch (e) {
-      console.error(e);
-      return [{href: editUrl, label: 'Edit this page'}];
+    // editUrl은 일반 URL 문자열이 기본이고, JSON 배열([{label, href}]) 형식도 허용한다
+    if (editUrl?.trim().startsWith('[')) {
+      try {
+        return JSON.parse(editUrl);
+      } catch {
+        // JSON 형식이 아니면 아래의 일반 URL 처리로 폴백
+      }
     }
+    return [{href: editUrl, label: 'Edit this page'}];
   }, [editUrl]);
   return (
     <div className={clsx(ThemeClassNames.docs.docFooterEditMetaRow, 'row')}>
