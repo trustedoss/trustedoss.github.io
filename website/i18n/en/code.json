@@ -744,5 +744,21 @@
   },
   "glossary.self-certification": {
     "message": "Declaring on your own, without an external audit, that you meet the OpenChain requirements."
+  },
+  "docsRating.question": {
+    "message": "Is this page useful?",
+    "description": "Question asking the reader to rate the docs page"
+  },
+  "docsRating.voted": {
+    "message": "Thanks for letting us know!",
+    "description": "Message shown after the reader rates a docs page"
+  },
+  "docsRating.like": {
+    "message": "Yes, this page was useful",
+    "description": "Label of the thumbs-up docs rating button"
+  },
+  "docsRating.dislike": {
+    "message": "No, this page was not useful",
+    "description": "Label of the thumbs-down docs rating button"
   }
 }

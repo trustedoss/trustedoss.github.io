@@ -2404,6 +2404,15 @@ html[data-theme="dark"] .component {
   font-weight: 500;
   border-radius: var(--ifm-alert-border-radius);
 
+  .docsRating_button {
+    border: 0;
+    padding: 0;
+    background: transparent;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
   svg {
     height: 1.5em;
     width: 1.5em;
@@ -2414,6 +2423,11 @@ html[data-theme="dark"] .component {
       cursor: pointer;
       fill: var(--ifm-color-primary);
     }
+  }
+
+  .docsRating_button:hover svg,
+  .docsRating_button:focus-visible svg {
+    fill: var(--ifm-color-primary);
   }
 
   .i_thumbsup {

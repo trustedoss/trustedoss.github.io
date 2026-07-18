@@ -27,12 +27,21 @@ const config: Config = {
   projectName: 'trustedoss.github.io',
   url: 'https://trustedoss.github.io/',
   baseUrl: '/',
-  clientModules: ['./modules/jumpToFragment.ts', './modules/fonts.ts'],
+  clientModules: [
+    './modules/jumpToFragment.ts',
+    './modules/fonts.ts',
+    './modules/goatcounter.ts',
+  ],
   trailingSlash: false,
   scripts: [
     {
       src: 'https://cdn.jsdelivr.net/npm/focus-visible@5.2.0/dist/focus-visible.min.js',
       defer: true,
+    },
+    {
+      src: 'https://gc.zgo.at/count.js',
+      async: true,
+      'data-goatcounter': 'https://trustedoss.goatcounter.com/count',
     },
   ],
   favicon: 'img/favicon.svg',
