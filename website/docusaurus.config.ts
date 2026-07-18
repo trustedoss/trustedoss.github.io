@@ -55,6 +55,7 @@ const config: Config = {
     },
   },
   onBrokenLinks: 'throw',
+  onBrokenAnchors: 'throw',
   markdown: {
     mermaid: true,
     hooks: {
