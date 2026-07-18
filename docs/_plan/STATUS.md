@@ -312,9 +312,15 @@ task 고유 수용 기준 + `cd website && npm run build`(ko/en) + `verify.sh` 1
 진행(2026-07-18): 검색 전환 완료. DocSearch가 신청 승인 대기 방식이 아니라 셀프서브로 바뀌어
 당일 완료했다. Algolia 계정 가입(사용자), 도메인 인증(메타 태그, 커밋 827f58b), 크롤러 생성과
 전체 색인(레코드 13,749개, 에러 0), 주 1회(월요일) 크롤링 스케줄, 사이트 연동 배포까지 반영.
-실사이트에서 한국어와 영어 검색 동작을 확인했다. 남은 것: GoatCounter 가입(사용자),
-crawler 설정에 Docusaurus facet 추가 후 contextualSearch 활성화(선택), Phase 1 웹폰트,
-Phase 2 측정 인프라, Phase 0의 broken anchor 수정.
+실사이트에서 한국어와 영어 검색 동작을 확인했다.
+
+진행(2026-07-18, 이어서): GoatCounter 연동 완료(커밋 78bc5bf). 계정 가입(사용자,
+trustedoss.goatcounter.com), 스크립트와 SPA 라우트 집계 클라이언트 모듈 추가, 죽어 있던
+DocsRating을 GoatCounter 이벤트로 수리(번역 4키 추가, svg를 button으로 감싸 접근성 확보).
+로컬 서빙에서 ko와 en 렌더, 클릭 후 감사 문구, count.js 로드를 확인하고 배포했다.
+남은 것: GoatCounter 이메일 인증(사용자), 실집계 대시보드 확인, crawler 설정에 Docusaurus
+facet 추가 후 contextualSearch 활성화(선택), Phase 1 웹폰트, Phase 2의 Lighthouse CI와
+접근성 감사, Phase 0의 broken anchor 수정.
 
 ### 후속에서 완료한 것 (참고)
 
