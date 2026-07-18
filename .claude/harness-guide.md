@@ -634,6 +634,32 @@ docs/05-tools/index.md 에 반영이 필요한 내용이 있는지 확인해줘
 
 ---
 
+## 9. 사이트 운영 점검 (월 1회)
+
+디자인·측정 인프라(2026-07 도입) 점검 루틴. 결과는 `.claude/progress.md`에 한 줄로 기록한다.
+
+| 항목            | 확인 위치                                        | 보는 것                                                      |
+| --------------- | ------------------------------------------------ | ------------------------------------------------------------ |
+| 방문 통계       | https://trustedoss.goatcounter.com               | 상위·하위 페이지, 유입 경로, `rating/` 이벤트 비율           |
+| 검색 품질       | Algolia 대시보드 (Search, Analytics 메뉴)        | no-results 쿼리(문서 갭 신호), 상위 검색어                   |
+| 크롤러 상태     | Algolia 대시보드 (Data sources, Crawler)         | 주 1회(월요일) 크롤링 성공 여부, 색인 레코드 수 추이         |
+| Lighthouse 점수 | GitHub Actions의 Lighthouse 워크플로우 최근 실행 | 6개 대표 페이지 점수 추이. 2주 안정화 후 warn을 error로 승격 |
+
+### 접근성 스캔 절차 (분기 1회 또는 디자인 변경 후)
+
+전용 스크립트 없이 Claude가 Playwright MCP로 수행한다.
+
+1. `cd website && npm run build && npm run serve -- --port 3210 --no-open`
+2. 대표 페이지(랜딩, docs, docs 본문, devsecops/intro, ai-coding/intro, reference/samples/sbom)를
+   브라우저로 열고, axe-core를 CDN(`https://cdn.jsdelivr.net/npm/axe-core@4.10.2/axe.min.js`)에서
+   주입한 뒤 `axe.run()` 실행
+3. 라이트와 다크 모두 스캔한다. 다크 전환은 data-theme 속성 변경이 아니라 **테마 토글 버튼 클릭**으로
+   해야 한다 (Prism 코드 색은 React 리렌더가 필요해 속성만 바꾸면 라이트 값이 측정된다)
+4. critical과 serious 위반만 수정 대상으로 한다. Prism 토큰 색은 인라인 스타일이라
+   CSS 오버라이드에 `!important`가 필요하다 (customTheme.scss 끝의 접근성 섹션 참조)
+
+---
+
 ### KWG 동기화 rate limit 오류
 
 ```
