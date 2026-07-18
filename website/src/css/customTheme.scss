@@ -253,7 +253,8 @@ html[data-theme="dark"] .button.button--primary:hover {
 }
 
 html[data-theme="dark"] {
-  --subtle: #858993;
+  /* #8b8f99: 다크 표 헤더 배경(#20232a) 위에서 WCAG AA 대비 충족 (기존 #858993은 4.49:1) */
+  --subtle: #8b8f99;
 
   --navbar-background: #20232aee;
   --sidebar-active-item-background: color-mix(
@@ -720,7 +721,8 @@ html[data-theme="dark"] {
     }
 
     div[class*="codeBlockTitle"] {
-      color: var(--docsearch-muted-color);
+      /* #8f93a3: 다크 코드 배경(#20232a) 위 WCAG AA 대비 충족 (docsearch-muted는 4.23:1) */
+      color: #8f93a3;
       background-color: var(--deepdark);
     }
   }
@@ -768,13 +770,14 @@ html[data-theme="dark"] article .badge {
   span[class^="admonitionIcon"] svg {
     max-width: 20px;
     max-height: 20px;
-    fill: hsl(from var(--ifm-alert-border-color) h calc(s + 30) calc(l - 20));
+    fill: hsl(from var(--ifm-alert-border-color) h calc(s + 30) calc(l - 27));
   }
 
+  /* l - 27: 옅은 admonition 배경 위에서 제목이 WCAG AA 대비(4.5:1)를 충족하는 밝기 */
   div[class^="admonitionHeading"] {
     font-size: 18px;
     margin-bottom: 12px;
-    color: hsl(from var(--ifm-alert-border-color) h calc(s + 30) calc(l - 20));
+    color: hsl(from var(--ifm-alert-border-color) h calc(s + 30) calc(l - 27));
   }
 }
 
@@ -790,11 +793,13 @@ html[data-theme="dark"] article .badge {
 
 html[data-theme="dark"] {
   span[class^="admonitionIcon"] svg {
-    fill: hsl(from var(--ifm-alert-border-color) h calc(s + 10) calc(l + 10));
+    fill: hsl(from var(--ifm-alert-border-color) h calc(s + 10) calc(l + 22));
   }
 
+  /* l + 22: 어두운 admonition 배경에서도 제목이 WCAG AA 대비를 충족하는 밝기
+     (l + 10은 note(secondary)에서 3.67:1로 미달) */
   div[class^="admonitionHeading"] {
-    color: hsl(from var(--ifm-alert-border-color) h calc(s + 10) calc(l + 10));
+    color: hsl(from var(--ifm-alert-border-color) h calc(s + 10) calc(l + 22));
   }
 
   .alert--secondary {
@@ -965,7 +970,8 @@ a[class*="tagRegular"] {
   padding: 2px 4px;
   font-size: 0.82rem;
   font-weight: 400;
-  color: var(--ifm-color-emphasis-600);
+  /* emphasis-700: 흰 배경에서 WCAG AA 대비 충족 (600은 3.06:1로 미달) */
+  color: var(--ifm-color-emphasis-700);
 }
 
 .breadcrumbs__item:not(.breadcrumbs__item--active) .breadcrumbs__link:hover {
@@ -2400,7 +2406,8 @@ html[data-theme="dark"] .component {
   margin-top: 42px;
   background-color: var(--docs-rating-background);
   text-align: center;
-  color: var(--ifm-link-color);
+  /* blue-700: 옅은 하늘색 배경 위에서 WCAG AA 대비 충족 (기본 블루는 4.05:1) */
+  color: var(--g-blue-700);
   line-height: 32px;
   font-weight: 500;
   border-radius: var(--ifm-alert-border-radius);
@@ -2686,5 +2693,86 @@ figcaption > p:last-child {
   th:first-child,
   td:first-child {
     white-space: nowrap;
+  }
+}
+
+// ============================
+// 접근성 — 라이트 테마의 옅은 칩 배경 위 활성 텍스트는 기본 브랜드 블루로는
+// WCAG AA 대비(4.5:1)에 미달해 blue-700을 사용한다 (다크 테마는 자체 색 유지)
+// ============================
+html[data-theme="light"] {
+  /* Infima 기본 emphasis-600(#8d949e)은 흰 배경에서 3.06:1로 WCAG AA 미달 —
+     흰색과 섹션 회색(#f5f6f7) 배경 모두 통과하는 --subtle 값으로 라이트 테마만 재정의 */
+  --ifm-color-emphasis-600: var(--subtle);
+
+  .navbar__link--active,
+  .navbar__link--active:hover {
+    color: var(--g-blue-700);
+  }
+
+  .menu__link.menu__link--active {
+    color: var(--g-blue-700);
+  }
+
+  // 표 줄무늬 행 배경(#fafafa) 위 기본 블루 링크는 4.31:1로 미달
+  .markdown table a {
+    color: var(--g-blue-700);
+  }
+}
+
+// Prism github 테마의 일부 토큰 색은 코드 배경(#f6f8fa)에서 WCAG AA(4.5:1)에
+// 미달 — 같은 색조의 어두운 값으로 교체 (주석 2.71, 청록 2.58, 하늘 3.1,
+// 빨강 4.0, 분홍 3.9 수준). prism-react-renderer가 인라인 스타일로 색을
+// 지정하므로 !important가 필요하다. 다크 테마(vsDark)는 전부 통과라 제외.
+html[data-theme="light"] .theme-code-block {
+  .token.comment {
+    color: #57606a !important;
+  }
+
+  // github 테마에서 #36acaa로 렌더되는 토큰군
+  .token.entity,
+  .token.url,
+  .token.symbol,
+  .token.number,
+  .token.boolean,
+  .token.variable,
+  .token.constant,
+  .token.property,
+  .token.regex,
+  .token.inserted {
+    color: #0f766e !important;
+  }
+
+  // #00a4db 토큰군
+  .token.atrule,
+  .token.keyword,
+  .token.attr-name,
+  .token.selector {
+    color: #0b7285 !important;
+  }
+
+  // #d73a49 토큰군
+  .token.function,
+  .token.deleted,
+  .token.tag {
+    color: #b31d28 !important;
+  }
+
+  // #e3116c 토큰군
+  .token.string,
+  .token.attr-value {
+    color: #c00f5e !important;
+  }
+}
+
+// 다크 테마의 본문 링크는 주변 텍스트와 색 대비만으로 구분되지 않아(1.64:1)
+// 밑줄로 구분한다 (WCAG 1.4.1 색상만으로 정보 전달 금지)
+html[data-theme="dark"] .markdown {
+  p a:not(.button),
+  li a:not(.button),
+  td a:not(.button) {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
   }
 }

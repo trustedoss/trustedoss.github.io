@@ -760,5 +760,9 @@
   "docsRating.dislike": {
     "message": "No, this page was not useful",
     "description": "Label of the thumbs-down docs rating button"
+  },
+  "journey.progressLabel": {
+    "message": "Self-certification journey progress",
+    "description": "Accessible name of the journey progress bar"
   }
 }

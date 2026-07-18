@@ -111,6 +111,11 @@ function JourneyProgress() {
       <div
         className={styles.bar}
         role="progressbar"
+        aria-label={translate({
+          id: 'journey.progressLabel',
+          message: '자체 인증 여정 진행률',
+          description: 'Accessible name of the journey progress bar',
+        })}
         aria-valuenow={pct}
         aria-valuemin={0}
         aria-valuemax={100}>

@@ -64,6 +64,11 @@
   background: color-mix(in srgb, var(--ifm-color-primary) 14%, transparent);
 }
 
+/* 라이트 테마: 옅은 블루 칩 위 기본 블루는 3.52:1로 WCAG AA 미달 — blue-800 사용 */
+:global(html[data-theme="light"]) .grid > .card:last-child .badge {
+  color: var(--ifm-color-primary-darker);
+}
+
 .title {
   margin: 0 0 0.5rem;
   font-size: 1.05rem;

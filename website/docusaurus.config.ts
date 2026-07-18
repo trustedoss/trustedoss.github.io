@@ -31,6 +31,7 @@ const config: Config = {
     './modules/jumpToFragment.ts',
     './modules/fonts.ts',
     './modules/goatcounter.ts',
+    './modules/a11y.ts',
   ],
   trailingSlash: false,
   scripts: [
