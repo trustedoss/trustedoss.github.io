@@ -26,5 +26,12 @@ export function onRouteDidUpdate({
   ) {
     return;
   }
-  window.goatcounter?.count?.({path: location.pathname + location.search});
+  // 라우트 전환 직후에는 document.title이 아직 이전 페이지 값이라
+  // 제목 갱신 이후로 전송을 미룬다 (공식 gtag 플러그인과 같은 방식)
+  setTimeout(() => {
+    window.goatcounter?.count?.({
+      path: location.pathname + location.search,
+      title: document.title,
+    });
+  }, 50);
 }
