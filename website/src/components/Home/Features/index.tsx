@@ -116,13 +116,13 @@ function Features() {
         <header className={styles.sectionHeader}>
           <h2>
             <Translate id="homepage.features.title">
-              하나의 가이드, 세 갈래의 길
+              역할에 맞는 세 가지 경로
             </Translate>
           </h2>
           <p>
             <Translate id="homepage.features.subtitle">
               표준 기반 관리 체계, 보안 파이프라인, AI 코딩 컴플라이언스 —
-              역할에 맞는 길을 따라가세요.
+              필요한 경로에서 시작하세요.
             </Translate>
           </p>
         </header>

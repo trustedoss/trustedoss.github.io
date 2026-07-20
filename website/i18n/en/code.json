@@ -467,11 +467,11 @@
     "description": "Feature card link label"
   },
   "homepage.features.title": {
-    "message": "One guide, three paths",
+    "message": "Three tracks for your role",
     "description": "Features section title"
   },
   "homepage.features.subtitle": {
-    "message": "A standards-based management system, a security pipeline, and AI coding compliance — follow the path that fits your role.",
+    "message": "A standards-based management system, a security pipeline, and AI coding compliance — start with the track you need.",
     "description": "Features section subtitle"
   },
   "homepage.showcase.title": {
