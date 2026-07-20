@@ -207,9 +207,9 @@ const config: Config = {
       // 검색 전용 공개 키 — 프런트엔드 노출이 전제라 커밋해도 안전
       apiKey: 'c68e85986b1ff600b47ac302143d484c',
       indexName: 'Trusted OSS Docs',
-      // 크롤러가 Docusaurus 전용 facet(docusaurus_tag) 없이 색인하므로
-      // contextualSearch를 켜면 결과가 전부 걸러진다. 크롤러 설정 개편 전까지 false 유지
-      contextualSearch: false,
+      // 크롤러 v6부터 레코드에 Docusaurus facet(docusaurus_tag, language)이
+      // 실리므로 현재 언어와 문서 인스턴스에 맞는 결과만 노출한다
+      contextualSearch: true,
     },
     prism: {
       defaultLanguage: 'bash',
