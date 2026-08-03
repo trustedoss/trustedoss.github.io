@@ -100,6 +100,12 @@ FOSSLight, SW360, FOSSology 등 SCA·컴플라이언스 도구의 도입 및 활
 - `components[]`: 의존성 목록 (라이선스, PURL(Package URL, 패키지를 고유하게 식별하는 표준 문자열) 포함)
 - `vulnerabilities[]`: 취약점 정보 (있을 경우)
 
+:::tip MCP 서버도 SBOM 에 담을 수 있습니다
+AI 에이전트가 호출하는 MCP(Model Context Protocol, 에이전트가 외부 도구를 호출하는 프로토콜) 서버를
+SBOM 에 등재하는 방법은 [에이전트와 MCP 도구 거버넌스](/ai-coding/agent-governance)에서 다룹니다.
+표준 기구의 공식 지침이 없어 기존 명세를 해석해 적용하는 영역입니다.
+:::
+
 ---
 
 ## 3. 셀프 스터디

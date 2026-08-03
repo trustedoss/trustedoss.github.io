@@ -263,3 +263,10 @@ POSITIONING.md 정체성에 맞춰 시스템·콘텐츠 고도화. 계획은 승
     agent-governance(에이전트·MCP 도구 거버넌스) — 전부 1차 출처 사실 검증 + 독립 게이트 판정
   - BomLens 소개(구 sbom-tools 명칭 갱신), KWG 갭 잔여 반영(취약점 템플릿 상향, 용어 부록, 챔피언 모델)
   - 12/12 PASS 확인 (verify.sh 12항목 체계로 표기 일괄 정정 포함)
+- **에이전트 거버넌스 핸드오프 반영** (2026-08-04):
+  - research 팀 핸드오프 5개 제안을 1차 출처 재검증 후 반영 (CycloneDX 1.7 스키마, Snyk,
+    Linux Foundation 원문 대조). 독립 검토로 위치·구조 보완 6건을 계획에 반영한 뒤 실행
+  - agent-governance: 범위 admonition, 여섯 번째 통제(데이터 반출 경로 판정), 출처별 심사 분기 표,
+    agentgateway와 단계적 도입, 6절 "MCP 서버를 SBOM 에 등재하기" 신설 (128줄 → 198줄)
+  - 05-tools/sbom-generation 상호 링크, STYLEGUIDE 약어표·용어집(ko/en) MCP 등재, en 쌍 3파일 동기화
+  - 12/12 PASS + build ko/en SUCCESS (상세: docs/\_plan/STATUS.md)

@@ -1,7 +1,29 @@
 # TrustedOSS 개편 — 실행 현황 (resume용)
 
 > 목적: 긴 세션에서 히스토리가 유실돼도 이 파일만 보면 즉시 재개 가능. 매 task 후 갱신·커밋한다.
-> 최종 갱신: 2026-07-16
+> 최종 갱신: 2026-08-04
+
+## 에이전트 거버넌스 핸드오프 반영 (2026-08-04) — 완료
+
+> 근거: research 팀 핸드오프 `reports/agent-layer-governance/trustedoss-handoff.md` 5개 제안.
+> 1차 출처 재검증 후 반영(CycloneDX 1.7 스키마 직접 확인, Snyk·Linux Foundation 원문 대조).
+> 독립 검토(Fable 5)로 위치·구조 보완 6건을 계획에 반영한 뒤 실행.
+
+- [x] 범위 admonition 신설 — 개발용 에이전트와 제품 내장 에이전트 구분. 본문이 "아래 4절",
+      "아래 5절"로 절 번호를 직접 참조하므로 번호 절이 아니라 admonition 으로 배치
+- [x] 3절 여섯 번째 통제 "데이터 반출 경로 판정" 추가 + 제목·도입문 출처 귀속 정정
+      (여섯 번째의 근거는 Microsoft 권고가 아니라 Snyk 사례 분석)
+- [x] 3절 출처별 심사 분기 표(4행) + 호스팅 플랫폼 심사 한 줄(Smithery — 침해 사고가 아니라
+      제보로 수정된 취약점임을 명시)
+- [x] 4절 agentgateway 행(Linux Foundation, Apache-2.0, 대체재 아닌 별도 통제 범위) +
+      단계적 도입(로그 우선, 관측→경고→차단)
+- [x] 6절 신설 "MCP 서버를 SBOM 에 등재하기" — CycloneDX services/components 배치와 한계
+      (표준 기구 공식 지침 없음 명시). 기존 6·7절은 7·8절로 이동
+- [x] docs/05-tools/sbom-generation 상호 링크 tip, STYLEGUIDE 약어표·용어집(ko/en) MCP 등재
+- [x] en 쌍 3파일 동기화, verify 12/12 + build ko/en SUCCESS
+
+미채택: 핸드오프 1절의 사건 3건 표 — 사례를 각 통제에 분산 배치하는 편이 페이지 밀도에 맞음.
+`agent-governance.md` 128줄 → 198줄.
 
 ## 전 영역 완성도 상향 (2026-07-16 계획 수립) — 실행 대기
 

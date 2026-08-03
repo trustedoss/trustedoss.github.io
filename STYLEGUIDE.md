@@ -87,6 +87,7 @@ trustedoss 문서 작성 시 따르는 규칙입니다.
 | Copyleft        | 카피레프트 라이선스 — 파생물도 같은 라이선스로 공개하도록 요구(GPL 등)                |
 | Strong Copyleft | 강한 카피레프트 — 링크·결합만 해도 소스 공개 의무 발생(GPL)                           |
 | Weak Copyleft   | 약한 카피레프트 — 수정한 파일만 공개하면 됨(LGPL·MPL)                                 |
+| MCP             | 모델 컨텍스트 프로토콜 — AI 에이전트가 외부 도구·데이터를 호출하는 규약               |
 | CycloneDX       | SBOM 표준 포맷의 하나(OWASP)                                                          |
 | SPDX            | SBOM·라이선스 표준 포맷(Linux Foundation)                                             |
 | OpenChain       | 오픈소스 컴플라이언스 국제표준 프로젝트(ISO/IEC 5230·18974)                           |

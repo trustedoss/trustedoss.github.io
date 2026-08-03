@@ -100,6 +100,12 @@ Key field descriptions:
 - `components[]`: the dependency list (includes license and PURL (Package URL, a standard string that uniquely identifies a package))
 - `vulnerabilities[]`: vulnerability information (if present)
 
+:::tip MCP servers belong in the SBOM too
+For how to list MCP (Model Context Protocol, the convention by which an agent calls external tools)
+servers that AI agents call, see [Agent and MCP Tool Governance](/ai-coding/agent-governance).
+No standards body guidance exists yet, so this area interprets the existing specification.
+:::
+
 ---
 
 ## 3. Self-study

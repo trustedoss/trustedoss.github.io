@@ -34,6 +34,7 @@ If you are new to open source management, many of these abbreviations will be un
 | ISO/IEC 5230       | The OpenChain international standard for license compliance                                                         |
 | ISO/IEC 18974      | The OpenChain international standard for security assurance (vulnerability management)                              |
 | Self-Certification | Declaring on your own that you meet the OpenChain requirements, without an external audit                           |
+| MCP                | Model Context Protocol — the convention by which an AI agent calls external tools                                   |
 
 ## Security · Vulnerabilities
 
