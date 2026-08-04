@@ -27,9 +27,34 @@ DevSecOps CI/CD 파이프라인 파일과 정책 파일을 생성한다.
    - DAST: 초기 도입 시 Soft Fail (fail_action: false)
 4. 아티팩트 보관: SBOM은 90일, 리포트는 30일
 
+## 액션 버전 참조표 (필수 준수)
+
+`uses:` 에는 아래 표의 소유자·태그를 그대로 쓴다. 기억에 의존해 임의 버전을 생성하지 않는다.
+이동 참조(`@master`, `@main`)는 사용하지 않는다. 공급망 침해 시 태그가 통째로 바뀔 수 있어,
+버전 고정이 실제 방어선이다(2026-03 trivy-action 태그 오염 사례).
+
+| 용도             | uses 값                                                                                                   |
+| ---------------- | --------------------------------------------------------------------------------------------------------- |
+| 체크아웃         | `actions/checkout@v7`                                                                                     |
+| 아티팩트 업로드  | `actions/upload-artifact@v7`                                                                              |
+| SBOM 생성        | `anchore/sbom-action@v0`                                                                                  |
+| SBOM 취약점 스캔 | `anchore/scan-action@v7`                                                                                  |
+| 컨테이너 스캔    | `aquasecurity/trivy-action@0.36.0`                                                                        |
+| 시크릿 탐지      | `gitleaks/gitleaks-action@v3`                                                                             |
+| IaC 점검         | `bridgecrewio/checkov-action@v12`                                                                         |
+| Terraform 점검   | `aquasecurity/tfsec-action@v1.0.3`                                                                        |
+| SAST             | `github/codeql-action/init@v4`, `github/codeql-action/analyze@v4`, `github/codeql-action/upload-sarif@v4` |
+| DAST             | `zaproxy/action-baseline@v0.15.0`, `zaproxy/action-api-scan@v0.10.0`                                      |
+
+`anchore/scan-action` 은 `severity-cutoff` 를 생략하면 기본값 `medium` 이 적용된다.
+의도한 기준을 항상 명시한다.
+
+`.trivyignore.yaml` 을 함께 생성하는 경우 Trivy 실행에 `--ignorefile` 로 경로를 지정해야 적용된다.
+
 ## GitHub Actions 생성 규칙
 
 devsecops-pr.yml:
+
 - on: pull_request (branches: [main, develop])
 - jobs 병렬 구성:
   - secret-detection (항상 먼저, needs 없음)
@@ -41,6 +66,7 @@ devsecops-pr.yml:
 - SBOM 아티팩트: retention-days: 90
 
 devsecops-merge.yml (컨테이너·DAST 선택 시):
+
 - on: push (branches: [main])
 - jobs 순서:
   - container-security (Trivy, 컨테이너 선택 시)
@@ -48,6 +74,7 @@ devsecops-merge.yml (컨테이너·DAST 선택 시):
 - DAST: fail_action: false (초기 Soft Fail)
 
 devsecops-schedule.yml (스케줄 선택 시):
+
 - on: schedule (cron 설정) + workflow_dispatch
 - jobs: sca-scan + container-scan (선택 영역만)
 - 아티팩트: retention-days: 365 (연간 보관)
@@ -56,30 +83,35 @@ devsecops-schedule.yml (스케줄 선택 시):
 
 stages: [secret-scan, code-scan, build-scan, dast]
 각 domain을 해당 stage에 배치:
+
 - secret-detection → secret-scan stage
 - sast·sca·iac → code-scan stage (병렬)
 - container → build-scan stage
 - dast → dast stage
-rules: merge_request_event (PR 단계 job)
-       CI_COMMIT_BRANCH == "main" (merge 단계 job)
+  rules: merge_request_event (PR 단계 job)
+  CI_COMMIT_BRANCH == "main" (merge 단계 job)
 
 ## 정책 파일 생성 규칙
 
 .grype.yaml (SCA 선택 시):
+
 - fail-on-severity: VULN_THRESHOLD 값
 - ignore 예시 1개 포함 (주석으로 사용법 설명)
 
 .gitleaks.toml (시크릿 탐지 선택 시):
+
 - useDefault: true
 - allowlists: 테스트 파일 경로 예외
 - PROJECT_PATH의 테스트 폴더 자동 감지해서 경로 포함
 
 .trivyignore.yaml (컨테이너 선택 시):
+
 - 예시 무시 규칙 1개 포함
 
 ## PIPELINE-SUMMARY.md 생성 규칙
 
 항상 생성. 포함 내용:
+
 - 선택된 보안 영역과 사용 도구 표
 - 파이프라인 실행 흐름 (단계별)
 - 예상 소요 시간 (영역별)
@@ -88,6 +120,7 @@ rules: merge_request_event (PR 단계 job)
 ## APPLY-GUIDE.md 생성 규칙
 
 항상 생성. 포함 내용:
+
 - 파일별 복사 위치
 - 기존 워크플로우 충돌 방지 방법
   (HAS_EXISTING_WORKFLOW: true일 때 강조)

@@ -38,7 +38,7 @@ The chapter and deliverable structure of this mapping is reworked from those gui
 | Item                              | ISO/IEC 5230                                                                                                | ISO/IEC 18974                                                                                            |
 | --------------------------------- | ----------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
 | **Official name**                 | OpenChain License Compliance                                                                                | OpenChain Security Assurance                                                                             |
-| **Latest version**                | 2.1 (2020)                                                                                                  | 1.0 (2023)                                                                                               |
+| **Current edition**               | ISO/IEC 5230:2020 (OpenChain spec 2.1)                                                                      | ISO/IEC 18974:2023                                                                                       |
 | **Purpose**                       | Establish an open source license compliance system                                                          | Establish an open source security vulnerability assurance system                                         |
 | **Focus**                         | Fulfilling license obligations, BOM management, attribution notice creation                                 | Identifying, tracking, and responding to known CVEs; SBOM-based security                                 |
 | **Key requirements**              | Policy, organization, process, BOM, compliance deliverables, contribution policy, declaration of compliance | Policy, organization, SBOM, CVE scan, vulnerability tracking/scoring/response, declaration of compliance |
@@ -553,11 +553,11 @@ Evolve the system as the technical and regulatory environment changes; required 
 
 ---
 
-#### G4.5 — Confirming distributed software has no known vulnerabilities `[18974]`
+#### G4.5 — Confirming vulnerability remediation before distribution `[18974]`
 
 > ISO/IEC 18974 §4.4.1 · §4.3.2
 
-Before distribution, verify and declare that externally distributed software has no known vulnerabilities; a practical prerequisite for the certification declaration.
+Confirm before distribution that each identified vulnerability has been remediated or recorded as needing no action. ISO/IEC 18974 does not require zero known vulnerabilities; it requires that the detect/assess/remediate/record process runs and that its results are documented. Residual CVEs are acceptable as long as the decision and the record exist.
 
 | Evidence ID    | Content                                                                    | Deliverable file                          |
 | -------------- | -------------------------------------------------------------------------- | ----------------------------------------- |

@@ -19,7 +19,7 @@ or an attorney for specific matters.
 
 The US Copyright Office set out its criteria in "Copyright and Artificial Intelligence" Part 2:
 Copyrightability (finalized 2025-01). The US Supreme Court's denial of certiorari in Thaler v.
-Perlmutter (2025) also settled the principle that an AI itself cannot be an author.
+Perlmutter (2026-03) also settled the principle that an AI itself cannot be an author.
 
 | Scenario                                                      | Human authorship | Copyright protection                                     |
 | ------------------------------------------------------------- | ---------------- | -------------------------------------------------------- |

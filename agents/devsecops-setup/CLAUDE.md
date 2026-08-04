@@ -23,7 +23,7 @@
    (예: ~/myproject 또는 ../myproject)
    → 입력받은 경로의 파일 구조를 즉시 분석한다.
    → package.json / requirements.txt / go.mod / Dockerfile /
-   _.tf / _.yaml(K8s) 자동 감지.
+   `*.tf` / `*.yaml`(K8s) 자동 감지.
 
 2. **CI/CD 플랫폼**은?
    (GitHub Actions / GitLab CI / 둘 다)
@@ -52,7 +52,7 @@
 질문 1 답변 후 즉시:
 
 - Dockerfile 존재 여부 → 컨테이너 보안 자동 권장
-- _.tf / k8s _.yaml 존재 여부 → IaC 보안 자동 권장
+- `*.tf` / k8s `*.yaml` 존재 여부 → IaC 보안 자동 권장
 - 언어·패키지 매니저 감지 → SCA audit 명령어 자동 설정
 - 기존 .github/workflows/ 또는 .gitlab-ci.yml 존재 여부 확인
   → 있으면 충돌 가능성 안내

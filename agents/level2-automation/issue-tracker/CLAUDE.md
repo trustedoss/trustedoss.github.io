@@ -29,9 +29,13 @@
 5. **이슈 언어**는?
    (한국어 / 영어)
 
+6. **Anthropic API 키 Secret 이름**은?
+   (기본값: ANTHROPIC_API_KEY)
+
 ## 처리 방식
 
 모든 질문 완료 후:
+
 - 선택한 플랫폼·기준에 맞는 워크플로우 파일 생성
 - 중복 방지 로직 포함 (기존 이슈 제목으로 검색)
 - Claude가 각 이슈의 설명·재현 방법·권장 조치를 작성
@@ -50,6 +54,8 @@ output/level2/
 
 - GitHub Token 권한 설정 (issues: write)
 - GitLab Token 권한 설정
+- Anthropic API 키 등록 위치·방법
+  (ANTHROPIC_API_KEY 를 저장소 Secret 으로 등록)
 - 이슈 라벨 사전 생성 방법
   (security, vulnerability, compliance 라벨)
 - 중복 방지 동작 방식 설명

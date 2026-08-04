@@ -103,7 +103,7 @@ jobs:
     needs: secret-detection
     steps:
       - uses: actions/checkout@v7
-      - uses: bridgecrewio/checkov-action@master
+      - uses: bridgecrewio/checkov-action@v12
         with:
           directory: .
           framework: terraform,kubernetes,dockerfile

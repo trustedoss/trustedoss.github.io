@@ -104,7 +104,7 @@ Two standard formats are mainly used in the industry today.
 | Item           | SPDX                                            | CycloneDX                                              |
 | -------------- | ----------------------------------------------- | ------------------------------------------------------ |
 | Maintained by  | Linux Foundation                                | OWASP                                                  |
-| Latest version | 3.0                                             | 1.6                                                    |
+| Latest version | 3.0                                             | 1.7                                                    |
 | Strengths      | License compliance focus, ISO/IEC 5962 standard | Security-specific fields, supports JSON/XML/Protobuf   |
 | Tooling        | fossology, reuse, spdx-tools                    | syft, cdxgen, Dependency-Track                         |
 | Main uses      | License audit, open source contribution         | Security vulnerability analysis, supply chain security |

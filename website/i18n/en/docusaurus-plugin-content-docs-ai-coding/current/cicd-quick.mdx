@@ -186,7 +186,7 @@ oss-check:
 
 **Vulnerability threshold**
 
-You can relax `severity-cutoff` (GitHub Actions) or `--fail-on` (GitLab CI) from the default `high` to `critical`, or tighten it to `medium`. When first introducing the pipeline, it is recommended to start at `critical`, observe build failure frequency, then gradually tighten.
+You can relax `severity-cutoff` (GitHub Actions) or `--fail-on` (GitLab CI) from the `high` used in the example to `critical`, or tighten it to `medium`. Omitting the option falls back to scan-action's own default of `medium`, so it is safer to state the threshold you intend. When first introducing the pipeline, it is recommended to start at `critical`, observe build failure frequency, then gradually tighten.
 
 **Forbidden license list**
 

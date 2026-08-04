@@ -98,9 +98,9 @@ For the same reason, the two items below are normally only partially satisfied a
 - **§4.1.2.5 Evidence of periodic review**: Record the "next scheduled review date" in `gap-analysis.md` and the item is treated as partially satisfied. On renewal, one or more actual review records convert it to satisfied.
 - **§4.1.2.6 Person responsible for verifying alignment with internal best practices**: Assign the verification owner in `role-definition.md` and the item is treated as partially satisfied. On renewal, one or more recorded review results convert it to satisfied.
 
-**G4.5 — Verifying that distributed software has no known vulnerabilities (18974 §4.4.1.1):**
+**G4.5 — Confirming vulnerability remediation before distribution (18974 §4.3.2.2 · §4.4.1.1):**
 
-This item requires you to "verify and declare that the distributed software has no known vulnerabilities." If a vulnerability exists, handle it as follows:
+ISO/IEC 18974 does not require zero known vulnerabilities. It requires a record of the action taken for each identified vulnerability — including a decision that no action is needed (§4.3.2.2) — plus documented evidence that the program meets the requirements (§4.4.1.1). If a vulnerability exists, handle it as follows:
 
 | Situation                                                      | How to handle                                                                                                                      |
 | -------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |

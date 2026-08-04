@@ -77,7 +77,7 @@ Recommended retention period: the software release's maintenance period plus at 
 - When the supplier explicitly requests one
 - When the contract includes a clause requiring SBOM delivery
 - When EO 14028 applies (delivery to the U.S. federal government)
-- When the EU CRA applies (entering the EU market; enforcement in 2027)
+- When the EU CRA applies (entering the EU market — reporting obligations from 2026-09-11, full application from 2027-12-11)
 - When participating in a large enterprise supply chain management program (an increasing trend, including Samsung and Hyundai Motor)
 
 **Pros and cons of each delivery method:**
