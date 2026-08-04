@@ -32,7 +32,7 @@ trustedoss에 기여해주셔서 감사합니다.
 
 ```
 Step 1   /qa changed                               # 품질 검증 (Claude 세션 필요)
-Step 2   bash .claude/scripts/verify.sh            # 12/12 PASS 확인
+Step 2   bash .claude/scripts/verify.sh            # 13/13 PASS 확인
 Step 3   .claude/progress.md 업데이트              # 완료 항목·다음 작업 갱신
 Step 4   git add -p && git commit -m "..."         # 변경 파일 선택적 스테이징
 Step 5   git push                                  # 모든 검증 통과 후에만
@@ -48,7 +48,7 @@ Step 5   git push                                  # 모든 검증 통과 후에
 | 명령어                                       | 역할                           | 소요시간 |
 | -------------------------------------------- | ------------------------------ | -------- |
 | `/qa changed`                                | 변경 파일 품질 자동 검사·수정  | ~2분     |
-| `bash .claude/scripts/verify.sh`             | 정적 검증 12항목 일괄 실행     | ~30초    |
+| `bash .claude/scripts/verify.sh`             | 정적 검증 13항목 일괄 실행     | ~30초    |
 | `python3 .claude/scripts/test-coverage.py`   | ISO G항목 커버리지 정합성 확인 | ~5초     |
 | `python3 .claude/scripts/validate-output.py` | output/ 산출물 완전성 확인     | ~5초     |
 | `/kwg-check`                                 | KWG 원본 싱크 상태 확인        | ~1분     |
@@ -176,7 +176,7 @@ If design or code changes appear necessary, stop work and open an issue for disc
 
 ```
 Step 1   /qa changed                               # Quality check (requires Claude session)
-Step 2   bash .claude/scripts/verify.sh            # Confirm 12/12 PASS
+Step 2   bash .claude/scripts/verify.sh            # Confirm 13/13 PASS
 Step 3   Update .claude/progress.md               # Check completed items, update next tasks
 Step 4   git add -p && git commit -m "..."         # Stage files selectively
 Step 5   git push                                  # Only after all checks pass
@@ -192,7 +192,7 @@ Step 5   git push                                  # Only after all checks pass
 | Command                                      | Role                                    | Time    |
 | -------------------------------------------- | --------------------------------------- | ------- |
 | `/qa changed`                                | Auto-check and fix changed file quality | ~2 min  |
-| `bash .claude/scripts/verify.sh`             | Run all 12 static validation checks     | ~30 sec |
+| `bash .claude/scripts/verify.sh`             | Run all 13 static validation checks     | ~30 sec |
 | `python3 .claude/scripts/test-coverage.py`   | Verify ISO requirement coverage         | ~5 sec  |
 | `python3 .claude/scripts/validate-output.py` | Verify output/ deliverable completeness | ~5 sec  |
 | `/kwg-check`                                 | Check sync status with KWG source       | ~1 min  |

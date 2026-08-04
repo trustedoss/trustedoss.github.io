@@ -3,6 +3,30 @@
 > 목적: 긴 세션에서 히스토리가 유실돼도 이 파일만 보면 즉시 재개 가능. 매 task 후 갱신·커밋한다.
 > 최종 갱신: 2026-08-04
 
+## 노후화 전수 검토 반영 (2026-08-04) — 완료
+
+> 근거: 프로젝트 전 영역을 3분할해 독립 검토(Fable 5) — ISO 체계구축 트랙 / AI 코딩·DevSecOps
+> 트랙 / 하네스·레퍼런스 자산. 외부 사실은 1차 출처로 재확인 후 반영.
+
+- [x] 1단계 실제 실패 지점 4건 `6f7db55` — OpenChain 등재 절차를 실제 흐름(체크리스트 내려받기
+      → 자체 점검 → get-started 온라인 신청 폼)으로 재작성(기존의 "Submit Conformance 버튼"은
+      존재하지 않음), NTIA 2021 → CISA 2026 SBOM 최소 요소 대체 반영, Windsurf → Devin Desktop
+      리브랜딩 완료(2026-06-02, Cascade → Devin Local, `.devin/rules/` 우선),
+      Dependency-Track 실행 안내 정정(compose 파일 부재·포트 8081)
+- [x] 2단계 표준·버전 갱신 `7351fd0` — G4.5 정정(18974는 취약점 0을 요구하지 않음),
+      ISO 판 표기 통일, CycloneDX 1.7, EU CRA 2단계 시점, Thaler 상고 기각 2026-03,
+      checkov-action `@master` → `@v12`, devsecops-setup 프롬프트에 액션 버전 참조표 신설,
+      anchore severity-cutoff 기본값 medium 명시, issue-tracker API 키 질문 추가
+- [x] 3단계 하네스 메타 문서 `bd036d1` — 삭제된 workshop/ 참조 제거, verify 항목 수 표기 정정,
+      harness-guide 트리에 KWG 자산 등재, STATUS·progress 상태 표기 정정,
+      일회성 문서 7종을 `.claude/archive/` 로 이동, 완료 계획서에 상태 배너
+- [x] 4단계 ko/en 패리티 검사 — `check-i18n-parity.py` 신설 후 verify.sh [13/13] 로 편입.
+      영어 드리프트가 가장 자주 재발한 결함인데 ko만 고쳐도 통과하던 구멍을 막음.
+      역검증(en 파일 1개 임시 제거 → FAIL, 복원 → PASS) 확인
+
+미확인으로 남긴 것: CISA 2026 최소 요소의 전체 필드 목록(원문 PDF 403), OpenChain Security
+Assurance 스펙 버전 번호(1.0/1.1 판별 불가) — 둘 다 확인된 범위로만 서술하고 원문 링크를 달았다.
+
 ## 에이전트 거버넌스 핸드오프 반영 (2026-08-04) — 완료
 
 > 근거: research 팀 핸드오프 `reports/agent-layer-governance/trustedoss-handoff.md` 5개 제안.

@@ -265,6 +265,11 @@ POSITIONING.md 정체성에 맞춰 시스템·콘텐츠 고도화. 계획은 승
     agent-governance(에이전트·MCP 도구 거버넌스) — 전부 1차 출처 사실 검증 + 독립 게이트 판정
   - BomLens 소개(구 sbom-tools 명칭 갱신), KWG 갭 잔여 반영(취약점 템플릿 상향, 용어 부록, 챔피언 모델)
   - 12/12 PASS 확인 (verify.sh 12항목 체계로 표기 일괄 정정 포함)
+- **노후화 전수 검토 반영** (2026-08-04):
+  - 전 영역 3분할 독립 검토 → 낡은 사실·중복·누락·작동 불능 항목 발굴, 1차 출처 재확인 후 4단계로 반영
+  - 실제 실패 지점 4건(OpenChain 등재 절차, CISA 2026 SBOM 최소 요소, Devin Desktop 리브랜딩,
+    Dependency-Track 실행), 표준·버전 9건, 하네스 메타 문서 정합, ko/en 패리티 검사 신설
+  - verify.sh 12항목 → 13항목 (`check-i18n-parity.py` 추가). 13/13 PASS + build ko/en SUCCESS
 - **에이전트 거버넌스 핸드오프 반영** (2026-08-04):
   - research 팀 핸드오프 5개 제안을 1차 출처 재검증 후 반영 (CycloneDX 1.7 스키마, Snyk,
     Linux Foundation 원문 대조). 독립 검토로 위치·구조 보완 6건을 계획에 반영한 뒤 실행

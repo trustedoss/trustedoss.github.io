@@ -9,7 +9,7 @@ WARNINGS=()
 echo "===== trustedoss 자체 검증 시작 ====="
 
 # 검증 1: Docusaurus 빌드
-echo "[1/12] Docusaurus 빌드 확인..."
+echo "[1/13] Docusaurus 빌드 확인..."
 BUILD_ERR_LOG=$(mktemp)
 if (cd website && npm run build --silent 2>"$BUILD_ERR_LOG"); then
   echo "  PASS: 빌드 성공"
@@ -22,7 +22,7 @@ fi
 rm -f "$BUILD_ERR_LOG"
 
 # 검증 2: 내부 링크 확인
-echo "[2/12] 내부 링크 확인..."
+echo "[2/13] 내부 링크 확인..."
 BROKEN=0
 while IFS= read -r file; do
   while IFS= read -r link; do
@@ -52,7 +52,7 @@ else
 fi
 
 # 검증 3: YAML front matter 콜론 확인
-echo "[3/12] Front matter YAML 형식 확인..."
+echo "[3/13] Front matter YAML 형식 확인..."
 FM_ERRORS=0
 while IFS= read -r file; do
   # front matter 추출 후 콜론 포함 값 따옴표 여부 확인
@@ -85,7 +85,7 @@ else
 fi
 
 # 검증 4: 필수 파일 존재 확인
-echo "[4/12] 필수 파일 존재 확인..."
+echo "[4/13] 필수 파일 존재 확인..."
 REQUIRED_FILES=(
   "CLAUDE.md"
   "README.md"
@@ -120,7 +120,7 @@ fi
 # 검증 5: 로컬 경로 노출 확인
 # (git ls-files 기준 — gitignore 된 파일 제외, verify.sh 자신 제외)
 # STYLEGUIDE.md 는 "금지 패턴" 자체를 예시로 문서화하므로 verify.sh 와 같은 이유로 제외한다.
-echo "[5/12] 로컬 경로 노출 확인..."
+echo "[5/13] 로컬 경로 노출 확인..."
 LOCAL_PATH_HITS=$(git ls-files \
   -- '*.md' '*.mdx' '*.sh' '*.yml' '*.yaml' '*.json' '*.ts' '*.tsx' '*.py' '*.js' '*.scss' \
   2>/dev/null | \
@@ -151,7 +151,7 @@ fi
 
 # 검증 6: ISO/IEC 18974 섹션 번호 형식 확인
 # 18974는 §4.x.x 체계 — 아래 2가지 패턴으로 §3.x.x 오표기 탐지
-echo "[6/12] ISO/IEC 18974 섹션 번호 형식 확인..."
+echo "[6/13] ISO/IEC 18974 섹션 번호 형식 확인..."
 SPEC_ERRORS=0
 
 # 패턴 1: 본문 텍스트 "18974 3.x.x" 형식 (괄호·숫자 이전까지만 탐색)
@@ -206,7 +206,7 @@ fi
 
 # 검증 7: agent 실행 블록 admonition 누락 확인
 # docs/ 내 bash 블록에 'cd agents/'가 있으면 직전 10줄에 ':::tip 실행 전 확인'이 있어야 함
-echo "[7/12] agent 실행 admonition 누락 확인..."
+echo "[7/13] agent 실행 admonition 누락 확인..."
 ADMON_ERRORS=0
 while IFS= read -r result; do
   WARNINGS+=("admonition 누락: $result")
@@ -263,7 +263,7 @@ else
 fi
 
 # 검증 8: ISO 커버리지 정합성 (test-coverage.py)
-echo "[8/12] ISO 커버리지 정합성 확인..."
+echo "[8/13] ISO 커버리지 정합성 확인..."
 if python3 "$(dirname "$0")/test-coverage.py" 2>/dev/null; then
   echo "  PASS: ISO 커버리지 정합성 이상 없음"
   PASS=$((PASS+1))
@@ -273,7 +273,7 @@ else
 fi
 
 # 검증 9: output/ 산출물 완전성 (validate-output.py)
-echo "[9/12] output/ 산출물 완전성 확인..."
+echo "[9/13] output/ 산출물 완전성 확인..."
 if python3 "$(dirname "$0")/validate-output.py" 2>/dev/null; then
   echo "  PASS: output/ 산출물 완전성 이상 없음"
   PASS=$((PASS+1))
@@ -283,7 +283,7 @@ else
 fi
 
 # 검증 10: Agent CLAUDE.md 스펙 구조 검증 (test-agent-specs.py)
-echo "[10/12] Agent 스펙 구조 확인..."
+echo "[10/13] Agent 스펙 구조 확인..."
 if python3 "$(dirname "$0")/test-agent-specs.py" 2>/dev/null; then
   echo "  PASS: Agent 스펙 구조 이상 없음"
   PASS=$((PASS+1))
@@ -293,7 +293,7 @@ else
 fi
 
 # 검증 11: 골든 픽스처 회귀 테스트 (test-output-fixtures.py)
-echo "[11/12] 골든 픽스처 회귀 테스트..."
+echo "[11/13] 골든 픽스처 회귀 테스트..."
 if python3 "$(dirname "$0")/test-output-fixtures.py" 2>/dev/null; then
   echo "  PASS: output-sample/ 골든 픽스처 유효"
   PASS=$((PASS+1))
@@ -303,12 +303,22 @@ else
 fi
 
 # 검증 12: agent 체인 전제 조건 연결 검증 (validate-chain.py)
-echo "[12/12] agent 체인 연결 검증..."
+echo "[12/13] agent 체인 연결 검증..."
 if python3 "$(dirname "$0")/validate-chain.py" --dir output-sample 2>/dev/null; then
   echo "  PASS: agent 체인 연결 이상 없음"
   PASS=$((PASS+1))
 else
   echo "  FAIL: 체인 연결 이슈 발견 — python3 .claude/scripts/validate-chain.py --dir output-sample -v 실행하여 상세 확인"
+  FAIL=$((FAIL+1))
+fi
+
+# 검증 13: 한국어·영어 문서 파일 패리티 (check-i18n-parity.py)
+echo "[13/13] ko/en 문서 패리티 확인..."
+if python3 "$(dirname "$0")/check-i18n-parity.py"; then
+  echo "  PASS: ko/en 문서 파일 패리티 이상 없음"
+  PASS=$((PASS+1))
+else
+  echo "  FAIL: ko/en 문서 파일 패리티 불일치 — 위 목록의 번역을 추가하거나 고아 파일을 정리하세요"
   FAIL=$((FAIL+1))
 fi
 

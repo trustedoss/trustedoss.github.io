@@ -44,7 +44,7 @@
 │   └── update-reference-samples.md   # /update-reference-samples (커맨드는 commands/ 에 별도)
 │
 ├── scripts/
-│   ├── verify.sh                     # 12가지 정적 검증 (항상 마지막에 실행)
+│   ├── verify.sh                     # 13가지 정적 검증 (항상 마지막에 실행)
 │   ├── test-coverage.py              # ISO 커버리지 정합성 4종 테스트
 │   ├── test-agent-specs.py           # Agent CLAUDE.md 스펙 구조 검증 (Layer 1)
 │   ├── test-output-fixtures.py       # 골든 픽스처 회귀 테스트 (Layer 2)
@@ -54,7 +54,8 @@
 │   ├── fix-style.py                  # 스타일 자동 수정
 │   ├── sync-output-samples.sh        # output/ → output-sample/ 동기화
 │   ├── sync-kwg-reference.sh         # KWG 원본 md 파일 동기화
-│   └── check-kwg-drift.py            # KWG 원본과의 드리프트 검사
+│   ├── check-kwg-drift.py            # KWG 원본과의 드리프트 검사
+│   └── check-i18n-parity.py          # ko/en 문서 파일 패리티 검사
 │
 dry-run/
 └── run-dryrun.sh                     # OpenWave 프로필 드라이런 오케스트레이터
@@ -122,7 +123,7 @@ dry-run/
 [1] diff-scope   → 변경 파일 목록 계산
 [2] qa-reviewer  → 6종 이슈 탐지
 [3] doc-fixer    → 자동 수정 (이슈 있을 때만)
-[4] verify.sh    → 12/12 정적 검증
+[4] verify.sh    → 13/13 정적 검증
 [5] 보고         → 수동 처리 필요 항목 출력
 ```
 
@@ -247,13 +248,13 @@ output/ 산출물이 ISO G항목을 실제로 충족하는지 판정.
 
 ## 4. 스크립트 레퍼런스
 
-### `verify.sh` — 12가지 정적 검증
+### `verify.sh` — 13가지 정적 검증
 
 ```bash
 bash .claude/scripts/verify.sh
 ```
 
-모든 파일 생성·수정 후 **반드시** 실행. 12/12 PASS 후에만 push 가능.
+모든 파일 생성·수정 후 **반드시** 실행. 13/13 PASS 후에만 push 가능.
 
 | #   | 항목              | 핵심                        |
 | --- | ----------------- | --------------------------- |
@@ -384,7 +385,7 @@ docs/ 파일 저장 시 `cd agents/` 블록 직전 `:::tip 실행 전 확인`이
     - YAML_QUOTE: title 값 따옴표 없음 (3번 줄)
     - ADMONITION: cd agents/03 직전 누락 (87번 줄)
 [3] doc-fixer 실행 중... 2건 자동 수정
-[4] verify.sh: 12/12 PASS
+[4] verify.sh: 13/13 PASS
 ✅ QA 완료 — 수동 처리 항목 없음
 ```
 
@@ -447,7 +448,7 @@ bash .claude/scripts/verify.sh  # 최종 확인
 ```bash
 /qa all                           # 전체 품질 이슈 검사
 /qa iso                           # 전체 ISO 정합성 검증
-bash .claude/scripts/verify.sh   # 12/12 최종 확인
+bash .claude/scripts/verify.sh   # 13/13 최종 확인
 ```
 
 > ⚠️ `/qa all`은 파일 수가 많아 토큰 소비가 크다. 개별 수정 후에는 `/qa changed` 사용 권장.
@@ -524,7 +525,7 @@ bash dry-run/run-dryrun.sh
 ```bash
 # 1. QA 및 검증
 /qa changed
-bash .claude/scripts/verify.sh   # 12/12 PASS 확인
+bash .claude/scripts/verify.sh   # 13/13 PASS 확인
 
 # 2. 진행 상황 업데이트
 # .claude/progress.md 갱신 (작업 내용 요약 추가)
@@ -611,20 +612,21 @@ docs/05-tools/index.md 에 반영이 필요한 내용이 있는지 확인해줘
 
 ### verify.sh FAIL 항목별 대응
 
-| FAIL 항목         | 즉각 대응                                                        |
-| ----------------- | ---------------------------------------------------------------- |
-| [1] 빌드 실패     | MDX 구문 오류. `:::` admonition 괄호, `{` 중괄호 확인            |
-| [2] 내부 링크     | 파일 경로 오타. 상대경로 기준 확인                               |
-| [3] Front matter  | 콜론 포함 값 따옴표 추가. `/qa changed`로 자동 수정              |
-| [4] 필수 파일     | `.claude/scripts/verify.sh` L4 목록 확인 후 누락 파일 생성       |
-| [5] 로컬 경로     | `/qa changed`로 LOCAL_PATH 자동 수정                             |
-| [6] 18974 섹션    | `/qa changed`로 ISO18974_NUM 자동 수정                           |
-| [7] Admonition    | `/qa changed`로 ADMONITION 자동 수정                             |
-| [8] ISO 커버리지  | `python3 .claude/scripts/test-coverage.py` 상세 오류 확인        |
-| [9] 산출물 완전성 | `python3 .claude/scripts/validate-output.py` 로 누락 산출물 확인 |
-| [10] Agent 스펙   | `python3 .claude/scripts/test-agent-specs.py` 상세 오류 확인     |
-| [11] 골든 픽스처  | `python3 .claude/scripts/test-output-fixtures.py` 로 회귀 확인   |
-| [12] 체인 연결    | `python3 .claude/scripts/validate-chain.py` 로 전제 조건 확인    |
+| FAIL 항목         | 즉각 대응                                                           |
+| ----------------- | ------------------------------------------------------------------- |
+| [1] 빌드 실패     | MDX 구문 오류. `:::` admonition 괄호, `{` 중괄호 확인               |
+| [2] 내부 링크     | 파일 경로 오타. 상대경로 기준 확인                                  |
+| [3] Front matter  | 콜론 포함 값 따옴표 추가. `/qa changed`로 자동 수정                 |
+| [4] 필수 파일     | `.claude/scripts/verify.sh` L4 목록 확인 후 누락 파일 생성          |
+| [5] 로컬 경로     | `/qa changed`로 LOCAL_PATH 자동 수정                                |
+| [6] 18974 섹션    | `/qa changed`로 ISO18974_NUM 자동 수정                              |
+| [7] Admonition    | `/qa changed`로 ADMONITION 자동 수정                                |
+| [8] ISO 커버리지  | `python3 .claude/scripts/test-coverage.py` 상세 오류 확인           |
+| [9] 산출물 완전성 | `python3 .claude/scripts/validate-output.py` 로 누락 산출물 확인    |
+| [10] Agent 스펙   | `python3 .claude/scripts/test-agent-specs.py` 상세 오류 확인        |
+| [11] 골든 픽스처  | `python3 .claude/scripts/test-output-fixtures.py` 로 회귀 확인      |
+| [12] 체인 연결    | `python3 .claude/scripts/validate-chain.py` 로 전제 조건 확인       |
+| [13] ko/en 패리티 | `python3 .claude/scripts/check-i18n-parity.py -v` 로 누락·고아 확인 |
 
 ---
 
