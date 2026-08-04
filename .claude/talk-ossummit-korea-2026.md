@@ -1,0 +1,183 @@
+# 발표 준비 — Open Source Summit Korea 2026
+
+**세션**: AI-Powered Open Source Risk Management: ISO Self-Certification Kit and 5-Level AI Coding Governance
+**일시**: 2026-08-12(수) 13:35 KST · **장소**: Rose · **길이**: 40분(Q&A 포함)
+**행사**: 2026-08-10~12, 서울 · **트랙**: OSS Enabling & Management
+**발표자**: 장학성, SK텔레콤 Open Source Program Manager / OpenChain Korea Work Group Lead
+
+> 이 문서는 CFP 제출본(2026-04)을 발표 준비용으로 갱신한 것이다. 제출 원문은 아래 "제출한
+> Description"에 그대로 보존한다.
+
+---
+
+## 핵심 포지셔닝
+
+**"AI로 오픈소스 컴플라이언스를 민주화한다"**
+
+Trusted OSS는 가이드가 아니라 **AI Agent가 회사별 맞춤 산출물을 자동 생성하는 오픈소스 킷**이다.
+OpenChain Korea Work Group에서 만들고 검증했다는 점이 신뢰의 근거다.
+
+---
+
+## 최종 발표 구성 (40분)
+
+| 구간                      | 시간 | 내용                                                              |
+| ------------------------- | ---- | ----------------------------------------------------------------- |
+| 문제 제기                 | 4분  | 사고 사례 → 규제(CISA 2026·EU CRA) → AI 코딩이 더한 새 위험       |
+| 전체 지도                 | 2분  | 키트 3층 + TRUSCA 위치를 한 장에. 이후 모든 슬라이드가 이 지도 위 |
+| 축 A — ISO 자체 인증 키트 | 9분  | 흐름 3분 / 녹화 데모 5분 / 실제 등재 절차 1분                     |
+| 축 B — AI 코딩 거버넌스   | 10분 | 5단계 자가진단 4분 / 4단계 AI 방어 3분 / 에이전트·MCP 3분         |
+| TRUSCA — 인증 이후        | 5분  | 왜 필요한가 2분 / 무엇인가 2분 / 로드맵 1분                       |
+| 시작 방법                 | 3분  | QR, CC BY 4.0, 기여                                               |
+| Q&A                       | 7분  |                                                                   |
+
+### 서사의 뼈대
+
+두 축이 마지막에 한 점으로 모인다. 키트는 체계를 세우고 산출물을 만들지만, ISO/IEC 18974의
+본질은 지속 운영이다. 인증 선언으로 끝나지 않는다는 사실을 청중이 깨달을 때 TRUSCA를 꺼내면
+판매가 아니라 논리적 귀결로 들린다. 그리고 TRUSCA 로드맵 1순위가 "에이전트가 패키지를 넣기 전에
+정책을 조회하는 MCP 서버"라, 축 B의 에이전트 거버넌스와 정확히 맞물린다.
+
+닫는 문장: **"AI 에이전트를 통제하는 이야기로 시작해, 그 에이전트가 스스로 정책을 조회하게 만드는
+지점에서 두 축이 만납니다."**
+
+---
+
+## 구간별 상세
+
+### 1. 문제 제기 (4분)
+
+13:35는 점심 직후다. 개요나 목차로 열면 청중이 깨어나지 않는다. 구체적 사고 사례로 시작한다.
+
+- 규제: EU CRA 보고 의무 2026-09-11 시작(한 달 뒤), 전면 적용 2027-12-11
+- **CISA 2026 SBOM 최소 요소**(2026-07-29 발표, 행사 2주 전)가 NTIA 2021을 대체.
+  컴포넌트 해시·라이선스가 필수 필드로 승격, AI 소프트웨어와 SaaS까지 적용 범위 확대
+- AI 코딩 도구가 라이선스·보안 위험을 증폭시키는 새 현실
+
+CISA 기준 변경을 이미 반영해 두었다는 점은 "살아 있는 프로젝트"의 증거로 한 줄 언급한다.
+
+### 2. 전체 지도 (2분)
+
+키트 3층(체계구축 / AI 코딩 거버넌스 / DevSecOps)과 그 바깥의 TRUSCA를 한 장에. DevSecOps는
+별도 층으로 길게 설명하지 않는다 — 5단계 모델의 3단계가 곧 DevSecOps이므로 축 B에서 흡수한다.
+
+### 3. 축 A — ISO 자체 인증 키트 (9분)
+
+- 흐름(3분): Agent 9종 → 산출물 24종 → 갭 분석 → 선언문. 5230과 18974의 공통 기반이 크다는 점
+- 데모(5분): **녹화본 2배속 + 말로 해설.** 라이브 실행 금지(콘퍼런스 와이파이 위험)
+- 등재 절차(1분): 체크리스트 내려받기 → 자체 점검 → get-started 온라인 신청 폼
+
+### 4. 축 B — AI 코딩 거버넌스 (10분)
+
+- 5단계 자가진단(4분): "지금 우리 팀은 몇 단계인가". 표가 복잡하면 실패한다.
+  거수를 요구하지 말고 **3초 침묵**으로 스스로 판단할 시간을 준다
+- 4단계 하이라이트(3분): AI 공격에 AI 방어 — findings-driven 리뷰, AI 퍼징.
+  3단계 도구가 추린 결과만 AI에 넘겨 토큰을 아끼는 구조
+- 에이전트·MCP 거버넌스(3분): KWG 가이드가 다루지 않는 영역이라 신선도가 가장 높다.
+  `postmark-mcp` 사례(1.0.15까지 정상 → 이후 숨은 BCC로 전체 발신 메일 외부 복사)로
+  "버전 고정"이 왜 필요한지를 3초 만에 납득시킨다. 데이터 반출 경로 판정까지 통제 6가지
+
+### 5. TRUSCA — 인증 이후 (5분)
+
+- **왜 필요한가(2분)**: 가이드는 체계와 1회성 산출물까지. 18974는 주간 단위 취약점 DB 갱신,
+  VEX 판정, 라이선스 정책 게이트를 계속 돌릴 것을 요구한다. 여기서 대부분의 팀이 상용 SCA
+  예산 앞에서 멈춘다
+- **무엇인가(2분)**: Apache-2.0 self-hosted SCA. cdxgen 기반 30개 이상 생태계 탐지,
+  Trivy 통합 DB(NVD·OSV·GHSA·EPSS·KEV, 주간 갱신), VEX 수출입과 7단계 triage,
+  라이선스 3계층 정책과 NOTICE 자동 생성, CI 게이트, RBAC·감사 로그.
+  폐쇄망 자체 호스팅이 한국 기업 상당수에 결정적
+- **로드맵(1분)**: 도달 가능성(reachability) 분석, 에이전트 pre-flight 정책 MCP 서버 →
+  축 B와 연결하며 닫는다
+- 링크: https://github.com/trustedoss/trusca · https://trustedoss.github.io/trusca/
+
+---
+
+## 지켜야 할 선
+
+- **No product pitches** 규칙. TRUSCA는 Apache-2.0이라 소개 자체는 문제없으나, 상용 도구와
+  기능을 나열해 비교하지 않는다. 이 로드맵의 출발점이 Black Duck 주최 웨비나 질문 분석이었고
+  행사에 관계자가 있을 수 있다. **"상용보다 낫다"가 아니라 "예산·폐쇄망 제약이 있는 팀에게
+  선택지가 하나 더 있다"**로 프레이밍한다
+- SK텔레콤 언급은 소속 소개 한 번으로 충분
+- 인접 세션과의 역할 분담: OpenChain 2027 전략(Meixia Wang), "SBOMs Aren't Enough"(정용재·
+  Justin Cappos)가 방향과 원리를 다룬다. 우리 세션은 **"그래서 내일 아침에 무엇을 실행하나"**를
+  맡는다. SBOM 생성 자체보다 산출물 생성과 AI 코딩 시대의 새 위험에 무게를 싣는다
+
+---
+
+## 준비 목록 (D-8, 2026-08-04 기준)
+
+- [ ] **데모 녹화** (가장 오래 걸림) — Agent 실행 → 정책 생성까지. 실패 시 재촬영 여유 확보.
+      2배속 재생 기준 5분에 맞춘다
+- [ ] **5단계 자가진단 슬라이드** — 3초 안에 자기 위치를 찾을 수 있어야 한다. 복잡하면 실패
+- [ ] 전체 지도 슬라이드 (키트 3층 + TRUSCA)
+- [ ] CISA 2026 최소 요소 슬라이드 1장
+- [ ] `postmark-mcp` 사례 슬라이드 — 사실 경계 주의(악성 시작 버전은 추정, ActiveCampaign
+      연관은 미확인)
+- [ ] TRUSCA 3장 (왜 / 무엇 / 로드맵)
+- [ ] QR 코드 — trustedoss.github.io
+- [ ] 리허설 1회 — 40분 안에 들어가는지 실측. TRUSCA를 넣어 빠듯하므로 필수
+- [ ] 오프라인 폴백 — 네트워크 없이도 슬라이드·녹화가 재생되는지 확인
+
+---
+
+## 4월 CFP 이후 프로젝트 변경 (발표에 반영할 것)
+
+| 변경                              | 발표 반영 지점                               |
+| --------------------------------- | -------------------------------------------- |
+| 에이전트·MCP 도구 거버넌스 페이지 | 축 B 신규 3분 (KWG 미커버 영역, 신선도 최상) |
+| CISA 2026 SBOM 최소 요소          | 문제 제기 (행사 2주 전 뉴스)                 |
+| 5.4 AI SBOM 챕터(BomLens 실측)    | 축 A 산출물 목록에 한 줄                     |
+| AI 생성 코드 법적 고려 페이지     | 질문 대비 (저작권 귀속, Thaler 2026-03)      |
+| TRUSCA 연계                       | 신규 구간 5분                                |
+| 브라우저 도구 6종                 | 시작 방법 (API 키만으로 즉시 사용)           |
+
+---
+
+## 제출한 Description (2026-04 원문, 수정 금지)
+
+```
+Open source compliance sounds expensive — consultants, lawyers,
+complex tooling. But it doesn't have to be.
+
+Trusted OSS is an open-source self-certification kit that guides
+any organization from zero to ISO/IEC 5230 (license compliance)
+and ISO/IEC 18974 (security assurance) conformance using AI agents.
+No prior expertise required.
+
+Built by the OpenChain Korea Work Group and released under CC BY 4.0,
+the kit features:
+
+• AI agents (Claude Code) that auto-generate company-specific
+  compliance artifacts: OSS policy, SBOM, vulnerability response
+  procedures, training curriculum, and conformance declaration
+• DevSecOps pipelines (SAST, SCA, secret detection, IaC) ready to
+  drop into any CI/CD environment
+• A 5-level AI Coding Governance Maturity Model — from ad-hoc
+  prompting (Level 1) to AI-augmented defense (findings-driven
+  review, AI fuzzing) and continuous auto-remediation (Level 5).
+  Teams self-assess where they stand and leave with a concrete
+  next step.
+• Browser-based tools requiring only an API key — no local setup
+
+In this session, I'll walk through how any team can go from
+no compliance process to a fully documented, self-certifiable
+program in hours, not months. I'll also share how we're using
+AI to close the compliance skills gap across Korean enterprises
+and SMEs — making OpenChain certification accessible to all.
+
+Attendees leave with a working toolkit they can clone and run today.
+```
+
+### Benefits to the Ecosystem (제출 원문)
+
+```
+1. Reduces the barrier to OpenChain ISO/IEC 5230 & 18974
+   self-certification for SMEs and under-resourced teams
+2. Demonstrates a replicable model for AI-assisted open source
+   governance that any community can adopt
+3. Provides immediately usable, CC BY 4.0 licensed tooling —
+   attendees can fork and adapt for their own organizations
+4. Advances the OpenChain ecosystem by growing the pool of
+   certified organizations in Korea and Asia
+```

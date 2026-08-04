@@ -3,6 +3,19 @@
 > 목적: 긴 세션에서 히스토리가 유실돼도 이 파일만 보면 즉시 재개 가능. 매 task 후 갱신·커밋한다.
 > 최종 갱신: 2026-08-04
 
+## OSS Summit Korea 2026 발표 준비 (2026-08-04) — 진행 중
+
+> 세션 확정: 2026-08-12(수) 13:35, Rose. 40분(Q&A 포함). 트랙 OSS Enabling & Management.
+> 제목 "AI-Powered Open Source Risk Management: ISO Self-Certification Kit and 5-Level AI
+> Coding Governance". 준비 문서: `.claude/talk-ossummit-korea-2026.md`
+
+- [x] 4월 CFP 문서를 발표 준비 문서로 갱신 — 확정 세션 정보, 40분 구성, 준비 목록
+- [x] 구성 확정: 양축 균형(ISO 키트 9분 + AI 코딩 거버넌스 10분) + TRUSCA 5분.
+      두 축이 TRUSCA 로드맵의 에이전트 pre-flight MCP 서버에서 합류하는 서사
+- [ ] 데모 녹화 (Agent 실행 → 정책 생성, 2배속 5분)
+- [ ] 슬라이드 작성 — 전체 지도, 5단계 자가진단, CISA 2026, postmark-mcp, TRUSCA 3장
+- [ ] 리허설 1회 (40분 실측)
+
 ## 노후화 전수 검토 반영 (2026-08-04) — 완료
 
 > 근거: 프로젝트 전 영역을 3분할해 독립 검토(Fable 5) — ISO 체계구축 트랙 / AI 코딩·DevSecOps
