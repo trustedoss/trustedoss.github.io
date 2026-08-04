@@ -1,5 +1,7 @@
 # TRUSCA 로드맵 제안 — OSSRA 2026 웨비나 수요 기반 (2026-07-09)
 
+**상태: 전달 완료** — TRUSCA 저장소로 전달할 제안서다. 로드맵 소관은 TRUSCA 저장소이며, 이 레포에서는 이력으로만 보관한다.
+
 > 목적: Black Duck x KMS Technology "2026 OSSRA Report" 웨비나 질문 약 90건을 분석해,
 > TRUSCA(github.com/trustedoss/trusca, Apache-2.0 self-hosted SCA)가 그 수요를 어디까지 지금 충족하고
 > 무엇을 더하면 시장 공백을 메우는지 정리한다. 이 문서는 trustedoss.github.io 사이트가 아니라 TRUSCA

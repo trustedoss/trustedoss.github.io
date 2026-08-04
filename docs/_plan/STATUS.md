@@ -25,7 +25,7 @@
 미채택: 핸드오프 1절의 사건 3건 표 — 사례를 각 통제에 분산 배치하는 편이 페이지 밀도에 맞음.
 `agent-governance.md` 128줄 → 198줄.
 
-## 전 영역 완성도 상향 (2026-07-16 계획 수립) — 실행 대기
+## 전 영역 완성도 상향 (2026-07-16 계획 수립) — 완료
 
 > 근거: 멀티 에이전트 전수 감사(finder 22유닛 + P0/P1 적대적 검증, 총 160 에이전트).
 > 발견 252건(확정 P0 24, 확정 P1 110, 미검증 P1 13, P2 101, 반박 4).
@@ -36,7 +36,8 @@
 - [x] 1순위 A1~A6: P0 24건 완료 — A1 `f247fcf`, A2 `15b472d`, A3 `82d2eb8`, A4 `71154d7`,
       A5 `bb82edb`, A6 `807c45c`. 게이트 1(gate-verifier 역순 판정) 전 항목 PASS + verify 12/12.
       게이트 참고 1건: sktelecom.github.io 링크는 실재 공개 가이드 인용이라 예외 판정(보존)
-- [ ] 6순위 회수 대장 (ko만 고친 P0의 en 대응분): en checklist-mapping 5230 연도,
+- [x] 6순위 회수 대장 (ko만 고친 P0의 en 대응분) — 6순위 en 패리티 동기화에 흡수되어 완료:
+      en checklist-mapping 5230 연도,
       en 01-setup 로그인 안내, en 05-sbom-management 주간 워크플로, en devsecops·ai-coding
       GitLab CI 예시(curl, dind, gitleaks, CKV ID), en 08 method2/method4는 D2 재번역에 포함
 - [x] 2순위 B1~B3 완료 — B1 `eceb1e7`(공통 12, 산출물 24, 39%, 담당 5쌍 양방향), B2 `4a365d7`

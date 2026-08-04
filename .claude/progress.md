@@ -6,9 +6,11 @@
 | ----- | ----------------------------------------------------- | ----------------- |
 | 0     | 플랫폼 기반 구축 (Docusaurus, CI/CD, 기본 구조)       | ✅ 완료           |
 | 1     | 핵심 콘텐츠 작성 (docs 챕터 00~07, templates, agents) | ✅ 완료 (2026-03) |
-| 2     | Agent 구축 (산출물 자동 생성 파이프라인)              | 🔄 진행중         |
-| 3     | 검증 시스템 강화 (verify.sh, CI 통합)                 | ⏳ 대기           |
-| 4     | 출시 및 배포 (퍼블리시, OpenChain 등록 안내)          | ⏳ 대기           |
+| 2     | Agent 구축 (산출물 자동 생성 파이프라인)              | ✅ 완료 (2026-04) |
+| 3     | 검증 시스템 강화 (verify.sh, CI 통합)                 | ✅ 완료 (2026-06) |
+| 4     | 출시 및 배포 (퍼블리시, OpenChain 등록 안내)          | ✅ 완료 (2026-07) |
+
+> 초기 로드맵 4단계는 모두 완료됐다. 현재 진행 중인 작업은 아래 고도화 이니셔티브를 따른다.
 
 ---
 
@@ -218,7 +220,7 @@ POSITIONING.md 정체성에 맞춰 시스템·콘텐츠 고도화. 계획은 승
     - 3단계 전체 (Gitleaks·Semgrep·CodeQL·syft+grype·Checkov·Trivy)
     - 4단계 전체 (Dependabot·Renovate·OWASP ZAP·AI 퍼징)
     - 정책 파일(.gitleaks.toml·.grype.yaml·.semgrep.yml), 샘플 앱(Flask), K8s 매니페스트
-  - `.claude/plan-ai-coding-improvement.md` 신규: 세션 연속성 보장용 작업 계획 문서
+  - `.claude/archive/plan-ai-coding-improvement.md` 신규: 세션 연속성 보장용 작업 계획 문서
   - 11/11 PASS 확인
 - **AI 코딩 전략 5단계 개편** (2026-04-25):
   - strategy.md: 4단계 → 5단계 (3: CI/CD / 4: AI 방어 레이어 / 5: 모니터링)

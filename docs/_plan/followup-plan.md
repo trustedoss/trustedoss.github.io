@@ -1,5 +1,7 @@
 # 후속 작업 계획 — P1 잔여 + BomLens + KWG 잔여 + P2 (2026-07-09)
 
+**상태: 완료** — 결과는 `STATUS.md` "후속 작업(followup-plan)" 절을 참조한다. 이력 기록이다.
+
 > 근거: summit-review-findings.md 의 P1 구조 4건과 P2, STATUS.md 의 KWG 갭 잔여 항목, 사용자 지시.
 > 사용자 지시 반영: (1) "KWG 동기화 범위 추가 확장"(금융권 가이드, 표준별 가이드 3종)은 후속 과제에서 제외.
 > (2) SBOM 생성 도구로 BomLens 를 소개.

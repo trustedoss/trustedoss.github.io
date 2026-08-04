@@ -90,7 +90,7 @@ npx docusaurus write-translations --locale en
 
 ---
 
-### 단계 4 — Cursor 번역 (`.claude/cursor-i18n-prompt.md` 참조)
+### 단계 4 — Cursor 번역 (`.claude/archive/cursor-i18n-prompt.md` 참조)
 
 번역 대상:
 

@@ -1,5 +1,7 @@
 # AI SBOM 가이드 동기화 + AI 생성 코드 법적 고려 보강 계획 (2026-07-09)
 
+**상태: 완료** — 결과는 `STATUS.md` "AI SBOM 동기화 + 법적 고려 보강" 절을 참조한다. 이력 기록이다.
+
 > 근거: `summit-review-findings.md` P0-6 후속, `STATUS.md` "KWG 갭 분석 — 검토 후 결정" 1번(동기화 범위 확장),
 > 5번(AI 코딩 3주제 보강), 7번(guide_mappings 사각지대). 승인 후 실행한다.
 

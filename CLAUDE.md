@@ -35,9 +35,9 @@ ISO/IEC 5230 (라이선스 컴플라이언스)과 ISO/IEC 18974 (보안 보증) 
 | `agents/`            | 산출물 자동 생성 agent       |
 | `templates/`         | 문서 템플릿                  |
 | `samples/`           | 실습용 샘플 프로젝트         |
-| `workshop/`          | 강의 키트                    |
 | `output/`            | 생성된 산출물 (gitignore)    |
 | `.claude/skills/`    | 재사용 skill 정의            |
+| `.claude/archive/`   | 역할이 끝난 일회성 문서 보관 |
 | `website/ai-coding/` | AI 코딩 가이드 페이지 (md)   |
 | `website/devsecops/` | DevSecOps 가이드 페이지 (md) |
 

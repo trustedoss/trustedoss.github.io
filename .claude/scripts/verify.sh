@@ -40,7 +40,7 @@ while IFS= read -r file; do
       BROKEN=$((BROKEN+1))
     fi
   done < <(grep -Eo '\]\([^)]+\)' "$file" | sed 's/\](\(.*\))/\1/' | grep -v "^http" | grep -v "^/" | grep -v "^pathname:")
-done < <(find docs README.md workshop website/ai-coding website/devsecops website/reference -name "*.md" -o -name "*.mdx" \
+done < <(find docs README.md website/ai-coding website/devsecops website/reference -name "*.md" -o -name "*.mdx" \
          2>/dev/null | grep -v "^website/reference/node_modules")
 
 if [ $BROKEN -eq 0 ]; then
