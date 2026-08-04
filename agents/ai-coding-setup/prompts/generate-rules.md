@@ -74,9 +74,9 @@ GitHub Copilot:
 파일: .github/copilot-instructions.md
 형식: 마크다운 지침
 
-Windsurf:
-파일: .windsurf/rules/oss-policy.md
-형식: 간결한 규칙 목록 (레거시 .windsurfrules 는 생성하지 않는다)
+Devin Desktop (구 Windsurf):
+파일: .devin/rules/oss-policy.md
+형식: 간결한 규칙 목록 (레거시 .windsurfrules 와 .windsurf/rules/ 는 생성하지 않는다)
 
 Cline:
 파일: .clinerules

@@ -44,7 +44,7 @@ The chapter and deliverable structure of this mapping is reworked from those gui
 | **Key requirements**              | Policy, organization, process, BOM, compliance deliverables, contribution policy, declaration of compliance | Policy, organization, SBOM, CVE scan, vulnerability tracking/scoring/response, declaration of compliance |
 | **Certification method**          | Self-declaration on the OpenChain website                                                                   | Self-declaration on the OpenChain website                                                                |
 | **Validity period**               | 18 months                                                                                                   | 18 months                                                                                                |
-| **Related regulations/standards** | SPDX, REUSE, EU CRA (licensing aspect)                                                                      | EO 14028, NTIA SBOM, EU CRA, NVD/CVSS                                                                    |
+| **Related regulations/standards** | SPDX, REUSE, EU CRA (licensing aspect)                                                                      | EO 14028, CISA SBOM minimum elements, EU CRA, NVD/CVSS                                                   |
 | **Complementarity**               | Shares the common foundation (policy, organization, SBOM); adds license-specific requirements               | Shares the common foundation; adds security-specific requirements                                        |
 
 :::info[Key insight]
@@ -55,13 +55,13 @@ The two standards share a common foundation in the areas of policy, organization
 
 ## Tag notation rules
 
-| Tag              | Meaning                                                                 |
-| ---------------- | ----------------------------------------------------------------------- |
-| `[Common]`       | Required by both standards                                              |
-| `[5230]`         | ISO/IEC 5230 only                                                       |
-| `[18974]`        | ISO/IEC 18974 only (security-specific)                                  |
-| `[Supply Chain]` | Related to software supply chain security                               |
-| `[Regulation]`   | Items linked to international regulations (EO 14028, EU CRA, NTIA SBOM) |
+| Tag              | Meaning                                                                                  |
+| ---------------- | ---------------------------------------------------------------------------------------- |
+| `[Common]`       | Required by both standards                                                               |
+| `[5230]`         | ISO/IEC 5230 only                                                                        |
+| `[18974]`        | ISO/IEC 18974 only (security-specific)                                                   |
+| `[Supply Chain]` | Related to software supply chain security                                                |
+| `[Regulation]`   | Items linked to international regulations (EO 14028, EU CRA, CISA SBOM minimum elements) |
 
 ---
 
@@ -467,7 +467,7 @@ Keep the SBOM current on every release and update; integrate it with configurati
 
 > ISO/IEC 18974 §4.3.1
 
-Pass transparency down the supply chain; addresses the NTIA and EU CRA supply chain disclosure obligations.
+Pass transparency down the supply chain; addresses the CISA SBOM minimum elements and EU CRA supply chain disclosure obligations.
 
 | Evidence ID    | Content                                                                               | Deliverable file                       |
 | -------------- | ------------------------------------------------------------------------------------- | -------------------------------------- |

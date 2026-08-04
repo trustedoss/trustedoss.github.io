@@ -120,13 +120,13 @@ ISO/IEC 18974 §4.1.4.3은 "지속적 개선을 입증하는 감사 증거"를 �
 
 **1단계**: `output/conformance/declaration-draft.md` 내용을 최종 검토하고 확정합니다.
 
-**2단계**: 브라우저에서 https://www.openchainproject.org/conformance 에 접속합니다.
+**2단계**: 자체 인증 체크리스트를 내려받습니다. [OpenChain Reference-Material 저장소](https://github.com/OpenChain-Project/Reference-Material/tree/master/OpenChain-Standards-Self-Certification)의 `Checklist/ISO-IEC-5230` 또는 `Checklist/ISO-IEC-18974` 아래에 언어별 파일이 있습니다. 두 표준 모두 선언하려면 각각 내려받습니다.
 
-**3단계**: ISO/IEC 5230 또는 ISO/IEC 18974 중 인증할 표준을 선택합니다. (또는 두 표준 모두 선택)
+**3단계**: 체크리스트의 각 항목을 Yes/No 로 자체 점검합니다. `declaration-draft.md` 의 항목별 판정을 그대로 대응시킬 수 있습니다.
 
-**4단계**: 온라인 자체 인증 체크리스트를 작성하고 제출합니다. `declaration-draft.md`의 내용을 참고하면 빠르게 완성할 수 있습니다.
+**4단계**: [OpenChain 시작하기 페이지](https://openchainproject.org/get-started)의 온라인 신청 폼을 작성해 등재를 신청합니다. 체크리스트 자체를 업로드하는 방식이 아니라, 자체 점검을 마쳤다는 전제로 회사 정보를 제출하는 방식입니다.
 
-**5단계**: 등록이 완료되면 OpenChain 로고 사용이 가능하며, 공식 인정 기업 목록에 등재됩니다.
+**5단계**: 등재가 완료되면 공식 인정 기업 목록에 오르고 OpenChain 로고를 사용할 수 있습니다.
 
 > 이 단계는 ISO/IEC 5230 G4.1 (3.6.1) 및 ISO/IEC 18974 G4.2 (4.4.1) 요구사항을 충족합니다.
 

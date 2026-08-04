@@ -342,11 +342,11 @@ sidebar_label: 교육 산출물
 
 ### 6. ISO/IEC 5230 · 18974 참고 자료
 
-| 리소스                         | 설명                       | 링크                                                |
-| ------------------------------ | -------------------------- | --------------------------------------------------- |
-| OpenChain ISO/IEC 5230 사양    | 라이선스 컴플라이언스 표준 | https://www.openchainproject.org/license-compliance |
-| OpenChain ISO/IEC 18974 사양   | 보안 보증 표준             | https://www.openchainproject.org/security-assurance |
-| OpenChain 자체 인증 체크리스트 | 인증 준비                  | https://www.openchainproject.org/conformance        |
+| 리소스                         | 설명                       | 링크                                                                                                       |
+| ------------------------------ | -------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| OpenChain ISO/IEC 5230 사양    | 라이선스 컴플라이언스 표준 | https://www.openchainproject.org/license-compliance                                                        |
+| OpenChain ISO/IEC 18974 사양   | 보안 보증 표준             | https://www.openchainproject.org/security-assurance                                                        |
+| OpenChain 자체 인증 체크리스트 | 인증 준비                  | https://github.com/OpenChain-Project/Reference-Material/tree/master/OpenChain-Standards-Self-Certification |
 
 **커리큘럼 연계**: 관리자 M3 핵심 자료
 

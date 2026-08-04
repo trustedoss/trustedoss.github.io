@@ -51,9 +51,11 @@ SBOM 없이는 다음 질문에 답하기 어렵습니다.
 
 ---
 
-## 3. SBOM 최소 필수 요소 (NTIA 기준)
+## 3. SBOM 최소 필수 요소 (CISA 2026 기준)
 
-NTIA(미국 통신정보관리청, National Telecommunications and Information Administration)는 SBOM이 반드시 포함해야 할 7가지 최소 요소를 정의했습니다.
+2026년 7월 CISA(미국 사이버보안·인프라보안국)가 NSA, FBI 및 한국을 포함한 국제 파트너 기관과 함께 발표한 **2026 Minimum Elements for a SBOM** 이 2021년 NTIA 최소 요소를 대체했습니다. 기존 7가지 요소는 대부분 그대로 유지되므로 아래 표를 먼저 익히고, 이어지는 신규 필수 요소를 함께 보면 됩니다.
+
+NTIA(미국 통신정보관리청, National Telecommunications and Information Administration)가 2021년에 정의한 7가지 요소입니다.
 
 | 요소        | 영문명                   | 설명                           | 예시                                                   |
 | ----------- | ------------------------ | ------------------------------ | ------------------------------------------------------ |
@@ -64,6 +66,19 @@ NTIA(미국 통신정보관리청, National Telecommunications and Information A
 | 의존성 관계 | Dependency Relationship  | 다른 컴포넌트와의 관계         | spring-boot가 log4j-core에 의존                        |
 | SBOM 작성자 | Author of SBOM Data      | SBOM을 생성한 도구 또는 사람   | syft v1.x                                              |
 | 생성 시각   | Timestamp                | SBOM이 생성된 날짜와 시간      | 2024-01-15T09:30:00Z                                   |
+
+2026년 판에서 새로 필수가 된 요소는 다음과 같습니다.
+
+| 요소              | 설명                                                               |
+| ----------------- | ------------------------------------------------------------------ |
+| 컴포넌트 해시     | 해시 값과 알고리즘. 무결성 검증용으로, 2021년 권고에서 필수로 승격 |
+| 컴포넌트 라이선스 | 컴포넌트의 라이선스. 선택 항목에서 핵심 필드로 승격                |
+| SBOM 생성 도구명  | 어떤 도구가 이 SBOM을 만들었는지                                   |
+| 생성 맥락         | 빌드 전·후 등 SBOM이 만들어진 수명주기 단계                        |
+
+적용 범위도 넓어져 오픈소스, AI 소프트웨어, SaaS를 포함한 모든 소프트웨어가 대상입니다. 라이선스가 필수 필드가 된 점은 ISO/IEC 5230 라이선스 컴플라이언스와 직접 맞닿아 있어, SBOM 하나로 두 요구를 함께 충족하기 쉬워졌습니다.
+
+전체 요소 목록과 필드 명칭은 [CISA 2026 Minimum Elements for a SBOM](https://www.cisa.gov/resources-tools/resources/2026-minimum-elements-software-bill-materials-sbom) 원문에서 확인하세요.
 
 > 이 단계는 ISO/IEC 18974 [G3B.1 배경] 요구사항의 이해 기반을 충족합니다.
 
@@ -192,7 +207,7 @@ A: 이 키트를 따라가면 CycloneDX JSON 형식의 SBOM을 생성할 수 있
 ## 7. 완료 확인 체크리스트
 
 - [ ] SBOM의 정의와 필요성을 설명할 수 있다
-- [ ] NTIA 7가지 최소 요소를 알고 있다
+- [ ] SBOM 최소 필수 요소(CISA 2026 기준)를 알고 있다
 - [ ] SPDX vs CycloneDX 차이를 이해했다
 - [ ] SBOM 생태계(생성 → 관리 → 분석 → 공유)를 파악했다
 

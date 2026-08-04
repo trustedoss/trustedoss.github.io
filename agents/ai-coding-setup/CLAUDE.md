@@ -26,7 +26,7 @@
    pom.xml / build.gradle 중 존재하는 파일 자동 감지.
 
 2. **사용 중인 AI 코딩 도구**는? (복수 선택 가능)
-   (Claude Code / Cursor / GitHub Copilot / Windsurf / Cline / Aider)
+   (Claude Code / Cursor / GitHub Copilot / Devin Desktop / Cline / Aider)
 
 3. **라이선스 정책 수준**은?
    - 엄격: MIT·Apache·BSD만 허용
@@ -79,7 +79,7 @@ output/ai-coding/
 ├── .cursor/rules/oss-policy.mdc     ← Cursor 선택 시
 ├── .github/
 │   └── copilot-instructions.md     ← Copilot 선택 시
-├── .windsurf/rules/oss-policy.md    ← Windsurf 선택 시
+├── .devin/rules/oss-policy.md       ← Devin Desktop 선택 시
 ├── .clinerules                      ← Cline 선택 시
 ├── CONVENTIONS.md                   ← Aider 선택 시
 ├── LICENSE-RISK-REPORT.md           ← 라이선스 위험 리포트

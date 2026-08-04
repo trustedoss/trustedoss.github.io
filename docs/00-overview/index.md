@@ -145,4 +145,4 @@ cd trustedoss-agents && claude
 - [OpenChain KWG](https://openchain-project.github.io/OpenChain-KWG/)
 - [ISO/IEC 5230](https://www.iso.org/standard/81039.html)
 - [ISO/IEC 18974](https://www.iso.org/standard/86450.html)
-- [OpenChain 자체 인증 등록](https://www.openchainproject.org/conformance)
+- [OpenChain 자체 인증 등록](https://openchainproject.org/get-started)

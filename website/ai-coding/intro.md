@@ -13,7 +13,7 @@ slug: intro
 표준 자체 인증이 목표라면 체계구축(거버넌스)을 먼저 끝내세요. 개발자가 AI 도구를 쓴다면 여기서 정책을 코드 생성 시점에 강제합니다.
 :::
 
-AI 코딩 도구(Claude Code, Cursor, GitHub Copilot, Windsurf, OpenAI Codex, Gemini CLI 등)는 개발 생산성을 크게 높여줍니다.
+AI 코딩 도구(Claude Code, Cursor, GitHub Copilot, Devin Desktop, OpenAI Codex, Gemini CLI 등)는 개발 생산성을 크게 높여줍니다.
 하지만 AI가 생성한 코드에도 오픈소스 라이선스 컴플라이언스와 보안 취약점 관리가 필요합니다.
 
 ## 왜 AI 코딩 도구에서 오픈소스 관리가 중요한가?
@@ -31,7 +31,7 @@ AI 코딩 도구(Claude Code, Cursor, GitHub Copilot, Windsurf, OpenAI Codex, Ge
 | [Claude Code](./tools/claude-code)                 | Anthropic의 CLI 기반 AI 코딩 에이전트                            |
 | [Cursor](./tools/cursor)                           | AI 기반 코드 편집기                                              |
 | [GitHub Copilot](./tools/copilot)                  | GitHub의 AI 페어 프로그래머                                      |
-| [Windsurf](./tools/windsurf)                       | Cognition의 AI 코딩 에이전트 (구 Codeium, Devin Desktop 통합 중) |
+| [Devin Desktop](./tools/windsurf)                  | Cognition의 AI 코딩 에이전트 (구 Windsurf·Codeium)               |
 | [Cline / Aider](./tools/cline-aider)               | 오픈소스 CLI/VS Code 기반 AI 에이전트                            |
 | [30분 완성 Quick CI/CD](./cicd-quick)              | SCA(소프트웨어 구성 분석)·라이선스 중심 CI/CD 최소 시작점        |
 | [AI 보안 코드 리뷰](./ai-security-review)          | 4단계 — findings-driven AI 검증·심층 해석                        |

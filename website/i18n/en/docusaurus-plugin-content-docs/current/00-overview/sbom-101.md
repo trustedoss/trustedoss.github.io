@@ -48,9 +48,11 @@ Without an SBOM, the following questions are hard to answer.
 
 ---
 
-## 3. SBOM minimum required elements (per NTIA)
+## 3. SBOM minimum required elements (CISA 2026)
 
-The U.S. National Telecommunications and Information Administration (NTIA) has defined seven minimum elements that an SBOM must include.
+In July 2026, CISA (the U.S. Cybersecurity and Infrastructure Security Agency), together with the NSA, the FBI, and international partner agencies including Korea, published the **2026 Minimum Elements for a SBOM**, which replaces the 2021 NTIA minimum elements. Most of the original seven elements carry over, so learn the table below first and then read the newly required elements that follow.
+
+These are the seven elements the U.S. National Telecommunications and Information Administration (NTIA) defined in 2021.
 
 | Element                 | English name             | Description                                           | Example                                                |
 | ----------------------- | ------------------------ | ----------------------------------------------------- | ------------------------------------------------------ |
@@ -61,6 +63,19 @@ The U.S. National Telecommunications and Information Administration (NTIA) has d
 | Dependency relationship | Dependency Relationship  | Relationships with other components                   | spring-boot depends on log4j-core                      |
 | SBOM author             | Author of SBOM Data      | The tool or person that created the SBOM              | syft v1.x                                              |
 | Timestamp               | Timestamp                | Date and time the SBOM was created                    | 2024-01-15T09:30:00Z                                   |
+
+The 2026 revision adds the following as required elements.
+
+| Element            | Description                                                                      |
+| ------------------ | -------------------------------------------------------------------------------- |
+| Component hash     | Hash value and algorithm, for integrity verification — promoted from recommended |
+| Component license  | The component's license — promoted from optional to a core field                 |
+| SBOM tool name     | Which tool generated this SBOM                                                   |
+| Generation context | The lifecycle stage at which the SBOM was created (pre-build, post-build, etc.)  |
+
+The scope widened as well: it now covers all software, including open source, AI software, and SaaS. Licenses becoming a required field lines up directly with ISO/IEC 5230 license compliance, so one SBOM can now serve both demands more easily.
+
+For the full element list and exact field names, see the [CISA 2026 Minimum Elements for a SBOM](https://www.cisa.gov/resources-tools/resources/2026-minimum-elements-software-bill-materials-sbom).
 
 > This step satisfies the conceptual understanding required by ISO/IEC 18974 [G3B.1 Background].
 
@@ -190,7 +205,7 @@ A: By following this kit, you can generate an SBOM in CycloneDX JSON format. If 
 ## 7. Completion checklist
 
 - [ ] I can explain what an SBOM is and why it is needed
-- [ ] I know the 7 NTIA minimum elements
+- [ ] I know the SBOM minimum required elements (CISA 2026)
 - [ ] I understand the difference between SPDX and CycloneDX
 - [ ] I understand the SBOM ecosystem (creation → management → analysis → sharing)
 

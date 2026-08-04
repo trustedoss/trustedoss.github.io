@@ -97,7 +97,7 @@ ISO/IEC 5230과 ISO/IEC 18974 자체 인증을 위한
 모든 산출물이 완성되었습니다.
 
 다음 단계: OpenChain 자체 인증 등록
-https://www.openchainproject.org/conformance
+https://openchainproject.org/get-started
 
 유효기간: 선언일로부터 18개월
 재선언 예정일: {선언일 + 18개월}
@@ -107,11 +107,12 @@ https://www.openchainproject.org/conformance
 
 submission-guide.md 에 상세 절차가 포함되며, 요약하면:
 
-1. https://www.openchainproject.org/conformance 접속
-2. "Submit Conformance" 클릭
-3. 회사 정보 및 선언 정보 입력
-4. declaration-draft.md 내용 참조하여 체크리스트 항목 체크
-5. 제출 및 확인 이메일 수신
+1. OpenChain Reference-Material 저장소에서 자체 인증 체크리스트 내려받기
+   (https://github.com/OpenChain-Project/Reference-Material/tree/master/OpenChain-Standards-Self-Certification)
+2. declaration-draft.md 내용을 참조하여 체크리스트 각 항목을 Yes/No 로 자체 점검
+3. https://openchainproject.org/get-started 의 온라인 신청 폼 작성
+4. 회사 정보 및 선언 정보 입력 후 제출
+5. 공식 등재 목록 반영 확인
 
 ## 완료 후 확인
 

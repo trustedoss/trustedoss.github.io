@@ -78,4 +78,4 @@ cat output/progress.md  # 존재하는 경우
 output/conformance/ 가 완료되면:
 
 **OpenChain 자체 인증 등록:**
-https://www.openchainproject.org/conformance
+https://openchainproject.org/get-started

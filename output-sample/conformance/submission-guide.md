@@ -7,12 +7,12 @@
 테크유니콘은 ISO/IEC 5230:2020 (라이선스 컴플라이언스)과 ISO/IEC 18974:2023 (보안 보증) 자체 인증을
 OpenChain 프로젝트 공식 사이트에 등록하여 공개적으로 선언한다.
 
-| 항목        | 내용                                         |
-| ----------- | -------------------------------------------- |
-| 등록 사이트 | https://www.openchainproject.org/conformance |
-| 선언 유형   | 자체 인증 (Self Certification)               |
-| 적용 표준   | ISO/IEC 5230:2020 + ISO/IEC 18974:2023       |
-| 유효 기간   | 18개월 (2026-03-23 ~ 2027-09-23)             |
+| 항목        | 내용                                     |
+| ----------- | ---------------------------------------- |
+| 등록 사이트 | https://openchainproject.org/get-started |
+| 선언 유형   | 자체 인증 (Self Certification)           |
+| 적용 표준   | ISO/IEC 5230:2020 + ISO/IEC 18974:2023   |
+| 유효 기간   | 18개월 (2026-03-23 ~ 2027-09-23)         |
 
 ---
 
@@ -36,18 +36,18 @@ OpenChain 프로젝트 공식 사이트에 등록하여 공개적으로 선언�
 
 ## 등록 절차 (단계별)
 
-### 1단계 — OpenChain 사이트 접속
+### 1단계 — 자체 인증 체크리스트 내려받기
 
-1. https://www.openchainproject.org/conformance 접속
-2. 페이지 하단 또는 상단 메뉴에서 **"Submit Conformance"** 클릭
+1. [OpenChain Reference-Material 저장소](https://github.com/OpenChain-Project/Reference-Material/tree/master/OpenChain-Standards-Self-Certification) 접속
+2. `Checklist/ISO-IEC-5230` 및 `Checklist/ISO-IEC-18974` 아래에서 언어별 파일을 내려받는다
 
-### 2단계 — 표준 선택
+### 2단계 — 선언할 표준 결정
 
-- **ISO/IEC 5230** (라이선스 컴플라이언스) 선택
-- **ISO/IEC 18974** (보안 보증) 선택
-- 두 표준 모두 동시에 제출 가능
+- **ISO/IEC 5230** (라이선스 컴플라이언스)
+- **ISO/IEC 18974** (보안 보증)
+- 두 표준 모두 선언 가능하며, 표준마다 체크리스트가 따로 있다
 
-### 3단계 — 회사 정보 입력
+### 3단계 — 등재 신청 정보 준비
 
 | 입력 항목   | 입력 내용                       |
 | ----------- | ------------------------------- |
@@ -57,9 +57,9 @@ OpenChain 프로젝트 공식 사이트에 등록하여 공개적으로 선언�
 | 국가        | Korea (South)                   |
 | 웹사이트    | https://www.techunicorn.example |
 
-### 4단계 — 체크리스트 항목 체크
+### 4단계 — 체크리스트 자체 점검
 
-`output/conformance/declaration-draft.md`를 참조하여 각 항목에 체크한다.
+`output/conformance/declaration-draft.md`를 참조하여 각 항목을 Yes/No 로 판정한다.
 
 **ISO/IEC 5230 체크리스트 (25개 항목)**:
 
@@ -71,11 +71,11 @@ OpenChain 프로젝트 공식 사이트에 등록하여 공개적으로 선언�
 - 4.1.1.1부터 4.4.2.1까지 모든 항목에 체크
 - 🔶 항목 중 시간 기반 3개(4.1.2.5, 4.1.2.6, 4.1.4.3)는 초기 인증 시 허용 범위이고, 나머지는 가능하면 충족으로 전환한 뒤 제출
 
-### 5단계 — 제출 및 확인
+### 5단계 — 등재 신청 및 확인
 
-1. 모든 항목 체크 후 **"Submit"** 클릭
-2. 입력한 이메일 주소로 확인 이메일 수신 확인
-3. OpenChain 공식 등록 리스트에 테크유니콘이 등재됨
+1. [OpenChain 시작하기 페이지](https://openchainproject.org/get-started)의 온라인 신청 폼 작성
+2. 3단계에서 준비한 회사 정보를 입력하고 제출
+3. OpenChain 공식 등재 목록에 테크유니콘이 오르는지 확인 (문의: support@openchainproject.org)
 
 ---
 

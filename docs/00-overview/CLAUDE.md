@@ -100,13 +100,13 @@ A: 두 표준 모두 자체 인증(Self-Certification) 방식이다. 외부 심�
 |----------|------|---------|
 | EO 14028 (미국, 2021) | 연방 조달 소프트웨어 보안 강화 (SBOM 일괄 요구는 2025~2026 행정부 방침 변경으로 완화) | 기관별 위험 기반 |
 | EU CRA (2024) | EU 시장 출시 디지털 제품 보안 의무 | SBOM 권고 |
-| NTIA SBOM 지침 | SBOM 최소 요소 정의 | SBOM 표준화 |
+| CISA 2026 SBOM 최소 요소 | SBOM 최소 요소 정의 (NTIA 2021 대체) | SBOM 표준화 |
 
 ### sbom-101.md
 
 SBOM의 기술적 세부사항을 다루는 문서:
 
-- NTIA 7가지 최소 요소
+- SBOM 최소 필수 요소 (CISA 2026 기준, NTIA 2021 대체)
 - CycloneDX vs SPDX 포맷 비교
 - SBOM 생태계 (생성 → 관리 → 분석 → 공유)
 - 생성 도구 개요 (syft, cdxgen)

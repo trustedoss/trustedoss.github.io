@@ -19,11 +19,13 @@
 - [ ] 선언 범위(적용 소프트웨어/제품)가 명확히 정의됨
 - [ ] 승인 권한자(경영진 또는 담당 임원)의 사전 동의 확보
 
-### 2단계 — OpenChain 웹사이트 접속
+### 2단계 — 자체 인증 체크리스트 내려받기
 
-https://www.openchainproject.org/conformance
+https://github.com/OpenChain-Project/Reference-Material/tree/master/OpenChain-Standards-Self-Certification
 
-### 3단계 — 표준 선택 및 양식 작성
+`Checklist/ISO-IEC-5230` 및 `Checklist/ISO-IEC-18974` 아래에 언어별 파일이 있다.
+
+### 3단계 — 표준 선택 및 자체 점검
 
 | 인증할 표준                          | 선택 |
 | ------------------------------------ | ---- |
@@ -31,12 +33,12 @@ https://www.openchainproject.org/conformance
 | ISO/IEC 18974 (보안 보증)            | ☐    |
 | 두 표준 모두                         | ☐    |
 
-양식 작성 시 `output/conformance/declaration-draft.md` 내용을 참고한다.
+체크리스트의 각 항목을 Yes/No 로 판정할 때 `output/conformance/declaration-draft.md` 내용을 참고한다.
 
-### 4단계 — 체크리스트 항목 확인 및 제출
+### 4단계 — 등재 신청
 
-OpenChain 온라인 양식의 각 항목에 체크하고 제출한다.
-제출 완료 시 확인 이메일이 수신된다.
+https://openchainproject.org/get-started 의 온라인 신청 폼을 작성해 제출한다.
+체크리스트 자체를 업로드하는 방식이 아니라, 자체 점검을 마쳤다는 전제로 회사 정보를 제출한다.
 
 ### 5단계 — 인증 완료 확인
 

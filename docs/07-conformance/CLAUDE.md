@@ -50,13 +50,13 @@ agent가 output/ 전체를 스캔하고 표준별 25개 입증자료(총 50개)�
 
 ## 자체 인증 등록 절차
 
-선언문 완성 후 아래 링크에서 자체 인증을 등록한다:
+선언문 완성 후 아래 순서로 자체 인증을 등재한다:
 
-**ISO/IEC 5230 (라이선스 컴플라이언스):**
-https://www.openchainproject.org/conformance
+**1. 체크리스트 내려받기 (표준별로 각각):**
+https://github.com/OpenChain-Project/Reference-Material/tree/master/OpenChain-Standards-Self-Certification
 
-**ISO/IEC 18974 (보안 보증):**
-https://www.openchainproject.org/conformance
+**2. 자체 점검 후 등재 신청:**
+https://openchainproject.org/get-started
 
 등록 시 필요한 정보:
 
@@ -104,4 +104,4 @@ submission-guide.md 에 리마인더 설정 방법이 포함된다.
 - 공급망 파트너에게 신뢰할 수 있는 오픈소스 관리 체계를 증명할 수 있다
 
 **OpenChain 자체 인증 등록:**
-https://www.openchainproject.org/conformance
+https://openchainproject.org/get-started

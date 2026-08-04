@@ -299,12 +299,12 @@ program that satisfies all requirements of ISO/IEC 5230:2020 and ISO/IEC 18974:2
 TechUnicorn registers its ISO/IEC 5230:2020 (license compliance) and ISO/IEC 18974:2023 (security assurance)
 Self-Certification on the official OpenChain project site and declares it publicly.
 
-| Item                 | Content                                      |
-| -------------------- | -------------------------------------------- |
-| Registration site    | https://www.openchainproject.org/conformance |
-| Declaration type     | Self-Certification                           |
-| Applicable standards | ISO/IEC 5230:2020 + ISO/IEC 18974:2023       |
-| Validity period      | 18 months (2026-03-23 ~ 2027-09-23)          |
+| Item                 | Content                                  |
+| -------------------- | ---------------------------------------- |
+| Registration site    | https://openchainproject.org/get-started |
+| Declaration type     | Self-Certification                       |
+| Applicable standards | ISO/IEC 5230:2020 + ISO/IEC 18974:2023   |
+| Validity period      | 18 months (2026-03-23 ~ 2027-09-23)      |
 
 ---
 
@@ -328,18 +328,18 @@ Complete the items below before proceeding with registration.
 
 ### Registration Procedure (Step by Step)
 
-#### Step 1 — Visit the OpenChain site
+#### Step 1 — Download the self-certification checklist
 
-1. Go to https://www.openchainproject.org/conformance
-2. Click **"Submit Conformance"** in the menu at the top or bottom of the page
+1. Go to the [OpenChain Reference-Material repository](https://github.com/OpenChain-Project/Reference-Material/tree/master/OpenChain-Standards-Self-Certification)
+2. Download the language-specific files under `Checklist/ISO-IEC-5230` and `Checklist/ISO-IEC-18974`
 
-#### Step 2 — Select the standards
+#### Step 2 — Decide which standards to declare
 
-- Select **ISO/IEC 5230** (license compliance)
-- Select **ISO/IEC 18974** (security assurance)
-- Both standards can be submitted at the same time
+- **ISO/IEC 5230** (license compliance)
+- **ISO/IEC 18974** (security assurance)
+- Both can be declared; each standard has its own checklist
 
-#### Step 3 — Enter company information
+#### Step 3 — Prepare the listing application details
 
 | Field        | Value                                                    |
 | ------------ | -------------------------------------------------------- |
@@ -349,9 +349,9 @@ Complete the items below before proceeding with registration.
 | Country      | Korea (South)                                            |
 | Website      | https://www.techunicorn.example                          |
 
-#### Step 4 — Check off the checklist items
+#### Step 4 — Self-assess against the checklist
 
-Refer to `output/conformance/declaration-draft.md` and check each item.
+Refer to `output/conformance/declaration-draft.md` and answer each item Yes/No.
 
 **ISO/IEC 5230 checklist (25 items)**:
 
@@ -363,11 +363,11 @@ Refer to `output/conformance/declaration-draft.md` and check each item.
 - Check every item from 4.1.1.1 through 4.4.2.1
 - Among the partially satisfied items, the 3 time-based ones (4.1.2.5, 4.1.2.6, 4.1.4.3) are acceptable at initial certification; convert the rest to satisfied where possible before submitting
 
-#### Step 5 — Submit and confirm
+#### Step 5 — Apply for listing and confirm
 
-1. After checking all items, click **"Submit"**
-2. Confirm receipt of the confirmation email at the address you entered
-3. TechUnicorn is listed on the official OpenChain registration list
+1. Complete the online application form on the [OpenChain get-started page](https://openchainproject.org/get-started)
+2. Enter the company information prepared in step 3 and submit
+3. Confirm that TechUnicorn appears on the official OpenChain list (contact: support@openchainproject.org)
 
 ---
 

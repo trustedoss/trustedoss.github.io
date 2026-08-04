@@ -145,4 +145,4 @@ Take your time to understand and work through each document on your own. We reco
 - [OpenChain KWG](https://openchain-project.github.io/OpenChain-KWG/)
 - [ISO/IEC 5230](https://www.iso.org/standard/81039.html)
 - [ISO/IEC 18974](https://www.iso.org/standard/86450.html)
-- [OpenChain self-certification registration](https://www.openchainproject.org/conformance)
+- [OpenChain self-certification registration](https://openchainproject.org/get-started)

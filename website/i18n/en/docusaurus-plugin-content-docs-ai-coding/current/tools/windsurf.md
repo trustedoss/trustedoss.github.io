@@ -1,26 +1,30 @@
 ---
 id: windsurf
-title: Windsurf
-sidebar_label: Windsurf
+title: Devin Desktop (formerly Windsurf)
+sidebar_label: Devin Desktop
 sidebar_position: 4
 ---
 
-# Windsurf
+# Devin Desktop (formerly Windsurf)
 
 ## Overview
 
-Windsurf reads workspace rules from the `.windsurf/rules/` directory (the legacy single-file `.windsurfrules` is still recognized) and uses them as behavior instructions for the Cascade AI agent. Global rules can be configured separately in the Windsurf app settings (UI). The scope is project-level, and global and project settings can be used together.
+Windsurf was renamed Devin Desktop on 2026-06-02. The IDE and its features are unchanged; the brand was unified under Devin. The coding agent also changed from Cascade to Devin Local (Cascade remained available only through 2026-07).
 
-It is efficient to manage rules in layers: put organization-wide policy in Global Rules and project-specific exceptions or additional rules in `.windsurf/rules/`. Committing the rules directory to the repository applies the same policy across the team. If global and project rules conflict, project rules take precedence.
+Rules files live at the project level, and global rules are configured separately in the app settings (UI). It is efficient to manage rules in layers: put organization-wide policy in Global Rules and project-specific exceptions or additional rules in the project rules directory. Committing the rules directory to the repository applies the same policy across the team. If global and project rules conflict, project rules take precedence.
 
 ## Configuration File Location
 
-- Project: `.windsurf/rules/` directory (recommended — 12,000-character limit per file; the legacy single-file `.windsurfrules` is still recognized). `AGENTS.md` is also supported
-- Global: `~/.codeium/windsurf/memories/global_rules.md` (6,000-character limit)
+- Project (recommended): `.devin/rules/` directory — the new standard path, which takes precedence over the others
+- Project (backward compatible): `.windsurf/rules/` directory and the legacy single-file `.windsurfrules`. Existing setups keep working as-is
+- Common format: `AGENTS.md` is supported, and `.cursor/rules` can be imported
+- Global: Global Rules in the app settings
+
+There is a 12,000-character limit per file.
 
 ## How to Apply
 
-1. Create `.windsurf/rules/oss-policy.md` in the project.
+1. Create `.devin/rules/oss-policy.md` in the project.
 2. Paste content from the [Common Rules Template](../rules-template).
 3. Update the allow/deny license list to match internal policy.
 
@@ -53,5 +57,5 @@ If the rules are recognized, the tool answers that it is a prohibited license an
 ## Notes
 
 :::info Good to know
-Windsurf has been merging into Devin Desktop since Cognition (the maker of Devin) acquired it in 2025, and the official docs moved to docs.devin.ai. Newer docs recommend the `.devin/rules/` directory first, so check for rule-path changes when the tool updates. Larger rule files can increase response latency (12,000-character limit per file), so trim the full template down to only the essential team policies.
+Following Cognition's (the maker of Devin) 2025 acquisition, the rebrand to Devin Desktop completed on 2026-06-02, and the official docs moved to docs.devin.ai. Existing `.windsurf/rules/` and `.windsurfrules` are still recognized, so there is no need to migrate immediately, but use `.devin/rules/` for anything new. Larger rule files can increase response latency (12,000-character limit per file), so trim the full template down to only the essential team policies.
 :::

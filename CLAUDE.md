@@ -55,7 +55,7 @@ ISO/IEC 5230 (라이선스 컴플라이언스)과 ISO/IEC 18974 (보안 보증) 
 | sbom-management-plan.md 있음, vulnerability/ 없음 | 현재 Claude 세션 종료 후 `cd agents/05-vulnerability-analyst && claude` 실행                                                                                                                                       |
 | vulnerability/ 있음, training/ 없음               | 현재 Claude 세션 종료 후 `cd agents/06-training-manager && claude` 실행                                                                                                                                            |
 | training/ 있음, conformance/ 없음                 | 현재 Claude 세션 종료 후 `cd agents/07-conformance-preparer && claude` 실행                                                                                                                                        |
-| conformance/ 있음                                 | 완성 축하 → OpenChain 자체 인증 등록: https://www.openchainproject.org/conformance                                                                                                                                 |
+| conformance/ 있음                                 | 완성 축하 → OpenChain 자체 인증 등록: https://openchainproject.org/get-started                                                                                                                                     |
 
 ## 사용 경로
 

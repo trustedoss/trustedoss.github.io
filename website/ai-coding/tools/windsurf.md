@@ -1,26 +1,30 @@
 ---
 id: windsurf
-title: Windsurf
-sidebar_label: Windsurf
+title: Devin Desktop (구 Windsurf)
+sidebar_label: Devin Desktop
 sidebar_position: 4
 ---
 
-# Windsurf
+# Devin Desktop (구 Windsurf)
 
 ## 개요
 
-Windsurf는 프로젝트 루트의 `.windsurfrules` 파일을 읽어 Cascade AI 에이전트의 동작 지침으로 활용합니다. 글로벌 규칙은 Windsurf 앱 설정(UI)에서 별도로 지정할 수 있습니다. 적용 범위는 프로젝트 단위이며, 글로벌 설정과 프로젝트 설정을 병행 사용할 수 있습니다.
+Windsurf 는 2026-06-02 에 Devin Desktop 으로 이름이 바뀌었습니다. IDE와 기능은 그대로이고 브랜드가 Devin 으로 통합됐습니다. 코딩 에이전트도 Cascade 에서 Devin Local 로 교체됐습니다(Cascade 는 2026-07 까지만 제공).
 
-글로벌 Rules에는 조직 공통 정책을 작성하고, 워크스페이스 규칙(`.windsurf/rules/`)에는 프로젝트 특화 예외 사항이나 추가 규칙을 작성하는 방식으로 계층적으로 관리하면 효율적입니다. 규칙 디렉토리를 저장소에 커밋하면 팀 전체에 동일한 정책이 적용됩니다. 글로벌 규칙과 프로젝트 규칙이 충돌할 경우 프로젝트 규칙이 우선합니다.
+규칙 파일은 프로젝트 단위로 두고, 글로벌 규칙은 앱 설정(UI)에서 별도로 지정합니다. 글로벌 Rules 에는 조직 공통 정책을, 프로젝트 규칙 디렉토리에는 프로젝트 특화 예외나 추가 규칙을 두는 계층 관리가 효율적입니다. 규칙 디렉토리를 저장소에 커밋하면 팀 전체에 동일한 정책이 적용됩니다. 글로벌 규칙과 프로젝트 규칙이 충돌하면 프로젝트 규칙이 우선합니다.
 
 ## 설정 파일 위치
 
-- 프로젝트: `.windsurf/rules/` 디렉토리 (권장 — 파일당 12,000자 제한. 레거시 `.windsurfrules` 단일 파일도 인식). `AGENTS.md` 도 지원
-- 글로벌: `~/.codeium/windsurf/memories/global_rules.md` (6,000자 제한)
+- 프로젝트(권장): `.devin/rules/` 디렉토리 — 신규 표준 경로이며 다른 경로보다 우선합니다
+- 프로젝트(하위 호환): `.windsurf/rules/` 디렉토리, 레거시 `.windsurfrules` 단일 파일. 기존 설정을 그대로 두어도 계속 동작합니다
+- 공통 규격: `AGENTS.md` 지원. `.cursor/rules` 가져오기도 가능합니다
+- 글로벌: 앱 설정의 글로벌 Rules
+
+파일당 12,000자 제한이 있습니다.
 
 ## 적용 방법
 
-1. 프로젝트에 `.windsurf/rules/oss-policy.md` 파일을 생성합니다.
+1. 프로젝트에 `.devin/rules/oss-policy.md` 파일을 생성합니다.
 2. [공통 Rules 템플릿](../rules-template)의 내용을 붙여넣습니다.
 3. 허용·금지 라이선스 목록을 사내 정책에 맞게 수정합니다.
 
@@ -53,5 +57,5 @@ Windsurf는 프로젝트 루트의 `.windsurfrules` 파일을 읽어 Cascade AI 
 ## 주의사항
 
 :::info 알아두세요
-Windsurf 는 2025년 Cognition(Devin 개발사) 인수 후 Devin Desktop 으로 통합이 진행 중이며, 공식 문서도 docs.devin.ai 로 이전됐습니다. 신규 문서에서는 `.devin/rules/` 디렉토리를 우선 안내하므로 도구 업데이트 시 규칙 경로 변화를 확인하세요. 규칙 파일이 클수록 응답 지연이 발생할 수 있으므로(파일당 12,000자 제한), 전체 템플릿 중 팀에 꼭 필요한 핵심 정책만 간결하게 유지하는 것을 권장합니다.
+Windsurf 는 2025년 Cognition(Devin 개발사) 인수를 거쳐 2026-06-02 에 Devin Desktop 으로 리브랜딩이 완료됐고, 공식 문서도 docs.devin.ai 로 이전됐습니다. 기존 `.windsurf/rules/` 와 `.windsurfrules` 는 계속 인식되므로 당장 옮길 필요는 없지만, 새로 만든다면 `.devin/rules/` 를 쓰세요. 규칙 파일이 클수록 응답 지연이 발생할 수 있으므로(파일당 12,000자 제한), 전체 템플릿 중 팀에 꼭 필요한 핵심 정책만 간결하게 유지하는 것을 권장합니다.
 :::

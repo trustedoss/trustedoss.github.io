@@ -103,11 +103,15 @@ In response to a series of large-scale supply chain attacks such as SolarWinds a
   requirements, and OMB M-26-05 (2026-02) rescinded the blanket attestation mandates, moving to a
   **risk-based, per-agency approach**.
 
+- The minimum elements themselves were updated in 2026-07. The **2026 Minimum Elements for a SBOM**,
+  published by CISA, the NSA, the FBI, and international partner agencies including Korea, replaces
+  the NTIA 2021 baseline and makes component hashes and licenses required fields.
+
 **Impact on Korean companies**
-The blanket SBOM mandate for U.S. federal procurement has been relaxed, but the NTIA minimum
-elements remain the de facto SBOM standard, and the practical SBOM demands now come from the EU CRA
-and customer procurement contracts. Companies active in the U.S. market should prepare for
-contract-level requirements.
+The blanket SBOM mandate for U.S. federal procurement has been relaxed, but the minimum-elements
+baseline continues through the CISA 2026 edition and still functions as the de facto standard. The
+practical SBOM demands now come from the EU CRA and customer procurement contracts. Companies active
+in the U.S. market should prepare for contract-level requirements.
 
 ---
 

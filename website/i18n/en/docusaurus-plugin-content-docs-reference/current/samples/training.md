@@ -342,11 +342,11 @@ Related standards
 
 ### 6. ISO/IEC 5230 · 18974 References
 
-| Resource                               | Description                 | Link                                                |
-| -------------------------------------- | --------------------------- | --------------------------------------------------- |
-| OpenChain ISO/IEC 5230 specification   | License compliance standard | https://www.openchainproject.org/license-compliance |
-| OpenChain ISO/IEC 18974 specification  | Security assurance standard | https://www.openchainproject.org/security-assurance |
-| OpenChain Self-Certification checklist | Certification preparation   | https://www.openchainproject.org/conformance        |
+| Resource                               | Description                 | Link                                                                                                       |
+| -------------------------------------- | --------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| OpenChain ISO/IEC 5230 specification   | License compliance standard | https://www.openchainproject.org/license-compliance                                                        |
+| OpenChain ISO/IEC 18974 specification  | Security assurance standard | https://www.openchainproject.org/security-assurance                                                        |
+| OpenChain Self-Certification checklist | Certification preparation   | https://github.com/OpenChain-Project/Reference-Material/tree/master/OpenChain-Standards-Self-Certification |
 
 **Curriculum mapping**: core material for Manager M3
 

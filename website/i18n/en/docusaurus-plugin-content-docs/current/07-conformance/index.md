@@ -120,13 +120,13 @@ Once the gap analysis is complete and there are no unmet items (or a resolution 
 
 **Step 1**: Do a final review of the contents of `output/conformance/declaration-draft.md` and confirm them.
 
-**Step 2**: In your browser, go to https://www.openchainproject.org/conformance.
+**Step 2**: Download the self-certification checklist. The [OpenChain Reference-Material repository](https://github.com/OpenChain-Project/Reference-Material/tree/master/OpenChain-Standards-Self-Certification) hosts language-specific files under `Checklist/ISO-IEC-5230` and `Checklist/ISO-IEC-18974`. Download each one you intend to declare against.
 
-**Step 3**: Select the standard you want to certify against: ISO/IEC 5230 or ISO/IEC 18974 (or choose both standards).
+**Step 3**: Answer each checklist item Yes/No as a self-assessment. The per-item verdicts in `declaration-draft.md` map directly onto it.
 
-**Step 4**: Complete and submit the online self-certification checklist. You can complete it quickly by referring to the contents of `declaration-draft.md`.
+**Step 4**: Complete the online application form on the [OpenChain get-started page](https://openchainproject.org/get-started) to request listing. You do not upload the checklist itself; you submit company details on the premise that the self-assessment is done.
 
-**Step 5**: Once registration is complete, you can use the OpenChain logo and will be listed among officially recognized companies.
+**Step 5**: Once listed, you appear among officially recognized companies and can use the OpenChain logo.
 
 > This step meets the requirements of ISO/IEC 5230 G4.1 (3.6.1) and ISO/IEC 18974 G4.2 (4.4.1).
 
