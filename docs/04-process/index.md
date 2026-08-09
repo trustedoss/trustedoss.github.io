@@ -142,6 +142,23 @@ ISO/IEC 5230 §3.5는 오픈소스 커뮤니티 참여(기여 및 공개)에 대
 기록 보관의 흐름으로 구성합니다. 02장에서 지정한 외부 문의 채널이 이 프로세스의 입구가 되며,
 산출물은 `inquiry-response.md` 로 생성됩니다.
 
+:::tip 공개 운영 사례 — 신고 창구와 고지문
+
+문서로만 정의된 절차는 확인할 방법이 없습니다. 오픈소스 프로젝트 TRUSCA 는 이 두 가지를
+저장소에 공개해 두었습니다.
+
+- [SECURITY.md](https://github.com/trustedoss/trusca/blob/main/SECURITY.md) — 취약점 신고 창구. GitHub 비공개 취약점 신고를 우선
+  채널로 두고 암호화 이메일을 대안으로 제시하며, 공개 이슈로 올리지 말 것을 명시합니다.
+  ISO/IEC 5230 §3.2.1 과 ISO/IEC 18974 §4.2.1 이 요구하는 "공개적으로 볼 수 있는 문의 방법"의
+  실제 형태입니다
+- [NOTICE](https://github.com/trustedoss/trusca/blob/main/NOTICE) 와 [THIRD_PARTY_NOTICES.md](https://github.com/trustedoss/trusca/blob/main/THIRD_PARTY_NOTICES.md)
+  — 배포에 포함하는 고지문. 5230 §3.4.1 의 컴플라이언스 산출물에 해당합니다
+
+구조를 참고하되 그대로 복사하지는 마세요. 예를 들어 위 SECURITY.md 의 PGP 지문은 아직
+채워지지 않은 자리 표시자입니다. 연락처와 키는 각자 실제 값으로 채워야 의미가 있습니다.
+
+:::
+
 ---
 
 ### CI/CD 통합 포인트

@@ -97,6 +97,18 @@ Recommended retention period: the software release's maintenance period plus at 
 - The applicable software version
 - A contact name and contact details
 
+:::tip A published example — attach it as a release asset
+
+The lightest of the options above is to attach the SBOM file to the release itself. The open source
+project TRUSCA publishes a CycloneDX SBOM with every release — `trusca-0.20.1.cdx.json` on the
+[v0.20.1 release](https://github.com/trustedoss/trusca/releases/latest).
+
+Because the version and the file name map one to one, you can reconstruct what a given release
+contained, and customers can download it without asking. For a closed product, the same pattern
+works against an internal artifact repository.
+
+:::
+
 ### Conversely, receiving SBOMs from suppliers and outsourced deliverables
 
 Just as important as providing an SBOM is requesting and verifying the SBOM of software you

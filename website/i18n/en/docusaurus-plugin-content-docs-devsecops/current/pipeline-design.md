@@ -39,6 +39,25 @@ The YAML and commands on this page are examples that show the essentials. For a 
 
 The stage-2 scans can run in parallel to keep the overall time within 5 minutes.
 
+### How one project splits it — TRUSCA
+
+The open source project TRUSCA runs seventeen workflows. Grouping them by trigger shows the intent.
+
+| When         | Workflow                                                                                                                                                                                                                                                                    | Purpose                          |
+| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
+| PR           | [secret-scan](https://github.com/trustedoss/trusca/blob/main/.github/workflows/secret-scan.yml) · [sast](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sast.yml) · [codeql](https://github.com/trustedoss/trusca/blob/main/.github/workflows/codeql.yml) | Fast blocking checks             |
+| PR           | [screenshot-size-gate](https://github.com/trustedoss/trusca/blob/main/.github/workflows/screenshot-size-gate.yml) · [ui-gates](https://github.com/trustedoss/trusca/blob/main/.github/workflows/ui-gates.yml)                                                               | Output quality gates             |
+| Nightly      | [sca-self](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml) (07:00) · [e2e-nightly](https://github.com/trustedoss/trusca/blob/main/.github/workflows/e2e-nightly.yml) (17:00)                                                                 | Long-running full sweeps         |
+| Every 30 min | [demo-health-canary](https://github.com/trustedoss/trusca/blob/main/.github/workflows/demo-health-canary.yml)                                                                                                                                                               | Watching the live demo           |
+| Manual       | [dogfood-scan](https://github.com/trustedoss/trusca/blob/main/.github/workflows/dogfood-scan.yml)                                                                                                                                                                           | Scanning itself with its own SCA |
+
+The important decision is **what was kept out of the PR**. Only checks that finish in a couple of
+minutes — secrets, SAST — gate the pull request; SBOM regeneration and end-to-end tests moved to the
+night. A slow PR is a PR developers learn to route around.
+
+Some checks run at two points on purpose. CodeQL looks at the diff on each PR and re-examines the
+whole tree every Monday at 01:30, so code already merged gets re-checked when new rules land.
+
 ---
 
 ## GitHub Actions integrated workflow

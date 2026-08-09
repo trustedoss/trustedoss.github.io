@@ -140,6 +140,23 @@ web form), acknowledgement, triage into compliance vs. security inquiries, assig
 and record keeping. The external inquiry channel designated in chapter 02 is the entry point, and
 the deliverable is generated as `inquiry-response.md`.
 
+:::tip Published examples — intake channel and notices
+
+A procedure that exists only on paper cannot be verified. The open source project TRUSCA publishes
+both of these in its repository.
+
+- [SECURITY.md](https://github.com/trustedoss/trusca/blob/main/SECURITY.md) — the vulnerability intake channel. It puts GitHub
+  private vulnerability reporting first, offers encrypted email as a fallback, and states plainly
+  that unpatched issues must not be filed as public issues. This is what the "publicly visible
+  method of inquiry" required by ISO/IEC 5230 §3.2.1 and ISO/IEC 18974 §4.2.1 looks like in practice
+- [NOTICE](https://github.com/trustedoss/trusca/blob/main/NOTICE) and [THIRD_PARTY_NOTICES.md](https://github.com/trustedoss/trusca/blob/main/THIRD_PARTY_NOTICES.md)
+  — the notices shipped with the distribution, matching the compliance artifacts in 5230 §3.4.1
+
+Borrow the structure, not the contents. The PGP fingerprint in that SECURITY.md is still a
+placeholder; contact details and keys only mean something once they hold real values.
+
+:::
+
 ---
 
 ### CI/CD integration points
