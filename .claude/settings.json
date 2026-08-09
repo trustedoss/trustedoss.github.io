@@ -26,8 +26,7 @@
           },
           {
             "type": "command",
-            "command": "node .claude/scripts/check-admonition.js",
-            "description": "docs/ 파일 저장 시 cd agents/ 블록 직전 admonition 누락 즉시 경고"
+            "command": "node .claude/scripts/check-admonition.js"
           }
         ]
       }
