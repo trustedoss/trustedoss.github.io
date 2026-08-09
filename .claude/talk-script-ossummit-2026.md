@@ -507,12 +507,12 @@ trustedoss.github.io/ai-coding/strategy
   | SAST             | CodeQL                | [codeql.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/codeql.yml)             |
   | SCA              | cdxgen 12.3.3 + Trivy | [sca-self.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml)         |
   | container 보안   | Trivy (image scan)    | [ci.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/ci.yml) 의 `image-scan` job |
-  | IaC 보안         | —                     | 없음 (대상 IaC 가 없다)                                                                               |
+  | IaC 보안         | 미도입                | Helm chart 와 compose 파일이 있으나 `trivy config` 를 아직 걸지 않았다                                |
 
 - **[참조]** 5단계 실제 운영 — TRUSCA
-  [dependabot.yml](https://github.com/trustedoss/trusca/blob/main/.github/dependabot.yml) (npm · pip · docker · github-actions) ·
+  [dependabot.yml](https://github.com/trustedoss/trusca/blob/main/.github/dependabot.yml) (6개 항목) ·
   [sca-self.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml) (매일 07:00) ·
-  [dogfood-scan.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/dogfood-scan.yml) (advisory 기본) ·
+  [dogfood-scan.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/dogfood-scan.yml) (수동 실행, advisory 기본) ·
   [demo-health-canary.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/demo-health-canary.yml) (30분 주기).
   DAST 는 없다
 - **[참조]** 4단계는 TRUSCA 에도 없다. 공개 저장소에서 findings-driven 리뷰를 상시 운영하는
