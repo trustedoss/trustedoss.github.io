@@ -197,8 +197,10 @@ Trusted OSS 전체 지도
 
 말할 것:
 
-- Trusted OSS 는 OpenChain Korea Work Group 에서 만든 오픈소스 프로젝트다. CC BY 4.0 이므로
-  누구나 가져다 회사에 맞게 고쳐 쓸 수 있다
+- Trusted OSS 는 CC BY 4.0 으로 공개된 실전 키트다. 누구나 가져다 회사에 맞게 고쳐 쓸 수 있다
+- **OpenChain KWG 와의 관계를 정확히 말한다.** KWG 는 표준과 가이드, 빈 템플릿으로 "무엇을,
+  왜"를 다룬다. 이 키트는 그 위에서 "어떻게, 자동으로"를 맡는다. KWG 콘텐츠를 동기화하는
+  실행·자동화 레이어이지 KWG 가 만든 산출물이 아니다
 - 위 칸이 첫 번째 덩어리다. ISO/IEC 5230 은 라이선스 컴플라이언스, 18974 는 보안 보증 표준이다.
   둘 다 자체 인증 방식이라 외부 심사 없이 스스로 선언한다. 이 체계를 세우는 데 필요한 산출물
   24종을 agent 9종이 만든다. 오늘 앞부분에서 이걸 다룬다
@@ -783,7 +785,7 @@ AI 에이전트를 통제하는 문제에서 출발해,
 
   [ QR ]  →  trustedoss.github.io
 
-  OpenChain Korea Work Group 과 함께 만들었습니다
+  OpenChain KWG 와 연계해 운영합니다
 ```
 
 말할 것:
@@ -796,7 +798,7 @@ AI 에이전트를 통제하는 문제에서 출발해,
 - 사이트 메뉴는 네 개다 — 오픈소스 관리, AI 코딩 거버넌스, DevSecOps, 레퍼런스.
   오늘 다루지 않은 DevSecOps 에는 영역별(secret detection · SAST · SCA · container · IaC · DAST)
   구현 가이드와 전사 pipeline 설계가 들어 있다
-- 기여를 환영한다. OpenChain Korea Work Group 과 연계해 운영하고 있다
+- 기여를 환영한다. OpenChain KWG 커뮤니티와 연계해 운영하고 있다
 
 링크:
 

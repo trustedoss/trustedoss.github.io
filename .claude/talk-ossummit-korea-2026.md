@@ -15,7 +15,8 @@
 **"AI로 오픈소스 컴플라이언스를 민주화한다"**
 
 Trusted OSS는 가이드가 아니라 **AI Agent가 회사별 맞춤 산출물을 자동 생성하는 오픈소스 킷**이다.
-OpenChain Korea Work Group에서 만들고 검증했다는 점이 신뢰의 근거다.
+OpenChain KWG 콘텐츠를 동기화하며 그 위에서 실행과 자동화를 맡는 레이어라는 점이
+신뢰의 근거다(POSITIONING §7). **"KWG 가 만들었다"고 말하지 않는다** — 별개이며 보완 관계다.
 
 ---
 
@@ -215,6 +216,9 @@ SBOM 을 만들어야 하는데 쓸 만한 수단이 없어 못 만든다. 이 �
 ---
 
 ## 제출한 Description (2026-04 원문, 수정 금지)
+
+(주의 — 제출본에 "Built by the OpenChain Korea Work Group" 이라고 썼으나 정확하지 않다.
+KWG 와는 보완 관계이며 별개다. 발표에서는 "KWG 와 연계해 운영한다"로 말한다.)
 
 ```
 Open source compliance sounds expensive — consultants, lawyers,
