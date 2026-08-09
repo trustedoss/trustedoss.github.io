@@ -34,21 +34,21 @@ SK텔레콤 · OpenChain Korea Work Group
 ## 2. 문제 제기 ①: 오픈소스 공급망 위험 (0:20 / 1분)
 
 ```
-오픈소스 공급망 침해는 반복되고 있습니다
+오픈소스 공급망 침해는 계속 일어나고 있습니다
 
 XZ Utils (2024)      upstream 프로젝트에 삽입된 backdoor
 Log4Shell (2021)     라이브러리 하나, 수억 개 시스템
 
-공통점 — 무엇이 포함되어 있는지 파악하지 못했습니다
+공통점 — 무엇이 들어 있는지 몰랐습니다
 ```
 
 점심 직후 시간대이므로 목차로 시작하지 않는다. 사례부터 제시한다.
 
 말할 것:
 
-- 두 사건 모두 직접 작성하지 않은 코드가 원인이었다
-- 구성 요소를 파악하지 못한 상태에서는 영향 범위조차 판단할 수 없다
-- 이것이 기존에 알려진 문제다. 다음 슬라이드에서 AI 코딩이 이 조건을 어떻게 바꾸는지 다룬다
+- 두 사건 모두 직접 쓰지 않은 코드가 원인이었다
+- 무엇이 들어 있는지 모르면 영향 범위조차 판단할 수 없다
+- 여기까지가 기존에 알려진 문제다. 다음 슬라이드에서 AI 코딩이 무엇을 바꾸는지 다룬다
 
 링크:
 
@@ -64,31 +64,31 @@ AI 코딩 도구는 세 가지를 바꿉니다
 의존성 유입    AI 가 제안한 패키지가 사람의 검토를 거치지 않고 반입됩니다
 
 검토 밀도      rule 이 탐지하지 못하는 영역 — 비즈니스 로직, 권한 검사,
-               상태 전이 — 의 코드가 생산량에 비례해 증가하지만
-               리뷰 용량은 그대로입니다
+               상태 전이 — 의 코드는 생산량만큼 늘지만
+               리뷰 인원은 그대로입니다
 
 도구 호출      MCP tool 의 description 은 agent 의 context 로 들어갑니다.
                사람이 읽지 않고 저장소에도 없으며 서버가 언제든 변경합니다
 
-기존 통제는 사람이 코드를 작성하고 사람이 검토한다는 전제 위에 설계되었습니다
+기존 통제는 사람이 코드를 쓰고 사람이 검토한다는 전제로 만들어졌습니다
 ```
 
-**이 슬라이드가 세션 제목의 절반을 설명한다.** 축 B 전체(11~15번)의 근거가 여기서 나온다.
+**이 슬라이드가 세션 제목의 절반을 설명한다.** 2부 전체(11~15번)의 근거가 여기서 나온다.
 
 말할 것:
 
-- 첫 번째는 반입 경로의 문제다. 사람이 라이브러리를 선택할 때는 검토 절차가 작동하지만,
-  AI 가 제안하고 에이전트가 설치하면 그 절차를 거치지 않는다
+- 첫 번째는 반입 경로 문제다. 사람이 라이브러리를 고를 때는 검토 절차가 작동하지만,
+  AI 가 제안하고 에이전트가 설치하면 그 절차를 건너뛴다
 - 두 번째는 탐지가 아니라 **분량**의 문제다. 정적 분석이 비즈니스 로직 결함이나 권한 검사
-  누락을 잡지 못하는 것은 원래부터 그렇다. 달라진 것은 그 사각지대에 놓이는 코드의 양이다.
-  생산량이 몇 배가 되어도 리뷰 인원은 그대로다. 게다가 AI 가 생성한 코드는 문법적으로
-  정연하고 주석까지 갖춰 리뷰어의 시선이 멈추지 않는다.
+  누락을 잡지 못하는 것은 원래부터 그렇다. 달라진 것은 rule 이 보지 못하는 영역에 쌓이는
+  코드의 양이다. 생산량이 몇 배가 되어도 리뷰 인원은 그대로다. 게다가 AI 가 쓴 코드는
+  문법이 정연하고 주석까지 있어 리뷰어의 시선이 멈추지 않는다.
   **"AI 가 신종 취약점 패턴을 만든다"고 말하지 않는다** — 근거를 요구받으면 답하기 어렵다
-- 세 번째가 가장 최근에 생긴 축이다. MCP 도구 설명(description 필드)은 에이전트의 컨텍스트로
+- 세 번째가 가장 최근에 생긴 문제다. MCP 도구 설명(description 필드)은 에이전트의 컨텍스트로
   들어가므로 **악성 지시를 숨긴 설명은 시스템 프롬프트를 바꾼 것과 같은 효과**를 낸다.
   문제는 이 설명이
-  세 가지 통제를 모두 비켜 간다는 점이다. 사람은 읽지 않고(에이전트만 읽는다), 저장소에 없어
-  코드 리뷰 대상이 아니며, 서버 업데이트로 내용이 바뀌어도 알아채기 어렵다.
+  세 가지 통제를 모두 비켜 간다는 점이다. 사람은 읽지 않고(에이전트만 읽는다), 저장소에 없으니
+  코드 리뷰 대상도 아니며, 서버가 내용을 바꿔도 알아채기 어렵다.
   1,899개 오픈소스 MCP 서버 조사에서 5.5% 가 이 유형을 보였다
 
 링크:
@@ -100,25 +100,27 @@ AI 코딩 도구는 세 가지를 바꿉니다
 ## 4. 문제 제기 ③: 규제 요구와 대응 수단의 격차 (2:20 / 1분)
 
 ```
-규제 요구사항은 강화되었으나 대응 수단은 부족합니다
+규제는 강해졌는데 만들 수단은 그대로입니다
 
 EU CRA        보고 의무 2026-09-11 · 전면 적용 2027-12-11
 CISA 2026     2026-07-29 발표, NTIA 2021 대체
-              component hash 와 license 가 필수 항목으로 변경
-              적용 범위에 AI software 와 SaaS 포함
+              component hash 와 license 가 필수가 됨
+              적용 범위가 AI software 와 SaaS 까지 넓어짐
 
-그러나 다수의 공급사는 SBOM 을 생성하지 못합니다
-  소스 없음 (binary · firmware 납품)
-  폐쇄망 (외부 서비스 업로드 불가)
-  충족 여부 판정 방법 없음
+그러나 다수의 공급사는 요구 수준의 SBOM 을 생성하지 못합니다
+  소스 없음        binary · firmware 만 납품되는 경우
+  판정 불가        최소 요소 충족 여부를 확인할 방법이 없음
 ```
 
 말할 것:
 
 - 유럽연합 사이버 복원력법(EU CRA) 보고 의무가 한 달 뒤 시작된다
-- CISA 2026 최소 요소는 2주 전 발표되었고 NTIA 2021 기준을 대체한다.
-  컴포넌트 해시와 라이선스가 권고에서 필수로 변경되었다
-- 요구 수준은 상향되었으나 생성 수단은 그대로다. 이 격차를 8번 슬라이드에서 다시 다룬다
+- CISA 2026 최소 요소는 2주 전에 나왔고 NTIA 2021 기준을 대체한다.
+  component hash 와 license 가 권고에서 필수가 됐다
+- 요구 수준은 높아졌는데 만들 수단은 그대로다. 이 격차를 8번 슬라이드에서 다시 다룬다
+- **폐쇄망을 여기서 언급하지 않는다.** syft·cdxgen·Trivy 는 로컬 실행이 되므로 망 분리
+  환경에서도 SBOM 생성 자체는 가능하다. 폐쇄망이 제약이 되는 것은 SaaS 형 SCA 서비스를
+  사용할 수 없다는 점이며, 이는 17번 TRUSCA 구간의 논점이다
 
 한 줄 덧붙임: 이 가이드는 CISA 2026 기준을 이미 반영했다.
 (주의 — **가이드가 반영했다는 뜻이다.** 도구 구현 여부와 혼동하지 않는다.)
@@ -173,7 +175,7 @@ Trusted OSS 전체 지도
 
 ---
 
-## 6. 축 A ①: 무엇을 만들어야 하는가 (5:20 / 1분)
+## 6. 1부 ①: 무엇을 만들어야 하는가 (5:20 / 1분)
 
 ```
 두 표준이 실제로 요구하는 것
@@ -181,14 +183,14 @@ Trusted OSS 전체 지도
 5230    정책 · 조직 · 프로세스 · BOM · 고지문 · 기여
 18974   정책 · 조직 · SBOM · CVE 추적 · 대응 · 기록
 
-공통 기반의 비중이 큽니다.
-하나를 구축하면 나머지의 절반이 함께 충족됩니다.
+공통 기반이 큽니다.
+하나를 세우면 나머지 절반이 함께 충족됩니다.
 ```
 
 말할 것:
 
-- 두 표준은 독립적이지 않다. 정책·조직·교육·SBOM 이 공통 기반이다
-- 개별 진행하면 동일한 작업을 중복 수행하게 된다
+- 두 표준은 별개가 아니다. 정책·조직·교육·SBOM 이 공통 기반이다
+- 따로 진행하면 같은 작업을 두 번 하게 된다
 
 링크:
 
@@ -197,7 +199,7 @@ Trusted OSS 전체 지도
 
 ---
 
-## 7. 축 A ②: Agent가 만든다 (6:20 / 1분)
+## 7. 1부 ②: Agent가 만든다 (6:20 / 1분)
 
 ```
 agent 9종 → 산출물 24종
@@ -217,8 +219,8 @@ github.com/trustedoss/trustedoss-agents
 
 말할 것:
 
-- 각 agent 가 조직 상황을 질문하고 그 답변으로 문서를 생성한다. 템플릿을 채우는 방식이 아니라 답변에 따라 내용이 달라진다
-- 마지막 agent 가 앞선 산출물을 모두 읽어 갭 분석과 선언문 초안을 생성한다
+- 각 agent 가 조직 상황을 묻고 그 답으로 문서를 만든다. 템플릿을 채우는 방식이 아니라 답에 따라 내용이 달라진다
+- 마지막 agent 가 앞선 산출물을 모두 읽어 gap 분석과 선언문 초안을 만든다
 
 링크:
 
@@ -227,19 +229,18 @@ github.com/trustedoss/trustedoss-agents
 
 ---
 
-## 8. 축 A ③: SBOM 생성이 불가능한 구간 (7:20 / 1.5분)
+## 8. 1부 ③: SBOM 생성이 불가능한 구간 (7:20 / 1.5분)
 
 ```
 SBOM 을 생성할 수 없는 구간
 
-소스가 있는 경우    →  syft, cdxgen              해결됨
-binary / firmware   →  ?
-폐쇄망              →  ?
+소스가 있는 경우      →  syft, cdxgen            해결됨
+binary / firmware 만  →  ?
 
 BomLens (Apache-2.0)
-  입력   소스 · container · binary · firmware
-  출력   CycloneDX SBOM · NOTICE · 위험 리포트 · ML-BOM
-  실행   로컬에서 동작
+  input    소스 · container · binary · firmware
+  output   CycloneDX SBOM · NOTICE · risk report · ML-BOM
+  runs     로컬에서 실행
 
 github.com/sktelecom/bomlens
 ```
@@ -254,9 +255,11 @@ github.com/sktelecom/bomlens
 ```
 
 - 소스가 있는 프로젝트는 syft 와 cdxgen 으로 해결된다
-- 미해결 구간은 소스 없이 바이너리나 펌웨어만 존재하는 경우, 그리고 폐쇄망이다
-- BomLens 는 로컬에서 실행되며 펌웨어와 바이너리를 입력으로 받는다. Apache-2.0 으로 공개되어 있다
-- 고지문과 위험 리포트를 함께 생성한다
+- 미해결 구간은 소스 없이 binary 나 firmware 만 존재하는 경우다. 두 도구 모두 소스나 패키지
+  manifest 를 입력으로 하기 때문이다
+- BomLens 는 firmware 와 binary 를 입력으로 받는다. 로컬에서 실행되므로 분석 대상 코드가
+  외부로 나가지 않는다. Apache-2.0 으로 공개되어 있다
+- NOTICE 와 risk report 를 함께 생성한다
 
 **사용하지 않을 표현**: "최적의 도구". 비교 평가 없이 단정하면 근거를 요구받는다.
 지원 범위를 구체적으로 제시하는 것으로 충분하다.
@@ -269,7 +272,7 @@ github.com/sktelecom/bomlens
 
 ---
 
-## 9. 축 A ④: 데모 (8:50 / 4.5분)
+## 9. 1부 ④: 데모 (8:50 / 4.5분)
 
 ```
 [ 녹화 데모 ]
@@ -294,13 +297,13 @@ agents/03-policy-generator → output/policy/oss-policy.md
 
 ---
 
-## 10. 축 A ⑤: 그래서 어떻게 선언하는가 (13:20 / 1분)
+## 10. 1부 ⑤: 그래서 어떻게 선언하는가 (13:20 / 1분)
 
 ```
 자체 인증 선언 절차
 
-1  체크리스트 내려받기     OpenChain-Project/Reference-Material
-2  스스로 점검             각 항목에 yes / no
+1  checklist 내려받기      OpenChain-Project/Reference-Material
+2  self-assessment         각 항목에 yes / no
 3  등재 신청               openchainproject.org/get-started
 
 외부 심사 없음. 비용 없음.
@@ -308,9 +311,9 @@ agents/03-policy-generator → output/policy/oss-policy.md
 
 말할 것:
 
-- 자체 인증 방식이므로 외부 심사가 없다
-- 체크리스트를 내려받아 자체 점검한 뒤 신청 폼을 제출한다
-- 앞에서 생성한 갭 분석과 선언문 초안이 이 점검의 근거가 된다
+- 자체 인증이므로 외부 심사가 없다
+- checklist 를 내려받아 스스로 점검한 뒤 신청 폼을 낸다
+- 앞에서 만든 gap 분석과 선언문 초안이 이 점검의 근거가 된다
 
 링크:
 
@@ -321,13 +324,13 @@ agents/03-policy-generator → output/policy/oss-policy.md
 
 ---
 
-## 11. 축 B ①: 자가진단 (14:20 / 4분)
+## 11. 2부 ①: 자가진단 (14:20 / 4분)
 
 ```
 지금 우리 팀은 몇 단계입니까?
 
 L1  프롬프트 의존       정책이 개인의 기억에만 있다
-L2  규칙 내재화         CLAUDE.md, .cursor/rules, AGENTS.md
+L2  AI 규칙 내재화      CLAUDE.md, .cursor/rules, AGENTS.md
 L3  CI/CD 자동 차단     gitleaks · semgrep · grype · trivy · checkov
 L4  AI 방어 레이어      findings-driven 리뷰 · AI fuzzing
 L5  지속 모니터링       dependabot · renovate · DAST
@@ -341,10 +344,10 @@ trustedoss.github.io/ai-coding/strategy
 
 말할 것:
 
-- 1단계는 정책이 개인의 기억에만 존재하는 상태다. 담당자가 변경되면 유실된다
-- 2단계는 그 정책을 규칙 파일로 저장소에 두는 단계다. 별도 비용 없이 10분이면 적용된다
-- 3단계부터 실질적인 차단이 작동한다. 규칙은 권고이지 강제가 아니기 때문이다
-- 시크릿 탐지를 먼저 적용하고 SAST, SCA 순으로 확대한다. 동시 도입은 실패 확률이 높다
+- 1단계는 정책이 개인의 기억에만 있는 상태다. 담당자가 바뀌면 사라진다
+- 2단계는 그 정책을 rules 파일로 저장소에 두는 단계다. 별도 비용 없이 10분이면 적용된다
+- 3단계부터 실질적인 차단이 작동한다. rules 는 권고이지 강제가 아니기 때문이다
+- secret detection 을 먼저 적용하고 SAST, SCA 순으로 확대한다. 동시 도입은 실패 확률이 높다
 
 3단계를 실제로 돌리는 곳이 있느냐는 질문이 나오면 아래 워크플로우를 연다.
 
@@ -360,14 +363,14 @@ trustedoss.github.io/ai-coding/strategy
 - **[화면]** 5단계 전략 — https://trustedoss.github.io/ai-coding/strategy
 - **[참조]** 3단계 실제 운영 — TRUSCA. 다섯 영역 중 넷을 덮는다
 
-  | 영역          | 도구                  | 워크플로우                                                                                            |
-  | ------------- | --------------------- | ----------------------------------------------------------------------------------------------------- |
-  | 시크릿 탐지   | gitleaks              | [secret-scan.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/secret-scan.yml)   |
-  | SAST          | bandit · semgrep      | [sast.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sast.yml)                 |
-  | SAST          | CodeQL                | [codeql.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/codeql.yml)             |
-  | SCA           | cdxgen 12.3.3 + Trivy | [sca-self.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml)         |
-  | 컨테이너 보안 | Trivy (image scan)    | [ci.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/ci.yml) 의 `image-scan` job |
-  | IaC 보안      | —                     | 없음 (대상 IaC 가 없다)                                                                               |
+  | 영역             | 도구                  | 워크플로우                                                                                            |
+  | ---------------- | --------------------- | ----------------------------------------------------------------------------------------------------- |
+  | secret detection | gitleaks              | [secret-scan.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/secret-scan.yml)   |
+  | SAST             | bandit · semgrep      | [sast.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sast.yml)                 |
+  | SAST             | CodeQL                | [codeql.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/codeql.yml)             |
+  | SCA              | cdxgen 12.3.3 + Trivy | [sca-self.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml)         |
+  | container 보안   | Trivy (image scan)    | [ci.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/ci.yml) 의 `image-scan` job |
+  | IaC 보안         | —                     | 없음 (대상 IaC 가 없다)                                                                               |
 
 - **[참조]** 5단계 실제 운영 — TRUSCA
   [dependabot.yml](https://github.com/trustedoss/trusca/blob/main/.github/dependabot.yml) (npm · pip · docker · github-actions) ·
@@ -380,7 +383,7 @@ trustedoss.github.io/ai-coding/strategy
 
 ---
 
-## 12. 축 B ②: 4단계는 왜 필요한가 (18:20 / 1.5분)
+## 12. 2부 ②: 4단계는 왜 필요한가 (18:20 / 1.5분)
 
 ```
 3단계는 알려진 pattern 을 탐지합니다.
@@ -399,7 +402,7 @@ AI 는 알려지지 않은 pattern 을 생성합니다.
 
 ---
 
-## 13. 축 B ③: 무엇이 오가는가 (19:50 / 1.5분)
+## 13. 2부 ③: 무엇이 오가는가 (19:50 / 1.5분)
 
 ```
 모델에 실제로 전달되는 것
@@ -407,7 +410,7 @@ AI 는 알려지지 않은 pattern 을 생성합니다.
   semgrep.sarif ─┐
   grype.json    ─┴→  파싱  →  플래그된 3건 + 각 ±5줄
                                        ↓
-                             TP / FP · 위험도 · 익스플로잇 경로
+                             TP / FP · risk · exploit path
                                        ↓
                                  PR 코멘트 (빌드 차단 아님)
 
@@ -420,8 +423,8 @@ trustedoss.github.io/ai-coding/ai-security-review
 말할 것:
 
 - 저장소 전체가 아니라 플래그된 항목과 주변 코드만 전송된다
-- 동일한 심각도로 플래그된 두 건을 모델이 실제 취약점과 오탐으로 구분한다. 3단계와 구분되는 지점이다
-- 빌드는 실패시키지 않는다. 오탐 비율이 높기 때문에 PR 코멘트로만 남긴다
+- 동일한 severity 로 플래그된 두 건을 모델이 TP 와 FP 로 구분한다. 3단계와 구분되는 지점이다
+- 빌드는 실패시키지 않는다. FP 비율이 높기 때문에 PR 코멘트로만 남긴다
 
 링크:
 
@@ -429,7 +432,7 @@ trustedoss.github.io/ai-coding/ai-security-review
 
 ---
 
-## 14. 축 B ④: 에이전트가 도구를 부른다 (21:20 / 1.5분)
+## 14. 2부 ④: 에이전트가 도구를 부른다 (21:20 / 1.5분)
 
 ```
 agent 가 호출하는 tool 도 공급망 입력입니다
@@ -445,8 +448,8 @@ npm postmark-mcp
 말할 것:
 
 - MCP 는 에이전트가 외부 도구를 호출하는 규약이다
-- 이 패키지는 초기 버전에서는 정상이었고 이후 버전에서 악성 코드가 포함되었다
-- 도입 시점의 승인만으로는 통제되지 않는다. 버전 고정과 변경 추적이 필요한 근거다
+- 이 패키지는 처음에는 정상이었고 이후 버전에 악성 코드가 들어갔다
+- 도입할 때 한 번 승인하는 것으로는 막지 못한다. 버전 고정과 변경 추적이 필요한 이유다
 
 **사실 경계 주의**: 악성 코드가 포함된 시작 버전은 추정이며, 공식 저장소와의 연관은
 확인되지 않았다. 단정적으로 서술하지 않는다.
@@ -457,7 +460,7 @@ npm postmark-mcp
 
 ---
 
-## 15. 축 B ⑤: 여섯 가지 통제 (22:50 / 1.5분)
+## 15. 2부 ⑤: 여섯 가지 통제 (22:50 / 1.5분)
 
 ```
 Agent tool 통제 여섯 가지
@@ -475,8 +478,8 @@ trustedoss.github.io/ai-coding/agent-governance
 
 말할 것:
 
-- 여섯 번째 항목이 앞의 사례에서 도출된 것이다. 도입 전에 외부 엔드포인트와 전송 데이터를 판정한다
-- 모든 서버를 동일한 강도로 심사하면 운영이 지속되지 않는다. 출처에 따라 구분한다
+- 여섯 번째 항목이 앞의 사례에서 나온 것이다. 도입 전에 어떤 외부 endpoint 로 무엇이 나가는지 판정한다
+- 모든 서버를 같은 강도로 심사하면 운영이 이어지지 않는다. 출처에 따라 나눈다
 - 호스팅 플랫폼을 경유하는 경우 해당 플랫폼도 심사 대상이다
 
 전환 문장:
@@ -495,21 +498,21 @@ trustedoss.github.io/ai-coding/agent-governance
 ## 16. TRUSCA ①: 선언 다음에 오는 것 (24:20 / 2분)
 
 ```
-자체 인증 선언 이후에도 관리는 계속됩니다
+자체 인증을 선언한 뒤에도 관리는 계속됩니다
 
 18974 가 요구하는 것은 지속 운영입니다
-  · 취약점 DB 주간 갱신
+  · vulnerability DB 주간 갱신
   · VEX 판정 최신 유지
-  · 모든 빌드에서 license policy 적용
+  · 모든 build 에서 license policy 적용
 
-상용 SCA 도입 비용에서 중단되는 경우가 많습니다.
+상용 SCA 비용 때문에 여기서 멈추는 경우가 많습니다.
 ```
 
 말할 것:
 
-- 키트가 제공하는 범위는 체계 수립과 산출물 생성까지다
-- 18974 가 요구하는 것은 지속 운영이다. CVE 는 계속 공개되고 SBOM 은 시간이 지나면 실제 구성과 어긋난다
-- 이 지점에서 상용 도구 비용 때문에 중단되는 경우가 많다
+- 키트가 해 주는 것은 체계를 세우고 산출물을 만드는 데까지다
+- 18974 가 요구하는 것은 지속 운영이다. CVE 는 계속 나오고 SBOM 은 시간이 지나면 실제 구성과 어긋난다
+- 이 지점에서 상용 도구 비용 때문에 멈추는 경우가 많다
 
 ---
 
@@ -518,11 +521,11 @@ trustedoss.github.io/ai-coding/agent-governance
 ```
 TRUSCA — Apache-2.0, self-hosted SCA
 
-  탐지    cdxgen, 30개 이상 생태계
-  대조    Trivy 통합 DB (NVD · OSV · GHSA · EPSS · KEV)
-  판정    VEX 수출입, 7단계 triage
-  차단    3계층 license policy, CI gate, NOTICE 생성
-  운영    RBAC, 감사 로그, Compose / Helm
+  detect     cdxgen, 30개 이상 ecosystem
+  match      Trivy 통합 DB (NVD · OSV · GHSA · EPSS · KEV)
+  triage     VEX import / export, 7단계 triage
+  enforce    3계층 license policy, CI gate, NOTICE 생성
+  operate    RBAC, audit log, Compose / Helm
 
   사내망에서 실행됩니다
 
@@ -534,19 +537,19 @@ github.com/trustedoss/trusca
 
 말할 것:
 
-- 자체 호스팅 방식이므로 폐쇄망에서 실행된다. 국내 기업 상당수에 중요한 조건이다
-- 규제 크로스워크 데이터는 BomLens 에서 가져온 것이다. 오픈소스 프로젝트 간 데이터 재사용 사례다
+- self-hosted 방식이므로 폐쇄망에서 실행된다. 국내 기업 상당수에 중요한 조건이다
+- regulatory crosswalk 데이터는 BomLens 에서 가져온 것이다. 오픈소스 프로젝트 간 데이터 재사용 사례다
 
 공개된 운영 자산을 함께 제시한다. 문서상의 절차가 아니라 실제로 운영 중임을 확인할 수 있다.
 
 링크:
 
 - **[화면]** https://github.com/trustedoss/trusca · https://trustedoss.github.io/trusca/
-- **[참조]** 릴리스마다 첨부되는 CycloneDX SBOM —
+- **[참조]** release asset 으로 첨부되는 CycloneDX SBOM —
   https://github.com/trustedoss/trusca/releases/latest
-- **[참조]** 취약점 신고 창구(5230 §3.2.1 · 18974 §4.2.1) —
+- **[참조]** vulnerability 신고 창구(5230 §3.2.1 · 18974 §4.2.1) —
   https://github.com/trustedoss/trusca/blob/main/SECURITY.md
-- **[참조]** 고지문(5230 §3.4.1) —
+- **[참조]** NOTICE 와 third-party notices(5230 §3.4.1) —
   [NOTICE](https://github.com/trustedoss/trusca/blob/main/NOTICE) ·
   [THIRD_PARTY_NOTICES.md](https://github.com/trustedoss/trusca/blob/main/THIRD_PARTY_NOTICES.md)
 
@@ -557,7 +560,7 @@ github.com/trustedoss/trusca
 ```
 로드맵
 
-  reachability 분석       이 CVE 가 우리 실행 경로에 실제로 있는가
+  reachability 분석       이 CVE 가 실제 execution path 상에 있는가
   agent pre-flight 정책   패키지를 넣기 전에 agent 가 조회하는
                           MCP 서버
 ```
@@ -568,7 +571,7 @@ github.com/trustedoss/trusca
 
 ```
 AI 에이전트를 통제하는 문제에서 출발해,
-그 에이전트가 정책을 직접 조회하는 지점에서 두 축이 만납니다.
+그 에이전트가 정책을 직접 조회하는 지점에서 1부와 2부가 만납니다.
 
 규칙으로 권고하는 2단계도, CI 에서 사후 차단하는 3단계도 아닙니다.
 반입 이전에 조회하는 방식이며, 5단계 모델이 아직 포함하지 못한 영역입니다.
@@ -581,9 +584,9 @@ AI 에이전트를 통제하는 문제에서 출발해,
 ```
 오늘 바로 시작하기
 
-  가이드      trustedoss.github.io            CC BY 4.0
+  guide       trustedoss.github.io            CC BY 4.0
   agent       git clone → cd agents → claude
-  브라우저    API key 만으로 설치 없이 사용
+  browser     API key 만으로 설치 없이 사용
 
   [ QR ]  →  trustedoss.github.io
 
@@ -592,8 +595,8 @@ AI 에이전트를 통제하는 문제에서 출발해,
 
 말할 것:
 
-- 전부 공개되어 있으며 포크해서 조직에 맞게 수정할 수 있다
-- 브라우저 도구는 설치 없이 API 키만으로 사용할 수 있다
+- 전부 공개돼 있고 fork 해서 조직에 맞게 고칠 수 있다
+- 브라우저 도구는 설치 없이 API key 만으로 쓸 수 있다
 
 링크:
 
@@ -682,20 +685,20 @@ findings 수를 제한해 통제한다. 정확한 수치는 팀 규모와 PR 빈
 
 ### TRUSCA 실제 운영 사례
 
-| 대상                     | URL                                                                                        |
-| ------------------------ | ------------------------------------------------------------------------------------------ |
-| 시크릿 탐지 (3단계)      | https://github.com/trustedoss/trusca/blob/main/.github/workflows/secret-scan.yml           |
-| SAST — bandit·semgrep    | https://github.com/trustedoss/trusca/blob/main/.github/workflows/sast.yml                  |
-| SAST — CodeQL            | https://github.com/trustedoss/trusca/blob/main/.github/workflows/codeql.yml                |
-| SCA 정기 스캔 (3·5단계)  | https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml              |
-| 컨테이너 이미지 스캔     | https://github.com/trustedoss/trusca/blob/main/.github/workflows/ci.yml (`image-scan` job) |
-| 의존성 자동 갱신 (5단계) | https://github.com/trustedoss/trusca/blob/main/.github/dependabot.yml                      |
-| 자기 적용 검증 (5단계)   | https://github.com/trustedoss/trusca/blob/main/.github/workflows/dogfood-scan.yml          |
-| 운영 감시 (5단계)        | https://github.com/trustedoss/trusca/blob/main/.github/workflows/demo-health-canary.yml    |
-| 릴리스 SBOM              | https://github.com/trustedoss/trusca/releases/latest                                       |
-| 취약점 신고 창구         | https://github.com/trustedoss/trusca/blob/main/SECURITY.md                                 |
-| 고지문                   | https://github.com/trustedoss/trusca/blob/main/NOTICE                                      |
-| 서드파티 고지            | https://github.com/trustedoss/trusca/blob/main/THIRD_PARTY_NOTICES.md                      |
+| 대상                      | URL                                                                                        |
+| ------------------------- | ------------------------------------------------------------------------------------------ |
+| secret detection (3단계)  | https://github.com/trustedoss/trusca/blob/main/.github/workflows/secret-scan.yml           |
+| SAST — bandit·semgrep     | https://github.com/trustedoss/trusca/blob/main/.github/workflows/sast.yml                  |
+| SAST — CodeQL             | https://github.com/trustedoss/trusca/blob/main/.github/workflows/codeql.yml                |
+| SCA scheduled scan        | https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml              |
+| container image scan      | https://github.com/trustedoss/trusca/blob/main/.github/workflows/ci.yml (`image-scan` job) |
+| dependency update (5단계) | https://github.com/trustedoss/trusca/blob/main/.github/dependabot.yml                      |
+| dogfooding (5단계)        | https://github.com/trustedoss/trusca/blob/main/.github/workflows/dogfood-scan.yml          |
+| health canary (5단계)     | https://github.com/trustedoss/trusca/blob/main/.github/workflows/demo-health-canary.yml    |
+| release SBOM              | https://github.com/trustedoss/trusca/releases/latest                                       |
+| vulnerability 신고 창구   | https://github.com/trustedoss/trusca/blob/main/SECURITY.md                                 |
+| NOTICE                    | https://github.com/trustedoss/trusca/blob/main/NOTICE                                      |
+| third-party notices       | https://github.com/trustedoss/trusca/blob/main/THIRD_PARTY_NOTICES.md                      |
 
 ### 외부 표준·출처
 
@@ -713,7 +716,7 @@ findings 수를 제한해 통제한다. 정확한 수치는 팀 규모와 PR 빈
 - [ ] 전체 30분 안에 들어가는지 실측 (Q&A 제외)
 - [ ] 데모 구간이 4.5분에 맞는지 — 넘치면 재생 속도를 올린다
 - [ ] 11번 슬라이드에서 3초 침묵을 실제로 지키는지
-- [ ] 3번(AI 코딩이 바꾼 조건) → 축 B, 4번(생성 수단 부재) → 8번 연결을 말로 명시했는지
+- [ ] 3번(AI 코딩이 바꾼 조건) → 2부, 4번(생성 수단 부재) → 8번 연결을 말로 명시했는지
 - [ ] 18번 닫는 문장을 보지 않고 말할 수 있는지
 - [ ] 화면에 띄우는 URL 이 뒷자리에서 읽히는 크기인지
 
