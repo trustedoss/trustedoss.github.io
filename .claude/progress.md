@@ -265,6 +265,14 @@ POSITIONING.md 정체성에 맞춰 시스템·콘텐츠 고도화. 계획은 승
     agent-governance(에이전트·MCP 도구 거버넌스) — 전부 1차 출처 사실 검증 + 독립 게이트 판정
   - BomLens 소개(구 sbom-tools 명칭 갱신), KWG 갭 잔여 반영(취약점 템플릿 상향, 용어 부록, 챔피언 모델)
   - 12/12 PASS 확인 (verify.sh 12항목 체계로 표기 일괄 정정 포함)
+- **TRUSCA 4단계 제안 + 참조 구현 정정 + 발표 자료** (2026-08-09):
+  - 5단계 모델 대비 TRUSCA 점검 → 4단계 공백 확인 → 이슈 전달 → 구현·머지(PR #33)
+  - 3·5단계 실전 사례를 strategy·DevSecOps 4개 페이지·container-security 에 링크,
+    docs 쪽에는 릴리스 SBOM·SECURITY.md·고지문·파이프라인 분할 사례 추가
+  - 참조 구현 결함 6건 정정(타임아웃·비차단, 코멘트 중복, 포크 PR 인젝션, 모델 ID,
+    재실행 서술, Trivy 대안) + 사실 오류 3건(dependabot 6개, dogfood 수동, IaC 근거)
+  - OSS Summit Korea 2026 발표 스크립트 21장 완성(`.claude/talk-script-ossummit-2026.md`)
+  - 13/13 PASS + build ko/en SUCCESS (상세: docs/\_plan/STATUS.md)
 - **노후화 전수 검토 반영** (2026-08-04):
   - 전 영역 3분할 독립 검토 → 낡은 사실·중복·누락·작동 불능 항목 발굴, 1차 출처 재확인 후 4단계로 반영
   - 실제 실패 지점 4건(OpenChain 등재 절차, CISA 2026 SBOM 최소 요소, Devin Desktop 리브랜딩,
