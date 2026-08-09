@@ -84,10 +84,16 @@ form of this level looks like.
 
 ## Stage 4: AI Defense Layer (AI-Augmented Defense)
 
-:::info Use AI defense against AI attacks
-Attackers also use AI to generate new vulnerability patterns and automatically produce code that bypasses existing rule sets.
-Stage 3 tools catch **known patterns** accurately, but novel AI-generated patterns can pass because they are not in the rule set.
-Stage 4 uses AI to defend this blind spot.
+:::info Closing the stage 3 blind spot with AI
+Stage 3 tools detect **known patterns** accurately. What a rule does not define, they do not catch:
+business logic flaws, missing authorization checks, and broken state transitions. That limit of
+static analysis predates AI coding.
+
+What AI coding changed is **the volume of code landing in that blind spot**. Output multiplies while
+review headcount does not, and AI-generated code reads cleanly enough that reviewers rarely stop on
+it. Attackers can also use AI to generate rule-evading variants.
+
+Stage 4 closes that blind spot with AI.
 :::
 
 Stage 3 tools first narrow down candidates through pattern matching, and AI then focuses on those results to perform **semantic judgment** and **active exploration**.
