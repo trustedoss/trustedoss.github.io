@@ -198,6 +198,17 @@ jobs:
 
 ---
 
+## 실제 운영 사례
+
+TRUSCA 는 이 층을 세 갈래로 운영합니다.
+
+- [dependabot.yml](https://github.com/trustedoss/trusca/blob/main/.github/dependabot.yml) — npm · pip · docker · github-actions 다섯 생태계를 덮습니다
+- [sca-self.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml) — 매일 07:00 UTC 에 SBOM 을 다시 만들고 취약점을 재스캔합니다
+- [dogfood-scan.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/dogfood-scan.yml) — 자사 SCA 로 자기 저장소를 스캔합니다
+
+마지막 워크플로우는 기본값이 advisory(비차단)이고 `fail_on_gate` 입력으로 차단을 켜도록
+설계돼 있습니다. 관측부터 시작해 차단으로 올리는 순서를 그대로 구현한 예입니다.
+
 ## 셀프 스터디 — 레벨 2 자동화
 
 :::tip Claude Code로 자동화 워크플로우 생성

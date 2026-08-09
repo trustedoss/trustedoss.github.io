@@ -209,6 +209,15 @@ It calls the Anthropic API directly from your browser. Enter your own [Anthropic
   }}
 />
 
+## In Practice
+
+TRUSCA splits SAST across two workflows. [sast.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sast.yml) runs bandit (High severity) and
+semgrep (ERROR severity), each hard-failing the build, while [codeql.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/codeql.yml) runs
+CodeQL separately.
+
+Different SAST tools catch different things, so they overlap on purpose; cutting the blocking
+threshold at a severity level keeps false positives from stalling development.
+
 ## Self-Study
 
 :::tip In-depth SAST result analysis with Claude Code

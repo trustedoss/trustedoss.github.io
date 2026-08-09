@@ -208,6 +208,15 @@ It calls the Anthropic API directly from your browser. Enter your own [Anthropic
 
 ---
 
+## In Practice
+
+TRUSCA's [sca-self.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml) generates a CycloneDX SBOM with cdxgen and then scans it
+with Trivy, on a daily schedule. Both tools are installed at pinned versions with checksum
+verification.
+
+The reason for a scheduled run alongside the PR check is that vulnerabilities are disclosed after
+a release ships. That thread continues in [Continuous Monitoring](./monitoring).
+
 ## Self-Study
 
 :::tip In-depth SBOM analysis with Claude Code

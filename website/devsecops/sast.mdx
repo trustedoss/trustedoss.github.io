@@ -209,6 +209,15 @@ API 키 없이 미리 만든 샘플 스캔 결과의 분석을 바로 확인할 
   }}
 />
 
+## 실제 운영 사례
+
+TRUSCA 는 SAST 를 두 워크플로우로 나눠 운영합니다.
+[sast.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sast.yml) 은 bandit(High 심각도)과 semgrep(ERROR 심각도)을 각각 Hard Fail 기준으로
+돌리고, [codeql.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/codeql.yml) 은 CodeQL 분석을 별도로 수행합니다.
+
+같은 SAST 라도 도구마다 잡는 것이 달라 겹쳐 쓰는 구성이며, 차단 기준을 심각도로 명확히 끊어
+오탐 때문에 개발이 멈추지 않도록 한 점을 참고할 만합니다.
+
 ## 셀프 스터디
 
 :::tip Claude Code로 SAST 결과 심층 분석
