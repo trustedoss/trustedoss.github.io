@@ -67,6 +67,19 @@ AI coding tools frequently insert hardcoded values into code, so **secret detect
 - [DevSecOps — Secret Detection](/devsecops/secret-detection) · [SAST](/devsecops/sast) · [SCA](/devsecops/sca) · [Container Security](/devsecops/container-security) · [IaC Security](/devsecops/iac-security)
 - [Organization-wide Pipeline Design](/devsecops/pipeline-design)
 
+**In practice — TRUSCA**: an Apache-2.0 open source SCA project runs this level today. The
+workflow files are open to read.
+
+| Area             | Workflow                                                                                            | How it runs                                |
+| ---------------- | --------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| Secret detection | [secret-scan.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/secret-scan.yml) | Gitleaks, hard fail on any leak            |
+| SAST             | [sast.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sast.yml)               | bandit (High) + semgrep (ERROR), hard fail |
+| SAST             | [codeql.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/codeql.yml)           | CodeQL static analysis                     |
+| SCA              | [sca-self.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml)       | cdxgen SBOM then Trivy scan, daily         |
+
+Hard-failing on secrets and SAST, pinning tool versions, and verifying checksums are what a mature
+form of this level looks like.
+
 ---
 
 ## Stage 4: AI Defense Layer (AI-Augmented Defense)
@@ -103,6 +116,11 @@ AI **actively explores** areas untouched by Stage 3 tools, such as business logi
 
 - [AI Security Code Review](./ai-security-review) — Findings-driven implementation guide and GitHub Actions example
 
+**In practice**: levels 3 and 5 are easy to find in public repositories, but few public projects run
+level 4 continuously — the tooling around it is still forming, so there are not many precedents to
+follow. Copying the workflow from the implementation guide above, running it in report-only mode
+first, and deciding how to operate it after measuring the false positive rate is the practical path.
+
 ---
 
 ## Stage 5: Continuous Monitoring & Auto-remediation (Continuous & Auto-remediation)
@@ -111,6 +129,17 @@ At this stage, SBOM is continuously scanned even after deployment, and patch PRs
 
 - [Continuous Monitoring & Auto-remediation](/devsecops/monitoring)
 - [DAST — Dynamic Analysis](/devsecops/dast)
+
+**In practice — TRUSCA**:
+
+| Component          | File                                                                                                  | What it does                                                   |
+| ------------------ | ----------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
+| Dependency updates | [dependabot.yml](https://github.com/trustedoss/trusca/blob/main/.github/dependabot.yml)               | npm, pip, docker, github-actions — five ecosystems             |
+| Scheduled scanning | [sca-self.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml)         | Regenerates the SBOM and rescans daily at 07:00 UTC            |
+| Dogfooding         | [dogfood-scan.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/dogfood-scan.yml) | Scans its own repository with its own SCA; advisory by default |
+
+`dogfood-scan.yml` defaults to non-blocking and turns blocking on through a `fail_on_gate` input —
+the same observe, then warn, then block progression this guide recommends.
 
 ---
 

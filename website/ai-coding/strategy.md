@@ -67,6 +67,19 @@ AI 코딩 도구는 하드코딩된 값을 코드에 삽입하는 경우가 잦�
 - [DevSecOps — 시크릿 탐지](/devsecops/secret-detection) · [SAST](/devsecops/sast) · [SCA](/devsecops/sca) · [컨테이너 보안](/devsecops/container-security) · [IaC 보안](/devsecops/iac-security)
 - [전사 파이프라인 설계](/devsecops/pipeline-design)
 
+**실전 적용 사례 — TRUSCA**: Apache-2.0 오픈소스 SCA 프로젝트가 이 단계를 실제로 운영합니다.
+워크플로우 파일을 그대로 열어 볼 수 있습니다.
+
+| 영역        | 워크플로우                                                                                          | 운영 방식                                 |
+| ----------- | --------------------------------------------------------------------------------------------------- | ----------------------------------------- |
+| 시크릿 탐지 | [secret-scan.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/secret-scan.yml) | Gitleaks, 유출 발견 시 Hard Fail          |
+| SAST        | [sast.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sast.yml)               | bandit(High) + semgrep(ERROR) Hard Fail   |
+| SAST        | [codeql.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/codeql.yml)           | CodeQL 정적 분석                          |
+| SCA         | [sca-self.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml)       | cdxgen SBOM 생성 후 Trivy 스캔, 매일 실행 |
+
+시크릿과 SAST 를 Hard Fail 로 걸어 둔 점, 도구 버전을 고정하고 체크섬을 확인하는 점이 이 단계의
+성숙한 형태를 보여줍니다.
+
 ---
 
 ## 4단계: AI 방어 레이어 (AI-Augmented Defense)
@@ -103,6 +116,11 @@ AI 코딩 도구는 하드코딩된 값을 코드에 삽입하는 경우가 잦�
 
 - [AI 보안 코드 리뷰](./ai-security-review) — Findings-driven 구현 가이드 및 GitHub Actions 예시
 
+**실전 적용 사례**: 3단계와 5단계는 공개 사례를 찾기 쉽지만, 4단계를 상시 운영하는 공개 저장소는
+아직 드뭅니다. 이 단계는 도구 지형이 막 형성되는 중이라 참고할 선례가 적습니다. 위 구현 가이드의
+워크플로우를 그대로 복사해 먼저 리포트 전용으로 돌려 보고, 오탐 비율을 확인한 뒤 운영 방식을
+정하는 편이 현실적입니다.
+
 ---
 
 ## 5단계: 지속적 모니터링·자동 교정 (Continuous & Auto-remediation)
@@ -111,6 +129,17 @@ AI 코딩 도구는 하드코딩된 값을 코드에 삽입하는 경우가 잦�
 
 - [지속적 모니터링·자동 교정](/devsecops/monitoring)
 - [DAST — 동적 분석](/devsecops/dast)
+
+**실전 적용 사례 — TRUSCA**:
+
+| 구성 요소        | 파일                                                                                                  | 내용                                                    |
+| ---------------- | ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
+| 의존성 자동 갱신 | [dependabot.yml](https://github.com/trustedoss/trusca/blob/main/.github/dependabot.yml)               | npm · pip · docker · github-actions 5개 생태계          |
+| 정기 스캔        | [sca-self.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml)         | 매일 07:00 UTC SBOM 재생성 + 취약점 스캔                |
+| 자기 적용 검증   | [dogfood-scan.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/dogfood-scan.yml) | 자사 SCA 로 자기 저장소를 스캔. 기본은 advisory(비차단) |
+
+`dogfood-scan.yml` 이 기본값을 비차단으로 두고 `fail_on_gate` 옵션으로 차단을 켜게 설계한 점은,
+이 가이드가 권하는 관측 → 경고 → 차단 순서와 같은 접근입니다.
 
 ---
 
