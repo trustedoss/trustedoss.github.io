@@ -640,7 +640,7 @@ trustedoss.github.io/ai-coding/ai-security-review
 
 ---
 
-## 15. 2부 ⑤: agent 가 호출하는 tool · 시작 22:20 · 길이 1분 30초
+## 15. 2부 ⑤: agent 가 호출하는 tool · 시작 21:50 · 길이 1분 30초
 
 ```
 agent 가 호출하는 tool 도 공급망 입력입니다
@@ -675,7 +675,7 @@ npm postmark-mcp
 
 ---
 
-## 16. 2부 ⑥: agent tool 통제와 심사 · 시작 23:50 · 길이 1분 30초
+## 16. 2부 ⑥: agent tool 통제와 심사 · 시작 23:20 · 길이 1분 30초
 
 ```
 agent tool 통제 여섯 가지
@@ -736,7 +736,7 @@ trustedoss.github.io/ai-coding/agent-governance
 
 ---
 
-## 17. TRUSCA ①: 문서와 운영은 다릅니다 · 시작 25:20 · 길이 1분 30초
+## 17. TRUSCA ①: 문서와 운영은 다릅니다 · 시작 24:50 · 길이 1분 30초
 
 ```
 산출물을 만드는 것과 체계를 운영하는 것은 다릅니다
@@ -770,7 +770,7 @@ trustedoss.github.io/ai-coding/agent-governance
 
 ---
 
-## 18. TRUSCA ②: 무엇인가 · 시작 26:50 · 길이 2분
+## 18. TRUSCA ②: 무엇인가 · 시작 26:20 · 길이 2분
 
 ```
 TRUSCA — Apache-2.0, self-hosted SCA
@@ -822,7 +822,7 @@ github.com/trustedoss/trusca
 
 ---
 
-## 19. TRUSCA ③: 로드맵 · 시작 28:50 · 길이 1분
+## 19. TRUSCA ③: 로드맵 · 시작 28:20 · 길이 1분
 
 ```
 로드맵
@@ -852,7 +852,7 @@ AI 에이전트를 통제하는 문제에서 출발해,
 
 ---
 
-## 20. 시작하기 · 시작 29:50 · 길이 1분 30초
+## 20. 시작하기 · 시작 29:20 · 길이 1분 30초
 
 ```
 어느 것부터 열면 되는가
@@ -898,7 +898,7 @@ AI 에이전트를 통제하는 문제에서 출발해,
 
 ---
 
-## 21. Q&A · 시작 31:20 · 길이 4분
+## 21. Q&A · 시작 30:50 · 길이 4분 30초
 
 ```
 질문
