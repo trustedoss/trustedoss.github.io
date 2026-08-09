@@ -846,44 +846,52 @@ AI 에이전트를 통제하는 문제에서 출발해,
 
 ---
 
-## 20. 시작하기 · 시작 29:50 · 길이 1분
+## 20. 시작하기 · 시작 29:50 · 길이 1분 30초
 
 ```
-오늘 바로 시작하기
+어느 것부터 열면 되는가
 
-  guide       trustedoss.github.io           CC BY 4.0
-  agent       git clone → cd agents → claude
-  browser     API key 만으로 설치 없이 사용
+  체계를 세울 때        Trusted OSS     trustedoss.github.io
+                        가이드와 agent → 산출물 24종 → 자체 인증 선언
+                        CC BY 4.0
+
+  SBOM 을 만들 때       BomLens         github.com/sktelecom/bomlens
+                        빌드 환경을 image 로 제공, 받은 SBOM 점검까지
+                        Apache-2.0
+
+  선언 이후 운영할 때   TRUSCA          github.com/trustedoss/trusca
+                        지속 추적, 사내망에서 실행
+                        Apache-2.0
 
   [ QR ]  →  trustedoss.github.io
-
-  OpenChain KWG 와 연계해 운영합니다
 ```
 
 말할 것:
 
-- 전부 공개돼 있고 fork 해서 조직에 맞게 고칠 수 있다. CC BY 4.0 이므로 출처만 밝히면 된다
-- agent 를 쓰려면 저장소를 클론하고 해당 폴더에서 claude 를 실행하면 된다.
-  "어디서 시작해야 해?"라고 물으면 현재 상태를 진단하고 다음 단계를 안내한다
-- Claude Code 없이 브라우저에서 바로 쓸 수 있는 도구도 있다. API key 만 있으면 되고
-  설치가 필요 없다. Rules 생성기, CI/CD 워크플로 생성기, SBOM·SAST·시크릿·IaC 분석기다
-- 사이트 메뉴는 네 개다 — 오픈소스 관리, AI 코딩 거버넌스, DevSecOps, 레퍼런스.
-  오늘 다루지 않은 DevSecOps 에는 영역별(secret detection · SAST · SCA · container · IaC · DAST)
-  구현 가이드와 전사 pipeline 설계가 들어 있다
+- 오늘 세 가지를 말씀드렸는데, 쓰는 시점이 다르다. 지금 상황에 맞는 것부터 열면 된다
+- **아직 체계가 없다면 Trusted OSS 다.** 저장소를 클론하고 해당 폴더에서 claude 를 실행한 뒤
+  "어디서 시작해야 해?"라고 물으면 현재 상태를 진단하고 다음 단계를 안내한다.
+  Claude Code 없이 브라우저에서 API key 만으로 쓰는 도구도 있다
+- **SBOM 을 요구받은 상황이라면 BomLens 다.** 설치 프로그램을 받아 실행하면 되고,
+  협력사에서 받은 SBOM 을 점검하는 용도로도 쓸 수 있다
+- **선언까지 마쳤는데 운영이 이어지지 않는다면 TRUSCA 다.** 사내망에 올려 두고 계속 추적한다
+- 셋 다 무료이고 공개돼 있다. fork 해서 조직에 맞게 고칠 수 있다
+- 사이트에는 오늘 다루지 않은 DevSecOps 가이드도 있다. 영역별 구현 방법과 전사 pipeline 설계다
 - 기여를 환영한다. OpenChain KWG 커뮤니티와 연계해 운영하고 있다
 
 링크:
 
 - **[화면]** QR 대상 — https://trustedoss.github.io
-- **[화면]** https://github.com/trustedoss
+- **[화면]** https://github.com/sktelecom/bomlens · https://github.com/trustedoss/trusca
 - **[참조]** 브라우저 도구 —
   [Rules 생성기](https://trustedoss.github.io/ai-coding/rules-template) ·
   [Quick CI/CD](https://trustedoss.github.io/ai-coding/cicd-quick) ·
   [SBOM 분석기](https://trustedoss.github.io/devsecops/sca)
+- **[참조]** BomLens 데모 — https://sktelecom.github.io/bomlens/demo/
 
 ---
 
-## 21. Q&A · 시작 30:50 · 길이 4분 30초
+## 21. Q&A · 시작 31:20 · 길이 4분
 
 ```
 질문
