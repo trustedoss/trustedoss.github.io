@@ -221,6 +221,140 @@ PR opened
 
 ---
 
+## What Actually Goes Over the Wire
+
+Here is one run of the workflow above, showing what goes in and what comes back.
+The values below are illustrative; real ones vary per project.
+
+### 1. Raw tool output
+
+Semgrep emits SARIF and grype emits JSON. Neither is suitable to send as-is — both are large and
+carry fields the model does not need.
+
+```json
+// semgrep.sarif (excerpt) — the real file also carries rule definitions, tags, and fix suggestions
+{
+  "runs": [
+    {
+      "results": [
+        {
+          "ruleId": "python.lang.security.audit.formatted-sql-query.formatted-sql-query",
+          "message": {
+            "text": "Detected possible formatted SQL query. Use parameterized queries instead."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {"uri": "app/db.py"},
+                "region": {"startLine": 42}
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+```json
+// grype.json (excerpt)
+{
+  "matches": [
+    {
+      "vulnerability": {
+        "id": "CVE-2021-44228",
+        "severity": "Critical",
+        "fix": {"versions": ["2.15.0"]}
+      },
+      "artifact": {"name": "log4j-core", "version": "2.14.1"}
+    }
+  ]
+}
+```
+
+### 2. The prompt sent to the Claude API
+
+The parsing step pulls just the fields it needs and reads ±5 lines around each hit for context.
+This is the entire payload.
+
+```text
+The following are findings from a static analysis tool (Semgrep) and an SCA tool (grype).
+Judge each item in the format below.
+
+Format:
+- **[item]** true positive (TP) or false positive (FP) | risk: High/Medium/Low | 1-2 sentences of reasoning
+- If TP: add a one-line exploitation scenario
+- For grype CVEs, judge whether the package is actually reachable in the execution path
+
+---
+[Semgrep #1] python.lang.security.audit.formatted-sql-query.formatted-sql-query @ app/db.py:42
+Message: Detected possible formatted SQL query. Use parameterized queries instead.
+Code:
+38:     def find_user(keyword):
+39:         conn = get_connection()
+40:         cur = conn.cursor()
+41:         # the search term goes straight into the string
+42:         cur.execute(f"SELECT * FROM users WHERE name LIKE '%{keyword}%'")
+43:         return cur.fetchall()
+
+[Semgrep #2] python.lang.security.audit.subprocess-shell-true.subprocess-shell-true @ scripts/deploy.py:18
+Message: Detected subprocess function with shell=True.
+Code:
+16:     RELEASE_DIR = "/opt/app/release"
+17:
+18:     subprocess.run(f"tar -xzf {RELEASE_DIR}/build.tar.gz", shell=True)
+
+[grype] CVE-2021-44228 — log4j-core@2.14.1 (Critical) → fixed in: ['2.15.0']
+---
+
+Output PASS if there are no findings.
+```
+
+Not the repository — **only the three flagged items and a few lines around each**. That is the
+core of the findings-driven approach.
+
+### 3. What Claude returns
+
+```text
+- **[Semgrep #1]** true positive (TP) | risk: High | The user-supplied keyword is interpolated
+  directly into SQL via an f-string. With no parameter binding, an input that closes the quote can
+  change the query structure.
+  Exploitation: searching for `%' OR '1'='1` returns every user record.
+
+- **[Semgrep #2]** false positive (FP) | risk: Low | shell=True is used, but the only value in the
+  command string is the module constant RELEASE_DIR, which no external input reaches. Should that
+  path ever become an argument it would turn into an injection point, so shell=False with list
+  arguments is still the safer form.
+
+- **[grype CVE-2021-44228]** true positive (TP) | risk: High | log4j-core 2.14.1 is within the
+  Log4Shell affected range; if user input reaches a logging call, this leads to remote code
+  execution. Upgrade to 2.15.0 or later. Even when the application never calls the package
+  directly, frameworks often use it internally, so ruling it out requires checking the execution
+  path.
+```
+
+This is where level 4 diverges from level 3. Semgrep flagged both findings at the same strength;
+the model separated one as real and one as a false positive, and still attached a conditional
+improvement to the false positive.
+
+### 4. How it appears as a PR comment
+
+The judgment becomes the comment body verbatim.
+
+```markdown
+## 🔍 AI Security Review (Findings-Driven)
+
+The AI verified and interpreted the level 3 tool findings (Semgrep, grype).
+False positives are possible, so weigh the context. This is not a build gate.
+
+- **[Semgrep #1]** true positive (TP) | risk: High | ...
+```
+
+The build does not fail. A developer reads the comment and decides.
+
+---
+
 ## How to Enable
 
 1. Add `ANTHROPIC_API_KEY` to GitHub Secrets

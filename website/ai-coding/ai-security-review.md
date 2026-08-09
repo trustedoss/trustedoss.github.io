@@ -221,6 +221,136 @@ PR 오픈
 
 ---
 
+## 실제로 오가는 데이터
+
+위 워크플로우에서 무엇이 입력되고 무엇이 나오는지 한 번의 실행을 따라가 봅니다.
+아래는 이해를 돕기 위한 예시이며, 실제 값은 프로젝트마다 다릅니다.
+
+### 1. 도구가 낸 원본
+
+Semgrep은 SARIF로, grype는 JSON으로 결과를 냅니다. 둘 다 그대로는 AI에게 보내기에 크고
+불필요한 필드가 많습니다.
+
+```json
+// semgrep.sarif (발췌) — 실제로는 룰 정의·태그·수정 제안까지 포함돼 훨씬 깁니다
+{
+  "runs": [
+    {
+      "results": [
+        {
+          "ruleId": "python.lang.security.audit.formatted-sql-query.formatted-sql-query",
+          "message": {
+            "text": "Detected possible formatted SQL query. Use parameterized queries instead."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {"uri": "app/db.py"},
+                "region": {"startLine": 42}
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+```json
+// grype.json (발췌)
+{
+  "matches": [
+    {
+      "vulnerability": {
+        "id": "CVE-2021-44228",
+        "severity": "Critical",
+        "fix": {"versions": ["2.15.0"]}
+      },
+      "artifact": {"name": "log4j-core", "version": "2.14.1"}
+    }
+  ]
+}
+```
+
+### 2. Claude API 로 전달되는 프롬프트
+
+파싱 단계가 위 원본에서 필요한 필드만 뽑고, 해당 파일에서 ±5줄을 읽어 컨텍스트로 붙입니다.
+실제로 전송되는 것은 이만큼입니다.
+
+```text
+아래는 정적 분석 도구(Semgrep)와 SCA 도구(grype)의 탐지 결과다.
+각 항목에 대해 아래 형식으로 판정하라.
+
+판정 형식:
+- **[항목번호]** 실제취약점(TP) 또는 오탐(FP) | 위험도: High/Medium/Low | 판정 근거 1~2문장
+- TP일 경우: 실제 익스플로잇 시나리오 1줄 추가
+- grype CVE는 해당 패키지가 실제 코드 실행 경로에서 사용되는지 판단
+
+---
+[Semgrep #1] python.lang.security.audit.formatted-sql-query.formatted-sql-query @ app/db.py:42
+메시지: Detected possible formatted SQL query. Use parameterized queries instead.
+코드:
+38:     def find_user(keyword):
+39:         conn = get_connection()
+40:         cur = conn.cursor()
+41:         # 검색어를 그대로 문자열에 넣는다
+42:         cur.execute(f"SELECT * FROM users WHERE name LIKE '%{keyword}%'")
+43:         return cur.fetchall()
+
+[Semgrep #2] python.lang.security.audit.subprocess-shell-true.subprocess-shell-true @ scripts/deploy.py:18
+메시지: Detected subprocess function with shell=True.
+코드:
+16:     RELEASE_DIR = "/opt/app/release"
+17:
+18:     subprocess.run(f"tar -xzf {RELEASE_DIR}/build.tar.gz", shell=True)
+
+[grype] CVE-2021-44228 — log4j-core@2.14.1 (Critical) → 수정버전: ['2.15.0']
+---
+
+탐지 항목이 없으면 PASS를 출력하라.
+```
+
+전체 저장소가 아니라 **플래그된 3건과 그 주변 몇 줄만** 나갑니다. 이것이 findings-driven 방식의
+핵심입니다.
+
+### 3. Claude 가 낸 판정
+
+```text
+- **[Semgrep #1]** 실제취약점(TP) | 위험도: High | 사용자 입력 keyword 가 f-string 으로 SQL 에
+  직접 삽입됩니다. 파라미터 바인딩이 없어 인용부호를 닫는 입력으로 쿼리 구조를 바꿀 수 있습니다.
+  익스플로잇: 검색어에 `%' OR '1'='1` 를 넣으면 전체 사용자 목록이 반환됩니다.
+
+- **[Semgrep #2]** 오탐(FP) | 위험도: Low | shell=True 가 쓰였지만 명령 문자열에 들어가는 값이
+  모듈 상수 RELEASE_DIR 뿐이고 외부 입력이 닿지 않습니다. 다만 이 경로가 향후 인자로 바뀌면
+  주입 지점이 되므로 shell=False 와 리스트 인자로 바꾸는 편이 안전합니다.
+
+- **[grype CVE-2021-44228]** 실제취약점(TP) | 위험도: High | log4j-core 2.14.1 은 Log4Shell 영향
+  버전이며, 로깅 호출에 사용자 입력이 들어가는 경로가 있으면 원격 코드 실행으로 이어집니다.
+  2.15.0 이상으로 올리십시오. 애플리케이션이 이 패키지를 직접 호출하지 않더라도 프레임워크가
+  내부적으로 사용하는 경우가 많아 배제 판정에는 실행 경로 확인이 필요합니다.
+```
+
+여기서 4단계가 3단계와 갈리는 지점이 드러납니다. Semgrep 은 두 건을 같은 강도로 플래그했지만
+AI 는 하나를 실제 취약점으로, 다른 하나를 오탐으로 갈랐고, 오탐에도 조건부 개선안을 붙였습니다.
+
+### 4. PR 코멘트로 게시되는 모습
+
+위 판정이 그대로 코멘트 본문이 됩니다.
+
+```markdown
+## 🔍 AI 보안 리뷰 (Findings-Driven)
+
+3단계 도구(Semgrep·grype) 탐지 결과를 AI가 검증·해석한 결과입니다.
+오탐 가능성이 있으니 맥락을 고려해 판단하세요. 빌드 차단 기준이 아닙니다.
+
+- **[Semgrep #1]** 실제취약점(TP) | 위험도: High | ...
+```
+
+빌드는 실패하지 않습니다. 개발자가 코멘트를 읽고 판단합니다.
+
+---
+
 ## 활성화 방법
 
 1. `ANTHROPIC_API_KEY`를 GitHub Secrets에 등록
