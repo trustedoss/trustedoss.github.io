@@ -159,6 +159,16 @@ secrets:
 
 ---
 
+## In Practice
+
+The open source project TRUSCA scans the worker image it builds with Trivy — the `image-scan` job in
+[ci.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/ci.yml). HIGH or CRITICAL findings fail the build.
+
+Two details are worth borrowing. Exceptions live in `.trivyignore` per CVE **with a written reason
+for why it is unreachable**, and the policy states that those entries are re-evaluated every 180
+days or on the next release of the bundled tool. Putting an expiry on exceptions is what keeps them
+from being forgotten.
+
 ## Dockerfile security best practices
 
 1. **Use a minimal base image:** Choose `alpine` or `distroless` over `ubuntu`. Fewer packages mean a smaller vulnerability surface.

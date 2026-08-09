@@ -159,6 +159,15 @@ secrets:
 
 ---
 
+## 실제 운영 사례
+
+오픈소스 프로젝트 TRUSCA 는 빌드하는 워커 이미지를 Trivy 로 스캔합니다 —
+[ci.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/ci.yml) 의 `image-scan` job 입니다. HIGH 또는 CRITICAL 이 나오면 빌드가 실패합니다.
+
+참고할 만한 두 가지가 있습니다. 예외는 `.trivyignore` 에 CVE 단위로 두되 **왜 도달 불가한지를
+함께 적고**, 그 항목들을 180일마다 또는 번들 도구의 다음 릴리스마다 재평가하도록 정책을 문서에
+박아 두었습니다. 예외가 한번 들어가면 잊히는 문제를 기한으로 막는 방식입니다.
+
 ## Dockerfile 보안 모범 사례
 
 1. **최소 베이스 이미지 사용:** `ubuntu` 대신 `alpine`·`distroless`를 선택합니다. 패키지 수가 적을수록 취약점 노출 면적이 줄어듭니다.
