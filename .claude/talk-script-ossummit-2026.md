@@ -921,6 +921,11 @@ github.com/trustedoss
 미국 저작권청 기준과 Thaler v. Perlmutter 상고 기각(2026-03)으로 AI 자체는 저작자가 될 수
 없다는 원칙이 확정됐다. → https://trustedoss.github.io/ai-coding/legal-considerations
 
+**"4단계를 실제로 돌리는 곳이 있나?"**
+있다. TRUSCA 가 2026-08 부터 운영한다(`ai-review.yml`). 빌드를 차단하지 않고, PR 이 바꾼 파일만
+검사하며, API 키가 없으면 전체를 건너뛴다. 공개 저장소에서 흔한 사례는 아니므로 이 단계가
+앞서 있다는 점을 함께 말해도 된다.
+
 **"CISA 2026을 도구가 지원하나?"**
 공개 저장소에서 확인되지 않았다. **발표 전에 확인해 답을 정해 둔다.**
 확인 못 했으면 "가이드는 반영했고 도구 대응은 진행 중"으로 답한다.
@@ -980,6 +985,7 @@ findings 수를 제한해 통제한다. 정확한 수치는 팀 규모와 PR 빈
 | SAST — bandit·semgrep     | https://github.com/trustedoss/trusca/blob/main/.github/workflows/sast.yml                  |
 | SAST — CodeQL             | https://github.com/trustedoss/trusca/blob/main/.github/workflows/codeql.yml                |
 | SCA scheduled scan        | https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml              |
+| 4a AI 리뷰 (4단계)        | https://github.com/trustedoss/trusca/blob/main/.github/workflows/ai-review.yml             |
 | container image scan      | https://github.com/trustedoss/trusca/blob/main/.github/workflows/ci.yml (`image-scan` job) |
 | dependency update (5단계) | https://github.com/trustedoss/trusca/blob/main/.github/dependabot.yml                      |
 | dogfooding (5단계)        | https://github.com/trustedoss/trusca/blob/main/.github/workflows/dogfood-scan.yml          |

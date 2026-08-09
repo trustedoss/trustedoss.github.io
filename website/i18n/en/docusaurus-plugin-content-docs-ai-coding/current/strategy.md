@@ -122,10 +122,16 @@ AI **actively explores** areas untouched by Stage 3 tools, such as business logi
 
 - [AI Security Code Review](./ai-security-review) — Findings-driven implementation guide and GitHub Actions example
 
-**In practice**: levels 3 and 5 are easy to find in public repositories, but few public projects run
-level 4 continuously — the tooling around it is still forming, so there are not many precedents to
-follow. Copying the workflow from the implementation guide above, running it in report-only mode
-first, and deciding how to operate it after measuring the false positive rate is the practical path.
+**In practice — TRUSCA**: [ai-review.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/ai-review.yml) runs this level (added 2026-08).
+Three design decisions are worth borrowing.
+
+- **It blocks nothing.** A comment in the file states it must never be added to branch protection —
+  the principle that a model's verdict cannot gate a build, written into the workflow itself
+- **It scans only what the PR changed**, not the whole repository, which cuts cost and noise together
+- **It skips entirely without a key.** Forks and early adopters see the job succeed rather than fail
+
+The file also explains why it re-runs the stage 3 tools: a job running at a blocking threshold
+produces either nothing or a build that has already failed, leaving no input to triage.
 
 ---
 
