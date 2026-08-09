@@ -1,24 +1,26 @@
 # 슬라이드 구성안 + 발표 스크립트 — OSS Summit Korea 2026
 
 **세션**: 2026-08-12(수) 13:35~14:15, Rose · 실질 35분(발표 30분 + Q&A 5분)
-**형식**: 한국어 발표 + 영문 슬라이드
+**형식**: 한국어 발표 · 슬라이드는 한국어 문장 + 영어 키워드
+**영문 전용 슬라이드**: 별도 판으로 만들어 따로 배포한다(이 문서의 구성을 그대로 옮기면 된다)
 **구성 근거**: `.claude/talk-ossummit-korea-2026.md`
 
 스크립트는 축자 대본이 아니다. **첫 문장·전환 문장·닫는 문장은 그대로 말할 수 있게** 적었고,
 나머지는 말할 요점을 문장으로 적었다. 읽지 말고 눈으로 훑은 뒤 자기 말로 하는 것을 전제로 한다.
 
-슬라이드 20장. 괄호 안 시간은 누적이 아니라 해당 구간의 길이다.
+도구명·표준명·기술 용어(SBOM, CVE, SAST, MCP, CI/CD 등)는 영어 그대로 두고, 설명 문장만
+한국어로 쓴다. 슬라이드 20장. 괄호 안 시간은 누적이 아니라 해당 구간의 길이다.
 
 ---
 
 ## 1. 타이틀 (0:00)
 
 ```
-AI-Powered Open Source Risk Management
-ISO Self-Certification Kit and 5-Level AI Coding Governance
+AI로 여는 오픈소스 리스크 관리
+ISO 자체 인증 키트와 AI 코딩 거버넌스 5단계
 
-Haksung Jang
-SK Telecom · OpenChain Korea Work Group
+장학성
+SK텔레콤 · OpenChain Korea Work Group
 ```
 
 인사와 소속을 한 문장으로 끝낸다. 소속 설명에 시간을 쓰지 않는다.
@@ -28,10 +30,10 @@ SK Telecom · OpenChain Korea Work Group
 ## 2. 문제 제기 ①: 사고는 계속 일어난다 (0:20 / 1분)
 
 ```
-The supply chain keeps breaking
+공급망은 계속 뚫리고 있습니다
 
-XZ Utils (2024)     backdoor planted in an upstream project
-Log4Shell (2021)    one library, hundreds of millions of systems
+XZ Utils (2024)      upstream 프로젝트에 심어진 backdoor
+Log4Shell (2021)     라이브러리 하나, 수억 개 시스템
 ```
 
 점심 직후라 목차로 열지 않는다. 사례로 바로 들어간다.
@@ -47,21 +49,21 @@ Log4Shell (2021)    one library, hundreds of millions of systems
 ## 3. 문제 제기 ②: 요구 수준이 올라갔다 (1:20 / 1분)
 
 ```
-The bar moved — twice, this year
+기준이 올해만 두 번 올라갔습니다
 
-EU CRA        reporting obligations start 2026-09-11
-              full application 2027-12-11
+EU CRA           보고 의무 2026-09-11 시작
+                 전면 적용 2027-12-11
 
-CISA 2026     published 2026-07-29, replaces NTIA 2021
-Minimum       + component hash      (was recommended)
-Elements      + component license   (was optional)
-              + SBOM tool name, generation context
-              scope now includes AI software and SaaS
+CISA 2026        2026-07-29 발표, NTIA 2021 대체
+Minimum          + component hash        (권고 → 필수)
+Elements         + component license     (선택 → 필수)
+                 + SBOM 생성 도구명, 생성 맥락
+                 적용 범위에 AI software 와 SaaS 포함
 ```
 
 말할 것:
 
-- 유럽연합 사이버 복원력법 보고 의무가 **한 달 뒤** 시작된다
+- 유럽연합 사이버 복원력법(EU CRA) 보고 의무가 **한 달 뒤** 시작된다
 - CISA 2026 최소 요소는 **2주 전** 발표됐다. NTIA 2021을 대체한다
 - 컴포넌트 해시와 라이선스가 권고에서 필수로 올라갔다. 기존에 만들던 SBOM으로는 부족해진다
 
@@ -73,13 +75,13 @@ Elements      + component license   (was optional)
 ## 4. 문제 제기 ③: 그런데 만들지를 못한다 (2:20 / 1분)
 
 ```
-But most suppliers still can't produce one
+그런데 대부분의 공급사는 아직 SBOM 을 만들지 못합니다
 
-no source          binaries and firmware are what gets delivered
-air-gapped         can't upload to a hosted service
-no verdict         "does this meet the minimum elements?" — unanswered
+소스가 없다        납품되는 것은 binary 와 firmware
+폐쇄망이다         외부 서비스에 올릴 수 없다
+판정이 안 된다     "최소 요소를 충족했는가" — 답할 방법이 없다
 
-Requirements went up. The means didn't.
+요구는 올라갔고, 수단은 그대로입니다
 ```
 
 **이 슬라이드가 발표 전체의 문제 정의다.** 천천히 말한다.
@@ -102,18 +104,18 @@ Requirements went up. The means didn't.
 ## 5. 전체 지도 (3:20 / 2분)
 
 ```
-Trusted OSS — the map
+Trusted OSS 전체 지도
 
-  [ Governance ]        ISO/IEC 5230 & 18974 self-certification
-                        9 agents → 24 artifacts → declaration
+  [ 체계 구축 ]        ISO/IEC 5230 & 18974 자체 인증
+                       agent 9종 → 산출물 24종 → 선언
 
-  [ AI Coding ]         5-level maturity model
-                        rules → CI gates → AI defense → auto-remediation
+  [ AI 코딩 ]          거버넌스 5단계 성숙도 모델
+                       rules → CI gate → AI 방어 → 자동 교정
 
-  [ DevSecOps ]         (level 3 of the model above)
+  [ DevSecOps ]        (위 모델의 3단계에 해당)
 
-  ──────────────────────────────────────────────
-  [ TRUSCA ]            what runs after the declaration
+  ─────────────────────────────────────────────
+  [ TRUSCA ]           선언 이후에 계속 도는 층
 
   CC BY 4.0 · trustedoss.github.io
 ```
@@ -129,13 +131,13 @@ Trusted OSS — the map
 ## 6. 축 A ①: 무엇을 만들어야 하는가 (5:20 / 1분)
 
 ```
-What conformance actually requires
+두 표준이 실제로 요구하는 것
 
-5230  policy · organization · process · BOM · notices · contribution
-18974 policy · organization · SBOM · CVE tracking · response · records
+5230    정책 · 조직 · 프로세스 · BOM · 고지문 · 기여
+18974   정책 · 조직 · SBOM · CVE 추적 · 대응 · 기록
 
-Shared foundation is large.
-Build one, and half of the other is already done.
+공통 기반이 큽니다.
+하나를 세우면 나머지 절반은 이미 되어 있습니다.
 ```
 
 말할 것:
@@ -148,15 +150,15 @@ Build one, and half of the other is already done.
 ## 7. 축 A ②: Agent가 만든다 (6:20 / 1분)
 
 ```
-9 agents → 24 artifacts
+agent 9종 → 산출물 24종
 
-02 organization    role definition, RACI, appointment letter
-03 policy          OSS policy, license allowlist
-04 process         approval, distribution, vulnerability response, inquiry
-05 SBOM            CycloneDX SBOM, license report, copyleft risk
-05 vulnerability   CVE report, remediation plan
-06 training        curriculum, completion tracker
-07 conformance     gap analysis, declaration draft
+02 조직        역할 정의, RACI, 임명 공문
+03 정책        오픈소스 정책, 허용 license 목록
+04 프로세스    사용 승인, 배포 전 점검, 취약점 대응, 외부 문의
+05 SBOM        CycloneDX SBOM, license 리포트, copyleft 위험
+05 취약점      CVE 리포트, 조치 계획
+06 교육        커리큘럼, 이수 추적
+07 인증        gap 분석, 선언문 초안
 ```
 
 산출물을 하나씩 읽지 않는다. 화면으로 넘기고 말로는 흐름만 말한다.
@@ -171,16 +173,16 @@ Build one, and half of the other is already done.
 ## 8. 축 A ③: SBOM 생성의 간극 (7:20 / 1.5분)
 
 ```
-The gap in the middle
+중간에 뚫려 있는 자리
 
-source available   →  syft, cdxgen            ✓ solved
-binary / firmware  →  ?
-air-gapped         →  ?
+소스가 있으면       →  syft, cdxgen              ✓ 이미 해결
+binary / firmware   →  ?
+폐쇄망              →  ?
 
 BomLens (Apache-2.0)
-  in    source · container · binary · firmware
-  out   CycloneDX SBOM · NOTICE · risk report · ML-BOM
-  runs  locally
+  입력   소스 · container · binary · firmware
+  출력   CycloneDX SBOM · NOTICE · 위험 리포트 · ML-BOM
+  실행   로컬에서 동작
 ```
 
 4번 슬라이드에서 던진 문제를 여기서 받는다. **이 연결을 말로 명시한다.**
@@ -204,7 +206,7 @@ BomLens (Apache-2.0)
 ## 9. 축 A ④: 데모 (8:50 / 4.5분)
 
 ```
-[ recorded demo ]
+[ 녹화 데모 ]
 agents/03-policy-generator → output/policy/oss-policy.md
 ```
 
@@ -224,13 +226,13 @@ agents/03-policy-generator → output/policy/oss-policy.md
 ## 10. 축 A ⑤: 그래서 어떻게 선언하는가 (13:20 / 1분)
 
 ```
-Declaring conformance
+자체 인증 선언 절차
 
-1  download the checklist   OpenChain-Project/Reference-Material
-2  self-assess              yes/no against each item
-3  apply for listing        openchainproject.org/get-started
+1  체크리스트 내려받기     OpenChain-Project/Reference-Material
+2  스스로 점검             각 항목에 yes / no
+3  등재 신청               openchainproject.org/get-started
 
-No audit. No fee.
+외부 심사 없음. 비용 없음.
 ```
 
 말할 것:
@@ -244,15 +246,15 @@ No audit. No fee.
 ## 11. 축 B ①: 자가진단 (14:20 / 4분)
 
 ```
-Where is your team right now?
+지금 우리 팀은 몇 단계입니까?
 
-L1  prompt-dependent      policy lives in someone's memory
-L2  rules internalized    CLAUDE.md, .cursor/rules, AGENTS.md
-L3  CI/CD hard block      gitleaks · semgrep · grype · trivy · checkov
-L4  AI-augmented defense  findings-driven review · AI fuzzing
-L5  continuous            dependabot · renovate · DAST
+L1  프롬프트 의존       정책이 개인의 기억에만 있다
+L2  규칙 내재화         CLAUDE.md, .cursor/rules, AGENTS.md
+L3  CI/CD 자동 차단     gitleaks · semgrep · grype · trivy · checkov
+L4  AI 방어 레이어      findings-driven 리뷰 · AI fuzzing
+L5  지속 모니터링       dependabot · renovate · DAST
 
-                          entry cost:  L2 = 10 minutes
+                        진입 비용:  L2 는 10분
 ```
 
 띄우고 **3초 침묵**한다. 거수를 요구하지 않는다. 스스로 찾게 둔다.
@@ -276,12 +278,12 @@ L5  continuous            dependabot · renovate · DAST
 ## 12. 축 B ②: 4단계는 왜 필요한가 (18:20 / 1.5분)
 
 ```
-Level 3 catches known patterns.
-AI writes new ones.
+3단계는 알려진 pattern 을 잡습니다.
+AI 는 새로운 pattern 을 만듭니다.
 
-  attacker with AI  →  novel pattern  →  no rule matches  →  passes
+  AI 를 쓰는 공격자  →  신종 pattern  →  rule 에 없음  →  통과
 
-Level 4: answer AI with AI
+4단계 — AI 공격에는 AI 방어로
 ```
 
 말할 것:
@@ -295,14 +297,14 @@ Level 4: answer AI with AI
 ## 13. 축 B ③: 무엇이 오가는가 (19:50 / 1.5분)
 
 ```
-What actually goes to the model
+모델에 실제로 전달되는 것
 
   semgrep.sarif ─┐
-  grype.json    ─┴→  parse  →  3 flagged items + ±5 lines each
-                                        ↓
-                              TP / FP · risk · exploit path
-                                        ↓
-                                   PR comment (not a gate)
+  grype.json    ─┴→  파싱  →  플래그된 3건 + 각 ±5줄
+                                       ↓
+                             TP / FP · 위험도 · 익스플로잇 경로
+                                       ↓
+                                 PR 코멘트 (빌드 차단 아님)
 ```
 
 이 페이지는 사이트에 실제 입출력 예시가 들어 있으니, 시간이 되면 화면으로 보여준다.
@@ -318,14 +320,14 @@ What actually goes to the model
 ## 14. 축 B ④: 에이전트가 도구를 부른다 (21:20 / 1.5분)
 
 ```
-Agents call tools. Tools are supply chain inputs.
+Agent 가 tool 을 호출합니다. 그 tool 도 공급망 입력입니다.
 
 npm postmark-mcp
-  1.0.15   clean
-  1.0.16+  hidden BCC — every outgoing mail copied to an external address
-           (start version is the researcher's estimate)
+  1.0.15    정상
+  1.0.16+   숨은 BCC — 모든 발신 메일을 외부 주소로 복사
+            (시작 버전은 연구자의 추정)
 
-Approving once at adoption does not catch this.
+최초 승인만으로는 막을 수 없습니다.
 ```
 
 말할 것:
@@ -342,15 +344,15 @@ Approving once at adoption does not catch this.
 ## 15. 축 B ⑤: 여섯 가지 통제 (22:50 / 1.5분)
 
 ```
-Six controls for agent tooling
+Agent tool 통제 여섯 가지
 
-1  server allowlist          5  human approval + audit log
-2  least privilege           6  egress path review   ← new
-3  description review
-4  version pinning
+1  서버 allowlist            5  사람 승인 + 감사 로그
+2  최소 권한                 6  데이터 반출 경로 판정   ← 신규
+3  도구 설명 검토
+4  버전 고정
 
-Source tiers: public releases need full review.
-              vendor and in-house servers do not.
+출처별 분기: 외부 커뮤니티 배포판만 전수 심사.
+             벤더 공식 서버와 사내 개발 서버는 다른 절차로.
 ```
 
 말할 것:
@@ -371,14 +373,14 @@ Source tiers: public releases need full review.
 ## 16. TRUSCA ①: 선언 다음에 오는 것 (24:20 / 2분)
 
 ```
-The declaration is not the finish line
+선언은 결승선이 아닙니다
 
-18974 asks for continuous operation
-  · vulnerability DB refreshed weekly
-  · VEX judgments kept current
-  · license policy enforced on every build
+18974 가 요구하는 것은 지속 운영입니다
+  · 취약점 DB 주간 갱신
+  · VEX 판정 최신 유지
+  · 모든 빌드에서 license policy 적용
 
-This is where most teams stop — at the price of a commercial SCA.
+대부분의 팀이 여기서 멈춥니다 — 상용 SCA 예산 앞에서.
 ```
 
 말할 것:
@@ -394,13 +396,13 @@ This is where most teams stop — at the price of a commercial SCA.
 ```
 TRUSCA — Apache-2.0, self-hosted SCA
 
-  detect    cdxgen, 30+ ecosystems
-  match     Trivy unified DB (NVD · OSV · GHSA · EPSS · KEV)
-  judge     VEX import/export, 7-stage triage
-  enforce   3-tier license policy, CI gate, NOTICE generation
-  operate   RBAC, audit log, Compose/Helm
+  탐지    cdxgen, 30개 이상 생태계
+  대조    Trivy 통합 DB (NVD · OSV · GHSA · EPSS · KEV)
+  판정    VEX 수출입, 7단계 triage
+  차단    3계층 license policy, CI gate, NOTICE 생성
+  운영    RBAC, 감사 로그, Compose / Helm
 
-  runs in your own network
+  사내망 안에서 돕니다
 ```
 
 **말하는 방식 주의**: 상용 도구와 기능을 나열해 비교하지 않는다.
@@ -416,11 +418,11 @@ TRUSCA — Apache-2.0, self-hosted SCA
 ## 18. TRUSCA ③: 그리고 다음 단계 (28:20 / 1분)
 
 ```
-On the roadmap
+로드맵
 
-  reachability analysis      is this CVE actually on our execution path?
-  agent pre-flight policy    an MCP server the agent queries
-                             before it adds a package
+  reachability 분석       이 CVE 가 우리 실행 경로에 실제로 있는가
+  agent pre-flight 정책   패키지를 넣기 전에 agent 가 조회하는
+                          MCP 서버
 ```
 
 **발표를 닫는 슬라이드다.**
@@ -440,15 +442,15 @@ AI 에이전트를 통제하는 이야기로 시작해서,
 ## 19. 시작하기 (29:20 / 1분)
 
 ```
-Start today
+오늘 바로 시작하기
 
-  guide      trustedoss.github.io          CC BY 4.0
-  agents     git clone → cd agents → claude
-  browser    API key only, no local setup
+  가이드      trustedoss.github.io           CC BY 4.0
+  agent       git clone → cd agents → claude
+  브라우저    API key 만 있으면 설치 없이
 
   [ QR ]
 
-  Built with the OpenChain Korea Work Group
+  OpenChain Korea Work Group 과 함께 만들었습니다
 ```
 
 말할 것:
@@ -461,7 +463,7 @@ Start today
 ## 20. Q&A (30:20 / 5분)
 
 ```
-Questions
+질문
 
 trustedoss.github.io
 github.com/trustedoss
