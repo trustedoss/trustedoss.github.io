@@ -124,7 +124,7 @@ CISA 2026     2026-07-29 발표, NTIA 2021 대체
 - **문제의 핵심은 "만들지 못한다"가 아니라 "만들어도 요구 수준에 못 미친다"이다.**
   공급사는 소프트웨어를 개발해 납품하지만 SBOM 개념부터 생소하고, 생성 방법도 모르며,
   도구를 살 예산도 없다. 무료 도구를 안내해 생성하게 해도 transitive dependency 누락,
-  PURL 누락 같은 결함으로 최소 요소를 채우지 못한다
+  PURL 누락 같은 결함으로 최소 요소를 채우지 못한다. 원인은 8번에서 다룬다
 - 앞 슬라이드에서 CISA 2026 이 필수 필드를 늘렸다고 말했다. 기준이 올라간 만큼
   기존 방식으로 만든 SBOM 은 더 자주 반려된다
 - **폐쇄망과 "소스 없음"을 문제로 들지 않는다.** syft·cdxgen 은 로컬에서 실행되고,
@@ -243,18 +243,19 @@ github.com/trustedoss/trustedoss-agents
 ```
 SBOM 은 만드는 것보다 정확하게 만드는 것이 어렵습니다
 
-자주 나오는 결함
-  transitive dependency 누락      직접 의존성만 잡힌 경우
-  PURL 없음                       컴포넌트 식별이 되지 않음
-  license 미확인                  NOASSERTION 으로 남음
+왜 빠지는가
+  의존성 트리는 빌드해야 확정됩니다
+  로컬에 Java · Maven · Node · Python 버전이 프로젝트와 맞지 않으면
+  도구가 조용히 부분 결과만 냅니다
+  → transitive dependency 누락 · PURL 없음 · license 미확인
   → 최소 요소 미충족 → 납품처 반려 → 재작업
 
 BomLens (Apache-2.0)
-  input     소스 · container · binary · firmware · 기존 SBOM
-  output    CycloneDX SBOM · NOTICE · 위험 리포트 · ML-BOM
-  검증      ML-BOM 은 G7 AI 최소 요소 기준으로 점검
+  빌드 환경을 Docker image 하나로 제공합니다
+  Java · Python · Node.js · Ruby · PHP · Rust · Go · .NET · Swift · C/C++
+  공급사가 환경을 구성할 필요가 없습니다
 
-github.com/sktelecom/bomlens
+  받는 쪽도 씁니다 — 납품된 SBOM 을 형식 요건 대비로 점검 (--analyze)
 ```
 
 4번 슬라이드에서 제시한 문제를 여기서 받는다. **이 연결을 말로 명시한다.**
@@ -263,27 +264,27 @@ github.com/sktelecom/bomlens
 
 ```
 앞에서 납품되는 SBOM 이 요구 수준에 미치지 못한다고 말씀드렸습니다.
-실제로 무엇이 빠지는지 보겠습니다.
+왜 그런지 원인부터 보겠습니다.
 ```
 
-- 무료 도구로 생성하는 것 자체는 어렵지 않다. 문제는 결과물의 정확도다
-- transitive dependency 가 빠지면 실제로 들어간 컴포넌트의 상당수가 목록에 없다.
-  PURL 이 없으면 취약점 데이터베이스와 대조할 수 없어 SBOM 이 있어도 쓸 수 없다
-- 납품처가 반려하면 공급사는 원인을 모른 채 다시 만든다. 이 반복이 실제 비용이다
-- BomLens 는 Apache-2.0 이므로 예산 문제가 없고, 소스뿐 아니라 container·binary·firmware 와
-  기존 SBOM 도 입력으로 받는다. 생성과 함께 고지문과 위험 리포트가 나오므로 결과를 해석할
-  기준도 함께 제공된다
-
-**사실 경계 주의**: 공개 저장소에서 확인한 것은 입력 범위, 출력물, ML-BOM 의 G7 AI 최소 요소
-점검이다. **일반 SBOM 의 전이 의존성 정확도나 최소 요소 적합성 점수는 공개 문서에서 확인되지
-않았다.** 발표 전에 근거를 확보하지 못하면 "정확도가 더 높다"고 단정하지 말고 위 사실 범위로만
-말한다.
+- 의존성 트리는 매니페스트만 읽어서는 확정되지 않는다. 빌드 도구가 실제로 의존성을 해결해야
+  전이 의존성이 드러난다
+- 그래서 로컬 환경이 프로젝트와 맞지 않으면 도구가 실패하지 않고 **부분 결과만 낸다.**
+  공급사는 SBOM 이 나왔으니 됐다고 판단하고 납품한다. 문제는 반려된 뒤에 발견된다
+- BomLens 는 이 지점을 Docker 이미지 하나로 해결한다. 열 개 언어의 빌드 환경이 이미지 안에
+  들어 있으므로 공급사가 런타임과 빌드 도구를 맞출 필요가 없다
+- 설치 프로그램과 웹 UI 가 있어 CLI 를 모르는 담당자도 쓸 수 있고, Apache-2.0 이라 예산도
+  들지 않는다. 4번 슬라이드의 네 가지 문제에 각각 대응한다
+- 받는 쪽에서도 쓸 수 있다. 협력사가 보낸 SBOM 을 형식 요건 대비로 점검하는 기능이 있다
 
 **사용하지 않을 표현**: "최적의 도구". 비교 평가 없이 단정하면 근거를 요구받는다.
+빌드 환경을 이미지로 제공한다는 구조적 차이를 말하는 것으로 충분하다.
 
 링크:
 
 - **[화면]** https://github.com/sktelecom/bomlens
+- **[참조]** 설치 없이 결과만 보는 데모 — https://sktelecom.github.io/bomlens/demo/
+  (소스·컨테이너 이미지·펌웨어·AI 모델·협력사 SBOM 점검 결과가 각각 하나씩 있다)
 - **[참조]** SBOM 생성 실습 — https://trustedoss.github.io/docs/tools/sbom-generation
 - **[참조]** ML-BOM 실습(BomLens 실측) — https://trustedoss.github.io/docs/tools/ai-sbom
 
