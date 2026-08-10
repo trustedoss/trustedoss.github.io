@@ -1,11 +1,13 @@
 ---
+id: talks
 title: Talks
-description: Where Trusted OSS has been presented, with the slides from each talk.
+sidebar_label: Talks
+sidebar_position: 3
 ---
 
 # Talks
 
-Where Trusted OSS has been presented, with the slides from each talk. If you would like this
+Where Trusted OSS has been presented, and the slides from each talk. If you would like this
 at your event, open an issue on
 [GitHub](https://github.com/trustedoss/trustedoss.github.io/issues).
 
@@ -13,10 +15,12 @@ at your event, open an issue on
 
 **AI-Powered Open Source Risk Management: ISO Self-Certification Kit and 5-Level AI Coding Governance**
 
-- Event: Open Source Summit Korea 2026 (Linux Foundation)
-- Date: 12 August 2026
-- Location: Seoul, Rose
-- Format: 40-minute talk, OSS Enabling & Management track
+| Item     | Detail                                           |
+| -------- | ------------------------------------------------ |
+| Event    | Open Source Summit Korea 2026 (Linux Foundation) |
+| Date     | 12 August 2026                                   |
+| Location | Seoul, Rose                                      |
+| Format   | 40-minute talk, OSS Enabling & Management track  |
 
 How agents build an ISO/IEC 5230 and 18974 self-certification program, a 5-level maturity
 model for governing AI coding, and the tools that keep the program running once it exists

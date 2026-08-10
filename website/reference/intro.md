@@ -33,6 +33,7 @@ description: '산출물 Best Practice, 정본 개념 페이지(라이선스 분�
 | [라이선스 분류](./concepts/license-classification)          | 분류 기준, 배포 방식별 영향, 배포 채널 허용 매트릭스 |
 | [취약점 대응 기한과 VEX](./concepts/vulnerability-response) | CVSS 심각도별 대응 기한(KWG 기준선·조직 SLA), VEX    |
 | [용어집](./glossary)                                        | 라이선스·SBOM·보안·조직 용어 풀이                    |
+| [발표 자료](./talks)                                        | Trusted OSS를 발표한 자리와 슬라이드                 |
 
 ## 에이전트 선택 가이드
 

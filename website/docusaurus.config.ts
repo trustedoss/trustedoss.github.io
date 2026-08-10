@@ -272,11 +272,6 @@ const config: Config = {
           label: '레퍼런스',
           position: 'left',
         },
-        {
-          to: '/talks',
-          label: '발표',
-          position: 'left',
-        },
         // {
         //   to: '/blog',
         //   label: '블로그',

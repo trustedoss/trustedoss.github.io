@@ -33,6 +33,7 @@ Canonical concept pages linked from the main guide. The policy, process, and too
 | [License Classification](./concepts/license-classification)                   | Classification criteria, impact by distribution method, distribution channel allow matrix |
 | [Vulnerability Response Deadlines and VEX](./concepts/vulnerability-response) | Response deadlines by CVSS severity (KWG baseline and organizational SLA), VEX            |
 | [Glossary](./glossary)                                                        | Plain-language definitions of license, SBOM, security, and organization terms             |
+| [Talks](./talks)                                                              | Where Trusted OSS has been presented, and the slides                                      |
 
 ## Agent Selection Guide
 

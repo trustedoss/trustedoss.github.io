@@ -148,21 +148,25 @@ TRUSCA 가 5단계까지 구현한다는 뜻이 되어 모델의 벤더 중립�
 
 ## 웹사이트 공개
 
-슬라이드는 Trusted OSS 웹사이트의 "발표"(영문 Talks) 메뉴에서 연다.
+슬라이드는 Trusted OSS 웹사이트의 레퍼런스 > "발표 자료"(영문 Talks) 에서 연다.
+대메뉴로 올리지 않는다. 발표 기록은 레퍼런스 성격이라 그 아래가 맞다.
 
-| 항목        | 경로                                                       |
-| ----------- | ---------------------------------------------------------- |
-| 목록 페이지 | `website/src/pages/talks.md` (영문 i18n 사본 있음)         |
-| 슬라이드    | `website/static/talks/oss-summit-korea-2026/slides.html`   |
-| 공개 주소   | `/talks` 및 `/talks/oss-summit-korea-2026/slides.html`     |
-| 동기화      | `deck/publish.sh` 가 `deck/index.html` 을 static 으로 복사 |
+| 항목        | 경로                                                             |
+| ----------- | ---------------------------------------------------------------- |
+| 목록 페이지 | `website/reference/talks.md` (영문 i18n 사본 있음)               |
+| 슬라이드    | `website/static/talks/oss-summit-korea-2026/slides.html`         |
+| 공개 주소   | `/reference/talks` 및 `/talks/oss-summit-korea-2026/slides.html` |
+| 동기화      | `deck/publish.sh` 가 `deck/index.html` 을 static 으로 복사       |
+
+목록 페이지 주소와 슬라이드 주소는 서로 다른 계통이다. 앞은 Docusaurus 라우트이고
+뒤는 `static/` 파일이라 사이트 구조를 바꿔도 슬라이드 주소는 그대로 둔다.
 
 슬라이드를 고치면 `bash deck/publish.sh` 를 돌려야 공개본이 따라간다.
 
 목록 페이지에서 슬라이드로 거는 링크는 `pathname:///talks/...` 형식이어야 한다.
 `static/` 파일은 Docusaurus 라우트가 아니라서 일반 링크로 적으면 빌드가 깨진 링크로 막는다.
-사이트가 `trailingSlash: false` 라 목록 페이지는 `build/talks.html` 로 나온다.
-로컬에서 `python3 -m http.server` 로 확인할 때는 `/talks.html` 로 열어야 한다.
+사이트가 `trailingSlash: false` 라 목록 페이지는 `build/reference/talks.html` 로 나온다.
+로컬에서 `python3 -m http.server` 로 확인할 때는 `.html` 을 붙여 열어야 한다.
 
 ## 남은 일
 

@@ -4,6 +4,7 @@ const sidebars: SidebarsConfig = {
   reference: [
     'intro',
     'glossary',
+    'talks',
     {
       type: 'category',
       label: '산출물 Best Practice',
