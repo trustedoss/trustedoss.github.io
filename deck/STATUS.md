@@ -168,7 +168,7 @@ TRUSCA 가 5단계까지 구현한다는 뜻이 되어 모델의 벤더 중립�
 - [x] 웹사이트 "발표" 메뉴로 공개
 - [x] 연습용 출력본(`?handout`). A4 세로 한 장에 슬라이드와 대사
 - [ ] 한국어판(`deck/ko.html`)은 만들지 않기로 했다. 파일은 남아 있으나 PDF 생성 대상에서 뺐다
-- [x] 데모(8번)는 녹화본을 쓰지 않는다. `trustedoss.github.io/docs/policy` 를 열어
+- [x] 데모(8번)는 녹화본을 쓰지 않는다. `trustedoss.github.io/en/docs/policy` 를 열어
       절차와 결과를 직접 보여 준다. 슬라이드에는 무엇을 볼지 세 줄로 적어 두었다
 - [ ] 20번 QR 코드. `qrencode` 도 `python3 -m qrcode` 도 이 환경에 없어 넣지 못했다.
       설치 후 SVG 를 만들어 인라인하면 된다
@@ -197,6 +197,10 @@ TRUSCA 가 5단계까지 구현한다는 뜻이 되어 모델의 벤더 중립�
   `bash .claude/scripts/verify.sh` 13/13 PASS.
 - 2026-08-10: 영문 navbar 에 Talks 가 늘면서 브랜드명이 "Trusted..." 로 잘렸다.
   1200px 이상에서 `.navbar__title` 이 줄지 않도록 막아 두 언어 모두 온전히 나온다.
+- 2026-08-11: 표지에서 OpenChain Korea Work Group Lead 표기를 뺐다. 20번 마무리 장에는
+  같은 줄이 그대로 있다.
+- 2026-08-11: 슬라이드가 거는 Trusted OSS 링크를 모두 `/en/` 로 바꿨다. href 와 화면에
+  글자로 보이는 주소를 함께 고쳤고, 고유 URL 50개가 전부 200 이다.
 - 2026-08-10: 연습용 출력본을 A4 25쪽으로 렌더해 확인했다. 노트가 가장 긴 21쪽도 한 장에
   들어가며 아래로 필기할 여백이 남는다. `?handout` 은 `file://` 로 열어도 동작한다.
   발표 모드는 그대로다. 25장 이동, 노트 패널, 오버플로 0을 다시 확인했다.
@@ -209,7 +213,7 @@ TRUSCA 가 5단계까지 구현한다는 뜻이 되어 모델의 벤더 중립�
 
 | 리소스         | 기준 URL                                |
 | -------------- | --------------------------------------- |
-| Trusted OSS    | `trustedoss.github.io`                  |
+| Trusted OSS    | `trustedoss.github.io/en/`              |
 | TRUSCA 사이트  | `trustedoss.github.io/trusca/`          |
 | TRUSCA 데모    | `trusca-demo.duckdns.org`               |
 | BomLens 사이트 | `sktelecom.github.io/bomlens/`          |
@@ -246,6 +250,11 @@ TRUSCA 가 5단계까지 구현한다는 뜻이 되어 모델의 벤더 중립�
 표준 해설이 맞아 블로그로 바꿨다.
 
 블로그는 한국어가 기본이고 영문만 `/en/` 접두어를 쓴다. `/ko/` 를 붙이면 404 다.
+
+Trusted OSS 사이트도 마찬가지로 한국어가 기본이라, 슬라이드에서 거는 링크에는 모두
+`/en/` 을 붙였다. 화면에 글자로 보이는 주소도 같은 형태로 적어, 청중이 받아 적어도
+영문 페이지로 간다. TRUSCA 사이트와 데모, BomLens 는 영문이 기본이라 그대로 둔다
+(`trustedoss.github.io/trusca/en/` 은 없다).
 
 외부 대상(XZ Utils, postmark-mcp, cisa.gov 원문)은 본문에 링크하지 않고 하단 출처 줄에만 둔다.
 5번과 12번은 SVG 도식이라 라벨을 SVG `<a>` 로 감쌌다. 점선은 `text-decoration` 으로 넣는다.
