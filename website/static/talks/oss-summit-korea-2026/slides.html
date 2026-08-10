@@ -13,6 +13,8 @@
          1280x720 canvas scaled to any projector.
          Keys: arrows / space  move  ·  F fullscreen  ·  S notes
                T timer  ·  D dark  ·  P print  ·  H help
+         index.html?handout  rehearsal print: A4 portrait, one slide per
+               sheet with the script under it
          ------------------------------------------------------------------ */
 
       :root {
@@ -1109,6 +1111,126 @@
         line-height: 1.7;
       }
 
+      /* ================= handout =================
+         index.html?handout opens a rehearsal print: one A4 sheet per slide,
+         the slide on top and what to say under it. The notes are read from
+         the same .notes-src blocks the presenter panel uses, so there is
+         only ever one copy of the script. */
+      #handout {
+        display: none;
+      }
+
+      html[data-handout] {
+        /* A4 is 210mm wide; 15mm margins leave 180mm = 680px */
+        --sheet-w: 680px;
+        --sheet-scale: 0.5315;
+        height: auto;
+        overflow: visible;
+        /* html and body must agree, or the seam between the two backgrounds
+           prints as a hairline down both edges of every page */
+        background: #fff;
+      }
+
+      html[data-handout] body {
+        height: auto;
+        overflow: visible;
+        /* the handout is always printed on white paper */
+        background: #fff;
+      }
+
+      html[data-handout] #stage,
+      html[data-handout] #notes,
+      html[data-handout] .hud {
+        display: none !important;
+      }
+
+      html[data-handout] #handout {
+        display: block;
+        width: var(--sheet-w);
+        margin: 0 auto;
+        padding: 34px 0 60px;
+      }
+
+      .sheet {
+        page-break-after: always;
+        break-after: page;
+        margin-bottom: 52px;
+      }
+
+      .sheet:last-child {
+        page-break-after: auto;
+        break-after: auto;
+        margin-bottom: 0;
+      }
+
+      .sheet-head {
+        display: flex;
+        align-items: baseline;
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 7px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        color: var(--ink-3);
+        margin-bottom: 9px;
+      }
+
+      .sheet-head .sp {
+        flex: 1;
+      }
+
+      .sheet-stage {
+        width: var(--sheet-w);
+        /* 720 * 0.5315, rounded up */
+        height: 383px;
+        /* a single rule, not a box: Chrome draws an outline or a full border
+           down to the bottom of the printed page, whatever height is set */
+        border-bottom: 1px solid var(--line);
+      }
+
+      .sheet-stage .slide {
+        display: flex !important;
+        position: relative !important;
+        inset: auto !important;
+        width: 1280px;
+        height: 720px;
+        /* zoom, not transform: a transformed slide keeps its full 720px
+           layout box, and when printing that box stretches the clip region
+           to the bottom of the page. zoom shrinks the box itself. */
+        zoom: var(--sheet-scale);
+      }
+
+      .sheet-notes {
+        padding-top: 15px;
+        /* keep the last word off the rule above */
+        padding-right: 10px;
+      }
+
+      .sheet-notes .say {
+        border-left: 3px solid var(--accent);
+        padding: 2px 0 2px 12px;
+        margin: 0 0 12px;
+        font-size: 13.5px;
+        line-height: 1.72;
+        color: var(--ink);
+      }
+
+      .sheet-notes ul {
+        margin: 0;
+        padding-left: 16px;
+      }
+
+      .sheet-notes li {
+        font-size: 12px;
+        line-height: 1.6;
+        color: var(--ink-2);
+        margin-bottom: 5px;
+      }
+
+      .sheet-notes li b {
+        color: var(--ink);
+      }
+
       /* ================= print ================= */
       @page {
         size: 1280px 720px;
@@ -1148,6 +1270,21 @@
           overflow: hidden;
           page-break-after: always;
           break-after: page;
+        }
+
+        /* the handout brings its own page box, set from script */
+        html[data-handout] #handout {
+          padding: 0;
+        }
+
+        html[data-handout] .sheet {
+          margin-bottom: 0;
+        }
+
+        /* the sheet owns the page break here, not the slide inside it */
+        html[data-handout] .slide {
+          page-break-after: auto !important;
+          break-after: auto !important;
         }
       }
     </style>
@@ -3824,6 +3961,60 @@
             String(el.dataset.no).padStart(2, "0") + " / " + TOTAL;
           f.appendChild(n);
         });
+
+        // ---------- handout: one A4 sheet per slide, script underneath ----------
+        if (/(^|[?&])handout($|[=&])/.test(location.search)) {
+          document.documentElement.setAttribute("data-handout", "");
+
+          // a later @page wins, so this replaces the 1280x720 slide page box
+          var pageBox = document.createElement("style");
+          pageBox.textContent = "@page{size:A4 portrait;margin:15mm 15mm 14mm}";
+          document.head.appendChild(pageBox);
+
+          var sheets = document.createElement("div");
+          sheets.id = "handout";
+
+          slides.forEach(function (el) {
+            var sheet = document.createElement("article");
+            sheet.className = "sheet";
+
+            var head = document.createElement("div");
+            head.className = "sheet-head";
+            var left = document.createElement("span");
+            left.textContent = el.hasAttribute("data-divider")
+              ? "—"
+              : String(el.dataset.no).padStart(2, "0") + " / " + TOTAL;
+            var gap = document.createElement("span");
+            gap.className = "sp";
+            var right = document.createElement("span");
+            right.textContent = el.dataset.time || "";
+            head.appendChild(left);
+            head.appendChild(gap);
+            head.appendChild(right);
+
+            // take the script out before the slide moves, so the hidden
+            // block does not travel into the scaled frame
+            var src = el.querySelector(".notes-src");
+            var script = src ? src.innerHTML : "";
+            if (src) src.parentNode.removeChild(src);
+
+            var stage = document.createElement("div");
+            stage.className = "sheet-stage";
+            stage.appendChild(el);
+
+            var body = document.createElement("div");
+            body.className = "sheet-notes";
+            body.innerHTML = script;
+
+            sheet.appendChild(head);
+            sheet.appendChild(stage);
+            sheet.appendChild(body);
+            sheets.appendChild(sheet);
+          });
+
+          document.body.appendChild(sheets);
+          return;
+        }
 
         function show(i) {
           index = Math.max(0, Math.min(slides.length - 1, i));
