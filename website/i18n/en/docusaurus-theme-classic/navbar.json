@@ -26,5 +26,9 @@
   "item.label.TRUSCA": {
     "message": "TRUSCA",
     "description": "Navbar item with label TRUSCA"
+  },
+  "item.label.발표": {
+    "message": "Talks",
+    "description": "Navbar item with label 발표"
   }
 }
