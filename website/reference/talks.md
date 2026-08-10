@@ -24,7 +24,7 @@ Trusted OSS를 발표한 자리와 슬라이드입니다. 행사에서 이 내�
 ISO/IEC 5230과 18974 자체 인증 체계를 agent로 세우는 방법, AI 코딩을 다루는 5단계 성숙도
 모델, 그리고 그렇게 만든 체계를 실제로 돌리는 도구(BomLens, TRUSCA)를 다룹니다.
 
-[슬라이드 보기](pathname:///talks/oss-summit-korea-2026/slides.html)
+[슬라이드 보기](pathname:///reference/talks/oss-summit-korea-2026/slides.html)
 
 :::note 슬라이드 조작
 
