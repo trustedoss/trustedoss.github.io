@@ -3688,7 +3688,7 @@
                   <div class="area">
                     <a
                       class="ref"
-                      href="https://github.com/trustedoss/trusca"
+                      href="https://github.com/trustedoss/trusca/blob/main/ROADMAP.md#supply-chain-integrity"
                       target="_blank"
                       rel="noopener noreferrer"
                       >Reachability</a
@@ -3699,18 +3699,24 @@
                   Is this CVE actually on an execution path we call?
                 </div>
               </div>
-              <div class="row row--last">
+              <div class="row">
                 <div>
                   <div class="area">
                     <a
                       class="ref"
-                      href="https://github.com/trustedoss/trusca"
+                      href="https://github.com/trustedoss/trusca/blob/main/ROADMAP.md#supply-chain-integrity"
                       target="_blank"
                       rel="noopener noreferrer"
-                      >Agent pre-flight</a
+                      >SBOM drift</a
                     >
                   </div>
                 </div>
+                <div class="what">
+                  Does the SBOM a supplier sent match their code?
+                </div>
+              </div>
+              <div class="row row--last">
+                <div><div class="area">Agent pre-flight</div></div>
                 <div class="what">
                   An MCP server the agent queries before it adds a package
                 </div>
@@ -3719,7 +3725,10 @@
 
             <div class="answer">
               Not level 2, which asks. Not level 3, which blocks after the fact.
-              <b>A query before intake — the model does not cover this yet.</b>
+              <b
+                >A query before intake — neither the model nor the roadmap
+                covers it yet.</b
+              >
             </div>
           </div>
 
@@ -3748,6 +3757,23 @@
                 도달 가능성 분석 — CVE 가 있어도 우리 코드에서 그 함수를 부르지
                 않으면 실제 위험은 없다. 이걸 판정할 수 있으면 triage 부담이
                 크게 준다
+              </li>
+              <li>
+                SBOM drift — <b>16번에서 던진 문제의 답이다.</b> 공급사가 낸
+                문서를 같은 ref 를 직접 스캔한 결과와 맞대어, 어느 쪽이 무엇을
+                빠뜨렸는지 보고한다. 적합성 점수가 "칸이 채워졌는가"를 본다면
+                이것은 "문서가 코드와 맞는가"를 본다
+              </li>
+              <li>
+                <b>앞의 두 가지는 TRUSCA 공개 로드맵에 있다.</b> 항목 이름을
+                누르면 ROADMAP.md 의 해당 절이 열린다. 날짜는 적지 않는다.
+                로드맵 문서가 "제안이지 약속이 아니며 날짜는 일부러 뺀다"고
+                밝히고 있어서다
+              </li>
+              <li>
+                <b>세 번째는 로드맵에 없다. 그래서 링크도 걸지 않았다.</b> 이
+                발표가 도달한 지점이지 예정된 작업이 아니다. 질문이 나오면 그
+                차이를 그대로 말한다
               </li>
             </ul>
           </div>
