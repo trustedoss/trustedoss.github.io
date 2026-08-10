@@ -74,21 +74,36 @@ arbitrary code execution (a researcher found and reported it, and it was fixed; 
 observed). Reviewing individual servers does not help when the hosting path is a single point of
 failure.
 
-1. **MCP server allowlist** — use only approved servers and disable "allow all"-style settings.
-   New servers pass the scanning in section 4 before registration.
-2. **Least privilege** — limit the agent's file, network, and command-execution scope to what is
-   needed.
-3. **Description review** — tool descriptions from untrusted sources are review targets, both at
-   adoption and on updates (descriptions can change when a server updates).
-4. **Version pinning** — pin agents and MCP servers like any dependency and track changes. The npm
-   package `postmark-mcp` was clean through 1.0.15, then later versions (believed to start at
-   1.0.16) added a hidden BCC copying every outgoing email to an external address. Approving once
-   at adoption cannot catch this.
-5. **Human approval and audit logs for high-risk actions** — never auto-approve file deletion,
-   external transmission, or deployment, and keep tool-call history.
-6. **Egress path review** — before adoption, determine which external endpoints the server talks to
-   and whether internal data can leave through them. `postmark-mcp` above is exactly the kind of
-   case this catches. Record the result in the SBOM as described in section 6.
+### MCP server allowlist
+
+Use only approved servers and disable "allow all"-style settings. New servers pass the scanning
+in section 4 before registration.
+
+### Least privilege
+
+Limit the agent's file, network, and command-execution scope to what is needed.
+
+### Description review
+
+Tool descriptions from untrusted sources are review targets, both at adoption and on updates
+(descriptions can change when a server updates).
+
+### Version pinning
+
+Pin agents and MCP servers like any dependency and track changes. The npm package `postmark-mcp`
+was clean through 1.0.15, then later versions (believed to start at 1.0.16) added a hidden BCC
+copying every outgoing email to an external address. Approving once at adoption cannot catch this.
+
+### Human approval and audit logs
+
+Never auto-approve high-risk actions — file deletion, external transmission, deployment — and keep
+tool-call history.
+
+### Egress path review
+
+Before adoption, determine which external endpoints the server talks to and whether internal data
+can leave through them. `postmark-mcp` above is exactly the kind of case this catches. Record the
+result in the SBOM as described in section 6.
 
 ## 4. Automation tools
 
