@@ -2134,7 +2134,16 @@
             <div class="rows rows--compact rows--agents">
               <div class="row">
                 <div class="area">Organization</div>
-                <div class="what">roles, RACI, appointment letter</div>
+                <div class="what">
+                  roles,
+                  <a
+                    class="ref"
+                    href="https://trustedoss.github.io/en/reference/samples/organization#open-source-raci-matrix"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >RACI</a
+                  >, appointment letter
+                </div>
                 <div class="open">
                   <a
                     class="ref"
@@ -2687,29 +2696,12 @@
           <h2>Policy that lives in one person's head</h2>
 
           <div class="body">
-            <div class="trio trio--pair">
-              <div>
-                <div class="k">What it looks like</div>
-                <p>
-                  "Use only MIT-licensed code" typed into the prompt.
-                  <b>Every time, by every developer.</b>
-                </p>
-              </div>
-              <div>
-                <div class="k">What it costs</div>
-                <p>
-                  A hallucinated GPL snippet, or a version with a known CVE.
-                  <b>Nothing is watching.</b>
-                </p>
-              </div>
-            </div>
-
             <div class="answer">
-              <b>There is no file to show you at this level.</b> Nothing is
-              written down, so nothing can be reviewed, inherited, or audited.
+              "Use only MIT-licensed code" typed into the prompt, every time.
+              <b>There is no file to show you at this level.</b>
               <span class="sub"
-                >Fine for a weekend project. It does not survive one person
-                leaving the team.</span
+                >Nothing written down is nothing to review, inherit, or
+                audit.</span
               >
             </div>
           </div>
@@ -2736,6 +2728,11 @@
               <li>
                 가장 시작하기 쉽고 가장 불안정하다. 도구도 설정도 필요 없지만
                 모든 것이 개발자 개인의 기억과 숙련도에 달린다
+              </li>
+              <li>
+                대가는 두 가지로 나타난다. 환각으로 GPL 코드가 딸려 들어오거나,
+                알려진 취약점이 있는 버전을 추천받는다.
+                <b>둘 다 아무도 보지 않는다</b>
               </li>
               <li>
                 <b>보여 줄 파일이 없다는 것이 이 장의 요지다.</b> 뒤의 네 장은
@@ -2812,15 +2809,15 @@
                     href="https://github.com/trustedoss/trustedoss.github.io/blob/main/CLAUDE.md"
                     target="_blank"
                     rel="noopener noreferrer"
-                    >This deck's own repository</a
+                    >trustedoss.github.io</a
                   >
-                  runs on one, and so does the
+                  runs on one, and so does
                   <a
                     class="ref"
                     href="https://github.com/trustedoss/ai-coding-best-practice/blob/main/CLAUDE.md"
                     target="_blank"
                     rel="noopener noreferrer"
-                    >reference repository</a
+                    >ai-coding-best-practice</a
                   >
                 </div>
               </div>
@@ -2881,7 +2878,17 @@
           <div class="body">
             <div class="rows rows--compact">
               <div class="row">
-                <div><div class="area">Secrets</div></div>
+                <div>
+                  <div class="area">
+                    <a
+                      class="ref"
+                      href="https://trustedoss.github.io/en/devsecops/secret-detection"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >Secrets</a
+                    >
+                  </div>
+                </div>
                 <div class="what">
                   <span class="mono">gitleaks</span>, hard fail on any leak ·
                   <a
@@ -2894,7 +2901,17 @@
                 </div>
               </div>
               <div class="row">
-                <div><div class="area">SAST</div></div>
+                <div>
+                  <div class="area">
+                    <a
+                      class="ref"
+                      href="https://trustedoss.github.io/en/devsecops/sast"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >SAST</a
+                    >
+                  </div>
+                </div>
                 <div class="what">
                   <span class="mono">semgrep, bandit, CodeQL</span> ·
                   <a
@@ -2907,7 +2924,17 @@
                 </div>
               </div>
               <div class="row row--last">
-                <div><div class="area">SCA</div></div>
+                <div>
+                  <div class="area">
+                    <a
+                      class="ref"
+                      href="https://trustedoss.github.io/en/devsecops/sca"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >SCA</a
+                    >
+                  </div>
+                </div>
                 <div class="what">
                   <span class="mono">cdxgen</span> then
                   <span class="mono">Trivy</span>, daily ·
