@@ -546,8 +546,8 @@
     <div class="wrap">
       <div class="header">
         <div class="header-badge"><span>✦</span> Trusted OSS</div>
-        <h1>OSS Rules 생성기</h1>
-        <p>
+        <h1 data-i18n="headerTitle">OSS Rules 생성기</h1>
+        <p data-i18n-html="headerDesc">
           AI 코딩 도구에 적용할 오픈소스 정책 파일을 자동으로 생성합니다.<br />질문에
           답하면 바로 다운로드할 수 있는 설정 파일이 만들어집니다.
         </p>
@@ -567,9 +567,11 @@
             placeholder="sk-ant-api03-..."
             autocomplete="off"
           />
-          <button class="show-btn" onclick="toggleKey()">표시</button>
+          <button class="show-btn" onclick="toggleKey()" data-i18n="showKey">
+            표시
+          </button>
         </div>
-        <div class="api-hint">
+        <div class="api-hint" data-i18n-html="apiHint">
           API 키는 브라우저에서만 사용되며 서버로 전송되지 않습니다. 키 발급:
           <a href="https://console.anthropic.com" target="_blank"
             >console.anthropic.com</a
@@ -582,8 +584,8 @@
         <div class="step">
           <div class="step-head">
             <div class="step-num">1</div>
-            <div class="step-title">AI 코딩 도구</div>
-            <div class="step-desc">복수 선택 가능</div>
+            <div class="step-title" data-i18n="step1Title">AI 코딩 도구</div>
+            <div class="step-desc" data-i18n="step1Desc">복수 선택 가능</div>
           </div>
           <div class="step-body">
             <div class="chips" id="tools">
@@ -641,8 +643,10 @@
         <div class="step">
           <div class="step-head">
             <div class="step-num">2</div>
-            <div class="step-title">개발 언어</div>
-            <div class="step-desc">언어별 audit 명령어가 포함됩니다</div>
+            <div class="step-title" data-i18n="step2Title">개발 언어</div>
+            <div class="step-desc" data-i18n="step2Desc">
+              언어별 audit 명령어가 포함됩니다
+            </div>
           </div>
           <div class="step-body">
             <div class="chips">
@@ -690,7 +694,9 @@
         <div class="step">
           <div class="step-head">
             <div class="step-num">3</div>
-            <div class="step-title">라이선스 정책 수준</div>
+            <div class="step-title" data-i18n="step3Title">
+              라이선스 정책 수준
+            </div>
           </div>
           <div class="step-body">
             <div class="pills">
@@ -701,8 +707,9 @@
                   name="license"
                   value="strict"
                 /><label for="lic1"
-                  >엄격<br /><small style="font-weight: 400; opacity: 0.7"
-                    >MIT·Apache·BSD만</small
+                  ><span data-i18n="lic1">엄격</span><br /><small
+                    style="font-weight: 400; opacity: 0.7"
+                    ><span data-i18n="lic1Desc">MIT·Apache·BSD만</span></small
                   ></label
                 >
               </div>
@@ -714,9 +721,9 @@
                   value="moderate"
                   checked
                 /><label for="lic2"
-                  >표준 (권장)<br /><small
+                  ><span data-i18n="lic2">표준 (권장)</span><br /><small
                     style="font-weight: 400; opacity: 0.7"
-                    >LGPL·MPL 주의</small
+                    ><span data-i18n="lic2Desc">LGPL·MPL 주의</span></small
                   ></label
                 >
               </div>
@@ -727,8 +734,11 @@
                   name="license"
                   value="permissive"
                 /><label for="lic3"
-                  >유연<br /><small style="font-weight: 400; opacity: 0.7"
-                    >법무 검토 후 GPL 가능</small
+                  ><span data-i18n="lic3">유연</span><br /><small
+                    style="font-weight: 400; opacity: 0.7"
+                    ><span data-i18n="lic3Desc"
+                      >법무 검토 후 GPL 가능</span
+                    ></small
                   ></label
                 >
               </div>
@@ -740,7 +750,9 @@
         <div class="step">
           <div class="step-head">
             <div class="step-num">4</div>
-            <div class="step-title">취약점 차단 기준</div>
+            <div class="step-title" data-i18n="step4Title">
+              취약점 차단 기준
+            </div>
           </div>
           <div class="step-body">
             <div class="pills">
@@ -751,8 +763,9 @@
                   name="vuln"
                   value="critical"
                 /><label for="v1"
-                  >Critical만<br /><small style="font-weight: 400; opacity: 0.7"
-                    >처음 도입 시</small
+                  ><span data-i18n="vuln1">Critical만</span><br /><small
+                    style="font-weight: 400; opacity: 0.7"
+                    ><span data-i18n="vuln1Desc">처음 도입 시</span></small
                   ></label
                 >
               </div>
@@ -764,17 +777,18 @@
                   value="high"
                   checked
                 /><label for="v2"
-                  >High 이상<br /><small style="font-weight: 400; opacity: 0.7"
-                    >권장</small
+                  ><span data-i18n="vuln2">High 이상</span><br /><small
+                    style="font-weight: 400; opacity: 0.7"
+                    ><span data-i18n="vuln2Desc">권장</span></small
                   ></label
                 >
               </div>
               <div class="pill">
                 <input type="radio" id="v3" name="vuln" value="medium" /><label
                   for="v3"
-                  >Medium 이상<br /><small
+                  ><span data-i18n="vuln3">Medium 이상</span><br /><small
                     style="font-weight: 400; opacity: 0.7"
-                    >엄격</small
+                    ><span data-i18n="vuln3Desc">엄격</span></small
                   ></label
                 >
               </div>
@@ -786,8 +800,8 @@
         <div class="step">
           <div class="step-head">
             <div class="step-num">5</div>
-            <div class="step-title">추가 규칙</div>
-            <div class="step-desc">선택 사항</div>
+            <div class="step-title" data-i18n="step5Title">추가 규칙</div>
+            <div class="step-desc" data-i18n="step5Desc">선택 사항</div>
           </div>
           <div class="step-body">
             <div class="chips">
@@ -799,7 +813,8 @@
                   value="sbom"
                   checked
                 /><label for="o1"
-                  ><span class="chip-dot"></span>SBOM 관리</label
+                  ><span class="chip-dot"></span
+                  ><span data-i18n="optSbom">SBOM 관리</span></label
                 >
               </div>
               <div class="chip">
@@ -810,7 +825,8 @@
                   value="copyright"
                   checked
                 /><label for="o2"
-                  ><span class="chip-dot"></span>저작권 헤더</label
+                  ><span class="chip-dot"></span
+                  ><span data-i18n="optCopyright">저작권 헤더</span></label
                 >
               </div>
               <div class="chip">
@@ -820,7 +836,8 @@
                   name="option"
                   value="cicd"
                 /><label for="o3"
-                  ><span class="chip-dot"></span>CI/CD 연동 안내</label
+                  ><span class="chip-dot"></span
+                  ><span data-i18n="optCicd">CI/CD 연동 안내</span></label
                 >
               </div>
             </div>
@@ -828,14 +845,19 @@
         </div>
       </div>
 
-      <button class="gen-btn" id="genBtn" onclick="generate()">
+      <button
+        class="gen-btn"
+        id="genBtn"
+        onclick="generate()"
+        data-i18n="genBtn"
+      >
         Rules 파일 생성하기 →
       </button>
 
       <div class="loading-bar" id="loadingBar">
         <div class="loading-fill"></div>
       </div>
-      <div class="loading-text" id="loadingText">
+      <div class="loading-text" id="loadingText" data-i18n="loadingText">
         Claude가 설정 파일을 생성하고 있습니다...
       </div>
 
@@ -846,8 +868,12 @@
 
       <!-- Result -->
       <div class="result" id="result">
-        <div class="success-banner visible" id="successBanner">
-          ✓ 생성 완료 — 탭을 선택해 파일을 확인하고 다운로드하세요.
+        <div
+          class="success-banner visible"
+          id="successBanner"
+          data-i18n="successBanner"
+        >
+          ✓ 생성 완료. 탭을 선택해 파일을 확인하고 다운로드하세요.
         </div>
         <div class="result-header">
           <div class="tabs" id="tabs"></div>
@@ -856,22 +882,276 @@
           <div id="codeContents"></div>
           <div class="result-actions">
             <div class="action-left">
-              <button class="btn-copy" id="copyBtn" onclick="copyActive()">
+              <button
+                class="btn-copy"
+                id="copyBtn"
+                onclick="copyActive()"
+                data-i18n="copy"
+              >
                 복사
               </button>
-              <button class="btn-dl" onclick="downloadActive()">
+              <button
+                class="btn-dl"
+                onclick="downloadActive()"
+                data-i18n="download"
+              >
                 다운로드
               </button>
             </div>
-            <div class="action-right" id="actionHint">
-              프로젝트 루트에 붙여넣으세요
-            </div>
+            <div class="action-right" id="actionHint"></div>
           </div>
         </div>
       </div>
     </div>
 
     <script>
+      const I18N = {
+        ko: {
+          docTitle: "OSS Rules 생성기",
+          headerTitle: "OSS Rules 생성기",
+          headerDesc:
+            "AI 코딩 도구에 적용할 오픈소스 정책 파일을 자동으로 생성합니다.<br />질문에 답하면 바로 다운로드할 수 있는 설정 파일이 만들어집니다.",
+          showKey: "표시",
+          hideKey: "숨김",
+          apiHint:
+            'API 키는 브라우저에서만 사용되며 서버로 전송되지 않습니다. 키 발급: <a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a>',
+          step1Title: "AI 코딩 도구",
+          step1Desc: "복수 선택 가능",
+          step2Title: "개발 언어",
+          step2Desc: "언어별 audit 명령어가 포함됩니다",
+          step3Title: "라이선스 정책 수준",
+          lic1: "엄격",
+          lic1Desc: "MIT·Apache·BSD만",
+          lic2: "표준 (권장)",
+          lic2Desc: "LGPL·MPL 주의",
+          lic3: "유연",
+          lic3Desc: "법무 검토 후 GPL 가능",
+          step4Title: "취약점 차단 기준",
+          vuln1: "Critical만",
+          vuln1Desc: "처음 도입 시",
+          vuln2: "High 이상",
+          vuln2Desc: "권장",
+          vuln3: "Medium 이상",
+          vuln3Desc: "엄격",
+          step5Title: "추가 규칙",
+          step5Desc: "선택 사항",
+          optSbom: "SBOM 관리",
+          optCopyright: "저작권 헤더",
+          optCicd: "CI/CD 연동 안내",
+          genBtn: "Rules 파일 생성하기 →",
+          genBtnLoading: "생성 중...",
+          loadingText: "Claude가 설정 파일을 생성하고 있습니다...",
+          successBanner:
+            "✓ 생성 완료. 탭을 선택해 파일을 확인하고 다운로드하세요.",
+          copy: "복사",
+          copied: "복사됨 ✓",
+          download: "다운로드",
+          errApiKeyTitle: "API 키 필요",
+          errApiKeyMsg:
+            "Anthropic API 키를 입력하세요. console.anthropic.com에서 발급받을 수 있습니다.",
+          errKeyFormatTitle: "잘못된 API 키 형식",
+          errKeyFormatMsg: "API 키는 sk-ant-로 시작해야 합니다.",
+          errSelectTitle: "선택 필요",
+          errNoTool: "AI 코딩 도구를 하나 이상 선택하세요.",
+          errNoLang: "개발 언어를 하나 이상 선택하세요.",
+          errFailTitle: "생성 실패",
+          errUnauthorized: "API 키가 유효하지 않습니다. 키를 다시 확인하세요.",
+          errRateLimit:
+            "API 요청 한도를 초과했습니다. 잠시 후 다시 시도하세요.",
+          errParse: "응답 파싱 실패. 다시 시도해주세요.",
+          errEmpty: "생성된 파일이 없습니다. 다시 시도해주세요.",
+          hintRoot: "프로젝트 루트에 위치시키세요",
+          hintGithub: ".github/ 폴더 안에 위치시키세요",
+          licensePolicy: {
+            strict:
+              "허용: MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC\n금지: LGPL, MPL, GPL, AGPL, SSPL, Commons Clause",
+            moderate:
+              "허용: MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC\n주의(법무 검토 필요): LGPL, MPL\n금지: GPL, AGPL, SSPL, Commons Clause",
+            permissive:
+              "허용: MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC, LGPL, MPL\n주의(법무 검토 필요): GPL, AGPL\n금지: SSPL, Commons Clause",
+          },
+          vulnPolicy: {
+            critical: "Critical CVE만 즉시 차단. High 이하는 경고 출력.",
+            high: "High·Critical CVE 발견 시 차단. Medium 이하는 경고.",
+            medium: "Medium·High·Critical CVE 발견 시 차단.",
+          },
+          toolFormat: {
+            claude:
+              "Claude Code의 CLAUDE.md 형식 - ## 섹션 헤더와 지시문 스타일로 작성. Claude Code가 프로젝트 시작 시 자동으로 읽는 파일임.",
+            cursor:
+              "Cursor의 .cursorrules 형식 - 간결한 규칙 목록 스타일. Cursor AI가 코드 작성 시 참고하는 파일임.",
+            copilot:
+              "GitHub Copilot의 copilot-instructions.md 형식 - 마크다운 형식, .github/ 폴더에 위치. Copilot Chat과 코드 완성에 적용됨.",
+            windsurf:
+              "Windsurf의 .windsurfrules 형식 - Cascade AI 에이전트 지침 파일. 간결하고 명확한 규칙 목록.",
+            cline:
+              "Cline의 .clinerules 형식 - 프로젝트 루트에 위치하는 지침 파일.",
+          },
+          optionText: {
+            sbom: "- SBOM 관리: 의존성 변경 시 SBOM 업데이트 필요, 생성 도구(syft/cdxgen/trivy), 권장 포맷(CycloneDX)",
+            copyright:
+              "- 저작권: 기존 코드 저작권 헤더 유지, 새 파일 생성 시 라이선스 헤더 포함, 타 프로젝트 코드 복사 시 출처 명시",
+            cicd: "- CI/CD 연동: AI 규칙은 권장사항이므로 CI/CD 파이프라인에서 syft+grype로 강제 검증 권장",
+          },
+          buildPrompt: (
+            ctx,
+          ) => `아래 조건에 맞는 AI 코딩 도구용 오픈소스 정책 Rules 파일들을 생성해.
+
+## 생성할 파일 목록과 형식
+${ctx.toolInstructions}
+
+## 공통 정책 내용
+라이선스 정책:
+${ctx.license}
+
+취약점 정책: ${ctx.vuln}
+
+언어별 보안 감사 명령어:
+${ctx.auditList}
+
+추가 규칙:
+${ctx.optionList || "없음"}
+
+## 응답 형식
+반드시 아래 JSON 형식으로만 응답. 설명 텍스트, 마크다운 코드블록 없이 순수 JSON만.
+
+{"files":[{"tool":"도구키(claude/cursor/copilot/windsurf/cline 중 하나)","filename":"파일명","content":"파일 전체 내용"}]}
+
+## 작성 요구사항
+- 각 도구의 특성과 형식에 맞게 작성
+- 한국어로 작성
+- 실제 프로젝트에 바로 적용 가능한 수준으로 구체적으로 작성
+- 각 섹션(라이선스/보안/SBOM 등)을 명확히 구분
+- tool 값은 반드시 ${ctx.toolKeys} 중에서만 사용`,
+          formatLabel: "형식",
+        },
+        en: {
+          docTitle: "OSS Rules Generator",
+          headerTitle: "OSS Rules Generator",
+          headerDesc:
+            "Generate the open source policy files your AI coding tools read.<br />Answer a few questions and you get configuration files ready to download.",
+          showKey: "Show",
+          hideKey: "Hide",
+          apiHint:
+            'Your API key stays in the browser and is never sent to our server. Get a key at <a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a>',
+          step1Title: "AI coding tools",
+          step1Desc: "Select one or more",
+          step2Title: "Programming languages",
+          step2Desc: "Audit commands are added for each language",
+          step3Title: "License policy level",
+          lic1: "Strict",
+          lic1Desc: "MIT, Apache, BSD only",
+          lic2: "Standard (recommended)",
+          lic2Desc: "LGPL and MPL need review",
+          lic3: "Flexible",
+          lic3Desc: "GPL allowed after legal review",
+          step4Title: "Vulnerability blocking threshold",
+          vuln1: "Critical only",
+          vuln1Desc: "For a first rollout",
+          vuln2: "High and above",
+          vuln2Desc: "Recommended",
+          vuln3: "Medium and above",
+          vuln3Desc: "Strict",
+          step5Title: "Additional rules",
+          step5Desc: "Optional",
+          optSbom: "SBOM management",
+          optCopyright: "Copyright headers",
+          optCicd: "CI/CD integration notes",
+          genBtn: "Generate rules files →",
+          genBtnLoading: "Generating...",
+          loadingText: "Claude is generating your configuration files...",
+          successBanner:
+            "✓ Done. Pick a tab to review each file and download it.",
+          copy: "Copy",
+          copied: "Copied ✓",
+          download: "Download",
+          errApiKeyTitle: "API key required",
+          errApiKeyMsg:
+            "Enter your Anthropic API key. You can create one at console.anthropic.com.",
+          errKeyFormatTitle: "Invalid API key format",
+          errKeyFormatMsg: "An API key must start with sk-ant-.",
+          errSelectTitle: "Selection required",
+          errNoTool: "Select at least one AI coding tool.",
+          errNoLang: "Select at least one programming language.",
+          errFailTitle: "Generation failed",
+          errUnauthorized: "The API key is not valid. Please check it again.",
+          errRateLimit: "API rate limit exceeded. Please try again shortly.",
+          errParse: "Could not parse the response. Please try again.",
+          errEmpty: "No files were generated. Please try again.",
+          hintRoot: "Place it in your project root",
+          hintGithub: "Place it inside the .github/ folder",
+          licensePolicy: {
+            strict:
+              "Allowed: MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC\nForbidden: LGPL, MPL, GPL, AGPL, SSPL, Commons Clause",
+            moderate:
+              "Allowed: MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC\nCaution (legal review required): LGPL, MPL\nForbidden: GPL, AGPL, SSPL, Commons Clause",
+            permissive:
+              "Allowed: MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC, LGPL, MPL\nCaution (legal review required): GPL, AGPL\nForbidden: SSPL, Commons Clause",
+          },
+          vulnPolicy: {
+            critical:
+              "Block only Critical CVEs immediately. Warn on High and below.",
+            high: "Block when a High or Critical CVE is found. Warn on Medium and below.",
+            medium: "Block when a Medium, High, or Critical CVE is found.",
+          },
+          toolFormat: {
+            claude:
+              "Claude Code CLAUDE.md format - use ## section headers and an instructional style. Claude Code reads this file automatically when a project opens.",
+            cursor:
+              "Cursor .cursorrules format - a concise list of rules. Cursor AI consults this file while writing code.",
+            copilot:
+              "GitHub Copilot copilot-instructions.md format - markdown, placed in the .github/ folder. Applies to Copilot Chat and code completion.",
+            windsurf:
+              "Windsurf .windsurfrules format - an instruction file for the Cascade AI agent. Keep the rule list short and clear.",
+            cline:
+              "Cline .clinerules format - an instruction file placed in the project root.",
+          },
+          optionText: {
+            sbom: "- SBOM management: update the SBOM whenever dependencies change, generation tools (syft/cdxgen/trivy), recommended format (CycloneDX)",
+            copyright:
+              "- Copyright: keep existing copyright headers, add a license header to new files, credit the source when copying code from another project",
+            cicd: "- CI/CD integration: AI rules are advisory, so enforce them in the CI/CD pipeline with syft and grype",
+          },
+          buildPrompt: (
+            ctx,
+          ) => `Generate open source policy rules files for AI coding tools that match the conditions below.
+
+## Files to generate and their formats
+${ctx.toolInstructions}
+
+## Shared policy content
+License policy:
+${ctx.license}
+
+Vulnerability policy: ${ctx.vuln}
+
+Security audit commands per language:
+${ctx.auditList}
+
+Additional rules:
+${ctx.optionList || "None"}
+
+## Response format
+Respond with the JSON structure below and nothing else. No explanation text, no markdown code block.
+
+{"files":[{"tool":"tool key (one of claude/cursor/copilot/windsurf/cline)","filename":"file name","content":"full file content"}]}
+
+## Writing requirements
+- Match the characteristics and format of each tool
+- Write in English
+- Be concrete enough to apply to a real project as is
+- Separate each section (license, security, SBOM, and so on) clearly
+- Use only ${ctx.toolKeys} as tool values`,
+          formatLabel: "Format",
+        },
+      };
+
+      const LANG =
+        new URLSearchParams(window.location.search).get("lang") === "en"
+          ? "en"
+          : "ko";
+      const T = I18N[LANG];
+
       let files = [];
       let activeIdx = 0;
       let keyVisible = false;
@@ -880,64 +1160,52 @@
         claude: {
           filename: "CLAUDE.md",
           label: "CLAUDE.md",
-          hint: "프로젝트 루트에 위치시키세요",
+          hintKey: "hintRoot",
         },
         cursor: {
           filename: ".cursorrules",
           label: ".cursorrules",
-          hint: "프로젝트 루트에 위치시키세요",
+          hintKey: "hintRoot",
         },
         copilot: {
           filename: ".github/copilot-instructions.md",
           label: "copilot-instructions.md",
-          hint: ".github/ 폴더 안에 위치시키세요",
+          hintKey: "hintGithub",
         },
         windsurf: {
           filename: ".windsurfrules",
           label: ".windsurfrules",
-          hint: "프로젝트 루트에 위치시키세요",
+          hintKey: "hintRoot",
         },
         cline: {
           filename: ".clinerules",
           label: ".clinerules",
-          hint: "프로젝트 루트에 위치시키세요",
+          hintKey: "hintRoot",
         },
       };
 
-      const licensePolicy = {
-        strict:
-          "허용: MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC\n금지: LGPL, MPL, GPL, AGPL, SSPL, Commons Clause",
-        moderate:
-          "허용: MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC\n주의(법무 검토 필요): LGPL, MPL\n금지: GPL, AGPL, SSPL, Commons Clause",
-        permissive:
-          "허용: MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC, LGPL, MPL\n주의(법무 검토 필요): GPL, AGPL\n금지: SSPL, Commons Clause",
-      };
-
-      const vulnPolicy = {
-        critical: "Critical CVE만 즉시 차단. High 이하는 경고 출력.",
-        high: "High·Critical CVE 발견 시 차단. Medium 이하는 경고.",
-        medium: "Medium·High·Critical CVE 발견 시 차단.",
-      };
-
       const auditCmd = {
-        javascript: "npm audit 또는 yarn audit",
+        javascript: "npm audit or yarn audit",
         python: "pip-audit",
         java: "dependency-check",
         go: "govulncheck ./...",
         rust: "cargo audit",
       };
 
-      const toolFormat = {
-        claude:
-          "Claude Code의 CLAUDE.md 형식 — ## 섹션 헤더와 지시문 스타일로 작성. Claude Code가 프로젝트 시작 시 자동으로 읽는 파일임.",
-        cursor:
-          "Cursor의 .cursorrules 형식 — 간결한 규칙 목록 스타일. Cursor AI가 코드 작성 시 참고하는 파일임.",
-        copilot:
-          "GitHub Copilot의 copilot-instructions.md 형식 — 마크다운 형식, .github/ 폴더에 위치. Copilot Chat과 코드 완성에 적용됨.",
-        windsurf:
-          "Windsurf의 .windsurfrules 형식 — Cascade AI 에이전트 지침 파일. 간결하고 명확한 규칙 목록.",
-        cline: "Cline의 .clinerules 형식 — 프로젝트 루트에 위치하는 지침 파일.",
-      };
+      function applyI18n() {
+        document.documentElement.lang = LANG;
+        document.title = T.docTitle;
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          const v = T[el.dataset.i18n];
+          if (typeof v === "string") el.textContent = v;
+        });
+        document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+          const v = T[el.dataset.i18nHtml];
+          if (typeof v === "string") el.innerHTML = v;
+        });
+        document.getElementById("actionHint").textContent = T.hintRoot;
+      }
+      applyI18n();
 
       function getChecked(name) {
         return [
@@ -954,16 +1222,16 @@
           ? "text"
           : "password";
         document.querySelector(".show-btn").textContent = keyVisible
-          ? "숨김"
-          : "표시";
+          ? T.hideKey
+          : T.showKey;
       }
       function setLoading(on) {
         document.getElementById("loadingBar").classList.toggle("visible", on);
         document.getElementById("loadingText").classList.toggle("visible", on);
         document.getElementById("genBtn").disabled = on;
         document.getElementById("genBtn").textContent = on
-          ? "생성 중..."
-          : "Rules 파일 생성하기 →";
+          ? T.genBtnLoading
+          : T.genBtn;
       }
       function showError(title, msg) {
         const box = document.getElementById("errorBox");
@@ -986,25 +1254,19 @@
         hideError();
 
         if (!apiKey) {
-          showError(
-            "API 키 필요",
-            "Anthropic API 키를 입력하세요. console.anthropic.com에서 발급받을 수 있습니다.",
-          );
+          showError(T.errApiKeyTitle, T.errApiKeyMsg);
           return;
         }
         if (!apiKey.startsWith("sk-ant-")) {
-          showError(
-            "잘못된 API 키 형식",
-            "API 키는 sk-ant-로 시작해야 합니다.",
-          );
+          showError(T.errKeyFormatTitle, T.errKeyFormatMsg);
           return;
         }
         if (tools.length === 0) {
-          showError("선택 필요", "AI 코딩 도구를 하나 이상 선택하세요.");
+          showError(T.errSelectTitle, T.errNoTool);
           return;
         }
         if (langs.length === 0) {
-          showError("선택 필요", "개발 언어를 하나 이상 선택하세요.");
+          showError(T.errSelectTitle, T.errNoLang);
           return;
         }
 
@@ -1013,51 +1275,25 @@
 
         const auditList = langs.map((l) => `- ${auditCmd[l]}`).join("\n");
         const toolInstructions = tools
-          .map((t) => `### ${toolMeta[t].filename}\n형식: ${toolFormat[t]}`)
+          .map(
+            (t) =>
+              `### ${toolMeta[t].filename}\n${T.formatLabel}: ${T.toolFormat[t]}`,
+          )
           .join("\n\n");
 
-        const optionList = [
-          options.includes("sbom")
-            ? "- SBOM 관리: 의존성 변경 시 SBOM 업데이트 필요, 생성 도구(syft/cdxgen/trivy), 권장 포맷(CycloneDX)"
-            : "",
-          options.includes("copyright")
-            ? "- 저작권: 기존 코드 저작권 헤더 유지, 새 파일 생성 시 라이선스 헤더 포함, 타 프로젝트 코드 복사 시 출처 명시"
-            : "",
-          options.includes("cicd")
-            ? "- CI/CD 연동: AI 규칙은 권장사항이므로 CI/CD 파이프라인에서 syft+grype로 강제 검증 권장"
-            : "",
-        ]
-          .filter(Boolean)
+        const optionList = ["sbom", "copyright", "cicd"]
+          .filter((o) => options.includes(o))
+          .map((o) => T.optionText[o])
           .join("\n");
 
-        const prompt = `아래 조건에 맞는 AI 코딩 도구용 오픈소스 정책 Rules 파일들을 생성해.
-
-## 생성할 파일 목록과 형식
-${toolInstructions}
-
-## 공통 정책 내용
-라이선스 정책:
-${licensePolicy[license]}
-
-취약점 정책: ${vulnPolicy[vuln]}
-
-언어별 보안 감사 명령어:
-${auditList}
-
-추가 규칙:
-${optionList || "없음"}
-
-## 응답 형식
-반드시 아래 JSON 형식으로만 응답. 설명 텍스트, 마크다운 코드블록 없이 순수 JSON만.
-
-{"files":[{"tool":"도구키(claude/cursor/copilot/windsurf/cline 중 하나)","filename":"파일명","content":"파일 전체 내용"}]}
-
-## 작성 요구사항
-- 각 도구의 특성과 형식에 맞게 작성
-- 한국어로 작성
-- 실제 프로젝트에 바로 적용 가능한 수준으로 구체적으로 작성
-- 각 섹션(라이선스/보안/SBOM 등)을 명확히 구분
-- tool 값은 반드시 ${tools.join("/")} 중에서만 사용`;
+        const prompt = T.buildPrompt({
+          toolInstructions,
+          license: T.licensePolicy[license],
+          vuln: T.vulnPolicy[vuln],
+          auditList,
+          optionList,
+          toolKeys: tools.join("/"),
+        });
 
         try {
           const res = await fetch("https://api.anthropic.com/v1/messages", {
@@ -1078,14 +1314,8 @@ ${optionList || "없음"}
           if (!res.ok) {
             const err = await res.json().catch(() => ({}));
             const msg = err?.error?.message || `HTTP ${res.status}`;
-            if (res.status === 401)
-              throw new Error(
-                "API 키가 유효하지 않습니다. 키를 다시 확인하세요.",
-              );
-            if (res.status === 429)
-              throw new Error(
-                "API 요청 한도를 초과했습니다. 잠시 후 다시 시도하세요.",
-              );
+            if (res.status === 401) throw new Error(T.errUnauthorized);
+            if (res.status === 429) throw new Error(T.errRateLimit);
             throw new Error(msg);
           }
 
@@ -1103,7 +1333,7 @@ ${optionList || "없음"}
               .trim();
             parsed = JSON.parse(clean);
           } catch {
-            throw new Error("응답 파싱 실패. 다시 시도해주세요.");
+            throw new Error(T.errParse);
           }
 
           if (
@@ -1111,13 +1341,13 @@ ${optionList || "없음"}
             !Array.isArray(parsed.files) ||
             parsed.files.length === 0
           ) {
-            throw new Error("생성된 파일이 없습니다. 다시 시도해주세요.");
+            throw new Error(T.errEmpty);
           }
 
           files = parsed.files;
           renderResult();
         } catch (e) {
-          showError("생성 실패", e.message);
+          showError(T.errFailTitle, e.message);
         } finally {
           setLoading(false);
         }
@@ -1163,7 +1393,7 @@ ${optionList || "없음"}
           .querySelectorAll(".code-wrap")
           .forEach((c, idx) => c.classList.toggle("active", idx === i));
         updateHint();
-        document.getElementById("copyBtn").textContent = "복사";
+        document.getElementById("copyBtn").textContent = T.copy;
         document.getElementById("copyBtn").classList.remove("copied");
       }
 
@@ -1171,17 +1401,19 @@ ${optionList || "없음"}
         const f = files[activeIdx];
         if (!f) return;
         const meta = toolMeta[f.tool] || {};
-        document.getElementById("actionHint").textContent = meta.hint || "";
+        document.getElementById("actionHint").textContent = meta.hintKey
+          ? T[meta.hintKey]
+          : "";
       }
 
       function copyActive() {
         const text = files[activeIdx]?.content || "";
         navigator.clipboard.writeText(text).then(() => {
           const btn = document.getElementById("copyBtn");
-          btn.textContent = "복사됨 ✓";
+          btn.textContent = T.copied;
           btn.classList.add("copied");
           setTimeout(() => {
-            btn.textContent = "복사";
+            btn.textContent = T.copy;
             btn.classList.remove("copied");
           }, 2000);
         });

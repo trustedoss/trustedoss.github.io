@@ -2138,7 +2138,7 @@
                 <div class="open">
                   <a
                     class="ref"
-                    href="https://trustedoss.github.io/en/docs/organization"
+                    href="https://trustedoss.github.io/en/docs/organization#5-self-study"
                     target="_blank"
                     rel="noopener noreferrer"
                     >steps</a
@@ -2159,7 +2159,7 @@
                 <div class="open">
                   <a
                     class="ref"
-                    href="https://trustedoss.github.io/en/docs/policy"
+                    href="https://trustedoss.github.io/en/docs/policy#3-self-study"
                     target="_blank"
                     rel="noopener noreferrer"
                     >steps</a
@@ -2182,7 +2182,7 @@
                 <div class="open">
                   <a
                     class="ref"
-                    href="https://trustedoss.github.io/en/docs/process"
+                    href="https://trustedoss.github.io/en/docs/process#3-self-study"
                     target="_blank"
                     rel="noopener noreferrer"
                     >steps</a
@@ -2203,7 +2203,7 @@
                 <div class="open">
                   <a
                     class="ref"
-                    href="https://trustedoss.github.io/en/docs/tools/sbom-generation"
+                    href="https://trustedoss.github.io/en/docs/tools/sbom-generation#3-self-study"
                     target="_blank"
                     rel="noopener noreferrer"
                     >steps</a
@@ -2224,7 +2224,7 @@
                 <div class="open">
                   <a
                     class="ref"
-                    href="https://trustedoss.github.io/en/docs/tools/vulnerability"
+                    href="https://trustedoss.github.io/en/docs/tools/vulnerability#3-self-study"
                     target="_blank"
                     rel="noopener noreferrer"
                     >steps</a
@@ -2245,7 +2245,7 @@
                 <div class="open">
                   <a
                     class="ref"
-                    href="https://trustedoss.github.io/en/docs/training"
+                    href="https://trustedoss.github.io/en/docs/training#6-self-study"
                     target="_blank"
                     rel="noopener noreferrer"
                     >steps</a
@@ -2266,7 +2266,7 @@
                 <div class="open">
                   <a
                     class="ref"
-                    href="https://trustedoss.github.io/en/docs/conformance"
+                    href="https://trustedoss.github.io/en/docs/conformance#3-final-review-before-self-certification-self-study"
                     target="_blank"
                     rel="noopener noreferrer"
                     >steps</a
@@ -2596,6 +2596,13 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 >dependabot</a
+              >. All five, in one repository to fork:
+              <a
+                class="ref"
+                href="https://github.com/trustedoss/ai-coding-best-practice"
+                target="_blank"
+                rel="noopener noreferrer"
+                >ai-coding-best-practice</a
               >.
             </div>
           </div>
@@ -2621,6 +2628,12 @@
               <li>
                 <b>띄우고 3초 침묵한다. 거수를 요구하지 않는다.</b> 스스로 찾게
                 둔다
+              </li>
+              <li>
+                <b>표 아래 마지막 링크를 짚는다.</b> ai-coding-best-practice 는
+                다섯 층을 한 저장소에 모두 구현해 둔 참조 저장소다. fork 해서
+                바로 쓰거나 설정 파일만 복사해도 된다. 층마다 다른 저장소를 뒤질
+                필요가 없다는 뜻이다
               </li>
               <li>
                 L1 — 개발자가 프롬프트에 "GPL 은 쓰지 마"라고 매번 적는다. 그
@@ -2744,7 +2757,7 @@
           <h2>Rules the agent reads before it writes</h2>
 
           <div class="body">
-            <div class="rows">
+            <div class="rows rows--compact">
               <div class="row">
                 <div><div class="area">What you add</div></div>
                 <div class="what">
@@ -2794,13 +2807,20 @@
               <div class="row row--last">
                 <div><div class="area">In practice</div></div>
                 <div class="what">
-                  This deck's own repository runs on one.
                   <a
                     class="ref"
                     href="https://github.com/trustedoss/trustedoss.github.io/blob/main/CLAUDE.md"
                     target="_blank"
                     rel="noopener noreferrer"
-                    >Read its CLAUDE.md</a
+                    >This deck's own repository</a
+                  >
+                  runs on one, and so does the
+                  <a
+                    class="ref"
+                    href="https://github.com/trustedoss/ai-coding-best-practice/blob/main/CLAUDE.md"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >reference repository</a
                   >
                 </div>
               </div>
@@ -2914,7 +2934,15 @@
                   rel="noopener noreferrer"
                   >cicd-quick</a
                 >
-                walks the order.</span
+                walks the order, and the
+                <a
+                  class="ref"
+                  href="https://github.com/trustedoss/ai-coding-best-practice/tree/main/.github/workflows"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >reference repository</a
+                >
+                adds Checkov and Trivy on top.</span
               >
             </div>
           </div>
@@ -3382,10 +3410,23 @@
                   input, then actually run it
                 </div>
               </div>
-              <div class="row row--last">
+              <div class="row">
                 <div><div class="area">Signal</div></div>
                 <div class="what">
                   5xx errors, malformed responses, state that does not add up
+                </div>
+              </div>
+              <div class="row row--last">
+                <div><div class="area">Running</div></div>
+                <div class="what">
+                  <a
+                    class="ref"
+                    href="https://github.com/trustedoss/ai-coding-best-practice/blob/main/.github/workflows/ai-fuzzing.yml"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >ai-fuzzing.yml</a
+                  >
+                  in the best-practice repository, on push and weekly
                 </div>
               </div>
             </div>
@@ -3429,6 +3470,12 @@
                 실행 주기는 대상에 따라 다르다. Claude + requests 로 웹 API
                 엣지케이스는 main 푸시마다, Claude + AFL++ 로 저수준 binary
                 crash 는 주 1회, C/C++ 나 Rust 는 Claude + OSS-Fuzz 연동이 낫다
+              </li>
+              <li>
+                <b>마지막 줄이 실제로 도는 곳이다.</b> 4b 는 TRUSCA 에 없다.
+                대신 참조 저장소 ai-coding-best-practice 가
+                <span class="mono">ai-fuzzing.yml</span> 로 돌린다. main 푸시와
+                주 1회다
               </li>
               <li>
                 <b>두 갈래를 함께 써야 4단계가 성립한다.</b> 4a 만 쓰면 탐지되지
@@ -3756,7 +3803,15 @@
               <b>Only this level notices.</b>
               <span class="sub"
                 >dogfood-scan ships non-blocking, then turns the gate on with a
-                single input.</span
+                single input. The
+                <a
+                  class="ref"
+                  href="https://github.com/trustedoss/ai-coding-best-practice"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >reference repository</a
+                >
+                adds Renovate auto-merge and DAST.</span
               >
             </div>
           </div>
@@ -4414,7 +4469,15 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 >TRUSCA</a
+              >. For the five AI coding layers, fork
+              <a
+                class="ref"
+                href="https://github.com/trustedoss/ai-coding-best-practice"
+                target="_blank"
+                rel="noopener noreferrer"
+                >ai-coding-best-practice</a
               >
+              and delete what you do not need.
             </div>
           </div>
 
