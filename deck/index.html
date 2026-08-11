@@ -3175,10 +3175,10 @@
           </div>
 
           <div class="stage">Level 4 · why it exists</div>
-          <h2>Level 3 finds only what a rule describes</h2>
+          <h2>Three places level 3 stops</h2>
 
           <div class="body">
-            <div class="trio trio--pair">
+            <div class="trio">
               <div>
                 <div class="k">What it flags</div>
                 <p>
@@ -3192,11 +3192,18 @@
                   <b>No rule describes them.</b>
                 </p>
               </div>
+              <div>
+                <div class="k">What it never sees</div>
+                <p>
+                  Tool descriptions and tool output the agent reads.
+                  <b>They never reach a diff.</b>
+                </p>
+              </div>
             </div>
 
             <div style="height: 44px"></div>
 
-            <div class="grouplabel">Level 4 answers all three, separately</div>
+            <div class="grouplabel">One answer each</div>
             <div class="trio">
               <div>
                 <div class="k k--name">
@@ -3261,19 +3268,29 @@
                 한계다
               </li>
               <li>
-                문제가 두 방향으로 생긴다. <b>탐지된 쪽</b>에는 오탐이 섞여 있어
-                사람이 하나씩 확인해야 하고, <b>탐지되지 않은 쪽</b>에는
-                비즈니스 로직 결함이나 권한 검사 누락처럼 룰로 표현하기 어려운
-                것들이 남는다. AI 코딩은 뒤쪽 영역에 들어가는 코드의 양을 늘린다
+                <b>세 칸을 위아래로 짝지어 읽는다.</b> 위가 3단계가 멈추는
+                지점이고 아래가 그에 대응하는 4단계 갈래다. 왼쪽부터 차례로
+                짚는다
               </li>
               <li>
-                4단계는 이 둘을 <b>서로 다른 방법으로</b> 다룬다. 하나는 3단계
-                결과를 모델이 재판정해 정밀도를 높이는 것이고, 다른 하나는
-                3단계가 보지 않은 영역을 모델이 직접 탐색하는 것이다
+                <b>탐지된 쪽</b>에는 오탐이 섞여 있어 사람이 하나씩 확인해야
+                한다. 4a 가 모델로 재판정해 정밀도를 올린다
               </li>
               <li>
-                <b>이 구분이 중요하다.</b> 3단계 결과만 다시 보는 방식으로는
-                탐지되지 않은 영역이 그대로 남는다. 두 갈래가 필요한 이유다
+                <b>탐지되지 않은 쪽</b>에는 비즈니스 로직 결함이나 권한 검사
+                누락처럼 룰로 표현하기 어려운 것들이 남는다. AI 코딩은 이 영역에
+                들어가는 코드의 양을 늘린다. 4b 가 모델로 직접 탐색한다
+              </li>
+              <li>
+                <b>세 번째는 성격이 다르다.</b> 앞의 둘은 저장소에 들어온 코드를
+                두고 벌어지는 일이지만, 에이전트가 MCP 로 읽는 도구 설명과 도구
+                출력은 애초에 코드가 아니다. diff 에 나타나지 않으므로 3단계가
+                놓치는 것이 아니라 볼 수조차 없다. 4c 가 이 면을 맡는다
+              </li>
+              <li>
+                셋 중 하나만 해서는 4단계가 성립하지 않는다. 4a 만 쓰면 탐지되지
+                않은 영역이 남고, 4b 만 쓰면 오탐 확인이 사람 몫으로 남으며, 둘
+                다 해도 에이전트가 부르는 도구는 통제되지 않는다
               </li>
             </ul>
           </div>
