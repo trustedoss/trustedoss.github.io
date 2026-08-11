@@ -762,6 +762,32 @@
       }
 
       /* chapter · artifacts · the two pages that show them */
+      /* same four columns on level 5, with room for the repository prefix */
+      .rows--after .row {
+        grid-template-columns: 128px 1fr 176px 232px;
+        gap: 20px;
+        padding: 11px 0;
+        align-items: baseline;
+      }
+
+      .rows--after .area {
+        font-size: 22px;
+      }
+
+      .rows--after .what {
+        font-size: 19px;
+      }
+
+      .rows--after .tools {
+        font-size: 19px;
+      }
+
+      .rows--after .open {
+        font-size: 17px;
+        text-align: right;
+        color: var(--ink-3);
+      }
+
       /* the header row names the three as one thing: DevSecOps */
       .gatehead {
         display: grid;
@@ -4073,56 +4099,67 @@
               </text>
             </svg>
 
-            <div class="rows rows--compact" style="margin-top: 22px">
+            <div class="rows rows--after" style="margin-top: 22px">
               <div class="row">
                 <div><div class="area">Updates</div></div>
-                <div class="what">
-                  Five ecosystems, patches raised for you · trusca
+                <div class="what">Patches raised for you, five ecosystems</div>
+                <div class="tools">Dependabot</div>
+                <div class="open">
+                  trusca
                   <a
                     class="ref"
                     href="https://github.com/trustedoss/trusca/blob/main/.github/dependabot.yml"
                     target="_blank"
                     rel="noopener noreferrer"
-                    >dependabot.yml</a
+                    ><span class="mono">dependabot.yml</span></a
                   >
                 </div>
               </div>
               <div class="row">
                 <div><div class="area">Rescan</div></div>
-                <div class="what">
-                  SBOM rebuilt and rescanned daily · trusca
+                <div class="what">SBOM rebuilt and rescanned daily</div>
+                <div class="tools">
+                  <span class="mono">cdxgen</span> ·
+                  <span class="mono">Trivy</span>
+                </div>
+                <div class="open">
+                  trusca
                   <a
                     class="ref"
                     href="https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml"
                     target="_blank"
                     rel="noopener noreferrer"
-                    >sca-self.yml</a
+                    ><span class="mono">sca-self.yml</span></a
                   >
                 </div>
               </div>
               <div class="row">
                 <div><div class="area">DAST</div></div>
-                <div class="what">
-                  The deployed app probed, not the source · best-practice
+                <div class="what">The deployed app probed, not the source</div>
+                <div class="tools">OWASP ZAP</div>
+                <div class="open">
+                  best-practice
                   <a
                     class="ref"
                     href="https://github.com/trustedoss/ai-coding-best-practice/blob/main/.github/workflows/dast.yml"
                     target="_blank"
                     rel="noopener noreferrer"
-                    >dast.yml</a
+                    ><span class="mono">dast.yml</span></a
                   >
                 </div>
               </div>
               <div class="row row--last">
                 <div><div class="area">Dogfooding</div></div>
-                <div class="what">
-                  The scanner scans itself, advisory · trusca
+                <div class="what">The scanner scans itself, advisory</div>
+                <div class="tools">TRUSCA itself</div>
+                <div class="open">
+                  trusca
                   <a
                     class="ref"
                     href="https://github.com/trustedoss/trusca/blob/main/.github/workflows/dogfood-scan.yml"
                     target="_blank"
                     rel="noopener noreferrer"
-                    >dogfood-scan.yml</a
+                    ><span class="mono">dogfood-scan.yml</span></a
                   >
                 </div>
               </div>
