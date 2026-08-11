@@ -133,6 +133,21 @@ Three design decisions are worth borrowing.
 The file also explains why it re-runs the stage 3 tools: a job running at a blocking threshold
 produces either nothing or a build that has already failed, leaving no input to triage.
 
+### 4c. Agent and MCP Tool Governance
+
+4a and 4b both look at code the AI wrote. This one looks at what the AI _calls_. An agent that
+reaches outside the repository over MCP (Model Context Protocol) pulls in tool descriptions and
+tool output that never pass through a pull request, so neither the stage 2 rule file nor the stage 3
+gate ever sees them. A study of 1,899 open-source MCP servers found 5.5% carrying tool poisoning,
+and the npm package `postmark-mcp` was clean through 1.0.15 before later versions added a hidden BCC
+on every outgoing mail.
+
+The control set is a server allowlist, least privilege, description review, version pinning, human
+approval with audit logs, and egress path review, backed by pre-adoption scanning.
+
+- [Agent and MCP Tool Governance](./agent-governance) — the six controls, the scanners, and a
+  copy-paste organization policy
+
 ---
 
 ## Stage 5: Continuous Monitoring & Auto-remediation (Continuous & Auto-remediation)

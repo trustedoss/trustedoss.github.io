@@ -11,6 +11,10 @@ page covers the remaining plane: **which tools the agent calls and which inputs 
 development environment where agents chain external tools over MCP (Model Context Protocol), the
 tools and prompts themselves become supply chain inputs.
 
+This is **stage 4c** of the [five-stage model](./strategy). 4a re-judges what the scanners flagged
+and 4b searches what they never flagged; both read code the AI wrote. 4c covers what the AI calls,
+which no pull request ever shows.
+
 :::note Scope of this page
 
 This page covers **agents used during development**. The goal is securing the development

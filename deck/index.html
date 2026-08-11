@@ -2108,7 +2108,7 @@
         </section>
 
         <!-- ==================== 7. agents and artifacts ==================== -->
-        <section class="slide" data-no="7" data-time="5:50 · 5m 30s">
+        <section class="slide" data-no="7" data-time="5:50 · 4m 30s">
           <div class="eyebrow">
             <b>Part 1</b>
             <span>build the program</span>
@@ -2336,7 +2336,7 @@
           </div>
         </section>
 
-        <section class="slide" data-no="8" data-time="11:20 · 1m">
+        <section class="slide" data-no="8" data-time="10:20 · 1m">
           <div class="eyebrow">
             <b>Part 1</b>
             <span>build the program</span>
@@ -2435,7 +2435,7 @@
           class="slide slide--divider"
           data-no="9"
           data-divider
-          data-time="12:20 · 4m"
+          data-time="11:20 · 2m 30s"
         >
           <div class="divider-rule"></div>
           <div class="kicker-lg">Part 2</div>
@@ -2456,18 +2456,17 @@
           </div>
         </section>
 
-        <section class="slide" data-no="9" data-time="12:20 · 4m">
+        <section class="slide" data-no="9" data-time="11:20 · 2m 30s">
           <div class="eyebrow">
             <b>Part 2</b>
             <span>AI coding governance</span>
             <span class="sp"></span>
-            <span>1 of 6</span>
+            <span>1 of 10</span>
           </div>
 
-          <h2>Which of these do you already have?</h2>
+          <h2>Five layers, one slide each</h2>
           <p class="lede">
-            Not a ladder. Plenty of teams run L3 and have never written an L2
-            file.
+            What to add, a sample to copy, and where it runs today.
           </p>
 
           <div class="body body--top">
@@ -2522,7 +2521,9 @@
                 <tr class="ahead">
                   <td class="lv">L4</td>
                   <td class="nm">AI defense layer</td>
-                  <td class="dt">findings-driven review, fuzzing</td>
+                  <td class="dt">
+                    4a review · 4b fuzzing · 4c agent and MCP tools
+                  </td>
                   <td class="ct">
                     <a
                       class="ref"
@@ -2659,12 +2660,285 @@
           </div>
         </section>
 
-        <section class="slide" data-no="10" data-time="16:20 · 1m 30s">
+        <section class="slide" data-no="10" data-time="13:50 · 45s">
           <div class="eyebrow">
             <b>Part 2</b>
             <span>AI coding governance</span>
             <span class="sp"></span>
-            <span>2 of 6</span>
+            <span>2 of 10</span>
+          </div>
+
+          <div class="stage">Level 1</div>
+          <h2>Policy that lives in one person's head</h2>
+
+          <div class="body">
+            <div class="trio trio--pair">
+              <div>
+                <div class="k">What it looks like</div>
+                <p>
+                  "Use only MIT-licensed code" typed into the prompt.
+                  <b>Every time, by every developer.</b>
+                </p>
+              </div>
+              <div>
+                <div class="k">What it costs</div>
+                <p>
+                  A hallucinated GPL snippet, or a version with a known CVE.
+                  <b>Nothing is watching.</b>
+                </p>
+              </div>
+            </div>
+
+            <div class="answer">
+              <b>There is no file to show you at this level.</b> Nothing is
+              written down, so nothing can be reviewed, inherited, or audited.
+              <span class="sub"
+                >Fine for a weekend project. It does not survive one person
+                leaving the team.</span
+              >
+            </div>
+          </div>
+
+          <div class="foot">
+            <span
+              ><a
+                href="https://trustedoss.github.io/en/ai-coding/strategy"
+                target="_blank"
+                rel="noopener noreferrer"
+                >trustedoss.github.io/en/ai-coding/strategy</a
+              ></span
+            >
+            <span class="sp"></span>
+          </div>
+
+          <div class="notes-src">
+            <ul>
+              <li>
+                <b>빠르게 넘긴다. 45초다.</b> 이 단계에 머물러 있다고 말하기
+                위한 장이 아니라, 다음 장부터 무엇이 달라지는지 대비를 만드는
+                장이다
+              </li>
+              <li>
+                가장 시작하기 쉽고 가장 불안정하다. 도구도 설정도 필요 없지만
+                모든 것이 개발자 개인의 기억과 숙련도에 달린다
+              </li>
+              <li>
+                <b>보여 줄 파일이 없다는 것이 이 장의 요지다.</b> 뒤의 네 장은
+                모두 열어 볼 수 있는 파일이 있다. 여기만 없다
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="slide" data-no="11" data-time="14:35 · 1m 15s">
+          <div class="eyebrow">
+            <b>Part 2</b>
+            <span>AI coding governance</span>
+            <span class="sp"></span>
+            <span>3 of 10</span>
+          </div>
+
+          <div class="stage">Level 2</div>
+          <h2>Rules the agent reads before it writes</h2>
+
+          <div class="body">
+            <div class="rows">
+              <div class="row">
+                <div><div class="area">What you add</div></div>
+                <div class="what">
+                  <span class="mono">CLAUDE.md</span>,
+                  <span class="mono">AGENTS.md</span>,
+                  <span class="mono">.cursor/rules</span> in the repository
+                </div>
+              </div>
+              <div class="row">
+                <div><div class="area">Sample</div></div>
+                <div class="what">
+                  <a
+                    class="ref"
+                    href="https://trustedoss.github.io/en/ai-coding/rules-template"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >A template to copy today</a
+                  >, plus
+                  <a
+                    class="ref"
+                    href="https://trustedoss.github.io/en/ai-coding/tools/claude-code"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >per-tool setup</a
+                  >
+                </div>
+              </div>
+              <div class="row row--last">
+                <div><div class="area">In practice</div></div>
+                <div class="what">
+                  This deck's own repository runs on one.
+                  <a
+                    class="ref"
+                    href="https://github.com/trustedoss/trustedoss.github.io/blob/main/CLAUDE.md"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Read its CLAUDE.md</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="answer">
+              The agent treats a rule as guidance, never as a gate.
+              <b>That gap is the whole reason level 3 exists.</b>
+            </div>
+          </div>
+
+          <div class="foot">
+            <span
+              ><a
+                href="https://trustedoss.github.io/en/ai-coding/rules-template"
+                target="_blank"
+                rel="noopener noreferrer"
+                >trustedoss.github.io/en/ai-coding/rules-template</a
+              ></span
+            >
+            <span class="sp"></span>
+          </div>
+
+          <div class="notes-src">
+            <ul>
+              <li>
+                <b>팀 단위 도입은 여기서 시작된다.</b> 규칙 파일을 저장소에 두면
+                AI 가 코드를 쓰는 동안 정책을 읽는다. 팀 전체가 같은 규칙을
+                공유하고, 새로 합류한 사람에게도 그대로 전달된다
+              </li>
+              <li>
+                <b>10분이면 된다.</b> 오른쪽 템플릿을 열면 프로젝트에 맞는
+                파일을 바로 만들 수 있다. 도구별 설정 방법도 함께 있다
+              </li>
+              <li>
+                이 발표 자료를 만든 저장소가 실제로 그렇게 돌아간다. 링크를 열면
+                우리가 쓰는 규칙 파일을 그대로 볼 수 있다
+              </li>
+              <li>
+                <b>한계를 분명히 말한다.</b> AI 는 규칙을 참고 사항으로 다룬다.
+                강제 차단은 되지 않는다. 그래서 다음 단계가 필요하다
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="slide" data-no="12" data-time="15:50 · 1m 15s">
+          <div class="eyebrow">
+            <b>Part 2</b>
+            <span>AI coding governance</span>
+            <span class="sp"></span>
+            <span>4 of 10</span>
+          </div>
+
+          <div class="stage">Level 3</div>
+          <h2>The gate that does not negotiate</h2>
+
+          <div class="body">
+            <div class="rows rows--compact">
+              <div class="row">
+                <div><div class="area">Secrets</div></div>
+                <div class="what">
+                  <span class="mono">gitleaks</span>, hard fail on any leak ·
+                  <a
+                    class="ref"
+                    href="https://github.com/trustedoss/trusca/blob/main/.github/workflows/secret-scan.yml"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >secret-scan.yml</a
+                  >
+                </div>
+              </div>
+              <div class="row">
+                <div><div class="area">SAST</div></div>
+                <div class="what">
+                  <span class="mono">semgrep, bandit, CodeQL</span> ·
+                  <a
+                    class="ref"
+                    href="https://github.com/trustedoss/trusca/blob/main/.github/workflows/sast.yml"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >sast.yml</a
+                  >
+                </div>
+              </div>
+              <div class="row row--last">
+                <div><div class="area">SCA</div></div>
+                <div class="what">
+                  <span class="mono">cdxgen</span> then
+                  <span class="mono">Trivy</span>, daily ·
+                  <a
+                    class="ref"
+                    href="https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >sca-self.yml</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="answer">
+              <b>Secrets first.</b> A leaked key cannot be un-leaked, and
+              rotating it is not the same as never leaking it.
+              <span class="sub"
+                >Turn them on one at a time.
+                <a
+                  class="ref"
+                  href="https://trustedoss.github.io/en/ai-coding/cicd-quick"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >cicd-quick</a
+                >
+                walks the order.</span
+              >
+            </div>
+          </div>
+
+          <div class="foot">
+            <span
+              ><a
+                href="https://trustedoss.github.io/en/ai-coding/cicd-quick"
+                target="_blank"
+                rel="noopener noreferrer"
+                >trustedoss.github.io/en/ai-coding/cicd-quick</a
+              ></span
+            >
+            <span class="sp"></span>
+          </div>
+
+          <div class="notes-src">
+            <ul>
+              <li>
+                <b>진짜 차단은 여기서 시작된다.</b> 개발자가 실수하든 AI 가
+                실수하든, 파이프라인이 기계적으로 막는다. 사람의 판단에 기대지
+                않는 유일한 층이다
+              </li>
+              <li>
+                <b>순서가 중요하다. 시크릿 먼저다.</b> 한 번 노출된 키는 되돌릴
+                수 없다. 교체는 사후 조치이지 예방이 아니다
+              </li>
+              <li>
+                세 가지를 동시에 차단 수준으로 켜면 오탐이 쏟아져 팀이 게이트를
+                꺼 버린다. 관찰, 경고, 차단 순으로 올린다
+              </li>
+              <li>
+                오른쪽 링크는 모두 TRUSCA 에서 실제로 도는 워크플로 파일이다.
+                문서상의 단계가 아니라는 근거다
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="slide" data-no="13" data-time="17:05 · 1m 15s">
+          <div class="eyebrow">
+            <b>Part 2</b>
+            <span>AI coding governance</span>
+            <span class="sp"></span>
+            <span>5 of 10</span>
           </div>
 
           <div class="stage">Level 4 · why it exists</div>
@@ -2689,8 +2963,8 @@
 
             <div style="height: 44px"></div>
 
-            <div class="grouplabel">Level 4 answers both, separately</div>
-            <div class="trio trio--pair">
+            <div class="grouplabel">Level 4 answers all three, separately</div>
+            <div class="trio">
               <div>
                 <div class="k k--name">
                   4a ·
@@ -2716,6 +2990,19 @@
                   >
                 </div>
                 <p>Searches the area that was never flagged at all.</p>
+              </div>
+              <div>
+                <div class="k k--name">
+                  4c ·
+                  <a
+                    class="ref"
+                    href="https://trustedoss.github.io/en/ai-coding/agent-governance"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >agent and MCP tools</a
+                  >
+                </div>
+                <p>Guards what the agent calls, not what it writes.</p>
               </div>
             </div>
           </div>
@@ -2759,12 +3046,12 @@
           </div>
         </section>
 
-        <section class="slide" data-no="11" data-time="17:50 · 1m 30s">
+        <section class="slide" data-no="14" data-time="18:20 · 1m 15s">
           <div class="eyebrow">
             <b>Part 2</b>
             <span>AI coding governance</span>
             <span class="sp"></span>
-            <span>3 of 6</span>
+            <span>6 of 10</span>
           </div>
 
           <div class="stage">Level 4a</div>
@@ -3048,12 +3335,12 @@
           </div>
         </section>
 
-        <section class="slide" data-no="12" data-time="19:20 · 1m">
+        <section class="slide" data-no="15" data-time="19:35 · 1m">
           <div class="eyebrow">
             <b>Part 2</b>
             <span>AI coding governance</span>
             <span class="sp"></span>
-            <span>4 of 6</span>
+            <span>7 of 10</span>
           </div>
 
           <div class="stage">Level 4b</div>
@@ -3131,15 +3418,15 @@
           </div>
         </section>
 
-        <section class="slide" data-no="13" data-time="20:20 · 1m 30s">
+        <section class="slide" data-no="16" data-time="20:35 · 1m 15s">
           <div class="eyebrow">
             <b>Part 2</b>
             <span>AI coding governance</span>
             <span class="sp"></span>
-            <span>5 of 6</span>
+            <span>8 of 10</span>
           </div>
 
-          <div class="stage stage--aside">Not a level — a different axis</div>
+          <div class="stage">Level 4c</div>
           <h2>An MCP server is supply chain input too</h2>
           <p class="lede">
             MCP is how an agent calls outside tools. Every server it calls is a
@@ -3216,15 +3503,15 @@
           </div>
         </section>
 
-        <section class="slide" data-no="14" data-time="21:50 · 1m 30s">
+        <section class="slide" data-no="17" data-time="21:50 · 1m 15s">
           <div class="eyebrow">
             <b>Part 2</b>
             <span>AI coding governance</span>
             <span class="sp"></span>
-            <span>6 of 6</span>
+            <span>9 of 10</span>
           </div>
 
-          <div class="stage stage--aside">Not a level — a different axis</div>
+          <div class="stage">Level 4c</div>
           <h2>Six controls, and how to review</h2>
 
           <div class="body body--top">
@@ -3389,12 +3676,113 @@
           </div>
         </section>
 
+        <section class="slide" data-no="18" data-time="23:05 · 1m">
+          <div class="eyebrow">
+            <b>Part 2</b>
+            <span>AI coding governance</span>
+            <span class="sp"></span>
+            <span>10 of 10</span>
+          </div>
+
+          <div class="stage">Level 5</div>
+          <h2>What keeps running after the merge</h2>
+
+          <div class="body">
+            <div class="rows rows--compact">
+              <div class="row">
+                <div><div class="area">Updates</div></div>
+                <div class="what">
+                  Five ecosystems, patches raised for you ·
+                  <a
+                    class="ref"
+                    href="https://github.com/trustedoss/trusca/blob/main/.github/dependabot.yml"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >dependabot.yml</a
+                  >
+                </div>
+              </div>
+              <div class="row">
+                <div><div class="area">Rescan</div></div>
+                <div class="what">
+                  SBOM rebuilt and rescanned daily ·
+                  <a
+                    class="ref"
+                    href="https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >sca-self.yml</a
+                  >
+                </div>
+              </div>
+              <div class="row row--last">
+                <div><div class="area">Dogfooding</div></div>
+                <div class="what">
+                  Scans itself with its own SCA, advisory ·
+                  <a
+                    class="ref"
+                    href="https://github.com/trustedoss/trusca/blob/main/.github/workflows/dogfood-scan.yml"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >dogfood-scan.yml</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="answer">
+              A CVE published tomorrow lands in code you merged last year.
+              <b>Only this level notices.</b>
+              <span class="sub"
+                >dogfood-scan ships non-blocking, then turns the gate on with a
+                single input.</span
+              >
+            </div>
+          </div>
+
+          <div class="foot">
+            <span
+              ><a
+                href="https://trustedoss.github.io/en/devsecops/monitoring"
+                target="_blank"
+                rel="noopener noreferrer"
+                >trustedoss.github.io/en/devsecops/monitoring</a
+              ></span
+            >
+            <span class="sp"></span>
+          </div>
+
+          <div class="notes-src">
+            <ul>
+              <li>
+                <b>1~4 단계는 코드가 들어올 때의 통제다.</b> 5단계만 들어온 뒤를
+                본다. 취약점은 배포 이후에 공개되므로 이 층이 없으면 어제
+                안전했던 코드가 오늘 위험해진 것을 아무도 모른다
+              </li>
+              <li>
+                Dependabot 이 다섯 개 생태계를 훑고 패치 pull request 를 대신
+                올린다. SBOM 은 릴리스 때가 아니라 매일 다시 만들어 다시
+                스캔한다
+              </li>
+              <li>
+                <b>세 번째 줄이 이 프로젝트의 태도다.</b> 스캐너가 자기 저장소를
+                자기 도구로 스캔한다. 기본은 차단하지 않고 입력 하나로 차단으로
+                바꾼다
+              </li>
+              <li>
+                전환 문장 — "다섯 층을 모두 봤습니다. 그런데 문서와 도구를
+                갖춰도 남는 문제가 있습니다."
+              </li>
+            </ul>
+          </div>
+        </section>
+
         <!-- ==================== divider: Part 3 ==================== -->
         <section
           class="slide slide--divider"
-          data-no="15"
+          data-no="19"
           data-divider
-          data-time="23:20 · 1m 30s"
+          data-time="24:05 · 1m 30s"
         >
           <div class="divider-rule"></div>
           <div class="kicker-lg">Part 3</div>
@@ -3415,7 +3803,7 @@
           </div>
         </section>
 
-        <section class="slide" data-no="15" data-time="23:20 · 1m 30s">
+        <section class="slide" data-no="19" data-time="24:05 · 1m 30s">
           <div class="eyebrow">
             <b>Part 3</b>
             <span>running it</span>
@@ -3492,7 +3880,7 @@
           </div>
         </section>
 
-        <section class="slide" data-no="16" data-time="24:50 · 1m 30s">
+        <section class="slide" data-no="20" data-time="25:35 · 1m 30s">
           <div class="eyebrow">
             <b>Part 3</b>
             <span>running it</span>
@@ -3629,7 +4017,7 @@
           </div>
         </section>
 
-        <section class="slide" data-no="17" data-time="26:20 · 2m">
+        <section class="slide" data-no="21" data-time="27:05 · 2m">
           <div class="eyebrow">
             <b>Part 3</b>
             <span>running it</span>
@@ -3789,7 +4177,7 @@
           </div>
         </section>
 
-        <section class="slide" data-no="18" data-time="28:20 · 1m">
+        <section class="slide" data-no="22" data-time="29:05 · 1m">
           <div class="eyebrow">
             <b>Part 3</b>
             <span>running it</span>
@@ -3897,7 +4285,7 @@
           </div>
         </section>
 
-        <section class="slide" data-no="19" data-time="29:20 · 1m 30s">
+        <section class="slide" data-no="23" data-time="30:05 · 1m 30s">
           <div class="eyebrow">
             <b>Start here</b>
             <span class="sp"></span>
@@ -4052,8 +4440,8 @@
 
         <section
           class="slide title-slide"
-          data-no="20"
-          data-time="30:50 · 4m 30s"
+          data-no="24"
+          data-time="31:35 · 3m 25s"
         >
           <div class="topline"></div>
 
@@ -4165,7 +4553,7 @@
         var nmeta = document.getElementById("nmeta");
         var timer = document.getElementById("timer");
         var help = document.getElementById("help");
-        var TOTAL = 20;
+        var TOTAL = 24;
         var index = 0;
 
         function fit() {
