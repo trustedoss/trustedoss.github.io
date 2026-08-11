@@ -243,7 +243,9 @@
       /* a keyword that points at one of our own pages: marked with a hairline
          dotted rule, quiet enough for a projector, visible in the handout */
       a.ref {
-        border-bottom: 1px dotted var(--line);
+        /* --line is a hairline for boxes and rules; against the paper it is
+           almost invisible, and a link nobody sees is not a link */
+        border-bottom: 1px dotted var(--ink-3);
       }
 
       /* at 23px and up the dots close into a line, so mark those with colour
