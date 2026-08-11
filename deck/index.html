@@ -622,6 +622,36 @@
         border-bottom-color: currentColor;
       }
 
+      /* ================= link buttons ================= */
+      /* An outlined pill, not a filled button: the deck has no colour blocks,
+         and a border is enough to read as "you can open this". */
+      .linkbar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 12px;
+      }
+
+      .linkbar a {
+        display: inline-flex;
+        align-items: baseline;
+        gap: 10px;
+        padding: 7px 18px;
+        border: 1px solid var(--ink-3);
+        border-radius: 999px;
+        font-size: 19px;
+        font-weight: 700;
+        color: var(--ink);
+        text-decoration: none;
+      }
+
+      .linkbar a .u {
+        font-family: var(--mono);
+        font-size: 15px;
+        font-weight: 400;
+        color: var(--ink-3);
+      }
+
       /* ================= 11. levels ================= */
       table.levels {
         width: 100%;
@@ -1597,7 +1627,7 @@
                 기한부터 오는 요구다. 절차를 안내받아도 도구 선택과 환경
                 구성에서 막히고, 조직 규모에 따라 도구를 갖추기 어렵다. 무료
                 도구로 생성해도 transitive dependency 누락, PURL 누락으로 최소
-                요소를 채우지 못한다. 원인은 16번에서 다룬다
+                요소를 채우지 못한다. 원인은 20번에서 다룬다
               </li>
               <li>
                 <b>공급사를 탓하는 어조가 되지 않게 한다.</b> 역량의 문제가
@@ -2338,6 +2368,12 @@
               </li>
               <li>
                 <b>시간이 지연되면 절차를 건너뛰고 산출물만 보여준다</b>
+              </li>
+              <li>
+                <b>"절차" 링크는 각 챕터의 실습 절로 바로 들어간다.</b> 첫
+                화면이 아니라 Self-study 절이다. Organization 행의
+                <span class="mono">RACI</span> 를 누르면 실제 매트릭스 샘플이
+                열린다. 용어를 묻는 질문이 나오면 그 자리에서 연다
               </li>
               <li>
                 <b>전환 문장</b> — "이렇게 만든 산출물을 가지고 자체 인증을
@@ -3480,7 +3516,7 @@
             <ul>
               <li>
                 4a 가 3단계 결과를 다시 보는 일이라면, 4b 는 3단계가 아예 보지
-                않는 영역을 대상으로 한다. 10번에서 말씀드린 비즈니스 로직과
+                않는 영역을 대상으로 한다. 13번에서 말씀드린 비즈니스 로직과
                 엣지케이스 입력 처리다
               </li>
               <li>
@@ -3570,6 +3606,11 @@
 
           <div class="notes-src">
             <ul>
+              <li>
+                <b>여기부터 4c 다.</b> 4a 와 4b 가 AI 가 쓴 코드를 본다면 4c 는
+                AI 가 호출하는 것을 본다. 별개 주제가 아니라 4단계의 세 번째
+                갈래다
+              </li>
               <li>
                 MCP 는 에이전트가 외부 도구를 호출하는 규약이다. GitHub 을 읽고,
                 데이터베이스를 조회하고, 메일을 보내는 도구들이 이 방식으로
@@ -3787,7 +3828,7 @@
               <div class="row">
                 <div><div class="area">Updates</div></div>
                 <div class="what">
-                  Five ecosystems, patches raised for you ·
+                  Five ecosystems, patches raised for you · trusca
                   <a
                     class="ref"
                     href="https://github.com/trustedoss/trusca/blob/main/.github/dependabot.yml"
@@ -3800,7 +3841,7 @@
               <div class="row">
                 <div><div class="area">Rescan</div></div>
                 <div class="what">
-                  SBOM rebuilt and rescanned daily ·
+                  SBOM rebuilt and rescanned daily · trusca
                   <a
                     class="ref"
                     href="https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml"
@@ -3810,10 +3851,23 @@
                   >
                 </div>
               </div>
+              <div class="row">
+                <div><div class="area">DAST</div></div>
+                <div class="what">
+                  The deployed app probed, not the source · best-practice
+                  <a
+                    class="ref"
+                    href="https://github.com/trustedoss/ai-coding-best-practice/blob/main/.github/workflows/dast.yml"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >dast.yml</a
+                  >
+                </div>
+              </div>
               <div class="row row--last">
                 <div><div class="area">Dogfooding</div></div>
                 <div class="what">
-                  Scans itself with its own SCA, advisory ·
+                  The scanner scans itself, advisory · trusca
                   <a
                     class="ref"
                     href="https://github.com/trustedoss/trusca/blob/main/.github/workflows/dogfood-scan.yml"
@@ -3830,15 +3884,15 @@
               <b>Only this level notices.</b>
               <span class="sub"
                 >dogfood-scan ships non-blocking, then turns the gate on with a
-                single input. The
+                single input. ai-coding-best-practice adds
                 <a
                   class="ref"
-                  href="https://github.com/trustedoss/ai-coding-best-practice"
+                  href="https://github.com/trustedoss/ai-coding-best-practice/blob/main/renovate.json"
                   target="_blank"
                   rel="noopener noreferrer"
-                  >reference repository</a
+                  >Renovate auto-merge</a
                 >
-                adds Renovate auto-merge and DAST.</span
+                on top.</span
               >
             </div>
           </div>
@@ -3868,7 +3922,13 @@
                 스캔한다
               </li>
               <li>
-                <b>세 번째 줄이 이 프로젝트의 태도다.</b> 스캐너가 자기 저장소를
+                <b>DAST 는 앞의 셋과 성격이 다르다.</b> 소스가 아니라 배포된
+                앱을 밖에서 찔러 본다. 코드를 읽어서는 나오지 않는 설정 오류와
+                노출된 엔드포인트가 여기서 나온다. TRUSCA 에는 없고 참조
+                저장소가 <span class="mono">dast.yml</span> 로 돌린다
+              </li>
+              <li>
+                <b>마지막 줄이 이 프로젝트의 태도다.</b> 스캐너가 자기 저장소를
                 자기 도구로 스캔한다. 기본은 차단하지 않고 입력 하나로 차단으로
                 바꾼다
               </li>
@@ -4050,6 +4110,27 @@
                 · Apache-2.0 · runs locally</span
               >
             </div>
+
+            <div class="linkbar">
+              <a
+                href="https://sktelecom.github.io/bomlens/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Website <span class="u">sktelecom.github.io/bomlens</span></a
+              >
+              <a
+                href="https://sktelecom.github.io/bomlens/demo/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Live demo <span class="u">/demo</span></a
+              >
+              <a
+                href="https://github.com/sktelecom/bomlens"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Source</a
+              >
+            </div>
           </div>
 
           <div class="foot">
@@ -4069,6 +4150,12 @@
               앞에서 납품되는 SBOM 이 요구 수준에 미치지 못한다고
               말씀드렸습니다. 실제로 무엇이 오는지 보겠습니다.
             </p>
+            <ul>
+              <li>
+                <b>아래 세 버튼이 진입점이다.</b> 사이트, 바로 써 볼 수 있는
+                데모, 저장소. 질문이 나오면 데모를 그 자리에서 연다
+              </li>
+            </ul>
             <ul>
               <li>
                 <b>3번 슬라이드와의 연결을 말로 명시한다.</b> 이 슬라이드가 그
@@ -4181,7 +4268,7 @@
                     >
                   </div>
                 </div>
-                <div class="what">VEX import and export, 7-stage triage</div>
+                <div class="what">VEX import and export, 7 triage states</div>
               </div>
               <div class="row">
                 <div>
@@ -4219,6 +4306,27 @@
               <b>Runs inside your own network.</b> Neither the code nor the SBOM
               leaves it.
             </div>
+
+            <div class="linkbar">
+              <a
+                href="https://trustedoss.github.io/trusca/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Website <span class="u">trustedoss.github.io/trusca</span></a
+              >
+              <a
+                href="https://trusca-demo.duckdns.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Live demo <span class="u">trusca-demo.duckdns.org</span></a
+              >
+              <a
+                href="https://github.com/trustedoss/trusca"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Source</a
+              >
+            </div>
           </div>
 
           <div class="foot">
@@ -4241,6 +4349,18 @@
                 제시한다
               </li>
               <li>
+                <b>용어 두 개는 물어볼 수 있다.</b> triage 상태 일곱 가지는
+                아래에 적어 두었다. <span class="mono">RBAC</span> 는 역할 기반
+                접근 제어다. 사람마다 권한을 주는 대신 역할을 정의하고 사람을
+                역할에 배정한다. TRUSCA 에서는 VEX 상태 변경에 developer 이상,
+                일괄 억제에 team_admin 이 필요하다. 감사 로그와 짝을 이뤄 5230
+                이 요구하는 역할과 책임을 시스템이 뒷받침한다
+              </li>
+              <li>
+                <b>아래 세 버튼이 진입점이다.</b> 사이트, 사내망 없이 바로 만져
+                볼 수 있는 데모, 저장소다
+              </li>
+              <li>
                 <b>앞에서 문서로 정의한 거버넌스를 실제로 운영하는 쪽</b>을
                 맡는다. 인증 전후를 가리지 않고, 체계를 만들면서 함께 도입해도
                 된다
@@ -4251,9 +4371,11 @@
                 여부까지 보고 우선순위를 정할 수 있다
               </li>
               <li>
-                VEX 를 가져오고 내보낼 수 있으며 7단계 triage 를 지원한다. "이
-                CVE 는 우리 실행 경로에 없다"는 판정을 기록하고 협력사와
-                주고받을 수 있다.
+                VEX 를 가져오고 내보낼 수 있으며 triage 상태가 일곱 가지다. 열린
+                상태 셋(New, Analyzing, Exploitable)은 빌드 게이트 집계에 계속
+                잡히고, 종결 상태 넷(Not affected, False positive, Suppressed,
+                Fixed)은 집계에서 빠진다. "이 CVE 는 우리 실행 경로에 없다"는
+                판정을 기록하고 협력사와 주고받을 수 있다.
                 <b>18974 가 VEX 를 요구하는 것은 아니다.</b> 조치 판단과 기록을
                 요구하고, VEX 는 그것을 담는 형식 중 하나다
               </li>
@@ -4368,7 +4490,7 @@
                 크게 준다
               </li>
               <li>
-                SBOM drift — <b>16번에서 던진 문제의 답이다.</b> 공급사가 낸
+                SBOM drift — <b>20번에서 던진 문제의 답이다.</b> 공급사가 낸
                 문서를 같은 ref 를 직접 스캔한 결과와 맞대어, 어느 쪽이 무엇을
                 빠뜨렸는지 보고한다. 적합성 점수가 "칸이 채워졌는가"를 본다면
                 이것은 "문서가 코드와 맞는가"를 본다
@@ -4540,6 +4662,14 @@
                 방법과 전사 pipeline 설계다
               </li>
               <li>
+                <b
+                  >AI 코딩 다섯 층을 통째로 가져가려면 참조 저장소를 fork
+                  한다.</b
+                >
+                규칙 파일부터 워크플로, dependabot 과 renovate 설정까지 들어
+                있다. 필요 없는 것을 지우는 편이 하나씩 모으는 것보다 빠르다
+              </li>
+              <li>
                 기여를 환영한다. OpenChain KWG 커뮤니티와 연계해 운영하고 있다
               </li>
               <li>
@@ -4630,8 +4760,8 @@
                 밝힌다. 적용 계획을 덧붙이면 자연스럽다
               </li>
               <li>
-                축소 순서 — Q&A → 18번 로드맵 → 12번 4b → 10번 4단계 이유. 7번
-                데모, 9번 자가진단, 16번 SBOM 정확도는 마지막까지 유지한다
+                축소 순서 — Q&A → 22번 로드맵 → 15번 4b → 13번 4단계 도입. 7번
+                데모, 9번 5층 개요, 20번 SBOM 정확도는 마지막까지 유지한다
               </li>
             </ul>
           </div>
