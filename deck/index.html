@@ -3597,26 +3597,47 @@
           <h2>Finding what no rule describes</h2>
 
           <div class="body">
+            <svg
+              class="diagram"
+              style="margin-top: 6px"
+              viewBox="0 0 1096 126"
+              role="img"
+              aria-label="read the signature, generate input, run it, watch what breaks"
+            >
+              <rect class="box" x="1" y="1" width="236" height="66" />
+              <text class="note" x="26" y="28">READ</text>
+              <text class="lead" x="26" y="54">Endpoint signature</text>
+              <path class="link" d="M237,34 H273" />
+              <path class="head" d="M281,34 l-9,-5 v10 z" />
+
+              <rect class="box" x="281" y="1" width="266" height="66" />
+              <text class="note" x="306" y="28">GENERATE</text>
+              <text class="lead" x="306" y="54">Boundary, malformed</text>
+              <path class="link" d="M547,34 H583" />
+              <path class="head" d="M591,34 l-9,-5 v10 z" />
+
+              <rect
+                class="box box--strong"
+                x="591"
+                y="1"
+                width="200"
+                height="66"
+              />
+              <text class="note" x="616" y="28">RUN IT</text>
+              <text class="lead" x="616" y="54">Against the app</text>
+              <path class="link" d="M791,34 H827" />
+              <path class="head" d="M835,34 l-9,-5 v10 z" />
+
+              <text class="note" x="849" y="28">WATCH</text>
+              <text class="lead" x="849" y="54">5xx, malformed, bad state</text>
+
+              <text class="note" x="1" y="108">
+                Business logic and edge-case input handling, the area no rule
+                describes
+              </text>
+            </svg>
+
             <div class="rows rows--compact">
-              <div class="row">
-                <div><div class="area">Target</div></div>
-                <div class="what">
-                  Business logic and edge-case input handling
-                </div>
-              </div>
-              <div class="row">
-                <div><div class="area">Method</div></div>
-                <div class="what">
-                  Read the endpoint signature, generate boundary and malformed
-                  input, then actually run it
-                </div>
-              </div>
-              <div class="row">
-                <div><div class="area">Signal</div></div>
-                <div class="what">
-                  5xx errors, malformed responses, state that does not add up
-                </div>
-              </div>
               <div class="row row--last">
                 <div><div class="area">Running</div></div>
                 <div class="what">
@@ -4028,6 +4049,30 @@
           <h2>What keeps running after the merge</h2>
 
           <div class="body">
+            <svg
+              class="diagram"
+              style="margin-top: 4px"
+              viewBox="0 0 1096 66"
+              role="img"
+              aria-label="levels one to four end at the merge, level five starts there"
+            >
+              <text class="note" x="1" y="14">LEVELS 1 TO 4</text>
+              <text class="note" x="592" y="14">LEVEL 5</text>
+
+              <path class="link" d="M1,30 H560" />
+              <rect class="chip" x="560" y="22" width="16" height="16" />
+              <path class="link" d="M576,30 H1060" />
+              <path class="head" d="M1068,30 l-9,-5 v10 z" />
+
+              <text class="lead" x="1" y="58">Write · rules · gate</text>
+              <text class="lead" x="520" y="58" text-anchor="middle">
+                merge
+              </text>
+              <text class="lead" x="592" y="58">
+                Deploy, then every day after it
+              </text>
+            </svg>
+
             <div class="rows rows--compact">
               <div class="row">
                 <div><div class="area">Updates</div></div>
@@ -4084,19 +4129,12 @@
             </div>
 
             <div class="answer">
-              A CVE published tomorrow lands in code you merged last year.
-              <b>Only this level notices.</b>
+              <b
+                >A CVE published tomorrow lands in code you merged last year.</b
+              >
               <span class="sub"
-                >dogfood-scan ships non-blocking, then turns the gate on with a
-                single input. ai-coding-best-practice adds
-                <a
-                  class="ref"
-                  href="https://github.com/trustedoss/ai-coding-best-practice/blob/main/renovate.json"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >Renovate auto-merge</a
-                >
-                on top.</span
+                >dogfood-scan ships non-blocking and turns the gate on with one
+                input.</span
               >
             </div>
           </div>
