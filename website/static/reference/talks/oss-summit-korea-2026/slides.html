@@ -62,14 +62,22 @@
       #stage {
         position: fixed;
         inset: 0;
-        display: grid;
-        place-items: center;
+        overflow: hidden;
+        background: var(--paper);
       }
 
+      /* Centered by margin, not by grid or flex. When the viewport is narrower
+         than 1280px the frame is the larger box, and centering an oversized
+         item that way drifts it to one side. Half the width and height as a
+         negative margin always lands on the middle, and scale() keeps its
+         origin there. */
       #frame {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin: -360px 0 0 -640px;
         width: 1280px;
         height: 720px;
-        position: relative;
         transform-origin: center center;
         background: var(--paper);
       }
@@ -244,6 +252,7 @@
       .nm a.ref,
       .k a.ref,
       .byline a.ref,
+      .lede a.ref,
       h2 a.ref {
         border-bottom: 0;
         color: var(--accent);
@@ -602,6 +611,13 @@
         margin-top: 8px;
         font-size: 19px;
         color: var(--ink-3);
+      }
+
+      /* a dotted rule in the line's own grey disappears; links in the quiet
+         line carry the brand colour instead */
+      .answer .sub a.ref {
+        color: var(--accent);
+        border-bottom-color: currentColor;
       }
 
       /* ================= 11. levels ================= */
@@ -1249,8 +1265,14 @@
           display: block;
         }
 
+        /* undo the margin-centering so printed slides stack from the top */
         #frame {
+          position: static !important;
+          left: auto !important;
+          top: auto !important;
+          margin: 0 !important;
           transform: none !important;
+          width: auto;
           height: auto;
         }
 
@@ -1728,8 +1750,14 @@
             <h2>What Trusted OSS covers</h2>
           </div>
           <p class="lede">
-            A free kit that takes a company from no process to a conformance
-            declaration.
+            An initiative of the
+            <a
+              class="ref"
+              href="https://openchain-project.github.io/OpenChain-KWG/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >OpenChain Korea Work Group</a
+            >, free to use and adapt.
           </p>
 
           <div class="body">
@@ -1740,7 +1768,7 @@
               aria-label="Build the program / Govern AI coding / TRUSCA"
             >
               <!-- the two areas the kit covers -->
-              <rect class="box" x="1" y="1" width="526" height="158" />
+              <rect class="box" x="1" y="1" width="526" height="183" />
               <text class="kicker" x="28" y="36">PART 1</text>
               <text class="title" x="28" y="74">Build the program</text>
               <a
@@ -1762,7 +1790,7 @@
                 9 agents → 24 artifacts → declaration
               </text>
 
-              <rect class="box" x="569" y="1" width="526" height="158" />
+              <rect class="box" x="569" y="1" width="526" height="183" />
               <text class="kicker" x="596" y="36">PART 2</text>
               <text class="title" x="596" y="74">Govern AI coding</text>
               <a
@@ -1783,12 +1811,32 @@
               <text class="flowtext" x="596" y="142">
                 ad-hoc → rules → gates → AI defense → monitoring
               </text>
+              <!-- stages 3 and 5 are what the DevSecOps guide implements -->
+              <path class="link" d="M792,150 V159" />
+              <path class="link" d="M1029,150 V159" />
+              <path class="link" d="M792,159 H1029" />
+              <a
+                href="https://trustedoss.github.io/en/devsecops/intro"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <text
+                  class="note"
+                  x="910"
+                  y="175"
+                  text-anchor="middle"
+                  text-decoration="underline"
+                  style="text-decoration-style: dotted"
+                >
+                  both built in the DevSecOps guide
+                </text>
+              </a>
 
               <!-- both feed the platform underneath -->
-              <path class="link" d="M264,159 V224" />
+              <path class="link" d="M264,184 V224" />
               <path class="head" d="M264,232 l-5,-9 h10 z" />
 
-              <text class="note" x="596" y="196">
+              <text class="note" x="596" y="212">
                 A different kind of risk. They meet on the roadmap, slide 18
               </text>
               <rect
@@ -1851,8 +1899,10 @@
           <div class="notes-src">
             <ul>
               <li>
-                Trusted OSS 는 <b>CC BY 4.0</b> 으로 공개된 실전 키트다. 누구나
-                가져다 회사에 맞게 고쳐 쓸 수 있다
+                Trusted OSS 는
+                <b>OpenChain Korea Work Group 이 시작한 이니셔티브</b>다. CC BY
+                4.0 으로 공개돼 누구나 가져다 회사에 맞게 고쳐 쓸 수 있다. 개인
+                프로젝트가 아니라 커뮤니티가 만들고 있다는 점을 먼저 밝힌다
               </li>
               <li>
                 위 칸이 첫 번째 영역. 5230 은 라이선스 컴플라이언스, 18974 는
@@ -1865,9 +1915,11 @@
                 DevSecOps 가이드에 있다
               </li>
               <li>
-                <b>DevSecOps 를 별도 상자로 그리지 않은 이유를 짚는다.</b> 5단계
-                모델은 성숙도를 판단하는 기준이고, DevSecOps 가이드는 그 3단계와
-                5단계를 구현하는 방법이다
+                <b>2부 아래 묶어 둔 표시가 DevSecOps 다.</b> 5단계 모델은
+                성숙도를 판단하는 기준이고, DevSecOps 가이드는 그 3단계(CI
+                게이트)와 5단계(지속 모니터링)를 실제로 구현하는 방법이다.
+                나란한 영역이 아니라 2부 안쪽의 구현 계층이라 별도 상자로 그리지
+                않았다
               </li>
               <li>
                 선 아래 TRUSCA 는
@@ -1924,53 +1976,92 @@
           </div>
 
           <div class="body">
-            <div class="rows">
-              <div class="row">
-                <div>
-                  <div class="part">License compliance</div>
-                  <div class="area">
-                    <a
-                      class="ref"
-                      href="https://haksungjang.github.io/en/docs/governance_iso5230/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      >ISO/IEC 5230</a
-                    >
-                  </div>
-                </div>
-                <div>
-                  <div class="what">
-                    policy · organization · process · BOM · notices ·
-                    contribution
-                  </div>
-                </div>
-              </div>
+            <svg
+              class="diagram"
+              viewBox="0 0 1096 208"
+              role="img"
+              aria-label="What ISO/IEC 5230 and 18974 ask for separately and together"
+            >
+              <rect class="box" x="1" y="1" width="330" height="206" />
+              <a
+                href="https://haksungjang.github.io/en/docs/governance_iso5230/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <text
+                  class="kicker"
+                  x="26"
+                  y="36"
+                  text-decoration="underline"
+                  style="text-decoration-style: dotted"
+                >
+                  ISO/IEC 5230 ONLY
+                </text>
+              </a>
+              <text class="note" x="26" y="60">license compliance</text>
+              <text class="lead" x="26" y="108">License obligations</text>
+              <text class="lead" x="26" y="142">Notices</text>
+              <text class="lead" x="26" y="176">Contribution policy</text>
 
-              <div class="row">
-                <div>
-                  <div class="part">Security assurance</div>
-                  <div class="area">
-                    <a
-                      class="ref"
-                      href="https://haksungjang.github.io/en/docs/isoiec18974_guide/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      >ISO/IEC 18974</a
-                    >
-                  </div>
-                </div>
-                <div>
-                  <div class="what">
-                    policy · organization · SBOM · CVE tracking · response ·
-                    records
-                  </div>
-                </div>
-              </div>
-            </div>
+              <rect
+                class="box box--strong"
+                x="355"
+                y="1"
+                width="386"
+                height="206"
+              />
+              <text class="kicker" x="382" y="36">SHARED BASE</text>
+              <text class="note" x="382" y="60">
+                build it once, it counts for both
+              </text>
+              <text class="lead" x="382" y="108">Policy · Organization</text>
+              <text class="lead" x="382" y="142">Process · Training</text>
+              <text class="lead" x="382" y="176">SBOM</text>
+
+              <rect class="box" x="765" y="1" width="330" height="206" />
+              <a
+                href="https://haksungjang.github.io/en/docs/isoiec18974_guide/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <text
+                  class="kicker"
+                  x="790"
+                  y="36"
+                  text-decoration="underline"
+                  style="text-decoration-style: dotted"
+                >
+                  ISO/IEC 18974 ONLY
+                </text>
+              </a>
+              <text class="note" x="790" y="60">security assurance</text>
+              <text class="lead" x="790" y="108">CVE tracking</text>
+              <text class="lead" x="790" y="142">Response</text>
+              <text class="lead" x="790" y="176">Records</text>
+            </svg>
 
             <div class="answer">
-              <b>The shared base is large.</b> Build one and half of the other
-              is already done.
+              <b>The shared base is the larger half.</b> Build one and most of
+              the other is already done.
+              <span class="sub"
+                >The OpenChain Korea Work Group publishes an
+                <a
+                  class="ref"
+                  href="https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >enterprise guide</a
+                >
+                and
+                <a
+                  class="ref"
+                  href="https://openchain-project.github.io/OpenChain-KWG/guide/templates/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >policy and process templates</a
+                >
+                for both.</span
+              >
             </div>
           </div>
 
@@ -1993,9 +2084,10 @@
                 보면 공통 기반이 크다
               </li>
               <li>
-                문서화된 정책이 있어야 하고, 역할과 책임이 정해져 있어야 하고,
-                담당자가 교육을 받아야 하고, 무엇을 쓰는지 목록이 있어야 한다.
-                여기까지가 양쪽 공통이다
+                <b>가운데 상자를 먼저 짚는다.</b> 문서화된 정책, 역할과 책임,
+                프로세스, 담당자 교육, 무엇을 쓰는지 보여 주는 SBOM. 다섯 가지가
+                양쪽 표준에 똑같이 들어간다. 18974 라고 프로세스가 없는 것이
+                아니라 대상이 취약점으로 바뀔 뿐이다
               </li>
               <li>
                 갈라지는 지점은 그다음이다. 5230 은 라이선스 의무 이행과 고지문,
@@ -2005,6 +2097,11 @@
               <li>
                 따로 진행하면 같은 작업을 두 번 하게 된다. 이 키트는 처음부터 두
                 표준을 함께 충족하도록 설계돼 있다
+              </li>
+              <li>
+                <b>맨 아래 두 링크를 소개한다.</b> OpenChain Korea Work Group 이
+                기업용 가이드와 정책·프로세스 문서 템플릿을 공개하고 있다. 이
+                키트를 쓰지 않더라도 그 템플릿부터 받아 갈 수 있다
               </li>
             </ul>
           </div>
@@ -2019,10 +2116,16 @@
             <span>2 of 3</span>
           </div>
 
-          <h2>9 agents, 24 artifacts</h2>
+          <h2>An agent writes each part of the program</h2>
           <p class="lede">
-            Run them in order. We will open the policy agent live — steps, then
-            output.
+            Nine of them, 24 artifacts, run in order. Every one is a
+            <a
+              class="ref"
+              href="https://github.com/trustedoss/trustedoss.github.io/tree/main/agents"
+              target="_blank"
+              rel="noopener noreferrer"
+              >prompt you can read</a
+            >. We will open the policy agent live: steps, then output.
           </p>
 
           <div class="body body--top">
@@ -4066,12 +4169,26 @@
         var index = 0;
 
         function fit() {
-          frame.style.transform =
-            "scale(" +
-            Math.min(window.innerWidth / 1280, window.innerHeight / 720) +
-            ")";
+          // the visual viewport is what the reader actually sees once a mobile
+          // browser's chrome and any pinch-zoom are taken into account
+          var vv = window.visualViewport;
+          var w = vv
+            ? vv.width
+            : document.documentElement.clientWidth || window.innerWidth;
+          var h = vv
+            ? vv.height
+            : document.documentElement.clientHeight || window.innerHeight;
+          var k = Math.min(w / 1280, h / 720);
+          // the viewport is not always settled at first paint
+          if (!(k > 0)) k = w / 1280 || 1;
+          frame.style.transform = "scale(" + k + ")";
         }
         window.addEventListener("resize", fit);
+        window.addEventListener("orientationchange", fit);
+        window.addEventListener("load", fit);
+        if (window.visualViewport) {
+          window.visualViewport.addEventListener("resize", fit);
+        }
         fit();
 
         slides.forEach(function (el) {
