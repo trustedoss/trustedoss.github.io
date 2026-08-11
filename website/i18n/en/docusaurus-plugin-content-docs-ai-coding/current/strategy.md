@@ -93,7 +93,8 @@ What AI coding changed is **the volume of code landing in that blind spot**. Out
 review headcount does not, and AI-generated code reads cleanly enough that reviewers rarely stop on
 it. Attackers can also use AI to generate rule-evading variants.
 
-Stage 4 closes that blind spot with AI.
+4a and 4b close that blind spot with AI. 4c runs the other way: it covers what the AI itself
+reaches for, since an agent calling outside tools pulls in input no pull request ever shows.
 :::
 
 Stage 3 tools first narrow down candidates through pattern matching, and AI then focuses on those results to perform **semantic judgment** and **active exploration**.

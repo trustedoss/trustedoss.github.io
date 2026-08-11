@@ -41,6 +41,21 @@ syft nginx:latest -o cyclonedx-json=sbom.cdx.json
 
 For security pipeline-centric workflows, CycloneDX JSON is recommended.
 
+### cdxgen
+
+An alternative generator, from the CycloneDX project itself. Where syft reads what is on disk,
+cdxgen resolves through each language's own package manager, so it can recover dependencies a
+file-based scan does not see — which matters when a lockfile is absent or the tree is only fixed at
+build time. It covers more than 30 ecosystems and emits CycloneDX directly.
+
+```bash
+# CycloneDX JSON for the current project
+npx @cyclonedx/cdxgen@latest -o sbom.cdx.json
+```
+
+TRUSCA uses cdxgen as its generator. Which one to choose comes down to whether your build resolves
+dependencies at install time (syft is enough) or at build time (cdxgen recovers what syft loses).
+
 ---
 
 ## Vulnerability Scanning — grype
@@ -148,6 +163,23 @@ ignore:
       name: some-test-lib
       type: npm
 ```
+
+### Trivy
+
+An alternative scanner, from Aqua Security. It ships a single database that merges NVD, OSV, GHSA,
+EPSS and KEV, so exploit probability and known-exploited status arrive with the finding rather than
+from a second lookup. It also scans container images and IaC, not only SBOM files.
+
+```bash
+# Scan an SBOM you already have
+trivy sbom sbom.cdx.json
+
+# Or scan the project directly
+trivy fs --scanners vuln,license .
+```
+
+TRUSCA uses Trivy as its matching engine, which is why its findings carry EPSS and KEV alongside
+CVSS.
 
 ---
 

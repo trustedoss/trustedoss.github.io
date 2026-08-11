@@ -41,6 +41,21 @@ syft nginx:latest -o cyclonedx-json=sbom.cdx.json
 
 보안 파이프라인 중심이라면 CycloneDX JSON을 권장합니다.
 
+### cdxgen
+
+CycloneDX 프로젝트가 직접 만드는 또 다른 생성기입니다. syft 가 디스크에 있는 파일을 읽는다면
+cdxgen 은 언어별 패키지 관리자를 통해 의존성을 해석합니다. 그래서 파일 기반 스캔이 보지 못하는
+의존성까지 복원할 수 있습니다. lockfile 이 없거나 의존성 트리가 빌드 시점에야 확정되는
+프로젝트에서 차이가 납니다. 30종이 넘는 생태계를 지원하며 CycloneDX 를 바로 내보냅니다.
+
+```bash
+# 현재 프로젝트의 CycloneDX JSON 생성
+npx @cyclonedx/cdxgen@latest -o sbom.cdx.json
+```
+
+TRUSCA 는 생성기로 cdxgen 을 씁니다. 둘 중 무엇을 고를지는 빌드가 의존성을 설치 시점에
+확정하는지(syft 로 충분), 빌드 시점에 확정하는지(cdxgen 이 놓치는 것을 복원)로 갈립니다.
+
 ---
 
 ## 취약점 스캔 — grype
@@ -147,6 +162,22 @@ ignore:
       name: some-test-lib
       type: npm
 ```
+
+### Trivy
+
+Aqua Security 가 만드는 또 다른 스캐너입니다. NVD, OSV, GHSA, EPSS, KEV 를 하나로 합친
+데이터베이스를 함께 배포하므로 악용 확률과 실제 악용 여부가 조회를 한 번 더 하지 않아도
+탐지 결과에 함께 옵니다. SBOM 파일뿐 아니라 컨테이너 이미지와 IaC 도 검사합니다.
+
+```bash
+# 이미 만들어 둔 SBOM 검사
+trivy sbom sbom.cdx.json
+
+# 프로젝트를 직접 검사
+trivy fs --scanners vuln,license .
+```
+
+TRUSCA 는 대조 엔진으로 Trivy 를 씁니다. 탐지 결과에 CVSS 와 함께 EPSS, KEV 가 붙는 이유입니다.
 
 ---
 
