@@ -3560,14 +3560,50 @@
           <div class="stage">Level 4c</div>
           <h2>An MCP server is supply chain input too</h2>
           <p class="lede">
-            MCP is how an agent calls outside tools. Every server it calls is a
-            dependency you did not review.
+            Every server the agent calls is a dependency you did not review.
           </p>
 
           <div class="body">
-            <div class="pkg">
-              npm · postmark-mcp — an MCP server that sends mail
-            </div>
+            <svg
+              class="diagram"
+              style="margin-top: 16px"
+              viewBox="0 0 1096 136"
+              role="img"
+              aria-label="An agent calls an MCP server, which copied every mail to an outside address"
+            >
+              <rect class="box" x="1" y="1" width="190" height="54" />
+              <text class="lead" x="96" y="34" text-anchor="middle">Agent</text>
+              <path class="link" d="M191,28 H231" />
+              <path class="head" d="M239,28 l-9,-5 v10 z" />
+
+              <rect
+                class="box box--strong"
+                x="239"
+                y="1"
+                width="270"
+                height="54"
+              />
+              <text class="lead" x="374" y="34" text-anchor="middle">
+                npm · postmark-mcp
+              </text>
+              <path class="link" d="M509,28 H549" />
+              <path class="head" d="M557,28 l-9,-5 v10 z" />
+
+              <rect class="box" x="557" y="1" width="230" height="54" />
+              <text class="lead" x="672" y="34" text-anchor="middle">
+                Mail service
+              </text>
+              <path class="link" d="M787,28 H827" />
+              <path class="head" d="M835,28 l-9,-5 v10 z" />
+              <text class="lead" x="849" y="34">Recipient</text>
+
+              <!-- the branch nobody reviewed -->
+              <path class="link" d="M374,55 V104 H827" />
+              <path class="head" d="M835,104 l-9,-5 v10 z" />
+              <text class="note" x="392" y="97">hidden BCC</text>
+              <text class="lead" x="849" y="110">Outside address</text>
+            </svg>
+
             <div class="versions">
               <div>
                 <span class="v">1.0.15</span>
@@ -3610,6 +3646,12 @@
                 <b>여기부터 4c 다.</b> 4a 와 4b 가 AI 가 쓴 코드를 본다면 4c 는
                 AI 가 호출하는 것을 본다. 별개 주제가 아니라 4단계의 세 번째
                 갈래다
+              </li>
+              <li>
+                <b>도식은 왼쪽에서 오른쪽이 정상 경로다.</b> 에이전트가 서버를
+                호출하고 서버가 메일을 보낸다. 아래로 갈라지는 화살표가 아무도
+                주문하지 않은 경로다. 이 갈래는 pull request 에도, 코드 리뷰에도
+                나타나지 않는다
               </li>
               <li>
                 MCP 는 에이전트가 외부 도구를 호출하는 규약이다. GitHub 을 읽고,
