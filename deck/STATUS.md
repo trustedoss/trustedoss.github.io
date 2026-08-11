@@ -209,6 +209,10 @@ TRUSCA 가 5단계까지 구현한다는 뜻이 되어 모델의 벤더 중립�
   1200px 이상에서 `.navbar__title` 이 줄지 않도록 막아 두 언어 모두 온전히 나온다.
 - 2026-08-11: 표지에서 OpenChain Korea Work Group Lead 표기를 뺐다. 20번 마무리 장에는
   같은 줄이 그대로 있다.
+- 2026-08-11: 3번의 CISA 2026 설명에 전이 의존성 요구를 넣었다. NTIA 2021 의 Depth 요소가
+  최상위까지만 요구했던 것을 CISA 2026 이 Coverage 로 바꾸면서 "transitive dependency 를
+  포함한 모든 구성 요소" 로 올렸다. 근거는 발표자 블로그의 CISA 2026 조사보고서다.
+  16번(실제로 오는 SBOM)에서 전이 의존성 누락을 다루므로 요구와 실패가 이어진다.
 - 2026-08-11: 18번 로드맵을 TRUSCA `ROADMAP.md` 에 맞춰 다시 짰다. Reachability 는 공개
   로드맵의 Supply-chain Integrity 절에 있어 그 앵커로 연결하고, 같은 절의 SBOM drift 를
   더했다. 16번에서 던진 "공급사 문서가 코드와 맞는가" 를 받는 항목이다. 에이전트

@@ -1520,8 +1520,9 @@
                 </div>
                 <div>
                   <div class="what">
-                    Replaces NTIA 2021. Component hashes and licenses are now
-                    required, and the scope reaches AI software and SaaS
+                    Replaces NTIA 2021. Every transitive dependency, not just
+                    the top level. Hashes and licenses required. Scope reaches
+                    AI software and SaaS
                   </div>
                 </div>
               </div>
@@ -1552,6 +1553,20 @@
                 요소는 <b>2주 전에</b> 나왔고 NTIA 2021 을 대체했다. component
                 hash 와 license 가 권고에서 필수가 됐다. 기준이 올라간 만큼 기존
                 방식으로 만든 SBOM 은 더 자주 반려된다
+              </li>
+              <li>
+                <b>깊이 제한이 사라진 것이 가장 큰 변화다.</b> NTIA 2021 의
+                Depth 요소는 최상위 의존성까지만 요구했다. CISA 2026 은 이를
+                Coverage 로 바꾸면서 "transitive dependency 를 포함한 모든 구성
+                요소" 를 기록하라고 하고, 일정 깊이까지만 기록하는 것은 더 이상
+                충분하지 않다고 못박았다. 당시 도구 수준에 맞춘 기준이었지 보안
+                판단에 필요한 깊이가 아니었다는 것이 이유다
+              </li>
+              <li>
+                데이터 필드도 7개에서 17개로 늘었다. 늘어난 쪽에 SBOM 생성
+                시점(빌드 전후), 작성자 서명, 도구 버전, 미상 항목 표기가 있다.
+                <b>이 두 가지를 함께 말한다.</b> 넓이(모든 전이 의존성)와
+                깊이(필드)가 동시에 올라갔다
               </li>
               <li>
                 공급사 입장에서 SBOM 은 왜 필요한지 공유되지 않은 채 제출
