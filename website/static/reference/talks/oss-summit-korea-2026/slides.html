@@ -2926,7 +2926,13 @@
                   </div>
                 </div>
                 <div class="what">
-                  <span class="mono">gitleaks</span>, hard fail on any leak ·
+                  <a
+                    class="ref"
+                    href="https://trustedoss.github.io/en/devsecops/secret-detection#gitleaks-setup"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><span class="mono">gitleaks</span></a
+                  >, hard fail on any leak ·
                   <a
                     class="ref"
                     href="https://github.com/trustedoss/trusca/blob/main/.github/workflows/secret-scan.yml"
@@ -2949,7 +2955,21 @@
                   </div>
                 </div>
                 <div class="what">
-                  <span class="mono">semgrep, bandit, CodeQL</span> ·
+                  <a
+                    class="ref"
+                    href="https://trustedoss.github.io/en/devsecops/sast#semgrep-setup"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><span class="mono">semgrep</span></a
+                  >,
+                  <a
+                    class="ref"
+                    href="https://trustedoss.github.io/en/devsecops/sast#codeql-setup"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><span class="mono">CodeQL</span></a
+                  >
+                  ·
                   <a
                     class="ref"
                     href="https://github.com/trustedoss/trusca/blob/main/.github/workflows/sast.yml"
@@ -2972,8 +2992,7 @@
                   </div>
                 </div>
                 <div class="what">
-                  <span class="mono">cdxgen</span> then
-                  <span class="mono">Trivy</span>, daily ·
+                  SBOM generated, then scanned, daily ·
                   <a
                     class="ref"
                     href="https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml"
@@ -3691,26 +3710,6 @@
 
           <div class="stage">Level 4c</div>
           <h2>Six controls, and how to review</h2>
-          <p class="lede">
-            Five are
-            <a
-              class="ref"
-              href="https://www.microsoft.com/en-us/security/blog/2026/06/30/securing-ai-agents-ai-tools-move-from-reading-acting/"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Microsoft Incident Response</a
-            >
-            and the
-            <a
-              class="ref"
-              href="https://modelcontextprotocol.io/specification/2025-06-18/basic/security_best_practices"
-              target="_blank"
-              rel="noopener noreferrer"
-              >MCP spec</a
-            >
-            turned into working rules. The sixth is from the case you just saw.
-          </p>
-
           <div class="body body--top">
             <ul class="grid2">
               <li>
@@ -3770,6 +3769,27 @@
                 >
               </li>
             </ul>
+
+            <p class="caveat">
+              1 to 5 are
+              <a
+                class="ref"
+                href="https://www.microsoft.com/en-us/security/blog/2026/06/30/securing-ai-agents-ai-tools-move-from-reading-acting/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Microsoft Incident Response</a
+              >
+              and the
+              <a
+                class="ref"
+                href="https://modelcontextprotocol.io/specification/2025-06-18/basic/security_best_practices"
+                target="_blank"
+                rel="noopener noreferrer"
+                >MCP spec</a
+              >
+              turned into working rules. 6 is from the case on the previous
+              slide.
+            </p>
 
             <div class="gap-lg"></div>
 
