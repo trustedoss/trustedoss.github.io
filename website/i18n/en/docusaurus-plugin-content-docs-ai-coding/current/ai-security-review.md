@@ -400,6 +400,31 @@ The build does not fail. A developer reads the comment and decides.
 
 ---
 
+## In practice
+
+[TRUSCA](https://github.com/trustedoss/trusca) runs this stage through
+[ai-review.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/ai-review.yml).
+Where it differs from the example above is the interesting part.
+
+**Semgrep runs twice.** The blocking gate in `sast.yml` applies a severity filter and `--error`, so
+a PR that passed has an empty result set and a PR that did not has already failed the build. Either
+way there is nothing left to triage. The review workflow therefore runs Semgrep again with no
+filter, pinned to the same version as the gate.
+
+**Comments branch three ways.** With findings, it creates a comment or edits the existing one. When
+clean, it edits an existing comment but never opens a new one, because a comment on every passing PR
+stops being read. On error it leaves whatever is there alone: erasing an earlier verdict when you
+learned nothing is a net loss of information.
+
+**The triage script has a selftest.** The lint job in `ci.yml` runs `tools/ai-review/selftest.py`,
+so an exclusion pattern that silently matches nothing does not survive.
+
+**The non-blocking rule is written into the file.** A comment in the workflow says not to add it to
+branch protection. The principle that a model's verdict cannot justify a block lives next to the
+code that produces the verdict.
+
+---
+
 ## Notes
 
 **External transfer of sensitive code**

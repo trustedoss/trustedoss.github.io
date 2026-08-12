@@ -181,6 +181,27 @@ current official docs).
 - Other tools offer admin policies as well (e.g., restricting MCP use in per-tool organization
   settings); check each tool's admin documentation.
 
+### The repository-scoped version
+
+Where you cannot deploy managed settings, checked-in repository config is a place to start. The
+[ai-coding-best-practice](https://github.com/trustedoss/ai-coding-best-practice) repository carries
+that shape.
+
+| File                                                                                                           | Control it carries                                                             |
+| -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| [.mcp.json](https://github.com/trustedoss/ai-coding-best-practice/blob/main/.mcp.json)                         | Declares approved servers; currently empty                                     |
+| [.claude/settings.json](https://github.com/trustedoss/ai-coding-best-practice/blob/main/.claude/settings.json) | No server auto-approved, secret reads blocked, approval for egress and deploys |
+| [CLAUDE.md](https://github.com/trustedoss/ai-coding-best-practice/blob/main/CLAUDE.md)                         | Tool-description review, egress judgement, how to add a server                 |
+
+One difference matters. The `allowedMcpServers` and `deniedMcpServers` keys in section 5 work only
+in managed settings, so putting them in repository config enforces nothing. What does take effect at
+repository scope is `permissions.deny`, `permissions.ask`, `enabledMcpjsonServers` and
+`disableClaudeAiConnectors`. Keeping `.mcp.json` in the repository is what makes adding a server
+show up as a PR diff instead of in someone's personal config.
+
+Two of the six controls, reviewing tool descriptions and judging the egress path, do not reduce to a
+file. They stay written rules whose results belong in the PR.
+
 ## 6. Listing MCP servers in the SBOM
 
 Once an MCP server becomes a runtime dependency, it belongs in the SBOM. Alongside `components`,

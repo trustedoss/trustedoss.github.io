@@ -163,10 +163,26 @@ is nothing to bump, and packages installed inside the image are never in scope e
 | Gate on the image       | Scanning the built image rather than the manifest is what makes this layer visible (Trivy, grype) |
 | Run on a schedule       | On PRs only, a newly disclosed vulnerability waits until the next PR to surface                   |
 | Drop tools from runtime | With no package manager in the container, the tree it bundles goes with it                        |
-| Do not suppress         | A `.trivyignore` turns the gate green and ships the vulnerability anyway                          |
+| Suppress with evidence  | Suppression is not the problem; unexplained suppression is (see below)                            |
 
 The case above was resolved by removing pip right after `pip install`. A runtime container does not
 need a package manager. The same applies to build tools, compilers and shell utilities.
+
+### When a suppression file is the right answer
+
+Sometimes upstream has not shipped a fix, or the vulnerable code path is never called. Excluding
+such an entry in `.trivyignore` is legitimate. What makes it illegitimate is leaving no record of
+what was excluded and why, at which point it is indistinguishable from switching the gate off.
+
+The `.trivyignore` in [TRUSCA](https://github.com/trustedoss/trusca) requires each entry to carry:
+
+- The CVE identifier, the artifact it came from, and the path the scanner reported
+- Upstream fix status: unpatched, or patched but not yet in the bundled release
+- A reach analysis, naming the code location that shows the vulnerable entry point is never invoked
+
+A vulnerability that is reachable does not belong there and blocks the merge until it is fixed.
+Every entry is re-judged after 180 days, or sooner if the tool cuts a new release. At that point the
+file records decisions rather than hiding findings.
 
 ---
 

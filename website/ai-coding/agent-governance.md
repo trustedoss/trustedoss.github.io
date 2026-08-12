@@ -170,6 +170,27 @@ Claude Code 는 조직이 배포하는 관리 설정(`managed-settings.json` —
 - 다른 도구도 관리자 정책을 제공합니다(예: 도구별 조직 설정에서 MCP 사용 제한). 각 도구의
   관리자 문서를 확인하세요.
 
+### 저장소 수준으로 줄인 형태
+
+관리 설정을 배포할 수 없는 상황에서는 저장소에 커밋하는 설정만으로 시작할 수 있습니다.
+[ai-coding-best-practice](https://github.com/trustedoss/ai-coding-best-practice) 저장소가
+그 형태를 담고 있습니다.
+
+| 파일                                                                                                           | 담은 통제                                                       |
+| -------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| [.mcp.json](https://github.com/trustedoss/ai-coding-best-practice/blob/main/.mcp.json)                         | 승인한 서버 선언. 현재 비어 있음                                |
+| [.claude/settings.json](https://github.com/trustedoss/ai-coding-best-practice/blob/main/.claude/settings.json) | 서버 자동 승인 차단, 시크릿 읽기 차단, 외부 통신·배포 명령 승인 |
+| [CLAUDE.md](https://github.com/trustedoss/ai-coding-best-practice/blob/main/CLAUDE.md)                         | 도구 설명 검토와 반출 경로 판정 절차, 서버 추가 방법            |
+
+주의할 차이가 있습니다. 위 5절의 `allowedMcpServers`·`deniedMcpServers` 는 관리 설정에서만
+동작하므로 저장소 설정에 넣어도 강제되지 않습니다. 저장소 수준에서 실제로 먹히는 것은
+`permissions.deny`·`permissions.ask`, `enabledMcpjsonServers`, `disableClaudeAiConnectors`
+입니다. `.mcp.json` 을 저장소에 두는 이유는 서버 추가가 개인 설정이 아니라 PR diff 로
+드러나게 하기 위해서입니다.
+
+여섯 통제 중 셋째(도구 설명 검토)와 여섯째(데이터 반출 경로 판정)는 파일로 표현되지 않습니다.
+사람이 판단하는 절차이므로 규칙으로 적어 두고 결과를 PR 에 남기는 방식으로 다룹니다.
+
 ## 6. MCP 서버를 SBOM 에 등재하기
 
 MCP 서버가 런타임 의존성이 되면 SBOM 에 담아야 합니다. CycloneDX 는 `components` 와 별도로
