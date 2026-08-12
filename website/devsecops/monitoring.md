@@ -131,6 +131,45 @@ self-hosted 방식으로 GitLab에서도 동일하게 사용 가능합니다.
 
 ---
 
+## 두 도구가 보지 못하는 것
+
+Dependabot과 Renovate는 매니페스트에 선언된 패키지를 갱신합니다. `requirements.txt`,
+`package.json`, `go.mod` 에 이름이 적혀 있어야 대상이 됩니다. 선언되지 않은 것은 두 도구의
+시야 밖에 있습니다.
+
+실행 환경에는 선언되지 않은 패키지가 함께 들어갑니다. 베이스 이미지에 미리 설치된 것,
+그리고 설치한 도구가 자기 안에 번들한 것입니다.
+
+**실제 사례.** [ai-coding-best-practice](https://github.com/trustedoss/ai-coding-best-practice)
+저장소의 컨테이너 스캔이 HIGH 2건으로 실패한 적이 있습니다.
+
+| 패키지     | 취약점              | 설치 버전 | 수정 버전 |
+| ---------- | ------------------- | --------- | --------- |
+| msgpack    | GHSA-6v7p-g79w-8964 | 1.1.2     | 1.2.1     |
+| setuptools | CVE-2025-47273      | 70.3.0    | 78.1.1    |
+
+둘 다 `requirements.txt` 에 없었습니다. `site-packages/pip/_vendor/` 안, 즉 pip 자체에 들어
+있는 라이브러리였습니다. Dependabot과 Renovate는 이 둘을 보지 못했고, 게이트가 3개월 넘게
+빨간 상태로 남아 있었습니다.
+
+이 저장소는 Dependabot에 docker 생태계도 등록해 두었지만 도움이 되지 않았습니다. docker
+생태계는 `FROM` 의 태그를 갱신합니다. `python:3.14-slim` 처럼 패치 버전이 고정되지 않은
+태그에는 올릴 버전이 없고, 이미지 안에 설치된 패키지는 어느 경우에도 대상이 아닙니다.
+
+### 무엇으로 메우는가
+
+| 대응                    | 내용                                                                          |
+| ----------------------- | ----------------------------------------------------------------------------- |
+| 이미지 스캔을 게이트로  | 매니페스트가 아니라 빌드된 이미지를 스캔해야 이 영역이 보입니다 (Trivy·grype) |
+| 정기 실행               | PR 때만 돌리면 새 취약점이 공개된 뒤 다음 PR까지 발견되지 않습니다            |
+| 런타임에서 도구 제거    | 컨테이너에 패키지 관리자를 남기지 않으면 그것이 번들한 트리도 함께 사라집니다 |
+| 억제 파일로 넘기지 않기 | `.trivyignore` 로 덮으면 게이트는 초록이 되지만 취약점은 그대로 배포됩니다    |
+
+위 사례는 `pip install` 직후 pip을 제거하는 것으로 해결했습니다. 런타임 컨테이너에는 패키지
+관리자가 필요하지 않습니다. 같은 원리가 빌드 도구, 컴파일러, 셸 유틸리티에도 적용됩니다.
+
+---
+
 ## 정기 스캔 자동화
 
 PR 단계 외에도 배포된 코드를 주기적으로 스캔하는 스케줄 워크플로우를 별도로 운영합니다.
@@ -202,7 +241,7 @@ jobs:
 
 TRUSCA 는 이 층을 세 갈래로 운영합니다.
 
-- [dependabot.yml](https://github.com/trustedoss/trusca/blob/main/.github/dependabot.yml) — npm · pip · docker · github-actions 네 생태계, 여섯 항목을 덮습니다
+- [dependabot.yml](https://github.com/trustedoss/trusca/blob/main/.github/dependabot.yml) — npm, pip, docker, github-actions 네 생태계의 여섯 항목을 덮습니다
 - [sca-self.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml) — 매일 07:00 UTC 에 SBOM 을 다시 만들고 취약점을 재스캔합니다
 - [dogfood-scan.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/dogfood-scan.yml) — 자사 SCA 로 자기 저장소를 스캔합니다
 

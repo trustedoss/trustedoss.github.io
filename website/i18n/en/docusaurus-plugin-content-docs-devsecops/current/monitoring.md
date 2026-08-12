@@ -131,6 +131,45 @@ It can also be run self-hosted on GitLab.
 
 ---
 
+## What neither tool sees
+
+Dependabot and Renovate update packages declared in a manifest. A name has to appear in
+`requirements.txt`, `package.json` or `go.mod` to be in scope. Anything undeclared is outside
+their view.
+
+A runtime environment carries undeclared packages too: what the base image already had
+installed, and what an installed tool bundles inside itself.
+
+**A real case.** The container scan in the
+[ai-coding-best-practice](https://github.com/trustedoss/ai-coding-best-practice) repository failed
+on two HIGH findings.
+
+| Package    | Vulnerability       | Installed | Fixed  |
+| ---------- | ------------------- | --------- | ------ |
+| msgpack    | GHSA-6v7p-g79w-8964 | 1.1.2     | 1.2.1  |
+| setuptools | CVE-2025-47273      | 70.3.0    | 78.1.1 |
+
+Neither was in `requirements.txt`. Both sat under `site-packages/pip/_vendor/`, inside pip itself.
+Dependabot and Renovate never saw them, and the gate stayed red for over three months.
+
+The repository had registered the docker ecosystem with Dependabot, which did not help. That
+ecosystem updates the tag in `FROM`. A tag like `python:3.14-slim` pins no patch version, so there
+is nothing to bump, and packages installed inside the image are never in scope either way.
+
+### How to cover it
+
+| Measure                 | What it does                                                                                      |
+| ----------------------- | ------------------------------------------------------------------------------------------------- |
+| Gate on the image       | Scanning the built image rather than the manifest is what makes this layer visible (Trivy, grype) |
+| Run on a schedule       | On PRs only, a newly disclosed vulnerability waits until the next PR to surface                   |
+| Drop tools from runtime | With no package manager in the container, the tree it bundles goes with it                        |
+| Do not suppress         | A `.trivyignore` turns the gate green and ships the vulnerability anyway                          |
+
+The case above was resolved by removing pip right after `pip install`. A runtime container does not
+need a package manager. The same applies to build tools, compilers and shell utilities.
+
+---
+
 ## Automate scheduled scans
 
 Beyond the PR phase, run a separate scheduled workflow that periodically scans deployed code.

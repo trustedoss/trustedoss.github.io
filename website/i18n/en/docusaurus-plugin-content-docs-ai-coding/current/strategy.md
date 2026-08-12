@@ -182,6 +182,15 @@ At this stage, SBOM is continuously scanned even after deployment, and patch PRs
 `dogfood-scan.yml` defaults to non-blocking and turns blocking on through a `fail_on_gate` input —
 the same observe, then warn, then block progression this guide recommends.
 
+:::caution Dependency automation does not cover all of it
+
+Dependabot and Renovate only update packages declared in a manifest. Libraries that came with the
+base image, or that an installed tool bundles inside itself, are out of scope. Gating on the built
+image is what makes that layer visible. A real case and the measures for it are in
+[What neither tool sees](/en/devsecops/monitoring#what-neither-tool-sees).
+
+:::
+
 ---
 
 ## Where should our team start?
