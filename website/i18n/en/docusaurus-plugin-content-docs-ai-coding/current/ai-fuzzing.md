@@ -44,6 +44,76 @@ values, wrong types, path traversal strings.
 For low-level C/C++ or Rust, tracking execution coverage matters more than clever inputs, so
 OSS-Fuzz integration is the better route.
 
+## Starting without a model
+
+If stage 4b is stalled behind an API key you do not have or a budget approval that has not come
+through, schema-based fuzzing gets you started. It needs one thing: an application that publishes
+an OpenAPI schema. FastAPI, NestJS and the Spring family generally do by default.
+
+The schema carries, for every endpoint, the type of each parameter, whether it is required, and
+constraints such as length or range. A tool like
+[schemathesis](https://github.com/schemathesis/schemathesis) reads that and generates boundary
+cases: values past a declared maximum, empty strings, wrong types, missing required fields, enum
+members that are not in the definition. No model, no GPU, no paid service.
+
+### What you get and what you do not
+
+|                     | Schema-based                                                          | Model-based                                          |
+| ------------------- | --------------------------------------------------------------------- | ---------------------------------------------------- |
+| What it knows       | Types and constraints                                                 | What a parameter means and where it fits             |
+| Inputs it generates | Values around the declared boundaries                                 | Values inferred from names and purpose               |
+| What it misses      | Inputs that require understanding meaning, such as a traversal string | Fine-grained constraints that only the schema states |
+| Cost                | None                                                                  | API call costs                                       |
+
+Nothing in a schema suggests trying `../../etc/passwd` against a parameter named `path`. Nor does
+it suggest that two endpoints have to be called in a particular order for the state to make sense.
+Business-logic flaws remain the model's territory.
+
+So schema-based fuzzing does not replace 4b. It fills part of the gap 4b exists to close - and the
+part is not small. Applied to TRUSCA it selected 141 operations, generated roughly 1100 test cases
+and surfaced 260 unique failures, mostly responses that did not match the schema, undocumented
+status codes, and requests accepted despite violating the schema.
+
+### What got in the way
+
+Three things that actually blocked the work in TRUSCA.
+
+**Schema version.** FastAPI emits OpenAPI 3.1. schemathesis 3.x will not read that schema at all
+without an experimental flag; it exits during loading. 4.x reads it normally.
+
+**The defaults send data outward.** In schemathesis 3.x, `--report` with no argument uploads the
+run to the vendor's service, and telemetry defaults to on. For an internal API that means the
+schema and the test results leave your infrastructure. 4.x removed both options. Either way, check
+what a tool's defaults send and where before wiring it in.
+
+**The fuzzing account's permissions.** This is a policy decision, not a technical one. Run
+unauthenticated and nearly everything answers 401, so you see nothing. Grant administrative rights
+and the fuzzer reaches cross-tenant deletion paths. TRUSCA creates a fresh user per run, scoped to
+administer only its own team, and the workflow asserts the account is not a superuser before
+handing it over. A 403 from an admin route is the authorisation boundary working, not a finding.
+
+### Left non-blocking, it dies quietly
+
+Fuzzing is usually not a blocking gate: the finding count is high and some of it is noise. But if
+making it non-blocking means swallowing the tool's exit status, then the job goes green even when
+the tool died before reaching the API. The result reads "no failures", which is indistinguishable
+from passing.
+
+That happened three times while this workflow was being written in TRUSCA: a report file the
+container could not write, a schema version it would not read, and a command-line flag in the wrong
+format. All three produced a clean summary.
+
+The fix is to print **coverage numbers before findings**.
+
+```
+| API operations selected | 141 |
+| Test cases generated | 1098 |
+```
+
+If either is zero, the summary says so explicitly: the run never reached the API, which is not the
+same as the API being clean. "The scanner counted zero" and "there were zero findings" are
+different statements.
+
 ## In practice — ai-coding-best-practice
 
 The [ai-coding-best-practice](https://github.com/trustedoss/ai-coding-best-practice) repository
