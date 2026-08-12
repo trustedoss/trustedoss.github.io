@@ -26,6 +26,8 @@ PAIRS = [
 EXTS = {".md", ".mdx"}
 # 번역 대상이 아닌 파일 (Claude 컨텍스트 파일 등)
 SKIP_NAMES = {"CLAUDE.md"}
+# 어느 깊이에 있든 번역 대상이 아닌 디렉토리 — 작업 기록이지 문서가 아니다
+SKIP_DIRS = {".claude"}
 
 
 def collect(base: Path, excludes: set) -> set:
@@ -37,6 +39,8 @@ def collect(base: Path, excludes: set) -> set:
             continue
         rel = p.relative_to(base)
         if rel.parts and rel.parts[0] in excludes:
+            continue
+        if SKIP_DIRS & set(rel.parts):
             continue
         found.add(rel.as_posix())
     return found
