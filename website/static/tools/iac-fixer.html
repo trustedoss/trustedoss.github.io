@@ -736,8 +736,8 @@
     <div class="wrap">
       <div class="header">
         <div class="badge">🏗️ Trusted OSS</div>
-        <h1>IaC 보안 수정기</h1>
-        <p class="subtitle">
+        <h1 data-i18n="h1">IaC 보안 수정기</h1>
+        <p class="subtitle" data-i18n-html="subtitle">
           Checkov 결과 파일을 업로드하면 위반 항목별 수정된 코드를 자동으로
           생성합니다.<br />리포트가 아닌 바로 적용할 수 있는 수정 코드를
           제공합니다.
@@ -754,9 +754,11 @@
             placeholder="sk-ant-api03-..."
             autocomplete="off"
           />
-          <button class="show-btn" onclick="toggleKey()">표시</button>
+          <button class="show-btn" onclick="toggleKey()" data-i18n="showKey">
+            표시
+          </button>
         </div>
-        <div class="api-hint">
+        <div class="api-hint" data-i18n-html="apiHint">
           키는 브라우저에서만 사용됩니다. 발급:
           <a href="https://console.anthropic.com" target="_blank"
             >console.anthropic.com</a
@@ -771,14 +773,16 @@
           onclick="selectFw('terraform')"
           id="fw-terraform"
         >
-          Terraform<span class="fw-sub">.tf 파일</span>
+          Terraform<span class="fw-sub" data-i18n="fwTf">.tf 파일</span>
         </button>
         <button
           class="fw-btn"
           onclick="selectFw('kubernetes')"
           id="fw-kubernetes"
         >
-          Kubernetes<span class="fw-sub">YAML 매니페스트</span>
+          Kubernetes<span class="fw-sub" data-i18n="fwK8s"
+            >YAML 매니페스트</span
+          >
         </button>
         <button
           class="fw-btn"
@@ -788,7 +792,8 @@
           CloudFormation<span class="fw-sub">JSON/YAML</span>
         </button>
         <button class="fw-btn" onclick="selectFw('auto')" id="fw-auto">
-          자동 감지<span class="fw-sub">도구 무관</span>
+          <span data-i18n="fwAuto">자동 감지</span
+          ><span class="fw-sub" data-i18n="fwAutoSub">도구 무관</span>
         </button>
       </div>
 
@@ -802,10 +807,10 @@
         ondrop="onDrop(event)"
       >
         <span class="upload-icon" id="uploadIcon">🔒</span>
-        <div class="upload-title" id="uploadTitle">
+        <div class="upload-title" id="uploadTitle" data-i18n="uploadTitle">
           Checkov 결과 파일을 드래그하거나 클릭해서 선택
         </div>
-        <div class="upload-desc" id="uploadDesc">
+        <div class="upload-desc" id="uploadDesc" data-i18n="uploadDesc">
           checkov -d . -o json > checkov-result.json 으로 생성한 파일
         </div>
         <div class="upload-formats">
@@ -823,47 +828,54 @@
 
       <!-- Mode -->
       <div class="mode-box">
-        <div class="mode-label">수정 모드</div>
+        <div class="mode-label" data-i18n="modeLabel">수정 모드</div>
         <div class="pills">
           <div class="pill">
             <input type="radio" id="m1" name="mode" value="fix" checked /><label
               for="m1"
-              >수정 코드 생성<br /><small style="opacity: 0.7; font-weight: 400"
-                >위반 항목 자동 수정</small
+              ><span data-i18n="mode1">수정 코드 생성</span><br /><small
+                style="opacity: 0.7; font-weight: 400"
+                ><span data-i18n="mode1Sub">위반 항목 자동 수정</span></small
               ></label
             >
           </div>
           <div class="pill">
             <input type="radio" id="m2" name="mode" value="annotate" /><label
               for="m2"
-              >인라인 주석 추가<br /><small
+              ><span data-i18n="mode2">인라인 주석 추가</span><br /><small
                 style="opacity: 0.7; font-weight: 400"
-                >checkov:skip 주석 삽입</small
+                ><span data-i18n="mode2Sub">checkov:skip 주석 삽입</span></small
               ></label
             >
           </div>
           <div class="pill">
             <input type="radio" id="m3" name="mode" value="both" /><label
               for="m3"
-              >수정 + 불가 항목 주석<br /><small
+              ><span data-i18n="mode3">수정 + 불가 항목 주석</span><br /><small
                 style="opacity: 0.7; font-weight: 400"
-                >혼합 방식 (권장)</small
+                ><span data-i18n="mode3Sub">혼합 방식 (권장)</span></small
               ></label
             >
           </div>
         </div>
       </div>
 
-      <button class="fix-btn" id="fixBtn" onclick="analyze()" disabled>
+      <button
+        class="fix-btn"
+        id="fixBtn"
+        onclick="analyze()"
+        disabled
+        data-i18n="fixBtn"
+      >
         수정 코드 생성하기 →
       </button>
 
       <div class="loading-bar" id="lb"><div class="loading-fill"></div></div>
-      <div class="loading-text" id="lt">
+      <div class="loading-text" id="lt" data-i18n="loading">
         Claude가 위반 항목을 분석하고 수정 코드를 생성하고 있습니다...
       </div>
       <div class="err" id="errBox">
-        <div class="err-title" id="errTitle">오류</div>
+        <div class="err-title" id="errTitle" data-i18n="errTitle">오류</div>
         <div id="errMsg"></div>
       </div>
 
@@ -872,27 +884,33 @@
         <div class="stats-row">
           <div class="stat total">
             <div class="stat-num" id="sTotal">0</div>
-            <div class="stat-label">전체 위반</div>
+            <div class="stat-label" data-i18n="statTotal">전체 위반</div>
           </div>
           <div class="stat fixed">
             <div class="stat-num" id="sFixed">0</div>
-            <div class="stat-label">수정 완료</div>
+            <div class="stat-label" data-i18n="statFixed">수정 완료</div>
           </div>
           <div class="stat skipped">
             <div class="stat-num" id="sSkipped">0</div>
-            <div class="stat-label">수동 검토 필요</div>
+            <div class="stat-label" data-i18n="statSkipped">수동 검토 필요</div>
           </div>
         </div>
 
         <!-- Download panel -->
         <div class="dl-panel" id="dlPanel" style="display: none">
-          <div class="dl-title">📥 수정된 파일 다운로드</div>
+          <div class="dl-title" data-i18n="dlTitle">
+            📥 수정된 파일 다운로드
+          </div>
           <div class="dl-items" id="dlItems"></div>
         </div>
 
         <div class="tabs">
-          <button class="tab active" onclick="switchTab(0)">위반 항목</button>
-          <button class="tab" onclick="switchTab(1)">원본 Markdown</button>
+          <button class="tab active" onclick="switchTab(0)" data-i18n="tabViol">
+            위반 항목
+          </button>
+          <button class="tab" onclick="switchTab(1)" data-i18n="tabRaw">
+            원본 Markdown
+          </button>
         </div>
         <div class="panel">
           <div class="pane active" id="pane0"><div id="violList"></div></div>
@@ -901,10 +919,19 @@
           </div>
           <div class="footer">
             <div class="footer-left">
-              <button class="btn btn-sec" id="copyBtn" onclick="copyMd()">
+              <button
+                class="btn btn-sec"
+                id="copyBtn"
+                onclick="copyMd()"
+                data-i18n="copyReport"
+              >
                 리포트 복사
               </button>
-              <button class="btn btn-pri" onclick="downloadAllFixed()">
+              <button
+                class="btn btn-pri"
+                onclick="downloadAllFixed()"
+                data-i18n="downloadAll"
+              >
                 수정 파일 전체 다운로드
               </button>
             </div>
@@ -914,117 +941,208 @@
       </div>
     </div>
     <script>
-      let fileContent = "",
-        fileName = "",
-        reportMd = "",
-        keyVisible = false,
-        selectedFw = "terraform";
-      let parsedData = null;
+      const I18N = {
+        ko: {
+          docTitle: "IaC 보안 수정기",
+          h1: "IaC 보안 수정기",
+          subtitle:
+            "Checkov 결과 파일을 업로드하면 위반 항목별 수정된 코드를 자동으로 생성합니다.<br />리포트가 아닌 바로 적용할 수 있는 수정 코드를 제공합니다.",
+          showKey: "표시",
+          hideKey: "숨김",
+          apiHint:
+            '키는 브라우저에서만 사용됩니다. 발급: <a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a>',
+          fwTf: ".tf 파일",
+          fwK8s: "YAML 매니페스트",
+          fwAuto: "자동 감지",
+          fwAutoSub: "도구 무관",
+          uploadTitle: "Checkov 결과 파일을 드래그하거나 클릭해서 선택",
+          uploadDesc:
+            "checkov -d . -o json > checkov-result.json 으로 생성한 파일",
+          fileReady: "파일 준비 완료",
+          modeLabel: "수정 모드",
+          mode1: "수정 코드 생성",
+          mode1Sub: "위반 항목 자동 수정",
+          mode2: "인라인 주석 추가",
+          mode2Sub: "checkov:skip 주석 삽입",
+          mode3: "수정 + 불가 항목 주석",
+          mode3Sub: "혼합 방식 (권장)",
+          fixBtn: "수정 코드 생성하기 →",
+          generating: "생성 중...",
+          loading:
+            "Claude가 위반 항목을 분석하고 수정 코드를 생성하고 있습니다...",
+          errTitle: "오류",
+          errKeyTitle: "API 키 필요",
+          errKeyMsg: "Anthropic API 키를 입력하세요.",
+          errKeyFormatTitle: "잘못된 API 키",
+          errKeyFormatMsg: "sk-ant-로 시작하는 키를 입력하세요.",
+          errFileTitle: "파일 필요",
+          errFileMsg: "Checkov 결과 파일을 먼저 업로드하세요.",
+          errUnauthorized: "API 키가 유효하지 않습니다.",
+          errRateLimit: "요청 한도 초과. 잠시 후 다시 시도하세요.",
+          errParse: "응답 파싱 실패. 다시 시도해주세요.",
+          errFailTitle: "생성 실패",
+          truncated: "...(이하 생략)",
+          statTotal: "전체 위반",
+          statFixed: "수정 완료",
+          statSkipped: "수동 검토 필요",
+          dlTitle: "📥 수정된 파일 다운로드",
+          tabViol: "위반 항목",
+          tabRaw: "원본 Markdown",
+          noViolations: "✅ 위반 항목이 없습니다.",
+          badgeFixed: "✓ 수정 완료",
+          badgeManual: "⚠ 수동 검토",
+          skipAnnotation: "checkov:skip 주석",
+          fixedCode: "수정 코드",
+          copy: "복사",
+          copied: "복사됨 ✓",
+          copyReport: "리포트 복사",
+          download: "다운로드",
+          downloadAll: "수정 파일 전체 다운로드",
+          fwAutoDesc: "자동 감지",
+          modeFixDesc:
+            "수정 가능한 항목은 수정 코드 생성, 불가능한 항목은 skipReason 표시",
+          modeAnnotateDesc: "모든 항목에 checkov:skip 인라인 주석 삽입",
+          modeBothDesc:
+            "수정 가능한 항목은 수정 코드 생성, 불가능한 항목은 checkov:skip 주석 삽입",
+        },
+        en: {
+          docTitle: "IaC Security Fixer",
+          h1: "IaC Security Fixer",
+          subtitle:
+            "Upload a Checkov result file and it writes the corrected code for each violation.<br />You get code you can apply directly, not a report about it.",
+          showKey: "Show",
+          hideKey: "Hide",
+          apiHint:
+            'Your key stays in the browser. Get one at <a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a>',
+          fwTf: ".tf files",
+          fwK8s: "YAML manifests",
+          fwAuto: "Auto-detect",
+          fwAutoSub: "any tool",
+          uploadTitle:
+            "Drag your Checkov result here, or click to choose a file",
+          uploadDesc:
+            "The file produced by checkov -d . -o json > checkov-result.json",
+          fileReady: "The file is ready",
+          modeLabel: "Fix mode",
+          mode1: "Generate fixes",
+          mode1Sub: "fix violations automatically",
+          mode2: "Add inline comments",
+          mode2Sub: "insert checkov:skip comments",
+          mode3: "Fix, comment the rest",
+          mode3Sub: "mixed (recommended)",
+          fixBtn: "Generate the fixes →",
+          generating: "Generating...",
+          loading:
+            "Claude is analysing the violations and writing the fixes...",
+          errTitle: "Error",
+          errKeyTitle: "API key required",
+          errKeyMsg: "Enter your Anthropic API key.",
+          errKeyFormatTitle: "Invalid API key",
+          errKeyFormatMsg: "Enter a key that starts with sk-ant-.",
+          errFileTitle: "File required",
+          errFileMsg: "Upload a Checkov result file first.",
+          errUnauthorized: "The API key is not valid.",
+          errRateLimit: "Rate limit exceeded. Please try again shortly.",
+          errParse: "Could not parse the response. Please try again.",
+          errFailTitle: "Generation failed",
+          truncated: "...(truncated)",
+          statTotal: "Total violations",
+          statFixed: "Fixed",
+          statSkipped: "Needs manual review",
+          dlTitle: "📥 Download the corrected files",
+          tabViol: "Violations",
+          tabRaw: "Raw Markdown",
+          noViolations: "✅ No violations.",
+          badgeFixed: "✓ Fixed",
+          badgeManual: "⚠ Manual review",
+          skipAnnotation: "checkov:skip comment",
+          fixedCode: "Corrected code",
+          copy: "Copy",
+          copied: "Copied ✓",
+          copyReport: "Copy the report",
+          download: "Download",
+          downloadAll: "Download every corrected file",
+          fwAutoDesc: "auto-detected",
+          modeFixDesc:
+            "generate fixes where possible and state skipReason where not",
+          modeAnnotateDesc:
+            "insert a checkov:skip inline comment on every item",
+          modeBothDesc:
+            "generate fixes where possible and insert checkov:skip comments where not",
+        },
+      };
 
-      function toggleKey() {
-        keyVisible = !keyVisible;
-        document.getElementById("apiKey").type = keyVisible
-          ? "text"
-          : "password";
-        document.querySelector(".show-btn").textContent = keyVisible
-          ? "숨김"
-          : "표시";
-      }
-      function selectFw(fw) {
-        selectedFw = fw;
-        document
-          .querySelectorAll(".fw-btn")
-          .forEach((b) => b.classList.remove("active"));
-        document.getElementById("fw-" + fw).classList.add("active");
-      }
-      function onDragOver(e) {
-        e.preventDefault();
-        document.getElementById("uploadZone").classList.add("drag");
-      }
-      function onDragLeave() {
-        document.getElementById("uploadZone").classList.remove("drag");
-      }
-      function onDrop(e) {
-        e.preventDefault();
-        document.getElementById("uploadZone").classList.remove("drag");
-        const f = e.dataTransfer.files[0];
-        if (f) processFile(f);
-      }
-      function onFileSelect(e) {
-        const f = e.target.files[0];
-        if (f) processFile(f);
-      }
-      function processFile(f) {
-        fileName = f.name;
-        const r = new FileReader();
-        r.onload = (e) => {
-          fileContent = e.target.result;
-          document.getElementById("uploadZone").classList.add("has-file");
-          document.getElementById("uploadIcon").textContent = "✅";
-          document.getElementById("uploadTitle").textContent = "파일 준비 완료";
-          document.getElementById("uploadDesc").textContent =
-            `${f.name} (${(f.size / 1024).toFixed(1)} KB)`;
-          document.getElementById("fixBtn").disabled = false;
-        };
-        r.readAsText(f);
-      }
-      function setLoading(on) {
-        document.getElementById("lb").classList.toggle("on", on);
-        document.getElementById("lt").classList.toggle("on", on);
-        document.getElementById("fixBtn").disabled = on;
-        document.getElementById("fixBtn").textContent = on
-          ? "생성 중..."
-          : "수정 코드 생성하기 →";
-      }
-      function showErr(t, m) {
-        document.getElementById("errTitle").textContent = t;
-        document.getElementById("errMsg").textContent = m;
-        document.getElementById("errBox").classList.add("on");
-      }
-      function hideErr() {
-        document.getElementById("errBox").classList.remove("on");
-      }
+      const LANG =
+        new URLSearchParams(window.location.search).get("lang") === "en"
+          ? "en"
+          : "ko";
+      const T = I18N[LANG];
 
-      async function analyze() {
-        const apiKey = document.getElementById("apiKey").value.trim();
-        const mode =
-          document.querySelector('input[name="mode"]:checked')?.value || "both";
-        hideErr();
-        if (!apiKey) {
-          showErr("API 키 필요", "Anthropic API 키를 입력하세요.");
-          return;
-        }
-        if (!apiKey.startsWith("sk-ant-")) {
-          showErr("잘못된 API 키", "sk-ant-로 시작하는 키를 입력하세요.");
-          return;
-        }
-        if (!fileContent) {
-          showErr("파일 필요", "Checkov 결과 파일을 먼저 업로드하세요.");
-          return;
-        }
+      document.documentElement.lang = LANG;
+      document.title = T.docTitle;
+      document.querySelectorAll("[data-i18n]").forEach((el) => {
+        const v = T[el.dataset.i18n];
+        if (typeof v === "string") el.textContent = v;
+      });
+      document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+        const v = T[el.dataset.i18nHtml];
+        if (typeof v === "string") el.innerHTML = v;
+      });
+      T.buildPrompt = (fw, mode, fileName, content) =>
+        LANG === "en"
+          ? `Below is the result file of a Checkov (or tfsec / Trivy IaC) security scan.
+IaC framework: ${fw}
+Fix mode: ${mode}
+File name: ${fileName}
 
-        const content =
-          fileContent.length > 80000
-            ? fileContent.substring(0, 80000) + "...(이하 생략)"
-            : fileContent;
-        setLoading(true);
-        document.getElementById("result").classList.remove("on");
+File content:
+\`\`\`json
+${content}
+\`\`\`
 
-        const fwDesc = {
-          terraform: "Terraform (.tf)",
-          kubernetes: "Kubernetes YAML",
-          cloudformation: "AWS CloudFormation",
-          auto: "자동 감지",
-        };
-        const modeDesc = {
-          fix: "수정 가능한 항목은 수정 코드 생성, 불가능한 항목은 skipReason 표시",
-          annotate: "모든 항목에 checkov:skip 인라인 주석 삽입",
-          both: "수정 가능한 항목은 수정 코드 생성, 불가능한 항목은 checkov:skip 주석 삽입",
-        };
+Analyse it and reply with the JSON below and nothing else. Pure JSON only.
 
-        const prompt = `아래는 Checkov(또는 tfsec/Trivy IaC) 보안 검사 결과 파일이다.
-IaC 프레임워크: ${fwDesc[selectedFw]}
-수정 모드: ${modeDesc[mode]}
+{
+  "summary": {
+    "total": number,
+    "fixed": number,
+    "skipped": number,
+    "framework": "the detected framework"
+  },
+  "violations": [
+    {
+      "checkId": "CKV_AWS_XX",
+      "status": "fixed|skipped",
+      "resource": "resource name",
+      "file": "file path",
+      "line": "line number",
+      "description": "what the violation is (English)",
+      "severity": "high|medium|low",
+      "skipReason": "why it cannot be fixed (when status=skipped, English)",
+      "originalCode": "the code before the fix (that resource block)",
+      "fixedCode": "the code after the fix (when status=fixed)",
+      "skipAnnotation": "# checkov:skip=CKV_AWS_18:reason (when status=skipped)"
+    }
+  ],
+  "fixedFiles": [
+    {
+      "filename": "filename.tf",
+      "content": "the full corrected file"
+    }
+  ],
+  "markdown": "the full remediation report in markdown (English)"
+}
+
+Requirements:
+- For fixed items, write code that can actually be applied (follow that framework's syntax)
+- Mark an item skipped when the fix is structurally impossible or the setting is intentional
+- fixedFiles carries the whole file with every violation in that file fixed at once
+- originalCode and fixedCode cover only that resource block, not the whole file
+- markdown carries the sections ## Summary, ## Fixed, ## Needs manual review
+- Write in English`
+          : `아래는 Checkov(또는 tfsec/Trivy IaC) 보안 검사 결과 파일이다.
+IaC 프레임워크: ${fw}
+수정 모드: ${mode}
 파일명: ${fileName}
 
 파일 내용:
@@ -1072,6 +1190,126 @@ ${content}
 - markdown에는 ## 요약, ## 수정 완료 항목, ## 수동 검토 필요 항목 섹션 포함
 - 한국어로 작성`;
 
+      T.hint = (fw, n) =>
+        LANG === "en"
+          ? fw + " · " + n + " fixed automatically"
+          : fw + " · " + n + "개 자동 수정";
+
+      let fileContent = "",
+        fileName = "",
+        reportMd = "",
+        keyVisible = false,
+        selectedFw = "terraform";
+      let parsedData = null;
+
+      function toggleKey() {
+        keyVisible = !keyVisible;
+        document.getElementById("apiKey").type = keyVisible
+          ? "text"
+          : "password";
+        document.querySelector(".show-btn").textContent = keyVisible
+          ? T.hideKey
+          : T.showKey;
+      }
+      function selectFw(fw) {
+        selectedFw = fw;
+        document
+          .querySelectorAll(".fw-btn")
+          .forEach((b) => b.classList.remove("active"));
+        document.getElementById("fw-" + fw).classList.add("active");
+      }
+      function onDragOver(e) {
+        e.preventDefault();
+        document.getElementById("uploadZone").classList.add("drag");
+      }
+      function onDragLeave() {
+        document.getElementById("uploadZone").classList.remove("drag");
+      }
+      function onDrop(e) {
+        e.preventDefault();
+        document.getElementById("uploadZone").classList.remove("drag");
+        const f = e.dataTransfer.files[0];
+        if (f) processFile(f);
+      }
+      function onFileSelect(e) {
+        const f = e.target.files[0];
+        if (f) processFile(f);
+      }
+      function processFile(f) {
+        fileName = f.name;
+        const r = new FileReader();
+        r.onload = (e) => {
+          fileContent = e.target.result;
+          document.getElementById("uploadZone").classList.add("has-file");
+          document.getElementById("uploadIcon").textContent = "✅";
+          document.getElementById("uploadTitle").textContent = T.fileReady;
+          document.getElementById("uploadDesc").textContent =
+            `${f.name} (${(f.size / 1024).toFixed(1)} KB)`;
+          document.getElementById("fixBtn").disabled = false;
+        };
+        r.readAsText(f);
+      }
+      function setLoading(on) {
+        document.getElementById("lb").classList.toggle("on", on);
+        document.getElementById("lt").classList.toggle("on", on);
+        document.getElementById("fixBtn").disabled = on;
+        document.getElementById("fixBtn").textContent = on
+          ? T.generating
+          : T.fixBtn;
+      }
+      function showErr(t, m) {
+        document.getElementById("errTitle").textContent = t;
+        document.getElementById("errMsg").textContent = m;
+        document.getElementById("errBox").classList.add("on");
+      }
+      function hideErr() {
+        document.getElementById("errBox").classList.remove("on");
+      }
+
+      async function analyze() {
+        const apiKey = document.getElementById("apiKey").value.trim();
+        const mode =
+          document.querySelector('input[name="mode"]:checked')?.value || "both";
+        hideErr();
+        if (!apiKey) {
+          showErr(T.errKeyTitle, T.errKeyMsg);
+          return;
+        }
+        if (!apiKey.startsWith("sk-ant-")) {
+          showErr(T.errKeyFormatTitle, T.errKeyFormatMsg);
+          return;
+        }
+        if (!fileContent) {
+          showErr(T.errFileTitle, T.errFileMsg);
+          return;
+        }
+
+        const content =
+          fileContent.length > 80000
+            ? fileContent.substring(0, 80000) + T.truncated
+            : fileContent;
+        setLoading(true);
+        document.getElementById("result").classList.remove("on");
+
+        const fwDesc = {
+          terraform: "Terraform (.tf)",
+          kubernetes: "Kubernetes YAML",
+          cloudformation: "AWS CloudFormation",
+          auto: T.fwAutoDesc,
+        };
+        const modeDesc = {
+          fix: T.modeFixDesc,
+          annotate: T.modeAnnotateDesc,
+          both: T.modeBothDesc,
+        };
+
+        const prompt = T.buildPrompt(
+          fwDesc[selectedFw],
+          modeDesc[mode],
+          fileName,
+          content,
+        );
+
         try {
           const res = await fetch("https://api.anthropic.com/v1/messages", {
             method: "POST",
@@ -1089,10 +1327,8 @@ ${content}
           });
           if (!res.ok) {
             const e = await res.json().catch(() => ({}));
-            if (res.status === 401)
-              throw new Error("API 키가 유효하지 않습니다.");
-            if (res.status === 429)
-              throw new Error("요청 한도 초과. 잠시 후 다시 시도하세요.");
+            if (res.status === 401) throw new Error(T.errUnauthorized);
+            if (res.status === 429) throw new Error(T.errRateLimit);
             throw new Error(e?.error?.message || `HTTP ${res.status}`);
           }
           const data = await res.json();
@@ -1108,13 +1344,13 @@ ${content}
               .trim();
             parsed = JSON.parse(clean);
           } catch {
-            throw new Error("응답 파싱 실패. 다시 시도해주세요.");
+            throw new Error(T.errParse);
           }
           parsedData = parsed;
           reportMd = parsed.markdown || "";
           renderResult(parsed);
         } catch (e) {
-          showErr("생성 실패", e.message);
+          showErr(T.errFailTitle, e.message);
         } finally {
           setLoading(false);
         }
@@ -1125,8 +1361,10 @@ ${content}
         document.getElementById("sTotal").textContent = s.total || 0;
         document.getElementById("sFixed").textContent = s.fixed || 0;
         document.getElementById("sSkipped").textContent = s.skipped || 0;
-        document.getElementById("footerHint").textContent =
-          `${s.framework || ""} · ${s.fixed || 0}개 자동 수정`;
+        document.getElementById("footerHint").textContent = T.hint(
+          s.framework || "",
+          s.fixed || 0,
+        );
 
         // Download panel
         if (data.fixedFiles && data.fixedFiles.length) {
@@ -1138,7 +1376,7 @@ ${content}
               (f, i) => `
       <div class="dl-item">
         <span class="dl-file">${f.filename}</span>
-        <button class="dl-btn" onclick="downloadFile(${i})">다운로드</button>
+        <button class="dl-btn" onclick="downloadFile(${i})">${T.download}</button>
       </div>`,
             )
             .join("");
@@ -1147,7 +1385,7 @@ ${content}
         // Violations
         const list = document.getElementById("violList");
         if (!data.violations || !data.violations.length) {
-          list.innerHTML = '<div class="empty">✅ 위반 항목이 없습니다.</div>';
+          list.innerHTML = '<div class="empty">' + T.noViolations + "</div>";
         } else {
           list.innerHTML = data.violations
             .map(
@@ -1158,17 +1396,17 @@ ${content}
             <div class="viol-id">${v.checkId} <span style="color:var(--text-2);font-weight:400">${v.resource}</span></div>
             <div class="viol-res" style="font-size:11px;color:var(--text-3);font-family:var(--mono)">${v.file}:${v.line}</div>
           </div>
-          <span class="viol-badge ${v.status}">${v.status === "fixed" ? "✓ 수정 완료" : "⚠ 수동 검토"}</span>
+          <span class="viol-badge ${v.status}">${v.status === "fixed" ? T.badgeFixed : T.badgeManual}</span>
         </div>
         <div class="viol-body" id="viol-body-${i}">
           <div class="viol-desc">${v.description}</div>
           ${v.status === "skipped" && v.skipReason ? `<div class="viol-skip-reason">⚠ ${v.skipReason}</div>` : ""}
-          ${v.status === "skipped" && v.skipAnnotation ? `<div class="diff-wrap"><div class="diff-header"><span class="diff-title">checkov:skip 주석</span><button class="copy-code-btn" onclick="copyCode(event,'${escStr(v.skipAnnotation)}')">복사</button></div><div class="code-block">${escHtml(v.skipAnnotation)}</div></div>` : ""}
+          ${v.status === "skipped" && v.skipAnnotation ? `<div class="diff-wrap"><div class="diff-header"><span class="diff-title">${T.skipAnnotation}</span><button class="copy-code-btn" onclick="copyCode(event,'${escStr(v.skipAnnotation)}')">복사</button></div><div class="code-block">${escHtml(v.skipAnnotation)}</div></div>` : ""}
           ${
             v.status === "fixed" && v.fixedCode
               ? `
             <div class="diff-wrap">
-              <div class="diff-header"><span class="diff-title">수정 코드</span><button class="copy-code-btn" onclick="copyCode(event,${JSON.stringify(v.fixedCode)})">복사</button></div>
+              <div class="diff-header"><span class="diff-title">${T.fixedCode}</span><button class="copy-code-btn" onclick="copyCode(event,${JSON.stringify(v.fixedCode)})">복사</button></div>
               <div class="code-block">${escHtml(v.fixedCode)}</div>
             </div>`
               : ""
@@ -1204,10 +1442,10 @@ ${content}
         e.stopPropagation();
         navigator.clipboard.writeText(text).then(() => {
           const btn = e.target;
-          btn.textContent = "복사됨 ✓";
+          btn.textContent = T.copied;
           btn.classList.add("done");
           setTimeout(() => {
-            btn.textContent = "복사";
+            btn.textContent = T.copy;
             btn.classList.remove("done");
           }, 2000);
         });
@@ -1244,10 +1482,10 @@ ${content}
       function copyMd() {
         navigator.clipboard.writeText(reportMd).then(() => {
           const b = document.getElementById("copyBtn");
-          b.textContent = "복사됨 ✓";
+          b.textContent = T.copied;
           b.classList.add("done");
           setTimeout(() => {
-            b.textContent = "리포트 복사";
+            b.textContent = T.copyReport;
             b.classList.remove("done");
           }, 2000);
         });
