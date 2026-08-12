@@ -33,7 +33,7 @@ trustedoss에 기여해주셔서 감사합니다.
 ```
 Step 1   /qa changed                               # 품질 검증 (Claude 세션 필요)
 Step 2   bash .claude/scripts/verify.sh            # 13/13 PASS 확인
-Step 3   .claude/progress.md 업데이트              # 완료 항목·다음 작업 갱신
+Step 3   진행 기록 갱신                            # 로컬 작업 노트 (저장소에는 올리지 않는다)
 Step 4   git add -p && git commit -m "..."         # 변경 파일 선택적 스테이징
 Step 5   git push                                  # 모든 검증 통과 후에만
 ```
@@ -177,7 +177,7 @@ If design or code changes appear necessary, stop work and open an issue for disc
 ```
 Step 1   /qa changed                               # Quality check (requires Claude session)
 Step 2   bash .claude/scripts/verify.sh            # Confirm 13/13 PASS
-Step 3   Update .claude/progress.md               # Check completed items, update next tasks
+Step 3   Update your progress notes               # Local working notes, not tracked in the repository
 Step 4   git add -p && git commit -m "..."         # Stage files selectively
 Step 5   git push                                  # Only after all checks pass
 ```

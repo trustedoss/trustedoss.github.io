@@ -180,7 +180,10 @@ ISO/IEC 5230과 18974는 섹션 번호 체계가 다르다. 혼용하면 verify.
 
 ## 진행 상황
 
-`.claude/progress.md` 참조
+`.claude/progress.md` 와 `docs/_plan/STATUS.md` 참조.
+둘 다 로컬 작업 노트이며 `.gitignore` 로 추적하지 않는다. 공개 저장소에는
+운영 기록을 올리지 않는다는 원칙이므로, 새 계획·감사 문서도 같은 위치에 두고
+커밋 대상에서 제외한다.
 
 ## CLAUDE.md 업데이트 규칙
 
@@ -202,7 +205,7 @@ ISO/IEC 5230과 18974는 섹션 번호 체계가 다르다. 혼용하면 verify.
 매 작업 세션 종료 전 아래를 순서대로 실행하라.
 
 - [ ] bash .claude/scripts/verify.sh 실행 후 13/13 모두 PASS 확인
-- [ ] .claude/progress.md 업데이트
-      (완료 항목 체크, 다음 작업 갱신)
+- [ ] .claude/progress.md 와 docs/\_plan/STATUS.md 업데이트
+      (완료 항목 체크, 다음 작업 갱신 — 둘 다 추적하지 않으므로 커밋되지 않는다)
 - [ ] 이번 세션에서 구조 변경이 있었으면 CLAUDE.md도 업데이트
 - [ ] git commit
