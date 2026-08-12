@@ -12,7 +12,8 @@
 
 배치: `agents/en/<agent>/CLAUDE.md`, `templates/en/<category>/*.md`. output 경로는 공용(`output/`).
 
-- [ ] 1단계: `templates/en/` 16개 번역 (organization 3, policy 2, process 5, training 2, conformance 3)
+- [x] 1단계: `templates/en/` 16개 번역 (organization 3, policy 2, process 5, training 2, conformance 3)
+      — 용어는 이미 영문화된 `reference/samples/` 7개 페이지에서 추출해 맞췄다
 - [ ] 2단계: `agents/en/` 체인 9개 + 마스터 `agents/en/CLAUDE.md`
 - [ ] 3단계: `agents/en/` 독립 도구 8개 + prompts 2개
       (ai-coding-setup, devsecops-setup, iac-fixer, sast/secret/sbom-vuln-analyst,
