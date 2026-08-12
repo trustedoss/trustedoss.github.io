@@ -682,11 +682,13 @@
         vertical-align: baseline;
       }
 
+      /* One weight carries the hierarchy: the name is bold, everything else
+         is not. No colour on the rows — the levels are not a ranking, and
+         dimming the later ones implied they were out of reach. */
       table.levels .lv {
         font-family: var(--mono);
-        font-size: 24px;
-        font-weight: 700;
-        color: var(--accent);
+        font-size: 22px;
+        color: var(--ink-2);
         width: 86px;
       }
 
@@ -695,6 +697,16 @@
         font-weight: 700;
         letter-spacing: -0.018em;
         width: 330px;
+      }
+
+      table.levels .nm .ds {
+        display: block;
+        margin-top: 3px;
+        font-size: 15px;
+        font-weight: 400;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--accent);
       }
 
       table.levels .dt {
@@ -708,19 +720,6 @@
         text-align: right;
         width: 210px;
         white-space: nowrap;
-      }
-
-      /* the "see it" column is a link list, so every row reads the same;
-         the level worth starting at is called out in the speaker notes */
-      table.levels tr.mark .lv {
-        text-decoration: underline;
-        text-underline-offset: 5px;
-      }
-
-      table.levels tr.ahead .lv,
-      table.levels tr.ahead .nm,
-      table.levels tr.ahead .dt {
-        color: var(--ink-3);
       }
 
       .body--top {
@@ -2615,12 +2614,10 @@
                   <td class="dt">policy in one person's memory, or nowhere</td>
                   <td class="ct">—</td>
                 </tr>
-                <tr class="mark">
+                <tr>
                   <td class="lv">L2</td>
                   <td class="nm">Rules in the repo</td>
-                  <td class="dt">
-                    <span class="mono">CLAUDE.md, AGENTS.md</span>
-                  </td>
+                  <td class="dt">CLAUDE.md, AGENTS.md</td>
                   <td class="ct">
                     <a
                       class="ref"
@@ -2633,10 +2630,19 @@
                 </tr>
                 <tr>
                   <td class="lv">L3</td>
-                  <td class="nm">Blocked in CI/CD</td>
-                  <td class="dt">
-                    <span class="mono">gitleaks, semgrep, grype</span>
+                  <td class="nm">
+                    Blocked in CI/CD
+                    <span class="ds"
+                      ><a
+                        class="ref"
+                        href="https://trustedoss.github.io/en/devsecops/intro"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >DevSecOps</a
+                      ></span
+                    >
                   </td>
+                  <td class="dt">gitleaks, semgrep, grype</td>
                   <td class="ct">
                     <a
                       class="ref"
@@ -2647,7 +2653,7 @@
                     >
                   </td>
                 </tr>
-                <tr class="ahead">
+                <tr>
                   <td class="lv">L4</td>
                   <td class="nm">AI defense layer</td>
                   <td class="dt">
@@ -2663,10 +2669,21 @@
                     >
                   </td>
                 </tr>
-                <tr class="ahead">
+                <tr>
                   <td class="lv">L5</td>
-                  <td class="nm">Continuous monitoring</td>
-                  <td class="dt"><span class="mono">dependabot, DAST</span></td>
+                  <td class="nm">
+                    Continuous monitoring
+                    <span class="ds"
+                      ><a
+                        class="ref"
+                        href="https://trustedoss.github.io/en/devsecops/intro"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >DevSecOps</a
+                      ></span
+                    >
+                  </td>
+                  <td class="dt">dependabot, DAST</td>
                   <td class="ct">
                     <a
                       class="ref"
@@ -2681,49 +2698,8 @@
             </table>
 
             <div class="evidence">
-              <b>Levels 3, 4 and 5 all run in TRUSCA's own CI</b> —
-              <a
-                class="ref"
-                href="https://github.com/trustedoss/trusca/blob/main/.github/workflows/secret-scan.yml"
-                target="_blank"
-                rel="noopener noreferrer"
-                >secret-scan</a
-              >,
-              <a
-                class="ref"
-                href="https://github.com/trustedoss/trusca/blob/main/.github/workflows/sast.yml"
-                target="_blank"
-                rel="noopener noreferrer"
-                >sast</a
-              >,
-              <a
-                class="ref"
-                href="https://github.com/trustedoss/trusca/blob/main/.github/workflows/codeql.yml"
-                target="_blank"
-                rel="noopener noreferrer"
-                >codeql</a
-              >,
-              <a
-                class="ref"
-                href="https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml"
-                target="_blank"
-                rel="noopener noreferrer"
-                >sca-self</a
-              >,
-              <a
-                class="ref"
-                href="https://github.com/trustedoss/trusca/blob/main/.github/workflows/ai-review.yml"
-                target="_blank"
-                rel="noopener noreferrer"
-                >ai-review</a
-              >,
-              <a
-                class="ref"
-                href="https://github.com/trustedoss/trusca/blob/main/.github/dependabot.yml"
-                target="_blank"
-                rel="noopener noreferrer"
-                >dependabot</a
-              >. All five, in one repository to fork:
+              <b>Levels 3, 4 and 5 all run in TRUSCA's own CI.</b> All five sit
+              in one repository you can fork:
               <a
                 class="ref"
                 href="https://github.com/trustedoss/ai-coding-best-practice"
