@@ -1,6 +1,6 @@
 ---
 title: 이 프로젝트에 대하여
-description: Trusted OSS는 OpenChain KWG가 만든 오픈소스 공급망 관리 체계 구축 실전 키트입니다.
+description: Trusted OSS는 OpenChain KWG 커뮤니티에서 만든 오픈소스 공급망 관리 체계 구축 실전 키트입니다.
 ---
 
 # 이 프로젝트에 대하여
@@ -11,9 +11,9 @@ Trusted OSS는 **ISO/IEC 5230**(라이선스 컴플라이언스)과 **ISO/IEC 18
 
 오픈소스 관리 경험이 없는 담당자도 Claude Code Agent의 안내를 따라가면 정책·조직·프로세스·SBOM·교육·인증 산출물을 단계적으로 만들어 낼 수 있습니다.
 
-## 만든 곳: OpenChain KWG
+## 만든 곳: OpenChain KWG 커뮤니티
 
-이 프로젝트는 **[OpenChain KWG](https://openchain-project.github.io/OpenChain-KWG/)**(OpenChain Korea Work Group)가 제작했습니다.
+Trusted OSS는 **[OpenChain KWG](https://openchain-project.github.io/OpenChain-KWG/)**(OpenChain Korea Work Group) 커뮤니티에서 출발한 프로젝트입니다. KWG가 표준 가이드와 템플릿으로 방향을 제시해 왔다면, Trusted OSS는 그것을 실제 산출물로 만드는 실행 도구입니다.
 
 OpenChain KWG는 ISO/IEC 5230 국제 표준을 이끄는 [Linux Foundation OpenChain Project](https://www.openchainproject.org/)의 한국 워킹 그룹입니다. 국내 기업의 오픈소스 컴플라이언스 역량을 높이기 위해 가이드·도구·커뮤니티를 운영하고 있습니다.
 
@@ -24,7 +24,7 @@ OpenChain KWG는 ISO/IEC 5230 국제 표준을 이끄는 [Linux Foundation OpenC
 출처를 표기하면 자유롭게 복제·수정·재배포·상업적 활용이 가능합니다.
 
 :::info 출처 표기 예시
-"Trusted OSS (CC BY 4.0 · OpenChain KWG)"
+"Trusted OSS (CC BY 4.0)"
 :::
 
 ## 기여 방법
