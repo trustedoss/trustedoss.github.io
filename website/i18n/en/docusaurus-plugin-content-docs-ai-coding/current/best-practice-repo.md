@@ -11,9 +11,9 @@ This is a reference GitHub repository that implements the [5-Stage Strategy](./s
 workflows and configuration files. You can fork it for immediate use or copy configuration files
 into an existing project.
 
-Stage 4c (agent and MCP tool governance) has no implementation here. It is handled through
-organization policy and tool settings rather than a CI workflow, so it ships as the six controls
-and the copy-paste policy in [Agent and MCP Tool Governance](./agent-governance).
+Stage 4c (agent and MCP tool governance) targets the agent on a developer workstation rather than
+CI, so it ships as config files (`.mcp.json`, `.claude/settings.json`) instead of a workflow. For
+enforcing it across an organization, see [Agent and MCP Tool Governance](./agent-governance).
 
 :::info Repository
 **[github.com/trustedoss/ai-coding-best-practice](https://github.com/trustedoss/ai-coding-best-practice)**
@@ -32,8 +32,12 @@ ai-coding-best-practice/
 ├── Dockerfile
 ├── docker-compose.yml                 # app startup for DAST/AI fuzzing
 │
-├── CLAUDE.md                          # Stage 2: Embed AI rules
+├── CLAUDE.md                          # Stage 2: Embed AI rules + 4c: MCP server intake
 ├── .cursorrules                       # Stage 2: Cursor rules
+│
+├── .mcp.json                          # 4c: Approved MCP servers (currently empty)
+├── .claude/
+│   └── settings.json                  # 4c: Agent permissions (blocked reads, commands needing approval)
 │
 ├── .gitleaks.toml                     # Stage 3: secret detection settings
 ├── .grype.yaml                        # Stage 3: SCA threshold settings
@@ -78,11 +82,11 @@ ai-coding-best-practice/
 
 ### Stage 4 — AI Defense Layer
 
-| Item                | Implementation File | Description                                                                     |
-| ------------------- | ------------------- | ------------------------------------------------------------------------------- |
-| AI Code Review (4a) | `ai-review.yml`     | Semgrep/grype findings → Claude validation and deep interpretation → PR comment |
-| AI Fuzzing (4b)     | `ai-fuzzing.yml`    | Claude generates edge cases → runs app → detects 5xx errors (Push to main)      |
-| MCP governance (4c) | —                   | Not here. Provided as a [guide](./agent-governance)                             |
+| Item                | Implementation File                  | Description                                                                                      |
+| ------------------- | ------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| AI Code Review (4a) | `ai-review.yml`                      | Semgrep/grype findings → Claude validation and deep interpretation → PR comment                  |
+| AI Fuzzing (4b)     | `ai-fuzzing.yml`                     | Claude generates edge cases → runs app → detects 5xx errors (Push to main)                       |
+| MCP governance (4c) | `.mcp.json`, `.claude/settings.json` | No MCP server auto-approved, secret reads blocked, human approval for egress and deploy commands |
 
 ### Stage 5 — Continuous Monitoring & Auto-remediation
 
