@@ -160,6 +160,81 @@ metadata:
 
 ---
 
+## What is the green badge actually based on
+
+:::warning A scan passing and a scan checking are two different things
+:::
+
+Once an IaC scan is wired up, the badge turns green. Whether that green means "no violations" or "nothing was examined" is not something the badge can tell you. What follows are four cases from adding IaC scanning to [TRUSCA](https://github.com/trustedoss/trusca). In all four the display looked correct.
+
+### Passing while scanning a chart that never rendered
+
+When `trivy config` scans a Helm chart whose templates require values, rendering fails. Trivy records the render error as a warning, returns zero results, and exits 0. The job passes. The badge is green with nothing examined at all.
+
+Two things have to happen together here. Supply a scan-only values file through `--helm-values` so the templates render, and separately count the files that were inspected.
+
+```bash
+count=$(jq '[.Results[]?] | length' trivy-chart.json)
+echo "config files inspected: ${count}"
+if [ "${count}" -eq 0 ]; then
+  echo "::error::Trivy inspected 0 files. The chart failed to render."
+  exit 1
+fi
+```
+
+Adding the values file alone is not enough. When a later template change breaks rendering again, you land in the same place. The count is what turns that regression into a failure.
+
+### Failing on something that never ships
+
+The opposite direction also happens. A container image scan kept reporting a package that had been patched upstream weeks earlier. The cause was a cached image layer. A cached layer does not run again, so the `apt-get upgrade` inside it does not run either, and the layer keeps serving the package versions it was first built against. The image being released carried the patched version; only the scan was looking at the old one.
+
+A red gate does get noticed eventually. The cost is what happens in the meantime, as reviewers grow used to the red. The fix is to key the cache scope on time so drift is bounded. Putting the ISO week in the key caps it at a week, and one cold build per week pays for it.
+
+### Raising the blocking level and losing the block
+
+This one shows up when moving from observe to block. Say the gate counts like this:
+
+```bash
+n=$(jq --arg s "${BLOCKING_SEVERITY}" \
+  '[.Results[]?.Misconfigurations[]? | select(.Severity == $s)] | length' "$file")
+```
+
+Changing `BLOCKING_SEVERITY` from `CRITICAL` to `CRITICAL,HIGH` looks like it widens what gets blocked. But no finding has a `Severity` equal to the string `"CRITICAL,HIGH"`. Nothing matches, the count is zero on every run, and the gate always passes. The block disappears at the exact moment you believe you strengthened it.
+
+The value and the comparison have to move together.
+
+```bash
+sevs=$(printf '%s' "${BLOCKING_SEVERITY}" | jq -Rc 'split(",")')
+n=$(jq --argjson sevs "$sevs" \
+  '[.Results[]?.Misconfigurations[]? | select(.Severity as $s | $sevs | index($s))] | length' "$file")
+```
+
+Fixing it is not where this ends. A gate passing with zero violations looks identical to a gate passing because its comparison broke. Only deliberately reviving a violation separates the two. In TRUSCA that meant rendering the chart with a securityContext removed and confirming side by side that the new condition counts 3 while the old one counts 0 on the same input.
+
+### A setting you think you turned off
+
+This comes up when a chart ships a default and someone wants to drop it. An empty map looks like it should remove the block. It does not.
+
+```yaml
+# Does NOT remove it. Helm deep-merges maps, so the defaults stay.
+worker:
+  containerSecurityContext: {}
+
+# This removes it.
+worker:
+  containerSecurityContext: null
+```
+
+What makes this dangerous is the direction of the error. Whoever tried to turn it off believes it is off while it is still on. For a security setting that is the lucky case, and the reverse holds too. If a values file's own comment says `{}` clears the block, anyone who trusts that comment deploys something other than what they intended.
+
+### What they have in common
+
+All four displayed correctly. Green, or red with a plausible-sounding reason. What was wrong was not the verdict but the basis for it.
+
+So build gates that report their basis alongside their verdict: how many files were inspected, how many findings at which severity, which target was read. Print it to the log or the job summary. And after raising a gate to blocking, create a violation on purpose and watch it get stopped once. "There were zero findings" and "the scanner counted zero" are different statements, and without something that tells them apart, a pipeline quietly slides back to observing.
+
+---
+
 ## Key Checks
 
 :::warning The items below are major root causes of real incidents
