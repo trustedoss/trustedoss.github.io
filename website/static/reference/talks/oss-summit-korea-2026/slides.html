@@ -4531,7 +4531,8 @@
 
           <h2>One run, three documents</h2>
           <p class="lede">
-            No account, no upload. It runs on the machine that has the code.
+            This is what you hand the supplier. No account, no upload — it runs
+            on their machine.
           </p>
 
           <div class="body">
@@ -5093,63 +5094,117 @@
             <span>8 of 8</span>
           </div>
 
-          <h2>Roadmap</h2>
+          <h2>Where the three are headed</h2>
+          <p class="lede">
+            One defines the programme, one runs it, one feeds it from outside.
+          </p>
 
           <div class="body">
-            <div class="rows">
-              <div class="row">
-                <div>
-                  <div class="area">
-                    <a
-                      class="ref"
-                      href="https://github.com/trustedoss/trusca/blob/main/ROADMAP.md#supply-chain-integrity"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      >Reachability</a
-                    >
-                  </div>
-                </div>
-                <div class="what">
-                  Is this CVE actually on an execution path we call?
-                </div>
-              </div>
-              <div class="row">
-                <div>
-                  <div class="area">
-                    <a
-                      class="ref"
-                      href="https://github.com/trustedoss/trusca/blob/main/ROADMAP.md#supply-chain-integrity"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      >SBOM drift</a
-                    >
-                  </div>
-                </div>
-                <div class="what">
-                  Does the SBOM a supplier sent match their code?
-                </div>
-              </div>
-              <div class="row row--last">
-                <div><div class="area">Agent pre-flight</div></div>
-                <div class="what">
-                  An MCP server the agent queries before it adds a package
-                </div>
-              </div>
-            </div>
+            <svg
+              class="diagram"
+              style="margin-top: 18px"
+              viewBox="0 0 1096 250"
+              role="img"
+              aria-label="Trusted OSS defines the programme, TRUSCA runs it, and the SBOM arrives from the supplier side through BomLens"
+            >
+              <rect
+                class="box box--strong"
+                x="386"
+                y="1"
+                width="710"
+                height="58"
+              />
+              <a
+                href="https://trustedoss.github.io/en"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <text
+                  class="title"
+                  x="414"
+                  y="28"
+                  text-decoration="underline"
+                  style="text-decoration-style: dotted"
+                >
+                  Trusted OSS
+                </text>
+              </a>
+              <text class="note" x="620" y="28">
+                defines what the programme must do
+              </text>
+              <path class="link" d="M741,59 V92" />
+              <path class="head" d="M741,100 l-5,-9 h10 z" />
+
+              <text class="note" x="1" y="88">SUPPLIER SIDE</text>
+              <rect class="box" x="1" y="100" width="300" height="66" />
+              <a
+                href="https://sktelecom.github.io/bomlens/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <text
+                  class="title"
+                  x="151"
+                  y="128"
+                  text-anchor="middle"
+                  text-decoration="underline"
+                  style="text-decoration-style: dotted"
+                >
+                  BomLens
+                </text>
+              </a>
+              <text class="note" x="151" y="152" text-anchor="middle">
+                the supplier generates it
+              </text>
+
+              <text class="note" x="316" y="122">SBOM</text>
+              <path class="link" d="M301,138 H370" />
+              <path class="head" d="M378,138 l-9,-5 v10 z" />
+
+              <text class="note" x="386" y="88">INSIDE THE COMPANY</text>
+              <rect
+                class="box box--strong"
+                x="386"
+                y="100"
+                width="710"
+                height="66"
+              />
+              <a
+                href="https://trustedoss.github.io/trusca/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <text
+                  class="title"
+                  x="414"
+                  y="128"
+                  text-decoration="underline"
+                  style="text-decoration-style: dotted"
+                >
+                  TRUSCA
+                </text>
+              </a>
+              <text class="note" x="414" y="152">
+                policy applied, findings tracked, evidence kept — every day
+              </text>
+
+              <path class="link" d="M741,166 V204" />
+              <path class="head" d="M741,212 l-5,-9 h10 z" />
+              <text class="lead" x="741" y="240" text-anchor="middle">
+                Next: the agent asks before it pulls
+              </text>
+            </svg>
 
             <div class="answer">
               Not level 2, which asks. Not level 3, which blocks after the fact.
-              <b
-                >A query before intake — neither the model nor the roadmap
-                covers it yet.</b
-              >
+              <b>Neither the model nor the roadmap covers it yet.</b>
             </div>
           </div>
 
           <div class="foot">
             <span
               ><a
-                href="https://github.com/trustedoss/trusca"
+                href="https://github.com/trustedoss/trusca/blob/main/ROADMAP.md"
                 target="_blank"
                 rel="noopener noreferrer"
                 >github.com/trustedoss/trusca</a
@@ -5160,34 +5215,34 @@
 
           <div class="notes-src">
             <p class="say">
-              AI 에이전트를 통제하는 문제에서 출발해, 그 에이전트가 정책을 직접
-              조회하는 지점에서 1부와 2부가 만납니다. 규칙으로 권고하는 2단계도,
-              CI 에서 사후 차단하는 3단계도 아닙니다. 반입 이전에 조회하는
-              방식이며, 5단계 모델이 아직 포함하지 못한 영역입니다.
+              오늘 세 가지를 말씀드렸는데, 각자 맡은 자리가 다릅니다. 그리고 그
+              셋이 한 지점에서 만납니다.
             </p>
             <ul>
               <li><b>발표를 닫는 슬라이드다</b></li>
               <li>
-                도달 가능성 분석 — CVE 가 있어도 우리 코드에서 그 함수를 부르지
-                않으면 실제 위험은 없다. 이걸 판정할 수 있으면 triage 부담이
-                크게 준다
+                위가 Trusted OSS 다. 체계가 무엇을 해야 하는지 정의하고, 그것을
+                실제로 돌리는 것이 TRUSCA 다
               </li>
               <li>
-                SBOM drift — <b>20번에서 던진 문제의 답이다.</b> 공급사가 낸
-                문서를 같은 ref 를 직접 스캔한 결과와 맞대어, 어느 쪽이 무엇을
-                빠뜨렸는지 보고한다. 적합성 점수가 "칸이 채워졌는가"를 본다면
-                이것은 "문서가 코드와 맞는가"를 본다
+                <b>왼쪽과 오른쪽은 대등하지 않다.</b> 왼쪽은 공급망 바깥이다.
+                공급사가 BomLens 로 SBOM 을 만들어 보내면, 그것이 회사 안의
+                TRUSCA 로 들어간다. BomLens 는 입력을 만드는 도구이고 TRUSCA 는
+                그 입력으로 거버넌스를 돌리는 축이다
               </li>
               <li>
-                <b>앞의 두 가지는 TRUSCA 공개 로드맵에 있다.</b> 항목 이름을
-                누르면 ROADMAP.md 의 해당 절이 열린다. 날짜는 적지 않는다.
-                로드맵 문서가 "제안이지 약속이 아니며 날짜는 일부러 뺀다"고
-                밝히고 있어서다
+                아래에서 다시 만나는 지점이 앞으로 가려는 방향이다. 에이전트가
+                패키지를 반입하기 전에 정책을 직접 조회하는 것이다. 규칙으로
+                권고하는 2단계도, CI 에서 사후 차단하는 3단계도 아니다
               </li>
               <li>
-                <b>세 번째는 로드맵에 없다. 그래서 링크도 걸지 않았다.</b> 이
-                발표가 도달한 지점이지 예정된 작업이 아니다. 질문이 나오면 그
-                차이를 그대로 말한다
+                <b>아직 아무 데도 없다.</b> 5단계 모델에도, TRUSCA 로드맵에도
+                없다. 사실대로 말한다. TRUSCA 로드맵에 있는 것은 도달 가능성
+                분석과 SBOM drift 이며, 링크로 확인할 수 있다
+              </li>
+              <li>
+                축소 순서 — Q&A → 이 장 → 15번 4b → 13번 4단계 도입. 7번 데모,
+                9번 5층 개요, 20번 SBOM 정확도는 마지막까지 유지한다
               </li>
             </ul>
           </div>
