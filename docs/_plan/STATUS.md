@@ -1,7 +1,31 @@
 # TrustedOSS 개편 — 실행 현황 (resume용)
 
 > 목적: 긴 세션에서 히스토리가 유실돼도 이 파일만 보면 즉시 재개 가능. 매 task 후 갱신·커밋한다.
-> 최종 갱신: 2026-08-10
+> 최종 갱신: 2026-08-12
+
+## agents·templates 영문 트리 (2026-08-12) — 진행 중
+
+> 계기: 영문 docs 12개 파일이 `cd agents/02-organization-designer` 를 그대로 안내하는데
+> agent CLAUDE.md 18개와 templates 16개가 전부 한국어라, 영문 독자가 실행하면 한국어 질문을
+> 받는다. 영문 샘플 산출물 페이지(`reference/samples/` 7개)는 이미 영문이라 결과도 어긋난다.
+> 방식은 B안(영문 트리 분리) 확정. docs 를 ko/en 이중으로 관리하는 기존 구조와 맞춘다.
+
+배치: `agents/en/<agent>/CLAUDE.md`, `templates/en/<category>/*.md`. output 경로는 공용(`output/`).
+
+- [ ] 1단계: `templates/en/` 16개 번역 (organization 3, policy 2, process 5, training 2, conformance 3)
+- [ ] 2단계: `agents/en/` 체인 9개 + 마스터 `agents/en/CLAUDE.md`
+- [ ] 3단계: `agents/en/` 독립 도구 8개 + prompts 2개
+      (ai-coding-setup, devsecops-setup, iac-fixer, sast/secret/sbom-vuln-analyst,
+      level2-automation/issue-tracker·pr-comment)
+- [ ] 4단계: 검증 스크립트 확장 — test-agent-specs.py 는 한국어 헤더(`## 입력 질문`,
+      `## 출력 산출물`)를 하드코딩하므로 영문 헤더도 인식시킨다. validate-chain.py,
+      check-i18n-parity.py 에 영문 트리 추가
+- [ ] 5단계: 영문 docs 12개 파일의 `cd agents/...` → `cd agents/en/...` 수정
+- [ ] 6단계: verify.sh 13/13, `npm run build`, 루트 CLAUDE.md 디렉토리 구조 갱신
+
+각 단계 종료 시 동일 게이트: 파일 수 대조 → verify.sh → 이전 단계 산출물 회귀 확인.
+반드시 조건부로 바꿀 것: `agents/ai-coding-setup/prompts/generate-rules.md:133` 과
+`devsecops-setup/prompts/generate-pipeline.md:136` 의 "생성하는 모든 파일은 한국어로 작성한다".
 
 ## OSS Summit Korea 2026 발표 준비 (2026-08-04) — 진행 중
 
