@@ -81,18 +81,19 @@ Three things that actually blocked the work in TRUSCA.
 **Schema version.** FastAPI emits OpenAPI 3.1. schemathesis 3.x will not read that schema at all
 without an experimental flag; it exits during loading. 4.x reads it normally.
 
-**The defaults send data outward.** In schemathesis 3.x, `--report` with no argument uploads the
+**What the tool's defaults send.** In schemathesis 3.x, `--report` with no argument uploads the
 run to the vendor's service, and telemetry defaults to on. For an internal API that means the
-schema and the test results leave your infrastructure. 4.x removed both options. Either way, check
-what a tool's defaults send and where before wiring it in.
+schema and the test results leave your infrastructure. 4.x removed the upload and telemetry
+options, and `--report` there generates a local report instead, in formats such as JUnit. Either
+way, check what a tool's defaults send and where before wiring it in.
 
 **The fuzzing account's permissions.** This is a policy decision, not a technical one. Run
 unauthenticated and nearly everything answers 401, so you see nothing. Grant administrative rights
 and the fuzzer reaches cross-tenant deletion paths. TRUSCA creates a fresh user per run, scoped to
 administer only its own team, and the workflow asserts the account is not a superuser before
-handing it over. A 403 from an admin route is the authorisation boundary working, not a finding.
+handing it over. A 403 from an admin route is the authorization boundary working, not a finding.
 
-### Left non-blocking, it dies quietly
+### The blind spot a non-blocking job creates
 
 Fuzzing is usually not a blocking gate: the finding count is high and some of it is noise. But if
 making it non-blocking means swallowing the tool's exit status, then the job goes green even when

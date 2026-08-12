@@ -165,7 +165,7 @@ metadata:
 :::warning A scan passing and a scan checking are two different things
 :::
 
-Once an IaC scan is wired up, the badge turns green. Whether that green means "no violations" or "nothing was examined" is not something the badge can tell you. What follows are four cases from adding IaC scanning to [TRUSCA](https://github.com/trustedoss/trusca). In all four the display looked correct.
+Once an IaC scan is wired up, the badge turns green. Whether that green means "no violations" or "nothing was examined" is not something the badge can tell you. What follows are four cases from adding scanning and a blocking gate to [TRUSCA](https://github.com/trustedoss/trusca). In the first three the scan result looked correct; in the fourth the setting itself was not what it appeared to be.
 
 ### Passing while scanning a chart that never rendered
 
@@ -184,7 +184,7 @@ fi
 
 Adding the values file alone is not enough. When a later template change breaks rendering again, you land in the same place. The count is what turns that regression into a failure.
 
-### Failing on something that never ships
+### Failing on something that is never deployed
 
 The opposite direction also happens. A container image scan kept reporting a package that had been patched upstream weeks earlier. The cause was a cached image layer. A cached layer does not run again, so the `apt-get upgrade` inside it does not run either, and the layer keeps serving the package versions it was first built against. The image being released carried the patched version; only the scan was looking at the old one.
 
@@ -229,7 +229,7 @@ What makes this dangerous is the direction of the error. Whoever tried to turn i
 
 ### What they have in common
 
-All four displayed correctly. Green, or red with a plausible-sounding reason. What was wrong was not the verdict but the basis for it.
+The first three displayed correctly: green, or red with a plausible-sounding reason. The fourth has no display at all - it exists only for whoever believed they had changed a setting. In all four, what was wrong was not the verdict but the basis for it.
 
 So build gates that report their basis alongside their verdict: how many files were inspected, how many findings at which severity, which target was read. Print it to the log or the job summary. And after raising a gate to blocking, create a violation on purpose and watch it get stopped once. "There were zero findings" and "the scanner counted zero" are different statements, and without something that tells them apart, a pipeline quietly slides back to observing.
 

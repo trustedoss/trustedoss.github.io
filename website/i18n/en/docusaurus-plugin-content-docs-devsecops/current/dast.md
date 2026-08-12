@@ -99,16 +99,16 @@ The difference is not duration. It is what gets sent to the target.
 
 |                       | Baseline                                                                     | Full Scan                                                                         |
 | --------------------- | ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| Behaviour             | Spiders the site and observes the traffic                                    | Sends attack payloads to every parameter it finds                                 |
+| Behavior              | Spiders the site and observes the traffic                                    | Sends attack payloads to every parameter it finds                                 |
 | Requests sent         | Ordinary retrieval requests                                                  | Real attack strings: SQL injection, path traversal, command injection             |
 | What it finds         | What the responses reveal (missing headers, cookie flags, information leaks) | Whether a vulnerability actually holds                                            |
 | What it leaves behind | Access log entries                                                           | Attack attempts in logs, created or modified data, failed authentication attempts |
 
-Baseline sends no attack payloads, which is what makes it safe to point at an environment people are using. In exchange it only sees what the responses reveal.
+Baseline sends no attack payloads, which is what makes it safe to point at an environment people are using, such as a demo or a staging deployment. Production stays out of scope, per the caution further down this page. In exchange it only sees what the responses reveal.
 
 ### Pointing a Full Scan at something in use
 
-Full Scan is a different proposition. All three of the following remain even when the target is read-only.
+Full Scan is a different proposition. The first two of the following hold even when the target is read-only.
 
 - **Resource exhaustion.** Every parameter it discovers gets dozens to hundreds of request variants. Aimed at an expensive path such as search or a listing endpoint, real users feel it.
 - **Account lockout.** Finding a login path, it repeatedly attempts authentication bypass. On a system with a lockout policy, real accounts can be locked when the scan finishes.
@@ -120,9 +120,9 @@ So a Full Scan belongs on a scan-only instance: somewhere data can be wiped and 
 
 [TRUSCA](https://github.com/trustedoss/trusca) has Baseline only, for now.
 
-The demo host runs with `DEMO_READ_ONLY` on, rejecting anything but GET, HEAD and OPTIONS, so most of the write risk was already closed. Full was still deferred, because two of the three concerns above have nothing to do with writes. Retrieval alone consumes resources, and authentication attempts still trip lockout policy. On top of that, a setting exists that opens a scan-ingest path when sandbox scans are permitted. Full waits for a scan-only instance.
+The demo host runs with `DEMO_READ_ONLY` on, rejecting anything but GET, HEAD and OPTIONS, so most of the write risk was already closed. Full was still deferred, because the first two concerns above have nothing to do with writes. Retrieval alone consumes resources, and authentication attempts still trip lockout policy. The third does not vanish either: permitting sandbox scans opens a path that ingests scan results. Full waits for a scan-only instance.
 
-Baseline got caps too: five minutes of spidering, ten for the whole run. Not to shorten CI. An unbounded spider hitting that ingest path repeatedly is resource exhaustion on its own, with no attack payload involved.
+Baseline got caps too: two minutes of spidering, six for the whole run. Not to shorten CI. The demo is deliberately cheap to run and carries memory limits, so the retrieval load of an unbounded spider is itself too much for that size. Raise them after watching a run leave the response times steady, not before.
 
 The target URL lives in a repository variable rather than in the workflow. With the variable empty, the job logs that it scanned nothing and exits successfully. Merging a workflow and pointing it at a specific host are separate decisions, and the second should not arrive as a side effect of the first.
 
