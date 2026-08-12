@@ -134,6 +134,44 @@ FAIL: agent 실행 admonition 누락
 
 ---
 
+## 처음 기여하신다면
+
+1. 저장소를 fork 하고 브랜치를 만듭니다.
+2. 위 "작업 범위"의 O 항목이면 바로 고치셔도 됩니다.
+3. `-s` 옵션으로 커밋하고 Pull Request를 엽니다.
+
+`/qa changed` 같은 하네스 명령은 메인테이너용입니다. 실행 환경이 없어도 Pull Request는 여실 수
+있습니다. 검증은 CI와 메인테이너가 맡습니다.
+
+---
+
+## 라이선스와 저작권
+
+기여하신 내용의 저작권은 기여자 본인이 그대로 보유합니다. 프로젝트는 그 기여를 문서는
+[CC BY 4.0](./LICENSE-docs), 코드는 [MIT](./LICENSE)로 배포합니다.
+
+모든 커밋에는 DCO(Developer Certificate of Origin) 사인오프가 필요합니다. 커밋할 때 `-s`를
+붙이면 됩니다.
+
+```bash
+git commit -s -m "docs: 정책 템플릿에 예시 추가"
+```
+
+커밋 메시지 끝에 아래 한 줄이 남습니다. 그 기여를 프로젝트 라이선스로 제출할 권리가 본인에게
+있다는 확인이며, 전문은 [developercertificate.org](https://developercertificate.org/)에 있습니다.
+
+```
+Signed-off-by: Your Name <your.email@example.com>
+```
+
+이미 만든 커밋에서 빠뜨렸다면 `git commit --amend -s`로, 여러 커밋이면
+`git rebase --signoff origin/main`으로 채울 수 있습니다.
+
+프로젝트 운영 방식은 [`GOVERNANCE.md`](./GOVERNANCE.md), 메인테이너 목록은
+[`MAINTAINERS.md`](./MAINTAINERS.md)에 있습니다.
+
+---
+
 ## 참고 문서
 
 | 문서                             | 내용                                     |
@@ -275,6 +313,44 @@ FAIL: agent 실행 admonition 누락
 First exit the current Claude session (`/exit` or `Ctrl+C`), then run the command below in a new terminal.
 :::
 ```
+
+---
+
+## Your first contribution
+
+1. Fork the repository and create a branch.
+2. If your change falls under the allowed paths above, go ahead and edit.
+3. Commit with `-s` and open a pull request.
+
+Harness commands such as `/qa changed` are for maintainers. You can open a pull request without
+that setup; CI and the maintainers handle verification.
+
+---
+
+## License and copyright
+
+You keep the copyright in what you contribute. The project distributes contributions as
+[CC BY 4.0](./LICENSE-docs) for documentation and [MIT](./LICENSE) for code.
+
+Every commit needs a DCO (Developer Certificate of Origin) sign-off. Add `-s` when you commit.
+
+```bash
+git commit -s -m "docs: add an example to the policy template"
+```
+
+That appends the line below to your commit message. It certifies that you have the right to
+submit the contribution under the project license; the full text is at
+[developercertificate.org](https://developercertificate.org/).
+
+```
+Signed-off-by: Your Name <your.email@example.com>
+```
+
+If you forgot on a commit you already made, use `git commit --amend -s`, or
+`git rebase --signoff origin/main` for several commits.
+
+How the project is run is described in [`GOVERNANCE.md`](./GOVERNANCE.md), and the maintainer
+list is in [`MAINTAINERS.md`](./MAINTAINERS.md).
 
 ---
 
