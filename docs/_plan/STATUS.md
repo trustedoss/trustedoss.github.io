@@ -3,6 +3,56 @@
 > 목적: 긴 세션에서 히스토리가 유실돼도 이 파일만 보면 즉시 재개 가능. 매 task 후 갱신·커밋한다.
 > 최종 갱신: 2026-08-12
 
+## 영문화 잔여 조사와 보완 계획 (2026-08-12) — 계획 수립 완료
+
+> 조사 방법: 빌드된 `build/en/**/*.html` 87개에서 script·style·태그를 제거하고 한글을
+> 추출했다. 소스가 아니라 실제 렌더 결과를 기준으로 삼아야 독자가 마주치는 것만 잡힌다.
+> 결과: 31개 페이지에 한글 잔존. 언어 전환 드롭다운의 "한국어"는 정상이므로 제외했다.
+
+### 1단계 — 영문 독자에게 한국어 산출물이 나가는 것 (기능 결함)
+
+- [ ] `website/static/tools/` 도구 9개. 영문 devsecops·ai-coding 페이지 5곳이 iframe 으로
+      임베드하는데 전부 한국어다. rules-generator 에 적용한 `?lang=en` 사전 방식을 그대로 쓴다. - 분석기 5개(sbom-analyzer, sast-analyzer, secret-analyzer, iac-fixer, workflow-generator)는
+      Claude API 프롬프트까지 한국어라 **생성 결과물도 한국어로 나온다**. 프롬프트도 함께 번역한다 - 데모 4개(sbom, sast, secret, iac 의 sample-demo)는 정적 미리보기라 화면 문자열만 번역하면 된다
+- [ ] 영문 docs 5개 파일이 `` `시작` `` 을 입력하라고 안내한다(02, 03, 04, 06 챕터와 05-tools/vulnerability).
+      `agents/en/` 지침은 "start" 기준이므로 안내를 맞춘다
+
+### 2단계 — 영문 첫인상과 SEO
+
+- [ ] 랜딩 Hero 의 데모 콘텐츠. 터미널 진행 문구("회사 상황 6개 질문에 답하는 중…"),
+      정책 문서·선언문 미리보기가 하드코딩 한국어다. "처음이세요? 5분 빠른 시작" 도 미번역
+- [ ] `website/src/theme/Heading/index.tsx:33` 의 `aria-label="링크 복사"`. 모든 영문 docs
+      페이지의 헤딩마다 들어가므로 스크린리더 사용자에게 계속 노출된다
+- [ ] `website/src/components/Prerequisite/index.tsx`. 24줄 aria-label 이 raw 한국어이고,
+      26줄의 `<Translate id="prerequisite.label">` 은 code.json 에 키가 없어 한국어로 폴백된다
+- [ ] `website/docusaurus.config.ts:88` JSON-LD. `inLanguage: 'ko'` 와 한국어 description 이
+      영문 페이지에도 그대로 삽입된다
+- [ ] 페이지 하단 이전·다음 네비게이션에 한국어 문서 제목이 나온다. `current.json` 의
+      `sidebar.docs.doc.*` 번역은 있는데 pagination 에 반영되지 않는다 — 원인 확인 필요
+
+### 3단계 — 주변 자산
+
+- [ ] 블로그. `welcome` 글이 한국어 원문 그대로 영문 사이트에 노출된다(영문 번역본 없음)
+- [ ] `website/static/llms.txt`·`llms-full.txt`·`manifest.json` 이 한국어뿐이다
+- [ ] `README.en.md` 없음. GitHub 첫 화면이라 clone 하려는 영문 사용자가 먼저 본다
+- [ ] `samples/` 13개 파일(README·주석)이 한국어. 영문 agent 로 실습할 때 마주친다
+
+### 처리 완료
+
+- [x] 발표 슬라이드. 한글 잔존 521건으로 가장 많았지만 슬라이드 본문은 원래 영어였고,
+      한글은 전부 발표자 노트(`.notes-src` 30개 블록)였다. 웹 공개본에는 노트가 필요 없으므로
+      `deck/publish.sh` 가 복사할 때 노트 블록을 걷어내고 S 키 핸들러도 함께 막도록 고쳤다.
+      노트를 지우고 S 키를 살려 두면 빈 발표자 패널이 열린다. `deck/index.html` 원본은
+      노트를 그대로 유지한다. 한국어와 영문 talks 페이지의 조작 안내에서 S 키 항목을 뺐다.
+      결과: 공개본 한글 0자, 슬라이드 23장 유지, 브라우저에서 이동·다크모드 정상
+
+### 방향 확인이 필요한 것
+
+- `output-sample/` 은 한국어지만 웹의 `reference/samples/` 영문판이 이미 번역돼 있어
+  저장소를 직접 열 때만 노출된다. 우선순위가 낮다
+- `CONTRIBUTING.md`·`POSITIONING.md`·`STYLEGUIDE.md` 는 기여자용이다
+- 영문화 대상 아님: `.claude/` 하네스, `docs/_plan/`, `deck/`, 각 `CLAUDE.md`
+
 ## agents·templates 영문 트리 (2026-08-12) — 진행 중
 
 > 계기: 영문 docs 12개 파일이 `cd agents/02-organization-designer` 를 그대로 안내하는데

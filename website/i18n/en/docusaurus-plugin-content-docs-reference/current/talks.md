@@ -30,7 +30,7 @@ model for governing AI coding, and the tools that keep the program running once 
 
 :::note Slide controls
 
-Move with `←` `→`, go full screen with `F`. `S` opens the presenter notes and `D` switches
-to a dark background. Every address on screen is clickable.
+Move with `←` `→`, go full screen with `F`, and switch to a dark background with `D`.
+Every address on screen is clickable.
 
 :::
