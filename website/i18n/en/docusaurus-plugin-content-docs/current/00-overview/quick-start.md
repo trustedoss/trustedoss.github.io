@@ -46,7 +46,7 @@ If a Claude session is open, exit it first (`/exit` or `Ctrl+C`). Run the comman
 :::
 
 ```bash
-cd agents/02-organization-designer
+cd agents/en/02-organization-designer
 claude
 ```
 

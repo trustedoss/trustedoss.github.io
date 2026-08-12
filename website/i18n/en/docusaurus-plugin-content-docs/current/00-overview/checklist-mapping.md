@@ -592,15 +592,15 @@ Once you understand this mapping document, start producing the actual deliverabl
 If the `output/` folder is empty, begin with the steps below.
 :::
 
-1. **Organization design** → `cd agents/02-organization-designer && claude`
-2. **Create policy** → `cd agents/03-policy-generator && claude`
-3. **Process design** → `cd agents/04-process-designer && claude`
-4. **Create SBOM** → `cd agents/05-sbom-guide && claude`
-5. **License analysis** → `cd agents/05-sbom-analyst && claude`
-6. **SBOM management plan** → `cd agents/05-sbom-management && claude`
-7. **Vulnerability analysis** → `cd agents/05-vulnerability-analyst && claude`
-8. **Training program** → `cd agents/06-training-manager && claude`
-9. **Certification declaration** → `cd agents/07-conformance-preparer && claude`
+1. **Organization design** → `cd agents/en/02-organization-designer && claude`
+2. **Create policy** → `cd agents/en/03-policy-generator && claude`
+3. **Process design** → `cd agents/en/04-process-designer && claude`
+4. **Create SBOM** → `cd agents/en/05-sbom-guide && claude`
+5. **License analysis** → `cd agents/en/05-sbom-analyst && claude`
+6. **SBOM management plan** → `cd agents/en/05-sbom-management && claude`
+7. **Vulnerability analysis** → `cd agents/en/05-vulnerability-analyst && claude`
+8. **Training program** → `cd agents/en/06-training-manager && claude`
+9. **Certification declaration** → `cd agents/en/07-conformance-preparer && claude`
 
 :::info Status of this document
 This document is the project's canonical mapping reference for the **full** ISO/IEC 5230 and the **full** ISO/IEC 18974 requirements.

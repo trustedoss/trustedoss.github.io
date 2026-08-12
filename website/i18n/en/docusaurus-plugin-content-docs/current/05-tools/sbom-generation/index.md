@@ -165,7 +165,7 @@ Terminate the current Claude session first (`/exit` or `Ctrl+C`), then run the c
 :::
 
 ```bash
-cd agents/05-sbom-guide
+cd agents/en/05-sbom-guide
 claude
 ```
 
@@ -200,7 +200,7 @@ Terminate the current Claude session first (`/exit` or `Ctrl+C`), then run the c
 :::
 
 ```bash
-cd agents/05-sbom-analyst
+cd agents/en/05-sbom-analyst
 claude
 ```
 
@@ -285,7 +285,7 @@ Terminate the current Claude session first (`/exit` or `Ctrl+C`), then run the c
 :::
 
 ```bash
-cd agents/05-sbom-management
+cd agents/en/05-sbom-management
 claude
 ```
 
@@ -298,7 +298,7 @@ Terminate the current Claude session first (`/exit` or `Ctrl+C`), then run the c
 :::
 
 ```bash
-cd agents/05-vulnerability-analyst
+cd agents/en/05-vulnerability-analyst
 claude
 ```
 

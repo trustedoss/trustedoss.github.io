@@ -24,7 +24,7 @@ This agent asks no questions: it reads the existing deliverables in your `output
 Report type: Gap Analysis (ISO/IEC 5230 + ISO/IEC 18974)
 Created: 2026-03-23
 Target project: TechUnicorn open source program
-Tools used: trustedoss agents/07-conformance-preparer
+Tools used: trustedoss agents/en/07-conformance-preparer
 
 ---
 

@@ -46,7 +46,7 @@
 ├── scripts/
 │   ├── verify.sh                     # 13가지 정적 검증 (항상 마지막에 실행)
 │   ├── test-coverage.py              # ISO 커버리지 정합성 4종 테스트
-│   ├── test-agent-specs.py           # Agent CLAUDE.md 스펙 구조 검증 (Layer 1)
+│   ├── test-agent-specs.py           # Agent CLAUDE.md 스펙 구조 검증 (Layer 1, ko·en 트리 + 파일 패리티)
 │   ├── test-output-fixtures.py       # 골든 픽스처 회귀 테스트 (Layer 2)
 │   ├── test-agent-e2e.py             # LLM 기반 E2E 대화 테스트 (Layer 3)
 │   ├── validate-chain.py             # agent 체인 전제 조건 연결 검증

@@ -59,7 +59,7 @@ Proceed in the following order:
    :::
 
    ```bash
-   cd agents/07-conformance-preparer && claude
+   cd agents/en/07-conformance-preparer && claude
    ```
 
    The agent automatically scans the entire `output/` folder and generates a gap analysis report.

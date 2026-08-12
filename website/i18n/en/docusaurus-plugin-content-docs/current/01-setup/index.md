@@ -195,7 +195,7 @@ First terminate the current Claude session (`/exit` or `Ctrl+C`), then run the c
 :::
 
 ```bash
-cd agents/02-organization-designer
+cd agents/en/02-organization-designer
 claude
 ```
 

@@ -104,7 +104,7 @@ Take your time and work through each step until you understand it.
    :::
 
    ```bash
-   cd agents/06-training-manager && claude
+   cd agents/en/06-training-manager && claude
    ```
 
 3. When the Claude prompt opens, type **`시작`** (start).
@@ -224,5 +224,5 @@ Terminate the current Claude session first (`/exit` or `Ctrl+C`), then run the c
 :::
 
 ```bash
-cd agents/07-conformance-preparer && claude
+cd agents/en/07-conformance-preparer && claude
 ```

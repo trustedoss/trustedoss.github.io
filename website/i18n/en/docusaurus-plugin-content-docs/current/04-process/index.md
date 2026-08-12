@@ -17,7 +17,7 @@ This chapter documents the approval of open source use, the pre-release checklis
 If a policy defines "what should be done," a process defines "how it is done."
 Even if the policy states "using AGPL requires a source disclosure review," the policy remains a declaration unless you decide who reviews it, when, and in what form.
 
-Work with the `agents/04-process-designer` agent to generate 5–7 deliverables tailored to your company's environment.
+Work with the `agents/en/04-process-designer` agent to generate 5–7 deliverables tailored to your company's environment.
 You also cover CI/CD integration, aiming for a sustainable system that is naturally embedded in the development flow.
 
 ---
@@ -229,7 +229,7 @@ First terminate the current Claude session (`/exit` or `Ctrl+C`), then run the c
 :::
 
 ```bash
-cd agents/04-process-designer
+cd agents/en/04-process-designer
 claude
 ```
 
@@ -366,7 +366,7 @@ First terminate the current Claude session (`/exit` or `Ctrl+C`), then run the c
 :::
 
 ```bash
-cd agents/05-sbom-guide
+cd agents/en/05-sbom-guide
 claude
 ```
 

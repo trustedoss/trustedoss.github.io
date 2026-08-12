@@ -13,7 +13,7 @@ self_study_time: 1 hour
 
 Creating an SBOM once is not enough. Software changes constantly, and new vulnerabilities are disclosed every day. In this chapter, you establish a process to update the SBOM in step with your release cycle, store it by version, and share it systematically with external customers or suppliers.
 
-Running the `agents/05-sbom-management` agent produces two outputs: `output/sbom/sbom-management-plan.md`, which defines the update cycle and the responsible owner, and `output/sbom/sbom-sharing-template.md`, a cover document for delivering the SBOM to a supplier. Once these two documents are complete, the foundation for your SBOM management system is in place.
+Running the `agents/en/05-sbom-management` agent produces two outputs: `output/sbom/sbom-management-plan.md`, which defines the update cycle and the responsible owner, and `output/sbom/sbom-sharing-template.md`, a cover document for delivering the SBOM to a supplier. Once these two documents are complete, the foundation for your SBOM management system is in place.
 
 ---
 
@@ -204,7 +204,7 @@ Terminate the current Claude session first (`/exit` or `Ctrl+C`), then run the c
 :::
 
 ```bash
-cd agents/05-sbom-management
+cd agents/en/05-sbom-management
 claude
 ```
 
@@ -319,7 +319,7 @@ Terminate the current Claude session first (`/exit` or `Ctrl+C`), then run the c
 :::
 
 ```bash
-cd agents/05-vulnerability-analyst
+cd agents/en/05-vulnerability-analyst
 claude
 ```
 

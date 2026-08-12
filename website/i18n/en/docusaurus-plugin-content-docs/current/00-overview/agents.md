@@ -16,7 +16,7 @@ The core of TrustedOSS is that **an AI agent asks about your company's situation
 
 ## Agents at a glance
 
-| Chapter           | Agent (`agents/…`)                 | Generated deliverables                                                                                                                              |
+| Chapter           | Agent (`agents/en/…`)              | Generated deliverables                                                                                                                              |
 | ----------------- | ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 2 Organization    | `02-organization-designer`         | role-definition, raci-matrix, appointment-template                                                                                                  |
 | 3 Policy          | `03-policy-generator`              | oss-policy, license-allowlist                                                                                                                       |
@@ -45,7 +45,7 @@ First exit the current Claude session (`/exit` or `Ctrl+C`), then run the comman
 :::
 
 ```bash
-cd agents/XX-agent-name
+cd agents/en/XX-agent-name
 claude
 ```
 

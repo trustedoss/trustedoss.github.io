@@ -17,14 +17,24 @@
 - [x] 2단계: `agents/en/` 체인 9개 + 마스터 `agents/en/CLAUDE.md`
       — 영문 섹션명은 `## Input questions` / `## Output deliverables` / `Behavior on session start`
       로 고정했다(4단계에서 스크립트가 이 문자열을 인식해야 한다). 경로는 `../../../output/...`
-- [ ] 3단계: `agents/en/` 독립 도구 8개 + prompts 2개
+- [x] 3단계: `agents/en/` 독립 도구 8개 + prompts 2개
       (ai-coding-setup, devsecops-setup, iac-fixer, sast/secret/sbom-vuln-analyst,
-      level2-automation/issue-tracker·pr-comment)
-- [ ] 4단계: 검증 스크립트 확장 — test-agent-specs.py 는 한국어 헤더(`## 입력 질문`,
-      `## 출력 산출물`)를 하드코딩하므로 영문 헤더도 인식시킨다. validate-chain.py,
-      check-i18n-parity.py 에 영문 트리 추가
-- [ ] 5단계: 영문 docs 12개 파일의 `cd agents/...` → `cd agents/en/...` 수정
-- [ ] 6단계: verify.sh 13/13, `npm run build`, 루트 CLAUDE.md 디렉토리 구조 갱신
+      level2-automation/issue-tracker·pr-comment). 두 prompts 의 "한국어로 작성" 지시는
+      "Write in English" 로 바꿨다
+- [x] 4단계: `test-agent-specs.py` 를 TREES(ko·en) 구조로 확장했다. 트리마다 섹션 헤더
+      문자열과 templates 접두사를 따로 두고, agents·templates 의 ko/en 파일 패리티까지
+      한 스크립트에서 검사한다. validate-chain.py 는 output/ 만 보므로 수정 불필요
+- [x] 5단계: 영문 docs 12개 파일의 `agents/...` → `agents/en/...` (46곳)
+- [x] 6단계: verify.sh 13/13, `npm run build` ko·en 성공, 루트 CLAUDE.md·README·
+      harness-guide 갱신. 영문 트리 한글 잔존 0건, 경로 방향 교차 확인 완료
+
+커밋 완료. 슬라이드 세션이 덱 커밋을 마쳐 pre-commit 훅이 풀린 뒤 한 커밋으로 묶었다.
+`.claude/STATUS.md` 는 그 세션의 자동 갱신 파일이라 제외했다.
+
+동시 세션 주의 (2026-08-12): 발표 슬라이드 세션이 같은 저장소에서 `deck/index.html` 과
+`website/static/reference/talks/.../slides.html` 을 편집 중이다. 그 세션이 스테이징 전체를
+커밋하면서 `agents/en/` 19개 파일이 덱 커밋 `a16ffcf` 에 섞여 들어갔다(내용 손실은 없음).
+그 세션이 끝날 때까지 이쪽은 커밋하지 않고 파일 작업만 진행한다.
 
 각 단계 종료 시 동일 게이트: 파일 수 대조 → verify.sh → 이전 단계 산출물 회귀 확인.
 반드시 조건부로 바꿀 것: `agents/ai-coding-setup/prompts/generate-rules.md:133` 과

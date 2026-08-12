@@ -224,7 +224,7 @@ Each time a PR is opened, Claude analyzes the security scan results and
 automatically posts a comment on the PR.
 
 ```bash
-cd agents/level2-automation/pr-comment
+cd agents/en/level2-automation/pr-comment
 claude
 ```
 
@@ -240,7 +240,7 @@ Generates a workflow that automatically registers findings from security scan re
 It includes deduplication logic keyed by CVE ID.
 
 ```bash
-cd agents/level2-automation/issue-tracker
+cd agents/en/level2-automation/issue-tracker
 claude
 ```
 

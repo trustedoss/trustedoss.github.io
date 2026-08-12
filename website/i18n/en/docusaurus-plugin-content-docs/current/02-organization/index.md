@@ -127,7 +127,7 @@ You interact with the agent and create the organizational deliverables.
    :::
 
    ```bash
-   cd agents/02-organization-designer
+   cd agents/en/02-organization-designer
    claude
    ```
 
@@ -285,7 +285,7 @@ First terminate the current Claude session (`/exit` or `Ctrl+C`), then run the c
 :::
 
 ```bash
-cd agents/03-policy-generator
+cd agents/en/03-policy-generator
 claude
 ```
 

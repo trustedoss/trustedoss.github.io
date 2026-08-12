@@ -16,7 +16,7 @@ self_study_time: 1 hour
 
 In this chapter, you will create an open source policy document tailored to your company. An open source policy is not just an internal rulebook — it serves as a means of legal protection in a licensing dispute or vulnerability incident, demonstrating that the company has managed compliance systematically. It becomes an official document you can submit immediately when a customer or partner requests proof of an open source management system.
 
-When you run `agents/03-policy-generator`, it asks five questions — including your distribution method, development languages, and delivery situation — and based on your answers automatically generates two deliverables: `output/policy/oss-policy.md` and `output/policy/license-allowlist.md`.
+When you run `agents/en/03-policy-generator`, it asks five questions — including your distribution method, development languages, and delivery situation — and based on your answers automatically generates two deliverables: `output/policy/oss-policy.md` and `output/policy/license-allowlist.md`.
 
 ---
 
@@ -158,7 +158,7 @@ First terminate the current Claude session (`/exit` or `Ctrl+C`), then run the c
 :::
 
 ```bash
-cd agents/03-policy-generator
+cd agents/en/03-policy-generator
 claude
 ```
 
@@ -332,7 +332,7 @@ First terminate the current Claude session (`/exit` or `Ctrl+C`), then run the c
 :::
 
 ```bash
-cd agents/04-process-designer
+cd agents/en/04-process-designer
 claude
 ```
 

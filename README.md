@@ -66,6 +66,10 @@ cd trustedoss-agents && claude
 
 ## Agent 목록
 
+아래 표의 Agent는 한국어로 질문하고 한국어 산출물을 만듭니다. 영어로 진행하려면 같은 이름의
+영문 Agent가 `agents/en/` 아래에 있습니다 (`cd agents/en/02-organization-designer && claude`).
+영문 Agent는 `templates/en/` 템플릿을 참조합니다.
+
 ### 체계구축 Agent (ISO/IEC 5230 & 18974)
 
 | Agent                             | 역할                          | 실행 방법                                      |
