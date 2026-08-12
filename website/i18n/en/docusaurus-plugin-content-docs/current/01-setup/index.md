@@ -5,6 +5,7 @@ checklist:
   - 'ISO/IEC 5230: []'
   - 'ISO/IEC 18974: []'
 self_study_time: 30 minutes to 1 hour
+pagination_label: '1. Environment Setup'
 ---
 
 # Environment setup: Install the tools needed for the exercises

@@ -22,18 +22,28 @@ JS 치환을 반영하지 못하므로 도구 페이지 판정에 쓰면 안 된
 빌드 중에 스캔하면 파일이 12개만 잡혀 오판하므로 빌드 완료 후에 센다.
 결과: 영문 페이지 88개 중 한글 잔존 30개 (도구 10개는 위 이유로 정상, 나머지 20개가 2·3단계 몫).
 
-### 2단계 — 영문 첫인상과 SEO
+### 2단계 — 영문 첫인상과 SEO — 완료
 
-- [ ] 랜딩 Hero 의 데모 콘텐츠. 터미널 진행 문구("회사 상황 6개 질문에 답하는 중…"),
-      정책 문서·선언문 미리보기가 하드코딩 한국어다. "처음이세요? 5분 빠른 시작" 도 미번역
-- [ ] `website/src/theme/Heading/index.tsx:33` 의 `aria-label="링크 복사"`. 모든 영문 docs
-      페이지의 헤딩마다 들어가므로 스크린리더 사용자에게 계속 노출된다
-- [ ] `website/src/components/Prerequisite/index.tsx`. 24줄 aria-label 이 raw 한국어이고,
-      26줄의 `<Translate id="prerequisite.label">` 은 code.json 에 키가 없어 한국어로 폴백된다
-- [ ] `website/docusaurus.config.ts:88` JSON-LD. `inLanguage: 'ko'` 와 한국어 description 이
-      영문 페이지에도 그대로 삽입된다
-- [ ] 페이지 하단 이전·다음 네비게이션에 한국어 문서 제목이 나온다. `current.json` 의
-      `sidebar.docs.doc.*` 번역은 있는데 pagination 에 반영되지 않는다 — 원인 확인 필요
+원인이 두 갈래였다. Hero 와 Prerequisite 는 이미 `<Translate>` 로 감싸져 있었는데
+code.json 에 키 자체가 없어 한국어로 폴백되고 있었다. 코드의 번역 키와 code.json 을
+전수 대조해 누락 6개를 찾았고, `npx docusaurus write-translations --locale en` 으로
+추출한 뒤(기존 번역 0개 변경 확인) 영문을 채웠다. Showcase 의 문서 미리보기와
+Heading 의 aria-label 은 아예 감싸지지 않은 raw 문자열이라 `translate()` 로 감쌌다.
+
+- [x] 랜딩 Hero: cta.quickstart, terminal.progress, chip 3개. 터미널 창 경로도 로케일별로
+      분리해 영문에서는 `agents/en/02-organization-designer` 가 보인다
+- [x] Showcase 의 정책·선언문 미리보기 2개를 `translate()` 로 감쌌다
+- [x] `theme/Heading/index.tsx` 의 aria-label·title ("링크 복사", "복사됨").
+      모든 문서 헤딩마다 붙어 스크린리더에 노출되던 것
+- [x] `components/Prerequisite/index.tsx` 의 aria-label 과 `prerequisite.label` 키
+- [x] `docusaurus.config.ts` JSON-LD. `DOCUSAURUS_CURRENT_LOCALE` 로 분기해 영문 빌드에는
+      영어 name·description 과 `inLanguage: 'en'` 이 들어간다
+- [x] 페이지 하단 이전·다음 네비게이션. 원인은 Docusaurus 가 pagination 라벨을
+      front matter(`pagination_label` → `sidebar_label` → title)에서 가져오기 때문이었다.
+      sidebars.ts 의 label 은 사이드바 전용이라 `sidebar.docs.doc.*` 번역이 닿지 않는다.
+      영문 문서 8개에 `pagination_label` 을 넣어 해결했다
+
+결과: 영문 페이지의 한글 잔존이 도구 제외 20개에서 8개로 줄었고, 남은 8개는 전부 블로그(3단계)다.
 
 ### 3단계 — 주변 자산
 

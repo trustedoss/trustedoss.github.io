@@ -22,11 +22,14 @@ const SHOTS: Shot[] = [
     id: 'policy',
     href: '/reference/samples/policy',
     file: 'oss-policy.md',
-    preview: `# 오픈소스 정책
+    preview: translate({
+      id: 'homepage.showcase.policy.preview',
+      message: `# 오픈소스 정책
 ## 3.1 라이선스 승인 등급
 - 허용:   MIT · Apache-2.0
 - 조건부: LGPL · MPL-2.0
 - 금지:   AGPL · 상용 EULA`,
+    }),
     caption: translate({
       id: 'homepage.showcase.policy.caption',
       message: '정책 · 조직 — 라이선스 승인 등급과 RACI 책임 매트릭스',
@@ -53,11 +56,14 @@ const SHOTS: Shot[] = [
     id: 'conformance',
     href: '/reference/samples/conformance',
     file: 'conformance.md',
-    preview: `ISO/IEC 5230 적합성 선언문
+    preview: translate({
+      id: 'homepage.showcase.conformance.preview',
+      message: `ISO/IEC 5230 적합성 선언문
 조직: ____________________
 [v] 3.1 프로그램 기반 수립
 [v] 3.2 업무 지원 · 책임 지정
 [v] 3.3 콘텐츠 검토 · 승인`,
+    }),
     caption: translate({
       id: 'homepage.showcase.conformance.caption',
       message: '자체 인증 — 적합성 체크리스트와 자체 인증 선언문 초안',

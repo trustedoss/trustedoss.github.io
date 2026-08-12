@@ -77,7 +77,9 @@ function Hero() {
               <i />
               <i />
               <span className={styles.windowTitle}>
-                agents/02-organization-designer
+                <Translate id="homepage.hero.terminal.path">
+                  agents/02-organization-designer
+                </Translate>
               </span>
             </div>
             <div className={styles.windowBody}>

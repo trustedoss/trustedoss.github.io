@@ -5,6 +5,7 @@ checklist:
   - 'ISO/IEC 5230: G4.1 (3.6.1), G4.3 (3.6.2), G4.4 (3.6.2)'
   - 'ISO/IEC 18974: G4.2 (4.4.1), G4.3 (4.4.2), G4.4 (4.4.2)'
 self_study_time: 2 hours
+pagination_label: '7. Self-Certification'
 ---
 
 # Self-Certification Declaration: The Final Step

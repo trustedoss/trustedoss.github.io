@@ -383,36 +383,30 @@
     "description": "CTA section intro title"
   },
   "homepage.cta.feature1.title": {
-    "message": "Build Your System",
-    "description": "CTA feature card 1 title"
+    "message": "Build Your System"
   },
   "homepage.cta.feature1.desc": {
-    "message": "Build an enterprise open source management system from scratch to completion, based on ISO/IEC 5230 & 18974.",
-    "description": "CTA feature card 1 description"
+    "message": "Build an enterprise open source management system from scratch to completion, based on ISO/IEC 5230 & 18974."
   },
   "homepage.cta.feature1.link": {
     "message": "Start the Guide",
     "description": "CTA feature card 1 link label"
   },
   "homepage.cta.feature2.title": {
-    "message": "DevSecOps",
-    "description": "CTA feature card 2 title"
+    "message": "DevSecOps"
   },
   "homepage.cta.feature2.desc": {
-    "message": "Integrate security into your development pipeline. Covers SAST, SCA, container security, and CI/CD automation.",
-    "description": "CTA feature card 2 description"
+    "message": "Integrate security into your development pipeline. Covers SAST, SCA, container security, and CI/CD automation."
   },
   "homepage.cta.feature2.link": {
     "message": "DevSecOps Guide",
     "description": "CTA feature card 2 link label"
   },
   "homepage.cta.feature3.title": {
-    "message": "AI Coding",
-    "description": "CTA feature card 3 title"
+    "message": "AI Coding"
   },
   "homepage.cta.feature3.desc": {
-    "message": "Manage AI coding tools like Claude Code, Cursor, and Copilot alongside open source compliance.",
-    "description": "CTA feature card 3 description"
+    "message": "Manage AI coding tools like Claude Code, Cursor, and Copilot alongside open source compliance."
   },
   "homepage.cta.feature3.link": {
     "message": "AI Coding Guide",
@@ -463,224 +457,170 @@
     "description": "Feature 3 audience label"
   },
   "homepage.feature.more": {
-    "message": "Learn more →",
-    "description": "Feature card link label"
+    "message": "Learn more →"
   },
   "homepage.features.title": {
-    "message": "Three tracks for your role",
-    "description": "Features section title"
+    "message": "Three tracks for your role"
   },
   "homepage.features.subtitle": {
-    "message": "A standards-based management system, a security pipeline, and AI coding compliance — start with the track you need.",
-    "description": "Features section subtitle"
+    "message": "A standards-based management system, a security pipeline, and AI coding compliance — start with the track you need."
   },
   "homepage.showcase.title": {
-    "message": "Real artifacts the agents produce",
-    "description": "Showcase section title"
+    "message": "Real artifacts the agents produce"
   },
   "homepage.showcase.subtitle": {
-    "message": "Preview the artifacts auto-generated for your company through these best-practice samples.",
-    "description": "Showcase section subtitle"
+    "message": "Preview the artifacts auto-generated for your company through these best-practice samples."
   },
   "homepage.showcase.policy.caption": {
-    "message": "Policy & org — license approval tiers and the RACI responsibility matrix",
-    "description": "Showcase policy caption"
+    "message": "Policy & org — license approval tiers and the RACI responsibility matrix"
   },
   "homepage.showcase.sbom.caption": {
-    "message": "SBOM & vulnerabilities — CycloneDX analysis and triage reports",
-    "description": "Showcase sbom caption"
+    "message": "SBOM & vulnerabilities — CycloneDX analysis and triage reports"
   },
   "homepage.showcase.conformance.caption": {
-    "message": "Self-certification — conformance checklist and declaration draft",
-    "description": "Showcase conformance caption"
+    "message": "Self-certification — conformance checklist and declaration draft"
   },
   "homepage.whykwg.title": {
-    "message": "Why TrustedOSS, together with KWG",
-    "description": "WhyKwg section title"
+    "message": "Why TrustedOSS, together with KWG"
   },
   "homepage.whykwg.subtitle": {
-    "message": "Not competition, but completion. KWG points the way with standards and blank templates; TrustedOSS turns that into executable artifacts with AI and automation.",
-    "description": "WhyKwg section subtitle"
+    "message": "Not competition, but completion. KWG points the way with standards and blank templates; TrustedOSS turns that into executable artifacts with AI and automation."
   },
   "homepage.whykwg.kwg.badge": {
-    "message": "What & why",
-    "description": "WhyKwg KWG badge"
+    "message": "What & why"
   },
   "homepage.whykwg.kwg.title": {
-    "message": "OpenChain KWG",
-    "description": "WhyKwg KWG card title"
+    "message": "OpenChain KWG"
   },
   "homepage.whykwg.kwg.desc": {
-    "message": "Tells you what the standard requires and why. Provides the international standards, an enterprise OSS management guide, and blank templates.",
-    "description": "WhyKwg KWG card description"
+    "message": "Tells you what the standard requires and why. Provides the international standards, an enterprise OSS management guide, and blank templates."
   },
   "homepage.whykwg.kwg.point1": {
-    "message": "ISO/IEC 5230 and 18974 standard guides",
-    "description": "WhyKwg KWG point 1"
+    "message": "ISO/IEC 5230 and 18974 standard guides"
   },
   "homepage.whykwg.kwg.point2": {
-    "message": "Blank policy and process templates",
-    "description": "WhyKwg KWG point 2"
+    "message": "Blank policy and process templates"
   },
   "homepage.whykwg.kwg.point3": {
-    "message": "Tool guides and links",
-    "description": "WhyKwg KWG point 3"
+    "message": "Tool guides and links"
   },
   "homepage.whykwg.toss.badge": {
-    "message": "How, automatically",
-    "description": "WhyKwg TrustedOSS badge"
+    "message": "How, automatically"
   },
   "homepage.whykwg.toss.title": {
-    "message": "TrustedOSS",
-    "description": "WhyKwg TrustedOSS card title"
+    "message": "TrustedOSS"
   },
   "homepage.whykwg.toss.desc": {
-    "message": "Helps you actually achieve the standard with AI and automation, on a single path from zero to self-certification.",
-    "description": "WhyKwg TrustedOSS card description"
+    "message": "Helps you actually achieve the standard with AI and automation, on a single path from zero to self-certification."
   },
   "homepage.whykwg.toss.point1": {
-    "message": "AI agents auto-generate company-tailored artifacts",
-    "description": "WhyKwg TrustedOSS point 1"
+    "message": "AI agents auto-generate company-tailored artifacts"
   },
   "homepage.whykwg.toss.point2": {
-    "message": "Copy-paste CI workflows and Rules, no-API-key demos",
-    "description": "WhyKwg TrustedOSS point 2"
+    "message": "Copy-paste CI workflows and Rules, no-API-key demos"
   },
   "homepage.whykwg.toss.point3": {
-    "message": "Extends to DevSecOps and AI coding governance",
-    "description": "WhyKwg TrustedOSS point 3"
+    "message": "Extends to DevSecOps and AI coding governance"
   },
   "homepage.whykwg.note": {
-    "message": "TrustedOSS synchronizes KWG content and attributes it under CC BY 4.0.",
-    "description": "WhyKwg footer note"
+    "message": "TrustedOSS synchronizes KWG content and attributes it under CC BY 4.0."
   },
   "homepage.whykwg.note.link": {
-    "message": "View the OpenChain KWG guide",
-    "description": "WhyKwg footer note link"
+    "message": "View the OpenChain KWG guide"
   },
   "homepage.hero.eyebrow": {
-    "message": "Free self-study guide by OpenChain KWG",
-    "description": "Hero eyebrow"
+    "message": "Free self-study guide by OpenChain KWG"
   },
   "homepage.hero.title": {
     "message": "Build open source trust, yourself",
     "description": "Hero title"
   },
   "homepage.hero.title.line1": {
-    "message": "Open source trust,",
-    "description": "Hero title line 1"
+    "message": "Open source trust,"
   },
   "homepage.hero.title.line2": {
-    "message": "built by you.",
-    "description": "Hero title line 2"
+    "message": "built by you."
   },
   "homepage.finalcta.title": {
-    "message": "Start with step one, today",
-    "description": "Final CTA title"
+    "message": "Start with step one, today"
   },
   "homepage.finalcta.subtitle": {
-    "message": "A free OpenChain KWG guide, all the way to self-certification. No install, no cost, no vendor lock-in.",
-    "description": "Final CTA subtitle"
+    "message": "A free OpenChain KWG guide, all the way to self-certification. No install, no cost, no vendor lock-in."
   },
   "homepage.finalcta.cta": {
-    "message": "Start the guide",
-    "description": "Final CTA primary"
+    "message": "Start the guide"
   },
   "homepage.finalcta.cta2": {
-    "message": "See artifact samples",
-    "description": "Final CTA secondary"
+    "message": "See artifact samples"
   },
   "homepage.hero.subtitle.content": {
-    "message": "Build an ISO/IEC 5230 & 18974 open source management system step by step, with no vendor consulting — all the way to a self-certification declaration. No prior experience needed.",
-    "description": "Hero subtitle"
+    "message": "Build an ISO/IEC 5230 & 18974 open source management system step by step, with no vendor consulting — all the way to a self-certification declaration. No prior experience needed."
   },
   "homepage.hero.cta.start": {
-    "message": "Start the guide",
-    "description": "Hero primary CTA"
+    "message": "Start the guide"
   },
   "homepage.roadmap.title": {
-    "message": "From zero to self-certification, step by step",
-    "description": "Roadmap section title"
+    "message": "From zero to self-certification, step by step"
   },
   "homepage.roadmap.subtitle": {
-    "message": "Just follow the order. An agent at each step generates company-specific artifacts for you.",
-    "description": "Roadmap section subtitle"
+    "message": "Just follow the order. An agent at each step generates company-specific artifacts for you."
   },
   "homepage.roadmap.s0.title": {
-    "message": "Get started",
-    "description": "Roadmap step 0 title"
+    "message": "Get started"
   },
   "homepage.roadmap.s0.desc": {
-    "message": "Grasp the big picture of supply chain security and the two standards.",
-    "description": "Roadmap step 0 desc"
+    "message": "Grasp the big picture of supply chain security and the two standards."
   },
   "homepage.roadmap.s1.title": {
-    "message": "Set up",
-    "description": "Roadmap step 1 title"
+    "message": "Set up"
   },
   "homepage.roadmap.s1.desc": {
-    "message": "Prepare the foundation for self-study and artifact generation.",
-    "description": "Roadmap step 1 desc"
+    "message": "Prepare the foundation for self-study and artifact generation."
   },
   "homepage.roadmap.s2.title": {
-    "message": "Organization",
-    "description": "Roadmap step 2 title"
+    "message": "Organization"
   },
   "homepage.roadmap.s2.desc": {
-    "message": "Define governance owners with a responsibility (RACI) model.",
-    "description": "Roadmap step 2 desc"
+    "message": "Define governance owners with a responsibility (RACI) model."
   },
   "homepage.roadmap.s3.title": {
-    "message": "OSS policy",
-    "description": "Roadmap step 3 title"
+    "message": "OSS policy"
   },
   "homepage.roadmap.s3.desc": {
-    "message": "Establish license approval tiers and policy documents.",
-    "description": "Roadmap step 3 desc"
+    "message": "Establish license approval tiers and policy documents."
   },
   "homepage.roadmap.s4.title": {
-    "message": "Process",
-    "description": "Roadmap step 4 title"
+    "message": "Process"
   },
   "homepage.roadmap.s4.desc": {
-    "message": "Design operating procedures: review, approval, disclosure.",
-    "description": "Roadmap step 4 desc"
+    "message": "Design operating procedures: review, approval, disclosure."
   },
   "homepage.roadmap.s5.title": {
-    "message": "SBOM & vulnerabilities",
-    "description": "Roadmap step 5 title"
+    "message": "SBOM & vulnerabilities"
   },
   "homepage.roadmap.s5.desc": {
-    "message": "Generate and analyze SBOMs and manage vulnerabilities with tools.",
-    "description": "Roadmap step 5 desc"
+    "message": "Generate and analyze SBOMs and manage vulnerabilities with tools."
   },
   "homepage.roadmap.s6.title": {
-    "message": "Training",
-    "description": "Roadmap step 6 title"
+    "message": "Training"
   },
   "homepage.roadmap.s6.desc": {
-    "message": "Build the capability to keep the system running over time.",
-    "description": "Roadmap step 6 desc"
+    "message": "Build the capability to keep the system running over time."
   },
   "homepage.roadmap.s7.title": {
-    "message": "Self-certification",
-    "description": "Roadmap step 7 title"
+    "message": "Self-certification"
   },
   "homepage.roadmap.s7.desc": {
-    "message": "Check conformance and complete a self-certification declaration.",
-    "description": "Roadmap step 7 desc"
+    "message": "Check conformance and complete a self-certification declaration."
   },
   "homepage.meta.title": {
-    "message": "Trusted OSS · Trusted Open Source Supply Chain Management",
-    "description": "Homepage meta title"
+    "message": "Trusted OSS · Trusted Open Source Supply Chain Management"
   },
   "homepage.meta.description": {
-    "message": "A practical guide to building an enterprise open source management system based on ISO/IEC 5230 & 18974",
-    "description": "Homepage meta description"
+    "message": "A practical guide to building an enterprise open source management system based on ISO/IEC 5230 & 18974"
   },
   "homepage.hero.meta.vendorNeutral": {
-    "message": "Vendor-neutral",
-    "description": "Hero meta chip: vendor neutrality"
+    "message": "Vendor-neutral"
   },
   "journey.title": {
     "message": "From zero to self-certification"
@@ -764,5 +704,270 @@
   "journey.progressLabel": {
     "message": "Self-certification journey progress",
     "description": "Accessible name of the journey progress bar"
+  },
+  "prerequisite.label": {
+    "message": "Prerequisites"
+  },
+  "theme.heading.copyLink": {
+    "message": "Copy link"
+  },
+  "theme.heading.copied": {
+    "message": "Copied"
+  },
+  "homepage.hero.cta.quickstart": {
+    "message": "New here? Start in 5 minutes"
+  },
+  "homepage.hero.terminal.progress": {
+    "message": "Answering six questions about the company…"
+  },
+  "homepage.hero.terminal.chip.policy": {
+    "message": "Policy"
+  },
+  "homepage.hero.terminal.chip.vulnerability": {
+    "message": "Vulnerabilities"
+  },
+  "homepage.hero.terminal.chip.declaration": {
+    "message": "Declaration"
+  },
+  "homepage.showcase.policy.preview": {
+    "message": "# Open Source Policy\n## 3.1 License approval tiers\n- Allowed:   MIT · Apache-2.0\n- Review:    LGPL · MPL-2.0\n- Forbidden: AGPL · commercial EULA"
+  },
+  "homepage.showcase.conformance.preview": {
+    "message": "ISO/IEC 5230 conformance declaration\nOrganization: ____________________\n[v] 3.1 Program foundation\n[v] 3.2 Assigned support and responsibility\n[v] 3.3 Content review and approval"
+  },
+  "theme.SearchBar.seeAll": {
+    "message": "See all {count} results"
+  },
+  "theme.SearchBar.label": {
+    "message": "Search",
+    "description": "The ARIA label and placeholder for search button"
+  },
+  "theme.SearchModal.searchBox.resetButtonTitle": {
+    "message": "Clear the query",
+    "description": "The label and ARIA label for search box reset button"
+  },
+  "theme.SearchModal.searchBox.cancelButtonText": {
+    "message": "Cancel",
+    "description": "The label and ARIA label for search box cancel button"
+  },
+  "theme.SearchModal.searchBox.placeholderText": {
+    "message": "Search docs",
+    "description": "The placeholder text for the main search input field"
+  },
+  "theme.SearchModal.searchBox.placeholderTextAskAi": {
+    "message": "Ask another question...",
+    "description": "The placeholder text when in AI question mode"
+  },
+  "theme.SearchModal.searchBox.placeholderTextAskAiStreaming": {
+    "message": "Answering...",
+    "description": "The placeholder text for search box when AI is streaming an answer"
+  },
+  "theme.SearchModal.searchBox.enterKeyHint": {
+    "message": "search",
+    "description": "The hint for the search box enter key text"
+  },
+  "theme.SearchModal.searchBox.enterKeyHintAskAi": {
+    "message": "enter",
+    "description": "The hint for the Ask AI search box enter key text"
+  },
+  "theme.SearchModal.searchBox.searchInputLabel": {
+    "message": "Search",
+    "description": "The ARIA label for search input"
+  },
+  "theme.SearchModal.searchBox.backToKeywordSearchButtonText": {
+    "message": "Back to keyword search",
+    "description": "The text for back to keyword search button"
+  },
+  "theme.SearchModal.searchBox.backToKeywordSearchButtonAriaLabel": {
+    "message": "Back to keyword search",
+    "description": "The ARIA label for back to keyword search button"
+  },
+  "theme.SearchModal.startScreen.recentSearchesTitle": {
+    "message": "Recent",
+    "description": "The title for recent searches"
+  },
+  "theme.SearchModal.startScreen.noRecentSearchesText": {
+    "message": "No recent searches",
+    "description": "The text when there are no recent searches"
+  },
+  "theme.SearchModal.startScreen.saveRecentSearchButtonTitle": {
+    "message": "Save this search",
+    "description": "The title for save recent search button"
+  },
+  "theme.SearchModal.startScreen.removeRecentSearchButtonTitle": {
+    "message": "Remove this search from history",
+    "description": "The title for remove recent search button"
+  },
+  "theme.SearchModal.startScreen.favoriteSearchesTitle": {
+    "message": "Favorite",
+    "description": "The title for favorite searches"
+  },
+  "theme.SearchModal.startScreen.removeFavoriteSearchButtonTitle": {
+    "message": "Remove this search from favorites",
+    "description": "The title for remove favorite search button"
+  },
+  "theme.SearchModal.startScreen.recentConversationsTitle": {
+    "message": "Recent conversations",
+    "description": "The title for recent conversations"
+  },
+  "theme.SearchModal.startScreen.removeRecentConversationButtonTitle": {
+    "message": "Remove this conversation from history",
+    "description": "The title for remove recent conversation button"
+  },
+  "theme.SearchModal.errorScreen.titleText": {
+    "message": "Unable to fetch results",
+    "description": "The title for error screen"
+  },
+  "theme.SearchModal.errorScreen.helpText": {
+    "message": "You might want to check your network connection.",
+    "description": "The help text for error screen"
+  },
+  "theme.SearchModal.resultsScreen.askAiPlaceholder": {
+    "message": "Ask AI: ",
+    "description": "The placeholder text for Ask AI input"
+  },
+  "theme.SearchModal.askAiScreen.disclaimerText": {
+    "message": "Answers are generated with AI which can make mistakes. Verify responses.",
+    "description": "The disclaimer text for AI answers"
+  },
+  "theme.SearchModal.askAiScreen.relatedSourcesText": {
+    "message": "Related sources",
+    "description": "The text for related sources"
+  },
+  "theme.SearchModal.askAiScreen.thinkingText": {
+    "message": "Thinking...",
+    "description": "The text when AI is thinking"
+  },
+  "theme.SearchModal.askAiScreen.copyButtonText": {
+    "message": "Copy",
+    "description": "The text for copy button"
+  },
+  "theme.SearchModal.askAiScreen.copyButtonCopiedText": {
+    "message": "Copied!",
+    "description": "The text for copy button when copied"
+  },
+  "theme.SearchModal.askAiScreen.copyButtonTitle": {
+    "message": "Copy",
+    "description": "The title for copy button"
+  },
+  "theme.SearchModal.askAiScreen.likeButtonTitle": {
+    "message": "Like",
+    "description": "The title for like button"
+  },
+  "theme.SearchModal.askAiScreen.dislikeButtonTitle": {
+    "message": "Dislike",
+    "description": "The title for dislike button"
+  },
+  "theme.SearchModal.askAiScreen.thanksForFeedbackText": {
+    "message": "Thanks for your feedback!",
+    "description": "The text for thanks for feedback"
+  },
+  "theme.SearchModal.askAiScreen.preToolCallText": {
+    "message": "Searching...",
+    "description": "The text before tool call"
+  },
+  "theme.SearchModal.askAiScreen.duringToolCallText": {
+    "message": "Searching for ",
+    "description": "The text during tool call"
+  },
+  "theme.SearchModal.askAiScreen.afterToolCallText": {
+    "message": "Searched for",
+    "description": "The text after tool call"
+  },
+  "theme.SearchModal.footer.selectText": {
+    "message": "Select",
+    "description": "The select text for footer"
+  },
+  "theme.SearchModal.footer.submitQuestionText": {
+    "message": "Submit question",
+    "description": "The submit question text for footer"
+  },
+  "theme.SearchModal.footer.selectKeyAriaLabel": {
+    "message": "Enter key",
+    "description": "The ARIA label for select key in footer"
+  },
+  "theme.SearchModal.footer.navigateText": {
+    "message": "Navigate",
+    "description": "The navigate text for footer"
+  },
+  "theme.SearchModal.footer.navigateUpKeyAriaLabel": {
+    "message": "Arrow up",
+    "description": "The ARIA label for navigate up key in footer"
+  },
+  "theme.SearchModal.footer.navigateDownKeyAriaLabel": {
+    "message": "Arrow down",
+    "description": "The ARIA label for navigate down key in footer"
+  },
+  "theme.SearchModal.footer.closeText": {
+    "message": "Close",
+    "description": "The close text for footer"
+  },
+  "theme.SearchModal.footer.closeKeyAriaLabel": {
+    "message": "Escape key",
+    "description": "The ARIA label for close key in footer"
+  },
+  "theme.SearchModal.footer.searchByText": {
+    "message": "Powered by",
+    "description": "The 'Powered by' text for footer"
+  },
+  "theme.SearchModal.footer.backToSearchText": {
+    "message": "Back to search",
+    "description": "The back to search text for footer"
+  },
+  "theme.SearchModal.noResultsScreen.noResultsText": {
+    "message": "No results found for",
+    "description": "The text when there are no results"
+  },
+  "theme.SearchModal.noResultsScreen.suggestedQueryText": {
+    "message": "Try searching for",
+    "description": "The text for suggested query"
+  },
+  "theme.SearchModal.noResultsScreen.reportMissingResultsText": {
+    "message": "Believe this query should return results?",
+    "description": "The text for reporting missing results"
+  },
+  "theme.SearchModal.noResultsScreen.reportMissingResultsLinkText": {
+    "message": "Let us know.",
+    "description": "The link text for reporting missing results"
+  },
+  "theme.SearchModal.placeholder": {
+    "message": "Search docs",
+    "description": "The placeholder of the input of the DocSearch pop-up modal"
+  },
+  "theme.SearchPage.documentsFound.plurals": {
+    "message": "One document found|{count} documents found",
+    "description": "Pluralized label for \"{count} documents found\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+  },
+  "theme.SearchPage.existingResultsTitle": {
+    "message": "Search results for \"{query}\"",
+    "description": "The search page title for non-empty query"
+  },
+  "theme.SearchPage.emptyResultsTitle": {
+    "message": "Search the documentation",
+    "description": "The search page title for empty query"
+  },
+  "theme.SearchPage.inputPlaceholder": {
+    "message": "Type your search here",
+    "description": "The placeholder for search page input"
+  },
+  "theme.SearchPage.inputLabel": {
+    "message": "Search",
+    "description": "The ARIA label for search page input"
+  },
+  "theme.SearchPage.algoliaLabel": {
+    "message": "Powered by Algolia",
+    "description": "The description label for Algolia mention"
+  },
+  "theme.SearchPage.noResultsText": {
+    "message": "No results were found",
+    "description": "The paragraph for empty search result"
+  },
+  "theme.SearchPage.fetchingNewResults": {
+    "message": "Fetching new results...",
+    "description": "The paragraph for fetching new search results"
+  },
+  "homepage.hero.terminal.path": {
+    "message": "agents/en/02-organization-designer",
+    "description": "Terminal window title on the homepage hero"
   }
 }

@@ -15,6 +15,10 @@ const isProductionDeployment =
 
 const copyright = `CC BY 4.0 · OpenChain KWG · haksungjang`;
 
+// 로케일별로 빌드가 한 번씩 돌고, 그때마다 이 값이 바뀐다.
+// 구조화 데이터(JSON-LD)를 로케일에 맞춰 내보내는 데 쓴다.
+const currentLocale = process.env.DOCUSAURUS_CURRENT_LOCALE ?? 'ko';
+
 const config: Config = {
   future: {
     v4: true,
@@ -77,16 +81,29 @@ const config: Config = {
       attributes: {
         type: 'application/ld+json',
       },
-      innerHTML: JSON.stringify({
-        '@context': 'https://schema.org/',
-        '@type': 'WebSite',
-        '@id': 'https://trustedoss.github.io/',
-        url: 'https://trustedoss.github.io/',
-        name: 'Trusted OSS · 신뢰할 수 있는 오픈소스 공급망 관리',
-        description:
-          'ISO/IEC 5230 & 18974 기반 기업 오픈소스 관리 체계 구축 실전 가이드',
-        inLanguage: 'ko',
-      }),
+      innerHTML: JSON.stringify(
+        currentLocale === 'en'
+          ? {
+              '@context': 'https://schema.org/',
+              '@type': 'WebSite',
+              '@id': 'https://trustedoss.github.io/en/',
+              url: 'https://trustedoss.github.io/en/',
+              name: 'Trusted OSS · Trustworthy open source supply chain management',
+              description:
+                'A practical guide to building an ISO/IEC 5230 & 18974 open source management program',
+              inLanguage: 'en',
+            }
+          : {
+              '@context': 'https://schema.org/',
+              '@type': 'WebSite',
+              '@id': 'https://trustedoss.github.io/',
+              url: 'https://trustedoss.github.io/',
+              name: 'Trusted OSS · 신뢰할 수 있는 오픈소스 공급망 관리',
+              description:
+                'ISO/IEC 5230 & 18974 기반 기업 오픈소스 관리 체계 구축 실전 가이드',
+              inLanguage: 'ko',
+            }
+      ),
     },
   ],
   presets: [

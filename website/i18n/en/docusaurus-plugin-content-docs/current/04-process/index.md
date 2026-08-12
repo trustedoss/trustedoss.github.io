@@ -5,6 +5,7 @@ checklist:
   - 'ISO/IEC 5230: [3.1.5, 3.2.1, 3.3.2, 3.4.1, 3.5.1]'
   - 'ISO/IEC 18974: [4.1.5, 4.2.1]'
 self_study_time: 1 to 2 hours
+pagination_label: '4. Open Source Process'
 ---
 
 # Open source process: From use to distribution

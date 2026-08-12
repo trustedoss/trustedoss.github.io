@@ -7,6 +7,7 @@
  */
 import React, {useCallback, useState} from 'react';
 import clsx from 'clsx';
+import {translate} from '@docusaurus/Translate';
 import {useAnchorTargetClassName} from '@docusaurus/theme-common';
 import useBrokenLinks from '@docusaurus/useBrokenLinks';
 import type {Props} from '@theme/Heading';
@@ -30,8 +31,15 @@ function CopyLinkButton({anchor}: {anchor?: string}): JSX.Element {
       type="button"
       className={clsx(styles.copyBtn, copied && styles.copied)}
       onClick={onClick}
-      aria-label="링크 복사"
-      title={copied ? '복사됨' : '링크 복사'}>
+      aria-label={translate({
+        id: 'theme.heading.copyLink',
+        message: '링크 복사',
+      })}
+      title={
+        copied
+          ? translate({id: 'theme.heading.copied', message: '복사됨'})
+          : translate({id: 'theme.heading.copyLink', message: '링크 복사'})
+      }>
       <span className={styles.icon} aria-hidden="true" />
     </button>
   );

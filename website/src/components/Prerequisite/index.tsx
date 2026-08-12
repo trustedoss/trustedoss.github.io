@@ -7,7 +7,7 @@
 
 import React from 'react';
 import Link from '@docusaurus/Link';
-import Translate from '@docusaurus/Translate';
+import Translate, {translate} from '@docusaurus/Translate';
 
 import styles from './styles.module.css';
 
@@ -21,7 +21,9 @@ function Prerequisite({
   children?: React.ReactNode;
 }) {
   return (
-    <aside className={styles.prereq} aria-label="전제 조건">
+    <aside
+      className={styles.prereq}
+      aria-label={translate({id: 'prerequisite.label', message: '전제 조건'})}>
       <span className={styles.badge}>
         <Translate id="prerequisite.label">전제 조건</Translate>
       </span>

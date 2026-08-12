@@ -9,6 +9,7 @@ checklist:
   - 'ISO/IEC 5230: G1.3 (3.1.2), G2.1 (3.2.2), G2.2 (3.2.1)'
   - 'ISO/IEC 18974: G1.3 (4.1.2), G2.1 (4.2.2), G2.2 (4.2.1)'
 self_study_time: 1 hour
+pagination_label: '2. Organizational Structure'
 ---
 
 # Organizational structure: Designating open source personnel and defining roles

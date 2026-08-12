@@ -6,6 +6,7 @@ checklist:
   - 'ISO/IEC 5230: [3.1.1, 3.1.4, 3.5.1]'
   - 'ISO/IEC 18974: [4.1.1, 4.1.4]'
 self_study_time: 1 hour
+pagination_label: '3. Open Source Policy'
 ---
 
 # Establishing an open source policy: The first step to legal protection

@@ -5,6 +5,7 @@ checklist:
   - 'ISO/IEC 5230: []'
   - 'ISO/IEC 18974: [4.3.1, 4.3.2]'
 self_study_time: 1 hour
+pagination_label: '5.2 SBOM Management and Sharing'
 ---
 
 # SBOM management: creating it is not the end; managing it is the beginning

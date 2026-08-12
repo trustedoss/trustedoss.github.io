@@ -6,6 +6,7 @@ checklist:
   - 'ISO/IEC 18974: [G3B.1 extension — extending SBOM scope to AI components]'
 self_study_time: 1 hour
 sidebar_label: '5.4 AI SBOM (optional)'
+pagination_label: '5.4 AI SBOM (Optional)'
 ---
 
 # AI SBOM: Building an SBOM for Models and Datasets (Optional)

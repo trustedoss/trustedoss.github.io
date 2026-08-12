@@ -5,6 +5,7 @@ checklist:
   - 'ISO/IEC 5230: G1.4 (3.1.2), G1.7 (3.1.3), G2.3 (3.1.3)'
   - 'ISO/IEC 18974: G1.4 (4.1.2), G1.7 (4.1.3), G2.3 (4.1.3)'
 self_study_time: 1 hour
+pagination_label: '6. Training Program'
 ---
 
 # Training Program: Raise open source awareness across your organization
