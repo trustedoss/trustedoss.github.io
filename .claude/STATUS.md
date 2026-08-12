@@ -1,17 +1,28 @@
 # Status — trustedoss
 
-_updated: 2026-08-12T08:54 (auto)_
+_updated: 2026-08-12T14:24 (auto)_
 
 ## 다음 할 일
 
-- 28장 전체 넘침 검사 후 최종 커밋
+- `/reference/talks` 페이지의 발표 문구를 과거형으로 수정하고 필요시 발표 후 반응 추가
 
 ## 막힌 점
 
-- 브라우저 확장 끊김 (PDF 렌더로 대체 확인 중, 복구 대기)
+- 없음.
 
 ## 오늘 한 일
 
+- refactor(deck): move the TRUSCA buttons to the slide that argues for it
+- fix(deck): drop the "stand it up on Monday" line
+- feat(deck): add a slide on what sets TRUSCA apart
+- feat(agents): add the English agent and template trees
+- fix(deck): take the decoration out of the five-layer table
+- feat(deck): show the CycloneDX and SPDX marks on the BomLens output
+- refactor(deck): fold the closing slide into the diagram
+- feat(templates): add the English template tree
+- feat(tools): localise the rules generator and plan the agents English tree
+- refactor(deck): lead Part 3 with TRUSCA, then BomLens
+- feat(deck): close on what each of the three does, not on feature names
 - feat(deck): give BomLens and TRUSCA three slides each
 - feat(deck): link the level 5 tools to their guide sections
 - fix(deck): put the level 5 tools back, in their own column
@@ -26,4 +37,4 @@ _updated: 2026-08-12T08:54 (auto)_
 - docs(deck): bring the presenter notes back in line with the slides
 - fix(deck): name the repositories, link the scan areas, thin out level 1
 
-<!-- radar: branch=main dirty=2 ahead=0 behind=0 last=2026-08-12 -->
+<!-- radar: branch=main dirty=1 ahead=0 behind=0 last=2026-08-12 -->

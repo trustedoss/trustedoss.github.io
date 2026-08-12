@@ -24,7 +24,7 @@ at your event, open an issue on
 
 How agents build an ISO/IEC 5230 and 18974 self-certification program, a 5-level maturity
 model for governing AI coding, and the tools that keep the program running once it exists
-(BomLens, TRUSCA).
+(BomLens, TRUSCA). The talk has been given; the slides stay up.
 
 [View slides](pathname:///reference/talks/oss-summit-korea-2026/slides.html)
 
