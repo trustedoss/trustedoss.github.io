@@ -1,6 +1,6 @@
 /**
  * trustedoss.github.io Features — 세 트랙 (Vercel풍 카드)
- * CC BY 4.0 · OpenChain KWG · haksungjang
+ * CC BY 4.0 · TrustedOSS Contributors
  */
 
 import React from 'react';

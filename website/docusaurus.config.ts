@@ -1,6 +1,6 @@
 /**
  * trustedoss.github.io - Trusted OSS Supply Chain Management Guide
- * CC BY 4.0 · OpenChain KWG · haksungjang
+ * CC BY 4.0 · TrustedOSS Contributors
  */
 
 import type * as PluginContentDocs from '@docusaurus/plugin-content-docs';
@@ -13,7 +13,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 const isProductionDeployment =
   !!process.env.NETLIFY && process.env.CONTEXT === 'production';
 
-const copyright = `CC BY 4.0 · OpenChain KWG · haksungjang`;
+const copyright = `CC BY 4.0 · TrustedOSS Contributors`;
 
 // 로케일별로 빌드가 한 번씩 돌고, 그때마다 이 값이 바뀐다.
 // 구조화 데이터(JSON-LD)를 로케일에 맞춰 내보내는 데 쓴다.

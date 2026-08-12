@@ -1,6 +1,6 @@
 /**
  * trustedoss.github.io Home Component
- * CC BY 4.0 · OpenChain KWG · haksungjang
+ * CC BY 4.0 · TrustedOSS Contributors
  */
 
 import React from 'react';
