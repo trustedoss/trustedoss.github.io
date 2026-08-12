@@ -1,6 +1,6 @@
 /**
  * trustedoss.github.io Hero — Vercel풍 (고대비 모노크롬, 큰 타이포, 미세 그리드)
- * CC BY 4.0 · OpenChain KWG · haksungjang
+ * CC BY 4.0 · TrustedOSS Contributors
  */
 
 import React from 'react';

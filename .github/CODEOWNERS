@@ -1,3 +1,5 @@
 # Each line is a file pattern followed by one or more owners.
+# See https://docs.github.com/articles/about-code-owners
+# Maintainer list: ../MAINTAINERS.md
 
-docs/typescript @orta
+* @haksungjang

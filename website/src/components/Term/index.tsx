@@ -2,7 +2,7 @@
  * trustedoss Term — 용어 호버/포커스 툴팁
  * 사용: <Term k="sbom">SBOM</Term>  또는  <Term def="설명">용어</Term>
  * 초심자가 본문에서 약어 위에 마우스를 올리거나 포커스하면 풀이가 뜬다.
- * CC BY 4.0 · OpenChain KWG · haksungjang
+ * CC BY 4.0 · TrustedOSS Contributors
  */
 
 import React from 'react';

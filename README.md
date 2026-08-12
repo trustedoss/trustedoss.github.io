@@ -204,7 +204,12 @@ OpenChain KWG 커뮤니티와 연계하여 운영됩니다. PR과 이슈 제출�
 
 ## 라이선스
 
-[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+문서와 콘텐츠(`docs/`, `agents/`, `templates/`, `website/` 안의 마크다운)는
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), 사이트 코드는 [MIT](./LICENSE)로 배포합니다.
+전문은 [`LICENSE-docs`](./LICENSE-docs)와 [`LICENSE`](./LICENSE)에 있습니다.
+
+`.claude/reference/kwg/`는 OpenChain KWG 가이드의 사본이며, 원저작권은 The OpenChain KWG Authors에게 있습니다.
+출처와 갱신 방법은 [해당 폴더의 README](./.claude/reference/kwg/README.md)를 참고하세요.
 
 ---
 
@@ -406,4 +411,10 @@ This project is operated in collaboration with the OpenChain KWG community. Pull
 
 ## License
 
-[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+Documentation and content (markdown under `docs/`, `agents/`, `templates/`, and `website/`) is
+released under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/); the site code is released
+under [MIT](./LICENSE). Full texts are in [`LICENSE-docs`](./LICENSE-docs) and [`LICENSE`](./LICENSE).
+
+`.claude/reference/kwg/` is a copy of the OpenChain KWG guides; the original copyright belongs to
+The OpenChain KWG Authors. See [the README in that folder](./.claude/reference/kwg/README.md)
+for attribution and sync details.

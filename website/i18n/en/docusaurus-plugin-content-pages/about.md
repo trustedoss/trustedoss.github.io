@@ -1,6 +1,6 @@
 ---
 title: About This Project
-description: Trusted OSS is a practical toolkit created by OpenChain KWG to build an open source supply chain management framework.
+description: Trusted OSS is a practical toolkit built in the OpenChain KWG community to help you set up open source supply chain governance.
 ---
 
 # About This Project
@@ -11,9 +11,9 @@ Trusted OSS is a practical toolkit designed to help you complete self-certificat
 
 Even practitioners with no prior open source governance experience can follow the Claude Code Agent guidance to progressively produce policies, organizational setup, processes, SBOMs, training materials, and certification deliverables.
 
-## Built by OpenChain KWG
+## Built in the OpenChain KWG community
 
-This project was created by **[OpenChain KWG](https://openchain-project.github.io/OpenChain-KWG/)** (OpenChain Korea Work Group).
+Trusted OSS grew out of the **[OpenChain KWG](https://openchain-project.github.io/OpenChain-KWG/)** (OpenChain Korea Work Group) community. Where KWG provides standards guidance and templates, Trusted OSS turns them into finished artifacts.
 
 OpenChain KWG is the Korean working group of the [Linux Foundation OpenChain Project](https://www.openchainproject.org/), which leads the ISO/IEC 5230 international standard. It operates guides, tools, and a community to improve open source compliance capabilities for companies in Korea.
 
@@ -24,7 +24,7 @@ All content on this site is released under the **[CC BY 4.0](https://creativecom
 With proper attribution, you can freely copy, modify, redistribute, and use it commercially.
 
 :::info Attribution Example
-"Trusted OSS (CC BY 4.0 · OpenChain KWG)"
+"Trusted OSS (CC BY 4.0)"
 :::
 
 ## How to Contribute

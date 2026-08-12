@@ -2,7 +2,7 @@
  * trustedoss Prerequisite — 챕터 상단 전제 조건 배지
  * 사용 예: <Prerequisite items={[{label: '2. 조직 구성', href: '/docs/organization'}]} />
  *          <Prerequisite>없음 — 여기가 시작점입니다.</Prerequisite>
- * CC BY 4.0 · OpenChain KWG · haksungjang
+ * CC BY 4.0 · TrustedOSS Contributors
  */
 
 import React from 'react';

@@ -1,7 +1,7 @@
 /**
  * trustedoss JourneyProgress — 0에서 자체 인증까지 7단계 진행 가시화
  * 진행 상태는 브라우저 localStorage에 저장된다(서버 렌더 시 빈 상태).
- * CC BY 4.0 · OpenChain KWG · haksungjang
+ * CC BY 4.0 · TrustedOSS Contributors
  */
 
 import React, {useEffect, useState} from 'react';

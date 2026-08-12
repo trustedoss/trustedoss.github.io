@@ -60,7 +60,7 @@
     "description": "The label of footer link with label=OpenChain 자체 인증 linking to https://www.openchainproject.org/conformance"
   },
   "copyright": {
-    "message": "CC BY 4.0 · OpenChain KWG · haksungjang",
+    "message": "CC BY 4.0 · TrustedOSS Contributors",
     "description": "The footer copyright"
   }
 }
