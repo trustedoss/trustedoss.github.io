@@ -8,7 +8,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>SBOM 분석 샘플 미리보기</title>
+    <title>SBOM Analysis Sample Preview</title>
     <style>
       :root {
         --border: #d7dbe0;
@@ -127,14 +127,16 @@
   </head>
   <body>
     <div class="panel">
-      <div class="ptitle">입력 — 샘플 SBOM (5개 컴포넌트)</div>
+      <div class="ptitle" data-i18n="inputTitle">
+        입력 — 샘플 SBOM (5개 컴포넌트)
+      </div>
       <table>
         <thead>
           <tr>
-            <th>컴포넌트</th>
-            <th>버전</th>
-            <th>라이선스</th>
-            <th>분류</th>
+            <th data-i18n="thComponent">컴포넌트</th>
+            <th data-i18n="thVersion">버전</th>
+            <th data-i18n="thLicense">라이선스</th>
+            <th data-i18n="thClass">분류</th>
           </tr>
         </thead>
         <tbody>
@@ -142,62 +144,64 @@
             <td><code>PyYAML</code></td>
             <td>5.3.1</td>
             <td>MIT</td>
-            <td>허용형(Permissive)</td>
+            <td data-i18n="permissive">허용형(Permissive)</td>
           </tr>
           <tr>
             <td><code>requests</code></td>
             <td>2.27.0</td>
             <td>Apache-2.0</td>
-            <td>허용형(Permissive)</td>
+            <td data-i18n="permissive">허용형(Permissive)</td>
           </tr>
           <tr>
             <td><code>celery</code></td>
             <td>5.2.0</td>
             <td>BSD-3-Clause</td>
-            <td>허용형(Permissive)</td>
+            <td data-i18n="permissive">허용형(Permissive)</td>
           </tr>
           <tr>
             <td><code>mysql-connector-python</code></td>
             <td>8.1.0</td>
             <td>GPL-2.0-only</td>
-            <td>강한 카피레프트(Strong Copyleft)</td>
+            <td data-i18n="strongCopyleft">강한 카피레프트(Strong Copyleft)</td>
           </tr>
           <tr>
             <td><code>Pillow</code></td>
             <td>9.0.0</td>
             <td>HPND</td>
-            <td>허용형(Permissive)</td>
+            <td data-i18n="permissive">허용형(Permissive)</td>
           </tr>
         </tbody>
       </table>
     </div>
 
-    <button id="runBtn" type="button" onclick="showResult()">
+    <button id="runBtn" type="button" onclick="showResult()" data-i18n="runBtn">
       샘플 분석 결과 보기
     </button>
 
     <div id="result" class="hidden">
       <div class="panel">
-        <div class="ptitle">결과 — 분석 리포트 (예시)</div>
-        <p>
+        <div class="ptitle" data-i18n="resultTitle">
+          결과 — 분석 리포트 (예시)
+        </div>
+        <p data-i18n-html="licenseSummary">
           <strong>라이선스 요약</strong> — 허용형 4건(MIT, Apache-2.0,
           BSD-3-Clause, HPND), 강한 카피레프트 1건.
         </p>
-        <div class="copyleft">
+        <div class="copyleft" data-i18n-html="copyleftWarn">
           <strong>카피레프트 위험 1건</strong><br />
           <code>mysql-connector-python 8.1.0</code> 는 GPL-2.0-only
           라이선스입니다. 배포 방식에 따라 전체 소스 공개 의무가 생길 수 있어
           검토가 필요합니다. 대안: PyMySQL(MIT), aiomysql(MIT).
         </div>
-        <div class="ptitle">알려진 취약점</div>
+        <div class="ptitle" data-i18n="knownVulns">알려진 취약점</div>
         <table>
           <thead>
             <tr>
-              <th>패키지</th>
+              <th data-i18n="thPackage">패키지</th>
               <th>CVE</th>
-              <th>심각도</th>
+              <th data-i18n="thSeverity">심각도</th>
               <th>CVSS</th>
-              <th>수정 버전</th>
+              <th data-i18n="thFixed">수정 버전</th>
             </tr>
           </thead>
           <tbody>
@@ -206,22 +210,22 @@
               <td>CVE-2020-14343</td>
               <td><span class="sev crit">Critical</span></td>
               <td>9.8</td>
-              <td>5.4 이상</td>
+              <td data-i18n="fixed54">5.4 이상</td>
             </tr>
             <tr>
               <td><code>requests 2.27.0</code></td>
               <td>CVE-2023-32681</td>
               <td><span class="sev med">Medium</span></td>
               <td>6.1</td>
-              <td>2.31.0 이상</td>
+              <td data-i18n="fixed231">2.31.0 이상</td>
             </tr>
           </tbody>
         </table>
-        <p>
+        <p data-i18n-html="recommendation">
           <strong>권고</strong> — Critical(CVE-2020-14343)부터 즉시 패치하고,
           카피레프트 컴포넌트는 배포 전 법무 검토 또는 대안 교체를 진행합니다.
         </p>
-        <p class="note">
+        <p class="note" data-i18n="note">
           위 결과는 샘플 SBOM 기준 예시입니다. 실제 프로젝트 결과는 아래
           도구에서 본인 SBOM을 업로드해 확인하세요.
         </p>
@@ -229,6 +233,76 @@
     </div>
 
     <script>
+      const I18N = {
+        ko: {
+          docTitle: "SBOM 분석 샘플 미리보기",
+          inputTitle: "입력 — 샘플 SBOM (5개 컴포넌트)",
+          thComponent: "컴포넌트",
+          thVersion: "버전",
+          thLicense: "라이선스",
+          thClass: "분류",
+          permissive: "허용형(Permissive)",
+          strongCopyleft: "강한 카피레프트(Strong Copyleft)",
+          runBtn: "샘플 분석 결과 보기",
+          resultTitle: "결과 — 분석 리포트 (예시)",
+          licenseSummary:
+            "<strong>라이선스 요약</strong> — 허용형 4건(MIT, Apache-2.0, BSD-3-Clause, HPND), 강한 카피레프트 1건.",
+          copyleftWarn:
+            "<strong>카피레프트 위험 1건</strong><br /><code>mysql-connector-python 8.1.0</code> 는 GPL-2.0-only 라이선스입니다. 배포 방식에 따라 전체 소스 공개 의무가 생길 수 있어 검토가 필요합니다. 대안: PyMySQL(MIT), aiomysql(MIT).",
+          knownVulns: "알려진 취약점",
+          thPackage: "패키지",
+          thSeverity: "심각도",
+          thFixed: "수정 버전",
+          fixed54: "5.4 이상",
+          fixed231: "2.31.0 이상",
+          recommendation:
+            "<strong>권고</strong> — Critical(CVE-2020-14343)부터 즉시 패치하고, 카피레프트 컴포넌트는 배포 전 법무 검토 또는 대안 교체를 진행합니다.",
+          note: "위 결과는 샘플 SBOM 기준 예시입니다. 실제 프로젝트 결과는 아래 도구에서 본인 SBOM을 업로드해 확인하세요.",
+        },
+        en: {
+          docTitle: "SBOM Analysis Sample Preview",
+          inputTitle: "Input — sample SBOM (5 components)",
+          thComponent: "Component",
+          thVersion: "Version",
+          thLicense: "License",
+          thClass: "Classification",
+          permissive: "Permissive",
+          strongCopyleft: "Strong copyleft",
+          runBtn: "Show the sample analysis",
+          resultTitle: "Result — analysis report (example)",
+          licenseSummary:
+            "<strong>License summary</strong> — 4 permissive (MIT, Apache-2.0, BSD-3-Clause, HPND) and 1 strong copyleft.",
+          copyleftWarn:
+            "<strong>1 copyleft risk</strong><br /><code>mysql-connector-python 8.1.0</code> is under GPL-2.0-only. Depending on how you distribute, it can create an obligation to publish your full source, so it needs review. Alternatives: PyMySQL (MIT), aiomysql (MIT).",
+          knownVulns: "Known vulnerabilities",
+          thPackage: "Package",
+          thSeverity: "Severity",
+          thFixed: "Fixed in",
+          fixed54: "5.4 or later",
+          fixed231: "2.31.0 or later",
+          recommendation:
+            "<strong>Recommendation</strong> — patch the Critical one (CVE-2020-14343) first, and either get legal review or swap the copyleft component before you distribute.",
+          note: "This is an example based on the sample SBOM. To see the result for your own project, upload your SBOM in the tool below.",
+        },
+      };
+
+      const LANG =
+        new URLSearchParams(window.location.search).get("lang") === "en"
+          ? "en"
+          : "ko";
+      const T = I18N[LANG];
+
+      document.documentElement.lang = LANG;
+      document.title = T.docTitle;
+      document.querySelectorAll("[data-i18n]").forEach((el) => {
+        const v = T[el.dataset.i18n];
+        if (typeof v === "string") el.textContent = v;
+      });
+      document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+        const v = T[el.dataset.i18nHtml];
+        if (typeof v === "string") el.innerHTML = v;
+      });
+
       function showResult() {
         document.getElementById("result").classList.remove("hidden");
         document.getElementById("runBtn").classList.add("hidden");

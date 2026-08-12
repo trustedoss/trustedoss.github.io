@@ -107,7 +107,7 @@ Take your time and work through each step until you understand it.
    cd agents/en/06-training-manager && claude
    ```
 
-3. When the Claude prompt opens, type **`시작`** (start).
+3. When the Claude prompt opens, type **`start`**.
 
    <details>
    <summary>Agent conversation example (click to expand)</summary>

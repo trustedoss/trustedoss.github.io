@@ -137,46 +137,48 @@
   </head>
   <body>
     <div class="panel">
-      <div class="ptitle">
+      <div class="ptitle" data-i18n="inputTitle">
         입력 — 샘플 Checkov 스캔 결과 (S3 버킷, 3건 실패)
       </div>
       <table>
         <thead>
           <tr>
-            <th>체크 ID</th>
-            <th>내용</th>
-            <th>심각도</th>
+            <th data-i18n="thCheck">체크 ID</th>
+            <th data-i18n="thDetail">내용</th>
+            <th data-i18n="thSeverity">심각도</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td><code>CKV_AWS_19</code></td>
-            <td>S3 버킷 저장 데이터 암호화 미적용</td>
+            <td data-i18n="chk19">S3 버킷 저장 데이터 암호화 미적용</td>
             <td><span class="sev high">High</span></td>
           </tr>
           <tr>
             <td><code>CKV_AWS_21</code></td>
-            <td>S3 버킷 버전 관리 미설정</td>
+            <td data-i18n="chk21">S3 버킷 버전 관리 미설정</td>
             <td><span class="sev med">Medium</span></td>
           </tr>
           <tr>
             <td><code>CKV_AWS_18</code></td>
-            <td>S3 버킷 액세스 로깅 미설정</td>
+            <td data-i18n="chk18">S3 버킷 액세스 로깅 미설정</td>
             <td><span class="sev low">Low</span></td>
           </tr>
         </tbody>
       </table>
     </div>
 
-    <button id="runBtn" type="button" onclick="showResult()">
+    <button id="runBtn" type="button" onclick="showResult()" data-i18n="runBtn">
       샘플 수정 코드 보기
     </button>
 
     <div id="result" class="hidden">
       <div class="panel">
-        <div class="ptitle">결과 — 수정된 Terraform (예시)</div>
-        <p>세 가지 위반을 모두 해소한 블록을 추가합니다.</p>
-        <pre>
+        <div class="ptitle" data-i18n="resultTitle">
+          결과 — 수정된 Terraform (예시)
+        </div>
+        <p data-i18n="lead">세 가지 위반을 모두 해소한 블록을 추가합니다.</p>
+        <pre data-i18n="code">
 resource "aws_s3_bucket" "data" {
   bucket = "my-app-data"
 }
@@ -202,7 +204,7 @@ resource "aws_s3_bucket_logging" "data" {
   target_prefix = "s3-access/"
 }</pre
         >
-        <p class="note">
+        <p class="note" data-i18n="note">
           위 결과는 샘플 스캔 기준 예시입니다. 실제 결과는 아래 도구에서 본인
           Checkov 출력 파일을 업로드해 확인하세요.
         </p>
@@ -210,6 +212,53 @@ resource "aws_s3_bucket_logging" "data" {
     </div>
 
     <script>
+      const I18N = {
+        ko: {
+          docTitle: "IaC 수정 샘플 미리보기",
+          inputTitle: "입력 — 샘플 Checkov 스캔 결과 (S3 버킷, 3건 실패)",
+          thCheck: "체크 ID",
+          thDetail: "내용",
+          thSeverity: "심각도",
+          chk19: "S3 버킷 저장 데이터 암호화 미적용",
+          chk21: "S3 버킷 버전 관리 미설정",
+          chk18: "S3 버킷 액세스 로깅 미설정",
+          runBtn: "샘플 수정 코드 보기",
+          resultTitle: "결과 — 수정된 Terraform (예시)",
+          lead: "세 가지 위반을 모두 해소한 블록을 추가합니다.",
+          code: 'resource "aws_s3_bucket" "data" {\n  bucket = "my-app-data"\n}\n\n# CKV_AWS_19 — 저장 데이터 암호화\nresource "aws_s3_bucket_server_side_encryption_configuration" "data" {\n  bucket = aws_s3_bucket.data.id\n  rule {\n    apply_server_side_encryption_by_default { sse_algorithm = "aws:kms" }\n  }\n}\n\n# CKV_AWS_21 — 버전 관리\nresource "aws_s3_bucket_versioning" "data" {\n  bucket = aws_s3_bucket.data.id\n  versioning_configuration { status = "Enabled" }\n}\n\n# CKV_AWS_18 — 액세스 로깅\nresource "aws_s3_bucket_logging" "data" {\n  bucket        = aws_s3_bucket.data.id\n  target_bucket = aws_s3_bucket.logs.id\n  target_prefix = "s3-access/"\n}',
+          note: "위 결과는 샘플 스캔 기준 예시입니다. 실제 결과는 아래 도구에서 본인 Checkov 출력 파일을 업로드해 확인하세요.",
+        },
+        en: {
+          docTitle: "IaC Remediation Sample Preview",
+          inputTitle:
+            "Input — sample Checkov scan result (S3 bucket, 3 failures)",
+          thCheck: "Check ID",
+          thDetail: "Detail",
+          thSeverity: "Severity",
+          chk19: "S3 bucket has no encryption at rest",
+          chk21: "S3 bucket versioning is not enabled",
+          chk18: "S3 bucket access logging is not enabled",
+          runBtn: "Show the sample fix",
+          resultTitle: "Result — corrected Terraform (example)",
+          lead: "Add the blocks below to clear all three violations.",
+          code: 'resource "aws_s3_bucket" "data" {\n  bucket = "my-app-data"\n}\n\n# CKV_AWS_19 - encryption at rest\nresource "aws_s3_bucket_server_side_encryption_configuration" "data" {\n  bucket = aws_s3_bucket.data.id\n  rule {\n    apply_server_side_encryption_by_default { sse_algorithm = "aws:kms" }\n  }\n}\n\n# CKV_AWS_21 - versioning\nresource "aws_s3_bucket_versioning" "data" {\n  bucket = aws_s3_bucket.data.id\n  versioning_configuration { status = "Enabled" }\n}\n\n# CKV_AWS_18 - access logging\nresource "aws_s3_bucket_logging" "data" {\n  bucket        = aws_s3_bucket.data.id\n  target_bucket = aws_s3_bucket.logs.id\n  target_prefix = "s3-access/"\n}',
+          note: "This is an example based on the sample scan. To see your own result, upload your Checkov output in the tool below.",
+        },
+      };
+
+      const LANG =
+        new URLSearchParams(window.location.search).get("lang") === "en"
+          ? "en"
+          : "ko";
+      const T = I18N[LANG];
+
+      document.documentElement.lang = LANG;
+      document.title = T.docTitle;
+      document.querySelectorAll("[data-i18n]").forEach((el) => {
+        const v = T[el.dataset.i18n];
+        if (typeof v === "string") el.textContent = v;
+      });
+
       function showResult() {
         document.getElementById("result").classList.remove("hidden");
         document.getElementById("runBtn").classList.add("hidden");

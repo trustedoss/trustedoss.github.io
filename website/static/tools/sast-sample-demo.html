@@ -127,71 +127,79 @@
   </head>
   <body>
     <div class="panel">
-      <div class="ptitle">입력 — 샘플 Semgrep 스캔 결과 (3건)</div>
+      <div class="ptitle" data-i18n="inputTitle">
+        입력 — 샘플 Semgrep 스캔 결과 (3건)
+      </div>
       <table>
         <thead>
           <tr>
-            <th>위치</th>
-            <th>규칙</th>
-            <th>유형</th>
-            <th>심각도</th>
+            <th data-i18n="thWhere">위치</th>
+            <th data-i18n="thRule">규칙</th>
+            <th data-i18n="thType">유형</th>
+            <th data-i18n="thSeverity">심각도</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td><code>app/db.py:42</code></td>
             <td>formatted-sql-query</td>
-            <td>SQL 인젝션 (CWE-89)</td>
+            <td data-i18n="cweSql">SQL 인젝션 (CWE-89)</td>
             <td><span class="sev high">High</span></td>
           </tr>
           <tr>
             <td><code>app/worker.py:88</code></td>
             <td>dangerous-subprocess-use</td>
-            <td>명령 주입 (CWE-78)</td>
+            <td data-i18n="cweCmd">명령 주입 (CWE-78)</td>
             <td><span class="sev crit">Critical</span></td>
           </tr>
           <tr>
             <td><code>app/util.py:15</code></td>
             <td>insecure-hash-algorithm-md5</td>
-            <td>취약한 해시 (CWE-327)</td>
+            <td data-i18n="cweHash">취약한 해시 (CWE-327)</td>
             <td><span class="sev med">Medium</span></td>
           </tr>
         </tbody>
       </table>
     </div>
 
-    <button id="runBtn" type="button" onclick="showResult()">
+    <button id="runBtn" type="button" onclick="showResult()" data-i18n="runBtn">
       샘플 분석 결과 보기
     </button>
 
     <div id="result" class="hidden">
       <div class="panel">
-        <div class="ptitle">결과 — 수정 가이드 (예시)</div>
-        <p>
+        <div class="ptitle" data-i18n="resultTitle">
+          결과 — 수정 가이드 (예시)
+        </div>
+        <p data-i18n-html="priority">
           <strong>우선순위</strong> — Critical 1건을 먼저 처리한 뒤 High, Medium
           순으로 진행합니다.
         </p>
         <table>
           <thead>
             <tr>
-              <th>순위</th>
-              <th>문제</th>
-              <th>수정 방향</th>
+              <th data-i18n="thRank">순위</th>
+              <th data-i18n="thIssue">문제</th>
+              <th data-i18n="thFix">수정 방향</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>1</td>
-              <td><code>worker.py:88</code> 명령 주입 (Critical)</td>
-              <td>
+              <td data-i18n-html="issue1">
+                <code>worker.py:88</code> 명령 주입 (Critical)
+              </td>
+              <td data-i18n-html="fix1">
                 <code>shell=True</code>를 제거하고 인자를 리스트로 전달, 사용자
                 입력은 화이트리스트 검증
               </td>
             </tr>
             <tr>
               <td>2</td>
-              <td><code>db.py:42</code> SQL 인젝션 (High)</td>
-              <td>
+              <td data-i18n-html="issue2">
+                <code>db.py:42</code> SQL 인젝션 (High)
+              </td>
+              <td data-i18n-html="fix2">
                 문자열 포매팅 대신 파라미터 바인딩(<code
                   >cursor.execute(sql, params)</code
                 >) 사용
@@ -199,14 +207,16 @@
             </tr>
             <tr>
               <td>3</td>
-              <td><code>util.py:15</code> 취약한 해시 (Medium)</td>
-              <td>
+              <td data-i18n-html="issue3">
+                <code>util.py:15</code> 취약한 해시 (Medium)
+              </td>
+              <td data-i18n-html="fix3">
                 MD5를 SHA-256 이상으로 교체, 비밀번호는 bcrypt·argon2 사용
               </td>
             </tr>
           </tbody>
         </table>
-        <p class="note">
+        <p class="note" data-i18n="note">
           위 결과는 샘플 스캔 기준 예시입니다. 실제 결과는 아래 도구에서 본인
           Semgrep·CodeQL 출력 파일을 업로드해 확인하세요.
         </p>
@@ -214,6 +224,76 @@
     </div>
 
     <script>
+      const I18N = {
+        ko: {
+          docTitle: "SAST 분석 샘플 미리보기",
+          inputTitle: "입력 — 샘플 Semgrep 스캔 결과 (3건)",
+          thWhere: "위치",
+          thRule: "규칙",
+          thType: "유형",
+          thSeverity: "심각도",
+          cweSql: "SQL 인젝션 (CWE-89)",
+          cweCmd: "명령 주입 (CWE-78)",
+          cweHash: "취약한 해시 (CWE-327)",
+          runBtn: "샘플 분석 결과 보기",
+          resultTitle: "결과 — 수정 가이드 (예시)",
+          priority:
+            "<strong>우선순위</strong> — Critical 1건을 먼저 처리한 뒤 High, Medium 순으로 진행합니다.",
+          thRank: "순위",
+          thIssue: "문제",
+          thFix: "수정 방향",
+          issue1: "<code>worker.py:88</code> 명령 주입 (Critical)",
+          issue2: "<code>db.py:42</code> SQL 인젝션 (High)",
+          issue3: "<code>util.py:15</code> 취약한 해시 (Medium)",
+          fix1: "<code>shell=True</code>를 제거하고 인자를 리스트로 전달, 사용자 입력은 화이트리스트 검증",
+          fix2: "문자열 포매팅 대신 파라미터 바인딩(<code>cursor.execute(sql, params)</code>) 사용",
+          fix3: "MD5를 SHA-256 이상으로 교체, 비밀번호는 bcrypt·argon2 사용",
+          note: "위 결과는 샘플 스캔 기준 예시입니다. 실제 결과는 아래 도구에서 본인 Semgrep·CodeQL 출력 파일을 업로드해 확인하세요.",
+        },
+        en: {
+          docTitle: "SAST Analysis Sample Preview",
+          inputTitle: "Input — sample Semgrep scan result (3 findings)",
+          thWhere: "Location",
+          thRule: "Rule",
+          thType: "Type",
+          thSeverity: "Severity",
+          cweSql: "SQL injection (CWE-89)",
+          cweCmd: "Command injection (CWE-78)",
+          cweHash: "Weak hash (CWE-327)",
+          runBtn: "Show the sample analysis",
+          resultTitle: "Result — remediation guide (example)",
+          priority:
+            "<strong>Priority</strong> — handle the one Critical finding first, then High, then Medium.",
+          thRank: "Rank",
+          thIssue: "Issue",
+          thFix: "How to fix it",
+          issue1: "<code>worker.py:88</code> command injection (Critical)",
+          issue2: "<code>db.py:42</code> SQL injection (High)",
+          issue3: "<code>util.py:15</code> weak hash (Medium)",
+          fix1: "Remove <code>shell=True</code>, pass the arguments as a list, and validate user input against an allowlist",
+          fix2: "Use parameter binding (<code>cursor.execute(sql, params)</code>) instead of string formatting",
+          fix3: "Replace MD5 with SHA-256 or stronger, and use bcrypt or argon2 for passwords",
+          note: "This is an example based on the sample scan. To see your own result, upload your Semgrep or CodeQL output in the tool below.",
+        },
+      };
+
+      const LANG =
+        new URLSearchParams(window.location.search).get("lang") === "en"
+          ? "en"
+          : "ko";
+      const T = I18N[LANG];
+
+      document.documentElement.lang = LANG;
+      document.title = T.docTitle;
+      document.querySelectorAll("[data-i18n]").forEach((el) => {
+        const v = T[el.dataset.i18n];
+        if (typeof v === "string") el.textContent = v;
+      });
+      document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+        const v = T[el.dataset.i18nHtml];
+        if (typeof v === "string") el.innerHTML = v;
+      });
+
       function showResult() {
         document.getElementById("result").classList.remove("hidden");
         document.getElementById("runBtn").classList.add("hidden");

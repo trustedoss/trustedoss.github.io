@@ -162,12 +162,12 @@ cd agents/en/03-policy-generator
 claude
 ```
 
-**Step 2. When the Claude prompt opens, enter `시작` ("start").**
+**Step 2. When the Claude prompt opens, enter `start`.**
 
 <details>
 <summary>Agent conversation example (click to expand)</summary>
 
-Below is an example of a conversation flow with the actual agent. When the user enters `시작`, it proceeds like this.
+Below is an example of a conversation flow with the actual agent. When the user enters `start`, it proceeds like this.
 
 **Agent guidance message:**
 

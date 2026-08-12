@@ -26,7 +26,7 @@ TrustedOSS uses AI agents to automatically generate company-tailored <Term k="op
 
 Check SBOM analysis results right in your browser, with no installation.
 
-- [Open the SBOM sample demo](pathname:///tools/sbom-sample-demo.html)
+- [Open the SBOM sample demo](pathname:///tools/sbom-sample-demo.html?lang=en)
 
 If you are curious about the actual form of the generated deliverables, also see the [Policy Deliverable Best Practices](/reference/samples/policy).
 

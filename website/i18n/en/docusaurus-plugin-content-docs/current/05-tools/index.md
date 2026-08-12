@@ -27,7 +27,7 @@ This chapter covers the tools that automatically identify the open source in you
 
 See SBOM analysis results right in your browser first, with no installation.
 
-- [Try the SBOM analyzer sample](pathname:///tools/sbom-sample-demo.html)
+- [Try the SBOM analyzer sample](pathname:///tools/sbom-sample-demo.html?lang=en)
 
 ## Automatic generation with AI agents
 

@@ -131,12 +131,12 @@ You interact with the agent and create the organizational deliverables.
    claude
    ```
 
-4. When the Claude prompt opens, type **`시작`** ("start"). The agent walks through the six questions in order.
+4. When the Claude prompt opens, type **`start`**. The agent walks through the six questions in order.
 
    <details>
    <summary>Agent conversation example (click to expand)</summary>
 
-   Below is an example of a conversation flow with the actual agent. When the user enters `시작`, it proceeds like this.
+   Below is an example of a conversation flow with the actual agent. When the user enters `start`, it proceeds like this.
 
    **Agent guidance message:**
 

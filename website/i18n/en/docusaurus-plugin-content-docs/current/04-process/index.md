@@ -257,7 +257,7 @@ For the list of generated files, see the [Expected output](#expected-output) tab
 
 </details>
 
-**Step 2**: When the Claude prompt opens, type `시작` ("start").
+**Step 2**: When the Claude prompt opens, type `start`.
 
 **Step 3**: Answer the 7 questions in order.
 
