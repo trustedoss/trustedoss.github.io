@@ -114,7 +114,8 @@ cd trustedoss-agents && claude
 ```
 trustedoss/
 ├── docs/                    # 챕터별 가이드 문서 (체계구축)
-├── agents/                  # 산출물 자동 생성 Agent
+├── agents/                  # 산출물 자동 생성 Agent (한국어)
+│   ├── en/                  # 같은 Agent의 영문판
 │   ├── 02-organization-designer/
 │   ├── 03-policy-generator/
 │   ├── ...
@@ -125,7 +126,7 @@ trustedoss/
 │   ├── secret-analyst/      # 시크릿 탐지 결과 분석
 │   ├── iac-fixer/           # IaC 수정 코드 생성
 │   └── level2-automation/   # CI/CD 연동 자동화
-├── templates/               # 문서 템플릿
+├── templates/               # 문서 템플릿 (en/ 하위에 영문판)
 ├── samples/                 # 실습용 샘플 프로젝트
 ├── output/                  # 생성된 산출물 (.gitignore)
 ├── .claude/                 # Claude Code 설정 및 skills
@@ -267,42 +268,46 @@ You can build your program at two depths:
 
 ## Agent List
 
+The agents below ask their questions and write their deliverables in English, and
+they read the templates in `templates/en/`. The Korean versions live at the same
+paths without the `en/` segment (`cd agents/02-organization-designer && claude`).
+
 ### Compliance Agents (ISO/IEC 5230 & 18974)
 
-| Agent                             | Role                                      | How to Run                                     |
-| --------------------------------- | ----------------------------------------- | ---------------------------------------------- |
-| `agents/02-organization-designer` | Generate organization & role deliverables | `cd agents/02-organization-designer && claude` |
-| `agents/03-policy-generator`      | Generate open source policy document      | `cd agents/03-policy-generator && claude`      |
-| `agents/04-process-designer`      | Generate process documents & flowcharts   | `cd agents/04-process-designer && claude`      |
-| `agents/05-sbom-guide`            | Generate SBOM commands & scripts          | `cd agents/05-sbom-guide && claude`            |
-| `agents/05-sbom-analyst`          | Generate SBOM license analysis report     | `cd agents/05-sbom-analyst && claude`          |
-| `agents/05-sbom-management`       | Generate SBOM management plan & templates | `cd agents/05-sbom-management && claude`       |
-| `agents/05-vulnerability-analyst` | Generate vulnerability analysis report    | `cd agents/05-vulnerability-analyst && claude` |
-| `agents/06-training-manager`      | Generate training curriculum & tracking   | `cd agents/06-training-manager && claude`      |
-| `agents/07-conformance-preparer`  | Generate gap analysis & declaration draft | `cd agents/07-conformance-preparer && claude`  |
+| Agent                                | Role                                      | How to Run                                        |
+| ------------------------------------ | ----------------------------------------- | ------------------------------------------------- |
+| `agents/en/02-organization-designer` | Generate organization & role deliverables | `cd agents/en/02-organization-designer && claude` |
+| `agents/en/03-policy-generator`      | Generate open source policy document      | `cd agents/en/03-policy-generator && claude`      |
+| `agents/en/04-process-designer`      | Generate process documents & flowcharts   | `cd agents/en/04-process-designer && claude`      |
+| `agents/en/05-sbom-guide`            | Generate SBOM commands & scripts          | `cd agents/en/05-sbom-guide && claude`            |
+| `agents/en/05-sbom-analyst`          | Generate SBOM license analysis report     | `cd agents/en/05-sbom-analyst && claude`          |
+| `agents/en/05-sbom-management`       | Generate SBOM management plan & templates | `cd agents/en/05-sbom-management && claude`       |
+| `agents/en/05-vulnerability-analyst` | Generate vulnerability analysis report    | `cd agents/en/05-vulnerability-analyst && claude` |
+| `agents/en/06-training-manager`      | Generate training curriculum & tracking   | `cd agents/en/06-training-manager && claude`      |
+| `agents/en/07-conformance-preparer`  | Generate gap analysis & declaration draft | `cd agents/en/07-conformance-preparer && claude`  |
 
 ### AI Coding & DevSecOps Agents (Level 1 — Config Generation)
 
-| Agent                    | Role                                              | How to Run                            |
-| ------------------------ | ------------------------------------------------- | ------------------------------------- |
-| `agents/ai-coding-setup` | Analyze project and generate custom Rules files   | `cd agents/ai-coding-setup && claude` |
-| `agents/devsecops-setup` | Analyze project and generate CI/CD pipeline files | `cd agents/devsecops-setup && claude` |
+| Agent                       | Role                                              | How to Run                               |
+| --------------------------- | ------------------------------------------------- | ---------------------------------------- |
+| `agents/en/ai-coding-setup` | Analyze project and generate custom Rules files   | `cd agents/en/ai-coding-setup && claude` |
+| `agents/en/devsecops-setup` | Analyze project and generate CI/CD pipeline files | `cd agents/en/devsecops-setup && claude` |
 
 ### AI Coding & DevSecOps Agents (Level 1 — Result Analysis)
 
-| Agent                      | Role                                         | How to Run                              |
-| -------------------------- | -------------------------------------------- | --------------------------------------- |
-| `agents/sbom-vuln-analyst` | SBOM/grype results → vulnerability report    | `cd agents/sbom-vuln-analyst && claude` |
-| `agents/sast-analyst`      | Semgrep/CodeQL results → fix guide           | `cd agents/sast-analyst && claude`      |
-| `agents/secret-analyst`    | Gitleaks results → secret response procedure | `cd agents/secret-analyst && claude`    |
-| `agents/iac-fixer`         | Checkov results → auto-generate IaC fix code | `cd agents/iac-fixer && claude`         |
+| Agent                         | Role                                         | How to Run                                 |
+| ----------------------------- | -------------------------------------------- | ------------------------------------------ |
+| `agents/en/sbom-vuln-analyst` | SBOM/grype results → vulnerability report    | `cd agents/en/sbom-vuln-analyst && claude` |
+| `agents/en/sast-analyst`      | Semgrep/CodeQL results → fix guide           | `cd agents/en/sast-analyst && claude`      |
+| `agents/en/secret-analyst`    | Gitleaks results → secret response procedure | `cd agents/en/secret-analyst && claude`    |
+| `agents/en/iac-fixer`         | Checkov results → auto-generate IaC fix code | `cd agents/en/iac-fixer && claude`         |
 
 ### CI/CD Automation Agents (Level 2)
 
-| Agent                                    | Role                                                | How to Run                                            |
-| ---------------------------------------- | --------------------------------------------------- | ----------------------------------------------------- |
-| `agents/level2-automation/pr-comment`    | Generate PR security analysis auto-comment workflow | `cd agents/level2-automation/pr-comment && claude`    |
-| `agents/level2-automation/issue-tracker` | Generate scheduled scan issue auto-filing workflow  | `cd agents/level2-automation/issue-tracker && claude` |
+| Agent                                       | Role                                                | How to Run                                               |
+| ------------------------------------------- | --------------------------------------------------- | -------------------------------------------------------- |
+| `agents/en/level2-automation/pr-comment`    | Generate PR security analysis auto-comment workflow | `cd agents/en/level2-automation/pr-comment && claude`    |
+| `agents/en/level2-automation/issue-tracker` | Generate scheduled scan issue auto-filing workflow  | `cd agents/en/level2-automation/issue-tracker && claude` |
 
 ---
 
@@ -311,7 +316,8 @@ You can build your program at two depths:
 ```
 trustedoss/
 ├── docs/                    # Chapter-by-chapter guide documents
-├── agents/                  # Deliverable auto-generation agents
+├── agents/                  # Deliverable auto-generation agents (Korean)
+│   ├── en/                  # The same agents in English
 │   ├── 02-organization-designer/
 │   ├── 03-policy-generator/
 │   ├── ...
@@ -322,7 +328,7 @@ trustedoss/
 │   ├── secret-analyst/      # Secret detection result analysis
 │   ├── iac-fixer/           # IaC fix code generation
 │   └── level2-automation/   # CI/CD integration automation
-├── templates/               # Document templates
+├── templates/               # Document templates (English under en/)
 ├── samples/                 # Sample projects for practice
 ├── output/                  # Generated deliverables (.gitignore)
 ├── .claude/                 # Claude Code configuration & skills

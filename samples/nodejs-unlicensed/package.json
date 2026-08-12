@@ -1,7 +1,7 @@
 {
   "name": "nodejs-unlicensed-sample",
   "version": "1.0.0",
-  "description": "라이선스 미명시 패키지 리스크 시연용 샘플",
+  "description": "Sample demonstrating the risk of a package with no declared license",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"

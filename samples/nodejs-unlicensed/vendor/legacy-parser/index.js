@@ -1,6 +1,6 @@
 /**
- * legacy-parser — 라이선스 미명시 패키지 재현용 실습 모듈.
- * package.json에 license 필드가 없어, SBOM에서 라이선스 미식별로 표시됩니다.
+ * legacy-parser: a stand-in for a package that declares no license.
+ * Its package.json has no license field, so the SBOM reports the license as unidentified.
  */
 
 function parseGreeting(text) {

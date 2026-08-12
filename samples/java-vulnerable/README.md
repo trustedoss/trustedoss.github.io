@@ -1,3 +1,9 @@
+[🇰🇷 한국어](#한국어) | [🇺🇸 English](#english)
+
+---
+
+<a id="한국어"></a>
+
 # java-vulnerable — Log4Shell 취약점 탐지 실습
 
 | 항목      | 내용                                                                                 |
@@ -76,4 +82,89 @@ java-vulnerable/
             └── com/
                 └── example/
                     └── App.java     # 메인 애플리케이션
+```
+
+---
+
+<a id="english"></a>
+
+# java-vulnerable — detecting the Log4Shell vulnerability
+
+| Item         | Detail                                                                                                  |
+| ------------ | ------------------------------------------------------------------------------------------------------- |
+| Goal         | See how SBOM and vulnerability analysis tools detect a Critical vulnerability (Log4Shell)               |
+| Time         | About 20 minutes                                                                                        |
+| Level        | Beginner                                                                                                |
+| Prerequisite | Docker Desktop running (or use the sample SBOM through the "working without Docker" path in chapter 05) |
+| Related      | 05 SBOM generation, vulnerability analysis                                                              |
+
+## What this is for
+
+This sample exists to practise detecting **the Log4Shell vulnerability (CVE-2021-44228)**.
+You see for yourself how the SBOM and vulnerability analysis tools surface a Critical finding.
+
+## The vulnerability planted here
+
+| CVE            | Component  | Version | CVSS | Severity |
+| -------------- | ---------- | ------- | ---- | -------- |
+| CVE-2021-44228 | log4j-core | 2.14.1  | 10.0 | Critical |
+
+**What Log4Shell is**
+It allows remote code execution by abusing the JNDI lookup feature of Apache Log4j 2.
+It was exploited at scale worldwide immediately after its disclosure in December 2021.
+
+## What you should see
+
+### When generating the SBOM
+
+- The `log4j-core 2.14.1` component is detected
+
+### When analysing vulnerabilities
+
+- **CVE-2021-44228 is reported as Critical**
+- Immediate action is advised. The tool reports 2.15.0 as the fixed version, but in practice
+  upgrade to 2.17.1 or later, which also resolves the follow-up vulnerabilities
+
+## Points worth making
+
+1. **A single vulnerable dependency** can put the whole system at risk
+2. **Without an SBOM**, a component like this is hard to track down
+3. It shows why **upgrading as soon as a vulnerability is disclosed** matters
+
+## How to fix it for real
+
+Change the log4j-core version in `pom.xml` to **2.17.1 or later**:
+
+```xml
+<dependency>
+    <groupId>org.apache.logging.log4j</groupId>
+    <artifactId>log4j-core</artifactId>
+    <version>2.17.1</version>  <!-- the patched version -->
+</dependency>
+```
+
+## SBOM generation commands
+
+```bash
+# Create the output directory (it does not exist in a fresh clone)
+mkdir -p ../../output/sbom
+
+docker run --rm -v $(pwd):/project \
+  anchore/syft:latest \
+  /project --output cyclonedx-json \
+  > ../../output/sbom/java-vulnerable.cdx.json
+```
+
+## Project layout
+
+```
+java-vulnerable/
+├── pom.xml                          # Maven build file (carries the vulnerable log4j)
+├── README.md                        # this file
+└── src/
+    └── main/
+        └── java/
+            └── com/
+                └── example/
+                    └── App.java     # the main application
 ```

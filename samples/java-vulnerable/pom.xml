@@ -11,7 +11,7 @@
     <packaging>jar</packaging>
 
     <name>Vulnerable Java App (Log4Shell Demo)</name>
-    <description>CVE-2021-44228 탐지 실습용 샘플 프로젝트</description>
+    <description>Sample project for practising CVE-2021-44228 detection</description>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
@@ -20,7 +20,7 @@
     </properties>
 
     <dependencies>
-        <!-- 취약한 버전: CVE-2021-44228 (Log4Shell), CVSS 10.0 Critical -->
+        <!-- The vulnerable version: CVE-2021-44228 (Log4Shell), CVSS 10.0, Critical -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>

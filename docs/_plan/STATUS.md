@@ -45,12 +45,22 @@ Heading 의 aria-label 은 아예 감싸지지 않은 raw 문자열이라 `trans
 
 결과: 영문 페이지의 한글 잔존이 도구 제외 20개에서 8개로 줄었고, 남은 8개는 전부 블로그(3단계)다.
 
-### 3단계 — 주변 자산
+### 3단계 — 주변 자산 — 완료
 
-- [ ] 블로그. `welcome` 글이 한국어 원문 그대로 영문 사이트에 노출된다(영문 번역본 없음)
-- [ ] `website/static/llms.txt`·`llms-full.txt`·`manifest.json` 이 한국어뿐이다
-- [ ] `README.en.md` 없음. GitHub 첫 화면이라 clone 하려는 영문 사용자가 먼저 본다
-- [ ] `samples/` 13개 파일(README·주석)이 한국어. 영문 agent 로 실습할 때 마주친다
+- [x] 블로그 `welcome` 글을 `i18n/en/docusaurus-plugin-content-blog/` 에 번역해 넣었다.
+      이것으로 영문 사이트의 한글 잔존이 0이 됐다(도구 페이지의 ko 폴백 문자열 제외)
+- [x] `llms.txt` 와 `llms-full.txt` 를 이중 언어로 다시 썼다. AI 크롤러가 읽는 파일이고
+      정적 파일이라 로케일별로 나눌 수 없어, 영문 섹션을 앞에 두고 한국어 섹션을 유지했다.
+      영문 URL(`/en/...`)과 `agents/en/`, 도구의 `?lang=en` 도 함께 안내한다
+- [x] README 는 `README.en.md` 가 없는 게 아니라 한 파일 안에 영문 섹션이 이미 있었다
+      (조사 때 잘못 봤다). 그 섹션이 `cd agents/02-...` 를 안내하던 것을 `agents/en/` 으로
+      고치고, 양쪽 언어의 저장소 구조 트리에 `agents/en/` 과 `templates/en/` 을 넣었다
+- [x] `samples/` — README 4개는 이중 언어로 만들고(한국어 섹션 유지 + 영문 섹션 추가),
+      코드 주석과 출력 문자열은 영문으로 통일했다. 맥락 설명은 README 가 담당한다.
+      편집 후 python·node 문법 검사와 JSON·XML 파싱으로 파일이 여전히 유효함을 확인했다
+
+`manifest.json` 은 한국어지만 어디에서도 참조되지 않는다(`rel="manifest"` 링크가 없다).
+영문화 대상이 아니라 정리 대상이므로 손대지 않았다.
 
 ### 처리 완료
 

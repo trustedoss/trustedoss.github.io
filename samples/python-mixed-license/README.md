@@ -1,3 +1,9 @@
+[🇰🇷 한국어](#한국어) | [🇺🇸 English](#english)
+
+---
+
+<a id="한국어"></a>
+
 # python-mixed-license — GPL + Permissive 라이선스 혼재 시연
 
 | 항목      | 내용                                                                     |
@@ -77,4 +83,89 @@ python-mixed-license/
 ├── requirements.txt    # 의존성 목록 (GPL 포함)
 ├── main.py             # 메인 스크립트
 └── README.md           # 이 파일
+```
+
+---
+
+<a id="english"></a>
+
+# python-mixed-license — GPL and permissive licenses side by side
+
+| Item         | Detail                                                                          |
+| ------------ | ------------------------------------------------------------------------------- |
+| Goal         | Identify the copyleft risk when GPL and permissive licenses are mixed           |
+| Time         | About 20 minutes                                                                |
+| Level        | Beginner                                                                        |
+| Prerequisite | Docker Desktop running (or use the "working without Docker" path in chapter 05) |
+| Related      | 05 SBOM generation and license analysis, 03 policy (license-allowlist)          |
+
+## What this is for
+
+This sample demonstrates the license risk that appears when **GPL and permissive
+licenses sit in the same project**.
+
+## The licenses in play
+
+| Package                | Version | License    | Obligation when distributing     |
+| ---------------------- | ------- | ---------- | -------------------------------- |
+| PyYAML                 | 6.0.1   | MIT        | Copyright notice                 |
+| requests               | 2.31.0  | Apache-2.0 | Copyright notice, NOTICE file    |
+| celery                 | 5.3.4   | BSD        | Copyright notice                 |
+| mysql-connector-python | 8.1.0   | GPL-2.0    | **Obligation to publish source** |
+
+## What you should see
+
+### When generating the SBOM
+
+- The `mysql-connector-python 8.1.0` component is detected (the license field in the syft output is empty)
+
+### When analysing licenses
+
+- **GPL-2.0 is identified** and flagged as a copyleft risk
+- The report says the source publication obligation needs review
+
+## Points worth making
+
+1. **Including a GPL component** can create an obligation to publish your full source, depending on how you distribute
+2. It shows why a **license allowlist policy** is needed (policy/license-allowlist.md)
+3. It shows why **checking the license before adoption** matters
+
+## The GPL risk in more detail
+
+The copyleft nature of GPL-2.0 works like this:
+
+- If you distribute software that includes GPL code, you may have to publish the source of the whole thing
+- Including a GPL component in commercial software requires legal review
+- LGPL relaxes the obligation when the library is linked rather than modified
+
+## How to fix it for real
+
+Consider replacing the GPL component with a permissive one of equivalent function:
+
+| Current (GPL)                    | Alternative (permissive) | License |
+| -------------------------------- | ------------------------ | ------- |
+| mysql-connector-python (GPL-2.0) | PyMySQL                  | MIT     |
+| mysql-connector-python (GPL-2.0) | aiomysql                 | MIT     |
+
+Or get legal review and prepare to publish the source.
+
+## SBOM generation commands
+
+```bash
+# Create the output directory (it does not exist in a fresh clone)
+mkdir -p ../../output/sbom
+
+docker run --rm -v $(pwd):/project \
+  anchore/syft:latest \
+  /project --output cyclonedx-json \
+  > ../../output/sbom/python-mixed.cdx.json
+```
+
+## Project layout
+
+```
+python-mixed-license/
+├── requirements.txt    # the dependency list (includes GPL)
+├── main.py             # the main script
+└── README.md           # this file
 ```

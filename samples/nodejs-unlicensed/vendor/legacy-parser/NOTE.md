@@ -6,3 +6,14 @@ package.json에 license 필드가 의도적으로 없으며, SBOM 생성 시 라
 
 실제 npm 레지스트리 패키지를 쓰지 않는 이유: 레지스트리 패키지는 배포자가 나중에
 라이선스를 추가하면 실습 결과가 재현되지 않기 때문입니다.
+
+---
+
+## Why this package has no license field
+
+This is a **fake package that stands in for one with no declared license**.
+The license field is left out of package.json on purpose, so the SBOM reports the
+license as empty (CycloneDX) or `NOASSERTION` (SPDX).
+
+A real npm registry package is not used here because its publisher could add a
+license later, and the exercise would stop reproducing the same result.

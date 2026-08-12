@@ -1,3 +1,9 @@
+[🇰🇷 한국어](#한국어) | [🇺🇸 English](#english)
+
+---
+
+<a id="한국어"></a>
+
 # nodejs-unlicensed — 라이선스 미명시 패키지 리스크 시연
 
 | 항목      | 내용                                                    |
@@ -94,4 +100,105 @@ nodejs-unlicensed/
 ├── index.js                  # 메인 스크립트
 ├── vendor/legacy-parser/     # 라이선스 미명시 로컬 패키지 (실습용)
 └── README.md                 # 이 파일
+```
+
+---
+
+<a id="english"></a>
+
+# nodejs-unlicensed — the risk of a package with no declared license
+
+| Item         | Detail                                                                    |
+| ------------ | ------------------------------------------------------------------------- |
+| Goal         | Handle the legal risk of a package with no declared license (NOASSERTION) |
+| Time         | About 25 minutes (including the dependency install)                       |
+| Level        | Intermediate                                                              |
+| Prerequisite | Docker Desktop running, Node.js and npm installed                         |
+| Related      | 05 SBOM generation and license analysis, 03 policy (license-allowlist)    |
+
+## What this is for
+
+This sample demonstrates the legal risk of **including a package that declares no license**.
+
+The unlicensed package is reproduced as a local package in the repository,
+`vendor/legacy-parser`. A real npm registry package could have a license added later by
+its publisher, which would change what you see, so a fake package with no license field
+lives in the repository to keep the exercise reproducible.
+
+## The packages in play
+
+| Package       | Version                     | License | Status                              |
+| ------------- | --------------------------- | ------- | ----------------------------------- |
+| express       | ^4.18.2                     | MIT     | Clear, commercial use is fine       |
+| lodash        | ^4.17.21                    | MIT     | Clear, commercial use is fine       |
+| legacy-parser | file:./vendor/legacy-parser | (none)  | **Risky, no clear right to use it** |
+
+**Note:** this project's own package.json has no license field either.
+It shows up as NOASSERTION when you generate the SBOM.
+
+## What you should see
+
+### When generating the SBOM
+
+- License information for `legacy-parser`: empty (CycloneDX) or `NOASSERTION` (SPDX)
+- The project's own license: `NOASSERTION`
+
+### When analysing licenses
+
+- **The item is flagged as needing a license check**
+- Commercial use is flagged as risky
+
+## Points worth making
+
+1. **No declared license means all rights reserved by default.**
+   Under copyright law you have no right to use it without explicit permission
+2. **License uncertainty is real in the npm ecosystem.**
+   A missing or untrustworthy license field in package.json does happen
+3. **Using it without checking is a legal risk**, especially when you distribute commercially
+
+## How to handle it for real
+
+1. **Check the license at the source (repository, distribution page)**
+
+   ```bash
+   # For a package on the npm registry
+   npm view <package-name> license
+
+   # For the local package in this sample, read package.json directly
+   cat vendor/legacy-parser/package.json
+   ```
+
+2. **If you cannot confirm it, do not use the package.**
+   Look for an alternative with a clear license, and if the code came from inside your
+   company with no clear provenance, find the author and get the license stated.
+
+3. **Record the outcome in license-allowlist.md**
+
+   ```
+   output/policy/license-allowlist.md
+   ```
+
+## SBOM generation commands
+
+```bash
+# Install the dependencies first, the same command as in the Korean section above
+npm ci
+
+# Create the output directory (it does not exist in a fresh clone)
+mkdir -p ../../output/sbom
+
+docker run --rm -v $(pwd):/project \
+  anchore/syft:latest \
+  /project --output cyclonedx-json \
+  > ../../output/sbom/nodejs-unlicensed.cdx.json
+```
+
+## Project layout
+
+```
+nodejs-unlicensed/
+├── package.json              # the dependency list (no license field)
+├── index.js                  # the main script
+├── vendor/legacy-parser/     # the unlicensed local package (for the exercise)
+└── README.md                 # this file
 ```
