@@ -70,12 +70,13 @@ AI 코딩 도구는 하드코딩된 값을 코드에 삽입하는 경우가 잦�
 **실전 적용 사례 — TRUSCA**: Apache-2.0 오픈소스 SCA 프로젝트가 이 단계를 실제로 운영합니다.
 워크플로우 파일을 그대로 열어 볼 수 있습니다.
 
-| 영역        | 워크플로우                                                                                          | 운영 방식                                 |
-| ----------- | --------------------------------------------------------------------------------------------------- | ----------------------------------------- |
-| 시크릿 탐지 | [secret-scan.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/secret-scan.yml) | Gitleaks, 유출 발견 시 Hard Fail          |
-| SAST        | [sast.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sast.yml)               | bandit(High) + semgrep(ERROR) Hard Fail   |
-| SAST        | [codeql.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/codeql.yml)           | CodeQL 정적 분석                          |
-| SCA         | [sca-self.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml)       | cdxgen SBOM 생성 후 Trivy 스캔, 매일 실행 |
+| 영역        | 워크플로우                                                                                          | 운영 방식                                        |
+| ----------- | --------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
+| 시크릿 탐지 | [secret-scan.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/secret-scan.yml) | Gitleaks, 유출 발견 시 Hard Fail                 |
+| SAST        | [sast.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sast.yml)               | bandit(High) + semgrep(ERROR) Hard Fail          |
+| SAST        | [codeql.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/codeql.yml)           | CodeQL 정적 분석                                 |
+| SCA         | [sca-self.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml)       | cdxgen SBOM 생성 후 Trivy 스캔, 매일 실행        |
+| 컨테이너    | [ci.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/ci.yml)                   | image-scan job, Trivy 로 HIGH·CRITICAL Hard Fail |
 
 시크릿과 SAST 를 Hard Fail 로 걸어 둔 점, 도구 버전을 고정하고 체크섬을 확인하는 점이 이 단계의
 성숙한 형태를 보여줍니다.
@@ -112,16 +113,6 @@ AI 코딩이 바꾼 것은 **그 사각지대에 놓이는 코드의 양**입니
 
 여러 도구가 동일 위치를 동시에 플래그하면 AI가 높은 우선순위로 상향 조정해 개발자에게 경보를 냅니다. AI 리뷰 결과는 **PR 코멘트로 게시**하며, 빌드를 강제로 실패시키지 않습니다(FP율이 높기 때문).
 
-### 4b. AI 퍼징
-
-3단계 도구가 전혀 건드리지 않은 영역 — 비즈니스 로직, 엣지케이스 입력 처리 — 을 **AI가 능동적으로 탐색**합니다. Claude 등 LLM이 엔드포인트 시그니처를 분석해 경계값과 이상 입력을 자동 생성하고, 앱에 직접 실행해 5xx 오류와 비정상 동작을 탐지합니다. C/C++, Rust 같은 저수준 코드는 OSS-Fuzz 연동을 권장합니다.
-
-| 도구 조합         | 탐지 대상                       | 실행 주기       |
-| ----------------- | ------------------------------- | --------------- |
-| Claude + requests | 웹 API 엣지케이스·비정상 응답   | Push to main    |
-| Claude + AFL++    | 저수준 바이너리 크래시          | 주 1회 스케줄   |
-| Claude + OSS-Fuzz | 오픈소스 라이브러리 파서 취약점 | 프로젝트별 설정 |
-
 - [AI 보안 코드 리뷰](./ai-security-review) — Findings-driven 구현 가이드 및 GitHub Actions 예시
 
 **실전 적용 사례 — TRUSCA**: [ai-review.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/ai-review.yml) 이 이 단계를 운영합니다
@@ -136,6 +127,29 @@ AI 코딩이 바꾼 것은 **그 사각지대에 놓이는 코드의 양**입니
 
 3단계 도구를 재실행하는 이유도 주석에 적혀 있습니다. 차단 기준으로 도는 job 의 결과는
 비어 있거나, 비어 있지 않으면 이미 빌드가 실패해 있어 트리아지할 입력이 없기 때문입니다.
+
+### 4b. AI 퍼징
+
+3단계 도구가 전혀 건드리지 않은 영역 — 비즈니스 로직, 엣지케이스 입력 처리 — 을 **AI가 능동적으로 탐색**합니다. Claude 등 LLM이 엔드포인트 시그니처를 분석해 경계값과 이상 입력을 자동 생성하고, 앱에 직접 실행해 5xx 오류와 비정상 동작을 탐지합니다. C/C++, Rust 같은 저수준 코드는 OSS-Fuzz 연동을 권장합니다.
+
+| 도구 조합         | 탐지 대상                       | 실행 주기       |
+| ----------------- | ------------------------------- | --------------- |
+| Claude + requests | 웹 API 엣지케이스·비정상 응답   | Push to main    |
+| Claude + AFL++    | 저수준 바이너리 크래시          | 주 1회 스케줄   |
+| Claude + OSS-Fuzz | 오픈소스 라이브러리 파서 취약점 | 프로젝트별 설정 |
+
+- [AI 퍼징](./ai-fuzzing) — 워크플로와 스크립트 해설, 도입 시 주의사항
+
+**실전 적용 사례 — ai-coding-best-practice**:
+[ai-fuzzing.yml](https://github.com/trustedoss/ai-coding-best-practice/blob/main/.github/workflows/ai-fuzzing.yml)
+과 [scripts/ai-fuzz.py](https://github.com/trustedoss/ai-coding-best-practice/blob/main/scripts/ai-fuzz.py)
+가 이 단계를 main 푸시와 매주 일요일에 돌립니다. 앱을 기동해 헬스체크로 준비를 확인한 뒤,
+모델이 만든 엣지케이스를 실제 요청으로 보내고 5xx 응답을 결함 후보로 남깁니다. 결과는
+`fuzz-report.json` 으로 30일 보관합니다. `ANTHROPIC_API_KEY` 가 없으면 job 이 실패하지 않고
+건너뜁니다.
+
+**TRUSCA 에는 이 단계가 없습니다.** SCA 제품이라 웹 앱 대상 퍼징이 맞지 않습니다. 4b 의
+돌아가는 예시는 위 참조 저장소입니다.
 
 ### 4c. 에이전트와 MCP 도구 거버넌스
 

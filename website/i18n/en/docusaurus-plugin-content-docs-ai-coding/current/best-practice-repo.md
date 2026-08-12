@@ -7,8 +7,13 @@ sidebar_position: 8
 
 # Best Practice Repository
 
-This is a reference GitHub repository that implements all Stages 1-5 from the [5-Stage Strategy](./strategy).
-You can fork it for immediate use or copy configuration files into an existing project.
+This is a reference GitHub repository that implements the [5-Stage Strategy](./strategy) as CI
+workflows and configuration files. You can fork it for immediate use or copy configuration files
+into an existing project.
+
+Stage 4c (agent and MCP tool governance) has no implementation here. It is handled through
+organization policy and tool settings rather than a CI workflow, so it ships as the six controls
+and the copy-paste policy in [Agent and MCP Tool Governance](./agent-governance).
 
 :::info Repository
 **[github.com/trustedoss/ai-coding-best-practice](https://github.com/trustedoss/ai-coding-best-practice)**
@@ -28,7 +33,7 @@ ai-coding-best-practice/
 ├── docker-compose.yml                 # app startup for DAST/AI fuzzing
 │
 ├── CLAUDE.md                          # Stage 2: Embed AI rules
-├── .cursor/rules/                     # Stage 2: Cursor rules
+├── .cursorrules                       # Stage 2: Cursor rules
 │
 ├── .gitleaks.toml                     # Stage 3: secret detection settings
 ├── .grype.yaml                        # Stage 3: SCA threshold settings
@@ -77,6 +82,7 @@ ai-coding-best-practice/
 | ------------------- | ------------------- | ------------------------------------------------------------------------------- |
 | AI Code Review (4a) | `ai-review.yml`     | Semgrep/grype findings → Claude validation and deep interpretation → PR comment |
 | AI Fuzzing (4b)     | `ai-fuzzing.yml`    | Claude generates edge cases → runs app → detects 5xx errors (Push to main)      |
+| MCP governance (4c) | —                   | Not here. Provided as a [guide](./agent-governance)                             |
 
 ### Stage 5 — Continuous Monitoring & Auto-remediation
 

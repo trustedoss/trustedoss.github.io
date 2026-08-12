@@ -7,8 +7,12 @@ sidebar_position: 8
 
 # Best Practice 저장소
 
-[5단계 전략](./strategy)의 1~5단계를 모두 구현한 참조 GitHub 저장소입니다.
+[5단계 전략](./strategy)을 CI 워크플로와 설정 파일로 구현한 참조 GitHub 저장소입니다.
 fork해서 즉시 사용하거나, 설정 파일을 복사해 기존 프로젝트에 적용할 수 있습니다.
+
+4c(에이전트·MCP 도구 거버넌스)는 이 저장소에 구현이 없습니다. CI 워크플로가 아니라 조직
+정책과 도구 설정으로 다루는 영역이라, [에이전트와 MCP 도구 거버넌스](./agent-governance)의
+통제 여섯 가지와 복붙용 조직 정책으로 제공합니다.
 
 :::info 저장소
 **[github.com/trustedoss/ai-coding-best-practice](https://github.com/trustedoss/ai-coding-best-practice)**
@@ -28,7 +32,7 @@ ai-coding-best-practice/
 ├── docker-compose.yml                 # DAST·AI 퍼징용 앱 기동
 │
 ├── CLAUDE.md                          # 2단계: AI 규칙 내재화
-├── .cursor/rules/                     # 2단계: Cursor 규칙
+├── .cursorrules                       # 2단계: Cursor 규칙
 │
 ├── .gitleaks.toml                     # 3단계: 시크릿 탐지 설정
 ├── .grype.yaml                        # 3단계: SCA 임계값 설정
@@ -77,6 +81,7 @@ ai-coding-best-practice/
 | ----------------- | ---------------- | ------------------------------------------------------------ |
 | AI 코드 리뷰 (4a) | `ai-review.yml`  | Semgrep·grype findings → Claude 검증·심층 해석 → PR 코멘트   |
 | AI 퍼징 (4b)      | `ai-fuzzing.yml` | Claude가 엣지케이스 생성 → 앱 실행 → 5xx 탐지 (Push to main) |
+| MCP 거버넌스 (4c) | —                | 이 저장소에는 없음. [가이드](./agent-governance)로 제공      |
 
 ### 5단계 — 지속적 모니터링·자동 교정
 

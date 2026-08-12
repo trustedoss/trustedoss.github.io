@@ -202,7 +202,7 @@ jobs:
 
 TRUSCA 는 이 층을 세 갈래로 운영합니다.
 
-- [dependabot.yml](https://github.com/trustedoss/trusca/blob/main/.github/dependabot.yml) — npm · pip · docker · github-actions 다섯 생태계를 덮습니다
+- [dependabot.yml](https://github.com/trustedoss/trusca/blob/main/.github/dependabot.yml) — npm · pip · docker · github-actions 네 생태계, 여섯 항목을 덮습니다
 - [sca-self.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml) — 매일 07:00 UTC 에 SBOM 을 다시 만들고 취약점을 재스캔합니다
 - [dogfood-scan.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/dogfood-scan.yml) — 자사 SCA 로 자기 저장소를 스캔합니다
 

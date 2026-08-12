@@ -202,7 +202,7 @@ jobs:
 
 TRUSCA runs this layer three ways.
 
-- [dependabot.yml](https://github.com/trustedoss/trusca/blob/main/.github/dependabot.yml) — covers npm, pip, docker, and github-actions, five ecosystems in all
+- [dependabot.yml](https://github.com/trustedoss/trusca/blob/main/.github/dependabot.yml) — covers npm, pip, docker and github-actions — four ecosystems, six entries
 - [sca-self.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml) — regenerates the SBOM and rescans daily at 07:00 UTC
 - [dogfood-scan.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/dogfood-scan.yml) — scans its own repository with its own SCA
 

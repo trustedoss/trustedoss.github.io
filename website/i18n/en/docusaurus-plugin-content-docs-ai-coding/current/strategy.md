@@ -70,12 +70,13 @@ AI coding tools frequently insert hardcoded values into code, so **secret detect
 **In practice — TRUSCA**: an Apache-2.0 open source SCA project runs this level today. The
 workflow files are open to read.
 
-| Area             | Workflow                                                                                            | How it runs                                |
-| ---------------- | --------------------------------------------------------------------------------------------------- | ------------------------------------------ |
-| Secret detection | [secret-scan.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/secret-scan.yml) | Gitleaks, hard fail on any leak            |
-| SAST             | [sast.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sast.yml)               | bandit (High) + semgrep (ERROR), hard fail |
-| SAST             | [codeql.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/codeql.yml)           | CodeQL static analysis                     |
-| SCA              | [sca-self.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml)       | cdxgen SBOM then Trivy scan, daily         |
+| Area             | Workflow                                                                                            | How it runs                                           |
+| ---------------- | --------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| Secret detection | [secret-scan.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/secret-scan.yml) | Gitleaks, hard fail on any leak                       |
+| SAST             | [sast.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sast.yml)               | bandit (High) + semgrep (ERROR), hard fail            |
+| SAST             | [codeql.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/codeql.yml)           | CodeQL static analysis                                |
+| SCA              | [sca-self.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml)       | cdxgen SBOM then Trivy scan, daily                    |
+| Container        | [ci.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/ci.yml)                   | image-scan job, Trivy, hard fail on HIGH and CRITICAL |
 
 Hard-failing on secrets and SAST, pinning tool versions, and verifying checksums are what a mature
 form of this level looks like.
@@ -111,16 +112,6 @@ Instead of sending all code to AI, only **code snippets flagged by Stage 3 tools
 
 When multiple tools flag the same location, AI raises priority and alerts developers. AI review results are **posted as PR comments**, and the build is not force-failed (because FP rates are high).
 
-### 4b. AI Fuzzing
-
-AI **actively explores** areas untouched by Stage 3 tools, such as business logic and edge-case input handling. LLMs like Claude analyze endpoint signatures, generate boundary and abnormal inputs automatically, and execute them directly against the app to detect 5xx errors and abnormal behavior. For low-level C/C++ and Rust code, OSS-Fuzz integration is recommended.
-
-| Tool Combination  | Detection Target                                | Execution Cycle           |
-| ----------------- | ----------------------------------------------- | ------------------------- |
-| Claude + requests | Web API edge cases and abnormal responses       | Push to main              |
-| Claude + AFL++    | Low-level binary crashes                        | Weekly schedule           |
-| Claude + OSS-Fuzz | Parser vulnerabilities in open source libraries | Per-project configuration |
-
 - [AI Security Code Review](./ai-security-review) — Findings-driven implementation guide and GitHub Actions example
 
 **In practice — TRUSCA**: [ai-review.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/ai-review.yml) runs this level (added 2026-08).
@@ -133,6 +124,28 @@ Three design decisions are worth borrowing.
 
 The file also explains why it re-runs the stage 3 tools: a job running at a blocking threshold
 produces either nothing or a build that has already failed, leaving no input to triage.
+
+### 4b. AI Fuzzing
+
+AI **actively explores** areas untouched by Stage 3 tools, such as business logic and edge-case input handling. LLMs like Claude analyze endpoint signatures, generate boundary and abnormal inputs automatically, and execute them directly against the app to detect 5xx errors and abnormal behavior. For low-level C/C++ and Rust code, OSS-Fuzz integration is recommended.
+
+| Tool Combination  | Detection Target                                | Execution Cycle           |
+| ----------------- | ----------------------------------------------- | ------------------------- |
+| Claude + requests | Web API edge cases and abnormal responses       | Push to main              |
+| Claude + AFL++    | Low-level binary crashes                        | Weekly schedule           |
+| Claude + OSS-Fuzz | Parser vulnerabilities in open source libraries | Per-project configuration |
+
+- [AI Fuzzing](./ai-fuzzing) — the workflow, the script, and what to watch when adopting it
+
+**In practice — ai-coding-best-practice**:
+[ai-fuzzing.yml](https://github.com/trustedoss/ai-coding-best-practice/blob/main/.github/workflows/ai-fuzzing.yml)
+and [scripts/ai-fuzz.py](https://github.com/trustedoss/ai-coding-best-practice/blob/main/scripts/ai-fuzz.py)
+run this stage on pushes to main and every Sunday. The app is started and health-checked, the
+model's edge cases go out as real requests, and 5xx responses are recorded as findings. Results are
+kept as `fuzz-report.json` for 30 days. Without `ANTHROPIC_API_KEY` the job skips rather than fails.
+
+**TRUSCA does not run this stage.** It is an SCA product, so fuzzing a web application does not
+apply. The working example for 4b is the reference repository above.
 
 ### 4c. Agent and MCP Tool Governance
 
@@ -160,11 +173,11 @@ At this stage, SBOM is continuously scanned even after deployment, and patch PRs
 
 **In practice — TRUSCA**:
 
-| Component          | File                                                                                                  | What it does                                                   |
-| ------------------ | ----------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
-| Dependency updates | [dependabot.yml](https://github.com/trustedoss/trusca/blob/main/.github/dependabot.yml)               | npm, pip, docker, github-actions — five ecosystems             |
-| Scheduled scanning | [sca-self.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml)         | Regenerates the SBOM and rescans daily at 07:00 UTC            |
-| Dogfooding         | [dogfood-scan.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/dogfood-scan.yml) | Scans its own repository with its own SCA; advisory by default |
+| Component          | File                                                                                                  | What it does                                                    |
+| ------------------ | ----------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| Dependency updates | [dependabot.yml](https://github.com/trustedoss/trusca/blob/main/.github/dependabot.yml)               | npm, pip, docker, github-actions — four ecosystems, six entries |
+| Scheduled scanning | [sca-self.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml)         | Regenerates the SBOM and rescans daily at 07:00 UTC             |
+| Dogfooding         | [dogfood-scan.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/dogfood-scan.yml) | Scans its own repository with its own SCA; advisory by default  |
 
 `dogfood-scan.yml` defaults to non-blocking and turns blocking on through a `fail_on_gate` input —
 the same observe, then warn, then block progression this guide recommends.
