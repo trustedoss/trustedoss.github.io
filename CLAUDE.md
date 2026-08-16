@@ -18,7 +18,7 @@ ISO/IEC 5230 (라이선스 컴플라이언스)과 ISO/IEC 18974 (보안 보증) 
 | `website/ai-coding/` (md만) | 설정 파일 전체                             |
 | `website/devsecops/` (md만) |                                            |
 
-**스코프 완화 (2026-06):** 위 "작업 금지(X)" 항목도 고도화(쉬운·간결 콘텐츠, 실습·데모·메뉴·디자인 패리티) 목적이면 아래 가드레일 하에 변경 가능하다.
+**스코프 완화 (2026-06):** 위 "작업 금지(X)" 항목도 고도화(쉽고 간결한 콘텐츠, 실습과 데모, 메뉴와 디자인 패리티) 목적이면 아래 가드레일 하에 변경 가능하다.
 
 1. **브랜드** — 로컬 `POSITIONING.md §5` 준수(저장소에 두지 않는 내부 기준 문서). 제품(포털) 팔레트에 굴복 금지, 중립 공용 토큰 원칙. 브랜드 토큰(주색상·폰트·로고) 변경 시 POSITIONING 근거를 명시한다.
 2. **최소 변경** — 무분별한 재디자인 금지. 고도화 목표에 직접 기여하는 변경만 한다.
@@ -112,7 +112,9 @@ bash .claude/scripts/verify.sh
 bash .claude/scripts/verify.sh
 ```
 
-검증 항목: Docusaurus 빌드 / 내부 링크 / front matter YAML / 필수 파일 / 로컬 경로 노출 / **18974 섹션 번호 형식** / **agent 실행 admonition 누락** / ISO 커버리지 정합성 / **output/ 산출물 완전성** / Agent 스펙 구조 / 골든 픽스처 회귀 / agent 체인 연결 / **ko·en 문서 패리티**
+검증 항목 13가지: Docusaurus 빌드, 내부 링크, front matter YAML, 필수 파일, 로컬 경로 노출,
+18974 섹션 번호 형식, agent 실행 admonition 누락, ISO 커버리지 정합성, output/ 산출물 완전성,
+Agent 스펙 구조, 골든 픽스처 회귀, agent 체인 연결, ko·en 문서 패리티.
 모든 항목 PASS 후에만 push 가능. push 전 5단계 절차는 `CONTRIBUTING.md` 참조.
 
 **verify.sh FAIL 처리 기준**: FAIL 항목이 이번 변경 이전부터 존재하던 것인지 먼저 확인하라. git diff로 해당 파일을 건드리지 않았다면 기존 이슈로 간주하고 조사하지 않는다. 새로 발생한 FAIL만 수정한다.
@@ -126,7 +128,7 @@ bash .claude/scripts/verify.sh
 | **허용** | 홈 디렉토리 약칭       | `~/`                                     |
 | **허용** | 일반화 예시 경로       | `/path/to/trustedoss`                    |
 
-명령어 예시·스크립트·에러 인용·README 설치 가이드 모두 동일 규칙 적용.
+명령어 예시, 스크립트, 에러 인용, README 설치 가이드 모두 같은 규칙을 적용한다.
 
 #### docs/ → reference/ 크로스 인스턴스 링크
 

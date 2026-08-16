@@ -23,7 +23,7 @@ DevSecOps CI/CD 파이프라인 파일과 정책 파일을 생성한다.
 1. 병렬 실행: 독립적인 검사는 같은 stage에 배치
 2. 단계별 게이트: 시크릿 탐지 → 코드 분석 → 빌드 분석 순서
 3. 실패 정책:
-   - 시크릿·SAST·SCA·IaC: Hard Fail (PR 차단)
+   - 시크릿, SAST, SCA, IaC: Hard Fail (PR 차단)
    - DAST: 초기 도입 시 Soft Fail (fail_action: false)
 4. 아티팩트 보관: SBOM은 90일, 리포트는 30일
 

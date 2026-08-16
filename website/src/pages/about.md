@@ -1,9 +1,9 @@
 ---
-title: 이 프로젝트에 대하여
+title: 프로젝트 소개
 description: Trusted OSS는 OpenChain KWG 커뮤니티에서 출발한 오픈소스 이니셔티브로, 가이드·Agent·TRUSCA 세 프로젝트로 오픈소스 공급망 관리를 지원합니다.
 ---
 
-# 이 프로젝트에 대하여
+# 프로젝트 소개
 
 ## Trusted OSS란?
 

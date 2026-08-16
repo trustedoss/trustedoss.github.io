@@ -24,7 +24,7 @@ Semgrep 또는 CodeQL SARIF 결과 파일을 분석해서
    (Semgrep JSON / SARIF 구분)
 
 2. 발견 항목 파싱
-   - 규칙 ID·파일·줄 번호·심각도
+   - 규칙 ID, 파일, 줄 번호, 심각도
 
 3. 심각도별 분류 및 수정 가이드 생성
    - error: 즉시 수정 코드 예시 포함
@@ -45,6 +45,7 @@ output/analysis/
 ## 리포트 구성
 
 sast-report.md:
+
 - ## 요약 (전체·심각도별 발견 수·사용 도구)
 - ## Error 항목 (규칙별 수정 코드 예시 포함)
 - ## Warning 항목 (수정 방향 안내)

@@ -1,6 +1,6 @@
 # Tests
 
-검증 스크립트는 `.claude/scripts/`에 위치합니다.
+검증 스크립트는 `.claude/scripts/`에 있습니다.
 
 ## 주요 스크립트
 
@@ -195,7 +195,7 @@ agents/ CLAUDE.md 수정  →  Layer 3 단일 agent 추가 실행
 
 ## 드라이런 — OpenWave 프로필 체인 테스트
 
-OpenWave 스타트업 프로필(SaaS·Python/pip·GitHub Actions·2주 배포·기여 계획 있음)을 기준으로
+OpenWave 스타트업 프로필(SaaS, Python/pip, GitHub Actions, 2주 배포, 기여 계획 있음)을 기준으로
 agent 02~07 전체 체인을 테스트하는 전용 시스템입니다.
 
 ### 구성 파일

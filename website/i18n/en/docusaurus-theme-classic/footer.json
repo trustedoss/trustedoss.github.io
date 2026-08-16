@@ -31,9 +31,9 @@
     "message": "TRUSCA",
     "description": "The label of footer link with label=TRUSCA linking to https://trustedoss.github.io/trusca/"
   },
-  "link.item.label.이 프로젝트에 대하여": {
+  "link.item.label.프로젝트 소개": {
     "message": "About This Project",
-    "description": "The label of footer link with label=이 프로젝트에 대하여 linking to /about"
+    "description": "The label of footer link with label=프로젝트 소개 linking to /about"
   },
   "link.item.label.OpenChain KWG": {
     "message": "OpenChain KWG",

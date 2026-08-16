@@ -348,7 +348,7 @@ const config: Config = {
           title: '커뮤니티',
           items: [
             {
-              label: '이 프로젝트에 대하여',
+              label: '프로젝트 소개',
               to: '/about',
             },
             {

@@ -48,7 +48,7 @@
 - 의존성 파일 읽기 (package.json, requirements.txt 등)
 - 현재 사용 중인 패키지 목록 파악
 - 금지 라이선스 패키지 사전 감지
-  (GPL·AGPL·SSPL·Commons Clause 포함 패키지 검색)
+  (GPL, AGPL, SSPL, Commons Clause 포함 패키지 검색)
 - 기존 CLAUDE.md, .cursor/rules(레거시 .cursorrules 포함) 등 존재 여부 확인
 
 ### 2. 금지 라이선스 패키지 발견 시
