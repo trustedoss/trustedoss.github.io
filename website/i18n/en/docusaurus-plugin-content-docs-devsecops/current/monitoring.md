@@ -271,7 +271,7 @@ The agents below work in conjunction with the CI/CD pipeline.
 They generate workflow files that fully automate security analysis.
 :::
 
-**Prerequisite**: Clone the [Trusted OSS repository](https://github.com/trustedoss/trustedoss-agents)
+**Prerequisite**: Clone the [Trusted OSS Agent repository](https://github.com/trustedoss/trustedoss-agents)
 
 ### Automated PR security-analysis comments
 

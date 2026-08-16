@@ -84,7 +84,7 @@ DevSecOps의 목표는 가능한 많은 검사를 왼쪽(코드 작성 단계)�
 전략 로드맵의 각 단계를 실제로 구현할 수 있습니다.
 :::
 
-**사전 조건**: [Trusted OSS 저장소](https://github.com/trustedoss/trustedoss-agents) 클론 필요
+**사전 조건**: [Trusted OSS Agent 저장소](https://github.com/trustedoss/trustedoss-agents) 클론 필요
 
 아래 단계 번호는 [AI 코딩 — 보장 수준별 5단계 전략](/ai-coding/strategy)의 체계를 따릅니다.
 

@@ -16,6 +16,11 @@
 
 **[trustedoss.github.io](https://trustedoss.github.io)** 에서 웹 가이드와 브라우저 기반 도구를 바로 사용할 수 있습니다.
 
+Trusted OSS는 오픈소스 공급망을 관리하는 데 필요한 가이드와 도구를 만드는 오픈소스 이니셔티브입니다.
+이 저장소는 그중 가이드이고, 인증 산출물을 생성하는 [Trusted OSS Agent](https://github.com/trustedoss/trustedoss-agents)와
+자체 호스팅 SCA 포털 [TRUSCA](https://github.com/trustedoss/trusca)가 함께 있습니다.
+구성은 [GOVERNANCE.md](./GOVERNANCE.md)에 정리돼 있습니다.
+
 ---
 
 ## 무엇을 제공하나요?
@@ -222,6 +227,12 @@ OpenChain KWG 커뮤니티와 연계하여 운영됩니다. PR과 이슈 제출�
 Even those with no prior open source management experience can complete ISO/IEC 5230 and ISO/IEC 18974 self-certification declarations by following this kit. Agents automatically generate deliverables tailored to your organization, and the kit is designed for self-study.
 
 The web guide and browser-based tools are available at **[trustedoss.github.io/en](https://trustedoss.github.io/en)**.
+
+Trusted OSS is an open source initiative building the guides and tools needed to manage an open
+source supply chain. This repository is the guide; alongside it are
+[Trusted OSS Agent](https://github.com/trustedoss/trustedoss-agents), which generates conformance
+deliverables, and [TRUSCA](https://github.com/trustedoss/trusca), a self-hosted SCA portal.
+See [GOVERNANCE.md](./GOVERNANCE.md) for how the projects fit together.
 
 ---
 

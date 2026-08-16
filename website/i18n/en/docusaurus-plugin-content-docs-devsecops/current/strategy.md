@@ -84,7 +84,7 @@ Running the agents below in order lets you actually implement
 each stage of the strategy roadmap.
 :::
 
-**Prerequisite**: Clone the [Trusted OSS repository](https://github.com/trustedoss/trustedoss-agents)
+**Prerequisite**: Clone the [Trusted OSS Agent repository](https://github.com/trustedoss/trustedoss-agents)
 
 The stage numbers below follow the framework of [AI Coding — 5-Stage Strategy by Assurance Level](/ai-coding/strategy).
 

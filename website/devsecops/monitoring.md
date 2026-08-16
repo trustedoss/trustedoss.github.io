@@ -271,7 +271,7 @@ TRUSCA 는 이 층을 세 갈래로 운영합니다.
 보안 분석을 완전히 자동화하는 워크플로우 파일을 생성합니다.
 :::
 
-**사전 조건**: [Trusted OSS 저장소](https://github.com/trustedoss/trustedoss-agents) 클론 필요
+**사전 조건**: [Trusted OSS Agent 저장소](https://github.com/trustedoss/trustedoss-agents) 클론 필요
 
 ### PR 보안 분석 자동 코멘트
 

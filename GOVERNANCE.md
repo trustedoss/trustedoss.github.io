@@ -6,8 +6,23 @@
 
 # 운영 방식
 
-Trusted OSS는 OpenChain KWG 커뮤니티에서 출발한 오픈 프로젝트입니다. 누구나 기여할 수 있고,
-프로젝트 운영은 아래 절차를 따릅니다.
+Trusted OSS는 OpenChain KWG 커뮤니티에서 출발한 오픈소스 이니셔티브입니다. 누구나 기여할 수 있고,
+운영은 아래 절차를 따릅니다.
+
+---
+
+## 구성 프로젝트
+
+Trusted OSS는 이름 하나로 여러 프로젝트를 묶습니다. 아래 프로젝트 모두 이 문서의 절차를 따릅니다.
+
+| 프로젝트           | 저장소                                                                     | 내용                                           |
+| ------------------ | -------------------------------------------------------------------------- | ---------------------------------------------- |
+| Trusted OSS 가이드 | [trustedoss.github.io](https://github.com/trustedoss/trustedoss.github.io) | ISO/IEC 5230·18974 가이드와 브라우저 기반 도구 |
+| Trusted OSS Agent  | [trustedoss-agents](https://github.com/trustedoss/trustedoss-agents)       | 인증 산출물을 생성하는 Claude Code 에이전트    |
+| TRUSCA             | [trusca](https://github.com/trustedoss/trusca)                             | 취약점·라이선스·SBOM 자체 호스팅 SCA 포털      |
+
+문서에서 소개하는 외부 도구는 구성 프로젝트가 아닙니다. 예를 들어 BomLens는 SK텔레콤이 만든
+별개의 오픈소스 도구이며, 가이드에서 대안으로 소개할 뿐입니다.
 
 ---
 
@@ -49,8 +64,24 @@ Trusted OSS는 KWG가 CC BY 4.0으로 공개한 가이드와 템플릿을 출처
 
 # Governance
 
-Trusted OSS is an open project that grew out of the OpenChain KWG community. Anyone can
-contribute, and the project runs on the process below.
+Trusted OSS is an open source initiative that grew out of the OpenChain KWG community. Anyone
+can contribute, and the initiative runs on the process below.
+
+---
+
+## Projects
+
+Trusted OSS is one name covering several projects. All of them follow the process in this
+document.
+
+| Project           | Repository                                                                 | Content                                                    |
+| ----------------- | -------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| Trusted OSS Guide | [trustedoss.github.io](https://github.com/trustedoss/trustedoss.github.io) | ISO/IEC 5230 and 18974 guides plus browser-based tools     |
+| Trusted OSS Agent | [trustedoss-agents](https://github.com/trustedoss/trustedoss-agents)       | Claude Code agents that generate conformance deliverables  |
+| TRUSCA            | [trusca](https://github.com/trustedoss/trusca)                             | Self-hosted SCA portal for vulnerabilities, licenses, SBOM |
+
+External tools covered in the documentation are not part of the initiative. BomLens, for
+example, is a separate open source tool built by SK Telecom that the guides present as an option.
 
 ---
 
