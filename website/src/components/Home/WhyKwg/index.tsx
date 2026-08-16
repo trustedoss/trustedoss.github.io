@@ -51,7 +51,10 @@ const SIDES: Side[] = [
       id: 'homepage.whykwg.toss.badge',
       message: '어떻게, 자동으로',
     }),
-    title: translate({id: 'homepage.whykwg.toss.title', message: 'TrustedOSS'}),
+    title: translate({
+      id: 'homepage.whykwg.toss.title',
+      message: 'Trusted OSS',
+    }),
     desc: translate({
       id: 'homepage.whykwg.toss.desc',
       message:
@@ -96,13 +99,13 @@ function WhyKwg() {
         <header className={styles.sectionHeader}>
           <h2>
             <Translate id="homepage.whykwg.title">
-              왜 KWG와 함께 TrustedOSS인가
+              왜 KWG와 함께 Trusted OSS인가
             </Translate>
           </h2>
           <p>
             <Translate id="homepage.whykwg.subtitle">
               경쟁이 아니라 보완입니다. KWG가 표준과 빈 템플릿으로 방향을
-              제시하면, TrustedOSS는 그것을 AI와 자동화로 실행 가능한 산출물로
+              제시하면, Trusted OSS는 그것을 AI와 자동화로 실행 가능한 산출물로
               만들어 줍니다.
             </Translate>
           </p>
@@ -114,7 +117,7 @@ function WhyKwg() {
         </div>
         <p className={styles.note}>
           <Translate id="homepage.whykwg.note">
-            TrustedOSS는 KWG 콘텐츠를 동기화하며 CC BY 4.0 출처를 표기합니다.
+            Trusted OSS는 KWG 콘텐츠를 동기화하며 CC BY 4.0 출처를 표기합니다.
           </Translate>{' '}
           <Link
             to="https://openchain-project.github.io/OpenChain-KWG/"

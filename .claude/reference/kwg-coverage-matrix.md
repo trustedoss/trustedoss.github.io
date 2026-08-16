@@ -1,4 +1,4 @@
-# KWG 템플릿 ↔ TrustedOSS 산출물 커버리지 매트릭스
+# KWG 템플릿 ↔ Trusted OSS 산출물 커버리지 매트릭스
 
 작성일: 2026-06-05 · 근거: `.claude/reference/kwg/content/ko/guide/templates/` 동기화본과 `output-sample/` 실제 산출물 직접 대조.
 

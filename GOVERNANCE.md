@@ -15,11 +15,15 @@ Trusted OSS는 OpenChain KWG 커뮤니티에서 출발한 오픈소스 이니셔
 
 Trusted OSS는 이름 하나로 여러 프로젝트를 묶습니다. 아래 프로젝트 모두 이 문서의 절차를 따릅니다.
 
-| 프로젝트           | 저장소                                                                     | 내용                                           |
-| ------------------ | -------------------------------------------------------------------------- | ---------------------------------------------- |
-| Trusted OSS 가이드 | [trustedoss.github.io](https://github.com/trustedoss/trustedoss.github.io) | ISO/IEC 5230·18974 가이드와 브라우저 기반 도구 |
-| Trusted OSS Agent  | [trustedoss-agents](https://github.com/trustedoss/trustedoss-agents)       | 인증 산출물을 생성하는 Claude Code 에이전트    |
-| TRUSCA             | [trusca](https://github.com/trustedoss/trusca)                             | 취약점·라이선스·SBOM 자체 호스팅 SCA 포털      |
+| 프로젝트              | 저장소                                                                           | 내용                                                    |
+| --------------------- | -------------------------------------------------------------------------------- | ------------------------------------------------------- |
+| Trusted OSS 가이드    | [trustedoss.github.io](https://github.com/trustedoss/trustedoss.github.io)       | ISO/IEC 5230·18974 가이드와 브라우저 기반 도구          |
+| Trusted OSS Agent     | [trustedoss-agents](https://github.com/trustedoss/trustedoss-agents)             | 인증 산출물을 생성하는 Claude Code 에이전트             |
+| TRUSCA                | [trusca](https://github.com/trustedoss/trusca)                                   | 취약점·라이선스·SBOM 자체 호스팅 SCA 포털               |
+| AI 코딩 Best Practice | [ai-coding-best-practice](https://github.com/trustedoss/ai-coding-best-practice) | 가이드의 AI 코딩 5단계 전략을 파일로 구현한 참조 저장소 |
+
+AI 코딩 Best Practice 는 독립 제품이 아니라 가이드에 딸린 참조 구현입니다. 가이드의 서술과
+저장소의 실제 파일이 어긋나면 저장소를 기준으로 삼고 가이드를 고칩니다.
 
 문서에서 소개하는 외부 도구는 구성 프로젝트가 아닙니다. 예를 들어 BomLens는 SK텔레콤이 만든
 별개의 오픈소스 도구이며, 가이드에서 대안으로 소개할 뿐입니다.
@@ -74,11 +78,16 @@ can contribute, and the initiative runs on the process below.
 Trusted OSS is one name covering several projects. All of them follow the process in this
 document.
 
-| Project           | Repository                                                                 | Content                                                    |
-| ----------------- | -------------------------------------------------------------------------- | ---------------------------------------------------------- |
-| Trusted OSS Guide | [trustedoss.github.io](https://github.com/trustedoss/trustedoss.github.io) | ISO/IEC 5230 and 18974 guides plus browser-based tools     |
-| Trusted OSS Agent | [trustedoss-agents](https://github.com/trustedoss/trustedoss-agents)       | Claude Code agents that generate conformance deliverables  |
-| TRUSCA            | [trusca](https://github.com/trustedoss/trusca)                             | Self-hosted SCA portal for vulnerabilities, licenses, SBOM |
+| Project                 | Repository                                                                       | Content                                                                  |
+| ----------------------- | -------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| Trusted OSS Guide       | [trustedoss.github.io](https://github.com/trustedoss/trustedoss.github.io)       | ISO/IEC 5230 and 18974 guides plus browser-based tools                   |
+| Trusted OSS Agent       | [trustedoss-agents](https://github.com/trustedoss/trustedoss-agents)             | Claude Code agents that generate conformance deliverables                |
+| TRUSCA                  | [trusca](https://github.com/trustedoss/trusca)                                   | Self-hosted SCA portal for vulnerabilities, licenses, SBOM               |
+| AI Coding Best Practice | [ai-coding-best-practice](https://github.com/trustedoss/ai-coding-best-practice) | Reference repository implementing the guide's 5-stage AI coding strategy |
+
+AI Coding Best Practice is not a standalone product but a reference implementation that belongs
+to the guide. When the guide and the files in that repository disagree, the repository is the
+source of truth and the guide gets corrected.
 
 External tools covered in the documentation are not part of the initiative. BomLens, for
 example, is a separate open source tool built by SK Telecom that the guides present as an option.

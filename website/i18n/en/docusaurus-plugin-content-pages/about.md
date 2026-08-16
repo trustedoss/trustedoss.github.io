@@ -15,6 +15,8 @@ Trusted OSS is an open source initiative building the guides and tools needed to
 
 Even practitioners with no prior open source governance experience can reach a self-certification declaration by following the guide with the agents alongside.
 
+Alongside the guide we maintain a reference repository, [AI Coding Best Practice](https://github.com/trustedoss/ai-coding-best-practice). It implements the 5-stage AI coding strategy as working configuration files and CI workflows, so you can fork it directly or copy only the files you need.
+
 Other tools covered in the guides are not part of the initiative. BomLens, for example, is a separate open source tool built by SK Telecom that we present as an option for SBOM generation.
 
 ## Built in the OpenChain KWG community

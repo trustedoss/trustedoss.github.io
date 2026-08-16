@@ -131,6 +131,21 @@ trustedoss 문서 작성 시 따르는 규칙입니다.
 
 `OpenChain`, `KWG`, `trustedoss`, `SBOM`, `CycloneDX`, `SPDX`, `Syft`, `Grype`, `Trivy`, `NTIA`, `OSS`, `DevSecOps`, `CLAUDE.md`, `Claude Code`, `Cursor`, `Copilot`
 
+### 프로젝트 이름 표기
+
+`Trusted OSS` 는 이니셔티브 이름이며 본문에서 항상 띄어 씁니다. `TrustedOSS` 로 붙여 쓰지 않습니다.
+구성 프로젝트 이름은 `Trusted OSS 가이드`(영문 `Trusted OSS Guide`), `Trusted OSS Agent`,
+`TRUSCA` 입니다. Agent 는 단수형으로 씁니다.
+
+| 구분        | 표기                                  | 쓰는 자리                            |
+| ----------- | ------------------------------------- | ------------------------------------ |
+| 본문 이름   | `Trusted OSS`                         | 문서, 웹사이트 카피, 발표 자료       |
+| 식별자      | `trustedoss`                          | 조직명, 도메인, 저장소 경로          |
+| 저작권 문구 | `CC BY 4.0 · TrustedOSS Contributors` | 소스 파일 머리말, 사이트 푸터 (고정) |
+
+저작권 문구는 이미 배포된 고정 문자열이므로 붙임 표기를 그대로 둡니다.
+구성 관계는 [`GOVERNANCE.md`](./GOVERNANCE.md) 의 "구성 프로젝트" 절을 따릅니다.
+
 ---
 
 ## 3. 코드 블록 규칙
@@ -334,6 +349,21 @@ English translation files must use the following terms consistently.
 The following terms are always kept in their original form:
 
 `OpenChain`, `KWG`, `trustedoss`, `SBOM`, `CycloneDX`, `SPDX`, `Syft`, `Grype`, `Trivy`, `NTIA`, `OSS`, `DevSecOps`, `CLAUDE.md`, `Claude Code`, `Cursor`, `Copilot`
+
+### Writing the Project Name
+
+`Trusted OSS` is the name of the initiative and is always written as two words in prose. Never
+write `TrustedOSS`. The projects under it are `Trusted OSS Guide`, `Trusted OSS Agent`, and
+`TRUSCA`. Agent stays singular.
+
+| Form              | Written as                            | Where it is used                          |
+| ----------------- | ------------------------------------- | ----------------------------------------- |
+| Name in prose     | `Trusted OSS`                         | Documentation, site copy, slides          |
+| Identifier        | `trustedoss`                          | Organization, domain, repository paths    |
+| Copyright notice  | `CC BY 4.0 · TrustedOSS Contributors` | Source file headers, site footer (frozen) |
+
+The copyright notice is a string that already shipped, so it keeps the closed-up spelling.
+For how the projects relate, see the projects section of [`GOVERNANCE.md`](./GOVERNANCE.md).
 
 ---
 

@@ -481,10 +481,10 @@
     "message": "Self-certification — conformance checklist and declaration draft"
   },
   "homepage.whykwg.title": {
-    "message": "Why TrustedOSS, together with KWG"
+    "message": "Why Trusted OSS, together with KWG"
   },
   "homepage.whykwg.subtitle": {
-    "message": "Not competition, but completion. KWG points the way with standards and blank templates; TrustedOSS turns that into executable artifacts with AI and automation."
+    "message": "Not competition, but completion. KWG points the way with standards and blank templates; Trusted OSS turns that into executable artifacts with AI and automation."
   },
   "homepage.whykwg.kwg.badge": {
     "message": "What & why"
@@ -508,7 +508,7 @@
     "message": "How, automatically"
   },
   "homepage.whykwg.toss.title": {
-    "message": "TrustedOSS"
+    "message": "Trusted OSS"
   },
   "homepage.whykwg.toss.desc": {
     "message": "Helps you actually achieve the standard with AI and automation, on a single path from zero to self-certification."
@@ -523,7 +523,7 @@
     "message": "Extends to DevSecOps and AI coding governance"
   },
   "homepage.whykwg.note": {
-    "message": "TrustedOSS synchronizes KWG content and attributes it under CC BY 4.0."
+    "message": "Trusted OSS synchronizes KWG content and attributes it under CC BY 4.0."
   },
   "homepage.whykwg.note.link": {
     "message": "View the OpenChain KWG guide"

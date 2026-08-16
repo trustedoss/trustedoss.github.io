@@ -15,6 +15,8 @@ Trusted OSS는 오픈소스 공급망을 관리하는 데 필요한 가이드와
 
 오픈소스 관리 경험이 없는 담당자도 가이드를 따라가며 Agent의 안내를 받으면 자체 인증 선언까지 도달할 수 있습니다.
 
+가이드에 딸린 참조 저장소로 [AI 코딩 Best Practice](https://github.com/trustedoss/ai-coding-best-practice)를 함께 운영합니다. AI 코딩 5단계 전략을 실제 설정 파일과 CI 워크플로로 구현해 둔 것이라, fork해서 바로 쓰거나 필요한 파일만 복사할 수 있습니다.
+
 가이드에서 소개하는 다른 도구는 이니셔티브의 구성 프로젝트가 아닙니다. 예를 들어 BomLens는 SK텔레콤이 만든 별개의 오픈소스 도구이며, SBOM 생성 대안으로 소개할 뿐입니다.
 
 ## 만든 곳: OpenChain KWG 커뮤니티
@@ -27,7 +29,7 @@ OpenChain KWG는 ISO/IEC 5230 국제 표준을 이끄는 [Linux Foundation OpenC
 
 이 사이트의 모든 콘텐츠는 **[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.ko)** 라이선스로 공개됩니다.
 
-출처를 표기하면 자유롭게 복제·수정·재배포·상업적 활용이 가능합니다.
+출처를 표기하면 자유롭게 복제하고 수정하고 재배포할 수 있으며, 상업적으로도 활용할 수 있습니다.
 
 :::info 출처 표기 예시
 "Trusted OSS (CC BY 4.0)"

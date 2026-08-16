@@ -12,7 +12,7 @@ sidebar_label: Create deliverables with AI agents
 
 # Create deliverables with AI agents
 
-The core of TrustedOSS is that **an AI agent asks about your company's situation and automatically creates deliverables that conform to the OpenChain standards**. Instead of filling in blank templates yourself, you answer questions and the policy, process, and organization documents tailored to your company are generated. This page shows at a glance which agent creates what.
+The core of Trusted OSS is that **an AI agent asks about your company's situation and automatically creates deliverables that conform to the OpenChain standards**. Instead of filling in blank templates yourself, you answer questions and the policy, process, and organization documents tailored to your company are generated. This page shows at a glance which agent creates what.
 
 ## Agents at a glance
 

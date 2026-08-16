@@ -12,7 +12,7 @@ sidebar_label: 5-minute quick start
 
 # 5-minute quick start
 
-TrustedOSS uses AI agents to automatically generate company-tailored <Term k="openchain">OpenChain</Term> (ISO/IEC 5230 and 18974) enterprise open source management deliverables, helping you reach a <Term k="self-certification">Self-Certification</Term> declaration as fast as possible. Even if this is your first time taking on open source management, you can follow along step by step.
+Trusted OSS uses AI agents to automatically generate company-tailored <Term k="openchain">OpenChain</Term> (ISO/IEC 5230 and 18974) enterprise open source management deliverables, helping you reach a <Term k="self-certification">Self-Certification</Term> declaration as fast as possible. Even if this is your first time taking on open source management, you can follow along step by step.
 
 ## When to use this
 

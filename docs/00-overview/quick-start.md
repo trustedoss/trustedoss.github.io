@@ -12,7 +12,7 @@ sidebar_label: 5분 빠른 시작
 
 # 5분 빠른 시작
 
-TrustedOSS는 AI 에이전트로 <Term k="openchain">OpenChain</Term>(ISO/IEC 5230·18974) 기업 오픈소스 관리 산출물을 회사 맞춤으로 자동 생성해, <Term k="self-certification">자체 인증</Term> 선언까지 가장 빠르게 도달하도록 돕습니다. 오픈소스 관리를 처음 맡으셨어도 단계별로 따라오면 됩니다.
+Trusted OSS는 AI 에이전트로 <Term k="openchain">OpenChain</Term>(ISO/IEC 5230·18974) 기업 오픈소스 관리 산출물을 회사 맞춤으로 자동 생성해, <Term k="self-certification">자체 인증</Term> 선언까지 가장 빠르게 도달하도록 돕습니다. 오픈소스 관리를 처음 맡으셨어도 단계별로 따라오면 됩니다.
 
 ## 언제 쓰나요
 
