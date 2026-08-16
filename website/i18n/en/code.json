@@ -484,7 +484,7 @@
     "message": "Why Trusted OSS, together with KWG"
   },
   "homepage.whykwg.subtitle": {
-    "message": "Not competition, but completion. KWG points the way with standards and blank templates; Trusted OSS turns that into executable artifacts with AI and automation."
+    "message": "Trusted OSS grew out of the KWG community. KWG points the way with standards and blank templates; Trusted OSS turns that into executable artifacts with AI and automation."
   },
   "homepage.whykwg.kwg.badge": {
     "message": "What & why"
@@ -523,7 +523,7 @@
     "message": "Extends to DevSecOps and AI coding governance"
   },
   "homepage.whykwg.note": {
-    "message": "Trusted OSS synchronizes KWG content and attributes it under CC BY 4.0."
+    "message": "Trusted OSS is an open source initiative that grew out of the KWG community. It synchronizes KWG content and attributes it under CC BY 4.0."
   },
   "homepage.whykwg.note.link": {
     "message": "View the OpenChain KWG guide"

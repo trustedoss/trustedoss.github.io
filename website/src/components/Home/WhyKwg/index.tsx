@@ -104,9 +104,9 @@ function WhyKwg() {
           </h2>
           <p>
             <Translate id="homepage.whykwg.subtitle">
-              경쟁이 아니라 보완입니다. KWG가 표준과 빈 템플릿으로 방향을
-              제시하면, Trusted OSS는 그것을 AI와 자동화로 실행 가능한 산출물로
-              만들어 줍니다.
+              Trusted OSS는 KWG 커뮤니티에서 출발했습니다. KWG가 표준과 빈
+              템플릿으로 방향을 제시하면, Trusted OSS는 그것을 AI와 자동화로
+              실행 가능한 산출물로 만들어 줍니다.
             </Translate>
           </p>
         </header>
@@ -117,7 +117,8 @@ function WhyKwg() {
         </div>
         <p className={styles.note}>
           <Translate id="homepage.whykwg.note">
-            Trusted OSS는 KWG 콘텐츠를 동기화하며 CC BY 4.0 출처를 표기합니다.
+            Trusted OSS는 KWG 커뮤니티에서 출발한 오픈소스 이니셔티브입니다. KWG
+            콘텐츠를 동기화하며 CC BY 4.0 출처를 표기합니다.
           </Translate>{' '}
           <Link
             to="https://openchain-project.github.io/OpenChain-KWG/"

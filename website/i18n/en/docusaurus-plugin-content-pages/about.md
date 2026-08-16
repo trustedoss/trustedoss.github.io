@@ -19,9 +19,11 @@ Alongside the guide we maintain a reference repository, [AI Coding Best Practice
 
 Other tools covered in the guides are not part of the initiative. BomLens, for example, is a separate open source tool built by SK Telecom that we present as an option for SBOM generation.
 
-## Built in the OpenChain KWG community
+## Where it started: the OpenChain KWG community
 
-Trusted OSS grew out of the **[OpenChain KWG](https://openchain-project.github.io/OpenChain-KWG/)** (OpenChain Korea Work Group) community. Where KWG provides standards guidance and templates, Trusted OSS turns them into finished artifacts.
+Trusted OSS is an initiative that grew out of the **[OpenChain KWG](https://openchain-project.github.io/OpenChain-KWG/)** (OpenChain Korea Work Group) community. Where KWG provides standards guidance and templates, Trusted OSS builds the tools that turn them into finished artifacts.
+
+It is not a subgroup of KWG. It builds on the guides and templates KWG publishes under CC BY 4.0, with attribution, and its own decisions follow the process in [GOVERNANCE.md](https://github.com/trustedoss/trustedoss.github.io/blob/main/GOVERNANCE.md).
 
 OpenChain KWG is the Korean working group of the [Linux Foundation OpenChain Project](https://www.openchainproject.org/), which leads the ISO/IEC 5230 international standard. It operates guides, tools, and a community to improve open source compliance capabilities for companies in Korea.
 

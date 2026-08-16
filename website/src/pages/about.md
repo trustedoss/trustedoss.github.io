@@ -19,9 +19,11 @@ Trusted OSS는 오픈소스 공급망을 관리하는 데 필요한 가이드와
 
 가이드에서 소개하는 다른 도구는 이니셔티브의 구성 프로젝트가 아닙니다. 예를 들어 BomLens는 SK텔레콤이 만든 별개의 오픈소스 도구이며, SBOM 생성 대안으로 소개할 뿐입니다.
 
-## 만든 곳: OpenChain KWG 커뮤니티
+## 어디서 시작했나: OpenChain KWG 커뮤니티
 
-Trusted OSS는 **[OpenChain KWG](https://openchain-project.github.io/OpenChain-KWG/)**(OpenChain Korea Work Group) 커뮤니티에서 출발한 프로젝트입니다. KWG가 표준 가이드와 템플릿으로 방향을 제시해 왔다면, Trusted OSS는 그것을 실제 산출물로 만드는 실행 도구입니다.
+Trusted OSS는 **[OpenChain KWG](https://openchain-project.github.io/OpenChain-KWG/)**(OpenChain Korea Work Group) 커뮤니티에서 출발한 이니셔티브입니다. KWG가 표준 가이드와 템플릿으로 방향을 제시해 왔다면, Trusted OSS는 그것을 실제 산출물로 만드는 실행 도구를 만듭니다.
+
+KWG의 하위 조직은 아닙니다. KWG가 CC BY 4.0으로 공개한 가이드와 템플릿을 출처를 밝히고 활용하며, 운영과 의사결정은 [GOVERNANCE.md](https://github.com/trustedoss/trustedoss.github.io/blob/main/GOVERNANCE.md)의 절차를 따릅니다.
 
 OpenChain KWG는 ISO/IEC 5230 국제 표준을 이끄는 [Linux Foundation OpenChain Project](https://www.openchainproject.org/)의 한국 워킹 그룹입니다. 국내 기업의 오픈소스 컴플라이언스 역량을 높이기 위해 가이드·도구·커뮤니티를 운영하고 있습니다.
 
