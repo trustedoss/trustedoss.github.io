@@ -29,6 +29,10 @@ slug: /
 
 ### 빠른 시작
 
+터미널·git·Claude Code를 한 번도 써 본 적이 없다면, 아래 명령을 실행하기 전에
+[01 환경 준비](../01-setup/index.md)를 먼저 끝내세요. 터미널 여는 법부터 도구 설치까지
+차례로 안내합니다. 이미 준비를 마쳤다면 바로 아래 명령을 실행하면 됩니다.
+
 ```bash
 git clone https://github.com/trustedoss/trustedoss-agents.git
 cd trustedoss-agents && claude

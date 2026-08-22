@@ -226,8 +226,17 @@ open output/sbom/sbom-sharing-template.md
 
 **Step 6.** SBOM 파일 명명 규칙을 기존 파일에 적용합니다.
 
+먼저 실제 파일 이름을 확인합니다(`myapp`는 예시일 뿐, 실제로는 05-1단계에서 생성된 다른
+이름일 가능성이 높습니다):
+
 ```bash
-# 예: 기존 파일 이름 변경
+ls output/sbom/*.cdx.json
+```
+
+위 명령으로 나온 실제 파일 이름을 아래 `myapp.cdx.json` 자리에 그대로 바꿔 넣고 실행합니다.
+
+```bash
+# myapp.cdx.json 부분을 위에서 확인한 실제 파일 이름으로 바꿔서 실행
 mv output/sbom/myapp.cdx.json output/sbom/myapp-v1.0.0-20260320.cdx.json
 cp output/sbom/myapp-v1.0.0-20260320.cdx.json output/sbom/myapp-latest.cdx.json
 ```

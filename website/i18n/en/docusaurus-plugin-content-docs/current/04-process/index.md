@@ -264,7 +264,18 @@ For the list of generated files, see the [Expected output](#expected-output) tab
 
 **Step 4**: Review the generated Mermaid flowchart.
 
-When you open the generated `output/process/process-diagram.md` file on GitHub, the flowchart is rendered automatically. Review it to make sure it matches your actual workflow. If corrections are needed, ask the agent for changes or edit the file directly.
+The diagram inside `output/process/process-diagram.md` is a "drawing" written in text, so opening
+it in a plain editor shows code, not a picture. To see the actual rendered diagram, use one of
+these two options.
+
+- **If this repository is hosted on GitHub**: opening the file on GitHub renders it as a picture automatically.
+- **If you're only working locally**: open [mermaid.live](https://mermaid.live), copy the whole
+  code block in `output/process/process-diagram.md` that starts with &#96;&#96;&#96;mermaid and ends
+  with &#96;&#96;&#96;, and paste it (Cmd+V or Ctrl+V) into the input pane on the left — the diagram
+  appears on the right immediately. In VS Code, an extension like "Markdown Preview Mermaid
+  Support" also renders it in the Preview pane.
+
+Review it to make sure it matches your actual workflow. If corrections are needed, ask the agent for changes or edit the file directly.
 
 **Step 5**: Check the files created in the `output/process/` directory.
 

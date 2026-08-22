@@ -51,8 +51,12 @@ Trusted OSS는 오픈소스 공급망을 관리하는 데 필요한 가이드와
 
 ### Claude Code로 실행
 
+터미널이나 git, Claude Code를 처음 써 본다면 아래 명령을 실행하기 전에
+[1. 환경 준비](docs/01-setup/index.md) 문서를 먼저 읽으세요. 터미널 여는 법부터
+차례로 안내합니다.
+
 ```bash
-# 1. 저장소 클론
+# 1. 저장소 클론(파일 내려받기)
 git clone https://github.com/trustedoss/trustedoss-agents.git
 
 # 2. 프로젝트 진입 및 Claude Code 실행
@@ -264,8 +268,11 @@ Browser-based tools are available with just an Anthropic API key.
 
 ### Run with Claude Code
 
+New to the terminal, git, or Claude Code? Read [1. Environment Setup](docs/01-setup/index.md)
+first — it walks through opening a terminal onward.
+
 ```bash
-# 1. Clone the repository
+# 1. Clone the repository (download the files)
 git clone https://github.com/trustedoss/trustedoss-agents.git
 
 # 2. Enter the project and launch Claude Code

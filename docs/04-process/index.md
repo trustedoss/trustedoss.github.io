@@ -268,9 +268,19 @@ agent는 7개 질문을 순서대로 묻습니다. 아래는 스타트업 예시
 
 **4단계**: 생성된 Mermaid 흐름도 검토
 
-생성된 `output/process/process-diagram.md` 파일을 GitHub에서 열면 흐름도가 자동으로
-렌더링됩니다. 흐름도가 실제 업무 흐름과 일치하는지 검토하고, 수정이 필요하면 agent에게
-추가 요청하거나 직접 편집합니다.
+`output/process/process-diagram.md` 파일 안의 그림은 텍스트로 그려진 "도면"이라 편집기에서
+그냥 열면 코드처럼 보입니다. 실제 그림으로 보려면 아래 두 방법 중 하나를 씁니다.
+
+- **이 저장소를 GitHub에 올려 관리하는 경우**: GitHub에서 이 파일을 열면 자동으로 그림으로
+  렌더링됩니다.
+- **로컬 컴퓨터에서만 작업하는 경우**: [mermaid.live](https://mermaid.live) 사이트를 열고,
+  `output/process/process-diagram.md`의 &#96;&#96;&#96;mermaid 로 시작해서 &#96;&#96;&#96;로 끝나는 코드 블록 하나를
+  통째로 복사해 그 사이트 왼쪽 입력창에 붙여넣으면(Cmd+V 또는 Ctrl+V) 오른쪽에 그림이
+  바로 나타납니다. VS Code를 쓴다면 "Markdown Preview Mermaid Support" 같은 확장 프로그램을
+  설치해 미리보기(Preview)로 봐도 됩니다.
+
+흐름도가 실제 업무 흐름과 일치하는지 검토하고, 수정이 필요하면 agent에게 추가 요청하거나
+직접 편집합니다.
 
 **5단계**: `output/process/` 디렉토리에 생성된 파일 확인
 

@@ -47,7 +47,10 @@ ISO/IEC 5230 (License Compliance) and ISO/IEC 18974 (Security Assurance) both pr
 ## 3. Final review before self-certification (self-study)
 
 :::info Self-study mode (about 2 hours)
-Additional work may be required depending on the results of the gap analysis. The conformance-preparer agent automatically scans the entire output/ folder to identify unmet items.
+The "about 2 hours" covers reading this document and running the agent to produce the gap analysis
+and declaration. If the gap analysis turns up unmet items, actually going back and fixing them in
+the relevant chapters takes extra time on top of that (anywhere from half a day to a few days,
+depending on how many items). The conformance-preparer agent automatically scans the entire output/ folder to identify unmet items.
 :::
 
 Proceed in the following order:
@@ -73,6 +76,11 @@ Proceed in the following order:
 ---
 
 ## 4. Understanding the gap analysis report
+
+**What is a gap analysis?** It's the work of checking what you've built so far against what the
+standard requires, and finding the "gap" — what's still missing. The agent opens the entire
+`output/` folder, compares it item by item against the standard's checklist, and writes the result
+to `output/conformance/gap-analysis.md`.
 
 `output/conformance/gap-analysis.md` is created with the following structure:
 
@@ -101,13 +109,15 @@ For the same reason, the two items below are normally only partially satisfied a
 
 **G4.5 — Confirming vulnerability remediation before distribution (18974 §4.3.2.2 · §4.4.1.1):**
 
-ISO/IEC 18974 does not require zero known vulnerabilities. It requires a record of the action taken for each identified vulnerability — including a decision that no action is needed (§4.3.2.2) — plus documented evidence that the program meets the requirements (§4.4.1.1). If a vulnerability exists, handle it as follows:
+ISO/IEC 18974 does not require zero known vulnerabilities. It requires a record of the action taken for each identified vulnerability — including a decision that no action is needed (§4.3.2.2) — plus documented evidence that the program meets the requirements (§4.4.1.1). The conformance-preparer agent checks `output/vulnerability/remediation-plan.md` directly and decides whether to print the "completion" message based on the criteria below.
 
-| Situation                                                      | How to handle                                                                                                                      |
-| -------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| The vulnerability is in the **actual distributed software**    | Declare after completing the patch before distribution. Record the completed action in `output/vulnerability/remediation-plan.md`. |
-| A vulnerability exists but **mitigations have been completed** | Document the mitigation measures and remaining risks in `remediation-plan.md`; a conditional declaration is possible.              |
-| The vulnerability is in a **practice sample**                  | Samples are not actual distributed software. Judge based on your actual distribution target product.                               |
+| Situation                                                                                                 | How to handle                                                                                                         |
+| --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| The vulnerability is in the **actual distributed software** and already **patched**                       | Declaration possible. Record the completed action in `output/vulnerability/remediation-plan.md`.                      |
+| A Critical/High vulnerability is unresolved but still **within its response deadline** (1 week / 4 weeks) | Does not block declaration. Note "unresolved until `{date}`" in `remediation-plan.md`.                                |
+| A Critical/High vulnerability is unresolved **past its response deadline**                                | Hold off declaring. Patch it or complete a mitigation first, then declare.                                            |
+| A vulnerability exists but **mitigations have been completed**                                            | Document the mitigation measures and remaining risks in `remediation-plan.md`; a conditional declaration is possible. |
+| The vulnerability is in a **practice sample**                                                             | Samples are not actual distributed software. Judge based on your actual distribution target product.                  |
 
 :::info Declaration scope
 Self-certification is a declaration about a specific software "scope." By clearly defining the scope (§3.1.4 / §4.1.4), you can make the declaration about actual products rather than practice samples.
@@ -118,6 +128,11 @@ Self-certification is a declaration about a specific software "scope." By clearl
 ## 5. OpenChain self-certification declaration procedure
 
 Once the gap analysis is complete and there are no unmet items (or a resolution plan is in place), proceed with official registration using the following steps:
+
+:::info Cost
+OpenChain self-certification registration is free. There is no review fee or registration charge —
+you self-check and then submit your company's information through the online form.
+:::
 
 **Step 1**: Do a final review of the contents of `output/conformance/declaration-draft.md` and confirm them.
 

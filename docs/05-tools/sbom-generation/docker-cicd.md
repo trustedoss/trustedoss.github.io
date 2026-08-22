@@ -17,14 +17,14 @@ sidebar_label: 'Docker·CI/CD 실행 가이드'
 
 ## Docker로 syft 실행 — 언어/패키지매니저별 명령어
 
-| 언어    | 패키지매니저 | 명령어                                                                                                                |
-| ------- | ------------ | --------------------------------------------------------------------------------------------------------------------- |
-| Java    | Maven/Gradle | `docker run --rm -v $(pwd):/project anchore/syft:latest /project --output cyclonedx-json > output/sbom/sbom.cdx.json` |
-| Python  | pip          | `docker run --rm -v $(pwd):/project anchore/syft:latest /project --output cyclonedx-json > output/sbom/sbom.cdx.json` |
-| Node.js | npm          | `docker run --rm -v $(pwd):/project anchore/syft:latest /project --output cyclonedx-json > output/sbom/sbom.cdx.json` |
-| Go      | go mod       | `docker run --rm -v $(pwd):/project anchore/syft:latest /project --output cyclonedx-json > output/sbom/sbom.cdx.json` |
+| 언어    | 패키지매니저 | 명령어                                                                                               |
+| ------- | ------------ | ---------------------------------------------------------------------------------------------------- |
+| Java    | Maven/Gradle | `docker run --rm -v $(pwd):/src anchore/syft dir:/src -o cyclonedx-json > output/sbom/sbom.cdx.json` |
+| Python  | pip          | `docker run --rm -v $(pwd):/src anchore/syft dir:/src -o cyclonedx-json > output/sbom/sbom.cdx.json` |
+| Node.js | npm          | `docker run --rm -v $(pwd):/src anchore/syft dir:/src -o cyclonedx-json > output/sbom/sbom.cdx.json` |
+| Go      | go mod       | `docker run --rm -v $(pwd):/src anchore/syft dir:/src -o cyclonedx-json > output/sbom/sbom.cdx.json` |
 
-전체 명령어 (각 언어 동일, 디렉토리만 조정):
+전체 명령어 (각 언어 동일, 디렉토리만 조정). `agents/05-sbom-guide/CLAUDE.md`가 실제로 생성하는 명령어와 동일한 형태입니다:
 
 ```bash
 # output/sbom 폴더 생성
@@ -32,10 +32,10 @@ mkdir -p output/sbom
 
 # syft로 SBOM 생성
 docker run --rm \
-  -v $(pwd):/project \
-  anchore/syft:latest \
-  /project \
-  --output cyclonedx-json \
+  -v $(pwd):/src \
+  anchore/syft \
+  dir:/src \
+  -o cyclonedx-json \
   > output/sbom/sbom.cdx.json
 ```
 
@@ -48,8 +48,8 @@ docker run --rm \
   -v $(pwd):/app \
   -w /app \
   ghcr.io/cyclonedx/cdxgen:latest \
-  -r /app \
-  -o /app/output/sbom/sbom-cdxgen.cdx.json
+  -o /app/output/sbom/sbom-cdxgen.cdx.json \
+  /app
 ```
 
 Java Maven 프로젝트에 권장합니다. syft보다 의존성 추적이 더 정밀하며, 전이 의존성(transitive dependencies)까지 더 완전하게 수집합니다.
@@ -78,9 +78,9 @@ jobs:
       - name: Generate SBOM with syft
         run: |
           docker run --rm \
-            -v ${{ github.workspace }}:/project \
-            anchore/syft:latest \
-            /project --output cyclonedx-json \
+            -v ${{ github.workspace }}:/src \
+            anchore/syft \
+            dir:/src -o cyclonedx-json \
             > sbom.cdx.json
       - name: Upload SBOM as artifact
         uses: actions/upload-artifact@v7
@@ -102,9 +102,9 @@ jobs:
 ```bash
 # java-vulnerable 샘플로 실습
 docker run --rm \
-  -v $(pwd)/samples/java-vulnerable:/project \
-  anchore/syft:latest \
-  /project --output cyclonedx-json \
+  -v $(pwd)/samples/java-vulnerable:/src \
+  anchore/syft \
+  dir:/src -o cyclonedx-json \
   > output/sbom/java-vulnerable.cdx.json
 ```
 
@@ -116,6 +116,6 @@ docker run --rm \
 | ---------------------------------- | --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | SBOM이 비어있음 (`components: []`) | lock 파일 없음                                                  | `package-lock.json`, `requirements.txt`, `pom.xml` 등 확인                                              |
 | SBOM이 비어있는데 에러도 없음      | Docker 파일 공유 제한 — 마운트가 빈 디렉토리로 잡힘 (colima 등) | Docker Desktop > Settings > Resources > File Sharing(또는 colima 마운트 설정)에 작업 디렉토리 포함 확인 |
-| Docker 볼륨 마운트 오류            | 경로 문제                                                       | 절대 경로로 변경: `-v /full/path:/project`                                                              |
+| Docker 볼륨 마운트 오류            | 경로 문제                                                       | 절대 경로로 변경: `-v /full/path:/src`                                                                  |
 | Permission denied                  | 권한 문제                                                       | `sudo` 또는 Docker 그룹 추가                                                                            |
 | 이미지 풀링 오래 걸림              | 네트워크                                                        | 최초 실행 시 정상, 이후 캐시 사용                                                                       |

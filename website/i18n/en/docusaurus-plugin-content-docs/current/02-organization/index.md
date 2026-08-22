@@ -196,6 +196,12 @@ You interact with the agent and create the organizational deliverables.
 5. Answer the seven questions from the conversation example above according to your company's situation.
 6. Confirm that `output/organization/` was created.
 
+:::tip If you answered something wrong
+To start over, run `claude` again in the same folder (`agents/en/02-organization-designer`) and
+answer the questions again. The existing files are overwritten with the new content — no need to
+delete anything yourself.
+:::
+
 :::tip Expected result
 When the exercise is complete, the three files below will be created.
 

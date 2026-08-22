@@ -219,8 +219,8 @@ docker run --rm \
   -v "$(pwd)":/app \
   -w /app \
   ghcr.io/cyclonedx/cdxgen:latest \
-  -r /app/samples/java-vulnerable \
-  -o /app/output/sbom/java-vulnerable-cdxgen.cdx.json
+  -o /app/output/sbom/java-vulnerable-cdxgen.cdx.json \
+  /app/samples/java-vulnerable
 ```
 
 **Expected result of each step:**

@@ -47,14 +47,10 @@ agent가 아래 질문을 순서대로 한다:
 
 ## 무료 교육 리소스
 
-| 리소스                    | 내용                            | 소요시간 |
-| ------------------------- | ------------------------------- | -------- |
-| OpenChain 교육 자료       | ISO/IEC 5230 및 18974 공식 교육 | 자율     |
-| Linux Foundation (LFC193) | 오픈소스 라이선스 컴플라이언스  | 3시간    |
-| Linux Foundation (LFD102) | 오픈소스 개발 기초              | 자율     |
-| SPDX 교육                 | SBOM 및 SPDX 표준               | 1시간    |
-
-agent가 생성하는 `output/training/resources.md` 에 링크와 함께 정리된다.
+`docs/06-training/index.md` §4 표와 동일한 6개(OpenChain 교육 자료, Linux Foundation LFC193,
+NIPA 오픈소스 라이선스 가이드, OpenChain KWG 교육 자료, SPDX 공식 문서, CycloneDX 공식 문서)를
+agent가 실제 URL과 함께 `output/training/resources.md`에 정리한다. 최신 목록은 index.md §4를
+정본으로 참조한다.
 
 ## 셀프스터디 경로
 

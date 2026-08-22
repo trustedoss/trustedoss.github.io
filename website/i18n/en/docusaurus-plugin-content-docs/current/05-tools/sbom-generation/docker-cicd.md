@@ -17,12 +17,12 @@ This page contains the actual Docker commands for syft and cdxgen, the GitHub Ac
 
 ## Running syft with Docker — commands per language/package manager
 
-| Language | Package manager | Command                                                                                                               |
-| -------- | --------------- | --------------------------------------------------------------------------------------------------------------------- |
-| Java     | Maven/Gradle    | `docker run --rm -v $(pwd):/project anchore/syft:latest /project --output cyclonedx-json > output/sbom/sbom.cdx.json` |
-| Python   | pip             | `docker run --rm -v $(pwd):/project anchore/syft:latest /project --output cyclonedx-json > output/sbom/sbom.cdx.json` |
-| Node.js  | npm             | `docker run --rm -v $(pwd):/project anchore/syft:latest /project --output cyclonedx-json > output/sbom/sbom.cdx.json` |
-| Go       | go mod          | `docker run --rm -v $(pwd):/project anchore/syft:latest /project --output cyclonedx-json > output/sbom/sbom.cdx.json` |
+| Language | Package manager | Command                                                                                              |
+| -------- | --------------- | ---------------------------------------------------------------------------------------------------- |
+| Java     | Maven/Gradle    | `docker run --rm -v $(pwd):/src anchore/syft dir:/src -o cyclonedx-json > output/sbom/sbom.cdx.json` |
+| Python   | pip             | `docker run --rm -v $(pwd):/src anchore/syft dir:/src -o cyclonedx-json > output/sbom/sbom.cdx.json` |
+| Node.js  | npm             | `docker run --rm -v $(pwd):/src anchore/syft dir:/src -o cyclonedx-json > output/sbom/sbom.cdx.json` |
+| Go       | go mod          | `docker run --rm -v $(pwd):/src anchore/syft dir:/src -o cyclonedx-json > output/sbom/sbom.cdx.json` |
 
 Full command (identical for every language; only the directory changes):
 
@@ -32,10 +32,10 @@ mkdir -p output/sbom
 
 # Generate the SBOM with syft
 docker run --rm \
-  -v $(pwd):/project \
-  anchore/syft:latest \
-  /project \
-  --output cyclonedx-json \
+  -v $(pwd):/src \
+  anchore/syft \
+  dir:/src \
+  -o cyclonedx-json \
   > output/sbom/sbom.cdx.json
 ```
 
@@ -48,8 +48,8 @@ docker run --rm \
   -v $(pwd):/app \
   -w /app \
   ghcr.io/cyclonedx/cdxgen:latest \
-  -r /app \
-  -o /app/output/sbom/sbom-cdxgen.cdx.json
+  -o /app/output/sbom/sbom-cdxgen.cdx.json \
+  /app
 ```
 
 Recommended for Java Maven projects. Its dependency resolution is more precise than syft's, and it collects transitive dependencies more completely.
@@ -78,9 +78,9 @@ jobs:
       - name: Generate SBOM with syft
         run: |
           docker run --rm \
-            -v ${{ github.workspace }}:/project \
-            anchore/syft:latest \
-            /project --output cyclonedx-json \
+            -v ${{ github.workspace }}:/src \
+            anchore/syft \
+            dir:/src -o cyclonedx-json \
             > sbom.cdx.json
       - name: Upload SBOM as artifact
         uses: actions/upload-artifact@v7
@@ -102,9 +102,9 @@ Three sample projects are provided for practice:
 ```bash
 # Practice with the java-vulnerable sample
 docker run --rm \
-  -v $(pwd)/samples/java-vulnerable:/project \
-  anchore/syft:latest \
-  /project --output cyclonedx-json \
+  -v $(pwd)/samples/java-vulnerable:/src \
+  anchore/syft \
+  dir:/src -o cyclonedx-json \
   > output/sbom/java-vulnerable.cdx.json
 ```
 
@@ -116,6 +116,6 @@ docker run --rm \
 | ----------------------------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
 | SBOM is empty (`components: []`)    | No lock file                                                                              | Check for `package-lock.json`, `requirements.txt`, `pom.xml`, etc.                                                                   |
 | SBOM is empty but there is no error | Docker file-sharing restriction — the mount resolves to an empty directory (colima, etc.) | Check that the working directory is included in Docker Desktop > Settings > Resources > File Sharing (or your colima mount settings) |
-| Docker volume mount error           | Path problem                                                                              | Switch to an absolute path: `-v /full/path:/project`                                                                                 |
+| Docker volume mount error           | Path problem                                                                              | Switch to an absolute path: `-v /full/path:/src`                                                                                     |
 | Permission denied                   | Permission problem                                                                        | Use `sudo` or add yourself to the Docker group                                                                                       |
 | Image pull takes a long time        | Network                                                                                   | Normal on the first run; the cache is used afterwards                                                                                |
