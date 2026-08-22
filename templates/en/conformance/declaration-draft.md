@@ -83,14 +83,14 @@ Confirm whether the 25 pieces of evidence below are satisfied. If anything is st
 | 4.1.2.2 | Documented competencies per role                         |   ✅/🔶   | role-definition.md §2                                        |
 | 4.1.2.3 | List of participants and their roles                     |   ✅/🔶   | raci-matrix.md (real names being entered)                    |
 | 4.1.2.4 | Evidence of competency assessment                        |   ✅/🔶   | training/completion-tracker.md                               |
-| 4.1.2.5 | Evidence of periodic review and change                   |   ✅/🔶   | oss-policy.md §9                                             |
+| 4.1.2.5 | Evidence of periodic review and change                   |   ✅/🔶   | role-definition.md §6                                        |
 | 4.1.2.6 | Owner verifying conformance to internal best practice    |   ✅/🔶   | role-definition.md §6                                        |
 | 4.1.3.1 | Evidence of participant awareness assessment             |   ✅/🔶   | training/curriculum.md and completion-tracker.md             |
 | 4.1.4.1 | Document defining the program scope                      |   ✅/🔶   | oss-policy.md §1                                             |
 | 4.1.4.2 | Performance metrics                                      |   ✅/🔶   | oss-policy.md §3 (5 KPI items)                               |
 | 4.1.4.3 | Evidence of continuous improvement (audit history)       |   ✅/🔶   | conformance/gap-analysis.md (audit round 1)                  |
 | 4.1.5.1 | Standard vulnerability response procedure                |   ✅/🔶   | process/vulnerability-response.md                            |
-| 4.2.1.1 | Public channel for external vulnerability inquiries      |   ✅/🔶   | role-definition.md §3 (security@techunicorn.example)         |
+| 4.2.1.1 | Public channel for external vulnerability inquiries      |   ✅/🔶   | role-definition.md §3 (security@{company domain})            |
 | 4.2.1.2 | Internal procedure for handling external inquiries       |   ✅/🔶   | vulnerability-response.md §7                                 |
 | 4.2.2.1 | Document naming the people holding each role             |   ✅/🔶   | raci-matrix.md (real names being entered)                    |
 | 4.2.2.2 | Confirmation of role staffing and budget                 |   ✅/🔶   | raci-matrix.md §Budget allocation status                     |

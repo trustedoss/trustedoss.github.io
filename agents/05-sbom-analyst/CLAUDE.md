@@ -37,6 +37,8 @@ generate-report skill을 적용하여 표준화된 형식의 리포트를 생성
 
 - `.claude/skills/generate-report.md` 의 리포트 생성 표준 적용
 - SBOM 파일(CycloneDX JSON) 파싱
+- SBOM의 `licenses` 필드가 비어 있는 컴포넌트는 패키지 매니저 공식 배포처(PyPI, npm, Maven Central 등)의
+  라이선스 표기를 근거로 조사해서 채운다. 조사로도 확인이 안 되면 "확인 필요"로 명시한다.
 - 라이선스별 분류:
   - Permissive (MIT, Apache 2.0, BSD 등)
   - Weak Copyleft (LGPL, MPL 등)

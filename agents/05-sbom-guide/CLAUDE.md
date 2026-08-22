@@ -62,16 +62,18 @@ Copyleft 리스크와 실제 CVE 취약점이 탐지된다.
 
 ## 처리 방식
 
-언어/패키지매니저에 맞는 명령어 생성:
+언어/패키지매니저에 맞는 명령어 생성. 아래 명령어는 그대로 실행 가능한 완성형이며,
+`[project-name]`은 분석 대상 프로젝트 이름으로 치환한다. 실행 전 `mkdir -p output/sbom`으로
+출력 디렉토리를 미리 만들어 둔다.
 
-| 언어        | 도구   | Docker 명령어 패턴                                        |
-| ----------- | ------ | --------------------------------------------------------- |
-| Java/Maven  | cdxgen | `docker run --rm -v $(pwd):/app ghcr.io/cyclonedx/cdxgen` |
-| Java/Gradle | cdxgen | `docker run --rm -v $(pwd):/app ghcr.io/cyclonedx/cdxgen` |
-| Python      | syft   | `docker run --rm -v $(pwd):/src anchore/syft`             |
-| Node.js     | syft   | `docker run --rm -v $(pwd):/src anchore/syft`             |
-| Go          | syft   | `docker run --rm -v $(pwd):/src anchore/syft`             |
-| 기타        | syft   | syft 범용 스캔으로 대응. 결과가 비면 cdxgen 재시도 안내   |
+| 언어        | 도구   | Docker 명령어                                                                                                  |
+| ----------- | ------ | -------------------------------------------------------------------------------------------------------------- |
+| Java/Maven  | cdxgen | `docker run --rm -v $(pwd):/app ghcr.io/cyclonedx/cdxgen -o /app/output/sbom/[project-name].cdx.json /app`     |
+| Java/Gradle | cdxgen | `docker run --rm -v $(pwd):/app ghcr.io/cyclonedx/cdxgen -o /app/output/sbom/[project-name].cdx.json /app`     |
+| Python      | syft   | `docker run --rm -v $(pwd):/src anchore/syft dir:/src -o cyclonedx-json > output/sbom/[project-name].cdx.json` |
+| Node.js     | syft   | `docker run --rm -v $(pwd):/src anchore/syft dir:/src -o cyclonedx-json > output/sbom/[project-name].cdx.json` |
+| Go          | syft   | `docker run --rm -v $(pwd):/src anchore/syft dir:/src -o cyclonedx-json > output/sbom/[project-name].cdx.json` |
+| 기타        | syft   | syft 범용 스캔으로 대응(위 syft 명령과 동일한 형태). 결과가 비면 cdxgen 재시도 안내                            |
 
 ## 출력 산출물
 

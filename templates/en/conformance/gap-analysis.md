@@ -60,33 +60,33 @@ Tool used: trustedoss agents/en/07-conformance-preparer
 
 ## 3. ISO/IEC 18974:2023 status by item
 
-| Item ID | Summary                                                    | Verdict  | Supporting deliverable                                                  |
-| ------- | ---------------------------------------------------------- | :------: | ----------------------------------------------------------------------- |
-| 4.1.1.1 | Security assurance policy                                  | ✅/🔶/❌ | oss-policy.md §4                                                        |
-| 4.1.1.2 | Policy dissemination procedure                             | ✅/🔶/❌ | oss-policy.md §7, curriculum.md                                         |
-| 4.1.2.1 | List of roles and responsibilities                         | ✅/🔶/❌ | role-definition.md §1                                                   |
-| 4.1.2.2 | Documented competencies per role                           | ✅/🔶/❌ | role-definition.md §2                                                   |
-| 4.1.2.3 | List of participants and their roles                       | ✅/🔶/❌ | raci-matrix.md §Assignees per role                                      |
-| 4.1.2.4 | Evidence of competency assessment                          | ✅/🔶/❌ | completion-tracker.md                                                   |
-| 4.1.2.5 | Evidence of periodic review and change                     | ✅/🔶/❌ | oss-policy.md §9 (review plan in place, no history yet) — time-based    |
-| 4.1.2.6 | Owner verifying conformance to internal best practice      | ✅/🔶/❌ | role-definition.md §6 (owner named, review due 2026-12-31) — time-based |
-| 4.1.3.1 | Evidence of participant awareness assessment               | ✅/🔶/❌ | curriculum.md and completion-tracker.md                                 |
-| 4.1.4.1 | Document defining the program scope                        | ✅/🔶/❌ | oss-policy.md §1                                                        |
-| 4.1.4.2 | Performance metrics                                        | ✅/🔶/❌ | oss-policy.md §3 (5 KPI items)                                          |
-| 4.1.4.3 | Evidence of continuous improvement (audit history)         | ✅/🔶/❌ | This gap analysis is audit round 1 — time-based                         |
-| 4.1.5.1 | Standard vulnerability response procedure                  | ✅/🔶/❌ | vulnerability-response.md (covers all eight methods)                    |
-| 4.2.1.1 | Public channel for external vulnerability inquiries        | ✅/🔶/❌ | role-definition.md §3 (security@techunicorn.example)                    |
-| 4.2.1.2 | Internal procedure for handling external inquiries         | ✅/🔶/❌ | vulnerability-response.md §7                                            |
-| 4.2.2.1 | Document naming the people holding each role               | ✅/🔶/❌ | raci-matrix.md                                                          |
-| 4.2.2.2 | Confirmation of role staffing and budget                   | ✅/🔶/❌ | raci-matrix.md §Budget allocation status                                |
-| 4.2.2.3 | Stated expertise for remediating vulnerabilities           | ✅/🔶/❌ | role-definition.md §5 (security team, national CERT support)            |
-| 4.2.2.4 | Internal responsibility assignment procedure               | ✅/🔶/❌ | raci-matrix.md §Internal responsibility assignment procedure            |
-| 4.3.1.1 | Procedure for keeping SBOM records across the lifecycle    | ✅/🔶/❌ | sbom-management-plan.md                                                 |
-| 4.3.1.2 | Component record (SBOM file)                               | ✅/🔶/❌ | output/sbom/[project].cdx.json                                          |
-| 4.3.2.1 | Procedure for detecting and resolving vulnerabilities      | ✅/🔶/❌ | vulnerability-response.md and remediation-plan.md                       |
-| 4.3.2.2 | Records of vulnerabilities and the actions taken           | ✅/🔶/❌ | cve-report.md (5 CVEs recorded) and remediation-plan.md                 |
-| 4.4.1.1 | Document confirming all requirements are met               | ✅/🔶/❌ | gap-analysis.md (this document)                                         |
-| 4.4.2.1 | Document confirming requirements were met within 18 months | ✅/🔶/❌ | declaration-draft.md                                                    |
+| Item ID | Summary                                                    | Verdict  | Supporting deliverable                                                    |
+| ------- | ---------------------------------------------------------- | :------: | ------------------------------------------------------------------------- |
+| 4.1.1.1 | Security assurance policy                                  | ✅/🔶/❌ | oss-policy.md §4                                                          |
+| 4.1.1.2 | Policy dissemination procedure                             | ✅/🔶/❌ | oss-policy.md §7, curriculum.md                                           |
+| 4.1.2.1 | List of roles and responsibilities                         | ✅/🔶/❌ | role-definition.md §1                                                     |
+| 4.1.2.2 | Documented competencies per role                           | ✅/🔶/❌ | role-definition.md §2                                                     |
+| 4.1.2.3 | List of participants and their roles                       | ✅/🔶/❌ | raci-matrix.md §Assignees per role                                        |
+| 4.1.2.4 | Evidence of competency assessment                          | ✅/🔶/❌ | completion-tracker.md                                                     |
+| 4.1.2.5 | Evidence of periodic review and change                     | ✅/🔶/❌ | role-definition.md §6 (review plan in place, no history yet) — time-based |
+| 4.1.2.6 | Owner verifying conformance to internal best practice      | ✅/🔶/❌ | role-definition.md §6 (owner named, review due 2026-12-31) — time-based   |
+| 4.1.3.1 | Evidence of participant awareness assessment               | ✅/🔶/❌ | curriculum.md and completion-tracker.md                                   |
+| 4.1.4.1 | Document defining the program scope                        | ✅/🔶/❌ | oss-policy.md §1                                                          |
+| 4.1.4.2 | Performance metrics                                        | ✅/🔶/❌ | oss-policy.md §3 (5 KPI items)                                            |
+| 4.1.4.3 | Evidence of continuous improvement (audit history)         | ✅/🔶/❌ | This gap analysis is audit round 1 — time-based                           |
+| 4.1.5.1 | Standard vulnerability response procedure                  | ✅/🔶/❌ | vulnerability-response.md (covers all eight methods)                      |
+| 4.2.1.1 | Public channel for external vulnerability inquiries        | ✅/🔶/❌ | role-definition.md §3 (security@{company domain})                         |
+| 4.2.1.2 | Internal procedure for handling external inquiries         | ✅/🔶/❌ | vulnerability-response.md §7                                              |
+| 4.2.2.1 | Document naming the people holding each role               | ✅/🔶/❌ | raci-matrix.md                                                            |
+| 4.2.2.2 | Confirmation of role staffing and budget                   | ✅/🔶/❌ | raci-matrix.md §Budget allocation status                                  |
+| 4.2.2.3 | Stated expertise for remediating vulnerabilities           | ✅/🔶/❌ | role-definition.md §5 (security team, national CERT support)              |
+| 4.2.2.4 | Internal responsibility assignment procedure               | ✅/🔶/❌ | raci-matrix.md §Internal responsibility assignment procedure              |
+| 4.3.1.1 | Procedure for keeping SBOM records across the lifecycle    | ✅/🔶/❌ | sbom-management-plan.md                                                   |
+| 4.3.1.2 | Component record (SBOM file)                               | ✅/🔶/❌ | output/sbom/[project].cdx.json                                            |
+| 4.3.2.1 | Procedure for detecting and resolving vulnerabilities      | ✅/🔶/❌ | vulnerability-response.md and remediation-plan.md                         |
+| 4.3.2.2 | Records of vulnerabilities and the actions taken           | ✅/🔶/❌ | cve-report.md (5 CVEs recorded) and remediation-plan.md                   |
+| 4.4.1.1 | Document confirming all requirements are met               | ✅/🔶/❌ | gap-analysis.md (this document)                                           |
+| 4.4.2.1 | Document confirming requirements were met within 18 months | ✅/🔶/❌ | declaration-draft.md                                                      |
 
 **ISO/IEC 18974 subtotal: ✅ {N} / 🔶 {N} / ❌ {N}**
 

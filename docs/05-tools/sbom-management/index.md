@@ -280,7 +280,9 @@ cp output/sbom/myapp-v1.0.0-20260320.cdx.json output/sbom/myapp-latest.cdx.json
 ## 2. 버전 관리 전략
 
 - **파일 명명 규칙:** `[project]-[version]-[date].cdx.json`
-- **보관 위치:** `output/sbom/` (Git 관리)
+- **보관 위치:** 자사 제품 저장소의 `output/sbom/`(Git 관리) — trustedoss-agents 실습 저장소 자체의
+  `output/`는 `.gitignore`로 제외되어 있으므로, 이 항목은 실습 산출물이 아니라 실제 운영 시
+  자사 저장소에 적용할 방식을 뜻한다.
 - **보관 기간:** 릴리즈 유지 기간 + 1년
 
 ## 3. 외부 공유 절차

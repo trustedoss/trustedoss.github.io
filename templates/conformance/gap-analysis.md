@@ -68,14 +68,14 @@
 | 4.1.2.2 | 역할별 역량 기술 문서               | ✅/🔶/❌ | role-definition.md §2                                                |
 | 4.1.2.3 | 참여자 목록 및 역할                 | ✅/🔶/❌ | raci-matrix.md §역할별 담당자                                        |
 | 4.1.2.4 | 역량 평가 증거                      | ✅/🔶/❌ | completion-tracker.md                                                |
-| 4.1.2.5 | 주기적 검토 및 변경 증거            | ✅/🔶/❌ | oss-policy.md §9 (검토 계획 수립, 이력 미축적) ※시간 기반            |
+| 4.1.2.5 | 주기적 검토 및 변경 증거            | ✅/🔶/❌ | role-definition.md §6 (검토 계획 수립, 이력 미축적) ※시간 기반       |
 | 4.1.2.6 | 내부 모범 사례 일치 검증 담당자     | ✅/🔶/❌ | role-definition.md §6 (담당자 지정, 검토 예정 2026-12-31) ※시간 기반 |
 | 4.1.3.1 | 참여자 인식 평가 증거               | ✅/🔶/❌ | curriculum.md + completion-tracker.md                                |
 | 4.1.4.1 | 프로그램 범위 문서                  | ✅/🔶/❌ | oss-policy.md §1                                                     |
 | 4.1.4.2 | 성과 메트릭                         | ✅/🔶/❌ | oss-policy.md §3 (KPI 5개 항목)                                      |
 | 4.1.4.3 | 지속적 개선 증거(감사 이력)         | ✅/🔶/❌ | 본 갭 분석 = 1회차 감사 이력 ※시간 기반                              |
 | 4.1.5.1 | 취약점 대응 표준 절차               | ✅/🔶/❌ | vulnerability-response.md (8가지 방법 모두 포함)                     |
-| 4.2.1.1 | 외부 취약점 문의 공개 채널          | ✅/🔶/❌ | role-definition.md §3 (security@techunicorn.example)                 |
+| 4.2.1.1 | 외부 취약점 문의 공개 채널          | ✅/🔶/❌ | role-definition.md §3 (security@{회사도메인})                        |
 | 4.2.1.2 | 외부 문의 내부 대응 절차            | ✅/🔶/❌ | vulnerability-response.md §7                                         |
 | 4.2.2.1 | 역할 담당자 이름 문서               | ✅/🔶/❌ | raci-matrix.md                                                       |
 | 4.2.2.2 | 역할 배치 및 예산 확인              | ✅/🔶/❌ | raci-matrix.md §예산 배분 현황                                       |

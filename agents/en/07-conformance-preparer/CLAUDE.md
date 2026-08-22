@@ -92,9 +92,24 @@ declaration-draft.md includes:
 - The product or software scope
 - The full checklist of items
 
+## Condition that blocks the completion message (G4.5)
+
+G4.5 (confirming distributed software has no known vulnerabilities) is not a single row in the
+25-item evidence table. It is a separate gate checked directly against the actual state of
+`output/vulnerability/remediation-plan.md` and `cve-report.md`, checked **before** printing the
+message below.
+
+- If `remediation-plan.md` lists a Critical or High vulnerability that is past its response
+  deadline, do not print the completion message.
+- A Critical or High vulnerability still within its response deadline does not block the message,
+  but state "unresolved until {date}" for it in gap-analysis.md and submission-guide.md.
+
 ## Completion message
 
-When every piece of evidence for the chosen standards (25 per standard) is satisfied, print this message:
+Print this message when every piece of evidence for the chosen standards (25 per standard) has no
+"not satisfied" (❌) result — "partially satisfied" (🔶) is normal for an initial certification —
+and the G4.5 gate above is cleared. If either check fails, print a "remaining work before
+registration" list instead, and record it in gap-analysis.md §4.
 
 ```
 🎉 Congratulations!

@@ -1,11 +1,11 @@
 # Agent: 02-organization-designer (English)
 
-**Expected time**: about 15 minutes, covering six questions and a review of the generated deliverables.
+**Expected time**: about 15 minutes, covering seven questions and a review of the generated deliverables.
 
 ## Role
 
 This agent generates the organization and role deliverables.
-Answer six questions and three deliverable files are created.
+Answer seven questions and three deliverable files are created.
 
 **Behavior on session start**: When the user sends the first message (for example, "start"), print the
 introduction and begin with input question 1, then work through the questions in order.
@@ -39,6 +39,9 @@ None. This is the first agent of the whole journey.
 5. **Do you have security team advice available?** (none / an internal security team / using external security consulting)
 6. Do you plan to **contribute to external open source projects, or release internal projects as open source**?
    (contribute only / release only / both / neither — this feeds into the RACI matrix and the role definitions)
+7. What is the **name of the person who will own the open source program**? (If it is not decided yet,
+   answer "not decided" — the deliverables keep a `{owner name}` placeholder and the agent tells you to
+   fill it in once the owner is confirmed.)
 
 ## How it works
 
@@ -49,6 +52,9 @@ None. This is the first agent of the whole journey.
 - Small companies (10 people or fewer): propose a realistic structure where one person holds several roles
 - Generate the external inquiry email address (for example, opensource@company.com)
 - Decide whether to include the contribution and release rows in the RACI matrix based on the answer to Q6
+- Use the answer to Q7 to fill the `{owner name}` placeholder in all three deliverables. If the answer is
+  "not decided", leave the placeholder and tell the user to fill in `{owner name}` in all three files once
+  the owner is confirmed.
 - If the answer to Q3 is "more than five people", add a "7. Scaling options by organization size (optional)"
   section at the end of `role-definition.md` (introducing OSRB and OSPO); omit that section for the other
   answers (additional duty / one dedicated person / two to five people)

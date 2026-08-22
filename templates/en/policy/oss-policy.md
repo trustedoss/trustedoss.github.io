@@ -55,6 +55,19 @@ Review all of the following before adopting new open source or changing the vers
 | Strong Copyleft  | GPL-2.0, GPL-3.0     | Publish the full source code (when distributing) |
 | Network Copyleft | AGPL-3.0             | Publish source code including for network use    |
 
+### SBOM submission obligation to customers (conditional)
+
+<!-- Include this subsection only when 03-policy-generator Q4 (do you deliver software to external
+     customers or clients) is answered "yes". If "no", omit this subsection entirely and keep a single
+     line instead: "SBOMs are kept in output/sbom/ for internal management purposes." -->
+
+When delivering software to external customers or clients, follow the SBOM (Software Bill of Materials) submission procedure below.
+
+- **Submission format**: CycloneDX or SPDX (follow the customer's required format when specified)
+- **Submission timing**: at initial delivery and whenever an updated SBOM is needed after a component change
+- **Required license information**: per-component license, version, and known vulnerability status
+- **Customer license requirements**: reflect any license restrictions from the delivery contract (for example, a ban on bringing in copyleft components) in `output/policy/license-allowlist.md`
+
 ---
 
 ## 3. Program scope and performance metrics
@@ -99,11 +112,12 @@ The company systematically identifies, tracks, and responds to known vulnerabili
 
 ---
 
-## 5. AI-generated code policy (optional)
+## 5. AI-generated code policy
 
 <!-- Recommended by the KWG open source guide -->
-<!-- Optional section: not included in the default output of 03-policy-generator. An organization that has adopted AI coding tools adds it after review.
-     Because including optional or conditional sections shifts the numbering of later sections, refer to sections of this policy by name rather than by number in other documents. -->
+<!-- Always included in the default output of 03-policy-generator. If the organization does not use AI
+     coding tools, state that explicitly in "Permitted and restricted uses" below.
+     Because section numbering can still shift between generated documents, refer to sections of this policy by name rather than by number in other documents. -->
 
 When AI code generation tools such as GitHub Copilot or ChatGPT are used, open source license obligations may still apply to the generated code, so the following criteria apply.
 
@@ -135,7 +149,7 @@ When AI code generation tools such as GitHub Copilot or ChatGPT are used, open s
 1. **Prior approval**: Approved after review by the Open Source Program Manager and the legal team
 2. **IP check**: Check whether the contribution contains company confidential information or third-party IP
 3. **License agreement**: Check whether a CLA (Contributor License Agreement) has to be signed
-4. **Record keeping**: Record the contribution in `output/organization/role-definition.md`
+4. **Record keeping**: Record the contribution following the retention location and period set in §9 (Record management)
 
 ---
 

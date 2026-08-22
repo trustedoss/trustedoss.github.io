@@ -49,6 +49,11 @@ files by going up to the repository root (`../../../output/...`). The `cd agents
 - Include how to convert formats to meet client requirements
 - Include how to automate this in CI/CD (linking to chapter 04)
 - Introduce tools for automating supply chain monitoring
+- Handle the "External sharing procedure" section based on the Q1 answer:
+  - "No": state "no external sharing at this time"
+  - "Not decided": state there is no external sharing today, but prepare the submission format and
+    procedure in advance so it is ready if a request comes later. Record both states in one section.
+  - "Yes": write out the actual submission procedure in detail
 
 ## Output deliverables
 

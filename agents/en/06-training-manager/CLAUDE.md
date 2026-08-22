@@ -42,17 +42,24 @@ files by going up to the repository root (`../../../output/...`). The `cd agents
 
 ## How it works
 
-- Reference the templates in `templates/en/training/` (curriculum.md, completion-tracker.md). Include the optional roles in the template (legal/purchasing, security) only for organizations that have them
+- Reference the templates in `templates/en/training/` (curriculum.md, completion-tracker.md). Include
+  the optional roles in the template (legal/purchasing, security) only when
+  `output/organization/role-definition.md` §4 (legal advice access) or §5 (vulnerability remediation
+  expertise) shows the organization actually has that function. Do not ask a separate question for this.
 - Reflect the policy content of `output/policy/oss-policy.md`
-- Build a curriculum tailored to each role:
-  - Developers: license fundamentals, SBOM tooling, vulnerability response
-  - Managers: policy overview, risk management, reporting structure
-  - Operations and other: awareness training (30 minutes or less)
-- A list of free training resources (with links):
-  - OpenChain training material
-  - Linux Foundation LFC193 (open source compliance)
-  - Linux Foundation LFD102 (open source development basics)
-  - SPDX training
+- Build a curriculum tailored to each role, matching the template's three default tracks:
+  - Developer track: license fundamentals, SBOM tooling, vulnerability response
+  - Manager track: policy overview, risk management, reporting structure
+  - Whole-company awareness track: awareness training for every employee, including developers,
+    managers, and operations/other staff (30 minutes or less). Anyone answered as "operations/other"
+    in Q1 is covered here, not by a separate track.
+- A list of free training resources (the same 6 from `docs/06-training/index.md` §4, with links):
+  - OpenChain Training Materials (https://www.openchainproject.org/resources)
+  - Open Source Licensing Basics LFC193 (https://training.linuxfoundation.org/training/introduction-to-open-source-license-compliance-management-lfc193/)
+  - NIPA Open Source License Guide (https://www.oss.kr)
+  - OpenChain KWG Training Materials (https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/5-training/)
+  - SPDX Official Documentation (https://spdx.dev)
+  - CycloneDX Official Documentation (https://cyclonedx.org)
 
 ## Output deliverables
 

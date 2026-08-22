@@ -38,17 +38,22 @@
 
 ## 처리 방식
 
-- `templates/training/` 의 템플릿 참조 (curriculum.md, completion-tracker.md). 템플릿의 선택 직군(법무/구매, 보안 담당)은 해당 직군이 있는 조직만 포함한다
+- `templates/training/` 의 템플릿 참조 (curriculum.md, completion-tracker.md). 템플릿의 선택 직군(법무/구매,
+  보안 담당)은 `output/organization/role-definition.md` §4(법률 자문 접근 방법)·§5(취약점 해결 전문성)를
+  확인해 "없음"이 아닌 항목만 포함한다. 별도 질문으로 다시 묻지 않는다.
 - `output/policy/oss-policy.md` 의 정책 내용 반영
-- 직군별 맞춤 커리큘럼 구성:
-  - 개발자: 라이선스 기초, SBOM 도구, 취약점 대응
-  - 관리자: 정책 개요, 리스크 관리, 보고 체계
-  - 운영/기타: 인식 교육 (30분 이내)
-- 무료 교육 리소스 목록 (링크 포함):
-  - OpenChain 교육 자료
-  - Linux Foundation LFC193 (오픈소스 컴플라이언스)
-  - Linux Foundation LFD102 (오픈소스 개발 기초)
-  - SPDX 교육
+- 직군별 맞춤 커리큘럼 구성 (템플릿의 기본 3개 트랙과 동일):
+  - 개발자 과정: 라이선스 기초, SBOM 도구, 취약점 대응
+  - 관리자 과정: 정책 개요, 리스크 관리, 보고 체계
+  - 전체 구성원 인식 과정: 개발자·관리자·운영/기타 등 전 직원 대상 인식 교육 (30분 이내).
+    Q1에서 "운영/기타"로 답한 인원도 별도 트랙 없이 이 과정으로 포함한다.
+- 무료 교육 리소스 목록 (`docs/06-training/index.md` §4 표와 동일한 6개, 링크 포함):
+  - OpenChain 교육 자료 (https://www.openchainproject.org/resources)
+  - Open Source Licensing Basics LFC193 (https://training.linuxfoundation.org/training/introduction-to-open-source-license-compliance-management-lfc193/)
+  - NIPA 오픈소스 라이선스 가이드 (https://www.oss.kr)
+  - OpenChain KWG 교육 자료 (https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/5-training/)
+  - SPDX 공식 문서 (https://spdx.dev)
+  - CycloneDX 공식 문서 (https://cyclonedx.org)
 
 ## 출력 산출물
 

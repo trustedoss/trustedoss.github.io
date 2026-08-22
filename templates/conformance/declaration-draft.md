@@ -75,33 +75,33 @@ _해당하는 항목에만 체크하세요._
 
 ## ISO/IEC 18974:2023 체크리스트 충족 확인
 
-| 항목 ID | 내용                            | 충족 여부 | 산출물                                               |
-| ------- | ------------------------------- | :-------: | ---------------------------------------------------- |
-| 4.1.1.1 | 문서화된 보안 보증 정책         |   ✅/🔶   | oss-policy.md §4                                     |
-| 4.1.1.2 | 정책 전파 절차                  |   ✅/🔶   | oss-policy.md §7, training/curriculum.md             |
-| 4.1.2.1 | 역할과 책임 목록                |   ✅/🔶   | organization/role-definition.md §1                   |
-| 4.1.2.2 | 역할별 역량 기술 문서           |   ✅/🔶   | role-definition.md §2                                |
-| 4.1.2.3 | 참여자 목록 및 역할             |   ✅/🔶   | raci-matrix.md (실명 기입 진행 중)                   |
-| 4.1.2.4 | 역량 평가 증거                  |   ✅/🔶   | training/completion-tracker.md                       |
-| 4.1.2.5 | 주기적 검토 및 변경 증거        |   ✅/🔶   | oss-policy.md §9                                     |
-| 4.1.2.6 | 내부 모범 사례 일치 검증 담당자 |   ✅/🔶   | role-definition.md §6                                |
-| 4.1.3.1 | 참여자 인식 평가 증거           |   ✅/🔶   | training/curriculum.md + completion-tracker.md       |
-| 4.1.4.1 | 프로그램 범위 문서              |   ✅/🔶   | oss-policy.md §1                                     |
-| 4.1.4.2 | 성과 메트릭                     |   ✅/🔶   | oss-policy.md §3 (KPI 5개 항목)                      |
-| 4.1.4.3 | 지속적 개선 증거(감사 이력)     |   ✅/🔶   | conformance/gap-analysis.md (1회차 감사 이력)        |
-| 4.1.5.1 | 취약점 대응 표준 절차           |   ✅/🔶   | process/vulnerability-response.md                    |
-| 4.2.1.1 | 외부 취약점 문의 공개 채널      |   ✅/🔶   | role-definition.md §3 (security@techunicorn.example) |
-| 4.2.1.2 | 외부 문의 내부 대응 절차        |   ✅/🔶   | vulnerability-response.md §7                         |
-| 4.2.2.1 | 역할 담당자 이름 문서           |   ✅/🔶   | raci-matrix.md (실명 기입 진행 중)                   |
-| 4.2.2.2 | 역할 배치 및 예산 확인          |   ✅/🔶   | raci-matrix.md §예산 배분 현황                       |
-| 4.2.2.3 | 취약점 해결 전문성 명시         |   ✅/🔶   | role-definition.md §5                                |
-| 4.2.2.4 | 내부 책임 할당 절차             |   ✅/🔶   | raci-matrix.md §내부 책임 할당 절차                  |
-| 4.3.1.1 | SBOM 수명주기 지속 기록 절차    |   ✅/🔶   | sbom/sbom-management-plan.md                         |
-| 4.3.1.2 | 컴포넌트 기록(SBOM 파일)        |   ✅/🔶   | sbom/[project].cdx.json                              |
-| 4.3.2.1 | 취약점 탐지 및 해결 절차        |   ✅/🔶   | vulnerability-response.md + remediation-plan.md      |
-| 4.3.2.2 | 취약점 및 조치 기록             |   ✅/🔶   | vulnerability/cve-report.md + remediation-plan.md    |
-| 4.4.1.1 | 모든 요구사항 충족 확인 문서    |   ✅/🔶   | conformance/gap-analysis.md                          |
-| 4.4.2.1 | 18개월 이내 요구사항 충족 확인  |   ✅/🔶   | 본 문서(declaration-draft.md)                        |
+| 항목 ID | 내용                            | 충족 여부 | 산출물                                            |
+| ------- | ------------------------------- | :-------: | ------------------------------------------------- |
+| 4.1.1.1 | 문서화된 보안 보증 정책         |   ✅/🔶   | oss-policy.md §4                                  |
+| 4.1.1.2 | 정책 전파 절차                  |   ✅/🔶   | oss-policy.md §7, training/curriculum.md          |
+| 4.1.2.1 | 역할과 책임 목록                |   ✅/🔶   | organization/role-definition.md §1                |
+| 4.1.2.2 | 역할별 역량 기술 문서           |   ✅/🔶   | role-definition.md §2                             |
+| 4.1.2.3 | 참여자 목록 및 역할             |   ✅/🔶   | raci-matrix.md (실명 기입 진행 중)                |
+| 4.1.2.4 | 역량 평가 증거                  |   ✅/🔶   | training/completion-tracker.md                    |
+| 4.1.2.5 | 주기적 검토 및 변경 증거        |   ✅/🔶   | role-definition.md §6                             |
+| 4.1.2.6 | 내부 모범 사례 일치 검증 담당자 |   ✅/🔶   | role-definition.md §6                             |
+| 4.1.3.1 | 참여자 인식 평가 증거           |   ✅/🔶   | training/curriculum.md + completion-tracker.md    |
+| 4.1.4.1 | 프로그램 범위 문서              |   ✅/🔶   | oss-policy.md §1                                  |
+| 4.1.4.2 | 성과 메트릭                     |   ✅/🔶   | oss-policy.md §3 (KPI 5개 항목)                   |
+| 4.1.4.3 | 지속적 개선 증거(감사 이력)     |   ✅/🔶   | conformance/gap-analysis.md (1회차 감사 이력)     |
+| 4.1.5.1 | 취약점 대응 표준 절차           |   ✅/🔶   | process/vulnerability-response.md                 |
+| 4.2.1.1 | 외부 취약점 문의 공개 채널      |   ✅/🔶   | role-definition.md §3 (security@{회사도메인})     |
+| 4.2.1.2 | 외부 문의 내부 대응 절차        |   ✅/🔶   | vulnerability-response.md §7                      |
+| 4.2.2.1 | 역할 담당자 이름 문서           |   ✅/🔶   | raci-matrix.md (실명 기입 진행 중)                |
+| 4.2.2.2 | 역할 배치 및 예산 확인          |   ✅/🔶   | raci-matrix.md §예산 배분 현황                    |
+| 4.2.2.3 | 취약점 해결 전문성 명시         |   ✅/🔶   | role-definition.md §5                             |
+| 4.2.2.4 | 내부 책임 할당 절차             |   ✅/🔶   | raci-matrix.md §내부 책임 할당 절차               |
+| 4.3.1.1 | SBOM 수명주기 지속 기록 절차    |   ✅/🔶   | sbom/sbom-management-plan.md                      |
+| 4.3.1.2 | 컴포넌트 기록(SBOM 파일)        |   ✅/🔶   | sbom/[project].cdx.json                           |
+| 4.3.2.1 | 취약점 탐지 및 해결 절차        |   ✅/🔶   | vulnerability-response.md + remediation-plan.md   |
+| 4.3.2.2 | 취약점 및 조치 기록             |   ✅/🔶   | vulnerability/cve-report.md + remediation-plan.md |
+| 4.4.1.1 | 모든 요구사항 충족 확인 문서    |   ✅/🔶   | conformance/gap-analysis.md                       |
+| 4.4.2.1 | 18개월 이내 요구사항 충족 확인  |   ✅/🔶   | 본 문서(declaration-draft.md)                     |
 
 ---
 

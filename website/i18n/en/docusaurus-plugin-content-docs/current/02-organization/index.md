@@ -132,7 +132,7 @@ You interact with the agent and create the organizational deliverables.
    claude
    ```
 
-4. When the Claude prompt opens, type **`start`**. The agent walks through the six questions in order.
+4. When the Claude prompt opens, type **`start`**. The agent walks through the seven questions in order.
 
    <details>
    <summary>Agent conversation example (click to expand)</summary>
@@ -143,34 +143,38 @@ You interact with the agent and create the organizational deliverables.
 
    ```text
    Hello! This is the agent that creates the organization and personnel deliverables.
-   Answer 6 questions and 3 deliverable files will be created automatically.
+   Answer 7 questions and 3 deliverable files will be created automatically.
    ```
 
    ***
 
-   **Question 1/6** — Tell us your company name and department name.
+   **Question 1/7** — Tell us your company name and department name.
 
    `Sample answer: TechStart Inc., Development Team`
 
-   **Question 2/6** — How many developers do you have in total?
+   **Question 2/7** — How many developers do you have in total?
 
    `Sample answer: 50 people`
 
-   **Question 3/6** — Do you have anyone who can be dedicated to open source work? (Concurrent role / 1 dedicated person / 2–5 people / 5 or more people)
+   **Question 3/7** — Do you have anyone who can be dedicated to open source work? (Concurrent role / 1 dedicated person / 2–5 people / 5 or more people)
 
    `Sample answer: Concurrent role`
 
-   **Question 4/6** — Do you have legal counsel? (None / In-house legal team / Currently using an external law firm / Planning to use an external law firm)
+   **Question 4/7** — Do you have legal counsel? (None / In-house legal team / Currently using an external law firm / Planning to use an external law firm)
 
    `Sample answer: Currently using an external law firm`
 
-   **Question 5/6** — Do you have security team support? (None / In-house security team / External security consulting)
+   **Question 5/7** — Do you have security team support? (None / In-house security team / External security consulting)
 
    `Sample answer: None`
 
-   **Question 6/6** — Do you plan to contribute to external open source projects or release internal projects as open source? (Contribution only / Disclosure only / Both / Neither)
+   **Question 6/7** — Do you plan to contribute to external open source projects or release internal projects as open source? (Contribution only / Disclosure only / Both / Neither)
 
    `Sample answer: Neither`
+
+   **Question 7/7** — What is the name of the person who will own the open source program? (If not decided yet, answer "not decided")
+
+   `Sample answer: Minjun Kim (Development Team Lead)`
 
    ***
 
@@ -183,13 +187,13 @@ You interact with the agent and create the organizational deliverables.
    | `output/organization/appointment-template.md` | Appointment letter template for the program manager  |
 
    **Items you must fill in manually:**
-   - The program manager's actual name
+   - The program manager's actual name, if you answered "not decided" in question 7
    - The development team's representative email
    - The status of open source tooling and the training budget
 
    </details>
 
-5. Answer the six questions from the conversation example above according to your company's situation.
+5. Answer the seven questions from the conversation example above according to your company's situation.
 6. Confirm that `output/organization/` was created.
 
 :::tip Expected result

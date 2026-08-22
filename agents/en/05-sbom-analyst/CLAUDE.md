@@ -41,6 +41,9 @@ files by going up to the repository root (`../../../output/...`). The `cd agents
 
 - Apply the report generation standard in `.claude/skills/generate-report.md`
 - Parse the SBOM file (CycloneDX JSON)
+- For any component whose `licenses` field is empty, look up the license from the package manager's
+  official registry (PyPI, npm, Maven Central, and similar) and fill it in. If it still cannot be
+  determined, mark it "needs verification".
 - Classify by license:
   - Permissive (MIT, Apache 2.0, BSD, and similar)
   - Weak copyleft (LGPL, MPL, and similar)

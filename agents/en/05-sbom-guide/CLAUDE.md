@@ -66,16 +66,18 @@ copyleft risk and real CVEs.
 
 ## How it works
 
-Generate the commands that match the language and package manager:
+Generate the commands that match the language and package manager. The commands below are complete
+and runnable as-is; substitute `[project-name]` with the name of the project being analyzed. Run
+`mkdir -p output/sbom` first to create the output directory.
 
-| Language    | Tool   | Docker command pattern                                                   |
-| ----------- | ------ | ------------------------------------------------------------------------ |
-| Java/Maven  | cdxgen | `docker run --rm -v $(pwd):/app ghcr.io/cyclonedx/cdxgen`                |
-| Java/Gradle | cdxgen | `docker run --rm -v $(pwd):/app ghcr.io/cyclonedx/cdxgen`                |
-| Python      | syft   | `docker run --rm -v $(pwd):/src anchore/syft`                            |
-| Node.js     | syft   | `docker run --rm -v $(pwd):/src anchore/syft`                            |
-| Go          | syft   | `docker run --rm -v $(pwd):/src anchore/syft`                            |
-| Other       | syft   | Use the general syft scan. If the result is empty, suggest trying cdxgen |
+| Language    | Tool   | Docker command                                                                                                 |
+| ----------- | ------ | -------------------------------------------------------------------------------------------------------------- |
+| Java/Maven  | cdxgen | `docker run --rm -v $(pwd):/app ghcr.io/cyclonedx/cdxgen -o /app/output/sbom/[project-name].cdx.json /app`     |
+| Java/Gradle | cdxgen | `docker run --rm -v $(pwd):/app ghcr.io/cyclonedx/cdxgen -o /app/output/sbom/[project-name].cdx.json /app`     |
+| Python      | syft   | `docker run --rm -v $(pwd):/src anchore/syft dir:/src -o cyclonedx-json > output/sbom/[project-name].cdx.json` |
+| Node.js     | syft   | `docker run --rm -v $(pwd):/src anchore/syft dir:/src -o cyclonedx-json > output/sbom/[project-name].cdx.json` |
+| Go          | syft   | `docker run --rm -v $(pwd):/src anchore/syft dir:/src -o cyclonedx-json > output/sbom/[project-name].cdx.json` |
+| Other       | syft   | Use the general syft command above. If the result is empty, suggest trying cdxgen                              |
 
 ## Output deliverables
 

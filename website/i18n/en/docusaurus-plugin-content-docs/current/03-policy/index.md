@@ -293,29 +293,43 @@ Ensure that the generated policy document contains the sections below.
 
 ```
 1. Purpose and scope
-2. Policy owner and responsibilities
-3. Open source usage approval criteria
-4. License obligation compliance procedure
-5. Open source contribution policy
-6. Security vulnerability response procedure
-7. Policy violation handling
-8. Policy review and revision
+2. Open source usage principles
+3. Program scope and performance metrics
+4. Security assurance policy
+5. AI-generated code policy
+6. Open source contribution policy
+7. Policy dissemination and training
+8. Non-compliance handling
+9. Record management
+10. Policy review and update
+11. Policy change requests and operations
+Appendix A. Glossary
+Appendix B. Publishing internal projects as open source
 ```
 
 ---
 
 **license-allowlist.md sample table**
 
-Compare the generated allowed-license list against the sample below to confirm it is correctly categorized by distribution method.
+The generated allowed-license list is not one combined matrix across distribution methods. It is
+organized into tables grouped by obligation strength (permissive / weak copyleft / strong copyleft /
+not allowed). The weak-copyleft and strong-copyleft categories carry a single column showing whether
+the license applies for the chosen distribution method.
 
 ```markdown
-| License    | Category         | Internal Use | SaaS Distribution | App distribution  | Embedded          |
-| ---------- | ---------------- | ------------ | ----------------- | ----------------- | ----------------- |
-| MIT        | Permissive       | ✓ Allowed    | ✓ Allowed         | ✓ Allowed         | ✓ Allowed         |
-| Apache-2.0 | Permissive       | ✓ Allowed    | ✓ Allowed         | ✓ Allowed         | ✓ Allowed         |
-| LGPL-2.1   | Weak Copyleft    | ✓ Allowed    | ✓ Allowed         | △ Conditional     | △ Conditional     |
-| GPL-2.0    | Strong Copyleft  | ✓ Allowed    | ✓ Allowed         | ✗ Review required | ✗ Review required |
-| AGPL-3.0   | Network Copyleft | ✓ Allowed    | ✗ Review required | ✗ Review required | ✗ Review required |
+## 1. Permissive licenses
+
+| License    | SPDX identifier | Key obligations                   |
+| ---------- | --------------- | --------------------------------- |
+| MIT        | MIT             | Copyright notice, include license |
+| Apache-2.0 | Apache-2.0      | Copyright notice, include NOTICE  |
+
+## 3. Strong copyleft licenses
+
+| License       | SPDX identifier | Key obligations                       | Applies to SaaS                           |
+| ------------- | --------------- | ------------------------------------- | ----------------------------------------- |
+| GNU GPL v2.0  | GPL-2.0         | Full source code disclosure           | Distribution clause usually not triggered |
+| GNU AGPL v3.0 | AGPL-3.0        | Source disclosure even over a network | Review required                           |
 ```
 
 :::tip Example deliverables
