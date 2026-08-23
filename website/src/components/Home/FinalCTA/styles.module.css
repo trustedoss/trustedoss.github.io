@@ -89,6 +89,21 @@
   text-decoration: none;
 }
 
+.note {
+  margin: 1.4rem 0 0;
+  font-size: 0.85rem;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.noteLink {
+  font-weight: 600;
+  color: var(--ifm-color-primary);
+}
+
+.noteLink:hover {
+  text-decoration: underline;
+}
+
 @media (max-width: 640px) {
   .band {
     padding: 2.75rem 1.25rem;

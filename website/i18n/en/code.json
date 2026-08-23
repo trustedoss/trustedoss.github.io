@@ -522,6 +522,9 @@
   "homepage.whykwg.toss.point3": {
     "message": "Extends to DevSecOps and AI coding governance"
   },
+  "homepage.whykwg.toss.link": {
+    "message": "Need continuous monitoring after certification? Try TRUSCA"
+  },
   "homepage.whykwg.note": {
     "message": "Trusted OSS is an open source initiative that grew out of the KWG community. It synchronizes KWG content and attributes it under CC BY 4.0."
   },
@@ -552,6 +555,12 @@
   },
   "homepage.finalcta.cta2": {
     "message": "See artifact samples"
+  },
+  "homepage.finalcta.note": {
+    "message": "Want to keep monitoring vulnerabilities, licenses, and SBOMs after certification? Check out"
+  },
+  "homepage.finalcta.note.suffix": {
+    "message": "."
   },
   "homepage.hero.subtitle.content": {
     "message": "Build an ISO/IEC 5230 & 18974 open source management system step by step, with no vendor consulting — all the way to a self-certification declaration. No prior experience needed."

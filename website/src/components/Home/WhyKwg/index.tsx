@@ -15,6 +15,7 @@ type Side = {
   title: string;
   desc: string;
   points: string[];
+  link?: {href: string; label: string};
 };
 
 const SIDES: Side[] = [
@@ -74,10 +75,17 @@ const SIDES: Side[] = [
         message: 'DevSecOps와 AI 코딩 거버넌스까지 확장',
       }),
     ],
+    link: {
+      href: 'https://trustedoss.github.io/trusca/',
+      label: translate({
+        id: 'homepage.whykwg.toss.link',
+        message: '인증 이후 상시 모니터링이 필요하면 TRUSCA로',
+      }),
+    },
   },
 ];
 
-function SideCard({badge, title, desc, points}: Side) {
+function SideCard({badge, title, desc, points, link}: Side) {
   return (
     <div className={styles.card}>
       <span className={styles.badge}>{badge}</span>
@@ -88,6 +96,12 @@ function SideCard({badge, title, desc, points}: Side) {
           <li key={i}>{p}</li>
         ))}
       </ul>
+      {link && (
+        <Link href={link.href} className={styles.cardLink}>
+          {link.label}
+          <span aria-hidden="true"> →</span>
+        </Link>
+      )}
     </div>
   );
 }

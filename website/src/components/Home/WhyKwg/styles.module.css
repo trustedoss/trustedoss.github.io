@@ -98,6 +98,33 @@
   color: var(--ifm-color-emphasis-700);
 }
 
+.cardLink {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ifm-color-primary);
+  text-decoration: none;
+}
+
+.cardLink:hover {
+  text-decoration: underline;
+  color: var(--ifm-color-primary);
+}
+
+.cardLink span {
+  margin-left: 0.15rem;
+  transition: transform 0.15s ease;
+}
+
+.cardLink:hover span {
+  transform: translateX(2px);
+}
+
 .note {
   margin: 1.5rem 0 0;
   font-size: 0.85rem;

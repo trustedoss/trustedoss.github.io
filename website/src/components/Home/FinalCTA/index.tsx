@@ -39,6 +39,19 @@ function FinalCTA() {
               })}
             </Link>
           </div>
+          <p className={styles.note}>
+            <Translate id="homepage.finalcta.note">
+              인증 이후 취약점·라이선스·SBOM을 상시 모니터링하고 싶다면
+            </Translate>{' '}
+            <Link
+              href="https://trustedoss.github.io/trusca/"
+              className={styles.noteLink}>
+              TRUSCA
+            </Link>
+            <Translate id="homepage.finalcta.note.suffix">
+              를 확인하세요.
+            </Translate>
+          </p>
         </div>
       </div>
     </section>
