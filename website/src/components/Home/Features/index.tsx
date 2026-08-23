@@ -61,11 +61,11 @@ const TRACKS: Track[] = [
   {
     id: 'governance',
     icon: 'governance',
-    title: translate({id: 'homepage.cta.feature1.title', message: '체계구축'}),
+    title: translate({id: 'homepage.cta.feature1.title', message: '체계 구축'}),
     desc: translate({
       id: 'homepage.cta.feature1.desc',
       message:
-        'ISO/IEC 5230 & 18974 기반으로 기업 오픈소스 관리 체계를 처음부터 완성까지 구축합니다.',
+        'ISO/IEC 5230과 18974를 기반으로 기업 오픈소스 관리 체계를 처음부터 완성까지 구축합니다.',
     }),
     href: '/docs',
   },

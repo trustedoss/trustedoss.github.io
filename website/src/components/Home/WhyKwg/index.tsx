@@ -58,7 +58,7 @@ const SIDES: Side[] = [
     desc: translate({
       id: 'homepage.whykwg.toss.desc',
       message:
-        '그 표준을 AI와 자동화로 실제로 달성하게 합니다. 0에서 자체 인증까지 단일 동선으로 끌고 갑니다.',
+        '그 표준을 AI와 자동화로 실제로 달성하게 합니다. 0에서 자체 인증까지 하나의 흐름으로 진행합니다.',
     }),
     points: [
       translate({
@@ -67,7 +67,7 @@ const SIDES: Side[] = [
       }),
       translate({
         id: 'homepage.whykwg.toss.point2',
-        message: '복붙 CI 워크플로와 Rules, 무API키 데모',
+        message: '복사해서 붙여넣는 CI 워크플로와 Rules, API 키 없는 데모',
       }),
       translate({
         id: 'homepage.whykwg.toss.point3',

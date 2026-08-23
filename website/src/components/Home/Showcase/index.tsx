@@ -49,7 +49,7 @@ const SHOTS: Shot[] = [
 }`,
     caption: translate({
       id: 'homepage.showcase.sbom.caption',
-      message: 'SBOM · 취약점 — CycloneDX 분석과 취약점 트리에이지 리포트',
+      message: 'SBOM · 취약점 — CycloneDX 분석과 취약점 우선순위 분류 리포트',
     }),
   },
   {
