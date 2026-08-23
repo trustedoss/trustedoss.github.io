@@ -27,6 +27,30 @@
   line-height: 1.6;
 }
 
+.agentLink {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 0.65rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ifm-color-primary);
+  text-decoration: none;
+}
+
+.agentLink:hover {
+  text-decoration: underline;
+  color: var(--ifm-color-primary);
+}
+
+.agentLink span {
+  margin-left: 0.15rem;
+  transition: transform 0.15s ease;
+}
+
+.agentLink:hover span {
+  transform: translateX(2px);
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

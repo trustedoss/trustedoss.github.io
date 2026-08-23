@@ -268,6 +268,23 @@
   border: 1px solid rgba(138, 180, 248, 0.3);
 }
 
+.poweredBy {
+  margin: 1.1rem 0 0;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.poweredByLink {
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.poweredByLink:hover {
+  color: #fff;
+}
+
 @media (max-width: 640px) {
   .hero {
     padding: 5rem 0 4rem;

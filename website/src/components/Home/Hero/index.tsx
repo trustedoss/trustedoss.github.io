@@ -15,7 +15,7 @@ function Hero() {
     'ISO/IEC 5230',
     'ISO/IEC 18974',
     'CC BY 4.0',
-    translate({id: 'homepage.hero.meta.vendorNeutral', message: '벤더중립'}),
+    translate({id: 'homepage.hero.meta.vendorNeutral', message: '벤더 중립'}),
   ];
   return (
     <header className={styles.hero}>
@@ -27,18 +27,20 @@ function Hero() {
           </Translate>
         </p>
         <h1 className={styles.title}>
-          <Translate id="homepage.hero.title.line1">오픈소스 신뢰를,</Translate>
+          <Translate id="homepage.hero.title.line1">
+            오픈소스 관리 체계를
+          </Translate>
           <br />
           <span className={styles.titleAccent}>
             <Translate id="homepage.hero.title.line2">
-              스스로 세웁니다.
+              에이전트와 직접 만듭니다.
             </Translate>
           </span>
         </h1>
         <p className={styles.subtitle}>
           <Translate id="homepage.hero.subtitle.content">
-            ISO/IEC 5230 & 18974 기반 오픈소스 관리 체계를 벤더 컨설팅 없이
-            단계별로 구축하고, 자체 인증 선언까지 도달합니다.
+            ISO/IEC 5230과 18974를 기반으로 오픈소스 관리 체계를 벤더 컨설팅
+            없이 단계별로 구축하고, 자체 인증 선언까지 완료합니다.
           </Translate>
         </p>
         <div className={styles.ctas}>
@@ -88,7 +90,7 @@ function Hero() {
               </p>
               <p className={styles.muted}>
                 <Translate id="homepage.hero.terminal.progress">
-                  회사 상황 6개 질문에 답하는 중…
+                  회사 상황에 관한 질문 7개에 답하는 중…
                 </Translate>
               </p>
               <p className={styles.gen}>
@@ -118,6 +120,17 @@ function Hero() {
             </div>
           </div>
         </div>
+        <p className={styles.poweredBy}>
+          <Translate id="homepage.hero.poweredBy">이 화면은</Translate>{' '}
+          <Link
+            href="https://github.com/trustedoss/trustedoss-agents"
+            className={styles.poweredByLink}>
+            Trusted OSS Agent
+          </Link>
+          <Translate id="homepage.hero.poweredBy.suffix">
+            가 만듭니다. 별도 저장소로 배포되는 무료 오픈소스 AI 에이전트입니다.
+          </Translate>
+        </p>
       </div>
     </header>
   );

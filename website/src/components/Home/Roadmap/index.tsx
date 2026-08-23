@@ -113,6 +113,14 @@ function Roadmap() {
               만들어 줍니다.
             </Translate>
           </p>
+          <Link
+            href="https://github.com/trustedoss/trustedoss-agents"
+            className={styles.agentLink}>
+            <Translate id="homepage.roadmap.agentLink">
+              이 에이전트들은 Trusted OSS Agent 저장소에 있습니다
+            </Translate>
+            <span aria-hidden="true"> →</span>
+          </Link>
         </header>
         <ol className={styles.grid}>
           {STEPS.map(step => (
