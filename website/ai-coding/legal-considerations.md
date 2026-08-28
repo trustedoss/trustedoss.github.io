@@ -62,6 +62,11 @@ AI 코딩 도구를 사내 개발에 쓰는 것만으로 코드에 표시할 법
 | EU AI Act 제50조      | 제공자의 합성 콘텐츠 머신리더블 마킹, 배포자의 딥페이크·공익 텍스트 고지 | 2026-08-02 적용 (기존 출시 시스템의 마킹은 2026-12-02까지 유예) |
 | 한국 AI 기본법 제31조 | 생성형 AI 제품·서비스 제공 사실 고지와 결과물 표시                       | 2026-01-22 시행 (계도기간 운영 중)                              |
 
+배포자의 딥페이크·공익 텍스트 고지(제50조 1항·4항)는 신규·기존 시스템 구분 없이 2026-08-02부터
+바로 적용되며 유예가 없습니다. 유예는 제공자의 마킹 의무(제50조 2항)에만, 그것도 2026-08-02
+이전에 이미 출시된 시스템에만 적용됩니다. 이 완화는 Digital Omnibus on AI 협상 결과이며
+2026-05-07 잠정 합의, 2026-06-16 유럽의회 승인, 2026-06-29 이사회 채택을 거쳤습니다.
+
 **모범 관행** — 법적 의무가 아니어도 다음을 권장합니다.
 
 - 사내 커밋 메시지와 PR 에 AI 도구 사용 명시 (1절의 실행 규칙과 동일)
@@ -108,6 +113,7 @@ AI 코딩 도구를 사내 개발에 쓰는 것만으로 코드에 표시할 법
 - Anthropic, [Commercial Terms of Service](https://www.anthropic.com/legal/commercial-terms) — Section K
 - Google Cloud, [Generative AI indemnified services](https://cloud.google.com/terms/generative-ai-indemnified-services)
 - EU AI Act, [Article 50](https://artificialintelligenceact.eu/article/50/) / 한국, [인공지능 발전과 신뢰 기반 조성 등에 관한 기본법](https://www.law.go.kr/lsInfoP.do?lsiSeq=268543) 제31조
+- Digital Omnibus on AI 협상 경과와 제50조 유예 범위, [Gibson Dunn 분석](https://www.gibsondunn.com/eu-ai-act-omnibus-agreement-postponed-high-risk-deadlines-and-other-key-changes/)
 
 ISO/IEC 표준과의 연계는 [ISO 표준 연계](./iso-mapping)를, AI 시스템 자체의 컴플라이언스는
 [AI 시스템 컴플라이언스 (ISO 42001)](./iso42001)를, 에이전트가 호출하는 도구의 보안 통제는

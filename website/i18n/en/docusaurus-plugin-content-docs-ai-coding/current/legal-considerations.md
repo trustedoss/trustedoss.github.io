@@ -66,6 +66,12 @@ attribution evidence (section 1) and traceability.
 | EU AI Act Article 50               | Providers must machine-readably mark synthetic content; deployers must disclose deepfakes and public-interest texts | Applies from 2026-08-02 (marking for systems already on the market deferred to 2026-12-02) |
 | Korean AI Framework Act Article 31 | Notify that a generative AI product or service is provided and label its outputs                                    | In force since 2026-01-22 (grace period in effect)                                         |
 
+The deployer's deepfake and public-interest text disclosure duty (Article 50(1) and (4)) applies from
+2026-08-02 with no grace period, for new and existing systems alike. Only the provider's marking duty
+(Article 50(2)) is deferred, and only for systems already on the market before 2026-08-02. This
+relaxation came out of the Digital Omnibus on AI negotiation: provisional agreement on 2026-05-07,
+European Parliament approval on 2026-06-16, Council adoption on 2026-06-29.
+
 **Best practices** — recommended even where not legally required.
 
 - State AI tool use in internal commit messages and PRs (same as the working rules in section 1)
@@ -115,6 +121,7 @@ This page is based on §5 of the OpenChain KWG
 - Anthropic, [Commercial Terms of Service](https://www.anthropic.com/legal/commercial-terms) — Section K
 - Google Cloud, [Generative AI indemnified services](https://cloud.google.com/terms/generative-ai-indemnified-services)
 - EU AI Act, [Article 50](https://artificialintelligenceact.eu/article/50/) / Korea, [Framework Act on the Development of Artificial Intelligence and Establishment of Trust](https://www.law.go.kr/lsInfoP.do?lsiSeq=268543), Article 31
+- Digital Omnibus on AI negotiation timeline and Article 50 grace scope, [Gibson Dunn analysis](https://www.gibsondunn.com/eu-ai-act-omnibus-agreement-postponed-high-risk-deadlines-and-other-key-changes/)
 
 For linkage to the ISO/IEC standards, see [ISO Standards Linkage](./iso-mapping); for compliance
 of AI systems themselves, see [AI System Compliance (ISO 42001)](./iso42001); for security controls

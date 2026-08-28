@@ -163,8 +163,13 @@ dependencies, pre-trained models (such as Llama) and training datasets are also 
 components with license obligations. The extension that captures them is the **AI SBOM**.
 
 Two formats are the de facto industry standards: **SPDX 3.0 AI Profile** offers precise
-license and copyright expression, while **CycloneDX 1.6 ML-BOM** carries rich model-card
-metadata (performance, ethics, security). Organizations can adopt either or both.
+license and copyright expression, while **CycloneDX 1.7 ML-BOM** carries rich model-card
+metadata (performance, ethics, security). Organizations can adopt either or both. On
+2026-05-12, the G7 Cybersecurity Working Group published "SBOM for AI: Minimum Elements,"
+defining the elements AI systems must add on top of the general SBOM minimum elements
+across seven clusters (metadata, system-level properties, models, dataset properties,
+infrastructure, security properties, and key performance indicators); the CISA 2026 minimum
+elements revision defers to this document for the AI-component section.
 
 To build one yourself, this kit's [5.4 AI SBOM hands-on](../05-tools/ai-sbom/index.md) walks through generating an ML-BOM for a HuggingFace model with [BomLens](https://github.com/sktelecom/bomlens).
 
