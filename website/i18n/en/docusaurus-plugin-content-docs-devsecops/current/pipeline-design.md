@@ -14,6 +14,10 @@ It focuses on how to combine the individual configurations covered on each area 
 The YAML and commands on this page are examples that show the essentials. For a complete, copy-and-run pipeline (including policy files and a sample app), see the [Best Practice repository](/ai-coding/best-practice-repo).
 :::
 
+:::note Tags in these examples versus production settings
+The examples below keep mutable tags such as `@v7` for readability. A tag can be repointed to a different commit later, so in production pin each action to a full commit SHA and grant only the permissions a job needs with a `permissions:` block. See [Pipeline Security](/devsecops/pipeline-security) for the reasoning and the procedure.
+:::
+
 ## Pipeline design principles
 
 **Parallel execution**: Run independent scans in parallel to minimize overall pipeline time. SAST, SCA, and secret detection have no dependencies on each other, so they can run simultaneously.
@@ -77,6 +81,8 @@ jobs:
   # Step 1: secret detection (first)
   secret-detection:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v7
         with:
@@ -89,6 +95,8 @@ jobs:
   sast:
     runs-on: ubuntu-latest
     needs: secret-detection
+    permissions:
+      contents: read
     container:
       image: semgrep/semgrep
     steps:
@@ -100,6 +108,8 @@ jobs:
   sca:
     runs-on: ubuntu-latest
     needs: secret-detection
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v7
       - uses: anchore/sbom-action@v0
@@ -120,6 +130,8 @@ jobs:
   iac:
     runs-on: ubuntu-latest
     needs: secret-detection
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v7
       - uses: bridgecrewio/checkov-action@v12
@@ -143,6 +155,8 @@ on:
 jobs:
   container-security:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v7
       - name: Build image
@@ -157,6 +171,8 @@ jobs:
   dast:
     runs-on: ubuntu-latest
     needs: container-security
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v7
       - name: Start application

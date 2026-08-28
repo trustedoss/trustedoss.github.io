@@ -15,6 +15,10 @@ Container security scanning detects vulnerabilities in the OS packages and appli
 The YAML and commands on this page are examples that show the essentials. For a complete, copy-and-run pipeline (including policy files and a sample app), see the [Best Practice repository](/ai-coding/best-practice-repo).
 :::
 
+:::note Tags in these examples versus production settings
+The examples below keep mutable tags such as `@v7` for readability. A tag can be repointed to a different commit later, so in production pin each action to a full commit SHA and grant only the permissions a job needs with a `permissions:` block. See [Pipeline Security](/devsecops/pipeline-security) for the reasoning and the procedure.
+:::
+
 ---
 
 ## Tool Comparison
@@ -64,6 +68,8 @@ on:
 jobs:
   trivy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v7
 

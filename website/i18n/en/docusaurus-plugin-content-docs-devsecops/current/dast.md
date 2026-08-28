@@ -17,6 +17,10 @@ SAST looks at the code and DAST looks at the running app. The two must be applie
 The YAML and commands on this page are examples that show the essentials. For a complete, copy-and-run pipeline (including policy files and a sample app), see the [Best Practice repository](/ai-coding/best-practice-repo).
 :::
 
+:::note Tags in these examples versus production settings
+The examples below keep mutable tags such as `@v7` for readability. A tag can be repointed to a different commit later, so in production pin each action to a full commit SHA and grant only the permissions a job needs with a `permissions:` block. See [Pipeline Security](/devsecops/pipeline-security) for the reasoning and the procedure.
+:::
+
 **Definition:** DAST sends real HTTP requests to a running application to detect runtime vulnerabilities such as SQL injection, XSS, authentication bypass, and sensitive information disclosure.
 
 **How it differs from SAST:** SAST scans quickly during the coding phase but cannot observe runtime behavior. DAST verifies actual behavior after deployment, helping you find vulnerabilities that SAST misses.
@@ -50,6 +54,9 @@ on:
 jobs:
   zap:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write # the ZAP action files findings as issues
     steps:
       - uses: actions/checkout@v7
 
@@ -159,6 +166,8 @@ on:
 jobs:
   nuclei:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v7
 

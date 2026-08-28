@@ -14,6 +14,10 @@ SAST, SCA, 시크릿 탐지, 컨테이너 보안, IaC 보안, DAST 6개 영역�
 이 페이지의 YAML·명령은 핵심을 보여주는 예시입니다. 복사해 바로 쓸 수 있는 전체 파이프라인(정책 파일·샘플 앱 포함)은 [Best Practice 저장소](/ai-coding/best-practice-repo)에서 확인하세요.
 :::
 
+:::note 예시의 태그 표기와 실제 운영 설정
+아래 예시는 읽기 쉽도록 `@v7` 같은 태그를 그대로 썼습니다. 태그는 나중에 다른 커밋을 가리키도록 바뀔 수 있으므로, 실제 운영 워크플로에서는 액션을 커밋 SHA로 고정하고 `permissions:` 로 잡마다 필요한 권한만 부여하세요. 이유와 방법은 [파이프라인 자체 보안](/devsecops/pipeline-security)에서 다룹니다.
+:::
+
 ## 파이프라인 설계 원칙
 
 **병렬 실행**: 독립적인 검사는 병렬로 실행해 전체 파이프라인 소요 시간을 최소화합니다. SAST·SCA·시크릿 탐지는 서로 의존성이 없으므로 동시에 실행할 수 있습니다.
@@ -78,6 +82,8 @@ jobs:
   # 1단계: 시크릿 탐지 (가장 먼저)
   secret-detection:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v7
         with:
@@ -90,6 +96,8 @@ jobs:
   sast:
     runs-on: ubuntu-latest
     needs: secret-detection
+    permissions:
+      contents: read
     container:
       image: semgrep/semgrep
     steps:
@@ -101,6 +109,8 @@ jobs:
   sca:
     runs-on: ubuntu-latest
     needs: secret-detection
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v7
       - uses: anchore/sbom-action@v0
@@ -121,6 +131,8 @@ jobs:
   iac:
     runs-on: ubuntu-latest
     needs: secret-detection
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v7
       - uses: bridgecrewio/checkov-action@v12
@@ -144,6 +156,8 @@ on:
 jobs:
   container-security:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v7
       - name: Build image
@@ -158,6 +172,8 @@ jobs:
   dast:
     runs-on: ubuntu-latest
     needs: container-security
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v7
       - name: Start application

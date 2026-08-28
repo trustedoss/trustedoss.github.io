@@ -14,6 +14,10 @@ Dependabot·Renovate·정기 스캔을 조합하면 프로덕션 환경의 취�
 이 페이지의 YAML·명령은 핵심을 보여주는 예시입니다. 복사해 바로 쓸 수 있는 전체 파이프라인(정책 파일·샘플 앱 포함)은 [Best Practice 저장소](/ai-coding/best-practice-repo)에서 확인하세요.
 :::
 
+:::note 예시의 태그 표기와 실제 운영 설정
+아래 예시는 읽기 쉽도록 `@v7` 같은 태그를 그대로 썼습니다. 태그는 나중에 다른 커밋을 가리키도록 바뀔 수 있으므로, 실제 운영 워크플로에서는 액션을 커밋 SHA로 고정하고 `permissions:` 로 잡마다 필요한 권한만 부여하세요. 이유와 방법은 [파이프라인 자체 보안](/devsecops/pipeline-security)에서 다룹니다.
+:::
+
 ## 왜 배포 후 모니터링이 필요한가
 
 :::info CI/CD 게이트는 배포 시점의 스냅샷만 검사합니다
@@ -203,6 +207,8 @@ on:
 jobs:
   sca-scan:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v7
 
@@ -228,6 +234,8 @@ jobs:
 
   container-scan:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Scan production image
         uses: aquasecurity/trivy-action@0.36.0

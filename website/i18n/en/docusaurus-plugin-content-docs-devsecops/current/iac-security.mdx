@@ -15,6 +15,10 @@ IaC security checks detect security misconfigurations in infrastructure-as-code 
 The YAML and commands on this page are examples that show the essentials. For a complete, copy-and-run pipeline (including policy files and a sample app), see the [Best Practice repository](/ai-coding/best-practice-repo).
 :::
 
+:::note Tags in these examples versus production settings
+The examples below keep mutable tags such as `@v7` for readability. A tag can be repointed to a different commit later, so in production pin each action to a full commit SHA and grant only the permissions a job needs with a `permissions:` block. See [Pipeline Security](/devsecops/pipeline-security) for the reasoning and the procedure.
+:::
+
 ---
 
 ## Tool Comparison
@@ -65,6 +69,9 @@ on:
 jobs:
   checkov:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write # required to upload SARIF
     steps:
       - uses: actions/checkout@v7
 
@@ -121,6 +128,8 @@ on:
 jobs:
   tfsec:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v7
 

@@ -17,6 +17,10 @@ SAST는 코드를 보고 DAST는 실행 중인 앱을 봅니다. 두 가지를 �
 이 페이지의 YAML·명령은 핵심을 보여주는 예시입니다. 복사해 바로 쓸 수 있는 전체 파이프라인(정책 파일·샘플 앱 포함)은 [Best Practice 저장소](/ai-coding/best-practice-repo)에서 확인하세요.
 :::
 
+:::note 예시의 태그 표기와 실제 운영 설정
+아래 예시는 읽기 쉽도록 `@v7` 같은 태그를 그대로 썼습니다. 태그는 나중에 다른 커밋을 가리키도록 바뀔 수 있으므로, 실제 운영 워크플로에서는 액션을 커밋 SHA로 고정하고 `permissions:` 로 잡마다 필요한 권한만 부여하세요. 이유와 방법은 [파이프라인 자체 보안](/devsecops/pipeline-security)에서 다룹니다.
+:::
+
 **정의:** 실행 중인 애플리케이션에 실제 HTTP 요청을 보내 SQL 인젝션, XSS, 인증 우회, 민감 정보 노출 같은 런타임 취약점을 탐지합니다.
 
 **SAST와의 차이:** SAST는 코드 작성 단계에서 빠르게 탐지하지만 런타임 동작은 확인할 수 없습니다. DAST는 배포 후 실제 동작을 검증하므로 SAST가 놓친 취약점을 발견할 수 있습니다.
@@ -50,6 +54,9 @@ on:
 jobs:
   zap:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write # ZAP 액션이 결과를 이슈로 등록합니다
     steps:
       - uses: actions/checkout@v7
 
@@ -159,6 +166,8 @@ on:
 jobs:
   nuclei:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v7
 
