@@ -269,7 +269,7 @@ controls extended to those tools are in the tool and extension supply chain sect
 
 **What is VEX (Vulnerability Exploitability eXchange)?** It is a machine-readable document that specifies whether a particular CVE is actually exploitable in a given product. It formally expresses cases like "the CVE exists, but the affected code path is not used," reducing unnecessary alerts across downstream supply chains.
 
-**Practical use:** Author it in CycloneDX VEX or OpenVEX format and distribute it with the SBOM. Adoption is still early, but its importance is growing as supply chain regulations tighten. For the concepts, including the four status values, [Vulnerability response deadlines and VEX](/reference/concepts/vulnerability-response) is the canonical reference.
+**Practical use:** Four formats are actually in use, CycloneDX VEX, OpenVEX, CSAF, and SPDX 3.0, and none has converged as the single standard. If a customer has not specified a format, starting with the same CycloneDX `vulnerabilities` field as your existing SBOM is the easiest to wire into your tooling. For the concepts, including the four status values, [Vulnerability response deadlines and VEX](/reference/concepts/vulnerability-response) is the canonical reference.
 
 ---
 
