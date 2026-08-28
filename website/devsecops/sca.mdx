@@ -201,6 +201,58 @@ TRUSCA 는 대조 엔진으로 Trivy 를 씁니다. 탐지 결과에 CVSS 와 �
 
 ---
 
+## 게시 경로와 설치 경로도 공격면입니다
+
+앞의 스캔은 이미 들어온 패키지를 검사합니다. 공격은 그 앞뒤 두 지점에서도 일어납니다. 패키지를
+레지스트리에 올리는 게시 경로와, 내려받은 패키지가 설치 도중 스크립트를 실행하는 설치 경로입니다.
+
+### 게시: 장기 토큰 대신 trusted publishing
+
+메인테이너의 npm 토큰이 유출되면 정상 패키지의 새 버전으로 악성 코드가 배포됩니다. 2025년 하반기
+이후 npm 공급망 공격 상당수가 이 경로를 썼습니다. npm 은 이후 토큰 정책을 강화해 classic token 을
+폐기했고, 현재 공식 문서는 granular access token 만 지원한다고 안내합니다(2025-11 기준).
+
+대안은 trusted publishing 입니다. CI 워크플로가 OIDC 로 레지스트리에 자신을 증명하고 그 자리에서
+받은 단기 자격으로 게시하므로, 저장소 시크릿에 장기 토큰을 둘 필요가 없습니다. 게시본에는 어느
+워크플로에서 나왔는지 기록한 출처(provenance) 증명이 `--provenance` 플래그 없이 자동으로 붙습니다.
+현재 GitHub Actions, GitLab CI/CD, CircleCI 의 클라우드 러너에서 쓸 수 있고 self-hosted 러너는 아직
+지원되지 않습니다. PyPI 와 RubyGems 도 같은 방식을 제공합니다.
+
+```yaml
+# .github/workflows/publish.yml — npm trusted publishing
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write # OIDC 토큰 발급에 필요
+      contents: read
+    steps:
+      - uses: actions/checkout@v7
+      - run: npm ci --ignore-scripts
+      - run: npm publish # NODE_AUTH_TOKEN 없이 게시
+```
+
+다만 출처 증명은 "이 빌드가 선언된 파이프라인에서 나왔다"만 보장합니다. 파이프라인 자체가 침해되면
+증명은 그대로 유효한 채 악성 빌드가 나갑니다. 2026-05 Mini Shai-Hulud 에서 악성 패키지 84개가
+유효한 SLSA Build Level 3 증명을 달고 배포된 것이 그 사례입니다.
+
+### 설치: install 훅은 임의 코드 실행 지점입니다
+
+npm 패키지는 설치 도중 `preinstall`, `install`, `postinstall` 스크립트를 자동으로 실행합니다.
+Shai-Hulud 계열(2025-09 최초, 2025-11 2.0, 2026-05 Mini, 2026-08 CHAINDROP)과 postmark-mcp 사건은
+모두 이 훅으로 실행 시점을 확보했습니다. `npm install` 한 번이 곧 남의 코드 실행이라는 뜻입니다.
+
+- CI 에서는 `npm ci --ignore-scripts` 로 설치하고, 빌드에 스크립트가 꼭 필요한 패키지만 따로 실행합니다.
+- pnpm 은 기본값이 이미 차단입니다. 검토해서 허용한 패키지만 `allowBuilds`(pnpm 11 이전에는
+  `onlyBuiltDependencies`)에 적습니다.
+- 사내 반입 게이트를 운영한다면 install 훅이 있는 패키지를 검토 대상으로 표시합니다. 게이트 구성은
+  [오픈소스 프로세스: 사용부터 배포까지](/docs/process)의 3-1 절을 참조하세요.
+
+에이전트가 설치하는 MCP 서버와 스킬도 같은 설치 경로를 지나갑니다. 이 통제를 도구 쪽으로 확장한
+내용은 [에이전트와 MCP 도구 거버넌스](/ai-coding/agent-governance)의 도구·확장 공급망 절에 있습니다.
+
+---
+
 ## VEX 활용
 
 **VEX(Vulnerability Exploitability eXchange)란:** 특정 CVE가 해당 제품에서 실제로 악용 가능한지를 기계가 읽을 수 있는 형식으로 명시하는 문서입니다. "CVE는 존재하지만 해당 코드 경로 미사용"을 공식적으로 표현해 하위 공급망의 불필요한 알림을 방지합니다.

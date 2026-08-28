@@ -76,11 +76,25 @@ repository, which cuts off the entry path for supply chain attacks such as depen
 typosquatting.
 
 ```
-Public repo → [SCA checks: license, CVE, integrity] → register in internal repo on pass → developers and CI use internal only
+Public repo → [checks: license, CVE, integrity, provenance] → register in internal repo on pass → developers and CI use internal only
 ```
 
 Build the internal repository on an artifact repository such as Nexus or Artifactory, and wire the
 check step to the scanning in [5.3 Vulnerability Analysis and Response](../05-tools/vulnerability/index.md).
+
+The integrity check confirms that the file you received is the one that was published (hashes
+match). Provenance verification adds one more layer on top. Check the SLSA provenance attestation
+or signature attached to the package (npm provenance, Sigstore and similar), match it against which
+workflow in which repository produced the artifact, and hold registration when there is no
+attestation or it points somewhere other than the repository you expected. For securing the publish
+path itself, see the publish and install path section of
+[Software Composition Analysis (SCA)](/devsecops/sca).
+
+Signature verification alone is not enough, though. An attestation only guarantees that the build
+came out of the declared pipeline; it does not cover a compromise of that pipeline. In Mini
+Shai-Hulud in 2026-05, 84 malicious packages were published carrying valid SLSA Build Level 3
+attestations. Use provenance verification as one axis of the gate, and keep license and
+vulnerability checks plus post-ingest monitoring alongside it.
 :::
 
 #### 3-2. Pre-release compliance check

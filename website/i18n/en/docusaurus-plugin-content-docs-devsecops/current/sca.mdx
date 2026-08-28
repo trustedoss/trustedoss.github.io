@@ -205,6 +205,66 @@ supply chain section of
 
 ---
 
+## The publish path and the install path are attack surfaces too
+
+The scans above inspect packages that have already arrived. Attacks also happen on either side of
+that: the publish path, where a package is uploaded to a registry, and the install path, where a
+downloaded package runs scripts during installation.
+
+### Publishing: trusted publishing instead of long-lived tokens
+
+If a maintainer's npm token leaks, malicious code ships as a new version of a legitimate package.
+Many of the npm supply chain attacks since the second half of 2025 took that route. npm has since
+tightened its token policy and retired classic tokens; the official documentation now states that
+only granular access tokens are supported (as of 2025-11).
+
+The alternative is trusted publishing. The CI workflow proves its identity to the registry over
+OIDC and publishes with a short-lived credential issued on the spot, so no long-lived token has to
+sit in repository secrets. Published packages also carry a provenance attestation recording which
+workflow produced them, generated automatically without the `--provenance` flag. It currently works
+on the cloud runners of GitHub Actions, GitLab CI/CD and CircleCI; self-hosted runners are not
+supported yet. PyPI and RubyGems offer the same mechanism.
+
+```yaml
+# .github/workflows/publish.yml - npm trusted publishing
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write # required to mint the OIDC token
+      contents: read
+    steps:
+      - uses: actions/checkout@v7
+      - run: npm ci --ignore-scripts
+      - run: npm publish # published without NODE_AUTH_TOKEN
+```
+
+A provenance attestation only guarantees that the build came out of the declared pipeline. If the
+pipeline itself is compromised, a malicious build ships with the attestation still valid. Mini
+Shai-Hulud in 2026-05 is the case in point: 84 malicious packages were published carrying valid
+SLSA Build Level 3 attestations.
+
+### Installing: install hooks are arbitrary code execution
+
+An npm package automatically runs its `preinstall`, `install` and `postinstall` scripts during
+installation. The Shai-Hulud lineage (2025-09 initial, 2025-11 2.0, 2026-05 Mini, 2026-08
+CHAINDROP) and the postmark-mcp incident all used those hooks to get execution. A single
+`npm install` is someone else's code running on your machine.
+
+- In CI, install with `npm ci --ignore-scripts` and run scripts separately only for the packages
+  whose build genuinely needs them.
+- pnpm already blocks them by default. List only the packages you reviewed and approved under
+  `allowBuilds` (`onlyBuiltDependencies` before pnpm 11).
+- If you run an internal ingest gate, flag packages that carry install hooks for review. For how to
+  build that gate, see section 3-1 of
+  [Open Source Process: From Use to Distribution](/docs/process).
+
+MCP servers and agent skills installed by coding agents travel the same install path. The same
+controls extended to those tools are in the tool and extension supply chain section of
+[Agent and MCP Tool Governance](/ai-coding/agent-governance).
+
+---
+
 ## Using VEX
 
 **What is VEX (Vulnerability Exploitability eXchange)?** It is a machine-readable document that specifies whether a particular CVE is actually exploitable in a given product. It formally expresses cases like "the CVE exists, but the affected code path is not used," reducing unnecessary alerts across downstream supply chains.

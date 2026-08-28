@@ -98,6 +98,13 @@ Recommended retention period: the software release's maintenance period plus at 
 - The applicable software version
 - A contact name and contact details
 
+**Ship a signature with it:** the receiving side needs a way to confirm that the SBOM really came
+from you and was not altered in transit. Attaching a signature to the SBOM file is the common
+practice for that. Teams either produce a detached signature with Sigstore's cosign and distribute
+it next to the SBOM, or wrap the SBOM in an in-toto attestation that also records which build
+produced it. A signature only guarantees the origin and integrity of the file, so pair it with a
+step where the recipient cross-checks the contents against the actual composition using an SCA tool.
+
 :::tip A published example — attach it as a release asset
 
 The lightest of the options above is to attach the SBOM file to the release itself. The open source
