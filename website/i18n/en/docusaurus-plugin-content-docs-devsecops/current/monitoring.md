@@ -2,7 +2,7 @@
 id: monitoring
 title: Continuous Monitoring and Automated Remediation
 sidebar_label: Monitoring and Automated Remediation
-sidebar_position: 10
+sidebar_position: 11
 ---
 
 # Continuous monitoring and automated remediation

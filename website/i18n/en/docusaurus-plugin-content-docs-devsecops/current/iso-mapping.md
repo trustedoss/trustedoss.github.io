@@ -2,7 +2,7 @@
 id: iso-mapping
 title: 'ISO/IEC 18974 Mapping'
 sidebar_label: 'ISO/IEC 18974 Mapping'
-sidebar_position: 11
+sidebar_position: 12
 ---
 
 # ISO/IEC 18974 Mapping (DevSecOps Implementation)
