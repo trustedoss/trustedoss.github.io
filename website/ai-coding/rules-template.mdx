@@ -34,6 +34,28 @@ sidebar_position: 3
 이미 조직 오픈소스 정책을 세웠다면, 그 정책을 개발에 자동 적용하는 [개발자 가이드](/docs/developer-guide/)를 참고하세요.
 :::
 
+### 규칙 파일 자체가 공격면입니다
+
+규칙 파일은 AI 코딩 도구가 매 세션 읽는 지시문입니다. 여기에 심어진 문장은 이후 생성되는 모든 코드 제안에 영향을 줍니다.
+
+Pillar Security 가 2025-03-18 공개한 Rules File Backdoor 는 zero-width joiner 와 Unicode Tags 같은 보이지 않는 문자로 규칙 파일에 지시를 숨기는 기법입니다. 숨긴 지시는 이후 AI 가 내놓는 코드 제안에 백도어를 넣게 만들고, 문자가 화면과 PR diff 에 표시되지 않으므로 포크에서 온 변경도 리뷰를 그대로 통과합니다. Cursor 의 Rules for AI 와 GitHub Copilot 지시 파일에서 재현됐습니다.
+
+이 경로가 실제로 얼마나 통하는지는 AIShellJack 연구(arXiv:2509.22040)가 측정했습니다. MITRE ATT&CK 70개 기법을 반영한 공격 페이로드 314개로 GitHub Copilot 과 Cursor 를 평가한 결과 공격 성공률이 플랫폼 전반에서 41~84% 였습니다. Cursor 를 auto-approve 모드로 쓴 TypeScript 시나리오가 83.4% 로 가장 높았고, Copilot 은 41.1~52.2% 로 상대적으로 낮았습니다.
+
+그래서 아래 템플릿을 붙여넣기 전에 세 가지를 먼저 정해 두시기 바랍니다.
+
+- 규칙 파일 변경도 일반 코드와 동일하게 PR 리뷰 대상으로 삼습니다. `CLAUDE.md`, `AGENTS.md`, `.cursor/rules/`, `.clinerules`, `.github/copilot-instructions.md` 를 CODEOWNERS 에 등록해 승인 없이 병합되지 않게 합니다.
+- 병합 전에 보이지 않는 유니코드 문자가 있는지 점검합니다. 아래는 zero-width 계열과 Unicode Tags 영역을 찾는 예시입니다. diff 도구에 비표시 문자 하이라이트 옵션이 있으면 함께 켜 두세요.
+- 신뢰할 수 없는 출처의 규칙 파일은 그대로 병합하지 않습니다. 포크에서 온 PR, 서드파티 저장소에서 복사한 규칙, 배포된 템플릿은 위 점검을 통과한 뒤 사람이 전체 내용을 읽고 병합합니다.
+
+```bash
+# GNU grep 기준. macOS 기본 grep 은 -P 를 지원하지 않으므로 ggrep 또는 rg 를 쓰세요.
+grep -rlP '[\x{200B}-\x{200D}\x{2060}\x{FEFF}\x{E0000}-\x{E007F}]' \
+  CLAUDE.md AGENTS.md .cursor/rules/ .clinerules .github/copilot-instructions.md
+```
+
+에이전트가 호출하는 MCP 서버·스킬·IDE 확장까지 포함한 통제는 [에이전트와 MCP 도구 거버넌스](./agent-governance)에서 다룹니다.
+
 ---
 
 ## 전체 템플릿
@@ -75,7 +97,7 @@ sidebar_position: 3
 ---
 ```
 
-위 내용을 복사해서 각 도구의 설정 파일에 붙여넣으세요. 도구별 적용 방법은 아래 링크를 참고하세요.
+위 내용을 복사해서 각 도구의 설정 파일에 붙여넣으세요. 붙여넣은 뒤에는 위 개요 절의 점검 세 가지를 그 파일에도 적용하시기 바랍니다. 도구별 적용 방법은 아래 링크를 참고하세요.
 
 ---
 

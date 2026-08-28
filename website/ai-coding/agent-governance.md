@@ -43,19 +43,28 @@ MCP 스펙 자체도 "도구 설명은 신뢰된 서버에서 온 것이 아니�
 
 ## 2. 위협 모델: 세 개의 면과 방어선
 
-| 면              | 위협                                                        | 방어선                                                   |
-| --------------- | ----------------------------------------------------------- | -------------------------------------------------------- |
-| 입력 (프롬프트) | 간접 프롬프트 인젝션 — 에이전트가 읽는 콘텐츠에 심어진 지시 | 신뢰할 수 없는 콘텐츠 접근 최소화, 고위험 작업 사람 승인 |
-| 도구 (MCP 서버) | tool poisoning, 도구 가장(shadowing), 도구 연쇄 호출        | 서버 allowlist, 도입 전 스캔·반출 경로 판정, 버전 고정   |
-| 산출물 (코드)   | 오염된 생성 코드, 취약·금지 라이선스 의존성                 | 기존 CI Hard Block(시크릿, SAST, SCA) — 최후 방어선      |
+| 면                        | 위협                                                                    | 방어선                                                                      |
+| ------------------------- | ----------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| 입력 (프롬프트·규칙 파일) | 간접 프롬프트 인젝션 — 에이전트가 읽는 콘텐츠와 규칙 파일에 심어진 지시 | 신뢰할 수 없는 콘텐츠 접근 최소화, 규칙 파일 PR 리뷰, 고위험 작업 사람 승인 |
+| 도구 (MCP 서버·스킬·확장) | tool poisoning, 도구 가장(shadowing), 도구 연쇄 호출, 악성 패키지 설치  | 서버 allowlist, 도입 전 스캔·반출 경로 판정, 버전 고정, 출처 확인           |
+| 산출물 (코드)             | 오염된 생성 코드, 취약·금지 라이선스 의존성                             | 기존 CI Hard Block(시크릿, SAST, SCA) — 최후 방어선                         |
 
 핵심은 세 면이 상보적이라는 점입니다. 입력·도구 통제가 뚫려도 산출물 게이트가 남고,
 산출물 게이트가 놓치는 행위(데이터 유출 등)는 도구 통제가 막습니다.
 
-## 3. 실행 통제 여섯 가지
+입력 면에서 규칙 파일을 따로 적어 둔 이유가 있습니다. 규칙 파일은 사람이 쓴 설정으로 취급하기
+쉬우나 에이전트에게는 매 세션 읽히는 지시문이고, 여기에 심어진 문장은 이후 생성되는 모든 코드
+제안에 영향을 줍니다. Rules File Backdoor(Pillar Security, 2025-03-18)는 zero-width joiner 와
+Unicode Tags 로 규칙 파일에 보이지 않는 지시를 심는 기법입니다. 숨긴 문자가 PR diff 에 표시되지
+않아 포크에서 온 변경도 리뷰를 통과합니다. AIShellJack 연구(arXiv:2509.22040)는 MITRE ATT&CK
+70개 기법을 반영한 페이로드 314개로 GitHub Copilot 과 Cursor 를 평가해 공격 성공률 41~84% 를
+보고했고, Cursor 를 auto-approve 모드로 쓴 TypeScript 시나리오가 83.4% 로 가장 높았습니다.
+점검 방법은 [공통 Rules 템플릿](./rules-template)에 정리해 두었습니다.
+
+## 3. 실행 통제 일곱 가지
 
 Microsoft Incident Response 의 권고(2026-06)와 MCP 스펙의 보안 원칙을 실무 규칙으로 옮기면
-다섯 가지가 되고, 실제 사건에서 도출한 한 가지를 더해 여섯 가지입니다.
+다섯 가지가 되고, 실제 사건에서 도출한 두 가지를 더해 일곱 가지입니다.
 
 적용 강도는 서버 출처에 따라 나눕니다. 전수 심사가 필요한 것은 첫 행이고, 나머지는 기존 절차에
 얹거나 다른 단계에서 처리됩니다.
@@ -101,6 +110,48 @@ Smithery 에서 경로 순회 취약점이 발견되어 3,000개 이상의 호�
 서버가 어떤 외부 엔드포인트와 통신하는지, 사내 데이터가 그 경로로 나갈 수 있는지를 도입 전에
 판정합니다. 위 `postmark-mcp` 는 정확히 이 항목에서 걸릴 수 있었던 유형입니다. 판정 결과는
 아래 6절의 방식으로 SBOM 에 기록합니다.
+
+### 도구·확장 공급망
+
+앞의 여섯 가지는 승인한 도구를 어떻게 쓰는지에 관한 통제입니다. 일곱 번째는 그 도구가 어디서
+왔는지를 봅니다. 에이전트가 쓰는 MCP 서버, 에이전트 스킬, IDE 확장은 모두 개발자 권한으로 코드를
+실행하는 서드파티 패키지이므로 의존성과 같은 절차로 다뤄야 합니다. 그런데 이들은 lockfile 에
+나타나지 않아 기존 SCA 결과에 잡히지 않습니다.
+
+근거는 세 갈래입니다.
+
+- 에이전트 스킬. Snyk 이 스킬 3,984개를 조사한 ToxicSkills 연구(2026-02)에서 13.4%(534개)가
+  critical 등급 이슈를 하나 이상 포함했습니다. 사람이 직접 확인한 악성 페이로드 76개 중 91%가
+  프롬프트 인젝션 기법을 함께 썼습니다.
+- MCP 서버. 위 버전 고정 항목의 `postmark-mcp` 외에 `@lanyer640/mcp-runcommand-server` 가
+  2025-09-30 이중 백도어를 담은 채 배포됐습니다. 공식 MCP Registry 는 2025-09-08 공개 이후 여전히
+  프리뷰 상태이고, 등재 후 커뮤니티 신고를 받아 처리하는 사후 방식이라 등재된 코드의 안전성을
+  인증하지 않습니다. 레지스트리에 있다는 사실은 심사를 통과했다는 뜻이 아닙니다.
+- IDE 확장. GlassWorm 은 2025-10 Open VSX 마켓플레이스에서 확산해 설치 3만 5,800건을 기록했고
+  2025-11 에 2차로 재발했습니다. 2026-03 에는 전이 의존성을 통한 변형으로 확장 72개가 영향을
+  받았고 여기에 Claude Code 와 Codex 를 사칭한 확장이 포함됐습니다. VS Code 마켓플레이스에서는
+  MaliciousCorgi 가 2026-01 약 150만 개발자에게 영향을 줬고, JetBrains 마켓플레이스에서도 악성
+  AI 플러그인 15개가 2026-06 확인됐습니다.
+
+실무 통제는 네 가지입니다.
+
+- 설치 전 출처 확인. 게시자, 연결된 저장소, 최근 커밋, 다운로드 수의 급증 여부를 봅니다.
+  마켓플레이스나 레지스트리 등재는 심사 근거가 아닙니다.
+- allowlist 운용. 승인한 MCP 서버·스킬·확장만 쓰게 하고 개인이 임의로 추가하지 못하게 합니다.
+  Claude Code 는 아래 5절의 관리 설정으로, VS Code 와 JetBrains 는 각 제품의 조직 정책에서
+  확장 allowlist 로 강제할 수 있습니다.
+- 정기 감사. 설치된 목록을 주기적으로 다시 확인합니다. 승인 시점에 정상이던 패키지가 나중
+  버전에서 바뀌는 것이 위 사례들의 공통점입니다. 4절의 Snyk agent-scan 은 MCP 서버뿐 아니라
+  에이전트 설정과 스킬도 검사 대상으로 삼습니다.
+- 격리 실행. 격리를 켜지 않은 기본 상태의 Claude Code 는 파일 도구와 MCP 서버, 훅이 호스트에서
+  직접 실행됩니다. 내장 샌드박스는 Bash 하위 프로세스만 격리하고 Read·Edit·Write 는 권한 시스템이
+  따로 처리하므로, MCP 서버와 훅까지 격리 경계 안에 넣으려면 프로세스 전체를 격리해야 합니다.
+  이 격리는 opt-in 이며 `@anthropic-ai/sandbox-runtime`, 개발 컨테이너, 가상 머신, 웹에서 실행하는
+  Claude Code 중 하나를 골라 켜야 합니다. 격리를 켜기 전이라도 `permissions.deny` 에
+  `.claude/settings.json`·`.mcp.json` 같은 설정 경로의 쓰기를 넣어 두면(deny 가 allow 보다
+  우선합니다) 에이전트가 자기 권한을 바꾸는 경로는 개별적으로 막을 수 있습니다.
+
+IDE 확장을 스캔 범위에 넣는 이야기는 [소프트웨어 구성 분석 (SCA)](/devsecops/sca)에서 이어집니다.
 
 ## 4. 자동화 도구
 
@@ -188,8 +239,9 @@ Claude Code 는 조직이 배포하는 관리 설정(`managed-settings.json` —
 입니다. `.mcp.json` 을 저장소에 두는 이유는 서버 추가가 개인 설정이 아니라 PR diff 로
 드러나게 하기 위해서입니다.
 
-여섯 통제 중 셋째(도구 설명 검토)와 여섯째(데이터 반출 경로 판정)는 파일로 표현되지 않습니다.
-사람이 판단하는 절차이므로 규칙으로 적어 두고 결과를 PR 에 남기는 방식으로 다룹니다.
+일곱 통제 중 셋째(도구 설명 검토)와 여섯째(데이터 반출 경로 판정), 일곱째의 출처 확인은 파일로
+표현되지 않습니다. 사람이 판단하는 절차이므로 규칙으로 적어 두고 결과를 PR 에 남기는 방식으로
+다룹니다.
 
 ## 6. MCP 서버를 SBOM 에 등재하기
 
@@ -235,5 +287,10 @@ ISO/IEC 표준과의 연계는 [ISO 표준 연계](./iso-mapping)를, AI 생성 
 - Snyk, [Malicious MCP Server on npm: postmark-mcp Harvests Emails](https://snyk.io/blog/malicious-mcp-server-on-npm-postmark-mcp-harvests-emails/) (2025-09-25) — 악성 버전은 1.0.16부터로 추정이며, ActiveCampaign/Postmark 저장소와의 연관은 확인되지 않았습니다
 - GitGuardian, [From Path Traversal to Supply Chain Compromise: Breaking MCP Server Hosting](https://blog.gitguardian.com/breaking-mcp-server-hosting/) (2025-10-15) — 침해 사고가 아니라 연구자가 제보해 수정된 취약점
 - OWASP CycloneDX, [Specification Overview](https://cyclonedx.org/specification/overview/) / [JSON Schema 1.7](https://cyclonedx.org/schema/bom-1.7.schema.json) — `service` 객체 필드와 `component.type` 열거값
+- Pillar Security, [New Vulnerability in GitHub Copilot and Cursor: How Hackers Can Weaponize Code Agents](https://www.pillar.security/blog/new-vulnerability-in-github-copilot-and-cursor-how-hackers-can-weaponize-code-agents) (2025-03-18) — Rules File Backdoor
+- Liu et al., ["Your AI, My Shell": Demystifying Prompt Injection Attacks on Agentic AI Coding Editors](https://arxiv.org/abs/2509.22040) — AIShellJack, 페이로드 314개, 성공률 41~84%
+- Snyk, [ToxicSkills: Malicious AI Agent Skills](https://snyk.io/blog/toxicskills-malicious-ai-agent-skills-clawhub/) (2026-02) — 스킬 3,984개 중 13.4%가 critical 등급 이슈
+- Model Context Protocol Blog, [Introducing the MCP Registry](https://blog.modelcontextprotocol.io/posts/2025-09-08-mcp-registry-preview/) (2025-09-08) — 프리뷰 공개와 신고 기반 사후 조치 방식
+- Koi Security, [GlassWorm: First Self-Propagating Worm Using Invisible Code Hits OpenVSX Marketplace](https://www.koi.ai/blog/glassworm-first-self-propagating-worm-using-invisible-code-hits-openvsx-marketplace) (2025-10-18) / [MaliciousCorgi](https://www.koi.ai/blog/maliciouscorgi-the-cute-looking-ai-extensions-leaking-code-from-1-5-million-developers) (2026-01-22)
 - [Snyk agent-scan](https://github.com/snyk/agent-scan) / [Cisco mcp-scanner](https://github.com/cisco-ai-defense/mcp-scanner) / [ToolHive](https://github.com/stacklok/toolhive) / [MCP Gateway & Registry](https://github.com/agentic-community/mcp-gateway-registry) / [agentgateway](https://agentgateway.dev/)
-- [Claude Code 설정 문서](https://code.claude.com/docs/en/settings) (managed settings, MCP allowlist)
+- [Claude Code 설정 문서](https://code.claude.com/docs/en/settings) (managed settings, MCP allowlist) / [샌드박스 문서](https://code.claude.com/docs/en/sandboxing) / [Sandbox environments](https://code.claude.com/docs/en/sandbox-environments) — 격리 범위와 opt-in 방식

@@ -47,20 +47,30 @@ cannot enforce these principles, leaving them to implementers (adopting organiza
 
 ## 2. Threat model: three planes and their defenses
 
-| Plane               | Threat                                                                      | Defense                                                                    |
-| ------------------- | --------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| Input (prompts)     | Indirect prompt injection — instructions planted in content the agent reads | Minimize untrusted content access, human approval for high-risk actions    |
-| Tools (MCP servers) | Tool poisoning, tool shadowing, chained tool calls                          | Server allowlist, pre-adoption scanning and egress review, version pinning |
-| Artifact (code)     | Tainted generated code, vulnerable or forbidden-license dependencies        | Existing CI hard blocks (secrets, SAST, SCA) — the last line of defense    |
+| Plane                                   | Threat                                                                                         | Defense                                                                                            |
+| --------------------------------------- | ---------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| Input (prompts and rules files)         | Indirect prompt injection — instructions planted in content the agent reads and in rules files | Minimize untrusted content access, review rules files in PRs, human approval for high-risk actions |
+| Tools (MCP servers, skills, extensions) | Tool poisoning, tool shadowing, chained tool calls, malicious package installs                 | Server allowlist, pre-adoption scanning and egress review, version pinning, provenance checks      |
+| Artifact (code)                         | Tainted generated code, vulnerable or forbidden-license dependencies                           | Existing CI hard blocks (secrets, SAST, SCA) — the last line of defense                            |
 
 The point is that the three planes are complementary: if input and tool controls are bypassed, the
 artifact gate remains, and behavior that never lands in code (data exfiltration through a tool) is
 caught by tool controls, not the CI gate.
 
-## 3. Six working controls
+Rules files are called out separately on the input plane for a reason. They are easy to treat as
+human-authored configuration, but to an agent they are instructions read in every session, and
+anything planted there influences every code suggestion that follows. The Rules File Backdoor
+(Pillar Security, 2025-03-18) hides instructions in a rules file using zero-width joiners and
+Unicode Tags. The characters do not render in a PR diff, so a change arriving from a fork passes
+review. The AIShellJack study (arXiv:2509.22040) evaluated GitHub Copilot and Cursor with 314
+payloads covering 70 MITRE ATT&CK techniques and reported attack success rates of 41% to 84%, the
+highest being 83.4% for Cursor in auto-approve mode on TypeScript scenarios. The check procedure is
+in the [Common Rules Template](./rules-template).
+
+## 3. Seven working controls
 
 Translating the Microsoft Incident Response guidance (2026-06) and the MCP spec's security
-principles into working rules gives five; a sixth is drawn from an actual incident.
+principles into working rules gives five; two more are drawn from actual incidents.
 
 How strictly each applies depends on where the server comes from. Only the first row needs
 across-the-board review; the rest ride on existing procedures or are handled at another stage.
@@ -108,6 +118,52 @@ tool-call history.
 Before adoption, determine which external endpoints the server talks to and whether internal data
 can leave through them. `postmark-mcp` above is exactly the kind of case this catches. Record the
 result in the SBOM as described in section 6.
+
+### Tool and extension supply chain
+
+The six controls above govern how an approved tool is used. The seventh looks at where the tool came
+from. MCP servers, agent skills, and IDE extensions are all third-party packages that execute code
+with developer privileges, so they belong in the same procedure as any dependency. Yet none of them
+appear in a lockfile, so existing SCA results never show them.
+
+The evidence runs in three strands.
+
+- Agent skills. Snyk's ToxicSkills research (2026-02) examined 3,984 skills and found 13.4% (534)
+  carrying at least one critical-level issue. Of the 76 malicious payloads confirmed by hand, 91%
+  also used prompt injection techniques.
+- MCP servers. Besides `postmark-mcp` under version pinning above,
+  `@lanyer640/mcp-runcommand-server` shipped with a double backdoor on 2025-09-30. The official MCP
+  Registry has stayed in preview since its 2025-09-08 launch, and it moderates listings reactively
+  on community reports rather than certifying the safety of listed code. Being in the registry does
+  not mean a listing passed review.
+- IDE extensions. GlassWorm spread through the Open VSX marketplace in 2025-10 with 35,800 installs
+  and returned in a second wave in 2025-11. In 2026-03 a variant delivered through transitive
+  dependencies affected 72 extensions, including ones impersonating Claude Code and Codex. On the VS
+  Code marketplace, MaliciousCorgi affected roughly 1.5 million developers in 2026-01, and 15
+  malicious AI plugins were confirmed on the JetBrains marketplace in 2026-06.
+
+Four working controls follow.
+
+- Check provenance before installing. Look at the publisher, the linked repository, recent commits,
+  and any sudden jump in download counts. A marketplace or registry listing is not evidence of
+  review.
+- Run an allowlist. Permit only approved MCP servers, skills, and extensions, and stop individuals
+  from adding their own. Claude Code enforces this through the managed settings in section 5; VS
+  Code and JetBrains each offer an extension allowlist in their organization policies.
+- Audit on a schedule. Re-check the installed list periodically. What the cases above have in common
+  is a package that was clean at approval and changed in a later version. Snyk agent-scan in
+  section 4 covers agent configurations and skills, not just MCP servers.
+- Isolate execution. With isolation off, Claude Code runs file tools, MCP servers, and hooks
+  directly on the host. The built-in sandbox isolates Bash subprocesses only, and Read, Edit, and
+  Write go through the permission system instead, so putting MCP servers and hooks inside the
+  boundary means isolating the whole process. That isolation is opt-in: choose
+  `@anthropic-ai/sandbox-runtime`, a dev container, a virtual machine, or Claude Code on the web.
+  Even before turning it on, adding writes to configuration paths such as `.claude/settings.json`
+  and `.mcp.json` to `permissions.deny` (deny always wins over allow) blocks the specific path an
+  agent would use to change its own privileges.
+
+Bringing IDE extensions into scanning scope continues in
+[Software Composition Analysis (SCA)](/devsecops/sca).
 
 ## 4. Automation tools
 
@@ -199,8 +255,9 @@ repository scope is `permissions.deny`, `permissions.ask`, `enabledMcpjsonServer
 `disableClaudeAiConnectors`. Keeping `.mcp.json` in the repository is what makes adding a server
 show up as a PR diff instead of in someone's personal config.
 
-Two of the six controls, reviewing tool descriptions and judging the egress path, do not reduce to a
-file. They stay written rules whose results belong in the PR.
+Three parts of the seven controls do not reduce to a file: reviewing tool descriptions, judging the
+egress path, and checking provenance in the seventh. They stay written rules whose results belong in
+the PR.
 
 ## 6. Listing MCP servers in the SBOM
 
@@ -252,5 +309,10 @@ KWG guide does not yet cover this topic; this page is based on the primary sourc
 - Snyk, [Malicious MCP Server on npm: postmark-mcp Harvests Emails](https://snyk.io/blog/malicious-mcp-server-on-npm-postmark-mcp-harvests-emails/) (2025-09-25) — the malicious versions are believed to start at 1.0.16, and no link to the ActiveCampaign/Postmark repository was confirmed
 - GitGuardian, [From Path Traversal to Supply Chain Compromise: Breaking MCP Server Hosting](https://blog.gitguardian.com/breaking-mcp-server-hosting/) (2025-10-15) — a responsibly disclosed and fixed vulnerability, not a breach
 - OWASP CycloneDX, [Specification Overview](https://cyclonedx.org/specification/overview/) / [JSON Schema 1.7](https://cyclonedx.org/schema/bom-1.7.schema.json) — `service` object fields and the `component.type` enumeration
+- Pillar Security, [New Vulnerability in GitHub Copilot and Cursor: How Hackers Can Weaponize Code Agents](https://www.pillar.security/blog/new-vulnerability-in-github-copilot-and-cursor-how-hackers-can-weaponize-code-agents) (2025-03-18) — the Rules File Backdoor
+- Liu et al., ["Your AI, My Shell": Demystifying Prompt Injection Attacks on Agentic AI Coding Editors](https://arxiv.org/abs/2509.22040) — AIShellJack, 314 payloads, 41–84% success rates
+- Snyk, [ToxicSkills: Malicious AI Agent Skills](https://snyk.io/blog/toxicskills-malicious-ai-agent-skills-clawhub/) (2026-02) — 13.4% of 3,984 skills carried a critical-level issue
+- Model Context Protocol Blog, [Introducing the MCP Registry](https://blog.modelcontextprotocol.io/posts/2025-09-08-mcp-registry-preview/) (2025-09-08) — preview status and report-driven moderation
+- Koi Security, [GlassWorm: First Self-Propagating Worm Using Invisible Code Hits OpenVSX Marketplace](https://www.koi.ai/blog/glassworm-first-self-propagating-worm-using-invisible-code-hits-openvsx-marketplace) (2025-10-18) / [MaliciousCorgi](https://www.koi.ai/blog/maliciouscorgi-the-cute-looking-ai-extensions-leaking-code-from-1-5-million-developers) (2026-01-22)
 - [Snyk agent-scan](https://github.com/snyk/agent-scan) / [Cisco mcp-scanner](https://github.com/cisco-ai-defense/mcp-scanner) / [ToolHive](https://github.com/stacklok/toolhive) / [MCP Gateway & Registry](https://github.com/agentic-community/mcp-gateway-registry) / [agentgateway](https://agentgateway.dev/)
-- [Claude Code settings documentation](https://code.claude.com/docs/en/settings) (managed settings, MCP allowlist)
+- [Claude Code settings documentation](https://code.claude.com/docs/en/settings) (managed settings, MCP allowlist) / [Sandboxing](https://code.claude.com/docs/en/sandboxing) / [Sandbox environments](https://code.claude.com/docs/en/sandbox-environments) — isolation scope and its opt-in nature

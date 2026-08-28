@@ -34,6 +34,28 @@ This page is a quick-start template for creating Rules files for AI coding tools
 If you have already established an organizational Open Source Policy, see the [Developer Guide](/docs/developer-guide/) for automatically applying that policy to development.
 :::
 
+### The rules file itself is an attack surface
+
+A rules file is an instruction set the AI coding tool reads in every session. Anything planted there influences every code suggestion that follows.
+
+The Rules File Backdoor, published by Pillar Security on 2025-03-18, hides instructions in a rules file using invisible characters such as zero-width joiners and Unicode Tags. The hidden instructions make the AI insert a backdoor into the code it suggests, and because the characters do not render on screen or in a PR diff, a change arriving from a fork passes review as-is. It was reproduced against Cursor's Rules for AI and GitHub Copilot instruction files.
+
+How well this path actually works was measured by the AIShellJack study (arXiv:2509.22040). Evaluating GitHub Copilot and Cursor with 314 attack payloads covering 70 MITRE ATT&CK techniques, attack success rates across platforms ranged from 41% to 84%. The highest was 83.4% for Cursor in auto-approve mode on TypeScript scenarios; Copilot was comparatively lower at 41.1% to 52.2%.
+
+So settle three things before you paste the template below.
+
+- Treat rules file changes as code review targets like any other change. Register `CLAUDE.md`, `AGENTS.md`, `.cursor/rules/`, `.clinerules`, and `.github/copilot-instructions.md` in CODEOWNERS so they cannot merge without approval.
+- Check for invisible Unicode characters before merging. The example below finds zero-width characters and the Unicode Tags block. If your diff viewer offers an invisible-character highlight option, turn it on as well.
+- Do not merge rules files from untrusted sources as-is. Pull requests from forks, rules copied from third-party repositories, and distributed templates should pass the check above and then be read in full by a person before merging.
+
+```bash
+# GNU grep syntax. The default macOS grep does not support -P, so use ggrep or rg.
+grep -rlP '[\x{200B}-\x{200D}\x{2060}\x{FEFF}\x{E0000}-\x{E007F}]' \
+  CLAUDE.md AGENTS.md .cursor/rules/ .clinerules .github/copilot-instructions.md
+```
+
+Controls covering the MCP servers, skills, and IDE extensions an agent calls are in [Agent and MCP Tool Governance](./agent-governance).
+
 ---
 
 ## Full template
@@ -75,7 +97,7 @@ When adding new external packages/libraries, always verify and document the lice
 ---
 ```
 
-Copy the content above and paste it into each tool's settings file. For tool-specific application steps, see the links below.
+Copy the content above and paste it into each tool's settings file. Once pasted, apply the three checks from the overview section to that file as well. For tool-specific application steps, see the links below.
 
 ---
 

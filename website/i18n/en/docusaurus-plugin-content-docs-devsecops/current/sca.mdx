@@ -183,6 +183,28 @@ CVSS.
 
 ---
 
+## Developer workstations belong in scanning scope
+
+Everything above targeted repositories and container images. There is one more path code arrives
+through: the extensions a developer installs in an IDE. Extensions run with developer privileges and
+reach source and credentials, yet they never appear in package.json or a lockfile, so the SCA
+results above never show them.
+
+- GlassWorm spread through the Open VSX marketplace in 2025-10 with 35,800 installs and returned in
+  a second wave in 2025-11. In 2026-03 a variant delivered through transitive dependencies affected
+  72 extensions, including ones impersonating Claude Code and Codex.
+- MaliciousCorgi posed as AI extensions on the VS Code marketplace and affected roughly 1.5 million
+  developers in 2026-01.
+- Fifteen malicious AI plugins were confirmed on the JetBrains marketplace in 2026-06.
+
+Three controls go together in practice: enforce an extension allowlist through organization policy,
+re-check the installed list on a schedule, and verify the publisher and linked repository before
+installing. The same controls extended to MCP servers and agent skills are in the tool and extension
+supply chain section of
+[Agent and MCP Tool Governance](/ai-coding/agent-governance).
+
+---
+
 ## Using VEX
 
 **What is VEX (Vulnerability Exploitability eXchange)?** It is a machine-readable document that specifies whether a particular CVE is actually exploitable in a given product. It formally expresses cases like "the CVE exists, but the affected code path is not used," reducing unnecessary alerts across downstream supply chains.
