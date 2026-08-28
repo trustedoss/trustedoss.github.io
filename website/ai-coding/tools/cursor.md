@@ -57,6 +57,27 @@ alwaysApply: true
 
 규칙이 인식되면 금지 라이선스라는 답과 함께 대안을 제시합니다. 인식하지 못하면 설정 파일 위치와 적용 방법을 다시 확인하세요. 표준 항목과의 연계는 [ISO 표준 연계](../iso-mapping)를 참조하세요.
 
+## 격리와 샌드박싱
+
+### 왜 필요한가
+
+규칙 파일은 에이전트가 어떤 코드를 만들지 유도할 뿐, 에이전트가 실행할 수 있는 명령과 접근할 수 있는 경로를 제한하지 않습니다. 에이전트가 읽는 이슈나 문서에 공격자가 지시를 심어 두면(간접 프롬프트 인젝션) 그 지시가 터미널 명령 실행으로 이어질 수 있습니다. 위협 모델 전반은 [에이전트·MCP 도구 거버넌스](../agent-governance)에서 다룹니다.
+
+### 두 계층으로 나뉩니다
+
+Cursor 의 통제는 실행 승인과 샌드박스 두 계층입니다.
+
+- 실행 승인(Run Mode): Auto-review, Allowlist, Run Everything 세 가지 중 하나를 고릅니다. Allowlist 는 미리 등록한 명령만 자동 실행합니다.
+- 샌드박스: 승인 계층 위에 얹히는 운영체제 수준 격리입니다. macOS 는 Seatbelt(`sandbox-exec`)를, Linux 는 Landlock 으로 파일시스템을, seccomp 로 위험한 시스템 호출을 제한합니다. Linux 는 커널 6.2 이상과 Landlock v3, unprivileged user namespace 가 필요하고, 조건이 맞지 않으면 명령 실행 전에 승인을 묻는 방식으로 되돌아갑니다. Windows 는 WSL2 안에서 Linux 샌드박스를 실행합니다.
+
+### 어떻게 켜는가
+
+`Settings > Agents > Approvals & Execution` 에서 Run Mode 와 샌드박스를 지정합니다. 샌드박스의 네트워크 정책은 세 가지입니다. `sandbox.json Only` 는 직접 적은 목록만 허용하고, 기본값인 `sandbox.json + Defaults` 는 내장 허용 목록(약 110개 도메인)을 함께 적용하며, `Allow All` 은 제한을 두지 않습니다. 기본 정책은 거부이므로 목록에 없는 도메인은 막힙니다.
+
+설정은 파일로도 남습니다. `~/.cursor/permissions.json` 이 명령·MCP 서버 허용 목록(`terminalAllowlist`, `mcpAllowlist`, `autoRun`)을, `~/.cursor/sandbox.json` 이 샌드박스 유형과 네트워크 정책(`networkPolicy`, `additionalReadwritePaths`)을 담습니다. 조직 정책은 Enterprise 대시보드의 Auto Run Configuration 과 Cloud Agent 의 Lock Network Access Policy 로 강제하며, 팀 관리자 설정이 개인의 `permissions.json` 과 편집기 설정보다 우선합니다.
+
+명령 단위로 확실히 막아야 한다면 `.cursor/hooks.json` 의 `beforeShellExecution` 훅을 씁니다. 훅이 종료 코드 2 를 반환하면 해당 명령은 실행되지 않습니다.
+
 ## 주의사항
 
 :::info 알아두세요

@@ -14,6 +14,7 @@ const sidebars: SidebarsConfig = {
         'tools/claude-code',
         'tools/cursor',
         'tools/copilot',
+        'tools/codex',
         'tools/windsurf',
         'tools/cline-aider',
       ],

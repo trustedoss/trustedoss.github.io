@@ -57,6 +57,27 @@ To check whether the rules are applied, ask the tool.
 
 If the rules are recognized, the tool answers that it is a prohibited license and suggests an alternative. If it does not recognize the rules, re-check the configuration file location and how to apply the rules. For linkage to the standard requirements, see [ISO Standards Linkage](../iso-mapping).
 
+## Isolation and Sandboxing
+
+### Why it matters
+
+Rules files steer what code the agent writes, but they do not limit which commands it can run or which paths it can reach. If an attacker plants instructions in an issue or a document the agent reads (indirect prompt injection), those instructions can turn into terminal command execution. The broader threat model is covered in [Agent & MCP Tool Governance](../agent-governance).
+
+### Two separate layers
+
+Cursor's controls come in two layers: execution approval and the sandbox.
+
+- Execution approval (Run Mode): choose one of Auto-review, Allowlist, or Run Everything. Allowlist auto-runs only the commands registered in advance.
+- Sandbox: operating-system-level isolation layered on top of approval. macOS uses Seatbelt (`sandbox-exec`); Linux restricts the filesystem with Landlock and blocks risky syscalls with seccomp. Linux requires kernel 6.2 or later, Landlock v3, and unprivileged user namespaces; when those are unavailable it falls back to asking for approval before each command. On Windows, the Linux sandbox runs inside WSL2.
+
+### How to turn it on
+
+Set the Run Mode and the sandbox under `Settings > Agents > Approvals & Execution`. The sandbox network policy has three options: `sandbox.json Only` allows only the list you write, the default `sandbox.json + Defaults` also applies the built-in allowlist (about 110 domains), and `Allow All` applies no restriction. The default policy is deny, so domains outside the list are blocked.
+
+The settings are also backed by files. `~/.cursor/permissions.json` holds the command and MCP server allowlists (`terminalAllowlist`, `mcpAllowlist`, `autoRun`), and `~/.cursor/sandbox.json` holds the sandbox type and network policy (`networkPolicy`, `additionalReadwritePaths`). Organization policy is enforced through Auto Run Configuration and the Cloud Agent's Lock Network Access Policy in the Enterprise dashboard, and team admin settings take precedence over a user's `permissions.json` and editor settings.
+
+To block specific commands with certainty, use the `beforeShellExecution` hook in `.cursor/hooks.json`. When the hook returns exit code 2, the command does not run.
+
 ## Notes
 
 :::info Good to know

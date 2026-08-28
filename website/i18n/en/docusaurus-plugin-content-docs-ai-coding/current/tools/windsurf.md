@@ -2,7 +2,7 @@
 id: windsurf
 title: Devin Desktop (formerly Windsurf)
 sidebar_label: Devin Desktop
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 # Devin Desktop (formerly Windsurf)
@@ -53,6 +53,24 @@ To check whether the rules are applied, ask the tool.
 "Can I add a GPL-3.0 licensed package to this project?"
 
 If the rules are recognized, the tool answers that it is a prohibited license and suggests an alternative. If it does not recognize the rules, re-check the configuration file location and how to apply the rules. For linkage to the standard requirements, see [ISO Standards Linkage](../iso-mapping).
+
+## Isolation and Sandboxing
+
+### Why it matters
+
+Rules files only set the direction of the code the agent writes; they do not limit which commands it runs or which files it touches. If instructions are planted in an issue or a document the agent reads (indirect prompt injection), they can turn directly into command execution. The broader threat model is covered in [Agent & MCP Tool Governance](../agent-governance).
+
+### It depends on where the agent runs
+
+Devin sessions that run in the cloud each run on their own isolated machine. Every session boots fresh from an organization-level snapshot and discards its changes when it ends, so it is separated from the developer's machine.
+
+Devin Local, which runs on the developer's machine, provides an operating-system-level sandbox. It supports filesystem isolation and domain-level network filtering, and the CLI turns it on with the `--sandbox` flag. It is off by default, Linux requires `bubblewrap`, and Windows is not supported.
+
+### Permission rules
+
+Devin Local permissions have three levels, Deny, Ask, and Allow, and Deny wins. Rules are written as `Read(glob)`, `Write(glob)`, `Exec(command prefix)`, and `Fetch(pattern)`. To keep the policy and rules files from being tampered with together, it is safer to put the rules directory and configuration paths under a Deny `Write` rule.
+
+If you still use the older Cascade agent, control comes from auto-run levels (Disabled, Allowlist Only, Auto, Turbo) and command lists rather than a sandbox. The setting keys kept their `windsurf.` prefix after the rebrand: `windsurf.cascadeCommandsAllowList` and `windsurf.cascadeCommandsDenyList`, with the deny list taking precedence.
 
 ## Notes
 

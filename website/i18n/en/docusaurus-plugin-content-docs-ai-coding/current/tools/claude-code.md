@@ -59,6 +59,74 @@ To check whether the rules are applied, ask the tool.
 
 If the rules are recognized, the tool answers that it is a prohibited license and suggests an alternative. If it does not recognize the rules, re-check the configuration file location and how to apply the rules. For linkage to the standard requirements, see [ISO Standards Linkage](../iso-mapping).
 
+## Isolation and Sandboxing
+
+### Why it matters
+
+Rules files steer the direction in which the agent writes code, but they do not limit what the agent is able to do. By default, Claude Code runs file tools, MCP servers, and hooks directly on the host. If an attacker plants instructions in content the agent reads (an issue, a web page, a code comment), that indirect prompt injection can rewrite the hook configuration in `.claude/settings.json` or `.mcp.json` so that it runs automatically from the next session onward. The broader threat model is covered in [Agent & MCP Tool Governance](../agent-governance).
+
+### Choosing an isolation scope
+
+Isolation is opt-in. If you do not turn it on, nothing is restricted.
+
+| Approach                        | Isolation scope                                                | Requirement    |
+| ------------------------------- | -------------------------------------------------------------- | -------------- |
+| Sandboxed Bash tool (built in)  | Bash commands and their child processes                        | None           |
+| Sandbox runtime                 | The whole Claude Code process (file tools, MCP servers, hooks) | Node           |
+| Dev container, custom container | The whole development environment                              | Docker         |
+| Virtual machine                 | The whole operating system                                     | Virtualization |
+| Claude Code on the web          | The whole operating system (operated by Anthropic)             | None           |
+
+The built-in sandboxed Bash tool restricts Bash commands only. MCP servers and hooks are separate processes and still run unconstrained on the host. To isolate MCP servers and hooks as well, one of the other four approaches must put the entire Claude Code process inside the isolation boundary.
+
+The sandbox runtime is a beta research preview. Run it with `npx @anthropic-ai/sandbox-runtime claude`; it denies writes to the project's `.git/hooks`, `.mcp.json`, `.claude/commands`, `.claude/agents`, and shell startup files by default.
+
+### How to turn it on
+
+Running `/sandbox` in a session opens a panel for choosing the mode and its exceptions, and the choices are saved to `.claude/settings.local.json`. To apply it to every project, write it directly in `~/.claude/settings.json`.
+
+```json
+{
+  "sandbox": {
+    "enabled": true,
+    "filesystem": {"allowWrite": ["~/.kube", "/tmp/build"]},
+    "network": {"allowedDomains": ["github.com", "*.npmjs.org"]}
+  }
+}
+```
+
+No domains are pre-allowed by default. A domain that is not on the list triggers an approval prompt, and turning on `sandbox.network.strictAllowlist` denies it without prompting. macOS uses the built-in Seatbelt; Linux and WSL2 need `bubblewrap` and `socat`. Native Windows is not supported, so run it under WSL2. If the sandbox fails to start, the default behavior is to warn and keep running without it, so set `sandbox.failIfUnavailable` to `true` to stop instead.
+
+To enforce this organization-wide, put the same keys in managed settings (`managed-settings.json`). Individual settings cannot override them.
+
+```json
+{
+  "sandbox": {
+    "enabled": true,
+    "failIfUnavailable": true,
+    "allowUnsandboxedCommands": false
+  }
+}
+```
+
+### Blocking writes to configuration paths only
+
+Before adopting full isolation, permission rules can at least block tampering with configuration files. Rules are evaluated in the order deny, ask, allow, and the first match decides the outcome, so a path placed in deny cannot be revived by an allow rule.
+
+```json
+{
+  "permissions": {
+    "deny": [
+      "Edit(./.claude/**)",
+      "Edit(./.mcp.json)",
+      "Edit(./.git/hooks/**)"
+    ]
+  }
+}
+```
+
+Path rules are checked against the `Edit` and `Read` matchers only. Writing the same path as `Write(...)` registers the rule but it is never consulted, and Claude Code only warns at startup.
+
 ## Notes
 
 :::warning Limits of AI rules

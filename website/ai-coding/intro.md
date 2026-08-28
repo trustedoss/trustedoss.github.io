@@ -31,6 +31,7 @@ AI 코딩 도구(Claude Code, Cursor, GitHub Copilot, Devin Desktop, OpenAI Code
 | [Claude Code](./tools/claude-code)                 | Anthropic의 CLI 기반 AI 코딩 에이전트                            |
 | [Cursor](./tools/cursor)                           | AI 기반 코드 편집기                                              |
 | [GitHub Copilot](./tools/copilot)                  | GitHub의 AI 페어 프로그래머                                      |
+| [OpenAI Codex](./tools/codex)                      | OpenAI의 CLI·IDE 기반 코딩 에이전트                              |
 | [Devin Desktop](./tools/windsurf)                  | Cognition의 AI 코딩 에이전트 (구 Windsurf·Codeium)               |
 | [Cline / Aider](./tools/cline-aider)               | 오픈소스 CLI/VS Code 기반 AI 에이전트                            |
 | [30분 완성 Quick CI/CD](./cicd-quick)              | SCA(소프트웨어 구성 분석)·라이선스 중심 CI/CD 최소 시작점        |
@@ -40,6 +41,8 @@ AI 코딩 도구(Claude Code, Cursor, GitHub Copilot, Devin Desktop, OpenAI Code
 | [AI 시스템 컴플라이언스](./iso42001)               | ISO/IEC 42001과 오픈소스의 교차점                                |
 | [Best Practice 저장소](./best-practice-repo)       | 5단계 전략을 워크플로와 설정으로 구현한 참조 저장소              |
 | [ISO 표준 연계](./iso-mapping)                     | AI 코딩 구현이 강화하는 표준 항목 매핑                           |
+
+도구별 페이지는 업무 사용률이 높은 순서로 실었습니다. JetBrains 의 Developer Ecosystem Survey 2026(전문 개발자 15,509명, 2026-08 공개) 기준 업무 사용률은 Claude Code 39%, GitHub Copilot 21%, Codex 16%, Cursor 12% 입니다.
 
 ## 빠른 시작
 

@@ -2,7 +2,7 @@
 id: windsurf
 title: Devin Desktop (구 Windsurf)
 sidebar_label: Devin Desktop
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 # Devin Desktop (구 Windsurf)
@@ -53,6 +53,24 @@ Windsurf 는 2026-06-02 에 Devin Desktop 으로 이름이 바뀌었습니다. I
 "이 프로젝트에 GPL-3.0 라이선스 패키지를 추가해도 돼?"
 
 규칙이 인식되면 금지 라이선스라는 답과 함께 대안을 제시합니다. 인식하지 못하면 설정 파일 위치와 적용 방법을 다시 확인하세요. 표준 항목과의 연계는 [ISO 표준 연계](../iso-mapping)를 참조하세요.
+
+## 격리와 샌드박싱
+
+### 왜 필요한가
+
+규칙 파일은 에이전트가 만들 코드의 방향만 정하고, 에이전트가 실행할 명령이나 접근할 파일은 제한하지 않습니다. 에이전트가 읽는 이슈나 문서에 지시가 심어져 있으면(간접 프롬프트 인젝션) 그대로 명령 실행으로 이어질 수 있습니다. 위협 모델 전반은 [에이전트·MCP 도구 거버넌스](../agent-governance)에서 다룹니다.
+
+### 실행 위치에 따라 다릅니다
+
+클라우드에서 도는 Devin 세션은 세션마다 격리된 머신에서 실행됩니다. 조직 단위 스냅샷에서 매번 새로 부팅하고 종료 시 변경분을 버리므로, 개발자 단말과는 분리돼 있습니다.
+
+로컬에서 도는 Devin Local 은 운영체제 수준 샌드박스를 제공합니다. 파일시스템 격리와 도메인 단위 네트워크 필터링을 지원하고, CLI 에서는 `--sandbox` 플래그로 켭니다. 기본은 꺼짐이며, Linux 는 `bubblewrap` 이 필요하고 Windows 는 지원하지 않습니다.
+
+### 권한 규칙
+
+Devin Local 의 권한은 Deny, Ask, Allow 세 단계이고 Deny 가 우선합니다. 규칙 형식은 `Read(글롭)`, `Write(글롭)`, `Exec(명령 접두사)`, `Fetch(패턴)` 입니다. 정책 파일과 규칙 파일이 함께 변조되지 않도록, 규칙 디렉터리와 설정 경로는 `Write` 규칙에서 Deny 로 지정해 두는 편이 안전합니다.
+
+구형 에이전트 Cascade 를 아직 쓰고 있다면 샌드박스 대신 자동 실행 레벨(Disabled, Allowlist Only, Auto, Turbo)과 명령 목록으로 통제합니다. 설정 키는 리브랜딩 이후에도 `windsurf.cascadeCommandsAllowList` 와 `windsurf.cascadeCommandsDenyList` 를 그대로 쓰며, 거부 목록이 우선합니다.
 
 ## 주의사항
 

@@ -51,6 +51,37 @@ GitHub Copilot은 `.github/copilot-instructions.md` 파일을 저장소 전체�
 
 규칙이 인식되면 금지 라이선스라는 답과 함께 대안을 제시합니다. 인식하지 못하면 설정 파일 위치와 적용 방법을 다시 확인하세요. 표준 항목과의 연계는 [ISO 표준 연계](../iso-mapping)를 참조하세요.
 
+## 격리와 샌드박싱
+
+### 왜 필요한가
+
+Copilot 은 실행 위치가 셋으로 나뉘고 격리 수준도 각각 다릅니다. 클라우드 에이전트는 이슈 본문이나 PR 설명을 그대로 읽으므로 거기 심어진 지시가 명령 실행과 외부 통신으로 이어질 수 있고, 로컬 도구는 개발자 단말에서 직접 실행됩니다. 위협 모델 전반은 [에이전트·MCP 도구 거버넌스](../agent-governance)에서 다룹니다.
+
+### 클라우드 에이전트
+
+Copilot 클라우드 에이전트는 GitHub Actions 기반 임시 환경에서 실행되고, 방화벽이 기본으로 켜져 있으며 권장 허용 목록도 기본 적용됩니다. 설정 위치는 조직 또는 저장소의 `Settings > Code, planning, and automation > Copilot > Internet access` 입니다.
+
+| 설정                          | 역할                                               |
+| ----------------------------- | -------------------------------------------------- |
+| Enable firewall               | 방화벽 사용 여부. 조직 기본값은 저장소 판단에 맡김 |
+| Recommended allowlist         | GitHub 가 제공하는 기본 허용 도메인 묶음           |
+| Allow repository custom rules | 저장소가 자체 허용 규칙을 추가할 수 있는지 여부    |
+| Custom allowlist              | 조직 또는 저장소가 직접 추가하는 허용 도메인       |
+
+한계도 함께 알아두세요. 이 방화벽은 Bash 도구가 실행하는 프로세스에만 적용되고, MCP 서버와 설정 단계(setup steps)에는 적용되지 않습니다.
+
+### Copilot CLI
+
+로컬 샌드박스가 있지만 기본으로 꺼져 있는 실험 기능입니다. `--experimental` 로 실행한 뒤 `/sandbox enable` 로 켭니다. 격리는 프로세스와 파일시스템 수준이며 가상 머신이나 컨테이너가 아닙니다. macOS 는 Seatbelt, Linux 는 bubblewrap 을 사용하고, Windows 는 Insiders 빌드에서만 동작합니다.
+
+도구 승인은 `--allow-tool`, `--deny-tool` 플래그로 지정하고, 승인된 도구와 경로는 `~/.copilot/permissions-config.json` 에, 허용 URL 은 `~/.copilot/settings.json` 의 `allowedUrls` 에 남습니다. `--allow-all-tools` 와 `--yolo` 는 모든 승인을 건너뛰므로 격리 환경 밖에서는 쓰지 마세요.
+
+### VS Code 에이전트 모드
+
+터미널 명령 자동 승인은 `chat.tools.terminal.enableAutoApprove` 로 켜고 `chat.tools.terminal.autoApprove` 에 대상 명령을 적습니다. 도구 전반의 자동 승인은 `chat.tools.global.autoApprove` 입니다(1.104 에서 `chat.tools.autoApprove` 를 대체했고 자동 이전은 없습니다).
+
+샌드박스는 미리보기 기능으로 `chat.agent.sandbox.enabled` 에서 켭니다. macOS, Linux, WSL2 를 지원하고, 네트워크는 `chat.agent.sandbox.allowNetwork`, 파일시스템은 `chat.agent.sandbox.fileSystem.mac` 과 `chat.agent.sandbox.fileSystem.linux` 로 조정합니다.
+
 ## 주의사항
 
 :::info 알아두세요
