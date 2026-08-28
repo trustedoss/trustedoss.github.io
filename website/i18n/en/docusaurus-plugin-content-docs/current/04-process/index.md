@@ -105,6 +105,16 @@ You use resources efficiently by applying different response deadlines based on 
 The CVSS-severity response-deadline table (the KWG baseline plus a stricter organizational SLA option) and the VEX concept are consolidated in [Vulnerability response deadlines and VEX](/reference/concepts/vulnerability-response). The process deliverable `vulnerability-response.md` documents these as your company SLA.
 :::
 
+:::warning Check the separate reporting obligation if you ship into the EU market
+Separately from the response deadlines above, the EU CRA requires reporting an exploited
+vulnerability or a severe incident to regulators (CSIRT and ENISA) within **24 hours for the
+early warning and 72 hours for the notification**, applying from 2026-09-11. This applies
+only to organizations placing products with digital elements on the EU market. For the
+detailed deadlines and reporting channel, see the EU CRA section of
+[Vulnerability response deadlines and VEX](/reference/concepts/vulnerability-response); for
+the deliverable, see §9 of `vulnerability-response.md`.
+:::
+
 #### 3-4. Open source contribution process (§3.5.1)
 
 ISO/IEC 5230 §3.5 requires separate policies and procedures for engaging with open source communities (contribution and disclosure). Even organizations with no plans to contribute or disclose need a policy document stating "not currently applicable."
@@ -139,7 +149,9 @@ This is the channel and procedure for receiving open-source-related inquiries fr
 customers, the community, or license holders. It consists of a published intake channel (email or a
 web form), acknowledgement, triage into compliance vs. security inquiries, assignment and response,
 and record keeping. The external inquiry channel designated in chapter 02 is the entry point, and
-the deliverable is generated as `inquiry-response.md`.
+the deliverable is generated as `inquiry-response.md`. If an intake turns out to be an actively
+exploited vulnerability, note that the EU CRA reporting clock in 3-3 (if it applies to you)
+starts at that same moment.
 
 :::tip Published examples — intake channel and notices
 

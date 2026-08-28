@@ -143,6 +143,11 @@ ISO/IEC 18974 §4.3.2 requires not only pre-deployment vulnerability scanning bu
 4. When customer notification is required: share the list of affected versions, temporary mitigations, and the expected patch date
 5. Keep records of the SBOM update and the response after the patch is deployed
 
+If your organization ships products into the EU market, an actively exploited vulnerability
+carries a separate regulatory reporting obligation on top of the customer notification above.
+See the EU CRA section of [Vulnerability response deadlines and
+VEX](/reference/concepts/vulnerability-response) for the deadlines.
+
 Keep your SBOM up to date so you can immediately tell whether your software is affected when a new CVE is disclosed. If the SBOM is stale, the monitoring tool will not raise the correct alert.
 
 **Monitoring methods:**
