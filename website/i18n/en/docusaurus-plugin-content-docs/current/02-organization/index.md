@@ -77,6 +77,27 @@ If you plan to contribute to an external open source project or release an inter
 | Disclosure review of internal projects                      | Development representative (R) | OSPM and Legal (A) |
 | Overall response to external license and security inquiries | OSPM (R)                       | —                  |
 
+### Owner of the AI coding tool usage policy
+
+Neither ISO/IEC 5230 nor 18974 explicitly requires this role, but if your development teams use AI
+coding tools, it is worth naming someone to own the policy now. Which tools are permitted, how the
+license and provenance of generated code is checked, and who verifies an upstream project's policy
+before contributing all overlap with open source management.
+
+| Activity                                               | Primary owner                  | Approver |
+| ------------------------------------------------------ | ------------------------------ | -------- |
+| Maintaining the allowlist of AI coding tools           | AI tool policy owner (R)       | OSPM (A) |
+| Setting review criteria for AI-generated code          | AI tool policy owner (R)       | OSPM (A) |
+| Checking the upstream project's AI contribution policy | Development representative (R) | OSPM (A) |
+
+You do not need to hire anyone. In a small organization the OSPM can hold this role concurrently.
+What matters is that decisions about adopting AI tools do not happen outside the open source
+management system.
+
+If you also have AI management system certification (ISO/IEC 42001) in mind, this role is the
+connection point between the two systems. See
+[AI System Compliance and Open Source Management](/ai-coding/iso42001) for details.
+
 ### Gather evidence for periodic review (ISO/IEC 18974 §4.1.2.5, §4.1.2.6)
 
 ISO/IEC 18974 requires evidence of **periodic review** of the open source program and **verification of conformance with internal best practices**. For initial certification, partial fulfillment through establishing a review plan is permitted; at renewal certification (18 months later), it must be fully satisfied with an actual review history.
@@ -268,6 +289,7 @@ Completing this exercise meets the requirements below.
 | License review                 | A    | R     | I        | C           |
 | Respond to CVE vulnerabilities | A    | I     | R        | C           |
 | Create SBOM                    | A    | I     | C        | R           |
+| AI coding tool policy          | R, A | C     | C        | I           |
 
 _(R = Responsible, A = Accountable, C = Consulted, I = Informed)_
 

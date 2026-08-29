@@ -190,6 +190,31 @@ Self-certification is not a one-time event. It requires ongoing maintenance:
 
 > This step meets the requirements of ISO/IEC 5230 G4.3 (3.6.2) and ISO/IEC 18974 G4.3 (4.4.2).
 
+### Setting the next goal: the OpenChain Capability Model
+
+Self-certification produces only two values: met and not met. Once you are met, the standard does
+not tell you what to improve next. OpenChain published its Capability Model to fill that space; it
+reached general release on 2025-01-31 and is distributed as CC0 (effectively public domain), so you
+can copy it straight into your internal documents.
+
+A version mapped to ISO/IEC 5230 (OpenChain 2.1) is provided as a spreadsheet. Recording a current
+level and a target level for each item gives you the improvement plan for the next 18 months up to
+renewal. It is available from
+[OpenChain-Maturity-Models](https://github.com/OpenChain-Project/Reference-Material/tree/master/OpenChain-Maturity-Models).
+
+### Other OpenChain material worth reading
+
+ISO/IEC 5230:2020 and ISO/IEC 18974:2023 remain valid without revision. What does get updated is
+the supporting material below, so it is worth reviewing at each recheck cycle.
+
+| Material                                                                          | Date    | What it is for                                                                                                                                                                                                          |
+| --------------------------------------------------------------------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Artificial Intelligence System Bill of Materials Compliance Management Guide v1.0 | 2025-10 | Sets out the policy, competence, AI content review and approval, and governance requirements for exchanging AI SBOMs across a supply chain, in the same shape as 5230. It also references ISO/IEC 42001:2023. CC BY 4.0 |
+| Telco SBOM Guide v1.1                                                             | 2025-05 | Builds on SPDX and the NTIA minimum elements to define how SBOMs are created, delivered, and consumed in the telecom industry. Validators are distributed alongside it                                                  |
+
+Both live in the [OpenChain Reference-Material repository](https://github.com/OpenChain-Project/Reference-Material),
+under the `AI-SBOM-Compliance` and `SBOM-Quality-Management` folders.
+
 ---
 
 ## 8. Completion checklist

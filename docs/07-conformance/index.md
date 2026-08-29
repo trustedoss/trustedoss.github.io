@@ -188,6 +188,30 @@ ISO/IEC 5230과 ISO/IEC 18974는 많은 요구사항을 공유합니다. 동시 
 
 > 이 단계는 ISO/IEC 5230 G4.3 (3.6.2) 및 ISO/IEC 18974 G4.3 (4.4.2) 요구사항을 충족합니다.
 
+### 다음 목표를 정할 때: OpenChain Capability Model
+
+자체 인증은 충족과 미충족 두 값만 냅니다. 충족 판정을 받은 다음 무엇을 더 개선할지는
+표준이 답해 주지 않습니다. OpenChain은 이 부분을 메우려고 Capability Model을 2025-01-31
+정식 공개했습니다. CC0(사실상 퍼블릭 도메인)로 배포되므로 사내 문서에 그대로 옮겨 써도 됩니다.
+
+ISO/IEC 5230(OpenChain 2.1) 대응판이 스프레드시트 형태로 제공됩니다. 항목마다 현재 수준과
+목표 수준을 기록해 두면 18개월 뒤 갱신 인증까지의 개선 계획이 그대로 만들어집니다.
+[OpenChain-Maturity-Models](https://github.com/OpenChain-Project/Reference-Material/tree/master/OpenChain-Maturity-Models)에서
+내려받을 수 있습니다.
+
+### 함께 볼 만한 OpenChain 산출물
+
+ISO/IEC 5230:2020과 ISO/IEC 18974:2023은 개정 없이 그대로 유효합니다. 표준 본문 대신
+아래 참고 산출물이 갱신되고 있으므로, 재확인 주기마다 함께 살펴보면 좋습니다.
+
+| 산출물                                                                            | 시점    | 쓰임                                                                                                                                                                                                   |
+| --------------------------------------------------------------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Artificial Intelligence System Bill of Materials Compliance Management Guide v1.0 | 2025-10 | AI 시스템의 구성 명세(AI SBOM)를 공급망에서 주고받을 때 필요한 정책, 역량, AI 콘텐츠 검토·승인, 거버넌스 요구사항을 5230과 같은 형식으로 정리했습니다. ISO/IEC 42001:2023을 함께 참조합니다. CC BY 4.0 |
+| Telco SBOM Guide v1.1                                                             | 2025-05 | SPDX와 NTIA 최소 요소를 바탕으로 통신 산업에서 SBOM을 만들고 주고받을 때의 요건을 정한 지침입니다. 검증 도구가 함께 배포됩니다                                                                         |
+
+두 산출물 모두 [OpenChain Reference-Material 저장소](https://github.com/OpenChain-Project/Reference-Material)의
+`AI-SBOM-Compliance` 와 `SBOM-Quality-Management` 폴더에 있습니다.
+
 ---
 
 ## 8. 완료 확인 체크리스트

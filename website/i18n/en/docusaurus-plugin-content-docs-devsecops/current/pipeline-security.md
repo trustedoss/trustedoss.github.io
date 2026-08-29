@@ -31,11 +31,16 @@ the runner worker process memory and printed them into the workflow log in plain
 with public logs, API keys, cloud credentials, and SSH keys were exposed directly. More than 23,000
 repositories were affected. Not a single line of application code changed.
 
-**Trivy Action tag repointing (2026-03).** The same attack pattern was repeated against a security
-scanner. A scan step added to inspect container images became the intrusion path itself.
-It shows that a tool cannot be exempted from verification just because it is a security tool.
+**Trivy Action composite-action script injection (2026-02-18, GHSA-9p44-j4g5-cfx5).** A
+widely used security scanner Action had its own vulnerability. The composite action sourced
+an environment file, and an attacker who could control that file's contents could execute
+arbitrary commands. The attack technique differs from the tj-actions case (an input-handling
+flaw, not tag repointing), but the conclusion is the same: a workflow step you add to scan for
+security issues becomes an intrusion path the moment it is exempted from scrutiny.
 
-Both incidents share one root cause: the workflow executed a reference whose content was not pinned.
+The shared lesson from both incidents is that everything a workflow executes, both the
+references it resolves and the input values it trusts, needs verification. tj-actions failed on
+an unpinned tag reference; Trivy Action failed on an unverified input value.
 
 ---
 

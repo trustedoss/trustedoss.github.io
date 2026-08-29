@@ -141,6 +141,27 @@ This is the process of contributing code, documentation, and bug reports to exte
 - CLA handling: Verify and record whether the Contributor License Agreement has been signed.
 - Approval stage: Obtain approval from the open source program manager and team lead before contributing (apply differently depending on the size of the contribution).
 - Contribution history: Record the contribution history (project, details, contributor, date) in an internal log.
+- AI tool policy check: Before contributing code generated or assisted by an AI coding tool, check the upstream project's AI contribution policy in advance.
+
+**Upstream AI contribution policies diverge:**
+
+The same patch may only need to be disclosed in one project and be rejected outright in another.
+That is why you must read the target repository's contribution guide and PR template before you
+send anything.
+
+| Project      | Approach             | What it requires                                                                                                                                                                                         |
+| ------------ | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Linux kernel | Disclosure required  | An `Assisted-by: AGENT_NAME:MODEL_VERSION` trailer naming the tool and model version. AI agents must not add `Signed-off-by`, because only a human can certify the Developer Certificate of Origin (DCO) |
+| QEMU         | Declined             | Contributions believed to include or derive from AI-generated content are declined. Using AI for research, static analysis, and debugging is allowed as long as its output does not end up in the patch  |
+| MicroPython  | Declaration required | The PR template has a "Generative AI" section that every contributor must answer. If AI was used, the contributor states that a human checked the code and takes responsibility for it                   |
+
+Sources: the [Linux kernel coding assistants document](https://docs.kernel.org/process/coding-assistants.html),
+[QEMU code provenance](https://www.qemu.org/docs/master/devel/code-provenance.html), and the
+[MicroPython PR template](https://github.com/micropython/micropython/blob/master/.github/pull_request_template.md).
+
+Put "check the target project's AI policy" into your internal procedure as a step before approval,
+and record both the result of that check and whether AI tools were used in the contribution log.
+If a policy violation surfaces after approval, you have to withdraw a patch you already submitted.
 
 #### 3-5. Internal project disclosure process (§3.5.1)
 
@@ -166,6 +187,39 @@ and record keeping. The external inquiry channel designated in chapter 02 is the
 the deliverable is generated as `inquiry-response.md`. If an intake turns out to be an actively
 exploited vulnerability, note that the EU CRA reporting clock in 3-3 (if it applies to you)
 starts at that same moment.
+
+**Triage criteria for low-quality AI-generated reports:**
+
+Once you open an intake channel, reports that are not real vulnerabilities arrive alongside the
+real ones. That share has grown enough recently that running the channel has become a cost of
+its own.
+
+- curl ended the monetary rewards of its seven-year bug bounty on 2026-01-31 after its confirmed
+  vulnerability rate fell from above 15% to below 5% during 2025. It still accepts reports through
+  GitHub private vulnerability reporting and a security email address
+  ([The end of the curl bug-bounty](https://daniel.haxx.se/blog/2026/01/26/the-end-of-the-curl-bug-bounty/))
+- HackerOne reported that total submissions across its platform grew roughly 76% over the twelve
+  months ending March 2026 while signal rates stayed about the same. What grew was triage load,
+  not work that needed fixing
+- Elastic received over 1,390 reports in the first half of 2026 alone, exceeding the full-year
+  totals for 2024 and 2025 combined, and measured the cost of triaging a single report at roughly $2
+- JFrog reported on 2026-07-30 that of 55 SQLite advisories published by one GitHub account,
+  54 were entirely fabricated. Several of them had been listed in NVD with a CVSS 9.8 Critical score
+
+Adding these three checks, in order, to the triage step of `inquiry-response.md` closes out most
+low-quality reports early.
+
+1. Does the code exist: confirm that the file, function, and version the report names actually
+   exist. Close a report that points at a code path that is not there.
+2. Is it reproducible: confirm there are runnable reproduction steps or proof-of-concept code.
+   If not, request them with a reply deadline (14 days, for example) and close on no response.
+3. What is the impact: confirm that your distribution actually uses that code path. If it does not,
+   record `not_affected` in VEX and close.
+
+Do not accept the CVSS score the reporter proposes; recalculate it yourself. The public CVE
+submission form has no real identity verification, so anyone can submit a vulnerability description
+and propose a CVSS score. That is how the fabricated advisories in the JFrog case came to be listed
+as Critical.
 
 :::tip Published examples — intake channel and notices
 
