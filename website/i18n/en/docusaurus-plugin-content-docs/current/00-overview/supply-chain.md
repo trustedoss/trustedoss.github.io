@@ -42,9 +42,9 @@ Supply chain security is the discipline of identifying and managing the risks th
 
 ---
 
-## 3. Three real-world supply chain attacks
+## 3. Real-world supply chain attacks
 
-The following three cases show that supply chain security is anything but an abstract concept.
+The cases below show that supply chain security is anything but an abstract concept. The first three targeted source code and maintainer trust, the pattern of the early years. The last two show where attacks moved from 2025 onward: stolen credentials and hijacked build pipelines.
 
 #### SolarWinds (2020)
 
@@ -81,7 +81,39 @@ Over two years, an attacker using the pseudonym "Jia Tan" contributed to the XZ 
 Development and beta channels of major distributions — Fedora beta, Debian testing, openSUSE Tumbleweed — had pulled in the vulnerable versions, and the discovery came just before stable releases. Had discovery been delayed by even a few days, backdoors would have landed on millions of servers.
 
 **Lesson**
-The identity and long-term behavior of open source contributors deserve scrutiny. The health of the open source projects you depend on — their governance and maintainer activity — is also part of supply chain security.
+The identity and long-term behavior of open source contributors deserve scrutiny. The health of the open source projects you depend on, meaning their governance and maintainer activity, is also part of supply chain security.
+
+---
+
+#### tj-actions/changed-files (2025-03, CVE-2025-30066)
+
+**What happened**
+Several version tags of `tj-actions/changed-files`, a widely used GitHub Action, were retargeted to point at a single malicious commit. Tags including `v1.0.0`, `v35.7.7-sec`, and `v44.5.1` all moved to that commit, whose script dumped secrets out of the Runner Worker process memory and printed them into the workflow logs.
+
+**Scope of impact**
+More than 23,000 repositories used the action. In repositories with public logs, API keys, cloud credentials, and SSH keys were exposed in plain text. Not a single line of application code changed. The attack was active on 2025-03-14 and 15, and was fixed in 46.0.1 (CVSS 8.6).
+
+**Lesson**
+Your dependency inventory includes not only libraries but also the actions and tools your build runs. A movable tag such as `@v45` can point at a different commit at any time, so pinning to a 40-character commit SHA is what actually fixes the code that runs.
+
+---
+
+#### The Shai-Hulud lineage and ChainDrop (2025-2026)
+
+**What happened**
+The Shai-Hulud worm, first observed on npm in 2025-09, used each victim's stolen npm token to reinfect the packages they maintained and spread to more than 500 packages. It was followed by Shai-Hulud 2.0 in 2025-11, several variants through the first half of 2026, and then ChainDrop on 2026-08-04. ChainDrop did not steal npm tokens: it compromised a maintainer's GitHub account and triggered the legitimate release workflows. As a result, the malicious versions were published with valid SLSA provenance attestations.
+
+**Scope of impact**
+Starting from `keyv`, `flat-cache`, and `file-entry-cache`, packages with over 100 million weekly downloads each, 444 packages and 2,212 versions were poisoned in under four hours. The payload harvested secrets from CI runner memory along with AWS, Kubernetes, and Vault credentials.
+
+**Lesson**
+The persistence mechanism is the part worth studying. ChainDrop's payload planted a `SessionStart` hook in the Claude Code settings file (`.claude/settings.json`) and a folder-open task in VS Code's `.vscode/tasks.json` inside the repositories it compromised. Simply opening that repository runs the payload again. Configuration files for AI coding tools are execution paths, so a configuration file that arrives from a repository deserves the same review as source code. Provenance attestations alone also do not guarantee safety: a compromised pipeline issues valid attestations through the normal process, and the consumer cannot tell the difference.
+
+---
+
+### Where the attacks moved
+
+In the first three cases, attackers went after source code or maintainer trust. In the cases from 2025 onward, they go after the accounts that hold publishing rights and the build pipelines themselves. Hijacking a single release workflow lets an attacker ship a malicious version that is indistinguishable from a legitimate release, without touching library source at all. Managing an inventory of open source components is therefore no longer enough: the pipeline that pulls those components in and builds them has to be under control as well. For the practical measures, see [Pipeline Security and Build Provenance](/devsecops/pipeline-security).
 
 ---
 
@@ -137,11 +169,26 @@ This applies to **any business** that sells software products or services in the
 
 #### Trends in Korea
 
-Discussions on mandating supply chain security are advancing quickly in Korea as well.
+Korean policy started with advisory guidelines and has moved on to a roadmap with a phased schedule.
 
-- **MSIT/KISA Software Supply Chain Security Guidelines (2023)**: Korea's first official guideline recommending the adoption of SBOM.
-- **Review of SBOM for public-sector software projects**: Authorities are considering requiring an SBOM for software procured by public institutions.
-- **Discussion of a domestic SBOM mandate**: Similar domestic regulation is likely to follow once the EU CRA takes effect.
+**SW Supply Chain Security Guideline 1.0 (2024-05-13)**
+Published jointly by the Ministry of Science and ICT (MSIT), the National Intelligence Service (NIS), and the Presidential Committee on Digital Platform Government, and distributed by KISA. Its stated purpose is to help government bodies, public institutions, and companies build their own capability to manage software supply chain security, with the SBOM submission requirements emerging in the United States and Europe as background. It comes in a full version and a summary, and English and Spanish summaries were added on 2024-09-12.
+
+**Phased implementation plan for SW supply chain security (2026-06-24)**
+MSIT released this under the title "Government announces a phased implementation plan (roadmap) for software supply chain security," with the NIS and KISA taking part. Its stated goal is "securing cyber resilience through a transition to a safe and responsible supply chain security system," and it sets out the three strategies below.
+
+| Strategy                                | Content                                                              |
+| --------------------------------------- | -------------------------------------------------------------------- |
+| Strengthen threat prevention capability | Build management capability upstream, before threats enter the chain |
+| Establish rapid detection and response  | Put detection and response procedures in place for compromises       |
+| Build the policy and institutional base | Prepare the institutional and support framework                      |
+
+:::info Check the source document for the detailed tasks
+The detailed tasks under each strategy and the year-by-year schedule are in the attached documents. Check the source directly for when and to what scope public procurement will require an SBOM. Both documents can be downloaded from the [KISA guideline library](https://www.kisa.or.kr/2060204).
+:::
+
+**Impact on Korean companies**
+This is not yet a legal obligation with penalties attached, unlike the EU CRA. That said, public procurement requirements and large-enterprise supplier requirements tend to track the roadmap, so building out SBOM generation and vulnerability response ahead of time pays off.
 
 ---
 
@@ -201,7 +248,7 @@ You can simply read this chapter. Focus on understanding the concepts.
 :::
 
 1. Read this page — get the full context of supply chain security
-2. Summarize, in your own words, the three key lessons from the incidents
+2. Summarize, in your own words, the key lessons from the incidents
 3. Identify which international regulations apply to your company
 4. Read `sbom-101.md` for a detailed understanding of SBOM technical concepts
 
@@ -209,9 +256,10 @@ You can simply read this chapter. Focus on understanding the concepts.
 
 ## 8. Completion checklist
 
-- [ ] I can explain the three supply chain security incidents (SolarWinds, Log4Shell, XZ Utils)
+- [ ] I can explain the supply chain security incidents (SolarWinds, Log4Shell, XZ Utils, tj-actions, ChainDrop)
+- [ ] I can explain why the attack surface shifted from maintainer trust to credentials and build pipelines
 - [ ] I understand why an SBOM is needed
-- [ ] I have identified how EO 14028 and the EU CRA affect my company
+- [ ] I have identified how EO 14028, the EU CRA, and Korea's phased implementation plan affect my company
 - [ ] I understand the role each standard plays in supply chain security
 - [ ] I can gauge my organization's high-risk components using the four assessment axes
 
