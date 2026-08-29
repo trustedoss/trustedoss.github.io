@@ -74,8 +74,21 @@ For the actual Docker commands, GitHub Actions CI/CD setup, and the sample proje
 ```json
 {
   "bomFormat": "CycloneDX",
-  "specVersion": "1.4",
+  "specVersion": "1.7",
+  "serialNumber": "urn:uuid:1b2f3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
   "metadata": {
+    "timestamp": "2026-08-20T09:30:00Z",
+    "lifecycles": [{"phase": "build"}],
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "author": "anchore",
+          "name": "syft",
+          "version": "1.51.1"
+        }
+      ]
+    },
     "component": {
       "name": "my-app",
       "version": "1.0.0",
@@ -84,9 +97,17 @@ For the actual Docker commands, GitHub Actions CI/CD setup, and the sample proje
   },
   "components": [
     {
+      "type": "library",
       "name": "log4j-core",
       "version": "2.14.1",
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1",
+      "supplier": {"name": "Apache Software Foundation"},
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3a5f1b9f2c7d4e8a1b0c6d5e4f3a2b1c9d8e7f6a5b4c3d2e1f0a9b8c7d6e5f4a"
+        }
+      ],
       "licenses": [{"license": {"id": "Apache-2.0"}}]
     }
   ]
@@ -95,10 +116,35 @@ For the actual Docker commands, GitHub Actions CI/CD setup, and the sample proje
 
 Key field descriptions:
 
-- `bomFormat`, `specVersion`: CycloneDX format identifiers
-- `metadata.component`: information about the software being analyzed
-- `components[]`: the dependency list (includes license and PURL (Package URL, a standard string that uniquely identifies a package))
-- `vulnerabilities[]`: vulnerability information (if present)
+| Field                         | Description                                                                                         |
+| ----------------------------- | --------------------------------------------------------------------------------------------------- |
+| `bomFormat`, `specVersion`    | CycloneDX format identifier and specification version. Both syft and cdxgen emit 1.7 by default     |
+| `metadata.timestamp`          | When the SBOM was generated                                                                         |
+| `metadata.tools.components[]` | Name and version of the tool that built the SBOM, the "SBOM generation tool" CISA 2026 requires     |
+| `metadata.lifecycles[]`       | Lifecycle phase the SBOM was captured in, the "generation context"                                  |
+| `metadata.component`          | Information about the software being analyzed                                                       |
+| `components[].supplier`       | Supplier of the component                                                                           |
+| `components[].hashes[]`       | Component file hash. The `alg` (SHA-256 and so on) and `content` (hex value) pair proves integrity  |
+| `components[].licenses[]`     | License of the component                                                                            |
+| `components[].purl`           | PURL (Package URL, a standard string that uniquely identifies a package)                            |
+| `signature`                   | Top-level BOM signature in JSON Signature Format (JSF), which proves the SBOM was not tampered with |
+| `vulnerabilities[]`           | Vulnerability information (if present)                                                              |
+
+Hashes, the generation tool name, the generation context, and licenses are the fields that the CISA 2026
+minimum elements described in [SBOM Basics: An Introduction to the Software Bill of Materials](../../00-overview/sbom-101.md)
+newly made mandatory or promoted to core fields. Which of them actually get filled in depends on the tool
+and the ecosystem.
+
+| Field                 | syft                                                | cdxgen                                                            |
+| --------------------- | --------------------------------------------------- | ----------------------------------------------------------------- |
+| `metadata.tools`      | Filled (name `syft`, author `anchore`)              | Filled                                                            |
+| `metadata.lifecycles` | Not filled                                          | Filled (`pre-build`, `build`, `post-build` decided automatically) |
+| `components[].hashes` | Not filled for package components                   | Filled when a lock file or archive exposes a hash                 |
+| `signature`           | Needs a separate signing step (in-toto attestation) | `--generate-key-and-sign` produces a JSF signature                |
+
+If you need the lifecycle phase or hashes and syft leaves them empty, generate the same project once more
+with cdxgen and compare. To pin the specification version, use `-o cyclonedx-json@1.7` with syft and
+`--spec-version 1.7` with cdxgen.
 
 :::tip MCP servers belong in the SBOM too
 For how to list MCP (Model Context Protocol, the convention by which an agent calls external tools)
@@ -191,7 +237,15 @@ bash output/sbom/sbom-commands.sh
 ls -lh output/sbom/*.cdx.json
 ```
 
-If the file exists and its size is greater than 0, it's OK. Open the file and check that the `components` array is not empty.
+If the file exists and its size is greater than 0, it's OK. Next, check that the minimum elements are filled in.
+
+```bash
+jq '{specVersion, timestamp: .metadata.timestamp, tool: .metadata.tools, lifecycles: .metadata.lifecycles, components: (.components | length), withHash: ([.components[] | select(.hashes)] | length), withLicense: ([.components[] | select(.licenses)] | length)}' output/sbom/*.cdx.json
+```
+
+`specVersion`, `timestamp`, `tool`, and `components` must have values. `lifecycles` and `withHash` can be
+empty in syft output, as the tool comparison table above explains. If you don't have jq, open the file and
+check the same items by eye.
 
 **Step 7** — Run license analysis
 
@@ -258,6 +312,11 @@ Confirm all of the items below before moving on to the next step.
 
 - [ ] `output/sbom/[project].cdx.json` created
 - [ ] The `components` array in the SBOM file is not empty
+- [ ] `specVersion` is `1.7` (if it is lower, upgrade the tool or pin the specification version and regenerate)
+- [ ] `metadata.timestamp` and `metadata.tools` record the generation time and the generating tool
+- [ ] Every entry in `components[]` has a `purl`
+- [ ] Component hashes (`hashes`) and licenses (`licenses`) have been checked (they can be empty depending on the tool; if so, compare against cdxgen output)
+- [ ] For an SBOM you will share externally, decided whether to sign it
 - [ ] `output/sbom/sbom-commands.sh` created
 - [ ] `output/sbom/license-report.md` created
 - [ ] `output/sbom/copyleft-risk.md` created

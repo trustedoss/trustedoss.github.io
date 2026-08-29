@@ -74,8 +74,21 @@ FOSSLight, SW360, FOSSology 등 SCA·컴플라이언스 도구의 도입 및 활
 ```json
 {
   "bomFormat": "CycloneDX",
-  "specVersion": "1.4",
+  "specVersion": "1.7",
+  "serialNumber": "urn:uuid:1b2f3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
   "metadata": {
+    "timestamp": "2026-08-20T09:30:00Z",
+    "lifecycles": [{"phase": "build"}],
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "author": "anchore",
+          "name": "syft",
+          "version": "1.51.1"
+        }
+      ]
+    },
     "component": {
       "name": "my-app",
       "version": "1.0.0",
@@ -84,9 +97,17 @@ FOSSLight, SW360, FOSSology 등 SCA·컴플라이언스 도구의 도입 및 활
   },
   "components": [
     {
+      "type": "library",
       "name": "log4j-core",
       "version": "2.14.1",
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1",
+      "supplier": {"name": "Apache Software Foundation"},
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3a5f1b9f2c7d4e8a1b0c6d5e4f3a2b1c9d8e7f6a5b4c3d2e1f0a9b8c7d6e5f4a"
+        }
+      ],
       "licenses": [{"license": {"id": "Apache-2.0"}}]
     }
   ]
@@ -95,10 +116,32 @@ FOSSLight, SW360, FOSSology 등 SCA·컴플라이언스 도구의 도입 및 활
 
 주요 필드 설명:
 
-- `bomFormat`, `specVersion`: CycloneDX 포맷 식별자
-- `metadata.component`: 분석 대상 소프트웨어 정보
-- `components[]`: 의존성 목록 (라이선스, PURL(Package URL, 패키지를 고유하게 식별하는 표준 문자열) 포함)
-- `vulnerabilities[]`: 취약점 정보 (있을 경우)
+| 필드                          | 설명                                                                                      |
+| ----------------------------- | ----------------------------------------------------------------------------------------- |
+| `bomFormat`, `specVersion`    | CycloneDX 포맷 식별자와 사양 버전. syft와 cdxgen 모두 기본 출력이 1.7입니다               |
+| `metadata.timestamp`          | SBOM 생성 시각                                                                            |
+| `metadata.tools.components[]` | SBOM을 만든 도구의 이름과 버전. CISA 2026 최소 요소의 "SBOM 생성 도구명"에 해당합니다     |
+| `metadata.lifecycles[]`       | SBOM을 만든 수명주기 단계. "생성 맥락"에 해당합니다                                       |
+| `metadata.component`          | 분석 대상 소프트웨어 정보                                                                 |
+| `components[].supplier`       | 컴포넌트 공급자                                                                           |
+| `components[].hashes[]`       | 컴포넌트 파일의 해시. `alg`(SHA-256 등)와 `content`(16진수 값) 쌍으로 무결성을 확인합니다 |
+| `components[].licenses[]`     | 컴포넌트 라이선스                                                                         |
+| `components[].purl`           | PURL(Package URL, 패키지를 고유하게 식별하는 표준 문자열)                                 |
+| `signature`                   | BOM 최상위의 서명 필드. JSON Signature Format(JSF)으로 SBOM 자체의 위·변조를 확인합니다   |
+| `vulnerabilities[]`           | 취약점 정보 (있을 경우)                                                                   |
+
+해시, 생성 도구명, 생성 맥락, 라이선스는 [SBOM 기본: 소프트웨어 부품 명세서 입문](../../00-overview/sbom-101.md)의 CISA 2026 최소 요소에서
+새로 필수가 되었거나 핵심 필드로 올라온 항목입니다. 실제로 어떤 필드가 채워지는지는 도구와 생태계에 따라 다릅니다.
+
+| 필드                  | syft                                    | cdxgen                                                 |
+| --------------------- | --------------------------------------- | ------------------------------------------------------ |
+| `metadata.tools`      | 채움 (name `syft`, author `anchore`)    | 채움                                                   |
+| `metadata.lifecycles` | 채우지 않음                             | 채움 (`pre-build`, `build`, `post-build` 등 자동 판정) |
+| `components[].hashes` | 패키지 컴포넌트에는 채우지 않음         | lock 파일이나 아카이브에서 해시를 얻을 수 있을 때 채움 |
+| `signature`           | 별도 서명 필요 (in-toto 증명 방식 제공) | `--generate-key-and-sign` 으로 JSF 서명 생성           |
+
+수명주기 단계나 해시가 필요한데 syft 출력에 비어 있다면 같은 프로젝트를 cdxgen으로 한 번 더 생성해 비교하세요.
+사양 버전을 명시하려면 syft는 `-o cyclonedx-json@1.7`, cdxgen은 `--spec-version 1.7` 을 씁니다.
 
 :::tip MCP 서버도 SBOM 에 담을 수 있습니다
 AI 에이전트가 호출하는 MCP(Model Context Protocol, 에이전트가 외부 도구를 호출하는 프로토콜) 서버를
@@ -191,7 +234,14 @@ bash output/sbom/sbom-commands.sh
 ls -lh output/sbom/*.cdx.json
 ```
 
-파일이 존재하고 크기가 0보다 크면 정상입니다. 파일을 열어 `components` 배열이 비어있지 않은지 확인합니다.
+파일이 존재하고 크기가 0보다 크면 정상입니다. 이어서 최소 요소가 채워졌는지 확인합니다.
+
+```bash
+jq '{specVersion, timestamp: .metadata.timestamp, tool: .metadata.tools, lifecycles: .metadata.lifecycles, components: (.components | length), withHash: ([.components[] | select(.hashes)] | length), withLicense: ([.components[] | select(.licenses)] | length)}' output/sbom/*.cdx.json
+```
+
+`specVersion`, `timestamp`, `tool`, `components` 는 값이 있어야 합니다. `lifecycles` 와 `withHash` 는
+위 도구별 비교표대로 syft 출력에서 비어 있을 수 있습니다. jq가 없으면 파일을 열어 같은 항목을 눈으로 확인합니다.
 
 **단계 7** — 라이선스 분석 실행
 
@@ -258,6 +308,11 @@ docker run --rm \
 
 - [ ] `output/sbom/[project].cdx.json` 생성됨
 - [ ] SBOM 파일에 `components` 배열이 비어있지 않음
+- [ ] `specVersion` 이 `1.7` 임 (낮은 값이면 도구 버전을 올리거나 사양 버전을 명시해 다시 생성)
+- [ ] `metadata.timestamp` 와 `metadata.tools` 에 생성 시각과 생성 도구명이 기록됨
+- [ ] `components[]` 각 항목에 `purl` 이 있음
+- [ ] 컴포넌트 해시(`hashes`)와 라이선스(`licenses`) 상태를 확인함 (도구에 따라 비어 있을 수 있으며, 비어 있으면 cdxgen 출력과 비교)
+- [ ] 외부에 공유할 SBOM이면 서명 여부를 결정함
 - [ ] `output/sbom/sbom-commands.sh` 생성됨
 - [ ] `output/sbom/license-report.md` 생성됨
 - [ ] `output/sbom/copyleft-risk.md` 생성됨

@@ -101,13 +101,19 @@ With a PURL, you can automatically match components against vulnerability databa
 
 Two standard formats are mainly used in the industry today.
 
-| Item           | SPDX                                            | CycloneDX                                              |
-| -------------- | ----------------------------------------------- | ------------------------------------------------------ |
-| Maintained by  | Linux Foundation                                | OWASP                                                  |
-| Latest version | 3.0                                             | 1.7                                                    |
-| Strengths      | License compliance focus, ISO/IEC 5962 standard | Security-specific fields, supports JSON/XML/Protobuf   |
-| Tooling        | fossology, reuse, spdx-tools                    | syft, cdxgen, Dependency-Track                         |
-| Main uses      | License audit, open source contribution         | Security vulnerability analysis, supply chain security |
+| Item                   | SPDX                                    | CycloneDX                                              |
+| ---------------------- | --------------------------------------- | ------------------------------------------------------ |
+| Maintained by          | Linux Foundation                        | OWASP                                                  |
+| Current stable release | 3.0.1 (2024-12-17)                      | 1.7 (2025-10-21)                                       |
+| Standardization        | ISO/IEC 5962:2021                       | ECMA-424 2nd edition (published 2025-12, defines 1.7)  |
+| Strengths              | License compliance focus                | Security-specific fields, supports JSON/XML/Protobuf   |
+| Tooling                | fossology, reuse, spdx-tools            | syft, cdxgen, Dependency-Track                         |
+| Main uses              | License audit, open source contribution | Security vulnerability analysis, supply chain security |
+
+SPDX published the first 3.1 Release Candidate on 2026-01-24 and review is still under way. It is not a
+final release yet, so base your adoption on 3.0.1. CycloneDX 1.7 was carried into an international
+standard as ECMA-424 2nd edition in December 2025, and the specification repository now carries the
+1.7.1 patch (2026-06-02). The `specVersion` value stays `1.7` regardless of the patch.
 
 ### Why this kit uses CycloneDX
 
