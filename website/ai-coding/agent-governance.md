@@ -61,10 +61,29 @@ Unicode Tags 로 규칙 파일에 보이지 않는 지시를 심는 기법입니
 보고했고, Cursor 를 auto-approve 모드로 쓴 TypeScript 시나리오가 83.4% 로 가장 높았습니다.
 점검 방법은 [공통 Rules 템플릿](./rules-template)에 정리해 두었습니다.
 
-## 3. 실행 통제 일곱 가지
+설정 파일도 같은 면에 있습니다. MCP 설정 파일은 서버 목록을 적어 둔 선언 파일로 보이지만
+실제로 담고 있는 것은 실행 명령입니다. Ox Security 가 2026-04-15 공개한 연구는 공식 MCP SDK
+네 종(Python, TypeScript, Java, Rust)의 STDIO 전송이 설정에서 받은 값을 검증 없이 셸로
+넘긴다고 보고했습니다. 연구진은 누적 내려받기 1억 5천만 건 이상, 외부에 노출된 서버
+7,000개 이상을 근거로 영향 범위를 최대 20만 인스턴스로 추산했고, 중대·높음 등급 CVE 10건이
+발급됐습니다. Anthropic 은 이 동작이 의도된 설계이며 입력 정제는 개발자 책임이라고 답해
+프로토콜을 바꾸지 않았습니다. MCP 스펙의 보안 모범사례 문서도 같은 위험을 로컬 서버 침해
+항목으로 다루며, 클라이언트 설정에 악성 실행 명령을 심는 것을 첫 번째 공격 시나리오로
+적어 두었습니다. 방어가 도입 조직 쪽에 남는다는 뜻이므로, MCP 설정 파일은 설정이 아니라
+코드 실행 경로로 다뤄야 합니다. 구체적인 처리는 아래 3절에 있습니다.
+
+## 3. 실행 통제 아홉 가지
 
 Microsoft Incident Response 의 권고(2026-06)와 MCP 스펙의 보안 원칙을 실무 규칙으로 옮기면
-다섯 가지가 되고, 실제 사건에서 도출한 두 가지를 더해 일곱 가지입니다.
+다섯 가지가 되고, 실제 사건에서 도출한 두 가지를 더하면 일곱 가지입니다. 여기에 명세가 바뀐
+인가 계층과 위 전송 계층 연구에서 나온 설정 파일 통제를 더해 아홉 가지입니다.
+
+방향은 국가기관 지침과도 일치합니다. 캐나다 사이버보안센터, 호주 ACSC, 미국 CISA 와 NSA,
+뉴질랜드 NCSC, 영국 NCSC 5개국 기관이 2026년 4월 말 공동 발표한
+"Careful adoption of agentic AI services" 는 계층 방어와 엄격한 접근 통제로 침해 가능성을
+줄이라고 권고하고, 안전한 에이전트 설계와 개발, 안전한 배포, 안전한 운영, 향후 위험 대비
+네 영역으로 나누어 지침을 제시합니다. 사내 정책 승인 근거가 필요할 때 인용할 수 있는
+국가기관 문서입니다.
 
 적용 강도는 서버 출처에 따라 나눕니다. 전수 심사가 필요한 것은 첫 행이고, 나머지는 기존 절차에
 얹거나 다른 단계에서 처리됩니다.
@@ -153,6 +172,44 @@ Smithery 에서 경로 순회 취약점이 발견되어 3,000개 이상의 호�
 
 IDE 확장을 스캔 범위에 넣는 이야기는 [소프트웨어 구성 분석 (SCA)](/devsecops/sca)에서 이어집니다.
 
+### 인가 계층
+
+앞의 일곱 가지가 정리된 뒤 MCP 명세 자체가 인가 방식을 크게 바꿨습니다. 2025-11-25
+개정은 OAuth Client ID Metadata Document 를 권장 클라이언트 등록 방식으로 추가하고
+OpenID Connect Discovery 기반 인가 서버 탐색을 도입했습니다. 2026-07-28 개정은 초기화
+핸드셰이크를 없애 프로토콜을 무상태로 바꾸면서, 인가 응답의 `iss` 값을 기록해 둔 발급자와
+대조하도록 요구하고(RFC 9207) 클라이언트 자격증명을 발급 인가 서버 단위로 보관해 다른
+서버에 재사용하지 못하게 했습니다. 공격자가 통제하는 인가 서버로 정직한 서버의 인가 코드를
+보내게 만드는 혼동 공격(mix-up)을 막는 장치이고, 스펙은 PKCE 만으로는 이 공격을 막을 수
+없다고 명시합니다. 같은 개정에서 Dynamic Client Registration(RFC 7591)은 Client ID Metadata
+Document 로 대체하는 방향으로 deprecated 처리됐고, 이를 지원하지 않는 인가 서버와의 하위
+호환용으로만 남습니다.
+
+조직 단위 도입에는 공식 확장인 Enterprise-Managed Authorization 이 직접 쓰입니다. 사용자가
+서버마다 개별 승인하는 대신 사내 IdP 가 접근 대상 서버와 조건을 결정하고, 입사와 퇴사에
+따른 권한 부여와 회수를 한 곳에서 처리합니다. 실무 규칙은 세 가지입니다.
+
+- 쓰는 클라이언트와 서버가 어느 개정을 구현하는지 확인합니다. 무상태 전환은 하위 호환이
+  깨지는 변경이라 도입 시점의 버전 조합을 기록해 두어야 합니다.
+- 새로 도입하는 클라이언트는 Dynamic Client Registration 대신 Client ID Metadata Document
+  를 쓰게 합니다.
+- 사내 IdP 가 있으면 서버별 개별 승인 대신 Enterprise-Managed Authorization 경로로 모읍니다.
+  확장은 기본으로 켜지지 않으므로 쓰려는 클라이언트가 지원하는지 먼저 확인해야 합니다.
+
+### 설정 파일을 코드 실행 경로로 다루기
+
+2절의 STDIO 전송 결함은 프로토콜이 고쳐 주지 않으므로 운영에서 막아야 합니다. `.mcp.json`
+과 IDE 의 MCP 설정처럼 서버 실행 명령을 담은 파일은 소스 코드와 같은 취급을 받아야 합니다.
+
+- 설정 파일을 저장소에 두고 변경을 PR 로 드러냅니다. 5절에서 `.mcp.json` 을 커밋하라고 한
+  이유가 여기에도 그대로 적용됩니다.
+- 설정 값에 사용자 입력이나 외부에서 받은 문자열을 넣지 않습니다. 에이전트가 자기 설정
+  파일을 쓰지 못하게 막는 것도 같은 항목입니다. `permissions.deny` 로 설정 경로 쓰기를
+  차단하는 방법은 위 격리 실행 항목에 있습니다.
+- 서버를 셸을 거쳐 띄우지 않고 실행 파일과 인자를 분리해 넘기는 형태를 씁니다.
+- 쓰는 SDK 버전을 확인하고 관련 CVE 수정본 이상으로 올립니다. 서버를 직접 만드는 경우에도
+  같습니다.
+
 ## 4. 자동화 도구
 
 | 통제 지점            | 메인                                        | 대안                                                   |
@@ -239,7 +296,7 @@ Claude Code 는 조직이 배포하는 관리 설정(`managed-settings.json` —
 입니다. `.mcp.json` 을 저장소에 두는 이유는 서버 추가가 개인 설정이 아니라 PR diff 로
 드러나게 하기 위해서입니다.
 
-일곱 통제 중 셋째(도구 설명 검토)와 여섯째(데이터 반출 경로 판정), 일곱째의 출처 확인은 파일로
+아홉 통제 가운데 도구 설명 검토, 데이터 반출 경로 판정, 도구·확장의 출처 확인은 파일로
 표현되지 않습니다. 사람이 판단하는 절차이므로 규칙으로 적어 두고 결과를 PR 에 남기는 방식으로
 다룹니다.
 
@@ -261,8 +318,17 @@ MCP 서버가 런타임 의존성이 되면 SBOM 에 담아야 합니다. Cyclon
 `properties` 에 조직 자체 정의를 얹는 방식이 됩니다. 자체 정의는 조직 밖에서 통용되지 않으므로
 협력사에 요구하기 어렵고, 규제 대응 문서로 쓸 때 설명이 따로 필요합니다.
 
+표준 쪽 논의는 진행 중입니다. CycloneDX 사양 저장소에 에이전트가 쓰는 MCP 서버, 도구 정의,
+모델, 신원 자격증명을 함께 담는 Agent Bill of Materials 제안이 올라왔습니다(이슈 #895,
+2026-03-26 개설). 이 이슈는 2026-04-29 중복으로 닫혔고, 유지관리자는 에이전틱 AI 를
+Blueprints 와 위협 모델링 워킹그룹의 진행 중인 작업에서 다루고 있다고 밝혔습니다. 필요성은
+논의 대상이 됐으나 전용 컴포넌트 타입을 새로 만들지, 다른 방식으로 표현할지는 아직 정해지지
+않았습니다.
+
 MCP 서버를 SBOM 에 표현하는 방법에 대한 표준 기구의 공식 지침은 아직 확인되지 않습니다. 위 배치는
-기존 명세를 해석해 적용한 것이며 표준화된 관례가 아닙니다. SBOM 생성 실습은
+기존 명세를 해석해 적용한 것이며 표준화된 관례가 아닙니다. 결론이 나오기 전까지는 위 배치를
+유지하되, 조직 자체 정의를 쓰더라도 어떤 항목을 무엇으로 기록했는지 남겨 두면 나중에 표준
+표현으로 옮기기 쉽습니다. SBOM 생성 실습은
 [SBOM 생성](/docs/tools/sbom-generation)에서 진행할 수 있습니다.
 
 ## 7. 기존 게이트와의 관계
@@ -279,9 +345,25 @@ ISO/IEC 표준과의 연계는 [ISO 표준 연계](./iso-mapping)를, AI 생성 
 [AI 생성 코드의 법적 고려](./legal-considerations)를 참조하세요. 이 주제는 OpenChain KWG
 가이드가 아직 다루지 않는 영역으로, 아래 1차 출처를 기반으로 작성했습니다(2026-08 기준).
 
-- MCP 스펙 — [Security Best Practices](https://modelcontextprotocol.io/specification/2025-06-18/basic/security_best_practices) 및 본문의 Security and Trust & Safety 절
+프레임워크 쪽에서 참고할 산출물이 둘 늘었습니다. OWASP Top 10 for Agentic Applications
+2026(2025-12-09 공개)은 에이전트 목표 탈취, 도구 오용, 신원과 권한 남용, 메모리 오염,
+안전하지 않은 에이전트 간 통신, 연쇄 실패, 신뢰 악용, 통제를 벗어난 에이전트를 위험 범주로
+정리해 위 2절의 위협 모델과 겹칩니다. OWASP AISVS 1.0(2026-06 공개)은 성격이 다릅니다.
+인식 목록이 아니라 검증 가능한 요구사항 카탈로그이고, 12개 장 가운데 9장이 오케스트레이션과
+에이전틱 액션, 10장이 MCP 보안입니다. 각 요구사항에 1에서 3까지 검증 레벨이 붙어 있어
+조직이 목표 레벨을 정하고 그대로 자체 인증 체크리스트로 옮길 수 있습니다. 예를 들어 10장은
+MCP 구성요소를 신뢰할 수 있는 출처에서만 받아 암호학적으로 검증할 것(레벨 1), allowlist 된
+서버만 허용할 것(레벨 2), 로컬에서 띄우는 서버를 최소 권한 샌드박스에서 실행할 것(레벨 2)을
+요구하는데, 위 3절의 통제와 그대로 대응합니다.
+
+- MCP 스펙 — [Security Best Practices](https://modelcontextprotocol.io/specification/2026-07-28/basic/security_best_practices) 및 본문의 Security and Trust & Safety 절. 현행 개정은 2026-07-28 이며 인가 관련 변경은 [2025-11-25 변경 목록](https://modelcontextprotocol.io/specification/2025-11-25/changelog)과 [2026-07-28 변경 목록](https://modelcontextprotocol.io/specification/2026-07-28/changelog)에 있습니다
+- MCP 공식 확장 — [Enterprise-Managed Authorization](https://modelcontextprotocol.io/extensions/auth/enterprise-managed-authorization) (stable) — 사내 IdP 가 MCP 서버 접근을 중앙에서 결정하는 방식
+- Ox Security, [The Mother of All AI Supply Chains](https://www.ox.security/blog/the-mother-of-all-ai-supply-chains-critical-systemic-vulnerability-at-the-core-of-the-mcp/) (2026-04-15) — 공식 SDK 네 종의 STDIO 전송 결함, CVE 10건, 최대 20만 인스턴스 추산
+- Canadian Centre for Cyber Security 외, [Careful adoption of agentic AI services](https://www.cyber.gc.ca/en/news-events/joint-guidance-careful-adoption-agentic-artificial-intelligence-services) (2026-05-01 게시) — 캐나다, 호주, 미국, 뉴질랜드, 영국 5개국 기관의 공동 지침
 - Microsoft Security Blog, [Securing AI agents: When AI tools move from reading to acting](https://www.microsoft.com/en-us/security/blog/2026/06/30/securing-ai-agents-ai-tools-move-from-reading-acting/) (2026-06-30)
-- OWASP GenAI Security Project, [LLM01:2025 Prompt Injection](https://genai.owasp.org/llmrisk/llm01-prompt-injection/) / [OWASP MCP Top 10](https://owasp.org/www-project-mcp-top-10/) (Incubator 단계)
+- OWASP GenAI Security Project, [Top 10 for Agentic Applications 2026](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/) (2025-12-09) / [LLM Top 10 2026](https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/) (2026-08-03, 본문에서 인용한 LLM01:2025 를 잇는 개정판) / [LLM01:2025 Prompt Injection](https://genai.owasp.org/llmrisk/llm01-prompt-injection/) / [OWASP MCP Top 10](https://owasp.org/www-project-mcp-top-10/) (Incubator 단계)
+- OWASP, [AISVS 1.0](https://github.com/OWASP/AISVS) (2026-06) — 9장 오케스트레이션과 에이전틱 액션, 10장 MCP 보안, 검증 레벨 1~3
+- CycloneDX, [Proposal: Agent Bill of Materials](https://github.com/CycloneDX/specification/issues/895) (2026-03-26 개설, 2026-04-29 중복 처리) — 에이전트 전용 BOM 논의 경과
 - Hasan et al., [Model Context Protocol (MCP) at First Glance](https://arxiv.org/abs/2506.13538) — 1,899개 서버 조사(tool poisoning 5.5%)
 - Invariant Labs, [MCP Security Notification: Tool Poisoning Attacks](https://invariantlabs.ai/blog/mcp-security-notification-tool-poisoning-attacks) (2025-04-01) — 도구 오염 기법 최초 공개
 - Snyk, [Malicious MCP Server on npm: postmark-mcp Harvests Emails](https://snyk.io/blog/malicious-mcp-server-on-npm-postmark-mcp-harvests-emails/) (2025-09-25) — 악성 버전은 1.0.16부터로 추정이며, ActiveCampaign/Postmark 저장소와의 연관은 확인되지 않았습니다

@@ -85,18 +85,42 @@ form of this level looks like.
 
 ## Stage 4: AI Defense Layer (AI-Augmented Defense)
 
-:::info Closing the stage 3 blind spot with AI
+:::info Covering what stage 3 cannot see, with AI
 Stage 3 tools detect **known patterns** accurately. What a rule does not define, they do not catch:
 business logic flaws, missing authorization checks, and broken state transitions. That limit of
 static analysis predates AI coding.
 
-What AI coding changed is **the volume of code landing in that blind spot**. Output multiplies while
+What AI coding changed is **the volume of code landing in that range**. Output grows while
 review headcount does not, and AI-generated code reads cleanly enough that reviewers rarely stop on
 it. Attackers can also use AI to generate rule-evading variants.
-
-4a and 4b close that blind spot with AI. 4c runs the other way: it covers what the AI itself
-reaches for, since an agent calling outside tools pulls in input no pull request ever shows.
 :::
+
+Measured figures back this up.
+
+Models improve, but the security of the code they generate does not. Veracode's 2026 GenAI Code
+Security Report (2026-07-28) puts the average security pass rate across models at 56%, barely
+different from the 55% in the first edition. By vulnerability type the gap is wider: 15% for
+cross-site scripting and 12% for log injection, meaning models rarely produce safe code for certain
+classes. Moving to a newer model generation does not fix this.
+
+The higher the share of AI-generated code, the more vulnerable the software an organization ships.
+In a report published 2026-06-09, Checkmarx surveyed 2,350 CISOs, application security managers, and
+developers across 14 countries and found that organizations where 81 to 100% of production code is
+AI-generated release vulnerable software at a rate of 47%, roughly 3.4 times the 14% for
+organizations at 1 to 20%. Across the brackets the figures rise monotonically: 14%, 19%, 23%, 36%,
+47%. The same survey put AI-generated code at 49% of production code and found 75% of organizations
+deploying code they already know is vulnerable.
+
+Speed comes at the cost of stability. The DORA 2025 report finds AI adoption positively related to
+delivery throughput and product performance but still negatively related to delivery stability, and
+explains that without control systems such as strong automated testing, mature version control, and
+fast feedback loops, an increase in change volume turns directly into instability.
+
+All three point the same way. Raising the share of AI-generated code without adding review and gates
+increases the amount of code that lands where static analysis cannot see it.
+
+4a and 4b cover that range with AI. 4c runs the other way: it covers what the AI itself
+reaches for, since an agent calling outside tools pulls in input no pull request ever shows.
 
 Stage 3 tools first narrow down candidates through pattern matching, and AI then focuses on those results to perform **semantic judgment** and **active exploration**.
 
@@ -156,10 +180,22 @@ gate ever sees them. A study of 1,899 open-source MCP servers found 5.5% carryin
 and the npm package `postmark-mcp` was clean through 1.0.15 before later versions added a hidden BCC
 on every outgoing mail.
 
-The control set is a server allowlist, least privilege, description review, version pinning, human
-approval with audit logs, and egress path review, backed by pre-adoption scanning.
+There is one more path. An MCP configuration file looks like a declaration, but it actually holds
+the command that starts a server. On 2026-04-15 Ox Security reported that the STDIO transport in all
+four official MCP SDKs passes configuration values to a shell without validation, and ten critical
+or high severity CVEs were issued for the flaw. That is why a configuration file has to be treated
+as an execution path for code.
 
-- [Agent and MCP Tool Governance](./agent-governance) — the six controls, the scanners, and a
+The control set is a server allowlist, least privilege, description review, version pinning, human
+approval with audit logs, egress path review, the tool and extension supply chain, the authorization
+layer, and configuration file management: nine controls, backed by pre-adoption scanning. The
+authorization layer reflects the 2026-07-28 MCP revision, which made the protocol stateless, required
+issuer validation, and deprecated Dynamic Client Registration. "Careful adoption of agentic AI
+services", published jointly by five national agencies at the end of April 2026, also recommends
+layered defence and strict access controls, so it can serve alongside these as grounds for approving
+an internal policy.
+
+- [Agent and MCP Tool Governance](./agent-governance) — the nine controls, the scanners, and a
   copy-paste organization policy
 
 ---

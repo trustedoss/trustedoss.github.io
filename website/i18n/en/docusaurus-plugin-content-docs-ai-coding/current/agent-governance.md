@@ -67,10 +67,33 @@ payloads covering 70 MITRE ATT&CK techniques and reported attack success rates o
 highest being 83.4% for Cursor in auto-approve mode on TypeScript scenarios. The check procedure is
 in the [Common Rules Template](./rules-template).
 
-## 3. Seven working controls
+Configuration files sit on the same plane. An MCP configuration file looks like a declaration
+listing servers, but what it actually holds is an execution command. Research published by Ox
+Security on 2026-04-15 reported that the STDIO transport in all four official MCP SDKs (Python,
+TypeScript, Java, Rust) passes values taken from configuration to a shell without validation. From
+more than 150 million cumulative downloads and more than 7,000 externally exposed servers, the
+researchers estimated an impact of up to 200,000 instances, and ten critical or high severity CVEs
+were issued. Anthropic answered that the behavior is by design and that sanitizing input is the
+developer's responsibility, so the protocol was not changed. The MCP specification's security best
+practices document covers the same risk under local server compromise, listing a malicious startup
+command planted in a client configuration as the first attack scenario. The defense therefore stays
+with the adopting organization: an MCP configuration file has to be treated as an execution path
+for code, not as configuration. The concrete handling is in section 3 below.
+
+## 3. Nine working controls
 
 Translating the Microsoft Incident Response guidance (2026-06) and the MCP spec's security
-principles into working rules gives five; two more are drawn from actual incidents.
+principles into working rules gives five; two more are drawn from actual incidents, making seven.
+Two more follow from the authorization changes in the specification and from the transport research
+above, making nine.
+
+National agency guidance points the same way. "Careful adoption of agentic AI services", published
+jointly at the end of April 2026 by five agencies (the Canadian Centre for Cyber Security,
+Australia's ACSC, the United States CISA and NSA, New Zealand's NCSC, and the United Kingdom's
+NCSC), recommends layered defence and strict access controls to reduce the likelihood of
+compromise, and organizes its guidance into four areas: designing and developing secure agents,
+deploying agentic AI securely, operating it securely, and defending against future risks. It is a
+government document you can cite when an internal policy needs approval.
 
 How strictly each applies depends on where the server comes from. Only the first row needs
 across-the-board review; the rest ride on existing procedures or are handled at another stage.
@@ -165,6 +188,49 @@ Four working controls follow.
 Bringing IDE extensions into scanning scope continues in
 [Software Composition Analysis (SCA)](/devsecops/sca).
 
+### The authorization layer
+
+After the seven controls above settled, the MCP specification changed authorization substantially.
+The 2025-11-25 revision added OAuth Client ID Metadata Documents as the recommended client
+registration mechanism and introduced authorization server discovery based on OpenID Connect
+Discovery. The 2026-07-28 revision removed the initialization handshake to make the protocol
+stateless, and at the same time it requires clients to validate the `iss` value in an authorization
+response against the issuer they recorded (RFC 9207) and to key client credentials by the issuing
+authorization server so they are never reused with another one. This blocks mix-up attacks, where
+an attacker-controlled authorization server gets the client to send it a code issued by an honest
+one; the specification notes that PKCE alone does not prevent this. The same revision deprecated
+OAuth Dynamic Client Registration (RFC 7591) in favor of Client ID Metadata Documents, keeping it
+only for backward compatibility with authorization servers that do not support them.
+
+For organization-wide adoption, the official Enterprise-Managed Authorization extension applies
+directly. Instead of each user approving each server, the corporate IdP decides which servers may
+be reached and under what conditions, and granting and revoking access on joining and leaving
+happens in one place. Three working rules follow.
+
+- Confirm which revision the clients and servers you use implement. The move to a stateless
+  protocol is a breaking change, so record the version combination in place at adoption.
+- Have newly adopted clients use Client ID Metadata Documents rather than Dynamic Client
+  Registration.
+- Where a corporate IdP exists, route access through Enterprise-Managed Authorization instead of
+  per-server approvals. The extension is never on by default, so check first that the intended
+  client supports it.
+
+### Treating configuration files as execution paths
+
+The STDIO transport flaw in section 2 will not be fixed in the protocol, so it has to be contained
+in operations. Files that carry server startup commands, such as `.mcp.json` and an IDE's MCP
+settings, deserve the same treatment as source code.
+
+- Keep configuration files in the repository so changes surface as a PR. The reason for committing
+  `.mcp.json` in section 5 applies here as well.
+- Never place user input or externally supplied strings into configuration values. Preventing the
+  agent from writing its own configuration file belongs to the same control; blocking writes to
+  configuration paths through `permissions.deny` is described under isolated execution above.
+- Launch servers by passing the executable and its arguments separately rather than through a
+  shell.
+- Check which SDK version you use and move to at least the release that fixes the related CVEs. The
+  same applies to servers you build yourself.
+
 ## 4. Automation tools
 
 | Control point             | Main                                        | Alternative                                            |
@@ -255,9 +321,9 @@ repository scope is `permissions.deny`, `permissions.ask`, `enabledMcpjsonServer
 `disableClaudeAiConnectors`. Keeping `.mcp.json` in the repository is what makes adding a server
 show up as a PR diff instead of in someone's personal config.
 
-Three parts of the seven controls do not reduce to a file: reviewing tool descriptions, judging the
-egress path, and checking provenance in the seventh. They stay written rules whose results belong in
-the PR.
+Three of the nine controls do not reduce to a file: reviewing tool descriptions, judging the egress
+path, and checking the provenance of tools and extensions. They stay written rules whose results
+belong in the PR.
 
 ## 6. Listing MCP servers in the SBOM
 
@@ -281,9 +347,18 @@ approach is to list them as ordinary services and add organization-defined `prop
 definitions carry no meaning outside your organization, so they are hard to require of suppliers
 and need separate explanation when used for regulatory filings.
 
+Discussion on the standards side is under way. A proposal for an Agent Bill of Materials, covering
+the MCP servers, tool definitions, models, and identity credentials an agent uses, was opened in the
+CycloneDX specification repository (issue #895, opened 2026-03-26). It was closed as a duplicate on
+2026-04-29, with a maintainer noting that agentic AI is being addressed in the ongoing work of the
+Blueprints and Threat Modeling working groups. The need is on the table, but whether a dedicated
+component type will be added or the information expressed some other way is not settled.
+
 No standards body guidance on representing MCP servers in an SBOM has been identified. The mapping
-above interprets the existing specification and is not a standardized practice. For hands-on SBOM
-generation, see [SBOM Generation](/docs/tools/sbom-generation).
+above interprets the existing specification and is not a standardized practice. Until that settles,
+keep the mapping above; even when you use organization-defined properties, recording which item you
+captured under which name makes it easier to move to a standard representation later. For hands-on
+SBOM generation, see [SBOM Generation](/docs/tools/sbom-generation).
 
 ## 7. Relationship to the existing gates
 
@@ -301,9 +376,27 @@ and regulation of AI-generated code, see [Legal Considerations](./legal-consider
 KWG guide does not yet cover this topic; this page is based on the primary sources below (as of
 2026-08).
 
-- MCP specification — [Security Best Practices](https://modelcontextprotocol.io/specification/2025-06-18/basic/security_best_practices) and the Security and Trust & Safety section
+Two more framework deliverables are now worth consulting. The OWASP Top 10 for Agentic Applications
+2026 (published 2025-12-09) organizes risks such as agent goal hijacking, tool misuse, identity and
+privilege abuse, memory poisoning, insecure inter-agent communication, cascading failures, trust
+exploitation, and rogue agents, which overlaps the threat model in section 2. OWASP AISVS 1.0
+(published 2026-06) is a different kind of document: not an awareness list but a catalogue of
+verifiable requirements. Of its twelve chapters, chapter 9 covers orchestration and agentic action
+and chapter 10 covers MCP security. Each requirement carries a verification level from 1 to 3, so an
+organization can pick a target level and carry the requirements straight into a self-certification
+checklist. Chapter 10, for instance, requires that MCP components be obtained only from trusted
+sources and cryptographically verified (level 1), that only allow-listed servers be permitted
+(level 2), and that locally launched servers run in a least-privilege sandbox (level 2), which maps
+directly onto the controls in section 3.
+
+- MCP specification — [Security Best Practices](https://modelcontextprotocol.io/specification/2026-07-28/basic/security_best_practices) and the Security and Trust & Safety section. The current revision is 2026-07-28; the authorization changes are in the [2025-11-25 changelog](https://modelcontextprotocol.io/specification/2025-11-25/changelog) and the [2026-07-28 changelog](https://modelcontextprotocol.io/specification/2026-07-28/changelog)
+- MCP official extension — [Enterprise-Managed Authorization](https://modelcontextprotocol.io/extensions/auth/enterprise-managed-authorization) (stable) — a corporate IdP deciding MCP server access centrally
+- Ox Security, [The Mother of All AI Supply Chains](https://www.ox.security/blog/the-mother-of-all-ai-supply-chains-critical-systemic-vulnerability-at-the-core-of-the-mcp/) (2026-04-15) — the STDIO transport flaw across four official SDKs, ten CVEs, an estimate of up to 200,000 instances
+- Canadian Centre for Cyber Security et al., [Careful adoption of agentic AI services](https://www.cyber.gc.ca/en/news-events/joint-guidance-careful-adoption-agentic-artificial-intelligence-services) (posted 2026-05-01) — joint guidance from agencies in Canada, Australia, the United States, New Zealand, and the United Kingdom
 - Microsoft Security Blog, [Securing AI agents: When AI tools move from reading to acting](https://www.microsoft.com/en-us/security/blog/2026/06/30/securing-ai-agents-ai-tools-move-from-reading-acting/) (2026-06-30)
-- OWASP GenAI Security Project, [LLM01:2025 Prompt Injection](https://genai.owasp.org/llmrisk/llm01-prompt-injection/) / [OWASP MCP Top 10](https://owasp.org/www-project-mcp-top-10/) (Incubator stage)
+- OWASP GenAI Security Project, [Top 10 for Agentic Applications 2026](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/) (2025-12-09) / [LLM Top 10 2026](https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/) (2026-08-03, the revision succeeding the LLM01:2025 entry cited above) / [LLM01:2025 Prompt Injection](https://genai.owasp.org/llmrisk/llm01-prompt-injection/) / [OWASP MCP Top 10](https://owasp.org/www-project-mcp-top-10/) (Incubator stage)
+- OWASP, [AISVS 1.0](https://github.com/OWASP/AISVS) (2026-06) — chapter 9 on orchestration and agentic action, chapter 10 on MCP security, verification levels 1 to 3
+- CycloneDX, [Proposal: Agent Bill of Materials](https://github.com/CycloneDX/specification/issues/895) (opened 2026-03-26, closed as duplicate 2026-04-29) — the state of the agent-specific BOM discussion
 - Hasan et al., [Model Context Protocol (MCP) at First Glance](https://arxiv.org/abs/2506.13538) — a study of 1,899 servers (5.5% tool poisoning)
 - Invariant Labs, [MCP Security Notification: Tool Poisoning Attacks](https://invariantlabs.ai/blog/mcp-security-notification-tool-poisoning-attacks) (2025-04-01) — the first public disclosure of the technique
 - Snyk, [Malicious MCP Server on npm: postmark-mcp Harvests Emails](https://snyk.io/blog/malicious-mcp-server-on-npm-postmark-mcp-harvests-emails/) (2025-09-25) — the malicious versions are believed to start at 1.0.16, and no link to the ActiveCampaign/Postmark repository was confirmed
