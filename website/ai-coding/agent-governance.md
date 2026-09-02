@@ -167,8 +167,12 @@ Smithery 에서 경로 순회 취약점이 발견되어 3,000개 이상의 호�
   따로 처리하므로, MCP 서버와 훅까지 격리 경계 안에 넣으려면 프로세스 전체를 격리해야 합니다.
   이 격리는 opt-in 이며 `@anthropic-ai/sandbox-runtime`, 개발 컨테이너, 가상 머신, 웹에서 실행하는
   Claude Code 중 하나를 골라 켜야 합니다. 격리를 켜기 전이라도 `permissions.deny` 에
-  `.claude/settings.json`·`.mcp.json` 같은 설정 경로의 쓰기를 넣어 두면(deny 가 allow 보다
+  `.claude/settings.json`·`.mcp.json` 같은 설정 경로를 넣어 두면(deny 가 allow 보다
   우선합니다) 에이전트가 자기 권한을 바꾸는 경로는 개별적으로 막을 수 있습니다.
+  이때 규칙은 `Edit(./.mcp.json)` 처럼 `Edit` 으로 적어야 합니다. 공식 문서는 파일 권한을
+  `Edit(path)` 와 `Read(path)` 규칙으로만 검사한다고 밝히고 있어, `Write(...)` 나
+  `MultiEdit(...)` 로 적은 경로 규칙은 받아들여지되 조회되지 않고 시작 시 경고만 남습니다.
+  막았다고 생각한 경로가 실제로는 열려 있는 상태가 되므로 표기를 틀리면 통제가 없는 것과 같습니다.
 
 IDE 확장을 스캔 범위에 넣는 이야기는 [소프트웨어 구성 분석 (SCA)](/devsecops/sca)에서 이어집니다.
 
@@ -290,11 +294,17 @@ Claude Code 는 조직이 배포하는 관리 설정(`managed-settings.json` —
 | [.claude/settings.json](https://github.com/trustedoss/ai-coding-best-practice/blob/main/.claude/settings.json) | 서버 자동 승인 차단, 시크릿 읽기 차단, 외부 통신·배포 명령 승인 |
 | [CLAUDE.md](https://github.com/trustedoss/ai-coding-best-practice/blob/main/CLAUDE.md)                         | 도구 설명 검토와 반출 경로 판정 절차, 서버 추가 방법            |
 
-주의할 차이가 있습니다. 위 5절의 `allowedMcpServers`·`deniedMcpServers` 는 관리 설정에서만
-동작하므로 저장소 설정에 넣어도 강제되지 않습니다. 저장소 수준에서 실제로 먹히는 것은
-`permissions.deny`·`permissions.ask`, `enabledMcpjsonServers`, `disableClaudeAiConnectors`
-입니다. `.mcp.json` 을 저장소에 두는 이유는 서버 추가가 개인 설정이 아니라 PR diff 로
-드러나게 하기 위해서입니다.
+주의할 차이가 있습니다. 위 관리 설정 예시에서 저장소 설정으로 옮겨도 그대로 동작하는 것과
+그렇지 않은 것이 갈립니다. 공식 설정 문서 기준으로 `allowedMcpServers`·`deniedMcpServers`,
+`enabledMcpjsonServers`·`disabledMcpjsonServers`, `enableAllProjectMcpServers`,
+`disableClaudeAiConnectors` 는 모두 관리 설정뿐 아니라 사용자·프로젝트 설정 파일에서도
+적용됩니다. 관리 설정에서만 동작하는 것은 `allowManagedMcpServersOnly` 이며, 이것을 저장소
+설정에 넣으면 무시됩니다. 개인이 덮어쓸 수 없게 만드는 강제력은 관리 설정에서 나오므로,
+저장소 설정은 기본값을 세우는 자리이지 우회를 막는 자리가 아닙니다.
+
+`enableAllProjectMcpServers` 는 `.mcp.json` 의 모든 서버를 프롬프트 없이 승인하는 설정이라
+기본값 `false` 를 그대로 두는 편이 낫습니다. `.mcp.json` 을 저장소에 두는 이유는 서버 추가가
+개인 설정이 아니라 PR diff 로 드러나게 하기 위해서입니다.
 
 아홉 통제 가운데 도구 설명 검토, 데이터 반출 경로 판정, 도구·확장의 출처 확인은 파일로
 표현되지 않습니다. 사람이 판단하는 절차이므로 규칙으로 적어 두고 결과를 PR 에 남기는 방식으로

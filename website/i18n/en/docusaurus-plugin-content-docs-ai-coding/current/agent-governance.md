@@ -181,9 +181,13 @@ Four working controls follow.
   Write go through the permission system instead, so putting MCP servers and hooks inside the
   boundary means isolating the whole process. That isolation is opt-in: choose
   `@anthropic-ai/sandbox-runtime`, a dev container, a virtual machine, or Claude Code on the web.
-  Even before turning it on, adding writes to configuration paths such as `.claude/settings.json`
-  and `.mcp.json` to `permissions.deny` (deny always wins over allow) blocks the specific path an
-  agent would use to change its own privileges.
+  Even before turning it on, adding configuration paths such as `.claude/settings.json` and
+  `.mcp.json` to `permissions.deny` (deny always wins over allow) blocks the specific path an
+  agent would use to change its own privileges. Write the rule as `Edit(./.mcp.json)`. The
+  documentation states that file permissions are checked against `Edit(path)` and `Read(path)`
+  rules only, so a path rule written as `Write(...)` or `MultiEdit(...)` is accepted, never
+  consulted, and only warned about at startup. Get the form wrong and the path you believed was
+  blocked is open.
 
 Bringing IDE extensions into scanning scope continues in
 [Software Composition Analysis (SCA)](/devsecops/sca).
@@ -315,10 +319,17 @@ that shape.
 | [.claude/settings.json](https://github.com/trustedoss/ai-coding-best-practice/blob/main/.claude/settings.json) | No server auto-approved, secret reads blocked, approval for egress and deploys |
 | [CLAUDE.md](https://github.com/trustedoss/ai-coding-best-practice/blob/main/CLAUDE.md)                         | Tool-description review, egress judgement, how to add a server                 |
 
-One difference matters. The `allowedMcpServers` and `deniedMcpServers` keys in section 5 work only
-in managed settings, so putting them in repository config enforces nothing. What does take effect at
-repository scope is `permissions.deny`, `permissions.ask`, `enabledMcpjsonServers` and
-`disableClaudeAiConnectors`. Keeping `.mcp.json` in the repository is what makes adding a server
+One difference matters. Some of the managed-settings example above carries over to repository
+config and some does not. Per the settings reference, `allowedMcpServers`, `deniedMcpServers`,
+`enabledMcpjsonServers`, `disabledMcpjsonServers`, `enableAllProjectMcpServers` and
+`disableClaudeAiConnectors` all apply from user and project settings files, not only managed ones.
+The key that works in managed settings alone is `allowManagedMcpServersOnly`, which is ignored in
+repository config. What managed settings buy you is the part an individual cannot override, so
+treat repository settings as the place that sets a default rather than the place that closes a
+bypass.
+
+Leave `enableAllProjectMcpServers` at its default of `false`: it approves every server in
+`.mcp.json` with no prompt. Keeping `.mcp.json` in the repository is what makes adding a server
 show up as a PR diff instead of in someone's personal config.
 
 Three of the nine controls do not reduce to a file: reviewing tool descriptions, judging the egress
