@@ -45,15 +45,15 @@ The stage-2 scans can run in parallel to keep the overall time within 5 minutes.
 
 ### How one project splits it — TRUSCA
 
-The open source project TRUSCA runs seventeen workflows. Grouping them by trigger shows the intent.
+The open source project TRUSCA runs twenty-three workflows. Grouping them by trigger shows the intent.
 
 | When         | Workflow                                                                                                                                                                                                                                                                    | Purpose                          |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
 | PR           | [secret-scan](https://github.com/trustedoss/trusca/blob/main/.github/workflows/secret-scan.yml) · [sast](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sast.yml) · [codeql](https://github.com/trustedoss/trusca/blob/main/.github/workflows/codeql.yml) | Fast blocking checks             |
 | PR           | [screenshot-size-gate](https://github.com/trustedoss/trusca/blob/main/.github/workflows/screenshot-size-gate.yml) · [ui-gates](https://github.com/trustedoss/trusca/blob/main/.github/workflows/ui-gates.yml)                                                               | Output quality gates             |
-| Nightly      | [sca-self](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml) (07:00) · [e2e-nightly](https://github.com/trustedoss/trusca/blob/main/.github/workflows/e2e-nightly.yml) (17:00)                                                                 | Long-running full sweeps         |
+| Nightly      | [sca-self](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml) (07:00) · the e2e job in [ci](https://github.com/trustedoss/trusca/blob/main/.github/workflows/ci.yml) (04:00)                                                                    | Long-running full sweeps         |
 | Every 30 min | [demo-health-canary](https://github.com/trustedoss/trusca/blob/main/.github/workflows/demo-health-canary.yml)                                                                                                                                                               | Watching the live demo           |
-| Manual       | [dogfood-scan](https://github.com/trustedoss/trusca/blob/main/.github/workflows/dogfood-scan.yml)                                                                                                                                                                           | Scanning itself with its own SCA |
+| Weekly       | [dogfood-scan](https://github.com/trustedoss/trusca/blob/main/.github/workflows/dogfood-scan.yml) (Sundays 07:00, also on demand)                                                                                                                                           | Scanning itself with its own SCA |
 
 The important decision is **what was kept out of the PR**. Only checks that finish in a couple of
 minutes — secrets, SAST — gate the pull request; SBOM regeneration and end-to-end tests moved to the

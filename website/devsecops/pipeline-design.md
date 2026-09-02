@@ -45,16 +45,16 @@ SAST, SCA, 시크릿 탐지, 컨테이너 보안, IaC 보안, DAST 6개 영역�
 
 ### 실제 분할 사례 — TRUSCA
 
-오픈소스 프로젝트 TRUSCA 는 워크플로우를 열일곱 개로 나눠 운영합니다. 트리거를 기준으로 보면
+오픈소스 프로젝트 TRUSCA 는 워크플로우를 스물세 개로 나눠 운영합니다. 트리거를 기준으로 보면
 설계 의도가 드러납니다.
 
 | 실행 시점   | 워크플로우                                                                                                                                                                                                                                                                  | 성격                         |
 | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
 | PR          | [secret-scan](https://github.com/trustedoss/trusca/blob/main/.github/workflows/secret-scan.yml) · [sast](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sast.yml) · [codeql](https://github.com/trustedoss/trusca/blob/main/.github/workflows/codeql.yml) | 빠르게 끝나는 차단 검사      |
 | PR          | [screenshot-size-gate](https://github.com/trustedoss/trusca/blob/main/.github/workflows/screenshot-size-gate.yml) · [ui-gates](https://github.com/trustedoss/trusca/blob/main/.github/workflows/ui-gates.yml)                                                               | 산출물 품질 게이트           |
-| 야간 스케줄 | [sca-self](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml) (07:00) · [e2e-nightly](https://github.com/trustedoss/trusca/blob/main/.github/workflows/e2e-nightly.yml) (17:00)                                                                 | 오래 걸리는 전수 검사        |
+| 야간 스케줄 | [sca-self](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml) (07:00) · [ci](https://github.com/trustedoss/trusca/blob/main/.github/workflows/ci.yml) 의 e2e job (04:00)                                                                        | 오래 걸리는 전수 검사        |
 | 30분 주기   | [demo-health-canary](https://github.com/trustedoss/trusca/blob/main/.github/workflows/demo-health-canary.yml)                                                                                                                                                               | 운영 중인 데모 상태 감시     |
-| 수동 실행   | [dogfood-scan](https://github.com/trustedoss/trusca/blob/main/.github/workflows/dogfood-scan.yml)                                                                                                                                                                           | 자사 도구로 자기 저장소 스캔 |
+| 주 1회      | [dogfood-scan](https://github.com/trustedoss/trusca/blob/main/.github/workflows/dogfood-scan.yml) (일요일 07:00, 수동 실행도 가능)                                                                                                                                          | 자사 도구로 자기 저장소 스캔 |
 
 핵심은 **PR 에 무엇을 넣지 않을지 정한 것**입니다. 시크릿과 SAST 처럼 몇 분 안에 끝나는 검사만
 PR 에 두고, SBOM 재생성이나 종단 테스트처럼 오래 걸리는 것은 야간으로 뺐습니다. PR 이 느려지면

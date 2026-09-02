@@ -209,11 +209,11 @@ npm `postmark-mcp` 는 1.0.15 까지 정상이던 패키지가 이후 버전에�
 
 **실전 적용 사례 — TRUSCA**:
 
-| 구성 요소        | 파일                                                                                                  | 내용                                                     |
-| ---------------- | ----------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
-| 의존성 자동 갱신 | [dependabot.yml](https://github.com/trustedoss/trusca/blob/main/.github/dependabot.yml)               | npm·pip·docker·github-actions 6개 항목                   |
-| 정기 스캔        | [sca-self.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml)         | 매일 07:00 UTC SBOM 재생성 + 취약점 스캔                 |
-| 자기 적용 검증   | [dogfood-scan.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/dogfood-scan.yml) | 자사 SCA 로 자기 저장소를 스캔(수동 실행, advisory 기본) |
+| 구성 요소        | 파일                                                                                                  | 내용                                                  |
+| ---------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| 의존성 자동 갱신 | [dependabot.yml](https://github.com/trustedoss/trusca/blob/main/.github/dependabot.yml)               | npm·pip·docker·github-actions 6개 항목                |
+| 정기 스캔        | [sca-self.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml)         | 매일 07:00 UTC SBOM 재생성 + 취약점 스캔              |
+| 자기 적용 검증   | [dogfood-scan.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/dogfood-scan.yml) | 자사 SCA 로 자기 저장소를 스캔(주 1회, advisory 기본) |
 
 `dogfood-scan.yml` 이 기본값을 비차단으로 두고 `fail_on_gate` 옵션으로 차단을 켜게 설계한 점은,
 이 가이드가 권하는 관측 → 경고 → 차단 순서와 같은 접근입니다.
