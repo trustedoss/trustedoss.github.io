@@ -44,6 +44,28 @@ This approach places common rule files such as CLAUDE.md, .cursor/rules, and AGE
 
 If your agents call external tools over MCP, rule internalization needs tool-side controls alongside it — see [Agent and MCP Tool Governance](./agent-governance).
 
+**In practice — TRUSCA**: rather than leaving a rule as a sentence, each rule gets a small tool that
+checks it, and that tool runs at two moments: when a file is edited and when it is merged. Korean
+translationese (`tools/ko-style`), em dash usage (`tools/em-dash`) and licence headers
+(`tools/license-header`) all take this shape.
+
+- At edit time it is a PostToolUse hook. Every time the agent changes a file, the hook checks that
+  one file and, on a finding, exits 2 so the result goes back to the agent to correct itself.
+- At merge time it is a CI gate. `node tools/ko-style/lint.mjs --all --fail-on S2` and its siblings
+  re-check the whole repository and fail the build if a violation survived.
+- The hook and the gate share a module. The code deciding what is in scope lives in one place, so
+  the hook cannot pass something the gate would reject, or the reverse.
+
+The two hooks behave differently on purpose. The translationese hook only reports; the licence
+header hook edits the file itself. What has no judgement in it gets fixed, what needs judgement
+gets reported. Findings graded as advisory say nothing at all, because a hook that nags is a hook
+someone turns off.
+
+It is worth being clear about where the enforcement actually sits. The hook lives in agent
+configuration, so it binds whoever runs that configuration, which means the CI gate is what blocks.
+What the hook changes is whether you learn about the same violation thirty seconds later or thirty
+minutes later. Level 2's limit does not disappear here; it is handed to level 3.
+
 ---
 
 ## Stage 3: CI/CD Pipeline Auto Blocking (Pipeline Enforcement)
@@ -70,16 +92,23 @@ AI coding tools frequently insert hardcoded values into code, so **secret detect
 **In practice — TRUSCA**: an Apache-2.0 open source SCA project runs this level today. The
 workflow files are open to read.
 
-| Area             | Workflow                                                                                            | How it runs                                           |
-| ---------------- | --------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
-| Secret detection | [secret-scan.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/secret-scan.yml) | Gitleaks, hard fail on any leak                       |
-| SAST             | [sast.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sast.yml)               | bandit (High) + semgrep (ERROR), hard fail            |
-| SAST             | [codeql.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/codeql.yml)           | CodeQL static analysis                                |
-| SCA              | [sca-self.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml)       | cdxgen SBOM then Trivy scan, daily                    |
-| Container        | [ci.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/ci.yml)                   | image-scan job, Trivy, hard fail on HIGH and CRITICAL |
+| Area             | Workflow                                                                                              | How it runs                                                                     |
+| ---------------- | ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| Secret detection | [secret-scan.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/secret-scan.yml)   | Gitleaks, hard fail on any leak                                                 |
+| SAST             | [sast.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sast.yml)                 | bandit (High) + semgrep (ERROR), hard fail                                      |
+| SAST             | [codeql.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/codeql.yml)             | CodeQL static analysis                                                          |
+| SCA              | [sca-self.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml)         | cdxgen SBOM then Trivy scan, daily                                              |
+| Container        | [ci.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/ci.yml)                     | image-scan job, Trivy, hard fail on HIGH and CRITICAL                           |
+| IaC security     | [iac-security.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/iac-security.yml) | Helm chart and Dockerfiles through Trivy config, hard fail on CRITICAL and HIGH |
 
 Hard-failing on secrets and SAST, pinning tool versions, and verifying checksums are what a mature
 form of this level looks like.
+
+Two of the tool choices differ from the table above. SCA runs on cdxgen and Trivy rather than syft
+and grype, and IaC runs on Trivy config rather than Checkov. Where the area of inspection is the
+same, matching the tool to what the organisation already operates is usually the better trade, and
+for TRUSCA that adds no new tool at all: Trivy is already the product's matching engine. How the
+IaC gate went from observing to blocking is written up in [IaC security](/devsecops/iac-security).
 
 ---
 
@@ -209,14 +238,24 @@ At this stage, SBOM is continuously scanned even after deployment, and patch PRs
 
 **In practice — TRUSCA**:
 
-| Component          | File                                                                                                  | What it does                                                    |
-| ------------------ | ----------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| Dependency updates | [dependabot.yml](https://github.com/trustedoss/trusca/blob/main/.github/dependabot.yml)               | npm, pip, docker, github-actions — four ecosystems, six entries |
-| Scheduled scanning | [sca-self.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml)         | Regenerates the SBOM and rescans daily at 07:00 UTC             |
-| Dogfooding         | [dogfood-scan.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/dogfood-scan.yml) | Scans its own repository with its own SCA; advisory by default  |
+| Component            | File                                                                                                    | What it does                                                             |
+| -------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| Dependency updates   | [dependabot.yml](https://github.com/trustedoss/trusca/blob/main/.github/dependabot.yml)                 | npm, pip, docker, github-actions — four ecosystems, six entries          |
+| Scheduled scanning   | [sca-self.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml)           | Regenerates the SBOM and rescans daily at 07:00 UTC                      |
+| Dogfooding           | [dogfood-scan.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/dogfood-scan.yml)   | Scans its own repository with its own SCA; advisory by default           |
+| Dynamic analysis     | [dast-baseline.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/dast-baseline.yml) | ZAP baseline, weekly. With no target URL set it scans nothing and passes |
+| Offline verification | [airgap-scan.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/airgap-scan.yml)     | Cuts the whole stack's egress and checks that a scan still completes     |
 
 `dogfood-scan.yml` defaults to non-blocking and turns blocking on through a `fail_on_gate` input —
 the same observe, then warn, then block progression this guide recommends.
+
+`airgap-scan.yml` runs Sundays at 09:00 UTC and asks a different question. It is not looking for
+vulnerabilities. It populates the vulnerability database cache, cuts every container's egress, and
+checks that a real scan still finishes. With the network open, a call that should not have gone out
+simply succeeds and nothing reveals it. An early version cut only the worker container, until a
+subprocess started inside the database container turned out to be a separate route out, and all
+four containers moved behind the cut. It is 4c's egress judgement moved from an adoption review
+into a scheduled job.
 
 :::caution Dependency automation does not cover all of it
 

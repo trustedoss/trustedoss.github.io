@@ -44,6 +44,27 @@ CLAUDE.md, .cursor/rules, AGENTS.md 같은 공통 규칙 파일을 저장소에 
 
 에이전트가 MCP 로 외부 도구를 호출하는 환경이라면, 규칙 내재화와 함께 도구 측 통제도 필요합니다 — [에이전트와 MCP 도구 거버넌스](./agent-governance)를 참조하세요.
 
+**실전 적용 사례 — TRUSCA**: 규칙을 문장으로만 두지 않고, 규칙마다 그것을 검사하는 작은 도구를
+만들어 편집 시점과 머지 시점 두 곳에서 돌립니다. 한국어 번역투(`tools/ko-style`), 줄표
+사용(`tools/em-dash`), 라이선스 헤더(`tools/license-header`) 셋이 이 형태입니다.
+
+- 편집 시점은 PostToolUse 훅입니다. 에이전트가 파일을 고칠 때마다 그 파일만 검사하고, 걸리면
+  종료 코드 2로 결과를 에이전트에게 돌려줘 스스로 고치게 합니다.
+- 머지 시점은 CI 게이트입니다. `node tools/ko-style/lint.mjs --all --fail-on S2` 처럼 저장소
+  전체를 다시 검사해 위반이 남아 있으면 빌드를 실패시킵니다.
+- 훅과 게이트는 같은 모듈을 공유합니다. 검사 대상을 판정하는 코드가 한 곳에 있어, 훅이
+  통과시킨 것을 게이트가 막거나 그 반대가 되는 일이 생기지 않습니다.
+
+두 훅의 성격은 다릅니다. 번역투 훅은 지적만 하고, 라이선스 헤더 훅은 직접 고칩니다. 판단할
+것이 없는 기계적인 항목은 고쳐 주고, 판단이 필요한 항목은 알려 주는 편이 낫다는 구분입니다.
+권고 등급으로 분류한 지적은 아무 말도 하지 않습니다. 잔소리가 되면 사람이 훅을 꺼 버리기
+때문입니다.
+
+강제력이 어디에 있는지는 분명히 해 두는 편이 좋습니다. 훅은 에이전트 설정에 있어 그 설정을
+쓰는 사람에게만 걸리므로, 실제로 막는 것은 CI 게이트입니다. 훅이 바꾸는 것은 같은 위반을
+30초 뒤에 아느냐 30분 뒤에 아느냐입니다. 2단계의 한계는 이렇게 없어지지 않고 3단계로 넘겨져
+해결됩니다.
+
 ---
 
 ## 3단계: CI/CD 파이프라인 자동 차단 (Pipeline Enforcement)
@@ -70,16 +91,22 @@ AI 코딩 도구는 하드코딩된 값을 코드에 삽입하는 경우가 잦�
 **실전 적용 사례 — TRUSCA**: Apache-2.0 오픈소스 SCA 프로젝트가 이 단계를 실제로 운영합니다.
 워크플로우 파일을 그대로 열어 볼 수 있습니다.
 
-| 영역        | 워크플로우                                                                                          | 운영 방식                                        |
-| ----------- | --------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
-| 시크릿 탐지 | [secret-scan.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/secret-scan.yml) | Gitleaks, 유출 발견 시 Hard Fail                 |
-| SAST        | [sast.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sast.yml)               | bandit(High) + semgrep(ERROR) Hard Fail          |
-| SAST        | [codeql.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/codeql.yml)           | CodeQL 정적 분석                                 |
-| SCA         | [sca-self.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml)       | cdxgen SBOM 생성 후 Trivy 스캔, 매일 실행        |
-| 컨테이너    | [ci.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/ci.yml)                   | image-scan job, Trivy 로 HIGH·CRITICAL Hard Fail |
+| 영역        | 워크플로우                                                                                            | 운영 방식                                                               |
+| ----------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| 시크릿 탐지 | [secret-scan.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/secret-scan.yml)   | Gitleaks, 유출 발견 시 Hard Fail                                        |
+| SAST        | [sast.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sast.yml)                 | bandit(High) + semgrep(ERROR) Hard Fail                                 |
+| SAST        | [codeql.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/codeql.yml)             | CodeQL 정적 분석                                                        |
+| SCA         | [sca-self.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml)         | cdxgen SBOM 생성 후 Trivy 스캔, 매일 실행                               |
+| 컨테이너    | [ci.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/ci.yml)                     | image-scan job, Trivy 로 HIGH·CRITICAL Hard Fail                        |
+| IaC 보안    | [iac-security.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/iac-security.yml) | Helm 차트와 Dockerfile 을 Trivy config 로 검사, CRITICAL·HIGH Hard Fail |
 
 시크릿과 SAST 를 Hard Fail 로 걸어 둔 점, 도구 버전을 고정하고 체크섬을 확인하는 점이 이 단계의
 성숙한 형태를 보여줍니다.
+
+도구 선택이 위 표와 다른 자리가 둘 있습니다. SCA 는 syft·grype 대신 cdxgen 과 Trivy 를,
+IaC 는 Checkov 대신 Trivy config 를 씁니다. 검사 영역이 같으면 도구는 조직이 이미 쓰는 것으로
+맞추는 편이 낫고, TRUSCA 의 경우 Trivy 가 이미 제품의 대조 엔진이라 운영할 도구가 늘지 않습니다.
+IaC 게이트를 처음부터 차단으로 걸지 않은 과정은 [IaC 보안](/devsecops/iac-security)에 적혀 있습니다.
 
 ---
 
@@ -209,14 +236,23 @@ npm `postmark-mcp` 는 1.0.15 까지 정상이던 패키지가 이후 버전에�
 
 **실전 적용 사례 — TRUSCA**:
 
-| 구성 요소        | 파일                                                                                                  | 내용                                                  |
-| ---------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
-| 의존성 자동 갱신 | [dependabot.yml](https://github.com/trustedoss/trusca/blob/main/.github/dependabot.yml)               | npm·pip·docker·github-actions 6개 항목                |
-| 정기 스캔        | [sca-self.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml)         | 매일 07:00 UTC SBOM 재생성 + 취약점 스캔              |
-| 자기 적용 검증   | [dogfood-scan.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/dogfood-scan.yml) | 자사 SCA 로 자기 저장소를 스캔(주 1회, advisory 기본) |
+| 구성 요소        | 파일                                                                                                    | 내용                                                                         |
+| ---------------- | ------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| 의존성 자동 갱신 | [dependabot.yml](https://github.com/trustedoss/trusca/blob/main/.github/dependabot.yml)                 | npm·pip·docker·github-actions 6개 항목                                       |
+| 정기 스캔        | [sca-self.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml)           | 매일 07:00 UTC SBOM 재생성 + 취약점 스캔                                     |
+| 자기 적용 검증   | [dogfood-scan.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/dogfood-scan.yml)   | 자사 SCA 로 자기 저장소를 스캔(주 1회, advisory 기본)                        |
+| 동적 분석        | [dast-baseline.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/dast-baseline.yml) | ZAP baseline 주 1회. 대상 URL 을 설정하지 않으면 아무것도 스캔하지 않고 통과 |
+| 오프라인 검증    | [airgap-scan.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/airgap-scan.yml)     | 스택 전체의 외부 통신을 끊고 스캔이 완주하는지 확인                          |
 
 `dogfood-scan.yml` 이 기본값을 비차단으로 두고 `fail_on_gate` 옵션으로 차단을 켜게 설계한 점은,
 이 가이드가 권하는 관측 → 경고 → 차단 순서와 같은 접근입니다.
+
+`airgap-scan.yml` 은 매주 일요일 09:00 UTC 에 돌며 성격이 조금 다릅니다. 취약점을 찾는 것이
+아니라, 취약점 데이터베이스 캐시를 채운 뒤 스택 전체의 외부 통신을 끊고도 스캔이 완주하는지를
+확인합니다. 통신이 열려 있는 환경에서는 나가지 말아야 할 호출이 조용히 성공해 버려서 드러나지
+않기 때문입니다. 처음에는 워커 컨테이너만 끊었는데, 데이터베이스 컨테이너 안에서 시작되는
+하위 프로세스가 별도의 통신 경로로 남는다는 것을 확인하고 네 컨테이너 전부를 끊는 형태로
+바꿨습니다. 4c 의 반출 경로 판정을 도입 심사가 아니라 정기 실행으로 옮겨 놓은 예입니다.
 
 :::caution 의존성 자동 갱신만으로는 덮이지 않습니다
 

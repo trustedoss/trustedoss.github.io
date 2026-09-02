@@ -125,7 +125,7 @@ So a Full Scan belongs on a scan-only instance: somewhere data can be wiped and 
 
 ### How this was set up in TRUSCA
 
-[TRUSCA](https://github.com/trustedoss/trusca) has Baseline only, for now.
+[TRUSCA](https://github.com/trustedoss/trusca) has Baseline only, for now. The workflow is [dast-baseline.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/dast-baseline.yml), running weekly on Mondays. The target URL lives in a repository variable, so with nothing set the job scans nothing and passes.
 
 The demo host runs with `DEMO_READ_ONLY` on, rejecting anything but GET, HEAD and OPTIONS, so most of the write risk was already closed. Full was still deferred, because the first two concerns above have nothing to do with writes. Retrieval alone consumes resources, and authentication attempts still trip lockout policy. The third does not vanish either: permitting sandbox scans opens a path that ingests scan results. Full waits for a scan-only instance.
 

@@ -174,7 +174,7 @@ metadata:
 :::warning A scan passing and a scan checking are two different things
 :::
 
-Once an IaC scan is wired up, the badge turns green. Whether that green means "no violations" or "nothing was examined" is not something the badge can tell you. What follows are four cases from adding scanning and a blocking gate to [TRUSCA](https://github.com/trustedoss/trusca). In the first three the scan result looked correct; in the fourth the setting itself was not what it appeared to be.
+Once an IaC scan is wired up, the badge turns green. Whether that green means "no violations" or "nothing was examined" is not something the badge can tell you. What follows are four cases from adding scanning and a blocking gate to [TRUSCA](https://github.com/trustedoss/trusca) ([iac-security.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/iac-security.yml), on Trivy config rather than Checkov). In the first three the scan result looked correct; in the fourth the setting itself was not what it appeared to be.
 
 ### Passing while scanning a chart that never rendered
 

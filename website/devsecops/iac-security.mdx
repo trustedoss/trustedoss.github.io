@@ -174,7 +174,7 @@ metadata:
 :::warning 스캔이 통과했다는 것과 스캔이 검사했다는 것은 다릅니다
 :::
 
-IaC 스캔을 붙이고 나면 배지가 초록으로 바뀝니다. 그런데 그 초록이 "위반이 없다"는 뜻인지 "검사가 이뤄지지 않았다"는 뜻인지는 배지만 봐서는 구분되지 않습니다. 아래는 [TRUSCA](https://github.com/trustedoss/trusca) 에 스캔과 차단 게이트를 붙이면서 실제로 겪은 네 가지입니다. 앞의 셋은 스캔 결과가, 넷째는 설정 자체가 의도와 달랐습니다.
+IaC 스캔을 붙이고 나면 배지가 초록으로 바뀝니다. 그런데 그 초록이 "위반이 없다"는 뜻인지 "검사가 이뤄지지 않았다"는 뜻인지는 배지만 봐서는 구분되지 않습니다. 아래는 [TRUSCA](https://github.com/trustedoss/trusca) 에 스캔과 차단 게이트를 붙이면서([iac-security.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/iac-security.yml), Checkov 대신 Trivy config) 실제로 겪은 네 가지입니다. 앞의 셋은 스캔 결과가, 넷째는 설정 자체가 의도와 달랐습니다.
 
 ### 렌더되지 않은 차트를 검사하고 통과하는 경우
 

@@ -125,7 +125,7 @@ Full Scan은 성격이 다릅니다. 아래 셋 중 앞의 둘은 대상이 읽�
 
 ### TRUSCA에 붙인 방식
 
-[TRUSCA](https://github.com/trustedoss/trusca)에는 Baseline만 먼저 붙였습니다.
+[TRUSCA](https://github.com/trustedoss/trusca)에는 Baseline만 먼저 붙였습니다. 워크플로는 [dast-baseline.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/dast-baseline.yml)이고 매주 월요일에 돕니다. 대상 URL을 저장소 변수로 두어, 설정하지 않으면 아무것도 스캔하지 않고 통과합니다.
 
 데모 호스트가 `DEMO_READ_ONLY` 로 GET과 HEAD, OPTIONS 외의 요청을 거부하고 있어 쓰기 위험은 대부분 막혀 있었습니다. 그런데도 Full을 미룬 이유는 앞의 두 가지가 읽기 전용과 무관하게 남기 때문입니다. 조회만 해도 자원은 소모되고, 인증 시도는 잠금 정책을 건드립니다. 세 번째인 데이터 오염도 완전히 사라지지는 않습니다. 샌드박스 스캔을 허용하는 설정을 켜면 스캔 결과를 받아들이는(ingest) 경로가 열리기 때문입니다. Full은 스캔 전용 인스턴스가 생긴 뒤로 미뤘습니다.
 

@@ -76,7 +76,7 @@ status codes, and requests accepted despite violating the schema.
 
 ### What got in the way
 
-Three things that actually blocked the work in TRUSCA.
+Three things that actually blocked the work in TRUSCA. The workflow is [schemathesis-fuzz.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/schemathesis-fuzz.yml), running weekly on Wednesdays.
 
 **Schema version.** FastAPI emits OpenAPI 3.1. schemathesis 3.x will not read that schema at all
 without an experimental flag; it exits during loading. 4.x reads it normally.

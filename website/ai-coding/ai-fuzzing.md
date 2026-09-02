@@ -75,7 +75,7 @@ API 키가 없거나 예산 승인이 나지 않아 4b 단계를 미루고 있�
 
 ### 붙일 때 걸린 것들
 
-TRUSCA에 적용하며 실제로 막힌 지점입니다.
+TRUSCA에 적용하며 실제로 막힌 지점입니다. 워크플로는 [schemathesis-fuzz.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/schemathesis-fuzz.yml)이고 매주 수요일에 돕니다.
 
 **스키마 버전.** FastAPI는 OpenAPI 3.1을 냅니다. schemathesis 3.x는 실험 플래그 없이는 이
 스키마를 아예 읽지 않고 로딩 단계에서 종료합니다. 4.x는 정식으로 읽습니다.
