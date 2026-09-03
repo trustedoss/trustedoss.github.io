@@ -44,12 +44,13 @@
   --docsearch-modal-background: var(--ifm-background-color);
   --docsearch-subtle-color: var(--ifm-table-border-color);
   --docsearch-container-background: rgba(32, 35, 42, 0.6);
-  --docsearch-muted-color: #969faf;
+  /* 검색 버튼의 단축키 표시. #969faf 는 키 배경(#f0f1f3) 위 2.36:1 로 AA 미달이었다 */
+  --docsearch-muted-color: #5f636e;
   --docsearch-key-pressed-shadow: inset 0 2px 5px rgba(120, 122, 165, 0.11);
   --docsearch-icon-color: var(--subtle);
   --docsearch-secondary-text-color: var(--subtle);
   --docsearch-hit-background: none;
-  --docsearch-hit-highlight-color: var(--home-button-primary);
+  --docsearch-hit-highlight-color: var(--brand-text);
   --docsearch-highlight-color: white;
   --docsearch-footer-height: 46px;
   --docsearch-soft-primary-color: var(--sidebar-active-item-background);
@@ -77,6 +78,15 @@
   --g-blue-800: #185abc;
   --g-blue-900: #174ea6;
 
+  /* ── 주색: 텍스트용과 채움용을 분리한다 (진단 B-6) ──────────────
+     blue-600 은 순백 위 4.51:1 로 AA 하한을 0.01 넘긴다. 틴트가 조금만
+     들어가면 4.07~4.19 로 미달하므로 텍스트는 blue-700(순백 5.37,
+     틴트 4.86~5.00)을 쓴다. 큰 면적 채움은 blue-600 을 유지한다.
+     승인 지점 3(2026-09-03)에서 "분리 유지" 로 확정. */
+  --brand-text: var(--g-blue-700);
+  --brand-fill: var(--g-blue-600);
+  --brand-fill-fg: #fff;
+
   /* 주색 = Google 블루 #1a73e8 */
   --ifm-color-primary: var(--g-blue-600);
   --ifm-color-primary-dark: var(--g-blue-700);
@@ -86,19 +96,22 @@
   --ifm-color-primary-lighter: var(--g-blue-400);
   --ifm-color-primary-lightest: var(--g-blue-300);
   --ifm-color-primary-75: rgba(26, 115, 232, 0.72);
-  /* Gemini(DevSite) 타입 스케일 실측 정렬 — ai.google.dev/gemini-api/docs 기준:
-     본문 16px, h1 34/300/40, h2 24/300/32, h3 20/400/32, h4 16px.
-     좌측 nav 13px, 우측 TOC 14px, navbar 14px(아래 선택자에서 px 고정). */
-  --ifm-heading-font-weight: 400;
-  --ifm-h1-font-size: 34px;
-  --ifm-h2-font-size: 24px;
-  --ifm-h3-font-size: 20px;
-  --ifm-h4-font-size: 16px;
-  --ifm-h5-font-size: 14px;
+  /* ── 타입 스케일: 시안 A(개발자 제품 문서형) ────────────────────
+     승인 지점 3 에서 선택. 크기는 rem 이라 브라우저 글꼴 설정을 따른다(B-4).
+     제목은 굵기로 본문과 거리를 벌린다(B-3). 현행은 h1~h4 가 전부 400 이라
+     계층 신호가 크기뿐이었고, 레퍼런스 4개(Stripe 700, Astro 600,
+     web.dev·MDN 은 굵기 대신 크기)와 견주면 가장 약했다.
+     h1 만 700, 나머지 제목은 600 이다(h1 은 _surfaces.scss 에서 지정). */
+  --ifm-heading-font-weight: 600;
+  --ifm-h1-font-size: 2.125rem;
+  --ifm-h2-font-size: 1.5rem;
+  --ifm-h3-font-size: 1.1875rem;
+  --ifm-h4-font-size: 1rem;
+  --ifm-h5-font-size: 0.875rem;
   --ifm-heading-line-height: 1.3;
   --ifm-code-background: rgba(0, 0, 0, 0.06);
-  --ifm-font-size-base: 16px;
-  --ifm-code-font-size: 90%;
+  --ifm-font-size-base: 100%;
+  --ifm-code-font-size: 87.5%;
   --ifm-code-padding-vertical: 0.05rem;
   --ifm-spacing-horizontal: 16px;
   --ifm-navbar-item-padding-horizontal: 18px;
@@ -107,15 +120,19 @@
   --ifm-toc-link-color: var(--ifm-color-emphasis-700);
   --ifm-blockquote-color: var(--ifm-font-color-base);
   --ifm-blockquote-font-size: 0.9rem;
-  --ifm-global-radius: 9px;
-  --ifm-code-border-radius: 0.4rem;
-  --ifm-blockquote-border-radius: var(--ifm-global-radius);
-  --ifm-table-head-color: var(--subtle);
+  /* 반경 스케일 (B-11). 시안 A 는 6px / 10px 두 단계다 */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --ifm-global-radius: var(--radius-sm);
+  --ifm-code-border-radius: var(--radius-sm);
+  --ifm-blockquote-border-radius: var(--radius-md);
+  /* --subtle(#6c707b)은 표 헤더 배경 위 4.07:1 로 미달이라 한 단계 어둡게 */
+  --ifm-table-head-color: #5f636e;
   --ifm-link-hover-decoration: none;
-  --ifm-pre-line-height: 1.4;
+  --ifm-pre-line-height: 1.6;
   --ifm-tabs-padding-vertical: 6px;
   --ifm-color-warning: #ffe564;
-  --ifm-color-info: #1a73e8;
+  --ifm-color-info: var(--brand-fill);
   --ifm-alert-color: var(--ifm-font-color-base);
   --ifm-pagination-nav-color-hover: var(--ifm-color-emphasis-300);
   --ifm-navbar-sidebar-width: 100%;
@@ -131,8 +148,6 @@
     --ifm-navbar-sidebar-width: 340px;
   }
 
-  --home-button-primary: var(--ifm-color-primary);
-
   @media (max-width: 900px) {
   }
 }
@@ -142,8 +157,8 @@ body {
 }
 
 html[data-theme="light"] {
-  /* 본문 링크 = Google 블루 */
-  --ifm-link-color: var(--ifm-color-primary);
+  /* 본문 링크는 텍스트 주색(blue-700). 틴트 표면 위에서도 AA 를 유지한다(B-6) */
+  --ifm-link-color: var(--brand-text);
   --ifm-link-hover-decoration: underline;
 }
 

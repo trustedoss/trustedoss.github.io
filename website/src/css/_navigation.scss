@@ -102,7 +102,9 @@ aside[class^="theme-doc-sidebar-container"] {
   .theme-doc-sidebar-item-category-level-1
     > .menu__list-item-collapsible
     > .menu__link--active {
-    color: var(--ifm-color-primary) !important;
+    /* 활성 항목 배경(--sidebar-active-item-background)이 옅은 블루라
+       blue-600 은 4.10:1 로 AA 미달이었다. 텍스트 주색을 쓴다(B-6) */
+    color: var(--brand-text) !important;
   }
 
   // 계층 구분: 카테고리 하위 항목 인덴트로 부모-자식 관계 명시
@@ -184,7 +186,7 @@ aside[class^="theme-doc-sidebar-container"] {
   .menu__link.menu__link--active {
     border-left-width: 0 !important;
     background-color: var(--sidebar-active-item-background);
-    color: var(--home-button-primary);
+    color: var(--brand-text);
     font-weight: 500;
     transition: none;
   }
@@ -311,22 +313,22 @@ div[class^="tableOfContents"] {
     }
 
     &:hover {
-      color: var(--home-button-primary) !important;
+      color: var(--brand-text) !important;
 
       code {
-        color: var(--home-button-primary) !important;
+        color: var(--brand-text) !important;
       }
     }
   }
 
   .table-of-contents__link--active {
     font-weight: 500;
-    color: var(--home-button-primary) !important;
+    color: var(--brand-text) !important;
 
     code {
       word-break: break-all;
       font-weight: 700;
-      color: var(--home-button-primary) !important;
+      color: var(--brand-text) !important;
     }
   }
 

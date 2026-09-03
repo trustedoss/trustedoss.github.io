@@ -67,7 +67,7 @@
 }
 
 [data-theme="dark"] .primary {
-  color: #062330;
+  color: var(--brand-fill-fg);
 }
 
 .primary:hover {
@@ -95,9 +95,11 @@
   color: var(--ifm-color-emphasis-600);
 }
 
+/* 틴트 밴드 위 링크라 텍스트 주색을 쓴다. blue-600 은 이 배경에서 4.17:1 로
+   AA 미달이었다 (진단 B-6, Lighthouse 실측 배경 #f1f7fe) */
 .noteLink {
   font-weight: 600;
-  color: var(--ifm-color-primary);
+  color: var(--brand-text);
 }
 
 .noteLink:hover {

@@ -3,6 +3,20 @@
  * 색은 중립 Material 블루 계열 그라데이션(POSITIONING §5: 다색 제품 팔레트·포털 네이비 미채택).
  */
 
+/* Hero 전용 토큰. 배경이 그라디언트라 대비를 수치로 재려면 전경이 얹히는
+   표면이 불투명해야 한다. --hero-surface 는 흰색 6% 를 그라디언트 위에 얹은
+   것과 같은 값의 불투명 색이다(진단에서 2차 CTA 를 측정하지 못했던 이유). */
+:root {
+  --hero-ink: #fff;
+  --hero-ink-2: rgba(255, 255, 255, 0.92);
+  --hero-accent: var(--g-blue-300);
+  --hero-cta-fg: #143a82;
+  --hero-cta-fg-hover: #0e1b3d;
+  --hero-surface: #1d376c;
+  --hero-surface-hover: #294585;
+  --hero-line: rgba(255, 255, 255, 0.4);
+}
+
 .hero {
   position: relative;
   padding: 7.5rem 0 6.5rem;
@@ -68,7 +82,7 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #8ab4f8;
+  background: var(--hero-accent);
   box-shadow: 0 0 0 3px rgba(138, 180, 248, 0.3);
 }
 
@@ -78,12 +92,12 @@
   font-weight: 300;
   letter-spacing: -0.025em;
   line-height: 1.1;
-  color: #fff;
+  color: var(--hero-ink);
 }
 
 .titleAccent {
   /* 폴백: background-clip:text 미지원 시 보이는 라이트 블루 */
-  color: #8ab4f8;
+  color: var(--hero-accent);
   background: linear-gradient(90deg, #aecbfa 0%, #8ab4f8 42%, #c2a8ff 100%);
   -webkit-background-clip: text;
   background-clip: text;
@@ -116,26 +130,26 @@
 
 /* 1차 CTA — 흰 배경 + 진한 블루 텍스트 */
 .ctas :global(.button--primary) {
-  background: #fff;
-  color: #143a82;
-  border-color: #fff;
+  background: var(--hero-ink);
+  color: var(--hero-cta-fg);
+  border-color: var(--hero-ink);
 }
 
 .ctas :global(.button--primary:hover) {
   background: rgba(255, 255, 255, 0.9);
-  color: #0e1b3d;
+  color: var(--hero-cta-fg-hover);
 }
 
 /* 2차 CTA — 투명 + 흰 외곽선 */
 .ctas :global(.button--secondary) {
-  background: rgba(255, 255, 255, 0.06);
-  color: #fff;
-  border-color: rgba(255, 255, 255, 0.4);
+  background: var(--hero-surface);
+  color: var(--hero-ink);
+  border-color: var(--hero-line);
 }
 
 .ctas :global(.button--secondary:hover) {
-  background: rgba(255, 255, 255, 0.14);
-  color: #fff;
+  background: var(--hero-surface-hover);
+  color: var(--hero-ink);
 }
 
 .ghIcon {
@@ -228,11 +242,11 @@
 
 .cmd {
   margin: 0;
-  color: rgba(255, 255, 255, 0.92);
+  color: var(--hero-ink-2);
 }
 
 .prompt {
-  color: #8ab4f8;
+  color: var(--hero-accent);
   margin-right: 0.4rem;
 }
 
@@ -271,7 +285,8 @@
 .poweredBy {
   margin: 1.1rem 0 0;
   font-size: 0.82rem;
-  color: rgba(255, 255, 255, 0.5);
+  /* 50% 는 Hero 그라디언트 위 4.39:1 로 AA 하한에 못 미쳤다. 65% 는 6.40:1 */
+  color: rgba(255, 255, 255, 0.65);
 }
 
 .poweredByLink {

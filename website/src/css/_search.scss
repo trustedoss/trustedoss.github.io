@@ -92,7 +92,7 @@
 
 .DocSearch-Actions {
   button:hover {
-    color: var(--home-button-primary);
+    color: var(--brand-text);
   }
 }
 
@@ -103,7 +103,7 @@
   }
 
   mark {
-    color: var(--home-button-primary);
+    color: var(--brand-text);
   }
 
   &[aria-selected="true"] {
@@ -119,7 +119,7 @@
 }
 
 .DocSearch-Form:focus-within .DocSearch-MagnifierLabel svg {
-  color: var(--home-button-primary);
+  color: var(--brand-text);
 }
 
 .DocSearch-Footer {

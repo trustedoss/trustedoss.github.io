@@ -107,13 +107,15 @@
   border-top: 1px solid var(--ifm-color-emphasis-200);
   font-size: 0.82rem;
   font-weight: 600;
-  color: var(--ifm-color-primary);
+  /* 카드 틴트 위 링크. blue-600 은 4.22:1 로 AA 미달이었다
+     (진단 B-6, Lighthouse 실측 배경 #f4f8fe) */
+  color: var(--brand-text);
   text-decoration: none;
 }
 
 .cardLink:hover {
   text-decoration: underline;
-  color: var(--ifm-color-primary);
+  color: var(--brand-text);
 }
 
 .cardLink span {
