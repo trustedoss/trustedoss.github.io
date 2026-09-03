@@ -133,7 +133,7 @@ const config: Config = {
     function disableExpensiveBundlerOptimizationPlugin() {
       return {
         name: 'disable-expensive-bundler-optimizations',
-        configureWebpack(_config: unknown, isServer: boolean) {
+        configureWebpack() {
           return {
             optimization: {
               concatenateModules: false,
