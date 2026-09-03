@@ -54,7 +54,7 @@ venv/
 .venv
 
 # 훅 생성 로컬 로그
-.claude/progress-infra.md
+**/.claude/progress-infra.md
 
 # 브라우저 자동화 부산물
 .playwright-mcp/

@@ -260,7 +260,7 @@ jobs:
       - uses: actions/checkout@v7
       - name: Generate SBOM
         run: |
-          docker run --rm -v $(pwd):/project \
+          docker run --rm -v "$(pwd)":/project \
             anchore/syft:latest /project \
             --output cyclonedx-json > sbom.cdx.json
       - name: License check

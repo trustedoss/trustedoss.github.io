@@ -108,19 +108,19 @@ For the actual Docker commands, GitHub Actions CI/CD setup, and the sample proje
 
 Key field descriptions:
 
-| Field                         | Description                                                                                         |
-| ----------------------------- | --------------------------------------------------------------------------------------------------- |
-| `bomFormat`, `specVersion`    | CycloneDX format identifier and specification version. Both syft and cdxgen emit 1.7 by default     |
-| `metadata.timestamp`          | When the SBOM was generated                                                                         |
-| `metadata.tools.components[]` | Name and version of the tool that built the SBOM, the "SBOM generation tool" CISA 2026 requires     |
-| `metadata.lifecycles[]`       | Lifecycle phase the SBOM was captured in, the "generation context"                                  |
-| `metadata.component`          | Information about the software being analyzed                                                       |
-| `components[].supplier`       | Supplier of the component                                                                           |
-| `components[].hashes[]`       | Component file hash. The `alg` (SHA-256 and so on) and `content` (hex value) pair proves integrity  |
-| `components[].licenses[]`     | License of the component                                                                            |
-| `components[].purl`           | PURL (Package URL, a standard string that uniquely identifies a package)                            |
-| `signature`                   | Top-level BOM signature in JSON Signature Format (JSF), which proves the SBOM was not tampered with |
-| `vulnerabilities[]`           | Vulnerability information (if present)                                                              |
+| Field                         | Description                                                                                           |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `bomFormat`, `specVersion`    | CycloneDX format identifier and specification version. cdxgen 12.x and syft 1.51+ emit 1.7 by default |
+| `metadata.timestamp`          | When the SBOM was generated                                                                           |
+| `metadata.tools.components[]` | Name and version of the tool that built the SBOM, the "SBOM generation tool" CISA 2026 requires       |
+| `metadata.lifecycles[]`       | Lifecycle phase the SBOM was captured in, the "generation context"                                    |
+| `metadata.component`          | Information about the software being analyzed                                                         |
+| `components[].supplier`       | Supplier of the component                                                                             |
+| `components[].hashes[]`       | Component file hash. The `alg` (SHA-256 and so on) and `content` (hex value) pair proves integrity    |
+| `components[].licenses[]`     | License of the component                                                                              |
+| `components[].purl`           | PURL (Package URL, a standard string that uniquely identifies a package)                              |
+| `signature`                   | Top-level BOM signature in JSON Signature Format (JSF), which proves the SBOM was not tampered with   |
+| `vulnerabilities[]`           | Vulnerability information (if present)                                                                |
 
 Hashes, the generation tool name, the generation context, and licenses are the fields that the CISA 2026
 minimum elements described in [SBOM Basics: An Introduction to the Software Bill of Materials](../../00-overview/sbom-101.md)
@@ -137,6 +137,13 @@ and the ecosystem.
 If you need the lifecycle phase or hashes and syft leaves them empty, generate the same project once more
 with cdxgen and compare. To pin the specification version, use `-o cyclonedx-json@1.7` with syft and
 `--spec-version 1.7` with cdxgen.
+
+:::warning Check the minimum tool versions first
+CycloneDX 1.7 requires syft 1.51 or newer. Older syft only goes up to 1.6 and fails with
+`unsupported output format` when given `-o cyclonedx-json@1.7`.
+grype needs 0.118 or newer to read 1.7; an older grype rejects a 1.7 SBOM with
+`sbom format not recognized`. Check with `syft version` and `grype version` before you start.
+:::
 
 :::tip MCP servers belong in the SBOM too
 For how to list MCP (Model Context Protocol, the convention by which an agent calls external tools)
@@ -293,7 +300,7 @@ Confirm all of the items below before moving on to the next step.
 
 - [ ] `output/sbom/[project].cdx.json` created
 - [ ] The `components` array in the SBOM file is not empty
-- [ ] `specVersion` is `1.7` (if it is lower, upgrade the tool or pin the specification version and regenerate)
+- [ ] `specVersion` is `1.7` (if it is lower, upgrade syft to 1.51 or newer and regenerate)
 - [ ] `metadata.timestamp` and `metadata.tools` record the generation time and the generating tool
 - [ ] Every entry in `components[]` has a `purl`
 - [ ] Component hashes (`hashes`) and licenses (`licenses`) have been checked (they can be empty depending on the tool; if so, compare against cdxgen output)

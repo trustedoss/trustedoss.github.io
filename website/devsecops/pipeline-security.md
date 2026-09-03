@@ -168,7 +168,7 @@ jobs:
 `pull_request_target` 은 반대로 대상 저장소의 시크릿과 쓰기 권한을 가진 채로 실행됩니다.
 여기서 PR 브랜치의 코드를 체크아웃해 실행하면, 외부인이 보낸 코드가 저장소 시크릿을 쥐고 돌아갑니다.
 
-```yaml
+```yaml validate=skip
 # 위험한 조합. 이렇게 쓰지 마세요
 on: pull_request_target
 
@@ -282,7 +282,7 @@ Fulcio가 OIDC 신원을 확인해 단기 인증서를 발급하고, 서명 기�
 서명자가 개인 키를 장기 보관할 필요가 없고, 누가 언제 무엇에 서명했는지 공개 로그로 확인할 수 있습니다.
 컨테이너 이미지에는 cosign으로 서명과 검증을 붙입니다.
 
-```bash
+```bash validate=skip
 # 키리스 서명. 실행 환경의 OIDC 신원으로 서명합니다
 cosign sign ghcr.io/myorg/myapp@sha256:<다이제스트>
 

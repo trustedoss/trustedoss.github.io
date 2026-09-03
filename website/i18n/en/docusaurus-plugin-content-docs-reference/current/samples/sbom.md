@@ -249,7 +249,7 @@ cyclonedx convert --input-file sbom.cdx.json \
 ```
 
 cdxgen is an SBOM generation tool and has no format conversion capability, so use cyclonedx-cli
-(`docker run --rm -v $(pwd):/data cyclonedx/cyclonedx-cli convert ...`) or the tool designated by the recipient for conversion.
+(`docker run --rm -v "$(pwd)":/data cyclonedx/cyclonedx-cli convert ...`) or the tool designated by the recipient for conversion.
 
 ---
 

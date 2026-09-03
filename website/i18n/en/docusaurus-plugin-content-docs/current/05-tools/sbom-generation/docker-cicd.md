@@ -17,12 +17,12 @@ This page contains the actual Docker commands for syft and cdxgen, the GitHub Ac
 
 ## Running syft with Docker — commands per language/package manager
 
-| Language | Package manager | Command                                                                                              |
-| -------- | --------------- | ---------------------------------------------------------------------------------------------------- |
-| Java     | Maven/Gradle    | `docker run --rm -v $(pwd):/src anchore/syft dir:/src -o cyclonedx-json > output/sbom/sbom.cdx.json` |
-| Python   | pip             | `docker run --rm -v $(pwd):/src anchore/syft dir:/src -o cyclonedx-json > output/sbom/sbom.cdx.json` |
-| Node.js  | npm             | `docker run --rm -v $(pwd):/src anchore/syft dir:/src -o cyclonedx-json > output/sbom/sbom.cdx.json` |
-| Go       | go mod          | `docker run --rm -v $(pwd):/src anchore/syft dir:/src -o cyclonedx-json > output/sbom/sbom.cdx.json` |
+| Language | Package manager | Command                                                                                                |
+| -------- | --------------- | ------------------------------------------------------------------------------------------------------ |
+| Java     | Maven/Gradle    | `docker run --rm -v "$(pwd)":/src anchore/syft dir:/src -o cyclonedx-json > output/sbom/sbom.cdx.json` |
+| Python   | pip             | `docker run --rm -v "$(pwd)":/src anchore/syft dir:/src -o cyclonedx-json > output/sbom/sbom.cdx.json` |
+| Node.js  | npm             | `docker run --rm -v "$(pwd)":/src anchore/syft dir:/src -o cyclonedx-json > output/sbom/sbom.cdx.json` |
+| Go       | go mod          | `docker run --rm -v "$(pwd)":/src anchore/syft dir:/src -o cyclonedx-json > output/sbom/sbom.cdx.json` |
 
 Full command (identical for every language; only the directory changes):
 
@@ -32,7 +32,7 @@ mkdir -p output/sbom
 
 # Generate the SBOM with syft
 docker run --rm \
-  -v $(pwd):/src \
+  -v "$(pwd)":/src \
   anchore/syft \
   dir:/src \
   -o cyclonedx-json \
@@ -45,7 +45,7 @@ docker run --rm \
 
 ```bash
 docker run --rm \
-  -v $(pwd):/app \
+  -v "$(pwd)":/app \
   -w /app \
   ghcr.io/cyclonedx/cdxgen:latest \
   -o /app/output/sbom/sbom-cdxgen.cdx.json \
@@ -102,7 +102,7 @@ Three sample projects are provided for practice:
 ```bash
 # Practice with the java-vulnerable sample
 docker run --rm \
-  -v $(pwd)/samples/java-vulnerable:/src \
+  -v "$(pwd)"/samples/java-vulnerable:/src \
   anchore/syft \
   dir:/src -o cyclonedx-json \
   > output/sbom/java-vulnerable.cdx.json

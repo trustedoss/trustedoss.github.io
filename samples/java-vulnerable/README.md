@@ -64,11 +64,15 @@ Apache Log4j 2의 JNDI 조회 기능을 악용하여 원격 코드 실행(RCE)�
 # 출력 디렉토리 생성 (fresh clone 직후에는 없음)
 mkdir -p ../../output/sbom
 
-docker run --rm -v $(pwd):/project \
+docker run --rm -v "$(pwd)":/project \
   anchore/syft:latest \
   /project --output cyclonedx-json \
   > ../../output/sbom/java-vulnerable.cdx.json
 ```
+
+스캔 단계에서 `sbom format not recognized` 가 나오면 grype 가 낡은 것입니다.
+`anchore/syft:latest` 는 CycloneDX 1.7 을 내는데 grype 는 0.118 이상에서만 읽습니다.
+`grype version` 으로 확인하고 올리세요.
 
 ## 프로젝트 구조
 
@@ -149,11 +153,15 @@ Change the log4j-core version in `pom.xml` to **2.17.1 or later**:
 # Create the output directory (it does not exist in a fresh clone)
 mkdir -p ../../output/sbom
 
-docker run --rm -v $(pwd):/project \
+docker run --rm -v "$(pwd)":/project \
   anchore/syft:latest \
   /project --output cyclonedx-json \
   > ../../output/sbom/java-vulnerable.cdx.json
 ```
+
+If the scan step reports `sbom format not recognized`, grype is too old.
+`anchore/syft:latest` emits CycloneDX 1.7, which grype only reads from 0.118 onwards.
+Check with `grype version` and upgrade.
 
 ## Project layout
 

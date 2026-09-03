@@ -172,7 +172,7 @@ The `pull_request` event runs fork pull requests in a read-only environment with
 `pull_request_target` does the opposite: it runs with the target repository's secrets and write permissions.
 If you check out and execute the pull request branch's code there, an outsider's code runs while holding your secrets.
 
-```yaml
+```yaml validate=skip
 # A dangerous combination. Do not write it this way
 on: pull_request_target
 
@@ -288,7 +288,7 @@ to the Rekor transparency log.
 Signers need no long-lived private key, and anyone can check who signed what and when in a public log.
 For container images, cosign handles signing and verification.
 
-```bash
+```bash validate=skip
 # Keyless signing, using the execution environment's OIDC identity
 cosign sign ghcr.io/myorg/myapp@sha256:<digest>
 

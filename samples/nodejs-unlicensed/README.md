@@ -86,11 +86,15 @@ npm install
 # 출력 디렉토리 생성 (fresh clone 직후에는 없음)
 mkdir -p ../../output/sbom
 
-docker run --rm -v $(pwd):/project \
+docker run --rm -v "$(pwd)":/project \
   anchore/syft:latest \
   /project --output cyclonedx-json \
   > ../../output/sbom/nodejs-unlicensed.cdx.json
 ```
+
+스캔 단계에서 `sbom format not recognized` 가 나오면 grype 가 낡은 것입니다.
+`anchore/syft:latest` 는 CycloneDX 1.7 을 내는데 grype 는 0.118 이상에서만 읽습니다.
+`grype version` 으로 확인하고 올리세요.
 
 ## 프로젝트 구조
 
@@ -187,11 +191,15 @@ npm ci
 # Create the output directory (it does not exist in a fresh clone)
 mkdir -p ../../output/sbom
 
-docker run --rm -v $(pwd):/project \
+docker run --rm -v "$(pwd)":/project \
   anchore/syft:latest \
   /project --output cyclonedx-json \
   > ../../output/sbom/nodejs-unlicensed.cdx.json
 ```
+
+If the scan step reports `sbom format not recognized`, grype is too old.
+`anchore/syft:latest` emits CycloneDX 1.7, which grype only reads from 0.118 onwards.
+Check with `grype version` and upgrade.
 
 ## Project layout
 
