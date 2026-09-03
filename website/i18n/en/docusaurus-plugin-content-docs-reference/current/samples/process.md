@@ -2,6 +2,7 @@
 id: process
 title: Process Deliverables Best Practice
 sidebar_label: Process Output
+sidebar_position: 3
 ---
 
 # Process Deliverables Best Practice

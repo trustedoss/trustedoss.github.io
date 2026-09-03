@@ -2,6 +2,7 @@
 id: legal-considerations
 title: 'AI 생성 코드의 법적 고려'
 sidebar_label: 'AI 생성 코드의 법적 고려'
+sidebar_position: 8
 ---
 
 # AI 생성 코드의 법적 고려

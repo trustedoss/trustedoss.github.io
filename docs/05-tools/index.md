@@ -6,7 +6,7 @@ description: '무료 오픈소스 도구로 SBOM을 만들고 취약점에 대�
   - 'ISO/IEC 5230: []'
   - 'ISO/IEC 18974: []'
 셀프스터디 소요시간: 5분
-sidebar_position: 0
+sidebar_position: 5
 sidebar_label: 도구 개요
 ---
 
@@ -31,7 +31,7 @@ sidebar_label: 도구 개요
 
 ## AI 에이전트로 자동 생성
 
-각 단계의 산출물은 에이전트로 자동 생성할 수 있습니다. 전체 매핑은 [AI 에이전트로 산출물 만들기](../00-overview/agents.md)를 참고하세요.
+각 단계의 산출물은 에이전트로 자동 생성할 수 있습니다. 전체 매핑은 [AI 에이전트로 산출물 만들기](/reference/agents)를 참고하세요.
 
 - SBOM 생성: `05-sbom-guide`, `05-sbom-analyst`
 - SBOM 관리: `05-sbom-management`

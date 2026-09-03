@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 sidebar_label: 'Method 1: CLAUDE.md Policy'
 date: 2026-03-20
 version: '1.0'

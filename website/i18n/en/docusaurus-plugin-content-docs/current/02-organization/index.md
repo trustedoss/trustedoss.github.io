@@ -2,7 +2,7 @@
 id: index
 title: Organizational Structure
 sidebar_label: Organizational Structure
-sidebar_position: 1
+sidebar_position: 2
 date: 2026-03-20
 version: '1.0'
 checklist:

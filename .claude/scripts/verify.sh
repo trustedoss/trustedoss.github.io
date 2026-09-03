@@ -74,7 +74,7 @@ while IFS= read -r file; do
       fi
     fi
   done < "$file"
-done < <(find docs -name "*.md" 2>/dev/null)
+done < <(find docs website/reference -name "*.md" 2>/dev/null)
 
 if [ $FM_ERRORS -eq 0 ]; then
   echo "  PASS: Front matter 형식 이상 없음"
@@ -161,6 +161,7 @@ while IFS= read -r match; do
   SPEC_ERRORS=$((SPEC_ERRORS+1))
 done < <(grep -rn "18974[^(0-9]*3\.[1-9]\.[0-9]" \
     docs/ agents/ templates/ output-sample/ website/ai-coding/ website/devsecops/ \
+    website/reference/ \
     --include="*.md" --include="*.mdx" \
     2>/dev/null | \
     grep -v "\.claude/reference/" | grep -v "^docs/_plan/")
@@ -172,6 +173,7 @@ while IFS= read -r match; do
   SPEC_ERRORS=$((SPEC_ERRORS+1))
 done < <(grep -rn "18974[^)]*[\[(]3\.[1-9]" \
     docs/ agents/ templates/ output-sample/ website/ai-coding/ website/devsecops/ \
+    website/reference/ \
     --include="*.md" --include="*.mdx" \
     2>/dev/null | \
     grep -v "\.claude/reference/" | grep -v "^docs/_plan/")
@@ -182,6 +184,7 @@ while IFS= read -r match; do
   SPEC_ERRORS=$((SPEC_ERRORS+1))
 done < <(grep -rn "5230[^(0-9]*4\.[1-9]\.[0-9]" \
     docs/ agents/ templates/ output-sample/ website/ai-coding/ website/devsecops/ \
+    website/reference/ \
     --include="*.md" --include="*.mdx" \
     2>/dev/null | \
     grep -v "\.claude/reference/" | grep -v "^docs/_plan/")
@@ -192,6 +195,7 @@ while IFS= read -r match; do
   SPEC_ERRORS=$((SPEC_ERRORS+1))
 done < <(grep -rn "5230[^)]*[\[(]4\.[1-9]" \
     docs/ agents/ templates/ output-sample/ website/ai-coding/ website/devsecops/ \
+    website/reference/ \
     --include="*.md" --include="*.mdx" \
     2>/dev/null | \
     grep -v "\.claude/reference/" | grep -v "^docs/_plan/")
@@ -214,10 +218,11 @@ while IFS= read -r result; do
 done < <(python3 - <<'PYEOF'
 import os, sys
 
-docs_dir = 'docs'
+search_roots = ['docs', 'website/reference']
 violations = []
 
-for root, dirs, files in os.walk(docs_dir):
+for docs_dir in search_roots:
+  for root, dirs, files in os.walk(docs_dir):
     for fname in files:
         if not fname.endswith('.md'):
             continue

@@ -1,5 +1,4 @@
 ---
-id: 08-developer-guide
 title: 'Developer Guide: Automatic Open Source Policy Compliance in Claude Code'
 sidebar_label: Developer Guide (Optional)
 sidebar_position: 8

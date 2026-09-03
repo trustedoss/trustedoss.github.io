@@ -18,5 +18,9 @@
   "sidebar.devSecOps.category.표준 연계": {
     "message": "Standard Alignment",
     "description": "The label for category '표준 연계' in sidebar 'devSecOps'"
+  },
+  "sidebar.devSecOps.doc.표준 대응: DevSecOps": {
+    "message": "Standard Coverage: DevSecOps",
+    "description": "The label for the doc item '표준 대응: DevSecOps' in sidebar 'devSecOps', linking to the doc iso-mapping"
   }
 }

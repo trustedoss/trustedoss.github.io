@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 3
 sidebar_label: '방법 3: Hooks 설정'
 작성일: 2026-03-20
 버전: 1.0

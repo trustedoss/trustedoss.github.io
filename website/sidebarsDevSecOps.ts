@@ -22,12 +22,12 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: '파이프라인',
-      items: ['pipeline-design', 'monitoring'],
+      items: ['pipeline-design', 'pipeline-security', 'monitoring'],
     },
     {
       type: 'category',
       label: '표준 연계',
-      items: ['iso-mapping'],
+      items: [{type: 'doc', id: 'iso-mapping', label: '표준 대응: DevSecOps'}],
     },
   ],
 };

@@ -5,7 +5,7 @@
   - 'ISO/IEC 5230: []'
   - 'ISO/IEC 18974: []'
 셀프스터디 소요시간: 1시간
-sidebar_position: 3
+sidebar_position: 4
 sidebar_label: 공급망 보안
 ---
 

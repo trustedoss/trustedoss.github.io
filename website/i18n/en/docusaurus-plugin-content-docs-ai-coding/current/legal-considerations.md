@@ -2,6 +2,7 @@
 id: legal-considerations
 title: 'Legal Considerations for AI-Generated Code'
 sidebar_label: 'Legal Considerations for AI-Generated Code'
+sidebar_position: 8
 ---
 
 # Legal Considerations for AI-Generated Code

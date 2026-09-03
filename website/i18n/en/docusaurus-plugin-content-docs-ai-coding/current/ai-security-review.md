@@ -2,7 +2,7 @@
 id: ai-security-review
 title: AI Security Code Review
 sidebar_label: AI Security Review
-sidebar_position: 7
+sidebar_position: 5
 ---
 
 # AI Security Code Review (Stage 4)

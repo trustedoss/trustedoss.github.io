@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 4
 sidebar_label: '방법 4: CI/CD 파이프라인'
 작성일: 2026-03-20
 버전: 1.0

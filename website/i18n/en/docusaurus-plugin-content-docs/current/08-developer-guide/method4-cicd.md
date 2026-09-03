@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 4
 sidebar_label: 'Method 4: CI/CD Pipeline'
 date: 2026-03-20
 version: '1.0'

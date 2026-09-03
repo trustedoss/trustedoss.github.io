@@ -3,6 +3,7 @@ id: intro
 title: Reference
 slug: intro
 description: 'Reference materials: deliverable best practices, canonical concept pages (license classification, vulnerability response deadlines), a glossary, and an agent selection guide.'
+sidebar_position: 1
 ---
 
 # Reference
@@ -37,7 +38,7 @@ Canonical concept pages linked from the main guide. The policy, process, and too
 
 ## Agent Selection Guide
 
-Which agent to use in which situation, and how agents map to chapters and deliverables, is covered in [Creating Deliverables with AI Agents](/docs/overview/agents).
+[Create deliverables with AI agents](./agents) covers which agent to use in which situation. The nine program-building agents map one-to-one to chapters and deliverables, and the seven automation agents write CI and developer-tool configuration or analyze scanner output.
 
 ## More on Tools and Regulations
 

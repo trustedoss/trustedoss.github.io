@@ -2,7 +2,7 @@
 id: checklist-mapping
 title: Integrated Requirements Checklist Mapping
 sidebar_label: Standard requirements at a glance
-sidebar_position: 2
+sidebar_position: 3
 date: 2026-03-20
 version: '1.0'
 checklist:

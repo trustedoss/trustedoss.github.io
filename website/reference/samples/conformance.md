@@ -2,6 +2,7 @@
 id: conformance
 title: 인증 산출물 Best Practice
 sidebar_label: 인증 산출물
+sidebar_position: 7
 ---
 
 # 인증 산출물 Best Practice

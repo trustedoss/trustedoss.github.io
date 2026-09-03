@@ -2,7 +2,7 @@
 id: ai-security-review
 title: AI 보안 코드 리뷰
 sidebar_label: AI 보안 리뷰
-sidebar_position: 7
+sidebar_position: 5
 ---
 
 # AI 보안 코드 리뷰 (4단계)

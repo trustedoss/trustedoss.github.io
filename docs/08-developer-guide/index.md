@@ -1,5 +1,4 @@
 ---
-id: 08-developer-guide
 title: '개발자 가이드: Claude Code에서 오픈소스 정책 자동 준수'
 sidebar_label: 개발자 가이드 (선택)
 sidebar_position: 8

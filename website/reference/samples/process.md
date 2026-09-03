@@ -2,6 +2,7 @@
 id: process
 title: 프로세스 산출물 Best Practice
 sidebar_label: 프로세스 산출물
+sidebar_position: 3
 ---
 
 # 프로세스 산출물 Best Practice

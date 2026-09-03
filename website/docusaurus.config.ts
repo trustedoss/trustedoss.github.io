@@ -166,6 +166,8 @@ const config: Config = {
             ],
             to: '/',
           },
+          {from: '/docs/overview/start-path', to: '/docs'},
+          {from: '/docs/overview/agents', to: '/reference/agents'},
         ],
       },
     ],

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 sidebar_label: 'Docker·CI/CD 실행 가이드'
 작성일: 2026-06-05
 버전: 1.0

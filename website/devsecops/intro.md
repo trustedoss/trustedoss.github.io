@@ -2,6 +2,7 @@
 id: intro
 title: DevSecOps
 slug: intro
+sidebar_position: 1
 ---
 
 # DevSecOps

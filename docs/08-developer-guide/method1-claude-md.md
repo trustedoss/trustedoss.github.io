@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 sidebar_label: '방법 1: CLAUDE.md 정책'
 작성일: 2026-03-20
 버전: 1.0

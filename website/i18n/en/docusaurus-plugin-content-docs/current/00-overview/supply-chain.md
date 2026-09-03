@@ -5,7 +5,7 @@ checklist:
   - 'ISO/IEC 5230: []'
   - 'ISO/IEC 18974: []'
 self_study_time: 1 hour
-sidebar_position: 3
+sidebar_position: 4
 sidebar_label: Supply chain security
 ---
 

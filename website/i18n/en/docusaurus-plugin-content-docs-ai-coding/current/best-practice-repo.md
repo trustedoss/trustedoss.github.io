@@ -2,7 +2,7 @@
 id: best-practice-repo
 title: Best Practice Repository
 sidebar_label: Best Practice Repository
-sidebar_position: 8
+sidebar_position: 10
 ---
 
 # Best Practice Repository

@@ -2,6 +2,7 @@
 id: conformance
 title: Conformance Output Best Practice
 sidebar_label: Conformance Output
+sidebar_position: 7
 ---
 
 # Conformance Output Best Practice

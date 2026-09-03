@@ -1,7 +1,7 @@
 ---
 id: index
 title: 조직 구성
-sidebar_position: 1
+sidebar_position: 2
 작성일: 2026-03-20
 버전: 1.0
 충족 체크리스트:

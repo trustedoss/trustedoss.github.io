@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 2
 sidebar_label: 'Method 2: Skill Definition'
 date: 2026-03-20
 version: '1.0'

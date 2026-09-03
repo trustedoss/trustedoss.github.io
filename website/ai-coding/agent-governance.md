@@ -2,6 +2,7 @@
 id: agent-governance
 title: '에이전트와 MCP 도구 거버넌스'
 sidebar_label: '에이전트·MCP 도구 거버넌스'
+sidebar_position: 7
 ---
 
 # 에이전트와 MCP 도구 거버넌스

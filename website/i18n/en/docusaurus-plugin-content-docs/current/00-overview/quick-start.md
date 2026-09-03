@@ -6,7 +6,7 @@ checklist:
   - 'ISO/IEC 5230: []'
   - 'ISO/IEC 18974: []'
 self_study_time: 5 minutes
-sidebar_position: 1
+sidebar_position: 2
 sidebar_label: 5-minute quick start
 ---
 
@@ -54,6 +54,6 @@ After the agent finishes, return to the repo root (`cd ../..`) and check the del
 
 ## Next steps
 
-- To choose a path that fits your situation, see [The start path that fits you](./start-path.md).
+- To choose a path that fits your situation, see the next-steps section of [Overview: the two standards and the whole journey](./index.md).
 - To see the full journey, go to [Overview: the two standards and the full journey](./index.md).
 - To prepare your environment first, go to the [Environment preparation](../01-setup/index.md) chapter.

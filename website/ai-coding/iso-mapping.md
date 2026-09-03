@@ -2,7 +2,7 @@
 id: iso-mapping
 title: 'ISO 표준 연계 (AI 코딩)'
 sidebar_label: 'ISO 표준 연계'
-sidebar_position: 12
+sidebar_position: 11
 ---
 
 # ISO/IEC 5230 · 18974 연계 (AI 코딩)

@@ -2,6 +2,7 @@
 id: training
 title: 교육 산출물 Best Practice
 sidebar_label: 교육 산출물
+sidebar_position: 6
 ---
 
 # 교육 산출물 Best Practice

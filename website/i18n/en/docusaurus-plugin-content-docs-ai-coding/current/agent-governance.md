@@ -2,6 +2,7 @@
 id: agent-governance
 title: 'Agent and MCP Tool Governance'
 sidebar_label: 'Agent & MCP Tool Governance'
+sidebar_position: 7
 ---
 
 # Agent and MCP Tool Governance

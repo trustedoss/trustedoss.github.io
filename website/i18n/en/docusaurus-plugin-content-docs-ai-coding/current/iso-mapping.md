@@ -2,7 +2,7 @@
 id: iso-mapping
 title: 'ISO Standards Linkage (AI Coding)'
 sidebar_label: 'ISO Standards Linkage'
-sidebar_position: 12
+sidebar_position: 11
 ---
 
 # ISO/IEC 5230 · 18974 Linkage (AI Coding)

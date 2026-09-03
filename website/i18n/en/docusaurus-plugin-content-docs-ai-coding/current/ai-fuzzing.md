@@ -2,7 +2,7 @@
 id: ai-fuzzing
 title: AI Fuzzing
 sidebar_label: AI Fuzzing
-sidebar_position: 8
+sidebar_position: 6
 ---
 
 # AI Fuzzing (Stage 4b)

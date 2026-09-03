@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 3
 sidebar_label: 'Method 3: Hooks Setup'
 date: 2026-03-20
 version: '1.0'

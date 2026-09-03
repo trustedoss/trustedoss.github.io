@@ -18,5 +18,9 @@
   "sidebar.aiCoding.category.표준 연계": {
     "message": "Standard Alignment",
     "description": "The label for category '표준 연계' in sidebar 'aiCoding'"
+  },
+  "sidebar.aiCoding.doc.표준 대응: AI 코딩": {
+    "message": "Standard Coverage: AI Coding",
+    "description": "The label for the doc item '표준 대응: AI 코딩' in sidebar 'aiCoding', linking to the doc iso-mapping"
   }
 }

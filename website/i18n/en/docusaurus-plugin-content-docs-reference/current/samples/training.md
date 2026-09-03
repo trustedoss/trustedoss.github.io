@@ -2,6 +2,7 @@
 id: training
 title: Training Output Best Practice
 sidebar_label: Training Output
+sidebar_position: 6
 ---
 
 # Training Output Best Practice

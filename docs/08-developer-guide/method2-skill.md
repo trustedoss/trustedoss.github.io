@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 2
 sidebar_label: '방법 2: Skill 정의'
 작성일: 2026-03-20
 버전: 1.0

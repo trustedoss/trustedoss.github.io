@@ -6,7 +6,7 @@ checklist:
   - 'ISO/IEC 5230: []'
   - 'ISO/IEC 18974: []'
 self_study_time: 5 minutes
-sidebar_position: 0
+sidebar_position: 5
 sidebar_label: Tools overview
 ---
 
@@ -31,7 +31,7 @@ See SBOM analysis results right in your browser first, with no installation.
 
 ## Automatic generation with AI agents
 
-The deliverables of each step can be generated automatically with AI agents. For the full mapping, see [Create deliverables with AI agents](../00-overview/agents.md).
+The deliverables of each step can be generated automatically with AI agents. For the full mapping, see [Create deliverables with AI agents](/reference/agents).
 
 - SBOM creation: `05-sbom-guide`, `05-sbom-analyst`
 - SBOM management: `05-sbom-management`

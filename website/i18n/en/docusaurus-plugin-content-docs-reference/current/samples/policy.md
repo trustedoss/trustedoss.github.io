@@ -2,6 +2,7 @@
 id: policy
 title: Policy Deliverables Best Practice
 sidebar_label: Policy Output
+sidebar_position: 2
 ---
 
 # Policy Deliverables Best Practice

@@ -2,6 +2,7 @@
 id: policy
 title: 정책 산출물 Best Practice
 sidebar_label: 정책 산출물
+sidebar_position: 2
 ---
 
 # 정책 산출물 Best Practice

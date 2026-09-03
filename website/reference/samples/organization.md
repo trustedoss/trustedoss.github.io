@@ -2,6 +2,7 @@
 id: organization
 title: 조직 산출물 Best Practice
 sidebar_label: 조직 산출물
+sidebar_position: 1
 ---
 
 # 조직 산출물 Best Practice

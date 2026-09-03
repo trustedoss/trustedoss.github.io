@@ -5,6 +5,7 @@ const sidebars: SidebarsConfig = {
     'intro',
     'glossary',
     'talks',
+    'agents',
     {
       type: 'category',
       label: '산출물 Best Practice',

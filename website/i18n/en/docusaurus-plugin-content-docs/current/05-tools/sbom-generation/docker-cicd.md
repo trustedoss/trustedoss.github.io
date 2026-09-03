@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 sidebar_label: 'Docker and CI/CD execution guide'
 date: 2026-06-05
 version: '1.0'

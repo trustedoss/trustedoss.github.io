@@ -2,6 +2,7 @@
 id: organization
 title: Organization Deliverables Best Practice
 sidebar_label: Organization Output
+sidebar_position: 1
 ---
 
 # Organization Deliverables Best Practice
