@@ -92,16 +92,9 @@ const sidebars: SidebarsConfig = {
       ],
     },
     {
-      type: 'category',
+      type: 'doc',
+      id: 'developer-guide/index',
       label: '8. 개발자 가이드 (선택)',
-      collapsed: true,
-      link: {type: 'doc', id: 'developer-guide/index'},
-      items: [
-        'developer-guide/method1-claude-md',
-        'developer-guide/method2-skill',
-        'developer-guide/method3-hooks',
-        'developer-guide/method4-cicd',
-      ],
     },
   ],
 };

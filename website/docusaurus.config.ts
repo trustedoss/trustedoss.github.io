@@ -168,6 +168,23 @@ const config: Config = {
           },
           {from: '/docs/overview/start-path', to: '/docs'},
           {from: '/docs/overview/agents', to: '/reference/agents'},
+          // 3.9.2 는 to 에 앵커를 허용한다(K6 빌드 실측). 각 방법 절로 보낸다.
+          {
+            from: '/docs/developer-guide/method1-claude-md',
+            to: '/docs/developer-guide#method-1',
+          },
+          {
+            from: '/docs/developer-guide/method2-skill',
+            to: '/docs/developer-guide#method-2',
+          },
+          {
+            from: '/docs/developer-guide/method3-hooks',
+            to: '/docs/developer-guide#method-3',
+          },
+          {
+            from: '/docs/developer-guide/method4-cicd',
+            to: '/docs/developer-guide#method-4',
+          },
         ],
       },
     ],

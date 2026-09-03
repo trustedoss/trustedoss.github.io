@@ -10,6 +10,14 @@ checklist:
 self_study_time: 2 hours
 ---
 
+<!-- This exceeds the 200-350 line guidance in STYLEGUIDE.md section 1. Keeping methods 1-4
+     as separate pages made the reader navigate four times and duplicated text between
+     sections, so they were merged into one page. The full SKILL.md and the full workflow
+     are folded into <details> to keep them out of the reading flow.
+     The license list in method 1 stays complete because readers paste it into their own
+     CLAUDE.md. When a category changes, three places must be updated together: the canonical
+     page (reference/concepts/license-classification), ai-coding/rules-template, and this file. -->
+
 # Developer Guide: Automatic Open Source Policy Compliance in Claude Code
 
 ## 1. What we do in this chapter
@@ -75,43 +83,163 @@ For complete assurance, apply all four methods. Each method works independently,
 
 ## 4. Detailed guide to each method
 
-We recommend starting with the easiest method 1 and reinforcing it with methods 3 and 4. Below is a summary of the key examples; the full explanation is in each linked document.
+We recommend starting with the easiest method 1 and reinforcing it with 3 and 4.
 
-### Method 1 — State the policy in CLAUDE.md (70% assurance, very easy)
+### Method 1 — State the policy in CLAUDE.md (70% assurance, very easy) {#method-1}
 
-Write the allowed and prohibited licenses and the package addition procedure in the project root `CLAUDE.md`, and Claude Code will automatically consult this policy whenever it helps add a package.
+Add the section below to `CLAUDE.md` in the project root and Claude Code will reference this policy automatically when it helps you add a package. The categories follow [License Classification](/reference/concepts/license-classification). The allowlist that actually governs your company is `output/policy/license-allowlist.md`, generated in the 03 Policy chapter, so adjust the example to match that file after pasting it.
 
 ```markdown
 ## Open Source Policy (automatic compliance)
 
+### Allowed licenses
+
+The following licenses may be used for new packages without separate approval:
+
+- MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC
+- Full list: see output/policy/license-allowlist.md
+
+### Conditionally allowed licenses
+
+The following licenses may be used after review and approval by the program manager:
+
+- LGPL, MPL (Weak Copyleft - source disclosure obligation depending on usage, legal review required)
+- CC-BY-SA (a content license, so applying it to software requires separate review)
+- Conditions and exceptions: see output/policy/license-allowlist.md
+
 ### Prohibited licenses
 
-- GPL-2.0, GPL-3.0, AGPL-3.0 (Copyleft — source code disclosure obligation)
-- Full allowlist: see output/policy/license-allowlist.md
+The following licenses must not be added without prior approval:
+
+- GPL, AGPL (Copyleft - source code disclosure obligation on distribution)
+- SSPL, Commons Clause (use restrictions that do not meet the Open Source Definition)
+- Any license with a clause prohibiting commercial use
+
+### Vulnerability policy
+
+- Do not use packages with vulnerabilities of CVSS 7.0 or higher (High/Critical)
+- Upgrade versions with known vulnerabilities to a patched version
+
+### Checks when adding a package
+
+When adding a new package, always check in this order:
+
+1. License check: run `license-checker` or the `/oss-policy-check` skill
+2. Vulnerability check: run the OSV API or `grype`
+3. Allowlist comparison: compare against output/policy/license-allowlist.md
+4. On violation: request usage approval from the program manager (see output/process/usage-approval.md)
 ```
+
+:::note The canonical source for the categories
+The criteria behind the allowed, conditional, and prohibited categories are owned by
+[License Classification](/reference/concepts/license-classification). The example above restates
+those criteria in CLAUDE.md form, so check the canonical page first if a category changes. The full
+rule set for AI coding tool configuration files is in the
+[Common Rules Template](/ai-coding/rules-template).
+:::
 
 - Effect: Claude Code is aware of the policy and warns you on violations.
 - Limitation: if a developer runs `npm install` directly in the terminal, Claude Code cannot intervene.
 
-Full example: [Method 1: Adding the Policy to CLAUDE.md](./method1-claude-md.md)
+### Method 2 — Standardize checks with a Skill (80% assurance, easy) {#method-2}
 
-### Method 2 — Standardize checks with a Skill (80% assurance, easy)
-
-Turn the license and vulnerability check procedure into an `/oss-policy-check` skill so anyone can run the same check with a single command.
+Turn the license and vulnerability check procedure into an `/oss-policy-check` skill so anyone can run the same check with a single command. Skills are defined per directory, and the frontmatter (name, description) at the top of the file is required for the skill to be recognized.
 
 ```bash
-npx license-checker --summary    # Collect licenses
-grype dir:. --fail-on high       # Check vulnerabilities (fail on High or above)
+mkdir -p .claude/skills/oss-policy-check
 ```
+
+You can invoke it anywhere in this project with `/oss-policy-check`. To use it in every project, put the same content in `~/.claude/skills/`.
+
+<details>
+<summary>Full <code>.claude/skills/oss-policy-check/SKILL.md</code></summary>
+
+````markdown
+---
+name: oss-policy-check
+description: Open source policy compliance check. Run when a developer requests /oss-policy-check or asks to "check the open source policy".
+---
+
+# OSS Policy Compliance Check
+
+## Execution steps
+
+### Step 1: License check
+
+Node.js project:
+
+```bash
+npx license-checker --summary --excludePrivatePackages
+```
+
+Python project:
+
+```bash
+pip-licenses --format=markdown --with-urls
+```
+
+Java/Maven project:
+
+```bash
+mvn license:aggregate-third-party-report
+```
+
+### Step 2: Allowlist comparison
+
+Compare against the allowed licenses in output/policy/license-allowlist.md.
+If a license not on the list is found, issue a warning immediately.
+
+### Step 3: Vulnerability lookup (OSV API)
+
+Look up vulnerabilities for the discovered packages via the OSV API:
+
+```bash
+# Use grype (recommended)
+grype dir:. --fail-on high
+
+# Or use OSV-Scanner
+osv-scanner --recursive .
+```
+
+### Step 4: Report format
+
+Report the check results in the following format:
+
+---
+
+## OSS Policy Check Results
+
+**Check date:** YYYY-MM-DD
+**Target project:** [project name]
+
+### License status
+
+| License    | Package count | Status       |
+| ---------- | ------------- | ------------ |
+| MIT        | 45            | ✅ Allowed   |
+| Apache-2.0 | 12            | ✅ Allowed   |
+| GPL-3.0    | 1             | ❌ Violation |
+
+### Vulnerability status
+
+| CVE           | CVSS | Package        | Status                 |
+| ------------- | ---- | -------------- | ---------------------- |
+| CVE-2024-XXXX | 9.1  | lodash@4.17.15 | ❌ Urgent patch needed |
+
+### Recommendations
+
+- [ ] Replace the GPL-3.0 package or request usage approval
+- [ ] Upgrade lodash to 4.17.21 or later
+````
+
+</details>
 
 - Effect: the check procedure is standardized into one reusable command.
 - Limitation: if developers forget to run it, nothing is checked.
 
-Full example: [Method 2: Defining a Skill](./method2-skill.md)
+### Method 3 — Automatic reminders with Hooks (90% assurance, moderate) {#method-3}
 
-### Method 3 — Automatic reminders with Hooks (90% assurance, moderate)
-
-With a Hook configured in `.claude/settings.json`, a warning is displayed automatically whenever a dependency file changes.
+With the Hook below configured in `.claude/settings.json`, a warning is displayed automatically whenever a dependency file changes.
 
 ```json
 {
@@ -122,7 +250,7 @@ With a Hook configured in `.claude/settings.json`, a warning is displayed automa
         "hooks": [
           {
             "type": "command",
-            "command": "... print a warning when a dependency file changes ..."
+            "command": "node -e \"\nlet raw = '';\nprocess.stdin.on('data', (c) => (raw += c));\nprocess.stdin.on('end', () => {\n  const hook = JSON.parse(raw);\n  const file = (hook.tool_input && hook.tool_input.file_path) || '';\n  const depFiles = ['package.json', 'requirements.txt', 'pom.xml', 'go.mod', 'Cargo.toml'];\n  if (depFiles.some((f) => file.endsWith(f))) {\n    console.error('[OSS Policy Warning] A dependency file was changed.');\n    console.error('Always check the licenses and vulnerabilities of new packages.');\n    console.error('How to check: run /oss-policy-check');\n    process.exit(2);\n  }\n});\n\""
           }
         ]
       }
@@ -131,26 +259,103 @@ With a Hook configured in `.claude/settings.json`, a warning is displayed automa
 }
 ```
 
-- Effect: changes to `package.json`, `requirements.txt`, `pom.xml`, `go.mod`, and similar files trigger an automatic reminder.
+The hook command receives JSON on standard input describing the tool call (`tool_name`, `tool_input`, `tool_response`). The example decides whether the file is a dependency file from `tool_input.file_path` and, if so, exits with code 2 so the warning reaches Claude. This Hook serves as an automatic reminder of the package addition approval procedure defined in `output/process/usage-approval.md`.
+
+- Effect: changes to `package.json`, `requirements.txt`, `pom.xml`, `go.mod`, `Cargo.toml`, and similar files trigger an automatic reminder.
+- Stronger control: to block the edit itself, register the same script as a `PreToolUse` Hook. In PreToolUse, exit code 2 blocks the tool call before it runs.
 - Limitation: files modified outside Claude Code are not detected, so complement this with CI/CD.
 
-Full example: [Method 3: Setting Up Hooks](./method3-hooks.md)
+### Method 4 — Block merges with CI/CD (99% assurance, somewhat complex) {#method-4}
 
-### Method 4 — Block merges with CI/CD (99% assurance, somewhat complex)
+Automatically check every PR with syft and grype, and block the merge on policy violations. This guards the last gate regardless of what people or tools miss. The example below uses free open source tools only ([syft](https://github.com/anchore/syft) and [grype](https://github.com/anchore/grype) are both Apache-2.0).
 
-Automatically check every PR with syft and grype, and block the merge on policy violations. This guards the last gate regardless of what people or tools miss.
+Put only licenses in the prohibited category of [License Classification](/reference/concepts/license-classification) into the block list. Conditionally allowed licenses such as LGPL and MPL go to program manager review rather than failing the build, which is what the canonical page specifies.
+
+<details>
+<summary>Full <code>.github/workflows/oss-policy-check.yml</code></summary>
 
 ```yaml
+name: OSS Policy Check
+
 on:
   pull_request:
-    paths: [package.json, requirements.txt, pom.xml, go.mod]
-# Generate SBOM with syft → block High or above vulnerabilities with grype --fail-on high
+    branches: [main, master]
+    paths:
+      - 'package.json'
+      - 'package-lock.json'
+      - 'requirements.txt'
+      - 'pom.xml'
+      - 'go.mod'
+      - 'Cargo.toml'
+
+jobs:
+  license-check:
+    name: License policy check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Generate SBOM with syft
+        uses: anchore/sbom-action@v0
+        with:
+          format: cyclonedx-json
+          output-file: sbom.cdx.json
+
+      - name: Extract licenses and check policy
+        run: |
+          # Extract the license list from the SBOM (sbom.cdx.json) generated in the previous step
+          jq -r '.components[]?.licenses[]? | (.license.id // .license.name // .expression) // empty' sbom.cdx.json | sort -u > detected-licenses.txt
+
+          echo "=== Detected licenses ==="
+          cat detected-licenses.txt
+
+          # Check for prohibited licenses (grep -E extended regex; -only/-or-later variants also match partially)
+          # \b is a word boundary, so LGPL does not match. LGPL and MPL are conditionally
+          # allowed rather than prohibited, so they go to manager review instead of a block.
+          # Requires GNU grep.
+          FORBIDDEN='\b(GPL-2\.0|GPL-3\.0|AGPL-3\.0|SSPL-1\.0|Commons-Clause)'
+          if grep -qE "$FORBIDDEN" detected-licenses.txt; then
+            echo "::error::Prohibited licenses detected. Obtain program manager approval or use an alternative package."
+            grep -E "$FORBIDDEN" detected-licenses.txt
+            exit 1
+          fi
+
+          echo "✅ License check passed"
+
+  vulnerability-check:
+    name: Vulnerability check (block High or above)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Scan vulnerabilities with grype
+        id: scan
+        uses: anchore/scan-action@v7
+        with:
+          path: '.'
+          fail-build: true
+          severity-cutoff: high # Block the merge when a High / Critical vulnerability is found
+          output-format: sarif # The result file path is referenced below via outputs
+
+      - name: Upload vulnerability report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: vulnerability-report
+          # Since v6 the result file is written to a temp path; reference it via outputs.
+          path: ${{ steps.scan.outputs.sarif }}
 ```
 
-- Effect: every PR is checked, regardless of the development environment.
+</details>
+
+:::note
+This step supports the automated, continuous verification of the ISO/IEC 18974 G3S.1 requirement (identifying known vulnerabilities).
+:::
+
+- Effect: every PR is checked regardless of the development environment, and merges are blocked when a prohibited license or a High or above vulnerability is found. Results appear directly on the PR.
 - Limitation: initial setup and exception management take some effort.
 
-Full example: [Method 4: Adding a CI/CD Pipeline](./method4-cicd.md)
+How to put the same checks into an organization-wide pipeline, and the per-tool settings, are covered in [Software Composition Analysis (SCA)](/devsecops/sca).
 
 ### Recommended combinations by situation
 
@@ -164,19 +369,7 @@ You do not need to adopt all four at once. Start with the combination that fits 
 
 We recommend a phased rollout: apply method 1 in five minutes first to see the effect, then add enforcement with method 4 as your release frequency grows.
 
-## 5. Detailed implementation guidance
-
-:::info See the separate project for detailed implementation
-Real implementation examples for each method, troubleshooting, and settings for various languages and build systems
-will be provided in the **claude-oss-policy-guard** project.
-(In preparation)
-:::
-
-This chapter provides the concepts and basic examples.
-For real production deployment, exception handling, complex monorepo setups, and more,
-refer to the detailed guide in the `claude-oss-policy-guard` project.
-
-## 6. Completion check
+## 5. Completion check
 
 :::info Self-study mode (about 2 hours)
 Take your time and work through each step until you understand it.
@@ -192,7 +385,7 @@ This chapter is complete when all items below are done.
 - [ ] `.github/workflows/oss-policy-check.yml` created
 - [ ] Test PR opened and the license and vulnerability checks confirmed to run automatically
 
-## 7. Next steps
+## 6. Next steps
 
 If you have completed this chapter, your open source management system has moved **beyond being built into daily operation**.
 
@@ -204,6 +397,5 @@ If you have completed this chapter, your open source management system has moved
 
 **Going further:**
 
-- claude-oss-policy-guard project (in preparation)
 - Join the [OpenChain community](https://www.openchainproject.org/)
 - Share SBOMs with supply chain partners (using `output/sbom/sbom-sharing-template.md`)

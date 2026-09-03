@@ -279,7 +279,7 @@ Claude Code 는 조직이 배포하는 관리 설정(`managed-settings.json` —
 - `allowedMcpServers` 에 없는 서버는 사용할 수 없습니다(빈 배열이면 전면 잠금,
   `deniedMcpServers` 가 우선).
 - 도구 호출 단위의 결정적 차단은 PreToolUse hook 으로 구현합니다 —
-  [방법 3: Hooks 설정하기](/docs/developer-guide/method3-hooks) 의 스크립트를 그대로 확장할 수 있습니다.
+  [방법 3: Hooks로 자동 환기](/docs/developer-guide#method-3) 의 스크립트를 그대로 확장할 수 있습니다.
 - 다른 도구도 관리자 정책을 제공합니다(예: 도구별 조직 설정에서 MCP 사용 제한). 각 도구의
   관리자 문서를 확인하세요.
 

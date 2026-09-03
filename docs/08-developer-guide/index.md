@@ -10,6 +10,13 @@ sidebar_position: 8
 셀프스터디 소요시간: 2시간
 ---
 
+<!-- STYLEGUIDE.md §1 의 200~350줄 권장을 넘는다. 방법 1~4 를 개별 페이지로 두면
+     독자가 네 번 이동해야 하고 절끼리 중복이 생겨 한 페이지로 합쳤다. SKILL.md 전문과
+     워크플로 전문은 <details> 로 접어 본문 흐름에서 뺐다.
+     방법 1 의 라이선스 목록은 독자가 붙여넣는 산출물이라 전문을 유지한다. 등급이 바뀌면
+     세 곳을 함께 고쳐야 한다. 정본(reference/concepts/license-classification),
+     ai-coding/rules-template, 그리고 이 문서다. -->
+
 # 개발자 가이드: Claude Code에서 오픈소스 정책 자동 준수
 
 ## 1. 이 챕터에서 하는 일
@@ -75,43 +82,160 @@ CVSS 9.0의 Critical 취약점이 공개되었지만 팀이 인지하지 못합�
 
 ## 4. 각 방법 상세 가이드
 
-가장 쉬운 방법 1부터 시작해 3·4로 보강하는 순서를 권장합니다. 아래는 핵심 예시 요약이며, 전체 설명은 각 링크 문서에 있습니다.
+가장 쉬운 방법 1부터 시작해 3·4로 보강하는 순서를 권장합니다.
 
-### 방법 1 — CLAUDE.md에 정책 명시 (보장 70%, 쉬움)
+### 방법 1 — CLAUDE.md에 정책 명시 (보장 70%, 쉬움) {#method-1}
 
-프로젝트 루트 `CLAUDE.md`에 허용·금지 라이선스와 패키지 추가 절차를 적어 두면, Claude Code가 패키지 추가를 도울 때 이 정책을 자동으로 참조합니다.
+프로젝트 루트의 `CLAUDE.md`에 아래 섹션을 추가하면, Claude Code가 패키지 추가를 도울 때 이 정책을 자동으로 참조합니다. 등급 구분은 [라이선스 분류](/reference/concepts/license-classification) 기준을 따릅니다. 실제 회사 정책의 허용 목록은 03 정책 챕터에서 생성한 `output/policy/license-allowlist.md`이므로, 아래 예시를 붙여넣은 뒤 그 파일 내용에 맞게 조정하세요.
 
 ```markdown
 ## 오픈소스 정책 (자동 준수)
 
+### 허용 라이선스
+
+아래 라이선스는 별도 승인 없이 신규 패키지에 사용 가능하다:
+
+- MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC
+- 전체 목록: output/policy/license-allowlist.md 참조
+
+### 조건부 허용 라이선스
+
+아래 라이선스는 담당자 사전 검토와 승인 후 사용 가능하다:
+
+- LGPL, MPL (Weak Copyleft - 사용 방식에 따라 소스 공개 의무 발생, 법무 검토 필요)
+- CC-BY-SA (콘텐츠용 라이선스라 소프트웨어 적용 시 별도 검토 필요)
+- 조건과 예외는 output/policy/license-allowlist.md 참조
+
 ### 금지 라이선스
 
-- GPL-2.0, GPL-3.0, AGPL-3.0 (Copyleft — 소스코드 공개 의무)
-- 전체 허용 목록: output/policy/license-allowlist.md 참조
+아래 라이선스는 사전 승인 없이 추가 금지:
+
+- GPL, AGPL (Copyleft - 배포 시 소스코드 공개 의무)
+- SSPL, Commons Clause (오픈소스 정의를 충족하지 않는 사용 제한 조항)
+- 상업적 사용 금지 조항이 있는 모든 라이선스
+
+### 취약점 정책
+
+- CVSS 7.0 이상(High/Critical) 취약점이 있는 패키지 사용 금지
+- 알려진 취약점이 있는 버전은 패치 버전으로 업그레이드
+
+### 패키지 추가 시 확인 절차
+
+새 패키지를 추가할 때는 반드시 아래 순서로 확인한다:
+
+1. 라이선스 확인: `license-checker` 또는 `/oss-policy-check` skill 실행
+2. 취약점 확인: OSV API 또는 `grype` 실행
+3. 허용 목록 비교: output/policy/license-allowlist.md 대조
+4. 위반 시: 담당자에게 사용 승인 요청 (output/process/usage-approval.md 참조)
 ```
+
+:::note 등급 기준의 정본
+허용·조건부·금지 세 등급의 판단 기준은 [라이선스 분류](/reference/concepts/license-classification)가
+정본입니다. 위 예시는 그 기준을 CLAUDE.md 형식으로 옮긴 것이므로, 등급이 바뀌면 정본을 먼저
+확인하세요. AI 코딩 도구별 설정 파일에 넣을 규칙 전문은
+[공통 Rules 템플릿](/ai-coding/rules-template)에 있습니다.
+:::
 
 - 효과: Claude Code가 정책을 인지하고 위반 시 경고합니다.
 - 한계: 개발자가 터미널에서 직접 `npm install`을 실행하면 개입하지 못합니다.
 
-전체 예시: [방법 1: CLAUDE.md에 정책 추가하기](./method1-claude-md.md)
+### 방법 2 — Skill로 검사 절차 표준화 (보장 80%, 쉬움) {#method-2}
 
-### 방법 2 — Skill로 검사 절차 표준화 (보장 80%, 쉬움)
-
-라이선스·취약점 확인 절차를 `/oss-policy-check` skill로 만들어, 누구나 한 명령으로 같은 검사를 실행합니다.
+라이선스·취약점 확인 절차를 `/oss-policy-check` skill로 만들어, 누구나 한 명령으로 같은 검사를 실행합니다. Skill은 디렉토리 단위로 정의하며, 파일 상단의 frontmatter(name, description)가 있어야 인식됩니다.
 
 ```bash
-npx license-checker --summary    # 라이선스 수집
-grype dir:. --fail-on high       # 취약점 조회 (High 이상이면 실패)
+mkdir -p .claude/skills/oss-policy-check
 ```
+
+이 프로젝트 어디서나 `/oss-policy-check`으로 호출할 수 있습니다. 모든 프로젝트에서 쓰려면 같은 내용을 `~/.claude/skills/`에 두면 됩니다.
+
+<details>
+<summary><code>.claude/skills/oss-policy-check/SKILL.md</code> 전문</summary>
+
+````markdown
+---
+name: oss-policy-check
+description: 오픈소스 정책 준수 검사. 개발자가 /oss-policy-check 또는 "오픈소스 정책 확인"을 요청할 때 실행한다.
+---
+
+# OSS 정책 준수 검사
+
+## 실행 절차
+
+### 1단계: 라이선스 확인
+
+Node.js 프로젝트:
+
+```bash
+npx license-checker --summary --excludePrivatePackages
+```
+
+Python 프로젝트:
+
+```bash
+pip-licenses --format=markdown --with-urls
+```
+
+Java/Maven 프로젝트:
+
+```bash
+mvn license:aggregate-third-party-report
+```
+
+### 2단계: 허용 목록 대조
+
+output/policy/license-allowlist.md 의 허용 라이선스와 비교한다.
+목록에 없는 라이선스가 발견되면 즉시 경고한다.
+
+### 3단계: 취약점 조회 (OSV API)
+
+발견된 패키지에 대해 OSV API로 취약점을 조회한다:
+
+```bash
+# grype 사용 (권장)
+grype dir:. --fail-on high
+
+# 또는 OSV-Scanner 사용
+osv-scanner --recursive .
+```
+
+### 4단계: 결과 보고 형식
+
+검사 결과를 아래 형식으로 보고한다:
+
+## OSS 정책 검사 결과
+
+**검사 일시:** YYYY-MM-DD
+**대상 프로젝트:** [프로젝트명]
+
+### 라이선스 현황
+
+| 라이선스   | 패키지 수 | 상태    |
+| ---------- | --------- | ------- |
+| MIT        | 45        | ✅ 허용 |
+| Apache-2.0 | 12        | ✅ 허용 |
+| GPL-3.0    | 1         | ❌ 위반 |
+
+### 취약점 현황
+
+| CVE           | CVSS | 패키지         | 상태              |
+| ------------- | ---- | -------------- | ----------------- |
+| CVE-2024-XXXX | 9.1  | lodash@4.17.15 | ❌ 긴급 패치 필요 |
+
+### 권고사항
+
+- [ ] GPL-3.0 패키지 대체 또는 사용 승인 요청
+- [ ] lodash 4.17.21 이상으로 업그레이드
+````
+
+</details>
 
 - 효과: 검사 절차가 재사용 가능한 한 명령으로 표준화됩니다.
 - 한계: 개발자가 실행을 잊으면 검사되지 않습니다.
 
-전체 예시: [방법 2: Skill 정의하기](./method2-skill.md)
+### 방법 3 — Hooks로 자동 환기 (보장 90%, 보통) {#method-3}
 
-### 방법 3 — Hooks로 자동 환기 (보장 90%, 보통)
-
-`.claude/settings.json`에 Hook을 걸어 두면, 의존성 파일이 변경될 때마다 자동으로 경고가 표시됩니다.
+`.claude/settings.json`에 아래 Hook을 걸어 두면, 의존성 파일이 변경될 때마다 자동으로 경고가 표시됩니다.
 
 ```json
 {
@@ -122,7 +246,7 @@ grype dir:. --fail-on high       # 취약점 조회 (High 이상이면 실패)
         "hooks": [
           {
             "type": "command",
-            "command": "... 의존성 파일 변경 시 경고 출력 ..."
+            "command": "node -e \"\nlet raw = '';\nprocess.stdin.on('data', (c) => (raw += c));\nprocess.stdin.on('end', () => {\n  const hook = JSON.parse(raw);\n  const file = (hook.tool_input && hook.tool_input.file_path) || '';\n  const depFiles = ['package.json', 'requirements.txt', 'pom.xml', 'go.mod', 'Cargo.toml'];\n  if (depFiles.some((f) => file.endsWith(f))) {\n    console.error('[OSS Policy Warning] 의존성 파일이 변경되었습니다.');\n    console.error('신규 패키지의 라이선스와 취약점을 반드시 확인하세요.');\n    console.error('확인 방법: /oss-policy-check 실행');\n    process.exit(2);\n  }\n});\n\""
           }
         ]
       }
@@ -131,26 +255,102 @@ grype dir:. --fail-on high       # 취약점 조회 (High 이상이면 실패)
 }
 ```
 
-- 효과: `package.json`·`requirements.txt`·`pom.xml`·`go.mod` 등 변경 시 자동으로 환기됩니다.
+Hook 커맨드는 표준 입력(stdin)으로 도구 호출 정보가 담긴 JSON(`tool_name`, `tool_input`, `tool_response`)을 받습니다. 위 예시는 `tool_input.file_path`로 의존성 파일 여부를 판단하고, 해당하면 exit code 2로 종료해 경고 메시지가 Claude에게 전달되도록 합니다. 이 Hook은 `output/process/usage-approval.md`에 정의된 패키지 추가 승인 절차를 자동으로 환기시킵니다.
+
+- 효과: `package.json`·`requirements.txt`·`pom.xml`·`go.mod`·`Cargo.toml` 등 변경 시 자동으로 환기됩니다.
+- 더 강한 통제: 수정 자체를 차단하려면 같은 스크립트를 `PreToolUse` Hook으로 등록하세요. PreToolUse에서 exit code 2는 도구 호출을 실행 전에 차단합니다.
 - 한계: Claude Code 외부에서 파일을 수정하면 감지하지 못하므로 CI/CD로 보완합니다.
 
-전체 예시: [방법 3: Hooks 설정하기](./method3-hooks.md)
+### 방법 4 — CI/CD로 머지 차단 (보장 99%, 다소 복잡) {#method-4}
 
-### 방법 4 — CI/CD로 머지 차단 (보장 99%, 다소 복잡)
+PR에서 syft·grype로 자동 검사하고, 정책 위반 시 머지를 차단합니다. 사람이나 도구의 누락과 무관하게 마지막 관문을 지킵니다. 아래 예시는 무료 오픈소스 도구만 사용합니다([syft](https://github.com/anchore/syft), [grype](https://github.com/anchore/grype) 모두 Apache-2.0).
 
-PR에서 syft·grype로 자동 검사하고, 정책 위반 시 머지를 차단합니다. 사람이나 도구의 누락과 무관하게 마지막 관문을 지킵니다.
+차단 목록에는 [라이선스 분류](/reference/concepts/license-classification)에서 금지 등급인 라이선스만 넣습니다. LGPL·MPL 같은 조건부 허용 라이선스는 빌드를 실패시키는 대신 담당자 검토로 넘기는 것이 정본 기준입니다.
+
+<details>
+<summary><code>.github/workflows/oss-policy-check.yml</code> 전문</summary>
 
 ```yaml
+name: OSS Policy Check
+
 on:
   pull_request:
-    paths: [package.json, requirements.txt, pom.xml, go.mod]
-# syft로 SBOM 생성 → grype --fail-on high 로 High 이상 취약점 차단
+    branches: [main, master]
+    paths:
+      - 'package.json'
+      - 'package-lock.json'
+      - 'requirements.txt'
+      - 'pom.xml'
+      - 'go.mod'
+      - 'Cargo.toml'
+
+jobs:
+  license-check:
+    name: 라이선스 정책 검사
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: syft로 SBOM 생성
+        uses: anchore/sbom-action@v0
+        with:
+          format: cyclonedx-json
+          output-file: sbom.cdx.json
+
+      - name: 라이선스 추출 및 정책 검사
+        run: |
+          # 앞 단계에서 생성한 SBOM(sbom.cdx.json)에서 라이선스 목록 추출
+          jq -r '.components[]?.licenses[]? | (.license.id // .license.name // .expression) // empty' sbom.cdx.json | sort -u > detected-licenses.txt
+
+          echo "=== 감지된 라이선스 ==="
+          cat detected-licenses.txt
+
+          # 금지 라이선스 확인 (grep -E 확장 정규식, -only/-or-later 변형도 부분 일치로 감지)
+          # \b 는 단어 경계라 LGPL 은 걸리지 않습니다. LGPL·MPL 은 금지가 아니라 조건부
+          # 허용이므로 차단 대신 담당자 검토 대상입니다. GNU grep 기준입니다.
+          FORBIDDEN='\b(GPL-2\.0|GPL-3\.0|AGPL-3\.0|SSPL-1\.0|Commons-Clause)'
+          if grep -qE "$FORBIDDEN" detected-licenses.txt; then
+            echo "::error::금지된 라이선스가 감지되었습니다. 담당자의 승인을 받거나 대체 패키지를 사용하세요."
+            grep -E "$FORBIDDEN" detected-licenses.txt
+            exit 1
+          fi
+
+          echo "✅ 라이선스 검사 통과"
+
+  vulnerability-check:
+    name: 취약점 검사 (High 이상 차단)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: grype로 취약점 스캔
+        id: scan
+        uses: anchore/scan-action@v7
+        with:
+          path: '.'
+          fail-build: true
+          severity-cutoff: high # High / Critical 취약점 발견 시 머지 차단
+          output-format: sarif # 결과 파일 경로는 아래에서 outputs 로 참조
+
+      - name: 취약점 보고서 업로드
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: vulnerability-report
+          # v6부터 결과 파일이 임시 경로에 생성되어 outputs 로 참조합니다.
+          path: ${{ steps.scan.outputs.sarif }}
 ```
 
-- 효과: 개발 환경과 무관하게 모든 PR을 강제로 검사합니다.
+</details>
+
+:::note
+이 단계는 ISO/IEC 18974 G3S.1 (알려진 취약점 식별) 요구사항의 자동화된 지속 검증을 지원합니다.
+:::
+
+- 효과: 개발 환경과 무관하게 모든 PR을 강제로 검사하고, 금지 라이선스나 High 이상 취약점 발견 시 머지를 차단합니다. 검사 결과는 PR 화면에 직접 표시됩니다.
 - 한계: 초기 설정과 예외 관리에 약간의 노력이 필요합니다.
 
-전체 예시: [방법 4: CI/CD 파이프라인 추가하기](./method4-cicd.md)
+같은 검사를 전사 파이프라인에 넣는 방법과 도구별 상세 설정은 [소프트웨어 구성 분석 (SCA)](/devsecops/sca)에서 다룹니다.
 
 ### 상황별 적용 조합 권장
 
@@ -164,19 +364,7 @@ on:
 
 처음에는 방법 1을 5분 만에 적용해 효과를 확인하고, 배포 빈도가 높아지면 방법 4로 강제력을 더하는 단계적 도입을 권장합니다.
 
-## 5. 상세 구현 안내
-
-:::info 상세 구현은 별도 프로젝트를 참조
-각 방법의 실제 구현 예시, 트러블슈팅, 다양한 언어·빌드 시스템별 설정을
-**claude-oss-policy-guard** 프로젝트에서 제공할 예정입니다.
-(준비 중)
-:::
-
-이 챕터는 개념과 기본 예시를 제공합니다.
-실제 프로덕션 환경 적용, 예외 처리, 복잡한 모노레포 구성 등은
-`claude-oss-policy-guard` 프로젝트의 상세 가이드를 참조합니다.
-
-## 6. 완료 확인
+## 5. 완료 확인
 
 :::info 셀프스터디 모드 (약 2시간)
 충분한 시간을 갖고 각 단계를 이해하며 진행합니다.
@@ -192,7 +380,7 @@ on:
 - [ ] `.github/workflows/oss-policy-check.yml` 생성 완료
 - [ ] 테스트 PR을 올려 라이선스·취약점 검사 자동 실행 확인
 
-## 7. 다음 단계
+## 6. 다음 단계
 
 이 챕터까지 완료했다면, 오픈소스 관리 체계가 **구축을 넘어 운영**까지 완성된 것입니다.
 
@@ -204,6 +392,5 @@ on:
 
 **더 나아가기:**
 
-- claude-oss-policy-guard 프로젝트 (준비 중)
 - [OpenChain 커뮤니티](https://www.openchainproject.org/) 참여
 - 공급망 파트너와 SBOM 공유 (`output/sbom/sbom-sharing-template.md` 활용)

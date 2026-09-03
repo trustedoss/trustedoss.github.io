@@ -304,7 +304,7 @@ current official docs).
 - Servers not in `allowedMcpServers` cannot be used (an empty array locks MCP down entirely;
   `deniedMcpServers` takes precedence).
 - Deterministic per-tool-call blocking is implemented with a PreToolUse hook — you can extend the
-  script from [Method 3: Setting up hooks](/docs/developer-guide/method3-hooks) directly.
+  script from [Method 3: Automatic reminders with Hooks](/docs/developer-guide#method-3) directly.
 - Other tools offer admin policies as well (e.g., restricting MCP use in per-tool organization
   settings); check each tool's admin documentation.
 

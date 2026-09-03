@@ -6,6 +6,10 @@
 "기준선에 있었으나 지금 사이트맵에 없는 URL 전부가 리다이렉트를 갖는가" 이므로
 이 스크립트가 그 방향으로 검사한다.
 
+리다이렉트 목적지에 앵커(`/path#anchor`)가 붙어 있으면 페이지 존재만이 아니라 그 앵커가
+실제로 목적지 페이지에 있는지까지 본다. 앵커가 없어지면 독자는 페이지 맨 위로 떨어지는데
+빌드는 이를 잡지 못한다(`onBrokenAnchors` 는 마크다운 링크만 검사한다).
+
 사용법:
     python3 .claude/scripts/check-redirects.py <기준선 파일> <build 디렉터리>
 
@@ -53,6 +57,19 @@ def url_to_path(url: str, site_root: str) -> str:
     if not path.startswith('/'):
         path = '/' + path
     return path.rstrip('/') or '/'
+
+
+def anchor_exists(build: Path, page_path: str, anchor: str) -> bool:
+    """목적지 페이지의 빌드 산출물에 해당 앵커 id 가 있는지 확인한다.
+
+    Docusaurus 산출물은 속성을 따옴표 없이 내보내므로(`id=method-1`) 두 형태를 모두 본다.
+    """
+    page = find_redirect_file(build, page_path)
+    if page is None:
+        return False
+    html = page.read_text(encoding='utf-8')
+    return any(pat in html for pat in
+               (f'id="{anchor}"', f"id='{anchor}'", f'id={anchor} ', f'id={anchor}>'))
 
 
 def find_redirect_file(build: Path, path: str) -> Path | None:
@@ -120,14 +137,19 @@ def main() -> int:
             continue
 
         target = match.group(1)
-        target_url = site_root + target if target.startswith('/') else target
+        # 앵커는 페이지 존재 검사에서 떼고, 뒤에서 따로 확인한다.
+        target_page, _, anchor = target.partition('#')
+        target_url = site_root + target_page if target_page.startswith('/') else target_page
         target_url = target_url.rstrip('/') or site_root
         # 목적지가 현재 사이트맵에 실재하는 URL 인지 확인한다.
-        if target_url in current or target_url + '/' in current:
-            print(f'  [정상] {path} -> {target}')
-        else:
+        if target_url not in current and target_url + '/' not in current:
             dangling.append((url, target))
             print(f'  [목적지 없음] {path} -> {target}')
+        elif anchor and not anchor_exists(build, target_page, anchor):
+            dangling.append((url, target))
+            print(f'  [앵커 없음] {path} -> {target}')
+        else:
+            print(f'  [정상] {path} -> {target}')
 
     print()
     if missing or dangling:
@@ -136,7 +158,7 @@ def main() -> int:
             for url in missing:
                 print(f'  {url}')
         if dangling:
-            print(f'FAIL: 목적지가 사이트맵에 없는 리다이렉트 {len(dangling)}개')
+            print(f'FAIL: 목적지 페이지나 앵커가 없는 리다이렉트 {len(dangling)}개')
             for url, target in dangling:
                 print(f'  {url} -> {target}')
         return 1
