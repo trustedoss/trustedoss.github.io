@@ -16,7 +16,13 @@ Compare them with your own `output/organization/` files to spot missing items.
 
 ---
 
-## Open Source Roles and Responsibilities Definition
+**Deliverables on this page**
+
+- [Open Source Roles and Responsibilities Definition](#role-definition)
+- [Open Source RACI Matrix](#raci-matrix)
+- [Open Source Program Manager Appointment Letter](#appointment-template)
+
+## Open Source Roles and Responsibilities Definition {#role-definition}
 
 Document: role-definition.md
 
@@ -133,7 +139,7 @@ As the organization grows and open source management becomes more complex, consi
 - **OSRB (Open Source Review Board)**: A committee that handles license, security, contribution, and release approvals. It is composed of the Open Source Program Manager and legal, security, and development representatives, and convenes once a month or when an issue arises.
 - **OSPO (Open Source Program Office)**: An organization dedicated to open source strategy and governance. Consider formalizing it once there are three or more dedicated staff members.
 
-## Open Source RACI Matrix
+## Open Source RACI Matrix {#raci-matrix}
 
 Document: raci-matrix.md
 
@@ -230,7 +236,7 @@ When new open source-related work arises:
 2. Assign an owner based on the RACI matrix
 3. Update role-definition.md and this document
 
-## Open Source Program Manager Appointment Letter
+## Open Source Program Manager Appointment Letter {#appointment-template}
 
 Document: appointment-template.md
 

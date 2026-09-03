@@ -14,7 +14,12 @@ sidebar_position: 2
 
 ---
 
-## 오픈소스 정책
+**이 페이지에 수록된 산출물**
+
+- [오픈소스 정책](#oss-policy)
+- [허용 라이선스 목록](#license-allowlist)
+
+## 오픈소스 정책 {#oss-policy}
 
 문서: oss-policy.md
 
@@ -306,7 +311,7 @@ sidebar_position: 2
 
 ---
 
-## 허용 라이선스 목록
+## 허용 라이선스 목록 {#license-allowlist}
 
 문서: license-allowlist.md
 

@@ -14,7 +14,13 @@ sidebar_position: 7
 
 ---
 
-## 갭 분석 리포트
+**이 페이지에 수록된 산출물**
+
+- [갭 분석 리포트](#gap-analysis)
+- [오픈소스 컴플라이언스 자체 인증 선언문](#declaration-draft)
+- [OpenChain 자체 인증 등록 절차 안내](#submission-guide)
+
+## 갭 분석 리포트 {#gap-analysis}
 
 :::info
 **생성 agent**: `07-conformance-preparer` | **저장 경로**: `output/conformance/gap-analysis.md`
@@ -42,33 +48,33 @@ sidebar_position: 7
 
 ### 2. ISO/IEC 5230:2020 항목별 충족 현황
 
-| 항목 ID | 내용 요약                             | 판정 | 근거 산출물                                                                                                                                                                                                     |
-| ------- | ------------------------------------- | :--: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 3.1.1.1 | 문서화된 오픈소스 정책                |  ✅  | [오픈소스 정책](/reference/samples/policy)                                                                                                                                                                      |
-| 3.1.1.2 | 정책 전파 절차                        |  ✅  | [오픈소스 정책](/reference/samples/policy) §7, [오픈소스 교육 커리큘럼](/reference/samples/training#오픈소스-교육-커리큘럼)                                                                                     |
-| 3.1.2.1 | 역할과 책임 목록                      |  ✅  | [오픈소스 역할 및 책임 정의](/reference/samples/organization) §1                                                                                                                                                |
-| 3.1.2.2 | 역할별 역량 기술 문서                 |  ✅  | [오픈소스 역할 및 책임 정의](/reference/samples/organization) §2                                                                                                                                                |
-| 3.1.2.3 | 역량 평가 증거                        |  🔶  | [교육 이수 추적 시트](/reference/samples/training#교육-이수-추적-시트) (양식 완비, 실이수 미시작)                                                                                                               |
-| 3.1.3.1 | 참여자 인식 평가 증거                 |  🔶  | [오픈소스 교육 커리큘럼](/reference/samples/training#오픈소스-교육-커리큘럼) + [교육 이수 추적 시트](/reference/samples/training#교육-이수-추적-시트) (교육 미시작)                                             |
-| 3.1.4.1 | 프로그램 적용 범위                    |  ✅  | [오픈소스 정책](/reference/samples/policy) §1                                                                                                                                                                   |
-| 3.1.5.1 | 라이선스 의무사항 검토 절차           |  ✅  | [오픈소스 사용 승인 절차](/reference/samples/process) §4, [허용 라이선스 목록](/reference/samples/policy#허용-라이선스-목록)                                                                                    |
-| 3.2.1.1 | 외부 문의 공개 채널                   |  ✅  | [오픈소스 역할 및 책임 정의](/reference/samples/organization) §3 (opensource@techunicorn.example)                                                                                                               |
-| 3.2.1.2 | 외부 문의 내부 대응 절차              |  ✅  | [오픈소스 역할 및 책임 정의](/reference/samples/organization) §3, [오픈소스 사용 승인 절차](/reference/samples/process)                                                                                         |
-| 3.2.2.1 | 역할 담당자 이름 문서                 |  🔶  | [오픈소스 RACI 매트릭스](/reference/samples/organization#오픈소스-raci-매트릭스) (역할 구조 완비, 실명 미기입)                                                                                                  |
-| 3.2.2.2 | 역할 배치 및 예산 확인                |  ✅  | [오픈소스 RACI 매트릭스](/reference/samples/organization#오픈소스-raci-매트릭스) §예산 배분 현황                                                                                                                |
-| 3.2.2.3 | 법률 자문 접근 방법                   |  ✅  | [오픈소스 역할 및 책임 정의](/reference/samples/organization) §4                                                                                                                                                |
-| 3.2.2.4 | 내부 책임 할당 절차                   |  ✅  | [오픈소스 RACI 매트릭스](/reference/samples/organization#오픈소스-raci-매트릭스) §내부 책임 할당 절차                                                                                                           |
-| 3.2.2.5 | 미준수 사례 검토 및 수정 절차         |  ✅  | [오픈소스 RACI 매트릭스](/reference/samples/organization#오픈소스-raci-매트릭스) §미준수 사례 검토 절차, [오픈소스 정책](/reference/samples/policy) §8                                                          |
-| 3.3.1.1 | SBOM 관리 절차                        |  ✅  | [SBOM 관리 계획](/reference/samples/sbom#sbom-관리-계획), [오픈소스 사용 승인 절차](/reference/samples/process) §6                                                                                              |
-| 3.3.1.2 | 컴포넌트 기록(SBOM 파일)              |  ✅  | output/sbom/java-vulnerable.cdx.json                                                                                                                                                                            |
-| 3.3.2.1 | 라이선스 사용 사례 처리 절차          |  ✅  | [SBOM 라이선스 분석 리포트](/reference/samples/sbom#sbom-라이선스-분석-리포트), [Copyleft 위험도 리포트](/reference/samples/sbom#copyleft-위험도-리포트), [오픈소스 사용 승인 절차](/reference/samples/process) |
-| 3.4.1.1 | 컴플라이언스 산출물 준비 및 배포 절차 |  ✅  | [배포 전 라이선스 컴플라이언스 체크리스트](/reference/samples/process#배포-전-라이선스-컴플라이언스-체크리스트)                                                                                                 |
-| 3.4.1.2 | 컴플라이언스 산출물 보관 절차         |  ✅  | [배포 전 라이선스 컴플라이언스 체크리스트](/reference/samples/process#배포-전-라이선스-컴플라이언스-체크리스트) §5                                                                                              |
-| 3.5.1.1 | 오픈소스 기여 정책                    |  ✅  | [오픈소스 정책](/reference/samples/policy) §5                                                                                                                                                                   |
-| 3.5.1.2 | 오픈소스 기여 관리 절차               |  ✅  | [오픈소스 정책](/reference/samples/policy) §5                                                                                                                                                                   |
-| 3.5.1.3 | 기여 정책 인식 절차                   |  ✅  | [오픈소스 정책](/reference/samples/policy) §7                                                                                                                                                                   |
-| 3.6.1.1 | 모든 요구사항 충족 확인 문서          |  ✅  | 갭 분석 리포트 (본 문서)                                                                                                                                                                                        |
-| 3.6.2.1 | 18개월 이내 요구사항 충족 확인 문서   |  ✅  | [오픈소스 컴플라이언스 자체 인증 선언문](/reference/samples/conformance#오픈소스-컴플라이언스-자체-인증-선언문)                                                                                                 |
+| 항목 ID | 내용 요약                             | 판정 | 근거 산출물                                                                                                                                                                                 |
+| ------- | ------------------------------------- | :--: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 3.1.1.1 | 문서화된 오픈소스 정책                |  ✅  | [오픈소스 정책](/reference/samples/policy)                                                                                                                                                  |
+| 3.1.1.2 | 정책 전파 절차                        |  ✅  | [오픈소스 정책](/reference/samples/policy) §7, [오픈소스 교육 커리큘럼](/reference/samples/training#curriculum)                                                                             |
+| 3.1.2.1 | 역할과 책임 목록                      |  ✅  | [오픈소스 역할 및 책임 정의](/reference/samples/organization) §1                                                                                                                            |
+| 3.1.2.2 | 역할별 역량 기술 문서                 |  ✅  | [오픈소스 역할 및 책임 정의](/reference/samples/organization) §2                                                                                                                            |
+| 3.1.2.3 | 역량 평가 증거                        |  🔶  | [교육 이수 추적 시트](/reference/samples/training#completion-tracker) (양식 완비, 실이수 미시작)                                                                                            |
+| 3.1.3.1 | 참여자 인식 평가 증거                 |  🔶  | [오픈소스 교육 커리큘럼](/reference/samples/training#curriculum) + [교육 이수 추적 시트](/reference/samples/training#completion-tracker) (교육 미시작)                                      |
+| 3.1.4.1 | 프로그램 적용 범위                    |  ✅  | [오픈소스 정책](/reference/samples/policy) §1                                                                                                                                               |
+| 3.1.5.1 | 라이선스 의무사항 검토 절차           |  ✅  | [오픈소스 사용 승인 절차](/reference/samples/process) §4, [허용 라이선스 목록](/reference/samples/policy#license-allowlist)                                                                 |
+| 3.2.1.1 | 외부 문의 공개 채널                   |  ✅  | [오픈소스 역할 및 책임 정의](/reference/samples/organization) §3 (opensource@techunicorn.example)                                                                                           |
+| 3.2.1.2 | 외부 문의 내부 대응 절차              |  ✅  | [오픈소스 역할 및 책임 정의](/reference/samples/organization) §3, [오픈소스 사용 승인 절차](/reference/samples/process)                                                                     |
+| 3.2.2.1 | 역할 담당자 이름 문서                 |  🔶  | [오픈소스 RACI 매트릭스](/reference/samples/organization#raci-matrix) (역할 구조 완비, 실명 미기입)                                                                                         |
+| 3.2.2.2 | 역할 배치 및 예산 확인                |  ✅  | [오픈소스 RACI 매트릭스](/reference/samples/organization#raci-matrix) §예산 배분 현황                                                                                                       |
+| 3.2.2.3 | 법률 자문 접근 방법                   |  ✅  | [오픈소스 역할 및 책임 정의](/reference/samples/organization) §4                                                                                                                            |
+| 3.2.2.4 | 내부 책임 할당 절차                   |  ✅  | [오픈소스 RACI 매트릭스](/reference/samples/organization#raci-matrix) §내부 책임 할당 절차                                                                                                  |
+| 3.2.2.5 | 미준수 사례 검토 및 수정 절차         |  ✅  | [오픈소스 RACI 매트릭스](/reference/samples/organization#raci-matrix) §미준수 사례 검토 절차, [오픈소스 정책](/reference/samples/policy) §8                                                 |
+| 3.3.1.1 | SBOM 관리 절차                        |  ✅  | [SBOM 관리 계획](/reference/samples/sbom#sbom-management-plan), [오픈소스 사용 승인 절차](/reference/samples/process) §6                                                                    |
+| 3.3.1.2 | 컴포넌트 기록(SBOM 파일)              |  ✅  | output/sbom/java-vulnerable.cdx.json                                                                                                                                                        |
+| 3.3.2.1 | 라이선스 사용 사례 처리 절차          |  ✅  | [SBOM 라이선스 분석 리포트](/reference/samples/sbom#license-report), [Copyleft 위험도 리포트](/reference/samples/sbom#copyleft-risk), [오픈소스 사용 승인 절차](/reference/samples/process) |
+| 3.4.1.1 | 컴플라이언스 산출물 준비 및 배포 절차 |  ✅  | [배포 전 라이선스 컴플라이언스 체크리스트](/reference/samples/process#distribution-checklist)                                                                                               |
+| 3.4.1.2 | 컴플라이언스 산출물 보관 절차         |  ✅  | [배포 전 라이선스 컴플라이언스 체크리스트](/reference/samples/process#distribution-checklist) §5                                                                                            |
+| 3.5.1.1 | 오픈소스 기여 정책                    |  ✅  | [오픈소스 정책](/reference/samples/policy) §5                                                                                                                                               |
+| 3.5.1.2 | 오픈소스 기여 관리 절차               |  ✅  | [오픈소스 정책](/reference/samples/policy) §5                                                                                                                                               |
+| 3.5.1.3 | 기여 정책 인식 절차                   |  ✅  | [오픈소스 정책](/reference/samples/policy) §7                                                                                                                                               |
+| 3.6.1.1 | 모든 요구사항 충족 확인 문서          |  ✅  | 갭 분석 리포트 (본 문서)                                                                                                                                                                    |
+| 3.6.2.1 | 18개월 이내 요구사항 충족 확인 문서   |  ✅  | [오픈소스 컴플라이언스 자체 인증 선언문](/reference/samples/conformance#declaration-draft)                                                                                                  |
 
 **ISO/IEC 5230 소계: ✅ 22개 / 🔶 3개 / ❌ 0개**
 
@@ -76,33 +82,33 @@ sidebar_position: 7
 
 ### 3. ISO/IEC 18974:2023 항목별 충족 현황
 
-| 항목 ID | 내용 요약                           | 판정 | 근거 산출물                                                                                                                                                                       |
-| ------- | ----------------------------------- | :--: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 4.1.1.1 | 보안 보증 정책                      |  ✅  | [오픈소스 정책](/reference/samples/policy) §4                                                                                                                                     |
-| 4.1.1.2 | 정책 전파 절차                      |  ✅  | [오픈소스 정책](/reference/samples/policy) §7, [오픈소스 교육 커리큘럼](/reference/samples/training#오픈소스-교육-커리큘럼)                                                       |
-| 4.1.2.1 | 역할과 책임 목록                    |  ✅  | [오픈소스 역할 및 책임 정의](/reference/samples/organization) §1                                                                                                                  |
-| 4.1.2.2 | 역할별 역량 기술 문서               |  ✅  | [오픈소스 역할 및 책임 정의](/reference/samples/organization) §2                                                                                                                  |
-| 4.1.2.3 | 참여자 목록 및 역할                 |  🔶  | [오픈소스 RACI 매트릭스](/reference/samples/organization#오픈소스-raci-매트릭스) §역할별 담당자 (실명 미기입)                                                                     |
-| 4.1.2.4 | 역량 평가 증거                      |  🔶  | [교육 이수 추적 시트](/reference/samples/training#교육-이수-추적-시트) (양식 완비, 실이수 미시작)                                                                                 |
-| 4.1.2.5 | 주기적 검토 및 변경 증거            |  🔶  | [오픈소스 정책](/reference/samples/policy) §9 (검토 계획 수립, 이력 미축적) ※시간 기반                                                                                            |
-| 4.1.2.6 | 내부 모범 사례 일치 검증 담당자     |  🔶  | [오픈소스 역할 및 책임 정의](/reference/samples/organization) §6 (담당자 지정, 검토 예정 2026-12-31) ※시간 기반                                                                   |
-| 4.1.3.1 | 참여자 인식 평가 증거               |  🔶  | [오픈소스 교육 커리큘럼](/reference/samples/training#오픈소스-교육-커리큘럼) + [교육 이수 추적 시트](/reference/samples/training#교육-이수-추적-시트) (교육 미시작)               |
-| 4.1.4.1 | 프로그램 범위 문서                  |  ✅  | [오픈소스 정책](/reference/samples/policy) §1                                                                                                                                     |
-| 4.1.4.2 | 성과 메트릭                         |  ✅  | [오픈소스 정책](/reference/samples/policy) §3 (KPI 5개 항목)                                                                                                                      |
-| 4.1.4.3 | 지속적 개선 증거(감사 이력)         |  🔶  | 갭 분석 리포트 (본 문서, 1회차 감사 이력) ※시간 기반                                                                                                                              |
-| 4.1.5.1 | 취약점 대응 표준 절차               |  ✅  | [취약점 대응 절차](/reference/samples/process#취약점-대응-절차) (8가지 방법 모두 포함)                                                                                            |
-| 4.2.1.1 | 외부 취약점 문의 공개 채널          |  ✅  | [오픈소스 역할 및 책임 정의](/reference/samples/organization) §3 (security@techunicorn.example)                                                                                   |
-| 4.2.1.2 | 외부 문의 내부 대응 절차            |  ✅  | [취약점 대응 절차](/reference/samples/process#취약점-대응-절차) §7                                                                                                                |
-| 4.2.2.1 | 역할 담당자 이름 문서               |  🔶  | [오픈소스 RACI 매트릭스](/reference/samples/organization#오픈소스-raci-매트릭스) (역할 구조 완비, 실명 미기입)                                                                    |
-| 4.2.2.2 | 역할 배치 및 예산 확인              |  ✅  | [오픈소스 RACI 매트릭스](/reference/samples/organization#오픈소스-raci-매트릭스) §예산 배분 현황                                                                                  |
-| 4.2.2.3 | 취약점 해결 전문성 명시             |  ✅  | [오픈소스 역할 및 책임 정의](/reference/samples/organization) §5 (보안팀, KrCERT)                                                                                                 |
-| 4.2.2.4 | 내부 책임 할당 절차                 |  ✅  | [오픈소스 RACI 매트릭스](/reference/samples/organization#오픈소스-raci-매트릭스) §내부 책임 할당 절차                                                                             |
-| 4.3.1.1 | SBOM 수명주기 지속 기록 절차        |  ✅  | [SBOM 관리 계획](/reference/samples/sbom#sbom-관리-계획)                                                                                                                          |
-| 4.3.1.2 | 컴포넌트 기록(SBOM 파일)            |  ✅  | output/sbom/java-vulnerable.cdx.json                                                                                                                                              |
-| 4.3.2.1 | 취약점 탐지 및 해결 절차            |  ✅  | [취약점 대응 절차](/reference/samples/process#취약점-대응-절차) + [취약점 대응 계획](/reference/samples/vulnerability#취약점-대응-계획-remediation-plan)                          |
-| 4.3.2.2 | 취약점 및 조치 기록                 |  ✅  | [취약점 분석 리포트](/reference/samples/vulnerability#취약점-분석-리포트) (5개 CVE 기록) + [취약점 대응 계획](/reference/samples/vulnerability#취약점-대응-계획-remediation-plan) |
-| 4.4.1.1 | 모든 요구사항 충족 확인 문서        |  ✅  | 갭 분석 리포트 (본 문서)                                                                                                                                                          |
-| 4.4.2.1 | 18개월 이내 요구사항 충족 확인 문서 |  ✅  | [오픈소스 컴플라이언스 자체 인증 선언문](/reference/samples/conformance#오픈소스-컴플라이언스-자체-인증-선언문)                                                                   |
+| 항목 ID | 내용 요약                           | 판정 | 근거 산출물                                                                                                                                              |
+| ------- | ----------------------------------- | :--: | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 4.1.1.1 | 보안 보증 정책                      |  ✅  | [오픈소스 정책](/reference/samples/policy) §4                                                                                                            |
+| 4.1.1.2 | 정책 전파 절차                      |  ✅  | [오픈소스 정책](/reference/samples/policy) §7, [오픈소스 교육 커리큘럼](/reference/samples/training#curriculum)                                          |
+| 4.1.2.1 | 역할과 책임 목록                    |  ✅  | [오픈소스 역할 및 책임 정의](/reference/samples/organization) §1                                                                                         |
+| 4.1.2.2 | 역할별 역량 기술 문서               |  ✅  | [오픈소스 역할 및 책임 정의](/reference/samples/organization) §2                                                                                         |
+| 4.1.2.3 | 참여자 목록 및 역할                 |  🔶  | [오픈소스 RACI 매트릭스](/reference/samples/organization#raci-matrix) §역할별 담당자 (실명 미기입)                                                       |
+| 4.1.2.4 | 역량 평가 증거                      |  🔶  | [교육 이수 추적 시트](/reference/samples/training#completion-tracker) (양식 완비, 실이수 미시작)                                                         |
+| 4.1.2.5 | 주기적 검토 및 변경 증거            |  🔶  | [오픈소스 정책](/reference/samples/policy) §9 (검토 계획 수립, 이력 미축적) ※시간 기반                                                                   |
+| 4.1.2.6 | 내부 모범 사례 일치 검증 담당자     |  🔶  | [오픈소스 역할 및 책임 정의](/reference/samples/organization) §6 (담당자 지정, 검토 예정 2026-12-31) ※시간 기반                                          |
+| 4.1.3.1 | 참여자 인식 평가 증거               |  🔶  | [오픈소스 교육 커리큘럼](/reference/samples/training#curriculum) + [교육 이수 추적 시트](/reference/samples/training#completion-tracker) (교육 미시작)   |
+| 4.1.4.1 | 프로그램 범위 문서                  |  ✅  | [오픈소스 정책](/reference/samples/policy) §1                                                                                                            |
+| 4.1.4.2 | 성과 메트릭                         |  ✅  | [오픈소스 정책](/reference/samples/policy) §3 (KPI 5개 항목)                                                                                             |
+| 4.1.4.3 | 지속적 개선 증거(감사 이력)         |  🔶  | 갭 분석 리포트 (본 문서, 1회차 감사 이력) ※시간 기반                                                                                                     |
+| 4.1.5.1 | 취약점 대응 표준 절차               |  ✅  | [취약점 대응 절차](/reference/samples/process#vulnerability-response) (8가지 방법 모두 포함)                                                             |
+| 4.2.1.1 | 외부 취약점 문의 공개 채널          |  ✅  | [오픈소스 역할 및 책임 정의](/reference/samples/organization) §3 (security@techunicorn.example)                                                          |
+| 4.2.1.2 | 외부 문의 내부 대응 절차            |  ✅  | [취약점 대응 절차](/reference/samples/process#vulnerability-response) §7                                                                                 |
+| 4.2.2.1 | 역할 담당자 이름 문서               |  🔶  | [오픈소스 RACI 매트릭스](/reference/samples/organization#raci-matrix) (역할 구조 완비, 실명 미기입)                                                      |
+| 4.2.2.2 | 역할 배치 및 예산 확인              |  ✅  | [오픈소스 RACI 매트릭스](/reference/samples/organization#raci-matrix) §예산 배분 현황                                                                    |
+| 4.2.2.3 | 취약점 해결 전문성 명시             |  ✅  | [오픈소스 역할 및 책임 정의](/reference/samples/organization) §5 (보안팀, KrCERT)                                                                        |
+| 4.2.2.4 | 내부 책임 할당 절차                 |  ✅  | [오픈소스 RACI 매트릭스](/reference/samples/organization#raci-matrix) §내부 책임 할당 절차                                                               |
+| 4.3.1.1 | SBOM 수명주기 지속 기록 절차        |  ✅  | [SBOM 관리 계획](/reference/samples/sbom#sbom-management-plan)                                                                                           |
+| 4.3.1.2 | 컴포넌트 기록(SBOM 파일)            |  ✅  | output/sbom/java-vulnerable.cdx.json                                                                                                                     |
+| 4.3.2.1 | 취약점 탐지 및 해결 절차            |  ✅  | [취약점 대응 절차](/reference/samples/process#vulnerability-response) + [취약점 대응 계획](/reference/samples/vulnerability#remediation-plan)            |
+| 4.3.2.2 | 취약점 및 조치 기록                 |  ✅  | [취약점 분석 리포트](/reference/samples/vulnerability#cve-report) (5개 CVE 기록) + [취약점 대응 계획](/reference/samples/vulnerability#remediation-plan) |
+| 4.4.1.1 | 모든 요구사항 충족 확인 문서        |  ✅  | 갭 분석 리포트 (본 문서)                                                                                                                                 |
+| 4.4.2.1 | 18개월 이내 요구사항 충족 확인 문서 |  ✅  | [오픈소스 컴플라이언스 자체 인증 선언문](/reference/samples/conformance#declaration-draft)                                                               |
 
 **ISO/IEC 18974 소계: ✅ 18개 / 🔶 7개 / ❌ 0개**
 
@@ -163,7 +169,7 @@ sidebar_position: 7
 
 ---
 
-## 오픈소스 컴플라이언스 자체 인증 선언문
+## 오픈소스 컴플라이언스 자체 인증 선언문 {#declaration-draft}
 
 :::info
 **생성 agent**: `07-conformance-preparer` | **저장 경로**: `output/conformance/declaration-draft.md`
@@ -205,33 +211,33 @@ sidebar_position: 7
 
 아래 25개 입증자료의 충족 상태를 확인하고 선언한다. 부분충족(🔶) 항목은 계획 수립이 완료된 상태로, 교육 이수·시간 기반 증거 확보 시 충족으로 전환된다.
 
-| 항목 ID | 내용                                  | 충족 여부 | 산출물                                                                                                                                                |
-| ------- | ------------------------------------- | :-------: | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 3.1.1.1 | 문서화된 오픈소스 정책                |    ✅     | [오픈소스 정책](/reference/samples/policy)                                                                                                            |
-| 3.1.1.2 | 정책 전파 절차                        |    ✅     | [오픈소스 정책](/reference/samples/policy) §7, [오픈소스 교육 커리큘럼](/reference/samples/training#오픈소스-교육-커리큘럼)                           |
-| 3.1.2.1 | 역할과 책임 목록                      |    ✅     | [오픈소스 역할 및 책임 정의](/reference/samples/organization)                                                                                         |
-| 3.1.2.2 | 역할별 역량 기술 문서                 |    ✅     | [오픈소스 역할 및 책임 정의](/reference/samples/organization) §2                                                                                      |
-| 3.1.2.3 | 역량 평가 증거                        |    🔶     | [교육 이수 추적 시트](/reference/samples/training#교육-이수-추적-시트) (이수 개시 예정)                                                               |
-| 3.1.3.1 | 참여자 인식 평가 증거                 |    🔶     | [오픈소스 교육 커리큘럼](/reference/samples/training#오픈소스-교육-커리큘럼) + [교육 이수 추적 시트](/reference/samples/training#교육-이수-추적-시트) |
-| 3.1.4.1 | 프로그램 적용 범위 문서               |    ✅     | [오픈소스 정책](/reference/samples/policy) §1                                                                                                         |
-| 3.1.5.1 | 라이선스 의무사항 검토 절차           |    ✅     | [오픈소스 사용 승인 절차](/reference/samples/process) §4, [허용 라이선스 목록](/reference/samples/policy#허용-라이선스-목록)                          |
-| 3.2.1.1 | 외부 문의 공개 채널                   |    ✅     | [오픈소스 역할 및 책임 정의](/reference/samples/organization) §3                                                                                      |
-| 3.2.1.2 | 외부 문의 내부 대응 절차              |    ✅     | [오픈소스 역할 및 책임 정의](/reference/samples/organization) §3                                                                                      |
-| 3.2.2.1 | 역할 담당자 이름 문서                 |    🔶     | [오픈소스 RACI 매트릭스](/reference/samples/organization#오픈소스-raci-매트릭스) (실명 기입 진행 중)                                                  |
-| 3.2.2.2 | 역할 배치 및 예산 확인                |    ✅     | [오픈소스 RACI 매트릭스](/reference/samples/organization#오픈소스-raci-매트릭스) §예산 배분 현황                                                      |
-| 3.2.2.3 | 법률 자문 접근 방법                   |    ✅     | [오픈소스 역할 및 책임 정의](/reference/samples/organization) §4                                                                                      |
-| 3.2.2.4 | 내부 책임 할당 절차                   |    ✅     | [오픈소스 RACI 매트릭스](/reference/samples/organization#오픈소스-raci-매트릭스) §내부 책임 할당 절차                                                 |
-| 3.2.2.5 | 미준수 사례 검토 및 수정 절차         |    ✅     | [오픈소스 RACI 매트릭스](/reference/samples/organization#오픈소스-raci-매트릭스) §미준수 사례 검토 절차                                               |
-| 3.3.1.1 | SBOM 관리 절차                        |    ✅     | [SBOM 관리 계획](/reference/samples/sbom#sbom-관리-계획)                                                                                              |
-| 3.3.1.2 | 컴포넌트 기록(SBOM 파일)              |    ✅     | output/sbom/java-vulnerable.cdx.json                                                                                                                  |
-| 3.3.2.1 | 라이선스 사용 사례 처리 절차          |    ✅     | [SBOM 라이선스 분석 리포트](/reference/samples/sbom#sbom-라이선스-분석-리포트), [오픈소스 사용 승인 절차](/reference/samples/process)                 |
-| 3.4.1.1 | 컴플라이언스 산출물 준비 및 배포 절차 |    ✅     | [배포 전 라이선스 컴플라이언스 체크리스트](/reference/samples/process#배포-전-라이선스-컴플라이언스-체크리스트)                                       |
-| 3.4.1.2 | 컴플라이언스 산출물 보관 절차         |    ✅     | [배포 전 라이선스 컴플라이언스 체크리스트](/reference/samples/process#배포-전-라이선스-컴플라이언스-체크리스트) §5                                    |
-| 3.5.1.1 | 오픈소스 기여 정책                    |    ✅     | [오픈소스 정책](/reference/samples/policy) §5                                                                                                         |
-| 3.5.1.2 | 오픈소스 기여 관리 절차               |    ✅     | [오픈소스 정책](/reference/samples/policy) §5                                                                                                         |
-| 3.5.1.3 | 기여 정책 인식 절차                   |    ✅     | [오픈소스 정책](/reference/samples/policy) §7                                                                                                         |
-| 3.6.1.1 | 모든 요구사항 충족 확인 문서          |    ✅     | [갭 분석 리포트](/reference/samples/conformance#갭-분석-리포트)                                                                                       |
-| 3.6.2.1 | 18개월 이내 요구사항 충족 확인        |    ✅     | 오픈소스 컴플라이언스 자체 인증 선언문 (본 문서)                                                                                                      |
+| 항목 ID | 내용                                  | 충족 여부 | 산출물                                                                                                                                   |
+| ------- | ------------------------------------- | :-------: | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| 3.1.1.1 | 문서화된 오픈소스 정책                |    ✅     | [오픈소스 정책](/reference/samples/policy)                                                                                               |
+| 3.1.1.2 | 정책 전파 절차                        |    ✅     | [오픈소스 정책](/reference/samples/policy) §7, [오픈소스 교육 커리큘럼](/reference/samples/training#curriculum)                          |
+| 3.1.2.1 | 역할과 책임 목록                      |    ✅     | [오픈소스 역할 및 책임 정의](/reference/samples/organization)                                                                            |
+| 3.1.2.2 | 역할별 역량 기술 문서                 |    ✅     | [오픈소스 역할 및 책임 정의](/reference/samples/organization) §2                                                                         |
+| 3.1.2.3 | 역량 평가 증거                        |    🔶     | [교육 이수 추적 시트](/reference/samples/training#completion-tracker) (이수 개시 예정)                                                   |
+| 3.1.3.1 | 참여자 인식 평가 증거                 |    🔶     | [오픈소스 교육 커리큘럼](/reference/samples/training#curriculum) + [교육 이수 추적 시트](/reference/samples/training#completion-tracker) |
+| 3.1.4.1 | 프로그램 적용 범위 문서               |    ✅     | [오픈소스 정책](/reference/samples/policy) §1                                                                                            |
+| 3.1.5.1 | 라이선스 의무사항 검토 절차           |    ✅     | [오픈소스 사용 승인 절차](/reference/samples/process) §4, [허용 라이선스 목록](/reference/samples/policy#license-allowlist)              |
+| 3.2.1.1 | 외부 문의 공개 채널                   |    ✅     | [오픈소스 역할 및 책임 정의](/reference/samples/organization) §3                                                                         |
+| 3.2.1.2 | 외부 문의 내부 대응 절차              |    ✅     | [오픈소스 역할 및 책임 정의](/reference/samples/organization) §3                                                                         |
+| 3.2.2.1 | 역할 담당자 이름 문서                 |    🔶     | [오픈소스 RACI 매트릭스](/reference/samples/organization#raci-matrix) (실명 기입 진행 중)                                                |
+| 3.2.2.2 | 역할 배치 및 예산 확인                |    ✅     | [오픈소스 RACI 매트릭스](/reference/samples/organization#raci-matrix) §예산 배분 현황                                                    |
+| 3.2.2.3 | 법률 자문 접근 방법                   |    ✅     | [오픈소스 역할 및 책임 정의](/reference/samples/organization) §4                                                                         |
+| 3.2.2.4 | 내부 책임 할당 절차                   |    ✅     | [오픈소스 RACI 매트릭스](/reference/samples/organization#raci-matrix) §내부 책임 할당 절차                                               |
+| 3.2.2.5 | 미준수 사례 검토 및 수정 절차         |    ✅     | [오픈소스 RACI 매트릭스](/reference/samples/organization#raci-matrix) §미준수 사례 검토 절차                                             |
+| 3.3.1.1 | SBOM 관리 절차                        |    ✅     | [SBOM 관리 계획](/reference/samples/sbom#sbom-management-plan)                                                                           |
+| 3.3.1.2 | 컴포넌트 기록(SBOM 파일)              |    ✅     | output/sbom/java-vulnerable.cdx.json                                                                                                     |
+| 3.3.2.1 | 라이선스 사용 사례 처리 절차          |    ✅     | [SBOM 라이선스 분석 리포트](/reference/samples/sbom#license-report), [오픈소스 사용 승인 절차](/reference/samples/process)               |
+| 3.4.1.1 | 컴플라이언스 산출물 준비 및 배포 절차 |    ✅     | [배포 전 라이선스 컴플라이언스 체크리스트](/reference/samples/process#distribution-checklist)                                            |
+| 3.4.1.2 | 컴플라이언스 산출물 보관 절차         |    ✅     | [배포 전 라이선스 컴플라이언스 체크리스트](/reference/samples/process#distribution-checklist) §5                                         |
+| 3.5.1.1 | 오픈소스 기여 정책                    |    ✅     | [오픈소스 정책](/reference/samples/policy) §5                                                                                            |
+| 3.5.1.2 | 오픈소스 기여 관리 절차               |    ✅     | [오픈소스 정책](/reference/samples/policy) §5                                                                                            |
+| 3.5.1.3 | 기여 정책 인식 절차                   |    ✅     | [오픈소스 정책](/reference/samples/policy) §7                                                                                            |
+| 3.6.1.1 | 모든 요구사항 충족 확인 문서          |    ✅     | [갭 분석 리포트](/reference/samples/conformance#gap-analysis)                                                                            |
+| 3.6.2.1 | 18개월 이내 요구사항 충족 확인        |    ✅     | 오픈소스 컴플라이언스 자체 인증 선언문 (본 문서)                                                                                         |
 
 ---
 
@@ -239,33 +245,33 @@ sidebar_position: 7
 
 아래 25개 입증자료의 충족 상태를 확인하고 선언한다. 부분충족(🔶) 항목은 계획 수립이 완료된 상태로, 교육 이수·시간 기반 증거 확보 시 충족으로 전환된다.
 
-| 항목 ID | 내용                            | 충족 여부 | 산출물                                                                                                                                                                            |
-| ------- | ------------------------------- | :-------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 4.1.1.1 | 문서화된 보안 보증 정책         |    ✅     | [오픈소스 정책](/reference/samples/policy) §4                                                                                                                                     |
-| 4.1.1.2 | 정책 전파 절차                  |    ✅     | [오픈소스 정책](/reference/samples/policy) §7, [오픈소스 교육 커리큘럼](/reference/samples/training#오픈소스-교육-커리큘럼)                                                       |
-| 4.1.2.1 | 역할과 책임 목록                |    ✅     | [오픈소스 역할 및 책임 정의](/reference/samples/organization) §1                                                                                                                  |
-| 4.1.2.2 | 역할별 역량 기술 문서           |    ✅     | [오픈소스 역할 및 책임 정의](/reference/samples/organization) §2                                                                                                                  |
-| 4.1.2.3 | 참여자 목록 및 역할             |    🔶     | [오픈소스 RACI 매트릭스](/reference/samples/organization#오픈소스-raci-매트릭스) (실명 기입 진행 중)                                                                              |
-| 4.1.2.4 | 역량 평가 증거                  |    🔶     | [교육 이수 추적 시트](/reference/samples/training#교육-이수-추적-시트) (이수 개시 예정)                                                                                           |
-| 4.1.2.5 | 주기적 검토 및 변경 증거        |    🔶     | [오픈소스 정책](/reference/samples/policy) §9 (검토 계획 수립, 이력 축적 예정)                                                                                                    |
-| 4.1.2.6 | 내부 모범 사례 일치 검증 담당자 |    🔶     | [오픈소스 역할 및 책임 정의](/reference/samples/organization) §6 (담당자 지정, 검토 예정 2026-12-31)                                                                              |
-| 4.1.3.1 | 참여자 인식 평가 증거           |    🔶     | [오픈소스 교육 커리큘럼](/reference/samples/training#오픈소스-교육-커리큘럼) + [교육 이수 추적 시트](/reference/samples/training#교육-이수-추적-시트)                             |
-| 4.1.4.1 | 프로그램 범위 문서              |    ✅     | [오픈소스 정책](/reference/samples/policy) §1                                                                                                                                     |
-| 4.1.4.2 | 성과 메트릭                     |    ✅     | [오픈소스 정책](/reference/samples/policy) §3 (KPI 5개 항목)                                                                                                                      |
-| 4.1.4.3 | 지속적 개선 증거(감사 이력)     |    🔶     | [갭 분석 리포트](/reference/samples/conformance#갭-분석-리포트) (1회차 감사 이력)                                                                                                 |
-| 4.1.5.1 | 취약점 대응 표준 절차           |    ✅     | [취약점 대응 절차](/reference/samples/process#취약점-대응-절차)                                                                                                                   |
-| 4.2.1.1 | 외부 취약점 문의 공개 채널      |    ✅     | [오픈소스 역할 및 책임 정의](/reference/samples/organization) §3 (security@techunicorn.example)                                                                                   |
-| 4.2.1.2 | 외부 문의 내부 대응 절차        |    ✅     | [취약점 대응 절차](/reference/samples/process#취약점-대응-절차) §7                                                                                                                |
-| 4.2.2.1 | 역할 담당자 이름 문서           |    🔶     | [오픈소스 RACI 매트릭스](/reference/samples/organization#오픈소스-raci-매트릭스) (실명 기입 진행 중)                                                                              |
-| 4.2.2.2 | 역할 배치 및 예산 확인          |    ✅     | [오픈소스 RACI 매트릭스](/reference/samples/organization#오픈소스-raci-매트릭스) §예산 배분 현황                                                                                  |
-| 4.2.2.3 | 취약점 해결 전문성 명시         |    ✅     | [오픈소스 역할 및 책임 정의](/reference/samples/organization) §5                                                                                                                  |
-| 4.2.2.4 | 내부 책임 할당 절차             |    ✅     | [오픈소스 RACI 매트릭스](/reference/samples/organization#오픈소스-raci-매트릭스) §내부 책임 할당 절차                                                                             |
-| 4.3.1.1 | SBOM 수명주기 지속 기록 절차    |    ✅     | [SBOM 관리 계획](/reference/samples/sbom#sbom-관리-계획)                                                                                                                          |
-| 4.3.1.2 | 컴포넌트 기록(SBOM 파일)        |    ✅     | output/sbom/java-vulnerable.cdx.json                                                                                                                                              |
-| 4.3.2.1 | 취약점 탐지 및 해결 절차        |    ✅     | [취약점 대응 절차](/reference/samples/process#취약점-대응-절차) + [취약점 대응 계획](/reference/samples/vulnerability#취약점-대응-계획-remediation-plan)                          |
-| 4.3.2.2 | 취약점 및 조치 기록             |    ✅     | [취약점 분석 리포트](/reference/samples/vulnerability#취약점-분석-리포트) (5개 CVE 기록) + [취약점 대응 계획](/reference/samples/vulnerability#취약점-대응-계획-remediation-plan) |
-| 4.4.1.1 | 모든 요구사항 충족 확인 문서    |    ✅     | [갭 분석 리포트](/reference/samples/conformance#갭-분석-리포트)                                                                                                                   |
-| 4.4.2.1 | 18개월 이내 요구사항 충족 확인  |    ✅     | 오픈소스 컴플라이언스 자체 인증 선언문 (본 문서)                                                                                                                                  |
+| 항목 ID | 내용                            | 충족 여부 | 산출물                                                                                                                                                   |
+| ------- | ------------------------------- | :-------: | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 4.1.1.1 | 문서화된 보안 보증 정책         |    ✅     | [오픈소스 정책](/reference/samples/policy) §4                                                                                                            |
+| 4.1.1.2 | 정책 전파 절차                  |    ✅     | [오픈소스 정책](/reference/samples/policy) §7, [오픈소스 교육 커리큘럼](/reference/samples/training#curriculum)                                          |
+| 4.1.2.1 | 역할과 책임 목록                |    ✅     | [오픈소스 역할 및 책임 정의](/reference/samples/organization) §1                                                                                         |
+| 4.1.2.2 | 역할별 역량 기술 문서           |    ✅     | [오픈소스 역할 및 책임 정의](/reference/samples/organization) §2                                                                                         |
+| 4.1.2.3 | 참여자 목록 및 역할             |    🔶     | [오픈소스 RACI 매트릭스](/reference/samples/organization#raci-matrix) (실명 기입 진행 중)                                                                |
+| 4.1.2.4 | 역량 평가 증거                  |    🔶     | [교육 이수 추적 시트](/reference/samples/training#completion-tracker) (이수 개시 예정)                                                                   |
+| 4.1.2.5 | 주기적 검토 및 변경 증거        |    🔶     | [오픈소스 정책](/reference/samples/policy) §9 (검토 계획 수립, 이력 축적 예정)                                                                           |
+| 4.1.2.6 | 내부 모범 사례 일치 검증 담당자 |    🔶     | [오픈소스 역할 및 책임 정의](/reference/samples/organization) §6 (담당자 지정, 검토 예정 2026-12-31)                                                     |
+| 4.1.3.1 | 참여자 인식 평가 증거           |    🔶     | [오픈소스 교육 커리큘럼](/reference/samples/training#curriculum) + [교육 이수 추적 시트](/reference/samples/training#completion-tracker)                 |
+| 4.1.4.1 | 프로그램 범위 문서              |    ✅     | [오픈소스 정책](/reference/samples/policy) §1                                                                                                            |
+| 4.1.4.2 | 성과 메트릭                     |    ✅     | [오픈소스 정책](/reference/samples/policy) §3 (KPI 5개 항목)                                                                                             |
+| 4.1.4.3 | 지속적 개선 증거(감사 이력)     |    🔶     | [갭 분석 리포트](/reference/samples/conformance#gap-analysis) (1회차 감사 이력)                                                                          |
+| 4.1.5.1 | 취약점 대응 표준 절차           |    ✅     | [취약점 대응 절차](/reference/samples/process#vulnerability-response)                                                                                    |
+| 4.2.1.1 | 외부 취약점 문의 공개 채널      |    ✅     | [오픈소스 역할 및 책임 정의](/reference/samples/organization) §3 (security@techunicorn.example)                                                          |
+| 4.2.1.2 | 외부 문의 내부 대응 절차        |    ✅     | [취약점 대응 절차](/reference/samples/process#vulnerability-response) §7                                                                                 |
+| 4.2.2.1 | 역할 담당자 이름 문서           |    🔶     | [오픈소스 RACI 매트릭스](/reference/samples/organization#raci-matrix) (실명 기입 진행 중)                                                                |
+| 4.2.2.2 | 역할 배치 및 예산 확인          |    ✅     | [오픈소스 RACI 매트릭스](/reference/samples/organization#raci-matrix) §예산 배분 현황                                                                    |
+| 4.2.2.3 | 취약점 해결 전문성 명시         |    ✅     | [오픈소스 역할 및 책임 정의](/reference/samples/organization) §5                                                                                         |
+| 4.2.2.4 | 내부 책임 할당 절차             |    ✅     | [오픈소스 RACI 매트릭스](/reference/samples/organization#raci-matrix) §내부 책임 할당 절차                                                               |
+| 4.3.1.1 | SBOM 수명주기 지속 기록 절차    |    ✅     | [SBOM 관리 계획](/reference/samples/sbom#sbom-management-plan)                                                                                           |
+| 4.3.1.2 | 컴포넌트 기록(SBOM 파일)        |    ✅     | output/sbom/java-vulnerable.cdx.json                                                                                                                     |
+| 4.3.2.1 | 취약점 탐지 및 해결 절차        |    ✅     | [취약점 대응 절차](/reference/samples/process#vulnerability-response) + [취약점 대응 계획](/reference/samples/vulnerability#remediation-plan)            |
+| 4.3.2.2 | 취약점 및 조치 기록             |    ✅     | [취약점 분석 리포트](/reference/samples/vulnerability#cve-report) (5개 CVE 기록) + [취약점 대응 계획](/reference/samples/vulnerability#remediation-plan) |
+| 4.4.1.1 | 모든 요구사항 충족 확인 문서    |    ✅     | [갭 분석 리포트](/reference/samples/conformance#gap-analysis)                                                                                            |
+| 4.4.2.1 | 18개월 이내 요구사항 충족 확인  |    ✅     | 오픈소스 컴플라이언스 자체 인증 선언문 (본 문서)                                                                                                         |
 
 ---
 
@@ -287,7 +293,7 @@ sidebar_position: 7
 
 ---
 
-## OpenChain 자체 인증 등록 절차 안내
+## OpenChain 자체 인증 등록 절차 안내 {#submission-guide}
 
 :::info
 **생성 agent**: `07-conformance-preparer` | **저장 경로**: `output/conformance/submission-guide.md`

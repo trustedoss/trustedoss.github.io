@@ -20,12 +20,12 @@ sidebar_position: 4
 
 **이 페이지에 수록된 산출물**
 
-- SBOM 라이선스 분석 리포트
-- Copyleft 위험도 리포트
-- SBOM 관리 계획
-- SBOM 제출 안내문 (납품처 제출용 템플릿)
+- [SBOM 라이선스 분석 리포트](#license-report)
+- [Copyleft 위험도 리포트](#copyleft-risk)
+- [SBOM 관리 계획](#sbom-management-plan)
+- [SBOM 제출 안내문 (납품처 제출용 템플릿)](#sbom-sharing-template)
 
-## SBOM 라이선스 분석 리포트
+## SBOM 라이선스 분석 리포트 {#license-report}
 
 :::info
 **생성 agent**: `05-sbom-analyst` | **저장 경로**: `output/sbom/license-report.md`
@@ -118,7 +118,7 @@ _이 리포트는 ISO/IEC 5230 §3.1.5(라이선스 의무사항 식별·검토)
 
 ---
 
-## Copyleft 위험도 리포트
+## Copyleft 위험도 리포트 {#copyleft-risk}
 
 :::info
 **생성 agent**: `05-sbom-analyst` | **저장 경로**: `output/sbom/copyleft-risk.md`
@@ -200,7 +200,7 @@ _이 리포트는 ISO/IEC 5230 §3.1.5(라이선스 의무사항 식별·검토)
 
 ---
 
-## SBOM 관리 계획
+## SBOM 관리 계획 {#sbom-management-plan}
 
 :::info
 **생성 agent**: `05-sbom-management` | **저장 경로**: `output/sbom/sbom-management-plan.md`
@@ -338,14 +338,14 @@ output/sbom/
 
 #### 4.2 모니터링 자동화 설정
 
-```bash
+```yaml
 # GitHub Dependabot 활성화 (.github/dependabot.yml)
 version: 2
 updates:
-  - package-ecosystem: "npm"   # 또는 maven, pip 등
-    directory: "/"
+  - package-ecosystem: 'npm' # 또는 maven, pip 등
+    directory: '/'
     schedule:
-      interval: "weekly"
+      interval: 'weekly'
     open-pull-requests-limit: 5
 ```
 
@@ -381,7 +381,7 @@ updates:
 
 ---
 
-## SBOM 제출 안내문 (납품처 제출용 템플릿)
+## SBOM 제출 안내문 (납품처 제출용 템플릿) {#sbom-sharing-template}
 
 :::info
 **생성 agent**: `05-sbom-management` | **저장 경로**: `output/sbom/sbom-sharing-template.md`

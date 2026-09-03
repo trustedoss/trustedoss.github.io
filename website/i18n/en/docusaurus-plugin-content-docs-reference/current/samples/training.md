@@ -14,7 +14,13 @@ Use them to compare against your own `output/training/` files and spot missing i
 
 ---
 
-## Open Source Training Curriculum
+**Deliverables on this page**
+
+- [Open Source Training Curriculum](#curriculum)
+- [Training Completion Tracking Sheet](#completion-tracker)
+- [Free Training Resource List](#resources)
+
+## Open Source Training Curriculum {#curriculum}
 
 Document: curriculum.md
 
@@ -138,7 +144,7 @@ Related standards
 
 ---
 
-## Training Completion Tracking Sheet
+## Training Completion Tracking Sheet {#completion-tracker}
 
 Document: completion-tracker.md
 
@@ -249,7 +255,7 @@ The named rows in the table below are sample records and are excluded from the c
 
 ---
 
-## Free Training Resource List
+## Free Training Resource List {#resources}
 
 Document: resources.md
 

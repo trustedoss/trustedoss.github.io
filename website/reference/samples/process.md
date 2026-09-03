@@ -18,15 +18,15 @@ sidebar_position: 3
 
 **이 페이지에 수록된 산출물**
 
-- 오픈소스 사용 승인 절차
-- 배포 전 라이선스 컴플라이언스 체크리스트
-- 취약점 대응 절차
-- 오픈소스 프로세스 흐름도
-- 외부 문의 대응 절차
-- 오픈소스 기여 절차
-- 사내 프로젝트 공개 절차
+- [오픈소스 사용 승인 절차](#usage-approval)
+- [배포 전 라이선스 컴플라이언스 체크리스트](#distribution-checklist)
+- [취약점 대응 절차](#vulnerability-response)
+- [오픈소스 프로세스 흐름도](#process-diagram)
+- [외부 문의 대응 절차](#inquiry-response)
+- [오픈소스 기여 절차](#contribution-process)
+- [사내 프로젝트 공개 절차](#project-publication-process)
 
-## 오픈소스 사용 승인 절차
+## 오픈소스 사용 승인 절차 {#usage-approval}
 
 문서: usage-approval.md
 
@@ -221,7 +221,7 @@ Jira에서 프로젝트 **OSS** 유형 티켓을 생성하여 아래 항목을 �
 
 ---
 
-## 배포 전 라이선스 컴플라이언스 체크리스트
+## 배포 전 라이선스 컴플라이언스 체크리스트 {#distribution-checklist}
 
 문서: distribution-checklist.md
 
@@ -382,7 +382,7 @@ Jira에서 프로젝트 **OSS** 유형 티켓을 생성하여 아래 항목을 �
 
 ---
 
-## 취약점 대응 절차
+## 취약점 대응 절차 {#vulnerability-response}
 
 문서: vulnerability-response.md
 
@@ -595,7 +595,7 @@ CVD 관련 모든 커뮤니케이션 및 결정 이력을 **최종 공개일로�
 
 ---
 
-## 오픈소스 프로세스 흐름도
+## 오픈소스 프로세스 흐름도 {#process-diagram}
 
 문서: process-diagram.md
 
@@ -716,7 +716,7 @@ graph LR
 
 ---
 
-## 외부 문의 대응 절차
+## 외부 문의 대응 절차 {#inquiry-response}
 
 문서: inquiry-response.md
 
@@ -843,7 +843,7 @@ graph LR
 
 ---
 
-## 오픈소스 기여 절차
+## 오픈소스 기여 절차 {#contribution-process}
 
 :::note[조건부 생성]
 `process-designer` agent Q5 "예" 답변 시 생성됩니다.
@@ -967,7 +967,7 @@ CLA 서명 거절 기준:
 
 ---
 
-## 사내 프로젝트 공개 절차
+## 사내 프로젝트 공개 절차 {#project-publication-process}
 
 :::note[조건부 생성]
 `process-designer` agent Q6 "예" 답변 시 생성됩니다.

@@ -130,14 +130,14 @@ output/sbom/
 
 ### 4.2 모니터링 자동화 설정
 
-```bash
+```yaml
 # GitHub Dependabot 활성화 (.github/dependabot.yml)
 version: 2
 updates:
-  - package-ecosystem: "npm"   # 또는 maven, pip 등
-    directory: "/"
+  - package-ecosystem: 'npm' # 또는 maven, pip 등
+    directory: '/'
     schedule:
-      interval: "weekly"
+      interval: 'weekly'
     open-pull-requests-limit: 5
 ```
 

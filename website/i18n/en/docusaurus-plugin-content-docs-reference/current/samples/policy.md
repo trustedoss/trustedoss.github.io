@@ -14,7 +14,12 @@ Compare them with your own `output/policy/` files to spot missing items.
 
 ---
 
-## Open Source Policy
+**Deliverables on this page**
+
+- [Open Source Policy](#oss-policy)
+- [Approved License List](#license-allowlist)
+
+## Open Source Policy {#oss-policy}
 
 Document: oss-policy.md
 
@@ -306,7 +311,7 @@ When software developed inside Tech Unicorn is released as open source, it goes 
 
 ---
 
-## Approved License List
+## Approved License List {#license-allowlist}
 
 Document: license-allowlist.md
 
