@@ -34,6 +34,21 @@
   color: var(--ifm-color-emphasis-700);
 }
 
+/* 찾지 못한 경로. 영문 폴백일 때만 뜬다(K15-a). 독자가 어떤 링크가 끊겼는지 본다. */
+.requested {
+  margin: -1.25rem auto 2rem;
+  font-size: 0.85rem;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.requested code {
+  padding: 0.15em 0.4em;
+  border-radius: var(--radius-sm);
+  background: var(--ifm-code-background);
+  font-size: 0.95em;
+  word-break: break-all;
+}
+
 /* 검색창. navbar 의 DocSearch 버튼과 같은 컴포넌트라 동작이 일치한다. */
 .search {
   display: flex;
