@@ -170,6 +170,14 @@ div[class^="generatedIndexPage"] {
   max-width: 1080px !important;
 }
 
+/* 문서 본문을 시안 A 의 단 폭으로 좁힌다. 본문, 문서 푸터, 페이지네이션이 같은
+   기준선에 서도록 article 에 건다. 표와 코드블록은 이 폭 안에서 가로 스크롤된다. */
+@media (min-width: 997px) {
+  main[class^="docMainContainer"] article {
+    max-width: var(--doc-content-width);
+  }
+}
+
 @media (max-width: 1416px) {
   .main-wrapper {
     max-width: 100%;

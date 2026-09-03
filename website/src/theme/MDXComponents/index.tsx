@@ -11,6 +11,8 @@ import MDXImg from '@theme/MDXComponents/Img';
 import Admonition from '@theme/Admonition';
 import Mermaid from '@theme/Mermaid';
 
+import Badge from '@theme/Badge';
+import BoxLink from '@theme/BoxLink';
 import JourneyProgress from '@site/src/components/JourneyProgress';
 import Prerequisite from '@site/src/components/Prerequisite';
 import Term from '@site/src/components/Term';
@@ -19,6 +21,8 @@ import type {MDXComponentsObject} from '@theme/MDXComponents';
 
 const MDXComponents: MDXComponentsObject = {
   Head,
+  Badge,
+  BoxLink,
   JourneyProgress,
   Prerequisite,
   Term,

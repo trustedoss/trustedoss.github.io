@@ -130,8 +130,8 @@
     "message": "Last updated{atDate}{byUser}",
     "description": "The sentence used to display when a page has been last updated, and by who"
   },
-  "theme.NotFound.title": {
-    "message": "Page Not Found",
+  "notFound.title": {
+    "message": "Page not found",
     "description": "The title of the 404 page"
   },
   "theme.navbar.mobileVersionsDropdown.label": {
@@ -995,5 +995,41 @@
   "homepage.cta.feature4.desc": {
     "message": "Look up the requirements matrix and the deliverable samples. See what to produce for each standard item.",
     "description": "Description of the fourth landing track card"
+  },
+  "notFound.lead": {
+    "message": "The address changed or the page was removed. Search, or pick one below to carry on.",
+    "description": "The single explanatory sentence on the 404 page"
+  },
+  "notFound.link.docs.title": {
+    "message": "Open Source Management",
+    "description": "Title of the docs link on the 404 page"
+  },
+  "notFound.link.docs.desc": {
+    "message": "Build a system on ISO/IEC 5230 and 18974",
+    "description": "Description of the docs link on the 404 page"
+  },
+  "notFound.link.devsecops.title": {
+    "message": "DevSecOps",
+    "description": "Title of the devsecops link on the 404 page"
+  },
+  "notFound.link.devsecops.desc": {
+    "message": "Pipeline security and CI/CD automation",
+    "description": "Description of the devsecops link on the 404 page"
+  },
+  "notFound.link.aicoding.title": {
+    "message": "AI Coding Governance",
+    "description": "Title of the ai-coding link on the 404 page"
+  },
+  "notFound.link.aicoding.desc": {
+    "message": "Controls and regulation for AI coding tools",
+    "description": "Description of the ai-coding link on the 404 page"
+  },
+  "notFound.link.reference.title": {
+    "message": "Reference",
+    "description": "Title of the reference link on the 404 page"
+  },
+  "notFound.link.reference.desc": {
+    "message": "Requirements matrix and deliverable samples",
+    "description": "Description of the reference link on the 404 page"
   }
 }
