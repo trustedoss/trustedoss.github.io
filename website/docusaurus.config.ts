@@ -9,10 +9,6 @@ import type {Config} from '@docusaurus/types';
 
 import {themes as prismThemes} from 'prism-react-renderer';
 
-// See https://docs.netlify.com/configure-builds/environment-variables/
-const isProductionDeployment =
-  !!process.env.NETLIFY && process.env.CONTEXT === 'production';
-
 const copyright = `CC BY 4.0 · TrustedOSS Contributors`;
 
 // 로케일별로 빌드가 한 번씩 돌고, 그때마다 이 값이 바뀐다.
@@ -129,17 +125,7 @@ const config: Config = {
           editUrl: ({docPath}) =>
             `https://github.com/trustedoss/trustedoss.github.io/edit/main/docs/${docPath}`,
         },
-        blog: {
-          path: 'blog',
-          blogSidebarCount: 'ALL',
-          blogSidebarTitle: '전체 블로그 포스트',
-          feedOptions: {
-            type: 'all',
-            copyright,
-          },
-          onInlineAuthors: 'ignore',
-          onUntruncatedBlogPosts: 'ignore',
-        },
+        blog: false,
         theme: {
           customCss: [
             require.resolve('./src/css/customTheme.scss'),
@@ -157,12 +143,32 @@ const config: Config = {
         configureWebpack(_config: unknown, isServer: boolean) {
           return {
             optimization: {
-              concatenateModules: isProductionDeployment ? !isServer : false,
+              concatenateModules: false,
             },
           };
         },
       };
     },
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          {
+            from: [
+              '/blog',
+              '/blog/archive',
+              '/blog/authors',
+              '/blog/tags',
+              '/blog/tags/openchain',
+              '/blog/tags/oss',
+              '/blog/tags/sbom',
+              '/blog/welcome',
+            ],
+            to: '/',
+          },
+        ],
+      },
+    ],
     [
       'content-docs',
       {
@@ -289,11 +295,6 @@ const config: Config = {
           label: '레퍼런스',
           position: 'left',
         },
-        // {
-        //   to: '/blog',
-        //   label: '블로그',
-        //   position: 'left',
-        // },
         {
           href: 'https://trustedoss.github.io/trusca/',
           label: 'TRUSCA',
@@ -338,10 +339,6 @@ const config: Config = {
               label: 'TRUSCA',
               href: 'https://trustedoss.github.io/trusca/',
             },
-            // {
-            //   label: '블로그',
-            //   to: '/blog',
-            // },
           ],
         },
         {

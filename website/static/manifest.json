@@ -21,12 +21,6 @@
       "short_name": "AI코딩",
       "url": "/ai-coding/intro",
       "icons": [{ "src": "img/pwa/manifest-icon-192.png", "sizes": "192x192" }]
-    },
-    {
-      "name": "블로그",
-      "short_name": "Blog",
-      "url": "/blog",
-      "icons": [{ "src": "img/pwa/manifest-icon-192.png", "sizes": "192x192" }]
     }
   ],
   "icons": [
