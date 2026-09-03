@@ -36,10 +36,6 @@ const config: Config = {
   trailingSlash: false,
   scripts: [
     {
-      src: 'https://cdn.jsdelivr.net/npm/focus-visible@5.2.0/dist/focus-visible.min.js',
-      defer: true,
-    },
-    {
       src: 'https://gc.zgo.at/count.js',
       async: true,
       'data-goatcounter': 'https://trustedoss.goatcounter.com/count',

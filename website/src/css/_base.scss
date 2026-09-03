@@ -123,6 +123,9 @@ html[data-theme="dark"] {
   src: url("/fonts/Source-Code-Pro-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
+  /* Lighthouse font-display 감사가 잡던 두 블록. modules/fonts.ts 의 Roboto·
+     Pretendard 는 이미 swap 이라 여기만 빠져 있었다. */
+  font-display: swap;
 }
 
 @font-face {
@@ -130,6 +133,7 @@ html[data-theme="dark"] {
   src: url("/fonts/Source-Code-Pro-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
+  font-display: swap;
 }
 
 /* Content */
