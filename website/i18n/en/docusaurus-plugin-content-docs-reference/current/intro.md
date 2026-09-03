@@ -14,16 +14,17 @@ This section collects the reference materials you need to build an open source m
 
 Completed examples of the deliverables each stage's agent generates (based on a fictional company).
 Compare them with the results in your own `output/` folder to spot missing items.
+The per-stage list of deliverable files is canonical in the deliverables table of [Overview: the two standards and the whole journey](/docs).
 
-| Deliverable                                                                                                 | Agent                          | Link                                                  |
-| ----------------------------------------------------------------------------------------------------------- | ------------------------------ | ----------------------------------------------------- |
-| Organization (role-definition, raci-matrix, appointment-template)                                           | organization-designer          | [Organization deliverables](./samples/organization)   |
-| Policy (oss-policy, license-allowlist)                                                                      | policy-generator               | [Policy deliverables](./samples/policy)               |
-| Process (usage-approval, distribution-checklist, vulnerability-response, inquiry-response, process-diagram) | process-designer               | [Process deliverables](./samples/process)             |
-| SBOM (license-report, copyleft-risk, sbom-management-plan, sbom-sharing-template)                           | sbom-analyst / sbom-management | [SBOM deliverables](./samples/sbom)                   |
-| Vulnerability (cve-report, remediation-plan)                                                                | vulnerability-analyst          | [Vulnerability deliverables](./samples/vulnerability) |
-| Training (curriculum, completion-tracker, resources)                                                        | training-manager               | [Training deliverables](./samples/training)           |
-| Conformance (gap-analysis, declaration-draft, submission-guide)                                             | conformance-preparer           | [Conformance deliverables](./samples/conformance)     |
+| Stage         | Link                                                  |
+| ------------- | ----------------------------------------------------- |
+| Organization  | [Organization deliverables](./samples/organization)   |
+| Policy        | [Policy deliverables](./samples/policy)               |
+| Process       | [Process deliverables](./samples/process)             |
+| SBOM          | [SBOM deliverables](./samples/sbom)                   |
+| Vulnerability | [Vulnerability deliverables](./samples/vulnerability) |
+| Training      | [Training deliverables](./samples/training)           |
+| Conformance   | [Conformance deliverables](./samples/conformance)     |
 
 ## Concepts in Depth
 

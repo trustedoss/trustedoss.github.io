@@ -25,9 +25,7 @@ This chapter covers the tools that automatically identify the open source in you
 
 ## Try it right away (no install, no API key)
 
-See SBOM analysis results right in your browser first, with no installation.
-
-- [Try the SBOM analyzer sample](pathname:///tools/sbom-sample-demo.html?lang=en)
+The no-install SBOM analyzer demo lives in the [5-minute quick start](../00-overview/quick-start.md).
 
 ## Automatic generation with AI agents
 

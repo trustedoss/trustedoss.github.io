@@ -34,15 +34,10 @@ If you are curious about the actual form of the generated deliverables, also see
 
 The first deliverable you create is the definition of your organization's roles and responsibilities. The agent asks questions and generates documents tailored to your company.
 
-If you have not cloned the repository yet, get it first. Skip this step if you have already completed [Environment preparation: install the tools needed for the labs](../01-setup/index.md).
-
-```bash
-git clone https://github.com/trustedoss/trustedoss-agents.git
-cd trustedoss-agents
-```
+First finish installing the tools and downloading the repository. [Environment preparation: install the tools needed for the labs](../01-setup/index.md) walks through everything from opening a terminal to `git clone`. Skip this step if you have already done it.
 
 :::tip Check before running
-If a Claude session is open, exit it first (`/exit` or `Ctrl+C`). Run the command below from the root of the `trustedoss-agents` repository you moved into above. (If you opened a new terminal, run `cd trustedoss-agents` first.)
+If a Claude session is open, exit it first (`/exit` or `Ctrl+C`). Run the command below from the root of the `trustedoss-agents` repository you downloaded during environment preparation. (If you opened a new terminal, run `cd trustedoss-agents` first.)
 :::
 
 ```bash

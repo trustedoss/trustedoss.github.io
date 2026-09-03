@@ -30,11 +30,15 @@ Even if today is your first day as an open source lead, you can complete the ISO
 
 ### Quick start
 
-```bash
-git clone https://github.com/trustedoss/trustedoss-agents.git
-cd trustedoss-agents && claude
-# Type "Where should I start?"
-```
+The labs need three things: a terminal, git, and Claude Code. Installing them and
+downloading the repository is covered in one place, in
+[Environment preparation: install the tools needed for the labs](../01-setup/index.md).
+You can follow it from opening a terminal for the first time.
+
+Once you are set up, run `claude` from the repository root and ask "Where should I start?".
+It reads your current progress and points you to the next step.
+
+If you would rather see the output before deciding, go to the [5-minute quick start](./quick-start.md).
 
 ### Full chapter list
 
@@ -105,10 +109,10 @@ Which chapter fills which group is laid out in [Standard requirements at a glanc
 Take your time to understand and work through each document on your own. We recommend 3-5 days to complete the entire kit.
 :::
 
-1. Read this page (`index.md`) — get an overview of the whole journey
+1. Read this page — grasp the purpose and structure of the whole journey
 2. Read [Standard requirements at a glance](./checklist-mapping.md) — grasp what the two standards require on a single screen
-3. Read `supply-chain.md` — build background on software supply chain security
-4. Go to `docs/01-setup/` — start preparing your environment
+3. Read [Software Supply Chain Security: Why It Matters Now](./supply-chain.md) — build the background
+4. Go to [Environment preparation: install the tools needed for the labs](../01-setup/index.md) — install the tools and clone the repository
 
 ---
 
@@ -146,9 +150,9 @@ Start from [DevSecOps adoption strategy](/devsecops/strategy) and build pipeline
 
 ### If you are not sure where to go
 
-Try the results first with the [5-minute quick start](./quick-start.md), then decide.
+If none of the three routes obviously matches your situation, try the results first with the [5-minute quick start](./quick-start.md) and then decide. It shows you the actual shape of the deliverables with nothing to install.
 
-**If you want some background first**, read [Software Supply Chain Security: Why It Matters Now](./supply-chain.md) and [SBOM Basics: An Introduction to the Software Bill of Materials](./sbom-101.md) to learn software supply chain security and SBOM concepts.
+If you would rather build background first, read [Software Supply Chain Security: Why It Matters Now](./supply-chain.md) and [SBOM Basics: An Introduction to the Software Bill of Materials](./sbom-101.md). Either one helps whichever route you pick.
 
 ---
 
