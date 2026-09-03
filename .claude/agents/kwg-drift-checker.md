@@ -78,7 +78,7 @@ KWG 원본 파일과 우리 파일 간의 **의미론적 갭**을 분석하고 �
 갭 판정: 🟡 검토 필요
 반영 권고:
 - ISO 3.7.x 의미 파악 (새 표준 요구사항 영역인지 확인)
-- checklist-mapping.md에 G항목 추가 필요 여부 검토
+- requirements-matrix.md에 G항목 추가 필요 여부 검토
 - kwg-mapping.yaml iso_section_mapping에 매핑 추가
 
 우선순위: 중간

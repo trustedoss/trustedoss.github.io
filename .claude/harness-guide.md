@@ -277,12 +277,12 @@ python3 .claude/scripts/test-coverage.py
 
 `verify.sh` 의 해당 항목이 내부적으로 실행. 독립 실행도 가능.
 
-| 검사 | 내용                                          |
-| ---- | --------------------------------------------- |
-| A    | G항목 ↔ 담당 Agent 할당                       |
-| B    | G항목 ↔ output 파일 할당                      |
-| C    | checklist-mapping ↔ validate-checklist 일관성 |
-| D    | agents CLAUDE.md → templates/ 파일 존재       |
+| 검사 | 내용                                            |
+| ---- | ----------------------------------------------- |
+| A    | G항목 ↔ 담당 Agent 할당                         |
+| B    | G항목 ↔ output 파일 할당                        |
+| C    | requirements-matrix ↔ validate-checklist 일관성 |
+| D    | agents CLAUDE.md → templates/ 파일 존재         |
 
 ---
 

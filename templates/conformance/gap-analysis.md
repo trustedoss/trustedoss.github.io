@@ -3,7 +3,7 @@
 <!-- 5230 §3.6.1.1, §3.6.2.1 · 18974 §4.4.1.1, §4.4.2.1, §4.1.2.5, §4.1.2.6, §4.1.4.3 -->
 <!-- 이 템플릿은 07-conformance-preparer가 생성하는 갭 분석과 같은 구조다:
      표준별 입증자료 25개(두 표준 모두 선택 시 총 50개)를 조항 ID 기준으로 대조한다.
-     G항목(G1~G4) 지도는 docs/00-overview/checklist-mapping.md 가 정본이다. -->
+     G항목(G1~G4) 지도는 website/reference/requirements-matrix.md 가 정본이다. -->
 
 ---
 

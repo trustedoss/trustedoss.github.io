@@ -3,7 +3,7 @@
 <!-- 5230 §3.6.1.1, §3.6.2.1 · 18974 §4.4.1.1, §4.4.2.1, §4.1.2.5, §4.1.2.6, §4.1.4.3 -->
 <!-- This template has the same structure as the gap analysis 07-conformance-preparer generates:
      25 pieces of evidence per standard (50 in total when both are selected), compared by clause ID.
-     docs/00-overview/checklist-mapping.md is the authoritative map of the G items (G1 to G4). -->
+     website/reference/requirements-matrix.md is the authoritative map of the G items (G1 to G4). -->
 
 ---
 

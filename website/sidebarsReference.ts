@@ -6,6 +6,7 @@ const sidebars: SidebarsConfig = {
     'glossary',
     'talks',
     'agents',
+    'requirements-matrix',
     {
       type: 'category',
       label: '산출물 Best Practice',

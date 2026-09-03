@@ -7,7 +7,7 @@ KWG 원본 파일의 구조적 변경을 감지하고 스냅샷과 비교한다.
   차원 1: KWG 가이드 헤딩 변경 → 우리 docs/ 챕터 영향
   차원 2: KWG 템플릿 ISO 항목 변경 → 우리 templates/ 영향
   차원 3: KWG 도구 수 변경 → 우리 docs/05-tools/ 영향
-  차원 4: 매핑 테이블 미반영 ISO 섹션 → checklist-mapping.md 영향
+  차원 4: 매핑 테이블 미반영 ISO 섹션 → requirements-matrix.md 영향
 
 실행:
   python3 .claude/scripts/check-kwg-drift.py
@@ -272,7 +272,7 @@ def check_drift(mapping: dict, verbose: bool, save_snapshot: bool = False) -> li
         changes.append({
             "dimension": 4,
             "kwg_file": "(전체 KWG 파일)",
-            "our_files": ["docs/00-overview/checklist-mapping.md"],
+            "our_files": ["website/reference/requirements-matrix.md"],
             "description": "kwg-mapping.yaml에 없는 ISO 섹션 번호 발견",
             "watch_for": ["새 ISO 요구사항이 우리 G항목 체계에 없을 수 있음"],
             "unmapped_sections": sorted(unmapped),

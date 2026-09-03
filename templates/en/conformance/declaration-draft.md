@@ -39,7 +39,7 @@ This declaration applies to the software and products below:
 ## ISO/IEC 5230:2020 checklist confirmation
 
 <!-- Confirm the 25 pieces of evidence per standard by clause ID, the same scheme as gap-analysis.md.
-     docs/00-overview/checklist-mapping.md is the authoritative map of the G items (G1 to G4). -->
+     website/reference/requirements-matrix.md is the authoritative map of the G items (G1 to G4). -->
 
 Confirm whether the 25 pieces of evidence below are satisfied. If anything is still only partially satisfied (🔶), either complete it before declaring, or declare with only the time-based items (18974 §4.1.2.5, §4.1.2.6, §4.1.4.3) left in the planned state.
 
