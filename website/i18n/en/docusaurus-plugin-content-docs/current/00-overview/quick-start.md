@@ -28,7 +28,7 @@ Check SBOM analysis results right in your browser, with no installation.
 
 - [Open the SBOM sample demo](pathname:///tools/sbom-sample-demo.html?lang=en)
 
-If you are curious about the actual form of the generated deliverables, also see the [Policy Deliverable Best Practices](/reference/samples/policy).
+If you are curious about the actual form of the generated deliverables, also see the [Policy Deliverable Best Practices](/en/reference/samples/policy).
 
 ### 2. Create your own deliverables (AI agent, about 15 minutes)
 

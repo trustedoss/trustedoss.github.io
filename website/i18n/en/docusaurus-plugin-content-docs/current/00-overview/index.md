@@ -56,16 +56,16 @@ If you would rather see the output before deciding, go to the [5-minute quick st
 
 ### Deliverables upon completion
 
-| Step            | Deliverable files                                                                                                                                                      | Related standards |
-| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
-| Organization    | `role-definition.md`, `raci-matrix.md`, `appointment-template.md` — [See example](/reference/samples/organization)                                                     | [Common]          |
-| Policy          | `oss-policy.md`, `license-allowlist.md` — [See example](/reference/samples/policy)                                                                                     | [Common]          |
-| Process         | `usage-approval.md`, `distribution-checklist.md`, `vulnerability-response.md`, `inquiry-response.md`, `process-diagram.md` — [See example](/reference/samples/process) | [Common]          |
-| Create SBOM     | `[project].cdx.json`, `sbom-commands.sh`, `license-report.md`, `copyleft-risk.md` — [See example](/reference/samples/sbom)                                             | [Common]          |
-| SBOM management | `sbom-management-plan.md`, `sbom-sharing-template.md` — [See example](/reference/samples/sbom)                                                                         | [Supply Chain]    |
-| Vulnerability   | `cve-report.md`, `remediation-plan.md` — [See example](/reference/samples/vulnerability)                                                                               | [18974]           |
-| Training        | `curriculum.md`, `completion-tracker.md`, `resources.md` — [See example](/reference/samples/training)                                                                  | [Common]          |
-| Certification   | `gap-analysis.md`, `declaration-draft.md`, `submission-guide.md` — [See example](/reference/samples/conformance)                                                       | [Common]          |
+| Step            | Deliverable files                                                                                                                                                         | Related standards |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
+| Organization    | `role-definition.md`, `raci-matrix.md`, `appointment-template.md` — [See example](/en/reference/samples/organization)                                                     | [Common]          |
+| Policy          | `oss-policy.md`, `license-allowlist.md` — [See example](/en/reference/samples/policy)                                                                                     | [Common]          |
+| Process         | `usage-approval.md`, `distribution-checklist.md`, `vulnerability-response.md`, `inquiry-response.md`, `process-diagram.md` — [See example](/en/reference/samples/process) | [Common]          |
+| Create SBOM     | `[project].cdx.json`, `sbom-commands.sh`, `license-report.md`, `copyleft-risk.md` — [See example](/en/reference/samples/sbom)                                             | [Common]          |
+| SBOM management | `sbom-management-plan.md`, `sbom-sharing-template.md` — [See example](/en/reference/samples/sbom)                                                                         | [Supply Chain]    |
+| Vulnerability   | `cve-report.md`, `remediation-plan.md` — [See example](/en/reference/samples/vulnerability)                                                                               | [18974]           |
+| Training        | `curriculum.md`, `completion-tracker.md`, `resources.md` — [See example](/en/reference/samples/training)                                                                  | [Common]          |
+| Certification   | `gap-analysis.md`, `declaration-draft.md`, `submission-guide.md` — [See example](/en/reference/samples/conformance)                                                       | [Common]          |
 
 Below is the 7-step journey from zero to self-certification. Check off each step as you complete it to track your progress (saved only in this browser).
 
@@ -99,7 +99,7 @@ Both standards use **Self-Certification**. You make the declaration directly on 
 
 The 31 requirements across the two standards fall into six groups: program foundation (G1), defining related tasks (G2), license compliance (G3-L), security assurance (G3-S), SBOM and supply chain (G3-B), and declaring and maintaining compliance (G4). Twelve of them are common to both standards, so working through them in order saves roughly 39% of the duplicate work.
 
-Which chapter fills which group is laid out in [Standard requirements at a glance](./checklist-mapping.md). The point where you need the certification question and verification material for each individual item is [07 Conformance](../07-conformance/index.md); that is when you open the [Requirements Detail Matrix](/reference/requirements-matrix).
+Which chapter fills which group is laid out in [Standard requirements at a glance](./checklist-mapping.md). The point where you need the certification question and verification material for each individual item is [07 Conformance](../07-conformance/index.md); that is when you open the [Requirements Detail Matrix](/en/reference/requirements-matrix).
 
 ---
 
@@ -140,13 +140,13 @@ Proceed in order starting from [Environment preparation](../01-setup/index.md). 
 
 This is for when you want to set up a policy and then automatically apply it to daily development and CI.
 
-First create the [Open Source Policy](../03-policy/index.md), apply the policy to your development tools with [AI coding governance](/ai-coding/intro), and then enforce it in your CI pipeline with [DevSecOps](/devsecops/intro).
+First create the [Open Source Policy](../03-policy/index.md), apply the policy to your development tools with [AI coding governance](/en/ai-coding/intro), and then enforce it in your CI pipeline with [DevSecOps](/en/devsecops/intro).
 
 ### When you already have a policy
 
 This is for when you already have a management system in place and want to strengthen automation first.
 
-Start from [DevSecOps adoption strategy](/devsecops/strategy) and build pipeline security gates. If you use AI coding tools, also see [AI coding governance](/ai-coding/intro).
+Start from [DevSecOps adoption strategy](/en/devsecops/strategy) and build pipeline security gates. If you use AI coding tools, also see [AI coding governance](/en/ai-coding/intro).
 
 ### If you are not sure where to go
 

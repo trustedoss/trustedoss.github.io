@@ -96,7 +96,7 @@ management system.
 
 If you also have AI management system certification (ISO/IEC 42001) in mind, this role is the
 connection point between the two systems. See
-[AI System Compliance and Open Source Management](/ai-coding/iso42001) for details.
+[AI System Compliance and Open Source Management](/en/ai-coding/iso42001) for details.
 
 ### Gather evidence for periodic review (ISO/IEC 18974 §4.1.2.5, §4.1.2.6)
 
@@ -246,7 +246,7 @@ Completing this exercise satisfies the requirements below.
 
 5230 §3.1.2, §3.2.1, §3.2.2 · 18974 §4.1.2, §4.2.1, §4.2.2
 
-The original self-certification question and the verification material for each item are in the [Requirements Detail Matrix](/reference/requirements-matrix).
+The original self-certification question and the verification material for each item are in the [Requirements Detail Matrix](/en/reference/requirements-matrix).
 :::
 
 ---
@@ -291,7 +291,7 @@ _(R = Responsible, A = Accountable, C = Consulted, I = Informed)_
 - [ ] External inquiry email/channel designated
 
 :::tip Example deliverables
-See the actual format of the generated files in [Organization deliverables best practice](/reference/samples/organization).
+See the actual format of the generated files in [Organization deliverables best practice](/en/reference/samples/organization).
 :::
 
 ---

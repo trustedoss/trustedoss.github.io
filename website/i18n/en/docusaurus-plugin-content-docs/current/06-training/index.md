@@ -43,7 +43,7 @@ Even when policies and processes exist, they will not work if people do not know
 ## 3. Required training content by job group
 
 :::tip
-Unfamiliar acronyms such as SBOM and CVSS are explained in plain language in the [Glossary](/reference/glossary).
+Unfamiliar acronyms such as SBOM and CVSS are explained in plain language in the [Glossary](/en/reference/glossary).
 :::
 
 | Job group           | Required training content                                                                           | Recommended time |
@@ -182,7 +182,7 @@ Completing this exercise satisfies the requirements below.
 
 5230 §3.1.2, §3.1.3 · 18974 §4.1.2, §4.1.3
 
-The original self-certification question and the verification material for each item are in the [Requirements Detail Matrix](/reference/requirements-matrix).
+The original self-certification question and the verification material for each item are in the [Requirements Detail Matrix](/en/reference/requirements-matrix).
 :::
 
 ## 7. Generated deliverables
@@ -202,7 +202,7 @@ When you complete this chapter, the following files will be created in the `outp
 - [ ] Method of proving completion has been decided
 
 :::tip Example deliverables
-You can see the actual format of the generated files in [Training Deliverables Best Practice](/reference/samples/training).
+You can see the actual format of the generated files in [Training Deliverables Best Practice](/en/reference/samples/training).
 :::
 
 ## 9. Next steps

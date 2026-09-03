@@ -17,7 +17,7 @@ The generated SBOM later becomes the basis for license analysis (05-sbom-analyst
 
 :::note How SBOM, vulnerability analysis, and SCA relate
 The **SBOM** (software bill of materials) is the input; **vulnerability analysis** is the step that uses that SBOM to find risks.
-Running both together automatically in CI is **SCA** (Software Composition Analysis) — automation is covered in [DevSecOps → SCA](/devsecops/sca).
+Running both together automatically in CI is **SCA** (Software Composition Analysis) — automation is covered in [DevSecOps → SCA](/en/devsecops/sca).
 :::
 
 ---
@@ -25,7 +25,7 @@ Running both together automatically in CI is **SCA** (Software Composition Analy
 ## 2. Background knowledge
 
 :::tip
-For plain-language explanations of unfamiliar acronyms such as SBOM, CycloneDX, and SPDX, see the [glossary](/reference/glossary).
+For plain-language explanations of unfamiliar acronyms such as SBOM, CycloneDX, and SPDX, see the [glossary](/en/reference/glossary).
 :::
 
 Both ISO/IEC 5230 and 18974 specify SBOM generation as a core requirement (G3B.1). What an SBOM is and why you need one is covered in [SBOM Basics](../../00-overview/sbom-101.md). This chapter covers the tools and commands that actually produce one.
@@ -140,7 +140,7 @@ with cdxgen and compare. To pin the specification version, use `-o cyclonedx-jso
 
 :::tip MCP servers belong in the SBOM too
 For how to list MCP (Model Context Protocol, the convention by which an agent calls external tools)
-servers that AI agents call, see [Agent and MCP Tool Governance](/ai-coding/agent-governance).
+servers that AI agents call, see [Agent and MCP Tool Governance](/en/ai-coding/agent-governance).
 No standards body guidance exists yet, so this area interprets the existing specification.
 :::
 
@@ -282,7 +282,7 @@ Completing this exercise satisfies the requirements below.
 
 5230 §3.3.1, §3.3.2, §3.4.1 · 18974 §4.3.1
 
-The original self-certification question and the verification material for each item are in the [Requirements Detail Matrix](/reference/requirements-matrix).
+The original self-certification question and the verification material for each item are in the [Requirements Detail Matrix](/en/reference/requirements-matrix).
 :::
 
 ---
@@ -311,7 +311,7 @@ Confirm all of the items below before moving on to the next step.
 > This step meets ISO/IEC 5230 3.3.1, 3.3.2, and 3.4.1, and ISO/IEC 18974 4.3.1 requirements.
 
 :::tip Example deliverables
-See the actual format of the generated files at [SBOM deliverables best practice](/reference/samples/sbom).
+See the actual format of the generated files at [SBOM deliverables best practice](/en/reference/samples/sbom).
 :::
 
 ---

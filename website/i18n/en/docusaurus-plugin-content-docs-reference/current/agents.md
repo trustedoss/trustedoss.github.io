@@ -14,7 +14,7 @@ Agents come in two groups. Program-building agents produce the deliverables you 
 
 ## Program-building agents
 
-Each maps to one chapter of the [Open Source Management](/docs) track. If self-certification is your goal, run them in the order below.
+Each maps to one chapter of the [Open Source Management](/en/docs) track. If self-certification is your goal, run them in the order below.
 
 | Chapter         | Agent (`agents/…`)                 | Deliverables                                                                                                                                        |
 | --------------- | ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -31,7 +31,7 @@ To see what the output actually looks like, read [Policy deliverables best pract
 
 ## Automation agents
 
-Use these once policy exists, in the [DevSecOps](/devsecops/intro) and [AI Coding Governance](/ai-coding/intro) tracks. Setup agents analyze your project and write configuration files. Analysis agents take a scanner's output file and turn it into a response report.
+Use these once policy exists, in the [DevSecOps](/en/devsecops/intro) and [AI Coding Governance](/en/ai-coding/intro) tracks. Setup agents analyze your project and write configuration files. Analysis agents take a scanner's output file and turn it into a response report.
 
 | Group    | Agent (`agents/…`)  | What it does                                                                                            | Deliverables                                                                                               |
 | -------- | ------------------- | ------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
@@ -84,5 +84,5 @@ claude
 
 ## Next steps
 
-- If you have not set up your environment yet, start with the [Environment setup](/docs/setup) chapter.
-- To decide what to do first, see the next-steps section of [Overview: the two standards and the whole journey](/docs).
+- If you have not set up your environment yet, start with the [Environment setup](/en/docs/setup) chapter.
+- To decide what to do first, see the next-steps section of [Overview: the two standards and the whole journey](/en/docs).

@@ -13,7 +13,7 @@ self_study_time: 15 minutes
 
 # Integrated Requirements Checklist Mapping
 
-This document summarizes **what ISO/IEC 5230 (license compliance) and ISO/IEC 18974 (security assurance) require, on a single screen**. The self-certification question, verification material, and deliverable file for each individual item live in the [Requirements Detail Matrix](/reference/requirements-matrix). You use that matrix at the [self-certification](../07-conformance/index.md) stage to check gap analysis results; for now the three sections below are all you need.
+This document summarizes **what ISO/IEC 5230 (license compliance) and ISO/IEC 18974 (security assurance) require, on a single screen**. The self-certification question, verification material, and deliverable file for each individual item live in the [Requirements Detail Matrix](/en/reference/requirements-matrix). You use that matrix at the [self-certification](../07-conformance/index.md) stage to check gap analysis results; for now the three sections below are all you need.
 
 ## Comparing the two standards
 
@@ -66,4 +66,4 @@ This mapping's chapter and deliverable structure is reworked from that guide.
 
 Once you have this much, move on to [Environment setup](../01-setup/index.md) to install the tools, then start producing deliverables from [Organization structure](../02-organization/index.md).
 
-The point where you need the per-item certification questions and verification material is the [self-certification](../07-conformance/index.md) chapter. At that point, open the [Requirements Detail Matrix](/reference/requirements-matrix) and check it against your gap analysis results.
+The point where you need the per-item certification questions and verification material is the [self-certification](../07-conformance/index.md) chapter. At that point, open the [Requirements Detail Matrix](/en/reference/requirements-matrix) and check it against your gap analysis results.

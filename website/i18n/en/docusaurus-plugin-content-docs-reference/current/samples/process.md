@@ -12,7 +12,7 @@ Compare them with your own `output/process/` files to spot missing items.
 
 > The process documents below are based on the six processes of the OpenChain KWG process guide (open source management, security vulnerability management, external inquiry response, contribution, internal project release, training and assessment) and ISO/IEC 5230 and 18974. The KWG guide is licensed under CC BY 4.0.
 
-> **Go to reference:** [Open Source Process Chapter Guide](/docs/process)
+> **Go to reference:** [Open Source Process Chapter Guide](/en/docs/process)
 
 ---
 

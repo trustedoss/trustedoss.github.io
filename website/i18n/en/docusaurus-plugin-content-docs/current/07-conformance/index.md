@@ -82,7 +82,7 @@ standard requires, and finding the "gap" — what's still missing. The agent ope
 `output/` folder, compares it item by item against the standard's checklist, and writes the result
 to `output/conformance/gap-analysis.md`.
 
-To check the certification question and verification material for each item yourself, keep the [Requirements Detail Matrix](/reference/requirements-matrix) open alongside it.
+To check the certification question and verification material for each item yourself, keep the [Requirements Detail Matrix](/en/reference/requirements-matrix) open alongside it.
 
 `output/conformance/gap-analysis.md` is created with the following structure:
 
@@ -153,7 +153,7 @@ Completing this exercise satisfies the requirements below.
 
 5230 §3.6.1, §3.6.2 · 18974 §4.4.1, §4.4.2
 
-The original self-certification question and the verification material for each item are in the [Requirements Detail Matrix](/reference/requirements-matrix).
+The original self-certification question and the verification material for each item are in the [Requirements Detail Matrix](/en/reference/requirements-matrix).
 :::
 
 ---
@@ -162,7 +162,7 @@ The original self-certification question and the verification material for each 
 
 Finish the common items first, then the ISO/IEC 5230-only items, then the ISO/IEC 18974-only items. That order saves roughly 39% of the work, and this kit's chapter order follows it.
 
-The item counts and the basis for that saving are in [Standard requirements at a glance](../00-overview/checklist-mapping.md); the per-item mapping is in the [Requirements Detail Matrix](/reference/requirements-matrix).
+The item counts and the basis for that saving are in [Standard requirements at a glance](../00-overview/checklist-mapping.md); the per-item mapping is in the [Requirements Detail Matrix](/en/reference/requirements-matrix).
 
 ---
 
@@ -215,7 +215,7 @@ Check all items below before finishing this chapter:
 - [ ] Self-certification declaration completed
 
 :::tip Example deliverables
-You can see the actual format of the generated files in [Self-Certification Deliverables Best Practice](/reference/samples/conformance).
+You can see the actual format of the generated files in [Self-Certification Deliverables Best Practice](/en/reference/samples/conformance).
 :::
 
 ---
@@ -237,5 +237,5 @@ Ways to keep growing with the open source ecosystem after certification:
 
 Now that certification has defined what to do, the next step is enforcing it automatically in daily development.
 
-- [AI Coding Tools and Open Source Compliance](/ai-coding/intro): Use Rules to keep AI coding tools such as Cursor, Copilot, and Claude Code within your policy.
-- [DevSecOps](/devsecops/intro): Turn SBOM generation and vulnerability scanning into CI pipeline gates that automatically block policy violations.
+- [AI Coding Tools and Open Source Compliance](/en/ai-coding/intro): Use Rules to keep AI coding tools such as Cursor, Copilot, and Claude Code within your policy.
+- [DevSecOps](/en/devsecops/intro): Turn SBOM generation and vulnerability scanning into CI pipeline gates that automatically block policy violations.

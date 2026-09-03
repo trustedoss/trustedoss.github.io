@@ -10,10 +10,10 @@ description: 'The canonical item-by-item matrix linking all 31 ISO/IEC 5230 and 
 
 This page is the **canonical, item-by-item expansion of the 31 requirements** in ISO/IEC 5230 and ISO/IEC 18974. Each item carries the original OpenChain self-certification question, the verification material named by the standard, the deliverable file that satisfies it, and the agent that produces that file.
 
-You do not need this page when you first start reading. To understand what the two standards require, read the [Standard requirements at a glance](/docs/overview/checklist-mapping) summary first. Use this matrix at the [self-certification](/docs/conformance) stage, when you check gap analysis results item by item.
+You do not need this page when you first start reading. To understand what the two standards require, read the [Standard requirements at a glance](/en/docs/overview/checklist-mapping) summary first. Use this matrix at the [self-certification](/en/docs/conformance) stage, when you check gap analysis results item by item.
 
 :::info Item ID scheme
-`G1` program foundation, `G2` scoped tasks and support, `G3-L` license compliance, `G3-S` security assurance, `G3-B` SBOM and supply chain, `G4` conformance declaration and maintenance. The per-group explanation is in [Standard requirements at a glance](/docs/overview/checklist-mapping).
+`G1` program foundation, `G2` scoped tasks and support, `G3-L` license compliance, `G3-S` security assurance, `G3-B` SBOM and supply chain, `G4` conformance declaration and maintenance. The per-group explanation is in [Standard requirements at a glance](/en/docs/overview/checklist-mapping).
 :::
 
 ## Remark tags
@@ -611,6 +611,6 @@ Confirm before distribution that each identified vulnerability has been remediat
 
 ## Related documents
 
-- [Standard requirements at a glance](/docs/overview/checklist-mapping) — a summary of what the two standards require
-- [Self-certification declaration](/docs/conformance) — the stage where you check gap analysis results against this matrix
+- [Standard requirements at a glance](/en/docs/overview/checklist-mapping) — a summary of what the two standards require
+- [Self-certification declaration](/en/docs/conformance) — the stage where you check gap analysis results against this matrix
 - [Building deliverables with AI agents](./agents) — how to run each owning agent

@@ -5,11 +5,11 @@ sidebar_position: 4
 
 # SBOM Output Best Practice
 
-These are examples of the SBOM-related deliverables generated in the [05 Tools chapter](/docs/tools/sbom-generation).
+These are examples of the SBOM-related deliverables generated in the [05 Tools chapter](/en/docs/tools/sbom-generation).
 They show actual output produced from the sample project (`java-vulnerable`, which includes Log4Shell CVE-2021-44228).
 
 :::tip Download the Sample SBOM
-We provide a sample SBOM (CycloneDX format, containing a GPL-2.0 copyleft component plus a vulnerable version) so you can try the analysis yourself. Download it and feed it into the [SCA analyzer](/devsecops/sca) or a local tool such as grype.
+We provide a sample SBOM (CycloneDX format, containing a GPL-2.0 copyleft component plus a vulnerable version) so you can try the analysis yourself. Download it and feed it into the [SCA analyzer](/en/devsecops/sca) or a local tool such as grype.
 
 <a href="/samples/fixture-sample.cdx.json" download>Download fixture-sample.cdx.json</a>
 

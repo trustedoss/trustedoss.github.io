@@ -9,7 +9,7 @@ slug: intro
 # AI Coding Governance — Tools and Open Source Compliance
 
 :::note Optional stage — if you have a development team
-This section is an optional stage that **automatically applies the policies you created in [Build Your System](/docs) to AI coding tools and CI**.
+This section is an optional stage that **automatically applies the policies you created in [Build Your System](/en/docs) to AI coding tools and CI**.
 If your goal is standard Self-Certification, finish Build Your System (governance) first. If your developers use AI tools, this is where you enforce the policy at code-generation time.
 :::
 
@@ -48,4 +48,4 @@ The tool pages are ordered by how widely each tool is used at work. In JetBrains
 
 To configure AI coding tools from an open source compliance perspective, start with the [Common Rules Template](./rules-template).
 
-Advanced CI/CD pipeline design and organization-wide security strategy are covered in the [DevSecOps guide](/devsecops/intro).
+Advanced CI/CD pipeline design and organization-wide security strategy are covered in the [DevSecOps guide](/en/devsecops/intro).

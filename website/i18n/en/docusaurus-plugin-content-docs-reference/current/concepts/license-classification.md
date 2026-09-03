@@ -61,7 +61,7 @@ A matrix to consult when deciding which categories to allow per channel. The act
 | AGPL-3.0   | Network Copyleft | ✅ Allowed   | ❌ Prohibited     | ❌ Prohibited    | ❌ Prohibited  |
 | CC-BY-SA   | Content license  | ✅ Allowed   | ⚠️ Conditional    | ⚠️ Conditional   | ⚠️ Conditional |
 
-The symbols follow the same three-level notation as the [Policy Deliverable Best Practices](/reference/samples/policy).
+The symbols follow the same three-level notation as the [Policy Deliverable Best Practices](/en/reference/samples/policy).
 
 | Symbol         | Meaning                                                                                   |
 | -------------- | ----------------------------------------------------------------------------------------- |
@@ -75,6 +75,6 @@ This classification is foundational knowledge for ISO/IEC 5230 3.1.4 (program sc
 
 ## Related Documents
 
-- [Open Source Policy chapter guide](/docs/policy) — turn this classification into an allow list tailored to your company's distribution method
-- [Policy Deliverable Best Practices](/reference/samples/policy) — a completed example reflecting per-channel allow principles
-- [Glossary](/reference/glossary) — definitions of Copyleft, Permissive, and other terms
+- [Open Source Policy chapter guide](/en/docs/policy) — turn this classification into an allow list tailored to your company's distribution method
+- [Policy Deliverable Best Practices](/en/reference/samples/policy) — a completed example reflecting per-channel allow principles
+- [Glossary](/en/reference/glossary) — definitions of Copyleft, Permissive, and other terms

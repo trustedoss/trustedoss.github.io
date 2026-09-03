@@ -113,7 +113,7 @@ The persistence mechanism is the part worth studying. ChainDrop's payload plante
 
 ### Where the attacks moved
 
-In the first three cases, attackers went after source code or maintainer trust. In the cases from 2025 onward, they go after the accounts that hold publishing rights and the build pipelines themselves. Hijacking a single release workflow lets an attacker ship a malicious version that is indistinguishable from a legitimate release, without touching library source at all. Managing an inventory of open source components is therefore no longer enough: the pipeline that pulls those components in and builds them has to be under control as well. For the practical measures, see [Pipeline Security and Build Provenance](/devsecops/pipeline-security).
+In the first three cases, attackers went after source code or maintainer trust. In the cases from 2025 onward, they go after the accounts that hold publishing rights and the build pipelines themselves. Hijacking a single release workflow lets an attacker ship a malicious version that is indistinguishable from a legitimate release, without touching library source at all. Managing an inventory of open source components is therefore no longer enough: the pipeline that pulls those components in and builds them has to be under control as well. For the practical measures, see [Pipeline Security and Build Provenance](/en/devsecops/pipeline-security).
 
 ---
 

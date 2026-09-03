@@ -191,7 +191,7 @@ Four working controls follow.
   blocked is open.
 
 Bringing IDE extensions into scanning scope continues in
-[Software Composition Analysis (SCA)](/devsecops/sca).
+[Software Composition Analysis (SCA)](/en/devsecops/sca).
 
 ### The authorization layer
 
@@ -304,7 +304,7 @@ current official docs).
 - Servers not in `allowedMcpServers` cannot be used (an empty array locks MCP down entirely;
   `deniedMcpServers` takes precedence).
 - Deterministic per-tool-call blocking is implemented with a PreToolUse hook — you can extend the
-  script from [Method 3: Automatic reminders with Hooks](/docs/developer-guide#method-3) directly.
+  script from [Method 3: Automatic reminders with Hooks](/en/docs/developer-guide#method-3) directly.
 - Other tools offer admin policies as well (e.g., restricting MCP use in per-tool organization
   settings); check each tool's admin documentation.
 
@@ -370,11 +370,11 @@ No standards body guidance on representing MCP servers in an SBOM has been ident
 above interprets the existing specification and is not a standardized practice. Until that settles,
 keep the mapping above; even when you use organization-defined properties, recording which item you
 captured under which name makes it easier to move to a standard representation later. For hands-on
-SBOM generation, see [SBOM Generation](/docs/tools/sbom-generation).
+SBOM generation, see [SBOM Generation](/en/docs/tools/sbom-generation).
 
 ## 7. Relationship to the existing gates
 
-Even if every control on this page is bypassed, the [stage 3 CI hard block](/devsecops/intro)
+Even if every control on this page is bypassed, the [stage 3 CI hard block](/en/devsecops/intro)
 mechanically stops secrets, vulnerabilities, and forbidden licenses at the artifact stage.
 Conversely, the CI gate cannot see behavior that never lands in code (such as data exfiltration
 through a tool), so tool controls and artifact gates are complementary — neither substitutes for

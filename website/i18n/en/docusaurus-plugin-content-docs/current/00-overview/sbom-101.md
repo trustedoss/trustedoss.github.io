@@ -183,7 +183,7 @@ The hands-on work in this kit (chapter 05) targets conventional SBOMs. To cover 
 refer to the [KWG AI SBOM Compliance Guide](https://openchain-project.github.io/OpenChain-KWG/guide/ai-sbom_guide/),
 which provides a clause checklist, a phased roadmap, and tool walkthroughs (OWASP AIBOM
 Generator, cdxgen). Legal considerations for AI coding tools are covered in
-[AI Coding Governance](/ai-coding/intro).
+[AI Coding Governance](/en/ai-coding/intro).
 
 ---
 

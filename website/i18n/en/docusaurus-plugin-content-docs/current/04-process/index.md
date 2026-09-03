@@ -26,7 +26,7 @@ You also cover CI/CD integration, aiming for a sustainable system that is natura
 ## 2. Background knowledge
 
 :::tip
-Unfamiliar acronyms such as SBOM, CVE, and CVSS are explained in plain language in the [Glossary](/reference/glossary).
+Unfamiliar acronyms such as SBOM, CVE, and CVSS are explained in plain language in the [Glossary](/en/reference/glossary).
 :::
 
 :::tip
@@ -88,7 +88,7 @@ or signature attached to the package (npm provenance, Sigstore and similar), mat
 workflow in which repository produced the artifact, and hold registration when there is no
 attestation or it points somewhere other than the repository you expected. For securing the publish
 path itself, see the publish and install path section of
-[Software Composition Analysis (SCA)](/devsecops/sca).
+[Software Composition Analysis (SCA)](/en/devsecops/sca).
 
 Signature verification alone is not enough, though. An attestation only guarantees that the build
 came out of the declared pipeline; it does not cover a compromise of that pipeline. In Mini
@@ -116,7 +116,7 @@ With an SBOM, you can quickly check whether your software is affected when a new
 You use resources efficiently by applying different response deadlines based on CVE severity (CVSS score).
 
 :::tip Canonical response deadlines
-The CVSS-severity response-deadline table (the KWG baseline plus a stricter organizational SLA option) and the VEX concept are consolidated in [Vulnerability response deadlines and VEX](/reference/concepts/vulnerability-response). The process deliverable `vulnerability-response.md` documents these as your company SLA.
+The CVSS-severity response-deadline table (the KWG baseline plus a stricter organizational SLA option) and the VEX concept are consolidated in [Vulnerability response deadlines and VEX](/en/reference/concepts/vulnerability-response). The process deliverable `vulnerability-response.md` documents these as your company SLA.
 :::
 
 :::warning Check the separate reporting obligation if you ship into the EU market
@@ -125,7 +125,7 @@ vulnerability or a severe incident to regulators (CSIRT and ENISA) within **24 h
 early warning and 72 hours for the notification**, applying from 2026-09-11. This applies
 only to organizations placing products with digital elements on the EU market. For the
 detailed deadlines and reporting channel, see the EU CRA section of
-[Vulnerability response deadlines and VEX](/reference/concepts/vulnerability-response); for
+[Vulnerability response deadlines and VEX](/en/reference/concepts/vulnerability-response); for
 the deliverable, see §9 of `vulnerability-response.md`.
 :::
 
@@ -391,7 +391,7 @@ Completing this exercise satisfies the requirements below.
 
 5230 §3.1.5, §3.2.1, §3.3.2, §3.4.1, §3.5.1 · 18974 §4.1.5, §4.2.1
 
-The original self-certification question and the verification material for each item are in the [Requirements Detail Matrix](/reference/requirements-matrix).
+The original self-certification question and the verification material for each item are in the [Requirements Detail Matrix](/en/reference/requirements-matrix).
 :::
 
 ---
@@ -430,7 +430,7 @@ flowchart TD
 > This step meets the ISO/IEC 5230 3.1.5, 3.2.1, 3.3.2, 3.4.1, and 3.5.1, and ISO/IEC 18974 4.1.5 and 4.2.1 requirements.
 
 :::tip Example deliverables
-See the actual format of the generated files in [Process deliverables best practice](/reference/samples/process).
+See the actual format of the generated files in [Process deliverables best practice](/en/reference/samples/process).
 :::
 
 ---

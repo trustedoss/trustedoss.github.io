@@ -24,7 +24,7 @@ When you run `agents/en/03-policy-generator`, it asks five questions — includi
 ## 2. Background knowledge
 
 :::tip
-Unfamiliar acronyms such as CVE, SBOM, and Copyleft are explained in plain language in the [Glossary](/reference/glossary).
+Unfamiliar acronyms such as CVE, SBOM, and Copyleft are explained in plain language in the [Glossary](/en/reference/glossary).
 :::
 
 ### Why you need an open source policy
@@ -120,7 +120,7 @@ Open source licenses split into two broad camps based on one question: "if I use
 For the same code, whether an obligation arises depends on the company's distribution method (SaaS / App Store / Embedded), so be sure to understand this before writing your policy.
 
 :::tip Canonical classification reference
-Representative licenses per category, core obligations, impact by distribution method, and the distribution-channel allow matrix are consolidated in [License classification](/reference/concepts/license-classification). The `policy-generator` agent turns this into an allow list tailored to your distribution method.
+Representative licenses per category, core obligations, impact by distribution method, and the distribution-channel allow matrix are consolidated in [License classification](/en/reference/concepts/license-classification). The `policy-generator` agent turns this into an allow list tailored to your distribution method.
 :::
 
 > This step meets the ISO/IEC 5230 3.1.4 (program scope definition) requirement.
@@ -267,7 +267,7 @@ Completing this exercise satisfies the requirements below.
 
 5230 §3.1.1, §3.1.4, §3.5.1 · 18974 §4.1.1, §4.1.4
 
-The original self-certification question and the verification material for each item are in the [Requirements Detail Matrix](/reference/requirements-matrix).
+The original self-certification question and the verification material for each item are in the [Requirements Detail Matrix](/en/reference/requirements-matrix).
 :::
 
 ---
@@ -337,7 +337,7 @@ the license applies for the chosen distribution method.
 ```
 
 :::tip Example deliverables
-See the actual format of the generated files in [Policy deliverables best practice](/reference/samples/policy).
+See the actual format of the generated files in [Policy deliverables best practice](/en/reference/samples/policy).
 :::
 
 ---

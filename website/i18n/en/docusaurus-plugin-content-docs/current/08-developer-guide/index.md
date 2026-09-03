@@ -1,6 +1,5 @@
 ---
 title: 'Developer Guide: Automatic Open Source Policy Compliance in Claude Code'
-sidebar_label: Developer Guide (Optional)
 sidebar_position: 8
 date: 2026-03-20
 version: '1.0'
@@ -34,13 +33,13 @@ Claude Code keeps the policy for you, even when the program manager does not rev
 
 :::note This chapter vs. the AI coding Rules template
 This chapter shows four ways to automatically apply **the organizational policy you built earlier** (`output/policy/`) to daily development.
-If you have not created a policy yet and just want a quick Rules file for AI coding tools, use the [Common Rules Template](/ai-coding/rules-template).
+If you have not created a policy yet and just want a quick Rules file for AI coding tools, use the [Common Rules Template](/en/ai-coding/rules-template).
 :::
 
 ## 2. Background: Why automation is needed
 
 :::tip
-If SBOM and license terminology is unfamiliar, see the [Glossary](/reference/glossary).
+If SBOM and license terminology is unfamiliar, see the [Glossary](/en/reference/glossary).
 :::
 
 ### Problems that actually happen
@@ -87,7 +86,7 @@ We recommend starting with the easiest method 1 and reinforcing it with 3 and 4.
 
 ### Method 1 — State the policy in CLAUDE.md (70% assurance, very easy) {#method-1}
 
-Add the section below to `CLAUDE.md` in the project root and Claude Code will reference this policy automatically when it helps you add a package. The categories follow [License Classification](/reference/concepts/license-classification). The allowlist that actually governs your company is `output/policy/license-allowlist.md`, generated in the 03 Policy chapter, so adjust the example to match that file after pasting it.
+Add the section below to `CLAUDE.md` in the project root and Claude Code will reference this policy automatically when it helps you add a package. The categories follow [License Classification](/en/reference/concepts/license-classification). The allowlist that actually governs your company is `output/policy/license-allowlist.md`, generated in the 03 Policy chapter, so adjust the example to match that file after pasting it.
 
 ```markdown
 ## Open Source Policy (automatic compliance)
@@ -132,10 +131,10 @@ When adding a new package, always check in this order:
 
 :::note The canonical source for the categories
 The criteria behind the allowed, conditional, and prohibited categories are owned by
-[License Classification](/reference/concepts/license-classification). The example above restates
+[License Classification](/en/reference/concepts/license-classification). The example above restates
 those criteria in CLAUDE.md form, so check the canonical page first if a category changes. The full
 rule set for AI coding tool configuration files is in the
-[Common Rules Template](/ai-coding/rules-template).
+[Common Rules Template](/en/ai-coding/rules-template).
 :::
 
 - Effect: Claude Code is aware of the policy and warns you on violations.
@@ -269,7 +268,7 @@ The hook command receives JSON on standard input describing the tool call (`tool
 
 Automatically check every PR with syft and grype, and block the merge on policy violations. This guards the last gate regardless of what people or tools miss. The example below uses free open source tools only ([syft](https://github.com/anchore/syft) and [grype](https://github.com/anchore/grype) are both Apache-2.0).
 
-Put only licenses in the prohibited category of [License Classification](/reference/concepts/license-classification) into the block list. Conditionally allowed licenses such as LGPL and MPL go to program manager review rather than failing the build, which is what the canonical page specifies.
+Put only licenses in the prohibited category of [License Classification](/en/reference/concepts/license-classification) into the block list. Conditionally allowed licenses such as LGPL and MPL go to program manager review rather than failing the build, which is what the canonical page specifies.
 
 <details>
 <summary>Full <code>.github/workflows/oss-policy-check.yml</code></summary>
@@ -355,7 +354,7 @@ This step supports the automated, continuous verification of the ISO/IEC 18974 G
 - Effect: every PR is checked regardless of the development environment, and merges are blocked when a prohibited license or a High or above vulnerability is found. Results appear directly on the PR.
 - Limitation: initial setup and exception management take some effort.
 
-How to put the same checks into an organization-wide pipeline, and the per-tool settings, are covered in [Software Composition Analysis (SCA)](/devsecops/sca).
+How to put the same checks into an organization-wide pipeline, and the per-tool settings, are covered in [Software Composition Analysis (SCA)](/en/devsecops/sca).
 
 ### Recommended combinations by situation
 

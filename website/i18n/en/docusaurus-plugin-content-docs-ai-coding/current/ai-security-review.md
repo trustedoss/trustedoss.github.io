@@ -456,5 +456,5 @@ The example assumes Semgrep and grype. If vulnerability scanning runs on Trivy a
 ## Learn More
 
 - [5-Stage Strategy](./strategy) — Full stage structure and AI defense layer positioning
-- [DevSecOps — SAST](/devsecops/sast) — Rule-based static analysis (Semgrep · CodeQL)
-- [DevSecOps — Organization-wide Pipeline Design](/devsecops/pipeline-design)
+- [DevSecOps — SAST](/en/devsecops/sast) — Rule-based static analysis (Semgrep · CodeQL)
+- [DevSecOps — Organization-wide Pipeline Design](/en/devsecops/pipeline-design)

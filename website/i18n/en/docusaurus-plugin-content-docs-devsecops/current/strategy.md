@@ -33,7 +33,7 @@ The goal of DevSecOps is to shift as many checks as possible to the left (the co
 
 ## Maturity Model — Four Levels
 
-This model grades DevSecOps maturity on four levels. These level numbers are a separate scale from the stage numbers in the [AI Coding 5-Stage Strategy by Assurance Level](/ai-coding/strategy). Do not read the two together.
+This model grades DevSecOps maturity on four levels. These level numbers are a separate scale from the stage numbers in the [AI Coding 5-Stage Strategy by Assurance Level](/en/ai-coding/strategy). Do not read the two together.
 
 | Level   | Name         | Characteristics                          | Main tools              |
 | ------- | ------------ | ---------------------------------------- | ----------------------- |
@@ -88,7 +88,7 @@ each stage of the AI Coding 5-stage strategy.
 
 **Prerequisite**: Clone the [Trusted OSS Agent repository](https://github.com/trustedoss/trustedoss-agents)
 
-The stage numbers below are those of the [AI Coding 5-Stage Strategy by Assurance Level](/ai-coding/strategy). They are a different scale from the maturity levels above.
+The stage numbers below are those of the [AI Coding 5-Stage Strategy by Assurance Level](/en/ai-coding/strategy). They are a different scale from the maturity levels above.
 
 | Stage                              | agent                | Command                                                  |
 | ---------------------------------- | -------------------- | -------------------------------------------------------- |

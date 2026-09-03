@@ -12,8 +12,8 @@ It shows which of the standard's requirements the implementation in this DevSecO
 The license compliance standard ISO/IEC 5230 is outside the scope of this guide.
 
 :::note Canonical reference for standards mapping
-The [Requirements Detail Matrix](/reference/requirements-matrix) is the canonical source for the per-item certification question and verification material.
-What the two standards require is summarized in [Standard requirements at a glance](/docs/overview/checklist-mapping).
+The [Requirements Detail Matrix](/en/reference/requirements-matrix) is the canonical source for the per-item certification question and verification material.
+What the two standards require is summarized in [Standard requirements at a glance](/en/docs/overview/checklist-mapping).
 This page covers only the **18974 items a DevSecOps pipeline can implement**.
 :::
 
@@ -35,7 +35,7 @@ The table below shows how the DevSecOps pipeline built in this guide meets the k
 :::note Clauses the pipeline does not cover
 Organizational requirements — a public channel for third-party vulnerability inquiries (§4.2.1) and
 documented roles, staffing, and budget (§4.2.2) — are covered by the governance-track deliverables,
-not by the CI pipeline. Use the [Requirements Detail Matrix](/reference/requirements-matrix) as the
+not by the CI pipeline. Use the [Requirements Detail Matrix](/en/reference/requirements-matrix) as the
 canonical reference for the full item list and evidence.
 :::
 
@@ -77,6 +77,6 @@ you must be able to provide evidence if an audit is requested.
 
 **DevSecOps scope**: The DevSecOps implementation in this guide focuses on the open source security assurance of ISO/IEC 18974. Additional areas such as SAST, DAST, and IaC security are security-hardening activities that go beyond the standard's requirements; they are optional improvements outside the scope of certification.
 
-**ISO/IEC 5230 requires separate preparation**: The license compliance standard ISO/IEC 5230 is outside the scope of this guide. See the [Build Your System guide](/docs).
+**ISO/IEC 5230 requires separate preparation**: The license compliance standard ISO/IEC 5230 is outside the scope of this guide. See the [Build Your System guide](/en/docs).
 
-**Self-certification declaration**: once you have the evidence above, follow the procedure in the [self-certification](/docs/conformance) chapter. Registration and validity management live there.
+**Self-certification declaration**: once you have the evidence above, follow the procedure in the [self-certification](/en/docs/conformance) chapter. Registration and validity management live there.

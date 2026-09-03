@@ -11,7 +11,7 @@ Other pages in this guide cover what the pipeline inspects. This page covers how
 No matter how tightly you wire up SAST, SCA, and secret scanning, the results mean nothing if the workflow running those checks is executing an attacker's code.
 
 :::tip These settings are examples. The working implementation lives in the reference repository
-The YAML and commands on this page illustrate the core idea. For a full pipeline you can copy and run (policy files and a sample app included), see the [Best Practice repository](/ai-coding/best-practice-repo).
+The YAML and commands on this page illustrate the core idea. For a full pipeline you can copy and run (policy files and a sample app included), see the [Best Practice repository](/en/ai-coding/best-practice-repo).
 :::
 
 ## Why the pipeline itself is a target
@@ -330,7 +330,7 @@ Adopting item 4 first does no harm, but with items 1 through 3 missing, item 4 m
 genuine-looking mark on the output of a compromised pipeline.
 
 The tools and IDE extensions an agent invokes form a supply chain with the same structure. For how to
-control the tools themselves, see [Agent and MCP Tool Governance](/ai-coding/agent-governance).
+control the tools themselves, see [Agent and MCP Tool Governance](/en/ai-coding/agent-governance).
 
 ---
 

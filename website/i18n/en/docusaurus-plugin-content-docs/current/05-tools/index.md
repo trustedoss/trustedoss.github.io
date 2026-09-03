@@ -29,7 +29,7 @@ The no-install SBOM analyzer demo lives in the [5-minute quick start](../00-over
 
 ## Automatic generation with AI agents
 
-The deliverables of each step can be generated automatically with AI agents. For the full mapping, see [Create deliverables with AI agents](/reference/agents).
+The deliverables of each step can be generated automatically with AI agents. For the full mapping, see [Create deliverables with AI agents](/en/reference/agents).
 
 - SBOM creation: `05-sbom-guide`, `05-sbom-analyst`
 - SBOM management: `05-sbom-management`
@@ -37,4 +37,4 @@ The deliverables of each step can be generated automatically with AI agents. For
 
 ## Extend to automation
 
-The SBOM creation and vulnerability scanning you learn here can be wired into your CI pipeline for continuous automation. The [DevSecOps](/devsecops/intro) guide provides workflows you can copy and use.
+The SBOM creation and vulnerability scanning you learn here can be wired into your CI pipeline for continuous automation. The [DevSecOps](/en/devsecops/intro) guide provides workflows you can copy and use.

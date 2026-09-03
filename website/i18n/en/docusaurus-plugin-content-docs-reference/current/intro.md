@@ -14,7 +14,7 @@ This section collects the reference materials you need to build an open source m
 
 Completed examples of the deliverables each stage's agent generates (based on a fictional company).
 Compare them with the results in your own `output/` folder to spot missing items.
-The per-stage list of deliverable files is canonical in the deliverables table of [Overview: the two standards and the whole journey](/docs).
+The per-stage list of deliverable files is canonical in the deliverables table of [Overview: the two standards and the whole journey](/en/docs).
 
 | Stage         | Link                                                  |
 | ------------- | ----------------------------------------------------- |
@@ -45,8 +45,8 @@ Canonical concept pages linked from the main guide. The policy, process, and too
 
 | Topic                                   | Link                                                                                                                                                     |
 | --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| SBOM generation tools in depth          | [SBOM Generation](/docs/tools/sbom-generation) (syft, cdxgen)                                                                                            |
-| Vulnerability management tools in depth | [Vulnerability Analysis and Response](/docs/tools/vulnerability) (grype, OSV)                                                                            |
+| SBOM generation tools in depth          | [SBOM Generation](/en/docs/tools/sbom-generation) (syft, cdxgen)                                                                                         |
+| Vulnerability management tools in depth | [Vulnerability Analysis and Response](/en/docs/tools/vulnerability) (grype, OSV)                                                                         |
 | KWG ecosystem tools                     | [KWG Open Source Guide — Tools](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/4-tool/) (FOSSLight, SW360, FOSSology) |
-| Regulatory trends                       | [Software Supply Chain Security](/docs/overview/supply-chain) (EU CRA, EO 14028, Korean SBOM trends)                                                     |
+| Regulatory trends                       | [Software Supply Chain Security](/en/docs/overview/supply-chain) (EU CRA, EO 14028, Korean SBOM trends)                                                  |
 | SKT Open Source Guide                   | [Link](https://sktelecom.github.io)                                                                                                                      |

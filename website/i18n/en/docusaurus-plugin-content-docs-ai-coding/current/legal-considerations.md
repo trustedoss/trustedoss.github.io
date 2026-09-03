@@ -149,7 +149,7 @@ Add the block below to the AI-generated-code section of your open source policy 
 - Where disclosure or a dedicated tag is required, record it in the required format.
 ```
 
-The full policy document structure is covered in [Chapter 3: Open Source Policy](/docs/policy),
+The full policy document structure is covered in [Chapter 3: Open Source Policy](/en/docs/policy),
 and per-tool Rules application in the [Common Rules Template](./rules-template).
 
 ## 6. Standards linkage and sources
