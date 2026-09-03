@@ -55,7 +55,8 @@
 │   ├── sync-output-samples.sh        # output/ → output-sample/ 동기화
 │   ├── sync-kwg-reference.sh         # KWG 원본 md 파일 동기화
 │   ├── check-kwg-drift.py            # KWG 원본과의 드리프트 검사
-│   └── check-i18n-parity.py          # ko/en 문서 파일 패리티 검사
+│   ├── check-i18n-parity.py          # ko/en 문서 파일 패리티 검사
+│   └── check-redirects.py            # 사이트 개편 시 사라진 URL의 리다이렉트·목적지 확인
 │
 dry-run/
 └── run-dryrun.sh                     # OpenWave 프로필 드라이런 오케스트레이터
