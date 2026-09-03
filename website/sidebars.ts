@@ -7,21 +7,20 @@ const sidebars: SidebarsConfig = {
       label: '시작하기',
       collapsed: true,
       items: [
-        'overview/quick-start',
-        'overview/start-path',
         'overview/index',
-        'overview/agents',
+        'overview/quick-start',
+        {
+          type: 'doc',
+          id: 'overview/checklist-mapping',
+          label: '표준 대응: 요약',
+        },
       ],
     },
     {
       type: 'category',
       label: '배경 지식',
       collapsed: true,
-      items: [
-        'overview/supply-chain',
-        'overview/sbom-101',
-        'overview/checklist-mapping',
-      ],
+      items: ['overview/supply-chain', 'overview/sbom-101'],
     },
     {
       type: 'category',
@@ -93,16 +92,9 @@ const sidebars: SidebarsConfig = {
       ],
     },
     {
-      type: 'category',
-      label: '개발자 가이드 (선택)',
-      collapsed: true,
-      link: {type: 'doc', id: 'developer-guide/08-developer-guide'},
-      items: [
-        'developer-guide/method1-claude-md',
-        'developer-guide/method2-skill',
-        'developer-guide/method3-hooks',
-        'developer-guide/method4-cicd',
-      ],
+      type: 'doc',
+      id: 'developer-guide/index',
+      label: '8. 개발자 가이드 (선택)',
     },
   ],
 };

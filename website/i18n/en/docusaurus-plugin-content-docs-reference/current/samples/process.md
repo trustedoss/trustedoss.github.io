@@ -2,6 +2,7 @@
 id: process
 title: Process Deliverables Best Practice
 sidebar_label: Process Output
+sidebar_position: 3
 ---
 
 # Process Deliverables Best Practice
@@ -11,21 +12,21 @@ Compare them with your own `output/process/` files to spot missing items.
 
 > The process documents below are based on the six processes of the OpenChain KWG process guide (open source management, security vulnerability management, external inquiry response, contribution, internal project release, training and assessment) and ISO/IEC 5230 and 18974. The KWG guide is licensed under CC BY 4.0.
 
-> **Go to reference:** [Open Source Process Chapter Guide](/docs/process)
+> **Go to reference:** [Open Source Process Chapter Guide](/en/docs/process)
 
 ---
 
 **Deliverables on this page**
 
-- Open source usage approval procedure
-- Pre-distribution license compliance checklist
-- Vulnerability response procedure
-- Open source process flowcharts
-- External inquiry response procedure
-- Open source contribution procedure
-- Internal project release procedure
+- [Open Source Usage Approval Procedure](#usage-approval)
+- [Pre-Distribution License Compliance Checklist](#distribution-checklist)
+- [Vulnerability Response Procedure](#vulnerability-response)
+- [Open Source Process Flowcharts](#process-diagram)
+- [External Inquiry Response Procedure](#inquiry-response)
+- [Open Source Contribution Procedure](#contribution-process)
+- [Internal Project Release Procedure](#project-publication-process)
 
-## Open Source Usage Approval Procedure
+## Open Source Usage Approval Procedure {#usage-approval}
 
 Document: usage-approval.md
 
@@ -220,7 +221,7 @@ For the full list of approved and restricted licenses, see `output/policy/licens
 
 ---
 
-## Pre-Distribution License Compliance Checklist
+## Pre-Distribution License Compliance Checklist {#distribution-checklist}
 
 Document: distribution-checklist.md
 
@@ -381,7 +382,7 @@ Once this checklist is complete, record it with the date in the history below.
 
 ---
 
-## Vulnerability Response Procedure
+## Vulnerability Response Procedure {#vulnerability-response}
 
 Document: vulnerability-response.md
 
@@ -595,7 +596,7 @@ Retain all CVD-related communications and decision records for **at least 3 year
 
 ---
 
-## Open Source Process Flowcharts
+## Open Source Process Flowcharts {#process-diagram}
 
 Document: process-diagram.md
 
@@ -716,7 +717,7 @@ graph LR
 
 ---
 
-## External Inquiry Response Procedure
+## External Inquiry Response Procedure {#inquiry-response}
 
 Document: inquiry-response.md
 
@@ -843,7 +844,7 @@ Retention period: **at least 3 years from the closure date**
 
 ---
 
-## Open Source Contribution Procedure
+## Open Source Contribution Procedure {#contribution-process}
 
 :::note[Conditional generation]
 Generated when the `process-designer` agent question Q5 is answered "Yes".
@@ -967,7 +968,7 @@ Retention period: **at least 3 years from the contribution date**
 
 ---
 
-## Internal Project Release Procedure
+## Internal Project Release Procedure {#project-publication-process}
 
 :::note[Conditional generation]
 Generated when the `process-designer` agent question Q6 is answered "Yes".

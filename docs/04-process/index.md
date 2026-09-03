@@ -383,23 +383,9 @@ ls output/process/
 :::info 충족되는 표준 요구사항
 이 실습을 완료하면 아래 요구사항이 충족됩니다.
 
-**ISO/IEC 5230**
+5230 §3.1.5, §3.2.1, §3.3.2, §3.4.1, §3.5.1 · 18974 §4.1.5, §4.2.1
 
-| 항목 ID | 요구사항                          | 자체인증 체크리스트                                                                                                                   |
-| ------- | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| 3.1.5   | 라이선스 의무사항 검토 절차       | Do you have a documented procedure to review and record the obligations, restrictions, and rights granted by each identified license? |
-| 3.2.1   | 외부 라이선스·보안 문의 수신 절차 | Do you have a documented procedure for receiving and handling inquiries about open source compliance?                                 |
-| 3.3.2   | 라이선스 사용 사례 처리 절차      | Do you have a documented procedure for handling the common open source license use cases for the components in your supply software?  |
-| 3.4.1   | 컴플라이언스 산출물 관리          | Do you have a process to ensure compliance artifacts accompany each distribution?                                                     |
-| 3.5.1   | 오픈소스 기여 관리 절차           | Do you have a process for contributing to open source projects?                                                                       |
-
-**ISO/IEC 18974**
-
-| 항목 ID | 요구사항                        | 자체인증 체크리스트                                                                                            |
-| ------- | ------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| 4.1.5   | 취약점 탐지 및 대응 절차        | Do you have a documented procedure for handling known vulnerabilities in open source components?               |
-| 4.2.1   | 외부 보안 취약점 신고 대응 절차 | Do you have a documented procedure for receiving and handling reports of open source security vulnerabilities? |
-
+각 항목의 자체 인증 체크리스트 문항 원문과 입증자료는 [요구사항 상세 대조표](/reference/requirements-matrix)에 있습니다.
 :::
 
 ---

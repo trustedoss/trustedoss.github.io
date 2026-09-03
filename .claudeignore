@@ -76,7 +76,6 @@ packages/
 website/sidebars*.ts
 website/tsconfig.json
 eslint.config.js
-netlify.toml
 .prettierrc.json
 .yarnrc.yml
 .husky/

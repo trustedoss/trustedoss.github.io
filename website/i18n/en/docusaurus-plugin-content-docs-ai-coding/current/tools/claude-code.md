@@ -38,13 +38,7 @@ If open source policies are written in `CLAUDE.md`, Claude Code automatically co
 
 ### License Management
 
-**Allowed Licenses**: MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC
-
-**Review Required Licenses** (legal review required): LGPL, MPL
-
-**Prohibited Licenses** (cannot be used without prior approval): GPL, AGPL, SSPL, Commons Clause
-
-<!-- Copy the full rules (including the Security, SBOM, and Copyright sections) from the Common Rules Template -->
+<!-- Copy the allowed / review-required / prohibited license lists and the rest of the rules from the Common Rules Template -->
 
 ---
 ```

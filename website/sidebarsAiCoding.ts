@@ -35,7 +35,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: '표준 연계',
-      items: ['iso-mapping'],
+      items: [{type: 'doc', id: 'iso-mapping', label: '표준 대응: AI 코딩'}],
     },
   ],
 };

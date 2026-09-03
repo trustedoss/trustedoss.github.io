@@ -35,13 +35,7 @@ Cline은 VS Code 확장으로 동작하는 에이전트형 AI 도구이며, Aide
 
 ### 라이선스 관리
 
-**허용 라이선스**: MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC
-
-**주의 라이선스** (법무 검토 필요): LGPL, MPL
-
-**금지 라이선스** (사전 승인 없이 사용 불가): GPL, AGPL, SSPL, Commons Clause
-
-<!-- 전체 규칙(보안, SBOM, 저작권 절 포함)은 공통 Rules 템플릿에서 복사 -->
+<!-- 허용·주의·금지 라이선스 목록과 나머지 규칙 전문은 공통 Rules 템플릿에서 복사 -->
 ```
 
 전문은 [공통 Rules 템플릿](../rules-template)에서 복사하세요. 허용·금지 목록이 바뀌면 정본만 갱신하고 각 도구 파일에 다시 붙여넣으면 됩니다.
@@ -71,13 +65,7 @@ Cline은 VS Code 확장으로 동작하는 에이전트형 AI 도구이며, Aide
 
 ### 라이선스 관리
 
-**허용 라이선스**: MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC
-
-**주의 라이선스** (법무 검토 필요): LGPL, MPL
-
-**금지 라이선스** (사전 승인 없이 사용 불가): GPL, AGPL, SSPL, Commons Clause
-
-<!-- 전체 규칙(보안, SBOM, 저작권 절 포함)은 공통 Rules 템플릿에서 복사 -->
+<!-- 허용·주의·금지 라이선스 목록과 나머지 규칙 전문은 공통 Rules 템플릿에서 복사 -->
 ```
 
 전문은 [공통 Rules 템플릿](../rules-template)에서 복사하세요. 허용·금지 목록이 바뀌면 정본만 갱신하고 각 도구 파일에 다시 붙여넣으면 됩니다.

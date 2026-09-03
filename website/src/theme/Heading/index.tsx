@@ -7,6 +7,7 @@
  */
 import React, {useCallback, useState} from 'react';
 import clsx from 'clsx';
+import {useLocation} from '@docusaurus/router';
 import {translate} from '@docusaurus/Translate';
 import {useAnchorTargetClassName} from '@docusaurus/theme-common';
 import useBrokenLinks from '@docusaurus/useBrokenLinks';
@@ -45,9 +46,15 @@ function CopyLinkButton({anchor}: {anchor?: string}): JSX.Element {
   );
 }
 
+/** 문서가 아닌 라우트에서는 페이지 제목 복사 버튼을 달지 않는다(진단 B-10).
+ *  404 는 이 스위즐을 쓰지 않는 자체 컴포넌트라 여기 목록에 없어도 된다.
+ *  검색 결과는 테마가 제공하는 페이지라 경로로 걸러야 한다. */
+const NO_TITLE_COPY = /^\/(?:[a-z]{2}\/)?search\/?$/;
+
 export default function Heading({as: As, id, ...props}: Props): JSX.Element {
   const brokenLinks = useBrokenLinks();
   const anchorTargetClassName = useAnchorTargetClassName(id);
+  const {pathname} = useLocation();
 
   // 페이지 제목(h1): 앵커 없음. 항상 보이는 페이지 링크 복사 버튼.
   if (As === 'h1') {
@@ -57,7 +64,7 @@ export default function Heading({as: As, id, ...props}: Props): JSX.Element {
         id={undefined}
         className={clsx(styles.title, props.className)}>
         {props.children}
-        <CopyLinkButton />
+        {!NO_TITLE_COPY.test(pathname) && <CopyLinkButton />}
       </As>
     );
   }

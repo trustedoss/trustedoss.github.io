@@ -2,7 +2,7 @@
 id: best-practice-repo
 title: Best Practice 저장소
 sidebar_label: Best Practice 저장소
-sidebar_position: 8
+sidebar_position: 10
 ---
 
 # Best Practice 저장소

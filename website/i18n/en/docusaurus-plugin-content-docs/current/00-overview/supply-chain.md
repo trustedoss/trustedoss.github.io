@@ -5,7 +5,7 @@ checklist:
   - 'ISO/IEC 5230: []'
   - 'ISO/IEC 18974: []'
 self_study_time: 1 hour
-sidebar_position: 3
+sidebar_position: 4
 sidebar_label: Supply chain security
 ---
 
@@ -46,7 +46,7 @@ Supply chain security is the discipline of identifying and managing the risks th
 
 The cases below show that supply chain security is anything but an abstract concept. The first three targeted source code and maintainer trust, the pattern of the early years. The last two show where attacks moved from 2025 onward: stolen credentials and hijacked build pipelines.
 
-#### SolarWinds (2020)
+### SolarWinds (2020)
 
 **What happened**
 Attackers inserted malware (Sunburst) into SolarWinds' internal build pipeline. Because it was bundled into a legitimate software update (the Orion Platform) and distributed that way, existing security tools had an extremely hard time detecting it.
@@ -59,7 +59,7 @@ The build pipeline that produces the software can itself be a target. You need a
 
 ---
 
-#### Log4Shell (2021, CVE-2021-44228)
+### Log4Shell (2021, CVE-2021-44228)
 
 **What happened**
 An injection vulnerability was found in Apache Log4j 2, a logging library used almost universally across Java applications. It abused JNDI (Java Naming and Directory Interface), letting an attacker achieve remote code execution (RCE) with a single specially crafted string.
@@ -72,7 +72,7 @@ You cannot even patch what you cannot find. With an SBOM, every system using Log
 
 ---
 
-#### XZ Utils (2024, CVE-2024-3094)
+### XZ Utils (2024, CVE-2024-3094)
 
 **What happened**
 Over two years, an attacker using the pseudonym "Jia Tan" contributed to the XZ Utils open source project, posing as a trustworthy maintainer. After building credibility through steady contributions, they committed malicious code that planted a backdoor in sshd (the SSH daemon). A widespread compromise was averted only because a developer noticed anomalies just before the release shipped.
@@ -85,7 +85,7 @@ The identity and long-term behavior of open source contributors deserve scrutiny
 
 ---
 
-#### tj-actions/changed-files (2025-03, CVE-2025-30066)
+### tj-actions/changed-files (2025-03, CVE-2025-30066)
 
 **What happened**
 Several version tags of `tj-actions/changed-files`, a widely used GitHub Action, were retargeted to point at a single malicious commit. Tags including `v1.0.0`, `v35.7.7-sec`, and `v44.5.1` all moved to that commit, whose script dumped secrets out of the Runner Worker process memory and printed them into the workflow logs.
@@ -98,7 +98,7 @@ Your dependency inventory includes not only libraries but also the actions and t
 
 ---
 
-#### The Shai-Hulud lineage and ChainDrop (2025-2026)
+### The Shai-Hulud lineage and ChainDrop (2025-2026)
 
 **What happened**
 The Shai-Hulud worm, first observed on npm in 2025-09, used each victim's stolen npm token to reinfect the packages they maintained and spread to more than 500 packages. It was followed by Shai-Hulud 2.0 in 2025-11, several variants through the first half of 2026, and then ChainDrop on 2026-08-04. ChainDrop did not steal npm tokens: it compromised a maintainer's GitHub account and triggered the legitimate release workflows. As a result, the malicious versions were published with valid SLSA provenance attestations.
@@ -113,7 +113,7 @@ The persistence mechanism is the part worth studying. ChainDrop's payload plante
 
 ### Where the attacks moved
 
-In the first three cases, attackers went after source code or maintainer trust. In the cases from 2025 onward, they go after the accounts that hold publishing rights and the build pipelines themselves. Hijacking a single release workflow lets an attacker ship a malicious version that is indistinguishable from a legitimate release, without touching library source at all. Managing an inventory of open source components is therefore no longer enough: the pipeline that pulls those components in and builds them has to be under control as well. For the practical measures, see [Pipeline Security and Build Provenance](/devsecops/pipeline-security).
+In the first three cases, attackers went after source code or maintainer trust. In the cases from 2025 onward, they go after the accounts that hold publishing rights and the build pipelines themselves. Hijacking a single release workflow lets an attacker ship a malicious version that is indistinguishable from a legitimate release, without touching library source at all. Managing an inventory of open source components is therefore no longer enough: the pipeline that pulls those components in and builds them has to be under control as well. For the practical measures, see [Pipeline Security and Build Provenance](/en/devsecops/pipeline-security).
 
 ---
 
@@ -121,7 +121,7 @@ In the first three cases, attackers went after source code or maintainer trust. 
 
 Supply chain security is moving beyond voluntary best practice and becoming a legal requirement.
 
-#### U.S. Executive Order EO 14028 (2021)
+### U.S. Executive Order EO 14028 (2021)
 
 **Background**
 In response to a series of large-scale supply chain attacks such as SolarWinds and Microsoft Exchange, the Biden administration signed this cybersecurity executive order in May 2021.
@@ -147,7 +147,7 @@ in the U.S. market should prepare for contract-level requirements.
 
 ---
 
-#### EU Cyber Resilience Act — CRA (2024)
+### EU Cyber Resilience Act — CRA (2024)
 
 **Background**
 An EU-wide regulation adopted in 2024 to strengthen the cybersecurity of digital products placed on the EU Digital Single Market.
@@ -167,7 +167,7 @@ This applies to **any business** that sells software products or services in the
 
 ---
 
-#### Trends in Korea
+### Trends in Korea
 
 Korean policy started with advisory guidelines and has moved on to a roadmap with a phased schedule.
 

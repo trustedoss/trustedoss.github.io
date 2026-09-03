@@ -5,11 +5,11 @@ sidebar_position: 4
 
 # SBOM Output Best Practice
 
-These are examples of the SBOM-related deliverables generated in the [05 Tools chapter](/docs/tools/sbom-generation).
+These are examples of the SBOM-related deliverables generated in the [05 Tools chapter](/en/docs/tools/sbom-generation).
 They show actual output produced from the sample project (`java-vulnerable`, which includes Log4Shell CVE-2021-44228).
 
 :::tip Download the Sample SBOM
-We provide a sample SBOM (CycloneDX format, containing a GPL-2.0 copyleft component plus a vulnerable version) so you can try the analysis yourself. Download it and feed it into the [SCA analyzer](/devsecops/sca) or a local tool such as grype.
+We provide a sample SBOM (CycloneDX format, containing a GPL-2.0 copyleft component plus a vulnerable version) so you can try the analysis yourself. Download it and feed it into the [SCA analyzer](/en/devsecops/sca) or a local tool such as grype.
 
 <a href="/samples/fixture-sample.cdx.json" download>Download fixture-sample.cdx.json</a>
 
@@ -20,12 +20,12 @@ Each code block below can be copied as-is with the copy button in its top-right 
 
 **Deliverables on this page**
 
-- SBOM License Analysis Report
-- Copyleft Risk Report
-- SBOM Management Plan
-- SBOM Submission Cover Letter (template for customer delivery)
+- [SBOM License Analysis Report](#license-report)
+- [Copyleft Risk Report](#copyleft-risk)
+- [SBOM Management Plan](#sbom-management-plan)
+- [SBOM Submission Cover Letter (template for customer delivery)](#sbom-sharing-template)
 
-## SBOM License Analysis Report
+## SBOM License Analysis Report {#license-report}
 
 :::info
 **Generating agent**: `05-sbom-analyst` | **Save path**: `output/sbom/license-report.md`
@@ -118,7 +118,7 @@ _This report was generated to satisfy ISO/IEC 5230 §3.1.5 (identifying and revi
 
 ---
 
-## Copyleft Risk Report
+## Copyleft Risk Report {#copyleft-risk}
 
 :::info
 **Generating agent**: `05-sbom-analyst` | **Save path**: `output/sbom/copyleft-risk.md`
@@ -200,7 +200,7 @@ _This report was generated to satisfy ISO/IEC 5230 §3.1.5 (identifying and revi
 
 ---
 
-## SBOM Management Plan
+## SBOM Management Plan {#sbom-management-plan}
 
 :::info
 **Generating agent**: `05-sbom-management` | **Save path**: `output/sbom/sbom-management-plan.md`
@@ -338,14 +338,14 @@ output/sbom/
 
 #### 4.2 Monitoring automation setup
 
-```bash
+```yaml
 # Enable GitHub Dependabot (.github/dependabot.yml)
 version: 2
 updates:
-  - package-ecosystem: "npm"   # or maven, pip, etc.
-    directory: "/"
+  - package-ecosystem: 'npm' # or maven, pip, etc.
+    directory: '/'
     schedule:
-      interval: "weekly"
+      interval: 'weekly'
     open-pull-requests-limit: 5
 ```
 
@@ -381,7 +381,7 @@ updates:
 
 ---
 
-## SBOM Submission Cover Letter (template for customer delivery)
+## SBOM Submission Cover Letter (template for customer delivery) {#sbom-sharing-template}
 
 :::info
 **Generating agent**: `05-sbom-management` | **Save path**: `output/sbom/sbom-sharing-template.md`

@@ -29,13 +29,18 @@
 
 파생 저작물의 범위에 따라 의무사항이 달라지는 라이선스. 담당자 검토 후 사용.
 
-| 라이선스                                    | SPDX 식별자 | 주요 의무사항                | {배포방식} 적용 여부 |
-| ------------------------------------------- | ----------- | ---------------------------- | -------------------- |
-| GNU Lesser GPL v2.1                         | LGPL-2.1    | 라이브러리 수정 시 소스 공개 | {조건}               |
-| GNU Lesser GPL v3.0                         | LGPL-3.0    | 라이브러리 수정 시 소스 공개 | {조건}               |
-| Mozilla Public License 2.0                  | MPL-2.0     | 수정된 파일 소스 공개        | {조건}               |
-| Eclipse Public License 2.0                  | EPL-2.0     | 수정된 파일 소스 공개        | {조건}               |
-| Common Development and Distribution License | CDDL-1.0    | 수정된 파일 소스 공개        | {조건}               |
+| 라이선스                                     | SPDX 식별자  | 주요 의무사항                         | {배포방식} 적용 여부 |
+| -------------------------------------------- | ------------ | ------------------------------------- | -------------------- |
+| GNU Lesser GPL v2.1                          | LGPL-2.1     | 라이브러리 수정 시 소스 공개          | {조건}               |
+| GNU Lesser GPL v3.0                          | LGPL-3.0     | 라이브러리 수정 시 소스 공개          | {조건}               |
+| Mozilla Public License 2.0                   | MPL-2.0      | 수정된 파일 소스 공개                 | {조건}               |
+| Eclipse Public License 2.0                   | EPL-2.0      | 수정된 파일 소스 공개                 | {조건}               |
+| Common Development and Distribution License  | CDDL-1.0     | 수정된 파일 소스 공개                 | {조건}               |
+| Creative Commons 저작자표시-동일조건변경허락 | CC-BY-SA-4.0 | 콘텐츠용 라이선스, 파생물 범위 불명확 | {조건}               |
+
+CC-BY-SA는 상업적 이용을 막지 않습니다. 콘텐츠용 라이선스라 소프트웨어에서 ShareAlike
+의무의 범위가 정해져 있지 않은 것이 검토가 필요한 이유입니다. 코드에는 쓰지 않는 것을
+원칙으로 두고, 폰트·아이콘·문서처럼 배포물에 동봉되는 콘텐츠 자산에서만 검토 후 허용합니다.
 
 ---
 
@@ -57,7 +62,7 @@
 
 아래 라이선스는 별도 법무 승인 없이 사용 불가:
 
-- Creative Commons (NC 포함): CC-BY-NC-_, CC-BY-SA-_ — 상업적 이용 제한 또는 강한 Copyleft
+- Creative Commons 비상업 조건: CC-BY-NC-\*, CC-BY-NC-SA-\*: 상업적 이용 제한 (CC-BY-SA는 위 2절 참조)
 - Server Side Public License (SSPL): 서비스 전체 소스 공개 요구
 - Business Source License (BUSL): 상업적 이용 제한 조건 포함
 - 기타 커스텀 라이선스: 법무팀 사전 검토 필수

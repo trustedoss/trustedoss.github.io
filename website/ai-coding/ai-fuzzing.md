@@ -2,7 +2,7 @@
 id: ai-fuzzing
 title: AI 퍼징
 sidebar_label: AI 퍼징
-sidebar_position: 8
+sidebar_position: 6
 ---
 
 # AI 퍼징 (4b 단계)

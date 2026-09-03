@@ -1,0 +1,385 @@
+/**
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+@use "shared";
+
+/* .markdown 본문, 표, 코드블록, admonition, alert */
+
+.markdown {
+  /* 한국어 단어 단위 줄바꿈 — 긴 영문 식별자(URL·패키지명)는 강제 줄바꿈 허용 */
+  word-break: keep-all;
+  overflow-wrap: break-word;
+
+  h2:first-child {
+    margin-top: 0;
+  }
+
+  code {
+    border-color: transparent;
+    vertical-align: baseline;
+    position: relative;
+    top: -0.5px;
+  }
+
+  kbd {
+    border: 0;
+    top: -1px;
+    margin: 0 2px;
+    position: relative;
+    padding: 0.2rem 0.3rem;
+    background: var(--ifm-background-color);
+    box-shadow: var(--key-shadow);
+    display: inline-block;
+    text-align: center;
+    min-width: 24px;
+  }
+
+  blockquote {
+    > :last-child {
+      margin-bottom: 0;
+    }
+
+    /* 스펙 참조·요구사항 문장 — 콜아웃(:::info)과 구분되는 작고 차분한 회색 노트 */
+    background-color: var(--ifm-color-emphasis-100);
+    border-left: 0;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    color: var(--ifm-color-emphasis-700);
+
+    code {
+      background-color: rgba(0, 0, 0, 0.07);
+    }
+
+    a code {
+      background-color: transparent;
+      white-space: pre;
+    }
+  }
+
+  a {
+    @extend %link-style;
+
+    code {
+      background-color: transparent;
+      padding-inline: 0;
+      font-size: 92%;
+    }
+
+    .hermes-logo {
+      float: right;
+      margin: -30px 4px 0;
+    }
+
+    @media screen and (max-width: 960px) {
+      .hermes-logo {
+        margin: 0 4px 30px;
+        width: 100%;
+      }
+    }
+  }
+
+  strong {
+    font-weight: 600;
+  }
+
+  img {
+    border-radius: var(--ifm-global-radius);
+    &.center {
+      width: 100%;
+      justify-content: center;
+    }
+    &.half-size {
+      max-height: 50vh;
+      object-fit: contain;
+    }
+  }
+
+  table {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    margin-bottom: 0;
+
+    thead tr {
+      border: 0;
+    }
+
+    tr th {
+      padding: 6px var(--ifm-table-cell-padding);
+      font-size: 80%;
+      text-align: start;
+      border: 0;
+      border-right: 1px solid var(--ifm-table-border-color);
+
+      &:last-child {
+        border-right: 0;
+      }
+    }
+
+    tr td {
+      font-size: 90%;
+      line-height: 1.3em;
+      text-align: start;
+      border: 0;
+      border-right: 1px solid var(--ifm-table-border-color);
+
+      &:last-child {
+        border-right: 0;
+      }
+
+      code {
+        display: inline-block;
+        line-height: 1.2em;
+        vertical-align: top;
+        word-break: break-word;
+      }
+
+      ul {
+        margin: 8px 0 0 0;
+        padding: 4px 0 4px 20px;
+      }
+    }
+
+    hr {
+      margin: 12px 0;
+    }
+
+    .wideColumn {
+      width: 128px;
+    }
+
+    .widerColumn {
+      width: 180px;
+    }
+
+    .table-heading {
+      font-weight: var(--ifm-table-head-font-weight);
+      border-bottom: 2px solid var(--ifm-table-border-color);
+    }
+
+    div[class*="codeBlockContainer"] {
+      &,
+      & pre {
+        margin-bottom: 0;
+      }
+
+      pre code {
+        padding: 12px 16px;
+        white-space: break-spaces;
+      }
+
+      button {
+        display: none;
+      }
+    }
+  }
+
+  figure {
+    text-align: center;
+    padding: 8px;
+
+    figcaption {
+      padding: 8px;
+      font-size: 0.9rem;
+      color: var(--subtle);
+
+      code {
+        color: var(--subtle);
+      }
+    }
+  }
+
+  .docusaurus-highlight-code-line {
+    background-color: color-mix(
+      in srgb,
+      var(--ifm-color-primary) 12%,
+      transparent
+    );
+  }
+
+  div[class*="codeBlockContainer"] {
+    box-shadow: none;
+    background: none;
+    border: 1px solid var(--ifm-color-emphasis-200);
+    border-radius: var(--ifm-global-radius);
+
+    pre {
+      border-radius: var(--ifm-global-radius);
+    }
+
+    button {
+      border-color: var(--ifm-color-emphasis-300);
+      background: var(--ifm-background-color);
+      color: var(--ifm-color-emphasis-700);
+    }
+  }
+
+  div[class*="codeBlockContent"] {
+    display: grid;
+    min-width: 100%;
+
+    &:first-child pre {
+      border-radius: var(--ifm-global-radius);
+    }
+  }
+
+  div[class*="codeBlockLines"] {
+    font-size: 80%;
+  }
+
+  div[class*="codeBlockTitle"] {
+    color: var(--ifm-color-emphasis-700);
+    background-color: var(--ifm-color-emphasis-100);
+    font-family: var(--ifm-font-family-monospace);
+    font-size: 0.74rem;
+    letter-spacing: 0.02em;
+    border-bottom: 1px solid var(--ifm-color-emphasis-200);
+    padding: 6px 14px;
+  }
+
+  /* 복사 버튼 항상 노출 (Gemini docs) */
+  div[class*="codeBlockContainer"] button[class*="copyButton"] {
+    opacity: 1;
+  }
+
+  .tabs {
+    border-bottom: 1px solid var(--ifm-table-border-color);
+    color: var(--ifm-font-color-base);
+
+    .tabs__item {
+      font-weight: normal;
+      font-size: 15px;
+      color: var(--ifm-font-color-base);
+      user-select: none;
+
+      &:hover {
+        border-radius: var(--ifm-global-radius) var(--ifm-global-radius) 0 0;
+      }
+
+      &.tabs__item--active {
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 996px) {
+  .markdown table {
+    display: block;
+
+    tr td code {
+      word-break: normal;
+    }
+  }
+}
+
+html[data-theme="dark"] {
+  .markdown {
+    a {
+      @extend %link-style-dark;
+    }
+
+    blockquote {
+      code {
+        background-color: rgba(255, 255, 255, 0.09);
+      }
+
+      a code {
+        background-color: transparent;
+      }
+    }
+
+    div[class*="codeBlockTitle"] {
+      /* #8f93a3: 다크 코드 배경(#20232a) 위 WCAG AA 대비 충족 (docsearch-muted는 4.23:1) */
+      color: #8f93a3;
+      background-color: var(--deepdark);
+    }
+  }
+}
+
+.hash-link,
+html[data-theme="dark"] .hash-link {
+  @extend %hash-link-style;
+}
+
+article .badge {
+  font-weight: 500;
+  border-radius: 16px;
+  margin-bottom: 6px;
+}
+
+html[data-theme="dark"] article .badge {
+  background: var(--deepdark);
+  border-color: var(--deepdark);
+  color: var(--ifm-font-color-base);
+}
+
+/* Admonitions & notes */
+
+.admonition,
+.theme-admonition {
+  font-size: 0.95rem;
+  margin-bottom: var(--ifm-paragraph-margin-bottom);
+  padding: 16px 20px;
+  border-radius: var(--ifm-alert-border-radius);
+  border: 1px solid var(--ifm-alert-background-color-highlight);
+  box-shadow: none;
+
+  div[class^="admonitionContent"] {
+    a {
+      border-bottom: 0;
+      color: var(--ifm-font-color-base);
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  span[class^="admonitionIcon"] svg {
+    max-width: 20px;
+    max-height: 20px;
+    fill: hsl(from var(--ifm-alert-border-color) h calc(s + 30) calc(l - 27));
+  }
+
+  /* l - 27: 옅은 admonition 배경 위에서 제목이 WCAG AA 대비(4.5:1)를 충족하는 밝기 */
+  div[class^="admonitionHeading"] {
+    font-size: 18px;
+    margin-bottom: 12px;
+    color: hsl(from var(--ifm-alert-border-color) h calc(s + 30) calc(l - 27));
+  }
+}
+
+.alert {
+  padding: 24px 28px;
+}
+
+.alert--secondary {
+  --ifm-alert-border-color: hsl(from var(--light) h calc(s - 20) calc(l + 30));
+  --ifm-alert-background-color: var(--ifm-color-secondary-lightest);
+  --ifm-alert-background-color-highlight: rgba(225, 227, 230, 0.7);
+}
+
+html[data-theme="dark"] {
+  span[class^="admonitionIcon"] svg {
+    fill: hsl(from var(--ifm-alert-border-color) h calc(s + 10) calc(l + 22));
+  }
+
+  /* l + 22: 어두운 admonition 배경에서도 제목이 WCAG AA 대비를 충족하는 밝기
+     (l + 10은 note(secondary)에서 3.67:1로 미달) */
+  div[class^="admonitionHeading"] {
+    color: hsl(from var(--ifm-alert-border-color) h calc(s + 10) calc(l + 22));
+  }
+
+  .alert--secondary {
+    --ifm-alert-background-color: var(
+      --ifm-color-secondary-contrast-background
+    );
+    --ifm-alert-background-color-highlight: rgba(225, 227, 230, 0.15);
+  }
+}

@@ -1,0 +1,201 @@
+/**
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+@use "shared";
+
+/* 랜딩, 버전 배너, 저자 표시, 헤딩 스케일, breadcrumb */
+
+/* Home page */
+
+.homepage {
+  /* 랜딩은 Infima 컨테이너 폭 제한을 받지 않고 전체 폭을 쓴다. Hero 밴드가
+     좌우 여백 없이 붙으려면 필요하다. index.scss(K10-a 에서 삭제)에 있던
+     규칙을 옮겨 왔다. 이것 없이는 1440px 뷰포트에서 좌우 20px 씩 흰 여백이 생긴다. */
+  width: 100%;
+  max-width: 100%;
+
+  div[class*="codeBlockContainer"] {
+    margin-bottom: 0;
+    overflow: visible;
+
+    .prism-code {
+      font-size: 90%;
+    }
+  }
+}
+
+/* 라이트 모드 랜딩 링크에 걸려 있던 `a:not([class*="Button"])` 규칙을 K11 에서 제거했다.
+   대문자 B 는 React Native 사이트의 클래스 명명 규칙이라 소문자 `button--primary` 를
+   걸러내지 못했고, 그 결과 %link-style 의 `display: initial` 이 Hero CTA 를
+   inline-flex 가 아니라 block 으로 만들었다. 랜딩 링크의 밑줄은 Infima 기본
+   `--ifm-link-hover-decoration: underline` 이 이미 처리한다. */
+
+/* 다크 모드 랜딩 링크 색은 Infima 기본(--ifm-link-color = --ifm-color-primary)에 맡긴다.
+   여기서 .homepage 의 모든 a 에 색을 덧씌우면 버튼·카드까지 링크 색이 되어
+   1차 CTA 가 흰 배경 위 옅은 파랑(2.11:1), FinalCTA 1차는 같은 색끼리 겹쳐
+   1.00:1 이 된다. 인라인 링크는 Infima 기본으로도 동일한 색을 받으므로
+   이 규칙은 이득 없이 결함만 만든다. */
+
+/* Version warning */
+
+.theme-doc-version-banner {
+  background-color: var(--docs-rating-background);
+  border: 1px solid rgba(125, 222, 255, 0.21);
+  color: var(--ifm-font-color-base);
+  box-shadow: none;
+  font-size: 15px;
+  line-height: var(--ifm-pre-line-height);
+  text-align: center;
+  border-radius: var(--ifm-alert-border-radius);
+  padding: var(--ifm-alert-padding-vertical) var(--ifm-alert-padding-horizontal);
+
+  a {
+    color: var(--ifm-font-color-base) !important;
+    text-decoration: underline !important;
+    text-decoration-thickness: 1px !important;
+  }
+
+  @layer docusaurus.infima.importantOverrides {
+    .margin-top--md {
+      margin-top: 0.33rem !important;
+    }
+  }
+}
+
+/* Blog */
+
+.avatar__name {
+  font-weight: 600;
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+
+  h2 {
+    margin-bottom: 0;
+  }
+}
+
+html[data-theme="dark"] .avatar__name a {
+  @extend %link-style-dark;
+}
+
+.avatar__subtitle {
+  margin-top: 0;
+  font-weight: 500;
+  color: var(--subtle);
+}
+
+/* 본문 헤딩 스케일 — Docusaurus 데스크톱 .markdown>h{n} 요소 레벨 재정의를
+   무력화해 페이지 제목(article header h1) >= 모든 본문 헤딩 보장.
+   시안 A(승인 지점 3) 값이고 크기는 rem 이다(B-4). 굵기로 본문과 거리를
+   벌린다(B-3): h1 700, h2·h3 600, h4 600. 현행은 전부 400 이라 h3(20px)와
+   본문(16px)이 4px 차이뿐이어서 구별되지 않았다. */
+.markdown > h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.markdown > h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.markdown > h3 {
+  font-size: 1.1875rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.markdown > h4 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+article header h1 {
+  font-size: 2.125rem !important;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* 페이지 제목과 첫 본문 요소 사이 간격 — h1 하단 마진이 header 밖으로
+   전달되지 않아 제목과 첫 헤딩이 붙는 문제 보정 */
+.markdown > header {
+  margin-bottom: 24px;
+}
+
+article header h2 {
+  line-height: 32px;
+
+  a {
+    color: var(--ifm-font-color-base);
+    font-size: 24px;
+
+    &:hover,
+    &:focus {
+      color: var(--ifm-font-color-base);
+      opacity: 0.8;
+    }
+  }
+}
+
+/* Breadcrumb — Gemini 톤(회색 텍스트, 평평) */
+.breadcrumbs {
+  margin-bottom: 1rem;
+}
+
+.breadcrumbs__item .breadcrumbs__link {
+  background: transparent;
+  padding: 2px 4px;
+  font-size: 0.82rem;
+  font-weight: 400;
+  /* emphasis-700: 흰 배경에서 WCAG AA 대비 충족 (600은 3.06:1로 미달) */
+  color: var(--ifm-color-emphasis-700);
+}
+
+.breadcrumbs__item:not(.breadcrumbs__item--active) .breadcrumbs__link:hover {
+  background: transparent;
+  color: var(--ifm-color-primary);
+  text-decoration: underline;
+}
+
+.breadcrumbs__item--active .breadcrumbs__link {
+  background: transparent;
+  color: var(--ifm-color-emphasis-800);
+  font-weight: 500;
+}
+
+/* 우측 TOC (이 페이지의 내용) — Gemini 톤: 가벼운 굵기 */
+.table-of-contents {
+  font-size: 14px;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.table-of-contents,
+.table-of-contents ul {
+  font-size: 14px;
+}
+
+.table-of-contents .table-of-contents__link,
+.table-of-contents .table-of-contents__link code {
+  font-weight: 400 !important;
+  font-size: 14px !important;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.table-of-contents__link--active,
+.table-of-contents__link--active code,
+.table-of-contents__link:hover,
+.table-of-contents__link:hover code {
+  color: var(--ifm-color-primary);
+}
+
+.table-of-contents__left-border {
+  border-left-color: var(--ifm-color-emphasis-200);
+}

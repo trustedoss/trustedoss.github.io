@@ -31,20 +31,22 @@ The goal of DevSecOps is to shift as many checks as possible to the left (the co
 
 ---
 
-## Maturity Model — 4 Stages
+## Maturity Model — Four Levels
 
-| Stage   | Level        | Characteristics                          | Main tools              |
+This model grades DevSecOps maturity on four levels. These level numbers are a separate scale from the stage numbers in the [AI Coding 5-Stage Strategy by Assurance Level](/en/ai-coding/strategy). Do not read the two together.
+
+| Level   | Name         | Characteristics                          | Main tools              |
 | ------- | ------------ | ---------------------------------------- | ----------------------- |
-| Stage 1 | None         | Security checks manual or absent         | —                       |
-| Stage 2 | Basic        | CI automation in key areas               | Gitleaks, grype         |
-| Stage 3 | Systematized | Pipeline integration across all areas    | Semgrep, Trivy, Checkov |
-| Stage 4 | Optimized    | Auto-remediation · continuous monitoring | Dependabot + AI         |
+| Level 1 | None         | Security checks manual or absent         | —                       |
+| Level 2 | Basic        | CI automation in key areas               | Gitleaks, grype         |
+| Level 3 | Systematized | Pipeline integration across all areas    | Semgrep, Trivy, Checkov |
+| Level 4 | Optimized    | Auto-remediation · continuous monitoring | Dependabot + AI         |
 
-For most teams, it is realistic to start at Stage 2 and move to Stage 3 over 6 to 12 months.
+For most teams, it is realistic to start at Level 2 and move to Level 3 over 6 to 12 months.
 
 ---
 
-## Step-by-step adoption roadmap
+## The order that raises your level
 
 :::tip Don't try to adopt everything at once
 Stabilizing one area at a time before moving to the next is the sustainable way to avoid team fatigue.
@@ -77,16 +79,16 @@ Stabilizing one area at a time before moving to the next is the sustainable way 
 
 ---
 
-## Self-study — step-by-step agents
+## Self-study — agents by strategy stage
 
-:::tip Automate each stage with a Claude Code agent
+:::tip Automate each stage of the 5-stage strategy with a Claude Code agent
 Running the agents below in order lets you actually implement
-each stage of the strategy roadmap.
+each stage of the AI Coding 5-stage strategy.
 :::
 
 **Prerequisite**: Clone the [Trusted OSS Agent repository](https://github.com/trustedoss/trustedoss-agents)
 
-The stage numbers below follow the framework of [AI Coding — 5-Stage Strategy by Assurance Level](/ai-coding/strategy).
+The stage numbers below are those of the [AI Coding 5-Stage Strategy by Assurance Level](/en/ai-coding/strategy). They are a different scale from the maturity levels above.
 
 | Stage                              | agent                | Command                                                  |
 | ---------------------------------- | -------------------- | -------------------------------------------------------- |

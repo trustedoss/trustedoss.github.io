@@ -2,7 +2,7 @@
 id: iso-mapping
 title: 'ISO Standards Linkage (AI Coding)'
 sidebar_label: 'ISO Standards Linkage'
-sidebar_position: 12
+sidebar_position: 11
 ---
 
 # ISO/IEC 5230 · 18974 Linkage (AI Coding)
@@ -10,8 +10,8 @@ sidebar_position: 12
 This page shows which requirements of the two standards the AI coding guide's implementations **operate and strengthen at the development stage**.
 
 :::note The Build Your System guide is the authority for meeting the standards
-The deliverables that **formally satisfy** the standard requirements (policy, SBOM, vulnerability reports, etc.) are produced in the [Build Your System](/docs) track.
-The [Checklist Mapping](/docs/overview/checklist-mapping) is the authoritative integrated mapping of all requirements.
+The deliverables that **formally satisfy** the standard requirements (policy, SBOM, vulnerability reports, etc.) are produced in the [Build Your System](/en/docs) track.
+The [Requirements Detail Matrix](/en/reference/requirements-matrix) is the canonical per-item mapping of certification questions and verification material.
 The AI coding guide is a means of **automatically applying that policy to daily development** to strengthen execution.
 :::
 
@@ -32,10 +32,10 @@ The AI coding guide internalizes that policy into **AI tool Rules and CI gates**
 | Continuous post-deployment monitoring (Stage 5)                              | 18974 §4.3.2 Vulnerability response                  | New CVEs tracked with Dependabot and Renovate       |
 
 :::note
-The AI coding guide **automates the execution** of the items above, but the self-certification declaration and evidence deliverables are completed in the [Build Your System](/docs) track.
+The AI coding guide **automates the execution** of the items above, but the self-certification declaration and evidence deliverables are completed in the [Build Your System](/en/docs) track.
 :::
 
 ## Next steps
 
-- To build the standards system from scratch → [Build Your System guide](/docs)
-- For organization-wide pipeline-level security enforcement → [DevSecOps guide](/devsecops/intro)
+- To build the standards system from scratch → [Build Your System guide](/en/docs)
+- For organization-wide pipeline-level security enforcement → [DevSecOps guide](/en/devsecops/intro)

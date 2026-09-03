@@ -4,8 +4,14 @@
 
 ## 트리거 조건
 
-- `bash .claude/scripts/sync-output-samples.sh` 실행 후
-- output-sample/ 파일이 변경되어 website 샘플 페이지를 최신화할 때
+- `output-sample/` 파일이 변경되어 website 샘플 페이지를 최신화할 때
+
+:::danger sync-output-samples.sh 를 먼저 돌리지 말 것
+`sync-output-samples.sh` 는 `output/` → `output-sample/` 방향이다. `output/` 은 gitignore
+대상이라 세션마다 내용이 다르므로, 돌리면 골든 픽스처를 덮어써 `verify.sh` [11/13] 이 깨진다.
+그 스크립트는 agent 를 실제로 실행해 `output/` 을 새로 만든 뒤 픽스처를 갱신할 때만 쓴다.
+샘플 페이지 재생성만 하려면 이 스킬만 실행한다.
+:::
 
 ---
 
@@ -209,10 +215,39 @@ HTML 주석 `<!-- 5230 §... -->` 을 코드블록으로 변환한다:
 
 - `갭 分析` → `갭 분석`
 
+### 7. 코드블록 언어 태그
+
+output-sample 의 펜스 언어를 그대로 옮긴다. 언어가 내용과 어긋나면 생성물이 아니라
+`output-sample/` 원본을 고치고 재생성한다. 생성물만 고치면 다음 재생성에서 원복된다.
+
+### 8. 페이지 목차 (필수)
+
+각 페이지는 첫 H2 바로 앞에 수록 산출물 목차를 둔다. 페이지 하나가 산출물 2~7개를 이어
+붙인 형태라, 독자는 자기 `output/` 파일과 비교할 하나만 필요하다.
+
+- 목차 제목: ko `**이 페이지에 수록된 산출물**`, en `**Deliverables on this page**`
+- 각 항목은 앵커 링크로 만든다: `- [{H2 제목}](#{앵커 id})`
+- 각 H2 에 명시적 앵커를 붙인다: `## {제목} {#{앵커 id}}`
+- 앵커 id 는 위 "페이지별 매핑" 표의 output-sample 파일명에서 확장자를 뺀 값을 쓴다.
+  예: `role-definition.md` → `{#role-definition}`. ko 와 en 이 같은 id 를 쓰므로
+  언어를 바꿔도 같은 앵커가 유지된다.
+- 헤딩 제목에서 자동 생성되는 슬러그에 의존하지 않는다. 제목이 바뀌어도 앵커가 살아 있어야
+  한다. 빌드가 `onBrokenAnchors: 'throw'` 이므로 끊긴 앵커는 빌드에서 잡힌다.
+
+`conformance.md` 의 갭 분석 표는 다른 샘플 페이지의 섹션을 앵커로 참조한다
+(`/reference/samples/policy#license-allowlist` 형태). 이 링크도 위 앵커 id 를 쓴다.
+제목에서 자동 생성된 슬러그를 쓰면 제목이 바뀔 때 조용히 끊긴다. 재생성 후
+`grep -rho "samples/[a-z]*#[^)]*" website/reference/samples` 로 참조된 앵커가 전부
+파일명 기반 id 인지 확인한다.
+
 ---
 
 ## 주의사항
 
 - output-sample/에 없는 파일이 있으면 해당 섹션은 재생성하지 않고 기존 내용을 유지한다.
-- 먼저 `bash .claude/scripts/sync-output-samples.sh`를 실행하여 output-sample/을 최신화한 후 이 스킬을 실행하는 것을 권장한다.
-- 완료 후 반드시 `bash .claude/scripts/verify.sh`를 실행하여 12개 항목 PASS를 확인한다.
+- `sync-output-samples.sh` 를 이 스킬의 사전 단계로 돌리지 않는다(위 트리거 조건의 경고 참조).
+- 이 스킬은 한국어 페이지(`website/reference/samples/`)만 생성한다. 영문
+  (`website/i18n/en/docusaurus-plugin-content-docs-reference/current/samples/`)은 대응하는
+  output-sample 영문 원본이 없어 사람이 옮긴 번역본이다. 한국어를 재생성했으면 영문도 같은
+  변경을 손으로 반영해야 `verify.sh` [13/13] 패리티와 내용 일치가 유지된다.
+- 완료 후 반드시 `bash .claude/scripts/verify.sh`를 실행하여 13개 항목 PASS를 확인한다.

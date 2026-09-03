@@ -2,7 +2,7 @@
 id: iso-mapping
 title: 'ISO 표준 연계 (AI 코딩)'
 sidebar_label: 'ISO 표준 연계'
-sidebar_position: 12
+sidebar_position: 11
 ---
 
 # ISO/IEC 5230 · 18974 연계 (AI 코딩)
@@ -11,7 +11,7 @@ sidebar_position: 12
 
 :::note 표준 충족의 정본은 체계구축 가이드
 표준 항목을 **정식으로 충족**하는 산출물(정책·SBOM·취약점 리포트 등)은 [체계구축](/docs) 트랙에서 만듭니다.
-전체 항목 통합 매핑은 [체크리스트 매핑](/docs/overview/checklist-mapping)이 정본입니다.
+항목별 인증 질문과 입증자료는 [요구사항 상세 대조표](/reference/requirements-matrix)가 정본입니다.
 AI 코딩 가이드는 그 정책을 **개발 일상에 자동 적용**해 이행을 강화하는 수단입니다.
 :::
 

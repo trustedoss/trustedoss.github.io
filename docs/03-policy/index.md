@@ -137,7 +137,7 @@ agent가 생성하는 `oss-policy.md` 에는 이 변경 요청·운영 절(§11)
 Claude Code 를 실행하는 환경을 전제합니다.
 
 - [ ] trustedoss 저장소를 클론했나요? (02장에서 이미 했다면 다시 할 필요 없습니다)
-      `git clone https://github.com/trustedoss/trustedoss-agents.git`
+      클론 명령은 [환경 준비](../01-setup/index.md)에 있습니다.
 - [ ] 터미널에서 프로젝트 루트에 있나요?
       `cd trustedoss-agents`
 - [ ] Claude Code 가 실행 중인가요?
@@ -271,22 +271,9 @@ cat output/policy/license-allowlist.md
 :::info 충족되는 표준 요구사항
 이 실습을 완료하면 아래 요구사항이 충족됩니다.
 
-**ISO/IEC 5230**
+5230 §3.1.1, §3.1.4, §3.5.1 · 18974 §4.1.1, §4.1.4
 
-| 항목 ID | 요구사항                    | 자체인증 체크리스트                                             |
-| ------- | --------------------------- | --------------------------------------------------------------- |
-| 3.1.1   | 오픈소스 정책 문서화        | Do you have a documented open source policy?                    |
-| 3.1.4   | 프로그램 범위 정의          | Is the scope of your open source program documented?            |
-| 3.5.1   | 오픈소스 커뮤니티 참여 정책 | Do you have a policy for open source community participation?   |
-| 3.5.1   | 오픈소스 기여 프로세스      | Do you have a process for contributing to open source projects? |
-
-**ISO/IEC 18974**
-
-| 항목 ID | 요구사항                | 자체인증 체크리스트                                                     |
-| ------- | ----------------------- | ----------------------------------------------------------------------- |
-| 4.1.1   | 보안 보증 정책 문서화   | Do you have a documented open source security assurance policy?         |
-| 4.1.4   | 보안 프로그램 범위 정의 | Is the scope of your open source security assurance program documented? |
-
+각 항목의 자체 인증 체크리스트 문항 원문과 입증자료는 [요구사항 상세 대조표](/reference/requirements-matrix)에 있습니다.
 :::
 
 ---

@@ -9,10 +9,6 @@ import type {Config} from '@docusaurus/types';
 
 import {themes as prismThemes} from 'prism-react-renderer';
 
-// See https://docs.netlify.com/configure-builds/environment-variables/
-const isProductionDeployment =
-  !!process.env.NETLIFY && process.env.CONTEXT === 'production';
-
 const copyright = `CC BY 4.0 · TrustedOSS Contributors`;
 
 // 로케일별로 빌드가 한 번씩 돌고, 그때마다 이 값이 바뀐다.
@@ -39,10 +35,6 @@ const config: Config = {
   ],
   trailingSlash: false,
   scripts: [
-    {
-      src: 'https://cdn.jsdelivr.net/npm/focus-visible@5.2.0/dist/focus-visible.min.js',
-      defer: true,
-    },
     {
       src: 'https://gc.zgo.at/count.js',
       async: true,
@@ -129,22 +121,9 @@ const config: Config = {
           editUrl: ({docPath}) =>
             `https://github.com/trustedoss/trustedoss.github.io/edit/main/docs/${docPath}`,
         },
-        blog: {
-          path: 'blog',
-          blogSidebarCount: 'ALL',
-          blogSidebarTitle: '전체 블로그 포스트',
-          feedOptions: {
-            type: 'all',
-            copyright,
-          },
-          onInlineAuthors: 'ignore',
-          onUntruncatedBlogPosts: 'ignore',
-        },
+        blog: false,
         theme: {
-          customCss: [
-            require.resolve('./src/css/customTheme.scss'),
-            require.resolve('./src/css/index.scss'),
-          ],
+          customCss: [require.resolve('./src/css/customTheme.scss')],
         },
       } satisfies Preset.Options,
     ],
@@ -154,15 +133,54 @@ const config: Config = {
     function disableExpensiveBundlerOptimizationPlugin() {
       return {
         name: 'disable-expensive-bundler-optimizations',
-        configureWebpack(_config: unknown, isServer: boolean) {
+        configureWebpack() {
           return {
             optimization: {
-              concatenateModules: isProductionDeployment ? !isServer : false,
+              concatenateModules: false,
             },
           };
         },
       };
     },
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          {
+            from: [
+              '/blog',
+              '/blog/archive',
+              '/blog/authors',
+              '/blog/tags',
+              '/blog/tags/openchain',
+              '/blog/tags/oss',
+              '/blog/tags/sbom',
+              '/blog/welcome',
+            ],
+            to: '/',
+          },
+          {from: '/docs/overview/start-path', to: '/docs'},
+          {from: '/docs/overview/agents', to: '/reference/agents'},
+          // 3.9.2 는 to 에 앵커를 허용한다(K6 빌드 실측). 각 방법 절로 보낸다.
+          {
+            from: '/docs/developer-guide/method1-claude-md',
+            to: '/docs/developer-guide#method-1',
+          },
+          {
+            from: '/docs/developer-guide/method2-skill',
+            to: '/docs/developer-guide#method-2',
+          },
+          {
+            from: '/docs/developer-guide/method3-hooks',
+            to: '/docs/developer-guide#method-3',
+          },
+          {
+            from: '/docs/developer-guide/method4-cicd',
+            to: '/docs/developer-guide#method-4',
+          },
+        ],
+      },
+    ],
     [
       'content-docs',
       {
@@ -266,6 +284,8 @@ const config: Config = {
       title: 'Trusted OSS',
       logo: {
         src: 'img/header_logo.svg',
+        width: 32,
+        height: 32,
         alt: 'Trusted OSS Logo',
       },
       items: [
@@ -289,11 +309,6 @@ const config: Config = {
           label: '레퍼런스',
           position: 'left',
         },
-        // {
-        //   to: '/blog',
-        //   label: '블로그',
-        //   position: 'left',
-        // },
         {
           href: 'https://trustedoss.github.io/trusca/',
           label: 'TRUSCA',
@@ -338,10 +353,6 @@ const config: Config = {
               label: 'TRUSCA',
               href: 'https://trustedoss.github.io/trusca/',
             },
-            // {
-            //   label: '블로그',
-            //   to: '/blog',
-            // },
           ],
         },
         {

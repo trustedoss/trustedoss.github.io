@@ -55,7 +55,8 @@
 │   ├── sync-output-samples.sh        # output/ → output-sample/ 동기화
 │   ├── sync-kwg-reference.sh         # KWG 원본 md 파일 동기화
 │   ├── check-kwg-drift.py            # KWG 원본과의 드리프트 검사
-│   └── check-i18n-parity.py          # ko/en 문서 파일 패리티 검사
+│   ├── check-i18n-parity.py          # ko/en 문서 파일 패리티 검사
+│   └── check-redirects.py            # 사이트 개편 시 사라진 URL의 리다이렉트·목적지 확인
 │
 dry-run/
 └── run-dryrun.sh                     # OpenWave 프로필 드라이런 오케스트레이터
@@ -277,12 +278,12 @@ python3 .claude/scripts/test-coverage.py
 
 `verify.sh` 의 해당 항목이 내부적으로 실행. 독립 실행도 가능.
 
-| 검사 | 내용                                          |
-| ---- | --------------------------------------------- |
-| A    | G항목 ↔ 담당 Agent 할당                       |
-| B    | G항목 ↔ output 파일 할당                      |
-| C    | checklist-mapping ↔ validate-checklist 일관성 |
-| D    | agents CLAUDE.md → templates/ 파일 존재       |
+| 검사 | 내용                                            |
+| ---- | ----------------------------------------------- |
+| A    | G항목 ↔ 담당 Agent 할당                         |
+| B    | G항목 ↔ output 파일 할당                        |
+| C    | requirements-matrix ↔ validate-checklist 일관성 |
+| D    | agents CLAUDE.md → templates/ 파일 존재         |
 
 ---
 
@@ -647,12 +648,12 @@ docs/05-tools/index.md 에 반영이 필요한 내용이 있는지 확인해줘
 
 디자인·측정 인프라(2026-07 도입) 점검 루틴. 결과는 `.claude/progress.md`에 한 줄로 기록한다.
 
-| 항목            | 확인 위치                                        | 보는 것                                                      |
-| --------------- | ------------------------------------------------ | ------------------------------------------------------------ |
-| 방문 통계       | https://trustedoss.goatcounter.com               | 상위·하위 페이지, 유입 경로, `rating/` 이벤트 비율           |
-| 검색 품질       | Algolia 대시보드 (Search, Analytics 메뉴)        | no-results 쿼리(문서 갭 신호), 상위 검색어                   |
-| 크롤러 상태     | Algolia 대시보드 (Data sources, Crawler)         | 주 1회(월요일) 크롤링 성공 여부, 색인 레코드 수 추이         |
-| Lighthouse 점수 | GitHub Actions의 Lighthouse 워크플로우 최근 실행 | 6개 대표 페이지 점수 추이. 2주 안정화 후 warn을 error로 승격 |
+| 항목            | 확인 위치                                        | 보는 것                                                                                                                                            |
+| --------------- | ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 방문 통계       | https://trustedoss.goatcounter.com               | 상위·하위 페이지, 유입 경로, `rating/` 이벤트 비율                                                                                                 |
+| 검색 품질       | Algolia 대시보드 (Search, Analytics 메뉴)        | no-results 쿼리(문서 갭 신호), 상위 검색어                                                                                                         |
+| 크롤러 상태     | Algolia 대시보드 (Data sources, Crawler)         | 주 1회(월요일) 크롤링 성공 여부, 색인 레코드 수 추이                                                                                               |
+| Lighthouse 점수 | GitHub Actions의 Lighthouse 워크플로우 최근 실행 | 6개 대표 페이지. 접근성·모범사례·SEO와 unsized-images·font-display는 error 단언이라 실패 시 CI가 막는다. TBT와 미사용 JS는 warn 이므로 추이만 본다 |
 
 ### 접근성 스캔 절차 (분기 1회 또는 디자인 변경 후)
 
@@ -662,10 +663,35 @@ docs/05-tools/index.md 에 반영이 필요한 내용이 있는지 확인해줘
 2. 대표 페이지(랜딩, docs, docs 본문, devsecops/intro, ai-coding/intro, reference/samples/sbom)를
    브라우저로 열고, axe-core를 CDN(`https://cdn.jsdelivr.net/npm/axe-core@4.10.2/axe.min.js`)에서
    주입한 뒤 `axe.run()` 실행
-3. 라이트와 다크 모두 스캔한다. 다크 전환은 data-theme 속성 변경이 아니라 **테마 토글 버튼 클릭**으로
-   해야 한다 (Prism 코드 색은 React 리렌더가 필요해 속성만 바꾸면 라이트 값이 측정된다)
+3. 라이트와 다크 모두 스캔한다. **`data-theme` 속성만 바꾸면 안 된다.** Prism 코드 색은
+   React 리렌더가 필요해 속성만 바꾸면 코드블록이 라이트 값 그대로 측정된다(실측: `pre` 배경이
+   `rgb(246,248,250)`에 머문다). 두 가지 방법이 통한다.
+   - `page.emulateMedia({colorScheme: 'dark'})` 후 `localStorage` 의 `theme` 을 지우고 새로고침.
+     `respectPrefersColorScheme: true` 라 이 방법이 가장 간단하고 코드블록까지 바뀐다.
+   - 테마 토글 버튼(`[class*="colorModeToggle"] button`) 클릭.
 4. critical과 serious 위반만 수정 대상으로 한다. Prism 토큰 색은 인라인 스타일이라
-   CSS 오버라이드에 `!important`가 필요하다 (customTheme.scss 끝의 접근성 섹션 참조)
+   CSS 오버라이드에 `!important`가 필요하다.
+
+### 대비비 전수 측정 방법 (K10 에서 확립, K11 에서 예외 하나 추가)
+
+순진하게 재면 오탐이 쏟아진다. 아래 절차만 오탐 0 이었다.
+
+1. 요소별 전경색(`getComputedStyle().color`)과 박스를 먼저 수집한다.
+2. `*,*::before,*::after{color:transparent!important;text-shadow:none!important}` 를 주입해
+   글자를 지운 상태로 페이지를 캡처한다. 이래야 표본이 글리프가 아닌 순수 배경이 된다.
+3. 각 요소 박스의 중앙 가로선에서 다섯 지점(폭의 15, 35, 50, 65, 85%)을 표본으로 최빈값을 배경으로 쓴다.
+4. 전경 알파가 1 미만이면 그 배경과 합성한 뒤 대비비를 낸다.
+5. 큰 텍스트(24px 이상, 또는 18.66px 이상이고 굵기 700 이상)는 3:1, 나머지는 4.5:1 기준.
+
+하지 말아야 할 것과 그 이유.
+
+- `getComputedStyle().backgroundColor` 만 보면 조상이 그라디언트일 때 흰색으로 잡힌다(오탐 1286건).
+- 박스 모서리를 표본으로 잡으면 알약 버튼의 둥근 모서리 바깥이나 짧은 인라인 텍스트의
+  글리프를 집는다(오탐 7~10건).
+
+**예외:** `background-clip: text` 로 그라디언트를 글자에 입힌 요소(랜딩 `.titleAccent`)는 이
+방법으로 잴 수 없다. 글자를 투명하게 만들어도 배경 그라디언트가 글자 모양대로 계속 칠해져
+표본이 전경과 같은 색을 집는다. 이런 요소는 건너뛰고 그라디언트 정지점을 배경과 직접 계산한다.
 
 ---
 

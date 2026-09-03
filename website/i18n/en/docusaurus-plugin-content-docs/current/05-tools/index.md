@@ -6,7 +6,7 @@ checklist:
   - 'ISO/IEC 5230: []'
   - 'ISO/IEC 18974: []'
 self_study_time: 5 minutes
-sidebar_position: 0
+sidebar_position: 5
 sidebar_label: Tools overview
 ---
 
@@ -25,13 +25,11 @@ This chapter covers the tools that automatically identify the open source in you
 
 ## Try it right away (no install, no API key)
 
-See SBOM analysis results right in your browser first, with no installation.
-
-- [Try the SBOM analyzer sample](pathname:///tools/sbom-sample-demo.html?lang=en)
+The no-install SBOM analyzer demo lives in the [5-minute quick start](../00-overview/quick-start.md).
 
 ## Automatic generation with AI agents
 
-The deliverables of each step can be generated automatically with AI agents. For the full mapping, see [Create deliverables with AI agents](../00-overview/agents.md).
+The deliverables of each step can be generated automatically with AI agents. For the full mapping, see [Create deliverables with AI agents](/en/reference/agents).
 
 - SBOM creation: `05-sbom-guide`, `05-sbom-analyst`
 - SBOM management: `05-sbom-management`
@@ -39,4 +37,4 @@ The deliverables of each step can be generated automatically with AI agents. For
 
 ## Extend to automation
 
-The SBOM creation and vulnerability scanning you learn here can be wired into your CI pipeline for continuous automation. The [DevSecOps](/devsecops/intro) guide provides workflows you can copy and use.
+The SBOM creation and vulnerability scanning you learn here can be wired into your CI pipeline for continuous automation. The [DevSecOps](/en/devsecops/intro) guide provides workflows you can copy and use.

@@ -38,13 +38,7 @@ Claude Code는 프로젝트 루트의 `CLAUDE.md`를 세션 시작 시 자동으
 
 ### 라이선스 관리
 
-**허용 라이선스**: MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC
-
-**주의 라이선스** (법무 검토 필요): LGPL, MPL
-
-**금지 라이선스** (사전 승인 없이 사용 불가): GPL, AGPL, SSPL, Commons Clause
-
-<!-- 전체 규칙(보안, SBOM, 저작권 절 포함)은 공통 Rules 템플릿에서 복사 -->
+<!-- 허용·주의·금지 라이선스 목록과 나머지 규칙 전문은 공통 Rules 템플릿에서 복사 -->
 
 ---
 ```

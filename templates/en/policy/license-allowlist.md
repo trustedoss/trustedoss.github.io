@@ -36,6 +36,12 @@ Licenses whose obligations depend on the scope of the derivative work. Use after
 | Mozilla Public License 2.0                  | MPL-2.0         | Publish the source of modified files               | {condition}                      |
 | Eclipse Public License 2.0                  | EPL-2.0         | Publish the source of modified files               | {condition}                      |
 | Common Development and Distribution License | CDDL-1.0        | Publish the source of modified files               | {condition}                      |
+| Creative Commons Attribution-ShareAlike 4.0 | CC-BY-SA-4.0    | Content license, derivative-work scope undefined   | {condition}                      |
+
+CC-BY-SA does not restrict commercial use. It needs review because it is a content license,
+so the reach of the ShareAlike obligation in software is undefined. Keep it out of code as a
+rule, and allow it after review only for content assets bundled with a distribution such as
+fonts, icons, and documentation.
 
 ---
 
@@ -57,7 +63,7 @@ Licenses that require the same license to apply to the whole derivative work. Le
 
 The licenses below cannot be used without separate legal approval:
 
-- Creative Commons (including NC): CC-BY-NC-_, CC-BY-SA-_ — restrict commercial use or impose strong copyleft
+- Creative Commons non-commercial terms: CC-BY-NC-\*, CC-BY-NC-SA-\*: restrict commercial use (for CC-BY-SA, see section 2 above)
 - Server Side Public License (SSPL): requires the source of the whole service to be published
 - Business Source License (BUSL): includes conditions that restrict commercial use
 - Other custom licenses: prior review by the legal team is mandatory

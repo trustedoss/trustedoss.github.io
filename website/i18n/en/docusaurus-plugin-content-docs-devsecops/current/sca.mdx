@@ -9,10 +9,10 @@ sidebar_position: 4
 
 ## What is SCA?
 
-SCA is a method for analyzing open-source components included in software to detect known vulnerabilities (CVEs). It tracks the full dependency graph based on an SBOM (Software Bill of Materials) and enables immediate response when new CVEs are discovered.
+SCA is a method for analyzing open-source components included in software to detect known vulnerabilities (CVEs). It tracks the full dependency graph based on an SBOM and enables immediate response when new CVEs are discovered. What an SBOM is is covered in [SBOM Basics](/en/docs/overview/sbom-101).
 
 :::tip The configuration below is an example — a fully working implementation lives in the reference repository
-The YAML and commands on this page are examples that show the essentials. For a complete, copy-and-run pipeline (including policy files and a sample app), see the [Best Practice repository](/ai-coding/best-practice-repo).
+The YAML and commands on this page are examples that show the essentials. For a complete, copy-and-run pipeline (including policy files and a sample app), see the [Best Practice repository](/en/ai-coding/best-practice-repo).
 :::
 
 ---
@@ -124,6 +124,18 @@ sca:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
 ```
 
+### How this differs from the cicd-quick workflow
+
+[AI Coding — Quick CI/CD in 30 minutes](/en/ai-coding/cicd-quick) carries a workflow of the same shape. If you already applied that one, adding the three items below turns it into what this page describes.
+
+| Item                     | Quick CI/CD                    | This page                                |
+| ------------------------ | ------------------------------ | ---------------------------------------- |
+| Artifact retention       | Default (may be under 90 days) | `retention-days: 90` and `expire_in` 90d |
+| Scan policy file         | None                           | `.grype.yaml` for exception handling     |
+| Prohibited license check | Shell script grepping the SBOM | None (licenses move to a policy gate)    |
+
+Quick CI/CD exists to stand up a first gate in 30 minutes; this page goes on to exception handling and evidence retention. Keep one of the two workflows, not both.
+
 ---
 
 ## Vulnerability Policy Design
@@ -132,7 +144,7 @@ sca:
 
 The table below is an **example of a hardened, organization-level SLA** tuned for CI gates. For the
 KWG baseline (Critical 1 week, High 4 weeks) and the canonical response deadlines, see
-[Vulnerability response deadlines and VEX](/reference/concepts/vulnerability-response).
+[Vulnerability response deadlines and VEX](/en/reference/concepts/vulnerability-response).
 
 | Severity | CVSS Range | Hardened SLA Example | Build Block  |
 | -------- | ---------- | -------------------- | ------------ |
@@ -201,7 +213,7 @@ Three controls go together in practice: enforce an extension allowlist through o
 re-check the installed list on a schedule, and verify the publisher and linked repository before
 installing. The same controls extended to MCP servers and agent skills are in the tool and extension
 supply chain section of
-[Agent and MCP Tool Governance](/ai-coding/agent-governance).
+[Agent and MCP Tool Governance](/en/ai-coding/agent-governance).
 
 ---
 
@@ -257,11 +269,11 @@ CHAINDROP) and the postmark-mcp incident all used those hooks to get execution. 
   `allowBuilds` (`onlyBuiltDependencies` before pnpm 11).
 - If you run an internal ingest gate, flag packages that carry install hooks for review. For how to
   build that gate, see section 3-1 of
-  [Open Source Process: From Use to Distribution](/docs/process).
+  [Open Source Process: From Use to Distribution](/en/docs/process).
 
 MCP servers and agent skills installed by coding agents travel the same install path. The same
 controls extended to those tools are in the tool and extension supply chain section of
-[Agent and MCP Tool Governance](/ai-coding/agent-governance).
+[Agent and MCP Tool Governance](/en/ai-coding/agent-governance).
 
 ---
 
@@ -269,7 +281,7 @@ controls extended to those tools are in the tool and extension supply chain sect
 
 **What is VEX (Vulnerability Exploitability eXchange)?** It is a machine-readable document that specifies whether a particular CVE is actually exploitable in a given product. It formally expresses cases like "the CVE exists, but the affected code path is not used," reducing unnecessary alerts across downstream supply chains.
 
-**Practical use:** Four formats are actually in use, CycloneDX VEX, OpenVEX, CSAF, and SPDX 3.0, and none has converged as the single standard. If a customer has not specified a format, starting with the same CycloneDX `vulnerabilities` field as your existing SBOM is the easiest to wire into your tooling. For the concepts, including the four status values, [Vulnerability response deadlines and VEX](/reference/concepts/vulnerability-response) is the canonical reference.
+**Practical use:** Four formats are actually in use, CycloneDX VEX, OpenVEX, CSAF, and SPDX 3.0, and none has converged as the single standard. If a customer has not specified a format, starting with the same CycloneDX `vulnerabilities` field as your existing SBOM is the easiest to wire into your tooling. For the concepts, including the four status values, [Vulnerability response deadlines and VEX](/en/reference/concepts/vulnerability-response) is the canonical reference.
 
 ---
 
@@ -290,7 +302,7 @@ to automatically analyze vulnerabilities and generate response guidance.
 
 ### Preview with a sample first (no API key required)
 
-You can view the analysis of a pre-built sample SBOM right away, without an API key. Get a feel for what the tool produces first, then run a real analysis on your own SBOM below.
+The same demo is available from the [5-minute quick start](/en/docs/overview/quick-start). Try it below, then run a real analysis on your own SBOM.
 
 <iframe
   src="/tools/sbom-sample-demo.html?lang=en"

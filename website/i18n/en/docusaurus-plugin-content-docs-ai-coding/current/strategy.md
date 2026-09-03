@@ -86,8 +86,8 @@ At this stage, the pipeline mechanically verifies the five areas below before PR
 AI coding tools frequently insert hardcoded values into code, so **secret detection is mandatory from day one of Stage 3**. Rather than introducing all areas at once, it is recommended to stabilize in this order: secret detection → SAST → SCA, then move on.
 
 - [30-Minute Quick CI/CD](./cicd-quick) — Minimal starting point focused on SCA
-- [DevSecOps — Secret Detection](/devsecops/secret-detection) · [SAST](/devsecops/sast) · [SCA](/devsecops/sca) · [Container Security](/devsecops/container-security) · [IaC Security](/devsecops/iac-security)
-- [Organization-wide Pipeline Design](/devsecops/pipeline-design)
+- [DevSecOps — Secret Detection](/en/devsecops/secret-detection) · [SAST](/en/devsecops/sast) · [SCA](/en/devsecops/sca) · [Container Security](/en/devsecops/container-security) · [IaC Security](/en/devsecops/iac-security)
+- [Organization-wide Pipeline Design](/en/devsecops/pipeline-design)
 
 **In practice — TRUSCA**: an Apache-2.0 open source SCA project runs this level today. The
 workflow files are open to read.
@@ -108,7 +108,7 @@ Two of the tool choices differ from the table above. SCA runs on cdxgen and Triv
 and grype, and IaC runs on Trivy config rather than Checkov. Where the area of inspection is the
 same, matching the tool to what the organisation already operates is usually the better trade, and
 for TRUSCA that adds no new tool at all: Trivy is already the product's matching engine. How the
-IaC gate went from observing to blocking is written up in [IaC security](/devsecops/iac-security).
+IaC gate went from observing to blocking is written up in [IaC security](/en/devsecops/iac-security).
 
 ---
 
@@ -233,8 +233,8 @@ an internal policy.
 
 At this stage, SBOM is continuously scanned even after deployment, and patch PRs are generated automatically when new CVEs are discovered. Integration with Dependabot and Renovate maintains centralized supply chain security compliance (ISO/IEC 18974). Human intervention for policy compliance is minimized, creating a virtuous cycle that continuously controls AI-induced risk through automation.
 
-- [Continuous Monitoring & Auto-remediation](/devsecops/monitoring)
-- [DAST — Dynamic Analysis](/devsecops/dast)
+- [Continuous Monitoring & Auto-remediation](/en/devsecops/monitoring)
+- [DAST — Dynamic Analysis](/en/devsecops/dast)
 
 **In practice — TRUSCA**:
 

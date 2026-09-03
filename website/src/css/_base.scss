@@ -1,0 +1,223 @@
+/**
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+@use "shared";
+
+/* 버튼, 다크 토큰 블록, 폰트, 본문 레이아웃 골격 */
+
+/* ── Buttons (Google AI Studio풍: 필 블루 / 깔끔한 아웃라인) ────── */
+.button {
+  border-radius: 8px;
+  font-weight: 600;
+  letter-spacing: 0;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.button--lg {
+  font-size: 0.95rem;
+  padding: 0.65rem 1.4rem;
+}
+
+/* Primary: 시안 필 + 흰 글자(다크 모드는 짙은 글자) */
+.button.button--primary {
+  background-color: var(--ifm-color-primary);
+  border-color: var(--ifm-color-primary);
+  color: #fff;
+}
+
+.button.button--primary:hover {
+  background-color: var(--ifm-color-primary-dark);
+  border-color: var(--ifm-color-primary-dark);
+  color: #fff;
+}
+
+html[data-theme="dark"] .button.button--primary {
+  color: var(--brand-fill-fg);
+}
+
+html[data-theme="dark"] .button.button--primary:hover {
+  background-color: var(--ifm-color-primary-light);
+  border-color: var(--ifm-color-primary-light);
+  color: var(--brand-fill-fg);
+}
+
+/* Secondary: 투명 + 연한 보더(아웃라인) */
+.button.button--secondary {
+  background-color: transparent;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  color: var(--ifm-color-emphasis-900);
+}
+
+.button.button--secondary:hover {
+  background-color: var(--ifm-color-emphasis-100);
+  border-color: var(--ifm-color-emphasis-400);
+  color: var(--ifm-color-emphasis-900);
+}
+
+html[data-theme="dark"] {
+  /* #8b8f99: 다크 표 헤더 배경(#20232a) 위에서 WCAG AA 대비 충족 (기존 #858993은 4.49:1) */
+  --subtle: #8b8f99;
+
+  --sidebar-active-item-background: color-mix(
+    in srgb,
+    var(--ifm-color-primary) 16%,
+    transparent
+  );
+
+  /* 주색: 다크 모드에서는 밝은 블루로(Material dark, 가시성) */
+  /* 다크에서는 텍스트와 채움이 같은 blue-300 이다. 본문 배경 위 8.16:1,
+     카드 배경 위 7.35:1 로 둘 다 여유가 있어 분리할 이유가 없다 */
+  --brand-text: var(--g-blue-300);
+  --brand-fill: var(--g-blue-300);
+  --brand-fill-fg: #062330;
+  --ifm-color-primary: var(--g-blue-300);
+  --ifm-color-primary-dark: var(--g-blue-400);
+  --ifm-color-primary-darker: var(--g-blue-500);
+  --ifm-color-primary-darkest: var(--g-blue-600);
+  --ifm-color-primary-light: var(--g-blue-200);
+  --ifm-color-primary-lighter: var(--g-blue-100);
+  --ifm-color-primary-lightest: var(--g-blue-50);
+  --ifm-color-primary-75: rgba(138, 180, 248, 0.72);
+
+  --key-shadow:
+    inset 0 -2px 0 0 var(--dark), inset 0 0 1px 1px var(--light),
+    0 2px 2px 0 rgba(3, 4, 9, 0.3);
+
+  --ifm-background-color: #1b1b1d;
+  --ifm-code-background: rgba(255, 255, 255, 0.06);
+  --ifm-toc-border-color: var(--dark);
+  --ifm-color-emphasis-300: var(--dark);
+  --ifm-table-head-background: var(--deepdark);
+  --ifm-table-head-color: var(--subtle);
+  --ifm-table-stripe-background: rgba(0, 0, 0, 0.08);
+  --ifm-table-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+
+  --docsearch-container-background: rgba(0, 0, 0, 0.6);
+  /* 다크 키 배경 위 #7f8497 은 4.20:1 로 미달. --subtle 과 같은 값으로 올린다 */
+  --docsearch-muted-color: #8b8f99;
+  --docsearch-subtle-color: #282833;
+  --docsearch-key-pressed-shadow: inset 0 2px 5px rgba(12, 13, 20, 0.4);
+  --docsearch-modal-shadow: 0 3px 8px 0 #000309;
+  --docsearch-hit-highlight-color: var(--ifm-color-primary);
+
+  @media (max-width: 900px) {
+  }
+}
+
+::marker {
+  color: var(--ifm-font-color-secondary);
+}
+
+/* Font */
+
+@font-face {
+  font-family: "Source Code Pro";
+  src: url("/fonts/Source-Code-Pro-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  /* Lighthouse font-display 감사가 잡던 두 블록. modules/fonts.ts 의 Roboto·
+     Pretendard 는 이미 swap 이라 여기만 빠져 있었다. */
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Source Code Pro";
+  src: url("/fonts/Source-Code-Pro-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Content */
+
+.main-wrapper {
+  max-width: 1400px;
+  width: 1400px;
+  align-self: center;
+  font-weight: 400;
+
+  div[class*="docRoot"] {
+    justify-content: center;
+  }
+
+  h1[class^="docTitle"] {
+    font-size: 1.8rem;
+    font-weight: 500;
+  }
+
+  .admonition-content {
+    a {
+      text-decoration: none;
+    }
+  }
+}
+
+/*
+Layer needed to override utility rules using !important in the Infima layer
+See also https://css-tricks.com/css-cascade-layers/#aa-important-layers
+*/
+@layer docusaurus.infima.importantOverrides {
+  main[class^="docMainContainer"] > .container {
+    padding-top: 2rem !important;
+  }
+}
+
+div[class^="generatedIndexPage"] {
+  max-width: 1080px !important;
+}
+
+/* 문서 본문을 시안 A 의 단 폭으로 좁힌다. 본문, 문서 푸터, 페이지네이션이 같은
+   기준선에 서도록 article 에 건다. 표와 코드블록은 이 폭 안에서 가로 스크롤된다. */
+@media (min-width: 997px) {
+  main[class^="docMainContainer"] article {
+    max-width: var(--doc-content-width);
+  }
+}
+
+@media (max-width: 1416px) {
+  .main-wrapper {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .navbar__inner {
+    max-width: 100% !important;
+    width: 100%;
+    padding: var(--ifm-navbar-padding-vertical)
+      var(--ifm-navbar-padding-horizontal);
+  }
+}
+
+@media (max-width: 1320px) and (min-width: 997px) {
+  .container {
+    max-width: calc(var(--ifm-container-width) - var(--doc-sidebar-width) / 2);
+  }
+}
+
+@media (min-width: 997px) {
+  main[class^="docMainContainer"] {
+    max-width: calc(100% - var(--doc-sidebar-width) + 44px);
+  }
+}
+
+hr {
+  border: 0;
+  height: 0.01rem;
+  background-color: var(--ifm-table-border-color);
+}
+
+.table-wrapper {
+  border: 1px solid var(--ifm-table-border-color);
+  border-radius: var(--ifm-global-radius);
+  overflow: hidden;
+  box-shadow: var(--ifm-table-box-shadow);
+  margin-bottom: var(--ifm-spacing-vertical);
+}

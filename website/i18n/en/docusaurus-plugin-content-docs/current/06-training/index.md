@@ -43,7 +43,7 @@ Even when policies and processes exist, they will not work if people do not know
 ## 3. Required training content by job group
 
 :::tip
-Unfamiliar acronyms such as SBOM and CVSS are explained in plain language in the [Glossary](/reference/glossary).
+Unfamiliar acronyms such as SBOM and CVSS are explained in plain language in the [Glossary](/en/reference/glossary).
 :::
 
 | Job group           | Required training content                                                                           | Recommended time |
@@ -59,14 +59,18 @@ For real corporate training examples (SKT, Kakao, NCSOFT, etc.) and training mat
 
 ## 4. List of free training resources
 
-| Resource                              | Provided by         | Level                 | Language | Link                                                                                                                             |
-| ------------------------------------- | ------------------- | --------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| OpenChain Training Materials          | OpenChain Project   | Beginner–Intermediate | English  | https://www.openchainproject.org/resources                                                                                       |
-| Open Source Licensing Basics (LFC193) | Linux Foundation    | Beginner              | English  | [LFC193 course](https://training.linuxfoundation.org/training/introduction-to-open-source-license-compliance-management-lfc193/) |
-| NIPA Open Source License Guide        | NIPA                | Beginner–Intermediate | Korean   | [NIPA Open SW Portal](https://www.oss.kr)                                                                                        |
-| OpenChain KWG Training Materials      | OpenChain KWG       | Intermediate          | Korean   | https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/5-training/                                    |
-| SPDX Official Documentation           | SPDX Community      | Intermediate          | English  | [SPDX official site](https://spdx.dev)                                                                                           |
-| CycloneDX Official Documentation      | CycloneDX Community | Intermediate          | English  | [CycloneDX official site](https://cyclonedx.org)                                                                                 |
+Use this list to fill the per-role curriculum in section 3 with actual material. Assign the English resources to the roles that need them or to a later stage, since completion rates are higher when people start in their own language.
+
+| Resource                              | Roles it serves                 | Provided by         | Level                 | Language | Link                                                                                                                             |
+| ------------------------------------- | ------------------------------- | ------------------- | --------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| NIPA Open Source License Guide        | All roles, introductory         | NIPA                | Beginner–Intermediate | Korean   | [NIPA Open SW Portal](https://www.oss.kr)                                                                                        |
+| OpenChain KWG Training Materials      | Developers, managers            | OpenChain KWG       | Intermediate          | Korean   | https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/5-training/                                    |
+| OpenChain Training Materials          | Managers, legal and procurement | OpenChain Project   | Beginner–Intermediate | English  | https://www.openchainproject.org/resources                                                                                       |
+| Open Source Licensing Basics (LFC193) | Legal and procurement           | Linux Foundation    | Beginner              | English  | [LFC193 course](https://training.linuxfoundation.org/training/introduction-to-open-source-license-compliance-management-lfc193/) |
+| SPDX Official Documentation           | Developers, security            | SPDX Community      | Intermediate          | English  | [SPDX official site](https://spdx.dev)                                                                                           |
+| CycloneDX Official Documentation      | Developers, security            | CycloneDX Community | Intermediate          | English  | [CycloneDX official site](https://cyclonedx.org)                                                                                 |
+
+The `training-manager` agent picks from this table per role to build `output/training/resources.md`.
 
 ## 5. How to manage training completion records
 
@@ -174,22 +178,11 @@ When you complete this lab, the three files below will be created.
 :::
 
 :::info Standard requirements met
-Completing this lab meets the requirements below.
+Completing this exercise satisfies the requirements below.
 
-**ISO/IEC 5230**
+5230 §3.1.2, §3.1.3 · 18974 §4.1.2, §4.1.3
 
-| Item ID | Requirement          | Self-certification checklist                                                                         |
-| ------- | -------------------- | ---------------------------------------------------------------------------------------------------- |
-| 3.1.2   | Proof of competency  | Do you have documented evidence that each program participant has completed the necessary training?  |
-| 3.1.3   | Awareness assessment | Do you have documented evidence that your program participants are aware of your open source policy? |
-
-**ISO/IEC 18974**
-
-| Item ID | Requirement                   | Self-certification checklist                                                                                            |
-| ------- | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| 4.1.2   | Proof of security competency  | Do you have documented evidence that each program participant has the necessary competence for security assurance?      |
-| 4.1.3   | Security awareness assessment | Do you have documented evidence that your program participants are aware of your open source security assurance policy? |
-
+The original self-certification question and the verification material for each item are in the [Requirements Detail Matrix](/en/reference/requirements-matrix).
 :::
 
 ## 7. Generated deliverables
@@ -209,7 +202,7 @@ When you complete this chapter, the following files will be created in the `outp
 - [ ] Method of proving completion has been decided
 
 :::tip Example deliverables
-You can see the actual format of the generated files in [Training Deliverables Best Practice](/reference/samples/training).
+You can see the actual format of the generated files in [Training Deliverables Best Practice](/en/reference/samples/training).
 :::
 
 ## 9. Next steps

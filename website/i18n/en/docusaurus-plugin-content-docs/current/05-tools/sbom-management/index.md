@@ -153,7 +153,7 @@ ISO/IEC 18974 §4.3.2 requires not only pre-deployment vulnerability scanning bu
 If your organization ships products into the EU market, an actively exploited vulnerability
 carries a separate regulatory reporting obligation on top of the customer notification above.
 See the EU CRA section of [Vulnerability response deadlines and
-VEX](/reference/concepts/vulnerability-response) for the deadlines.
+VEX](/en/reference/concepts/vulnerability-response) for the deadlines.
 
 Keep your SBOM up to date so you can immediately tell whether your software is affected when a new CVE is disclosed. If the SBOM is stale, the monitoring tool will not raise the correct alert.
 
@@ -244,8 +244,17 @@ open output/sbom/sbom-sharing-template.md
 
 **Step 6.** Apply the SBOM file naming convention to existing files.
 
+First check the actual file name (`myapp` is only an example; in practice it is likely a
+different name generated in step 05-1):
+
 ```bash
-# Example: rename existing file
+ls output/sbom/*.cdx.json
+```
+
+Substitute the actual file name from that output for `myapp.cdx.json` below, then run it.
+
+```bash
+# Replace the myapp.cdx.json part with the actual file name you saw above, then run
 mv output/sbom/myapp.cdx.json output/sbom/myapp-v1.0.0-20260320.cdx.json
 cp output/sbom/myapp-v1.0.0-20260320.cdx.json output/sbom/myapp-latest.cdx.json
 ```
@@ -258,15 +267,11 @@ cp output/sbom/myapp-v1.0.0-20260320.cdx.json output/sbom/myapp-latest.cdx.json
 - `output/sbom/sbom-sharing-template.md`: cover document for the recipient (includes company information placeholders)
 
 :::info Standard requirements met
-Completing this lab will meet the requirements below:
+Completing this exercise satisfies the requirements below.
 
-**ISO/IEC 18974**
+18974 §4.3.1, §4.3.2
 
-| Item ID | Requirements                        | Self-certification checklist                                                                                       |
-| ------- | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| 4.3.1   | SBOM management and updates         | Do you have a documented process for creating and maintaining a SBOM for supply software throughout its lifecycle? |
-| 4.3.2   | SBOM-based vulnerability monitoring | Do you have a process for continuously monitoring supply software components for new vulnerabilities?              |
-
+The original self-certification question and the verification material for each item are in the [Requirements Detail Matrix](/en/reference/requirements-matrix).
 :::
 
 ---
@@ -318,7 +323,7 @@ Check all of the items below to complete this chapter.
 > This step meets ISO/IEC 18974 4.3.1 and 4.3.2 requirements.
 
 :::tip Example deliverables
-See the actual format of the generated files at [SBOM deliverables best practice](/reference/samples/sbom).
+See the actual format of the generated files at [SBOM deliverables best practice](/en/reference/samples/sbom).
 :::
 
 ---

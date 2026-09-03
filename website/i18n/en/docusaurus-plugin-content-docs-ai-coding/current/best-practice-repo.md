@@ -2,7 +2,7 @@
 id: best-practice-repo
 title: Best Practice Repository
 sidebar_label: Best Practice Repository
-sidebar_position: 8
+sidebar_position: 10
 ---
 
 # Best Practice Repository
@@ -146,4 +146,4 @@ AI fuzzing and DAST run on Push to main or weekly schedules.
 - [5-Stage Strategy](./strategy) — Purpose and adoption sequence of each stage
 - [30-Minute Quick CI/CD](./cicd-quick) — Minimal starting point focused on SCA
 - [AI Security Code Review](./ai-security-review) — Semantic vulnerability detection with AI
-- [DevSecOps — Organization-wide Pipeline Design](/devsecops/pipeline-design) — Multi-repository policy governance
+- [DevSecOps — Organization-wide Pipeline Design](/en/devsecops/pipeline-design) — Multi-repository policy governance

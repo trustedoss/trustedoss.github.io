@@ -43,7 +43,7 @@ the supplied software," so an AI SBOM is not itself mandatory. But if you ship m
 as part of your product, they are open source components too — extending the same principle to
 them is the point of this chapter. For background, see the
 [AI SBOM section of SBOM Basics](../../00-overview/sbom-101.md) and
-[AI System Compliance](/ai-coding/iso42001).
+[AI System Compliance](/en/ai-coding/iso42001).
 
 :::tip See a finished example first
 To see what the result looks like before you start, skim the clause checklist and tool-run outputs
@@ -117,7 +117,7 @@ documents per release unit and the retention/sharing procedures of
 ### Continuing to automation
 
 You can regenerate the ML-BOM in CI whenever the model version changes: add the scan command above
-to a workflow the same way the SBOM-generation job works in [DevSecOps — SCA](/devsecops/sca).
+to a workflow the same way the SBOM-generation job works in [DevSecOps — SCA](/en/devsecops/sca).
 
 ## 4. Completion checklist
 
@@ -130,4 +130,4 @@ to a workflow the same way the SBOM-generation job works in [DevSecOps — SCA](
 
 - SBOM retention and supply chain sharing: [5.2 SBOM Management](../sbom-management/index.md)
 - Vulnerability response (code dependencies): [5.3 Vulnerability Analysis and Response](../vulnerability/index.md)
-- Compliance for AI systems overall: [AI System Compliance](/ai-coding/iso42001)
+- Compliance for AI systems overall: [AI System Compliance](/en/ai-coding/iso42001)

@@ -11,7 +11,7 @@ Other pages in this guide cover what the pipeline inspects. This page covers how
 No matter how tightly you wire up SAST, SCA, and secret scanning, the results mean nothing if the workflow running those checks is executing an attacker's code.
 
 :::tip These settings are examples. The working implementation lives in the reference repository
-The YAML and commands on this page illustrate the core idea. For a full pipeline you can copy and run (policy files and a sample app included), see the [Best Practice repository](/ai-coding/best-practice-repo).
+The YAML and commands on this page illustrate the core idea. For a full pipeline you can copy and run (policy files and a sample app included), see the [Best Practice repository](/en/ai-coding/best-practice-repo).
 :::
 
 ## Why the pipeline itself is a target
@@ -34,13 +34,21 @@ repositories were affected. Not a single line of application code changed.
 **Trivy Action composite-action script injection (2026-02-18, GHSA-9p44-j4g5-cfx5).** A
 widely used security scanner Action had its own vulnerability. The composite action sourced
 an environment file, and an attacker who could control that file's contents could execute
-arbitrary commands. The attack technique differs from the tj-actions case (an input-handling
-flaw, not tag repointing), but the conclusion is the same: a workflow step you add to scan for
-security issues becomes an intrusion path the moment it is exempted from scrutiny.
+arbitrary commands. A workflow step you add to scan for security issues becomes an intrusion
+path the moment it is exempted from scrutiny.
 
-The shared lesson from both incidents is that everything a workflow executes, both the
-references it resolves and the input values it trusts, needs verification. tj-actions failed on
-an unpinned tag reference; Trivy Action failed on an unverified input value.
+**Trivy ecosystem supply chain compromise (2026-03-19, GHSA-69fq-xp46-6x23).** A month later the
+same Action was breached again, by an entirely different route. Using stolen credentials, an
+attacker force-pushed 76 of the 77 tags in `aquasecurity/trivy-action` to malicious commits,
+replaced all 7 tags in `aquasecurity/setup-trivy`, and published a malicious Trivy v0.69.4
+release. The exposure window for trivy-action ran from 2026-03-19 17:43 to 2026-03-20 05:40 UTC,
+about 12 hours. This is a separate incident from the script injection above.
+
+The shared lesson from all three incidents is that everything a workflow executes, both the
+references it resolves and the input values it trusts, needs verification. tj-actions and the
+2026-03 Trivy compromise failed on unpinned tag references; the 2026-02 Trivy Action
+vulnerability failed on an unverified input value. Note also that one repository can be hit
+through both routes, and that being a security tool earns no exemption.
 
 ---
 
@@ -48,6 +56,10 @@ an unpinned tag reference; Trivy Action failed on an unverified input value.
 
 Referencing a 40-character commit SHA instead of a mutable tag means the code that runs does not change
 even if the tag is repointed. Keep the original version in a comment so people can still read it.
+
+Pinning protects only the reference you pin, though. The advisory for the 2026-03 Trivy compromise
+notes that a trivy-action pinned to a commit from before it started pinning the actions it calls
+would still pull in a malicious `setup-trivy`. Check what a pinned action calls in turn.
 
 ```yaml
 # .github/workflows/ci.yml
@@ -61,7 +73,7 @@ jobs:
 
       # Recommended. The content is pinned
       - uses: actions/checkout@<40-character commit SHA> # v7
-      - uses: aquasecurity/trivy-action@<40-character commit SHA> # 0.36.0
+      - uses: aquasecurity/trivy-action@<40-character commit SHA> # v0.36.0
 ```
 
 Look up the SHA behind a tag like this.
@@ -318,7 +330,7 @@ Adopting item 4 first does no harm, but with items 1 through 3 missing, item 4 m
 genuine-looking mark on the output of a compromised pipeline.
 
 The tools and IDE extensions an agent invokes form a supply chain with the same structure. For how to
-control the tools themselves, see [Agent and MCP Tool Governance](/ai-coding/agent-governance).
+control the tools themselves, see [Agent and MCP Tool Governance](/en/ai-coding/agent-governance).
 
 ---
 

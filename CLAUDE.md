@@ -29,19 +29,20 @@ ISO/IEC 5230 (라이선스 컴플라이언스)과 ISO/IEC 18974 (보안 보증) 
 
 ## 디렉토리 구조
 
-| 경로                 | 역할                          |
-| -------------------- | ----------------------------- |
-| `docs/`              | 챕터별 가이드 문서            |
-| `agents/`            | 산출물 자동 생성 agent        |
-| `agents/en/`         | 영문 agent (영어로 질문·산출) |
-| `templates/`         | 문서 템플릿                   |
-| `templates/en/`      | 영문 문서 템플릿              |
-| `samples/`           | 실습용 샘플 프로젝트          |
-| `output/`            | 생성된 산출물 (gitignore)     |
-| `.claude/skills/`    | 재사용 skill 정의             |
-| `.claude/archive/`   | 역할이 끝난 일회성 문서 보관  |
-| `website/ai-coding/` | AI 코딩 가이드 페이지 (md)    |
-| `website/devsecops/` | DevSecOps 가이드 페이지 (md)  |
+| 경로                 | 역할                                                           |
+| -------------------- | -------------------------------------------------------------- |
+| `docs/`              | 챕터별 가이드 문서                                             |
+| `agents/`            | 산출물 자동 생성 agent                                         |
+| `agents/en/`         | 영문 agent (영어로 질문·산출)                                  |
+| `templates/`         | 문서 템플릿                                                    |
+| `templates/en/`      | 영문 문서 템플릿                                               |
+| `samples/`           | 실습용 샘플 프로젝트                                           |
+| `output/`            | 생성된 산출물 (gitignore)                                      |
+| `.claude/skills/`    | 재사용 skill 정의                                              |
+| `.claude/archive/`   | 역할이 끝난 일회성 문서 보관                                   |
+| `website/ai-coding/` | AI 코딩 가이드 페이지 (md)                                     |
+| `website/devsecops/` | DevSecOps 가이드 페이지 (md)                                   |
+| `website/reference/` | 레퍼런스 페이지 (에이전트 목록, 표준 요구사항 대조표, samples) |
 
 ## 독자 상태 감지 — 다음 단계 안내
 

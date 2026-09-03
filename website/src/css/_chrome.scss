@@ -1,0 +1,517 @@
+/**
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+@use "shared";
+
+/* 사이트 푸터, 배너, 라벨, 그리드, 평가 박스, 기타 */
+
+.footer {
+  &.footer--dark {
+    --ifm-footer-background-color: var(--deepdark);
+  }
+
+  .container {
+    max-width: 900px;
+  }
+
+  .text--center {
+    color: #858a96;
+    font-size: 13px;
+  }
+
+  .footer__item {
+    font-size: 14px;
+    padding: 8px 0 0;
+    min-height: 30px;
+
+    a:hover svg {
+      color: var(--brand);
+    }
+  }
+
+  .footer__title {
+    color: #858a96;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0 0 8px;
+    text-transform: uppercase;
+  }
+
+  .footer__col {
+    margin: 4px 0 12px 2%;
+    padding-left: 0 !important;
+  }
+
+  .footer__link-item {
+    line-height: 1.44;
+    display: inline-block;
+  }
+
+  .footer__links {
+    margin-bottom: 8px;
+  }
+
+  .footer__logo {
+    height: 54px;
+    max-width: 100%;
+  }
+
+  svg[class^="iconExternalLink"] {
+    color: var(--subtle);
+    right: -1px;
+    width: 9px;
+  }
+}
+
+@media only screen and (max-width: 996px) {
+  .footer {
+    .footer__col {
+      text-align: center;
+      flex-basis: 48% !important;
+      max-width: 48% !important;
+      margin-bottom: 28px;
+    }
+
+    .footer__links {
+      padding: 0 20px;
+    }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .footer {
+    .footer__col {
+      flex-basis: 99% !important;
+      max-width: 99% !important;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+  }
+}
+
+/* Announcement banner */
+
+:root {
+  --docusaurus-announcement-bar-height: auto !important;
+}
+
+@media (min-width: 997px) {
+  :root {
+    --docusaurus-announcement-bar-height: auto !important;
+  }
+}
+
+div[class*="announcementBar"][role="banner"] {
+  border-bottom-color: var(--deepdark);
+
+  button.close {
+    svg {
+      fill: white;
+    }
+  }
+}
+
+div[class*="announcementBarContent"] {
+  line-height: 40px;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 8px 30px;
+
+  a {
+    text-decoration: underline;
+    display: inline-block;
+    color: var(--brand) !important;
+
+    &:hover {
+      color: var(--ifm-color-primary) !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  div[class*="announcementBarContent"] {
+    font-size: 18px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  div[class*="announcementBarContent"] {
+    font-size: 15px;
+    line-height: 22px;
+    padding: 6px 30px;
+  }
+}
+
+/* Content banner */
+
+.content-banner {
+  background: #99d5e7;
+  padding: 20px 24px;
+  margin-bottom: 2em;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  color: var(--dark);
+  border-radius: var(--ifm-alert-border-radius);
+}
+
+.content-banner p {
+  width: calc(75% - 2em);
+  margin: 0;
+}
+
+.content-banner-img {
+  width: 25%;
+  position: absolute;
+  top: 2em;
+  right: 2em;
+}
+
+.content-banner a:link,
+.content-banner a:visited,
+.content-banner a:hover,
+.content-banner a:active,
+.content-banner a:focus {
+  border-bottom-width: 2px;
+  background: none !important;
+  color: #134484 !important;
+  border-bottom-color: #134484 !important;
+}
+/* Labels */
+
+/* 공용 필 라벨 스타일이 Mermaid SVG 내부 g.label에 적용돼 노드 글자가
+   작아지는 충돌 방지. Mermaid는 렌더 전 임시 영역에서 라벨 크기를 측정하므로
+   컨테이너가 아니라 svg 범위로 지정해야 측정·표시 크기가 일치한다 */
+svg .label {
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  padding: 0;
+}
+
+.label {
+  display: inline-block;
+  position: relative;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #fff;
+  padding: 2px 12px;
+  border-radius: 32px;
+
+  /* Basic label */
+  &.basic {
+    border-style: solid;
+    border-width: 2px;
+
+    &:before,
+    &:after {
+      display: none;
+    }
+  }
+
+  /* Label variants */
+  &.primary {
+    background: var(--ifm-color-primary);
+  }
+
+  &.android {
+    background: #a4c936;
+
+    &:before {
+      border-right-color: #a4c936;
+    }
+  }
+
+  &.ios {
+    background: #222;
+
+    &:before {
+      border-right-color: #222;
+    }
+  }
+
+  &.tv {
+    background: #6170af;
+
+    &:before {
+      border-right-color: #6170af;
+    }
+  }
+
+  &.required {
+    margin-left: 0;
+    margin-right: 8px;
+    color: #fa5035;
+    border-color: #fa5035;
+    border-radius: 32px;
+    font-weight: 600;
+  }
+}
+
+html[data-theme="dark"] .label {
+  color: var(--text);
+
+  &:after {
+    background: var(--ifm-background-color);
+  }
+
+  &.ios {
+    background: #fff;
+
+    &:before {
+      border-right-color: #fff;
+    }
+  }
+
+  &.required {
+    color: #fa5035;
+  }
+}
+
+/* Label inside other tags */
+
+h2 .label {
+  top: -6px;
+  margin-left: 6px;
+  padding: 3px 12px;
+}
+
+h3 .label {
+  top: -3px;
+  margin-left: 8px;
+  line-height: 20px;
+}
+
+td .label {
+  padding: 0 8px 0 10px;
+  font-size: 0.7rem;
+  margin-left: 6px;
+
+  &:before {
+    left: -8px;
+    border-width: 10px 8px 10px 0;
+  }
+
+  &:after {
+    top: 8px;
+  }
+
+  &.required {
+    margin-left: 6px;
+    padding: 0 6px;
+    border-width: 1px;
+    margin-right: 0;
+  }
+
+  &.two-lines {
+    margin-left: 0;
+    margin-top: 5px;
+
+    &.ios,
+    &.android,
+    &.tv {
+      margin-left: 8px;
+    }
+  }
+}
+
+/*
+  Mark pages as "new" using href attribute:
+  - to show badge in all versions use "PAGEID"
+  - to restrict badge only to the current/default version use "docs/PAGEID"
+  - to restrict badge only to the next version use "next/PAGEID"
+*/
+/* Docs Rating Box */
+
+.docsRating {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 30px;
+  margin-top: 42px;
+  background-color: var(--docs-rating-background);
+  text-align: center;
+  /* blue-700: 옅은 하늘색 배경 위에서 WCAG AA 대비 충족 (기본 블루는 4.05:1) */
+  color: var(--g-blue-700);
+  line-height: 32px;
+  font-weight: 500;
+  border-radius: var(--ifm-alert-border-radius);
+
+  .docsRating_button {
+    border: 0;
+    padding: 0;
+    background: transparent;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  svg {
+    height: 1.5em;
+    width: 1.5em;
+    margin: 0 0 0 6px;
+
+    &:hover,
+    &:focus {
+      cursor: pointer;
+      fill: var(--ifm-color-primary);
+    }
+  }
+
+  .docsRating_button:hover svg,
+  .docsRating_button:focus-visible svg {
+    fill: var(--ifm-color-primary);
+  }
+
+  .i_thumbsup {
+    fill: #56a211;
+    margin-left: 12px;
+  }
+
+  .i_thumbsdown {
+    fill: #e9430f;
+    transform: scale(-1, -1);
+  }
+}
+
+html[data-theme="dark"] .docsRating {
+  color: #b8e0ef;
+}
+
+@media only screen and (max-width: 996px) {
+  .docsRating {
+    width: 100%;
+    margin: 36px 0 0 !important;
+    border-radius: var(--ifm-global-radius);
+  }
+}
+/* Blog */
+
+@media only screen and (max-width: 996px) {
+  .container.margin-vert--lg .row .col.col--3 {
+    display: none;
+  }
+
+  .container.margin-vert--lg .row .col.col--7 {
+    --ifm-col-width: 100% !important;
+    padding: 24px 16px !important;
+  }
+
+  .main-wrapper {
+    .container.margin-vert--lg {
+      max-width: 96% !important;
+    }
+  }
+}
+/*
+Prevent useless bottom margin for multiline <figcaption> tags in MDX:
+<figcaption>
+  some paragraph text
+</figcaption>
+ */
+figcaption > p:last-child {
+  margin-bottom: 0;
+}
+// ============================
+// 테이블 컬럼 가독성 개선
+// ============================
+.theme-doc-markdown table {
+  table-layout: auto;
+  width: 100%;
+
+  th,
+  td {
+    white-space: normal;
+    width: auto;
+  }
+
+  // 짧은 컬럼(태그, ID, 버전 등)은 줄바꿈 방지
+  th:first-child,
+  td:first-child {
+    white-space: nowrap;
+  }
+}
+
+// ============================
+// 접근성 — 라이트 테마의 옅은 칩 배경 위 활성 텍스트는 기본 브랜드 블루로는
+// WCAG AA 대비(4.5:1)에 미달해 blue-700을 사용한다 (다크 테마는 자체 색 유지)
+// ============================
+html[data-theme="light"] {
+  /* Infima 기본 emphasis-600(#8d949e)은 흰 배경에서 3.06:1로 WCAG AA 미달 —
+     흰색과 섹션 회색(#f5f6f7) 배경 모두 통과하는 --subtle 값으로 라이트 테마만 재정의 */
+  --ifm-color-emphasis-600: var(--subtle);
+
+  .navbar__link--active,
+  .navbar__link--active:hover {
+    color: var(--g-blue-700);
+  }
+
+  .menu__link.menu__link--active {
+    color: var(--g-blue-700);
+  }
+
+  // 표 줄무늬 행 배경(#fafafa) 위 기본 블루 링크는 4.31:1로 미달
+  .markdown table a {
+    color: var(--g-blue-700);
+  }
+}
+
+// Prism github 테마의 일부 토큰 색은 코드 배경(#f6f8fa)에서 WCAG AA(4.5:1)에
+// 미달 — 같은 색조의 어두운 값으로 교체 (주석 2.71, 청록 2.58, 하늘 3.1,
+// 빨강 4.0, 분홍 3.9 수준). prism-react-renderer가 인라인 스타일로 색을
+// 지정하므로 !important가 필요하다. 다크 테마(vsDark)는 전부 통과라 제외.
+html[data-theme="light"] .theme-code-block {
+  .token.comment {
+    color: #57606a !important;
+  }
+
+  // github 테마에서 #36acaa로 렌더되는 토큰군
+  .token.entity,
+  .token.url,
+  .token.symbol,
+  .token.number,
+  .token.boolean,
+  .token.variable,
+  .token.constant,
+  .token.property,
+  .token.regex,
+  .token.inserted {
+    color: #0f766e !important;
+  }
+
+  // #00a4db 토큰군
+  .token.atrule,
+  .token.keyword,
+  .token.attr-name,
+  .token.selector {
+    color: #0b7285 !important;
+  }
+
+  // #d73a49 토큰군
+  .token.function,
+  .token.deleted,
+  .token.tag {
+    color: #b31d28 !important;
+  }
+
+  // #e3116c 토큰군
+  .token.string,
+  .token.attr-value {
+    color: #c00f5e !important;
+  }
+}
+
+// 다크 테마의 본문 링크는 주변 텍스트와 색 대비만으로 구분되지 않아(1.64:1)
+// 밑줄로 구분한다 (WCAG 1.4.1 색상만으로 정보 전달 금지)
+html[data-theme="dark"] .markdown {
+  p a:not(.button),
+  li a:not(.button),
+  td a:not(.button) {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+  }
+}

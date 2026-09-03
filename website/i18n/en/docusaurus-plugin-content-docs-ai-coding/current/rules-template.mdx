@@ -31,7 +31,7 @@ This template is a common ruleset that makes AI coding tools automatically recog
 
 :::note This template vs the Developer Guide
 This page is a quick-start template for creating Rules files for AI coding tools **on the spot**.
-If you have already established an organizational Open Source Policy, see the [Developer Guide](/docs/developer-guide/) for automatically applying that policy to development.
+If you have already established an organizational Open Source Policy, see the [Developer Guide](/en/docs/developer-guide/) for automatically applying that policy to development.
 :::
 
 ### The rules file itself is an attack surface
@@ -70,7 +70,7 @@ When adding new external packages/libraries, always verify and document the lice
 
 **Allowed Licenses**: MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC
 
-**Review Required Licenses** (legal review required): LGPL, MPL
+**Review Required Licenses** (legal review required): LGPL, MPL, CC-BY-SA
 
 **Prohibited Licenses** (cannot be used without prior approval): GPL, AGPL, SSPL, Commons Clause
 
@@ -107,7 +107,7 @@ Copy the content above and paste it into each tool's settings file. Once pasted,
 
 Allowed licenses in the MIT, Apache-2.0, BSD, and ISC families generally permit commercial use, modification, and distribution with notice obligations only, making them safe for most enterprise projects.
 
-Caution licenses such as LGPL and MPL may trigger source disclosure obligations depending on how they are used, so legal review is required.
+Caution licenses such as LGPL and MPL may trigger source disclosure obligations depending on how they are used, so legal review is required. CC-BY-SA is also a caution license. It does not restrict commercial use, but as a content license it leaves the reach of the ShareAlike obligation in software undefined. See [License Classification](/en/reference/concepts/license-classification) for the reasoning.
 
 GPL, AGPL, SSPL, and Commons Clause cannot be used without prior approval due to derivative-work disclosure obligations or commercial-use restrictions.
 
@@ -119,6 +119,7 @@ GPL, AGPL, SSPL, and Commons Clause cannot be used without prior approval due to
 | ISC            | Allowed        | Simplified MIT-family variant                             |
 | LGPL           | Caution        | Possible source disclosure obligation for dynamic linking |
 | MPL            | Caution        | Source disclosure obligation for modified files           |
+| CC-BY-SA       | Caution        | Content license, derivative-work scope undefined          |
 | GPL            | Forbidden      | Full derivative source disclosure obligation              |
 | AGPL           | Forbidden      | Source disclosure obligation for network use as well      |
 | SSPL           | Forbidden      | Full service infrastructure disclosure obligation         |

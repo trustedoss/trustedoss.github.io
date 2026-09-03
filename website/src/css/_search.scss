@@ -1,0 +1,172 @@
+/**
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+@use "shared";
+
+/* DocSearch 위젯 오버라이드 */
+
+/* DocSearch */
+
+.DocSearch-Container {
+  backdrop-filter: none !important;
+}
+
+.DocSearch-Button {
+  border-radius: 32px;
+  border: 1px solid var(--light);
+  padding: 0 8px 0 12px;
+  font-family: var(--ifm-font-family-base);
+  color: var(--subtle);
+  box-sizing: border-box;
+
+  &:hover {
+    box-shadow: inset 0 0 0 2px var(--ifm-color-primary);
+
+    .DocSearch-Search-Icon,
+    .DocSearch-Button-Placeholder {
+      color: var(--subtle);
+    }
+  }
+}
+
+.navbar {
+  .DocSearch-Search-Icon {
+    width: 16px;
+    margin-top: -1px;
+    color: var(--docsearch-muted-color);
+  }
+}
+
+.DocSearch-Button-Placeholder {
+  font-size: 14px;
+}
+
+.DocSearch-Button-Keys {
+  min-width: 42px;
+  margin-right: 4px;
+  margin-top: 1px;
+  gap: 2px;
+
+  .DocSearch-Button-Key {
+    font-size: 12px;
+    font-weight: 600;
+    background: color-mix(
+      in srgb,
+      var(--docsearch-subtle-color) 40%,
+      transparent
+    );
+    color: var(--docsearch-muted-color);
+    transform: none;
+    margin: 0;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.DocSearch-Commands-Key {
+  background: color-mix(
+    in srgb,
+    var(--docsearch-subtle-color) 40%,
+    transparent
+  );
+  border-radius: var(--ifm-code-border-radius);
+  color: var(--docsearch-muted-color);
+}
+
+.DocSearch-Modal {
+  border-radius: var(--ifm-global-radius);
+  border: 1px solid var(--ifm-table-border-color);
+}
+
+.DocSearch-Form {
+  border-radius: var(--ifm-global-radius) var(--ifm-global-radius) 0 0;
+}
+
+.DocSearch-Input {
+  padding-block-start: 0;
+}
+
+.DocSearch-Actions {
+  button:hover {
+    color: var(--brand-text);
+  }
+}
+
+.DocSearch-Hit {
+  &,
+  & a {
+    border-radius: var(--ifm-global-radius);
+  }
+
+  mark {
+    color: var(--brand-text);
+  }
+
+  &[aria-selected="true"] {
+    span,
+    mark {
+      color: white;
+    }
+  }
+
+  .DocSearch-Hit-content-wrapper {
+    gap: 0;
+  }
+}
+
+.DocSearch-Form:focus-within .DocSearch-MagnifierLabel svg {
+  color: var(--brand-text);
+}
+
+.DocSearch-Footer {
+  font-size: 14px;
+  border-radius: 0 0 var(--ifm-global-radius) var(--ifm-global-radius);
+
+  .DocSearch-Logo a {
+    display: flex;
+    align-items: center;
+
+    svg {
+      filter: grayscale(1);
+      opacity: 0.6;
+    }
+  }
+}
+
+html[data-theme="dark"] {
+  .DocSearch-Button:hover {
+    .DocSearch-Search-Icon,
+    .DocSearch-Button-Placeholder {
+      color: var(--ifm-font-color-base);
+    }
+  }
+
+  .DocSearch-Button-Key {
+    background: color-mix(
+      in srgb,
+      var(--docsearch-subtle-color) 60%,
+      transparent
+    );
+  }
+
+  .DocSearch-Commands-Key {
+    background: color-mix(
+      in srgb,
+      var(--docsearch-subtle-color) 50%,
+      transparent
+    );
+  }
+
+  .DocSearch-Logo a svg {
+    filter: grayscale(1) brightness(3);
+  }
+
+  .DocSearch-Form,
+  .DocSearch-Footer {
+    background: none;
+  }
+}

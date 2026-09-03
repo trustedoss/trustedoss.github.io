@@ -31,7 +31,7 @@ output/ 폴더의 산출물이 ISO/IEC 5230·18974 G항목 요구사항을 충�
 
 ## 검증 기준 (G항목별)
 
-`docs/00-overview/checklist-mapping.md`와 `templates/` 파일을 기준으로 판정한다.
+`website/reference/requirements-matrix.md`와 `templates/` 파일을 기준으로 판정한다.
 
 ### 충족 (✅)
 
@@ -72,7 +72,7 @@ output/ 폴더의 산출물이 ISO/IEC 5230·18974 G항목 요구사항을 충�
 1. 입력 모드에 따라 검증 대상 파일 목록 결정
    - `changed`: `git diff --name-only HEAD -- output/` 실행
    - `all`: `output/` 하위 전체 파일
-2. `docs/00-overview/checklist-mapping.md` Read → G항목 ↔ 파일 매핑 파악
+2. `website/reference/requirements-matrix.md` Read → G항목 ↔ 파일 매핑 파악
 3. 각 대상 파일에 대해:
    a. 파일 존재 여부 확인
    b. 파일 Read

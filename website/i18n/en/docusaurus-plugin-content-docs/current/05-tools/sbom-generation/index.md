@@ -17,7 +17,7 @@ The generated SBOM later becomes the basis for license analysis (05-sbom-analyst
 
 :::note How SBOM, vulnerability analysis, and SCA relate
 The **SBOM** (software bill of materials) is the input; **vulnerability analysis** is the step that uses that SBOM to find risks.
-Running both together automatically in CI is **SCA** (Software Composition Analysis) — automation is covered in [DevSecOps → SCA](/devsecops/sca).
+Running both together automatically in CI is **SCA** (Software Composition Analysis) — automation is covered in [DevSecOps → SCA](/en/devsecops/sca).
 :::
 
 ---
@@ -25,18 +25,10 @@ Running both together automatically in CI is **SCA** (Software Composition Analy
 ## 2. Background knowledge
 
 :::tip
-For plain-language explanations of unfamiliar acronyms such as SBOM, CycloneDX, and SPDX, see the [glossary](/reference/glossary).
+For plain-language explanations of unfamiliar acronyms such as SBOM, CycloneDX, and SPDX, see the [glossary](/en/reference/glossary).
 :::
 
-### What is SBOM?
-
-An SBOM (Software Bill of Materials) is a list of every component included in the software. Like a food nutrition label, it specifies which open source packages and versions the software contains. Both ISO/IEC 5230 and 18974 specify SBOM generation as a core requirement (G3B.1).
-
-Why SBOM matters:
-
-- Know which open source licenses are included (compliance)
-- Check whether you ship a vulnerable version of a library (security)
-- Provide software composition information to customers or regulators when distributing products
+Both ISO/IEC 5230 and 18974 specify SBOM generation as a core requirement (G3B.1). What an SBOM is and why you need one is covered in [SBOM Basics](../../00-overview/sbom-101.md). This chapter covers the tools and commands that actually produce one.
 
 ### The tools used
 
@@ -148,7 +140,7 @@ with cdxgen and compare. To pin the specification version, use `-o cyclonedx-jso
 
 :::tip MCP servers belong in the SBOM too
 For how to list MCP (Model Context Protocol, the convention by which an agent calls external tools)
-servers that AI agents call, see [Agent and MCP Tool Governance](/ai-coding/agent-governance).
+servers that AI agents call, see [Agent and MCP Tool Governance](/en/ai-coding/agent-governance).
 No standards body guidance exists yet, so this area interprets the existing specification.
 :::
 
@@ -286,22 +278,11 @@ docker run --rm \
 | Step 7 (sbom-analyst)     | `output/sbom/license-report.md` and `output/sbom/copyleft-risk.md` created        |
 
 :::info Standard requirements met
-Completing this lab will meet the requirements below:
+Completing this exercise satisfies the requirements below.
 
-**ISO/IEC 5230**
+5230 §3.3.1, §3.3.2, §3.4.1 · 18974 §4.3.1
 
-| Item ID | Requirements                      | Self-certification checklist                                                                          |
-| ------- | --------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| 3.3.1   | SBOM creation and management      | Do you have a process for creating and managing a bill of materials for each supply software release? |
-| 3.3.2   | Handling of license use cases     | Do you have a documented procedure for handling the common open source license use cases?             |
-| 3.4.1   | Preparing compliance deliverables | Do you have a process for creating the necessary compliance artifacts?                                |
-
-**ISO/IEC 18974**
-
-| Item ID | Requirements           | Self-certification checklist                                                                                       |
-| ------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| 4.3.1   | Supplied Software SBOM | Do you have a documented process for creating and maintaining a SBOM for supply software throughout its lifecycle? |
-
+The original self-certification question and the verification material for each item are in the [Requirements Detail Matrix](/en/reference/requirements-matrix).
 :::
 
 ---
@@ -330,7 +311,7 @@ Confirm all of the items below before moving on to the next step.
 > This step meets ISO/IEC 5230 3.3.1, 3.3.2, and 3.4.1, and ISO/IEC 18974 4.3.1 requirements.
 
 :::tip Example deliverables
-See the actual format of the generated files at [SBOM deliverables best practice](/reference/samples/sbom).
+See the actual format of the generated files at [SBOM deliverables best practice](/en/reference/samples/sbom).
 :::
 
 ---

@@ -11,16 +11,18 @@ This page walks through how to integrate the six areas — SAST, SCA, secret det
 It focuses on how to combine the individual configurations covered on each area page to fit your actual operating environment.
 
 :::tip The configuration below is an example — a fully working implementation lives in the reference repository
-The YAML and commands on this page are examples that show the essentials. For a complete, copy-and-run pipeline (including policy files and a sample app), see the [Best Practice repository](/ai-coding/best-practice-repo).
+The YAML and commands on this page are examples that show the essentials. For a complete, copy-and-run pipeline (including policy files and a sample app), see the [Best Practice repository](/en/ai-coding/best-practice-repo).
 :::
 
 :::note Tags in these examples versus production settings
-The examples below keep mutable tags such as `@v7` for readability. A tag can be repointed to a different commit later, so in production pin each action to a full commit SHA and grant only the permissions a job needs with a `permissions:` block. See [Pipeline Security](/devsecops/pipeline-security) for the reasoning and the procedure.
+The examples below keep mutable tags such as `@v7` for readability. A tag can be repointed to a different commit later, so in production pin each action to a full commit SHA and grant only the permissions a job needs with a `permissions:` block. See [Pipeline Security](/en/devsecops/pipeline-security) for the reasoning and the procedure.
 :::
 
 ## Pipeline design principles
 
 **Parallel execution**: Run independent scans in parallel to minimize overall pipeline time. SAST, SCA, and secret detection have no dependencies on each other, so they can run simultaneously.
+
+Each job in the integrated workflow below is lifted from the page for that area. The `.grype.yaml` exception handling and retention policy behind the SCA job are explained in [SCA](./sca); the other areas are covered on their own pages.
 
 **Staged gating**: Place fast scans (secret/SAST) at the front and slow scans (DAST) at the back. If an earlier stage fails, later stages don't need to run, which reduces wasted resources.
 
@@ -161,7 +163,7 @@ jobs:
       - uses: actions/checkout@v7
       - name: Build image
         run: docker build -t myapp:${{ github.sha }} .
-      - uses: aquasecurity/trivy-action@0.36.0
+      - uses: aquasecurity/trivy-action@v0.36.0
         with:
           image-ref: myapp:${{ github.sha }}
           exit-code: 1

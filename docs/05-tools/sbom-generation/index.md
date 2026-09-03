@@ -28,15 +28,7 @@
 SBOM·CycloneDX·SPDX 등 낯선 약어는 [용어집](/reference/glossary)에서 쉬운 설명을 볼 수 있습니다.
 :::
 
-### SBOM이란?
-
-SBOM(Software Bill of Materials)은 소프트웨어에 포함된 모든 구성 요소의 목록입니다. 식품 영양성분표처럼, 소프트웨어에 어떤 오픈소스가 어떤 버전으로 들어있는지 명시합니다. ISO/IEC 5230과 18974 모두 SBOM 생성을 핵심 요구사항으로 규정합니다 (G3B.1).
-
-SBOM이 중요한 이유:
-
-- 어떤 오픈소스 라이선스가 포함되어 있는지 파악 (컴플라이언스)
-- 취약한 버전의 라이브러리가 있는지 확인 (보안)
-- 제품 배포 시 고객 또는 규제 기관에 소프트웨어 구성 정보 제공
+ISO/IEC 5230과 18974 모두 SBOM 생성을 핵심 요구사항으로 규정합니다(G3B.1). SBOM이 무엇이고 왜 필요한지는 [SBOM 기본: 소프트웨어 부품 명세서 입문](../../00-overview/sbom-101.md)에서 다룹니다. 이 챕터는 그 SBOM을 실제로 만드는 도구와 명령을 다룹니다.
 
 ### 사용 도구 소개
 
@@ -284,20 +276,9 @@ docker run --rm \
 :::info 충족되는 표준 요구사항
 이 실습을 완료하면 아래 요구사항이 충족됩니다.
 
-**ISO/IEC 5230**
+5230 §3.3.1, §3.3.2, §3.4.1 · 18974 §4.3.1
 
-| 항목 ID | 요구사항                 | 자체인증 체크리스트                                                                                   |
-| ------- | ------------------------ | ----------------------------------------------------------------------------------------------------- |
-| 3.3.1   | SBOM 생성 및 관리        | Do you have a process for creating and managing a bill of materials for each supply software release? |
-| 3.3.2   | 라이선스 사용 사례 처리  | Do you have a documented procedure for handling the common open source license use cases?             |
-| 3.4.1   | 컴플라이언스 산출물 준비 | Do you have a process for creating the necessary compliance artifacts?                                |
-
-**ISO/IEC 18974**
-
-| 항목 ID | 요구사항             | 자체인증 체크리스트                                                                                                |
-| ------- | -------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| 4.3.1   | 공급 소프트웨어 SBOM | Do you have a documented process for creating and maintaining a SBOM for supply software throughout its lifecycle? |
-
+각 항목의 자체 인증 체크리스트 문항 원문과 입증자료는 [요구사항 상세 대조표](/reference/requirements-matrix)에 있습니다.
 :::
 
 ---

@@ -5,6 +5,12 @@ const sidebars: SidebarsConfig = {
     'intro',
     'glossary',
     'talks',
+    'agents',
+    {
+      type: 'doc',
+      id: 'requirements-matrix',
+      label: '표준 대응 (정본)',
+    },
     {
       type: 'category',
       label: '산출물 Best Practice',

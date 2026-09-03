@@ -2,6 +2,7 @@
 id: organization
 title: 조직 산출물 Best Practice
 sidebar_label: 조직 산출물
+sidebar_position: 1
 ---
 
 # 조직 산출물 Best Practice
@@ -15,7 +16,13 @@ sidebar_label: 조직 산출물
 
 ---
 
-## 오픈소스 역할 및 책임 정의
+**이 페이지에 수록된 산출물**
+
+- [오픈소스 역할 및 책임 정의](#role-definition)
+- [오픈소스 RACI 매트릭스](#raci-matrix)
+- [오픈소스 담당자 임명장](#appointment-template)
+
+## 오픈소스 역할 및 책임 정의 {#role-definition}
 
 문서: role-definition.md
 
@@ -132,7 +139,7 @@ sidebar_label: 조직 산출물
 - **OSRB (Open Source Review Board)**: 라이선스, 보안, 기여, 공개 승인을 다루는 위원회. 오픈소스 담당자와 법무, 보안, 개발 대표로 구성하며, 월 1회 또는 이슈 발생 시 소집.
 - **OSPO (Open Source Program Office)**: 오픈소스 전략·거버넌스를 전담하는 조직. 전담 인력이 3명 이상이 되는 시점부터 공식 조직화를 고려.
 
-## 오픈소스 RACI 매트릭스
+## 오픈소스 RACI 매트릭스 {#raci-matrix}
 
 문서: raci-matrix.md
 
@@ -229,7 +236,7 @@ sidebar_label: 조직 산출물
 2. RACI 매트릭스 기준으로 담당자 배정
 3. role-definition.md 및 이 문서 업데이트
 
-## 오픈소스 담당자 임명장
+## 오픈소스 담당자 임명장 {#appointment-template}
 
 문서: appointment-template.md
 

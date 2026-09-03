@@ -2,6 +2,7 @@
 id: training
 title: 교육 산출물 Best Practice
 sidebar_label: 교육 산출물
+sidebar_position: 6
 ---
 
 # 교육 산출물 Best Practice
@@ -13,7 +14,13 @@ sidebar_label: 교육 산출물
 
 ---
 
-## 오픈소스 교육 커리큘럼
+**이 페이지에 수록된 산출물**
+
+- [오픈소스 교육 커리큘럼](#curriculum)
+- [교육 이수 추적 시트](#completion-tracker)
+- [무료 교육 리소스 목록](#resources)
+
+## 오픈소스 교육 커리큘럼 {#curriculum}
 
 문서: curriculum.md
 
@@ -137,7 +144,7 @@ sidebar_label: 교육 산출물
 
 ---
 
-## 교육 이수 추적 시트
+## 교육 이수 추적 시트 {#completion-tracker}
 
 문서: completion-tracker.md
 
@@ -248,7 +255,7 @@ sidebar_label: 교육 산출물
 
 ---
 
-## 무료 교육 리소스 목록
+## 무료 교육 리소스 목록 {#resources}
 
 문서: resources.md
 

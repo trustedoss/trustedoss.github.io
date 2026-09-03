@@ -62,14 +62,18 @@ SBOM·CVSS 등 낯선 약어는 [용어집](/reference/glossary)에서 쉬운 �
 
 ## 4. 무료 교육 리소스 목록
 
-| 리소스                                | 제공 기관           | 수준      | 언어   | 링크                                                                                                                           |
-| ------------------------------------- | ------------------- | --------- | ------ | ------------------------------------------------------------------------------------------------------------------------------ |
-| OpenChain 교육 자료                   | OpenChain Project   | 초급~중급 | 영어   | https://www.openchainproject.org/resources                                                                                     |
-| Open Source Licensing Basics (LFC193) | Linux Foundation    | 초급      | 영어   | [LFC193 과정](https://training.linuxfoundation.org/training/introduction-to-open-source-license-compliance-management-lfc193/) |
-| NIPA 오픈소스 라이선스 가이드         | NIPA                | 초급~중급 | 한국어 | [NIPA 공개SW 포털](https://www.oss.kr)                                                                                         |
-| OpenChain KWG 교육 자료               | OpenChain KWG       | 중급      | 한국어 | https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/5-training/                                  |
-| SPDX 공식 문서                        | SPDX Community      | 중급      | 영어   | [SPDX 공식 사이트](https://spdx.dev)                                                                                           |
-| CycloneDX 공식 문서                   | CycloneDX Community | 중급      | 영어   | [CycloneDX 공식 사이트](https://cyclonedx.org)                                                                                 |
+위 3절의 직군별 교육 내용을 실제 자료로 채울 때 쓰는 목록입니다. 국내 조직이라면 한국어 자료부터 시작하고, 영어 자료는 심화 단계나 해당 직군에만 배정하는 편이 이수율이 높습니다.
+
+| 리소스                                | 대응 직군         | 제공 기관           | 수준      | 언어   | 링크                                                                                                                           |
+| ------------------------------------- | ----------------- | ------------------- | --------- | ------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| NIPA 오픈소스 라이선스 가이드         | 전 직군 입문      | NIPA                | 초급~중급 | 한국어 | [NIPA 공개SW 포털](https://www.oss.kr)                                                                                         |
+| OpenChain KWG 교육 자료               | 개발자, 관리자    | OpenChain KWG       | 중급      | 한국어 | https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/5-training/                                  |
+| OpenChain 교육 자료                   | 관리자, 법무·구매 | OpenChain Project   | 초급~중급 | 영어   | https://www.openchainproject.org/resources                                                                                     |
+| Open Source Licensing Basics (LFC193) | 법무·구매         | Linux Foundation    | 초급      | 영어   | [LFC193 과정](https://training.linuxfoundation.org/training/introduction-to-open-source-license-compliance-management-lfc193/) |
+| SPDX 공식 문서                        | 개발자, 보안 담당 | SPDX Community      | 중급      | 영어   | [SPDX 공식 사이트](https://spdx.dev)                                                                                           |
+| CycloneDX 공식 문서                   | 개발자, 보안 담당 | CycloneDX Community | 중급      | 영어   | [CycloneDX 공식 사이트](https://cyclonedx.org)                                                                                 |
+
+`training-manager` 에이전트는 위 표에서 직군별로 자료를 골라 `output/training/resources.md` 를 만듭니다.
 
 ## 5. 교육 이수 기록 관리 방법
 
@@ -179,20 +183,9 @@ completion-tracker.md는 교육 실시 후 채우는 문서입니다. agent를 �
 :::info 충족되는 표준 요구사항
 이 실습을 완료하면 아래 요구사항이 충족됩니다.
 
-**ISO/IEC 5230**
+5230 §3.1.2, §3.1.3 · 18974 §4.1.2, §4.1.3
 
-| 항목 ID | 요구사항       | 자체인증 체크리스트                                                                                  |
-| ------- | -------------- | ---------------------------------------------------------------------------------------------------- |
-| 3.1.2   | 역량 보유 증빙 | Do you have documented evidence that each program participant has completed the necessary training?  |
-| 3.1.3   | 인식 평가      | Do you have documented evidence that your program participants are aware of your open source policy? |
-
-**ISO/IEC 18974**
-
-| 항목 ID | 요구사항            | 자체인증 체크리스트                                                                                                     |
-| ------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| 4.1.2   | 보안 역량 보유 증빙 | Do you have documented evidence that each program participant has the necessary competence for security assurance?      |
-| 4.1.3   | 보안 인식 평가      | Do you have documented evidence that your program participants are aware of your open source security assurance policy? |
-
+각 항목의 자체 인증 체크리스트 문항 원문과 입증자료는 [요구사항 상세 대조표](/reference/requirements-matrix)에 있습니다.
 :::
 
 ## 7. 생성되는 산출물

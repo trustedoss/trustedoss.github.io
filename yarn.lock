@@ -2635,6 +2635,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@docusaurus/plugin-client-redirects@npm:3.9.2":
+  version: 3.9.2
+  resolution: "@docusaurus/plugin-client-redirects@npm:3.9.2"
+  dependencies:
+    "@docusaurus/core": "npm:3.9.2"
+    "@docusaurus/logger": "npm:3.9.2"
+    "@docusaurus/utils": "npm:3.9.2"
+    "@docusaurus/utils-common": "npm:3.9.2"
+    "@docusaurus/utils-validation": "npm:3.9.2"
+    eta: "npm:^2.2.0"
+    fs-extra: "npm:^11.1.1"
+    lodash: "npm:^4.17.21"
+    tslib: "npm:^2.6.0"
+  peerDependencies:
+    react: ^18.0.0 || ^19.0.0
+    react-dom: ^18.0.0 || ^19.0.0
+  checksum: 10c0/5fe827fa5f3b3e4634034eb63ff73d8bd2e83852ada6ae989ad5b566aaef4937476c20403e1ef05f2090dad92c2e6b384e0981d393a783b49e8b45fa464d282b
+  languageName: node
+  linkType: hard
+
 "@docusaurus/plugin-content-blog@npm:3.9.2":
   version: 3.9.2
   resolution: "@docusaurus/plugin-content-blog@npm:3.9.2"
@@ -11519,13 +11539,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"github-buttons@npm:^2.22.0":
-  version: 2.32.0
-  resolution: "github-buttons@npm:2.32.0"
-  checksum: 10c0/59a6b3fcb517ba6051fd9ab2d1733c2c20c972bc9bd5bb363dec70ef01d6336f203cfd8a502f43f91ea58a34e4fa56efe39a8b93ca77ece5da5a53f606dd3f19
-  languageName: node
-  linkType: hard
-
 "github-slugger@npm:^1.5.0":
   version: 1.5.0
   resolution: "github-slugger@npm:1.5.0"
@@ -19151,17 +19164,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-github-btn@npm:^1.4.0":
-  version: 1.4.0
-  resolution: "react-github-btn@npm:1.4.0"
-  dependencies:
-    github-buttons: "npm:^2.22.0"
-  peerDependencies:
-    react: ">=16.3.0"
-  checksum: 10c0/ce21b1081e8985fce93f19deb3ab3e20b36e80508fcd9346eb617728b2e242bea845434296a9b8acbc339259551d58e43d840dbe9ec03c21a7094a7a9038986e
-  languageName: node
-  linkType: hard
-
 "react-helmet-async@npm:@slorber/react-helmet-async@1.3.0":
   version: 1.3.0
   resolution: "@slorber/react-helmet-async@npm:1.3.0"
@@ -21637,6 +21639,7 @@ __metadata:
     "@docusaurus/core": "npm:3.9.2"
     "@docusaurus/faster": "npm:3.9.2"
     "@docusaurus/module-type-aliases": "npm:3.9.2"
+    "@docusaurus/plugin-client-redirects": "npm:3.9.2"
     "@docusaurus/plugin-google-gtag": "npm:3.9.2"
     "@docusaurus/preset-classic": "npm:3.9.2"
     "@docusaurus/theme-mermaid": "npm:^3.9.2"
@@ -21656,7 +21659,6 @@ __metadata:
     prettier: "npm:^3.8.1"
     react: "npm:^19.2.4"
     react-dom: "npm:^19.2.4"
-    react-github-btn: "npm:^1.4.0"
     remark-cli: "npm:^12.0.1"
     sass: "npm:1.97.3"
     typescript: "npm:^5.9.3"

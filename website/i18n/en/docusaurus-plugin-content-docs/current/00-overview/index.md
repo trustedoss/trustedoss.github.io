@@ -7,6 +7,7 @@ checklist:
   - 'ISO/IEC 18974: []'
 self_study_time: 1 hour
 sidebar_label: 'Overview: the two standards and the full journey'
+sidebar_position: 1
 slug: /
 ---
 
@@ -29,11 +30,15 @@ Even if today is your first day as an open source lead, you can complete the ISO
 
 ### Quick start
 
-```bash
-git clone https://github.com/trustedoss/trustedoss-agents.git
-cd trustedoss-agents && claude
-# Type "Where should I start?"
-```
+The labs need three things: a terminal, git, and Claude Code. Installing them and
+downloading the repository is covered in one place, in
+[Environment preparation: install the tools needed for the labs](../01-setup/index.md).
+You can follow it from opening a terminal for the first time.
+
+Once you are set up, run `claude` from the repository root and ask "Where should I start?".
+It reads your current progress and points you to the next step.
+
+If you would rather see the output before deciding, go to the [5-minute quick start](./quick-start.md).
 
 ### Full chapter list
 
@@ -51,16 +56,16 @@ cd trustedoss-agents && claude
 
 ### Deliverables upon completion
 
-| Step            | Deliverable files                                                                                                                                                      | Related standards |
-| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
-| Organization    | `role-definition.md`, `raci-matrix.md`, `appointment-template.md` — [See example](/reference/samples/organization)                                                     | [Common]          |
-| Policy          | `oss-policy.md`, `license-allowlist.md` — [See example](/reference/samples/policy)                                                                                     | [Common]          |
-| Process         | `usage-approval.md`, `distribution-checklist.md`, `vulnerability-response.md`, `inquiry-response.md`, `process-diagram.md` — [See example](/reference/samples/process) | [Common]          |
-| Create SBOM     | `[project].cdx.json`, `sbom-commands.sh`, `license-report.md`, `copyleft-risk.md` — [See example](/reference/samples/sbom)                                             | [Common]          |
-| SBOM management | `sbom-management-plan.md`, `sbom-sharing-template.md` — [See example](/reference/samples/sbom)                                                                         | [Supply Chain]    |
-| Vulnerability   | `cve-report.md`, `remediation-plan.md` — [See example](/reference/samples/vulnerability)                                                                               | [18974]           |
-| Training        | `curriculum.md`, `completion-tracker.md`, `resources.md` — [See example](/reference/samples/training)                                                                  | [Common]          |
-| Certification   | `gap-analysis.md`, `declaration-draft.md`, `submission-guide.md` — [See example](/reference/samples/conformance)                                                       | [Common]          |
+| Step            | Deliverable files                                                                                                                                                         | Related standards |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
+| Organization    | `role-definition.md`, `raci-matrix.md`, `appointment-template.md` — [See example](/en/reference/samples/organization)                                                     | [Common]          |
+| Policy          | `oss-policy.md`, `license-allowlist.md` — [See example](/en/reference/samples/policy)                                                                                     | [Common]          |
+| Process         | `usage-approval.md`, `distribution-checklist.md`, `vulnerability-response.md`, `inquiry-response.md`, `process-diagram.md` — [See example](/en/reference/samples/process) | [Common]          |
+| Create SBOM     | `[project].cdx.json`, `sbom-commands.sh`, `license-report.md`, `copyleft-risk.md` — [See example](/en/reference/samples/sbom)                                             | [Common]          |
+| SBOM management | `sbom-management-plan.md`, `sbom-sharing-template.md` — [See example](/en/reference/samples/sbom)                                                                         | [Supply Chain]    |
+| Vulnerability   | `cve-report.md`, `remediation-plan.md` — [See example](/en/reference/samples/vulnerability)                                                                               | [18974]           |
+| Training        | `curriculum.md`, `completion-tracker.md`, `resources.md` — [See example](/en/reference/samples/training)                                                                  | [Common]          |
+| Certification   | `gap-analysis.md`, `declaration-draft.md`, `submission-guide.md` — [See example](/en/reference/samples/conformance)                                                       | [Common]          |
 
 Below is the 7-step journey from zero to self-certification. Check off each step as you complete it to track your progress (saved only in this browser).
 
@@ -90,22 +95,11 @@ Both standards use **Self-Certification**. You make the declaration directly on 
 - **Legal and practical implications**: Your open source management maturity is shared transparently with supply chain partners and can serve as evidence of compliance at delivery time.
 - **What you can do after certification**: Use the OpenChain certification logo, demonstrate supply chain transparency, and respond to customer audits with greater credibility.
 
-### How to read `checklist-mapping.md`
+### How to read the requirements map
 
-`docs/00-overview/checklist-mapping.md` is a map that organizes all 31 requirements of the two standards into a single table.
+The 31 requirements across the two standards fall into six groups: program foundation (G1), defining related tasks (G2), license compliance (G3-L), security assurance (G3-S), SBOM and supply chain (G3-B), and declaring and maintaining compliance (G4). Twelve of them are common to both standards, so working through them in order saves roughly 39% of the duplicate work.
 
-**Item ID scheme:**
-
-| Prefix | Meaning                                             |
-| ------ | --------------------------------------------------- |
-| G1     | Program foundation (policy, organization, training) |
-| G2     | Defining related tasks (roles, channels, awareness) |
-| G3-L   | License compliance (ISO/IEC 5230 focus)             |
-| G3-S   | Security assurance (ISO/IEC 18974 focus)            |
-| G3-B   | SBOM and supply chain (common)                      |
-| G4     | Declaring and maintaining compliance                |
-
-**Key insight:** Of the 31 items, 12 are common to both standards. By completing those 12 common items first, you satisfy both standards at once and save roughly 39% of the duplicate work. The kit is designed to prioritize the common items.
+Which chapter fills which group is laid out in [Standard requirements at a glance](./checklist-mapping.md). The point where you need the certification question and verification material for each individual item is [07 Conformance](../07-conformance/index.md); that is when you open the [Requirements Detail Matrix](/en/reference/requirements-matrix).
 
 ---
 
@@ -115,17 +109,17 @@ Both standards use **Self-Certification**. You make the declaration directly on 
 Take your time to understand and work through each document on your own. We recommend 3-5 days to complete the entire kit.
 :::
 
-1. Read this page (`index.md`) — get an overview of the whole journey
-2. Read `checklist-mapping.md` — understand the structure of all 31 items
-3. Read `supply-chain.md` — build background on software supply chain security
-4. Go to `docs/01-setup/` — start preparing your environment
+1. Read this page — grasp the purpose and structure of the whole journey
+2. Read [Standard requirements at a glance](./checklist-mapping.md) — grasp what the two standards require on a single screen
+3. Read [Software Supply Chain Security: Why It Matters Now](./supply-chain.md) — build the background
+4. Go to [Environment preparation: install the tools needed for the labs](../01-setup/index.md) — install the tools and clone the repository
 
 ---
 
 ## 4. Completion checklist
 
 - [ ] I can explain the differences and similarities between the two standards (ISO/IEC 5230 and ISO/IEC 18974)
-- [ ] I understand the G1-G4 item ID system in `checklist-mapping.md`
+- [ ] I understand the G1-G4 item ID system in the requirements map
 - [ ] I understand that the 12 common items satisfy both standards at once
 - [ ] I have confirmed my self-study route
 - [ ] I am ready to move to the next step (learn supply chain security, or go to chapter `01`)
@@ -134,9 +128,31 @@ Take your time to understand and work through each document on your own. We reco
 
 ## 5. Next steps
 
-**If you want some background first**, read [Software Supply Chain Security: Why It Matters Now](./supply-chain.md) and [SBOM Basics: An Introduction to the Software Bill of Materials](./sbom-101.md) to learn software supply chain security and SBOM concepts.
+The fastest route differs depending on your goal. Choose the case closest to you below.
 
-**If you want to start preparing your environment right away**, go to [Environment preparation: install the tools needed for the labs](../01-setup/index.md) to install the tools and set things up.
+### Just get to self-certification quickly
+
+This is the path of building a standards-based management system from scratch all the way to an OpenChain self-certification declaration.
+
+Proceed in order starting from [Environment preparation](../01-setup/index.md). The core deliverables are the [Open Source Policy](../03-policy/index.md) and the [Self-certification declaration](../07-conformance/index.md). The full course takes about 12-14 hours; if you are short on time, a condensed 1-2 hour course covers just this overview, chapter 02 (organization), and chapter 03 (policy).
+
+### All the way to automation with your dev team
+
+This is for when you want to set up a policy and then automatically apply it to daily development and CI.
+
+First create the [Open Source Policy](../03-policy/index.md), apply the policy to your development tools with [AI coding governance](/en/ai-coding/intro), and then enforce it in your CI pipeline with [DevSecOps](/en/devsecops/intro).
+
+### When you already have a policy
+
+This is for when you already have a management system in place and want to strengthen automation first.
+
+Start from [DevSecOps adoption strategy](/en/devsecops/strategy) and build pipeline security gates. If you use AI coding tools, also see [AI coding governance](/en/ai-coding/intro).
+
+### If you are not sure where to go
+
+If none of the three routes obviously matches your situation, try the results first with the [5-minute quick start](./quick-start.md) and then decide. It shows you the actual shape of the deliverables with nothing to install.
+
+If you would rather build background first, read [Software Supply Chain Security: Why It Matters Now](./supply-chain.md) and [SBOM Basics: An Introduction to the Software Bill of Materials](./sbom-101.md). Either one helps whichever route you pick.
 
 ---
 

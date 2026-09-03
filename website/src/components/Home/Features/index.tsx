@@ -9,7 +9,7 @@ import Translate, {translate} from '@docusaurus/Translate';
 
 import styles from './styles.module.css';
 
-type IconName = 'governance' | 'devsecops' | 'aicoding';
+type IconName = 'governance' | 'devsecops' | 'aicoding' | 'reference';
 
 function FeatureIcon({name}: {name: IconName}) {
   const p = {
@@ -40,11 +40,19 @@ function FeatureIcon({name}: {name: IconName}) {
       </svg>
     );
   }
+  if (name === 'aicoding') {
+    return (
+      <svg {...p}>
+        <rect x="4" y="7" width="16" height="12" rx="2" />
+        <path d="M12 7V4M9.2 12h.01M14.8 12h.01M9.5 16h5" />
+        <path d="M2 12h2M20 12h2" />
+      </svg>
+    );
+  }
   return (
     <svg {...p}>
-      <rect x="4" y="7" width="16" height="12" rx="2" />
-      <path d="M12 7V4M9.2 12h.01M14.8 12h.01M9.5 16h5" />
-      <path d="M2 12h2M20 12h2" />
+      <path d="M4 5.5A1.5 1.5 0 015.5 4H10a2 2 0 012 2v13a2 2 0 00-2-2H5.5A1.5 1.5 0 014 15.5z" />
+      <path d="M20 5.5A1.5 1.5 0 0018.5 4H14a2 2 0 00-2 2v13a2 2 0 012-2h4.5a1.5 1.5 0 001.5-1.5z" />
     </svg>
   );
 }
@@ -90,6 +98,17 @@ const TRACKS: Track[] = [
         'Claude Code, Cursor, Copilot 등 AI 코딩 도구와 오픈소스 컴플라이언스를 함께 관리합니다.',
     }),
     href: '/ai-coding/intro',
+  },
+  {
+    id: 'reference',
+    icon: 'reference',
+    title: translate({id: 'homepage.cta.feature4.title', message: '레퍼런스'}),
+    desc: translate({
+      id: 'homepage.cta.feature4.desc',
+      message:
+        '요구사항 매트릭스와 산출물 샘플을 찾아봅니다. 표준 항목별로 무엇을 만들어야 하는지 확인합니다.',
+    }),
+    href: '/reference/intro',
   },
 ];
 

@@ -26,10 +26,22 @@ Claude Code로 개발할 때 오픈소스 정책을 자동으로 준수하는 �
 
 해당 없음 (선택 챕터)
 
+## 파일 구성
+
+이 챕터는 `index.md` 한 파일이다. 방법 1~4 가 각각 한 절이며, 각 절에 붙여넣어 쓸 수 있는
+전문이 들어 있다. 분량이 큰 두 가지(SKILL.md 전문, CI 워크플로 전문)는 `<details>` 로 접혀
+있다. 각 절은 `{#method-1}` ~ `{#method-4}` 앵커를 갖는다.
+
+방법마다 별도 파일(`method1-claude-md.md` 등)이 있었으나 2026-09 개편에서 `index.md` 로
+통합했다. 구 URL 은 `website/docusaurus.config.ts` 의 리다이렉트가 각 절 앵커로 보낸다.
+
 ## 다음 단계
 
-각 방법의 상세 구현은 **claude-oss-policy-guard** 프로젝트를 참조한다.
-(별도 저장소, 추후 공개 예정)
+이 챕터가 셀프스터디의 마지막이다. 완료 후에는 운영으로 넘어간다. 18개월마다 자체 인증을
+갱신하고(`docs/07-conformance/`), 분기마다 `output/policy/license-allowlist.md` 를 검토하며,
+신규 CVE 가 나오면 grype 를 다시 돌린다.
+
+자동화를 더 넓히려면 `website/devsecops/` 와 `website/ai-coding/` 트랙으로 간다.
 
 ## 충족되는 체크리스트 항목
 
@@ -45,11 +57,11 @@ Claude Code로 개발할 때 오픈소스 정책을 자동으로 준수하는 �
 각 방법을 순서대로 적용하며 실제 프로젝트에 테스트합니다.
 :::
 
-1. `docs/08-developer-guide/index.md` 읽기
-2. 프로젝트 CLAUDE.md 에 오픈소스 정책 추가
-3. `.claude/skills/oss-policy-check/SKILL.md` 생성
-4. `.claude/settings.json` Hook 설정
-5. `.github/workflows/oss-policy-check.yml` 생성
+1. `docs/08-developer-guide/index.md` 읽기 (1~3절: 배경과 네 방법 비교)
+2. 방법 1 (`#method-1`): 프로젝트 CLAUDE.md 에 오픈소스 정책 추가
+3. 방법 2 (`#method-2`): `.claude/skills/oss-policy-check/SKILL.md` 생성
+4. 방법 3 (`#method-3`): `.claude/settings.json` Hook 설정
+5. 방법 4 (`#method-4`): `.github/workflows/oss-policy-check.yml` 생성
 6. 각 방법이 실제로 동작하는지 테스트
 
 ## 자주 발생하는 문제

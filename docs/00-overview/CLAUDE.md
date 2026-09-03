@@ -16,16 +16,17 @@ ISO/IEC 5230 (라이선스 컴플라이언스)과 ISO/IEC 18974 (보안 보증) 
 ## 충족되는 체크리스트 항목
 
 이 챕터 자체는 체크리스트 항목을 직접 충족하지 않는다 (개요 챕터).
-그러나 `checklist-mapping.md` 를 통해 전체 31개 항목의 지도를 파악한다.
+그러나 `checklist-mapping.md` 요약과 `website/reference/requirements-matrix.md` 대조표로 전체 31개 항목의 지도를 파악한다.
 
 ## 체크리스트 매핑 문서 보는 방법
 
-`docs/00-overview/checklist-mapping.md` 를 열어 아래 순서로 읽는다:
+`docs/00-overview/checklist-mapping.md` 요약을 열어 아래 순서로 읽는다(항목별 상세는 `website/reference/requirements-matrix.md`):
 
 1. **두 표준 비교 표** → 각 표준의 목적과 범위 파악
-2. **통합 매핑 테이블** → G1~G4 그룹별로 담당 Agent와 산출물 확인
-3. **비고 컬럼 태그** → `[공통]` `[5230]` `[18974]` `[공급망]` `[규제]` 로 항목 성격 파악
-4. **요약 통계** → 전체 31개 항목 현황 숫자로 확인
+2. **요구사항 네 덩어리** → G1~G4 그룹별로 어느 챕터가 채우는지 확인
+3. **요약 통계** → 전체 31개 항목과 39% 절감 근거 확인
+
+항목별 담당 Agent, 산출물 파일, 인증 질문, 비고 태그(`[공통]` `[5230]` `[18974]` `[공급망]` `[규제]`)는 `website/reference/requirements-matrix.md` 에 있다. `verify.sh` [8/13] 의 `test-coverage.py` 가 파싱하는 파일도 이쪽이다.
 
 ## 전체 산출물 목록 미리보기
 
@@ -49,7 +50,7 @@ ISO/IEC 5230 (라이선스 컴플라이언스)과 ISO/IEC 18974 (보안 보증) 
 ## 완료 기준
 
 - [ ] 두 표준의 차이점과 공통점을 설명할 수 있다
-- [ ] checklist-mapping.md 의 전체 구조를 파악했다
+- [ ] 요구사항 네 그룹(G1~G4)의 구조를 파악했다
 - [ ] 다음 단계(챕터 00b 또는 챕터 01)로 이동할 준비가 되었다
 
 ## 셀프스터디 경로
@@ -59,7 +60,7 @@ ISO/IEC 5230 (라이선스 컴플라이언스)과 ISO/IEC 18974 (보안 보증) 
 :::
 
 1. `docs/00-overview/index.md` 읽기 — 전체 여정 개요 파악
-2. `docs/00-overview/checklist-mapping.md` 읽기 — 전체 체크리스트 31개 항목 파악
+2. `docs/00-overview/checklist-mapping.md` 읽기 — 두 표준이 요구하는 것을 한 화면에서 파악
 3. `docs/00b-supply-chain/` 으로 이동하여 배경 지식 습득
 
 ## 자주 발생하는 문제

@@ -82,6 +82,8 @@ standard requires, and finding the "gap" — what's still missing. The agent ope
 `output/` folder, compares it item by item against the standard's checklist, and writes the result
 to `output/conformance/gap-analysis.md`.
 
+To check the certification question and verification material for each item yourself, keep the [Requirements Detail Matrix](/en/reference/requirements-matrix) open alongside it.
+
 `output/conformance/gap-analysis.md` is created with the following structure:
 
 | Section                   | Content                                                                           |
@@ -147,35 +149,20 @@ you self-check and then submit your company's information through the online for
 > This step meets the requirements of ISO/IEC 5230 G4.1 (3.6.1) and ISO/IEC 18974 G4.2 (4.4.1).
 
 :::info Standard requirements met
-Completing this lab meets the requirements below.
+Completing this exercise satisfies the requirements below.
 
-**ISO/IEC 5230**
+5230 §3.6.1, §3.6.2 · 18974 §4.4.1, §4.4.2
 
-| Item ID | Requirement                              | Self-certification checklist                                                                       |
-| ------- | ---------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| 3.6.1   | Self-certification declaration           | Do you confirm that your program meets all the requirements of this specification?                 |
-| 3.6.2   | Certification validity period management | Do you have a process to confirm the program meets the requirements at least once every 18 months? |
-
-**ISO/IEC 18974**
-
-| Item ID | Requirement                                       | Self-certification checklist                                                                                          |
-| ------- | ------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| 4.4.1   | Self-certification declaration (security)         | Do you confirm that your security assurance program meets all the requirements of this specification?                 |
-| 4.4.2   | Security certification validity period management | Do you have a process to confirm the security assurance program meets the requirements at least once every 18 months? |
-
+The original self-certification question and the verification material for each item are in the [Requirements Detail Matrix](/en/reference/requirements-matrix).
 :::
 
 ---
 
 ## 6. Strategy for certifying both standards at once
 
-ISO/IEC 5230 and ISO/IEC 18974 share many requirements. If simultaneous certification is your goal, the following strategy is efficient:
+Finish the common items first, then the ISO/IEC 5230-only items, then the ISO/IEC 18974-only items. That order saves roughly 39% of the work, and this kit's chapter order follows it.
 
-- **12 common items**: Items shared by both standards are met simultaneously in a single effort.
-- **8 items for 5230 only**: Additional requirements specific to license compliance are met.
-- **11 items for 18974 only**: Additional requirements specific to security assurance are met.
-
-Recommended order of work: complete the common items first → then the ISO/IEC 5230-only items → then the ISO/IEC 18974-only items. This can save roughly **39% of the work**. The way the chapters in this kit are organized is designed to follow this order.
+The item counts and the basis for that saving are in [Standard requirements at a glance](../00-overview/checklist-mapping.md); the per-item mapping is in the [Requirements Detail Matrix](/en/reference/requirements-matrix).
 
 ---
 
@@ -228,7 +215,7 @@ Check all items below before finishing this chapter:
 - [ ] Self-certification declaration completed
 
 :::tip Example deliverables
-You can see the actual format of the generated files in [Self-Certification Deliverables Best Practice](/reference/samples/conformance).
+You can see the actual format of the generated files in [Self-Certification Deliverables Best Practice](/en/reference/samples/conformance).
 :::
 
 ---
@@ -250,5 +237,5 @@ Ways to keep growing with the open source ecosystem after certification:
 
 Now that certification has defined what to do, the next step is enforcing it automatically in daily development.
 
-- [AI Coding Tools and Open Source Compliance](/ai-coding/intro): Use Rules to keep AI coding tools such as Cursor, Copilot, and Claude Code within your policy.
-- [DevSecOps](/devsecops/intro): Turn SBOM generation and vulnerability scanning into CI pipeline gates that automatically block policy violations.
+- [AI Coding Tools and Open Source Compliance](/en/ai-coding/intro): Use Rules to keep AI coding tools such as Cursor, Copilot, and Claude Code within your policy.
+- [DevSecOps](/en/devsecops/intro): Turn SBOM generation and vulnerability scanning into CI pipeline gates that automatically block policy violations.

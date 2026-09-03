@@ -3,6 +3,7 @@ id: intro
 title: 레퍼런스
 slug: intro
 description: '산출물 Best Practice, 정본 개념 페이지(라이선스 분류, 취약점 대응 기한), 용어집, 에이전트 선택 가이드를 모은 레퍼런스.'
+sidebar_position: 1
 ---
 
 # 레퍼런스
@@ -13,16 +14,17 @@ description: '산출물 Best Practice, 정본 개념 페이지(라이선스 분�
 
 각 단계별 agent가 생성하는 산출물의 완성 예시입니다(가상 기업 기준).
 자신의 `output/` 폴더 결과물과 비교하여 빠진 항목을 확인하세요.
+단계별 산출물 파일 목록은 [개요: 두 표준과 전체 여정](/docs)의 산출물 표가 정본입니다.
 
-| 산출물                                                                                                       | 대응 Agent                     | 바로가기                                 |
-| ------------------------------------------------------------------------------------------------------------ | ------------------------------ | ---------------------------------------- |
-| 조직 (role-definition, raci-matrix, appointment-template)                                                    | organization-designer          | [조직 산출물](./samples/organization)    |
-| 정책 (oss-policy, license-allowlist)                                                                         | policy-generator               | [정책 산출물](./samples/policy)          |
-| 프로세스 (usage-approval, distribution-checklist, vulnerability-response, inquiry-response, process-diagram) | process-designer               | [프로세스 산출물](./samples/process)     |
-| SBOM (license-report, copyleft-risk, sbom-management-plan, sbom-sharing-template)                            | sbom-analyst / sbom-management | [SBOM 산출물](./samples/sbom)            |
-| 취약점 (cve-report, remediation-plan)                                                                        | vulnerability-analyst          | [취약점 산출물](./samples/vulnerability) |
-| 교육 (curriculum, completion-tracker, resources)                                                             | training-manager               | [교육 산출물](./samples/training)        |
-| 인증 (gap-analysis, declaration-draft, submission-guide)                                                     | conformance-preparer           | [인증 산출물](./samples/conformance)     |
+| 단계     | 바로가기                                 |
+| -------- | ---------------------------------------- |
+| 조직     | [조직 산출물](./samples/organization)    |
+| 정책     | [정책 산출물](./samples/policy)          |
+| 프로세스 | [프로세스 산출물](./samples/process)     |
+| SBOM     | [SBOM 산출물](./samples/sbom)            |
+| 취약점   | [취약점 산출물](./samples/vulnerability) |
+| 교육     | [교육 산출물](./samples/training)        |
+| 인증     | [인증 산출물](./samples/conformance)     |
 
 ## 개념 심화
 
@@ -37,7 +39,7 @@ description: '산출물 Best Practice, 정본 개념 페이지(라이선스 분�
 
 ## 에이전트 선택 가이드
 
-어느 상황에 어느 에이전트를 쓰는지, 에이전트와 챕터와 산출물의 매핑은 [AI 에이전트로 산출물 만들기](/docs/overview/agents)에 정리돼 있습니다.
+[AI 에이전트로 산출물 만들기](./agents)에 어느 상황에 어느 에이전트를 쓰는지 정리돼 있습니다. 체계 구축 에이전트 9종은 챕터·산출물과 하나씩 대응하고, 자동화 에이전트 7종은 CI와 개발 도구 설정을 만들거나 스캔 결과를 분석합니다.
 
 ## 도구와 규제 더 알아보기
 
