@@ -30,7 +30,7 @@ The Quick CI/CD of the AI Coding guide aims to help developers create a basic ga
 
 | Page                                          | Contents covered                                    | Recommended Readers    |
 | --------------------------------------------- | --------------------------------------------------- | ---------------------- |
-| [Adoption Strategy](./strategy)               | Maturity model · step-by-step roadmap               | Team Lead · Architect  |
+| [Adoption Strategy](./strategy)               | Four maturity levels · adoption order               | Team Lead · Architect  |
 | [SAST](./sast)                                | Static analysis — CodeQL · Semgrep                  | Developer · DevOps     |
 | [SCA](./sca)                                  | Dependency analysis — syft · grype · SBOM           | DevOps · Security Team |
 | [Secret Detection](./secret-detection)        | Prevent key/token leakage — Gitleaks                | Developer · DevOps     |

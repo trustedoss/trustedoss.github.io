@@ -35,13 +35,7 @@ Cline is an agent-style AI tool running as a VS Code extension, while Aider is a
 
 ### License Management
 
-**Allowed Licenses**: MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC
-
-**Review Required Licenses** (legal review required): LGPL, MPL
-
-**Prohibited Licenses** (cannot be used without prior approval): GPL, AGPL, SSPL, Commons Clause
-
-<!-- Copy the full rules (including the Security, SBOM, and Copyright sections) from the Common Rules Template -->
+<!-- Copy the allowed / review-required / prohibited license lists and the rest of the rules from the Common Rules Template -->
 ```
 
 Copy the full text from the [Common Rules Template](../rules-template). When the allow/deny lists change, update only the canonical template and paste it into each tool file again.
@@ -71,13 +65,7 @@ Copy the full text from the [Common Rules Template](../rules-template). When the
 
 ### License Management
 
-**Allowed Licenses**: MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC
-
-**Review Required Licenses** (legal review required): LGPL, MPL
-
-**Prohibited Licenses** (cannot be used without prior approval): GPL, AGPL, SSPL, Commons Clause
-
-<!-- Copy the full rules (including the Security, SBOM, and Copyright sections) from the Common Rules Template -->
+<!-- Copy the allowed / review-required / prohibited license lists and the rest of the rules from the Common Rules Template -->
 ```
 
 Copy the full text from the [Common Rules Template](../rules-template). When the allow/deny lists change, update only the canonical template and paste it into each tool file again.

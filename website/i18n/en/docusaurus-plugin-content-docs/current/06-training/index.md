@@ -59,14 +59,18 @@ For real corporate training examples (SKT, Kakao, NCSOFT, etc.) and training mat
 
 ## 4. List of free training resources
 
-| Resource                              | Provided by         | Level                 | Language | Link                                                                                                                             |
-| ------------------------------------- | ------------------- | --------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| OpenChain Training Materials          | OpenChain Project   | Beginner–Intermediate | English  | https://www.openchainproject.org/resources                                                                                       |
-| Open Source Licensing Basics (LFC193) | Linux Foundation    | Beginner              | English  | [LFC193 course](https://training.linuxfoundation.org/training/introduction-to-open-source-license-compliance-management-lfc193/) |
-| NIPA Open Source License Guide        | NIPA                | Beginner–Intermediate | Korean   | [NIPA Open SW Portal](https://www.oss.kr)                                                                                        |
-| OpenChain KWG Training Materials      | OpenChain KWG       | Intermediate          | Korean   | https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/5-training/                                    |
-| SPDX Official Documentation           | SPDX Community      | Intermediate          | English  | [SPDX official site](https://spdx.dev)                                                                                           |
-| CycloneDX Official Documentation      | CycloneDX Community | Intermediate          | English  | [CycloneDX official site](https://cyclonedx.org)                                                                                 |
+Use this list to fill the per-role curriculum in section 3 with actual material. Assign the English resources to the roles that need them or to a later stage, since completion rates are higher when people start in their own language.
+
+| Resource                              | Roles it serves                 | Provided by         | Level                 | Language | Link                                                                                                                             |
+| ------------------------------------- | ------------------------------- | ------------------- | --------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| NIPA Open Source License Guide        | All roles, introductory         | NIPA                | Beginner–Intermediate | Korean   | [NIPA Open SW Portal](https://www.oss.kr)                                                                                        |
+| OpenChain KWG Training Materials      | Developers, managers            | OpenChain KWG       | Intermediate          | Korean   | https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/5-training/                                    |
+| OpenChain Training Materials          | Managers, legal and procurement | OpenChain Project   | Beginner–Intermediate | English  | https://www.openchainproject.org/resources                                                                                       |
+| Open Source Licensing Basics (LFC193) | Legal and procurement           | Linux Foundation    | Beginner              | English  | [LFC193 course](https://training.linuxfoundation.org/training/introduction-to-open-source-license-compliance-management-lfc193/) |
+| SPDX Official Documentation           | Developers, security            | SPDX Community      | Intermediate          | English  | [SPDX official site](https://spdx.dev)                                                                                           |
+| CycloneDX Official Documentation      | Developers, security            | CycloneDX Community | Intermediate          | English  | [CycloneDX official site](https://cyclonedx.org)                                                                                 |
+
+The `training-manager` agent picks from this table per role to build `output/training/resources.md`.
 
 ## 5. How to manage training completion records
 

@@ -9,7 +9,7 @@ sidebar_position: 4
 
 ## What is SCA?
 
-SCA is a method for analyzing open-source components included in software to detect known vulnerabilities (CVEs). It tracks the full dependency graph based on an SBOM (Software Bill of Materials) and enables immediate response when new CVEs are discovered.
+SCA is a method for analyzing open-source components included in software to detect known vulnerabilities (CVEs). It tracks the full dependency graph based on an SBOM and enables immediate response when new CVEs are discovered. What an SBOM is is covered in [SBOM Basics](/docs/overview/sbom-101).
 
 :::tip The configuration below is an example — a fully working implementation lives in the reference repository
 The YAML and commands on this page are examples that show the essentials. For a complete, copy-and-run pipeline (including policy files and a sample app), see the [Best Practice repository](/ai-coding/best-practice-repo).
@@ -123,6 +123,18 @@ sca:
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
 ```
+
+### How this differs from the cicd-quick workflow
+
+[AI Coding — Quick CI/CD in 30 minutes](/ai-coding/cicd-quick) carries a workflow of the same shape. If you already applied that one, adding the three items below turns it into what this page describes.
+
+| Item                     | Quick CI/CD                    | This page                                |
+| ------------------------ | ------------------------------ | ---------------------------------------- |
+| Artifact retention       | Default (may be under 90 days) | `retention-days: 90` and `expire_in` 90d |
+| Scan policy file         | None                           | `.grype.yaml` for exception handling     |
+| Prohibited license check | Shell script grepping the SBOM | None (licenses move to a policy gate)    |
+
+Quick CI/CD exists to stand up a first gate in 30 minutes; this page goes on to exception handling and evidence retention. Keep one of the two workflows, not both.
 
 ---
 
@@ -290,7 +302,7 @@ to automatically analyze vulnerabilities and generate response guidance.
 
 ### Preview with a sample first (no API key required)
 
-You can view the analysis of a pre-built sample SBOM right away, without an API key. Get a feel for what the tool produces first, then run a real analysis on your own SBOM below.
+The same demo is available from the [5-minute quick start](/docs/overview/quick-start). Try it below, then run a real analysis on your own SBOM.
 
 <iframe
   src="/tools/sbom-sample-demo.html?lang=en"

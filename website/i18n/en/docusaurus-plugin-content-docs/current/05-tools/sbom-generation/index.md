@@ -28,15 +28,7 @@ Running both together automatically in CI is **SCA** (Software Composition Analy
 For plain-language explanations of unfamiliar acronyms such as SBOM, CycloneDX, and SPDX, see the [glossary](/reference/glossary).
 :::
 
-### What is SBOM?
-
-An SBOM (Software Bill of Materials) is a list of every component included in the software. Like a food nutrition label, it specifies which open source packages and versions the software contains. Both ISO/IEC 5230 and 18974 specify SBOM generation as a core requirement (G3B.1).
-
-Why SBOM matters:
-
-- Know which open source licenses are included (compliance)
-- Check whether you ship a vulnerable version of a library (security)
-- Provide software composition information to customers or regulators when distributing products
+Both ISO/IEC 5230 and 18974 specify SBOM generation as a core requirement (G3B.1). What an SBOM is and why you need one is covered in [SBOM Basics](../../00-overview/sbom-101.md). This chapter covers the tools and commands that actually produce one.
 
 ### The tools used
 

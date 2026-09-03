@@ -22,6 +22,8 @@ The examples below keep mutable tags such as `@v7` for readability. A tag can be
 
 **Parallel execution**: Run independent scans in parallel to minimize overall pipeline time. SAST, SCA, and secret detection have no dependencies on each other, so they can run simultaneously.
 
+Each job in the integrated workflow below is lifted from the page for that area. The `.grype.yaml` exception handling and retention policy behind the SCA job are explained in [SCA](./sca); the other areas are covered on their own pages.
+
 **Staged gating**: Place fast scans (secret/SAST) at the front and slow scans (DAST) at the back. If an earlier stage fails, later stages don't need to run, which reduces wasted resources.
 
 **Separate failure policies**: Clearly distinguish hard fail from warning-only (soft fail). Starting at a tolerable level and tightening gradually increases the success rate of real-world adoption.

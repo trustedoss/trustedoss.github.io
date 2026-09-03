@@ -261,8 +261,10 @@ a run made in advisory mode.
 
 ## What Actually Goes Over the Wire
 
-Here is one run of the workflow above, showing what goes in and what comes back.
-The values below are illustrative; real ones vary per project.
+Here is one run of the workflow above, showing what goes in and what comes back: the raw tool output, the prompt sent to the Claude API, the verdict that comes back, and the PR comment. It is worth reading once after you decide to adopt this, so it is folded away. The values below are illustrative; real ones vary per project.
+
+<details>
+<summary>The full data exchanged in one run (click to expand)</summary>
 
 ### 1. Raw tool output
 
@@ -390,6 +392,8 @@ False positives are possible, so weigh the context. This is not a build gate.
 ```
 
 The build does not fail. A developer reads the comment and decides.
+
+</details>
 
 ---
 
