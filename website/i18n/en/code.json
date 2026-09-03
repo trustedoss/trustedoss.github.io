@@ -347,7 +347,7 @@
     "description": "Homepage hero badges aria label"
   },
   "homepage.trustbar.thesis": {
-    "message": "Trust open source — without outsourcing that trust to a vendor.",
+    "message": "Trust open source without outsourcing that trust to a vendor.",
     "description": "TrustBar brand thesis"
   },
   "homepage.trustbar.pillar1.title": {
@@ -425,7 +425,7 @@
     "description": "CTA section button"
   },
   "homepage.hero.subtitle.portal": {
-    "message": "Trust open source — without outsourcing that trust to a vendor. Build an ISO/IEC 5230 & 18974 open source management system yourself, with no vendor consulting, all the way to a self-certification declaration — guided step by step, even from zero.",
+    "message": "Trust open source without outsourcing that trust to a vendor. Build an ISO/IEC 5230 & 18974 open source management system yourself, with no vendor consulting, all the way to a self-certification declaration. Guided step by step, even from zero.",
     "description": "Homepage hero subtitle (portal-style)"
   },
   "homepage.hero.stat1.label": {
@@ -463,7 +463,7 @@
     "message": "Three tracks for your role"
   },
   "homepage.features.subtitle": {
-    "message": "A standards-based management system, a security pipeline, and AI coding compliance — start with the track you need."
+    "message": "A standards-based management system, a security pipeline, and AI coding compliance. Start with the track you need."
   },
   "homepage.showcase.title": {
     "message": "Real artifacts the agents produce"
@@ -472,13 +472,13 @@
     "message": "Preview the artifacts auto-generated for your company through these best-practice samples."
   },
   "homepage.showcase.policy.caption": {
-    "message": "Policy & org — license approval tiers and the RACI responsibility matrix"
+    "message": "Policy and org: license approval tiers and the RACI responsibility matrix"
   },
   "homepage.showcase.sbom.caption": {
-    "message": "SBOM & vulnerabilities — CycloneDX analysis and triage reports"
+    "message": "SBOM and vulnerabilities: CycloneDX analysis and triage reports"
   },
   "homepage.showcase.conformance.caption": {
-    "message": "Self-certification — conformance checklist and declaration draft"
+    "message": "Self-certification: conformance checklist and declaration draft"
   },
   "homepage.whykwg.title": {
     "message": "Why Trusted OSS, together with KWG"
@@ -563,7 +563,7 @@
     "message": "."
   },
   "homepage.hero.subtitle.content": {
-    "message": "Build an ISO/IEC 5230 & 18974 open source management system step by step, with no vendor consulting — all the way to a self-certification declaration. No prior experience needed."
+    "message": "Build an ISO/IEC 5230 & 18974 open source management system step by step, with no vendor consulting, all the way to a self-certification declaration. No prior experience needed."
   },
   "homepage.hero.cta.start": {
     "message": "Start the guide"
@@ -665,7 +665,7 @@
     "message": "Checkmarks are stored only in this browser. Mark each step as you finish it to track your progress."
   },
   "glossary.sbom": {
-    "message": "Software Bill of Materials — a list of every open source component in a product, with versions and licenses."
+    "message": "Software Bill of Materials: a list of every open source component in a product, with versions and licenses."
   },
   "glossary.spdx": {
     "message": "A standard format for SBOMs and licensing data (Linux Foundation)."
@@ -674,22 +674,22 @@
     "message": "One of the standard SBOM formats (OWASP)."
   },
   "glossary.copyleft": {
-    "message": "Copyleft — a license family that requires derivative works to be released under the same license (GPL, AGPL, etc.)."
+    "message": "Copyleft: a license family that requires derivative works to be released under the same license (GPL, AGPL, etc.)."
   },
   "glossary.permissive": {
-    "message": "Permissive license — few obligations beyond attribution (MIT, Apache-2.0, BSD)."
+    "message": "Permissive license: few obligations beyond attribution (MIT, Apache-2.0, BSD)."
   },
   "glossary.cve": {
-    "message": "Common Vulnerabilities and Exposures — the unique identifier assigned to a known vulnerability."
+    "message": "Common Vulnerabilities and Exposures: the unique identifier assigned to a known vulnerability."
   },
   "glossary.cvss": {
-    "message": "Vulnerability severity score — risk expressed on a 0-10 scale."
+    "message": "Vulnerability severity score: risk expressed on a 0-10 scale."
   },
   "glossary.vex": {
-    "message": "Vulnerability Exploitability eXchange — states whether a vulnerability actually affects your product."
+    "message": "Vulnerability Exploitability eXchange: states whether a vulnerability actually affects your product."
   },
   "glossary.sca": {
-    "message": "Software Composition Analysis — checks open source components for vulnerabilities and license issues."
+    "message": "Software Composition Analysis: checks open source components for vulnerabilities and license issues."
   },
   "glossary.openchain": {
     "message": "The international open source compliance standards project (ISO/IEC 5230 and 18974)."

@@ -41,5 +41,5 @@ With proper attribution, you can freely copy, modify, redistribute, and use it c
 
 All contributions are welcome, including typo fixes, content improvements, and new sample additions.
 
-- **GitHub**: [github.com/trustedoss](https://github.com/trustedoss) — issues or pull requests
-- **Community**: [OpenChain KWG](https://openchain-project.github.io/OpenChain-KWG/) — quarterly meetings and a mailing list
+- **GitHub**: [github.com/trustedoss](https://github.com/trustedoss) for issues or pull requests
+- **Community**: [OpenChain KWG](https://openchain-project.github.io/OpenChain-KWG/) for quarterly meetings and a mailing list
