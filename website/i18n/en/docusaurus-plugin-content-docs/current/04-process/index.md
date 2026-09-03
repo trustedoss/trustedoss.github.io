@@ -387,25 +387,11 @@ If immediate adoption is difficult, schedule it for the next sprint or the next 
 | `output/process/project-publication-process.md` | Project disclosure process (created when Q6 is "Yes")                                                |
 
 :::info Standard requirements met
-Completing this exercise meets the requirements below.
+Completing this exercise satisfies the requirements below.
 
-**ISO/IEC 5230**
+5230 §3.1.5, §3.2.1, §3.3.2, §3.4.1, §3.5.1 · 18974 §4.1.5, §4.2.1
 
-| Item ID | Requirement                                                 | Self-certification checklist                                                                                                          |
-| ------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| 3.1.5   | License obligations review procedure                        | Do you have a documented procedure to review and record the obligations, restrictions, and rights granted by each identified license? |
-| 3.2.1   | Procedure for receiving external license/security inquiries | Do you have a documented procedure for receiving and handling inquiries about open source compliance?                                 |
-| 3.3.2   | Procedure for handling license use cases                    | Do you have a documented procedure for handling the common open source license use cases for the components in your supply software?  |
-| 3.4.1   | Compliance artifact management                              | Do you have a process to ensure compliance artifacts accompany each distribution?                                                     |
-| 3.5.1   | Open source contribution management procedure               | Do you have a process for contributing to open source projects?                                                                       |
-
-**ISO/IEC 18974**
-
-| Item ID | Requirement                                               | Self-certification checklist                                                                                   |
-| ------- | --------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| 4.1.5   | Vulnerability detection and response procedures           | Do you have a documented procedure for handling known vulnerabilities in open source components?               |
-| 4.2.1   | External security vulnerability report response procedure | Do you have a documented procedure for receiving and handling reports of open source security vulnerabilities? |
-
+The original self-certification question and the verification material for each item are in the [Requirements Detail Matrix](/reference/requirements-matrix).
 :::
 
 ---

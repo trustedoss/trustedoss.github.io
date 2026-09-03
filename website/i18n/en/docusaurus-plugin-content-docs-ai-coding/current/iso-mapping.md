@@ -11,7 +11,7 @@ This page shows which requirements of the two standards the AI coding guide's im
 
 :::note The Build Your System guide is the authority for meeting the standards
 The deliverables that **formally satisfy** the standard requirements (policy, SBOM, vulnerability reports, etc.) are produced in the [Build Your System](/docs) track.
-The [Checklist Mapping](/docs/overview/checklist-mapping) is the authoritative integrated mapping of all requirements.
+The [Requirements Detail Matrix](/reference/requirements-matrix) is the canonical per-item mapping of certification questions and verification material.
 The AI coding guide is a means of **automatically applying that policy to daily development** to strengthen execution.
 :::
 

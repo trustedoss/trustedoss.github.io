@@ -174,22 +174,11 @@ When you complete this lab, the three files below will be created.
 :::
 
 :::info Standard requirements met
-Completing this lab meets the requirements below.
+Completing this exercise satisfies the requirements below.
 
-**ISO/IEC 5230**
+5230 §3.1.2, §3.1.3 · 18974 §4.1.2, §4.1.3
 
-| Item ID | Requirement          | Self-certification checklist                                                                         |
-| ------- | -------------------- | ---------------------------------------------------------------------------------------------------- |
-| 3.1.2   | Proof of competency  | Do you have documented evidence that each program participant has completed the necessary training?  |
-| 3.1.3   | Awareness assessment | Do you have documented evidence that your program participants are aware of your open source policy? |
-
-**ISO/IEC 18974**
-
-| Item ID | Requirement                   | Self-certification checklist                                                                                            |
-| ------- | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| 4.1.2   | Proof of security competency  | Do you have documented evidence that each program participant has the necessary competence for security assurance?      |
-| 4.1.3   | Security awareness assessment | Do you have documented evidence that your program participants are aware of your open source security assurance policy? |
-
+The original self-certification question and the verification material for each item are in the [Requirements Detail Matrix](/reference/requirements-matrix).
 :::
 
 ## 7. Generated deliverables

@@ -80,6 +80,8 @@ ISO/IEC 5230(라이선스 컴플라이언스)과 ISO/IEC 18974(보안 보증) �
 빠졌는지("갭", 차이)를 찾아내는 작업입니다. agent가 `output/` 폴더 전체를 열어 표준 체크리스트
 항목 하나하나와 대조하고, 그 결과를 `output/conformance/gap-analysis.md`에 정리합니다.
 
+항목별 인증 질문과 입증자료를 직접 대조하려면 [요구사항 상세 대조표](/reference/requirements-matrix)를 함께 펼쳐 놓고 보세요.
+
 `output/conformance/gap-analysis.md`는 다음 구성으로 생성됩니다:
 
 | 섹션           | 내용                                             |
@@ -147,33 +149,18 @@ OpenChain 자체 인증 등록은 무료입니다. 심사 비용이나 등록 �
 :::info 충족되는 표준 요구사항
 이 실습을 완료하면 아래 요구사항이 충족됩니다.
 
-**ISO/IEC 5230**
+5230 §3.6.1, §3.6.2 · 18974 §4.4.1, §4.4.2
 
-| 항목 ID | 요구사항           | 자체인증 체크리스트                                                                                |
-| ------- | ------------------ | -------------------------------------------------------------------------------------------------- |
-| 3.6.1   | 자체 인증 선언     | Do you confirm that your program meets all the requirements of this specification?                 |
-| 3.6.2   | 인증 유효기간 관리 | Do you have a process to confirm the program meets the requirements at least once every 18 months? |
-
-**ISO/IEC 18974**
-
-| 항목 ID | 요구사항                | 자체인증 체크리스트                                                                                                   |
-| ------- | ----------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| 4.4.1   | 자체 인증 선언 (보안)   | Do you confirm that your security assurance program meets all the requirements of this specification?                 |
-| 4.4.2   | 보안 인증 유효기간 관리 | Do you have a process to confirm the security assurance program meets the requirements at least once every 18 months? |
-
+각 항목의 자체 인증 체크리스트 문항 원문과 입증자료는 [요구사항 상세 대조표](/reference/requirements-matrix)에 있습니다.
 :::
 
 ---
 
 ## 6. 두 표준 동시 인증 전략
 
-ISO/IEC 5230과 ISO/IEC 18974는 많은 요구사항을 공유합니다. 동시 인증을 목표로 한다면 다음 전략이 효율적입니다:
+공통 항목을 먼저 끝내고 ISO/IEC 5230 전용, ISO/IEC 18974 전용 순으로 진행하면 약 39%를 절감합니다. 이 키트의 챕터 구성이 그 순서를 따릅니다.
 
-- **공통 항목 12개**: 두 표준이 공유하는 항목은 한 번의 작업으로 동시에 충족됩니다.
-- **5230 전용 8개**: 라이선스 컴플라이언스에 특화된 항목을 추가로 충족합니다.
-- **18974 전용 11개**: 보안 보증에 특화된 항목을 추가로 충족합니다.
-
-권장 작업 순서: 공통 항목 먼저 완료 → ISO/IEC 5230 전용 항목 → ISO/IEC 18974 전용 항목 순으로 진행하면 약 **39% 작업 절감** 효과를 얻을 수 있습니다. 이 키트의 챕터 구성 자체가 이 순서를 따르도록 설계되어 있습니다.
+항목 수와 절감 근거는 [표준 요구사항 한눈에](../00-overview/checklist-mapping.md)에, 항목별 대조는 [요구사항 상세 대조표](/reference/requirements-matrix)에 있습니다.
 
 ---
 

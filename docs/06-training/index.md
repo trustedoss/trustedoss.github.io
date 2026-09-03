@@ -179,20 +179,9 @@ completion-tracker.md는 교육 실시 후 채우는 문서입니다. agent를 �
 :::info 충족되는 표준 요구사항
 이 실습을 완료하면 아래 요구사항이 충족됩니다.
 
-**ISO/IEC 5230**
+5230 §3.1.2, §3.1.3 · 18974 §4.1.2, §4.1.3
 
-| 항목 ID | 요구사항       | 자체인증 체크리스트                                                                                  |
-| ------- | -------------- | ---------------------------------------------------------------------------------------------------- |
-| 3.1.2   | 역량 보유 증빙 | Do you have documented evidence that each program participant has completed the necessary training?  |
-| 3.1.3   | 인식 평가      | Do you have documented evidence that your program participants are aware of your open source policy? |
-
-**ISO/IEC 18974**
-
-| 항목 ID | 요구사항            | 자체인증 체크리스트                                                                                                     |
-| ------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| 4.1.2   | 보안 역량 보유 증빙 | Do you have documented evidence that each program participant has the necessary competence for security assurance?      |
-| 4.1.3   | 보안 인식 평가      | Do you have documented evidence that your program participants are aware of your open source security assurance policy? |
-
+각 항목의 자체 인증 체크리스트 문항 원문과 입증자료는 [요구사항 상세 대조표](/reference/requirements-matrix)에 있습니다.
 :::
 
 ## 7. 생성되는 산출물

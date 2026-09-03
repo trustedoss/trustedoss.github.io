@@ -1,32 +1,21 @@
 ---
 id: iso-mapping
-title: 'ISO/IEC 18974 Mapping'
-sidebar_label: 'ISO/IEC 18974 Mapping'
+title: 'The 18974 items a pipeline satisfies'
+sidebar_label: '18974 items satisfied'
 sidebar_position: 12
 ---
 
-# ISO/IEC 18974 Mapping (DevSecOps Implementation)
+# The ISO/IEC 18974 items a pipeline satisfies
 
 This page focuses on **ISO/IEC 18974 (Open Source Security Assurance)**.
 It shows which of the standard's requirements the implementation in this DevSecOps guide satisfies.
 The license compliance standard ISO/IEC 5230 is outside the scope of this guide.
 
 :::note Canonical reference for standards mapping
-The [Checklist Mapping](/docs/overview/checklist-mapping) in the Build Your System guide is the canonical source for the **combined mapping of all 5230 and 18974 items**.
-This page covers only the **18974 items that can be implemented with DevSecOps**.
+The [Requirements Detail Matrix](/reference/requirements-matrix) is the canonical source for the per-item certification question and verification material.
+What the two standards require is summarized in [Standard requirements at a glance](/docs/overview/checklist-mapping).
+This page covers only the **18974 items a DevSecOps pipeline can implement**.
 :::
-
-## What is ISO/IEC 18974?
-
-:::info ISO/IEC 18974 is an international standard for open source security assurance
-Hosted by the OpenChain Project, it lets anyone self-certify for free.
-:::
-
-**Purpose**: To define the minimum core requirements for identifying, tracking, and responding to known security vulnerabilities (such as CVEs) in open source software. It focuses on a minimal baseline so that organizations of any size can adopt it without undue burden.
-
-**Structure**: Consists of four sections — Program Foundation (4.1), Relevant Tasks Defined and Supported (4.2), Open Source Software Content Review and Approval (4.3), and Adherence to the Specification Requirements (4.4). Each requirement is numbered in the format 4.x.x.
-
-**Certification method**: Complete and submit a self-certification checklist on the official OpenChain site. Because the organization declares conformance itself without an external audit, the process is simple and free.
 
 ---
 
@@ -46,7 +35,7 @@ The table below shows how the DevSecOps pipeline built in this guide meets the k
 :::note Clauses the pipeline does not cover
 Organizational requirements — a public channel for third-party vulnerability inquiries (§4.2.1) and
 documented roles, staffing, and budget (§4.2.2) — are covered by the governance-track deliverables,
-not by the CI pipeline. Use [Requirements at a Glance](/docs/overview/checklist-mapping) as the
+not by the CI pipeline. Use the [Requirements Detail Matrix](/reference/requirements-matrix) as the
 canonical reference for the full item list and evidence.
 :::
 
@@ -84,16 +73,10 @@ you must be able to provide evidence if an audit is requested.
 
 ---
 
-## Certification registration process
-
-1. **Self-assessment**: Self-assess the ISO/IEC 18974 items against the official OpenChain checklist and confirm that all requirements are met.
-2. **Declaration**: Once you have confirmed that all requirements are met, declare that your organization has a conforming program. Stating this in organizational policy documents is also recommended.
-3. **Registration**: Register your organization in the OpenChain Community of Conformance. This is optional but helps improve supply chain trust.
-
----
-
 ## Limitations and precautions
 
 **DevSecOps scope**: The DevSecOps implementation in this guide focuses on the open source security assurance of ISO/IEC 18974. Additional areas such as SAST, DAST, and IaC security are security-hardening activities that go beyond the standard's requirements; they are optional improvements outside the scope of certification.
 
 **ISO/IEC 5230 requires separate preparation**: The license compliance standard ISO/IEC 5230 is outside the scope of this guide. See the [Build Your System guide](/docs).
+
+**Self-certification declaration**: once you have the evidence above, follow the procedure in the [self-certification](/docs/conformance) chapter. Registration and validity management live there.

@@ -242,22 +242,9 @@ agent와 대화하며 조직 산출물을 생성합니다.
 :::info 충족되는 표준 요구사항
 이 실습을 완료하면 아래 요구사항이 충족됩니다.
 
-**ISO/IEC 5230**
+5230 §3.1.2, §3.2.1, §3.2.2 · 18974 §4.1.2, §4.2.1, §4.2.2
 
-| 항목 ID | 요구사항            | 자체인증 체크리스트                                                                               |
-| ------- | ------------------- | ------------------------------------------------------------------------------------------------- |
-| 3.1.2   | 담당자 및 역할 정의 | Do you have documented roles and responsibilities for your open source program?                   |
-| 3.2.1   | 외부 문의 수신 채널 | Do you have a publicly visible contact method for open source compliance inquiries?               |
-| 3.2.2   | 역할·책임 매트릭스  | Do you have a documented list of roles and responsibilities with personnel assigned to each role? |
-
-**ISO/IEC 18974**
-
-| 항목 ID | 요구사항                 | 자체인증 체크리스트                                                                                     |
-| ------- | ------------------------ | ------------------------------------------------------------------------------------------------------- |
-| 4.1.2   | 보안 담당자 및 역할 정의 | Do you have documented roles and responsibilities for your open source security assurance program?      |
-| 4.2.1   | 외부 취약점 신고 채널    | Do you have a publicly visible contact method for open source vulnerability reporting?                  |
-| 4.2.2   | 보안 역할·책임 매트릭스  | Do you have a process for assigning responsibilities for handling open source security vulnerabilities? |
-
+각 항목의 자체 인증 체크리스트 문항 원문과 입증자료는 [요구사항 상세 대조표](/reference/requirements-matrix)에 있습니다.
 :::
 
 ---

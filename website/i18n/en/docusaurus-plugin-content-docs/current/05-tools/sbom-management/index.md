@@ -258,15 +258,11 @@ cp output/sbom/myapp-v1.0.0-20260320.cdx.json output/sbom/myapp-latest.cdx.json
 - `output/sbom/sbom-sharing-template.md`: cover document for the recipient (includes company information placeholders)
 
 :::info Standard requirements met
-Completing this lab will meet the requirements below:
+Completing this exercise satisfies the requirements below.
 
-**ISO/IEC 18974**
+18974 §4.3.1, §4.3.2
 
-| Item ID | Requirements                        | Self-certification checklist                                                                                       |
-| ------- | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| 4.3.1   | SBOM management and updates         | Do you have a documented process for creating and maintaining a SBOM for supply software throughout its lifecycle? |
-| 4.3.2   | SBOM-based vulnerability monitoring | Do you have a process for continuously monitoring supply software components for new vulnerabilities?              |
-
+The original self-certification question and the verification material for each item are in the [Requirements Detail Matrix](/reference/requirements-matrix).
 :::
 
 ---

@@ -6,7 +6,11 @@ const sidebars: SidebarsConfig = {
     'glossary',
     'talks',
     'agents',
-    'requirements-matrix',
+    {
+      type: 'doc',
+      id: 'requirements-matrix',
+      label: '표준 대응 (정본)',
+    },
     {
       type: 'category',
       label: '산출물 Best Practice',

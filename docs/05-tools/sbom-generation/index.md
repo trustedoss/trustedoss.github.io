@@ -284,20 +284,9 @@ docker run --rm \
 :::info 충족되는 표준 요구사항
 이 실습을 완료하면 아래 요구사항이 충족됩니다.
 
-**ISO/IEC 5230**
+5230 §3.3.1, §3.3.2, §3.4.1 · 18974 §4.3.1
 
-| 항목 ID | 요구사항                 | 자체인증 체크리스트                                                                                   |
-| ------- | ------------------------ | ----------------------------------------------------------------------------------------------------- |
-| 3.3.1   | SBOM 생성 및 관리        | Do you have a process for creating and managing a bill of materials for each supply software release? |
-| 3.3.2   | 라이선스 사용 사례 처리  | Do you have a documented procedure for handling the common open source license use cases?             |
-| 3.4.1   | 컴플라이언스 산출물 준비 | Do you have a process for creating the necessary compliance artifacts?                                |
-
-**ISO/IEC 18974**
-
-| 항목 ID | 요구사항             | 자체인증 체크리스트                                                                                                |
-| ------- | -------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| 4.3.1   | 공급 소프트웨어 SBOM | Do you have a documented process for creating and maintaining a SBOM for supply software throughout its lifecycle? |
-
+각 항목의 자체 인증 체크리스트 문항 원문과 입증자료는 [요구사항 상세 대조표](/reference/requirements-matrix)에 있습니다.
 :::
 
 ---

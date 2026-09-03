@@ -91,9 +91,9 @@ Both standards use **Self-Certification**. You make the declaration directly on 
 - **Legal and practical implications**: Your open source management maturity is shared transparently with supply chain partners and can serve as evidence of compliance at delivery time.
 - **What you can do after certification**: Use the OpenChain certification logo, demonstrate supply chain transparency, and respond to customer audits with greater credibility.
 
-### How to read `checklist-mapping.md`
+### How to read the requirements map
 
-`docs/00-overview/checklist-mapping.md` is a map that organizes all 31 requirements of the two standards into a single table.
+[Standard requirements at a glance](./checklist-mapping.md) is a map that brings the two standards' requirements together. Each item is tied to the chapter that fills it and the deliverable it produces.
 
 **Item ID scheme:**
 
@@ -117,7 +117,7 @@ Take your time to understand and work through each document on your own. We reco
 :::
 
 1. Read this page (`index.md`) — get an overview of the whole journey
-2. Read `checklist-mapping.md` — understand the structure of all 31 items
+2. Read [Standard requirements at a glance](./checklist-mapping.md) — grasp what the two standards require on a single screen
 3. Read `supply-chain.md` — build background on software supply chain security
 4. Go to `docs/01-setup/` — start preparing your environment
 
@@ -126,7 +126,7 @@ Take your time to understand and work through each document on your own. We reco
 ## 4. Completion checklist
 
 - [ ] I can explain the differences and similarities between the two standards (ISO/IEC 5230 and ISO/IEC 18974)
-- [ ] I understand the G1-G4 item ID system in `checklist-mapping.md`
+- [ ] I understand the G1-G4 item ID system in the requirements map
 - [ ] I understand that the 12 common items satisfy both standards at once
 - [ ] I have confirmed my self-study route
 - [ ] I am ready to move to the next step (learn supply chain security, or go to chapter `01`)

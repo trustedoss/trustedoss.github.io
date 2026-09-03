@@ -261,13 +261,9 @@ cp output/sbom/myapp-v1.0.0-20260320.cdx.json output/sbom/myapp-latest.cdx.json
 :::info 충족되는 표준 요구사항
 이 실습을 완료하면 아래 요구사항이 충족됩니다.
 
-**ISO/IEC 18974**
+18974 §4.3.1, §4.3.2
 
-| 항목 ID | 요구사항                  | 자체인증 체크리스트                                                                                                |
-| ------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| 4.3.1   | SBOM 관리 및 갱신         | Do you have a documented process for creating and maintaining a SBOM for supply software throughout its lifecycle? |
-| 4.3.2   | SBOM 기반 취약점 모니터링 | Do you have a process for continuously monitoring supply software components for new vulnerabilities?              |
-
+각 항목의 자체 인증 체크리스트 문항 원문과 입증자료는 [요구사항 상세 대조표](/reference/requirements-matrix)에 있습니다.
 :::
 
 ---

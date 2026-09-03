@@ -132,7 +132,7 @@ This exercise assumes an environment where Claude Code is running
 in the trustedoss project root.
 
 - [ ] Did you clone the trustedoss repository? (already done in chapter 02? no need to redo it)
-      `git clone https://github.com/trustedoss/trustedoss-agents.git`
+      The clone command is in [Environment setup](../01-setup/index.md).
 - [ ] Are you in the project root in your terminal?
       `cd trustedoss-agents`
 - [ ] Is Claude Code running?
@@ -263,24 +263,11 @@ the questions again. The existing files are overwritten with the new content.
 ---
 
 :::info Standard requirements met
-Completing this exercise meets the requirements below.
+Completing this exercise satisfies the requirements below.
 
-**ISO/IEC 5230**
+5230 §3.1.1, §3.1.4, §3.5.1 · 18974 §4.1.1, §4.1.4
 
-| Item ID | Requirement                                | Self-certification checklist                                    |
-| ------- | ------------------------------------------ | --------------------------------------------------------------- |
-| 3.1.1   | Open source policy documentation           | Do you have a documented open source policy?                    |
-| 3.1.4   | Program scope definition                   | Is the scope of your open source program documented?            |
-| 3.5.1   | Open source community participation policy | Do you have a policy for open source community participation?   |
-| 3.5.1   | Open source contribution process           | Do you have a process for contributing to open source projects? |
-
-**ISO/IEC 18974**
-
-| Item ID | Requirement                             | Self-certification checklist                                            |
-| ------- | --------------------------------------- | ----------------------------------------------------------------------- |
-| 4.1.1   | Documenting a security assurance policy | Do you have a documented open source security assurance policy?         |
-| 4.1.4   | Security program scope definition       | Is the scope of your open source security assurance program documented? |
-
+The original self-certification question and the verification material for each item are in the [Requirements Detail Matrix](/reference/requirements-matrix).
 :::
 
 ---

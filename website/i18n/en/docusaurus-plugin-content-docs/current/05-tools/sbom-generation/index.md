@@ -286,22 +286,11 @@ docker run --rm \
 | Step 7 (sbom-analyst)     | `output/sbom/license-report.md` and `output/sbom/copyleft-risk.md` created        |
 
 :::info Standard requirements met
-Completing this lab will meet the requirements below:
+Completing this exercise satisfies the requirements below.
 
-**ISO/IEC 5230**
+5230 §3.3.1, §3.3.2, §3.4.1 · 18974 §4.3.1
 
-| Item ID | Requirements                      | Self-certification checklist                                                                          |
-| ------- | --------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| 3.3.1   | SBOM creation and management      | Do you have a process for creating and managing a bill of materials for each supply software release? |
-| 3.3.2   | Handling of license use cases     | Do you have a documented procedure for handling the common open source license use cases?             |
-| 3.4.1   | Preparing compliance deliverables | Do you have a process for creating the necessary compliance artifacts?                                |
-
-**ISO/IEC 18974**
-
-| Item ID | Requirements           | Self-certification checklist                                                                                       |
-| ------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| 4.3.1   | Supplied Software SBOM | Do you have a documented process for creating and maintaining a SBOM for supply software throughout its lifecycle? |
-
+The original self-certification question and the verification material for each item are in the [Requirements Detail Matrix](/reference/requirements-matrix).
 :::
 
 ---

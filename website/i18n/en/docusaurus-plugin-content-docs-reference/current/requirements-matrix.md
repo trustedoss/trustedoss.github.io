@@ -47,6 +47,9 @@ Without a policy you cannot establish systematic compliance; it is the basis for
 | 5230 §3.1.1.1 · 18974 §4.1.1.1 | Documented open source policy  | `output/policy/oss-policy.md`   |
 | 5230 §3.1.1.2 · 18974 §4.1.1.2 | Policy dissemination procedure | `output/training/curriculum.md` |
 
+- **Certification question**
+  - 5230 §3.1.1: "Do you have a documented open source policy?"
+  - 18974 §4.1.1: "Do you have a documented open source security assurance policy?"
 - **Agent in charge**: `03-policy-generator`
 
 ---
@@ -62,6 +65,8 @@ Without a policy you cannot establish systematic compliance; it is the basis for
 | 18974 §4.1.1.1 | Documented security assurance policy (including review process) | `output/policy/oss-policy.md`        |
 | 18974 §4.1.2.5 | Evidence of periodic review and change                          | `output/conformance/gap-analysis.md` |
 
+- **Certification question**
+  - 18974 §4.1.1: "Do you have a documented open source security assurance policy?"
 - **Agent in charge**: `03-policy-generator`
 
 ---
@@ -85,6 +90,9 @@ Without clear ownership, decision-making stalls.
 At first certification there is no review history, so these are treated as partially satisfied. Record the review-cycle plan and owner assignment in gap-analysis.md, and satisfy them with actual history at the 18-month renewal.
 :::
 
+- **Certification question**
+  - 5230 §3.1.2: "Do you have documented roles and responsibilities for your open source program?"
+  - 18974 §4.1.2: "Do you have documented roles and responsibilities for your open source security assurance program?"
 - **Agent in charge**: `02-organization-designer`
 
 ---
@@ -100,6 +108,9 @@ Build and continuously maintain staff competency; both standards require evidenc
 | 5230 §3.1.2.1 · 18974 §4.1.2.1 | List of roles and responsibilities | `output/organization/raci-matrix.md`    |
 | 5230 §3.1.2.3 · 18974 §4.1.2.4 | Evidence of competency assessment  | `output/training/completion-tracker.md` |
 
+- **Certification question**
+  - 5230 §3.1.2: "Do you have documented evidence that each program participant has completed the necessary training?"
+  - 18974 §4.1.2: "Do you have documented evidence that each program participant has the necessary competence for security assurance?"
 - **Agent in charge**: `06-training-manager`
 
 ---
@@ -120,6 +131,9 @@ Clarifying the target software and products enables efficient resource allocatio
 There is no improvement history at first certification. Record the initial gap analysis run itself in gap-analysis.md as one audit record; at the 18-month renewal, two or more records will satisfy this item.
 :::
 
+- **Certification question**
+  - 5230 §3.1.4: "Is the scope of your open source program documented?"
+  - 18974 §4.1.4: "Is the scope of your open source security assurance program documented?"
 - **Agent in charge**: `03-policy-generator`
 
 ---
@@ -134,6 +148,8 @@ Prevent license violations before distribution; covers obligations such as copyl
 | ------------- | ----------------------------------------------------------------------------------------------------------- | ---------------------------------- |
 | 5230 §3.1.5.1 | Procedures for reviewing and recording the obligations, restrictions, and rights of each identified license | `output/process/usage-approval.md` |
 
+- **Certification question**
+  - 5230 §3.1.5: "Do you have a documented procedure to review and record the obligations, restrictions, and rights granted by each identified license?"
 - **Agent in charge**: `04-process-designer`
 
 ---
@@ -148,6 +164,9 @@ Document, per person and role, that each participant understands the policy, the
 | ------------------------------ | --------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
 | 5230 §3.1.3.1 · 18974 §4.1.3.1 | Evidence assessing participant awareness of the program goals, ways to contribute, and impact of non-compliance | `output/training/completion-tracker.md` |
 
+- **Certification question**
+  - 5230 §3.1.3: "Do you have documented evidence that your program participants are aware of your open source policy?"
+  - 18974 §4.1.3: "Do you have documented evidence that your program participants are aware of your open source security assurance policy?"
 - **Agent in charge**: `06-training-manager`
 
 ---
@@ -171,6 +190,9 @@ Clarify who performs, approves, and reviews open source activities; prevent gaps
 | 5230 §3.2.2.5                  | Procedure for reviewing and correcting license non-compliance cases  | `output/process/usage-approval.md`, `output/process/distribution-checklist.md` |
 | 18974 §4.2.2.3                 | Identification of the expertise available to resolve vulnerabilities | `output/organization/role-definition.md`                                       |
 
+- **Certification question**
+  - 5230 §3.2.2: "Do you have a documented list of roles and responsibilities with personnel assigned to each role?"
+  - 18974 §4.2.2: "Do you have a process for assigning responsibilities for handling open source security vulnerabilities?"
 - **Agent in charge**: `02-organization-designer`
 
 ---
@@ -186,6 +208,9 @@ An official channel is required so third parties can request fulfillment of lice
 | 5230 §3.2.1.1 · 18974 §4.2.1.1 | Public channel through which third parties can inquire | `output/organization/role-definition.md`                                         |
 | 5230 §3.2.1.2 · 18974 §4.2.1.2 | Internal response procedure for third-party inquiries  | `output/process/inquiry-response.md`, `output/process/vulnerability-response.md` |
 
+- **Certification question**
+  - 5230 §3.2.1: "Do you have a publicly visible contact method for open source compliance inquiries?"
+  - 18974 §4.2.1: "Do you have a publicly visible contact method for open source vulnerability reporting?"
 - **Agent in charge**: `02-organization-designer`, `04-process-designer`
 
 ---
@@ -200,6 +225,9 @@ Compliance is only effective when every member knows and follows the policy.
 | ------------------------------ | ---------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
 | 5230 §3.1.3.1 · 18974 §4.1.3.1 | Evidence of participant awareness assessment (including goals, contribution, and impact of non-compliance) | `output/training/resources.md`, `output/training/completion-tracker.md` |
 
+- **Certification question**
+  - 5230 §3.1.3: "Do you have documented evidence that your program participants are aware of your open source policy?"
+  - 18974 §4.1.3: "Do you have documented evidence that your program participants are aware of your open source security assurance policy?"
 - **Agent in charge**: `06-training-manager`
 
 ---
@@ -220,6 +248,9 @@ Identify the license status of each component from the SBOM; flag copyleft risk.
 | 5230 §3.3.1.2 | Component records (evidence of procedural compliance)                             | `output/sbom/[project].cdx.json`                                |
 | 5230 §3.3.2.1 | Procedure for handling license use cases                                          | `output/sbom/license-report.md`, `output/sbom/copyleft-risk.md` |
 
+- **Certification question**
+  - 5230 §3.3.1: "Do you have a process for creating and managing a bill of materials for each supply software release?"
+  - 5230 §3.3.2: "Do you have a documented procedure for handling the common open source license use cases for the components in your supply software?"
 - **Agent in charge**: `05-sbom-analyst`
 
 ---
@@ -234,6 +265,8 @@ Fulfill copyleft license obligations such as GPL, LGPL, and AGPL; maintain an Ap
 | ------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
 | 5230 §3.3.2.1 | Procedure for handling the license use cases of each open source component | `output/process/distribution-checklist.md`, `output/policy/license-allowlist.md` |
 
+- **Certification question**
+  - 5230 §3.3.2: "Do you have a documented procedure for handling the common open source license use cases for the components in your supply software?"
 - **Agent in charge**: `04-process-designer`
 
 ---
@@ -249,6 +282,8 @@ Obligation to provide, at distribution time, the files that demonstrate fulfillm
 | 5230 §3.4.1.1 | Procedure for preparing and distributing compliance artifacts           | `output/sbom/license-report.md` |
 | 5230 §3.4.1.2 | Procedure for archiving compliance artifacts and records of fulfillment | `output/sbom/license-report.md` |
 
+- **Certification question**
+  - 5230 §3.4.1: "Do you have a process for creating the necessary compliance artifacts?"
 - **Agent in charge**: `05-sbom-analyst`
 
 ---
@@ -264,6 +299,8 @@ Prevents IP leakage and license-contamination risk when contributing upstream.
 | 5230 §3.5.1.1 | Open source contribution policy         | `output/policy/oss-policy.md`   |
 | 5230 §3.5.1.3 | Contribution policy awareness procedure | `output/training/curriculum.md` |
 
+- **Certification question**
+  - 5230 §3.5.1: "Do you have a policy for open source community participation?"
 - **Agent in charge**: `03-policy-generator`
 
 ---
@@ -279,6 +316,8 @@ Verify before distribution that all license obligations (source-code disclosure,
 | 5230 §3.4.1.1 | Procedure for preparing and distributing compliance artifacts           | `output/process/distribution-checklist.md` |
 | 5230 §3.4.1.2 | Procedure for archiving compliance artifacts and records of fulfillment | `output/process/distribution-checklist.md` |
 
+- **Certification question**
+  - 5230 §3.4.1: "Do you have a process to ensure compliance artifacts accompany each distribution?"
 - **Agent in charge**: `04-process-designer`
 
 ---
@@ -293,6 +332,8 @@ Concrete procedures for implementing the policy (G3L.4): the contribution review
 | ------------- | --------------------------------------------- | ------------------------------------------------------------------------------------- |
 | 5230 §3.5.1.2 | Open source contribution management procedure | `output/policy/oss-policy.md`, `output/process/contribution-process.md` (conditional) |
 
+- **Certification question**
+  - 5230 §3.5.1: "Do you have a process for contributing to open source projects?"
 - **Agent in charge**: `03-policy-generator`, `04-process-designer` (conditional)
 
 ---
@@ -313,6 +354,8 @@ Failing to identify CVEs invites security incidents and legal liability; this is
 | 18974 §4.3.2.1 | Vulnerability detection and resolution procedure                                     | `output/vulnerability/cve-report.md`       |
 | 18974 §4.3.2.2 | Record of vulnerabilities and actions taken                                          | `output/vulnerability/cve-report.md`       |
 
+- **Certification question**
+  - 18974 §4.3.2: "Do you have a process for identifying, tracking, and remediating known vulnerabilities in supply software?"
 - **Agent in charge**: `05-vulnerability-analyst`
 
 ---
@@ -329,6 +372,8 @@ Continuously track identified vulnerabilities until remediation is complete; pre
 | 18974 §4.3.2.1 | Vulnerability detection and resolution procedure                           | `output/vulnerability/cve-report.md`       |
 | 18974 §4.3.2.2 | Record of vulnerabilities and actions taken                                | `output/vulnerability/cve-report.md`       |
 
+- **Certification question**
+  - 18974 §4.3.2: "Do you have a process for identifying, tracking, and remediating known vulnerabilities in supply software?"
 - **Agent in charge**: `05-vulnerability-analyst`
 
 ---
@@ -344,6 +389,8 @@ Prioritize by CVSS score; allocate resources efficiently.
 | 18974 §4.3.2.1 | Vulnerability handling procedure, including risk/impact score assignment | `output/vulnerability/cve-report.md` |
 | 18974 §4.3.2.2 | Record of identified vulnerabilities and risk scores                     | `output/vulnerability/cve-report.md` |
 
+- **Certification question**
+  - 18974 §4.3.2: "Do you have a process for identifying, tracking, and remediating known vulnerabilities in supply software?"
 - **Agent in charge**: `05-vulnerability-analyst`
 
 ---
@@ -360,6 +407,8 @@ A system for rapidly patching, upgrading, or mitigating discovered vulnerabiliti
 | 18974 §4.3.2.1 | Vulnerability resolution procedure                                                    | `output/vulnerability/remediation-plan.md` |
 | 18974 §4.3.2.2 | Record of actions taken                                                               | `output/vulnerability/remediation-plan.md` |
 
+- **Certification question**
+  - 18974 §4.1.5: "Do you have a documented procedure for handling known vulnerabilities in open source components?"
 - **Agent in charge**: `05-vulnerability-analyst`
 
 ---
@@ -375,6 +424,8 @@ Formal procedures for delivering security deliverables such as the SBOM and CVE 
 | 18974 §4.3.1.1 | Procedure for continuously recording the SBOM throughout the supplied software life cycle | `output/sbom/sbom-sharing-template.md` |
 | 18974 §4.3.1.2 | Component records (evidence of procedural compliance)                                     | `output/sbom/[project].cdx.json`       |
 
+- **Certification question**
+  - 18974 §4.3.1: "Do you have a documented process for creating and maintaining a SBOM for supply software throughout its lifecycle?"
 - **Agent in charge**: `05-sbom-management`
 
 ---
@@ -390,6 +441,8 @@ Procedure to verify that the response, patch, and mitigation actions for identif
 | 18974 §4.3.2.1 | Procedure including verification that vulnerability resolution is complete | `output/vulnerability/remediation-plan.md` |
 | 18974 §4.3.2.2 | Record of completed actions                                                | `output/vulnerability/remediation-plan.md` |
 
+- **Certification question**
+  - 18974 §4.3.2: "Do you have a process for identifying, tracking, and remediating known vulnerabilities in supply software?"
 - **Agent in charge**: `05-vulnerability-analyst`
 
 ---
@@ -409,6 +462,9 @@ The starting point for component transparency; the input for both license and se
 | 5230 §3.3.1.1 · 18974 §4.3.1.1 | Procedure for identifying, tracking, reviewing, approving, and archiving the SBOM | `output/sbom/sbom-commands.sh`   |
 | 5230 §3.3.1.2 · 18974 §4.3.1.2 | Component records (evidence of procedural compliance)                             | `output/sbom/[project].cdx.json` |
 
+- **Certification question**
+  - 5230 §3.3.1: "Do you have a process for creating and managing a bill of materials for each supply software release?"
+  - 18974 §4.3.1: "Do you have a documented process for creating and maintaining a SBOM for supply software throughout its lifecycle?"
 - **Agent in charge**: `05-sbom-guide`
 
 ---
@@ -424,6 +480,9 @@ Keep the SBOM current on every release and update; integrate it with configurati
 | 5230 §3.3.1.1 · 18974 §4.3.1.1 | SBOM life cycle management procedure | `output/sbom/sbom-management-plan.md` |
 | 5230 §3.3.1.2 · 18974 §4.3.1.2 | Up-to-date component records         | `output/sbom/[project].cdx.json`      |
 
+- **Certification question**
+  - 5230 §3.3.1: "Do you have a process for creating and managing a bill of materials for each supply software release?"
+  - 18974 §4.3.1: "Do you have a documented process for creating and maintaining a SBOM for supply software throughout its lifecycle?"
 - **Agent in charge**: `05-sbom-management`
 
 ---
@@ -439,6 +498,8 @@ Pass transparency down the supply chain; addresses the CISA SBOM minimum element
 | 18974 §4.3.1.1 | Life cycle recording procedure, including sharing the SBOM with supply chain partners | `output/sbom/sbom-sharing-template.md` |
 | 18974 §4.3.1.2 | Component records                                                                     | `output/sbom/[project].cdx.json`       |
 
+- **Certification question**
+  - 18974 §4.3.1: "Do you have a documented process for creating and maintaining a SBOM for supply software throughout its lifecycle?"
 - **Agent in charge**: `05-sbom-management`
 
 ---
@@ -454,6 +515,8 @@ When a new CVE is disclosed, immediately identify which supply chain components 
 | 18974 §4.3.2.1 | Response procedure, including methods for analyzing new vulnerabilities after release | `output/sbom/sbom-management-plan.md` |
 | 18974 §4.3.2.2 | Record of vulnerabilities and actions taken                                           | `output/sbom/sbom-management-plan.md` |
 
+- **Certification question**
+  - 18974 §4.3.2: "Do you have a process for continuously monitoring supply software components for new vulnerabilities?"
 - **Agent in charge**: `05-sbom-management`
 
 ---
@@ -472,6 +535,8 @@ Official declaration of license compliance capability; earns the trust of supply
 | ------------- | ------------------------------------------------------------------------------------------- | ----------------------------------------- |
 | 5230 §3.6.1.1 | Document confirming that the program in §3.1.4 meets all requirements of this specification | `output/conformance/declaration-draft.md` |
 
+- **Certification question**
+  - 5230 §3.6.1: "Do you confirm that your program meets all the requirements of this specification?"
 - **Agent in charge**: `07-conformance-preparer`
 
 ---
@@ -486,6 +551,8 @@ Official declaration of security assurance capability; evidence for EO 14028 and
 | -------------- | ------------------------------------------------------------------------------------------- | ----------------------------------------- |
 | 18974 §4.4.1.1 | Document confirming that the program in §4.1.4 meets all requirements of this specification | `output/conformance/declaration-draft.md` |
 
+- **Certification question**
+  - 18974 §4.4.1: "Do you confirm that your security assurance program meets all the requirements of this specification?"
 - **Agent in charge**: `07-conformance-preparer`
 
 ---
@@ -500,6 +567,9 @@ Both standards require re-declaration every 18 months; this avoids automatic exp
 | ------------------------------ | ------------------------------------------------------------------------------------------------- | ---------------------------------------- |
 | 5230 §3.6.2.1 · 18974 §4.4.2.1 | Document confirming that all requirements have been met within 18 months of obtaining conformance | `output/conformance/submission-guide.md` |
 
+- **Certification question**
+  - 5230 §3.6.2: "Do you have a process to confirm the program meets the requirements at least once every 18 months?"
+  - 18974 §4.4.2: "Do you have a process to confirm the security assurance program meets the requirements at least once every 18 months?"
 - **Agent in charge**: `07-conformance-preparer`
 
 ---
@@ -514,6 +584,9 @@ Evolve the system as the technical and regulatory environment changes; required 
 | ------------------------------ | ----------------------------------------------------------------- | ------------------------------------ |
 | 5230 §3.6.2.1 · 18974 §4.4.2.1 | Document confirming re-satisfaction of requirements after renewal | `output/conformance/gap-analysis.md` |
 
+- **Certification question**
+  - 5230 §3.6.2: "Do you have a process to confirm the program meets the requirements at least once every 18 months?"
+  - 18974 §4.4.2: "Do you have a process to confirm the security assurance program meets the requirements at least once every 18 months?"
 - **Agent in charge**: `07-conformance-preparer`
 
 ---
@@ -529,6 +602,9 @@ Confirm before distribution that each identified vulnerability has been remediat
 | 18974 §4.4.1.1 | Document confirming that distributed software fully meets the requirements | `output/conformance/declaration-draft.md` |
 | 18974 §4.3.2.2 | Record of completed vulnerability actions                                  | `output/vulnerability/cve-report.md`      |
 
+- **Certification question**
+  - 18974 §4.4.1: "Do you confirm that your security assurance program meets all the requirements of this specification?"
+  - 18974 §4.3.2: "Do you have a process for identifying, tracking, and remediating known vulnerabilities in supply software?"
 - **Agent in charge**: `07-conformance-preparer`
 
 ---

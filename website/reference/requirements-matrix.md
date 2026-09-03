@@ -3,7 +3,7 @@ id: requirements-matrix
 title: 요구사항 상세 대조표
 sidebar_label: 표준 대응 (정본)
 sidebar_position: 5
-description: 'ISO/IEC 5230과 18974의 31개 요구사항을 항목별로 펼쳐 인증 질문, 입증자료, 산출물 파일, 담당 에이전트까지 잇는 정본 대조표.'
+description: 'ISO/IEC 5230과 18974의 31개 요구사항을 항목별로 펼쳐 자체 인증 체크리스트 문항, 입증자료, 산출물 파일, 담당 에이전트까지 잇는 정본 대조표.'
 ---
 
 # 요구사항 상세 대조표
@@ -47,6 +47,9 @@ description: 'ISO/IEC 5230과 18974의 31개 요구사항을 항목별로 펼쳐
 | 5230 §3.1.1.1 · 18974 §4.1.1.1 | 문서화된 오픈소스 정책 | `output/policy/oss-policy.md`   |
 | 5230 §3.1.1.2 · 18974 §4.1.1.2 | 정책 전파 절차         | `output/training/curriculum.md` |
 
+- **인증 질문**
+  - 5230 §3.1.1: "Do you have a documented open source policy?"
+  - 18974 §4.1.1: "Do you have a documented open source security assurance policy?"
 - **담당 Agent**: `03-policy-generator`
 
 ---
@@ -62,6 +65,8 @@ description: 'ISO/IEC 5230과 18974의 31개 요구사항을 항목별로 펼쳐
 | 18974 §4.1.1.1 | 문서화된 보안 보증 정책 (검토 프로세스 포함) | `output/policy/oss-policy.md`        |
 | 18974 §4.1.2.5 | 주기적 검토 및 변경 증거                     | `output/conformance/gap-analysis.md` |
 
+- **인증 질문**
+  - 18974 §4.1.1: "Do you have a documented open source security assurance policy?"
 - **담당 Agent**: `03-policy-generator`
 
 ---
@@ -85,6 +90,9 @@ description: 'ISO/IEC 5230과 18974의 31개 요구사항을 항목별로 펼쳐
 처음 인증할 때는 검토 이력이 없으므로 부분충족으로 처리합니다. gap-analysis.md에 "검토 주기 계획"과 "담당자 지정"을 기록하고, 18개월 후 갱신 시 실제 이력으로 충족합니다.
 :::
 
+- **인증 질문**
+  - 5230 §3.1.2: "Do you have documented roles and responsibilities for your open source program?"
+  - 18974 §4.1.2: "Do you have documented roles and responsibilities for your open source security assurance program?"
 - **담당 Agent**: `02-organization-designer`
 
 ---
@@ -100,6 +108,9 @@ description: 'ISO/IEC 5230과 18974의 31개 요구사항을 항목별로 펼쳐
 | 5230 §3.1.2.1 · 18974 §4.1.2.1 | 역할과 책임 목록 | `output/organization/raci-matrix.md`    |
 | 5230 §3.1.2.3 · 18974 §4.1.2.4 | 역량 평가 증거   | `output/training/completion-tracker.md` |
 
+- **인증 질문**
+  - 5230 §3.1.2: "Do you have documented evidence that each program participant has completed the necessary training?"
+  - 18974 §4.1.2: "Do you have documented evidence that each program participant has the necessary competence for security assurance?"
 - **담당 Agent**: `06-training-manager`
 
 ---
@@ -120,6 +131,9 @@ description: 'ISO/IEC 5230과 18974의 31개 요구사항을 항목별로 펼쳐
 처음 인증할 때는 개선 이력이 없습니다. 초기 갭 분석 실행 자체를 1회 감사 이력으로 gap-analysis.md에 기록하고, 18개월 후 갱신 시 2회 이상 이력으로 충족합니다.
 :::
 
+- **인증 질문**
+  - 5230 §3.1.4: "Is the scope of your open source program documented?"
+  - 18974 §4.1.4: "Is the scope of your open source security assurance program documented?"
 - **담당 Agent**: `03-policy-generator`
 
 ---
@@ -134,6 +148,8 @@ description: 'ISO/IEC 5230과 18974의 31개 요구사항을 항목별로 펼쳐
 | ------------- | -------------------------------------------------- | ---------------------------------- |
 | 5230 §3.1.5.1 | 식별된 라이선스별 의무·제한·권리 검토 및 기록 절차 | `output/process/usage-approval.md` |
 
+- **인증 질문**
+  - 5230 §3.1.5: "Do you have a documented procedure to review and record the obligations, restrictions, and rights granted by each identified license?"
 - **담당 Agent**: `04-process-designer`
 
 ---
@@ -148,6 +164,9 @@ description: 'ISO/IEC 5230과 18974의 31개 요구사항을 항목별로 펼쳐
 | ------------------------------ | ---------------------------------------------------------------- | --------------------------------------- |
 | 5230 §3.1.3.1 · 18974 §4.1.3.1 | 프로그램 목표·기여 방법·비준수 영향에 대한 참여자 인식 평가 증거 | `output/training/completion-tracker.md` |
 
+- **인증 질문**
+  - 5230 §3.1.3: "Do you have documented evidence that your program participants are aware of your open source policy?"
+  - 18974 §4.1.3: "Do you have documented evidence that your program participants are aware of your open source security assurance policy?"
 - **담당 Agent**: `06-training-manager`
 
 ---
@@ -171,6 +190,9 @@ description: 'ISO/IEC 5230과 18974의 31개 요구사항을 항목별로 펼쳐
 | 5230 §3.2.2.5                  | 라이선스 미준수 사례 검토 및 수정 절차     | `output/process/usage-approval.md`, `output/process/distribution-checklist.md` |
 | 18974 §4.2.2.3                 | 취약점 해결을 위해 이용 가능한 전문성 명시 | `output/organization/role-definition.md`                                       |
 
+- **인증 질문**
+  - 5230 §3.2.2: "Do you have a documented list of roles and responsibilities with personnel assigned to each role?"
+  - 18974 §4.2.2: "Do you have a process for assigning responsibilities for handling open source security vulnerabilities?"
 - **담당 Agent**: `02-organization-designer`
 
 ---
@@ -186,6 +208,9 @@ description: 'ISO/IEC 5230과 18974의 31개 요구사항을 항목별로 펼쳐
 | 5230 §3.2.1.1 · 18974 §4.2.1.1 | 제3자가 문의할 수 있는 공개 채널 | `output/organization/role-definition.md`                                         |
 | 5230 §3.2.1.2 · 18974 §4.2.1.2 | 제3자 문의 내부 대응 절차        | `output/process/inquiry-response.md`, `output/process/vulnerability-response.md` |
 
+- **인증 질문**
+  - 5230 §3.2.1: "Do you have a publicly visible contact method for open source compliance inquiries?"
+  - 18974 §4.2.1: "Do you have a publicly visible contact method for open source vulnerability reporting?"
 - **담당 Agent**: `02-organization-designer`, `04-process-designer`
 
 ---
@@ -200,6 +225,9 @@ description: 'ISO/IEC 5230과 18974의 31개 요구사항을 항목별로 펼쳐
 | ------------------------------ | -------------------------------------------------- | ----------------------------------------------------------------------- |
 | 5230 §3.1.3.1 · 18974 §4.1.3.1 | 참여자 인식 평가 증거 (목표·기여·비준수 영향 포함) | `output/training/resources.md`, `output/training/completion-tracker.md` |
 
+- **인증 질문**
+  - 5230 §3.1.3: "Do you have documented evidence that your program participants are aware of your open source policy?"
+  - 18974 §4.1.3: "Do you have documented evidence that your program participants are aware of your open source security assurance policy?"
 - **담당 Agent**: `06-training-manager`
 
 ---
@@ -220,6 +248,9 @@ SBOM 기반 컴포넌트별 라이선스 현황 파악; Copyleft 위험 식별
 | 5230 §3.3.1.2 | 컴포넌트 기록 (절차 준수 증빙)     | `output/sbom/[project].cdx.json`                                |
 | 5230 §3.3.2.1 | 라이선스 사용 사례 처리 절차       | `output/sbom/license-report.md`, `output/sbom/copyleft-risk.md` |
 
+- **인증 질문**
+  - 5230 §3.3.1: "Do you have a process for creating and managing a bill of materials for each supply software release?"
+  - 5230 §3.3.2: "Do you have a documented procedure for handling the common open source license use cases for the components in your supply software?"
 - **담당 Agent**: `05-sbom-analyst`
 
 ---
@@ -234,6 +265,8 @@ GPL·LGPL·AGPL 등 Copyleft 라이선스 의무 이행; 허용 라이선스 목
 | ------------- | ------------------------------------------------ | -------------------------------------------------------------------------------- |
 | 5230 §3.3.2.1 | 오픈소스 컴포넌트별 라이선스 사용 사례 처리 절차 | `output/process/distribution-checklist.md`, `output/policy/license-allowlist.md` |
 
+- **인증 질문**
+  - 5230 §3.3.2: "Do you have a documented procedure for handling the common open source license use cases for the components in your supply software?"
 - **담당 Agent**: `04-process-designer`
 
 ---
@@ -249,6 +282,8 @@ GPL·LGPL·AGPL 등 Copyleft 라이선스 의무 이행; 허용 라이선스 목
 | 5230 §3.4.1.1 | 컴플라이언스 산출물 준비 및 배포 절차      | `output/sbom/license-report.md` |
 | 5230 §3.4.1.2 | 컴플라이언스 산출물 보관 절차 및 이행 기록 | `output/sbom/license-report.md` |
 
+- **인증 질문**
+  - 5230 §3.4.1: "Do you have a process for creating the necessary compliance artifacts?"
 - **담당 Agent**: `05-sbom-analyst`
 
 ---
@@ -264,6 +299,8 @@ GPL·LGPL·AGPL 등 Copyleft 라이선스 의무 이행; 허용 라이선스 목
 | 5230 §3.5.1.1 | 오픈소스 기여 정책  | `output/policy/oss-policy.md`   |
 | 5230 §3.5.1.3 | 기여 정책 인식 절차 | `output/training/curriculum.md` |
 
+- **인증 질문**
+  - 5230 §3.5.1: "Do you have a policy for open source community participation?"
 - **담당 Agent**: `03-policy-generator`
 
 ---
@@ -279,6 +316,8 @@ GPL·LGPL·AGPL 등 Copyleft 라이선스 의무 이행; 허용 라이선스 목
 | 5230 §3.4.1.1 | 컴플라이언스 산출물 준비 및 배포 절차      | `output/process/distribution-checklist.md` |
 | 5230 §3.4.1.2 | 컴플라이언스 산출물 보관 절차 및 이행 기록 | `output/process/distribution-checklist.md` |
 
+- **인증 질문**
+  - 5230 §3.4.1: "Do you have a process to ensure compliance artifacts accompany each distribution?"
 - **담당 Agent**: `04-process-designer`
 
 ---
@@ -293,6 +332,8 @@ GPL·LGPL·AGPL 등 Copyleft 라이선스 의무 이행; 허용 라이선스 목
 | ------------- | ----------------------- | -------------------------------------------------------------------------------- |
 | 5230 §3.5.1.2 | 오픈소스 기여 관리 절차 | `output/policy/oss-policy.md`, `output/process/contribution-process.md` (조건부) |
 
+- **인증 질문**
+  - 5230 §3.5.1: "Do you have a process for contributing to open source projects?"
 - **담당 Agent**: `03-policy-generator`, `04-process-designer` (조건부)
 
 ---
@@ -313,6 +354,8 @@ CVE 취약점 미파악 시 보안 사고·법적 책임 위험; EO 14028 요구
 | 18974 §4.3.2.1 | 취약점 탐지 및 해결 절차                        | `output/vulnerability/cve-report.md`       |
 | 18974 §4.3.2.2 | 취약점 및 취해진 조치 기록                      | `output/vulnerability/cve-report.md`       |
 
+- **인증 질문**
+  - 18974 §4.3.2: "Do you have a process for identifying, tracking, and remediating known vulnerabilities in supply software?"
 - **담당 Agent**: `05-vulnerability-analyst`
 
 ---
@@ -329,6 +372,8 @@ CVE 취약점 미파악 시 보안 사고·법적 책임 위험; EO 14028 요구
 | 18974 §4.3.2.1 | 취약점 탐지 및 해결 절차                      | `output/vulnerability/cve-report.md`       |
 | 18974 §4.3.2.2 | 취약점 및 취해진 조치 기록                    | `output/vulnerability/cve-report.md`       |
 
+- **인증 질문**
+  - 18974 §4.3.2: "Do you have a process for identifying, tracking, and remediating known vulnerabilities in supply software?"
 - **담당 Agent**: `05-vulnerability-analyst`
 
 ---
@@ -344,6 +389,8 @@ CVSS 점수 기반 우선순위 결정; 자원 배분 효율화
 | 18974 §4.3.2.1 | 위험/영향 점수 할당을 포함한 취약점 처리 절차 | `output/vulnerability/cve-report.md` |
 | 18974 §4.3.2.2 | 식별된 취약점 및 위험 점수 기록               | `output/vulnerability/cve-report.md` |
 
+- **인증 질문**
+  - 18974 §4.3.2: "Do you have a process for identifying, tracking, and remediating known vulnerabilities in supply software?"
 - **담당 Agent**: `05-vulnerability-analyst`
 
 ---
@@ -360,6 +407,8 @@ CVSS 점수 기반 우선순위 결정; 자원 배분 효율화
 | 18974 §4.3.2.1 | 취약점 해결 절차                                     | `output/vulnerability/remediation-plan.md` |
 | 18974 §4.3.2.2 | 취해진 조치 기록                                     | `output/vulnerability/remediation-plan.md` |
 
+- **인증 질문**
+  - 18974 §4.1.5: "Do you have a documented procedure for handling known vulnerabilities in open source components?"
 - **담당 Agent**: `05-vulnerability-analyst`
 
 ---
@@ -375,6 +424,8 @@ SBOM과 CVE 리포트 등 보안 산출물을 공급망 파트너와 고객에�
 | 18974 §4.3.1.1 | 공급 소프트웨어 수명주기 동안 SBOM 지속 기록 절차 | `output/sbom/sbom-sharing-template.md` |
 | 18974 §4.3.1.2 | 컴포넌트 기록 (절차 준수 증빙)                    | `output/sbom/[project].cdx.json`       |
 
+- **인증 질문**
+  - 18974 §4.3.1: "Do you have a documented process for creating and maintaining a SBOM for supply software throughout its lifecycle?"
 - **담당 Agent**: `05-sbom-management`
 
 ---
@@ -390,6 +441,8 @@ SBOM과 CVE 리포트 등 보안 산출물을 공급망 파트너와 고객에�
 | 18974 §4.3.2.1 | 취약점 해결 완료 검증을 포함한 절차 | `output/vulnerability/remediation-plan.md` |
 | 18974 §4.3.2.2 | 조치 완료 기록                      | `output/vulnerability/remediation-plan.md` |
 
+- **인증 질문**
+  - 18974 §4.3.2: "Do you have a process for identifying, tracking, and remediating known vulnerabilities in supply software?"
 - **담당 Agent**: `05-vulnerability-analyst`
 
 ---
@@ -409,6 +462,9 @@ SBOM과 CVE 리포트 등 보안 산출물을 공급망 파트너와 고객에�
 | 5230 §3.3.1.1 · 18974 §4.3.1.1 | SBOM 식별·추적·검토·승인·보관 절차 | `output/sbom/sbom-commands.sh`   |
 | 5230 §3.3.1.2 · 18974 §4.3.1.2 | 컴포넌트 기록 (절차 준수 증빙)     | `output/sbom/[project].cdx.json` |
 
+- **인증 질문**
+  - 5230 §3.3.1: "Do you have a process for creating and managing a bill of materials for each supply software release?"
+  - 18974 §4.3.1: "Do you have a documented process for creating and maintaining a SBOM for supply software throughout its lifecycle?"
 - **담당 Agent**: `05-sbom-guide`
 
 ---
@@ -424,6 +480,9 @@ SBOM과 CVE 리포트 등 보안 산출물을 공급망 파트너와 고객에�
 | 5230 §3.3.1.1 · 18974 §4.3.1.1 | SBOM 수명주기 관리 절차 | `output/sbom/sbom-management-plan.md` |
 | 5230 §3.3.1.2 · 18974 §4.3.1.2 | 최신 컴포넌트 기록      | `output/sbom/[project].cdx.json`      |
 
+- **인증 질문**
+  - 5230 §3.3.1: "Do you have a process for creating and managing a bill of materials for each supply software release?"
+  - 18974 §4.3.1: "Do you have a documented process for creating and maintaining a SBOM for supply software throughout its lifecycle?"
 - **담당 Agent**: `05-sbom-management`
 
 ---
@@ -439,6 +498,8 @@ SBOM과 CVE 리포트 등 보안 산출물을 공급망 파트너와 고객에�
 | 18974 §4.3.1.1 | 공급망 파트너 대상 SBOM 공유를 포함한 수명주기 기록 절차 | `output/sbom/sbom-sharing-template.md` |
 | 18974 §4.3.1.2 | 컴포넌트 기록                                            | `output/sbom/[project].cdx.json`       |
 
+- **인증 질문**
+  - 18974 §4.3.1: "Do you have a documented process for creating and maintaining a SBOM for supply software throughout its lifecycle?"
 - **담당 Agent**: `05-sbom-management`
 
 ---
@@ -454,6 +515,8 @@ SBOM과 CVE 리포트 등 보안 산출물을 공급망 파트너와 고객에�
 | 18974 §4.3.2.1 | 출시 후 신규 취약점 분석 방법을 포함한 대응 절차 | `output/sbom/sbom-management-plan.md` |
 | 18974 §4.3.2.2 | 취약점 및 조치 기록                              | `output/sbom/sbom-management-plan.md` |
 
+- **인증 질문**
+  - 18974 §4.3.2: "Do you have a process for continuously monitoring supply software components for new vulnerabilities?"
 - **담당 Agent**: `05-sbom-management`
 
 ---
@@ -472,6 +535,8 @@ SBOM과 CVE 리포트 등 보안 산출물을 공급망 파트너와 고객에�
 | ------------- | -------------------------------------------------------- | ----------------------------------------- |
 | 5230 §3.6.1.1 | §3.1.4의 프로그램이 본 규격 모든 요구사항 충족 확인 문서 | `output/conformance/declaration-draft.md` |
 
+- **인증 질문**
+  - 5230 §3.6.1: "Do you confirm that your program meets all the requirements of this specification?"
 - **담당 Agent**: `07-conformance-preparer`
 
 ---
@@ -486,6 +551,8 @@ SBOM과 CVE 리포트 등 보안 산출물을 공급망 파트너와 고객에�
 | -------------- | -------------------------------------------------------- | ----------------------------------------- |
 | 18974 §4.4.1.1 | §4.1.4의 프로그램이 본 규격 모든 요구사항 충족 확인 문서 | `output/conformance/declaration-draft.md` |
 
+- **인증 질문**
+  - 18974 §4.4.1: "Do you confirm that your security assurance program meets all the requirements of this specification?"
 - **담당 Agent**: `07-conformance-preparer`
 
 ---
@@ -500,6 +567,9 @@ SBOM과 CVE 리포트 등 보안 산출물을 공급망 파트너와 고객에�
 | ------------------------------ | ------------------------------------------------------- | ---------------------------------------- |
 | 5230 §3.6.2.1 · 18974 §4.4.2.1 | 적합성 획득 후 18개월 이내 모든 요구사항 충족 확인 문서 | `output/conformance/submission-guide.md` |
 
+- **인증 질문**
+  - 5230 §3.6.2: "Do you have a process to confirm the program meets the requirements at least once every 18 months?"
+  - 18974 §4.4.2: "Do you have a process to confirm the security assurance program meets the requirements at least once every 18 months?"
 - **담당 Agent**: `07-conformance-preparer`
 
 ---
@@ -514,6 +584,9 @@ SBOM과 CVE 리포트 등 보안 산출물을 공급망 파트너와 고객에�
 | ------------------------------ | --------------------------------- | ------------------------------------ |
 | 5230 §3.6.2.1 · 18974 §4.4.2.1 | 갱신 후 요구사항 재충족 확인 문서 | `output/conformance/gap-analysis.md` |
 
+- **인증 질문**
+  - 5230 §3.6.2: "Do you have a process to confirm the program meets the requirements at least once every 18 months?"
+  - 18974 §4.4.2: "Do you have a process to confirm the security assurance program meets the requirements at least once every 18 months?"
 - **담당 Agent**: `07-conformance-preparer`
 
 ---
@@ -531,6 +604,9 @@ SBOM과 CVE 리포트 등 보안 산출물을 공급망 파트너와 고객에�
 | 18974 §4.4.1.1 | 배포 소프트웨어 요구사항 완전 충족 확인 문서 | `output/conformance/declaration-draft.md` |
 | 18974 §4.3.2.2 | 취약점 조치 완료 기록                        | `output/vulnerability/cve-report.md`      |
 
+- **인증 질문**
+  - 18974 §4.4.1: "Do you confirm that your security assurance program meets all the requirements of this specification?"
+  - 18974 §4.3.2: "Do you have a process for identifying, tracking, and remediating known vulnerabilities in supply software?"
 - **담당 Agent**: `07-conformance-preparer`
 
 ---
