@@ -34,6 +34,14 @@ import tempfile
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
+# PyYAML 이 없는 채로 진행하면 yaml 블록을 한 건도 보지 않고 통과한다.
+# check-kwg-drift.py 와 같은 방식으로 즉시 멈춘다. CI 는 static-verify 에서 미리 넣는다.
+try:
+    import yaml
+except ImportError:
+    print("PyYAML 이 없다. 의존성을 갖춘 뒤 다시 실행하라 (pyyaml).")
+    sys.exit(2)
+
 ROOT = Path(__file__).resolve().parents[2]
 
 # 검사 대상 경로. 셸 변수로 넘기면 zsh 가 단어 분리를 하지 않아 통째로 한 인자가 되고
@@ -180,8 +188,6 @@ def strip_json_comments(code):
 
 
 def check_yaml(block, findings):
-    import yaml
-
     try:
         data = yaml.safe_load(block.code)
     except Exception as exc:
@@ -209,16 +215,16 @@ def check_xml(block, findings):
         findings.append((block.where, "xml", str(exc)))
 
 
-def check_toml(block, findings):
+def check_toml(block, findings, skips):
     try:
         import tomllib
     except ImportError:
-        return "tomllib 없음 (Python 3.11+ 필요)"
+        skips.add("toml 검사 (tomllib 없음, Python 3.11 이상 필요)")
+        return
     try:
         tomllib.loads(block.code)
     except Exception as exc:
         findings.append((block.where, "toml", str(exc)))
-    return None
 
 
 def check_gitlab(block, data, findings):
@@ -242,9 +248,9 @@ def check_gitlab(block, data, findings):
             )
 
 
-def run_actionlint(blocks, findings, verbose):
+def run_actionlint(blocks, findings, verbose, skips):
     if not shutil.which("actionlint"):
-        print("  건너뜀: actionlint 가 없다. GitHub Actions 스키마 검사를 하지 못했다.")
+        skips.add("GitHub Actions 스키마 검사 (actionlint 없음)")
         return False
     with tempfile.TemporaryDirectory() as tmp:
         wf = Path(tmp) / ".github" / "workflows"
@@ -274,10 +280,10 @@ def run_actionlint(blocks, findings, verbose):
     return True
 
 
-def run_bash(blocks, findings, verbose):
+def run_bash(blocks, findings, verbose, skips):
     have_shellcheck = shutil.which("shellcheck") is not None
     if not have_shellcheck:
-        print("  건너뜀: shellcheck 가 없다. bash 정적 분석을 하지 못했다.")
+        skips.add("bash 정적 분석 (shellcheck 없음)")
     with tempfile.TemporaryDirectory() as tmp:
         index = {}
         paths = []
@@ -312,7 +318,7 @@ def collect_blocks():
     return blocks
 
 
-def analyse(blocks, findings, verbose):
+def analyse(blocks, findings, verbose, skips):
     counts = {}
     gha, gitlab_pairs, bash_blocks = [], [], []
     for block in blocks:
@@ -333,18 +339,16 @@ def analyse(blocks, findings, verbose):
         elif lang == "xml":
             check_xml(block, findings)
         elif lang == "toml":
-            note = check_toml(block, findings)
-            if note and verbose:
-                print(f"  건너뜀: {block.where} {note}")
+            check_toml(block, findings, skips)
         elif lang == "bash":
             bash_blocks.append(block)
 
     for block, data in gitlab_pairs:
         check_gitlab(block, data, findings)
     if gha:
-        run_actionlint(gha, findings, verbose)
+        run_actionlint(gha, findings, verbose, skips)
     if bash_blocks:
-        run_bash(bash_blocks, findings, verbose)
+        run_bash(bash_blocks, findings, verbose, skips)
     return counts, len(gha), len(gitlab_pairs), len(bash_blocks)
 
 
@@ -367,7 +371,7 @@ def selftest():
     for lang, code, kind in cases:
         findings = []
         block = Block("<selftest>", 1, lang, "", code)
-        analyse([block], findings, False)
+        analyse([block], findings, False, set())
         hit = any(f[1] == kind for f in findings)
         print(f"  {'OK  ' if hit else 'FAIL'} {lang} 위반 -> {kind} 검출 "
               f"{'됨' if hit else '안 됨'}")
@@ -375,7 +379,7 @@ def selftest():
 
     findings = []
     block = Block("<selftest>", 1, "yaml", "validate=skip", "a:\n  b: c\n bad: x")
-    analyse([block], findings, False)
+    analyse([block], findings, False, set())
     skipped_ok = not findings
     print(f"  {'OK  ' if skipped_ok else 'FAIL'} validate=skip 블록은 건너뛴다")
     ok &= skipped_ok
@@ -387,6 +391,8 @@ def main():
     ap.add_argument("-v", "--verbose", action="store_true")
     ap.add_argument("--stats", action="store_true", help="인벤토리만 출력한다")
     ap.add_argument("--selftest", action="store_true", help="검사기 자체를 확인한다")
+    ap.add_argument("--allow-missing-tools", action="store_true",
+                    help="도구가 없어 돌지 못한 검사를 실패로 세지 않는다 (로컬 전용)")
     args = ap.parse_args()
 
     if args.selftest:
@@ -399,7 +405,8 @@ def main():
 
     skipped = [b for b in blocks if b.skipped]
     findings = []
-    counts, n_gha, n_gitlab, n_bash = analyse(blocks, findings, args.verbose)
+    skips = set()
+    counts, n_gha, n_gitlab, n_bash = analyse(blocks, findings, args.verbose, skips)
 
     print(f"[코드블록 검사] 파일에서 블록 {len(blocks)}개 수집 "
           f"(validate=skip {len(skipped)}개 제외)")
@@ -416,6 +423,16 @@ def main():
         print(f"  FAIL: {len(findings)}건")
         for where, kind, msg in findings:
             print(f"    {where} [{kind}] {msg}")
+        return 1
+
+    # 도구가 없어 돌지 못한 검사가 있으면 통과로 세지 않는다. 검사기가 아무것도 보지
+    # 않고 초록을 내는 것이 이 스크립트가 막으려는 실패 유형이다.
+    if skips and not args.allow_missing_tools:
+        print(f"  FAIL: 돌지 못한 검사 {len(skips)}종")
+        for item in sorted(skips):
+            print(f"    {item}")
+        print("    도구를 갖추고 다시 실행하라. 로컬에서 일부러 건너뛰려면"
+              " --allow-missing-tools 를 준다.")
         return 1
 
     print("  PASS: 코드블록 문법·스키마 이상 없음")

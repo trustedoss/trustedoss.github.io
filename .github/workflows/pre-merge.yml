@@ -115,7 +115,8 @@ jobs:
           NODE_OPTIONS: --max_old_space_size=8192
 
       - name: Install Python dependencies
-        run: pip install anthropic
+        # anthropic 은 Layer 3 카세트 재생, pyyaml 은 Layer 4 코드블록 검사에 쓴다.
+        run: pip install anthropic pyyaml
 
       - name: Layer 1 — Agent 스펙 구조
         run: python3 .claude/scripts/test-agent-specs.py
