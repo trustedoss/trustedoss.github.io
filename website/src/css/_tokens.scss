@@ -1,0 +1,152 @@
+/**
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+@use "shared";
+
+/* 색·타이포·여백 토큰 선언과 테마별 재정의 */
+
+:root {
+  /* 중립 딥 배경 — 포털 주색(#0f172a)과 의도적으로 구분된 중립 톤 */
+
+  /* ── 랜딩 토큰 (모노크롬 · 테마 인지) ──────────────────────────
+     Hero는 페이지 배경과 이어지는 라이트/다크 인지 표면.
+     색 악센트는 주색 팔레트(--g-blue-*, 단일 소스)를 미세하게만 사용. */
+
+  --space-section: 6rem;
+
+  --brand: var(--ifm-color-primary);
+  --dark: #282c34;
+  --deepdark: #20232a;
+  --light: #373940;
+  --text: #1a1a1a;
+  --subtle: #6c707b;
+  --divider: #ececec;
+
+  --navbar-active-item-background: color-mix(
+    in srgb,
+    var(--ifm-color-primary) 9%,
+    transparent
+  );
+  --sidebar-active-item-background: #e6f7ff;
+  --docs-rating-background: #64d7ff33;
+  --key-shadow:
+    inset 0 -2px 0 0 var(--ifm-hr-border-color), inset 0 0 1px 1px #fff,
+    0 1px 2px 1px rgba(30, 35, 90, 0.3);
+
+  --doc-sidebar-width: 266px !important;
+
+  --docsearch-key-background: none;
+  --docsearch-searchbox-background: var(--ifm-background-color);
+  --docsearch-modal-background: var(--ifm-background-color);
+  --docsearch-subtle-color: var(--ifm-table-border-color);
+  --docsearch-container-background: rgba(32, 35, 42, 0.6);
+  --docsearch-muted-color: #969faf;
+  --docsearch-key-pressed-shadow: inset 0 2px 5px rgba(120, 122, 165, 0.11);
+  --docsearch-icon-color: var(--subtle);
+  --docsearch-secondary-text-color: var(--subtle);
+  --docsearch-hit-background: none;
+  --docsearch-hit-highlight-color: var(--home-button-primary);
+  --docsearch-highlight-color: white;
+  --docsearch-footer-height: 46px;
+  --docsearch-soft-primary-color: var(--sidebar-active-item-background);
+
+  /* Material/Gemini docs 타이포 — Roboto(라틴) + Pretendard(한글, 셀프호스트)
+     폴백은 글리프 단위로 동작하므로 라틴은 Roboto, 한글은 Pretendard로 렌더된다 */
+  --ifm-font-family-base:
+    "Roboto", "Pretendard Variable", system-ui, -apple-system, "Segoe UI",
+    "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --ifm-font-family-monospace:
+    "Roboto Mono", "Source Code Pro", SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+
+  --ifm-background-color: white;
+  /* ── Material 블루 팔레트 (Google Blue, 단일 소스) ──────────────
+     POSITIONING §5·§6 업데이트로 브랜드 주색을 Google 블루로 채택.   */
+  --g-blue-50: #e8f0fe;
+  --g-blue-100: #d2e3fc;
+  --g-blue-200: #aecbfa;
+  --g-blue-300: #8ab4f8;
+  --g-blue-400: #669df6;
+  --g-blue-500: #4285f4;
+  --g-blue-600: #1a73e8;
+  --g-blue-700: #1967d2;
+  --g-blue-800: #185abc;
+  --g-blue-900: #174ea6;
+
+  /* 주색 = Google 블루 #1a73e8 */
+  --ifm-color-primary: var(--g-blue-600);
+  --ifm-color-primary-dark: var(--g-blue-700);
+  --ifm-color-primary-darker: var(--g-blue-800);
+  --ifm-color-primary-darkest: var(--g-blue-900);
+  --ifm-color-primary-light: var(--g-blue-500);
+  --ifm-color-primary-lighter: var(--g-blue-400);
+  --ifm-color-primary-lightest: var(--g-blue-300);
+  --ifm-color-primary-75: rgba(26, 115, 232, 0.72);
+  /* Gemini(DevSite) 타입 스케일 실측 정렬 — ai.google.dev/gemini-api/docs 기준:
+     본문 16px, h1 34/300/40, h2 24/300/32, h3 20/400/32, h4 16px.
+     좌측 nav 13px, 우측 TOC 14px, navbar 14px(아래 선택자에서 px 고정). */
+  --ifm-heading-font-weight: 400;
+  --ifm-h1-font-size: 34px;
+  --ifm-h2-font-size: 24px;
+  --ifm-h3-font-size: 20px;
+  --ifm-h4-font-size: 16px;
+  --ifm-h5-font-size: 14px;
+  --ifm-heading-line-height: 1.3;
+  --ifm-code-background: rgba(0, 0, 0, 0.06);
+  --ifm-font-size-base: 16px;
+  --ifm-code-font-size: 90%;
+  --ifm-code-padding-vertical: 0.05rem;
+  --ifm-spacing-horizontal: 16px;
+  --ifm-navbar-item-padding-horizontal: 18px;
+  --ifm-menu-link-padding-horizontal: 0;
+  --ifm-toc-padding-vertical: 6px;
+  --ifm-toc-link-color: var(--ifm-color-emphasis-700);
+  --ifm-blockquote-color: var(--ifm-font-color-base);
+  --ifm-blockquote-font-size: 0.9rem;
+  --ifm-global-radius: 9px;
+  --ifm-code-border-radius: 0.4rem;
+  --ifm-blockquote-border-radius: var(--ifm-global-radius);
+  --ifm-table-head-color: var(--subtle);
+  --ifm-link-hover-decoration: none;
+  --ifm-pre-line-height: 1.4;
+  --ifm-tabs-padding-vertical: 6px;
+  --ifm-color-warning: #ffe564;
+  --ifm-color-info: #1a73e8;
+  --ifm-alert-color: var(--ifm-font-color-base);
+  --ifm-pagination-nav-color-hover: var(--ifm-color-emphasis-300);
+  --ifm-navbar-sidebar-width: 100%;
+  --ifm-hr-border-color: var(--docusaurus-collapse-button-bg-hover);
+  --ifm-table-head-background: var(--ifm-color-emphasis-100);
+  --ifm-table-border-color: var(--ifm-toc-border-color);
+  --ifm-table-cell-padding: 10px;
+  --ifm-table-stripe-background: rgba(0, 0, 0, 0.02);
+  --ifm-table-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+  --ifm-alert-border-radius: 12px;
+
+  @media (min-width: 340px) {
+    --ifm-navbar-sidebar-width: 340px;
+  }
+
+  --home-button-primary: var(--ifm-color-primary);
+
+  @media (max-width: 900px) {
+  }
+}
+
+body {
+  font-family: var(--ifm-font-family-base);
+}
+
+html[data-theme="light"] {
+  /* 본문 링크 = Google 블루 */
+  --ifm-link-color: var(--ifm-color-primary);
+  --ifm-link-hover-decoration: underline;
+}
+
+html[data-theme="dark"] {
+  --ifm-link-hover-decoration: underline;
+}

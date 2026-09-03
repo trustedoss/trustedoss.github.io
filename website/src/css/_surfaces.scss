@@ -1,0 +1,190 @@
+/**
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+@use "shared";
+
+/* 랜딩, 버전 배너, 저자 표시, 헤딩 스케일, breadcrumb */
+
+/* Home page */
+
+.homepage {
+  div[class*="codeBlockContainer"] {
+    margin-bottom: 0;
+    overflow: visible;
+
+    .prism-code {
+      font-size: 90%;
+    }
+  }
+
+  a:not([class*="Button"]) {
+    @extend %link-style;
+  }
+}
+
+/* 다크 모드 랜딩 링크 색은 Infima 기본(--ifm-link-color = --ifm-color-primary)에 맡긴다.
+   여기서 .homepage 의 모든 a 에 색을 덧씌우면 버튼·카드까지 링크 색이 되어
+   1차 CTA 가 흰 배경 위 옅은 파랑(2.11:1), FinalCTA 1차는 같은 색끼리 겹쳐
+   1.00:1 이 된다. 인라인 링크는 Infima 기본으로도 동일한 색을 받으므로
+   이 규칙은 이득 없이 결함만 만든다. */
+
+/* Version warning */
+
+.theme-doc-version-banner {
+  background-color: var(--docs-rating-background);
+  border: 1px solid rgba(125, 222, 255, 0.21);
+  color: var(--ifm-font-color-base);
+  box-shadow: none;
+  font-size: 15px;
+  line-height: var(--ifm-pre-line-height);
+  text-align: center;
+  border-radius: var(--ifm-alert-border-radius);
+  padding: var(--ifm-alert-padding-vertical) var(--ifm-alert-padding-horizontal);
+
+  a {
+    color: var(--ifm-font-color-base) !important;
+    text-decoration: underline !important;
+    text-decoration-thickness: 1px !important;
+  }
+
+  @layer docusaurus.infima.importantOverrides {
+    .margin-top--md {
+      margin-top: 0.33rem !important;
+    }
+  }
+}
+
+/* Blog */
+
+.avatar__name {
+  font-weight: 600;
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+
+  h2 {
+    margin-bottom: 0;
+  }
+}
+
+html[data-theme="dark"] .avatar__name a {
+  @extend %link-style-dark;
+}
+
+.avatar__subtitle {
+  margin-top: 0;
+  font-weight: 500;
+  color: var(--subtle);
+}
+
+/* 본문 헤딩 스케일 — Docusaurus 데스크톱 .markdown>h{n} 요소 레벨 재정의를
+   무력화해 페이지 제목(article header h1) ≥ 모든 본문 헤딩 보장 (Gemini 톤) */
+.markdown > h1 {
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 36px;
+}
+
+.markdown > h2 {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 32px;
+}
+
+.markdown > h3 {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 32px;
+}
+
+.markdown > h4 {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+article header h1 {
+  font-size: 34px !important;
+  font-weight: 400;
+  line-height: 40px;
+}
+
+/* 페이지 제목과 첫 본문 요소 사이 간격 — h1 하단 마진이 header 밖으로
+   전달되지 않아 제목과 첫 헤딩이 붙는 문제 보정 */
+.markdown > header {
+  margin-bottom: 24px;
+}
+
+article header h2 {
+  line-height: 32px;
+
+  a {
+    color: var(--ifm-font-color-base);
+    font-size: 24px;
+
+    &:hover,
+    &:focus {
+      color: var(--ifm-font-color-base);
+      opacity: 0.8;
+    }
+  }
+}
+
+/* Breadcrumb — Gemini 톤(회색 텍스트, 평평) */
+.breadcrumbs {
+  margin-bottom: 1rem;
+}
+
+.breadcrumbs__item .breadcrumbs__link {
+  background: transparent;
+  padding: 2px 4px;
+  font-size: 0.82rem;
+  font-weight: 400;
+  /* emphasis-700: 흰 배경에서 WCAG AA 대비 충족 (600은 3.06:1로 미달) */
+  color: var(--ifm-color-emphasis-700);
+}
+
+.breadcrumbs__item:not(.breadcrumbs__item--active) .breadcrumbs__link:hover {
+  background: transparent;
+  color: var(--ifm-color-primary);
+  text-decoration: underline;
+}
+
+.breadcrumbs__item--active .breadcrumbs__link {
+  background: transparent;
+  color: var(--ifm-color-emphasis-800);
+  font-weight: 500;
+}
+
+/* 우측 TOC (이 페이지의 내용) — Gemini 톤: 가벼운 굵기 */
+.table-of-contents {
+  font-size: 14px;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.table-of-contents,
+.table-of-contents ul {
+  font-size: 14px;
+}
+
+.table-of-contents .table-of-contents__link,
+.table-of-contents .table-of-contents__link code {
+  font-weight: 400 !important;
+  font-size: 14px !important;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.table-of-contents__link--active,
+.table-of-contents__link--active code,
+.table-of-contents__link:hover,
+.table-of-contents__link:hover code {
+  color: var(--ifm-color-primary);
+}
+
+.table-of-contents__left-border {
+  border-left-color: var(--ifm-color-emphasis-200);
+}
