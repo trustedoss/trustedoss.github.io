@@ -288,6 +288,8 @@ const config: Config = {
       title: 'Trusted OSS',
       logo: {
         src: 'img/header_logo.svg',
+        width: 32,
+        height: 32,
         alt: 'Trusted OSS Logo',
       },
       items: [

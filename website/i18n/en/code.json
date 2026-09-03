@@ -987,5 +987,13 @@
   "homepage.hero.terminal.path": {
     "message": "agents/en/02-organization-designer",
     "description": "Terminal window title on the homepage hero"
+  },
+  "homepage.cta.feature4.title": {
+    "message": "Reference",
+    "description": "Title of the fourth landing track card"
+  },
+  "homepage.cta.feature4.desc": {
+    "message": "Look up the requirements matrix and the deliverable samples. See what to produce for each standard item.",
+    "description": "Description of the fourth landing track card"
   }
 }

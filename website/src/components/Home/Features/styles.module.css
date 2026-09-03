@@ -31,8 +31,15 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  /* 카드 4개 (A-4). navbar 의 문서 인스턴스 4개와 같은 갈래다. */
+  grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
+}
+
+@media (max-width: 1100px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .card {
@@ -89,7 +96,7 @@
 .more {
   font-size: 0.875rem;
   font-weight: 600;
-  color: var(--ifm-color-primary);
+  color: var(--brand-text);
 }
 
 @media (max-width: 860px) {

@@ -6,7 +6,8 @@
  */
 
 %link-style {
-  display: initial;
+  /* `display: initial` 이 있었으나 남은 사용처가 인라인 `.markdown a` 뿐이라
+     무효 선언이었고, 랜딩에서는 버튼을 block 으로 만드는 원인이었다(K11 에서 제거). */
   line-height: calc(var(--ifm-font-size-base) + 4px);
   border-bottom: 1px solid transparent;
   transition: border-color 0.15s;

@@ -3,27 +3,59 @@
  * 색은 중립 Material 블루 계열 그라데이션(POSITIONING §5: 다색 제품 팔레트·포털 네이비 미채택).
  */
 
-/* Hero 전용 토큰. 배경이 그라디언트라 대비를 수치로 재려면 전경이 얹히는
-   표면이 불투명해야 한다. --hero-surface 는 흰색 6% 를 그라디언트 위에 얹은
-   것과 같은 값의 불투명 색이다(진단에서 2차 CTA 를 측정하지 못했던 이유). */
+/* Hero 전용 토큰 — 테마 인지형 (승인 지점 3: 시안 A, Hero 는 시안 그대로).
+   진단 B-2 는 Hero 가 라이트에서도 짙은 네이비로 고정이라 첫 화면과 그 아래
+   문서 영역 사이에서 배경이 급격히 반전된다고 지적했다. 여기서 그것을 푼다.
+   대비를 수치로 재려면 전경이 얹히는 표면이 불투명해야 하므로, 2차 CTA 와
+   터미널 목업은 반투명 대신 불투명 값을 쓴다. */
 :root {
-  --hero-ink: #fff;
-  --hero-ink-2: rgba(255, 255, 255, 0.92);
-  --hero-accent: var(--g-blue-300);
-  --hero-cta-fg: #143a82;
-  --hero-cta-fg-hover: #0e1b3d;
-  --hero-surface: #1d376c;
-  --hero-surface-hover: #294585;
-  --hero-line: rgba(255, 255, 255, 0.4);
+  /* 라이트: 문서 본문 배경으로 자연스럽게 이어지는 옅은 그라디언트 */
+  --hero-bg:
+    radial-gradient(
+      900px 420px at 16% 0%,
+      rgba(66, 133, 244, 0.1),
+      transparent 60%
+    ),
+    linear-gradient(180deg, #f7f9fc 0%, #eef2f8 100%);
+  --hero-grid: rgba(15, 45, 107, 0.05);
+  --hero-ink: #1c1e21;
+  --hero-ink-2: #454b53;
+  --hero-ink-3: #5f636e;
+  --hero-accent: var(--g-blue-700);
+  --hero-title-grad: linear-gradient(
+    90deg,
+    #1967d2 0%,
+    #185abc 52%,
+    #6f42c1 100%
+  );
+  --hero-chip-bg: #eaf1fd;
+  --hero-chip-br: #cfe0fb;
+  --hero-chip-fg: var(--g-blue-800);
+  --hero-cta-bg: var(--brand-fill);
+  --hero-cta-fg: #fff;
+  --hero-cta-bg-hover: var(--g-blue-700);
+  --hero-surface: #fff;
+  --hero-surface-hover: #eef0f4;
+  --hero-surface-fg: #1c1e21;
+  --hero-line: #c4c8cf;
+
+  /* 터미널 목업은 두 테마 모두 어둡게 둔다. 터미널이라는 사물의 관습이고,
+     라이트 배경 위에서도 제품 화면으로 읽힌다. */
+  --term-bg: #131a2e;
+  --term-bar: #1c2540;
+  --term-br: #2a3a5f;
+  --term-ink: #eef1f6;
+  --term-ink-2: #c3cad8;
+  --term-ink-3: #98a2b6;
+  --term-accent: var(--g-blue-300);
+  --term-ok: #6ee7a8;
+  --term-chip-bg: #24365e;
+  --term-chip-br: #33487a;
+  --term-chip-fg: #dbe6ff;
 }
 
-.hero {
-  position: relative;
-  padding: 7.5rem 0 6.5rem;
-  text-align: center;
-  color: #fff;
-  overflow: hidden;
-  background:
+html[data-theme="dark"] {
+  --hero-bg:
     radial-gradient(
       820px 360px at 80% 6%,
       rgba(139, 110, 246, 0.32),
@@ -35,6 +67,36 @@
       transparent 60%
     ),
     linear-gradient(160deg, #0a1230 0%, #0f2a63 52%, #123e92 100%);
+  --hero-grid: rgba(255, 255, 255, 0.04);
+  --hero-ink: #fff;
+  --hero-ink-2: #dfe4ee;
+  --hero-ink-3: #b8c0d3;
+  --hero-accent: var(--g-blue-300);
+  --hero-title-grad: linear-gradient(
+    90deg,
+    #aecbfa 0%,
+    #8ab4f8 42%,
+    #c2a8ff 100%
+  );
+  --hero-chip-bg: #1f2f57;
+  --hero-chip-br: #33487a;
+  --hero-chip-fg: #dbe6ff;
+  --hero-cta-bg: #fff;
+  --hero-cta-fg: #143a82;
+  --hero-cta-bg-hover: #e7ecf5;
+  --hero-surface: #1d376c;
+  --hero-surface-hover: #294585;
+  --hero-surface-fg: #fff;
+  --hero-line: #52689c;
+}
+
+.hero {
+  position: relative;
+  padding: 7.5rem 0 6.5rem;
+  text-align: center;
+  color: var(--hero-ink);
+  overflow: hidden;
+  background: var(--hero-bg);
 }
 
 /* 미세 그리드 글로우 */
@@ -43,8 +105,8 @@
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    linear-gradient(var(--hero-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--hero-grid) 1px, transparent 1px);
   background-size: 44px 44px;
   -webkit-mask: radial-gradient(
     900px 420px at 50% 10%,
@@ -69,13 +131,12 @@
   gap: 0.5rem;
   margin: 0 0 2rem;
   padding: 0.35rem 0.9rem;
-  border: 1px solid rgba(255, 255, 255, 0.22);
+  border: 1px solid var(--hero-chip-br);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(6px);
+  background: var(--hero-chip-bg);
   font-size: 0.8rem;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--hero-chip-fg);
 }
 
 .dot {
@@ -83,13 +144,12 @@
   height: 6px;
   border-radius: 50%;
   background: var(--hero-accent);
-  box-shadow: 0 0 0 3px rgba(138, 180, 248, 0.3);
 }
 
 .title {
   margin: 0 0 1.5rem;
-  font-size: clamp(2.3rem, 4.6vw, 3.6rem);
-  font-weight: 300;
+  font-size: clamp(2rem, 3.4vw, 2.5rem);
+  font-weight: 700;
   letter-spacing: -0.025em;
   line-height: 1.1;
   color: var(--hero-ink);
@@ -98,7 +158,7 @@
 .titleAccent {
   /* 폴백: background-clip:text 미지원 시 보이는 라이트 블루 */
   color: var(--hero-accent);
-  background: linear-gradient(90deg, #aecbfa 0%, #8ab4f8 42%, #c2a8ff 100%);
+  background: var(--hero-title-grad);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -109,7 +169,7 @@
   margin: 0 0 2.4rem;
   font-size: 1.08rem;
   line-height: 1.65;
-  color: rgba(255, 255, 255, 0.82);
+  color: var(--hero-ink-2);
 }
 
 .ctas {
@@ -128,28 +188,31 @@
   border: 1px solid transparent;
 }
 
-/* 1차 CTA — 흰 배경 + 진한 블루 텍스트 */
-.ctas :global(.button--primary) {
-  background: var(--hero-ink);
+/* Hero CTA 는 전역 `html[data-theme="dark"] .button.button--primary` 규칙(특이도 0,3,1)보다
+   높아야 아래 토큰이 실제로 색을 정한다. 특이도를 맞추지 않으면 값이 우연히 맞아떨어질 뿐
+   토큰이 무력해진다. 진단 B-1 이 같은 종류의 함정이었다. */
+:global(html[data-theme]) .ctas :global(.button.button--primary) {
+  background: var(--hero-cta-bg);
   color: var(--hero-cta-fg);
-  border-color: var(--hero-ink);
+  border-color: var(--hero-cta-bg);
 }
 
-.ctas :global(.button--primary:hover) {
-  background: rgba(255, 255, 255, 0.9);
-  color: var(--hero-cta-fg-hover);
+:global(html[data-theme]) .ctas :global(.button.button--primary:hover) {
+  background: var(--hero-cta-bg-hover);
+  border-color: var(--hero-cta-bg-hover);
+  color: var(--hero-cta-fg);
 }
 
 /* 2차 CTA — 투명 + 흰 외곽선 */
-.ctas :global(.button--secondary) {
+:global(html[data-theme]) .ctas :global(.button.button--secondary) {
   background: var(--hero-surface);
-  color: var(--hero-ink);
+  color: var(--hero-surface-fg);
   border-color: var(--hero-line);
 }
 
-.ctas :global(.button--secondary:hover) {
+:global(html[data-theme]) .ctas :global(.button.button--secondary:hover) {
   background: var(--hero-surface-hover);
-  color: var(--hero-ink);
+  color: var(--hero-surface-fg);
 }
 
 .ghIcon {
@@ -176,7 +239,7 @@
   position: relative;
   font-family: var(--ifm-font-family-monospace);
   font-size: 0.78rem;
-  color: rgba(255, 255, 255, 0.62);
+  color: var(--hero-ink-3);
 }
 
 .metaItem:not(:last-child)::after {
@@ -187,7 +250,7 @@
   width: 3px;
   height: 3px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.35);
+  background: var(--hero-line);
   transform: translateY(-50%);
 }
 
@@ -200,11 +263,10 @@
 }
 
 .window {
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  border: 1px solid var(--term-br);
   border-radius: 14px;
-  background: rgba(13, 22, 48, 0.55);
-  box-shadow: 0 30px 60px -25px rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(10px);
+  background: var(--term-bg);
+  box-shadow: 0 30px 60px -25px rgba(0, 0, 0, 0.35);
   overflow: hidden;
   text-align: left;
   transform: rotateX(6deg);
@@ -215,22 +277,22 @@
   align-items: center;
   gap: 6px;
   padding: 0.6rem 0.85rem;
-  background: rgba(255, 255, 255, 0.06);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--term-bar);
+  border-bottom: 1px solid var(--term-br);
 }
 
 .windowBar i {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.32);
+  background: var(--term-ink-3);
 }
 
 .windowTitle {
   margin-left: 0.5rem;
   font-family: var(--ifm-font-family-monospace);
   font-size: 0.74rem;
-  color: rgba(255, 255, 255, 0.55);
+  color: var(--term-ink-3);
 }
 
 .windowBody {
@@ -242,26 +304,26 @@
 
 .cmd {
   margin: 0;
-  color: var(--hero-ink-2);
+  color: var(--term-ink);
 }
 
 .prompt {
-  color: var(--hero-accent);
+  color: var(--term-accent);
   margin-right: 0.4rem;
 }
 
 .muted {
   margin: 0;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--term-ink-2);
 }
 
 .gen {
   margin: 0;
-  color: rgba(255, 255, 255, 0.88);
+  color: var(--term-ink);
 }
 
 .check {
-  color: #6ee7a8;
+  color: var(--term-ok);
   margin-right: 0.45rem;
 }
 
@@ -277,27 +339,26 @@
   border-radius: 999px;
   font-family: var(--ifm-font-family-base);
   font-size: 0.72rem;
-  color: rgba(255, 255, 255, 0.85);
-  background: rgba(138, 180, 248, 0.18);
-  border: 1px solid rgba(138, 180, 248, 0.3);
+  color: var(--term-chip-fg);
+  background: var(--term-chip-bg);
+  border: 1px solid var(--term-chip-br);
 }
 
 .poweredBy {
   margin: 1.1rem 0 0;
   font-size: 0.82rem;
-  /* 50% 는 Hero 그라디언트 위 4.39:1 로 AA 하한에 못 미쳤다. 65% 는 6.40:1 */
-  color: rgba(255, 255, 255, 0.65);
+  color: var(--hero-ink-3);
 }
 
 .poweredByLink {
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--hero-ink-2);
   font-weight: 600;
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 
 .poweredByLink:hover {
-  color: #fff;
+  color: var(--hero-ink);
 }
 
 @media (max-width: 640px) {
