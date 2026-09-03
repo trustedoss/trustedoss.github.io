@@ -87,6 +87,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          # Layer 5 가 base 와 비교해 변경분을 고른다. 얕은 클론이면 base 가 없다.
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -131,3 +134,29 @@ jobs:
 
       - name: output/ 산출물 완전성
         run: python3 .claude/scripts/validate-output.py
+
+      # 문서 코드블록 검사에 쓴다. 이동 태그 대신 버전을 고정한다.
+      - name: Install actionlint
+        env:
+          ACTIONLINT_VERSION: 1.7.12
+        run: |
+          curl -sSfL -o actionlint.tar.gz \
+            "https://github.com/rhysd/actionlint/releases/download/v${ACTIONLINT_VERSION}/actionlint_${ACTIONLINT_VERSION}_linux_amd64.tar.gz"
+          tar -xzf actionlint.tar.gz actionlint
+          sudo mv actionlint /usr/local/bin/
+          actionlint --version
+
+      # 검사기가 실제로 도는지 먼저 확인한다. 결과가 0건일 때 그것이 진짜 0인지
+      # 검사기가 아무것도 안 본 것인지 구분되지 않으면 이 단계는 의미가 없다.
+      - name: Layer 4 자체 점검
+        run: python3 .claude/scripts/check-code-blocks.py --selftest
+
+      - name: Layer 4 코드블록 문법
+        run: python3 .claude/scripts/check-code-blocks.py
+
+      # 외부 참조는 우리가 문서를 고치지 않아도 깨질 수 있다. PR 에서는 이번 변경으로
+      # 들어온 참조만 본다. 전량 확인은 example-refs.yml 이 주간으로 돌린다.
+      - name: Layer 5 외부 참조 (변경분)
+        run: |
+          python3 .claude/scripts/check-code-refs.py \
+            --changed "origin/${{ github.base_ref }}"

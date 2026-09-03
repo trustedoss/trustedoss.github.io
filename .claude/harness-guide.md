@@ -56,7 +56,9 @@
 │   ├── sync-kwg-reference.sh         # KWG 원본 md 파일 동기화
 │   ├── check-kwg-drift.py            # KWG 원본과의 드리프트 검사
 │   ├── check-i18n-parity.py          # ko/en 문서 파일 패리티 검사
-│   └── check-redirects.py            # 사이트 개편 시 사라진 URL의 리다이렉트·목적지 확인
+│   ├── check-redirects.py            # 사이트 개편 시 사라진 URL의 리다이렉트·목적지 확인
+│   ├── check-code-blocks.py          # 문서 코드블록 문법·스키마 검사 (L1·L2)
+│   └── check-code-refs.py            # 문서가 인용하는 외부 참조 실재 확인 (L3)
 │
 dry-run/
 └── run-dryrun.sh                     # OpenWave 프로필 드라이런 오케스트레이터
@@ -361,6 +363,41 @@ bash .claude/scripts/sync-output-samples.sh
 `settings.json` Hook으로 자동 실행. 직접 실행 불필요.
 
 docs/ 파일 저장 시 `cd agents/` 블록 직전 `:::tip 실행 전 확인`이 없으면 즉시 경고 출력.
+
+### `check-code-blocks.py`: 코드블록 문법·스키마 검사 (L1·L2)
+
+독자가 복사해 쓰는 예시가 깨지지 않았는지 본다. yaml·json·xml·toml 을 파서에 넣고,
+GitHub Actions 는 actionlint, GitLab CI 는 구조 검사, bash 는 `bash -n` 과 shellcheck 로 검사한다.
+
+```bash
+python3 .claude/scripts/check-code-blocks.py            # 전체 검사
+python3 .claude/scripts/check-code-blocks.py --stats    # 인벤토리만
+python3 .claude/scripts/check-code-blocks.py --selftest # 검사기가 실제로 도는지 확인
+```
+
+통과할 수 없는 블록은 펜스에 `validate=skip` 을 단다(예: ` ```yaml validate=skip `).
+안티패턴 예시나 `<다이제스트>` 같은 자리표시자가 든 블록에만 쓴다. 현재 2개 블록에 달려 있고
+ko·en 양쪽이라 파일에서는 4곳으로 잡힌다.
+
+`website/reference/samples/` 는 검사하지 않는다. `output-sample/` 에서 생성되는 파생물이라
+거기서 고치면 다음 재생성에 원복된다. 원본인 `output-sample/` 을 검사한다.
+
+`--selftest` 는 일부러 깨뜨린 블록을 넣어 검출되는지 본다. 결과가 0건일 때 그것이 진짜 0인지
+검사기가 아무것도 안 본 것인지 구분하기 위해서다. CI 도 본 검사 앞에 이것을 먼저 돌린다.
+
+### `check-code-refs.py`: 외부 참조 실재 확인 (L3)
+
+`uses:` 가 가리키는 액션 태그와 설치 스크립트 URL 이 실제로 있는지 확인한다.
+actionlint 는 문법만 보고 참조 실재는 확인하지 않아서 따로 둔다.
+
+```bash
+python3 .claude/scripts/check-code-refs.py                    # 전량
+python3 .claude/scripts/check-code-refs.py --changed origin/main  # 변경분만
+```
+
+문서를 고치지 않아도 깨질 수 있다. 태그가 삭제되거나 URL 이 옮겨 가면 실패한다. 그래서
+PR 게이트(`pre-merge.yml` Layer 5)는 변경분만 보고, 전량 확인은 `example-refs.yml` 이
+주간 예약으로 돌려 실패 시 이슈만 만든다. 병합은 막지 않는다.
 
 ---
 

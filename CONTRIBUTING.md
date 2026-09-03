@@ -45,14 +45,16 @@ Step 5   git push                                  # 모든 검증 통과 후에
 
 ## 검증 명령어 빠른 참조
 
-| 명령어                                                        | 역할                                                    | 소요시간 |
-| ------------------------------------------------------------- | ------------------------------------------------------- | -------- |
-| `/qa changed`                                                 | 변경 파일 품질 자동 검사·수정                           | ~2분     |
-| `bash .claude/scripts/verify.sh`                              | 정적 검증 13항목 일괄 실행                              | ~30초    |
-| `python3 .claude/scripts/test-coverage.py`                    | ISO G항목 커버리지 정합성 확인                          | ~5초     |
-| `python3 .claude/scripts/validate-output.py`                  | output/ 산출물 완전성 확인                              | ~5초     |
-| `python3 .claude/scripts/check-redirects.py <기준선> <build>` | 사이트 개편 시 사라진 URL의 리다이렉트 존재·목적지 확인 | ~5초     |
-| `/kwg-check`                                                  | KWG 원본 싱크 상태 확인                                 | ~1분     |
+| 명령어                                                        | 역할                                                        | 소요시간 |
+| ------------------------------------------------------------- | ----------------------------------------------------------- | -------- |
+| `/qa changed`                                                 | 변경 파일 품질 자동 검사·수정                               | ~2분     |
+| `bash .claude/scripts/verify.sh`                              | 정적 검증 13항목 일괄 실행                                  | ~30초    |
+| `python3 .claude/scripts/test-coverage.py`                    | ISO G항목 커버리지 정합성 확인                              | ~5초     |
+| `python3 .claude/scripts/validate-output.py`                  | output/ 산출물 완전성 확인                                  | ~5초     |
+| `python3 .claude/scripts/check-redirects.py <기준선> <build>` | 사이트 개편 시 사라진 URL의 리다이렉트 존재·목적지 확인     | ~5초     |
+| `python3 .claude/scripts/check-code-blocks.py`                | 문서 코드블록 문법·스키마 검사 (L1·L2)                      | ~40초    |
+| `python3 .claude/scripts/check-code-refs.py`                  | 문서가 인용하는 액션 태그·설치 URL 실재 확인 (L3, 네트워크) | ~2분     |
+| `/kwg-check`                                                  | KWG 원본 싱크 상태 확인                                     | ~1분     |
 
 ---
 
@@ -228,14 +230,16 @@ Step 5   git push                                  # Only after all checks pass
 
 ## Verification Command Reference
 
-| Command                                                         | Role                                                                           | Time    |
-| --------------------------------------------------------------- | ------------------------------------------------------------------------------ | ------- |
-| `/qa changed`                                                   | Auto-check and fix changed file quality                                        | ~2 min  |
-| `bash .claude/scripts/verify.sh`                                | Run all 13 static validation checks                                            | ~30 sec |
-| `python3 .claude/scripts/test-coverage.py`                      | Verify ISO requirement coverage                                                | ~5 sec  |
-| `python3 .claude/scripts/validate-output.py`                    | Verify output/ deliverable completeness                                        | ~5 sec  |
-| `python3 .claude/scripts/check-redirects.py <baseline> <build>` | During a site redesign, confirm every dropped URL has a redirect that resolves | ~5 sec  |
-| `/kwg-check`                                                    | Check sync status with KWG source                                              | ~1 min  |
+| Command                                                         | Role                                                                               | Time    |
+| --------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ------- |
+| `/qa changed`                                                   | Auto-check and fix changed file quality                                            | ~2 min  |
+| `bash .claude/scripts/verify.sh`                                | Run all 13 static validation checks                                                | ~30 sec |
+| `python3 .claude/scripts/test-coverage.py`                      | Verify ISO requirement coverage                                                    | ~5 sec  |
+| `python3 .claude/scripts/validate-output.py`                    | Verify output/ deliverable completeness                                            | ~5 sec  |
+| `python3 .claude/scripts/check-redirects.py <baseline> <build>` | During a site redesign, confirm every dropped URL has a redirect that resolves     | ~5 sec  |
+| `python3 .claude/scripts/check-code-blocks.py`                  | Check code block syntax and schema in the docs (L1, L2)                            | ~40 sec |
+| `python3 .claude/scripts/check-code-refs.py`                    | Confirm the action tags and install URLs the docs cite still resolve (L3, network) | ~2 min  |
+| `/kwg-check`                                                    | Check sync status with KWG source                                                  | ~1 min  |
 
 ---
 

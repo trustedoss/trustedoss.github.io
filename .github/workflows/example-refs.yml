@@ -1,0 +1,85 @@
+name: Example refs
+
+# 문서가 인용하는 액션 태그와 설치 URL 이 아직 실재하는지 주기적으로 확인한다.
+# 이 검사는 우리가 문서를 고치지 않아도 깨진다. 태그가 삭제되거나 URL 이 옮겨 가면
+# 우리 잘못 없이 실패한다. 그래서 PR 게이트로 두지 않고 예약으로 돌리며,
+# 실패해도 병합을 막지 않고 이슈만 남긴다. PR 에서는 pre-merge 의 Layer 5 가
+# 이번 변경으로 들어온 참조만 확인한다.
+
+on:
+  schedule:
+    # 매주 월요일 02:30 UTC (KST 11:30)
+    - cron: "30 2 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  refs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Check every external reference
+        id: check
+        run: |
+          python3 .claude/scripts/check-code-refs.py -v | tee refs.log
+          exit "${PIPESTATUS[0]}"
+
+      - name: Open an issue when a reference stops resolving
+        if: failure()
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const fs = require('fs');
+            let log = '(로그를 읽지 못했다)';
+            try {
+              log = fs.readFileSync('refs.log', 'utf8').slice(-4000);
+            } catch (e) {
+              core.warning(`로그 읽기 실패: ${e.message}`);
+            }
+            const title = '문서가 인용하는 외부 참조가 해결되지 않는다';
+            const body = [
+              '`example-refs` 예약 실행에서 실패했다.',
+              '',
+              '문서를 고치지 않아도 발생할 수 있다. 액션 태그가 삭제됐거나',
+              '설치 URL 이 옮겨 갔을 수 있다. 아래 로그의 참조를 확인하고',
+              '현행 값으로 갱신하라.',
+              '',
+              '```',
+              log,
+              '```',
+              '',
+              `실행: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+            ].join('\n');
+
+            const existing = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'example-refs',
+            });
+            if (existing.data.length > 0) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existing.data[0].number,
+                body,
+              });
+              return;
+            }
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title,
+              body,
+              labels: ['example-refs'],
+            });
