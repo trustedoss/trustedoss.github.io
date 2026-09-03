@@ -93,20 +93,9 @@ Both standards use **Self-Certification**. You make the declaration directly on 
 
 ### How to read the requirements map
 
-[Standard requirements at a glance](./checklist-mapping.md) is a map that brings the two standards' requirements together. Each item is tied to the chapter that fills it and the deliverable it produces.
+The 31 requirements across the two standards fall into six groups: program foundation (G1), defining related tasks (G2), license compliance (G3-L), security assurance (G3-S), SBOM and supply chain (G3-B), and declaring and maintaining compliance (G4). Twelve of them are common to both standards, so working through them in order saves roughly 39% of the duplicate work.
 
-**Item ID scheme:**
-
-| Prefix | Meaning                                             |
-| ------ | --------------------------------------------------- |
-| G1     | Program foundation (policy, organization, training) |
-| G2     | Defining related tasks (roles, channels, awareness) |
-| G3-L   | License compliance (ISO/IEC 5230 focus)             |
-| G3-S   | Security assurance (ISO/IEC 18974 focus)            |
-| G3-B   | SBOM and supply chain (common)                      |
-| G4     | Declaring and maintaining compliance                |
-
-**Key insight:** Of the 31 items, 12 are common to both standards. By completing those 12 common items first, you satisfy both standards at once and save roughly 39% of the duplicate work. The kit is designed to prioritize the common items.
+Which chapter fills which group is laid out in [Standard requirements at a glance](./checklist-mapping.md). The point where you need the certification question and verification material for each individual item is [07 Conformance](../07-conformance/index.md); that is when you open the [Requirements Detail Matrix](/reference/requirements-matrix).
 
 ---
 
