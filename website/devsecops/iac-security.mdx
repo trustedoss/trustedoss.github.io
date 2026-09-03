@@ -155,7 +155,7 @@ resource "aws_s3_bucket" "logs" {
   bucket = "my-log-bucket"
 
   # checkov:skip=CKV_AWS_18:접근 로그 버킷은 자체 로깅 불필요
-  # checkov:skip=CKV_AWS_52:MFA 삭제는 로그 버킷 특성상 불필요
+  # checkov:skip=CKV_AWS_144:로그 버킷은 교차 리전 복제 대상이 아님
 }
 ```
 

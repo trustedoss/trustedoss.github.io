@@ -30,8 +30,10 @@ project analysis.
 ## Action version reference (must be followed)
 
 Use the owners and tags in the table below verbatim in `uses:`. Do not invent versions from memory.
-Do not use moving references (`@master`, `@main`). A supply chain compromise can replace a whole tag,
-so pinning the version is the real defence (see the trivy-action tag poisoning case of 2026-03).
+Do not use moving references (`@master`, `@main`). On 2026-03-19, 76 of the 77 tags in trivy-action
+were force-pushed to malicious commits (GHSA-69fq-xp46-6x23). Pinning a version tag is safer than a
+moving reference, but as that incident shows it does not help when the tag itself is rewritten, so
+pin a commit SHA when stronger protection is needed.
 
 | Purpose                 | uses value                                                                                                |
 | ----------------------- | --------------------------------------------------------------------------------------------------------- |
@@ -39,7 +41,7 @@ so pinning the version is the real defence (see the trivy-action tag poisoning c
 | Artifact upload         | `actions/upload-artifact@v7`                                                                              |
 | SBOM generation         | `anchore/sbom-action@v0`                                                                                  |
 | SBOM vulnerability scan | `anchore/scan-action@v7`                                                                                  |
-| Container scan          | `aquasecurity/trivy-action@0.36.0`                                                                        |
+| Container scan          | `aquasecurity/trivy-action@v0.36.0`                                                                       |
 | Secret detection        | `gitleaks/gitleaks-action@v3`                                                                             |
 | IaC check               | `bridgecrewio/checkov-action@v12`                                                                         |
 | Terraform check         | `aquasecurity/tfsec-action@v1.0.3`                                                                        |

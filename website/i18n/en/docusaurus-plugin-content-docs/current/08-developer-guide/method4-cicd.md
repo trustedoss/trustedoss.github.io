@@ -18,6 +18,11 @@ Blocking automatically at the PR stage keeps violations out of the main branch.
 Create `.github/workflows/oss-policy-check.yml`.
 The example below uses **free open source tools only** (syft and grype are both open source).
 
+Put only licenses in the prohibited category of
+[License Classification](/reference/concepts/license-classification) into the block list.
+Conditionally allowed licenses such as LGPL and MPL go to program manager review rather than
+failing the build, which is what the canonical page specifies.
+
 ```yaml
 name: OSS Policy Check
 
@@ -54,7 +59,10 @@ jobs:
           cat detected-licenses.txt
 
           # Check for prohibited licenses (grep -E extended regex; -only/-or-later variants also match partially)
-          FORBIDDEN='GPL-2\.0|GPL-3\.0|AGPL-3\.0|LGPL-2\.0'
+          # \b is a word boundary, so LGPL does not match. LGPL and MPL are conditionally
+          # allowed rather than prohibited, so they go to manager review instead of a block.
+          # Requires GNU grep.
+          FORBIDDEN='\b(GPL-2\.0|GPL-3\.0|AGPL-3\.0|SSPL-1\.0|Commons-Clause)'
           if grep -qE "$FORBIDDEN" detected-licenses.txt; then
             echo "::error::Prohibited licenses detected. Obtain program manager approval or use an alternative package."
             grep -E "$FORBIDDEN" detected-licenses.txt
@@ -92,7 +100,7 @@ jobs:
 **Effect:**
 
 - License checks run automatically on every PR
-- PR merges are blocked when prohibited licenses such as GPL are found
+- PR merges are blocked when prohibited licenses such as GPL or AGPL are found
 - Merges are blocked when vulnerabilities of CVSS High (7.0) or above are found
 - Check results are displayed directly on the PR page
 

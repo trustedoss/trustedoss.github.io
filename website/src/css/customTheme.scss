@@ -827,11 +827,11 @@ html[data-theme="dark"] {
   }
 }
 
-html[data-theme="dark"] .homepage {
-  a:not([class*="Button"]) {
-    @extend %link-style-dark;
-  }
-}
+/* 다크 모드 랜딩 링크 색은 Infima 기본(--ifm-link-color = --ifm-color-primary)에 맡긴다.
+   여기서 .homepage 의 모든 a 에 색을 덧씌우면 버튼·카드까지 링크 색이 되어
+   1차 CTA 가 흰 배경 위 옅은 파랑(2.11:1), FinalCTA 1차는 같은 색끼리 겹쳐
+   1.00:1 이 된다. 인라인 링크는 Infima 기본으로도 동일한 색을 받으므로
+   이 규칙은 이득 없이 결함만 만든다. */
 
 /* Version warning */
 

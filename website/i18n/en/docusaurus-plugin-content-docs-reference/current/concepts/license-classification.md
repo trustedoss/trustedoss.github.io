@@ -24,6 +24,22 @@ Open source licenses fall into four broad categories by the strength of their ob
 For the same code, whether an obligation arises depends on the **distribution method**. In particular, GPL does not treat server execution (SaaS) as "distribution," so no obligation arises, whereas AGPL imposes an obligation even for network provision.
 :::
 
+## CC-BY-SA: Using a Content License for Software
+
+CC-BY-SA (Creative Commons Attribution-ShareAlike) is handled separately rather than placed in the four categories above. It was built for content such as text, images, and video, and Creative Commons itself recommends using a dedicated software license instead of a CC license for software. **Its category is conditionally allowed**, and applying it to code requires review by the program manager plus legal confirmation.
+
+The problem is not a commercial-use restriction. Unlike CC-BY-NC, CC-BY-SA does not restrict commercial use. The real problem is that how far the ShareAlike clause propagates is undefined for software.
+
+- **The boundary of a derivative work is unclear.** ShareAlike requires an adaptation of the original work to carry the same license. But the license does not define which of linking, bundling, or embedding counts as an adaptation in software, in contrast to the GPL family, which spells out the scope of a derivative work.
+- **There is no notion of source code.** The GPL requires source to be provided in "the preferred form for making modifications," while CC licenses have no such provision. Even if you decide an obligation applies, there is no defined way to satisfy it.
+- **There is no patent clause.** CC-BY-SA 4.0 states explicitly that it grants no patent rights. For a project that needs an explicit patent grant such as the one in Apache-2.0, that gap is a risk.
+
+One path is defined. Creative Commons declared CC BY-SA 4.0 one-way compatible with GPL-3.0. You can bring CC BY-SA 4.0 material into a GPL-3.0 project, but not the reverse.
+
+In practice the rule is to keep it out of code. You will still meet CC-BY-SA often in content assets bundled with software such as fonts, icons, documentation, and training data. In those cases the program manager confirms whether the asset ships with the distribution and how the attribution obligation is satisfied.
+
+This is also why CC-BY-SA is the only row in the matrix below whose SaaS column is conditional. The GPL text itself supports the judgment that server execution is not distribution; CC-BY-SA offers no such basis for the judgment.
+
 ## Impact by Distribution Method
 
 Distribution method is the key factor that determines whether a license obligation arises.
@@ -43,6 +59,7 @@ A matrix to consult when deciding which categories to allow per channel. The act
 | LGPL-2.1   | Weak Copyleft    | ✅ Allowed   | ✅ Allowed        | ⚠️ Conditional   | ⚠️ Conditional |
 | GPL-2.0    | Strong Copyleft  | ✅ Allowed   | ✅ Allowed        | ❌ Prohibited    | ❌ Prohibited  |
 | AGPL-3.0   | Network Copyleft | ✅ Allowed   | ❌ Prohibited     | ❌ Prohibited    | ❌ Prohibited  |
+| CC-BY-SA   | Content license  | ✅ Allowed   | ⚠️ Conditional    | ⚠️ Conditional   | ⚠️ Conditional |
 
 The symbols follow the same three-level notation as the [Policy Deliverable Best Practices](/reference/samples/policy).
 

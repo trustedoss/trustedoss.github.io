@@ -155,7 +155,7 @@ resource "aws_s3_bucket" "logs" {
   bucket = "my-log-bucket"
 
   # checkov:skip=CKV_AWS_18:access-log bucket does not require self-logging
-  # checkov:skip=CKV_AWS_52:MFA delete protection unnecessary for log bucket
+  # checkov:skip=CKV_AWS_144:Log bucket does not need cross-region replication
 }
 ```
 

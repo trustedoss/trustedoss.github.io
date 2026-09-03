@@ -161,7 +161,7 @@ jobs:
       - uses: actions/checkout@v7
       - name: Build image
         run: docker build -t myapp:${{ github.sha }} .
-      - uses: aquasecurity/trivy-action@0.36.0
+      - uses: aquasecurity/trivy-action@v0.36.0
         with:
           image-ref: myapp:${{ github.sha }}
           exit-code: 1

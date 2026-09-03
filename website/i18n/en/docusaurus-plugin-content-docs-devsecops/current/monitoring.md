@@ -238,7 +238,7 @@ jobs:
       contents: read
     steps:
       - name: Scan production image
-        uses: aquasecurity/trivy-action@0.36.0
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
           image-ref: ${{ vars.PROD_IMAGE }}
           exit-code: 1

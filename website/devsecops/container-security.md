@@ -77,7 +77,7 @@ jobs:
         run: docker build -t myapp:${{ github.sha }} .
 
       - name: Scan image — vulnerability
-        uses: aquasecurity/trivy-action@0.36.0
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
           image-ref: myapp:${{ github.sha }}
           format: table
@@ -86,14 +86,14 @@ jobs:
           ignore-unfixed: true
 
       - name: Scan image — secret
-        uses: aquasecurity/trivy-action@0.36.0
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
           image-ref: myapp:${{ github.sha }}
           scanners: secret
           exit-code: 1
 
       - name: Upload SBOM
-        uses: aquasecurity/trivy-action@0.36.0
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
           image-ref: myapp:${{ github.sha }}
           format: cyclonedx

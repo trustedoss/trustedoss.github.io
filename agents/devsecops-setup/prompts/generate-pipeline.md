@@ -30,8 +30,9 @@ DevSecOps CI/CD 파이프라인 파일과 정책 파일을 생성한다.
 ## 액션 버전 참조표 (필수 준수)
 
 `uses:` 에는 아래 표의 소유자·태그를 그대로 쓴다. 기억에 의존해 임의 버전을 생성하지 않는다.
-이동 참조(`@master`, `@main`)는 사용하지 않는다. 공급망 침해 시 태그가 통째로 바뀔 수 있어,
-버전 고정이 실제 방어선이다(2026-03 trivy-action 태그 오염 사례).
+이동 참조(`@master`, `@main`)는 사용하지 않는다. 2026-03-19 trivy-action 은 태그 77개 중 76개가
+악성 커밋으로 강제 재지정됐다(GHSA-69fq-xp46-6x23). 태그 고정은 이동 참조보다 안전하지만 이 사건처럼
+태그 자체가 바뀌면 막지 못하므로, 더 강한 보호가 필요하면 커밋 SHA 로 고정한다.
 
 | 용도             | uses 값                                                                                                   |
 | ---------------- | --------------------------------------------------------------------------------------------------------- |
@@ -39,7 +40,7 @@ DevSecOps CI/CD 파이프라인 파일과 정책 파일을 생성한다.
 | 아티팩트 업로드  | `actions/upload-artifact@v7`                                                                              |
 | SBOM 생성        | `anchore/sbom-action@v0`                                                                                  |
 | SBOM 취약점 스캔 | `anchore/scan-action@v7`                                                                                  |
-| 컨테이너 스캔    | `aquasecurity/trivy-action@0.36.0`                                                                        |
+| 컨테이너 스캔    | `aquasecurity/trivy-action@v0.36.0`                                                                       |
 | 시크릿 탐지      | `gitleaks/gitleaks-action@v3`                                                                             |
 | IaC 점검         | `bridgecrewio/checkov-action@v12`                                                                         |
 | Terraform 점검   | `aquasecurity/tfsec-action@v1.0.3`                                                                        |

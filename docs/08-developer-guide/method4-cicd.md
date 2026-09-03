@@ -18,6 +18,10 @@ PR 단계에서 자동으로 차단하면 위반이 메인 브랜치에 들어�
 `.github/workflows/oss-policy-check.yml`을 생성합니다.
 아래 예시는 **무료 오픈소스 도구만** 사용합니다 (syft, grype 모두 오픈소스).
 
+차단 목록에는 [라이선스 분류](/reference/concepts/license-classification)에서 금지 등급인
+라이선스만 넣습니다. LGPL·MPL 같은 조건부 허용 라이선스는 빌드를 실패시키는 대신 담당자
+검토로 넘기는 것이 정본 기준입니다.
+
 ```yaml
 name: OSS Policy Check
 
@@ -54,7 +58,9 @@ jobs:
           cat detected-licenses.txt
 
           # 금지 라이선스 확인 (grep -E 확장 정규식, -only/-or-later 변형도 부분 일치로 감지)
-          FORBIDDEN='GPL-2\.0|GPL-3\.0|AGPL-3\.0|LGPL-2\.0'
+          # \b 는 단어 경계라 LGPL 은 걸리지 않습니다. LGPL·MPL 은 금지가 아니라 조건부
+          # 허용이므로 차단 대신 담당자 검토 대상입니다. GNU grep 기준입니다.
+          FORBIDDEN='\b(GPL-2\.0|GPL-3\.0|AGPL-3\.0|SSPL-1\.0|Commons-Clause)'
           if grep -qE "$FORBIDDEN" detected-licenses.txt; then
             echo "::error::금지된 라이선스가 감지되었습니다. 담당자의 승인을 받거나 대체 패키지를 사용하세요."
             grep -E "$FORBIDDEN" detected-licenses.txt
@@ -92,7 +98,7 @@ jobs:
 **효과:**
 
 - 모든 PR에서 자동으로 라이선스 검사 실행
-- GPL 등 금지 라이선스 발견 시 PR 머지 차단
+- GPL·AGPL 등 금지 라이선스 발견 시 PR 머지 차단
 - CVSS High(7.0) 이상 취약점 발견 시 머지 차단
 - 검사 결과가 PR 화면에 직접 표시됨
 
