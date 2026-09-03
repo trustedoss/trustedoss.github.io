@@ -34,18 +34,10 @@ Trusted OSS는 AI 에이전트로 <Term k="openchain">OpenChain</Term>(ISO/IEC 5
 
 가장 먼저 만드는 산출물은 조직의 역할과 책임 정의입니다. 에이전트가 질문하고 회사 맞춤 문서를 생성합니다.
 
-저장소를 아직 클론하지 않았다면 먼저 받아 두세요(`git clone`은 GitHub에 있는 파일 전체를 내
-컴퓨터로 내려받는 명령입니다). 터미널·git·Claude Code를 처음 써 본다면 아래 명령을 실행하기
-전에 [환경 준비: 실습에 필요한 도구 설치](../01-setup/index.md)를 먼저 끝내세요. 이미
-마쳤다면 이 단계는 건너뜁니다.
-
-```bash
-git clone https://github.com/trustedoss/trustedoss-agents.git
-cd trustedoss-agents
-```
+먼저 도구 설치와 저장소 내려받기를 마쳐야 합니다. [환경 준비: 실습에 필요한 도구 설치](../01-setup/index.md)가 터미널 여는 법부터 `git clone`까지 차례로 안내합니다. 이미 마쳤다면 이 단계는 건너뜁니다.
 
 :::tip 실행 전 확인
-Claude 세션이 열려 있다면 먼저 종료(`/exit` 또는 `Ctrl+C`)하세요. 아래 명령은 위에서 이동해 둔 `trustedoss-agents` 저장소 루트에서 실행합니다. (새 터미널을 열었다면 먼저 `cd trustedoss-agents`)
+Claude 세션이 열려 있다면 먼저 종료(`/exit` 또는 `Ctrl+C`)하세요. 아래 명령은 환경 준비에서 내려받은 `trustedoss-agents` 저장소 루트에서 실행합니다. (새 터미널을 열었다면 먼저 `cd trustedoss-agents`)
 :::
 
 ```bash

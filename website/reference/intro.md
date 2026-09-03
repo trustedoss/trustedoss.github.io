@@ -14,16 +14,17 @@ sidebar_position: 1
 
 각 단계별 agent가 생성하는 산출물의 완성 예시입니다(가상 기업 기준).
 자신의 `output/` 폴더 결과물과 비교하여 빠진 항목을 확인하세요.
+단계별 산출물 파일 목록은 [개요: 두 표준과 전체 여정](/docs)의 산출물 표가 정본입니다.
 
-| 산출물                                                                                                       | 대응 Agent                     | 바로가기                                 |
-| ------------------------------------------------------------------------------------------------------------ | ------------------------------ | ---------------------------------------- |
-| 조직 (role-definition, raci-matrix, appointment-template)                                                    | organization-designer          | [조직 산출물](./samples/organization)    |
-| 정책 (oss-policy, license-allowlist)                                                                         | policy-generator               | [정책 산출물](./samples/policy)          |
-| 프로세스 (usage-approval, distribution-checklist, vulnerability-response, inquiry-response, process-diagram) | process-designer               | [프로세스 산출물](./samples/process)     |
-| SBOM (license-report, copyleft-risk, sbom-management-plan, sbom-sharing-template)                            | sbom-analyst / sbom-management | [SBOM 산출물](./samples/sbom)            |
-| 취약점 (cve-report, remediation-plan)                                                                        | vulnerability-analyst          | [취약점 산출물](./samples/vulnerability) |
-| 교육 (curriculum, completion-tracker, resources)                                                             | training-manager               | [교육 산출물](./samples/training)        |
-| 인증 (gap-analysis, declaration-draft, submission-guide)                                                     | conformance-preparer           | [인증 산출물](./samples/conformance)     |
+| 단계     | 바로가기                                 |
+| -------- | ---------------------------------------- |
+| 조직     | [조직 산출물](./samples/organization)    |
+| 정책     | [정책 산출물](./samples/policy)          |
+| 프로세스 | [프로세스 산출물](./samples/process)     |
+| SBOM     | [SBOM 산출물](./samples/sbom)            |
+| 취약점   | [취약점 산출물](./samples/vulnerability) |
+| 교육     | [교육 산출물](./samples/training)        |
+| 인증     | [인증 산출물](./samples/conformance)     |
 
 ## 개념 심화
 

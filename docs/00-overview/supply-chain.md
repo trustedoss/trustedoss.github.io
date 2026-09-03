@@ -59,7 +59,7 @@ flowchart LR
 앞의 세 건은 코드와 메인테이너의 신뢰를 노린 초기 유형이고,
 뒤의 두 건은 2025년 이후 자격증명과 빌드 파이프라인으로 옮겨 간 유형입니다.
 
-#### SolarWinds (2020)
+### SolarWinds (2020)
 
 **사건 개요**
 공격자는 SolarWinds의 내부 빌드 파이프라인에 악성코드(Sunburst)를 삽입했습니다.
@@ -76,7 +76,7 @@ flowchart LR
 
 ---
 
-#### Log4Shell (2021, CVE-2021-44228)
+### Log4Shell (2021, CVE-2021-44228)
 
 **사건 개요**
 Java 애플리케이션에서 거의 보편적으로 사용되는 로깅 라이브러리 Apache Log4j 2에서
@@ -94,7 +94,7 @@ SBOM이 있었다면 Log4j를 사용하는 모든 시스템을 즉시 식별하�
 
 ---
 
-#### XZ Utils (2024, CVE-2024-3094)
+### XZ Utils (2024, CVE-2024-3094)
 
 **사건 개요**
 공격자는 "Jia Tan"이라는 가명으로 2년간 XZ Utils 오픈소스 프로젝트에
@@ -112,7 +112,7 @@ Fedora 베타, Debian testing, openSUSE Tumbleweed 등 주요 배포판의 개�
 
 ---
 
-#### tj-actions/changed-files (2025-03, CVE-2025-30066)
+### tj-actions/changed-files (2025-03, CVE-2025-30066)
 
 **사건 개요**
 GitHub Actions 워크플로에서 널리 쓰이던 `tj-actions/changed-files` 액션의 여러 버전 태그가
@@ -132,7 +132,7 @@ GitHub Actions 워크플로에서 널리 쓰이던 `tj-actions/changed-files` �
 
 ---
 
-#### Shai-Hulud 계보와 ChainDrop (2025-2026)
+### Shai-Hulud 계보와 ChainDrop (2025-2026)
 
 **사건 개요**
 2025-09 npm에서 처음 확인된 Shai-Hulud 웜은 훔친 npm 토큰으로 피해자가 관리하는 패키지를
@@ -174,7 +174,7 @@ AI 코딩 도구의 설정 파일이 곧 실행 경로라는 뜻이므로, 저�
 
 공급망 보안은 이제 자율적 모범 사례를 넘어 법적 요구사항이 되고 있습니다.
 
-#### 미국 행정명령 EO 14028 (2021)
+### 미국 행정명령 EO 14028 (2021)
 
 **배경**
 SolarWinds, Microsoft Exchange 등 잇따른 대형 공급망 공격에 대응하여
@@ -198,7 +198,7 @@ SolarWinds, Microsoft Exchange 등 잇따른 대형 공급망 공격에 대응�
 
 ---
 
-#### EU Cyber Resilience Act - CRA (2024)
+### EU Cyber Resilience Act - CRA (2024)
 
 **배경**
 EU 디지털 단일 시장에 출시되는 디지털 제품의 사이버보안을 강화하기 위해
@@ -220,7 +220,7 @@ EU에 소프트웨어 제품이나 서비스를 판매하는 **모든 기업**�
 
 ---
 
-#### 국내 동향
+### 국내 동향
 
 국내 정책은 권고 성격의 가이드라인에서 시작해 시행 일정을 갖춘 로드맵 단계로 넘어왔습니다.
 

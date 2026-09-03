@@ -25,9 +25,7 @@ sidebar_label: 도구 개요
 
 ## 바로 체험 (무설치·무API키)
 
-설치 없이 브라우저에서 SBOM 분석 결과를 먼저 확인해 보세요.
-
-- [SBOM 분석기 샘플 체험](pathname:///tools/sbom-sample-demo.html)
+무설치 SBOM 분석기 체험은 [5분 빠른 시작](../00-overview/quick-start.md)에 있습니다.
 
 ## AI 에이전트로 자동 생성
 
