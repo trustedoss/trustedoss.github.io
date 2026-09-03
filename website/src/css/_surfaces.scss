@@ -12,6 +12,12 @@
 /* Home page */
 
 .homepage {
+  /* 랜딩은 Infima 컨테이너 폭 제한을 받지 않고 전체 폭을 쓴다. Hero 밴드가
+     좌우 여백 없이 붙으려면 필요하다. index.scss(K10-a 에서 삭제)에 있던
+     규칙을 옮겨 왔다. 이것 없이는 1440px 뷰포트에서 좌우 20px 씩 흰 여백이 생긴다. */
+  width: 100%;
+  max-width: 100%;
+
   div[class*="codeBlockContainer"] {
     margin-bottom: 0;
     overflow: visible;

@@ -127,10 +127,7 @@ const config: Config = {
         },
         blog: false,
         theme: {
-          customCss: [
-            require.resolve('./src/css/customTheme.scss'),
-            require.resolve('./src/css/index.scss'),
-          ],
+          customCss: [require.resolve('./src/css/customTheme.scss')],
         },
       } satisfies Preset.Options,
     ],
