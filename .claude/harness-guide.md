@@ -58,7 +58,8 @@
 │   ├── check-i18n-parity.py          # ko/en 문서 파일 패리티 검사
 │   ├── check-redirects.py            # 사이트 개편 시 사라진 URL의 리다이렉트·목적지 확인
 │   ├── check-code-blocks.py          # 문서 코드블록 문법·스키마 검사 (L1·L2)
-│   └── check-code-refs.py            # 문서가 인용하는 외부 참조 실재 확인 (L3)
+│   ├── check-code-refs.py            # 문서가 인용하는 외부 참조 실재 확인 (L3)
+│   └── example-e2e.sh                # samples/ 실습을 실제로 돌려 재현 확인 (L4)
 │
 dry-run/
 └── run-dryrun.sh                     # OpenWave 프로필 드라이런 오케스트레이터
@@ -403,6 +404,30 @@ python3 .claude/scripts/check-code-refs.py --changed origin/main  # 변경분만
 문서를 고치지 않아도 깨질 수 있다. 태그가 삭제되거나 URL 이 옮겨 가면 실패한다. 그래서
 PR 게이트(`pre-merge.yml` Layer 5)는 변경분만 보고, 전량 확인은 `example-refs.yml` 이
 주간 예약으로 돌려 실패 시 이슈만 만든다. 병합은 막지 않는다.
+
+### `example-e2e.sh`: samples 실습 재현 확인 (L4)
+
+`samples/` 세 프로젝트를 문서에 적힌 순서대로 실제로 돌려 기대한 결과가 나오는지 본다.
+앞 계층이 문법만 보는 것과 달리 도구를 실행한다.
+
+```bash
+bash .claude/scripts/example-e2e.sh              # 전체
+bash .claude/scripts/example-e2e.sh --selftest   # 단언이 실제로 검출하는지 확인
+bash .claude/scripts/example-e2e.sh --no-network # 네트워크가 필요한 항목을 건너뛴다
+```
+
+단언은 종료 코드가 아니라 값이다. java 컴포넌트 4개 이상, python 5개 이상, 생성한 SBOM 을
+grype 가 실제로 파싱하는지, java 스캔에 `GHSA-jfh8-c2jp-5v3q` 가 있는지, nodejs 는 설치 후
+컴포넌트가 0보다 큰지와 `vendor/legacy-parser` 에 license 필드가 없는지를 본다.
+
+종료 코드를 믿지 않는 이유가 있다. macOS 의 Docker 는 공유 목록에 없는 호스트 경로를
+마운트하면 오류 대신 빈 디렉터리를 붙인다. 그러면 syft 는 종료 코드 0 으로 컴포넌트가 하나도
+없는 SBOM 을 내놓는다. `--selftest` 가 빈 입력을 넣어 이 상황이 실패로 판정되는지 확인한다.
+
+도구 버전은 태그로 고정한다(syft v1.51.1, grype v0.118.0). 이 조합이 CycloneDX 1.7 을 내고
+읽는 짝이다. 낮은 grype 를 쓰면 `sbom format not recognized` 로 이 검사가 걸린다.
+
+`GRYPE_DB_CACHE` 에 디렉터리를 주면 취약점 DB 를 재사용한다. DB 는 약 2GB 다.
 
 ---
 

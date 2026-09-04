@@ -54,6 +54,7 @@ Step 5   git push                                  # 모든 검증 통과 후에
 | `python3 .claude/scripts/check-redirects.py <기준선> <build>` | 사이트 개편 시 사라진 URL의 리다이렉트 존재·목적지 확인     | ~5초     |
 | `python3 .claude/scripts/check-code-blocks.py`                | 문서 코드블록 문법·스키마 검사 (L1·L2)                      | ~40초    |
 | `python3 .claude/scripts/check-code-refs.py`                  | 문서가 인용하는 액션 태그·설치 URL 실재 확인 (L3, 네트워크) | ~2분     |
+| `bash .claude/scripts/example-e2e.sh`                         | samples/ 실습을 실제로 돌려 재현 확인 (L4, Docker)          | ~15분    |
 | `/kwg-check`                                                  | KWG 원본 싱크 상태 확인                                     | ~1분     |
 
 ---
@@ -239,6 +240,7 @@ Step 5   git push                                  # Only after all checks pass
 | `python3 .claude/scripts/check-redirects.py <baseline> <build>` | During a site redesign, confirm every dropped URL has a redirect that resolves     | ~5 sec  |
 | `python3 .claude/scripts/check-code-blocks.py`                  | Check code block syntax and schema in the docs (L1, L2)                            | ~40 sec |
 | `python3 .claude/scripts/check-code-refs.py`                    | Confirm the action tags and install URLs the docs cite still resolve (L3, network) | ~2 min  |
+| `bash .claude/scripts/example-e2e.sh`                           | Run the samples/ walkthroughs for real and check they reproduce (L4, Docker)       | ~15 min |
 | `/kwg-check`                                                    | Check sync status with KWG source                                                  | ~1 min  |
 
 ---

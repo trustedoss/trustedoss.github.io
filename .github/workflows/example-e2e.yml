@@ -1,0 +1,91 @@
+name: Example E2E
+
+# samples/ 실습을 문서에 적힌 그대로 끝까지 돌려 본다 (L4).
+#
+# PR 게이트로 두지 않는 이유가 있다. grype 취약점 DB 를 내려받는 데만 몇 분이 걸리고,
+# 컨테이너 이미지 세 개를 받아야 하며, npm 레지스트리와 취약점 DB 서버에 의존한다.
+# 문서와 무관한 이유로 PR 이 막히면 게이트가 신뢰를 잃는다. 그래서 주간 예약과 수동 실행을
+# 기본으로 두고, 실습 자체를 건드리는 PR 에서만 경로 한정으로 함께 돈다.
+
+on:
+  schedule:
+    # 매주 월요일 03:30 UTC (KST 12:30). example-refs 와 한 시간 띄운다.
+    - cron: "30 3 * * 1"
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "samples/**"
+      - "docs/05-tools/**"
+      - ".claude/scripts/example-e2e.sh"
+      - ".github/workflows/example-e2e.yml"
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    # grype DB 내려받기가 가장 오래 걸린다. 실측 기준 7분을 넘겼고, 이미지 세 개와
+    # npm 설치까지 더해지므로 넉넉히 잡는다.
+    timeout-minutes: 40
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run the sample walkthroughs
+        id: e2e
+        run: |
+          bash .claude/scripts/example-e2e.sh 2>&1 | tee e2e.log
+          exit "${PIPESTATUS[0]}"
+
+      - name: Open an issue when the walkthrough stops reproducing
+        # 예약·수동 실행에서만 이슈를 만든다. PR 에서는 실패가 체크에 바로 보이므로
+        # 이슈까지 만들면 중복이다.
+        if: failure() && github.event_name != 'pull_request'
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const fs = require('fs');
+            let log = '(로그를 읽지 못했다)';
+            try {
+              log = fs.readFileSync('e2e.log', 'utf8').slice(-4000);
+            } catch (e) {
+              core.warning(`로그 읽기 실패: ${e.message}`);
+            }
+            const body = [
+              '`example-e2e` 실행에서 samples/ 실습이 문서대로 재현되지 않았다.',
+              '',
+              '문서를 고치지 않아도 발생할 수 있다. 도구 버전이 올라가면서 출력 형식이',
+              '바뀌었거나, 취약점 DB 에서 기대하던 항목이 빠졌을 수 있다.',
+              '로그의 실패 항목을 확인하고 문서나 고정 태그를 갱신하라.',
+              '',
+              '```',
+              log,
+              '```',
+              '',
+              `실행: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+            ].join('\n');
+
+            const existing = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'example-e2e',
+            });
+            if (existing.data.length > 0) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existing.data[0].number,
+                body,
+              });
+              return;
+            }
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: 'samples/ 실습이 문서대로 재현되지 않는다',
+              body,
+              labels: ['example-e2e'],
+            });
