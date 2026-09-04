@@ -61,7 +61,7 @@ Step 5   git push                                  # 모든 검증 통과 후에
 
 ## verify.sh FAIL 시 자주 발생하는 오류
 
-### [1/12] Docusaurus 빌드 실패
+### [1/13] Docusaurus 빌드 실패
 
 ```
 FAIL: Docusaurus 빌드 실패
@@ -247,7 +247,7 @@ Step 5   git push                                  # Only after all checks pass
 
 ## Common verify.sh FAIL Errors
 
-### [1/12] Docusaurus Build Failure
+### [1/13] Docusaurus Build Failure
 
 ```
 FAIL: Docusaurus 빌드 실패
