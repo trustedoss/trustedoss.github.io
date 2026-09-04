@@ -24,8 +24,28 @@ GRYPE_IMAGE="anchore/grype:v0.118.0"
 NODE_IMAGE="node:22-bookworm-slim"
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
-WORK="$(mktemp -d)"
-trap 'rm -rf "$WORK"' EXIT
+
+# 작업 디렉터리를 저장소 안에 만든다. macOS 의 Docker Desktop 은 공유 목록에 없는 경로를
+# 마운트하면 오류 대신 빈 디렉터리를 붙이는데, `mktemp -d` 가 주는 /var/folders 가 그렇다.
+# 저장소는 이미 공유되는 위치라 여기에 두면 macOS 와 리눅스에서 같게 동작한다.
+# .gitignore 에 등록돼 있다.
+TMPBASE="$ROOT/.example-e2e-tmp"
+WORK="$TMPBASE/$$"
+mkdir -p "$WORK"
+
+# 컨테이너가 만든 파일이 root 소유로 남으면 러너 사용자가 지우지 못하고 Permission denied 가
+# 파일 수만큼 쏟아져 실제 오류를 덮는다. 컨테이너를 호출자 UID 로 돌려 예방하되,
+# 그래도 남으면 컨테이너 안에서 지운다.
+cleanup() {
+  [ -d "$WORK" ] || return 0
+  rm -rf "$WORK" 2>/dev/null
+  if [ -d "$WORK" ] && command -v docker >/dev/null 2>&1; then
+    docker run --rm -v "$TMPBASE":/w "$NODE_IMAGE" rm -rf "/w/$$" >/dev/null 2>&1
+  fi
+  rmdir "$TMPBASE" 2>/dev/null
+  return 0
+}
+trap cleanup EXIT
 
 RAN=()
 SKIPPED=()
@@ -120,8 +140,11 @@ main_run() {
   else
     local proj="$WORK/nodejs"
     cp -R "$ROOT/samples/nodejs-unlicensed" "$proj"
-    if docker run --rm -v "$proj":/app -w /app "$NODE_IMAGE" \
-         npm install --no-audit --no-fund >/dev/null 2>&1; then
+    # 호출자 UID 로 돌려 산출물이 root 소유가 되지 않게 한다. npm 은 쓸 수 있는 HOME 이
+    # 필요하므로 컨테이너 안 경로를 준다.
+    if docker run --rm -v "$proj":/app -w /app \
+         --user "$(id -u):$(id -g)" -e HOME=/tmp -e npm_config_cache=/tmp/.npm \
+         "$NODE_IMAGE" npm install --no-audit --no-fund >/dev/null 2>&1; then
       ok "nodejs 의존성 설치"
       local out="$WORK/nodejs.cdx.json"
       syft "$proj" --output cyclonedx-json > "$out" 2>/dev/null

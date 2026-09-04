@@ -72,3 +72,6 @@ docs/_plan/
 .claude/talk-script-ossummit-2026.md
 deck/STATUS.md
 POSITIONING.md
+
+# example-e2e.sh 작업 디렉터리 (실행 중에만 존재)
+.example-e2e-tmp/

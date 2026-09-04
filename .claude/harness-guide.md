@@ -429,6 +429,10 @@ grype 가 실제로 파싱하는지, java 스캔에 `GHSA-jfh8-c2jp-5v3q` 가 �
 
 `GRYPE_DB_CACHE` 에 디렉터리를 주면 취약점 DB 를 재사용한다. DB 는 약 2GB 다.
 
+작업 디렉터리는 저장소 안 `.example-e2e-tmp/` 에 만든다(gitignore 대상, 종료 시 삭제).
+`mktemp -d` 를 쓰지 않는 이유는 macOS 에서 그 경로가 `/var/folders` 아래라 Docker Desktop 의
+공유 목록에 없기 때문이다. 마운트가 빈 디렉터리로 붙어 실습이 통째로 실패한다.
+
 ---
 
 ## 5. 시나리오별 사용 예시
