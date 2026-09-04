@@ -424,6 +424,16 @@ grype 가 실제로 파싱하는지, java 스캔에 `GHSA-jfh8-c2jp-5v3q` 가 �
 마운트하면 오류 대신 빈 디렉터리를 붙인다. 그러면 syft 는 종료 코드 0 으로 컴포넌트가 하나도
 없는 SBOM 을 내놓는다. `--selftest` 가 빈 입력을 넣어 이 상황이 실패로 판정되는지 확인한다.
 
+같은 이유로 작업 디렉터리를 `mktemp -d` 가 아니라 저장소 안 `.example-e2e-tmp/` 에 만든다.
+`mktemp -d` 가 macOS 에서 주는 `/var/folders` 경로가 Docker Desktop 공유 목록에 없어 마운트가
+비기 때문이다. 이 위치를 옮기지 마라.
+
+자동 실행은 `example-e2e.yml` 이 맡는다. 주간 예약(월요일 03:30 UTC)과 수동 실행,
+그리고 `samples/**`·`docs/05-tools/**`·이 스크립트와 워크플로 자신을 건드리는 PR 에서 돈다.
+PR 게이트로 상시 도는 계층이 아닌 이유는 grype 취약점 DB 가 2.0GB 단일 파일이라 내려받는 데만
+7분이 넘고 컨테이너 이미지 넷과 외부 API 에 의존하기 때문이다. 실패하면 이슈를 만들되 PR 에서는
+체크에 이미 보이므로 만들지 않는다.
+
 도구 버전은 태그로 고정한다(syft v1.51.1, grype v0.118.0). 이 조합이 CycloneDX 1.7 을 내고
 읽는 짝이다. 낮은 grype 를 쓰면 `sbom format not recognized` 로 이 검사가 걸린다.
 

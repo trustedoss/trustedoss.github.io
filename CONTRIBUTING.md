@@ -72,7 +72,7 @@ FAIL: Docusaurus 빌드 실패
 
 ---
 
-### [2/12] 내부 링크 오류
+### [2/13] 내부 링크 오류
 
 ```
 FAIL: 깨진 링크 발견
@@ -83,7 +83,7 @@ FAIL: 깨진 링크 발견
 
 ---
 
-### [3/12] front matter YAML 오류
+### [3/13] front matter YAML 오류
 
 ```
 FAIL: front matter YAML 오류
@@ -94,7 +94,7 @@ FAIL: front matter YAML 오류
 
 ---
 
-### [5/12] 로컬 경로 노출
+### [5/13] 로컬 경로 노출
 
 ```
 FAIL: 로컬 사용자 경로 노출
@@ -105,7 +105,7 @@ FAIL: 로컬 사용자 경로 노출
 
 ---
 
-### [6/12] ISO 섹션 번호 형식 오류
+### [6/13] ISO 섹션 번호 형식 오류
 
 ```
 FAIL: 18974 섹션 번호 형식 오류
@@ -121,7 +121,7 @@ FAIL: 18974 섹션 번호 형식 오류
 
 ---
 
-### [7/12] agent 실행 admonition 누락
+### [7/13] agent 실행 admonition 누락
 
 ```
 FAIL: agent 실행 admonition 누락
@@ -258,7 +258,7 @@ FAIL: Docusaurus 빌드 실패
 
 ---
 
-### [2/12] Broken Internal Links
+### [2/13] Broken Internal Links
 
 ```
 FAIL: 깨진 링크 발견
@@ -269,7 +269,7 @@ FAIL: 깨진 링크 발견
 
 ---
 
-### [3/12] Front Matter YAML Error
+### [3/13] Front Matter YAML Error
 
 ```
 FAIL: front matter YAML 오류
@@ -280,7 +280,7 @@ FAIL: front matter YAML 오류
 
 ---
 
-### [5/12] Local Path Exposed
+### [5/13] Local Path Exposed
 
 ```
 FAIL: 로컬 사용자 경로 노출
@@ -291,7 +291,7 @@ FAIL: 로컬 사용자 경로 노출
 
 ---
 
-### [6/12] ISO Section Number Format Error
+### [6/13] ISO Section Number Format Error
 
 ```
 FAIL: 18974 섹션 번호 형식 오류
@@ -307,7 +307,7 @@ FAIL: 18974 섹션 번호 형식 오류
 
 ---
 
-### [7/12] Missing Agent Execution Admonition
+### [7/13] Missing Agent Execution Admonition
 
 ```
 FAIL: agent 실행 admonition 누락
