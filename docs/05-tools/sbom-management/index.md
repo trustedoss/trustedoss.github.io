@@ -184,6 +184,11 @@ jobs:
 
 이 워크플로우를 통해 매주 최신 SBOM을 기반으로 취약점을 자동 스캔하고, 심각도 높은 취약점 발견 시 CI 빌드를 실패로 처리하여 팀에 알릴 수 있습니다.
 
+:::warning grype 가 `sbom format not recognized` 를 낼 때
+syft 1.51 이상은 CycloneDX 1.7 을 냅니다. grype 는 0.118 이상에서만 이 버전을 읽습니다.
+두 도구를 함께 올리거나, 올릴 수 없으면 `syft ... -o cyclonedx-json@1.6` 으로 낮춰 생성하세요.
+:::
+
 ---
 
 ## 3. 셀프 스터디

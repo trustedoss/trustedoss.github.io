@@ -41,7 +41,7 @@ cyclonedx convert --input-file sbom.cdx.json \
 ```
 
 cdxgen은 SBOM 생성 도구로 포맷 간 변환 기능이 없으므로, 변환에는 cyclonedx-cli
-(`docker run --rm -v $(pwd):/data cyclonedx/cyclonedx-cli convert ...`) 또는 납품처 지정 도구를 사용한다.
+(`docker run --rm -v "$(pwd)":/data cyclonedx/cyclonedx-cli convert ...`) 또는 납품처 지정 도구를 사용한다.
 
 ---
 

@@ -110,7 +110,7 @@ FOSSLight, SW360, FOSSology 등 SCA·컴플라이언스 도구의 도입 및 활
 
 | 필드                          | 설명                                                                                      |
 | ----------------------------- | ----------------------------------------------------------------------------------------- |
-| `bomFormat`, `specVersion`    | CycloneDX 포맷 식별자와 사양 버전. syft와 cdxgen 모두 기본 출력이 1.7입니다               |
+| `bomFormat`, `specVersion`    | CycloneDX 포맷 식별자와 사양 버전. cdxgen 12.x 와 syft 1.51 이상이 1.7 을 기본으로 냅니다 |
 | `metadata.timestamp`          | SBOM 생성 시각                                                                            |
 | `metadata.tools.components[]` | SBOM을 만든 도구의 이름과 버전. CISA 2026 최소 요소의 "SBOM 생성 도구명"에 해당합니다     |
 | `metadata.lifecycles[]`       | SBOM을 만든 수명주기 단계. "생성 맥락"에 해당합니다                                       |
@@ -134,6 +134,13 @@ FOSSLight, SW360, FOSSology 등 SCA·컴플라이언스 도구의 도입 및 활
 
 수명주기 단계나 해시가 필요한데 syft 출력에 비어 있다면 같은 프로젝트를 cdxgen으로 한 번 더 생성해 비교하세요.
 사양 버전을 명시하려면 syft는 `-o cyclonedx-json@1.7`, cdxgen은 `--spec-version 1.7` 을 씁니다.
+
+:::warning 도구 최소 버전을 먼저 확인하세요
+CycloneDX 1.7 은 syft 1.51 이상에서만 나옵니다. 그보다 낮은 syft 는 1.6 까지만 지원해
+`-o cyclonedx-json@1.7` 을 주면 `unsupported output format` 으로 실패합니다.
+스캔에 쓰는 grype 도 1.7 을 읽으려면 0.118 이상이 필요합니다. 낮은 grype 에 1.7 SBOM 을 주면
+`sbom format not recognized` 로 끝납니다. `syft version` 과 `grype version` 으로 먼저 확인하세요.
+:::
 
 :::tip MCP 서버도 SBOM 에 담을 수 있습니다
 AI 에이전트가 호출하는 MCP(Model Context Protocol, 에이전트가 외부 도구를 호출하는 프로토콜) 서버를
@@ -289,7 +296,7 @@ docker run --rm \
 
 - [ ] `output/sbom/[project].cdx.json` 생성됨
 - [ ] SBOM 파일에 `components` 배열이 비어있지 않음
-- [ ] `specVersion` 이 `1.7` 임 (낮은 값이면 도구 버전을 올리거나 사양 버전을 명시해 다시 생성)
+- [ ] `specVersion` 이 `1.7` 임 (낮은 값이면 syft 를 1.51 이상으로 올린 뒤 다시 생성)
 - [ ] `metadata.timestamp` 와 `metadata.tools` 에 생성 시각과 생성 도구명이 기록됨
 - [ ] `components[]` 각 항목에 `purl` 이 있음
 - [ ] 컴포넌트 해시(`hashes`)와 라이선스(`licenses`) 상태를 확인함 (도구에 따라 비어 있을 수 있으며, 비어 있으면 cdxgen 출력과 비교)

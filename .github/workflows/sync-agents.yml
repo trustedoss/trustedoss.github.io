@@ -26,7 +26,7 @@ jobs:
         env:
           AGENTS_REPO_TOKEN: ${{ secrets.AGENTS_REPO_TOKEN }}
         run: |
-          git clone https://x-access-token:${AGENTS_REPO_TOKEN}@github.com/trustedoss/trustedoss-agents.git /tmp/trustedoss-agents
+          git clone "https://x-access-token:${AGENTS_REPO_TOKEN}@github.com/trustedoss/trustedoss-agents.git" /tmp/trustedoss-agents
 
       - name: Sync files
         run: |
@@ -50,7 +50,7 @@ jobs:
           cd /tmp/trustedoss-agents
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git remote set-url origin https://x-access-token:${AGENTS_REPO_TOKEN}@github.com/trustedoss/trustedoss-agents.git
+          git remote set-url origin "https://x-access-token:${AGENTS_REPO_TOKEN}@github.com/trustedoss/trustedoss-agents.git"
           git add -A
           if [ -z "$(git status --porcelain)" ]; then
             echo "변경 없음 — sync 스킵"

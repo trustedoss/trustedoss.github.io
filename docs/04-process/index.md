@@ -251,7 +251,7 @@ jobs:
       - uses: actions/checkout@v7
       - name: SBOM 생성
         run: |
-          docker run --rm -v $(pwd):/project \
+          docker run --rm -v "$(pwd)":/project \
             anchore/syft:latest /project \
             --output cyclonedx-json > sbom.cdx.json
       - name: 라이선스 확인

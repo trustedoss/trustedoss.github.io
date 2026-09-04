@@ -106,10 +106,14 @@
     color: var(--brand-text);
   }
 
+  /* 활성 행 배경은 밝은 주색이다. 전경을 흰색으로 고정하면 다크에서 흰 글자가
+     #8ab4f8 위에 놓여 2.11:1 로 AA 에 미달한다. --brand-fill-fg 는 라이트에서
+     #fff, 다크에서 #062330 이라 라이트는 그대로 두고 다크만 7.72:1 로 올린다.
+     사이트의 다크 1차 버튼과 같은 처리다. */
   &[aria-selected="true"] {
     span,
     mark {
-      color: white;
+      color: var(--brand-fill-fg);
     }
   }
 
@@ -120,6 +124,41 @@
 
 .DocSearch-Form:focus-within .DocSearch-MagnifierLabel svg {
   color: var(--brand-text);
+}
+
+/* 검색 결과 페이지(/search)
+   테마의 CSS 모듈 클래스에는 빌드마다 달라지는 해시가 붙으므로 부분 일치로 잡는다. */
+
+/* 결과 제목이 h2 인데 테마가 font-weight 400 을 걸어 사이트 굵기 계층을 덮는다. */
+[class*="searchResultItemHeading"] {
+  font-weight: var(--ifm-heading-font-weight);
+  font-size: 1.125rem;
+  line-height: 1.4;
+}
+
+/* 한 화면에 담기는 결과 수를 늘린다. 테마 기본값은 padding 1rem 0 이다.
+   행 높이의 대부분은 본문용 제목 패딩(위아래 12px)과 breadcrumb 패딩·여백(합 40px)이
+   차지한다. 결과 목록에서는 둘 다 필요 없다. */
+[class*="searchResultItem"] {
+  padding: 0.75rem 0;
+
+  [class*="searchResultItemHeading"] {
+    padding: 0;
+  }
+
+  .breadcrumbs {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+[class*="searchResultItemSummary"] {
+  margin: 0.25rem 0 0;
+}
+
+/* 강조 표시가 DocSearch 기본 크림색이라 사이트 토큰 밖이고 다크 대응이 없다. */
+.search-result-match {
+  background: color-mix(in srgb, var(--ifm-color-primary) 18%, transparent);
 }
 
 .DocSearch-Footer {
@@ -168,5 +207,10 @@ html[data-theme="dark"] {
   .DocSearch-Form,
   .DocSearch-Footer {
     background: none;
+  }
+
+  /* 다크에서는 같은 비율이면 흐려서 조금 더 올린다. */
+  .search-result-match {
+    background: color-mix(in srgb, var(--ifm-color-primary) 26%, transparent);
   }
 }

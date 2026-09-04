@@ -192,6 +192,11 @@ jobs:
 
 This workflow automatically scans for vulnerabilities against the latest SBOM every week. If a high-severity vulnerability is found, the CI build can be failed and the team notified.
 
+:::warning When grype reports `sbom format not recognized`
+syft 1.51 and newer emit CycloneDX 1.7, which only grype 0.118 and newer can read.
+Upgrade both tools together, or generate at the older version with `syft ... -o cyclonedx-json@1.6`.
+:::
+
 ---
 
 ## 3. Self-study

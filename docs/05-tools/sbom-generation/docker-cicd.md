@@ -17,12 +17,12 @@ sidebar_label: 'Docker·CI/CD 실행 가이드'
 
 ## Docker로 syft 실행 — 언어/패키지매니저별 명령어
 
-| 언어    | 패키지매니저 | 명령어                                                                                               |
-| ------- | ------------ | ---------------------------------------------------------------------------------------------------- |
-| Java    | Maven/Gradle | `docker run --rm -v $(pwd):/src anchore/syft dir:/src -o cyclonedx-json > output/sbom/sbom.cdx.json` |
-| Python  | pip          | `docker run --rm -v $(pwd):/src anchore/syft dir:/src -o cyclonedx-json > output/sbom/sbom.cdx.json` |
-| Node.js | npm          | `docker run --rm -v $(pwd):/src anchore/syft dir:/src -o cyclonedx-json > output/sbom/sbom.cdx.json` |
-| Go      | go mod       | `docker run --rm -v $(pwd):/src anchore/syft dir:/src -o cyclonedx-json > output/sbom/sbom.cdx.json` |
+| 언어    | 패키지매니저 | 명령어                                                                                                 |
+| ------- | ------------ | ------------------------------------------------------------------------------------------------------ |
+| Java    | Maven/Gradle | `docker run --rm -v "$(pwd)":/src anchore/syft dir:/src -o cyclonedx-json > output/sbom/sbom.cdx.json` |
+| Python  | pip          | `docker run --rm -v "$(pwd)":/src anchore/syft dir:/src -o cyclonedx-json > output/sbom/sbom.cdx.json` |
+| Node.js | npm          | `docker run --rm -v "$(pwd)":/src anchore/syft dir:/src -o cyclonedx-json > output/sbom/sbom.cdx.json` |
+| Go      | go mod       | `docker run --rm -v "$(pwd)":/src anchore/syft dir:/src -o cyclonedx-json > output/sbom/sbom.cdx.json` |
 
 전체 명령어 (각 언어 동일, 디렉토리만 조정). `agents/05-sbom-guide/CLAUDE.md`가 실제로 생성하는 명령어와 동일한 형태입니다:
 
@@ -32,7 +32,7 @@ mkdir -p output/sbom
 
 # syft로 SBOM 생성
 docker run --rm \
-  -v $(pwd):/src \
+  -v "$(pwd)":/src \
   anchore/syft \
   dir:/src \
   -o cyclonedx-json \
@@ -45,7 +45,7 @@ docker run --rm \
 
 ```bash
 docker run --rm \
-  -v $(pwd):/app \
+  -v "$(pwd)":/app \
   -w /app \
   ghcr.io/cyclonedx/cdxgen:latest \
   -o /app/output/sbom/sbom-cdxgen.cdx.json \
@@ -102,7 +102,7 @@ jobs:
 ```bash
 # java-vulnerable 샘플로 실습
 docker run --rm \
-  -v $(pwd)/samples/java-vulnerable:/src \
+  -v "$(pwd)"/samples/java-vulnerable:/src \
   anchore/syft \
   dir:/src -o cyclonedx-json \
   > output/sbom/java-vulnerable.cdx.json

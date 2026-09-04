@@ -47,7 +47,7 @@ The stage-2 scans can run in parallel to keep the overall time within 5 minutes.
 
 ### How one project splits it — TRUSCA
 
-The open source project TRUSCA runs twenty-three workflows. Grouping them by trigger shows the intent.
+The open source project TRUSCA runs twenty-five workflows. Grouping them by trigger shows the intent.
 
 | When         | Workflow                                                                                                                                                                                                                                                                    | Purpose                          |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |

@@ -45,20 +45,23 @@ Step 5   git push                                  # 모든 검증 통과 후에
 
 ## 검증 명령어 빠른 참조
 
-| 명령어                                                        | 역할                                                    | 소요시간 |
-| ------------------------------------------------------------- | ------------------------------------------------------- | -------- |
-| `/qa changed`                                                 | 변경 파일 품질 자동 검사·수정                           | ~2분     |
-| `bash .claude/scripts/verify.sh`                              | 정적 검증 13항목 일괄 실행                              | ~30초    |
-| `python3 .claude/scripts/test-coverage.py`                    | ISO G항목 커버리지 정합성 확인                          | ~5초     |
-| `python3 .claude/scripts/validate-output.py`                  | output/ 산출물 완전성 확인                              | ~5초     |
-| `python3 .claude/scripts/check-redirects.py <기준선> <build>` | 사이트 개편 시 사라진 URL의 리다이렉트 존재·목적지 확인 | ~5초     |
-| `/kwg-check`                                                  | KWG 원본 싱크 상태 확인                                 | ~1분     |
+| 명령어                                                        | 역할                                                        | 소요시간 |
+| ------------------------------------------------------------- | ----------------------------------------------------------- | -------- |
+| `/qa changed`                                                 | 변경 파일 품질 자동 검사·수정                               | ~2분     |
+| `bash .claude/scripts/verify.sh`                              | 정적 검증 13항목 일괄 실행                                  | ~30초    |
+| `python3 .claude/scripts/test-coverage.py`                    | ISO G항목 커버리지 정합성 확인                              | ~5초     |
+| `python3 .claude/scripts/validate-output.py`                  | output/ 산출물 완전성 확인                                  | ~5초     |
+| `python3 .claude/scripts/check-redirects.py <기준선> <build>` | 사이트 개편 시 사라진 URL의 리다이렉트 존재·목적지 확인     | ~5초     |
+| `python3 .claude/scripts/check-code-blocks.py`                | 문서 코드블록 문법·스키마 검사 (L1·L2)                      | ~40초    |
+| `python3 .claude/scripts/check-code-refs.py`                  | 문서가 인용하는 액션 태그·설치 URL 실재 확인 (L3, 네트워크) | ~2분     |
+| `bash .claude/scripts/example-e2e.sh`                         | samples/ 실습을 실제로 돌려 재현 확인 (L4, Docker)          | ~15분    |
+| `/kwg-check`                                                  | KWG 원본 싱크 상태 확인                                     | ~1분     |
 
 ---
 
 ## verify.sh FAIL 시 자주 발생하는 오류
 
-### [1/12] Docusaurus 빌드 실패
+### [1/13] Docusaurus 빌드 실패
 
 ```
 FAIL: Docusaurus 빌드 실패
@@ -69,7 +72,7 @@ FAIL: Docusaurus 빌드 실패
 
 ---
 
-### [2/12] 내부 링크 오류
+### [2/13] 내부 링크 오류
 
 ```
 FAIL: 깨진 링크 발견
@@ -80,7 +83,7 @@ FAIL: 깨진 링크 발견
 
 ---
 
-### [3/12] front matter YAML 오류
+### [3/13] front matter YAML 오류
 
 ```
 FAIL: front matter YAML 오류
@@ -91,7 +94,7 @@ FAIL: front matter YAML 오류
 
 ---
 
-### [5/12] 로컬 경로 노출
+### [5/13] 로컬 경로 노출
 
 ```
 FAIL: 로컬 사용자 경로 노출
@@ -102,7 +105,7 @@ FAIL: 로컬 사용자 경로 노출
 
 ---
 
-### [6/12] ISO 섹션 번호 형식 오류
+### [6/13] ISO 섹션 번호 형식 오류
 
 ```
 FAIL: 18974 섹션 번호 형식 오류
@@ -118,7 +121,7 @@ FAIL: 18974 섹션 번호 형식 오류
 
 ---
 
-### [7/12] agent 실행 admonition 누락
+### [7/13] agent 실행 admonition 누락
 
 ```
 FAIL: agent 실행 admonition 누락
@@ -228,20 +231,23 @@ Step 5   git push                                  # Only after all checks pass
 
 ## Verification Command Reference
 
-| Command                                                         | Role                                                                           | Time    |
-| --------------------------------------------------------------- | ------------------------------------------------------------------------------ | ------- |
-| `/qa changed`                                                   | Auto-check and fix changed file quality                                        | ~2 min  |
-| `bash .claude/scripts/verify.sh`                                | Run all 13 static validation checks                                            | ~30 sec |
-| `python3 .claude/scripts/test-coverage.py`                      | Verify ISO requirement coverage                                                | ~5 sec  |
-| `python3 .claude/scripts/validate-output.py`                    | Verify output/ deliverable completeness                                        | ~5 sec  |
-| `python3 .claude/scripts/check-redirects.py <baseline> <build>` | During a site redesign, confirm every dropped URL has a redirect that resolves | ~5 sec  |
-| `/kwg-check`                                                    | Check sync status with KWG source                                              | ~1 min  |
+| Command                                                         | Role                                                                               | Time    |
+| --------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ------- |
+| `/qa changed`                                                   | Auto-check and fix changed file quality                                            | ~2 min  |
+| `bash .claude/scripts/verify.sh`                                | Run all 13 static validation checks                                                | ~30 sec |
+| `python3 .claude/scripts/test-coverage.py`                      | Verify ISO requirement coverage                                                    | ~5 sec  |
+| `python3 .claude/scripts/validate-output.py`                    | Verify output/ deliverable completeness                                            | ~5 sec  |
+| `python3 .claude/scripts/check-redirects.py <baseline> <build>` | During a site redesign, confirm every dropped URL has a redirect that resolves     | ~5 sec  |
+| `python3 .claude/scripts/check-code-blocks.py`                  | Check code block syntax and schema in the docs (L1, L2)                            | ~40 sec |
+| `python3 .claude/scripts/check-code-refs.py`                    | Confirm the action tags and install URLs the docs cite still resolve (L3, network) | ~2 min  |
+| `bash .claude/scripts/example-e2e.sh`                           | Run the samples/ walkthroughs for real and check they reproduce (L4, Docker)       | ~15 min |
+| `/kwg-check`                                                    | Check sync status with KWG source                                                  | ~1 min  |
 
 ---
 
 ## Common verify.sh FAIL Errors
 
-### [1/12] Docusaurus Build Failure
+### [1/13] Docusaurus Build Failure
 
 ```
 FAIL: Docusaurus 빌드 실패
@@ -252,7 +258,7 @@ FAIL: Docusaurus 빌드 실패
 
 ---
 
-### [2/12] Broken Internal Links
+### [2/13] Broken Internal Links
 
 ```
 FAIL: 깨진 링크 발견
@@ -263,7 +269,7 @@ FAIL: 깨진 링크 발견
 
 ---
 
-### [3/12] Front Matter YAML Error
+### [3/13] Front Matter YAML Error
 
 ```
 FAIL: front matter YAML 오류
@@ -274,7 +280,7 @@ FAIL: front matter YAML 오류
 
 ---
 
-### [5/12] Local Path Exposed
+### [5/13] Local Path Exposed
 
 ```
 FAIL: 로컬 사용자 경로 노출
@@ -285,7 +291,7 @@ FAIL: 로컬 사용자 경로 노출
 
 ---
 
-### [6/12] ISO Section Number Format Error
+### [6/13] ISO Section Number Format Error
 
 ```
 FAIL: 18974 섹션 번호 형식 오류
@@ -301,7 +307,7 @@ FAIL: 18974 섹션 번호 형식 오류
 
 ---
 
-### [7/12] Missing Agent Execution Admonition
+### [7/13] Missing Agent Execution Admonition
 
 ```
 FAIL: agent 실행 admonition 누락

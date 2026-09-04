@@ -124,6 +124,11 @@ sca:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
 ```
 
+:::warning When grype reports `sbom format not recognized`
+syft 1.51 and newer emit CycloneDX 1.7, which only grype 0.118 and newer can read.
+Upgrade both tools together, or generate at the older version with `syft ... -o cyclonedx-json@1.6`.
+:::
+
 ### How this differs from the cicd-quick workflow
 
 [AI Coding — Quick CI/CD in 30 minutes](/en/ai-coding/cicd-quick) carries a workflow of the same shape. If you already applied that one, adding the three items below turns it into what this page describes.
@@ -380,5 +385,5 @@ The analyzer above is for one-off checks. If your whole team needs a continuousl
 - Try it yourself: [TRUSCA repository](https://github.com/trustedoss/trusca) (Docker Compose or Helm deployment)
 - It is a path to a continuously operated SCA where budget, staffing, or an air-gapped network constrain the options.
 
-No hosted public demo instance is provided. Use the guide above to run it in your own environment.
+The TRUSCA portal links a hosted demo instance you can open. The demo is for looking around, so run it in your own environment with the guide above for real use.
 :::

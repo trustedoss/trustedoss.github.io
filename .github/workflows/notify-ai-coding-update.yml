@@ -23,9 +23,11 @@ jobs:
         id: changed
         run: |
           FILES=$(git diff --name-only HEAD~1 HEAD -- agents/ai-coding-setup/ website/ai-coding/ | head -20 | sed 's/^/- /' | tr '\n' '\n')
-          echo "files<<EOF" >> $GITHUB_OUTPUT
-          echo "$FILES" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
+          {
+            echo "files<<EOF"
+            echo "$FILES"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
 
       - name: Create issue in ai-coding-best-practice
         env:
