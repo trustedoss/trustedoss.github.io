@@ -337,6 +337,27 @@ Three of the nine controls do not reduce to a file: reviewing tool descriptions,
 path, and checking the provenance of tools and extensions. They stay written rules whose results
 belong in the PR.
 
+**In practice — TRUSCA**: a repository that uses no MCP server at all, showing what this shape looks
+like when adopted early. Early was the point: the alternative is inventing the procedure on the day
+someone wants a server.
+
+- [.mcp.json](https://github.com/trustedoss/trusca/blob/main/.mcp.json) sits in the repository,
+  empty. All it does is make adding a server a PR diff rather than a personal setting.
+- The [contributor guide](https://github.com/trustedoss/trusca/blob/main/docs-site/docs/contributor-guide/coding-standards.md)
+  carries a section, "MCP servers and agent tools", with the four things to establish before a
+  server lands (origin, tool descriptions, data egress, a pinned version) and the instruction to
+  record the outcome in the pull request. Re-reading the tool descriptions when the pin moves, and
+  re-checking agent skills and IDE extensions once a quarter, live in the same place.
+
+What was left out is worth stating too. Agent-side audit logging and a central authorization layer
+are not there. With no server configured neither has a subject, and there is no internal IdP.
+Standing up controls out of proportion to the setup leaves documentation nobody operates.
+
+The agent configuration file itself is not tracked in that repository, so the published procedure
+lives in the contributor guide while the settings-side controls stay in each developer's own
+environment. That split between what a repository can show and what remains local is worth deciding
+before adoption rather than after.
+
 ## 6. Listing MCP servers in the SBOM
 
 Once an MCP server becomes a runtime dependency, it belongs in the SBOM. Alongside `components`,
