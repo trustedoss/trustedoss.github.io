@@ -7,6 +7,16 @@ sidebar_position: 13
 
 # Testing for AI-Written Code
 
+:::info What this page covers
+
+- A way of working that agrees on tests first and then hands over implementation
+- Three layers of control that stop agents from weakening tests
+- Measuring the quality of the tests themselves with coverage and mutation testing
+- Isolated, reproducible execution environments and flaky-test handling
+
+It is written for developers, test and quality staff, and teams that run CI.
+:::
+
 AI coding tools increase the volume of change. The number of reviewers stays the same, so checking
 behavior by having a person read every line soon reaches its limit. The standard for deciding whether
 a change is right then becomes the tests. With weak tests, the only way to check AI-written code is a
@@ -204,3 +214,10 @@ policy were actually followed.
 - `tests/`, `scripts/check-test-integrity.py`, and `.github/workflows/` in the [ai-coding-best-practice](https://github.com/trustedoss/ai-coding-best-practice) repository
 
 All sources were checked on 2026-11-12.
+
+## Next steps
+
+- [Productivity and Collaboration in AI Coding](./collaboration): small PRs and shared review backed by tests
+- [AI Fuzzing](./ai-fuzzing): exploring inputs nobody wrote down as requirements
+- [Best Practice Repository](./best-practice-repo): every file covered on this page
+- [5-Stage Strategy](./strategy): the test gate to add alongside the Stage 3 gates

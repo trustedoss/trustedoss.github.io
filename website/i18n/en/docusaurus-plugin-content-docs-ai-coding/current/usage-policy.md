@@ -7,13 +7,23 @@ sidebar_position: 2
 
 # AI Coding Tool Usage Policy
 
+:::info What this page decides
+
+- Which tools and plans to allow, and the approval criteria
+- Which data may be sent to tools and which must be blocked
+- Roles and responsibilities, and training items
+- Cost limits and periodic review
+
+It is written for policy owners, tool administrators, and security and legal staff. Developers can start with section 2 (data handling) and the "Way of working and verification" items in the template.
+:::
+
 The first thing an organization that uses AI coding tools needs is not a tool configuration but a set
 of usage rules: which tools are allowed, which code and data may be sent to them, who approves and who
 is accountable, what people are taught, and how much may be spent. Without these rules, people work
 with whatever tools and accounts they picked themselves, and the other controls in this section (Rules,
 CI gates, MCP controls) lose a clear scope.
 
-This page puts those rules in one document. You can add the copy-paste block in the last section to
+This page puts those rules in one document. You can add the policy template in the last section to
 your [open source policy](/en/docs/policy) or adopt it as a standalone policy.
 
 :::note Not legal advice
@@ -43,13 +53,22 @@ The table covers business plans. Individual plans of the same vendor differ. For
 2026-04-24 GitHub uses interaction data from Copilot Free, Pro, and Pro+ users for training (users can
 opt out), while Business and Enterprise are excluded from that change.
 
-| Tool                                           | Training                                                             | Retention and zero-retention option                                                                    | Admin enforcement                                                                                   |
-| ---------------------------------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------- |
-| GitHub Copilot Business and Enterprise         | Not used for training                                                | Chat on github.com is retained for the life of the account from 2026-09-28 onward (previously 28 days) | Enterprise policies cannot be overridden by organizations. Content exclusion by repository and path |
-| Anthropic (Team, Enterprise, API, Claude Code) | Not used for training (unless the customer joins a separate program) | 30 days by default. Zero data retention (ZDR) is enabled by Anthropic per qualified organization       | Keys in managed settings (`managed-settings.json`) cannot be overridden by user settings            |
-| OpenAI (ChatGPT Business and Enterprise, API)  | Not used for training by default                                     | API abuse-monitoring logs kept up to 30 days. Zero retention needs prior approval from OpenAI          | Workspace admin settings                                                                            |
-| Cursor (Teams, Enterprise)                     | Not used for training in Privacy Mode                                | In Privacy Mode, zero-retention agreements with model providers; some models are exceptions            | Admins can turn on Privacy Mode and stop members from turning it off                                |
-| Gemini Code Assist                             | Prompts and responses not used for training                          | No retention period stated in the official documentation                                               | Not confirmed in official documentation                                                             |
+| Tool                                          | Training                 | Retention                                     | Admin enforcement            |
+| --------------------------------------------- | ------------------------ | --------------------------------------------- | ---------------------------- |
+| GitHub Copilot Business and Enterprise        | Not used                 | github.com chat: life of the account (note 1) | Policies, content exclusion  |
+| Anthropic (Team, Enterprise, API)             | Not used (note 2)        | 30 days, ZDR per organization                 | Managed settings (note 2)    |
+| OpenAI (ChatGPT Business and Enterprise, API) | Not used by default      | API logs up to 30 days, ZDR by prior approval | Workspace settings           |
+| Cursor (Teams, Enterprise)                    | Not used in Privacy Mode | ZDR in Privacy Mode (note 3)                  | Privacy Mode can be enforced |
+| Gemini Code Assist                            | Not used                 | Not stated                                    | Not confirmed                |
+
+ZDR (Zero Data Retention) is an option under which the vendor does not store inputs and outputs. Notes to the table:
+
+1. Changed from 2026-09-28; previously 28 days. Enterprise policies cannot be overridden by
+   organizations, and content exclusion is set by repository and path.
+2. Data may be used for training if the customer joins a separate program. In Claude Code, keys in
+   managed settings (`managed-settings.json`) cannot be overridden by user settings.
+3. Cursor has zero-retention agreements with model providers, with some model exceptions. When an
+   admin turns on Privacy Mode, members cannot turn it off.
 
 Two points need care. First, GitHub's documentation states that content exclusion may miss indirect
 file access by agents and does not replace operating-system permissions. Second, Copilot's policy that
@@ -143,12 +162,15 @@ chat use. Without limits, you learn about actual usage only when the invoice arr
 
 Cost controls of major tools (checked 2026-11):
 
-| Tool                      | Cost control                                                                                                                                                                                                                                                   |
-| ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Claude (Team, Enterprise) | When an admin turns on usage credits, use continues on credits past the seat allowance. Spend limits per organization, group, or member, admin analytics dashboard. In Claude Code, `/usage` shows usage                                                       |
-| Claude API (Console)      | Spend limits per workspace, a dedicated Claude Code workspace                                                                                                                                                                                                  |
-| GitHub Copilot            | Since 2026-06-01, billed in GitHub AI Credits instead of premium requests. Budgets per user, organization, cost center, and enterprise. User budgets stop usage at the limit, but for other levels "stop usage when budget limit is reached" is off by default |
-| Cursor                    | Team-level additional usage limit (fixed or per seat); Enterprise adds per-member limits. Enforcement has a delay                                                                                                                                              |
+| Tool                      | Limit levels                                      | What to check                                                 |
+| ------------------------- | ------------------------------------------------- | ------------------------------------------------------------- |
+| Claude (Team, Enterprise) | Organization, group, member                       | Usage credits must be on to continue past the seat allowance  |
+| Claude API (Console)      | Workspace                                         | A dedicated Claude Code workspace is created                  |
+| GitHub Copilot            | User, organization, cost center, enterprise       | Outside user budgets, stopping at the limit is off by default |
+| Cursor                    | Team (fixed or per seat); Enterprise adds members | Enforcement has a delay                                       |
+
+Since 2026-06-01 GitHub Copilot bills in GitHub AI Credits instead of premium requests. In Claude Code,
+`/usage` shows usage.
 
 GitHub Copilot's default needs particular attention. If you create an organization budget without
 turning on the stop option, charges continue past the limit.
@@ -162,73 +184,23 @@ turning on the stop option, charges continue past the limit.
 - After an incident (leaked secret, merged code with a license violation, unintended agent action),
   check whether the policy needs to change.
 
-## 7. Copy-paste asset: AI coding tool usage policy
+## 7. Policy template
 
-Add the block below to the AI-generated-code section of your open source policy document (chapter 03
-deliverable), or use it as a standalone policy. Replace the values in parentheses for your
-organization.
+A template that turns sections 1 to 6 into a policy document is at
+[templates/en/policy/ai-coding-usage-policy.md](https://github.com/trustedoss/trustedoss.github.io/blob/main/templates/en/policy/ai-coding-usage-policy.md). Add it to the AI-generated-code section of
+your open source policy (chapter 03 deliverable) or adopt it as a standalone policy, and replace the
+values in braces for your organization.
 
-```markdown
-## AI Coding Tool Usage Policy
-
-### Scope
-
-- Applies to all AI coding tools and agents used to write, review, test, and document internal code.
-
-### Tool approval
-
-- Use only tools and plans on the allow list for work. The policy owner maintains the allow list.
-- Approval criteria: input data is not used for training, vendor IP indemnification applies,
-  admins can enforce settings, and the organization can manage usage records and cost limits.
-- Do not use free personal accounts or unapproved extensions with internal code.
-- MCP servers and plugins go on the allow list only after a separate adoption review.
-
-### Data handling
-
-- Never send secrets (keys, tokens, certificates, passwords) to any tool; block reading them in agent settings.
-- Do not send customer data or personal information in principle. If needed, pseudonymize it and get security approval.
-- Check sharing scope before connecting external documents and systems to an agent.
-
-### Way of working and verification
-
-- For work that changes behavior, agree on tests first, then hand over implementation.
-- Do not delete or weaken a failing test to make it pass. Test changes need owner approval.
-- AI-generated code goes through the same CI gates and review as human code. AI review does not replace human approval.
-- Split PRs to a reviewable size (guideline: 400 lines).
-
-### Copyright attribution and records
-
-- Record the AI tool used in the commit message or PR description.
-- When an AI draft was edited, record in the PR description the design and editing decisions made by a person.
-- Review copyright notices with legal before releasing unmodified AI output externally.
-
-### License risk control
-
-- Check whether AI-suggested code resembles copyleft-licensed code (use a matching tool such as SCANOSS).
-- Include AI-suggested dependencies in SBOM and vulnerability management like any open source component.
-- Escalate suspected cases to legal.
-
-### External open source contributions
-
-- Check the upstream project's AI contribution policy before contributing.
-- Do not submit AI-generated code or documents to projects that prohibit AI-generated contributions.
-- Where a project requires disclosure or a dedicated tag, record it in the required format.
-
-### Cost
-
-- Set an organization monthly limit (amount) and per-team limits. Alert the tool administrator at 80% and 100%.
-- Issue dedicated AI keys for CI and set a limit for each key.
-
-### Accountability and training
-
-- The person who approves the merge is responsible for AI-generated code.
-- Include this policy in onboarding and yearly training and keep completion records.
-
-### Exceptions and review
-
-- Approve exceptions for a fixed period after security and legal review.
-- The policy owner reviews the allow list and this policy once a year and whenever vendor terms change.
-```
+| Template section                                   | Background in this guide                                                                                           |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| Scope, tool approval                               | Section 1                                                                                                          |
+| Data handling                                      | Section 2                                                                                                          |
+| Way of working and verification                    | [Testing](./testing), [Productivity and Collaboration](./collaboration)                                            |
+| Copyright attribution and records                  | [Legal Considerations, section 1](./legal-considerations#1-copyright-attribution-how-much-did-a-human-contribute)  |
+| License risk control                               | [Common Rules Template](./rules-template), [Quick CI/CD](./cicd-quick)                                             |
+| External open source contributions                 | [Legal Considerations, section 4](./legal-considerations#4-upstream-open-source-projects-ai-contribution-policies) |
+| Cost                                               | Section 5                                                                                                          |
+| Accountability and training, exceptions and review | Sections 3, 4, and 6                                                                                               |
 
 ## 8. Standards linkage and sources
 
@@ -249,3 +221,10 @@ organization.
 - EU, [Regulation (EU) 2026/1744](https://eur-lex.europa.eu/eli/reg/2026/1744/oj/eng) (Digital Omnibus on AI, amendment of Article 4)
 
 All sources were checked on 2026-11-12.
+
+## Next steps
+
+- [Legal Considerations for AI-Generated Code](./legal-considerations): background for the copyright and IP indemnification items
+- [Agent and MCP Tool Governance](./agent-governance): MCP server review and managed settings
+- [Productivity and Collaboration in AI Coding](./collaboration): turning the policy into the team's way of working
+- [Testing for AI-Written Code](./testing): implementing the "Way of working and verification" items

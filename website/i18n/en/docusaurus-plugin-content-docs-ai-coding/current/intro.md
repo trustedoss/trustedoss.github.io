@@ -52,7 +52,7 @@ each item strengthens is summarized in [Standard Coverage](./iso-mapping).
 
 Expand only after confirming one step.
 
-1. **Set the usage rules first.** Use the copy-paste block in the
+1. **Set the usage rules first.** Use the policy template in the
    [AI Coding Tool Usage Policy](./usage-policy) to decide allowed tools and plans, data that must not be
    sent, and who is responsible. If you configure tools before setting rules, personal accounts and
    unapproved extensions stay in use.

@@ -7,6 +7,16 @@ sidebar_position: 12
 
 # Productivity and Collaboration in AI Coding
 
+:::info What this page covers
+
+- Where the bottleneck moves once code writing gets faster
+- How to run rules files as a shared team asset
+- Agreeing on a plan, small PRs, sharing the review load, parallel agent work
+- What to measure and in what order to adopt
+
+It is written for development leads, engineering managers, and developers who use agents as a team.
+:::
+
 AI coding tools reduce the time spent writing code. A team's delivery speed, however, is not set by
 writing time alone. Defining requirements, splitting work, reviewing, integrating, and operating come
 before and after it. If only code writing gets faster, those steps become the bottleneck.
@@ -164,3 +174,10 @@ Expand only after confirming one step.
 - DORA, [State of AI-assisted Software Development 2025](https://services.google.com/fh/files/misc/2025_state_of_ai_assisted_software_development.pdf) (2025-09), AI Capabilities Model
 
 All sources were checked on 2026-11-12.
+
+## Next steps
+
+- [Testing for AI-Written Code](./testing): the verification standard that lightens review
+- [AI Security Code Review](./ai-security-review): the review layer machines handle before people
+- [AI Coding Tool Usage Policy](./usage-policy): setting approval points, permissions, and cost limits as policy
+- [Best Practice Repository](./best-practice-repo): PR size check, PR template, and CODEOWNERS examples
