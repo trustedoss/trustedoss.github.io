@@ -7,6 +7,16 @@ sidebar_position: 12
 
 # AI 코딩의 생산성과 협업
 
+:::info 이 페이지에서 다루는 것
+
+- 코드 작성이 빨라진 뒤 병목이 어디로 옮겨 가는가
+- 규칙 파일을 팀 공용 자산으로 운영하는 방법
+- 계획 합의, 작은 PR, 리뷰 분담, 병렬 에이전트 작업
+- 무엇을 재고 어떤 순서로 도입하는가
+
+대상은 개발 팀장, 엔지니어링 관리자, 에이전트를 팀 단위로 쓰는 개발자입니다.
+:::
+
 AI 코딩 도구는 코드를 쓰는 시간을 줄입니다. 그런데 팀의 배포 속도는 코드를 쓰는 시간만으로
 정해지지 않습니다. 요구사항을 정하고, 작업을 나누고, 리뷰하고, 통합하고, 운영하는 시간이 앞뒤에
 붙어 있습니다. 코드 작성만 빨라지면 그 앞뒤가 병목이 됩니다.
@@ -154,3 +164,10 @@ AI 도구 사용량(활성 사용자 수, 수락된 제안 수, 생성된 코드
 - DORA, [State of AI-assisted Software Development 2025](https://services.google.com/fh/files/misc/2025_state_of_ai_assisted_software_development.pdf) (2025-09), AI Capabilities Model
 
 모든 출처는 2026-11-12에 확인했습니다.
+
+## 다음 단계
+
+- [AI가 만든 코드의 테스트 환경](./testing): 리뷰 부담을 덜어 주는 검증 기준
+- [AI 보안 코드 리뷰](./ai-security-review): 사람보다 먼저 기계가 보는 리뷰 층
+- [AI 코딩 도구 사용 정책](./usage-policy): 승인 지점, 권한, 비용 한도를 정책으로 정하기
+- [Best Practice 저장소](./best-practice-repo): PR 크기 검사, PR 템플릿, CODEOWNERS 예시

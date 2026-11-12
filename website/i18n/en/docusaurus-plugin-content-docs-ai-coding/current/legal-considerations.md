@@ -119,8 +119,8 @@ involvement in the contribution process.
 
 The action rules in sections 1 to 4 (recording copyright attribution, using only plans covered by IP
 indemnification, controlling license risk, checking upstream policies before contributing) are bundled
-in the copy-paste block of the [AI Coding Tool Usage Policy](./usage-policy), together with tool
-approval, data handling, testing, and cost items. Add that one block to your policy document.
+in the policy template of the [AI Coding Tool Usage Policy](./usage-policy), together with tool
+approval, data handling, testing, and cost items. Add that one template to your policy document.
 
 The overall structure of the policy document is covered in
 [Build Your System 3. Open Source Policy](/en/docs/policy), and per-tool Rules setup in the

@@ -7,6 +7,16 @@ sidebar_position: 13
 
 # AI가 만든 코드의 테스트 환경
 
+:::info 이 페이지에서 다루는 것
+
+- 테스트를 먼저 정하고 구현을 맡기는 작업 방식
+- 에이전트가 테스트를 약화하는 것을 막는 세 겹의 통제
+- 커버리지와 변이 테스트로 테스트 자체의 품질 재기
+- 격리되고 재현 가능한 실행 환경, 불안정한 테스트 관리
+
+대상은 개발자, 테스트·품질 담당, CI 를 운영하는 팀입니다.
+:::
+
 AI 코딩 도구를 쓰면 변경량이 늘어납니다. 리뷰 인원은 그대로이므로, 사람이 모든 줄을 읽어서
 동작을 확인하는 방식은 곧 한계에 닿습니다. 이때 변경이 맞는지를 판단하는 기준은 테스트입니다.
 테스트가 약하면 AI가 만든 코드가 맞는지 확인할 방법이 사람의 눈밖에 남지 않고, 테스트가
@@ -199,3 +209,10 @@ mutmut 는 `fork` 를 지원하는 운영체제가 필요해 Windows 에서는 W
 - [ai-coding-best-practice](https://github.com/trustedoss/ai-coding-best-practice) 저장소의 `tests/`, `scripts/check-test-integrity.py`, `.github/workflows/`
 
 모든 출처는 2026-11-12에 확인했습니다.
+
+## 다음 단계
+
+- [AI 코딩의 생산성과 협업](./collaboration): 테스트가 받쳐 주는 작은 PR과 리뷰 분담
+- [AI 퍼징](./ai-fuzzing): 요구사항으로 적지 않은 입력 탐색
+- [Best Practice 저장소](./best-practice-repo): 이 페이지에서 다룬 파일 전체
+- [5단계 전략](./strategy): 3단계 게이트와 함께 거는 테스트 게이트

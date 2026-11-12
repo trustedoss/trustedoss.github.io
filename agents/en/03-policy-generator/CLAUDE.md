@@ -45,6 +45,7 @@ files by going up to the repository root (`../../../output/...`). The `cd agents
 - Reference every template in `templates/en/policy/`:
   - `oss-policy.md` — the body of the open source policy
   - `license-allowlist.md` — the allowed license list per distribution method
+  - `ai-coding-usage-policy.md` is an optional template the organization adopts directly. This agent does not generate it
 - Use the assignee information from `output/organization/role-definition.md`
 - Build the allowed license list differently depending on the distribution method
   - SaaS: watch AGPL closely, GPL is relatively free

@@ -41,6 +41,7 @@
 - `templates/policy/` 의 모든 템플릿 참조:
   - `oss-policy.md` — 오픈소스 정책 본문
   - `license-allowlist.md` — 배포 방식별 허용 라이선스 목록
+  - `ai-coding-usage-policy.md` 는 조직이 직접 채택하는 선택 템플릿이다. 이 agent 는 생성하지 않는다
 - `output/organization/role-definition.md` 의 담당자 정보 활용
 - 배포 방식에 따라 허용 라이선스 목록을 다르게 구성
   - SaaS: AGPL 주의, GPL 상대적으로 자유
