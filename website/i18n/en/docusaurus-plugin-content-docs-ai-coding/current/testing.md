@@ -95,6 +95,8 @@ it in three layers.
 | Pull request  | Fails when test files or functions are deleted, `skip`/`xfail` is added, or asserts decrease | [test-integrity.yml](https://github.com/trustedoss/ai-coding-best-practice/blob/main/.github/workflows/test-integrity.yml), [check-test-integrity.py](https://github.com/trustedoss/ai-coding-best-practice/blob/main/scripts/check-test-integrity.py) |
 | Review        | Changes to `tests/` request owner review                                                     | [CODEOWNERS](https://github.com/trustedoss/ai-coding-best-practice/blob/main/.github/CODEOWNERS)                                                                                                                                                       |
 
+![When an agent edits tests/, the change passes human approval in the agent session, the integrity check on the pull request, and CODEOWNERS review before merge](/img/ai-coding/ai-coding-test-defense-en.png)
+
 Sometimes removing a test is right: the feature was removed, or the test was pinning wrong behavior.
 So the test-integrity check is designed as a confirmation step, not a ban. When an owner has read the
 change and adds the `test-change-approved` label, the check passes. The label is the record that a

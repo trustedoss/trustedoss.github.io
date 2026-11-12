@@ -34,6 +34,8 @@ AI 코딩 거버넌스는 위험을 막는 일과 성과를 내는 일을 함께
 | 생산성과 협업          | 늘어난 변경이 리뷰와 통합에서 막히지 않게 하려면 무엇을 바꿔야 하는가                                       | [AI 코딩의 생산성과 협업](./collaboration)                                                                                                                                                                         |
 | 테스트 환경            | AI가 만든 변경이 맞는지 무엇으로 확인하는가                                                                 | [AI가 만든 코드의 테스트 환경](./testing)                                                                                                                                                                          |
 
+![거버넌스 기반이 보안·컴플라이언스 통제, 생산성과 협업, 테스트 환경의 기준이 되고, ai-coding-best-practice 저장소가 세 영역의 통제를 구현하는 구조](/img/ai-coding/ai-coding-four-areas.png)
+
 도구별 설정은 [Claude Code](./tools/claude-code), [Cursor](./tools/cursor),
 [GitHub Copilot](./tools/copilot), [OpenAI Codex](./tools/codex), [Devin Desktop](./tools/windsurf),
 [Cline / Aider](./tools/cline-aider) 페이지에 있습니다. 업무 사용률이 높은 순서로 실었습니다.

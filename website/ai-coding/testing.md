@@ -91,6 +91,8 @@ DORA 의 2025 보고서는 AI 도입이 배포 처리량을 높이지만 배포 
 | pull request  | 테스트 파일·함수 삭제, `skip`·`xfail` 추가, assert 감소를 탐지해 실패 처리 | [test-integrity.yml](https://github.com/trustedoss/ai-coding-best-practice/blob/main/.github/workflows/test-integrity.yml), [check-test-integrity.py](https://github.com/trustedoss/ai-coding-best-practice/blob/main/scripts/check-test-integrity.py) |
 | 리뷰          | `tests/` 변경은 담당자 리뷰 요청                                           | [CODEOWNERS](https://github.com/trustedoss/ai-coding-best-practice/blob/main/.github/CODEOWNERS)                                                                                                                                                       |
 
+![에이전트가 tests/ 를 고치면 에이전트 세션의 사람 승인, pull request의 무결성 검사, CODEOWNERS 리뷰를 거쳐 병합되는 흐름](/img/ai-coding/ai-coding-test-defense.png)
+
 테스트를 지우는 것이 맞는 경우도 있습니다. 기능을 없앴거나 테스트가 잘못된 동작을 고정하고
 있었다면 지워야 합니다. 그래서 test-integrity 검사는 금지가 아니라 확인 절차로 설계했습니다.
 담당자가 변경을 읽고 `test-change-approved` 라벨을 붙이면 통과합니다. 라벨이 사람이 판단했다는

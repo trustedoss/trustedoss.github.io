@@ -38,6 +38,8 @@ four areas.
 | Productivity and collaboration   | What must change so the extra changes do not get stuck in review and integration?                                  | [Productivity and Collaboration in AI Coding](./collaboration)                                                                                                                                                                         |
 | Testing                          | How do you confirm that an AI-written change is correct?                                                           | [Testing for AI-Written Code](./testing)                                                                                                                                                                                               |
 
+![Governance foundations set the rules for security and compliance controls, productivity and collaboration, and testing, and the ai-coding-best-practice repository implements their controls](/img/ai-coding/ai-coding-four-areas-en.png)
+
 Tool setup is on the [Claude Code](./tools/claude-code), [Cursor](./tools/cursor),
 [GitHub Copilot](./tools/copilot), [OpenAI Codex](./tools/codex), [Devin Desktop](./tools/windsurf),
 and [Cline / Aider](./tools/cline-aider) pages, ordered by how widely each tool is used at work. In
