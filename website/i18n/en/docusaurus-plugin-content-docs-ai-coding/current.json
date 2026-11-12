@@ -11,16 +11,24 @@
     "message": "Tool-Specific Setup",
     "description": "The label for category '도구별 설정' in sidebar 'aiCoding'"
   },
-  "sidebar.aiCoding.category.실전 적용": {
-    "message": "In Practice",
-    "description": "The label for category '실전 적용' in sidebar 'aiCoding'"
-  },
-  "sidebar.aiCoding.category.표준 연계": {
-    "message": "Standard Alignment",
-    "description": "The label for category '표준 연계' in sidebar 'aiCoding'"
-  },
   "sidebar.aiCoding.doc.표준 대응: AI 코딩": {
     "message": "Standard Coverage: AI Coding",
     "description": "The label for the doc item '표준 대응: AI 코딩' in sidebar 'aiCoding', linking to the doc iso-mapping"
+  },
+  "sidebar.aiCoding.category.거버넌스 기반": {
+    "message": "Governance Foundations",
+    "description": "The label for category '거버넌스 기반' in sidebar 'aiCoding'"
+  },
+  "sidebar.aiCoding.category.보안·컴플라이언스 통제": {
+    "message": "Security and Compliance Controls",
+    "description": "The label for category '보안·컴플라이언스 통제' in sidebar 'aiCoding'"
+  },
+  "sidebar.aiCoding.category.협업과 테스트": {
+    "message": "Collaboration and Testing",
+    "description": "The label for category '협업과 테스트' in sidebar 'aiCoding'"
+  },
+  "sidebar.aiCoding.category.참조 구현과 표준 연계": {
+    "message": "Reference Implementation and Standards",
+    "description": "The label for category '참조 구현과 표준 연계' in sidebar 'aiCoding'"
   }
 }

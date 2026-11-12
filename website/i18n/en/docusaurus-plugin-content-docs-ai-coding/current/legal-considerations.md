@@ -115,42 +115,16 @@ involvement in the contribution process.
   required format.
 - Even where no policy exists, disclosing AI use helps reviewers decide how closely to look.
 
-## 5. Copy-paste asset: AI coding tool usage policy
+## 5. Moving this into policy
 
-Add the block below to the AI-generated-code section of your open source policy document
-(chapter 03 deliverable), or use it as a standalone policy.
+The action rules in sections 1 to 4 (recording copyright attribution, using only plans covered by IP
+indemnification, controlling license risk, checking upstream policies before contributing) are bundled
+in the copy-paste block of the [AI Coding Tool Usage Policy](./usage-policy), together with tool
+approval, data handling, testing, and cost items. Add that one block to your policy document.
 
-```markdown
-## AI Coding Tool Usage Policy
-
-### Approved tools
-
-- Use only paid commercial plans covered by vendor IP indemnification.
-  (e.g., GitHub Copilot Business, ChatGPT Enterprise, paid commercial Claude plans, Gemini Code Assist)
-- Personal free accounts must not be used for company code.
-
-### Copyright attribution records
-
-- When AI output is used as-is, state it in the commit message.
-- When an AI draft is modified, record the human design and modification decisions in the PR body.
-- Review copyright notices with the legal team before releasing verbatim AI output externally.
-
-### License risk controls
-
-- Verify whether AI-suggested code resembles copyleft-licensed code (use matching tools such as SCANOSS).
-- Treat AI-suggested dependencies like any open source: include them in SBOM and vulnerability management.
-- Escalate suspicious cases to the legal team.
-
-### External open source contributions
-
-- Before contributing upstream, check that project's AI contribution policy
-  (CONTRIBUTING document, PR template, project policy page).
-- Do not submit AI-generated code or documents to projects that ban AI-generated content.
-- Where disclosure or a dedicated tag is required, record it in the required format.
-```
-
-The full policy document structure is covered in [Chapter 3: Open Source Policy](/en/docs/policy),
-and per-tool Rules application in the [Common Rules Template](./rules-template).
+The overall structure of the policy document is covered in
+[Build Your System 3. Open Source Policy](/en/docs/policy), and per-tool Rules setup in the
+[Common Rules Template](./rules-template).
 
 ## 6. Standards linkage and sources
 
@@ -173,4 +147,4 @@ This page is based on §5 of the OpenChain KWG
 
 For linkage to the ISO/IEC standards, see [ISO Standards Linkage](./iso-mapping); for compliance
 of AI systems themselves, see [AI System Compliance (ISO 42001)](./iso42001); for security controls
-on the tools agents call, see [Agent and MCP Tool Governance](./agent-governance).
+on the tools agents call, see [Agent and MCP Tool Governance](./agent-governance); for organizational usage rules, see the [AI Coding Tool Usage Policy](./usage-policy).

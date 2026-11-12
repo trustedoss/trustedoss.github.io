@@ -121,6 +121,24 @@ in section 4 before registration.
 
 Limit the agent's file, network, and command-execution scope to what is needed.
 
+To narrow permissions, the holder of the permissions must first be clear. When an agent works with a
+developer's personal token or a shared service account, what the agent can do and who is responsible
+for it disappear into a person's permissions. The OWASP Top 10 for Agentic Applications 2026 names this
+risk ASI03 (Identity & Privilege Abuse), and the OWASP Non-Human Identities Top 10 2025 describes it as
+failures in managing non-human accounts. Agents that run continuously in CI or on servers follow these
+rules.
+
+- Give each agent a dedicated account or token and one named owner. Agents do not share credentials
+  (NHI9 NHI Reuse), and people do not work through agent accounts (NHI10 Human Use of NHI).
+- Keep credentials narrow in scope and short-lived (NHI5 Overprivileged NHI, NHI7 Long-Lived Secrets).
+- Revoke accounts and tokens of agents no longer in use (NHI1 Improper Offboarding). Keeping a list of
+  agents with their owners shows what to revoke.
+
+The GitHub Copilot cloud agent is a useful model. The agent pushes only to its own branch and cannot
+access Actions secrets. Commits are authored by Copilot with the person who assigned the task as
+co-author, and workflows on PRs the agent opens run only after a user with write access approves them.
+Who asked and what acted are recorded in commits and approvals.
+
 ### Description review
 
 Tool descriptions from untrusted sources are review targets, both at adoption and on updates
@@ -429,6 +447,8 @@ directly onto the controls in section 3.
 - Microsoft Security Blog, [Securing AI agents: When AI tools move from reading to acting](https://www.microsoft.com/en-us/security/blog/2026/06/30/securing-ai-agents-ai-tools-move-from-reading-acting/) (2026-06-30)
 - OWASP GenAI Security Project, [Top 10 for Agentic Applications 2026](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/) (2025-12-09) / [LLM Top 10 2026](https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/) (2026-08-03, the revision succeeding the LLM01:2025 entry cited above) / [LLM01:2025 Prompt Injection](https://genai.owasp.org/llmrisk/llm01-prompt-injection/) / [OWASP MCP Top 10](https://owasp.org/www-project-mcp-top-10/) (Incubator stage)
 - OWASP, [AISVS 1.0](https://github.com/OWASP/AISVS) (2026-06) — chapter 9 on orchestration and agentic action, chapter 10 on MCP security, verification levels 1 to 3
+- OWASP, [Non-Human Identities Top 10 2025](https://owasp.github.io/www-project-non-human-identities-top-10/2025/): ten failures in managing non-human accounts
+- GitHub Docs, [Responsible use of Copilot cloud agent](https://docs.github.com/en/copilot/responsible-use/agents): single-branch push, no access to Actions secrets, workflow approval
 - CycloneDX, [Proposal: Agent Bill of Materials](https://github.com/CycloneDX/specification/issues/895) (opened 2026-03-26, closed as duplicate 2026-04-29) — the state of the agent-specific BOM discussion
 - Hasan et al., [Model Context Protocol (MCP) at First Glance](https://arxiv.org/abs/2506.13538) — a study of 1,899 servers (5.5% tool poisoning)
 - Invariant Labs, [MCP Security Notification: Tool Poisoning Attacks](https://invariantlabs.ai/blog/mcp-security-notification-tool-poisoning-attacks) (2025-04-01) — the first public disclosure of the technique

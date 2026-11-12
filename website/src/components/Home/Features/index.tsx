@@ -95,7 +95,7 @@ const TRACKS: Track[] = [
     desc: translate({
       id: 'homepage.cta.feature3.desc',
       message:
-        'Claude Code, Cursor, Copilot 등 AI 코딩 도구와 오픈소스 컴플라이언스를 함께 관리합니다.',
+        'AI 코딩 도구의 사용 정책, 보안·컴플라이언스 통제, 협업과 테스트를 한 기준으로 운영합니다.',
     }),
     href: '/ai-coding/intro',
   },
