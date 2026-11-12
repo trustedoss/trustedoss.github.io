@@ -11,7 +11,7 @@ sidebar_position: 12
 
 - Where the bottleneck moves once code writing gets faster
 - How to run rules files as a shared team asset
-- Agreeing on a plan, small PRs, sharing the review load, parallel agent work
+- Agreeing on a plan, small PRs (pull requests), sharing the review load, parallel agent work
 - What to measure and in what order to adopt
 
 It is written for development leads, engineering managers, and developers who use agents as a team.
@@ -28,25 +28,21 @@ work, and checking what agents did and measuring results.
 
 ## 1. Where does the bottleneck move?
 
-Atlassian's State of Developer Experience 2025 (3,500 respondents, 2025-07) cites an IDC survey
-(2025-02) finding that writing code takes 16% of a developer's working time. The rest goes to
-clarifying requirements, coordination, review, and operations. In the same report, 50% of respondents
-said they lose 10 or more hours a week to friction. In the 2026 edition (2026-10), 72% said they
-experience the same or more friction than before AI, and the share saving 10 or more hours a week with
-AI fell from 68% to 25%.
+The findings below show where the bottleneck moves once code is written faster.
 
-Perceived speed and actual speed can also differ. In METR's randomized controlled trial (2025-07, 16
-experienced open source developers, 246 issues), tasks done with AI tools took 19% longer, yet the
-developers still believed afterwards that they had been 20% faster. A 2026-02 follow-up pointed toward
-a speedup, but METR itself says the result is unreliable because developers who did not want to work
-without AI dropped out, and it is redesigning the study. The lesson stands: measure, do not judge by
-feel.
+| Source                                       | Scope and date                                             | Finding                                                                                                                        |
+| -------------------------------------------- | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| Atlassian State of Developer Experience 2025 | 3,500 respondents, 2025-07                                 | Writing code takes 16% of working time (citing an IDC survey from 2025-02). 50% lose 10 or more hours a week to friction       |
+| Atlassian State of Developer Experience 2026 | 2026-10                                                    | 72% experience the same or more friction than before AI. The share saving 10 or more hours a week with AI fell from 68% to 25% |
+| METR randomized controlled trial             | 16 experienced open source developers, 246 issues, 2025-07 | Tasks done with AI tools took 19% longer. Developers still believed afterwards that they had been 20% faster                   |
+| Faros AI                                     | Data from more than 10,000 developers, 2025-07             | Teams with high AI use merged 98% more PRs, while PR review time grew 91% and PR size grew 154%                                |
+| GitHub Octoverse 2026                        | 2026-10                                                    | Merged PRs more than tripled to 1.3 billion. More than 40% of PRs started from an agent's first draft                          |
 
-The extra changes accumulate in review. In Faros AI's 2025-07 report, based on data from more than
-10,000 developers, teams with high AI use merged 98% more PRs, while PR review time grew 91% and PR size
-grew 154%. GitHub Octoverse 2026 (2026-10) reports that merged PRs more than tripled to 1.3 billion and
-that more than 40% of PRs started from an agent's first draft. The number of reviewers is the same; the
-amount to review is not.
+Writing code is only part of a developer's work, and the extra changes accumulate in review. The number
+of reviewers is the same; the amount to review is not. Perceived speed and actual speed can also
+differ. A 2026-02 METR follow-up pointed toward a speedup, but METR itself says the result is unreliable
+because developers who did not want to work without AI dropped out, and it is redesigning the study.
+The lesson stands: measure, do not judge by feel.
 
 Taken together, raising individual coding speed alone does not raise team results. If review and
 integration cannot absorb the extra changes, waiting and rework grow instead. The sections below deal
@@ -128,7 +124,7 @@ The scope you can hand to agents equals the scope in which you can later check w
 agent changed what, on whose instruction, and with what permissions must be recorded. Commit trailers
 or AI-use notes in PR descriptions, dedicated agent accounts, and audit logs serve this purpose.
 Permissions and identity management are covered in
-[Agent and MCP Tool Governance](./agent-governance).
+[Agent and MCP Tool Governance](./agent-governance). MCP stands for Model Context Protocol.
 
 ### What to measure
 
@@ -143,7 +139,7 @@ results. Measure the team's delivery performance and quality, and compare before
 | Rework     | Share of reverted changes, re-edits shortly after merge | Is quickly written code fixed again soon?     |
 | Tests      | Count of test-integrity approval labels, mutation score | Is the verification standard holding?         |
 
-The first two rows are DORA metrics. DORA's 2025 report finds that AI adoption raises delivery
+The first two rows are DORA (DevOps Research and Assessment) metrics. DORA's 2025 report finds that AI adoption raises delivery
 throughput but also raises delivery instability, and it lists seven organizational capabilities that
 amplify AI's benefits: a clear and communicated AI stance, healthy data ecosystems, AI-accessible
 internal data, strong version control practices, working in small batches, a user-centric focus, and

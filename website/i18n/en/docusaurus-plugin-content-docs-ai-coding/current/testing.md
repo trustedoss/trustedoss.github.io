@@ -14,7 +14,7 @@ sidebar_position: 13
 - Measuring the quality of the tests themselves with coverage and mutation testing
 - Isolated, reproducible execution environments and flaky-test handling
 
-It is written for developers, test and quality staff, and teams that run CI.
+It is written for developers, test and quality staff, and teams that run CI (continuous integration).
 :::
 
 AI coding tools increase the volume of change. The number of reviewers stays the same, so checking
@@ -33,7 +33,7 @@ Stage 3 gates in the [5-Stage Strategy](./strategy) look for known risk patterns
 code patterns, prohibited licenses. No scanner answers "does this function do what the requirement
 says?" Tests answer that question.
 
-DORA's 2025 report finds that AI adoption raises delivery throughput but also raises delivery
+The 2025 report from DORA (DevOps Research and Assessment) finds that AI adoption raises delivery throughput but also raises delivery
 instability. As changes increase, instability passes straight into production unless something
 automatically confirms that changes did not break existing behavior. Tests are that mechanism.
 
@@ -102,7 +102,7 @@ So the test-integrity check is designed as a confirmation step, not a ban. When 
 change and adds the `test-change-approved` label, the check passes. The label is the record that a
 person decided.
 
-The script compares `tests/` on the base branch and the PR with Python's `ast` module. It reads the
+The script compares `tests/` on the base branch and the PR (pull request) with Python's `ast` module. It reads the
 syntax tree, not regular expressions, so an `assert` inside a comment or string does not fool it. A
 commit in the repository that deliberately deleted one test and added `skip` to another produced:
 
@@ -131,7 +131,7 @@ surviving mutants is the list of asserts to add.
 | JavaScript/TypeScript, C#, Scala | [Stryker](https://stryker-mutator.io/)    |
 
 Current versions as of 2026-11 are mutmut 3.8.1, PIT 1.30.2, StrykerJS 10.1.1, and Stryker.NET 5.1.0.
-mutmut needs an operating system with `fork` support, so on Windows run it inside WSL. Its settings go
+mutmut needs an operating system with `fork` support, so on Windows run it inside WSL (Windows Subsystem for Linux). Its settings go
 in `[tool.mutmut]` in `pyproject.toml`; from 3.6.0 the target path key was renamed from
 `paths_to_mutate` to `source_paths`.
 
@@ -188,13 +188,14 @@ regression test so it does not return. The two are not substitutes but steps in 
 
 ## 8. Adoption order
 
-| Order | What to do                                                               | Enforcement                |
-| ----- | ------------------------------------------------------------------------ | -------------------------- |
-| 1     | Write core behavior tests and run them in CI                             | Blocking                   |
-| 2     | Write test-first work and the ban on weakening tests into the rules file | Advisory                   |
-| 3     | Add the test-integrity check and CODEOWNERS                              | Blocking (label overrides) |
-| 4     | Set a coverage floor at the current level                                | Blocking                   |
-| 5     | Run mutation testing periodically and read the results                   | Advisory                   |
+Apply these one at a time in order and check each off when done. The parentheses give the enforcement
+level and the reference implementation file.
+
+- [ ] 1. Write core behavior tests and run them in CI (blocking, [tests.yml](https://github.com/trustedoss/ai-coding-best-practice/blob/main/.github/workflows/tests.yml))
+- [ ] 2. Write test-first work and the ban on weakening tests into the rules file (advisory, [CLAUDE.md](https://github.com/trustedoss/ai-coding-best-practice/blob/main/CLAUDE.md))
+- [ ] 3. Add the test-integrity check and CODEOWNERS (blocking, label overrides, [test-integrity.yml](https://github.com/trustedoss/ai-coding-best-practice/blob/main/.github/workflows/test-integrity.yml), [CODEOWNERS](https://github.com/trustedoss/ai-coding-best-practice/blob/main/.github/CODEOWNERS))
+- [ ] 4. Set a coverage floor at the current level (blocking, `--cov-fail-under` in [tests.yml](https://github.com/trustedoss/ai-coding-best-practice/blob/main/.github/workflows/tests.yml))
+- [ ] 5. Run mutation testing periodically and read the results (advisory, [mutation.yml](https://github.com/trustedoss/ai-coding-best-practice/blob/main/.github/workflows/mutation.yml))
 
 Do not start the coverage floor high; start at the current value and raise it. If people start writing
 assert-free tests to clear the floor, step 4 makes the tests weaker. Step 5 exposes that case.
