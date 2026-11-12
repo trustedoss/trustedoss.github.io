@@ -20,8 +20,8 @@ It is written for policy owners, tool administrators, and security and legal sta
 The first thing an organization that uses AI coding tools needs is not a tool configuration but a set
 of usage rules: which tools are allowed, which code and data may be sent to them, who approves and who
 is accountable, what people are taught, and how much may be spent. Without these rules, people work
-with whatever tools and accounts they picked themselves, and the other controls in this section (Rules,
-CI gates, MCP controls) lose a clear scope.
+with whatever tools and accounts they picked themselves, and the other controls in this section, namely
+Rules, CI (continuous integration) gates, and MCP (Model Context Protocol) controls, lose a clear scope.
 
 This page puts those rules in one document. You can add the policy template in the last section to
 your [open source policy](/en/docs/policy) or adopt it as a standalone policy.
@@ -38,14 +38,14 @@ often, so check the original documents again when you adopt a tool.
 Check the items below before adding a tool to the allow list. The same product has different
 conditions on different plans, so approve a "product and plan" pair rather than a product.
 
-| Item               | What to check                                                                                                                                                                           |
-| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Data handling      | Are submitted code and prompts excluded from model training? How long are they retained?                                                                                                |
-| IP indemnification | Does the vendor defend copyright claims against the output? See [Legal Considerations, section 2](./legal-considerations#2-vendor-ip-indemnification-who-defends-an-infringement-claim) |
-| Admin control      | Can organization admins enforce settings that individuals cannot override?                                                                                                              |
-| Records            | Can the organization see usage records and audit logs?                                                                                                                                  |
-| Cost control       | Can you set organization-level usage limits and alerts?                                                                                                                                 |
-| Extensions         | Can admins restrict MCP servers, plugins, and external connections? See [Agent and MCP Tool Governance](./agent-governance)                                                             |
+| Item                                       | What to check                                                                                                                                                                           |
+| ------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Data handling                              | Are submitted code and prompts excluded from model training? How long are they retained?                                                                                                |
+| IP (intellectual property) indemnification | Does the vendor defend copyright claims against the output? See [Legal Considerations, section 2](./legal-considerations#2-vendor-ip-indemnification-who-defends-an-infringement-claim) |
+| Admin control                              | Can organization admins enforce settings that individuals cannot override?                                                                                                              |
+| Records                                    | Can the organization see usage records and audit logs?                                                                                                                                  |
+| Cost control                               | Can you set organization-level usage limits and alerts?                                                                                                                                 |
+| Extensions                                 | Can admins restrict MCP servers, plugins, and external connections? See [Agent and MCP Tool Governance](./agent-governance)                                                             |
 
 ### Data-handling conditions by vendor
 
@@ -73,8 +73,8 @@ ZDR (Zero Data Retention) is an option under which the vendor does not store inp
 Two points need care. First, GitHub's documentation states that content exclusion may miss indirect
 file access by agents and does not replace operating-system permissions. Second, Copilot's policy that
 blocks suggestions matching public code does not apply to Copilot CLI and works only in annotate mode
-for the cloud agent. When you approve a tool, check the conditions for its CLI and agent features
-separately from its IDE features.
+for the cloud agent. When you approve a tool, check the conditions for its CLI (command-line interface) and agent features
+separately from its IDE (integrated development environment) features.
 
 ### Unapproved tools
 
@@ -114,7 +114,7 @@ agent just as widely. Clean up sharing scope before connecting.
 | Tool administrator | Deploys admin settings (managed settings, organization policies), accounts and licenses, cost limits and alerts |
 | Security           | Reviews tools and MCP servers before adoption, decides data classification, handles incidents                   |
 | Legal              | Reviews vendor terms and IP indemnification, decides copyright attribution, reviews before external release     |
-| Development lead   | Owns the team's rules file, runs PR review criteria and approval points                                         |
+| Development lead   | Owns the team's rules file, runs PR (pull request) review criteria and approval points                          |
 | Developer          | Uses approved tools only, records AI use, holds final responsibility for generated code                         |
 
 In a small organization one person may hold several roles. When the person who approves a tool also

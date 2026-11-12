@@ -14,7 +14,7 @@ sidebar_position: 13
 - 커버리지와 변이 테스트로 테스트 자체의 품질 재기
 - 격리되고 재현 가능한 실행 환경, 불안정한 테스트 관리
 
-대상은 개발자, 테스트·품질 담당, CI 를 운영하는 팀입니다.
+대상은 개발자, 테스트·품질 담당, CI(지속적 통합)를 운영하는 팀입니다.
 :::
 
 AI 코딩 도구를 쓰면 변경량이 늘어납니다. 리뷰 인원은 그대로이므로, 사람이 모든 줄을 읽어서
@@ -33,7 +33,7 @@ AI 코딩 도구를 쓰면 변경량이 늘어납니다. 리뷰 인원은 그대
 패턴, 금지 라이선스가 그 대상입니다. 하지만 "이 함수가 요구사항대로 동작하는가"는 어떤 스캐너도
 답하지 못합니다. 그 질문에 답하는 것이 테스트입니다.
 
-DORA 의 2025 보고서는 AI 도입이 배포 처리량을 높이지만 배포 불안정성도 함께 높인다고 보고합니다.
+DORA(DevOps Research and Assessment)의 2025 보고서는 AI 도입이 배포 처리량을 높이지만 배포 불안정성도 함께 높인다고 보고합니다.
 변경이 많아질수록, 그 변경이 기존 동작을 깨지 않았음을 자동으로 확인하는 장치가 없으면 불안정이 그대로
 운영으로 넘어갑니다. 테스트가 그 장치입니다.
 
@@ -98,7 +98,7 @@ DORA 의 2025 보고서는 AI 도입이 배포 처리량을 높이지만 배포 
 담당자가 변경을 읽고 `test-change-approved` 라벨을 붙이면 통과합니다. 라벨이 사람이 판단했다는
 기록이 됩니다.
 
-검사 스크립트는 Python 의 `ast` 모듈로 기준 브랜치와 PR 의 `tests/` 를 비교합니다. 정규식이
+검사 스크립트는 Python 의 `ast` 모듈로 기준 브랜치와 PR(pull request)의 `tests/` 를 비교합니다. 정규식이
 아니라 구문 트리를 보므로 주석이나 문자열 속 `assert` 에 속지 않습니다. 저장소에서 일부러
 테스트 하나를 지우고 다른 하나에 `skip` 을 붙인 커밋으로 확인한 결과는 다음과 같습니다.
 
@@ -127,7 +127,7 @@ Test suite weakened:
 | JavaScript·TypeScript, C#, Scala | [Stryker](https://stryker-mutator.io/)    |
 
 2026-11 기준 최신 버전은 mutmut 3.8.1, PIT 1.30.2, StrykerJS 10.1.1, Stryker.NET 5.1.0 입니다.
-mutmut 는 `fork` 를 지원하는 운영체제가 필요해 Windows 에서는 WSL 안에서 돌립니다. 설정은
+mutmut 는 `fork` 를 지원하는 운영체제가 필요해 Windows 에서는 WSL(Windows Subsystem for Linux) 안에서 돌립니다. 설정은
 `pyproject.toml` 의 `[tool.mutmut]` 에 두며, 3.6.0 부터 대상 경로 키 이름이 `paths_to_mutate` 에서
 `source_paths` 로 바뀌었습니다.
 
@@ -183,13 +183,13 @@ mutmut 는 `fork` 를 지원하는 운영체제가 필요해 Windows 에서는 W
 
 ## 8. 도입 순서
 
-| 순서 | 할 일                                                    | 강제 수준         |
-| ---- | -------------------------------------------------------- | ----------------- |
-| 1    | 핵심 동작 테스트를 쓰고 CI 에서 돌린다                   | 차단              |
-| 2    | 규칙 파일에 테스트 우선 작업과 테스트 약화 금지를 적는다 | 권고              |
-| 3    | test-integrity 검사와 CODEOWNERS 를 건다                 | 차단(라벨로 해제) |
-| 4    | 커버리지 하한을 현재 수준에 맞춰 건다                    | 차단              |
-| 5    | 변이 테스트를 주기적으로 돌리고 결과를 본다              | 권고              |
+아래 순서대로 하나씩 적용하고, 끝낸 항목에 표시해 나갑니다. 괄호 안은 강제 수준과 참조 구현 파일입니다.
+
+- [ ] 1. 핵심 동작 테스트를 쓰고 CI 에서 돌린다 (차단, [tests.yml](https://github.com/trustedoss/ai-coding-best-practice/blob/main/.github/workflows/tests.yml))
+- [ ] 2. 규칙 파일에 테스트 우선 작업과 테스트 약화 금지를 적는다 (권고, [CLAUDE.md](https://github.com/trustedoss/ai-coding-best-practice/blob/main/CLAUDE.md))
+- [ ] 3. test-integrity 검사와 CODEOWNERS 를 건다 (차단, 라벨로 해제, [test-integrity.yml](https://github.com/trustedoss/ai-coding-best-practice/blob/main/.github/workflows/test-integrity.yml), [CODEOWNERS](https://github.com/trustedoss/ai-coding-best-practice/blob/main/.github/CODEOWNERS))
+- [ ] 4. 커버리지 하한을 현재 수준에 맞춰 건다 (차단, [tests.yml](https://github.com/trustedoss/ai-coding-best-practice/blob/main/.github/workflows/tests.yml) 의 `--cov-fail-under`)
+- [ ] 5. 변이 테스트를 주기적으로 돌리고 결과를 본다 (권고, [mutation.yml](https://github.com/trustedoss/ai-coding-best-practice/blob/main/.github/workflows/mutation.yml))
 
 커버리지 하한은 처음부터 높게 잡지 말고 현재 값에서 시작해 올립니다. 하한을 넘기려고 assert 없는
 테스트를 만드는 일이 생기면 4번이 오히려 테스트를 약하게 만듭니다. 5번 변이 테스트가 그 경우를
