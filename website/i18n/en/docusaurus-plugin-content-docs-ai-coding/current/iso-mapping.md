@@ -30,6 +30,11 @@ The AI coding guide internalizes that policy into **AI tool Rules and CI gates**
 | SBOM refresh on dependency change                                            | 5230 §3.3.1 · 18974 §4.3.1 SBOM                      | SBOM generated automatically with cdxgen/syft       |
 | SCA and CVE scanning in CI ([AI Security Review](./ai-security-review))      | 18974 §4.3.2 Vulnerability identification & tracking | PRs blocked with npm audit, trivy, and grype        |
 | Continuous post-deployment monitoring (Stage 5)                              | 18974 §4.3.2 Vulnerability response                  | New CVEs tracked with Dependabot and Renovate       |
+| AI coding tool usage policy ([Usage Policy](./usage-policy)) | 5230 §3.1.1 · 18974 §4.1.1 Policy | Tool approval, data handling, and accountability adopted as a policy document |
+| Roles and responsibilities ([Usage Policy](./usage-policy)) | 5230 §3.1.2 · 18974 §4.1.2 Competence | Policy owner, tool administrator, security, and legal roles assigned |
+| AI coding training and records ([Usage Policy](./usage-policy)) | 5230 §3.1.3 · 18974 §4.1.3 Awareness | AI coding items in onboarding and regular training |
+| MCP server review and SBOM entry ([4c](./agent-governance)) | 5230 §3.3.1 · 18974 §4.3.1 SBOM | Servers agents call recorded as `services` |
+| Test gate and test-weakening check ([Testing](./testing)) | 18974 §4.3.2 Vulnerability response | Confirms a fix did not introduce a regression |
 
 :::note
 The AI coding guide **automates the execution** of the items above, but the self-certification declaration and evidence deliverables are completed in the [Build Your System](/en/docs) track.

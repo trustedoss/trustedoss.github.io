@@ -7,6 +7,14 @@ sidebar_position: 2
 
 # 5-Stage Strategy by Assurance Level
 
+:::note The area this page covers
+The 5-stage strategy is the **security and compliance controls** area of the four areas of
+[AI Coding Governance](./intro). Its stages differ in how strongly controls are enforced. Usage rules
+for tools and data are in the [AI Coding Tool Usage Policy](./usage-policy), how review and integration
+absorb the extra changes is in [Productivity and Collaboration](./collaboration), and the verification
+standard for AI-written code is in [Testing](./testing).
+:::
+
 ## Overview
 
 | Stage   | Name                                     | Core Method                                           | Assurance Level | Recommended For         |
@@ -281,4 +289,6 @@ If you are operating Stage 3 stably, add the Stage 4 AI defense layer. A single 
 
 If you already operate up to Stage 4 and have a dedicated security team, review Stage 5 and the full DevSecOps guide to raise organization-wide supply chain security maturity.
 
-Regardless of stage, adopting an AI coding tool requires three legal decisions: copyright attribution, vendor IP indemnification, and AI-use disclosure. Review [Legal Considerations for AI-Generated Code](./legal-considerations) alongside your rollout.
+Regardless of stage, adopting an AI coding tool requires usage rules (allowed tools, data handling, accountability) and decisions on copyright attribution, vendor IP indemnification, and AI-use disclosure. Review the [AI Coding Tool Usage Policy](./usage-policy) and [Legal Considerations for AI-Generated Code](./legal-considerations) alongside your rollout.
+
+Stage 3 gates block known risk patterns, but only tests confirm that code does what the requirements say. When you add Stage 3, add a test gate with it. See [Testing](./testing).

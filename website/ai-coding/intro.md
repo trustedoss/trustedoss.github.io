@@ -6,46 +6,64 @@ sidebar_position: 1
 slug: intro
 ---
 
-# AI 코딩 거버넌스 — 도구와 오픈소스 컴플라이언스
+# AI 코딩 거버넌스
 
-:::note 선택 단계 — 개발팀이 있다면
-이 섹션은 [체계구축](/docs)으로 만든 정책을 **AI 코딩 도구·CI에 자동 적용**하는 선택 단계입니다.
-표준 자체 인증이 목표라면 체계구축(거버넌스)을 먼저 끝내세요. 개발자가 AI 도구를 쓴다면 여기서 정책을 코드 생성 시점에 강제합니다.
-:::
+AI 코딩 도구(Claude Code, Cursor, GitHub Copilot, Devin Desktop, OpenAI Codex, Gemini CLI 등)는
+이제 개발 조직의 기본 도구입니다. 도구를 쓸지 말지보다, 조직이 같은 기준으로 쓰고 있는지가 더 큰
+문제가 됐습니다. 이 섹션은 그 기준을 세우고 운영하는 방법을 다룹니다.
 
-AI 코딩 도구(Claude Code, Cursor, GitHub Copilot, Devin Desktop, OpenAI Codex, Gemini CLI 등)는 개발 생산성을 크게 높여줍니다.
-하지만 AI가 생성한 코드에도 오픈소스 라이선스 컴플라이언스와 보안 취약점 관리가 필요합니다.
+조사 결과도 같은 방향을 가리킵니다. Deloitte 의 State of AI in the Enterprise 2026(2026-01, 24개국
+3,235명)에서 기업의 74%가 2년 안에 에이전틱 AI를 배치할 계획이라고 답했지만, 에이전트 관리 체계가
+성숙하다고 답한 곳은 21%였습니다. Deloitte 가 말하는 관리 체계는 에이전트 자율성의 경계, 실시간
+모니터링, 에이전트 행동 전체를 남기는 감사 기록입니다. Gartner 는 2025-06 에이전틱 AI 프로젝트의
+40% 이상이 비용 증가, 불분명한 가치, 부족한 리스크 통제로 2027년 말까지 취소될 것으로 전망했습니다.
+도구는 이미 들어와 있고, 기준이 그 속도를 따라가지 못하는 상황입니다.
 
-## 왜 AI 코딩 도구에서 오픈소스 관리가 중요한가?
+AI 코딩 거버넌스는 위험을 막는 일에서 끝나지 않습니다. DORA 의 2025 보고서는 AI를 증폭기라고
+표현합니다. 잘 운영되는 조직의 강점과 어려움을 겪는 조직의 약점을 함께 키운다는 뜻입니다. 같은
+도구를 들여도 리뷰, 테스트, 협업 방식이 받쳐 주지 않으면 늘어난 변경량이 병목과 장애로 돌아옵니다.
 
-- **AI는 오픈소스 코드를 학습하여 유사한 코드를 생성합니다** — 저작권 및 라이선스 이슈가 발생할 수 있습니다.
-- **AI가 제안하는 의존성 패키지**도 SBOM(소프트웨어 부품 명세서 — 소프트웨어에 들어간 모든 구성요소 목록) 및 취약점 관리 대상입니다.
-- **Rules/Prompt 설정**으로 오픈소스 컴플라이언스 요구사항을 AI에게 사전 안내할 수 있습니다.
+## 이 섹션이 다루는 네 가지 축
 
-## 이 섹션에서 다루는 내용
+AI 코딩 거버넌스는 위험을 막는 일과 성과를 내는 일을 함께 다룹니다. 이 섹션은 네 축으로 나뉩니다.
 
-| 페이지                                             | 설명                                                             |
-| -------------------------------------------------- | ---------------------------------------------------------------- |
-| [보장 수준별 5단계 전략](./strategy)               | 프롬프트 의존 → AI 규칙 내재화 → CI/CD 차단 → AI 방어 → 모니터링 |
-| [공통 Rules 템플릿](./rules-template)              | 오픈소스 컴플라이언스를 위한 공통 Rules 예시                     |
-| [Claude Code](./tools/claude-code)                 | Anthropic의 CLI 기반 AI 코딩 에이전트                            |
-| [Cursor](./tools/cursor)                           | AI 기반 코드 편집기                                              |
-| [GitHub Copilot](./tools/copilot)                  | GitHub의 AI 페어 프로그래머                                      |
-| [OpenAI Codex](./tools/codex)                      | OpenAI의 CLI·IDE 기반 코딩 에이전트                              |
-| [Devin Desktop](./tools/windsurf)                  | Cognition의 AI 코딩 에이전트 (구 Windsurf·Codeium)               |
-| [Cline / Aider](./tools/cline-aider)               | 오픈소스 CLI/VS Code 기반 AI 에이전트                            |
-| [30분 완성 Quick CI/CD](./cicd-quick)              | SCA(소프트웨어 구성 분석)·라이선스 중심 CI/CD 최소 시작점        |
-| [AI 보안 코드 리뷰](./ai-security-review)          | 4단계 — findings-driven AI 검증·심층 해석                        |
-| [에이전트·MCP 도구 거버넌스](./agent-governance)   | MCP 서버 allowlist, 도입 전 스캔, 프롬프트 인젝션 방어선         |
-| [AI 생성 코드의 법적 고려](./legal-considerations) | 저작권 귀속, 공급자 IP 보증, AI 사용 표시                        |
-| [AI 시스템 컴플라이언스](./iso42001)               | ISO/IEC 42001과 오픈소스의 교차점                                |
-| [Best Practice 저장소](./best-practice-repo)       | 5단계 전략을 워크플로와 설정으로 구현한 참조 저장소              |
-| [ISO 표준 연계](./iso-mapping)                     | AI 코딩 구현이 강화하는 표준 항목 매핑                           |
+| 축 | 다루는 질문 | 페이지 |
+| --- | --- | --- |
+| 거버넌스 기반 | 어떤 도구를 허용하고, 어떤 데이터를 보내도 되며, 누가 책임지는가. AI가 만든 코드의 저작권은 누구에게 있는가 | [AI 코딩 도구 사용 정책](./usage-policy), [AI 생성 코드의 법적 고려](./legal-considerations), [AI 시스템 컴플라이언스](./iso42001) |
+| 보안·컴플라이언스 통제 | AI가 만든 코드와 에이전트가 호출하는 도구의 위험을 어떻게 막는가 | [5단계 전략](./strategy), [공통 Rules 템플릿](./rules-template), [Quick CI/CD](./cicd-quick), [AI 보안 코드 리뷰](./ai-security-review), [AI 퍼징](./ai-fuzzing), [에이전트·MCP 도구 거버넌스](./agent-governance) |
+| 생산성과 협업 | 늘어난 변경이 리뷰와 통합에서 막히지 않게 하려면 무엇을 바꿔야 하는가 | [AI 코딩의 생산성과 협업](./collaboration) |
+| 테스트 환경 | AI가 만든 변경이 맞는지 무엇으로 확인하는가 | [AI가 만든 코드의 테스트 환경](./testing) |
 
-도구별 페이지는 업무 사용률이 높은 순서로 실었습니다. JetBrains 의 Developer Ecosystem Survey 2026(전문 개발자 15,509명, 2026-08 공개) 기준 업무 사용률은 Claude Code 39%, GitHub Copilot 21%, Codex 16%, Cursor 12% 입니다.
+도구별 설정은 [Claude Code](./tools/claude-code), [Cursor](./tools/cursor),
+[GitHub Copilot](./tools/copilot), [OpenAI Codex](./tools/codex), [Devin Desktop](./tools/windsurf),
+[Cline / Aider](./tools/cline-aider) 페이지에 있습니다. 업무 사용률이 높은 순서로 실었습니다.
+JetBrains 의 Developer Ecosystem Survey 2026(전문 개발자 15,509명, 2026-08 공개) 기준 업무 사용률은
+Claude Code 39%, GitHub Copilot 21%, Codex 16%, Cursor 12% 입니다.
 
-## 빠른 시작
+네 축의 설정과 워크플로를 한 저장소에 모은 참조 구현이
+[Best Practice 저장소](./best-practice-repo)입니다. 각 항목이 ISO/IEC 5230·18974 의 어느 요구사항을
+강화하는지는 [표준 대응](./iso-mapping)에 정리했습니다.
 
-오픈소스 컴플라이언스 관점에서 AI 코딩 도구를 설정하려면 [공통 Rules 템플릿](./rules-template)부터 시작하세요.
+## 어디서 시작할까
 
-CI/CD 파이프라인 심화 설계와 전사 보안 전략은 [DevSecOps 가이드](/devsecops/intro)에서 다룹니다.
+한 번에 넓히지 않고 하나를 확인한 뒤 넓힙니다.
+
+1. **사용 기준부터 정합니다.** 허용할 도구와 플랜, 보내면 안 되는 데이터, 책임자를
+   [AI 코딩 도구 사용 정책](./usage-policy)의 복붙 블록으로 먼저 정합니다. 기준 없이 도구 설정부터
+   하면 개인 계정과 승인되지 않은 확장이 그대로 남습니다.
+2. **규칙과 게이트를 겁니다.** 저장소에 규칙 파일을 두고([공통 Rules 템플릿](./rules-template)),
+   CI 에 시크릿·SAST·SCA 게이트를 겁니다([Quick CI/CD](./cicd-quick)). 규칙은 권고이고 실제로
+   막는 것은 게이트입니다.
+3. **테스트를 검증 기준으로 세웁니다.** 핵심 동작 테스트와 테스트 약화 검사를 겁니다
+   ([테스트 환경](./testing)). 에이전트에게 맡길 수 있는 범위는 테스트가 확인하는 범위와 같습니다.
+4. **업무 하나로 시험하고 잽니다.** 반복되는 업무 하나를 골라 지금의 리드 타임과 리뷰 대기 시간을
+   기준선으로 적고, 사람 승인 지점을 넣어 에이전트에게 맡겨 봅니다([생산성과 협업](./collaboration)).
+5. **결과를 보고 넓힙니다.** 승인 지점, 권한 범위, 비용 한도, PR 크기 기준을 정한 뒤 다른 업무와
+   팀으로 넓히고, [5단계 전략](./strategy)의 4·5단계와 [MCP 도구 통제](./agent-governance)를 더합니다.
+
+## 체계구축 가이드와의 관계
+
+ISO/IEC 5230·18974 자체 인증만이 목표라면 [체계구축](/docs) 트랙을 먼저 끝내세요. 표준이 요구하는
+정책·SBOM·취약점 대응 산출물은 그 트랙에서 만듭니다. 이 섹션은 그 정책을 AI 코딩 도구와 CI 에 적용해
+개발 시점에 지켜지게 하고, 표준이 다루지 않는 생산성·협업·테스트까지 넓힙니다. CI/CD 파이프라인
+심화 설계와 전사 보안 전략은 [DevSecOps 가이드](/devsecops/intro)에서 다룹니다.
