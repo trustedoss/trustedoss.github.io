@@ -110,6 +110,23 @@ Smithery 에서 경로 순회 취약점이 발견되어 3,000개 이상의 호�
 
 에이전트의 파일·네트워크·명령 실행 범위를 필요한 만큼만 허용합니다.
 
+권한을 좁히려면 먼저 권한의 주체가 분명해야 합니다. 에이전트가 개발자 개인의 토큰이나 공용 서비스
+계정으로 일하면, 그 에이전트가 무엇을 할 수 있는지와 누가 책임지는지가 사람의 권한에 섞여 보이지
+않습니다. OWASP Top 10 for Agentic Applications 2026 은 이 위험을 ASI03(Identity & Privilege
+Abuse)으로, OWASP Non-Human Identities Top 10 2025 는 사람이 아닌 계정의 관리 실패로 정리합니다.
+CI 와 서버에서 상시로 돌리는 에이전트는 아래를 지킵니다.
+
+- 에이전트마다 전용 계정이나 토큰을 쓰고 담당자 한 명을 정합니다. 여러 에이전트가 같은 자격증명을
+  나눠 쓰지 않고(NHI9 NHI Reuse), 사람이 에이전트 계정으로 작업하지 않습니다(NHI10 Human Use of NHI).
+- 자격증명은 범위를 좁히고 수명을 짧게 둡니다(NHI5 Overprivileged NHI, NHI7 Long-Lived Secrets).
+- 쓰지 않게 된 에이전트의 계정과 토큰을 회수합니다(NHI1 Improper Offboarding). 에이전트 목록과
+  담당자를 함께 관리하면 회수 대상이 보입니다.
+
+GitHub Copilot 클라우드 에이전트가 참고할 만한 형태입니다. 에이전트는 자기 브랜치 하나에만 push 하고,
+Actions 시크릿에 접근하지 못합니다. 커밋 작성자는 Copilot 이고 작업을 맡긴 사람이 공동 작성자로
+남으며, 에이전트가 연 PR 의 워크플로는 쓰기 권한이 있는 사람이 승인해야 돌아갑니다. 누가 시켰고
+무엇이 했는지가 커밋과 승인 기록에 남는 구조입니다.
+
 ### 도구 설명 검토
 
 도구 설명은 신뢰된 서버 출처가 아니면 검토 대상입니다. 도입 시점과 갱신 시점 모두 확인합니다
@@ -395,6 +412,8 @@ MCP 구성요소를 신뢰할 수 있는 출처에서만 받아 암호학적으�
 - Microsoft Security Blog, [Securing AI agents: When AI tools move from reading to acting](https://www.microsoft.com/en-us/security/blog/2026/06/30/securing-ai-agents-ai-tools-move-from-reading-acting/) (2026-06-30)
 - OWASP GenAI Security Project, [Top 10 for Agentic Applications 2026](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/) (2025-12-09) / [LLM Top 10 2026](https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/) (2026-08-03, 본문에서 인용한 LLM01:2025 를 잇는 개정판) / [LLM01:2025 Prompt Injection](https://genai.owasp.org/llmrisk/llm01-prompt-injection/) / [OWASP MCP Top 10](https://owasp.org/www-project-mcp-top-10/) (Incubator 단계)
 - OWASP, [AISVS 1.0](https://github.com/OWASP/AISVS) (2026-06) — 9장 오케스트레이션과 에이전틱 액션, 10장 MCP 보안, 검증 레벨 1~3
+- OWASP, [Non-Human Identities Top 10 2025](https://owasp.github.io/www-project-non-human-identities-top-10/2025/): 사람이 아닌 계정의 관리 실패 10가지
+- GitHub Docs, [Responsible use of Copilot cloud agent](https://docs.github.com/en/copilot/responsible-use/agents): 단일 브랜치 push, Actions 시크릿 접근 불가, 워크플로 승인
 - CycloneDX, [Proposal: Agent Bill of Materials](https://github.com/CycloneDX/specification/issues/895) (2026-03-26 개설, 2026-04-29 중복 처리) — 에이전트 전용 BOM 논의 경과
 - Hasan et al., [Model Context Protocol (MCP) at First Glance](https://arxiv.org/abs/2506.13538) — 1,899개 서버 조사(tool poisoning 5.5%)
 - Invariant Labs, [MCP Security Notification: Tool Poisoning Attacks](https://invariantlabs.ai/blog/mcp-security-notification-tool-poisoning-attacks) (2025-04-01) — 도구 오염 기법 최초 공개

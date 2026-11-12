@@ -7,8 +7,8 @@ sidebar_position: 10
 
 # Best Practice Repository
 
-This is a reference GitHub repository that implements the [5-Stage Strategy](./strategy) as CI
-workflows and configuration files. You can fork it for immediate use or copy configuration files
+This is a reference GitHub repository that implements the [5-Stage Strategy](./strategy) and the
+[testing](./testing) and [collaboration](./collaboration) controls as CI workflows and configuration files. You can fork it for immediate use or copy configuration files
 into an existing project.
 
 Stage 4c (agent and MCP tool governance) targets the agent on a developer workstation rather than
@@ -32,12 +32,14 @@ ai-coding-best-practice/
 ├── Dockerfile
 ├── docker-compose.yml                 # app startup for DAST/AI fuzzing
 │
-├── CLAUDE.md                          # Stage 2: Embed AI rules + 4c: MCP server intake
+├── CLAUDE.md                          # Stage 2: Embed AI rules + 4c: MCP server intake + testing policy
+├── pyproject.toml                     # Testing: pytest and mutmut settings
+├── requirements-dev.txt               # Testing: pytest, pytest-cov, mutmut (pinned)
 ├── .cursorrules                       # Stage 2: Cursor rules
 │
 ├── .mcp.json                          # 4c: Approved MCP servers (currently empty)
 ├── .claude/
-│   └── settings.json                  # 4c: Agent permissions (blocked reads, commands needing approval)
+│   └── settings.json                  # 4c: Agent permissions (blocked reads, commands needing approval, approval for tests/ edits)
 │
 ├── .gitleaks.toml                     # Stage 3: secret detection settings
 ├── .grype.yaml                        # Stage 3: SCA threshold settings
@@ -48,10 +50,16 @@ ai-coding-best-practice/
 ├── k8s/
 │   └── deployment.yaml                # sample target for IaC security scan (Checkov)
 │
+├── tests/
+│   └── test_app.py                    # Testing: behavior tests (acceptance criteria for agent work)
+│
 ├── scripts/
-│   └── ai-fuzz.py                     # AI fuzzing run script
+│   ├── ai-fuzz.py                     # AI fuzzing run script
+│   └── check-test-integrity.py        # Testing: detects weakened tests in a PR
 │
 └── .github/
+    ├── CODEOWNERS                     # Collaboration: owner review for tests/, agent rules, CI
+    ├── pull_request_template.md       # Collaboration: records AI use, decisions by a person, test checks
     ├── dependabot.yml                 # Stage 5: Dependabot settings
     └── workflows/
         ├── secret-detection.yml       # Stage 3: Gitleaks
@@ -62,7 +70,11 @@ ai-coding-best-practice/
         ├── container-security.yml     # Stage 3: Trivy
         ├── ai-review.yml              # Stage 4: findings-driven AI review (ANTHROPIC_API_KEY auto-enabled when configured)
         ├── ai-fuzzing.yml             # Stage 4: AI fuzzing (weekly + push)
-        └── dast.yml                   # Stage 5: OWASP ZAP (Push to main)
+        ├── dast.yml                   # Stage 5: OWASP ZAP (Push to main)
+        ├── tests.yml                  # Testing: pytest + 90% coverage floor (blocking)
+        ├── test-integrity.yml         # Testing: test-weakening check (blocking, label overrides)
+        ├── mutation.yml               # Testing: mutmut mutation testing (weekly, advisory)
+        └── pr-size.yml                # Collaboration: split suggestion above 400 lines
 ```
 
 ---
@@ -95,6 +107,20 @@ ai-coding-best-practice/
 | Automatic Dependency Updates | `dependabot.yml`    | Automatically creates weekly dependency update PRs       |
 | Automatic Patch Merge        | `renovate.json`     | Auto-merges Critical patches, notifies for Major updates |
 | DAST                         | `dast.yml`          | OWASP ZAP Baseline — dynamic scan on Push to main        |
+
+### Collaboration and Testing
+
+| Item                 | Implementation File                                     | Description                                                                                        |
+| -------------------- | ------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| Behavior tests       | `tests/`, `tests.yml`                                   | pytest and a 90% coverage floor. Blocks PRs                                                        |
+| Test-weakening check | `test-integrity.yml`, `scripts/check-test-integrity.py` | Detects deleted tests, added skip/xfail, fewer asserts. The `test-change-approved` label overrides |
+| Mutation testing     | `mutation.yml`                                          | mutmut measures whether asserts catch wrong behavior. Weekly, advisory                             |
+| PR size              | `pr-size.yml`                                           | Suggests a split above 400 lines. Never fails the build                                            |
+| Owner review         | `.github/CODEOWNERS`                                    | Requests owner review for `tests/`, rules files, agent permissions, CI                             |
+| Change record        | `.github/pull_request_template.md`                      | AI use, decisions made by a person, test checks                                                    |
+| Agent permissions    | `.claude/settings.json`                                 | Human approval when an agent edits `tests/` (`Edit(./tests/**)`)                                   |
+
+Design background is in [Testing](./testing) and [Productivity and Collaboration](./collaboration).
 
 ---
 
@@ -130,14 +156,17 @@ AI fuzzing and DAST run on Push to main or weekly schedules.
 
 ## Customization Points
 
-| File             | What to Customize                                                |
-| ---------------- | ---------------------------------------------------------------- |
-| `CLAUDE.md`      | Reflect team license policy and prohibited package list          |
-| `.grype.yaml`    | Adjust vulnerability thresholds (`high` ↔ `critical`)            |
-| `.gitleaks.toml` | Add internal organization pattern exceptions                     |
-| `.semgrep.yml`   | Add language/framework-specific rulesets                         |
-| `renovate.json`  | Adjust auto-merge scope and update cadence                       |
-| `dast.yml`       | After stabilization, change to `fail_action: true` for hard fail |
+| File                 | What to Customize                                                |
+| -------------------- | ---------------------------------------------------------------- |
+| `CLAUDE.md`          | Reflect team license policy and prohibited package list          |
+| `.grype.yaml`        | Adjust vulnerability thresholds (`high` ↔ `critical`)            |
+| `.gitleaks.toml`     | Add internal organization pattern exceptions                     |
+| `.semgrep.yml`       | Add language/framework-specific rulesets                         |
+| `renovate.json`      | Adjust auto-merge scope and update cadence                       |
+| `dast.yml`           | After stabilization, change to `fail_action: true` for hard fail |
+| `tests.yml`          | Set the coverage floor `--cov-fail-under` to your current level  |
+| `pr-size.yml`        | Advisory limit `MAX_LINES`                                       |
+| `.github/CODEOWNERS` | Replace the account with your team (`@your-org/maintainers`)     |
 
 ---
 
@@ -146,4 +175,6 @@ AI fuzzing and DAST run on Push to main or weekly schedules.
 - [5-Stage Strategy](./strategy) — Purpose and adoption sequence of each stage
 - [30-Minute Quick CI/CD](./cicd-quick) — Minimal starting point focused on SCA
 - [AI Security Code Review](./ai-security-review) — Semantic vulnerability detection with AI
+- [Testing](./testing): test-first work, defenses against weakened tests, mutation testing
+- [Productivity and Collaboration](./collaboration): PR size, sharing the review load, parallel agent work
 - [DevSecOps — Organization-wide Pipeline Design](/en/devsecops/pipeline-design) — Multi-repository policy governance
