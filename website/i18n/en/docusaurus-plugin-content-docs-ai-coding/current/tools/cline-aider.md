@@ -9,7 +9,7 @@ sidebar_position: 6
 
 ## Overview
 
-Cline reads `.clinerules` files (a single root file or `.clinerules/` folder) as project instructions and applies them to AI behavior. Aider includes a policy document (conventionally `CONVENTIONS.md`) in every session's context via the `--read` option or the `read` field in `.aider.conf.yml`. Both tools apply rules at the project level.
+Cline reads rule files in the `.clinerules/` folder (or `.cline/rules/`) as project instructions and applies them to AI behavior. Aider includes a policy document (conventionally `CONVENTIONS.md`) in every session's context via the `--read` option or the `read` field in `.aider.conf.yml`. Both tools apply rules at the project level.
 
 Cline is an agent-style AI tool running as a VS Code extension, while Aider is a terminal-based CLI tool. Both are open source and run locally, so they are often preferred by teams that avoid sending code to external servers. If open source policy is written in each configuration file, AI automatically considers it when adding packages or generating code.
 
@@ -19,12 +19,13 @@ Cline is an agent-style AI tool running as a VS Code extension, while Aider is a
 
 ### Configuration File Location
 
-- `.clinerules` (single root file, recommended)
-- `.clinerules/` (folder, allows split files)
+- `.clinerules/` (folder, recommended, e.g. `.clinerules/oss-policy.md`)
+- `.cline/rules/` (folder)
+- `AGENTS.md`, `.cursorrules` and `.windsurfrules` are also detected.
 
 ### How to Apply
 
-1. Create `.clinerules` in the project root.
+1. Create `.clinerules/oss-policy.md` in the project root.
 2. Paste content from the [Common Rules Template](../rules-template).
 3. Update the allow/deny license list to match internal policy.
 
@@ -95,9 +96,9 @@ Both tools run directly on the developer's machine and provide no operating-syst
 
 ### Cline
 
-Cline's control is human approval. The official documentation states that it offers a human-in-the-loop interface rather than a separate sandbox. Auto-approve is split into reading and editing files, running commands, using the browser, and using MCP servers, so turn on only what is needed. YOLO mode, which disables every safety check, should not be used outside an isolated environment.
+Cline's default control is human approval. Cline Cloud Agents run each session in a cloud sandbox and the CLI has a sandbox mode (`CLINE_SANDBOX`), but the local extension offers a human-in-the-loop interface rather than a separate sandbox. The Cline CLI defaults to auto-approve (yolo) mode, so do not use it as is. Auto-approve is split into reading and editing files, running commands, using the browser, and using MCP servers, so turn on only what is needed. YOLO mode, which disables every safety check, should not be used outside an isolated environment.
 
-Per-command allow and deny lists are set as JSON in the `CLINE_COMMAND_PERMISSIONS` environment variable (`allow`, `deny`, `allowRedirects`). There is no matching entry in the editor settings file.
+A per-command allow and deny list is not documented at present. If you must block specific commands, use a `PreToolUse` hook that cancels `run_commands` before it runs, and check the current settings in the [Cline documentation](https://docs.cline.bot) before relying on it.
 
 ### Aider
 

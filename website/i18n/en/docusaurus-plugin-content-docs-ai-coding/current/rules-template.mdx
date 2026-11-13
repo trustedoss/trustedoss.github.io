@@ -9,7 +9,7 @@ sidebar_position: 3
 
 ## Overview
 
-This template is a common ruleset that makes AI coding tools automatically recognize open source policy when generating code. Paste it into each tool's configuration file such as `CLAUDE.md`, `.cursor/rules`, or `.clinerules`. As of 2026, OpenAI Codex, Cursor, GitHub Copilot, Devin Desktop, and Cline all officially support the common rules file `AGENTS.md`, so you can also keep a single AGENTS.md as the baseline and let per-tool files carry only the differences. Please modify the allowed/forbidden license lists to match your internal policy.
+This template is a common ruleset that makes AI coding tools automatically recognize open source policy when generating code. Paste it into each tool's configuration file such as `CLAUDE.md`, `.cursor/rules`, or `.clinerules`. As of 2026, OpenAI Codex, Cursor, GitHub Copilot, Devin Desktop, and Cline all officially support the common rules file `AGENTS.md`, so you can also keep a single AGENTS.md as the baseline and let per-tool files carry only the differences. Claude Code, however, reads AGENTS.md only when there is no `CLAUDE.md`, so in a repository that has both, put `@AGENTS.md` on the first line of `CLAUDE.md` so the policy is not dropped. Please modify the allowed/forbidden license lists to match your internal policy.
 
 :::note This template vs the Developer Guide
 This page is a quick-start template for creating Rules files for AI coding tools **on the spot**.

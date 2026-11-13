@@ -110,7 +110,7 @@ Key field descriptions:
 
 | Field                         | Description                                                                                           |
 | ----------------------------- | ----------------------------------------------------------------------------------------------------- |
-| `bomFormat`, `specVersion`    | CycloneDX format identifier and specification version. cdxgen 12.x and syft 1.51+ emit 1.7 by default |
+| `bomFormat`, `specVersion`    | CycloneDX format identifier and specification version. cdxgen 12+ and syft 1.51+ emit 1.7 by default |
 | `metadata.timestamp`          | When the SBOM was generated                                                                           |
 | `metadata.tools.components[]` | Name and version of the tool that built the SBOM, the "SBOM generation tool" CISA 2026 requires       |
 | `metadata.lifecycles[]`       | Lifecycle phase the SBOM was captured in, the "generation context"                                    |

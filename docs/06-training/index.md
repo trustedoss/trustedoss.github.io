@@ -69,7 +69,7 @@ SBOM·CVSS 등 낯선 약어는 [용어집](/reference/glossary)에서 쉬운 �
 | NIPA 오픈소스 라이선스 가이드         | 전 직군 입문      | NIPA                | 초급~중급 | 한국어 | [NIPA 공개SW 포털](https://www.oss.kr)                                                                                         |
 | OpenChain KWG 교육 자료               | 개발자, 관리자    | OpenChain KWG       | 중급      | 한국어 | https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/5-training/                                  |
 | OpenChain 교육 자료                   | 관리자, 법무·구매 | OpenChain Project   | 초급~중급 | 영어   | https://www.openchainproject.org/resources                                                                                     |
-| Open Source Licensing Basics (LFC193) | 법무·구매         | Linux Foundation    | 초급      | 영어   | [LFC193 과정](https://training.linuxfoundation.org/training/introduction-to-open-source-license-compliance-management-lfc193/) |
+| Introduction to Open Source License Compliance Management (LFC193) | 법무·구매         | Linux Foundation    | 초급      | 영어   | [LFC193 과정](https://training.linuxfoundation.org/training/introduction-to-open-source-license-compliance-management-lfc193/) |
 | SPDX 공식 문서                        | 개발자, 보안 담당 | SPDX Community      | 중급      | 영어   | [SPDX 공식 사이트](https://spdx.dev)                                                                                           |
 | CycloneDX 공식 문서                   | 개발자, 보안 담당 | CycloneDX Community | 중급      | 영어   | [CycloneDX 공식 사이트](https://cyclonedx.org)                                                                                 |
 

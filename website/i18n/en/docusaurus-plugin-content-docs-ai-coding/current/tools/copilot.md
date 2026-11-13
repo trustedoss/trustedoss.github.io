@@ -17,7 +17,7 @@ If open source policy is written in this file, Copilot automatically recognizes 
 
 - `.github/copilot-instructions.md`: single file, applied to the whole repository
 - `.github/instructions/*.instructions.md`: path-scoped via the `applyTo` frontmatter pattern (good for per-language or per-folder rules)
-- `AGENTS.md`: common rules file at the root (nearest file wins)
+- `AGENTS.md`: common rules file. It can sit in any folder of the repository, and the file nearest to the working location wins
 
 ## How to Apply
 
@@ -66,7 +66,7 @@ Note the limit: this firewall applies only to processes started by the Bash tool
 
 ### Copilot CLI
 
-A local sandbox exists but it is an experimental feature that is off by default. Run with `--experimental`, then turn it on with `/sandbox enable`. The isolation is at the process and filesystem level, not a virtual machine or a container. macOS uses Seatbelt and Linux uses bubblewrap; on Windows it works only in Insiders builds.
+Local sandboxing became generally available on 2026-10-07. Turn it on in a session with `/sandbox enable`, or start with `--sandbox` (`--no-sandbox` to turn it off); to keep it on, set `sandbox.enabled` in `~/.copilot/settings.json`. Organizations can require sandboxing through enterprise-managed settings. The isolation is at the process and filesystem level, not a virtual machine or a container. macOS uses Seatbelt, Linux uses bubblewrap 0.5.0 or later with slirp4netns, and Windows works on Windows 11 25H2 (KB5124010 or later) or 26H1.
 
 Tool approvals are set with the `--allow-tool` and `--deny-tool` flags. Approved tools and paths are stored in `~/.copilot/permissions-config.json`, and allowed URLs in `allowedUrls` in `~/.copilot/settings.json`. `--allow-all-tools` and `--yolo` skip every approval, so do not use them outside an isolated environment.
 
@@ -74,7 +74,7 @@ Tool approvals are set with the `--allow-tool` and `--deny-tool` flags. Approved
 
 Terminal command auto-approval is enabled with `chat.tools.terminal.enableAutoApprove`, and the target commands are listed in `chat.tools.terminal.autoApprove`. Auto-approval across tools is `chat.tools.global.autoApprove` (it replaced `chat.tools.autoApprove` in 1.104, with no automatic migration).
 
-The sandbox is a preview feature, turned on with `chat.agent.sandbox.enabled`. It supports macOS, Linux, and WSL2; network access is adjusted with `chat.agent.sandbox.allowNetwork` and the filesystem with `chat.agent.sandbox.fileSystem.mac` and `chat.agent.sandbox.fileSystem.linux`.
+The sandbox is turned on with `chat.agent.sandbox.enabled`. It supports macOS, Linux, and WSL2, and Windows 11 as an experimental feature. Network access is adjusted with `chat.agent.sandbox.network.allowNetwork` (formerly `chat.agent.sandbox.allowNetwork`), `network.allowedDomains` and `network.deniedDomains`, and the filesystem with `chat.agent.sandbox.fileSystem.userConfiguredPaths` (`fileSystem.mac` and `fileSystem.linux` are deprecated). Watch two defaults: `network.allowNetwork` defaults to `true`, so the network is open, and `allowUnsandboxedCommands` also defaults to `true`, so commands can run outside the sandbox. Set both to `false` if your policy requires it.
 
 ## Notes
 

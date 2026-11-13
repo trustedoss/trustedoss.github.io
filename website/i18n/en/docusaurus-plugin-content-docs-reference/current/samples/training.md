@@ -294,9 +294,9 @@ Related standards
 
 | Course name                                          | Course code | Audience            | Time | Certificate      | Link                                                                                                |
 | ---------------------------------------------------- | ----------- | ------------------- | ---- | ---------------- | --------------------------------------------------------------------------------------------------- |
-| Open Source Compliance in the Enterprise             | LFC193      | Developers·Managers | ~3h  | Available (free) | https://training.linuxfoundation.org/training/open-source-compliance-in-the-enterprise/             |
+| Introduction to Open Source License Compliance Management             | LFC193      | Developers·Managers | ~3h  | Available (free) | https://training.linuxfoundation.org/training/introduction-to-open-source-license-compliance-management-lfc193/             |
 | Open Source Licensing Basics for Software Developers | LFC191      | Developers          | ~3h  | Available (free) | https://training.linuxfoundation.org/training/open-source-licensing-basics-for-software-developers/ |
-| Secure Software Development Fundamentals             | LFD121      | Developers          | ~12h | Available (free) | https://training.linuxfoundation.org/training/developing-secure-software-lfd121/                    |
+| Developing Secure Software             | LFD121      | Developers          | ~12h | Available (free) | https://training.linuxfoundation.org/training/developing-secure-software-lfd121/                    |
 | Kubernetes and Cloud Native Security Associate       | —           | Operations          | —    | Paid             | —                                                                                                   |
 
 **Curriculum mapping**:

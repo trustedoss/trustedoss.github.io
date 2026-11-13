@@ -36,7 +36,7 @@ AI 코딩 가이드의 Quick CI/CD는 개발자가 30분 안에 기본 게이트
 | [시크릿 탐지](./secret-detection)     | 키·토큰 누출 방지(Gitleaks)   | 개발자·DevOps     |
 | [컨테이너 보안](./container-security) | 이미지 취약점(Trivy)          | DevOps·보안팀     |
 | [IaC 보안](./iac-security)            | 인프라 코드 검사(Checkov)     | DevOps·SRE        |
-| [DAST](./dast)                        | 동적 분석(OWASP ZAP·Nuclei)   | 보안팀·QA         |
+| [DAST](./dast)                        | 동적 분석(ZAP·Nuclei)   | 보안팀·QA         |
 | [파이프라인 설계](./pipeline-design)  | 전체 통합 설계·GitHub Actions | DevOps 엔지니어   |
 | [모니터링·자동 교정](./monitoring)    | 배포 후 지속 스캔·자동 PR     | DevOps·보안팀     |
 | [ISO 표준 연계](./iso-mapping)        | ISO/IEC 18974 요구사항 매핑   | 컴플라이언스 담당 |

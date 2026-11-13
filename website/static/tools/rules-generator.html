@@ -623,7 +623,7 @@
                   id="t4"
                   name="tool"
                   value="windsurf"
-                /><label for="t4"><span class="chip-dot"></span>Windsurf</label>
+                /><label for="t4"><span class="chip-dot"></span>Devin Desktop</label>
               </div>
               <div class="chip">
                 <input
@@ -633,6 +633,16 @@
                   value="cline"
                 /><label for="t5"
                   ><span class="chip-dot"></span>Cline / Aider</label
+                >
+              </div>
+              <div class="chip">
+                <input
+                  type="checkbox"
+                  id="t6"
+                  name="tool"
+                  value="agents"
+                /><label for="t6"
+                  ><span class="chip-dot"></span>AGENTS.md (Codex)</label
                 >
               </div>
             </div>
@@ -962,6 +972,7 @@
           errEmpty: "생성된 파일이 없습니다. 다시 시도해주세요.",
           hintRoot: "프로젝트 루트에 위치시키세요",
           hintGithub: ".github/ 폴더 안에 위치시키세요",
+          hintPath: "프로젝트 루트 기준으로 표시된 경로에 저장하세요",
           licensePolicy: {
             strict:
               "허용: MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC\n금지: LGPL, MPL, GPL, AGPL, SSPL, Commons Clause",
@@ -979,13 +990,15 @@
             claude:
               "Claude Code의 CLAUDE.md 형식 - ## 섹션 헤더와 지시문 스타일로 작성. Claude Code가 프로젝트 시작 시 자동으로 읽는 파일임.",
             cursor:
-              "Cursor의 .cursorrules 형식 - 간결한 규칙 목록 스타일. Cursor AI가 코드 작성 시 참고하는 파일임.",
+              "Cursor의 프로젝트 규칙 파일(.cursor/rules/oss-policy.mdc) 형식 - 맨 위에 description과 alwaysApply: true 를 담은 front matter를 두고, 그 아래에 간결한 규칙 목록을 씀.",
             copilot:
-              "GitHub Copilot의 copilot-instructions.md 형식 - 마크다운 형식, .github/ 폴더에 위치. Copilot Chat과 코드 완성에 적용됨.",
+              "GitHub Copilot의 copilot-instructions.md 형식 - 마크다운 형식, .github/ 폴더에 위치. Copilot Chat과 Copilot 에이전트가 참고하는 저장소 지침 파일임.",
             windsurf:
-              "Windsurf의 .windsurfrules 형식 - Cascade AI 에이전트 지침 파일. 간결하고 명확한 규칙 목록.",
+              "Devin Desktop의 프로젝트 규칙 파일(.devin/rules/oss-policy.md) 형식 - 마크다운으로 쓴 간결하고 명확한 규칙 목록.",
             cline:
-              "Cline의 .clinerules 형식 - 프로젝트 루트에 위치하는 지침 파일.",
+              "Cline의 규칙 폴더(.clinerules/oss-policy.md) 형식 - 마크다운으로 쓴 지침 파일.",
+            agents:
+              "AGENTS.md 형식 - Codex 등 여러 에이전트가 함께 읽는 저장소 루트의 마크다운 지침 파일. Claude Code는 CLAUDE.md가 없을 때만 이 파일을 읽으므로, CLAUDE.md를 함께 쓰면 그 안에서 @AGENTS.md 로 가져와야 한다는 안내를 맨 위 주석으로 남김.",
           },
           optionText: {
             sbom: "- SBOM 관리: 의존성 변경 시 SBOM 업데이트 필요, 생성 도구(syft/cdxgen/trivy), 권장 포맷(CycloneDX)",
@@ -1015,7 +1028,7 @@ ${ctx.optionList || "없음"}
 ## 응답 형식
 반드시 아래 JSON 형식으로만 응답. 설명 텍스트, 마크다운 코드블록 없이 순수 JSON만.
 
-{"files":[{"tool":"도구키(claude/cursor/copilot/windsurf/cline 중 하나)","filename":"파일명","content":"파일 전체 내용"}]}
+{"files":[{"tool":"도구키(claude/cursor/copilot/windsurf/cline/agents 중 하나)","filename":"파일명","content":"파일 전체 내용"}]}
 
 ## 작성 요구사항
 - 각 도구의 특성과 형식에 맞게 작성
@@ -1080,6 +1093,7 @@ ${ctx.optionList || "없음"}
           errEmpty: "No files were generated. Please try again.",
           hintRoot: "Place it in your project root",
           hintGithub: "Place it inside the .github/ folder",
+          hintPath: "Save it at the path shown, relative to your project root",
           licensePolicy: {
             strict:
               "Allowed: MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC\nForbidden: LGPL, MPL, GPL, AGPL, SSPL, Commons Clause",
@@ -1098,13 +1112,15 @@ ${ctx.optionList || "없음"}
             claude:
               "Claude Code CLAUDE.md format - use ## section headers and an instructional style. Claude Code reads this file automatically when a project opens.",
             cursor:
-              "Cursor .cursorrules format - a concise list of rules. Cursor AI consults this file while writing code.",
+              "Cursor project rule file (.cursor/rules/oss-policy.mdc) format - start with front matter containing a description and alwaysApply: true, followed by a concise list of rules.",
             copilot:
-              "GitHub Copilot copilot-instructions.md format - markdown, placed in the .github/ folder. Applies to Copilot Chat and code completion.",
+              "GitHub Copilot copilot-instructions.md format - markdown, placed in the .github/ folder. The repository instruction file that Copilot Chat and Copilot agents consult.",
             windsurf:
-              "Windsurf .windsurfrules format - an instruction file for the Cascade AI agent. Keep the rule list short and clear.",
+              "Devin Desktop project rule file (.devin/rules/oss-policy.md) format - a short, clear list of rules in markdown.",
             cline:
-              "Cline .clinerules format - an instruction file placed in the project root.",
+              "Cline rules folder (.clinerules/oss-policy.md) format - an instruction file in markdown.",
+            agents:
+              "AGENTS.md format - a markdown instruction file at the repository root that Codex and other agents read. Claude Code reads it only when there is no CLAUDE.md, so add a comment at the top saying that a project that also has CLAUDE.md must import it there with @AGENTS.md.",
           },
           optionText: {
             sbom: "- SBOM management: update the SBOM whenever dependencies change, generation tools (syft/cdxgen/trivy), recommended format (CycloneDX)",
@@ -1134,7 +1150,7 @@ ${ctx.optionList || "None"}
 ## Response format
 Respond with the JSON structure below and nothing else. No explanation text, no markdown code block.
 
-{"files":[{"tool":"tool key (one of claude/cursor/copilot/windsurf/cline)","filename":"file name","content":"full file content"}]}
+{"files":[{"tool":"tool key (one of claude/cursor/copilot/windsurf/cline/agents)","filename":"file name","content":"full file content"}]}
 
 ## Writing requirements
 - Match the characteristics and format of each tool
@@ -1163,9 +1179,9 @@ Respond with the JSON structure below and nothing else. No explanation text, no 
           hintKey: "hintRoot",
         },
         cursor: {
-          filename: ".cursorrules",
-          label: ".cursorrules",
-          hintKey: "hintRoot",
+          filename: ".cursor/rules/oss-policy.mdc",
+          label: ".cursor/rules/oss-policy.mdc",
+          hintKey: "hintPath",
         },
         copilot: {
           filename: ".github/copilot-instructions.md",
@@ -1173,13 +1189,18 @@ Respond with the JSON structure below and nothing else. No explanation text, no 
           hintKey: "hintGithub",
         },
         windsurf: {
-          filename: ".windsurfrules",
-          label: ".windsurfrules",
-          hintKey: "hintRoot",
+          filename: ".devin/rules/oss-policy.md",
+          label: ".devin/rules/oss-policy.md",
+          hintKey: "hintPath",
         },
         cline: {
-          filename: ".clinerules",
-          label: ".clinerules",
+          filename: ".clinerules/oss-policy.md",
+          label: ".clinerules/oss-policy.md",
+          hintKey: "hintPath",
+        },
+        agents: {
+          filename: "AGENTS.md",
+          label: "AGENTS.md",
           hintKey: "hintRoot",
         },
       };
@@ -1305,8 +1326,8 @@ Respond with the JSON structure below and nothing else. No explanation text, no 
               "anthropic-dangerous-direct-browser-access": "true",
             },
             body: JSON.stringify({
-              model: "claude-sonnet-5",
-              max_tokens: 4000,
+              model: "claude-sonnet-5-5",
+              max_tokens: 16000,
               messages: [{ role: "user", content: prompt }],
             }),
           });

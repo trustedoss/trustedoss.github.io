@@ -9,7 +9,7 @@ sidebar_position: 5
 
 ## Overview
 
-Windsurf was renamed Devin Desktop on 2026-06-02. The IDE and its features are unchanged; the brand was unified under Devin. The coding agent also changed from Cascade to Devin Local (Cascade remained available only through 2026-07).
+Windsurf was renamed Devin Desktop on 2026-06-02. The IDE and its features are unchanged; the brand was unified under Devin. The coding agent also changed from Cascade to Devin Local (Cascade ended on 2026-07-01).
 
 Rules files live at the project level, and global rules are configured separately in the app settings (UI). It is efficient to manage rules in layers: put organization-wide policy in Global Rules and project-specific exceptions or additional rules in the project rules directory. Committing the rules directory to the repository applies the same policy across the team. If global and project rules conflict, project rules take precedence.
 
@@ -64,7 +64,7 @@ Devin Local, which runs on the developer's machine, provides an operating-system
 
 Devin Local permissions have three levels, Deny, Ask, and Allow, and Deny wins. Rules are written as `Read(glob)`, `Write(glob)`, `Exec(command prefix)`, and `Fetch(pattern)`. To keep the policy and rules files from being tampered with together, it is safer to put the rules directory and configuration paths under a Deny `Write` rule.
 
-If you still use the older Cascade agent, control comes from auto-run levels (Disabled, Allowlist Only, Auto, Turbo) and command lists rather than a sandbox. The setting keys kept their `windsurf.` prefix after the rebrand: `windsurf.cascadeCommandsAllowList` and `windsurf.cascadeCommandsDenyList`, with the deny list taking precedence.
+The older Cascade agent ended on 2026-07-01 and no longer runs, so use the Devin Local permission rules above instead of the old `windsurf.cascadeCommands*` settings.
 
 ## Notes
 

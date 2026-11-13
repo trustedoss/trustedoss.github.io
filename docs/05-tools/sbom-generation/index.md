@@ -110,7 +110,7 @@ FOSSLight, SW360, FOSSology 등 SCA·컴플라이언스 도구의 도입 및 활
 
 | 필드                          | 설명                                                                                      |
 | ----------------------------- | ----------------------------------------------------------------------------------------- |
-| `bomFormat`, `specVersion`    | CycloneDX 포맷 식별자와 사양 버전. cdxgen 12.x 와 syft 1.51 이상이 1.7 을 기본으로 냅니다 |
+| `bomFormat`, `specVersion`    | CycloneDX 포맷 식별자와 사양 버전. cdxgen 12 이상과 syft 1.51 이상이 1.7 을 기본으로 냅니다 |
 | `metadata.timestamp`          | SBOM 생성 시각                                                                            |
 | `metadata.tools.components[]` | SBOM을 만든 도구의 이름과 버전. CISA 2026 최소 요소의 "SBOM 생성 도구명"에 해당합니다     |
 | `metadata.lifecycles[]`       | SBOM을 만든 수명주기 단계. "생성 맥락"에 해당합니다                                       |

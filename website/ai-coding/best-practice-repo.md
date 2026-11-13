@@ -69,7 +69,7 @@ ai-coding-best-practice/
         ├── container-security.yml     # 3단계: Trivy
         ├── ai-review.yml              # 4단계: findings-driven AI 리뷰 (ANTHROPIC_API_KEY 등록 시 자동 활성화)
         ├── ai-fuzzing.yml             # 4단계: AI 퍼징 (주 1회 + Push)
-        ├── dast.yml                   # 5단계: OWASP ZAP (Push to main)
+        ├── dast.yml                   # 5단계: ZAP (Push to main)
         ├── tests.yml                  # 테스트: pytest + 커버리지 하한 90% (차단)
         ├── test-integrity.yml         # 테스트: 테스트 약화 탐지 (차단, 라벨로 해제)
         ├── mutation.yml               # 테스트: mutmut 변이 테스트 (주 1회, 권고)
@@ -105,7 +105,7 @@ ai-coding-best-practice/
 | -------------------- | ---------------- | --------------------------------------------- |
 | 의존성 자동 업데이트 | `dependabot.yml` | 주간 의존성 업데이트 PR 자동 생성             |
 | 패치 자동 병합       | `renovate.json`  | Critical 패치 자동 병합, Major는 검토 알림    |
-| DAST                 | `dast.yml`       | OWASP ZAP Baseline: Push to main 시 동적 스캔 |
+| DAST                 | `dast.yml`       | ZAP Baseline: Push to main 시 동적 스캔 |
 
 ### 협업과 테스트
 

@@ -36,7 +36,7 @@ The Quick CI/CD of the AI Coding guide aims to help developers create a basic ga
 | [Secret Detection](./secret-detection)        | Prevent key/token leakage (Gitleaks)                | Developer · DevOps     |
 | [Container Security](./container-security)    | Image vulnerabilities (Trivy)                       | DevOps · Security Team |
 | [IaC Security](./iac-security)                | Infrastructure-as-code inspection (Checkov)         | DevOps · SRE           |
-| [DAST](./dast)                                | Dynamic analysis (OWASP ZAP · Nuclei)               | Security Team · QA     |
+| [DAST](./dast)                                | Dynamic analysis (ZAP · Nuclei)               | Security Team · QA     |
 | [Pipeline Design](./pipeline-design)          | Full integrated design · GitHub Actions             | DevOps Engineer        |
 | [Monitoring · Auto-Remediation](./monitoring) | Continuous post-deployment scanning · automatic PRs | DevOps · Security Team |
 | [ISO Standard Mapping](./iso-mapping)         | ISO/IEC 18974 requirements mapping                  | Compliance Manager     |
