@@ -3,16 +3,16 @@ id: agents
 title: Create deliverables with AI agents
 sidebar_label: Agent selection guide
 sidebar_position: 4
-description: 'How agents map to chapters and deliverables, and which one to pick. Covers all nine program-building agents and seven automation agents.'
+description: 'How agents map to chapters and deliverables, and which one to pick. Covers all nine Open Source Management agents and seven automation agents.'
 ---
 
 # Create deliverables with AI agents
 
 What makes Trusted OSS different is that an AI agent asks about your company and then generates deliverables that meet the OpenChain standards. Instead of filling in blank templates, you answer questions and get policy, process, and organization documents written for your company. This page shows which agent produces what.
 
-Agents come in two groups. Program-building agents produce the deliverables you need for self-certification. Automation agents apply that policy to your CI and developer tools, or analyze scanner output.
+Agents come in two groups. Open Source Management agents produce the deliverables you need for self-certification. Automation agents apply that policy to your CI and developer tools, or analyze scanner output.
 
-## Program-building agents
+## Open Source Management agents
 
 Each maps to one chapter of the [Open Source Management](/en/docs) track. If self-certification is your goal, run them in the order below.
 

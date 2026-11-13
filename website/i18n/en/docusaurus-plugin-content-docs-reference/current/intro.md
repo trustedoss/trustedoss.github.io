@@ -43,7 +43,7 @@ Other materials: the [Glossary](./glossary) (plain-language definitions of licen
 
 ## Agent Selection Guide
 
-[Create deliverables with AI agents](./agents) covers which agent to use in which situation. The nine program-building agents map one-to-one to chapters and deliverables, and the seven automation agents write CI and developer-tool configuration or analyze scanner output.
+[Create deliverables with AI agents](./agents) covers which agent to use in which situation. The nine Open Source Management agents map one-to-one to chapters and deliverables, and the seven automation agents write CI and developer-tool configuration or analyze scanner output.
 
 ## More on Tools and Regulations
 

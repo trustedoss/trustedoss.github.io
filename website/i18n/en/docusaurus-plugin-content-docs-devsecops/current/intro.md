@@ -8,8 +8,8 @@ sidebar_position: 1
 # DevSecOps
 
 :::note Optional stage (if you have a development team)
-This section is an optional stage that **automatically applies the policies built in [Governance](/en/docs) to your code and CI pipeline**.
-If self-certification against the standards is your goal, finish the governance setup first. If you have a development team, this is where you enforce those policies in day-to-day development.
+This section is an optional stage that **automatically applies the policies built in the [Open Source Management](/en/docs) guide to your code and CI pipeline**.
+If self-certification against the standards is your goal, finish the Open Source Management guide first. If you have a development team, this is where you enforce those policies in day-to-day development.
 :::
 
 ## What this guide covers

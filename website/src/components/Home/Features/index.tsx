@@ -69,7 +69,10 @@ const TRACKS: Track[] = [
   {
     id: 'governance',
     icon: 'governance',
-    title: translate({id: 'homepage.cta.feature1.title', message: '체계 구축'}),
+    title: translate({
+      id: 'homepage.cta.feature1.title',
+      message: '오픈소스 관리',
+    }),
     desc: translate({
       id: 'homepage.cta.feature1.desc',
       message:

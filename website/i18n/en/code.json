@@ -383,7 +383,7 @@
     "description": "CTA section intro title"
   },
   "homepage.cta.feature1.title": {
-    "message": "Build Your System"
+    "message": "Open Source Management"
   },
   "homepage.cta.feature1.desc": {
     "message": "Build an enterprise open source management system from scratch to completion, based on ISO/IEC 5230 & 18974."
