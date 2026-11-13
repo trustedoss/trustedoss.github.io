@@ -118,14 +118,13 @@ container-security:
     - docker:27-dind
   variables:
     DOCKER_TLS_CERTDIR: '/certs'
-    TRIVY_VERSION: '0.76.2'
     IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
   script:
     # the docker image does not include trivy, so install it.
     # Pin both the install script and the binary to a release you have verified (never main or latest).
     - apk add --no-cache curl
-    - curl -sSfL "https://raw.githubusercontent.com/aquasecurity/trivy/v${TRIVY_VERSION}/contrib/install.sh"
-      | sh -s -- -b /usr/local/bin "v${TRIVY_VERSION}"
+    - curl -sSfL https://raw.githubusercontent.com/aquasecurity/trivy/v0.76.2/contrib/install.sh
+      | sh -s -- -b /usr/local/bin v0.76.2
     - docker build -t $IMAGE_TAG .
     # vulnerability scan
     - trivy image
