@@ -89,6 +89,11 @@
 
   img {
     border-radius: var(--ifm-global-radius);
+    // 흰 배경 PNG 다이어그램이 다크 모드에서 흰 직사각형으로 튀지 않도록 카드처럼 보이게 한다
+    [data-theme="dark"] &[src*="/img/ai-coding/"] {
+      background: #fff;
+      padding: 12px;
+    }
     &.center {
       width: 100%;
       justify-content: center;

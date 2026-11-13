@@ -286,7 +286,7 @@ const config: Config = {
         src: 'img/header_logo.svg',
         width: 32,
         height: 32,
-        alt: 'Trusted OSS Logo',
+        alt: '',
       },
       items: [
         {
