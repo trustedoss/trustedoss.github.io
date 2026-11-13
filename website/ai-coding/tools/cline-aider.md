@@ -46,7 +46,7 @@ Cline은 VS Code 확장으로 동작하는 에이전트형 AI 도구이며, Aide
 
 ### 설정 파일 위치
 
-- `CONVENTIONS.md` (루트, 파일명은 자유 — Aider 공식 문서의 관례)
+- `CONVENTIONS.md` (루트, 파일명은 자유, Aider 공식 문서의 관례)
 - `.aider.conf.yml` 의 `read` 항목 (위 파일을 자동 로드하도록 등록)
 
 ### 적용 방법
@@ -58,7 +58,7 @@ Cline은 VS Code 확장으로 동작하는 에이전트형 AI 도구이며, Aide
 
 ### 설정 예시
 
-**CONVENTIONS.md** — 공통 Rules 템플릿 내용을 담는 파일입니다. 아래는 발췌입니다.
+**CONVENTIONS.md**: 공통 Rules 템플릿 내용을 담는 파일입니다. 아래는 발췌입니다.
 
 ```markdown
 ## 오픈소스 정책
@@ -70,7 +70,7 @@ Cline은 VS Code 확장으로 동작하는 에이전트형 AI 도구이며, Aide
 
 전문은 [공통 Rules 템플릿](../rules-template)에서 복사하세요. 허용·금지 목록이 바뀌면 정본만 갱신하고 각 도구 파일에 다시 붙여넣으면 됩니다.
 
-**.aider.conf.yml** — 정책 문서를 읽기 전용 컨텍스트로 항상 로드합니다.
+**.aider.conf.yml**: 정책 문서를 읽기 전용 컨텍스트로 항상 로드합니다.
 
 ```yaml
 # 매 세션 시작 시 정책 문서를 읽기 전용으로 포함

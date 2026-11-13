@@ -21,15 +21,15 @@ AI가 생성한 코드의 저작권은 누구 것인가, 침해 분쟁이 나면
 Copyrightability(2025-01 확정)에서 판단 기준을 정리했습니다. 연방대법원이 Thaler v. Perlmutter
 상고를 기각(2026-03)하면서 "AI 자체는 저작자가 될 수 없다"는 원칙도 확정됐습니다.
 
-| 시나리오                                        | 인간 저작자성 | 저작권 보호                              |
-| ----------------------------------------------- | ------------- | ---------------------------------------- |
-| 프롬프트만 입력하고 출력을 그대로 사용          | 인정되지 않음 | 보호 불가 — 회사 저작물로 등록할 수 없음 |
-| AI 초안에 인간이 창작적으로 수정·배열           | 인정됨        | 인간 기여 부분에 한해 보호 가능          |
-| AI를 보조 도구로 쓰고 인간이 설계와 통합을 결정 | 인정됨        | 전체 작품의 보호가 부정되지 않음         |
+| 시나리오                                        | 인간 저작자성 | 저작권 보호                             |
+| ----------------------------------------------- | ------------- | --------------------------------------- |
+| 프롬프트만 입력하고 출력을 그대로 사용          | 인정되지 않음 | 보호 불가: 회사 저작물로 등록할 수 없음 |
+| AI 초안에 인간이 창작적으로 수정·배열           | 인정됨        | 인간 기여 부분에 한해 보호 가능         |
+| AI를 보조 도구로 쓰고 인간이 설계와 통합을 결정 | 인정됨        | 전체 작품의 보호가 부정되지 않음        |
 
 변경 비율 같은 정량 기준은 없습니다. "인간의 창작적 기여가 표현 요소를 결정했는가"를 사안별로 판단합니다.
 
-**실행 규칙** — 나중에 귀속을 입증할 수 있도록 개발 시점에 기록을 남깁니다.
+**실행 규칙**: 나중에 귀속을 입증할 수 있도록 개발 시점에 기록을 남깁니다.
 
 - 커밋 메시지에 AI 도구 사용을 명시합니다. 예: `feat: 주문 API 핸들러 구현 (Claude Code 보조)`
 - AI 초안을 수정해 사용한 경우, PR 본문에 어떤 설계·수정 결정을 사람이 했는지 한두 줄 기록합니다.
@@ -37,21 +37,21 @@ Copyrightability(2025-01 확정)에서 판단 기준을 정리했습니다. 연�
 
 ## 2. 공급자 IP 보증: 침해 분쟁이 나면 누가 방어하는가
 
-주요 공급자는 유료 상용 플랜 사용자에게 IP 보증(indemnification — 제3자가 저작권 침해를
+주요 공급자는 유료 상용 플랜 사용자에게 IP 보증(indemnification: 제3자가 저작권 침해를
 주장하면 공급자가 방어와 배상을 부담)을 제공합니다. 2026-07 기준 현황입니다.
 
-| 공급자                     | 제도와 근거                                                                       | 적용 대상                                           | 유의 조건                                                                                       |
-| -------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| Microsoft (GitHub Copilot) | Customer Copyright Commitment — GitHub Generative AI Services Terms(2026-03 교체) | Copilot Business, Enterprise                        | 개인용 Free와 Pro 는 제외. 공개 코드 매칭 차단 필터는 2026-04부터 보증 조건에서 제외(선택 기능) |
-| OpenAI                     | Copyright Shield(발표명) — Business Terms 의 배상 조항                            | ChatGPT Enterprise, API                             | 무료·개인 플랜 제외. 고객이 콘텐츠를 변경하거나 타사 기술과 결합한 경우 등은 제외               |
-| Anthropic                  | Commercial Terms of Service Section K(Indemnification)                            | 유료 상용 고객                                      | 승인된 사용과 그 Output 에 한함. 침해임을 알 수 있었던 사용 등은 제외                           |
-| Google Cloud               | Generative AI indemnification — 훈련 데이터와 생성 출력 이중 보장                 | Gemini for Google Cloud(Gemini Code Assist 포함) 등 | 대상 서비스 목록을 Google 이 수시 갱신 — 공식 목록 페이지 확인 필수                             |
+| 공급자                     | 제도와 근거                                                                      | 적용 대상                                           | 유의 조건                                                                                       |
+| -------------------------- | -------------------------------------------------------------------------------- | --------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| Microsoft (GitHub Copilot) | Customer Copyright Commitment: GitHub Generative AI Services Terms(2026-03 교체) | Copilot Business, Enterprise                        | 개인용 Free와 Pro 는 제외. 공개 코드 매칭 차단 필터는 2026-04부터 보증 조건에서 제외(선택 기능) |
+| OpenAI                     | Copyright Shield(발표명): Business Terms 의 배상 조항                            | ChatGPT Enterprise, API                             | 무료·개인 플랜 제외. 고객이 콘텐츠를 변경하거나 타사 기술과 결합한 경우 등은 제외               |
+| Anthropic                  | Commercial Terms of Service Section K(Indemnification)                           | 유료 상용 고객                                      | 승인된 사용과 그 Output 에 한함. 침해임을 알 수 있었던 사용 등은 제외                           |
+| Google Cloud               | Generative AI indemnification: 훈련 데이터와 생성 출력 이중 보장                 | Gemini for Google Cloud(Gemini Code Assist 포함) 등 | 대상 서비스 목록을 Google 이 수시 갱신하므로 공식 목록 페이지 확인 필수                         |
 
 **도입 전 체크리스트**
 
 - [ ] 사용할 도구의 플랜이 보증 적용 대상인가 (개인 무료 계정은 대부분 제외)
 - [ ] 보증 조건(승인된 사용, 필터 설정, 콘텐츠 변경 금지 등)을 충족하도록 사내 설정을 표준화했는가
-- [ ] 약관은 수시로 바뀐다 — 도입 시점의 약관 원문을 확인하고 연 1회 재점검 일정을 잡았는가
+- [ ] 약관은 수시로 바뀌므로 도입 시점의 약관 원문을 확인하고 연 1회 재점검 일정을 잡았는가
 
 ## 3. AI 사용 표시: 법적 의무와 모범 관행의 구분
 
@@ -69,7 +69,7 @@ AI 코딩 도구를 사내 개발에 쓰는 것만으로 코드에 표시할 법
 이전에 이미 출시된 시스템에만 적용됩니다. 이 완화는 Digital Omnibus on AI 협상 결과이며
 2026-05-07 잠정 합의, 2026-06-16 유럽의회 승인, 2026-06-29 이사회 채택을 거쳤습니다.
 
-**모범 관행** — 법적 의무가 아니어도 다음을 권장합니다.
+**모범 관행**: 법적 의무가 아니어도 다음을 권장합니다.
 
 - 사내 커밋 메시지와 PR 에 AI 도구 사용 명시 (1절의 실행 규칙과 동일)
 - 외부 공개 저장소는 README 또는 CONTRIBUTING 에 AI 도구 활용 사실을 한 줄 고지
@@ -119,10 +119,10 @@ AI 코딩 도구를 사내 개발에 쓰는 것만으로 코드에 표시할 법
 이 페이지는 OpenChain KWG [AI 컴플라이언스 가이드](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/7-ai-compliance/)
 §5(CC BY 4.0)를 기반으로, 아래 1차 출처로 사실을 재확인해 재구성했습니다.
 
-- US Copyright Office, [Copyright and Artificial Intelligence](https://www.copyright.gov/ai/) — Part 2 Copyrightability (2025-01)
+- US Copyright Office, [Copyright and Artificial Intelligence](https://www.copyright.gov/ai/): Part 2 Copyrightability (2025-01)
 - Microsoft, [Customer Copyright Commitment 필수 완화 조치](https://learn.microsoft.com/en-us/azure/foundry/responsible-ai/openai/customer-copyright-commitment) / GitHub, [Generative AI Services Terms](https://github.com/customer-terms/github-generative-ai-services-terms)
 - OpenAI, [Business Terms](https://openai.com/policies/business-terms/)
-- Anthropic, [Commercial Terms of Service](https://www.anthropic.com/legal/commercial-terms) — Section K
+- Anthropic, [Commercial Terms of Service](https://www.anthropic.com/legal/commercial-terms): Section K
 - Google Cloud, [Generative AI indemnified services](https://cloud.google.com/terms/generative-ai-indemnified-services)
 - EU AI Act, [Article 50](https://artificialintelligenceact.eu/article/50/) / 한국, [인공지능 발전과 신뢰 기반 조성 등에 관한 기본법](https://www.law.go.kr/lsInfoP.do?lsiSeq=268543) 제31조
 - Digital Omnibus on AI 협상 경과와 제50조 유예 범위, [Gibson Dunn 분석](https://www.gibsondunn.com/eu-ai-act-omnibus-agreement-postponed-high-risk-deadlines-and-other-key-changes/)

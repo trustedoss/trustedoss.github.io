@@ -7,8 +7,8 @@ sidebar_position: 6
 
 # AI Fuzzing (Stage 4b)
 
-Stage 3 tools find what a rule describes. What no rule describes — business logic flaws, edge-case
-input handling — does not get caught, by definition. Stage 4b fills that gap by having the model
+Stage 3 tools find what a rule describes. What no rule describes (business logic flaws, edge-case
+input handling) does not get caught, by definition. Stage 4b fills that gap by having the model
 **search it directly**. Where [4a](./ai-security-review) re-judges what was already flagged, 4b
 looks where nothing was flagged at all.
 
@@ -115,7 +115,7 @@ If either is zero, the summary says so explicitly: the run never reached the API
 same as the API being clean. "The scanner counted zero" and "there were zero findings" are
 different statements.
 
-## In practice — ai-coding-best-practice
+## In practice: ai-coding-best-practice
 
 The [ai-coding-best-practice](https://github.com/trustedoss/ai-coding-best-practice) repository
 runs this stage weekly. It is two files.
@@ -180,12 +180,12 @@ and minutes. The example above limits it to main pushes and once a week.
 
 - Fork the repository, register `ANTHROPIC_API_KEY`, and trigger the workflow by hand. Watching how
   the job ends _without_ a key first tells you what adoption costs
-- Open `fuzz-report.json` and read the `description` on failed cases — it says what the model was
+- Open `fuzz-report.json` and read the `description` on failed cases. It says what the model was
   aiming at
 - To point it at your own app, change `BASE_URL` and the start command
 
 ## Next steps
 
-- [AI Security Code Review](./ai-security-review) — 4a, re-judging what was already flagged
-- [Agent and MCP Tool Governance](./agent-governance) — 4c, governing what the AI calls
-- [5-Stage Strategy](./strategy) — where this stage sits in the model
+- [AI Security Code Review](./ai-security-review): 4a, re-judging what was already flagged
+- [Agent and MCP Tool Governance](./agent-governance): 4c, governing what the AI calls
+- [5-Stage Strategy](./strategy): where this stage sits in the model

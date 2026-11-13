@@ -15,9 +15,9 @@ If open source policy is written in this file, Copilot automatically recognizes 
 
 ## Configuration File Location
 
-- `.github/copilot-instructions.md` — single file, applied to the whole repository
-- `.github/instructions/*.instructions.md` — path-scoped via the `applyTo` frontmatter pattern (good for per-language or per-folder rules)
-- `AGENTS.md` — common rules file at the root (nearest file wins)
+- `.github/copilot-instructions.md`: single file, applied to the whole repository
+- `.github/instructions/*.instructions.md`: path-scoped via the `applyTo` frontmatter pattern (good for per-language or per-folder rules)
+- `AGENTS.md`: common rules file at the root (nearest file wins)
 
 ## How to Apply
 

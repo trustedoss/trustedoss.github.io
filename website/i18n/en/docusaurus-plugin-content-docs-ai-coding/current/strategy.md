@@ -50,9 +50,9 @@ This approach places common rule files such as CLAUDE.md, .cursor/rules, and AGE
 - [Common Rules Template](./rules-template)
 - [Tool-specific Setup](./tools/claude-code)
 
-If your agents call external tools over MCP, rule internalization needs tool-side controls alongside it — see [Agent and MCP Tool Governance](./agent-governance).
+If your agents call external tools over MCP, rule internalization needs tool-side controls alongside it. See [Agent and MCP Tool Governance](./agent-governance).
 
-**In practice — TRUSCA**: rather than leaving a rule as a sentence, each rule gets a small tool that
+**In practice (TRUSCA)**: rather than leaving a rule as a sentence, each rule gets a small tool that
 checks it, and that tool runs at two moments: when a file is edited and when it is merged. Korean
 translationese (`tools/ko-style`), em dash usage (`tools/em-dash`) and licence headers
 (`tools/license-header`) all take this shape.
@@ -93,11 +93,11 @@ At this stage, the pipeline mechanically verifies the five areas below before PR
 
 AI coding tools frequently insert hardcoded values into code, so **secret detection is mandatory from day one of Stage 3**. Rather than introducing all areas at once, it is recommended to stabilize in this order: secret detection → SAST → SCA, then move on.
 
-- [30-Minute Quick CI/CD](./cicd-quick) — Minimal starting point focused on SCA
-- [DevSecOps — Secret Detection](/en/devsecops/secret-detection) · [SAST](/en/devsecops/sast) · [SCA](/en/devsecops/sca) · [Container Security](/en/devsecops/container-security) · [IaC Security](/en/devsecops/iac-security)
+- [30-Minute Quick CI/CD](./cicd-quick): Minimal starting point focused on SCA
+- [DevSecOps: Secret Detection](/en/devsecops/secret-detection) · [SAST](/en/devsecops/sast) · [SCA](/en/devsecops/sca) · [Container Security](/en/devsecops/container-security) · [IaC Security](/en/devsecops/iac-security)
 - [Organization-wide Pipeline Design](/en/devsecops/pipeline-design)
 
-**In practice — TRUSCA**: an Apache-2.0 open source SCA project runs this level today. The
+**In practice (TRUSCA)**: an Apache-2.0 open source SCA project runs this level today. The
 workflow files are open to read.
 
 | Area             | Workflow                                                                                              | How it runs                                                                     |
@@ -173,12 +173,12 @@ Instead of sending all code to AI, only **code snippets flagged by Stage 3 tools
 
 When multiple tools flag the same location, AI raises priority and alerts developers. AI review results are **posted as PR comments**, and the build is not force-failed (because FP rates are high).
 
-- [AI Security Code Review](./ai-security-review) — Findings-driven implementation guide and GitHub Actions example
+- [AI Security Code Review](./ai-security-review): Findings-driven implementation guide and GitHub Actions example
 
-**In practice — TRUSCA**: [ai-review.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/ai-review.yml) runs this level (added 2026-08).
+**In practice (TRUSCA)**: [ai-review.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/ai-review.yml) runs this level (added 2026-08).
 Three design decisions are worth borrowing.
 
-- **It blocks nothing.** A comment in the file states it must never be added to branch protection —
+- **It blocks nothing.** A comment in the file states it must never be added to branch protection:
   the principle that a model's verdict cannot gate a build, written into the workflow itself
 - **It scans only what the PR changed**, not the whole repository, which cuts cost and noise together
 - **It skips entirely without a key.** Forks and early adopters see the job succeed rather than fail
@@ -196,9 +196,9 @@ AI **actively explores** areas untouched by Stage 3 tools, such as business logi
 | Claude + AFL++    | Low-level binary crashes                        | Weekly schedule           |
 | Claude + OSS-Fuzz | Parser vulnerabilities in open source libraries | Per-project configuration |
 
-- [AI Fuzzing](./ai-fuzzing) — the workflow, the script, and what to watch when adopting it
+- [AI Fuzzing](./ai-fuzzing): the workflow, the script, and what to watch when adopting it
 
-**In practice — ai-coding-best-practice**:
+**In practice (ai-coding-best-practice)**:
 [ai-fuzzing.yml](https://github.com/trustedoss/ai-coding-best-practice/blob/main/.github/workflows/ai-fuzzing.yml)
 and [scripts/ai-fuzz.py](https://github.com/trustedoss/ai-coding-best-practice/blob/main/scripts/ai-fuzz.py)
 run this stage on pushes to main and every Sunday. The app is started and health-checked, the
@@ -232,7 +232,7 @@ services", published jointly by five national agencies at the end of April 2026,
 layered defence and strict access controls, so it can serve alongside these as grounds for approving
 an internal policy.
 
-- [Agent and MCP Tool Governance](./agent-governance) — the nine controls, the scanners, and a
+- [Agent and MCP Tool Governance](./agent-governance): the nine controls, the scanners, and a
   copy-paste organization policy
 
 ---
@@ -242,19 +242,19 @@ an internal policy.
 At this stage, SBOM is continuously scanned even after deployment, and patch PRs are generated automatically when new CVEs are discovered. Integration with Dependabot and Renovate maintains centralized supply chain security compliance (ISO/IEC 18974). Human intervention for policy compliance is minimized, creating a virtuous cycle that continuously controls AI-induced risk through automation.
 
 - [Continuous Monitoring & Auto-remediation](/en/devsecops/monitoring)
-- [DAST — Dynamic Analysis](/en/devsecops/dast)
+- [DAST: Dynamic Analysis](/en/devsecops/dast)
 
-**In practice — TRUSCA**:
+**In practice (TRUSCA)**:
 
 | Component            | File                                                                                                    | What it does                                                             |
 | -------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| Dependency updates   | [dependabot.yml](https://github.com/trustedoss/trusca/blob/main/.github/dependabot.yml)                 | npm, pip, docker, github-actions — four ecosystems, six entries          |
+| Dependency updates   | [dependabot.yml](https://github.com/trustedoss/trusca/blob/main/.github/dependabot.yml)                 | npm, pip, docker, github-actions: four ecosystems, six entries           |
 | Scheduled scanning   | [sca-self.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml)           | Regenerates the SBOM and rescans daily at 07:00 UTC                      |
 | Dogfooding           | [dogfood-scan.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/dogfood-scan.yml)   | Scans its own repository with its own SCA; advisory by default           |
 | Dynamic analysis     | [dast-baseline.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/dast-baseline.yml) | ZAP baseline, weekly. With no target URL set it scans nothing and passes |
 | Offline verification | [airgap-scan.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/airgap-scan.yml)     | Cuts the whole stack's egress and checks that a scan still completes     |
 
-`dogfood-scan.yml` defaults to non-blocking and turns blocking on through a `fail_on_gate` input —
+`dogfood-scan.yml` defaults to non-blocking and turns blocking on through a `fail_on_gate` input:
 the same observe, then warn, then block progression this guide recommends.
 
 `airgap-scan.yml` runs Sundays at 09:00 UTC and asks a different question. It is not looking for

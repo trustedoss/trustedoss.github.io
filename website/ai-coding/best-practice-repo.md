@@ -80,18 +80,18 @@ ai-coding-best-practice/
 
 ## 단계별 구현 내용
 
-### 3단계 — CI/CD 자동 차단
+### 3단계: CI/CD 자동 차단
 
-| 영역          | 구현 파일                | 설명                                            |
-| ------------- | ------------------------ | ----------------------------------------------- |
-| 시크릿 탐지   | `secret-detection.yml`   | Gitleaks — PR마다 API 키·토큰 하드코딩 탐지     |
-| SAST          | `sast.yml`               | Semgrep — OWASP Top 10 룰셋 + 커스텀 룰         |
-| SAST (심층)   | `codeql.yml`             | CodeQL — PR 및 주 1회 스케줄 정적 분석          |
-| SCA           | `oss-policy.yml`         | syft + grype — SBOM 생성·CVE 스캔·라이선스 검사 |
-| IaC 보안      | `iac-security.yml`       | Checkov — Dockerfile·Kubernetes 설정 오류 탐지  |
-| 컨테이너 보안 | `container-security.yml` | Trivy — Docker 이미지 취약점 스캔               |
+| 영역          | 구현 파일                | 설명                                           |
+| ------------- | ------------------------ | ---------------------------------------------- |
+| 시크릿 탐지   | `secret-detection.yml`   | Gitleaks: PR마다 API 키·토큰 하드코딩 탐지     |
+| SAST          | `sast.yml`               | Semgrep: OWASP Top 10 룰셋 + 커스텀 룰         |
+| SAST (심층)   | `codeql.yml`             | CodeQL: PR 및 주 1회 스케줄 정적 분석          |
+| SCA           | `oss-policy.yml`         | syft + grype: SBOM 생성·CVE 스캔·라이선스 검사 |
+| IaC 보안      | `iac-security.yml`       | Checkov: Dockerfile·Kubernetes 설정 오류 탐지  |
+| 컨테이너 보안 | `container-security.yml` | Trivy: Docker 이미지 취약점 스캔               |
 
-### 4단계 — AI 방어 레이어
+### 4단계: AI 방어 레이어
 
 | 항목              | 구현 파일                            | 설명                                                                     |
 | ----------------- | ------------------------------------ | ------------------------------------------------------------------------ |
@@ -99,13 +99,13 @@ ai-coding-best-practice/
 | AI 퍼징 (4b)      | `ai-fuzzing.yml`                     | Claude가 엣지케이스 생성 → 앱 실행 → 5xx 탐지 (Push to main)             |
 | MCP 거버넌스 (4c) | `.mcp.json`, `.claude/settings.json` | MCP 서버 자동 승인 차단, 시크릿 읽기 차단, 외부 통신·배포 명령 사람 승인 |
 
-### 5단계 — 지속적 모니터링·자동 교정
+### 5단계: 지속적 모니터링·자동 교정
 
-| 항목                 | 구현 파일        | 설명                                           |
-| -------------------- | ---------------- | ---------------------------------------------- |
-| 의존성 자동 업데이트 | `dependabot.yml` | 주간 의존성 업데이트 PR 자동 생성              |
-| 패치 자동 병합       | `renovate.json`  | Critical 패치 자동 병합, Major는 검토 알림     |
-| DAST                 | `dast.yml`       | OWASP ZAP Baseline — Push to main 시 동적 스캔 |
+| 항목                 | 구현 파일        | 설명                                          |
+| -------------------- | ---------------- | --------------------------------------------- |
+| 의존성 자동 업데이트 | `dependabot.yml` | 주간 의존성 업데이트 PR 자동 생성             |
+| 패치 자동 병합       | `renovate.json`  | Critical 패치 자동 병합, Major는 검토 알림    |
+| DAST                 | `dast.yml`       | OWASP ZAP Baseline: Push to main 시 동적 스캔 |
 
 ### 협업과 테스트
 
@@ -171,9 +171,9 @@ AI 퍼징과 DAST는 Push to main 또는 주간 스케줄에서 실행됩니다.
 
 ## 관련 가이드
 
-- [5단계 전략](./strategy) — 각 단계의 목적과 도입 순서
-- [30분 완성 Quick CI/CD](./cicd-quick) — SCA 중심 최소 시작점
-- [AI 보안 코드 리뷰](./ai-security-review) — AI를 활용한 의미론적 취약점 탐지
+- [5단계 전략](./strategy): 각 단계의 목적과 도입 순서
+- [30분 완성 Quick CI/CD](./cicd-quick): SCA 중심 최소 시작점
+- [AI 보안 코드 리뷰](./ai-security-review): AI를 활용한 의미론적 취약점 탐지
 - [테스트 환경](./testing): 테스트 우선 작업, 테스트 약화 방어, 변이 테스트
 - [생산성과 협업](./collaboration): PR 크기, 리뷰 부담 분산, 병렬 에이전트 작업
-- [DevSecOps — 전사 파이프라인 설계](/devsecops/pipeline-design) — 멀티 저장소·정책 거버넌스
+- [DevSecOps: 전사 파이프라인 설계](/devsecops/pipeline-design): 멀티 저장소·정책 거버넌스

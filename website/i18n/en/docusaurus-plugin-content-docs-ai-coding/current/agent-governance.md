@@ -43,16 +43,16 @@ see [Legal Considerations](./legal-considerations); for managing the AI system i
   agent installs enter the supply chain without review.
 
 The MCP specification itself states that tool descriptions should be considered untrusted unless
-obtained from a trusted server and requires explicit user consent — while noting the protocol
+obtained from a trusted server and requires explicit user consent, while noting the protocol
 cannot enforce these principles, leaving them to implementers (adopting organizations).
 
 ## 2. Threat model: three planes and their defenses
 
-| Plane                                   | Threat                                                                                         | Defense                                                                                            |
-| --------------------------------------- | ---------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| Input (prompts and rules files)         | Indirect prompt injection — instructions planted in content the agent reads and in rules files | Minimize untrusted content access, review rules files in PRs, human approval for high-risk actions |
-| Tools (MCP servers, skills, extensions) | Tool poisoning, tool shadowing, chained tool calls, malicious package installs                 | Server allowlist, pre-adoption scanning and egress review, version pinning, provenance checks      |
-| Artifact (code)                         | Tainted generated code, vulnerable or forbidden-license dependencies                           | Existing CI hard blocks (secrets, SAST, SCA) — the last line of defense                            |
+| Plane                                   | Threat                                                                                        | Defense                                                                                            |
+| --------------------------------------- | --------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| Input (prompts and rules files)         | Indirect prompt injection: instructions planted in content the agent reads and in rules files | Minimize untrusted content access, review rules files in PRs, human approval for high-risk actions |
+| Tools (MCP servers, skills, extensions) | Tool poisoning, tool shadowing, chained tool calls, malicious package installs                | Server allowlist, pre-adoption scanning and egress review, version pinning, provenance checks      |
+| Artifact (code)                         | Tainted generated code, vulnerable or forbidden-license dependencies                          | Existing CI hard blocks (secrets, SAST, SCA) as the last line of defense                           |
 
 The point is that the three planes are complementary: if input and tool controls are bypassed, the
 artifact gate remains, and behavior that never lands in code (data exfiltration through a tool) is
@@ -99,12 +99,12 @@ government document you can cite when an internal policy needs approval.
 How strictly each applies depends on where the server comes from. Only the first row needs
 across-the-board review; the rest ride on existing procedures or are handled at another stage.
 
-| Source                    | Example                                       | Handling                                                           |
-| ------------------------- | --------------------------------------------- | ------------------------------------------------------------------ |
-| Public community releases | npm/PyPI public packages                      | Review and approve every server; pin versions and track changes    |
-| Vendor official servers   | GitHub, Atlassian, etc. for their own service | Light review focused on permission scope and egress paths          |
-| In-house servers          | Internal repos, issue trackers, databases     | Design review, not approval — decide privileges and exposure early |
-| Bundled with a tool       | Shipped with a commercial coding agent        | Review as part of tool selection                                   |
+| Source                    | Example                                       | Handling                                                          |
+| ------------------------- | --------------------------------------------- | ----------------------------------------------------------------- |
+| Public community releases | npm/PyPI public packages                      | Review and approve every server; pin versions and track changes   |
+| Vendor official servers   | GitHub, Atlassian, etc. for their own service | Light review focused on permission scope and egress paths         |
+| In-house servers          | Internal repos, issue trackers, databases     | Design review, not approval: decide privileges and exposure early |
+| Bundled with a tool       | Shipped with a commercial coding agent        | Review as part of tool selection                                  |
 
 If servers are adopted through a hosting platform, the platform itself is in scope. A path traversal
 vulnerability in the MCP hosting platform Smithery left more than 3,000 hosted servers open to
@@ -152,7 +152,7 @@ copying every outgoing email to an external address. Approving once at adoption 
 
 ### Human approval and audit logs
 
-Never auto-approve high-risk actions — file deletion, external transmission, deployment — and keep
+Never auto-approve high-risk actions (file deletion, external transmission, deployment), and keep
 tool-call history.
 
 ### Egress path review
@@ -263,7 +263,7 @@ settings, deserve the same treatment as source code.
 | Unified agent traffic     | agentgateway (Linux Foundation, Apache-2.0) | —                                                      |
 | Developer-endpoint policy | Tool built-in controls (section 5)          | —                                                      |
 
-**Pre-adoption scanning — Snyk agent-scan**: detects prompt injection, tool poisoning, and tool
+**Pre-adoption scanning (Snyk agent-scan)**: detects prompt injection, tool poisoning, and tool
 shadowing in MCP servers, agent configurations, and agent skills (the successor of Invariant Labs
 mcp-scan). Note that it requires a Snyk API token and actually executes MCP servers during the
 scan (run it in an isolated environment).
@@ -281,16 +281,16 @@ uv tool install --python 3.13 cisco-ai-mcp-scanner
 mcp-scanner --scan-known-configs --analyzers yara --format summary
 ```
 
-**Centralized operation — ToolHive**: builds a trusted catalog of approved MCP servers with access
+**Centralized operation (ToolHive)**: builds a trusted catalog of approved MCP servers with access
 policies, OIDC/OAuth authentication, isolated container execution (Docker/Podman, a Kubernetes
 Operator), and OpenTelemetry-based auditing. Adopt it when the allowlist should be managed by a
 platform rather than by hand. If you need large-scale IdP integration (Keycloak, Entra ID, etc.),
 consider MCP Gateway & Registry.
 
-**Unified agent traffic — agentgateway**: an open-source proxy built by solo.io and contributed to
+**Unified agent traffic (agentgateway)**: an open-source proxy built by solo.io and contributed to
 the Linux Foundation in August 2025. It handles large language model API calls, MCP, Agent-to-Agent
 (A2A), and HTTP in a single data plane. Where ToolHive focuses on a trusted catalog of MCP servers
-and isolated execution, agentgateway concentrates all agent traffic — including model API calls —
+and isolated execution, agentgateway concentrates all agent traffic (including model API calls)
 at one point. It is not a substitute but a different scope of control.
 
 Start with logs before policy. Blocking rules work from the moment you add them, but logs for a
@@ -300,7 +300,7 @@ workarounds, and once workarounds become routine the control itself stops workin
 
 ## 5. Copy-paste asset: a Claude Code organization policy
 
-Claude Code enforces organization-deployed managed settings (`managed-settings.json` — macOS
+Claude Code enforces organization-deployed managed settings (`managed-settings.json`: macOS
 `/Library/Application Support/ClaudeCode/`, Linux `/etc/claude-code/`) that individuals cannot
 override. The following is a starting point for an MCP allowlist and least privilege (per the
 current official docs).
@@ -321,7 +321,7 @@ current official docs).
 
 - Servers not in `allowedMcpServers` cannot be used (an empty array locks MCP down entirely;
   `deniedMcpServers` takes precedence).
-- Deterministic per-tool-call blocking is implemented with a PreToolUse hook — you can extend the
+- Deterministic per-tool-call blocking is implemented with a PreToolUse hook. You can extend the
   script from [Method 3: Automatic reminders with Hooks](/en/docs/developer-guide#method-3) directly.
 - Other tools offer admin policies as well (e.g., restricting MCP use in per-tool organization
   settings); check each tool's admin documentation.
@@ -355,7 +355,7 @@ Three of the nine controls do not reduce to a file: reviewing tool descriptions,
 path, and checking the provenance of tools and extensions. They stay written rules whose results
 belong in the PR.
 
-**In practice — TRUSCA**: a repository that uses no MCP server at all, showing what this shape looks
+**In practice (TRUSCA)**: a repository that uses no MCP server at all, showing what this shape looks
 like when adopted early. Early was the point: the alternative is inventing the procedure on the day
 someone wants a server.
 
@@ -379,13 +379,13 @@ before adoption rather than after.
 ## 6. Listing MCP servers in the SBOM
 
 Once an MCP server becomes a runtime dependency, it belongs in the SBOM. Alongside `components`,
-CycloneDX defines a `services` element that describes external services an application calls —
+CycloneDX defines a `services` element that describes external services an application calls:
 endpoint URIs, authentication requirements, whether a trust boundary is crossed, and data
 classification and flow direction.
 
-- **Remote MCP servers** — list under `services`, using `endpoints`, `authenticated`,
+- **Remote MCP servers**: list under `services`, using `endpoints`, `authenticated`,
   `x-trust-boundary`, `trustZone`, and `data` (`flow` direction and `classification`).
-- **Locally executed MCP server packages** — list under `components` and treat them like any other
+- **Locally executed MCP server packages**: list under `components` and treat them like any other
   dependency.
 
 Being able to state data flow direction connects directly to control 6 in section 3 (egress path
@@ -416,7 +416,7 @@ SBOM generation, see [SBOM Generation](/en/docs/tools/sbom-generation).
 Even if every control on this page is bypassed, the [stage 3 CI hard block](/en/devsecops/intro)
 mechanically stops secrets, vulnerabilities, and forbidden licenses at the artifact stage.
 Conversely, the CI gate cannot see behavior that never lands in code (such as data exfiltration
-through a tool), so tool controls and artifact gates are complementary — neither substitutes for
+through a tool), so tool controls and artifact gates are complementary. Neither substitutes for
 the other. [Stage 4 findings-driven review](./ai-security-review) adds reachability judgment in
 between.
 
@@ -440,25 +440,25 @@ sources and cryptographically verified (level 1), that only allow-listed servers
 (level 2), and that locally launched servers run in a least-privilege sandbox (level 2), which maps
 directly onto the controls in section 3.
 
-- MCP specification — [Security Best Practices](https://modelcontextprotocol.io/specification/2026-07-28/basic/security_best_practices) and the Security and Trust & Safety section. The current revision is 2026-07-28; the authorization changes are in the [2025-11-25 changelog](https://modelcontextprotocol.io/specification/2025-11-25/changelog) and the [2026-07-28 changelog](https://modelcontextprotocol.io/specification/2026-07-28/changelog)
-- MCP official extension — [Enterprise-Managed Authorization](https://modelcontextprotocol.io/extensions/auth/enterprise-managed-authorization) (stable) — a corporate IdP deciding MCP server access centrally
-- Ox Security, [The Mother of All AI Supply Chains](https://www.ox.security/blog/the-mother-of-all-ai-supply-chains-critical-systemic-vulnerability-at-the-core-of-the-mcp/) (2026-04-15) — the STDIO transport flaw across four official SDKs, ten CVEs, an estimate of up to 200,000 instances
-- Canadian Centre for Cyber Security et al., [Careful adoption of agentic AI services](https://www.cyber.gc.ca/en/news-events/joint-guidance-careful-adoption-agentic-artificial-intelligence-services) (posted 2026-05-01) — joint guidance from agencies in Canada, Australia, the United States, New Zealand, and the United Kingdom
+- MCP specification: [Security Best Practices](https://modelcontextprotocol.io/specification/2026-07-28/basic/security_best_practices) and the Security and Trust & Safety section. The current revision is 2026-07-28; the authorization changes are in the [2025-11-25 changelog](https://modelcontextprotocol.io/specification/2025-11-25/changelog) and the [2026-07-28 changelog](https://modelcontextprotocol.io/specification/2026-07-28/changelog)
+- MCP official extension: [Enterprise-Managed Authorization](https://modelcontextprotocol.io/extensions/auth/enterprise-managed-authorization) (stable), a corporate IdP deciding MCP server access centrally
+- Ox Security, [The Mother of All AI Supply Chains](https://www.ox.security/blog/the-mother-of-all-ai-supply-chains-critical-systemic-vulnerability-at-the-core-of-the-mcp/) (2026-04-15): the STDIO transport flaw across four official SDKs, ten CVEs, an estimate of up to 200,000 instances
+- Canadian Centre for Cyber Security et al., [Careful adoption of agentic AI services](https://www.cyber.gc.ca/en/news-events/joint-guidance-careful-adoption-agentic-artificial-intelligence-services) (posted 2026-05-01): joint guidance from agencies in Canada, Australia, the United States, New Zealand, and the United Kingdom
 - Microsoft Security Blog, [Securing AI agents: When AI tools move from reading to acting](https://www.microsoft.com/en-us/security/blog/2026/06/30/securing-ai-agents-ai-tools-move-from-reading-acting/) (2026-06-30)
 - OWASP GenAI Security Project, [Top 10 for Agentic Applications 2026](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/) (2025-12-09) / [LLM Top 10 2026](https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/) (2026-08-03, the revision succeeding the LLM01:2025 entry cited above) / [LLM01:2025 Prompt Injection](https://genai.owasp.org/llmrisk/llm01-prompt-injection/) / [OWASP MCP Top 10](https://owasp.org/www-project-mcp-top-10/) (Incubator stage)
-- OWASP, [AISVS 1.0](https://github.com/OWASP/AISVS) (2026-06) — chapter 9 on orchestration and agentic action, chapter 10 on MCP security, verification levels 1 to 3
+- OWASP, [AISVS 1.0](https://github.com/OWASP/AISVS) (2026-06): chapter 9 on orchestration and agentic action, chapter 10 on MCP security, verification levels 1 to 3
 - OWASP, [Non-Human Identities Top 10 2025](https://owasp.github.io/www-project-non-human-identities-top-10/2025/): ten failures in managing non-human accounts
 - GitHub Docs, [Responsible use of Copilot cloud agent](https://docs.github.com/en/copilot/responsible-use/agents): single-branch push, no access to Actions secrets, workflow approval
-- CycloneDX, [Proposal: Agent Bill of Materials](https://github.com/CycloneDX/specification/issues/895) (opened 2026-03-26, closed as duplicate 2026-04-29) — the state of the agent-specific BOM discussion
-- Hasan et al., [Model Context Protocol (MCP) at First Glance](https://arxiv.org/abs/2506.13538) — a study of 1,899 servers (5.5% tool poisoning)
-- Invariant Labs, [MCP Security Notification: Tool Poisoning Attacks](https://invariantlabs.ai/blog/mcp-security-notification-tool-poisoning-attacks) (2025-04-01) — the first public disclosure of the technique
-- Snyk, [Malicious MCP Server on npm: postmark-mcp Harvests Emails](https://snyk.io/blog/malicious-mcp-server-on-npm-postmark-mcp-harvests-emails/) (2025-09-25) — the malicious versions are believed to start at 1.0.16, and no link to the ActiveCampaign/Postmark repository was confirmed
-- GitGuardian, [From Path Traversal to Supply Chain Compromise: Breaking MCP Server Hosting](https://blog.gitguardian.com/breaking-mcp-server-hosting/) (2025-10-15) — a responsibly disclosed and fixed vulnerability, not a breach
-- OWASP CycloneDX, [Specification Overview](https://cyclonedx.org/specification/overview/) / [JSON Schema 1.7](https://cyclonedx.org/schema/bom-1.7.schema.json) — `service` object fields and the `component.type` enumeration
-- Pillar Security, [New Vulnerability in GitHub Copilot and Cursor: How Hackers Can Weaponize Code Agents](https://www.pillar.security/blog/new-vulnerability-in-github-copilot-and-cursor-how-hackers-can-weaponize-code-agents) (2025-03-18) — the Rules File Backdoor
-- Liu et al., ["Your AI, My Shell": Demystifying Prompt Injection Attacks on Agentic AI Coding Editors](https://arxiv.org/abs/2509.22040) — AIShellJack, 314 payloads, 41–84% success rates
-- Snyk, [ToxicSkills: Malicious AI Agent Skills](https://snyk.io/blog/toxicskills-malicious-ai-agent-skills-clawhub/) (2026-02) — 13.4% of 3,984 skills carried a critical-level issue
-- Model Context Protocol Blog, [Introducing the MCP Registry](https://blog.modelcontextprotocol.io/posts/2025-09-08-mcp-registry-preview/) (2025-09-08) — preview status and report-driven moderation
+- CycloneDX, [Proposal: Agent Bill of Materials](https://github.com/CycloneDX/specification/issues/895) (opened 2026-03-26, closed as duplicate 2026-04-29): the state of the agent-specific BOM discussion
+- Hasan et al., [Model Context Protocol (MCP) at First Glance](https://arxiv.org/abs/2506.13538): a study of 1,899 servers (5.5% tool poisoning)
+- Invariant Labs, [MCP Security Notification: Tool Poisoning Attacks](https://invariantlabs.ai/blog/mcp-security-notification-tool-poisoning-attacks) (2025-04-01): the first public disclosure of the technique
+- Snyk, [Malicious MCP Server on npm: postmark-mcp Harvests Emails](https://snyk.io/blog/malicious-mcp-server-on-npm-postmark-mcp-harvests-emails/) (2025-09-25): the malicious versions are believed to start at 1.0.16, and no link to the ActiveCampaign/Postmark repository was confirmed
+- GitGuardian, [From Path Traversal to Supply Chain Compromise: Breaking MCP Server Hosting](https://blog.gitguardian.com/breaking-mcp-server-hosting/) (2025-10-15): a responsibly disclosed and fixed vulnerability, not a breach
+- OWASP CycloneDX, [Specification Overview](https://cyclonedx.org/specification/overview/) / [JSON Schema 1.7](https://cyclonedx.org/schema/bom-1.7.schema.json): `service` object fields and the `component.type` enumeration
+- Pillar Security, [New Vulnerability in GitHub Copilot and Cursor: How Hackers Can Weaponize Code Agents](https://www.pillar.security/blog/new-vulnerability-in-github-copilot-and-cursor-how-hackers-can-weaponize-code-agents) (2025-03-18): the Rules File Backdoor
+- Liu et al., ["Your AI, My Shell": Demystifying Prompt Injection Attacks on Agentic AI Coding Editors](https://arxiv.org/abs/2509.22040): AIShellJack, 314 payloads, 41–84% success rates
+- Snyk, [ToxicSkills: Malicious AI Agent Skills](https://snyk.io/blog/toxicskills-malicious-ai-agent-skills-clawhub/) (2026-02): 13.4% of 3,984 skills carried a critical-level issue
+- Model Context Protocol Blog, [Introducing the MCP Registry](https://blog.modelcontextprotocol.io/posts/2025-09-08-mcp-registry-preview/) (2025-09-08): preview status and report-driven moderation
 - Koi Security, [GlassWorm: First Self-Propagating Worm Using Invisible Code Hits OpenVSX Marketplace](https://www.koi.ai/blog/glassworm-first-self-propagating-worm-using-invisible-code-hits-openvsx-marketplace) (2025-10-18) / [MaliciousCorgi](https://www.koi.ai/blog/maliciouscorgi-the-cute-looking-ai-extensions-leaking-code-from-1-5-million-developers) (2026-01-22)
 - [Snyk agent-scan](https://github.com/snyk/agent-scan) / [Cisco mcp-scanner](https://github.com/cisco-ai-defense/mcp-scanner) / [ToolHive](https://github.com/stacklok/toolhive) / [MCP Gateway & Registry](https://github.com/agentic-community/mcp-gateway-registry) / [agentgateway](https://agentgateway.dev/)
-- [Claude Code settings documentation](https://code.claude.com/docs/en/settings) (managed settings, MCP allowlist) / [Sandboxing](https://code.claude.com/docs/en/sandboxing) / [Sandbox environments](https://code.claude.com/docs/en/sandbox-environments) — isolation scope and its opt-in nature
+- [Claude Code settings documentation](https://code.claude.com/docs/en/settings) (managed settings, MCP allowlist) / [Sandboxing](https://code.claude.com/docs/en/sandboxing) / [Sandbox environments](https://code.claude.com/docs/en/sandbox-environments): isolation scope and its opt-in nature

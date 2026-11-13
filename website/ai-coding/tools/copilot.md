@@ -15,9 +15,9 @@ GitHub Copilot은 `.github/copilot-instructions.md` 파일을 저장소 전체�
 
 ## 설정 파일 위치
 
-- `.github/copilot-instructions.md` — 단일 파일, 저장소 전체 적용
-- `.github/instructions/*.instructions.md` — frontmatter 의 `applyTo` 패턴으로 경로 한정 적용 (언어·폴더별 규칙 분리에 적합)
-- `AGENTS.md` — 루트 공통 규칙 파일 (가장 가까운 파일 우선)
+- `.github/copilot-instructions.md`: 단일 파일, 저장소 전체 적용
+- `.github/instructions/*.instructions.md`: frontmatter 의 `applyTo` 패턴으로 경로 한정 적용 (언어·폴더별 규칙 분리에 적합)
+- `AGENTS.md`: 루트 공통 규칙 파일 (가장 가까운 파일 우선)
 
 ## 적용 방법
 

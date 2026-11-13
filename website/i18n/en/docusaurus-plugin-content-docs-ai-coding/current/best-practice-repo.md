@@ -81,18 +81,18 @@ ai-coding-best-practice/
 
 ## Stage-by-stage Implementation
 
-### Stage 3 — CI/CD Auto Blocking
+### Stage 3: CI/CD Auto Blocking
 
-| Area               | Implementation File      | Description                                                  |
-| ------------------ | ------------------------ | ------------------------------------------------------------ |
-| Secret Detection   | `secret-detection.yml`   | Gitleaks — Detects hardcoded API keys/tokens in every PR     |
-| SAST               | `sast.yml`               | Semgrep — OWASP Top 10 ruleset + custom rules                |
-| SAST (Deep)        | `codeql.yml`             | CodeQL — Static analysis on PRs and weekly schedule          |
-| SCA                | `oss-policy.yml`         | syft + grype — SBOM generation, CVE scan, and license checks |
-| IaC Security       | `iac-security.yml`       | Checkov — Detects Dockerfile/Kubernetes configuration issues |
-| Container Security | `container-security.yml` | Trivy — Docker image vulnerability scan                      |
+| Area               | Implementation File      | Description                                                 |
+| ------------------ | ------------------------ | ----------------------------------------------------------- |
+| Secret Detection   | `secret-detection.yml`   | Gitleaks: Detects hardcoded API keys/tokens in every PR     |
+| SAST               | `sast.yml`               | Semgrep: OWASP Top 10 ruleset + custom rules                |
+| SAST (Deep)        | `codeql.yml`             | CodeQL: Static analysis on PRs and weekly schedule          |
+| SCA                | `oss-policy.yml`         | syft + grype: SBOM generation, CVE scan, and license checks |
+| IaC Security       | `iac-security.yml`       | Checkov: Detects Dockerfile/Kubernetes configuration issues |
+| Container Security | `container-security.yml` | Trivy: Docker image vulnerability scan                      |
 
-### Stage 4 — AI Defense Layer
+### Stage 4: AI Defense Layer
 
 | Item                | Implementation File                  | Description                                                                                      |
 | ------------------- | ------------------------------------ | ------------------------------------------------------------------------------------------------ |
@@ -100,13 +100,13 @@ ai-coding-best-practice/
 | AI Fuzzing (4b)     | `ai-fuzzing.yml`                     | Claude generates edge cases → runs app → detects 5xx errors (Push to main)                       |
 | MCP governance (4c) | `.mcp.json`, `.claude/settings.json` | No MCP server auto-approved, secret reads blocked, human approval for egress and deploy commands |
 
-### Stage 5 — Continuous Monitoring & Auto-remediation
+### Stage 5: Continuous Monitoring & Auto-remediation
 
 | Item                         | Implementation File | Description                                              |
 | ---------------------------- | ------------------- | -------------------------------------------------------- |
 | Automatic Dependency Updates | `dependabot.yml`    | Automatically creates weekly dependency update PRs       |
 | Automatic Patch Merge        | `renovate.json`     | Auto-merges Critical patches, notifies for Major updates |
-| DAST                         | `dast.yml`          | OWASP ZAP Baseline — dynamic scan on Push to main        |
+| DAST                         | `dast.yml`          | OWASP ZAP Baseline: dynamic scan on Push to main         |
 
 ### Collaboration and Testing
 
@@ -172,9 +172,9 @@ AI fuzzing and DAST run on Push to main or weekly schedules.
 
 ## Related Guides
 
-- [5-Stage Strategy](./strategy) — Purpose and adoption sequence of each stage
-- [30-Minute Quick CI/CD](./cicd-quick) — Minimal starting point focused on SCA
-- [AI Security Code Review](./ai-security-review) — Semantic vulnerability detection with AI
+- [5-Stage Strategy](./strategy): Purpose and adoption sequence of each stage
+- [30-Minute Quick CI/CD](./cicd-quick): Minimal starting point focused on SCA
+- [AI Security Code Review](./ai-security-review): Semantic vulnerability detection with AI
 - [Testing](./testing): test-first work, defenses against weakened tests, mutation testing
 - [Productivity and Collaboration](./collaboration): PR size, sharing the review load, parallel agent work
-- [DevSecOps — Organization-wide Pipeline Design](/en/devsecops/pipeline-design) — Multi-repository policy governance
+- [DevSecOps: Organization-wide Pipeline Design](/en/devsecops/pipeline-design): Multi-repository policy governance

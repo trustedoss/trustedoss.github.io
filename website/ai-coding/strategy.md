@@ -49,9 +49,9 @@ CLAUDE.md, .cursor/rules, AGENTS.md 같은 공통 규칙 파일을 저장소에 
 - [공통 Rules 템플릿](./rules-template)
 - [도구별 설정](./tools/claude-code)
 
-에이전트가 MCP 로 외부 도구를 호출하는 환경이라면, 규칙 내재화와 함께 도구 측 통제도 필요합니다 — [에이전트와 MCP 도구 거버넌스](./agent-governance)를 참조하세요.
+에이전트가 MCP 로 외부 도구를 호출하는 환경이라면, 규칙 내재화와 함께 도구 측 통제도 필요합니다. [에이전트와 MCP 도구 거버넌스](./agent-governance)를 참조하세요.
 
-**실전 적용 사례 — TRUSCA**: 규칙을 문장으로만 두지 않고, 규칙마다 그것을 검사하는 작은 도구를
+**실전 적용 사례(TRUSCA)**: 규칙을 문장으로만 두지 않고, 규칙마다 그것을 검사하는 작은 도구를
 만들어 편집 시점과 머지 시점 두 곳에서 돌립니다. 한국어 번역투(`tools/ko-style`), 줄표
 사용(`tools/em-dash`), 라이선스 헤더(`tools/license-header`) 셋이 이 형태입니다.
 
@@ -91,11 +91,11 @@ PR 또는 Merge 전 파이프라인에서 아래 5개 영역을 기계적으로 
 
 AI 코딩 도구는 하드코딩된 값을 코드에 삽입하는 경우가 잦으므로, **시크릿 탐지는 3단계 도입 첫날부터 필수**입니다. 모든 영역을 한꺼번에 도입하기보다 시크릿 탐지 → SAST → SCA 순서로 안정화한 뒤 다음으로 넘어가는 방식을 권장합니다.
 
-- [30분 완성 Quick CI/CD](./cicd-quick) — SCA 중심 최소 시작점
-- [DevSecOps — 시크릿 탐지](/devsecops/secret-detection) · [SAST](/devsecops/sast) · [SCA](/devsecops/sca) · [컨테이너 보안](/devsecops/container-security) · [IaC 보안](/devsecops/iac-security)
+- [30분 완성 Quick CI/CD](./cicd-quick): SCA 중심 최소 시작점
+- [DevSecOps: 시크릿 탐지](/devsecops/secret-detection) · [SAST](/devsecops/sast) · [SCA](/devsecops/sca) · [컨테이너 보안](/devsecops/container-security) · [IaC 보안](/devsecops/iac-security)
 - [전사 파이프라인 설계](/devsecops/pipeline-design)
 
-**실전 적용 사례 — TRUSCA**: Apache-2.0 오픈소스 SCA 프로젝트가 이 단계를 실제로 운영합니다.
+**실전 적용 사례(TRUSCA)**: Apache-2.0 오픈소스 SCA 프로젝트가 이 단계를 실제로 운영합니다.
 워크플로우 파일을 그대로 열어 볼 수 있습니다.
 
 | 영역        | 워크플로우                                                                                            | 운영 방식                                                               |
@@ -170,9 +170,9 @@ AI 생성 비중이 높은 조직일수록 취약한 소프트웨어를 내보�
 
 여러 도구가 동일 위치를 동시에 플래그하면 AI가 높은 우선순위로 상향 조정해 개발자에게 경보를 냅니다. AI 리뷰 결과는 **PR 코멘트로 게시**하며, 빌드를 강제로 실패시키지 않습니다(FP율이 높기 때문).
 
-- [AI 보안 코드 리뷰](./ai-security-review) — Findings-driven 구현 가이드 및 GitHub Actions 예시
+- [AI 보안 코드 리뷰](./ai-security-review): Findings-driven 구현 가이드 및 GitHub Actions 예시
 
-**실전 적용 사례 — TRUSCA**: [ai-review.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/ai-review.yml) 이 이 단계를 운영합니다
+**실전 적용 사례(TRUSCA)**: [ai-review.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/ai-review.yml) 이 이 단계를 운영합니다
 (2026-08 도입). 참고할 만한 설계가 셋 있습니다.
 
 - **빌드를 차단하지 않습니다.** 워크플로 주석에 "브랜치 보호에 넣지 말 것"을 명시해 두었습니다.
@@ -187,7 +187,7 @@ AI 생성 비중이 높은 조직일수록 취약한 소프트웨어를 내보�
 
 ### 4b. AI 퍼징
 
-3단계 도구가 전혀 건드리지 않은 영역 — 비즈니스 로직, 엣지케이스 입력 처리 — 을 **AI가 능동적으로 탐색**합니다. Claude 등 LLM이 엔드포인트 시그니처를 분석해 경계값과 이상 입력을 자동 생성하고, 앱에 직접 실행해 5xx 오류와 비정상 동작을 탐지합니다. C/C++, Rust 같은 저수준 코드는 OSS-Fuzz 연동을 권장합니다.
+3단계 도구가 전혀 건드리지 않은 영역(비즈니스 로직, 엣지케이스 입력 처리)을 **AI가 능동적으로 탐색**합니다. Claude 등 LLM이 엔드포인트 시그니처를 분석해 경계값과 이상 입력을 자동 생성하고, 앱에 직접 실행해 5xx 오류와 비정상 동작을 탐지합니다. C/C++, Rust 같은 저수준 코드는 OSS-Fuzz 연동을 권장합니다.
 
 | 도구 조합         | 탐지 대상                       | 실행 주기       |
 | ----------------- | ------------------------------- | --------------- |
@@ -195,9 +195,9 @@ AI 생성 비중이 높은 조직일수록 취약한 소프트웨어를 내보�
 | Claude + AFL++    | 저수준 바이너리 크래시          | 주 1회 스케줄   |
 | Claude + OSS-Fuzz | 오픈소스 라이브러리 파서 취약점 | 프로젝트별 설정 |
 
-- [AI 퍼징](./ai-fuzzing) — 워크플로와 스크립트 해설, 도입 시 주의사항
+- [AI 퍼징](./ai-fuzzing): 워크플로와 스크립트 해설, 도입 시 주의사항
 
-**실전 적용 사례 — ai-coding-best-practice**:
+**실전 적용 사례(ai-coding-best-practice)**:
 [ai-fuzzing.yml](https://github.com/trustedoss/ai-coding-best-practice/blob/main/.github/workflows/ai-fuzzing.yml)
 과 [scripts/ai-fuzz.py](https://github.com/trustedoss/ai-coding-best-practice/blob/main/scripts/ai-fuzz.py)
 가 이 단계를 main 푸시와 매주 일요일에 돌립니다. 앱을 기동해 헬스체크로 준비를 확인한 뒤,
@@ -230,7 +230,7 @@ npm `postmark-mcp` 는 1.0.15 까지 정상이던 패키지가 이후 버전에�
 "Careful adoption of agentic AI services" 도 계층 방어와 엄격한 접근 통제를 권고하므로
 사내 정책 승인 근거로 함께 쓸 수 있습니다.
 
-- [에이전트와 MCP 도구 거버넌스](./agent-governance) — 아홉 가지 통제와 스캐너, 복붙용 조직 정책
+- [에이전트와 MCP 도구 거버넌스](./agent-governance): 아홉 가지 통제와 스캐너, 복붙용 조직 정책
 
 ---
 
@@ -239,9 +239,9 @@ npm `postmark-mcp` 는 1.0.15 까지 정상이던 패키지가 이후 버전에�
 배포 이후에도 SBOM을 지속적으로 스캔하고, 신규 CVE가 발견되면 자동으로 패치 PR을 생성하는 단계입니다. Dependabot · Renovate와 연동해 중앙 집중식으로 공급망 보안(ISO/IEC 18974) 준수를 유지합니다. 정책 준수에 들어가는 인간의 개입이 최소화되고, AI가 유발한 위험을 자동화로 지속 통제하는 선순환 구조가 완성됩니다.
 
 - [지속적 모니터링·자동 교정](/devsecops/monitoring)
-- [DAST — 동적 분석](/devsecops/dast)
+- [DAST: 동적 분석](/devsecops/dast)
 
-**실전 적용 사례 — TRUSCA**:
+**실전 적용 사례(TRUSCA)**:
 
 | 구성 요소        | 파일                                                                                                    | 내용                                                                         |
 | ---------------- | ------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
