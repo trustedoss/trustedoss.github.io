@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/tools/_theme.js"></script>
     <title>OSS Rules 생성기</title>
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Pretendard:wght@400;500;600&display=swap");
 
       *,
       *::before,
@@ -16,35 +16,68 @@
       }
 
       :root {
-        --bg: #f5f4f0;
-        --surface: #ffffff;
-        --surface2: #f0efe9;
-        --border: #e2e0d8;
-        --border-strong: #c8c5bb;
-        --text: #1c1b18;
-        --text-2: #6b6860;
-        --text-3: #5f636e;
-        --accent: #2d5be3;
-        --accent-bg: #eef2fd;
-        --accent-border: #b8ccf8;
-        --success: #1a7a4a;
-        --success-bg: #edf7f1;
-        --warning: #b54708;
-        --warning-bg: #fef6ee;
-        --danger: #c0392b;
-        --mono: "IBM Plex Mono", monospace;
-        --sans: "Pretendard", -apple-system, sans-serif;
+        --bg: #ffffff;
+        --surface: #f8f9fa;
+        --surface2: #f1f3f4;
+        --border: #dadce0;
+        --border-strong: #bdc1c6;
+        --text: #202124;
+        --text-2: #3c4043;
+        --text-3: #5f6368;
+        --accent: #1a73e8;
+        --accent-bg: #e8f0fe;
+        --accent-border: #d2e3fc;
+        --on-accent: #ffffff;
+        --accent-hover: #1765cc;
+        --accent-fg: #1558b0;
+        --success: #137333;
+        --success-bg: #e6f4ea;
+        --success-b: #a8dab5;
+        --danger: #c5221f;
+        --danger-bg: #fce8e6;
+        --danger-b: #f5b5b0;
+        --warning: #8f4a00;
+        --warning-bg: #fef0e0;
+        --mono: "SFMono-Regular", Consolas, "Roboto Mono", ui-monospace, monospace;
+        --sans: Roboto, "Pretendard Variable", system-ui, -apple-system, "Segoe UI", "Noto Sans KR", sans-serif;
         --radius: 8px;
         --radius-lg: 12px;
       }
+      :root[data-theme="dark"] {
+        --bg: #1b1b1d;
+        --surface: #242526;
+        --surface2: #2d2e30;
+        --border: #3c4043;
+        --border-strong: #5f6368;
+        --text: #e8eaed;
+        --text-2: #bdc1c6;
+        --text-3: #9aa0a6;
+        --accent: #8ab4f8;
+        --accent-bg: #1f2f4a;
+        --accent-border: #33487a;
+        --on-accent: #202124;
+        --accent-hover: #aecbfa;
+        --accent-fg: #8ab4f8;
+        --success: #81c995;
+        --success-bg: #1e3a2a;
+        --success-b: #2e5a40;
+        --danger: #f28b82;
+        --danger-bg: #3c1f1f;
+        --danger-b: #6b2f2b;
+        --warning: #fcad70;
+        --warning-bg: #3d2a14;
+      }
 
+      small {
+        font-size: 12px;
+      }
       body {
         font-family: var(--sans);
         background: var(--bg);
         color: var(--text);
         font-size: 14px;
         line-height: 1.6;
-        min-height: 100vh;
+        min-height: 0;
       }
 
       .wrap {
@@ -65,9 +98,9 @@
         border: 1px solid var(--accent-border);
         border-radius: 20px;
         padding: 4px 12px;
-        font-size: 11px;
+        font-size: 12px;
         font-weight: 600;
-        color: var(--accent);
+        color: var(--accent-fg);
         letter-spacing: 0.04em;
         text-transform: uppercase;
         margin-bottom: 12px;
@@ -113,10 +146,10 @@
       .step-num {
         width: 22px;
         height: 22px;
-        background: var(--text);
-        color: #fff;
+        background: var(--accent);
+        color: var(--on-accent);
         border-radius: 50%;
-        font-size: 11px;
+        font-size: 12px;
         font-weight: 600;
         display: flex;
         align-items: center;
@@ -169,7 +202,7 @@
       .chip input:checked + label {
         background: var(--accent-bg);
         border-color: var(--accent);
-        color: var(--accent);
+        color: var(--accent-fg);
         font-weight: 500;
       }
       .chip-dot {
@@ -218,8 +251,8 @@
         color: var(--text);
       }
       .pill input:checked + label {
-        background: var(--text);
-        color: #fff;
+        background: var(--accent);
+        color: var(--on-accent);
         font-weight: 500;
       }
 
@@ -261,18 +294,18 @@
       }
       .api-input:focus {
         border-color: var(--accent);
-        background: #fff;
+        background: var(--surface);
       }
       .api-input::placeholder {
         color: var(--text-3);
       }
       .api-hint {
-        font-size: 11px;
+        font-size: 12px;
         color: var(--text-3);
         margin-top: 6px;
       }
       .api-hint a {
-        color: var(--accent);
+        color: var(--accent-fg);
         text-decoration: none;
       }
       .show-btn {
@@ -293,8 +326,8 @@
       .gen-btn {
         width: 100%;
         padding: 14px;
-        background: var(--text);
-        color: #fff;
+        background: var(--accent);
+        color: var(--on-accent);
         border: none;
         border-radius: var(--radius-lg);
         font-family: var(--sans);
@@ -307,10 +340,9 @@
         overflow: hidden;
       }
       .gen-btn:hover:not(:disabled) {
-        background: #333;
+        background: var(--accent-hover);
         transform: translateY(-1px);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      }
+        }
       .gen-btn:active {
         transform: translateY(0);
       }
@@ -366,8 +398,8 @@
 
       /* Error */
       .error-box {
-        background: #fff5f5;
-        border: 1.5px solid #fcc;
+        background: var(--danger-bg);
+        border: 1.5px solid var(--danger-b);
         border-radius: var(--radius-lg);
         padding: 14px 16px;
         margin-top: 12px;
@@ -486,7 +518,7 @@
         gap: 8px;
       }
       .action-right {
-        font-size: 11px;
+        font-size: 12px;
         color: var(--text-3);
       }
 
@@ -511,17 +543,17 @@
       }
       .btn-copy.copied {
         background: var(--success-bg);
-        border-color: #a8d5bc;
+        border-color: var(--success-b);
         color: var(--success);
       }
       .btn-dl {
-        background: var(--text);
-        border: 1.5px solid var(--text);
-        color: #fff;
+        background: var(--accent);
+        border: 1.5px solid var(--accent);
+        color: var(--on-accent);
       }
       .btn-dl:hover {
-        background: #333;
-        border-color: #333;
+        background: var(--accent-hover);
+        border-color: var(--accent-hover);
       }
 
       /* Success banner */
@@ -530,7 +562,7 @@
         align-items: center;
         gap: 8px;
         background: var(--success-bg);
-        border: 1.5px solid #a8d5bc;
+        border: 1.5px solid var(--success-b);
         border-radius: var(--radius);
         padding: 10px 14px;
         font-size: 13px;
