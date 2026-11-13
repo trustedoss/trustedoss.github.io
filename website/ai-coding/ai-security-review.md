@@ -451,6 +451,6 @@ API 장애나 레이트 리밋으로 스텝이 실패해도 PR 이 빨간색이 
 
 ## 더 알아보기
 
-- [5단계 전략](./strategy) — 전체 단계 구조와 AI 방어 레이어 포지셔닝
-- [DevSecOps — SAST](/devsecops/sast) — 규칙 기반 정적 분석 (Semgrep · CodeQL)
-- [DevSecOps — 전사 파이프라인 설계](/devsecops/pipeline-design)
+- [5단계 전략](./strategy): 전체 단계 구조와 AI 방어 레이어 포지셔닝
+- [DevSecOps: SAST](/devsecops/sast): 규칙 기반 정적 분석 (Semgrep · CodeQL)
+- [DevSecOps: 전사 파이프라인 설계](/devsecops/pipeline-design)

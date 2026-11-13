@@ -10,7 +10,7 @@ sidebar_position: 11
 CI/CD 게이트는 배포 시점의 코드 상태를 검사하지만, 배포 이후 발생하는 신규 취약점에는 대응할 수 없습니다.
 Dependabot·Renovate·정기 스캔을 조합하면 프로덕션 환경의 취약점을 지속적으로 탐지하고 자동으로 패치 PR을 생성할 수 있습니다.
 
-:::tip 아래 설정은 예시입니다 — 작동하는 전체 구현은 참조 저장소에
+:::tip 아래 설정은 예시입니다. 작동하는 전체 구현은 참조 저장소에
 이 페이지의 YAML·명령은 핵심을 보여주는 예시입니다. 복사해 바로 쓸 수 있는 전체 파이프라인(정책 파일·샘플 앱 포함)은 [Best Practice 저장소](/ai-coding/best-practice-repo)에서 확인하세요.
 :::
 
@@ -265,14 +265,14 @@ jobs:
 
 TRUSCA 는 이 층을 세 갈래로 운영합니다.
 
-- [dependabot.yml](https://github.com/trustedoss/trusca/blob/main/.github/dependabot.yml) — npm, pip, docker, github-actions 네 생태계의 여섯 항목을 덮습니다
-- [sca-self.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml) — 매일 07:00 UTC 에 SBOM 을 다시 만들고 취약점을 재스캔합니다
-- [dogfood-scan.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/dogfood-scan.yml) — 자사 SCA 로 자기 저장소를 스캔합니다
+- [dependabot.yml](https://github.com/trustedoss/trusca/blob/main/.github/dependabot.yml): npm, pip, docker, github-actions 네 생태계의 여섯 항목을 덮습니다
+- [sca-self.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml): 매일 07:00 UTC 에 SBOM 을 다시 만들고 취약점을 재스캔합니다
+- [dogfood-scan.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/dogfood-scan.yml): 자사 SCA 로 자기 저장소를 스캔합니다
 
 마지막 워크플로우는 기본값이 advisory(비차단)이고 `fail_on_gate` 입력으로 차단을 켜도록
 설계돼 있습니다. 관측부터 시작해 차단으로 올리는 순서를 그대로 구현한 예입니다.
 
-## 셀프 스터디 — 레벨 2 자동화
+## 셀프 스터디: 레벨 2 자동화
 
 :::tip Claude Code로 자동화 워크플로우 생성
 아래 agent들은 CI/CD 파이프라인과 연동해서

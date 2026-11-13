@@ -7,8 +7,8 @@ sidebar_position: 6
 
 # AI 퍼징 (4b 단계)
 
-3단계 도구는 룰에 정의된 패턴을 찾습니다. 룰이 묘사하지 않은 것 — 비즈니스 로직 결함,
-엣지케이스 입력 처리 — 은 정의상 걸리지 않습니다. 4b 는 그 영역을 **모델이 직접 탐색**해서
+3단계 도구는 룰에 정의된 패턴을 찾습니다. 룰이 묘사하지 않은 것(비즈니스 로직 결함,
+엣지케이스 입력 처리)은 정의상 걸리지 않습니다. 4b 는 그 영역을 **모델이 직접 탐색**해서
 메웁니다. [4a](./ai-security-review) 가 이미 플래그된 것을 다시 판정한다면, 4b 는 아무도
 플래그하지 않은 곳을 찾습니다.
 
@@ -111,7 +111,7 @@ TRUSCA에서 이 워크플로를 만드는 동안 세 번 그랬습니다. 리�
 둘 중 하나라도 0이면 API에 닿지 못한 것이지 API가 깨끗한 것이 아니라고 요약에 명시합니다. 검사기가
 0건을 셌다는 것과 검사 결과가 0건이라는 것은 다른 문장입니다.
 
-## 실전 적용 사례 — ai-coding-best-practice
+## 실전 적용 사례: ai-coding-best-practice
 
 [ai-coding-best-practice](https://github.com/trustedoss/ai-coding-best-practice) 저장소가 이
 단계를 매주 돌립니다. 파일 두 개로 되어 있습니다.
@@ -155,9 +155,9 @@ fi
 [scripts/ai-fuzz.py](https://github.com/trustedoss/ai-coding-best-practice/blob/main/scripts/ai-fuzz.py)
 가 세 가지를 합니다.
 
-- `generate_fuzz_cases()` — 앱 코드를 모델에 넘겨 엔드포인트별 케이스를 JSON 배열로 받습니다.
+- `generate_fuzz_cases()`: 앱 코드를 모델에 넘겨 엔드포인트별 케이스를 JSON 배열로 받습니다.
   최소 20건을 요구하고, 인젝션·경로 탐색·비정상 입력을 탐지 목표로 지정합니다
-- `run_fuzz_cases()` — 각 케이스를 실제 요청으로 보냅니다. 상태 코드가 500 미만이면 통과,
+- `run_fuzz_cases()`: 각 케이스를 실제 요청으로 보냅니다. 상태 코드가 500 미만이면 통과,
   그 이상이거나 예외가 나면 실패로 기록하고 응답 앞부분을 함께 남깁니다
 - 결과를 `fuzz-report.json` 으로 씁니다
 
@@ -182,6 +182,6 @@ CI 안에서 앱을 새로 띄우고 그 인스턴스만 대상으로 합니다.
 
 ## 다음 단계
 
-- [AI 보안 코드 리뷰](./ai-security-review) — 4a, 이미 플래그된 것을 다시 판정합니다
-- [에이전트와 MCP 도구 거버넌스](./agent-governance) — 4c, AI 가 호출하는 도구를 통제합니다
-- [5단계 전략](./strategy) — 전체 모델에서 이 단계의 위치
+- [AI 보안 코드 리뷰](./ai-security-review): 4a, 이미 플래그된 것을 다시 판정합니다
+- [에이전트와 MCP 도구 거버넌스](./agent-governance): 4c, AI 가 호출하는 도구를 통제합니다
+- [5단계 전략](./strategy): 전체 모델에서 이 단계의 위치

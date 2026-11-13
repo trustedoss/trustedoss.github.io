@@ -11,7 +11,7 @@ sidebar_position: 6
 
 Container security scanning detects vulnerabilities in the OS packages and application dependencies bundled into a container image, along with Dockerfile misconfigurations and exposed secrets, before deployment. Blocking these at the build stage is especially important because once an image is deployed, the same vulnerability propagates to every instance.
 
-:::tip The configuration below is an example — a fully working implementation lives in the reference repository
+:::tip The configuration below is an example. A fully working implementation lives in the reference repository
 The YAML and commands on this page are examples that show the essentials. For a complete, copy-and-run pipeline (including policy files and a sample app), see the [Best Practice repository](/en/ai-coding/best-practice-repo).
 :::
 
@@ -167,7 +167,7 @@ secrets:
 
 ## In Practice
 
-The open source project TRUSCA scans the worker image it builds with Trivy — the `image-scan` job in
+The open source project TRUSCA scans the worker image it builds with Trivy: the `image-scan` job in
 [ci.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/ci.yml). HIGH or CRITICAL findings fail the build.
 
 Two details are worth borrowing. Exceptions live in `.trivyignore` per CVE **with a written reason

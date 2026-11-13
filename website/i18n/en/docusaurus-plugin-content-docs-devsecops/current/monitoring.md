@@ -10,7 +10,7 @@ sidebar_position: 11
 A CI/CD gate checks the state of the code at deployment time but cannot respond to new vulnerabilities that emerge afterward.
 Combining Dependabot·Renovate with scheduled scans lets you continuously detect vulnerabilities in production and automatically generate patch PRs.
 
-:::tip The configuration below is an example — a fully working implementation lives in the reference repository
+:::tip The configuration below is an example. A fully working implementation lives in the reference repository
 The YAML and commands on this page are examples that show the essentials. For a complete, copy-and-run pipeline (including policy files and a sample app), see the [Best Practice repository](/en/ai-coding/best-practice-repo).
 :::
 
@@ -265,14 +265,14 @@ jobs:
 
 TRUSCA runs this layer three ways.
 
-- [dependabot.yml](https://github.com/trustedoss/trusca/blob/main/.github/dependabot.yml) — covers npm, pip, docker and github-actions — four ecosystems, six entries
-- [sca-self.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml) — regenerates the SBOM and rescans daily at 07:00 UTC
-- [dogfood-scan.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/dogfood-scan.yml) — scans its own repository with its own SCA
+- [dependabot.yml](https://github.com/trustedoss/trusca/blob/main/.github/dependabot.yml): covers npm, pip, docker and github-actions (four ecosystems, six entries)
+- [sca-self.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/sca-self.yml): regenerates the SBOM and rescans daily at 07:00 UTC
+- [dogfood-scan.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/dogfood-scan.yml): scans its own repository with its own SCA
 
-That last workflow defaults to advisory and turns blocking on through a `fail_on_gate` input — the
+That last workflow defaults to advisory and turns blocking on through a `fail_on_gate` input. That is the
 observe-first, block-later progression implemented literally.
 
-## Self-Study — Level 2 Automation
+## Self-Study: Level 2 Automation
 
 :::tip Build automation workflows with Claude Code
 The agents below work in conjunction with the CI/CD pipeline.

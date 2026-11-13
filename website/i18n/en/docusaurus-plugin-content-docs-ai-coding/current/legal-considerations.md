@@ -23,16 +23,16 @@ The US Copyright Office set out its criteria in "Copyright and Artificial Intell
 Copyrightability (finalized 2025-01). The US Supreme Court's denial of certiorari in Thaler v.
 Perlmutter (2026-03) also settled the principle that an AI itself cannot be an author.
 
-| Scenario                                                      | Human authorship | Copyright protection                                     |
-| ------------------------------------------------------------- | ---------------- | -------------------------------------------------------- |
-| Prompt only, output used as-is                                | Not recognized   | Not protectable — cannot be registered as a company work |
-| AI draft with creative human modification and arrangement     | Recognized       | Protectable for the human contribution only              |
-| AI as an assistive tool, human decides design and integration | Recognized       | Protection of the overall work is not defeated           |
+| Scenario                                                      | Human authorship | Copyright protection                                    |
+| ------------------------------------------------------------- | ---------------- | ------------------------------------------------------- |
+| Prompt only, output used as-is                                | Not recognized   | Not protectable: cannot be registered as a company work |
+| AI draft with creative human modification and arrangement     | Recognized       | Protectable for the human contribution only             |
+| AI as an assistive tool, human decides design and integration | Recognized       | Protection of the overall work is not defeated          |
 
 There is no quantitative threshold such as a percentage of changes. The question is decided
 case by case: did human creative contribution determine the expressive elements?
 
-**Working rules** — leave records at development time so attribution can be proven later.
+**Working rules**: leave records at development time so attribution can be proven later.
 
 - State AI tool use in commit messages, e.g. `feat: implement order API handler (assisted by Claude Code)`
 - When you modify an AI draft, note in the PR body which design and modification decisions a human made
@@ -40,21 +40,21 @@ case by case: did human creative contribution determine the expressive elements?
 
 ## 2. Vendor IP indemnification: who defends an infringement claim?
 
-Major vendors offer IP indemnification — the vendor defends and covers third-party copyright
-claims — to paid commercial-plan customers. Status as of 2026-07:
+Major vendors offer IP indemnification (the vendor defends and covers third-party copyright
+claims) to paid commercial-plan customers. Status as of 2026-07:
 
-| Vendor                     | Program and basis                                                                      | Covered                                                           | Watch out                                                                                                                             |
-| -------------------------- | -------------------------------------------------------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| Microsoft (GitHub Copilot) | Customer Copyright Commitment — GitHub Generative AI Services Terms (replaced 2026-03) | Copilot Business, Enterprise                                      | Personal Free and Pro excluded. The public-code-matching filter is no longer a coverage condition since 2026-04 (now optional)        |
-| OpenAI                     | Copyright Shield (announcement name) — indemnity clause in the Business Terms          | ChatGPT Enterprise, API                                           | Free and personal plans excluded. Claims arising from customer modifications or combinations with third-party technology are excluded |
-| Anthropic                  | Commercial Terms of Service Section K (Indemnification)                                | Paid commercial customers                                         | Limited to authorized use and its Output. Use the customer knew or should have known was infringing is excluded                       |
-| Google Cloud               | Generative AI indemnification — dual coverage for training data and generated output   | Gemini for Google Cloud (including Gemini Code Assist) and others | Google updates the covered-services list frequently — always check the official list page                                             |
+| Vendor                     | Program and basis                                                                     | Covered                                                           | Watch out                                                                                                                             |
+| -------------------------- | ------------------------------------------------------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| Microsoft (GitHub Copilot) | Customer Copyright Commitment: GitHub Generative AI Services Terms (replaced 2026-03) | Copilot Business, Enterprise                                      | Personal Free and Pro excluded. The public-code-matching filter is no longer a coverage condition since 2026-04 (now optional)        |
+| OpenAI                     | Copyright Shield (announcement name): indemnity clause in the Business Terms          | ChatGPT Enterprise, API                                           | Free and personal plans excluded. Claims arising from customer modifications or combinations with third-party technology are excluded |
+| Anthropic                  | Commercial Terms of Service Section K (Indemnification)                               | Paid commercial customers                                         | Limited to authorized use and its Output. Use the customer knew or should have known was infringing is excluded                       |
+| Google Cloud               | Generative AI indemnification: dual coverage for training data and generated output   | Gemini for Google Cloud (including Gemini Code Assist) and others | Google updates the covered-services list frequently, so always check the official list page                                           |
 
 **Pre-adoption checklist**
 
 - [ ] Is your plan actually covered? (personal free accounts are mostly excluded)
 - [ ] Have you standardized internal settings to meet the coverage conditions (authorized use, filter settings, no content modification)?
-- [ ] Terms change often — did you review the terms at adoption time and schedule an annual re-check?
+- [ ] Terms change often. Did you review the terms at adoption time and schedule an annual re-check?
 
 ## 3. AI-use disclosure: legal duty vs. best practice
 
@@ -74,12 +74,12 @@ The deployer's deepfake and public-interest text disclosure duty (Article 50(1) 
 relaxation came out of the Digital Omnibus on AI negotiation: provisional agreement on 2026-05-07,
 European Parliament approval on 2026-06-16, Council adoption on 2026-06-29.
 
-**Best practices** — recommended even where not legally required.
+**Best practices**: recommended even where not legally required.
 
 - State AI tool use in internal commit messages and PRs (same as the working rules in section 1)
 - For public repositories, add a one-line notice of AI tool use to README or CONTRIBUTING
 - If you ship generative AI features to users in your product, you become directly subject to the
-  regulations above — legal review is mandatory
+  regulations above, so legal review is mandatory
 
 ## 4. Upstream open source projects' AI contribution policies
 
@@ -132,10 +132,10 @@ This page is based on §5 of the OpenChain KWG
 [AI Compliance Guide](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/7-ai-compliance/)
 (CC BY 4.0), re-verified against the primary sources below.
 
-- US Copyright Office, [Copyright and Artificial Intelligence](https://www.copyright.gov/ai/) — Part 2 Copyrightability (2025-01)
+- US Copyright Office, [Copyright and Artificial Intelligence](https://www.copyright.gov/ai/): Part 2 Copyrightability (2025-01)
 - Microsoft, [Customer Copyright Commitment required mitigations](https://learn.microsoft.com/en-us/azure/foundry/responsible-ai/openai/customer-copyright-commitment) / GitHub, [Generative AI Services Terms](https://github.com/customer-terms/github-generative-ai-services-terms)
 - OpenAI, [Business Terms](https://openai.com/policies/business-terms/)
-- Anthropic, [Commercial Terms of Service](https://www.anthropic.com/legal/commercial-terms) — Section K
+- Anthropic, [Commercial Terms of Service](https://www.anthropic.com/legal/commercial-terms): Section K
 - Google Cloud, [Generative AI indemnified services](https://cloud.google.com/terms/generative-ai-indemnified-services)
 - EU AI Act, [Article 50](https://artificialintelligenceact.eu/article/50/) / Korea, [Framework Act on the Development of Artificial Intelligence and Establishment of Trust](https://www.law.go.kr/lsInfoP.do?lsiSeq=268543), Article 31
 - Digital Omnibus on AI negotiation timeline and Article 50 grace scope, [Gibson Dunn analysis](https://www.gibsondunn.com/eu-ai-act-omnibus-agreement-postponed-high-risk-deadlines-and-other-key-changes/)

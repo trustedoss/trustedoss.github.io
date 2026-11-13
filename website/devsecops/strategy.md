@@ -13,7 +13,7 @@ sidebar_position: 2
 
 ---
 
-## Shift Left — 왜 빠를수록 좋은가
+## Shift Left: 왜 빠를수록 좋은가
 
 :::info 취약점 수정 비용은 발견 시점에 따라 수십 배 차이납니다
 :::
@@ -31,9 +31,9 @@ DevSecOps의 목표는 가능한 많은 검사를 왼쪽(코드 작성 단계)�
 
 ---
 
-## 성숙도 모델 — 네 수준
+## 성숙도 모델: 네 수준
 
-조직의 DevSecOps 성숙도를 네 수준으로 나눕니다. 이 수준 번호는 [AI 코딩 — 보장 수준별 5단계 전략](/ai-coding/strategy)의 단계 번호와 별개 척도입니다. 두 체계를 섞어 읽지 마세요.
+조직의 DevSecOps 성숙도를 네 수준으로 나눕니다. 이 수준 번호는 [AI 코딩: 보장 수준별 5단계 전략](/ai-coding/strategy)의 단계 번호와 별개 척도입니다. 두 체계를 섞어 읽지 마세요.
 
 | 수준   | 이름   | 특징                      | 주요 도구               |
 | ------ | ------ | ------------------------- | ----------------------- |
@@ -79,7 +79,7 @@ DevSecOps의 목표는 가능한 많은 검사를 왼쪽(코드 작성 단계)�
 
 ---
 
-## 셀프 스터디 — 5단계 전략별 agent
+## 셀프 스터디: 5단계 전략별 agent
 
 :::tip 5단계 전략의 각 단계를 Claude Code agent로 자동화
 아래 agent들을 순서대로 실행하면
@@ -88,14 +88,14 @@ AI 코딩 5단계 전략의 각 단계를 실제로 구현할 수 있습니다.
 
 **사전 조건**: [Trusted OSS Agent 저장소](https://github.com/trustedoss/trustedoss-agents) 클론 필요
 
-아래 단계 번호는 [AI 코딩 — 보장 수준별 5단계 전략](/ai-coding/strategy)의 체계입니다. 위 성숙도 수준과는 다른 척도입니다.
+아래 단계 번호는 [AI 코딩: 보장 수준별 5단계 전략](/ai-coding/strategy)의 체계입니다. 위 성숙도 수준과는 다른 척도입니다.
 
-| 단계                     | agent                | 명령어                                                |
-| ------------------------ | -------------------- | ----------------------------------------------------- |
-| 2단계 — AI 규칙 내재화   | ai-coding-setup      | `cd agents/ai-coding-setup && claude`                 |
-| 3단계 — CI/CD 파이프라인 | devsecops-setup      | `cd agents/devsecops-setup && claude`                 |
-| 4단계 — PR 자동 코멘트   | level2-pr-comment    | `cd agents/level2-automation/pr-comment && claude`    |
-| 5단계 — 지속적 모니터링  | level2-issue-tracker | `cd agents/level2-automation/issue-tracker && claude` |
+| 단계                    | agent                | 명령어                                                |
+| ----------------------- | -------------------- | ----------------------------------------------------- |
+| 2단계: AI 규칙 내재화   | ai-coding-setup      | `cd agents/ai-coding-setup && claude`                 |
+| 3단계: CI/CD 파이프라인 | devsecops-setup      | `cd agents/devsecops-setup && claude`                 |
+| 4단계: PR 자동 코멘트   | level2-pr-comment    | `cd agents/level2-automation/pr-comment && claude`    |
+| 5단계: 지속적 모니터링  | level2-issue-tracker | `cd agents/level2-automation/issue-tracker && claude` |
 
 ---
 

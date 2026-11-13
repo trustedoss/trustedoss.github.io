@@ -75,6 +75,6 @@ CC-BY-SA(크리에이티브 커먼즈 저작자표시-동일조건변경허락)�
 
 ## 관련 문서
 
-- [오픈소스 정책 수립 챕터 가이드](/docs/policy) — 이 분류를 회사 배포 방식에 맞춰 허용 목록으로 구체화
-- [정책 산출물 Best Practice](/reference/samples/policy) — 채널별 허용 원칙이 반영된 완성 예시
-- [용어집](/reference/glossary) — Copyleft·Permissive 등 용어 풀이
+- [오픈소스 정책 수립 챕터 가이드](/docs/policy): 이 분류를 회사 배포 방식에 맞춰 허용 목록으로 구체화
+- [정책 산출물 Best Practice](/reference/samples/policy): 채널별 허용 원칙이 반영된 완성 예시
+- [용어집](/reference/glossary): Copyleft·Permissive 등 용어 풀이

@@ -13,9 +13,9 @@ sidebar_label: Supply chain security
 
 ## 1. What this chapter covers
 
-This is a background chapter — read it, no hands-on work required. Through real-world incidents, you will see what software supply chain security looks like in practice, why an SBOM (Software Bill of Materials) has become an essential tool, and how international regulations now require it.
+This is a background chapter. Read it; no hands-on work is required. Through real-world incidents, you will see what software supply chain security looks like in practice, why an SBOM (Software Bill of Materials) has become an essential tool, and how international regulations now require it.
 
-After reading this chapter, you will have a clear answer to the question "Why do I need this kit?" Everything you do in later chapters — writing policy, designing processes, creating an SBOM, analyzing vulnerabilities — makes more sense in the context laid out here.
+After reading this chapter, you will have a clear answer to the question "Why do I need this kit?" Everything you do in later chapters (writing policy, designing processes, creating an SBOM, analyzing vulnerabilities) makes more sense in the context laid out here.
 
 ---
 
@@ -38,7 +38,7 @@ flowchart LR
 
 Modern software is **70-80% open source components**. In other words, far more code comes from outside than your team writes itself. This speeds up development, but it is also a conduit through which external threats can flow inward.
 
-Supply chain security is the discipline of identifying and managing the risks that can arise anywhere along this path — vulnerabilities, malware, and license violations.
+Supply chain security is the discipline of identifying and managing the risks that can arise anywhere along this path: vulnerabilities, malware, and license violations.
 
 ---
 
@@ -52,7 +52,7 @@ The cases below show that supply chain security is anything but an abstract conc
 Attackers inserted malware (Sunburst) into SolarWinds' internal build pipeline. Because it was bundled into a legitimate software update (the Orion Platform) and distributed that way, existing security tools had an extremely hard time detecting it.
 
 **Scope of impact**
-More than 18,000 organizations worldwide — including federal agencies such as the U.S. Treasury and the Department of State — installed the malicious update. Attackers had undetected access to internal networks for months.
+More than 18,000 organizations worldwide, including federal agencies such as the U.S. Treasury and the Department of State, installed the malicious update. Attackers had undetected access to internal networks for months.
 
 **Lesson**
 The build pipeline that produces the software can itself be a target. You need a system that verifies where every component in the product comes from and that the build process is safe.
@@ -65,7 +65,7 @@ The build pipeline that produces the software can itself be a target. You need a
 An injection vulnerability was found in Apache Log4j 2, a logging library used almost universally across Java applications. It abused JNDI (Java Naming and Directory Interface), letting an attacker achieve remote code execution (RCE) with a single specially crafted string.
 
 **Scope of impact**
-Hundreds of millions of systems worldwide were affected, covering the services of virtually every major technology company — Apple, Amazon, Tesla, Twitter, and more. About 800,000 exploit attempts were detected within 72 hours of disclosure, and millions over the following weeks.
+Hundreds of millions of systems worldwide were affected, covering the services of virtually every major technology company: Apple, Amazon, Tesla, Twitter, and more. About 800,000 exploit attempts were detected within 72 hours of disclosure, and millions over the following weeks.
 
 **Lesson**
 You cannot even patch what you cannot find. With an SBOM, every system using Log4j could have been identified and remediated immediately.
@@ -78,7 +78,7 @@ You cannot even patch what you cannot find. With an SBOM, every system using Log
 Over two years, an attacker using the pseudonym "Jia Tan" contributed to the XZ Utils open source project, posing as a trustworthy maintainer. After building credibility through steady contributions, they committed malicious code that planted a backdoor in sshd (the SSH daemon). A widespread compromise was averted only because a developer noticed anomalies just before the release shipped.
 
 **Scope of impact**
-Development and beta channels of major distributions — Fedora beta, Debian testing, openSUSE Tumbleweed — had pulled in the vulnerable versions, and the discovery came just before stable releases. Had discovery been delayed by even a few days, backdoors would have landed on millions of servers.
+Development and beta channels of major distributions (Fedora beta, Debian testing, openSUSE Tumbleweed) had pulled in the vulnerable versions, and the discovery came just before stable releases. Had discovery been delayed by even a few days, backdoors would have landed on millions of servers.
 
 **Lesson**
 The identity and long-term behavior of open source contributors deserve scrutiny. The health of the open source projects you depend on, meaning their governance and maintainer activity, is also part of supply chain security.
@@ -147,7 +147,7 @@ in the U.S. market should prepare for contract-level requirements.
 
 ---
 
-### EU Cyber Resilience Act — CRA (2024)
+### EU Cyber Resilience Act (CRA, 2024)
 
 **Background**
 An EU-wide regulation adopted in 2024 to strengthen the cybersecurity of digital products placed on the EU Digital Single Market.
@@ -163,7 +163,7 @@ An EU-wide regulation adopted in 2024 to strengthen the cybersecurity of digital
 For non-compliance, up to **EUR 15 million** or **2.5% of annual global turnover**, whichever is greater.
 
 **Impact on Korean companies**
-This applies to **any business** that sells software products or services in the EU. All products with digital elements — cloud services, mobile apps, IoT devices — are in scope.
+This applies to **any business** that sells software products or services in the EU. All products with digital elements (cloud services, mobile apps, IoT devices) are in scope.
 
 ---
 
@@ -225,15 +225,15 @@ Gauge each open source component (or the product as a whole) along the four axes
 | **Project health**   | Are the maintainers active? Are there recent releases and contributors?                        | When the project is unmaintained (the XZ Utils lesson)           |
 | **Blast radius**     | If it is compromised, how far does the damage reach (authentication, payments, customer data)? | When it can reach critical assets                                |
 
-### Dependency depth — the most commonly missed risk
+### Dependency depth: the most commonly missed risk
 
-Libraries you pull in directly (direct dependencies) are visible, but the **transitive dependencies** they pull in — dependencies of dependencies — are not. For both Log4Shell and XZ Utils, the reaction in many organizations was "but I never used that directly." An SBOM lays out all of these transitive dependencies, which makes it the starting point for risk assessment.
+Libraries you pull in directly (direct dependencies) are visible, but the **transitive dependencies** they pull in (dependencies of dependencies) are not. For both Log4Shell and XZ Utils, the reaction in many organizations was "but I never used that directly." An SBOM lays out all of these transitive dependencies, which makes it the starting point for risk assessment.
 
 ### A three-step assessment procedure
 
-1. **Get the inventory** — use an SBOM to build a component list that includes transitive dependencies ([Create SBOM](../05-tools/sbom-generation/index.md)).
-2. **Identify high risk** — rate each component high/medium/low along the four axes above and single out the high-risk ones.
-3. **Apply first where it matters** — apply policy (approved licenses and approvals), vulnerability response, and continuous monitoring to the high-risk components first.
+1. **Get the inventory**: use an SBOM to build a component list that includes transitive dependencies ([Create SBOM](../05-tools/sbom-generation/index.md)).
+2. **Identify high risk**: rate each component high/medium/low along the four axes above and single out the high-risk ones.
+3. **Apply first where it matters**: apply policy (approved licenses and approvals), vulnerability response, and continuous monitoring to the high-risk components first.
 
 :::info Regular reviews
 This assessment is not a one-time exercise. Dependencies and threats keep changing, so revisit it regularly.
@@ -247,7 +247,7 @@ This assessment is not a one-time exercise. Dependencies and threats keep changi
 You can simply read this chapter. Focus on understanding the concepts.
 :::
 
-1. Read this page — get the full context of supply chain security
+1. Read this page: get the full context of supply chain security
 2. Summarize, in your own words, the key lessons from the incidents
 3. Identify which international regulations apply to your company
 4. Read `sbom-101.md` for a detailed understanding of SBOM technical concepts

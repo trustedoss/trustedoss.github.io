@@ -24,7 +24,7 @@ Running the `agents/en/05-sbom-management` agent produces two outputs: `output/s
 
 Whenever the software changes, the SBOM must change with it. A stale, unmaintained SBOM can be more dangerous than none at all. Trusting an out-of-date SBOM creates security blind spots, because the actual components and the documentation no longer match.
 
-**Real-world example:** an organization trusted an SBOM created six months earlier and failed to notice the vulnerable libraries added since then. Even after a CVE was disclosed in one of those libraries, the organization did not realize it was affected — the customer discovered the problem first, and trust was lost.
+**Real-world example:** an organization trusted an SBOM created six months earlier and failed to notice the vulnerable libraries added since then. Even after a CVE was disclosed in one of those libraries, the organization did not realize it was affected. The customer discovered the problem first, and trust was lost.
 
 ---
 
@@ -78,7 +78,7 @@ Recommended retention period: the software release's maintenance period plus at 
 - When the supplier explicitly requests one
 - When the contract includes a clause requiring SBOM delivery
 - When EO 14028 applies (delivery to the U.S. federal government)
-- When the EU CRA applies (entering the EU market — reporting obligations from 2026-09-11, full application from 2027-12-11)
+- When the EU CRA applies (entering the EU market; reporting obligations from 2026-09-11, full application from 2027-12-11)
 - When participating in a large enterprise supply chain management program (an increasing trend, including Samsung and Hyundai Motor)
 
 **Pros and cons of each delivery method:**
@@ -105,10 +105,10 @@ it next to the SBOM, or wrap the SBOM in an in-toto attestation that also record
 produced it. A signature only guarantees the origin and integrity of the file, so pair it with a
 step where the recipient cross-checks the contents against the actual composition using an SCA tool.
 
-:::tip A published example — attach it as a release asset
+:::tip A published example: attach it as a release asset
 
 The lightest of the options above is to attach the SBOM file to the release itself. The open source
-project TRUSCA publishes a CycloneDX SBOM with every release — `trusca-0.20.1.cdx.json` on the
+project TRUSCA publishes a CycloneDX SBOM with every release: `trusca-0.20.1.cdx.json` on the
 [v0.20.1 release](https://github.com/trustedoss/trusca/releases/latest).
 
 Because the version and the file name map one to one, you can reconstruct what a given release
@@ -125,7 +125,7 @@ becomes your product's risk.
 
 - **Put it in the contract**: require an SBOM (CycloneDX or SPDX) to accompany deliverables as a
   contract or purchase-order condition.
-- **Verify the received SBOM**: do not take it on faith — re-check licenses and vulnerabilities
+- **Verify the received SBOM**: do not take it on faith; re-check licenses and vulnerabilities
   with an SCA tool. When you cannot obtain the source, scan the delivered binary or container with
   SCA and cross-check.
 - **Handle mismatches**: if the SBOM differs from the actual composition or a risk is found, share
@@ -205,7 +205,7 @@ Upgrade both tools together, or generate at the older version with `syft ... -o 
 Work with the agent to create an SBOM management plan and a sharing template for recipients. The agent asks three questions in order and generates a document automatically from your answers.
 :::
 
-**Preparation — knowing the three things below in advance makes this go faster:**
+**Preparation (knowing the three things below in advance makes this go faster):**
 
 1. Whether the SBOM must be provided externally (to customers/suppliers)
 2. The SBOM format the supplier requires (CycloneDX / SPDX / no preference)

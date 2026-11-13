@@ -36,7 +36,7 @@ and [policy and process templates](https://openchain-project.github.io/OpenChain
 
 ---
 
-#### G1.1 — Establishing and documenting an open source policy `[Common]`
+#### G1.1: Establishing and documenting an open source policy `[Common]`
 
 > ISO/IEC 5230 §3.1.1 · ISO/IEC 18974 §4.1.1
 
@@ -54,7 +54,7 @@ Without a policy you cannot establish systematic compliance; it is the basis for
 
 ---
 
-#### G1.2 — Establishing a review process for the security assurance policy `[18974]`
+#### G1.2: Establishing a review process for the security assurance policy `[18974]`
 
 > ISO/IEC 18974 §4.1.1
 
@@ -71,7 +71,7 @@ Without a policy you cannot establish systematic compliance; it is the basis for
 
 ---
 
-#### G1.3 — Designating the open source Program Manager and organization `[Common]`
+#### G1.3: Designating the open source Program Manager and organization `[Common]`
 
 > ISO/IEC 5230 §3.1.2 · ISO/IEC 18974 §4.1.2
 
@@ -97,7 +97,7 @@ At first certification there is no review history, so these are treated as parti
 
 ---
 
-#### G1.4 — Establishing a training program `[Common]`
+#### G1.4: Establishing a training program `[Common]`
 
 > ISO/IEC 5230 §3.1.2 · ISO/IEC 18974 §4.1.2 (education and training aspects)
 
@@ -115,7 +115,7 @@ Build and continuously maintain staff competency; both standards require evidenc
 
 ---
 
-#### G1.5 — Defining the program scope `[Common]`
+#### G1.5: Defining the program scope `[Common]`
 
 > ISO/IEC 5230 §3.1.4 · ISO/IEC 18974 §4.1.4
 
@@ -138,7 +138,7 @@ There is no improvement history at first certification. Record the initial gap a
 
 ---
 
-#### G1.6 — Establishing procedures to review license obligations `[5230]`
+#### G1.6: Establishing procedures to review license obligations `[5230]`
 
 > ISO/IEC 5230 §3.1.5
 
@@ -154,7 +154,7 @@ Prevent license violations before distribution; covers obligations such as copyl
 
 ---
 
-#### G1.7 — Program participant awareness records `[Common]`
+#### G1.7: Program participant awareness records `[Common]`
 
 > ISO/IEC 5230 §3.1.3 · ISO/IEC 18974 §4.1.3
 
@@ -175,7 +175,7 @@ Document, per person and role, that each participant understands the policy, the
 
 ---
 
-#### G2.1 — Establishing roles and responsibilities (RACI) `[Common]`
+#### G2.1: Establishing roles and responsibilities (RACI) `[Common]`
 
 > ISO/IEC 5230 §3.2.2 · ISO/IEC 18974 §4.2.2
 
@@ -197,7 +197,7 @@ Clarify who performs, approves, and reviews open source activities; prevent gaps
 
 ---
 
-#### G2.2 — Operating channels for receiving external inquiries `[Common]`
+#### G2.2: Operating channels for receiving external inquiries `[Common]`
 
 > ISO/IEC 5230 §3.2.1 · ISO/IEC 18974 §4.2.1
 
@@ -215,7 +215,7 @@ An official channel is required so third parties can request fulfillment of lice
 
 ---
 
-#### G2.3 — Operating an awareness program `[Common]`
+#### G2.3: Operating an awareness program `[Common]`
 
 > ISO/IEC 5230 §3.1.3 · ISO/IEC 18974 §4.1.3
 
@@ -236,7 +236,7 @@ Compliance is only effective when every member knows and follows the policy.
 
 ---
 
-#### G3L.1 — License identification and classification `[5230]`
+#### G3L.1: License identification and classification `[5230]`
 
 > ISO/IEC 5230 §3.3.1 · §3.3.2
 
@@ -255,7 +255,7 @@ Identify the license status of each component from the SBOM; flag copyleft risk.
 
 ---
 
-#### G3L.2 — Fulfilling license obligations `[5230]`
+#### G3L.2: Fulfilling license obligations `[5230]`
 
 > ISO/IEC 5230 §3.3.2
 
@@ -271,7 +271,7 @@ Fulfill copyleft license obligations such as GPL, LGPL, and AGPL; maintain an Ap
 
 ---
 
-#### G3L.3 — Generating compliance artifacts `[5230]`
+#### G3L.3: Generating compliance artifacts `[5230]`
 
 > ISO/IEC 5230 §3.4.1
 
@@ -288,7 +288,7 @@ Obligation to provide, at distribution time, the files that demonstrate fulfillm
 
 ---
 
-#### G3L.4 — Establishing an open source contribution policy `[5230]`
+#### G3L.4: Establishing an open source contribution policy `[5230]`
 
 > ISO/IEC 5230 §3.5.1
 
@@ -305,7 +305,7 @@ Prevents IP leakage and license-contamination risk when contributing upstream.
 
 ---
 
-#### G3L.5 — Process for verifying that license obligations are met `[5230]`
+#### G3L.5: Process for verifying that license obligations are met `[5230]`
 
 > ISO/IEC 5230 §3.4.1
 
@@ -322,7 +322,7 @@ Verify before distribution that all license obligations (source-code disclosure,
 
 ---
 
-#### G3L.6 — Operating an open source contribution process `[5230]`
+#### G3L.6: Operating an open source contribution process `[5230]`
 
 > ISO/IEC 5230 §3.5.1
 
@@ -342,7 +342,7 @@ Concrete procedures for implementing the policy (G3L.4): the contribution review
 
 ---
 
-#### G3S.1 — Identifying known vulnerabilities (CVE scan) `[18974]`
+#### G3S.1: Identifying known vulnerabilities (CVE scan) `[18974]`
 
 > ISO/IEC 18974 §4.3.2 · §4.1.5
 
@@ -360,7 +360,7 @@ Failing to identify CVEs invites security incidents and legal liability; this is
 
 ---
 
-#### G3S.2 — Vulnerability tracking and status management `[18974]`
+#### G3S.2: Vulnerability tracking and status management `[18974]`
 
 > ISO/IEC 18974 §4.3.2 · §4.1.5
 
@@ -378,7 +378,7 @@ Continuously track identified vulnerabilities until remediation is complete; pre
 
 ---
 
-#### G3S.3 — CVE risk scoring (CVSS) `[18974]`
+#### G3S.3: CVE risk scoring (CVSS) `[18974]`
 
 > ISO/IEC 18974 §4.3.2
 
@@ -395,7 +395,7 @@ Prioritize by CVSS score; allocate resources efficiently.
 
 ---
 
-#### G3S.4 — Vulnerability response and patching procedures `[18974]`
+#### G3S.4: Vulnerability response and patching procedures `[18974]`
 
 > ISO/IEC 18974 §4.3.2 · §4.1.5
 
@@ -413,7 +413,7 @@ A system for rapidly patching, upgrading, or mitigating discovered vulnerabiliti
 
 ---
 
-#### G3S.5 — Security artifact delivery process `[18974, Supply Chain]`
+#### G3S.5: Security artifact delivery process `[18974, Supply Chain]`
 
 > ISO/IEC 18974 §4.3.1
 
@@ -430,7 +430,7 @@ Formal procedures for delivering security deliverables such as the SBOM and CVE 
 
 ---
 
-#### G3S.6 — Process for verifying that security obligations are met `[18974]`
+#### G3S.6: Process for verifying that security obligations are met `[18974]`
 
 > ISO/IEC 18974 §4.3.2
 
@@ -451,7 +451,7 @@ Procedure to verify that the response, patch, and mitigation actions for identif
 
 ---
 
-#### G3B.1 — Creating an SBOM (CycloneDX/SPDX) `[Common, Supply Chain]`
+#### G3B.1: Creating an SBOM (CycloneDX/SPDX) `[Common, Supply Chain]`
 
 > ISO/IEC 5230 §3.3.1 · ISO/IEC 18974 §4.3.1
 
@@ -469,7 +469,7 @@ The starting point for component transparency; the input for both license and se
 
 ---
 
-#### G3B.2 — SBOM management and maintenance `[Common, Supply Chain]`
+#### G3B.2: SBOM management and maintenance `[Common, Supply Chain]`
 
 > ISO/IEC 5230 §3.3.1 · ISO/IEC 18974 §4.3.1
 
@@ -487,7 +487,7 @@ Keep the SBOM current on every release and update; integrate it with configurati
 
 ---
 
-#### G3B.3 — Sharing the SBOM (with supply chain partners) `[Supply Chain, Regulation]`
+#### G3B.3: Sharing the SBOM (with supply chain partners) `[Supply Chain, Regulation]`
 
 > ISO/IEC 18974 §4.3.1
 
@@ -504,7 +504,7 @@ Pass transparency down the supply chain; addresses the CISA SBOM minimum element
 
 ---
 
-#### G3B.4 — Continuous monitoring of supply chain vulnerabilities `[Supply Chain]`
+#### G3B.4: Continuous monitoring of supply chain vulnerabilities `[Supply Chain]`
 
 > ISO/IEC 18974 §4.3.2
 
@@ -525,7 +525,7 @@ When a new CVE is disclosed, immediately identify which supply chain components 
 
 ---
 
-#### G4.1 — ISO/IEC 5230 self-certification declaration `[5230]`
+#### G4.1: ISO/IEC 5230 self-certification declaration `[5230]`
 
 > ISO/IEC 5230 §3.6.1
 
@@ -541,7 +541,7 @@ Official declaration of license compliance capability; earns the trust of supply
 
 ---
 
-#### G4.2 — ISO/IEC 18974 self-certification declaration `[18974]`
+#### G4.2: ISO/IEC 18974 self-certification declaration `[18974]`
 
 > ISO/IEC 18974 §4.4.1
 
@@ -557,7 +557,7 @@ Official declaration of security assurance capability; evidence for EO 14028 and
 
 ---
 
-#### G4.3 — Managing the certification validity period (18 months) `[Common]`
+#### G4.3: Managing the certification validity period (18 months) `[Common]`
 
 > ISO/IEC 5230 §3.6.2 · ISO/IEC 18974 §4.4.2
 
@@ -574,7 +574,7 @@ Both standards require re-declaration every 18 months; this avoids automatic exp
 
 ---
 
-#### G4.4 — Regular gap analysis and policy updates `[Common]`
+#### G4.4: Regular gap analysis and policy updates `[Common]`
 
 > ISO/IEC 5230 §3.6.2 · ISO/IEC 18974 §4.4.2
 
@@ -591,7 +591,7 @@ Evolve the system as the technical and regulatory environment changes; required 
 
 ---
 
-#### G4.5 — Confirming vulnerability remediation before distribution `[18974]`
+#### G4.5: Confirming vulnerability remediation before distribution `[18974]`
 
 > ISO/IEC 18974 §4.4.1 · §4.3.2
 
@@ -611,6 +611,6 @@ Confirm before distribution that each identified vulnerability has been remediat
 
 ## Related documents
 
-- [Standard requirements at a glance](/en/docs/overview/checklist-mapping) — a summary of what the two standards require
-- [Self-certification declaration](/en/docs/conformance) — the stage where you check gap analysis results against this matrix
-- [Building deliverables with AI agents](./agents) — how to run each owning agent
+- [Standard requirements at a glance](/en/docs/overview/checklist-mapping): a summary of what the two standards require
+- [Self-certification declaration](/en/docs/conformance): the stage where you check gap analysis results against this matrix
+- [Building deliverables with AI agents](./agents): how to run each owning agent

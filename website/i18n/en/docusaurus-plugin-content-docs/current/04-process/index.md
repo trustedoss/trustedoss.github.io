@@ -30,7 +30,7 @@ Unfamiliar acronyms such as SBOM, CVE, and CVSS are explained in plain language 
 :::
 
 :::tip
-Detailed explanations of each step, along with real corporate examples, are available in the [KWG Open Source Guide — Process](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/3-process/). This chapter's structure and requirement descriptions are reworked from that KWG guide (CC BY 4.0).
+Detailed explanations of each step, along with real corporate examples, are available in the [KWG Open Source Guide: Process](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/3-process/). This chapter's structure and requirement descriptions are reworked from that KWG guide (CC BY 4.0).
 :::
 
 ### The overall open source lifecycle flow
@@ -52,7 +52,7 @@ flowchart TD
     K --> J
 ```
 
-Approval on adoption, a checklist before distribution, and CVE response during operation — you document this flow as the six core processes below.
+Approval on adoption, a checklist before distribution, and CVE response during operation: you document this flow as the six core processes below.
 
 ### The 6 core processes
 
@@ -67,7 +67,7 @@ If you define an allowed-license list (allowlist) in advance, licenses on the li
 | Conditionally allowed | Copyleft license, or has a High CVE                 | Approval after program manager review |
 | Prohibited            | Non-commercial license, or unpatched Critical CVE   | Use prohibited                        |
 
-:::tip Pre-flight ingest gate — developers see only what is verified
+:::tip Pre-flight ingest gate: developers see only what is verified
 Instead of judging each approval after the fact, many teams enforce it through repository
 structure. Rather than pulling directly from public repositories (npm, PyPI, etc.), you first
 **ingest** into an internal repository while checking license, vulnerabilities, and source
@@ -106,7 +106,7 @@ Be sure to check the items below before distributing the software externally. If
 - Confirm fulfillment of the source code disclosure obligations of copyleft licenses (the obligation to release derivative works under the same license)
 - Verify that the review of licenses not on the allowed-license list has been completed
 
-:::tip Automatic attribution notice generation — onot
+:::tip Automatic attribution notice generation: onot
 Writing the pre-release attribution notice (NOTICE) by hand often leads to omissions. [onot](https://github.com/sktelecom/onot) is a tool that takes an SBOM (an SPDX or CycloneDX document) as input and automatically generates the OSS attribution notice (co-developed by Kakao and SK Telecom). You can feed in the SBOM created in the previous step and automate attribution notice writing.
 :::
 
@@ -174,13 +174,13 @@ This is the process of releasing internally developed software as open source.
 - Security scan: Scan for vulnerabilities and hard-coded credentials before disclosure.
 - Approval stage: Final approval from the CTO or a designated committee.
 
-If you have no plans to contribute (3-4) or disclose (3-5), the agent does not generate those documents, and the gap analysis treats those items as N/A. If you wish, you can still write a declarative document yourself stating "No current plan — this procedure will be followed once a plan is made."
+If you have no plans to contribute (3-4) or disclose (3-5), the agent does not generate those documents, and the gap analysis treats those items as N/A. If you wish, you can still write a declarative document yourself stating "No current plan. This procedure will be followed once a plan is made."
 
 ---
 
 #### 3-6. External inquiry response process (§3.2.1)
 
-This is the channel and procedure for receiving open-source-related inquiries from outside —
+This is the channel and procedure for receiving open-source-related inquiries from outside:
 customers, the community, or license holders. It consists of a published intake channel (email or a
 web form), acknowledgement, triage into compliance vs. security inquiries, assignment and response,
 and record keeping. The external inquiry channel designated in chapter 02 is the entry point, and
@@ -221,17 +221,17 @@ submission form has no real identity verification, so anyone can submit a vulner
 and propose a CVSS score. That is how the fabricated advisories in the JFrog case came to be listed
 as Critical.
 
-:::tip Published examples — intake channel and notices
+:::tip Published examples: intake channel and notices
 
 A procedure that exists only on paper cannot be verified. The open source project TRUSCA publishes
 both of these in its repository.
 
-- [SECURITY.md](https://github.com/trustedoss/trusca/blob/main/SECURITY.md) — the vulnerability intake channel. It puts GitHub
+- [SECURITY.md](https://github.com/trustedoss/trusca/blob/main/SECURITY.md): the vulnerability intake channel. It puts GitHub
   private vulnerability reporting first, offers encrypted email as a fallback, and states plainly
   that unpatched issues must not be filed as public issues. This is what the "publicly visible
   method of inquiry" required by ISO/IEC 5230 §3.2.1 and ISO/IEC 18974 §4.2.1 looks like in practice
-- [NOTICE](https://github.com/trustedoss/trusca/blob/main/NOTICE) and [THIRD_PARTY_NOTICES.md](https://github.com/trustedoss/trusca/blob/main/THIRD_PARTY_NOTICES.md)
-  — the notices shipped with the distribution, matching the compliance artifacts in 5230 §3.4.1
+- [NOTICE](https://github.com/trustedoss/trusca/blob/main/NOTICE) and [THIRD_PARTY_NOTICES.md](https://github.com/trustedoss/trusca/blob/main/THIRD_PARTY_NOTICES.md):
+  the notices shipped with the distribution, matching the compliance artifacts in 5230 §3.4.1
 
 Borrow the structure, not the contents. The PGP fingerprint in that SECURITY.md is still a
 placeholder; contact details and keys only mean something once they hold real values.
@@ -351,7 +351,7 @@ these two options.
 - **If this repository is hosted on GitHub**: opening the file on GitHub renders it as a picture automatically.
 - **If you're only working locally**: open [mermaid.live](https://mermaid.live), copy the whole
   code block in `output/process/process-diagram.md` that starts with &#96;&#96;&#96;mermaid and ends
-  with &#96;&#96;&#96;, and paste it (Cmd+V or Ctrl+V) into the input pane on the left — the diagram
+  with &#96;&#96;&#96;, and paste it (Cmd+V or Ctrl+V) into the input pane on the left. The diagram
   appears on the right immediately. In VS Code, an extension like "Markdown Preview Mermaid
   Support" also renders it in the Preview pane.
 

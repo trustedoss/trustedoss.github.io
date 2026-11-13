@@ -15,7 +15,7 @@ Rules files live at the project level, and global rules are configured separatel
 
 ## Configuration File Location
 
-- Project (recommended): `.devin/rules/` directory — the new standard path, which takes precedence over the others
+- Project (recommended): `.devin/rules/` directory, the new standard path, which takes precedence over the others
 - Project (backward compatible): `.windsurf/rules/` directory and the legacy single-file `.windsurfrules`. Existing setups keep working as-is
 - Common format: `AGENTS.md` is supported, and `.cursor/rules` can be imported
 - Global: Global Rules in the app settings

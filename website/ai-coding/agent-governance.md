@@ -44,11 +44,11 @@ MCP 스펙 자체도 "도구 설명은 신뢰된 서버에서 온 것이 아니�
 
 ## 2. 위협 모델: 세 개의 면과 방어선
 
-| 면                        | 위협                                                                    | 방어선                                                                      |
-| ------------------------- | ----------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| 입력 (프롬프트·규칙 파일) | 간접 프롬프트 인젝션 — 에이전트가 읽는 콘텐츠와 규칙 파일에 심어진 지시 | 신뢰할 수 없는 콘텐츠 접근 최소화, 규칙 파일 PR 리뷰, 고위험 작업 사람 승인 |
-| 도구 (MCP 서버·스킬·확장) | tool poisoning, 도구 가장(shadowing), 도구 연쇄 호출, 악성 패키지 설치  | 서버 allowlist, 도입 전 스캔·반출 경로 판정, 버전 고정, 출처 확인           |
-| 산출물 (코드)             | 오염된 생성 코드, 취약·금지 라이선스 의존성                             | 기존 CI Hard Block(시크릿, SAST, SCA) — 최후 방어선                         |
+| 면                        | 위협                                                                   | 방어선                                                                      |
+| ------------------------- | ---------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| 입력 (프롬프트·규칙 파일) | 간접 프롬프트 인젝션: 에이전트가 읽는 콘텐츠와 규칙 파일에 심어진 지시 | 신뢰할 수 없는 콘텐츠 접근 최소화, 규칙 파일 PR 리뷰, 고위험 작업 사람 승인 |
+| 도구 (MCP 서버·스킬·확장) | tool poisoning, 도구 가장(shadowing), 도구 연쇄 호출, 악성 패키지 설치 | 서버 allowlist, 도입 전 스캔·반출 경로 판정, 버전 고정, 출처 확인           |
+| 산출물 (코드)             | 오염된 생성 코드, 취약·금지 라이선스 의존성                            | 기존 CI Hard Block(시크릿, SAST, SCA)을 최후 방어선으로                     |
 
 핵심은 세 면이 상보적이라는 점입니다. 입력·도구 통제가 뚫려도 산출물 게이트가 남고,
 산출물 게이트가 놓치는 행위(데이터 유출 등)는 도구 통제가 막습니다.
@@ -89,12 +89,12 @@ Microsoft Incident Response 의 권고(2026-06)와 MCP 스펙의 보안 원칙�
 적용 강도는 서버 출처에 따라 나눕니다. 전수 심사가 필요한 것은 첫 행이고, 나머지는 기존 절차에
 얹거나 다른 단계에서 처리됩니다.
 
-| 출처                 | 예                                        | 처리                                                        |
-| -------------------- | ----------------------------------------- | ----------------------------------------------------------- |
-| 외부 커뮤니티 배포판 | npm·PyPI 공개 패키지                      | 전수 승인 심사, 버전 고정과 변경 추적                       |
-| 벤더 공식 서버       | GitHub, Atlassian 등 자사 서비스용        | 권한 범위와 반출 경로 확인 중심의 간이 심사                 |
-| 사내 자체 개발 서버  | 사내 저장소·이슈 트래커·데이터베이스 연동 | 승인이 아니라 설계 검토 — 권한·노출 범위를 개발 시점에 결정 |
-| 개발 도구 번들       | 상용 코딩 에이전트 기본 탑재              | 도구 선정 단계에서 함께 검토                                |
+| 출처                 | 예                                        | 처리                                                       |
+| -------------------- | ----------------------------------------- | ---------------------------------------------------------- |
+| 외부 커뮤니티 배포판 | npm·PyPI 공개 패키지                      | 전수 승인 심사, 버전 고정과 변경 추적                      |
+| 벤더 공식 서버       | GitHub, Atlassian 등 자사 서비스용        | 권한 범위와 반출 경로 확인 중심의 간이 심사                |
+| 사내 자체 개발 서버  | 사내 저장소·이슈 트래커·데이터베이스 연동 | 승인이 아니라 설계 검토: 권한·노출 범위를 개발 시점에 결정 |
+| 개발 도구 번들       | 상용 코딩 에이전트 기본 탑재              | 도구 선정 단계에서 함께 검토                               |
 
 호스팅 플랫폼을 경유해 서버를 도입한다면 플랫폼 자체도 심사 대상입니다. MCP 호스팅 플랫폼
 Smithery 에서 경로 순회 취약점이 발견되어 3,000개 이상의 호스팅 서버에 임의 코드 실행이 가능한
@@ -241,7 +241,7 @@ Document 로 대체하는 방향으로 deprecated 처리됐고, 이를 지원하
 | 에이전트 트래픽 통합 | agentgateway (Linux Foundation, Apache-2.0) | —                                                      |
 | 개발자 단말 정책     | 도구 내장 통제 (아래 5절)                   | —                                                      |
 
-**도입 전 스캔 — Snyk agent-scan**: MCP 서버, 에이전트 설정, agent skill 에서 prompt injection,
+**도입 전 스캔(Snyk agent-scan)**: MCP 서버, 에이전트 설정, agent skill 에서 prompt injection,
 tool poisoning, tool shadowing 등을 탐지합니다(Invariant Labs mcp-scan 의 후속). Snyk API 토큰이
 필요하고, 검사 과정에서 MCP 서버를 실제 실행한다는 점에 유의하세요(격리 환경에서 실행 권장).
 
@@ -257,12 +257,12 @@ uv tool install --python 3.13 cisco-ai-mcp-scanner
 mcp-scanner --scan-known-configs --analyzers yara --format summary
 ```
 
-**운영 중앙 통제 — ToolHive**: 승인된 MCP 서버의 신뢰 카탈로그를 만들고, 접근 정책과 OIDC/OAuth
+**운영 중앙 통제(ToolHive)**: 승인된 MCP 서버의 신뢰 카탈로그를 만들고, 접근 정책과 OIDC/OAuth
 인증, 컨테이너 격리 실행(Docker/Podman, Kubernetes Operator), OpenTelemetry 기반 감사를
 제공합니다. 조직 규모에서 allowlist 를 사람 손이 아니라 플랫폼으로 관리할 때 도입합니다.
 대규모 IdP 연동(Keycloak, Entra ID 등)이 필요하면 MCP Gateway & Registry 를 검토하세요.
 
-**에이전트 트래픽 통합 — agentgateway**: solo.io 가 만들어 2025년 8월 Linux Foundation 에 기부한
+**에이전트 트래픽 통합(agentgateway)**: solo.io 가 만들어 2025년 8월 Linux Foundation 에 기부한
 오픈소스 프록시입니다. 대규모 언어 모델 API 호출, MCP, 에이전트 간 프로토콜(Agent-to-Agent, A2A),
 HTTP 를 하나의 데이터 플레인에서 처리합니다. ToolHive 가 MCP 서버의 신뢰 카탈로그와 격리 실행에
 초점을 둔다면, agentgateway 는 모델 API 호출까지 포함한 에이전트 트래픽 전체를 한 지점에 모읍니다.
@@ -275,7 +275,7 @@ HTTP 를 하나의 데이터 플레인에서 처리합니다. ToolHive 가 MCP �
 
 ## 5. 복붙 자산: Claude Code 조직 정책
 
-Claude Code 는 조직이 배포하는 관리 설정(`managed-settings.json` — macOS
+Claude Code 는 조직이 배포하는 관리 설정(`managed-settings.json`: macOS
 `/Library/Application Support/ClaudeCode/`, Linux `/etc/claude-code/`)으로 개인이 덮어쓸 수 없는
 정책을 강제할 수 있습니다. 아래는 MCP allowlist 와 최소 권한의 시작점입니다(현행 공식 문서 기준).
 
@@ -295,7 +295,7 @@ Claude Code 는 조직이 배포하는 관리 설정(`managed-settings.json` —
 
 - `allowedMcpServers` 에 없는 서버는 사용할 수 없습니다(빈 배열이면 전면 잠금,
   `deniedMcpServers` 가 우선).
-- 도구 호출 단위의 결정적 차단은 PreToolUse hook 으로 구현합니다 —
+- 도구 호출 단위의 결정적 차단은 PreToolUse hook 으로 구현합니다.
   [방법 3: Hooks로 자동 환기](/docs/developer-guide#method-3) 의 스크립트를 그대로 확장할 수 있습니다.
 - 다른 도구도 관리자 정책을 제공합니다(예: 도구별 조직 설정에서 MCP 사용 제한). 각 도구의
   관리자 문서를 확인하세요.
@@ -328,7 +328,7 @@ Claude Code 는 조직이 배포하는 관리 설정(`managed-settings.json` —
 표현되지 않습니다. 사람이 판단하는 절차이므로 규칙으로 적어 두고 결과를 PR 에 남기는 방식으로
 다룹니다.
 
-**실전 적용 사례 — TRUSCA**: MCP 서버를 아직 하나도 쓰지 않는 저장소가 이 형태를 어떻게
+**실전 적용 사례(TRUSCA)**: MCP 서버를 아직 하나도 쓰지 않는 저장소가 이 형태를 어떻게
 적용했는지 보여 주는 예입니다. 서버가 없을 때 도입하는 편이 낫다는 판단이었습니다. 나중에
 서버를 붙이려는 시점에는 급하게 절차를 만들게 되기 때문입니다.
 
@@ -355,9 +355,9 @@ MCP 서버가 런타임 의존성이 되면 SBOM 에 담아야 합니다. Cyclon
 `services` 요소를 두고, 애플리케이션이 호출하는 외부 서비스를 엔드포인트 URI, 인증 요구사항,
 신뢰 경계 통과 여부, 데이터 분류와 흐름 방향까지 기술할 수 있게 합니다.
 
-- **원격 MCP 서버** — `services` 에 등재합니다. `endpoints`, `authenticated`,
+- **원격 MCP 서버**: `services` 에 등재합니다. `endpoints`, `authenticated`,
   `x-trust-boundary`, `trustZone`, `data`(`flow` 방향과 `classification`) 필드를 사용합니다.
-- **로컬에서 실행되는 MCP 서버 패키지** — `components` 에 등재하고 일반 의존성과 동일하게 다룹니다.
+- **로컬에서 실행되는 MCP 서버 패키지**: `components` 에 등재하고 일반 의존성과 동일하게 다룹니다.
 
 데이터 흐름 방향을 기술할 수 있다는 점이 3절 6번(데이터 반출 경로 판정)과 직접 연결됩니다.
 서버가 어떤 외부 엔드포인트로 무엇을 내보내는지 판정한 결과를 그대로 담을 수 있습니다.
@@ -405,25 +405,25 @@ MCP 구성요소를 신뢰할 수 있는 출처에서만 받아 암호학적으�
 서버만 허용할 것(레벨 2), 로컬에서 띄우는 서버를 최소 권한 샌드박스에서 실행할 것(레벨 2)을
 요구하는데, 위 3절의 통제와 그대로 대응합니다.
 
-- MCP 스펙 — [Security Best Practices](https://modelcontextprotocol.io/specification/2026-07-28/basic/security_best_practices) 및 본문의 Security and Trust & Safety 절. 현행 개정은 2026-07-28 이며 인가 관련 변경은 [2025-11-25 변경 목록](https://modelcontextprotocol.io/specification/2025-11-25/changelog)과 [2026-07-28 변경 목록](https://modelcontextprotocol.io/specification/2026-07-28/changelog)에 있습니다
-- MCP 공식 확장 — [Enterprise-Managed Authorization](https://modelcontextprotocol.io/extensions/auth/enterprise-managed-authorization) (stable) — 사내 IdP 가 MCP 서버 접근을 중앙에서 결정하는 방식
-- Ox Security, [The Mother of All AI Supply Chains](https://www.ox.security/blog/the-mother-of-all-ai-supply-chains-critical-systemic-vulnerability-at-the-core-of-the-mcp/) (2026-04-15) — 공식 SDK 네 종의 STDIO 전송 결함, CVE 10건, 최대 20만 인스턴스 추산
-- Canadian Centre for Cyber Security 외, [Careful adoption of agentic AI services](https://www.cyber.gc.ca/en/news-events/joint-guidance-careful-adoption-agentic-artificial-intelligence-services) (2026-05-01 게시) — 캐나다, 호주, 미국, 뉴질랜드, 영국 5개국 기관의 공동 지침
+- MCP 스펙: [Security Best Practices](https://modelcontextprotocol.io/specification/2026-07-28/basic/security_best_practices) 및 본문의 Security and Trust & Safety 절. 현행 개정은 2026-07-28 이며 인가 관련 변경은 [2025-11-25 변경 목록](https://modelcontextprotocol.io/specification/2025-11-25/changelog)과 [2026-07-28 변경 목록](https://modelcontextprotocol.io/specification/2026-07-28/changelog)에 있습니다
+- MCP 공식 확장: [Enterprise-Managed Authorization](https://modelcontextprotocol.io/extensions/auth/enterprise-managed-authorization) (stable), 사내 IdP 가 MCP 서버 접근을 중앙에서 결정하는 방식
+- Ox Security, [The Mother of All AI Supply Chains](https://www.ox.security/blog/the-mother-of-all-ai-supply-chains-critical-systemic-vulnerability-at-the-core-of-the-mcp/) (2026-04-15): 공식 SDK 네 종의 STDIO 전송 결함, CVE 10건, 최대 20만 인스턴스 추산
+- Canadian Centre for Cyber Security 외, [Careful adoption of agentic AI services](https://www.cyber.gc.ca/en/news-events/joint-guidance-careful-adoption-agentic-artificial-intelligence-services) (2026-05-01 게시): 캐나다, 호주, 미국, 뉴질랜드, 영국 5개국 기관의 공동 지침
 - Microsoft Security Blog, [Securing AI agents: When AI tools move from reading to acting](https://www.microsoft.com/en-us/security/blog/2026/06/30/securing-ai-agents-ai-tools-move-from-reading-acting/) (2026-06-30)
 - OWASP GenAI Security Project, [Top 10 for Agentic Applications 2026](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/) (2025-12-09) / [LLM Top 10 2026](https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/) (2026-08-03, 본문에서 인용한 LLM01:2025 를 잇는 개정판) / [LLM01:2025 Prompt Injection](https://genai.owasp.org/llmrisk/llm01-prompt-injection/) / [OWASP MCP Top 10](https://owasp.org/www-project-mcp-top-10/) (Incubator 단계)
-- OWASP, [AISVS 1.0](https://github.com/OWASP/AISVS) (2026-06) — 9장 오케스트레이션과 에이전틱 액션, 10장 MCP 보안, 검증 레벨 1~3
+- OWASP, [AISVS 1.0](https://github.com/OWASP/AISVS) (2026-06): 9장 오케스트레이션과 에이전틱 액션, 10장 MCP 보안, 검증 레벨 1~3
 - OWASP, [Non-Human Identities Top 10 2025](https://owasp.github.io/www-project-non-human-identities-top-10/2025/): 사람이 아닌 계정의 관리 실패 10가지
 - GitHub Docs, [Responsible use of Copilot cloud agent](https://docs.github.com/en/copilot/responsible-use/agents): 단일 브랜치 push, Actions 시크릿 접근 불가, 워크플로 승인
-- CycloneDX, [Proposal: Agent Bill of Materials](https://github.com/CycloneDX/specification/issues/895) (2026-03-26 개설, 2026-04-29 중복 처리) — 에이전트 전용 BOM 논의 경과
-- Hasan et al., [Model Context Protocol (MCP) at First Glance](https://arxiv.org/abs/2506.13538) — 1,899개 서버 조사(tool poisoning 5.5%)
-- Invariant Labs, [MCP Security Notification: Tool Poisoning Attacks](https://invariantlabs.ai/blog/mcp-security-notification-tool-poisoning-attacks) (2025-04-01) — 도구 오염 기법 최초 공개
-- Snyk, [Malicious MCP Server on npm: postmark-mcp Harvests Emails](https://snyk.io/blog/malicious-mcp-server-on-npm-postmark-mcp-harvests-emails/) (2025-09-25) — 악성 버전은 1.0.16부터로 추정이며, ActiveCampaign/Postmark 저장소와의 연관은 확인되지 않았습니다
-- GitGuardian, [From Path Traversal to Supply Chain Compromise: Breaking MCP Server Hosting](https://blog.gitguardian.com/breaking-mcp-server-hosting/) (2025-10-15) — 침해 사고가 아니라 연구자가 제보해 수정된 취약점
-- OWASP CycloneDX, [Specification Overview](https://cyclonedx.org/specification/overview/) / [JSON Schema 1.7](https://cyclonedx.org/schema/bom-1.7.schema.json) — `service` 객체 필드와 `component.type` 열거값
-- Pillar Security, [New Vulnerability in GitHub Copilot and Cursor: How Hackers Can Weaponize Code Agents](https://www.pillar.security/blog/new-vulnerability-in-github-copilot-and-cursor-how-hackers-can-weaponize-code-agents) (2025-03-18) — Rules File Backdoor
-- Liu et al., ["Your AI, My Shell": Demystifying Prompt Injection Attacks on Agentic AI Coding Editors](https://arxiv.org/abs/2509.22040) — AIShellJack, 페이로드 314개, 성공률 41~84%
-- Snyk, [ToxicSkills: Malicious AI Agent Skills](https://snyk.io/blog/toxicskills-malicious-ai-agent-skills-clawhub/) (2026-02) — 스킬 3,984개 중 13.4%가 critical 등급 이슈
-- Model Context Protocol Blog, [Introducing the MCP Registry](https://blog.modelcontextprotocol.io/posts/2025-09-08-mcp-registry-preview/) (2025-09-08) — 프리뷰 공개와 신고 기반 사후 조치 방식
+- CycloneDX, [Proposal: Agent Bill of Materials](https://github.com/CycloneDX/specification/issues/895) (2026-03-26 개설, 2026-04-29 중복 처리): 에이전트 전용 BOM 논의 경과
+- Hasan et al., [Model Context Protocol (MCP) at First Glance](https://arxiv.org/abs/2506.13538): 1,899개 서버 조사(tool poisoning 5.5%)
+- Invariant Labs, [MCP Security Notification: Tool Poisoning Attacks](https://invariantlabs.ai/blog/mcp-security-notification-tool-poisoning-attacks) (2025-04-01): 도구 오염 기법 최초 공개
+- Snyk, [Malicious MCP Server on npm: postmark-mcp Harvests Emails](https://snyk.io/blog/malicious-mcp-server-on-npm-postmark-mcp-harvests-emails/) (2025-09-25): 악성 버전은 1.0.16부터로 추정이며, ActiveCampaign/Postmark 저장소와의 연관은 확인되지 않았습니다
+- GitGuardian, [From Path Traversal to Supply Chain Compromise: Breaking MCP Server Hosting](https://blog.gitguardian.com/breaking-mcp-server-hosting/) (2025-10-15): 침해 사고가 아니라 연구자가 제보해 수정된 취약점
+- OWASP CycloneDX, [Specification Overview](https://cyclonedx.org/specification/overview/) / [JSON Schema 1.7](https://cyclonedx.org/schema/bom-1.7.schema.json): `service` 객체 필드와 `component.type` 열거값
+- Pillar Security, [New Vulnerability in GitHub Copilot and Cursor: How Hackers Can Weaponize Code Agents](https://www.pillar.security/blog/new-vulnerability-in-github-copilot-and-cursor-how-hackers-can-weaponize-code-agents) (2025-03-18): Rules File Backdoor
+- Liu et al., ["Your AI, My Shell": Demystifying Prompt Injection Attacks on Agentic AI Coding Editors](https://arxiv.org/abs/2509.22040): AIShellJack, 페이로드 314개, 성공률 41~84%
+- Snyk, [ToxicSkills: Malicious AI Agent Skills](https://snyk.io/blog/toxicskills-malicious-ai-agent-skills-clawhub/) (2026-02): 스킬 3,984개 중 13.4%가 critical 등급 이슈
+- Model Context Protocol Blog, [Introducing the MCP Registry](https://blog.modelcontextprotocol.io/posts/2025-09-08-mcp-registry-preview/) (2025-09-08): 프리뷰 공개와 신고 기반 사후 조치 방식
 - Koi Security, [GlassWorm: First Self-Propagating Worm Using Invisible Code Hits OpenVSX Marketplace](https://www.koi.ai/blog/glassworm-first-self-propagating-worm-using-invisible-code-hits-openvsx-marketplace) (2025-10-18) / [MaliciousCorgi](https://www.koi.ai/blog/maliciouscorgi-the-cute-looking-ai-extensions-leaking-code-from-1-5-million-developers) (2026-01-22)
 - [Snyk agent-scan](https://github.com/snyk/agent-scan) / [Cisco mcp-scanner](https://github.com/cisco-ai-defense/mcp-scanner) / [ToolHive](https://github.com/stacklok/toolhive) / [MCP Gateway & Registry](https://github.com/agentic-community/mcp-gateway-registry) / [agentgateway](https://agentgateway.dev/)
-- [Claude Code 설정 문서](https://code.claude.com/docs/en/settings) (managed settings, MCP allowlist) / [샌드박스 문서](https://code.claude.com/docs/en/sandboxing) / [Sandbox environments](https://code.claude.com/docs/en/sandbox-environments) — 격리 범위와 opt-in 방식
+- [Claude Code 설정 문서](https://code.claude.com/docs/en/settings) (managed settings, MCP allowlist) / [샌드박스 문서](https://code.claude.com/docs/en/sandboxing) / [Sandbox environments](https://code.claude.com/docs/en/sandbox-environments): 격리 범위와 opt-in 방식

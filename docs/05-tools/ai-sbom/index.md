@@ -3,7 +3,7 @@
 버전: 1.0
 충족 체크리스트:
   - 'ISO/IEC 5230: []'
-  - 'ISO/IEC 18974: [G3B.1 확장 — AI 컴포넌트까지 SBOM 범위 확대]'
+  - 'ISO/IEC 18974: [G3B.1 확장: AI 컴포넌트까지 SBOM 범위 확대]'
 셀프스터디 소요시간: 1시간
 sidebar_label: '5.4 AI SBOM (선택)'
 ---
@@ -25,8 +25,8 @@ HuggingFace 모델 하나를 대상으로 CycloneDX **ML-BOM** 을 직접 생성
 
 코드 의존성만 담는 SBOM 은 AI 시스템의 두 가지 구성 요소를 놓칩니다.
 
-- **사전 훈련 모델** — 표준화되지 않은 커스텀 라이선스(상업적 사용 조건, MAU 제한, 파생 모델 의무)가 많습니다.
-- **학습 데이터셋** — CC 계열 오픈 데이터 라이선스의 저작자 표시, 동일 조건 의무가 따라옵니다.
+- **사전 훈련 모델**: 표준화되지 않은 커스텀 라이선스(상업적 사용 조건, MAU 제한, 파생 모델 의무)가 많습니다.
+- **학습 데이터셋**: CC 계열 오픈 데이터 라이선스의 저작자 표시, 동일 조건 의무가 따라옵니다.
 
 이 둘을 SBOM 에 기록하는 확장이 AI SBOM 이고, 사실상의 표준 형식은
 **CycloneDX ML-BOM**(모델 카드 메타데이터가 풍부)과 **SPDX 3.0 AI Profile**(라이선스 표현이 정밀) 두 가지입니다.
@@ -39,7 +39,7 @@ AI SBOM 자체가 필수 요구는 아닙니다. 다만 모델·데이터셋을 
 개념 배경은 [SBOM 기본의 AI SBOM 절](../../00-overview/sbom-101.md)과
 [AI 시스템 컴플라이언스](/ai-coding/iso42001)를 참조하세요.
 
-:::tip 바로 보기 — 완성 예시 먼저
+:::tip 바로 보기: 완성 예시 먼저
 어떤 결과가 나오는지 먼저 보려면 [KWG AI SBOM 컴플라이언스 가이드](https://openchain-project.github.io/OpenChain-KWG/guide/ai-sbom_guide/)의
 조항 체크리스트와 도구 실행 결과 화면을 훑어보세요. cdxgen 실행 결과로 AI 컴포넌트의
 라이선스 정보 공백을 실증한 사례도 실려 있습니다.
@@ -54,7 +54,7 @@ AI SBOM 자체가 필수 요구는 아닙니다. 다만 모델·데이터셋을 
 실습 도구는 [BomLens](https://github.com/sktelecom/bomlens)를 사용합니다. HuggingFace 모델
 식별자를 입력하면 CycloneDX 1.7 ML-BOM 과 고지문, 위험 리포트를 로컬(Docker)에서 생성합니다.
 
-### 1단계 — BomLens 준비
+### 1단계: BomLens 준비
 
 ```bash
 git clone https://github.com/sktelecom/bomlens.git
@@ -67,7 +67,7 @@ docker pull ghcr.io/sktelecom/bomlens:latest
 복사되지 않습니다(도구가 안내 메시지를 출력합니다). 홈 디렉토리 아래에서 클론해 실행하세요.
 :::
 
-### 2단계 — 모델 스캔으로 ML-BOM 생성
+### 2단계: 모델 스캔으로 ML-BOM 생성
 
 ```bash
 ./scripts/scan-sbom.sh --project bert-base --version 1.0.0 \
@@ -80,7 +80,7 @@ docker pull ghcr.io/sktelecom/bomlens:latest
   고지문(notice), 위험 리포트(risk-report), 보안(security) 리포트, NTIA 최소 요소 적합성 점검 결과.
   모델에는 패키지 CVE 가 없으므로 보안 리포트는 취약점 0건으로 나오는 것이 정상입니다.
 
-### 3단계 — ML-BOM 읽기
+### 3단계: ML-BOM 읽기
 
 생성된 `bom.json` 에서 아래를 확인합니다.
 
@@ -88,13 +88,13 @@ docker pull ghcr.io/sktelecom/bomlens:latest
   표준 라이선스(Apache-2.0 등)인지 확인하고 [5.1의 라이선스 검토 절차](../sbom-generation/index.md)와
   동일하게 허용 목록과 대조합니다.
 - **모델 카드 메타데이터**: 용도, 제한 사항 등 모델 카드에서 온 항목을 확인합니다.
-- **정보 공백**: 라이선스나 데이터셋 항목이 비어 있으면 그 자체가 발견입니다 — HuggingFace 모델
+- **정보 공백**: 라이선스나 데이터셋 항목이 비어 있으면 그 자체가 발견입니다. HuggingFace 모델
   카드에서 직접 확인해 보완 기록을 남깁니다 (KWG 가이드의 "라이선스 공백 실증"과 같은 상황).
 
-### 대안 도구 — OWASP AIBOM Generator
+### 대안 도구: OWASP AIBOM Generator
 
 표준 중립 대안으로는 OWASP AIBOM Generator 가 있습니다. HuggingFace 모델을 대상으로 AI SBOM 을
-생성하며, 설치와 실행 방법은 [KWG AI SBOM 가이드 — 도구](https://openchain-project.github.io/OpenChain-KWG/guide/ai-sbom_guide/)를 참조하세요.
+생성하며, 설치와 실행 방법은 [KWG AI SBOM 가이드: 도구](https://openchain-project.github.io/OpenChain-KWG/guide/ai-sbom_guide/)를 참조하세요.
 
 ### 코드 SBOM과의 관계
 
@@ -105,7 +105,7 @@ syft/cdxgen)과 이 챕터의 모델 ML-BOM. 배포 단위별로 두 문서를 �
 ### 자동화로 잇기
 
 모델 버전이 바뀔 때마다 ML-BOM 을 재생성하도록 CI 에 넣을 수 있습니다. 위 스캔 명령을
-[DevSecOps — SCA](/devsecops/sca)의 SBOM 생성 잡과 같은 방식으로 워크플로에 추가하면 됩니다.
+[DevSecOps: SCA](/devsecops/sca)의 SBOM 생성 잡과 같은 방식으로 워크플로에 추가하면 됩니다.
 
 ## 4. 완료 확인 체크리스트
 

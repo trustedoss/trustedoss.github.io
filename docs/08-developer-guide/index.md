@@ -27,7 +27,7 @@ sidebar_position: 8
 이 챕터는 Claude Code를 활용하여 **개발자가 무의식적으로 정책을 준수**하게 만드는 4가지 방법을 설명합니다.
 
 :::info 목표
-담당자가 매번 검토하지 않아도 Claude Code가 정책을 지켜준다 — 이 상태를 만드는 것이 이 챕터의 목표입니다.
+담당자가 매번 검토하지 않아도 Claude Code가 정책을 지켜준다. 이 상태를 만드는 것이 이 챕터의 목표입니다.
 :::
 
 :::note 이 챕터 vs AI코딩 Rules 템플릿
@@ -83,7 +83,7 @@ CVSS 9.0의 Critical 취약점이 공개되었지만 팀이 인지하지 못합�
 
 가장 쉬운 방법 1부터 시작해 3·4로 보강하는 순서를 권장합니다.
 
-### 방법 1 — CLAUDE.md에 정책 명시 (보장 70%, 쉬움) {#method-1}
+### 방법 1: CLAUDE.md에 정책 명시 (보장 70%, 쉬움) {#method-1}
 
 프로젝트 루트의 `CLAUDE.md`에 아래 섹션을 추가하면, Claude Code가 패키지 추가를 도울 때 이 정책을 자동으로 참조합니다. 등급 구분은 [라이선스 분류](/reference/concepts/license-classification) 기준을 따릅니다. 실제 회사 정책의 허용 목록은 03 정책 챕터에서 생성한 `output/policy/license-allowlist.md`이므로, 아래 예시를 붙여넣은 뒤 그 파일 내용에 맞게 조정하세요.
 
@@ -138,7 +138,7 @@ CVSS 9.0의 Critical 취약점이 공개되었지만 팀이 인지하지 못합�
 - 효과: Claude Code가 정책을 인지하고 위반 시 경고합니다.
 - 한계: 개발자가 터미널에서 직접 `npm install`을 실행하면 개입하지 못합니다.
 
-### 방법 2 — Skill로 검사 절차 표준화 (보장 80%, 쉬움) {#method-2}
+### 방법 2: Skill로 검사 절차 표준화 (보장 80%, 쉬움) {#method-2}
 
 라이선스·취약점 확인 절차를 `/oss-policy-check` skill로 만들어, 누구나 한 명령으로 같은 검사를 실행합니다. Skill은 디렉토리 단위로 정의하며, 파일 상단의 frontmatter(name, description)가 있어야 인식됩니다.
 
@@ -232,7 +232,7 @@ osv-scanner --recursive .
 - 효과: 검사 절차가 재사용 가능한 한 명령으로 표준화됩니다.
 - 한계: 개발자가 실행을 잊으면 검사되지 않습니다.
 
-### 방법 3 — Hooks로 자동 환기 (보장 90%, 보통) {#method-3}
+### 방법 3: Hooks로 자동 환기 (보장 90%, 보통) {#method-3}
 
 `.claude/settings.json`에 아래 Hook을 걸어 두면, 의존성 파일이 변경될 때마다 자동으로 경고가 표시됩니다.
 
@@ -260,7 +260,7 @@ Hook 커맨드는 표준 입력(stdin)으로 도구 호출 정보가 담긴 JSON
 - 더 강한 통제: 수정 자체를 차단하려면 같은 스크립트를 `PreToolUse` Hook으로 등록하세요. PreToolUse에서 exit code 2는 도구 호출을 실행 전에 차단합니다.
 - 한계: Claude Code 외부에서 파일을 수정하면 감지하지 못하므로 CI/CD로 보완합니다.
 
-### 방법 4 — CI/CD로 머지 차단 (보장 99%, 다소 복잡) {#method-4}
+### 방법 4: CI/CD로 머지 차단 (보장 99%, 다소 복잡) {#method-4}
 
 PR에서 syft·grype로 자동 검사하고, 정책 위반 시 머지를 차단합니다. 사람이나 도구의 누락과 무관하게 마지막 관문을 지킵니다. 아래 예시는 무료 오픈소스 도구만 사용합니다([syft](https://github.com/anchore/syft), [grype](https://github.com/anchore/grype) 모두 Apache-2.0).
 

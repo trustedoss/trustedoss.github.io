@@ -33,8 +33,8 @@ The table below shows how the DevSecOps pipeline built in this guide meets the k
 | 4.4.1       | Evidence that all requirements are met         | Scan results and SBOM artifacts retained as evidence       | [Monitoring](./monitoring)               |
 
 :::note Clauses the pipeline does not cover
-Organizational requirements — a public channel for third-party vulnerability inquiries (§4.2.1) and
-documented roles, staffing, and budget (§4.2.2) — are covered by the governance-track deliverables,
+Organizational requirements, namely a public channel for third-party vulnerability inquiries (§4.2.1) and
+documented roles, staffing, and budget (§4.2.2), are covered by the governance-track deliverables,
 not by the CI pipeline. Use the [Requirements Detail Matrix](/en/reference/requirements-matrix) as the
 canonical reference for the full item list and evidence.
 :::

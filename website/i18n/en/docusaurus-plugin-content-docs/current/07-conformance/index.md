@@ -78,7 +78,7 @@ Proceed in the following order:
 ## 4. Understanding the gap analysis report
 
 **What is a gap analysis?** It's the work of checking what you've built so far against what the
-standard requires, and finding the "gap" — what's still missing. The agent opens the entire
+standard requires, and finding the "gap": what's still missing. The agent opens the entire
 `output/` folder, compares it item by item against the standard's checklist, and writes the result
 to `output/conformance/gap-analysis.md`.
 
@@ -95,7 +95,7 @@ To check the certification question and verification material for each item your
 
 There is no need to panic if your gap analysis reveals unmet items. Each entry includes a link to the chapter you should return to. Partially satisfied items can often be converted to satisfied with only minor changes.
 
-**§4.1.4.3 — How to handle continuous improvement audit evidence (initial certification):**
+**§4.1.4.3: How to handle continuous improvement audit evidence (initial certification):**
 
 ISO/IEC 18974 §4.1.4.3 requires "audit evidence demonstrating continuous improvement." During initial certification, there is no history yet, so proceed as follows.
 
@@ -109,9 +109,9 @@ For the same reason, the two items below are normally only partially satisfied a
 - **§4.1.2.5 Evidence of periodic review**: Record the "next scheduled review date" in `gap-analysis.md` and the item is treated as partially satisfied. On renewal, one or more actual review records convert it to satisfied.
 - **§4.1.2.6 Person responsible for verifying alignment with internal best practices**: Assign the verification owner in `role-definition.md` and the item is treated as partially satisfied. On renewal, one or more recorded review results convert it to satisfied.
 
-**G4.5 — Confirming vulnerability remediation before distribution (18974 §4.3.2.2 · §4.4.1.1):**
+**G4.5: Confirming vulnerability remediation before distribution (18974 §4.3.2.2 · §4.4.1.1):**
 
-ISO/IEC 18974 does not require zero known vulnerabilities. It requires a record of the action taken for each identified vulnerability — including a decision that no action is needed (§4.3.2.2) — plus documented evidence that the program meets the requirements (§4.4.1.1). The conformance-preparer agent checks `output/vulnerability/remediation-plan.md` directly and decides whether to print the "completion" message based on the criteria below.
+ISO/IEC 18974 does not require zero known vulnerabilities. It requires a record of the action taken for each identified vulnerability, including a decision that no action is needed (§4.3.2.2), plus documented evidence that the program meets the requirements (§4.4.1.1). The conformance-preparer agent checks `output/vulnerability/remediation-plan.md` directly and decides whether to print the "completion" message based on the criteria below.
 
 | Situation                                                                                                 | How to handle                                                                                                         |
 | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
@@ -132,8 +132,8 @@ Self-certification is a declaration about a specific software "scope." By clearl
 Once the gap analysis is complete and there are no unmet items (or a resolution plan is in place), proceed with official registration using the following steps:
 
 :::info Cost
-OpenChain self-certification registration is free. There is no review fee or registration charge —
-you self-check and then submit your company's information through the online form.
+OpenChain self-certification registration is free. There is no review fee or registration charge.
+You self-check and then submit your company's information through the online form.
 :::
 
 **Step 1**: Do a final review of the contents of `output/conformance/declaration-draft.md` and confirm them.
@@ -224,13 +224,13 @@ You can see the actual format of the generated files in [Self-Certification Deli
 
 Your organization's open source management system is now complete.
 
-From organizational structure to policy, process, SBOM, vulnerability management, training, and the self-certification declaration — every element required by ISO/IEC 5230 and ISO/IEC 18974 has been systematically put in place. This achievement is a strong trust signal to your supply chain partners and customers, demonstrating the maturity of your open source management.
+From organizational structure to policy, process, SBOM, vulnerability management, training, and the self-certification declaration, every element required by ISO/IEC 5230 and ISO/IEC 18974 has been systematically put in place. This achievement is a strong trust signal to your supply chain partners and customers, demonstrating the maturity of your open source management.
 
 Ways to keep growing with the open source ecosystem after certification:
 
 - **Participate in the OpenChain KWG community**: Share your experience with other companies in the Korean OpenChain community.
   https://openchain-project.github.io/OpenChain-KWG
-- **Establish an in-house open source contribution policy**: Move from consumption to contribution — set up a policy for contributing to open source communities.
+- **Establish an in-house open source contribution policy**: Move from consumption to contribution: set up a policy for contributing to open source communities.
 - **Consider establishing an OSPO (Open Source Program Office)**: Strengthen long-term capability by formalizing a team dedicated to open source management.
 
 ### Next: Scale with automation

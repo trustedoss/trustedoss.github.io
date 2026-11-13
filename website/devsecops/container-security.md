@@ -11,7 +11,7 @@ sidebar_position: 6
 
 컨테이너 이미지에 포함된 OS 패키지·애플리케이션 의존성의 취약점, Dockerfile 설정 오류, 시크릿 노출을 배포 전에 탐지하는 보안 검사입니다. 이미지가 한 번 배포되면 전체 인스턴스에 동일한 취약점이 퍼지므로 빌드 단계 차단이 특히 중요합니다.
 
-:::tip 아래 설정은 예시입니다 — 작동하는 전체 구현은 참조 저장소에
+:::tip 아래 설정은 예시입니다. 작동하는 전체 구현은 참조 저장소에
 이 페이지의 YAML·명령은 핵심을 보여주는 예시입니다. 복사해 바로 쓸 수 있는 전체 파이프라인(정책 파일·샘플 앱 포함)은 [Best Practice 저장소](/ai-coding/best-practice-repo)에서 확인하세요.
 :::
 
@@ -167,7 +167,7 @@ secrets:
 
 ## 실제 운영 사례
 
-오픈소스 프로젝트 TRUSCA 는 빌드하는 워커 이미지를 Trivy 로 스캔합니다 —
+오픈소스 프로젝트 TRUSCA 는 빌드하는 워커 이미지를 Trivy 로 스캔합니다. 이 스캔은
 [ci.yml](https://github.com/trustedoss/trusca/blob/main/.github/workflows/ci.yml) 의 `image-scan` job 입니다. HIGH 또는 CRITICAL 이 나오면 빌드가 실패합니다.
 
 참고할 만한 두 가지가 있습니다. 예외는 `.trivyignore` 에 CVE 단위로 두되 **왜 도달 불가한지를

@@ -33,7 +33,7 @@ A food package lists "flour, sugar, eggs, butter..." An SBOM is the ingredient l
 
 > "This software includes React 18.2.0, axios 1.4.0, and log4j 2.14.0."
 
-Consumers — recipients, customers, and regulators — read this list to check safety and licensing.
+Consumers (recipients, customers, and regulators) read this list to check safety and licensing.
 
 ### What you cannot answer without an SBOM
 
@@ -66,12 +66,12 @@ These are the seven elements the U.S. National Telecommunications and Informatio
 
 The 2026 revision adds the following as required elements.
 
-| Element            | Description                                                                      |
-| ------------------ | -------------------------------------------------------------------------------- |
-| Component hash     | Hash value and algorithm, for integrity verification — promoted from recommended |
-| Component license  | The component's license — promoted from optional to a core field                 |
-| SBOM tool name     | Which tool generated this SBOM                                                   |
-| Generation context | The lifecycle stage at which the SBOM was created (pre-build, post-build, etc.)  |
+| Element            | Description                                                                     |
+| ------------------ | ------------------------------------------------------------------------------- |
+| Component hash     | Hash value and algorithm, for integrity verification; promoted from recommended |
+| Component license  | The component's license; promoted from optional to a core field                 |
+| SBOM tool name     | Which tool generated this SBOM                                                  |
+| Generation context | The lifecycle stage at which the SBOM was created (pre-build, post-build, etc.) |
 
 The scope widened as well: it now covers all software, including open source, AI software, and SaaS. Licenses becoming a required field lines up directly with ISO/IEC 5230 license compliance, so one SBOM can now serve both demands more easily.
 
@@ -89,9 +89,9 @@ pkg:{type}/{namespace}/{name}@{version}
 
 Examples:
 
-- `pkg:npm/lodash@4.17.21` — npm package
-- `pkg:pypi/requests@2.28.0` — Python package
-- `pkg:maven/org.springframework/spring-core@6.0.0` — Java Maven package
+- `pkg:npm/lodash@4.17.21`: npm package
+- `pkg:pypi/requests@2.28.0`: Python package
+- `pkg:maven/org.springframework/spring-core@6.0.0`: Java Maven package
 
 With a PURL, you can automatically match components against vulnerability databases (NVD, OSV) to find CVEs.
 

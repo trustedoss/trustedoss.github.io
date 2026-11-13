@@ -46,7 +46,7 @@ Copy the full text from the [Common Rules Template](../rules-template). When the
 
 ### Configuration File Location
 
-- `CONVENTIONS.md` (root; the file name is free — this is the convention in Aider's official docs)
+- `CONVENTIONS.md` (root; the file name is free, and this is the convention in Aider's official docs)
 - `read` field in `.aider.conf.yml` (registers the file so it loads automatically)
 
 ### How to Apply
@@ -58,7 +58,7 @@ Copy the full text from the [Common Rules Template](../rules-template). When the
 
 ### Configuration Example
 
-**CONVENTIONS.md** — This file holds the Common Rules Template content. Below is an excerpt.
+**CONVENTIONS.md**: This file holds the Common Rules Template content. Below is an excerpt.
 
 ```markdown
 ## Open Source Policy
@@ -70,7 +70,7 @@ Copy the full text from the [Common Rules Template](../rules-template). When the
 
 Copy the full text from the [Common Rules Template](../rules-template). When the allow/deny lists change, update only the canonical template and paste it into each tool file again.
 
-**.aider.conf.yml** — Always loads the policy document as read-only context.
+**.aider.conf.yml**: Always loads the policy document as read-only context.
 
 ```yaml
 # Load the policy document as read-only context at session start

@@ -11,7 +11,7 @@ Where Trusted OSS has been presented, and the slides from each talk. If you woul
 at your event, open an issue on
 [GitHub](https://github.com/trustedoss/trustedoss.github.io/issues).
 
-## Open Source Summit Korea 2026 — Seoul
+## Open Source Summit Korea 2026, Seoul
 
 **AI-Powered Open Source Risk Management: ISO Self-Certification Kit and 5-Level AI Coding Governance**
 

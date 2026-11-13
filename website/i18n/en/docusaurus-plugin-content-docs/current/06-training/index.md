@@ -54,7 +54,7 @@ Unfamiliar acronyms such as SBOM and CVSS are explained in plain language in the
 | Security Manager    | Vulnerability identification and response, interpreting CVSS scores, 18974 requirements             | 3 hours          |
 
 :::tip
-For real corporate training examples (SKT, Kakao, NCSOFT, etc.) and training materials, see [KWG Open Source Guide — Training](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/5-training/).
+For real corporate training examples (SKT, Kakao, NCSOFT, etc.) and training materials, see [KWG Open Source Guide: Training](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/5-training/).
 :::
 
 ## 4. List of free training resources
@@ -128,15 +128,15 @@ Take your time and work through each step until you understand it.
 
    ***
 
-   **Question 1/3** — How many people are in each job group? (N developers / N managers / N operations)
+   **Question 1/3**: How many people are in each job group? (N developers / N managers / N operations)
 
    `Sample answer: 40 developers, 5 managers, 5 in operations`
 
-   **Question 2/3** — What is your preferred training format? (Online self-paced / In-person classroom / Blended)
+   **Question 2/3**: What is your preferred training format? (Online self-paced / In-person classroom / Blended)
 
    `Sample answer: Online self-paced`
 
-   **Question 3/3** — Do you need proof of training completion? (For internal records / for audit preparation / for certification submission)
+   **Question 3/3**: Do you need proof of training completion? (For internal records / for audit preparation / for certification submission)
 
    `Sample answer: For certification submission`
 

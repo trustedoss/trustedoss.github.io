@@ -13,7 +13,7 @@ A culture and methodology that integrates development (Dev), security (Sec), and
 
 ---
 
-## Shift Left — Why faster is better
+## Shift Left: Why faster is better
 
 :::info The cost of fixing a vulnerability can vary by orders of magnitude depending on when it is discovered.
 :::
@@ -31,7 +31,7 @@ The goal of DevSecOps is to shift as many checks as possible to the left (the co
 
 ---
 
-## Maturity Model — Four Levels
+## Maturity Model: Four Levels
 
 This model grades DevSecOps maturity on four levels. These level numbers are a separate scale from the stage numbers in the [AI Coding 5-Stage Strategy by Assurance Level](/en/ai-coding/strategy). Do not read the two together.
 
@@ -79,7 +79,7 @@ Stabilizing one area at a time before moving to the next is the sustainable way 
 
 ---
 
-## Self-study — agents by strategy stage
+## Self-study: agents by strategy stage
 
 :::tip Automate each stage of the 5-stage strategy with a Claude Code agent
 Running the agents below in order lets you actually implement
@@ -90,12 +90,12 @@ each stage of the AI Coding 5-stage strategy.
 
 The stage numbers below are those of the [AI Coding 5-Stage Strategy by Assurance Level](/en/ai-coding/strategy). They are a different scale from the maturity levels above.
 
-| Stage                              | agent                | Command                                                  |
-| ---------------------------------- | -------------------- | -------------------------------------------------------- |
-| Stage 2 — Internalize the AI rules | ai-coding-setup      | `cd agents/en/ai-coding-setup && claude`                 |
-| Stage 3 — CI/CD pipeline           | devsecops-setup      | `cd agents/en/devsecops-setup && claude`                 |
-| Stage 4 — PR auto-comment          | level2-pr-comment    | `cd agents/en/level2-automation/pr-comment && claude`    |
-| Stage 5 — Continuous monitoring    | level2-issue-tracker | `cd agents/en/level2-automation/issue-tracker && claude` |
+| Stage                             | agent                | Command                                                  |
+| --------------------------------- | -------------------- | -------------------------------------------------------- |
+| Stage 2: Internalize the AI rules | ai-coding-setup      | `cd agents/en/ai-coding-setup && claude`                 |
+| Stage 3: CI/CD pipeline           | devsecops-setup      | `cd agents/en/devsecops-setup && claude`                 |
+| Stage 4: PR auto-comment          | level2-pr-comment    | `cd agents/en/level2-automation/pr-comment && claude`    |
+| Stage 5: Continuous monitoring    | level2-issue-tracker | `cd agents/en/level2-automation/issue-tracker && claude` |
 
 ---
 

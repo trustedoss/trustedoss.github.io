@@ -247,7 +247,7 @@ PR opened
                             PR comment: TP/FP assessment + risk level
 ```
 
-Note that the stage 3 jobs' output is not reused here — the tools are re-run. Stage 3 usually runs
+Note that the stage 3 jobs' output is not reused here. The tools are re-run. Stage 3 usually runs
 at a blocking threshold, so its result is either empty or the build has already failed. Triage needs
 a run made in advisory mode.
 
@@ -268,7 +268,7 @@ Here is one run of the workflow above, showing what goes in and what comes back:
 
 ### 1. Raw tool output
 
-Semgrep emits SARIF and grype emits JSON. Neither is suitable to send as-is — both are large and
+Semgrep emits SARIF and grype emits JSON. Neither is suitable to send as-is: both are large and
 carry fields the model does not need.
 
 ```json
@@ -351,7 +351,7 @@ Code:
 Output PASS if there are no findings.
 ```
 
-Not the repository — **only the three flagged items and a few lines around each**. That is the
+Not the repository, but **only the three flagged items and a few lines around each**. That is the
 core of the findings-driven approach.
 
 ### 3. What Claude returns
@@ -449,12 +449,12 @@ The PR contents become model input and the result goes back as a comment. An out
 
 **Swap the tools to match your environment**
 
-The example assumes Semgrep and grype. If vulnerability scanning runs on Trivy alone, replace the grype parsing block with Trivy JSON parsing. The structure — send the model only what stage 3 flagged — is the part that matters, not the specific tools.
+The example assumes Semgrep and grype. If vulnerability scanning runs on Trivy alone, replace the grype parsing block with Trivy JSON parsing. The structure (send the model only what stage 3 flagged) is the part that matters, not the specific tools.
 
 ---
 
 ## Learn More
 
-- [5-Stage Strategy](./strategy) — Full stage structure and AI defense layer positioning
-- [DevSecOps — SAST](/en/devsecops/sast) — Rule-based static analysis (Semgrep · CodeQL)
-- [DevSecOps — Organization-wide Pipeline Design](/en/devsecops/pipeline-design)
+- [5-Stage Strategy](./strategy): Full stage structure and AI defense layer positioning
+- [DevSecOps: SAST](/en/devsecops/sast): Rule-based static analysis (Semgrep · CodeQL)
+- [DevSecOps: Organization-wide Pipeline Design](/en/devsecops/pipeline-design)

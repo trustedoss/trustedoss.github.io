@@ -92,9 +92,9 @@ pkg:{타입}/{네임스페이스}/{이름}@{버전}
 
 예시:
 
-- `pkg:npm/lodash@4.17.21` — npm 패키지
-- `pkg:pypi/requests@2.28.0` — Python 패키지
-- `pkg:maven/org.springframework/spring-core@6.0.0` — Java Maven 패키지
+- `pkg:npm/lodash@4.17.21`: npm 패키지
+- `pkg:pypi/requests@2.28.0`: Python 패키지
+- `pkg:maven/org.springframework/spring-core@6.0.0`: Java Maven 패키지
 
 PURL이 있으면 취약점 데이터베이스(NVD, OSV)와 자동으로 매핑하여 CVE를 찾을 수 있습니다.
 
