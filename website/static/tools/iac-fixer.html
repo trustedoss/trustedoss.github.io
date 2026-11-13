@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/tools/_theme.js"></script>
     <title>IaC 보안 수정기</title>
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+KR:wght@400;500;600&display=swap");
       *,
       *::before,
       *::after {
@@ -14,35 +14,71 @@
         padding: 0;
       }
       :root {
-        --bg: #f7f8fa;
-        --surface: #fff;
-        --surface2: #f0f2f5;
-        --border: #e0e5ec;
-        --border-s: #c5ccd8;
-        --text: #1e2433;
-        --text-2: #6b7589;
-        --text-3: #5f636e;
-        --accent: #5c6bc0;
-        --accent-bg: #eef0fb;
-        --accent-b: #c5caed;
-        --green: #2e7d32;
-        --green-bg: #e8f5e9;
-        --green-b: #a5d6a7;
-        --red: #c62828;
-        --red-bg: #ffebee;
-        --red-b: #ef9a9a;
-        --orange: #e65100;
-        --orange-bg: #fff3e0;
-        --orange-b: #ffcc80;
-        --yellow: #f57f17;
-        --yellow-bg: #fffde7;
-        --yellow-b: #fff176;
-        --code-bg: #1e2433;
-        --code-text: #e8edf5;
-        --mono: "IBM Plex Mono", monospace;
-        --sans: "Noto Sans KR", -apple-system, sans-serif;
+        --bg: #ffffff;
+        --surface: #f8f9fa;
+        --surface2: #f1f3f4;
+        --border: #dadce0;
+        --border-s: #bdc1c6;
+        --text: #202124;
+        --text-2: #3c4043;
+        --text-3: #5f6368;
+        --accent: #1a73e8;
+        --accent-bg: #e8f0fe;
+        --accent-b: #d2e3fc;
+        --on-accent: #ffffff;
+        --accent-hover: #1765cc;
+        --accent-fg: #1558b0;
+        --green: #137333;
+        --green-bg: #e6f4ea;
+        --green-b: #a8dab5;
+        --red: #c5221f;
+        --red-bg: #fce8e6;
+        --red-b: #f5b5b0;
+        --orange: #8f4a00;
+        --orange-bg: #fef0e0;
+        --orange-b: #f6c58f;
+        --yellow: #7a5900;
+        --yellow-bg: #fef7d6;
+        --yellow-b: #ecd47a;
+        --code-bg: #f1f3f4;
+        --code-text: #202124;
+        --mono: "SFMono-Regular", Consolas, "Roboto Mono", ui-monospace, monospace;
+        --sans: Roboto, "Pretendard Variable", system-ui, -apple-system, "Segoe UI", "Noto Sans KR", sans-serif;
         --r: 8px;
         --rl: 12px;
+      }
+      :root[data-theme="dark"] {
+        --bg: #1b1b1d;
+        --surface: #242526;
+        --surface2: #2d2e30;
+        --border: #3c4043;
+        --border-s: #5f6368;
+        --text: #e8eaed;
+        --text-2: #bdc1c6;
+        --text-3: #9aa0a6;
+        --accent: #8ab4f8;
+        --accent-bg: #1f2f4a;
+        --accent-b: #33487a;
+        --on-accent: #202124;
+        --accent-hover: #aecbfa;
+        --accent-fg: #8ab4f8;
+        --green: #81c995;
+        --green-bg: #1e3a2a;
+        --green-b: #2e5a40;
+        --red: #f28b82;
+        --red-bg: #3c1f1f;
+        --red-b: #6b2f2b;
+        --orange: #fcad70;
+        --orange-bg: #3d2a14;
+        --orange-b: #6b4a22;
+        --yellow: #fdd663;
+        --yellow-bg: #3a3216;
+        --yellow-b: #6b5a1e;
+        --code-bg: #161618;
+        --code-text: #e8eaed;
+      }
+      small {
+        font-size: 12px;
       }
       body {
         font-family: var(--sans);
@@ -50,7 +86,7 @@
         color: var(--text);
         font-size: 14px;
         line-height: 1.6;
-        min-height: 100vh;
+        min-height: 0;
       }
       .wrap {
         max-width: 780px;
@@ -69,9 +105,9 @@
         border: 1px solid var(--accent-b);
         border-radius: 20px;
         padding: 4px 12px;
-        font-size: 11px;
+        font-size: 12px;
         font-weight: 600;
-        color: var(--accent);
+        color: var(--accent-fg);
         letter-spacing: 0.04em;
         text-transform: uppercase;
         margin-bottom: 10px;
@@ -135,12 +171,12 @@
         background: var(--border);
       }
       .api-hint {
-        font-size: 11px;
+        font-size: 12px;
         color: var(--text-3);
         margin-top: 5px;
       }
       .api-hint a {
-        color: var(--accent);
+        color: var(--accent-fg);
         text-decoration: none;
       }
 
@@ -169,11 +205,11 @@
       }
       .fw-btn.active {
         border-color: var(--accent);
-        color: var(--accent);
+        color: var(--accent-fg);
         background: var(--accent-bg);
       }
       .fw-sub {
-        font-size: 11px;
+        font-size: 12px;
         font-weight: 400;
         opacity: 0.7;
         display: block;
@@ -227,7 +263,7 @@
         background: var(--surface2);
         border: 1px solid var(--border);
         font-family: var(--mono);
-        font-size: 11px;
+        font-size: 12px;
         color: var(--text-2);
       }
       #fileInput {
@@ -282,7 +318,7 @@
       }
       .pill input:checked + label {
         background: var(--accent);
-        color: #fff;
+        color: var(--on-accent);
         font-weight: 600;
       }
 
@@ -290,7 +326,7 @@
         width: 100%;
         padding: 13px;
         background: var(--accent);
-        color: #fff;
+        color: var(--on-accent);
         border: none;
         border-radius: var(--rl);
         font-family: var(--sans);
@@ -300,10 +336,9 @@
         transition: all 0.15s;
       }
       .fix-btn:hover:not(:disabled) {
-        background: #4a5ab0;
+        background: var(--accent-hover);
         transform: translateY(-1px);
-        box-shadow: 0 4px 16px rgba(92, 107, 192, 0.3);
-      }
+        }
       .fix-btn:disabled {
         opacity: 0.4;
         cursor: not-allowed;
@@ -401,7 +436,7 @@
         margin-bottom: 3px;
       }
       .stat-label {
-        font-size: 11px;
+        font-size: 12px;
         color: var(--text-2);
       }
       .stat.fixed {
@@ -419,7 +454,7 @@
         color: var(--orange);
       }
       .stat.total .stat-num {
-        color: var(--accent);
+        color: var(--accent-fg);
       }
 
       /* Violation list */
@@ -453,17 +488,17 @@
       .viol-id {
         font-family: var(--mono);
         font-size: 12px;
-        color: var(--accent);
+        color: var(--accent-fg);
         font-weight: 500;
       }
       .viol-res {
-        font-size: 11px;
+        font-size: 12px;
         color: var(--text-2);
       }
       .viol-badge {
         padding: 2px 8px;
         border-radius: 4px;
-        font-size: 10px;
+        font-size: 12px;
         font-weight: 700;
         letter-spacing: 0.04em;
         flex-shrink: 0;
@@ -518,13 +553,13 @@
       }
       .diff-title {
         font-family: var(--mono);
-        font-size: 11px;
+        font-size: 12px;
         color: var(--text-3);
       }
       .copy-code-btn {
         padding: 3px 10px;
         border-radius: 4px;
-        font-size: 11px;
+        font-size: 12px;
         cursor: pointer;
         background: var(--surface2);
         border: 1px solid var(--border-s);
@@ -557,17 +592,17 @@
         height: 4px;
       }
       .code-block::-webkit-scrollbar-thumb {
-        background: #3a4055;
+        background: var(--border-s);
         border-radius: 2px;
       }
       .line-added {
-        color: #4ade80;
+        color: var(--green);
       }
       .line-removed {
-        color: #f87171;
+        color: var(--red);
       }
       .line-ctx {
-        color: #8892a8;
+        color: var(--text-3);
       }
 
       /* Download panel */
@@ -612,13 +647,13 @@
         cursor: pointer;
         background: var(--accent);
         border: none;
-        color: #fff;
+        color: var(--on-accent);
         font-family: var(--sans);
         transition: all 0.12s;
         white-space: nowrap;
       }
       .dl-btn:hover {
-        background: #4a5ab0;
+        background: var(--accent-hover);
       }
 
       /* Md raw */
@@ -714,14 +749,14 @@
       .btn-pri {
         background: var(--accent);
         border: 1.5px solid var(--accent);
-        color: #fff;
+        color: var(--on-accent);
         font-weight: 600;
       }
       .btn-pri:hover {
-        background: #4a5ab0;
+        background: var(--accent-hover);
       }
       .footer-hint {
-        font-size: 11px;
+        font-size: 12px;
         color: var(--text-3);
       }
       .empty {
@@ -1394,7 +1429,7 @@ ${content}
         <div class="viol-head" onclick="toggleViol(${i})">
           <div>
             <div class="viol-id">${v.checkId} <span style="color:var(--text-2);font-weight:400">${v.resource}</span></div>
-            <div class="viol-res" style="font-size:11px;color:var(--text-3);font-family:var(--mono)">${v.file}:${v.line}</div>
+            <div class="viol-res" style="font-size: 12px;color:var(--text-3);font-family:var(--mono)">${v.file}:${v.line}</div>
           </div>
           <span class="viol-badge ${v.status}">${v.status === "fixed" ? T.badgeFixed : T.badgeManual}</span>
         </div>

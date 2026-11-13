@@ -7,26 +7,25 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="/tools/_theme.js"></script>
     <title>Workflow Sample Preview</title>
     <style>
       :root {
-        --border: #d7dbe0;
-        --muted: #5a6270;
+        --border: #dadce0;
+        --muted: #5f6368;
         --bg: #ffffff;
-        --surface: #f7f8fa;
+        --surface: #f8f9fa;
         --code-bg: #f1f3f6;
-        --accent: #2a64c4;
-        --text: #1f2430;
+        --accent: #1a73e8;
+        --text: #202124;
       }
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --border: #2a2f45;
-          --muted: #9aa3b2;
-          --bg: #1b1f2a;
-          --surface: #232838;
-          --code-bg: #161a24;
-          --text: #e7e9ee;
-        }
+      :root[data-theme="dark"] {
+        --border: #3c4043;
+        --muted: #9aa0a6;
+        --bg: #1b1b1d;
+        --surface: #242526;
+        --code-bg: #161a24;
+        --text: #e8eaed;
       }
       * {
         box-sizing: border-box;
@@ -34,10 +33,11 @@
       body {
         margin: 0;
         font-family:
+          Roboto,
+          "Pretendard Variable",
           system-ui,
           -apple-system,
           "Segoe UI",
-          Roboto,
           sans-serif;
         color: var(--text);
         background: var(--bg);
@@ -46,7 +46,7 @@
       }
       .panel {
         border: 1px solid var(--border);
-        border-radius: 8px;
+        border-radius: 12px;
         padding: 12px 14px;
         margin-bottom: 14px;
         background: var(--surface);

@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/tools/_theme.js"></script>
     <title>SBOM 분석기</title>
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+KR:wght@400;500;600&display=swap");
 
       *,
       *::before,
@@ -16,35 +16,68 @@
       }
 
       :root {
-        --bg: #0f1117;
-        --surface: #1a1d27;
-        --surface2: #21253a;
-        --border: #2a2f45;
-        --border-strong: #3d4460;
-        --text: #e8eaf0;
-        --text-2: #8b90a8;
-        --text-3: #8b93ad;
-        --accent: #4d9fff;
-        --accent-bg: #0d2040;
-        --accent-border: #1a4a80;
-        --critical: #ff4d4d;
-        --critical-bg: #200f0f;
-        --critical-border: #4a1515;
-        --high: #ff8c42;
-        --high-bg: #201408;
-        --high-border: #4a2e10;
-        --medium: #ffd166;
-        --medium-bg: #201a08;
-        --medium-border: #4a3d10;
-        --low: #4ecdc4;
-        --low-bg: #081a1a;
-        --low-border: #0f3d3a;
-        --success: #4ade80;
-        --success-bg: #081a10;
-        --mono: "IBM Plex Mono", monospace;
-        --sans: "Noto Sans KR", -apple-system, sans-serif;
+        --bg: #ffffff;
+        --surface: #f8f9fa;
+        --surface2: #f1f3f4;
+        --border: #dadce0;
+        --border-strong: #bdc1c6;
+        --text: #202124;
+        --text-2: #3c4043;
+        --text-3: #5f6368;
+        --accent: #1967d2;
+        --accent-bg: #e8f0fe;
+        --accent-border: #d2e3fc;
+        --on-accent: #ffffff;
+        --accent-hover: #1558b0;
+        --critical: #c5221f;
+        --critical-bg: #fce8e6;
+        --critical-border: #f6c7c3;
+        --high: #9a5200;
+        --high-bg: #fef0e0;
+        --high-border: #fbd3a6;
+        --medium: #7a5200;
+        --medium-bg: #fef7e0;
+        --medium-border: #fde293;
+        --low: #0b6b66;
+        --low-bg: #e0f5f3;
+        --low-border: #b5e3de;
+        --success: #137333;
+        --success-bg: #e6f4ea;
+        --success-border: #ceead6;
+        --mono: "SFMono-Regular", Consolas, "Roboto Mono", ui-monospace, monospace;
+        --sans: Roboto, "Pretendard Variable", system-ui, -apple-system, "Segoe UI", "Noto Sans KR", sans-serif;
         --r: 8px;
         --rl: 12px;
+      }
+      :root[data-theme="dark"] {
+        --bg: #1b1b1d;
+        --surface: #242526;
+        --surface2: #2d2e30;
+        --border: #3c4043;
+        --border-strong: #5f6368;
+        --text: #e8eaed;
+        --text-2: #bdc1c6;
+        --text-3: #9aa0a6;
+        --accent: #8ab4f8;
+        --accent-bg: #1f2f4a;
+        --accent-border: #33487a;
+        --on-accent: #202124;
+        --accent-hover: #aecbfa;
+        --critical: #f28b82;
+        --critical-bg: #3b1d1c;
+        --critical-border: #5c2b29;
+        --high: #fcad70;
+        --high-bg: #3a2410;
+        --high-border: #5c3a1a;
+        --medium: #fdd663;
+        --medium-bg: #352b0c;
+        --medium-border: #594a14;
+        --low: #78d9ec;
+        --low-bg: #12323a;
+        --low-border: #1f5560;
+        --success: #81c995;
+        --success-bg: #14301d;
+        --success-border: #23512f;
       }
 
       body {
@@ -53,7 +86,7 @@
         color: var(--text);
         font-size: 14px;
         line-height: 1.6;
-        min-height: 100vh;
+        min-height: 0;
       }
 
       .wrap {
@@ -74,7 +107,7 @@
         border: 1px solid var(--accent-border);
         border-radius: 20px;
         padding: 4px 12px;
-        font-size: 11px;
+        font-size: 12px;
         font-weight: 600;
         color: var(--accent);
         letter-spacing: 0.04em;
@@ -143,7 +176,7 @@
         color: var(--text);
       }
       .api-hint {
-        font-size: 11px;
+        font-size: 12px;
         color: var(--text-3);
         margin-top: 6px;
       }
@@ -200,7 +233,7 @@
         background: var(--surface2);
         border: 1px solid var(--border);
         font-family: var(--mono);
-        font-size: 11px;
+        font-size: 12px;
         color: var(--text-2);
       }
       #fileInput {
@@ -264,7 +297,7 @@
       }
       .pill input:checked + label {
         background: var(--accent);
-        color: #fff;
+        color: var(--on-accent);
         font-weight: 600;
       }
 
@@ -273,7 +306,7 @@
         width: 100%;
         padding: 14px;
         background: var(--accent);
-        color: #fff;
+        color: var(--on-accent);
         border: none;
         border-radius: var(--rl);
         font-family: var(--sans);
@@ -284,9 +317,8 @@
         transition: all 0.15s;
       }
       .analyze-btn:hover:not(:disabled) {
-        background: #3a8fee;
+        background: var(--accent-hover);
         transform: translateY(-1px);
-        box-shadow: 0 4px 20px rgba(77, 159, 255, 0.3);
       }
       .analyze-btn:disabled {
         opacity: 0.4;
@@ -510,7 +542,7 @@
       .sev-badge {
         padding: 2px 8px;
         border-radius: 4px;
-        font-size: 11px;
+        font-size: 12px;
         font-weight: 700;
         letter-spacing: 0.05em;
         flex-shrink: 0;
@@ -601,19 +633,19 @@
       }
       .btn-sec.done {
         background: var(--success-bg);
-        border-color: #1a5a30;
+        border-color: var(--success-border);
         color: var(--success);
       }
       .btn-pri {
         background: var(--accent);
         border: 1.5px solid var(--accent);
-        color: #fff;
+        color: var(--on-accent);
       }
       .btn-pri:hover {
-        background: #3a8fee;
+        background: var(--accent-hover);
       }
       .action-hint {
-        font-size: 11px;
+        font-size: 12px;
         color: var(--text-3);
       }
 
@@ -1236,19 +1268,19 @@ ${fileContent}
         if (guide.immediate && guide.immediate.length > 0) {
           guideHtml += `<div style="margin-bottom:20px">
       <div style="font-size:13px;font-weight:600;color:var(--critical);margin-bottom:10px">${T.guideImmediate}</div>
-      ${guide.immediate.map((i) => `<div style="padding:8px 12px;background:var(--critical-bg);border:1px solid var(--critical-border);border-radius:6px;margin-bottom:6px;font-size:13px;color:var(--text-2)">${i}</div>`).join("")}
+      ${guide.immediate.map((i) => `<div style="padding:8px 12px;background:var(--critical-bg);border:1px solid var(--critical-border);border-radius:8px;margin-bottom:6px;font-size:13px;color:var(--text-2)">${i}</div>`).join("")}
     </div>`;
         }
         if (guide.planned && guide.planned.length > 0) {
           guideHtml += `<div style="margin-bottom:20px">
       <div style="font-size:13px;font-weight:600;color:var(--medium);margin-bottom:10px">${T.guidePlanned}</div>
-      ${guide.planned.map((i) => `<div style="padding:8px 12px;background:var(--medium-bg);border:1px solid var(--medium-border);border-radius:6px;margin-bottom:6px;font-size:13px;color:var(--text-2)">${i}</div>`).join("")}
+      ${guide.planned.map((i) => `<div style="padding:8px 12px;background:var(--medium-bg);border:1px solid var(--medium-border);border-radius:8px;margin-bottom:6px;font-size:13px;color:var(--text-2)">${i}</div>`).join("")}
     </div>`;
         }
         if (guide.grypeIgnore) {
           guideHtml += `<div>
       <div style="font-size:13px;font-weight:600;color:var(--accent);margin-bottom:10px">${T.guideIgnore}</div>
-      <div style="padding:14px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;font-family:var(--mono);font-size:12px;color:var(--text-2);white-space:pre-wrap">${guide.grypeIgnore}</div>
+      <div style="padding:14px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;font-family:var(--mono);font-size:12px;color:var(--text-2);white-space:pre-wrap">${guide.grypeIgnore}</div>
     </div>`;
         }
         document.getElementById("guideContent").innerHTML =

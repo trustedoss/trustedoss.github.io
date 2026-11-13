@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/tools/_theme.js"></script>
     <title>SAST 결과 분석기</title>
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+KR:wght@400;500;600&display=swap");
 
       *,
       *::before,
@@ -16,35 +16,68 @@
       }
 
       :root {
-        --bg: #0d1117;
-        --surface: #161b22;
-        --surface2: #1c2128;
-        --border: #30363d;
-        --border-strong: #484f58;
-        --text: #e6edf3;
-        --text-2: #8b949e;
-        --text-3: #8b949e;
-        --accent: #58a6ff;
-        --accent-bg: #0d1117;
-        --accent-border: #1f6feb;
-        --error: #ff7b72;
-        --error-bg: #160d0d;
-        --error-border: #3d1a1a;
-        --warn: #e3b341;
-        --warn-bg: #161206;
-        --warn-border: #3d2f0a;
-        --info: #58a6ff;
-        --info-bg: #0d1a2e;
-        --info-border: #1f3a6e;
-        --note: #bc8cff;
-        --note-bg: #130d1a;
-        --note-border: #301a4a;
-        --success: #3fb950;
-        --success-bg: #0a1a0d;
-        --mono: "IBM Plex Mono", monospace;
-        --sans: "Noto Sans KR", -apple-system, sans-serif;
-        --r: 6px;
-        --rl: 10px;
+        --bg: #ffffff;
+        --surface: #f8f9fa;
+        --surface2: #f1f3f4;
+        --border: #dadce0;
+        --border-strong: #bdc1c6;
+        --text: #202124;
+        --text-2: #3c4043;
+        --text-3: #5f6368;
+        --accent: #1967d2;
+        --accent-bg: #e8f0fe;
+        --accent-border: #d2e3fc;
+        --on-accent: #ffffff;
+        --accent-hover: #1558b0;
+        --error: #c5221f;
+        --error-bg: #fce8e6;
+        --error-border: #f6c7c3;
+        --warn: #7a5200;
+        --warn-bg: #fef7e0;
+        --warn-border: #fde293;
+        --info: #1967d2;
+        --info-bg: #e8f0fe;
+        --info-border: #d2e3fc;
+        --note: #7627bb;
+        --note-bg: #f3e8fd;
+        --note-border: #e1c9f8;
+        --success: #137333;
+        --success-bg: #e6f4ea;
+        --success-border: #ceead6;
+        --mono: "SFMono-Regular", Consolas, "Roboto Mono", ui-monospace, monospace;
+        --sans: Roboto, "Pretendard Variable", system-ui, -apple-system, "Segoe UI", "Noto Sans KR", sans-serif;
+        --r: 8px;
+        --rl: 12px;
+      }
+      :root[data-theme="dark"] {
+        --bg: #1b1b1d;
+        --surface: #242526;
+        --surface2: #2d2e30;
+        --border: #3c4043;
+        --border-strong: #5f6368;
+        --text: #e8eaed;
+        --text-2: #bdc1c6;
+        --text-3: #9aa0a6;
+        --accent: #8ab4f8;
+        --accent-bg: #1f2f4a;
+        --accent-border: #33487a;
+        --on-accent: #202124;
+        --accent-hover: #aecbfa;
+        --error: #f28b82;
+        --error-bg: #3b1d1c;
+        --error-border: #5c2b29;
+        --warn: #fdd663;
+        --warn-bg: #352b0c;
+        --warn-border: #594a14;
+        --info: #8ab4f8;
+        --info-bg: #1f2f4a;
+        --info-border: #33487a;
+        --note: #d7aefb;
+        --note-bg: #2e1f45;
+        --note-border: #4a3470;
+        --success: #81c995;
+        --success-bg: #14301d;
+        --success-border: #23512f;
       }
 
       body {
@@ -53,7 +86,7 @@
         color: var(--text);
         font-size: 14px;
         line-height: 1.6;
-        min-height: 100vh;
+        min-height: 0;
       }
       .wrap {
         max-width: 780px;
@@ -72,7 +105,7 @@
         border: 1px solid var(--info-border);
         border-radius: 20px;
         padding: 4px 12px;
-        font-size: 11px;
+        font-size: 12px;
         font-weight: 600;
         color: var(--accent);
         letter-spacing: 0.04em;
@@ -138,7 +171,7 @@
         background: var(--border);
       }
       .api-hint {
-        font-size: 11px;
+        font-size: 12px;
         color: var(--text-3);
         margin-top: 5px;
       }
@@ -176,7 +209,7 @@
         background: var(--info-bg);
       }
       .tool-sub {
-        font-size: 11px;
+        font-size: 12px;
         font-weight: 400;
         opacity: 0.7;
         display: block;
@@ -231,7 +264,7 @@
         background: var(--surface2);
         border: 1px solid var(--border);
         font-family: var(--mono);
-        font-size: 11px;
+        font-size: 12px;
         color: var(--text-2);
       }
       #fileInput {
@@ -242,7 +275,7 @@
         width: 100%;
         padding: 13px;
         background: var(--accent);
-        color: var(--bg);
+        color: var(--on-accent);
         border: none;
         border-radius: var(--rl);
         font-family: var(--sans);
@@ -252,9 +285,8 @@
         transition: all 0.15s;
       }
       .analyze-btn:hover:not(:disabled) {
-        background: #79c0ff;
+        background: var(--accent-hover);
         transform: translateY(-1px);
-        box-shadow: 0 4px 20px rgba(88, 166, 255, 0.25);
       }
       .analyze-btn:disabled {
         opacity: 0.35;
@@ -381,7 +413,7 @@
         color: var(--note);
       }
       .slabel {
-        font-size: 11px;
+        font-size: 12px;
         color: var(--text-2);
       }
 
@@ -474,7 +506,7 @@
         font-weight: 500;
       }
       .finding-loc {
-        font-size: 11px;
+        font-size: 12px;
         color: var(--text-3);
         font-family: var(--mono);
         margin-top: 3px;
@@ -482,7 +514,7 @@
       .lev-badge {
         padding: 2px 7px;
         border-radius: 3px;
-        font-size: 10px;
+        font-size: 12px;
         font-weight: 700;
         letter-spacing: 0.05em;
         flex-shrink: 0;
@@ -520,7 +552,7 @@
       }
       .finding-fix {
         background: var(--success-bg);
-        border: 1px solid #1a3a20;
+        border: 1px solid var(--success-border);
         border-radius: var(--r);
         padding: 10px 12px;
         font-size: 12px;
@@ -529,7 +561,7 @@
       .finding-fix-title {
         font-weight: 600;
         margin-bottom: 4px;
-        font-size: 11px;
+        font-size: 12px;
         color: var(--text-3);
         text-transform: uppercase;
         letter-spacing: 0.05em;
@@ -576,7 +608,7 @@
       }
       .guide-item.ok {
         background: var(--success-bg);
-        border: 1px solid #1a3a20;
+        border: 1px solid var(--success-border);
       }
 
       /* Markdown */
@@ -620,20 +652,20 @@
       }
       .btn-sec.done {
         background: var(--success-bg);
-        border-color: #1a3a20;
+        border-color: var(--success-border);
         color: var(--success);
       }
       .btn-pri {
         background: var(--accent);
         border: 1.5px solid var(--accent);
-        color: var(--bg);
+        color: var(--on-accent);
         font-weight: 600;
       }
       .btn-pri:hover {
-        background: #79c0ff;
+        background: var(--accent-hover);
       }
       .footer-hint {
-        font-size: 11px;
+        font-size: 12px;
         color: var(--text-3);
       }
 
