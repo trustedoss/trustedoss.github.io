@@ -63,13 +63,13 @@ you must be able to provide evidence if an audit is requested.
 
 - grype scan result artifacts
 - List of CVEs handled via exception and their approval records (including .grype.yaml comments)
-- Vulnerability discovery → remediation history (GitHub Issues·PRs)
+- History from vulnerability discovery to remediation (GitHub Issues·PRs)
 
 4. **Continuous monitoring evidence**
 
 - Scheduled scan workflow execution logs
 - Dependabot·Renovate PR history
-- New CVE alert → response timeline
+- Timeline from new CVE alert to response
 
 ---
 

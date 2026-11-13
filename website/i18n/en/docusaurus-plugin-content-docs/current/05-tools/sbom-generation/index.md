@@ -17,7 +17,7 @@ The generated SBOM later becomes the basis for license analysis (05-sbom-analyst
 
 :::note How SBOM, vulnerability analysis, and SCA relate
 The **SBOM** (software bill of materials) is the input; **vulnerability analysis** is the step that uses that SBOM to find risks.
-Running both together automatically in CI is **SCA** (Software Composition Analysis). Automation is covered in [DevSecOps → SCA](/en/devsecops/sca).
+Running both together automatically in CI is **SCA** (Software Composition Analysis). Automation is covered in [DevSecOps: SCA](/en/devsecops/sca).
 :::
 
 ---

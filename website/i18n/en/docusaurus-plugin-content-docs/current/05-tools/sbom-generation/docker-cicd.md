@@ -95,9 +95,9 @@ jobs:
 
 Three sample projects are provided for practice:
 
-- `samples/java-vulnerable/`: includes log4j-core 2.14.1 → expect CVE-2021-44228 to be detected
-- `samples/python-mixed-license/`: mixed GPL use → expect a license conflict to be detected
-- `samples/nodejs-unlicensed/`: local package with no declared license → expect an unidentified license (NOASSERTION) to be detected
+- `samples/java-vulnerable/`: includes log4j-core 2.14.1, so expect CVE-2021-44228 to be detected
+- `samples/python-mixed-license/`: mixed GPL use, so expect a license conflict to be detected
+- `samples/nodejs-unlicensed/`: local package with no declared license, so expect an unidentified license (NOASSERTION) to be detected
 
 ```bash
 # Practice with the java-vulnerable sample
