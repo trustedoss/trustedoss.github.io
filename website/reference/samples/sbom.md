@@ -408,7 +408,7 @@ updates:
 | 제품명       | [ 제품명 또는 소프트웨어명 ]           |
 | 버전         | [ v0.0.0 ]                             |
 | 빌드 일시    | [ YYYY-MM-DD HH:MM ]                   |
-| SBOM 포맷    | [ CycloneDX 1.6 JSON / SPDX 2.3 JSON ] |
+| SBOM 포맷    | [ CycloneDX 1.7 JSON / SPDX 2.3 JSON ] |
 | 파일명       | [ 예: myproduct-v1.0.0.cdx.json ]      |
 | SHA-256 해시 | [ 파일 해시값 ]                        |
 

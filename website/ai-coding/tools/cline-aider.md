@@ -9,7 +9,7 @@ sidebar_position: 6
 
 ## 개요
 
-Cline은 `.clinerules` 파일(루트 단일 파일 또는 `.clinerules/` 폴더)을 프로젝트 지침으로 읽어 AI 동작에 반영합니다. Aider는 정책 문서(관례상 `CONVENTIONS.md`)를 `--read` 옵션이나 `.aider.conf.yml`의 `read` 항목으로 읽어 매 세션의 컨텍스트에 포함합니다. 두 도구 모두 프로젝트 단위로 규칙을 적용합니다.
+Cline은 `.clinerules/` 폴더(또는 `.cline/rules/`)의 규칙 파일을 프로젝트 지침으로 읽어 AI 동작에 반영합니다. Aider는 정책 문서(관례상 `CONVENTIONS.md`)를 `--read` 옵션이나 `.aider.conf.yml`의 `read` 항목으로 읽어 매 세션의 컨텍스트에 포함합니다. 두 도구 모두 프로젝트 단위로 규칙을 적용합니다.
 
 Cline은 VS Code 확장으로 동작하는 에이전트형 AI 도구이며, Aider는 터미널 기반 CLI 도구입니다. 두 도구 모두 오픈소스이며 로컬 환경에서 실행되므로, 코드를 외부 서버에 전송하는 것을 꺼리는 팀에서 선호합니다. 오픈소스 정책을 각 설정 파일에 작성해 두면 AI가 패키지를 추가하거나 코드를 생성할 때 자동으로 정책을 고려합니다.
 
@@ -19,12 +19,13 @@ Cline은 VS Code 확장으로 동작하는 에이전트형 AI 도구이며, Aide
 
 ### 설정 파일 위치
 
-- `.clinerules` (루트 단일 파일, 권장)
-- `.clinerules/` (폴더, 여러 파일 분리 가능)
+- `.clinerules/` (폴더, 권장. 예: `.clinerules/oss-policy.md`)
+- `.cline/rules/` (폴더)
+- `AGENTS.md` 와 `.cursorrules`, `.windsurfrules` 도 함께 인식합니다.
 
 ### 적용 방법
 
-1. 프로젝트 루트에 `.clinerules` 파일을 생성합니다.
+1. 프로젝트 루트에 `.clinerules/oss-policy.md` 파일을 생성합니다.
 2. [공통 Rules 템플릿](../rules-template)의 내용을 붙여넣습니다.
 3. 허용·금지 라이선스 목록을 사내 정책에 맞게 수정합니다.
 
@@ -95,9 +96,9 @@ read: CONVENTIONS.md
 
 ### Cline
 
-Cline 의 통제 수단은 사람 승인입니다. 공식 문서도 별도 샌드박스 대신 사람이 개입하는 화면을 제공한다고 밝히고 있습니다. 자동 승인 항목은 파일 읽기와 편집, 명령 실행, 브라우저 사용, MCP 서버 사용으로 나뉘며, 필요한 항목만 켜세요. 모든 안전장치를 끄는 YOLO 모드는 격리 환경 밖에서 쓰지 않습니다.
+Cline 의 기본 통제 수단은 사람 승인입니다. Cline Cloud Agents 는 세션마다 클라우드 샌드박스에서 실행되고 CLI 에도 샌드박스 모드(`CLINE_SANDBOX`)가 있지만, 로컬 확장은 별도 샌드박스 없이 사람이 개입하는 화면을 제공합니다. Cline CLI 는 기본이 자동 승인(yolo) 모드이므로 그대로 쓰지 마세요. 자동 승인 항목은 파일 읽기와 편집, 명령 실행, 브라우저 사용, MCP 서버 사용으로 나뉘며, 필요한 항목만 켜세요. 모든 안전장치를 끄는 YOLO 모드는 격리 환경 밖에서 쓰지 않습니다.
 
-명령 단위 허용·거부 목록은 `CLINE_COMMAND_PERMISSIONS` 환경변수에 JSON 으로 지정합니다(`allow`, `deny`, `allowRedirects`). 편집기 설정 파일에 대응하는 설정 항목은 없습니다.
+명령 단위 허용·거부 목록은 현재 문서에서 확인되지 않습니다. 특정 명령을 막아야 한다면 `run_commands` 도구 실행 전에 취소하는 `PreToolUse` 훅을 두는 방식을 쓰고, 적용 전에 [Cline 문서](https://docs.cline.bot)에서 최신 설정을 확인하세요.
 
 ### Aider
 

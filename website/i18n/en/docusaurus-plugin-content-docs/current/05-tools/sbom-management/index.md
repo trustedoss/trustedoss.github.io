@@ -109,7 +109,7 @@ step where the recipient cross-checks the contents against the actual compositio
 
 The lightest of the options above is to attach the SBOM file to the release itself. The open source
 project TRUSCA publishes a CycloneDX SBOM with every release: `trusca-0.20.1.cdx.json` on the
-[v0.20.1 release](https://github.com/trustedoss/trusca/releases/latest).
+[v0.20.1 release](https://github.com/trustedoss/trusca/releases/tag/v0.20.1).
 
 Because the version and the file name map one to one, you can reconstruct what a given release
 contained, and customers can download it without asking. For a closed product, the same pattern

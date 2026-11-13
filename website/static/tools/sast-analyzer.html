@@ -23,7 +23,7 @@
         --border-strong: #484f58;
         --text: #e6edf3;
         --text-2: #8b949e;
-        --text-3: #484f58;
+        --text-3: #8b949e;
         --accent: #58a6ff;
         --accent-bg: #0d1117;
         --accent-border: #1f6feb;
@@ -1139,8 +1139,8 @@ ${content}
               "anthropic-dangerous-direct-browser-access": "true",
             },
             body: JSON.stringify({
-              model: "claude-sonnet-5",
-              max_tokens: 4000,
+              model: "claude-sonnet-5-5",
+              max_tokens: 16000,
               messages: [{ role: "user", content: prompt }],
             }),
           });

@@ -70,7 +70,7 @@ ai-coding-best-practice/
         ├── container-security.yml     # Stage 3: Trivy
         ├── ai-review.yml              # Stage 4: findings-driven AI review (ANTHROPIC_API_KEY auto-enabled when configured)
         ├── ai-fuzzing.yml             # Stage 4: AI fuzzing (weekly + push)
-        ├── dast.yml                   # Stage 5: OWASP ZAP (Push to main)
+        ├── dast.yml                   # Stage 5: ZAP (Push to main)
         ├── tests.yml                  # Testing: pytest + 90% coverage floor (blocking)
         ├── test-integrity.yml         # Testing: test-weakening check (blocking, label overrides)
         ├── mutation.yml               # Testing: mutmut mutation testing (weekly, advisory)
@@ -106,7 +106,7 @@ ai-coding-best-practice/
 | ---------------------------- | ------------------- | -------------------------------------------------------- |
 | Automatic Dependency Updates | `dependabot.yml`    | Automatically creates weekly dependency update PRs       |
 | Automatic Patch Merge        | `renovate.json`     | Auto-merges Critical patches, notifies for Major updates |
-| DAST                         | `dast.yml`          | OWASP ZAP Baseline: dynamic scan on Push to main         |
+| DAST                         | `dast.yml`          | ZAP Baseline: dynamic scan on Push to main               |
 
 ### Collaboration and Testing
 

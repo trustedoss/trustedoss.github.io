@@ -23,7 +23,7 @@
         --border-strong: #c5cad3;
         --text: #1a1d23;
         --text-2: #62677a;
-        --text-3: #9ba0ad;
+        --text-3: #5f636e;
         --accent: #0f6ef5;
         --accent-bg: #eff5ff;
         --accent-border: #b3d0fc;
@@ -833,7 +833,7 @@
                   ><span class="domain-info"
                     ><span class="domain-name" data-i18n="domDast"
                       >DAST (동적 분석)</span
-                    ><span class="domain-tool">OWASP ZAP</span></span
+                    ><span class="domain-tool">ZAP</span></span
                   ></label
                 >
               </div>
@@ -1145,7 +1145,7 @@ Reply with the JSON below and nothing else. No explanation, no markdown, pure JS
 
 ## Writing requirements
 - Separate each security area with a clear comment (# stage name)
-- GitHub Actions: use current versions such as uses: actions/checkout@v4
+- GitHub Actions: use current major versions such as uses: actions/checkout@v7, and pin each action to a commit SHA with the version in a trailing comment
 - GitLab CI: define stages clearly and use rules: - if: conditions
 - Parallelise jobs that can run together, with needs or stages
 - Set retention-days on every artifact (SBOM, reports)
@@ -1175,7 +1175,7 @@ ${policyFiles.length > 0 ? policyFiles.join("\n") : "없음"}
 
 ## 작성 요구사항
 - 각 보안 영역을 명확한 주석(# 단계명)으로 구분
-- GitHub Actions: uses: actions/checkout@v4 등 최신 버전 사용
+- GitHub Actions: uses: actions/checkout@v7 등 최신 메이저 버전을 쓰고, 각 액션은 커밋 SHA로 고정한 뒤 버전을 주석으로 적음
 - GitLab CI: stages 명확히 정의, rules: - if: 조건 사용
 - 병렬 실행 가능한 잡은 needs 또는 stage로 병렬화
 - 모든 아티팩트(SBOM, 리포트)는 retention-days 설정
@@ -1307,7 +1307,7 @@ ${policyFiles.length > 0 ? policyFiles.join("\n") : "없음"}
           sca: "SCA — anchore/sbom-action으로 SBOM 생성 후 anchore/scan-action으로 취약점 스캔, SBOM 아티팩트 보관",
           container: `컨테이너 보안 — Trivy 사용, 심각도 HIGH,CRITICAL 차단, ignore-unfixed: true, main 브랜치 push 시 실행`,
           iac: `IaC 보안 — Checkov 사용, 프레임워크: ${iacTools.join(",") || "terraform,kubernetes"}, PR에서 실행`,
-          dast: "DAST — OWASP ZAP Baseline Scan, 앱을 docker compose up으로 기동 후 실행, 초기에는 fail_action: false(soft fail)",
+          dast: "DAST — ZAP Baseline Scan, 앱을 docker compose up으로 기동 후 실행, 초기에는 fail_action: false(soft fail)",
         };
 
         const selectedDomains = domains
@@ -1352,8 +1352,8 @@ ${policyFiles.length > 0 ? policyFiles.join("\n") : "없음"}
               "anthropic-dangerous-direct-browser-access": "true",
             },
             body: JSON.stringify({
-              model: "claude-sonnet-5",
-              max_tokens: 4000,
+              model: "claude-sonnet-5-5",
+              max_tokens: 16000,
               messages: [{ role: "user", content: prompt }],
             }),
           });

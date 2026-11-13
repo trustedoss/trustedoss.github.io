@@ -113,7 +113,7 @@ Two standard formats are mainly used in the industry today.
 SPDX published the first 3.1 Release Candidate on 2026-01-24 and review is still under way. It is not a
 final release yet, so base your adoption on 3.0.1. CycloneDX 1.7 was carried into an international
 standard as ECMA-424 2nd edition in December 2025, and the specification repository now carries the
-1.7.1 patch (2026-06-02). The `specVersion` value stays `1.7` regardless of the patch.
+1.7.2 patch (2026-09-17). The `specVersion` value stays `1.7` regardless of the patch.
 
 ### Why this kit uses CycloneDX
 

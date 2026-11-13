@@ -80,7 +80,10 @@ Look up the SHA behind a tag like this.
 
 ```bash
 # Resolve the commit SHA a tag currently points at
-gh api repos/actions/checkout/git/ref/tags/v7 --jq '.object.sha'
+# commits/<tag> follows annotated tags through to the commit, so it always returns a commit SHA.
+# (.object.sha from git/ref/tags/<tag> is the tag object SHA for annotated tags; do not use it)
+gh api repos/actions/checkout/commits/v7 --jq '.sha'
+gh api repos/aquasecurity/trivy-action/commits/v0.36.0 --jq '.sha'
 
 # Find every tag reference across the repository's workflows
 grep -rn "uses: .*@v[0-9]" .github/workflows/

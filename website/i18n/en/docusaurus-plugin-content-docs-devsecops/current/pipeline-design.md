@@ -258,10 +258,11 @@ container-security:
   variables:
     DOCKER_TLS_CERTDIR: '/certs'
   script:
-    # the docker image does not include trivy, so install it
+    # the docker image does not include trivy, so install it.
+    # Pin both the install script and the binary to a release you have verified (never main or latest).
     - apk add --no-cache curl
-    - curl -sSfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh
-      | sh -s -- -b /usr/local/bin
+    - curl -sSfL https://raw.githubusercontent.com/aquasecurity/trivy/v0.76.2/contrib/install.sh
+      | sh -s -- -b /usr/local/bin v0.76.2
     - docker build -t $IMAGE_TAG .
     - trivy image --severity HIGH,CRITICAL
       --exit-code 1 --ignore-unfixed $IMAGE_TAG

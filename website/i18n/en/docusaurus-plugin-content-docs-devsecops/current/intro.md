@@ -36,7 +36,7 @@ The Quick CI/CD of the AI Coding guide aims to help developers create a basic ga
 | [SAST](./sast)                                | Static analysis (CodeQL · Semgrep)                  | Developer · DevOps     |
 | [Container Security](./container-security)    | Image vulnerabilities (Trivy)                       | DevOps · Security Team |
 | [IaC Security](./iac-security)                | Infrastructure-as-code inspection (Checkov)         | DevOps · SRE           |
-| [DAST](./dast)                                | Dynamic analysis (OWASP ZAP · Nuclei)               | Security Team · QA     |
+| [DAST](./dast)                                | Dynamic analysis (ZAP · Nuclei)                     | Security Team · QA     |
 | [Pipeline Design](./pipeline-design)          | Full integrated design · GitHub Actions             | DevOps Engineer        |
 | [Pipeline Security](./pipeline-security)      | Pin actions · least privilege · protect secrets     | DevOps · Security Team |
 | [Monitoring · Auto-Remediation](./monitoring) | Continuous post-deployment scanning · automatic PRs | DevOps · Security Team |

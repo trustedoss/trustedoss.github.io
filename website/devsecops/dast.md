@@ -29,23 +29,23 @@ SAST는 코드를 보고 DAST는 실행 중인 앱을 봅니다. 두 가지를 �
 
 ## 도구 비교
 
-| 도구      | 특징                           | 주요 용도               | 라이선스   |
-| --------- | ------------------------------ | ----------------------- | ---------- |
-| OWASP ZAP | 업계 표준·GUI·자동화 모두 지원 | 웹앱·API 전체 스캔      | Apache-2.0 |
-| Nuclei    | 템플릿 기반·빠른 속도·경량     | 알려진 취약점 패턴 스캔 | MIT        |
+| 도구   | 특징                           | 주요 용도               | 라이선스   |
+| ------ | ------------------------------ | ----------------------- | ---------- |
+| ZAP    | 업계 표준·GUI·자동화 모두 지원 | 웹앱·API 전체 스캔      | Apache-2.0 |
+| Nuclei | 템플릿 기반·빠른 속도·경량     | 알려진 취약점 패턴 스캔 | MIT        |
 
-심층 웹앱 스캔에는 OWASP ZAP, 알려진 CVE·미설정 취약점 빠른 검사에는 Nuclei를 권장합니다.
+심층 웹앱 스캔에는 ZAP, 알려진 CVE·미설정 취약점 빠른 검사에는 Nuclei를 권장합니다.
 
 ---
 
-## OWASP ZAP 설정
+## ZAP 설정
 
 ### GitHub Actions
 
 ```yaml
 # .github/workflows/dast-zap.yml
 
-name: DAST — OWASP ZAP
+name: DAST — ZAP
 
 on:
   push:
@@ -73,6 +73,7 @@ jobs:
           target: http://localhost:8080
           rules_file_name: zap-rules.tsv
           fail_action: true
+          artifact_name: zap-baseline
 
       # ZAP API 스캔 (OpenAPI 명세 기반)
       - name: ZAP API Scan
@@ -81,6 +82,7 @@ jobs:
           target: http://localhost:8080/api/openapi.json
           format: openapi
           fail_action: true
+          artifact_name: zap-api
 
       - name: Upload ZAP report
         uses: actions/upload-artifact@v7
@@ -179,10 +181,8 @@ jobs:
       - name: Run Nuclei
         uses: projectdiscovery/nuclei-action@v3
         with:
-          target: http://localhost:8080
-          # v3부터 templates·severity 같은 개별 input이 제거되어
-          # flags 로 nuclei CLI 플래그를 직접 전달합니다.
-          flags: '-t cves/ -t misconfiguration/ -t exposures/ -severity medium,high,critical -o nuclei.log'
+          # v3는 target·flags 입력이 없습니다. 대상과 옵션을 모두 args 로 nuclei CLI에 전달합니다.
+          args: -u http://localhost:8080 -tags cve,misconfig,exposure -severity medium,high,critical -o nuclei.log
 
       - name: Upload Nuclei report
         uses: actions/upload-artifact@v7
@@ -192,15 +192,17 @@ jobs:
           path: nuclei.log
 ```
 
-### 주요 템플릿 카테고리
+### 주요 템플릿 태그
 
-| 카테고리         | 설명                   |
-| ---------------- | ---------------------- |
-| cves             | 알려진 CVE 취약점 패턴 |
-| misconfiguration | 보안 설정 오류         |
-| exposures        | 민감 정보·파일 노출    |
-| default-logins   | 기본 계정·패스워드     |
-| takeovers        | 서브도메인 탈취 가능성 |
+위 예시의 `-tags` 에 쓰는 값입니다. 템플릿 파일은 `http/cves/` 처럼 프로토콜 폴더 아래에 있으므로, 경로(`-t`)보다 태그로 고르는 편이 간단합니다.
+
+| 태그          | 설명                   |
+| ------------- | ---------------------- |
+| cve           | 알려진 CVE 취약점 패턴 |
+| misconfig     | 보안 설정 오류         |
+| exposure      | 민감 정보·파일 노출    |
+| default-login | 기본 계정·패스워드     |
+| takeover      | 서브도메인 탈취 가능성 |
 
 ---
 

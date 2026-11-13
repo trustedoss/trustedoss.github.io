@@ -29,23 +29,23 @@ The examples below keep mutable tags such as `@v7` for readability. A tag can be
 
 ## Tool Comparison
 
-| Tool      | Features                                      | Main uses                                 | License    |
-| --------- | --------------------------------------------- | ----------------------------------------- | ---------- |
-| OWASP ZAP | Industry-standard, GUI and automation support | Full scan of web apps/APIs                | Apache-2.0 |
-| Nuclei    | Template-based, fast, lightweight             | Scanning for known vulnerability patterns | MIT        |
+| Tool   | Features                                      | Main uses                                 | License    |
+| ------ | --------------------------------------------- | ----------------------------------------- | ---------- |
+| ZAP    | Industry-standard, GUI and automation support | Full scan of web apps/APIs                | Apache-2.0 |
+| Nuclei | Template-based, fast, lightweight             | Scanning for known vulnerability patterns | MIT        |
 
-We recommend OWASP ZAP for in-depth web application scanning, and Nuclei for quick checks of known CVEs and misconfigurations.
+We recommend ZAP for in-depth web application scanning, and Nuclei for quick checks of known CVEs and misconfigurations.
 
 ---
 
-## OWASP ZAP setup
+## ZAP setup
 
 ### GitHub Actions
 
 ```yaml
 # .github/workflows/dast-zap.yml
 
-name: DAST — OWASP ZAP
+name: DAST — ZAP
 
 on:
   push:
@@ -73,6 +73,7 @@ jobs:
           target: http://localhost:8080
           rules_file_name: zap-rules.tsv
           fail_action: true
+          artifact_name: zap-baseline
 
       # ZAP API scan (based on OpenAPI spec)
       - name: ZAP API Scan
@@ -81,6 +82,7 @@ jobs:
           target: http://localhost:8080/api/openapi.json
           format: openapi
           fail_action: true
+          artifact_name: zap-api
 
       - name: Upload ZAP report
         uses: actions/upload-artifact@v7
@@ -179,10 +181,8 @@ jobs:
       - name: Run Nuclei
         uses: projectdiscovery/nuclei-action@v3
         with:
-          target: http://localhost:8080
-          # Since v3, individual inputs such as templates/severity were removed;
-          # pass nuclei CLI flags directly via flags.
-          flags: '-t cves/ -t misconfiguration/ -t exposures/ -severity medium,high,critical -o nuclei.log'
+          # v3 has no target or flags inputs. Pass the target and every option to the nuclei CLI through args.
+          args: -u http://localhost:8080 -tags cve,misconfig,exposure -severity medium,high,critical -o nuclei.log
 
       - name: Upload Nuclei report
         uses: actions/upload-artifact@v7
@@ -192,15 +192,17 @@ jobs:
           path: nuclei.log
 ```
 
-### Main template categories
+### Main template tags
 
-| Category         | Description                         |
-| ---------------- | ----------------------------------- |
-| cves             | Known CVE vulnerability patterns    |
-| misconfiguration | Security misconfigurations          |
-| exposures        | Sensitive information/file exposure |
-| default-logins   | Default accounts/passwords          |
-| takeovers        | Potential subdomain takeover        |
+These are the values for `-tags` in the example above. Template files now sit under protocol folders such as `http/cves/`, so selecting by tag is simpler than by path (`-t`).
+
+| Tag           | Description                         |
+| ------------- | ----------------------------------- |
+| cve           | Known CVE vulnerability patterns    |
+| misconfig     | Security misconfigurations          |
+| exposure      | Sensitive information/file exposure |
+| default-login | Default accounts/passwords          |
+| takeover      | Potential subdomain takeover        |
 
 ---
 

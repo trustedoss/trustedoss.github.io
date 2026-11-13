@@ -17,7 +17,7 @@ GitHub Copilot은 `.github/copilot-instructions.md` 파일을 저장소 전체�
 
 - `.github/copilot-instructions.md`: 단일 파일, 저장소 전체 적용
 - `.github/instructions/*.instructions.md`: frontmatter 의 `applyTo` 패턴으로 경로 한정 적용 (언어·폴더별 규칙 분리에 적합)
-- `AGENTS.md`: 루트 공통 규칙 파일 (가장 가까운 파일 우선)
+- `AGENTS.md`: 공통 규칙 파일. 저장소 어느 폴더에나 둘 수 있고 작업 위치에서 가장 가까운 파일이 우선
 
 ## 적용 방법
 
@@ -66,7 +66,7 @@ Copilot 클라우드 에이전트는 GitHub Actions 기반 임시 환경에서 �
 
 ### Copilot CLI
 
-로컬 샌드박스가 있지만 기본으로 꺼져 있는 실험 기능입니다. `--experimental` 로 실행한 뒤 `/sandbox enable` 로 켭니다. 격리는 프로세스와 파일시스템 수준이며 가상 머신이나 컨테이너가 아닙니다. macOS 는 Seatbelt, Linux 는 bubblewrap 을 사용하고, Windows 는 Insiders 빌드에서만 동작합니다.
+로컬 샌드박스는 2026-10-07 에 정식 기능(GA)이 됐습니다. 세션 안에서 `/sandbox enable` 로 켜거나 실행할 때 `--sandbox`(끄려면 `--no-sandbox`)를 붙이고, 항상 켜 두려면 `~/.copilot/settings.json` 에 `sandbox.enabled` 를 둡니다. 조직은 엔터프라이즈 관리 설정으로 샌드박스 사용을 강제할 수 있습니다. 격리는 프로세스와 파일시스템 수준이며 가상 머신이나 컨테이너가 아닙니다. macOS 는 Seatbelt, Linux 는 bubblewrap 0.5.0 이상과 slirp4netns 를 사용하고, Windows 는 Windows 11 25H2(KB5124010 이후) 또는 26H1 에서 동작합니다.
 
 도구 승인은 `--allow-tool`, `--deny-tool` 플래그로 지정하고, 승인된 도구와 경로는 `~/.copilot/permissions-config.json` 에, 허용 URL 은 `~/.copilot/settings.json` 의 `allowedUrls` 에 남습니다. `--allow-all-tools` 와 `--yolo` 는 모든 승인을 건너뛰므로 격리 환경 밖에서는 쓰지 마세요.
 
@@ -74,7 +74,7 @@ Copilot 클라우드 에이전트는 GitHub Actions 기반 임시 환경에서 �
 
 터미널 명령 자동 승인은 `chat.tools.terminal.enableAutoApprove` 로 켜고 `chat.tools.terminal.autoApprove` 에 대상 명령을 적습니다. 도구 전반의 자동 승인은 `chat.tools.global.autoApprove` 입니다(1.104 에서 `chat.tools.autoApprove` 를 대체했고 자동 이전은 없습니다).
 
-샌드박스는 미리보기 기능으로 `chat.agent.sandbox.enabled` 에서 켭니다. macOS, Linux, WSL2 를 지원하고, 네트워크는 `chat.agent.sandbox.allowNetwork`, 파일시스템은 `chat.agent.sandbox.fileSystem.mac` 과 `chat.agent.sandbox.fileSystem.linux` 로 조정합니다.
+샌드박스는 `chat.agent.sandbox.enabled` 에서 켭니다. macOS, Linux, WSL2 를 지원하고 Windows 11 은 실험 기능으로 지원합니다. 네트워크는 `chat.agent.sandbox.network.allowNetwork`(이전 이름 `chat.agent.sandbox.allowNetwork`)와 `network.allowedDomains`, `network.deniedDomains` 로, 파일시스템은 `chat.agent.sandbox.fileSystem.userConfiguredPaths` 로 조정합니다(`fileSystem.mac`, `fileSystem.linux` 는 더 이상 권장되지 않습니다). 두 기본값에 주의하세요. `network.allowNetwork` 는 기본이 `true` 라 네트워크가 열려 있고, `allowUnsandboxedCommands` 도 기본이 `true` 라 샌드박스 밖 실행을 허용합니다. 정책상 막아야 한다면 둘 다 `false` 로 바꾸세요.
 
 ## 주의사항
 

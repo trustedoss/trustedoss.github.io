@@ -62,7 +62,7 @@ Stabilizing one area at a time before moving to the next is the sustainable way 
    Add container security (Trivy) and IaC security (Checkov). This applies to teams that use container or cloud environments.
 
 4. **Complete dynamic analysis and automation (3-6 months)**
-   Add DAST (OWASP ZAP). After integrating all areas of the pipeline, establish a monitoring and auto-remediation system.
+   Add DAST (ZAP). After integrating all areas of the pipeline, establish a monitoring and auto-remediation system.
 
 ---
 

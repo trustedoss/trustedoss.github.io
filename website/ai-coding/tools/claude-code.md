@@ -18,6 +18,11 @@ Claude Code는 프로젝트 루트의 `CLAUDE.md`를 세션 시작 시 자동으
 - 프로젝트 루트: `CLAUDE.md` (권장)
 - 하위 폴더별: `{폴더명}/CLAUDE.md` (보조)
 - 글로벌: `~/.claude/CLAUDE.md` (모든 프로젝트 공통)
+- 조직 관리 정책: macOS `/Library/Application Support/ClaudeCode/CLAUDE.md`, Linux `/etc/claude-code/CLAUDE.md`, Windows `C:\Program Files\ClaudeCode\CLAUDE.md` (조직 정책을 모든 사용자에게 강제할 때)
+
+:::note AGENTS.md 와 함께 쓸 때
+Claude Code 는 `AGENTS.md` 도 읽지만, 디렉터리에 `CLAUDE.md` 가 없을 때만 읽습니다. 두 파일이 함께 있으면 `CLAUDE.md` 만 읽으므로, 공통 정책을 `AGENTS.md` 에 두었다면 `CLAUDE.md` 첫 줄에 `@AGENTS.md` 를 적어 가져오세요.
+:::
 
 ## 적용 방법
 

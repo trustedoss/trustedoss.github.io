@@ -11,7 +11,7 @@ sidebar_position: 4
 
 Codex 는 `AGENTS.md` 를 지침 파일로 읽습니다. 전역 파일(`~/.codex/AGENTS.md`)을 먼저 읽고, 이어서 Git 저장소 루트부터 현재 작업 디렉터리까지 각 단계의 파일을 순서대로 이어 붙입니다. 현재 디렉터리에 가까운 파일이 뒤에 놓이므로 앞선 지침을 덮습니다. 같은 위치에 `AGENTS.override.md` 가 있으면 그 파일이 `AGENTS.md` 보다 우선합니다.
 
-`AGENTS.md` 는 Cursor, GitHub Copilot, Devin Desktop, Cline 도 지원하는 공통 규격입니다. 오픈소스 정책을 `AGENTS.md` 한 벌로 두면 여러 도구에 같은 규칙이 적용되고, 도구별 파일에는 차이점만 남길 수 있습니다.
+`AGENTS.md` 는 Cursor, GitHub Copilot, Devin Desktop, Cline 도 지원하는 공통 규격입니다. Claude Code 도 읽지만 `CLAUDE.md` 가 없을 때만 읽으므로, 두 파일을 함께 쓴다면 `CLAUDE.md` 에 `@AGENTS.md` 를 적어 가져오세요. 오픈소스 정책을 `AGENTS.md` 한 벌로 두면 여러 도구에 같은 규칙이 적용되고, 도구별 파일에는 차이점만 남길 수 있습니다.
 
 ## 설정 파일 위치
 
@@ -69,11 +69,11 @@ writable_roots = ["/tmp/build"]
 
 `sandbox_mode` 값은 세 가지입니다. `read-only` 는 읽기만 허용하고, `workspace-write` 는 작업 공간과 `writable_roots` 에 적은 경로에만 쓰기를 허용하며, `danger-full-access` 는 제한을 두지 않습니다. `network_access` 를 `false` 로 두면 샌드박스 안에서 외부 통신이 막힙니다.
 
-`approval_policy` 값은 `untrusted`, `on-request`, `never` 입니다. 구버전의 `on-failure` 는 폐기됐습니다. 대화형 실행에는 `on-request` 를 씁니다. 비대화형 실행에서는 승인을 물을 상대가 없어 `never` 를 쓰게 되는데, 이때는 샌드박스가 유일한 방어선이므로 `sandbox_mode` 를 함께 낮춰 두어야 합니다.
+`approval_policy` 값은 `on-request`, `never`, 그리고 항목별로 정하는 `granular` 표입니다. 예전의 `untrusted` 는 지원이 끝났고, 설정에 남아 있으면 Codex 가 시작되지 않을 수 있으니 지워야 합니다(프로젝트 신뢰 수준을 뜻하는 `trust_level = "untrusted"` 는 다른 설정이라 그대로 쓸 수 있습니다). `on-failure` 도 더 이상 권장되지 않습니다(deprecated). 대화형 실행에는 `on-request` 를 씁니다. 비대화형 실행에서는 승인을 물을 상대가 없어 `never` 를 쓰게 되는데, 이때는 샌드박스가 유일한 방어선이므로 `sandbox_mode` 를 함께 낮춰 두어야 합니다.
 
 일회성으로 바꾸려면 `--sandbox workspace-write`, `--ask-for-approval on-request` 플래그를 씁니다.
 
-운영체제별 구현은 다릅니다. macOS 는 내장 Seatbelt 를, Linux 와 WSL2 는 `bubblewrap` 을 사용합니다. Windows 는 PowerShell 에서 실행하면 Windows Sandbox 를, WSL2 에서 실행하면 Linux 구현을 사용합니다.
+운영체제별 구현은 다릅니다. macOS 는 내장 Seatbelt 를, Linux 와 WSL2 는 `bubblewrap` 을 사용합니다. Windows 는 PowerShell 에서 실행하면 Codex 자체의 Windows 샌드박스를, WSL2 에서 실행하면 Linux 구현을 사용합니다.
 
 ### 관리 대상 기기에서 강제하기
 
