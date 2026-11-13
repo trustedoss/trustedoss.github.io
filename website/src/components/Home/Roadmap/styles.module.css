@@ -97,7 +97,7 @@
 .stepNo {
   font-family: var(--ifm-font-family-monospace);
   font-size: 0.85rem;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.02em;
   color: var(--ifm-color-primary);
 }
