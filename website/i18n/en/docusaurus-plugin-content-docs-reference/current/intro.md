@@ -10,6 +10,10 @@ sidebar_position: 1
 
 This section collects the reference materials you need to build an open source management system.
 
+## Standard Mapping: Full Matrix
+
+The [Requirements Detail Matrix](./requirements-matrix) is the canonical table that matches each requirement (G item) of ISO/IEC 5230 and 18974 to its deliverables, evidence, and check questions. Open it for gap analysis or self-certification preparation.
+
 ## Deliverable Best Practices
 
 Completed examples of the deliverables each stage's agent generates (based on a fictional company).
@@ -34,8 +38,8 @@ Canonical concept pages linked from the main guide. The policy, process, and too
 | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
 | [License Classification](./concepts/license-classification)                   | Classification criteria, impact by distribution method, distribution channel allow matrix |
 | [Vulnerability Response Deadlines and VEX](./concepts/vulnerability-response) | Response deadlines by CVSS severity (KWG baseline and organizational SLA), VEX            |
-| [Glossary](./glossary)                                                        | Plain-language definitions of license, SBOM, security, and organization terms             |
-| [Talks](./talks)                                                              | Where Trusted OSS has been presented, and the slides                                      |
+
+Other materials: the [Glossary](./glossary) (plain-language definitions of license, SBOM, security, and organization terms) and [Talks](./talks) (where Trusted OSS has been presented, and the slides).
 
 ## Agent Selection Guide
 

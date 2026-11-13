@@ -89,9 +89,9 @@ PR 또는 Merge 전 파이프라인에서 아래 5개 영역을 기계적으로 
 | 컨테이너 보안 | Trivy            | 빌드            | 이미지 취약점 (컨테이너 사용 시)        |
 | IaC 보안      | Checkov          | PR              | 클라우드 인프라 설정 오류 (IaC 사용 시) |
 
-AI 코딩 도구는 하드코딩된 값을 코드에 삽입하는 경우가 잦으므로, **시크릿 탐지는 3단계 도입 첫날부터 필수**입니다. 모든 영역을 한꺼번에 도입하기보다 시크릿 탐지 → SAST → SCA 순서로 안정화한 뒤 다음으로 넘어가는 방식을 권장합니다.
+AI 코딩 도구는 하드코딩된 값을 코드에 삽입하는 경우가 잦으므로, **시크릿 탐지는 3단계 도입 첫날부터 필수**입니다. 모든 영역을 한꺼번에 도입하기보다 시크릿 탐지, SCA, SAST 순서로 안정화한 뒤 다음으로 넘어가는 방식을 권장합니다. 영역별 도입 순서의 기준은 [DevSecOps 도입 전략](/devsecops/strategy)입니다.
 
-- [30분 완성 Quick CI/CD](./cicd-quick): SCA 중심 최소 시작점
+- [30분 Quick CI/CD](./cicd-quick): SCA 중심 최소 시작점
 - [DevSecOps: 시크릿 탐지](/devsecops/secret-detection) · [SAST](/devsecops/sast) · [SCA](/devsecops/sca) · [컨테이너 보안](/devsecops/container-security) · [IaC 보안](/devsecops/iac-security)
 - [전사 파이프라인 설계](/devsecops/pipeline-design)
 

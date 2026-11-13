@@ -244,28 +244,7 @@ placeholder; contact details and keys only mean something once they hold real va
 
 To be sustainable, the process must be integrated naturally into the development flow. Automating manual checks reduces the burden on the program manager and lowers the risk of omissions.
 
-```yaml
-# .github/workflows/oss-compliance.yml
-name: OSS Compliance Check
-
-on:
-  pull_request:
-  schedule:
-    - cron: '0 9 * * 1' # Every Monday at 09:00 UTC (18:00 KST)
-
-jobs:
-  license-check:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v7
-      - name: Generate SBOM
-        run: |
-          docker run --rm -v "$(pwd)":/project \
-            anchore/syft:latest /project \
-            --output cyclonedx-json > sbom.cdx.json
-      - name: License check
-        run: echo "License review step"
-```
+Full CI workflow examples are in [30-Minute Quick CI/CD](/en/ai-coding/cicd-quick) and [SCA](/en/devsecops/sca) for the blocking gate on pull requests, and in [Monitoring and Auto-remediation](/en/devsecops/monitoring) for scheduled scans. This chapter only covers where the process meets CI.
 
 The main CI/CD integration points are as follows:
 

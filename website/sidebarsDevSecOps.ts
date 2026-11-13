@@ -11,9 +11,9 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: '보안 게이트',
       items: [
-        'sast',
-        'sca',
         'secret-detection',
+        'sca',
+        'sast',
         'container-security',
         'iac-security',
         'dast',

@@ -49,6 +49,5 @@ After the agent finishes, return to the repo root (`cd ../..`) and check the del
 
 ## Next steps
 
-- To choose a path that fits your situation, see the next-steps section of [Overview: the two standards and the whole journey](./index.md).
-- To see the full journey, go to [Overview: the two standards and the full journey](./index.md).
+- To see the full journey and choose a path that fits your situation, go to [Overview: the two standards and the whole journey](./index.md).
 - To prepare your environment first, go to the [Environment preparation](../01-setup/index.md) chapter.

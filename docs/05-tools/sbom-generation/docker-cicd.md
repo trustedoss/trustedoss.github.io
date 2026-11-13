@@ -60,34 +60,7 @@ Java Maven 프로젝트에 권장합니다. syft보다 의존성 추적이 더 �
 
 SBOM 생성을 CI/CD 파이프라인에 통합하면 모든 릴리스마다 최신 SBOM이 자동으로 생성됩니다.
 
-```yaml
-# .github/workflows/sbom.yml
-name: Generate SBOM
-
-on:
-  push:
-    branches: [main]
-  release:
-    types: [published]
-
-jobs:
-  sbom:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v7
-      - name: Generate SBOM with syft
-        run: |
-          docker run --rm \
-            -v ${{ github.workspace }}:/src \
-            anchore/syft \
-            dir:/src -o cyclonedx-json \
-            > sbom.cdx.json
-      - name: Upload SBOM as artifact
-        uses: actions/upload-artifact@v7
-        with:
-          name: sbom
-          path: sbom.cdx.json
-```
+PR 게이트와 SBOM 업로드를 포함한 워크플로 전체 예시는 [SCA](/devsecops/sca)와 [30분 Quick CI/CD](/ai-coding/cicd-quick)에 있습니다. 핵심은 릴리스마다 `syft` 로 CycloneDX JSON을 만들고 아티팩트로 보관하는 것입니다.
 
 ---
 

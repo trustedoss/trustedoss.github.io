@@ -163,34 +163,7 @@ Keep your SBOM up to date so you can immediately tell whether your software is a
 - **GitHub Dependabot:** automatic PR alerts for dependency vulnerabilities in GitHub-based projects
 - **OSV.dev subscription:** subscribe to alerts from the open source vulnerability database operated by Google
 
-**CI/CD automated monitoring example (weekly scan):**
-
-```yaml
-# .github/workflows/vuln-scan.yml
-name: Weekly Vulnerability Scan
-on:
-  schedule:
-    - cron: '0 9 * * 1' # every Monday 09:00 UTC (18:00 KST)
-jobs:
-  scan:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v7
-      - name: Install syft and grype
-        run: |
-          curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin
-          curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
-      - name: Generate fresh SBOM
-        run: |
-          mkdir -p output/sbom
-          syft . -o cyclonedx-json > output/sbom/myapp-latest.cdx.json
-      - name: Check SBOM for new CVEs
-        run: |
-          # Scan with the Dependency-Track API, grype, or similar
-          grype sbom:output/sbom/myapp-latest.cdx.json --fail-on high
-```
-
-This workflow automatically scans for vulnerabilities against the latest SBOM every week. If a high-severity vulnerability is found, the CI build can be failed and the team notified.
+**CI/CD automated monitoring:** Full examples of the scheduled scan workflow (weekly or daily) are in [Monitoring and Auto-remediation](/en/devsecops/monitoring). It generates a fresh SBOM, scans it with grype, and fails the CI run when a vulnerability at or above the threshold appears, so the team is notified.
 
 :::warning When grype reports `sbom format not recognized`
 syft 1.51 and newer emit CycloneDX 1.7, which only grype 0.118 and newer can read.

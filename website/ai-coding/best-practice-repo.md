@@ -172,7 +172,7 @@ AI 퍼징과 DAST는 Push to main 또는 주간 스케줄에서 실행됩니다.
 ## 관련 가이드
 
 - [5단계 전략](./strategy): 각 단계의 목적과 도입 순서
-- [30분 완성 Quick CI/CD](./cicd-quick): SCA 중심 최소 시작점
+- [30분 Quick CI/CD](./cicd-quick): SCA 중심 최소 시작점
 - [AI 보안 코드 리뷰](./ai-security-review): AI를 활용한 의미론적 취약점 탐지
 - [테스트 환경](./testing): 테스트 우선 작업, 테스트 약화 방어, 변이 테스트
 - [생산성과 협업](./collaboration): PR 크기, 리뷰 부담 분산, 병렬 에이전트 작업

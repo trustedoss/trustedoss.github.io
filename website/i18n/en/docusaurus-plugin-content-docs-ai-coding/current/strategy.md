@@ -91,7 +91,7 @@ At this stage, the pipeline mechanically verifies the five areas below before PR
 | Container Security | Trivy                | Build             | Image vulnerabilities (when using containers)          |
 | IaC Security       | Checkov              | PR                | Cloud infrastructure misconfiguration (when using IaC) |
 
-AI coding tools frequently insert hardcoded values into code, so **secret detection is mandatory from day one of Stage 3**. Rather than introducing all areas at once, it is recommended to stabilize in this order: secret detection → SAST → SCA, then move on.
+AI coding tools frequently insert hardcoded values into code, so **secret detection is mandatory from day one of Stage 3**. Rather than introducing all areas at once, it is recommended to stabilize in this order: secret detection, SCA, then SAST, and then move on. The order for each area is defined in [DevSecOps Adoption Strategy](/en/devsecops/strategy).
 
 - [30-Minute Quick CI/CD](./cicd-quick): Minimal starting point focused on SCA
 - [DevSecOps: Secret Detection](/en/devsecops/secret-detection) · [SAST](/en/devsecops/sast) · [SCA](/en/devsecops/sca) · [Container Security](/en/devsecops/container-security) · [IaC Security](/en/devsecops/iac-security)
