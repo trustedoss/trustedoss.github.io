@@ -1,18 +1,20 @@
 {
   "ci": {
     "collect": {
-      "staticDistDir": "./website/build",
       "url": [
-        "http://localhost/",
-        "http://localhost/docs",
-        "http://localhost/docs/overview/supply-chain",
-        "http://localhost/devsecops/intro",
-        "http://localhost/devsecops/sast",
-        "http://localhost/ai-coding/intro",
-        "http://localhost/reference/samples/sbom",
-        "http://localhost/en/"
+        "http://localhost:4000/",
+        "http://localhost:4000/docs",
+        "http://localhost:4000/docs/overview/supply-chain",
+        "http://localhost:4000/devsecops/intro",
+        "http://localhost:4000/devsecops/sast",
+        "http://localhost:4000/ai-coding/intro",
+        "http://localhost:4000/reference/samples/sbom",
+        "http://localhost:4000/en/"
       ],
-      "numberOfRuns": 3
+      "numberOfRuns": 3,
+      "startServerCommand": "yarn --cwd website docusaurus serve --no-open --port 4000",
+      "startServerReadyPattern": "Serving",
+      "startServerReadyTimeout": 60000
     },
     "assert": {
       "assertions": {
