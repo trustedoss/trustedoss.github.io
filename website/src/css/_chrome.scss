@@ -430,7 +430,7 @@ figcaption > p:last-child {
 
   // 짧은 컬럼(태그, ID, 버전 등)은 줄바꿈 방지
   th:first-child,
-  td:first-child {
+  td:first-child code {
     white-space: nowrap;
   }
 }

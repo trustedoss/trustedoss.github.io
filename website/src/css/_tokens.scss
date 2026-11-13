@@ -31,7 +31,7 @@
     var(--ifm-color-primary) 9%,
     transparent
   );
-  --sidebar-active-item-background: #e6f7ff;
+  --sidebar-active-item-background: var(--g-blue-50);
   --docs-rating-background: #64d7ff33;
   --key-shadow:
     inset 0 -2px 0 0 var(--ifm-hr-border-color), inset 0 0 1px 1px #fff,
