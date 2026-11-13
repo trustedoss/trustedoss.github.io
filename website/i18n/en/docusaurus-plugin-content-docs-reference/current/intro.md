@@ -43,10 +43,10 @@ Canonical concept pages linked from the main guide. The policy, process, and too
 
 ## More on Tools and Regulations
 
-| Topic                                   | Link                                                                                                                                                     |
-| --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| SBOM generation tools in depth          | [SBOM Generation](/en/docs/tools/sbom-generation) (syft, cdxgen)                                                                                         |
-| Vulnerability management tools in depth | [Vulnerability Analysis and Response](/en/docs/tools/vulnerability) (grype, OSV)                                                                         |
-| KWG ecosystem tools                     | [KWG Open Source Guide — Tools](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/4-tool/) (FOSSLight, SW360, FOSSology) |
-| Regulatory trends                       | [Software Supply Chain Security](/en/docs/overview/supply-chain) (EU CRA, EO 14028, Korean SBOM trends)                                                  |
-| SKT Open Source Guide                   | [Link](https://sktelecom.github.io)                                                                                                                      |
+| Topic                                   | Link                                                                                                                                                    |
+| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| SBOM generation tools in depth          | [SBOM Generation](/en/docs/tools/sbom-generation) (syft, cdxgen)                                                                                        |
+| Vulnerability management tools in depth | [Vulnerability Analysis and Response](/en/docs/tools/vulnerability) (grype, OSV)                                                                        |
+| KWG ecosystem tools                     | [KWG Open Source Guide: Tools](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/4-tool/) (FOSSLight, SW360, FOSSology) |
+| Regulatory trends                       | [Software Supply Chain Security](/en/docs/overview/supply-chain) (EU CRA, EO 14028, Korean SBOM trends)                                                 |
+| SKT Open Source Guide                   | [Link](https://sktelecom.github.io)                                                                                                                     |

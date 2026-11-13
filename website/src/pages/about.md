@@ -9,9 +9,9 @@ description: Trusted OSS는 OpenChain KWG 커뮤니티에서 출발한 오픈소
 
 Trusted OSS는 오픈소스 공급망을 관리하는 데 필요한 가이드와 도구를 만드는 오픈소스 이니셔티브입니다. 세 프로젝트로 이루어집니다.
 
-- Trusted OSS 가이드 — 지금 보고 계신 이 사이트입니다. **ISO/IEC 5230**(라이선스 컴플라이언스)과 **ISO/IEC 18974**(보안 보증) 자체 인증을 처음부터 끝까지 완성할 수 있도록 설계된 실전 키트입니다.
-- [Trusted OSS Agent](https://github.com/trustedoss/trustedoss-agents) — 회사 상황에 맞는 정책, 조직, 프로세스, SBOM, 교육, 인증 산출물을 단계적으로 만들어 주는 Claude Code 에이전트입니다.
-- [TRUSCA](https://trustedoss.github.io/trusca/) — 취약점, 라이선스, SBOM을 한 화면에서 관리하는 자체 호스팅 SCA 포털입니다.
+- Trusted OSS 가이드: 지금 보고 계신 이 사이트입니다. **ISO/IEC 5230**(라이선스 컴플라이언스)과 **ISO/IEC 18974**(보안 보증) 자체 인증을 처음부터 끝까지 완성할 수 있도록 설계된 실전 키트입니다.
+- [Trusted OSS Agent](https://github.com/trustedoss/trustedoss-agents): 회사 상황에 맞는 정책, 조직, 프로세스, SBOM, 교육, 인증 산출물을 단계적으로 만들어 주는 Claude Code 에이전트입니다.
+- [TRUSCA](https://trustedoss.github.io/trusca/): 취약점, 라이선스, SBOM을 한 화면에서 관리하는 자체 호스팅 SCA 포털입니다.
 
 오픈소스 관리 경험이 없는 담당자도 가이드를 따라가며 Agent의 안내를 받으면 자체 인증 선언까지 도달할 수 있습니다.
 
@@ -41,5 +41,5 @@ OpenChain KWG는 ISO/IEC 5230 국제 표준을 이끄는 [Linux Foundation OpenC
 
 오탈자 수정, 내용 보완, 새로운 샘플 추가 등 어떤 기여도 환영합니다.
 
-- **GitHub**: [github.com/trustedoss](https://github.com/trustedoss) — Issue 또는 Pull Request
-- **커뮤니티**: [OpenChain KWG](https://openchain-project.github.io/OpenChain-KWG/) — 분기별 미팅 및 메일링 리스트
+- **GitHub**: [github.com/trustedoss](https://github.com/trustedoss) (Issue 또는 Pull Request)
+- **커뮤니티**: [OpenChain KWG](https://openchain-project.github.io/OpenChain-KWG/) (분기별 미팅 및 메일링 리스트)

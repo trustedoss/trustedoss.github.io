@@ -43,10 +43,10 @@ sidebar_position: 1
 
 ## 도구와 규제 더 알아보기
 
-| 주제                  | 바로가기                                                                                                                                              |
-| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| SBOM 생성 도구 심화   | [SBOM 생성](/docs/tools/sbom-generation) (syft, cdxgen)                                                                                               |
-| 취약점 관리 도구 심화 | [취약점 분석과 대응](/docs/tools/vulnerability) (grype, OSV)                                                                                          |
-| KWG 생태계 도구       | [KWG 오픈소스 가이드 — 도구](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/4-tool/) (FOSSLight, SW360, FOSSology) |
-| 규제 동향             | [소프트웨어 공급망 보안](/docs/overview/supply-chain) (EU CRA, EO 14028, 국내 SBOM 동향)                                                              |
-| SKT 오픈소스 가이드   | [바로가기](https://sktelecom.github.io)                                                                                                               |
+| 주제                  | 바로가기                                                                                                                                             |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| SBOM 생성 도구 심화   | [SBOM 생성](/docs/tools/sbom-generation) (syft, cdxgen)                                                                                              |
+| 취약점 관리 도구 심화 | [취약점 분석과 대응](/docs/tools/vulnerability) (grype, OSV)                                                                                         |
+| KWG 생태계 도구       | [KWG 오픈소스 가이드: 도구](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/4-tool/) (FOSSLight, SW360, FOSSology) |
+| 규제 동향             | [소프트웨어 공급망 보안](/docs/overview/supply-chain) (EU CRA, EO 14028, 국내 SBOM 동향)                                                             |
+| SKT 오픈소스 가이드   | [바로가기](https://sktelecom.github.io)                                                                                                              |

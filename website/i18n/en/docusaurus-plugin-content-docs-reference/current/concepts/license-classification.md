@@ -13,12 +13,12 @@ Open source licenses fall into four broad categories by the strength of their ob
 
 ## Classification Table
 
-| Category         | Representative licenses | Core obligation                                       | Distribution caution                                         |
-| ---------------- | ----------------------- | ----------------------------------------------------- | ------------------------------------------------------------ |
-| Permissive       | MIT, Apache-2.0, BSD    | Copyright and license notice                          | Safe in almost every distribution method                     |
-| Weak Copyleft    | LGPL, MPL               | Disclose source only for modified files and libraries | Mostly safe with dynamic linking                             |
-| Strong Copyleft  | GPL-2.0, GPL-3.0        | Disclose the full source of derivative works          | No obligation for SaaS; arises on binary distribution        |
-| Network Copyleft | AGPL-3.0                | Disclose source even for network provision (SaaS)     | Obligation arises even for SaaS — review required before use |
+| Category         | Representative licenses | Core obligation                                       | Distribution caution                                        |
+| ---------------- | ----------------------- | ----------------------------------------------------- | ----------------------------------------------------------- |
+| Permissive       | MIT, Apache-2.0, BSD    | Copyright and license notice                          | Safe in almost every distribution method                    |
+| Weak Copyleft    | LGPL, MPL               | Disclose source only for modified files and libraries | Mostly safe with dynamic linking                            |
+| Strong Copyleft  | GPL-2.0, GPL-3.0        | Disclose the full source of derivative works          | No obligation for SaaS; arises on binary distribution       |
+| Network Copyleft | AGPL-3.0                | Disclose source even for network provision (SaaS)     | Obligation arises even for SaaS; review required before use |
 
 :::info[Key insight]
 For the same code, whether an obligation arises depends on the **distribution method**. In particular, GPL does not treat server execution (SaaS) as "distribution," so no obligation arises, whereas AGPL imposes an obligation even for network provision.
@@ -75,6 +75,6 @@ This classification is foundational knowledge for ISO/IEC 5230 3.1.4 (program sc
 
 ## Related Documents
 
-- [Open Source Policy chapter guide](/en/docs/policy) — turn this classification into an allow list tailored to your company's distribution method
-- [Policy Deliverable Best Practices](/en/reference/samples/policy) — a completed example reflecting per-channel allow principles
-- [Glossary](/en/reference/glossary) — definitions of Copyleft, Permissive, and other terms
+- [Open Source Policy chapter guide](/en/docs/policy): turn this classification into an allow list tailored to your company's distribution method
+- [Policy Deliverable Best Practices](/en/reference/samples/policy): a completed example reflecting per-channel allow principles
+- [Glossary](/en/reference/glossary): definitions of Copyleft, Permissive, and other terms

@@ -52,7 +52,7 @@ def parse_mapping() -> list[dict]:
     blocks = re.split(r"(?=^#### G)", text, flags=re.MULTILINE)
 
     for block in blocks:
-        header_match = re.match(r"#### (G[\w.]+)\s*—\s*([^\n`[]+)", block)
+        header_match = re.match(r"#### (G[\w.]+)\s*[—:]\s*([^\n`[]+)", block)
         if not header_match:
             continue
 

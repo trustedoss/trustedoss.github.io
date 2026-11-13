@@ -11,7 +11,7 @@ sidebar_position: 3
 
 SAST is a technique that analyzes source code without executing it to detect patterns of security vulnerabilities such as SQL injection, XSS, and buffer overflows. Run it at the PR stage to block vulnerable code before it is merged into the main branch.
 
-:::tip The configuration below is an example — a fully working implementation lives in the reference repository
+:::tip The configuration below is an example. A fully working implementation lives in the reference repository
 The YAML and commands on this page are examples that show the essentials. For a complete, copy-and-run pipeline (including policy files and a sample app), see the [Best Practice repository](/en/ai-coding/best-practice-repo).
 :::
 
@@ -25,12 +25,12 @@ The examples below keep mutable tags such as `@v7` for readability. A tag can be
 
 SAST tool selection criteria vary depending on supported languages and analysis depth. The following tools are widely used in the open-source ecosystem.
 
-| Tool     | Key Characteristics              | Supported Languages | License                                                                |
-| -------- | -------------------------------- | ------------------- | ---------------------------------------------------------------------- |
-| Semgrep  | Easy custom rule authoring, fast | 30+ languages       | LGPL-2.1 (Community Edition — managed rulesets use a separate license) |
-| CodeQL   | GitHub-native, deep analysis     | 12 major languages  | Free on GitHub Actions                                                 |
-| Bandit   | Python-only, lightweight         | Python              | Apache-2.0                                                             |
-| SpotBugs | Java/Kotlin-focused              | Java, Kotlin, Scala | LGPL                                                                   |
+| Tool     | Key Characteristics              | Supported Languages | License                                                               |
+| -------- | -------------------------------- | ------------------- | --------------------------------------------------------------------- |
+| Semgrep  | Easy custom rule authoring, fast | 30+ languages       | LGPL-2.1 (Community Edition; managed rulesets use a separate license) |
+| CodeQL   | GitHub-native, deep analysis     | 12 major languages  | Free on GitHub Actions                                                |
+| Bandit   | Python-only, lightweight         | Python              | Apache-2.0                                                            |
+| SpotBugs | Java/Kotlin-focused              | Java, Kotlin, Scala | LGPL                                                                  |
 
 For multi-language projects, Semgrep is usually the best fit. For teams using GitHub, CodeQL is often the best choice. For single-language projects, combining language-specific tools is recommended.
 

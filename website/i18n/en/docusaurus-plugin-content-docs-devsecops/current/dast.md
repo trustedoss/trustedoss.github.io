@@ -13,7 +13,7 @@ sidebar_position: 8
 SAST looks at the code and DAST looks at the running app. The two must be applied together to reduce blind spots.
 :::
 
-:::tip The configuration below is an example — a fully working implementation lives in the reference repository
+:::tip The configuration below is an example. A fully working implementation lives in the reference repository
 The YAML and commands on this page are examples that show the essentials. For a complete, copy-and-run pipeline (including policy files and a sample app), see the [Best Practice repository](/en/ai-coding/best-practice-repo).
 :::
 

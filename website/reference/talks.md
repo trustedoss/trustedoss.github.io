@@ -10,7 +10,7 @@ sidebar_position: 3
 Trusted OSS를 발표한 자리와 슬라이드입니다. 행사에서 이 내용을 다루고 싶으시면
 [GitHub 이슈](https://github.com/trustedoss/trustedoss.github.io/issues)로 알려주세요.
 
-## Open Source Summit Korea 2026 — 서울
+## Open Source Summit Korea 2026, 서울
 
 **AI-Powered Open Source Risk Management: ISO Self-Certification Kit and 5-Level AI Coding Governance**
 

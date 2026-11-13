@@ -11,13 +11,13 @@ sidebar_position: 4
 
 SCA is a method for analyzing open-source components included in software to detect known vulnerabilities (CVEs). It tracks the full dependency graph based on an SBOM and enables immediate response when new CVEs are discovered. What an SBOM is is covered in [SBOM Basics](/en/docs/overview/sbom-101).
 
-:::tip The configuration below is an example — a fully working implementation lives in the reference repository
+:::tip The configuration below is an example. A fully working implementation lives in the reference repository
 The YAML and commands on this page are examples that show the essentials. For a complete, copy-and-run pipeline (including policy files and a sample app), see the [Best Practice repository](/en/ai-coding/best-practice-repo).
 :::
 
 ---
 
-## SBOM Generation — syft
+## SBOM Generation (syft)
 
 ### Basic Usage
 
@@ -45,7 +45,7 @@ For security pipeline-centric workflows, CycloneDX JSON is recommended.
 
 An alternative generator, from the CycloneDX project itself. Where syft reads what is on disk,
 cdxgen resolves through each language's own package manager, so it can recover dependencies a
-file-based scan does not see — which matters when a lockfile is absent or the tree is only fixed at
+file-based scan does not see. This matters when a lockfile is absent or the tree is only fixed at
 build time. It covers more than 30 ecosystems and emits CycloneDX directly.
 
 ```bash
@@ -58,7 +58,7 @@ dependencies at install time (syft is enough) or at build time (cdxgen recovers 
 
 ---
 
-## Vulnerability Scanning — grype
+## Vulnerability Scanning (grype)
 
 ### Full GitHub Actions Workflow
 
@@ -131,7 +131,7 @@ Upgrade both tools together, or generate at the older version with `syft ... -o 
 
 ### How this differs from the cicd-quick workflow
 
-[AI Coding — Quick CI/CD in 30 minutes](/en/ai-coding/cicd-quick) carries a workflow of the same shape. If you already applied that one, adding the three items below turns it into what this page describes.
+[AI Coding: Quick CI/CD in 30 minutes](/en/ai-coding/cicd-quick) carries a workflow of the same shape. If you already applied that one, adding the three items below turns it into what this page describes.
 
 | Item                     | Quick CI/CD                    | This page                                |
 | ------------------------ | ------------------------------ | ---------------------------------------- |
@@ -380,7 +380,7 @@ The agent automatically performs the following:
 - ISO/IEC 18974 alignment: [ISO Standard Mapping](./iso-mapping)
 
 :::tip Need an SCA engine you run every day?
-The analyzer above is for one-off checks. If your whole team needs a continuously running, self-hosted SCA, move on to [TRUSCA](https://trustedoss.github.io/trusca/) — an Apache-2.0 tool that manages vulnerabilities (CVEs), license compliance, and SBOMs in one UI.
+The analyzer above is for one-off checks. If your whole team needs a continuously running, self-hosted SCA, move on to [TRUSCA](https://trustedoss.github.io/trusca/), an Apache-2.0 tool that manages vulnerabilities (CVEs), license compliance, and SBOMs in one UI.
 
 - Try it yourself: [TRUSCA repository](https://github.com/trustedoss/trusca) (Docker Compose or Helm deployment)
 - It is a path to a continuously operated SCA where budget, staffing, or an air-gapped network constrain the options.

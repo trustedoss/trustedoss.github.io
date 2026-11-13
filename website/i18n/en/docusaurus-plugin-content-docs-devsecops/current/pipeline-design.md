@@ -7,10 +7,10 @@ sidebar_position: 9
 
 # Enterprise-wide pipeline design
 
-This page walks through how to integrate the six areas — SAST, SCA, secret detection, container security, IaC security, and DAST — into a single pipeline.
+This page walks through how to integrate the six areas (SAST, SCA, secret detection, container security, IaC security, and DAST) into a single pipeline.
 It focuses on how to combine the individual configurations covered on each area page to fit your actual operating environment.
 
-:::tip The configuration below is an example — a fully working implementation lives in the reference repository
+:::tip The configuration below is an example. A fully working implementation lives in the reference repository
 The YAML and commands on this page are examples that show the essentials. For a complete, copy-and-run pipeline (including policy files and a sample app), see the [Best Practice repository](/en/ai-coding/best-practice-repo).
 :::
 
@@ -45,7 +45,7 @@ Each job in the integrated workflow below is lifted from the page for that area.
 
 The stage-2 scans can run in parallel to keep the overall time within 5 minutes.
 
-### How one project splits it — TRUSCA
+### How one project splits it: TRUSCA
 
 The open source project TRUSCA runs twenty-five workflows. Grouping them by trigger shows the intent.
 
@@ -58,7 +58,7 @@ The open source project TRUSCA runs twenty-five workflows. Grouping them by trig
 | Weekly       | [dogfood-scan](https://github.com/trustedoss/trusca/blob/main/.github/workflows/dogfood-scan.yml) (Sundays 07:00, also on demand)                                                                                                                                           | Scanning itself with its own SCA |
 
 The important decision is **what was kept out of the PR**. Only checks that finish in a couple of
-minutes — secrets, SAST — gate the pull request; SBOM regeneration and end-to-end tests moved to the
+minutes (secrets, SAST) gate the pull request; SBOM regeneration and end-to-end tests moved to the
 night. A slow PR is a PR developers learn to route around.
 
 Some checks run at two points on purpose. CodeQL looks at the diff on each PR and re-examines the
