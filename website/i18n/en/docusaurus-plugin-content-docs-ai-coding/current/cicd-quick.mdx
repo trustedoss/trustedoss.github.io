@@ -75,15 +75,13 @@ jobs:
       # 3. Prohibited license check
       - name: Check licenses
         run: |
-          FORBIDDEN="GPL AGPL SSPL"
-          FOUND=""
-          for license in $FORBIDDEN; do
-            if grep -qi "\"$license" sbom.cdx.json; then
-              FOUND="$FOUND $license"
-            fi
-          done
-          if [ -n "$FOUND" ]; then
-            echo "Prohibited licenses found:$FOUND"
+          # Extract license IDs from the SBOM and match them against the forbidden list.
+          # Conditionally allowed licenses such as LGPL and MPL are not matched (\b word boundary).
+          jq -r '.components[]?.licenses[]? | (.license.id // .license.name // .expression) // empty' sbom.cdx.json | sort -u > detected-licenses.txt
+          FORBIDDEN='\b(GPL-2\.0|GPL-3\.0|AGPL-3\.0|SSPL-1\.0|Commons-Clause)'
+          if grep -qE "$FORBIDDEN" detected-licenses.txt; then
+            echo "::error::A forbidden license was detected. Get approval from the owner or use a replacement package."
+            grep -E "$FORBIDDEN" detected-licenses.txt
             exit 1
           fi
           echo "License check passed"
@@ -110,7 +108,7 @@ Checks vulnerabilities by comparing the generated SBOM against CVE databases. Wi
 
 **3. Forbidden license check (shell script)**
 
-Searches for GPL, AGPL, and SSPL strings in the SBOM JSON. If a forbidden license is found, the build fails with `exit 1`. You can modify the `FORBIDDEN` variable to sync with the forbidden list in the [Common Rules Template](./rules-template) or customize it for your team policy.
+Extracts license IDs from the SBOM JSON with `jq` and matches them exactly against the forbidden list (GPL, AGPL, SSPL, Commons Clause). Unlike a plain string search, conditionally allowed licenses such as LGPL are not matched. If a forbidden license is found, the build fails with `exit 1`. You can modify the `FORBIDDEN` variable to sync with the forbidden list in the [Common Rules Template](./rules-template) or customize it for your team policy.
 
 **4. SBOM artifact retention**
 
@@ -145,15 +143,11 @@ oss-check:
 
     # 3. Prohibited license check
     - |
-      FORBIDDEN="GPL AGPL SSPL"
-      FOUND=""
-      for license in $FORBIDDEN; do
-        if grep -qi "\"$license" sbom.cdx.json; then
-          FOUND="$FOUND $license"
-        fi
-      done
-      if [ -n "$FOUND" ]; then
-        echo "Prohibited licenses found:$FOUND"
+      jq -r '.components[]?.licenses[]? | (.license.id // .license.name // .expression) // empty' sbom.cdx.json | sort -u > detected-licenses.txt
+      FORBIDDEN='\b(GPL-2\.0|GPL-3\.0|AGPL-3\.0|SSPL-1\.0|Commons-Clause)'
+      if grep -qE "$FORBIDDEN" detected-licenses.txt; then
+        echo "A forbidden license was detected. Get approval from the owner or use a replacement package."
+        grep -E "$FORBIDDEN" detected-licenses.txt
         exit 1
       fi
 
