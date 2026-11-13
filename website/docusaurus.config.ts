@@ -328,7 +328,7 @@ const config: Config = {
     },
     image: 'img/logo-share.png',
     footer: {
-      style: 'dark',
+      style: 'light',
       links: [
         {
           title: '가이드',
