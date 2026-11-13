@@ -148,10 +148,7 @@ organizations at 1 to 20%. Across the brackets the figures rise monotonically: 1
 47%. The same survey put AI-generated code at 49% of production code and found 75% of organizations
 deploying code they already know is vulnerable.
 
-Speed comes at the cost of stability. The DORA 2025 report finds AI adoption positively related to
-delivery throughput and product performance but still negatively related to delivery stability, and
-explains that without control systems such as strong automated testing, mature version control, and
-fast feedback loops, an increase in change volume turns directly into instability.
+The DORA 2025 finding that speed comes at the cost of stability is covered in [Productivity and Collaboration](./collaboration).
 
 All three point the same way. Raising the share of AI-generated code without adding review and gates
 increases the amount of code that lands where static analysis cannot see it.
@@ -188,52 +185,17 @@ produces either nothing or a build that has already failed, leaving no input to 
 
 ### 4b. AI Fuzzing
 
-AI **actively explores** areas untouched by Stage 3 tools, such as business logic and edge-case input handling. LLMs like Claude analyze endpoint signatures, generate boundary and abnormal inputs automatically, and execute them directly against the app to detect 5xx errors and abnormal behavior. For low-level C/C++ and Rust code, OSS-Fuzz integration is recommended.
+AI actively explores the areas Stage 3 tools do not touch (business logic, edge-case input handling). An LLM analyzes endpoint signatures, generates boundary and abnormal inputs, and runs them against the app to find 5xx errors and abnormal behavior. For low-level code such as C/C++ and Rust, OSS-Fuzz integration is recommended.
 
-| Tool Combination  | Detection Target                                | Execution Cycle           |
-| ----------------- | ----------------------------------------------- | ------------------------- |
-| Claude + requests | Web API edge cases and abnormal responses       | Push to main              |
-| Claude + AFL++    | Low-level binary crashes                        | Weekly schedule           |
-| Claude + OSS-Fuzz | Parser vulnerabilities in open source libraries | Per-project configuration |
+- [AI Fuzzing](./ai-fuzzing): tool combinations, workflow and script walkthrough, and adoption cautions
 
-- [AI Fuzzing](./ai-fuzzing): the workflow, the script, and what to watch when adopting it
-
-**In practice (ai-coding-best-practice)**:
-[ai-fuzzing.yml](https://github.com/trustedoss/ai-coding-best-practice/blob/main/.github/workflows/ai-fuzzing.yml)
-and [scripts/ai-fuzz.py](https://github.com/trustedoss/ai-coding-best-practice/blob/main/scripts/ai-fuzz.py)
-run this stage on pushes to main and every Sunday. The app is started and health-checked, the
-model's edge cases go out as real requests, and 5xx responses are recorded as findings. Results are
-kept as `fuzz-report.json` for 30 days. Without `ANTHROPIC_API_KEY` the job skips rather than fails.
-
-**TRUSCA does not run this stage.** It is an SCA product, so fuzzing a web application does not
-apply. The working example for 4b is the reference repository above.
+A working example is `ai-fuzzing.yml` in [ai-coding-best-practice](https://github.com/trustedoss/ai-coding-best-practice/blob/main/.github/workflows/ai-fuzzing.yml). TRUSCA has no such stage because it is an SCA product and web app fuzzing does not fit it.
 
 ### 4c. Agent and MCP Tool Governance
 
-4a and 4b both look at code the AI wrote. This one looks at what the AI _calls_. An agent that
-reaches outside the repository over MCP (Model Context Protocol) pulls in tool descriptions and
-tool output that never pass through a pull request, so neither the stage 2 rule file nor the stage 3
-gate ever sees them. A study of 1,899 open-source MCP servers found 5.5% carrying tool poisoning,
-and the npm package `postmark-mcp` was clean through 1.0.15 before later versions added a hidden BCC
-on every outgoing mail.
+4a and 4b look at code the AI wrote. 4c looks at what the AI calls. When an agent reaches outside the repository through MCP (Model Context Protocol), tool descriptions and tool output come in without passing through a pull request, so neither the Stage 2 rules file nor the Stage 3 gates see this path. MCP configuration files look declarative but hold server launch commands, so treat them as a code execution path.
 
-There is one more path. An MCP configuration file looks like a declaration, but it actually holds
-the command that starts a server. On 2026-04-15 Ox Security reported that the STDIO transport in all
-four official MCP SDKs passes configuration values to a shell without validation, and ten critical
-or high severity CVEs were issued for the flaw. That is why a configuration file has to be treated
-as an execution path for code.
-
-The control set is a server allowlist, least privilege, description review, version pinning, human
-approval with audit logs, egress path review, the tool and extension supply chain, the authorization
-layer, and configuration file management: nine controls, backed by pre-adoption scanning. The
-authorization layer reflects the 2026-07-28 MCP revision, which made the protocol stateless, required
-issuer validation, and deprecated Dynamic Client Registration. "Careful adoption of agentic AI
-services", published jointly by five national agencies at the end of April 2026, also recommends
-layered defence and strict access controls, so it can serve alongside these as grounds for approving
-an internal policy.
-
-- [Agent and MCP Tool Governance](./agent-governance): the nine controls, the scanners, and a
-  copy-paste organization policy
+- [Agent and MCP Tool Governance](./agent-governance): survey figures and incidents, the nine controls, scanners, and a paste-ready organization policy
 
 ---
 
