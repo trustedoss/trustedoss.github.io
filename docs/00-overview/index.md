@@ -55,16 +55,16 @@ slug: /
 
 ### 완성 시 갖게 되는 산출물
 
-| 단계      | 산출물 파일                                                                                                                                                          | 관련 표준 |
-| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
-| 조직      | `role-definition.md`, `raci-matrix.md`, `appointment-template.md` — [예시 보기](/reference/samples/organization)                                                     | [공통]    |
-| 정책      | `oss-policy.md`, `license-allowlist.md` — [예시 보기](/reference/samples/policy)                                                                                     | [공통]    |
-| 프로세스  | `usage-approval.md`, `distribution-checklist.md`, `vulnerability-response.md`, `inquiry-response.md`, `process-diagram.md` — [예시 보기](/reference/samples/process) | [공통]    |
-| SBOM 생성 | `[project].cdx.json`, `sbom-commands.sh`, `license-report.md`, `copyleft-risk.md` — [예시 보기](/reference/samples/sbom)                                             | [공통]    |
-| SBOM 관리 | `sbom-management-plan.md`, `sbom-sharing-template.md` — [예시 보기](/reference/samples/sbom)                                                                         | [공급망]  |
-| 취약점    | `cve-report.md`, `remediation-plan.md` — [예시 보기](/reference/samples/vulnerability)                                                                               | [18974]   |
-| 교육      | `curriculum.md`, `completion-tracker.md`, `resources.md` — [예시 보기](/reference/samples/training)                                                                  | [공통]    |
-| 인증      | `gap-analysis.md`, `declaration-draft.md`, `submission-guide.md` — [예시 보기](/reference/samples/conformance)                                                       | [공통]    |
+| 단계      | 산출물 파일                                                                                                                                                         | 관련 표준 |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| 조직      | `role-definition.md`, `raci-matrix.md`, `appointment-template.md`, [예시 보기](/reference/samples/organization)                                                     | [공통]    |
+| 정책      | `oss-policy.md`, `license-allowlist.md`, [예시 보기](/reference/samples/policy)                                                                                     | [공통]    |
+| 프로세스  | `usage-approval.md`, `distribution-checklist.md`, `vulnerability-response.md`, `inquiry-response.md`, `process-diagram.md`, [예시 보기](/reference/samples/process) | [공통]    |
+| SBOM 생성 | `[project].cdx.json`, `sbom-commands.sh`, `license-report.md`, `copyleft-risk.md`, [예시 보기](/reference/samples/sbom)                                             | [공통]    |
+| SBOM 관리 | `sbom-management-plan.md`, `sbom-sharing-template.md`, [예시 보기](/reference/samples/sbom)                                                                         | [공급망]  |
+| 취약점    | `cve-report.md`, `remediation-plan.md`, [예시 보기](/reference/samples/vulnerability)                                                                               | [18974]   |
+| 교육      | `curriculum.md`, `completion-tracker.md`, `resources.md`, [예시 보기](/reference/samples/training)                                                                  | [공통]    |
+| 인증      | `gap-analysis.md`, `declaration-draft.md`, `submission-guide.md`, [예시 보기](/reference/samples/conformance)                                                       | [공통]    |
 
 아래는 0에서 자체 인증까지 7단계 여정입니다. 각 단계를 마칠 때마다 체크해 진행 상황을 추적하세요(이 브라우저에만 저장됩니다).
 
@@ -108,10 +108,10 @@ slug: /
 혼자서 충분한 시간을 갖고 각 문서를 이해하며 진행합니다. 전체 키트 완료까지 3~5일을 권장합니다.
 :::
 
-1. 이 문서 읽기 — 전체 여정의 목적과 구조 파악
-2. [표준 요구사항 한눈에](./checklist-mapping.md) 읽기 — 두 표준이 요구하는 것을 한 화면에서 파악
-3. [소프트웨어 공급망 보안: 왜 지금 중요한가](./supply-chain.md) 읽기 — 배경 지식 습득
-4. [환경 준비: 실습에 필요한 도구 설치](../01-setup/index.md)로 이동 — 도구 설치와 저장소 클론
+1. 이 문서 읽기: 전체 여정의 목적과 구조 파악
+2. [표준 요구사항 한눈에](./checklist-mapping.md) 읽기: 두 표준이 요구하는 것을 한 화면에서 파악
+3. [소프트웨어 공급망 보안: 왜 지금 중요한가](./supply-chain.md) 읽기: 배경 지식 습득
+4. [환경 준비: 실습에 필요한 도구 설치](../01-setup/index.md)로 이동: 도구 설치와 저장소 클론
 
 ---
 

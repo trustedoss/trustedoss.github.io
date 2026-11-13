@@ -57,7 +57,7 @@ SBOM·CVSS 등 낯선 약어는 [용어집](/reference/glossary)에서 쉬운 �
 | 보안 담당   | 취약점 식별 및 대응, CVSS 점수 해석, 18974 요구사항                     | 3시간     |
 
 :::tip
-실제 기업 교육 사례(SKT, 카카오, NC소프트 등)와 교육 자료는 [KWG 오픈소스 가이드 — 교육](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/5-training/)를 참조하세요.
+실제 기업 교육 사례(SKT, 카카오, NC소프트 등)와 교육 자료는 [KWG 오픈소스 가이드: 교육](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/5-training/)를 참조하세요.
 :::
 
 ## 4. 무료 교육 리소스 목록
@@ -131,15 +131,15 @@ completion-tracker.md는 교육 실시 후 채우는 문서입니다. agent를 �
 
    ***
 
-   **질문 1/3** — 직군별 인원을 알려주세요. (개발자 N명 / 관리자 N명 / 운영 N명)
+   **질문 1/3**: 직군별 인원을 알려주세요. (개발자 N명 / 관리자 N명 / 운영 N명)
 
    `예시 답변: 개발자 40명, 관리자 5명, 운영 5명`
 
-   **질문 2/3** — 선호하는 교육 형태는? (온라인 자율 / 오프라인 집합 / 혼합)
+   **질문 2/3**: 선호하는 교육 형태는? (온라인 자율 / 오프라인 집합 / 혼합)
 
    `예시 답변: 온라인 자율`
 
-   **질문 3/3** — 교육 이수 증빙이 필요한가요? (내부 기록용 / 감사 대비 / 인증 제출용)
+   **질문 3/3**: 교육 이수 증빙이 필요한가요? (내부 기록용 / 감사 대비 / 인증 제출용)
 
    `예시 답변: 인증 제출용`
 

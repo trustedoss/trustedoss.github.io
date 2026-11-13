@@ -17,7 +17,7 @@
 
 :::note SBOM · 취약점 분석 · SCA의 관계
 **SBOM**(소프트웨어 부품 명세서)은 입력, **취약점 분석**은 그 SBOM으로 위험을 찾는 산출 단계입니다.
-이 둘을 CI에서 자동으로 묶어 돌리는 것이 **SCA**(소프트웨어 구성 분석)입니다 — 자동화는 [DevSecOps → SCA](/devsecops/sca)에서 다룹니다.
+이 둘을 CI에서 자동으로 묶어 돌리는 것이 **SCA**(소프트웨어 구성 분석)입니다. 자동화는 [DevSecOps → SCA](/devsecops/sca)에서 다룹니다.
 :::
 
 ---
@@ -51,12 +51,12 @@ SBOM 생성에는 두 가지 접근 방식이 있습니다. **Dependency 분석*
 
 [SCANOSS](https://www.scanoss.com/)는 패키지 선언 없이 직접 복사·삽입된 오픈소스 코드 조각을 파일 레벨에서 탐지하는 데 강점이 있습니다. syft/cdxgen과 역할이 보완적이므로, 소스 레벨 정밀도가 필요한 경우 병행 사용을 권장합니다.
 
-:::tip 국내 통합 옵션 — BomLens (SK텔레콤)
+:::tip 국내 통합 옵션: BomLens (SK텔레콤)
 여러 언어와 분석 대상을 한 번에 처리해야 한다면 [BomLens](https://github.com/sktelecom/bomlens)가 편리합니다. 소스, 컨테이너 이미지, 바이너리와 RootFS, 펌웨어는 물론 이미 받은 SBOM 재평가와 HuggingFace 모델(ML-BOM)까지 입력으로 받아, CycloneDX SBOM과 고지문(NOTICE), 라이선스·보안 위험 리포트를 함께 만들어 줍니다. 내부적으로 syft, cdxgen, Trivy 를 래핑한 Apache-2.0 도구이고, 전 과정이 로컬(Docker)에서 실행되어 외부 전송이 없습니다. CLI 외에 웹 UI와 데스크톱 설치본도 제공합니다. 이 챕터의 메인 도구는 syft로 두고, 통합 실행이 필요할 때 대안으로 고려하세요.
 :::
 
 :::tip
-FOSSLight, SW360, FOSSology 등 SCA·컴플라이언스 도구의 도입 및 활용 가이드는 [KWG 오픈소스 가이드 — 도구](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/4-tool/)를 참조하세요.
+FOSSLight, SW360, FOSSology 등 SCA·컴플라이언스 도구의 도입 및 활용 가이드는 [KWG 오픈소스 가이드: 도구](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/4-tool/)를 참조하세요.
 :::
 
 실제 Docker 실행 명령어, GitHub Actions CI/CD 설정, 샘플 프로젝트 실습은 [Docker·CI/CD 실행 가이드](./docker-cicd.md) 페이지를 참조합니다.
@@ -158,7 +158,7 @@ SBOM 에 등재하는 방법은 [에이전트와 MCP 도구 거버넌스](/ai-co
 
 단계별 실습:
 
-**단계 1** — Docker Desktop 실행 확인
+**단계 1**: Docker Desktop 실행 확인
 
 ```bash
 docker ps
@@ -178,7 +178,7 @@ cp output-sample/sbom/fixture-sample.cdx.json output/sbom/fixture-sample.cdx.jso
 이 경우 SBOM을 직접 생성하는 단계 4~6(sbom-guide agent·스크립트 실행)을 건너뛰고 바로 **단계 7(라이선스 분석 실행)**로 이동합니다.
 :::
 
-**단계 2** — 분석할 프로젝트 선택
+**단계 2**: 분석할 프로젝트 선택
 
 본인의 프로젝트를 사용할 수도 있고, 샘플을 사용할 수도 있습니다.
 
@@ -191,16 +191,16 @@ cp output-sample/sbom/fixture-sample.cdx.json output/sbom/fixture-sample.cdx.jso
 | `samples/nodejs-unlicensed/`    | Node.js (npm) | 라이선스 미표기 패키지         | 라이선스 미식별 처리 실습   |
 
 :::tip 권장 샘플
-`samples/java-vulnerable/` — Log4Shell 취약점을 직접 탐지하며 SBOM의 가치를 체감할 수 있습니다.
+`samples/java-vulnerable/`: Log4Shell 취약점을 직접 탐지하며 SBOM의 가치를 체감할 수 있습니다.
 :::
 
-**단계 3** — 출력 폴더 생성
+**단계 3**: 출력 폴더 생성
 
 ```bash
 mkdir -p output/sbom
 ```
 
-**단계 4** — sbom-guide agent 실행
+**단계 4**: sbom-guide agent 실행
 
 :::tip 실행 전 확인
 현재 Claude 세션을 먼저 종료(`/exit` 또는 `Ctrl+C`)한 뒤, 새 터미널에서 아래 명령을 실행하세요.
@@ -217,7 +217,7 @@ agent가 프로젝트 정보를 묻는 3가지 질문을 합니다.
 - 주 언어 (예: `Java`)
 - 패키지 매니저 (예: `Maven`)
 
-**단계 5** — 생성된 스크립트 실행
+**단계 5**: 생성된 스크립트 실행
 
 agent가 `output/sbom/sbom-commands.sh`를 생성하면, 레포 루트로 돌아와(`cd ../..`) 실행합니다.
 단계 6 이후의 확인 명령도 모두 레포 루트 기준입니다.
@@ -227,7 +227,7 @@ cd ../..
 bash output/sbom/sbom-commands.sh
 ```
 
-**단계 6** — SBOM 파일 존재 확인
+**단계 6**: SBOM 파일 존재 확인
 
 ```bash
 ls -lh output/sbom/*.cdx.json
@@ -242,7 +242,7 @@ jq '{specVersion, timestamp: .metadata.timestamp, tool: .metadata.tools, lifecyc
 `specVersion`, `timestamp`, `tool`, `components` 는 값이 있어야 합니다. `lifecycles` 와 `withHash` 는
 위 도구별 비교표대로 syft 출력에서 비어 있을 수 있습니다. jq가 없으면 파일을 열어 같은 항목을 눈으로 확인합니다.
 
-**단계 7** — 라이선스 분석 실행
+**단계 7**: 라이선스 분석 실행
 
 :::tip 실행 전 확인
 현재 Claude 세션을 먼저 종료(`/exit` 또는 `Ctrl+C`)한 뒤, 새 터미널에서 아래 명령을 실행하세요.
@@ -253,7 +253,7 @@ cd agents/05-sbom-analyst
 claude
 ```
 
-**단계 8** — 분석 결과 확인
+**단계 8**: 분석 결과 확인
 
 ```bash
 ls output/sbom/license-report.md output/sbom/copyleft-risk.md

@@ -30,7 +30,7 @@ SBOM·CVE·CVSS 등 낯선 약어는 [용어집](/reference/glossary)에서 쉬�
 :::
 
 :::tip
-각 단계의 상세 설명과 실제 기업 사례는 [KWG 오픈소스 가이드 — 프로세스](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/3-process/)를 참조하세요. 이 챕터의 구조와 요구사항 설명은 해당 KWG 가이드(CC BY 4.0)를 기반으로 재구성했습니다.
+각 단계의 상세 설명과 실제 기업 사례는 [KWG 오픈소스 가이드: 프로세스](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/3-process/)를 참조하세요. 이 챕터의 구조와 요구사항 설명은 해당 KWG 가이드(CC BY 4.0)를 기반으로 재구성했습니다.
 :::
 
 ### 오픈소스 라이프사이클 전체 흐름
@@ -53,7 +53,7 @@ flowchart TD
     K --> J
 ```
 
-도입 시 승인, 배포 시 체크리스트, 운영 중 CVE 대응 — 이 흐름을 아래 여섯 가지 핵심 프로세스로 문서화합니다.
+도입 시 승인, 배포 시 체크리스트, 운영 중 CVE 대응, 이 흐름을 아래 여섯 가지 핵심 프로세스로 문서화합니다.
 
 ### 핵심 프로세스 6가지
 
@@ -69,7 +69,7 @@ flowchart TD
 | 조건부 허용 | Copyleft 라이선스, High CVE 있음                | 담당자 검토 후 승인 |
 | 금지        | 상용 불가 라이선스, Critical CVE 미패치         | 사용 금지           |
 
-:::tip 반입(pre-flight) 게이트 — 개발자는 검증된 것만 본다
+:::tip 반입(pre-flight) 게이트: 개발자는 검증된 것만 본다
 승인을 건별로 사후 판단하는 대신, 저장소 구조로 강제하는 방식이 실무에서 널리 쓰입니다.
 외부 공개 저장소(npm, PyPI 등)에서 바로 가져오지 않고, 먼저 사내 저장소로 **반입(ingest)** 하면서
 라이선스·취약점·출처 무결성을 검사해 통과한 버전만 등록합니다. 개발자와 CI 는 검증된 사내
@@ -105,7 +105,7 @@ flowchart TD
 - Copyleft(2차 저작물도 같은 라이선스로 공개해야 하는 의무) 라이선스의 소스코드 공개 의무 이행 확인
 - 허용 라이선스 목록에 없는 라이선스 검토 완료 확인
 
-:::tip 고지문 자동 생성 — onot
+:::tip 고지문 자동 생성: onot
 배포 전 고지문(NOTICE)은 손으로 작성하면 누락이 잦습니다. [onot](https://github.com/sktelecom/onot)은 SBOM(SPDX·CycloneDX 문서)을 입력받아 OSS 고지문을 자동 생성하는 도구입니다(Kakao와 SK텔레콤 공동 개발). 앞 단계에서 만든 SBOM을 그대로 이어 써서 고지문 작성을 자동화할 수 있습니다.
 :::
 
@@ -170,7 +170,7 @@ AI 도구 사용 여부를 기여 대장에 함께 기록하세요. 승인 이�
 - 보안 스캔: 공개 전 취약점 및 하드코딩된 자격증명 스캔
 - 승인 단계: CTO 또는 지정 위원회 최종 승인
 
-기여(3-4)나 공개(3-5) 계획이 없는 경우 agent는 해당 문서를 생성하지 않으며, 갭 분석에서 그 항목은 N/A로 처리됩니다. 원한다면 "현재 계획 없음 — 계획 수립 시 이 절차를 따른다"는 선언적 문서를 직접 작성해 둘 수도 있습니다.
+기여(3-4)나 공개(3-5) 계획이 없는 경우 agent는 해당 문서를 생성하지 않으며, 갭 분석에서 그 항목은 N/A로 처리됩니다. 원한다면 "현재 계획 없음. 계획 수립 시 이 절차를 따른다"는 선언적 문서를 직접 작성해 둘 수도 있습니다.
 
 ---
 
@@ -211,17 +211,17 @@ AI 도구 사용 여부를 기여 대장에 함께 기록하세요. 승인 이�
 신원 확인 절차가 없어 누구나 취약점 설명과 CVSS 점수를 제안할 수 있습니다. 위 JFrog 사례에서
 날조된 권고가 Critical로 등재된 경위도 같습니다.
 
-:::tip 공개 운영 사례 — 신고 창구와 고지문
+:::tip 공개 운영 사례: 신고 창구와 고지문
 
 문서로만 정의된 절차는 확인할 방법이 없습니다. 오픈소스 프로젝트 TRUSCA 는 이 두 가지를
 저장소에 공개해 두었습니다.
 
-- [SECURITY.md](https://github.com/trustedoss/trusca/blob/main/SECURITY.md) — 취약점 신고 창구. GitHub 비공개 취약점 신고를 우선
+- [SECURITY.md](https://github.com/trustedoss/trusca/blob/main/SECURITY.md): 취약점 신고 창구. GitHub 비공개 취약점 신고를 우선
   채널로 두고 암호화 이메일을 대안으로 제시하며, 공개 이슈로 올리지 말 것을 명시합니다.
   ISO/IEC 5230 §3.2.1 과 ISO/IEC 18974 §4.2.1 이 요구하는 "공개적으로 볼 수 있는 문의 방법"의
   실제 형태입니다
-- [NOTICE](https://github.com/trustedoss/trusca/blob/main/NOTICE) 와 [THIRD_PARTY_NOTICES.md](https://github.com/trustedoss/trusca/blob/main/THIRD_PARTY_NOTICES.md)
-  — 배포에 포함하는 고지문. 5230 §3.4.1 의 컴플라이언스 산출물에 해당합니다
+- [NOTICE](https://github.com/trustedoss/trusca/blob/main/NOTICE) 와 [THIRD_PARTY_NOTICES.md](https://github.com/trustedoss/trusca/blob/main/THIRD_PARTY_NOTICES.md):
+  배포에 포함하는 고지문. 5230 §3.4.1 의 컴플라이언스 산출물에 해당합니다
 
 구조를 참고하되 그대로 복사하지는 마세요. 예를 들어 위 SECURITY.md 의 PGP 지문은 아직
 채워지지 않은 자리 표시자입니다. 연락처와 키는 각자 실제 값으로 채워야 의미가 있습니다.
