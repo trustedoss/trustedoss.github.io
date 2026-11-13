@@ -118,12 +118,14 @@ container-security:
     - docker:27-dind
   variables:
     DOCKER_TLS_CERTDIR: '/certs'
+    TRIVY_VERSION: '0.76.2'
     IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
   script:
-    # the docker image does not include trivy, so install it
+    # the docker image does not include trivy, so install it.
+    # Pin both the install script and the binary to a release you have verified (never main or latest).
     - apk add --no-cache curl
-    - curl -sSfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh
-      | sh -s -- -b /usr/local/bin
+    - curl -sSfL "https://raw.githubusercontent.com/aquasecurity/trivy/v${TRIVY_VERSION}/contrib/install.sh"
+      | sh -s -- -b /usr/local/bin "v${TRIVY_VERSION}"
     - docker build -t $IMAGE_TAG .
     # vulnerability scan
     - trivy image
@@ -186,7 +188,7 @@ from being forgotten.
 ---
 
 :::note Pin your versions
-Trivy's repository was hijacked in 2026-03 and malicious versions were briefly published (since recovered). Pin action and image references to version tags (ideally commit digests) instead of moving refs like `latest` or `master`.
+Trivy's repository was hijacked in 2026-03 and malicious versions were briefly published (since recovered). In that incident 76 of 77 version tags were moved to malicious commits, so a version tag alone does not count as pinning. Pin actions to a commit SHA, container images to a digest (`@sha256:...`), and binaries fetched by install scripts to a release version you have verified. See [Pipeline Security](./pipeline-security) for how.
 :::
 
 :::note

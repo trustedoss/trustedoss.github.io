@@ -118,12 +118,14 @@ container-security:
     - docker:27-dind
   variables:
     DOCKER_TLS_CERTDIR: '/certs'
+    TRIVY_VERSION: '0.76.2'
     IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
   script:
-    # docker 이미지에는 trivy가 없으므로 설치
+    # docker 이미지에는 trivy가 없으므로 설치합니다.
+    # 설치 스크립트와 바이너리를 모두 검증한 릴리스 태그로 고정합니다(main이나 latest 금지).
     - apk add --no-cache curl
-    - curl -sSfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh
-      | sh -s -- -b /usr/local/bin
+    - curl -sSfL "https://raw.githubusercontent.com/aquasecurity/trivy/v${TRIVY_VERSION}/contrib/install.sh"
+      | sh -s -- -b /usr/local/bin "v${TRIVY_VERSION}"
     - docker build -t $IMAGE_TAG .
     # 취약점 스캔
     - trivy image
@@ -185,7 +187,7 @@ secrets:
 ---
 
 :::note 버전 고정 권장
-Trivy 는 2026-03 저장소 탈취로 악성 버전이 배포된 이력이 있습니다(현재 복구 완료). `latest` 나 `master` 같은 이동 참조 대신 버전 태그(가능하면 커밋 다이제스트)로 고정하세요.
+Trivy 는 2026-03 저장소 탈취로 악성 버전이 배포된 이력이 있습니다(현재 복구 완료). 이 사고에서는 버전 태그 77개 중 76개가 악성 커밋으로 재지정됐으므로, 버전 태그만으로는 고정했다고 볼 수 없습니다. 액션은 커밋 SHA로, 컨테이너 이미지는 다이제스트(`@sha256:...`)로, 설치 스크립트로 받는 바이너리는 검증한 릴리스 버전으로 고정하세요. 방법은 [파이프라인 자체 보안](./pipeline-security)에서 다룹니다.
 :::
 
 :::note

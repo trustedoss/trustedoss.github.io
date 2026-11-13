@@ -173,11 +173,15 @@ jobs:
 
           client = anthropic.Anthropic()
           response = client.messages.create(
-              model="claude-opus-5",
-              max_tokens=1500,
+              model="claude-opus-5-5",
+              # 생각(thinking) 토큰도 max_tokens 에 포함되므로 넉넉하게 둡니다.
+              max_tokens=16000,
               messages=[{"role": "user", "content": prompt}]
           )
-          result = response.content[0].text
+          # 첫 블록이 thinking 블록일 수 있으므로 text 블록만 모읍니다.
+          result = "".join(b.text for b in response.content if b.type == "text").strip()
+          if response.stop_reason == "max_tokens":
+              result += "\n\n(응답이 길이 한도에서 잘렸습니다. max_tokens 를 늘리세요.)"
           pathlib.Path("review_result.txt").write_text(result)
           print(result)
           PYEOF
@@ -191,7 +195,7 @@ jobs:
             const fs = require('fs');
             let result;
             try { result = fs.readFileSync('review_result.txt', 'utf8'); }
-            catch { result = 'PASS'; }
+            catch { core.warning('review_result.txt 가 없습니다. AI 리뷰 단계 로그를 확인하세요.'); return; }
             if (result.trim() === 'PASS') return;
 
             // 마커로 기존 코멘트를 찾아 갱신합니다. 없으면 새로 만듭니다.

@@ -53,12 +53,12 @@
 
 ## 3. 필요한 도구 목록
 
-| 도구           | 용도                                            | 설치 필요 여부                  | 버전 요구사항 |
-| -------------- | ----------------------------------------------- | ------------------------------- | ------------- |
-| Docker Desktop | 챕터 05 도구 실습(Dependency-Track 등) 실행     | 챕터 05만 사용 (대체 경로 있음) | 24.x 이상     |
-| Git            | 저장소 관리 및 버전 관리                        | 필수                            | 2.x 이상      |
-| Claude Code    | AI 기반 실습 보조, agent 실행                   | 필수                            | 최신 버전     |
-| Node.js        | Docusaurus 문서 사이트를 직접 빌드하려는 경우만 | 선택 (아래 실습에는 불필요)     | v18 LTS 이상  |
+| 도구           | 용도                                            | 설치 필요 여부                  | 버전 요구사항                  |
+| -------------- | ----------------------------------------------- | ------------------------------- | ------------------------------ |
+| Docker Desktop | 챕터 05 도구 실습(Dependency-Track 등) 실행     | 챕터 05만 사용 (대체 경로 있음) | 최신판 (Docker Engine 24 이상) |
+| Git            | 저장소 관리 및 버전 관리                        | 필수                            | 2.x 이상                       |
+| Claude Code    | AI 기반 실습 보조, agent 실행                   | 필수                            | 최신 버전                      |
+| Node.js        | Docusaurus 문서 사이트를 직접 빌드하려는 경우만 | 선택 (아래 실습에는 불필요)     | 22 LTS 이상 (최소 20)          |
 
 :::info Node.js가 없어도 Claude Code를 설치할 수 있습니다
 아래 4절의 Claude Code 설치 명령은 Node.js 없이 바로 실행됩니다. Node.js는 이 웹사이트를 직접
@@ -82,7 +82,7 @@ Docker는 챕터 05(SBOM·취약점 도구 실습)에서만 사용합니다. 회
 git --version
 
 # Claude Code (Node.js 불필요, Homebrew 불필요)
-curl https://claude.sh | bash
+curl -fsSL https://claude.ai/install.sh | bash
 
 # Docker Desktop — 아래 명령은 브라우저에서 다운로드 페이지를 엽니다.
 # 다운로드된 .dmg 파일을 더블클릭하고 안내에 따라 Applications 폴더로 끌어다 놓으세요.
@@ -101,11 +101,14 @@ WSL2 사용을 권장합니다. Docker Desktop 설치 시 WSL2 백엔드를 활�
 ```powershell
 # Git for Windows: https://git-scm.com/download/win 에서 설치 프로그램을 내려받아 실행
 
-# Claude Code (Node.js 불필요)
-curl https://claude.sh | bash
+# Claude Code (Node.js 불필요). PowerShell에서 실행합니다.
+irm https://claude.ai/install.ps1 | iex
 
 # 또는 winget이 있다면:
-winget install Anthropic.Claude
+winget install Anthropic.ClaudeCode
+
+# WSL2 터미널 안에서 쓴다면 Linux 명령과 같습니다.
+# curl -fsSL https://claude.ai/install.sh | bash
 
 # Docker Desktop: https://www.docker.com/products/docker-desktop 에서 다운로드
 # 설치 중 "WSL2 사용" 옵션이 나오면 체크
@@ -116,14 +119,14 @@ winget install Anthropic.Claude
 ```bash
 # Docker
 sudo apt-get update
-sudo apt-get install docker.io docker-compose
+sudo apt-get install docker.io docker-compose-v2
 sudo usermod -aG docker $USER
 
 # Git
 sudo apt-get install git
 
 # Claude Code (Node.js 불필요)
-curl https://claude.sh | bash
+curl -fsSL https://claude.ai/install.sh | bash
 ```
 
 ## 5. 설치 확인 명령어 모음
@@ -224,7 +227,7 @@ Claude Code는 각 챕터 폴더의 `CLAUDE.md`도 함께 읽어 해당 단계�
 - HTTPS 방식으로 클론: `git clone https://github.com/trustedoss/trustedoss-agents.git`
 - GitHub 인증 오류 시: `git config --global credential.helper store` 실행 후 재시도
 
-### Node.js 버전이 너무 낮을 때 (v18 미만, 문서 사이트를 직접 빌드하는 경우만 해당)
+### Node.js 버전이 너무 낮을 때 (v20 미만, 문서 사이트를 직접 빌드하는 경우만 해당)
 
 - nvm 사용 권장: `nvm install --lts && nvm use --lts`
 

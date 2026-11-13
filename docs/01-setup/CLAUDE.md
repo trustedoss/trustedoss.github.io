@@ -40,7 +40,7 @@ claude --version
 
 # Node.js 확인 (선택 — 문서 사이트를 직접 빌드하는 경우만 필요)
 node --version
-# 예상: v18.x.x 이상
+# 예상: v22.x.x 이상 (최소 v20)
 ```
 
 ## 설치가 안 된 도구 발견 시
@@ -49,7 +49,7 @@ node --version
 | -------------- | -------------------------------------------------------------------------------------------------------------- |
 | Docker Desktop | https://www.docker.com/products/docker-desktop                                                                 |
 | Git            | macOS는 `git --version` 실행 시 Command Line Tools 팝업으로 자동 설치. Windows는 https://git-scm.com/downloads |
-| Claude Code    | `curl https://claude.sh \| bash` (Node.js 불필요)                                                              |
+| Claude Code    | `curl -fsSL https://claude.ai/install.sh \| bash` (Windows PowerShell: `irm https://claude.ai/install.ps1 \| iex`) (Node.js 불필요)                                                              |
 | Node.js        | https://nodejs.org (선택, 문서 사이트를 직접 빌드하는 경우만)                                                  |
 
 ## 저장소 클론
@@ -86,7 +86,7 @@ cd trustedoss-agents
 A: macOS에서 보안 경고 시 시스템 환경설정 > 개인 정보 보호 및 보안 > 허용 클릭.
 
 **Q: `claude` 명령이 not found 오류가 나와요.**
-A: `curl https://claude.sh | bash` 실행 후 터미널 재시작.
+A: `curl -fsSL https://claude.ai/install.sh | bash` 실행 후 터미널 재시작.
 
 **Q: Node.js 버전이 낮아요.**
 A: nvm 사용 권장: `nvm install --lts && nvm use --lts`

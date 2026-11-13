@@ -69,11 +69,11 @@ writable_roots = ["/tmp/build"]
 
 `sandbox_mode` 값은 세 가지입니다. `read-only` 는 읽기만 허용하고, `workspace-write` 는 작업 공간과 `writable_roots` 에 적은 경로에만 쓰기를 허용하며, `danger-full-access` 는 제한을 두지 않습니다. `network_access` 를 `false` 로 두면 샌드박스 안에서 외부 통신이 막힙니다.
 
-`approval_policy` 값은 `untrusted`, `on-request`, `never` 입니다. 구버전의 `on-failure` 는 폐기됐습니다. 대화형 실행에는 `on-request` 를 씁니다. 비대화형 실행에서는 승인을 물을 상대가 없어 `never` 를 쓰게 되는데, 이때는 샌드박스가 유일한 방어선이므로 `sandbox_mode` 를 함께 낮춰 두어야 합니다.
+`approval_policy` 값은 `on-request`, `never`, 그리고 항목별로 정하는 `granular` 표입니다. 예전의 `untrusted` 는 지원이 끝났고, 설정에 남아 있으면 Codex 가 시작되지 않을 수 있으니 지워야 합니다(프로젝트 신뢰 수준을 뜻하는 `trust_level = "untrusted"` 는 다른 설정이라 그대로 쓸 수 있습니다). `on-failure` 도 더 이상 권장되지 않습니다(deprecated). 대화형 실행에는 `on-request` 를 씁니다. 비대화형 실행에서는 승인을 물을 상대가 없어 `never` 를 쓰게 되는데, 이때는 샌드박스가 유일한 방어선이므로 `sandbox_mode` 를 함께 낮춰 두어야 합니다.
 
 일회성으로 바꾸려면 `--sandbox workspace-write`, `--ask-for-approval on-request` 플래그를 씁니다.
 
-운영체제별 구현은 다릅니다. macOS 는 내장 Seatbelt 를, Linux 와 WSL2 는 `bubblewrap` 을 사용합니다. Windows 는 PowerShell 에서 실행하면 Windows Sandbox 를, WSL2 에서 실행하면 Linux 구현을 사용합니다.
+운영체제별 구현은 다릅니다. macOS 는 내장 Seatbelt 를, Linux 와 WSL2 는 `bubblewrap` 을 사용합니다. Windows 는 PowerShell 에서 실행하면 Codex 자체의 Windows 샌드박스를, WSL2 에서 실행하면 Linux 구현을 사용합니다.
 
 ### 관리 대상 기기에서 강제하기
 

@@ -69,11 +69,11 @@ writable_roots = ["/tmp/build"]
 
 `sandbox_mode` has three values. `read-only` allows reads only, `workspace-write` allows writes to the workspace and the paths listed in `writable_roots`, and `danger-full-access` applies no restriction. Setting `network_access` to `false` blocks outbound traffic inside the sandbox.
 
-`approval_policy` takes `untrusted`, `on-request`, or `never`. The older `on-failure` value is deprecated. Use `on-request` for interactive runs. Non-interactive runs have nobody to ask, so they end up on `never`, and in that case the sandbox is the only line of defense, so lower `sandbox_mode` at the same time.
+`approval_policy` takes `on-request`, `never`, or a `granular` table that sets each case separately. The former `untrusted` value is no longer supported, and leaving it in the config can stop Codex from starting, so remove it (`trust_level = "untrusted"` for projects is a different setting and is still valid). `on-failure` is deprecated. Use `on-request` for interactive runs. Non-interactive runs have nobody to ask, so they end up on `never`, and in that case the sandbox is the only line of defense, so lower `sandbox_mode` at the same time.
 
 For a one-off change, use the `--sandbox workspace-write` and `--ask-for-approval on-request` flags.
 
-The implementation differs per operating system. macOS uses the built-in Seatbelt, while Linux and WSL2 use `bubblewrap`. On Windows, running from PowerShell uses Windows Sandbox and running under WSL2 uses the Linux implementation.
+The implementation differs per operating system. macOS uses the built-in Seatbelt, while Linux and WSL2 use `bubblewrap`. On Windows, running from PowerShell uses Codex's own native Windows sandbox and running under WSL2 uses the Linux implementation.
 
 ### Enforcing it on managed devices
 
