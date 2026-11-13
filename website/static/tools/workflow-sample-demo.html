@@ -1,0 +1,280 @@
+<!doctype html>
+<!--
+  API 키 없이 보는 샘플: CI/CD 워크플로 생성기 결과 미리보기 (정적 데이터)
+  내용: cicd-quick, secret-detection, sast 페이지의 워크플로 예시를 아래 선택값에 맞춰 묶은 것
+-->
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Workflow Sample Preview</title>
+    <style>
+      :root {
+        --border: #d7dbe0;
+        --muted: #5a6270;
+        --bg: #ffffff;
+        --surface: #f7f8fa;
+        --code-bg: #f1f3f6;
+        --accent: #2a64c4;
+        --text: #1f2430;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --border: #2a2f45;
+          --muted: #9aa3b2;
+          --bg: #1b1f2a;
+          --surface: #232838;
+          --code-bg: #161a24;
+          --text: #e7e9ee;
+        }
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family:
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+        color: var(--text);
+        background: var(--bg);
+        padding: 16px;
+        line-height: 1.55;
+      }
+      .panel {
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 12px 14px;
+        margin-bottom: 14px;
+        background: var(--surface);
+      }
+      .ptitle {
+        font-weight: 600;
+        margin-bottom: 6px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.9rem;
+      }
+      th,
+      td {
+        text-align: left;
+        padding: 5px 8px;
+        border-bottom: 1px solid var(--border);
+        vertical-align: top;
+      }
+      th {
+        width: 30%;
+        font-weight: 600;
+      }
+      pre {
+        background: var(--code-bg);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 12px;
+        overflow-x: auto;
+        font-size: 0.82rem;
+        line-height: 1.5;
+        margin: 8px 0;
+        white-space: pre;
+      }
+      code {
+        font-family: "SFMono-Regular", Consolas, monospace;
+      }
+      button {
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 0.95rem;
+        padding: 8px 16px;
+        border-radius: 8px;
+        border: 1px solid var(--accent);
+        background: var(--accent);
+        color: #fff;
+      }
+      button:hover {
+        filter: brightness(1.08);
+      }
+      .note {
+        font-size: 0.85rem;
+        color: var(--muted);
+        margin-top: 10px;
+      }
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="panel">
+      <div class="ptitle" data-i18n="inputTitle">입력: 샘플 선택값</div>
+      <table>
+        <tbody>
+          <tr>
+            <th data-i18n="thPlatform">CI/CD 플랫폼</th>
+            <td data-i18n="platformValue">GitHub 저장소</td>
+          </tr>
+          <tr>
+            <th data-i18n="thLang">개발 언어</th>
+            <td>JavaScript/TypeScript, Python</td>
+          </tr>
+          <tr>
+            <th data-i18n="thDomain">보안 영역</th>
+            <td data-i18n="domainValue">시크릿 탐지, SAST, SCA</td>
+          </tr>
+          <tr>
+            <th data-i18n="thVuln">취약점 차단 기준</th>
+            <td data-i18n="vulnValue">High 이상</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <button id="runBtn" type="button" onclick="showResult()" data-i18n="runBtn">
+      샘플 생성 결과 보기
+    </button>
+
+    <div id="result" class="hidden">
+      <div class="panel">
+        <div class="ptitle" data-i18n="resultTitle">
+          결과: .github/workflows/security.yml (예시)
+        </div>
+        <pre><code id="output"></code></pre>
+        <p class="note" data-i18n="note">
+          위 결과는 샘플 선택값 기준 예시입니다. 아래 도구에서 본인 프로젝트의
+          선택값으로 생성하세요.
+        </p>
+      </div>
+    </div>
+
+    <script>
+      function yaml(c) {
+        return [
+          "# .github/workflows/security.yml",
+          "name: Security Checks",
+          "",
+          "on:",
+          "  pull_request:",
+          "    branches: [main, develop]",
+          "  push:",
+          "    branches: [main]",
+          "",
+          "permissions:",
+          "  contents: read",
+          "",
+          "jobs:",
+          "  # " + c.secret,
+          "  gitleaks:",
+          "    runs-on: ubuntu-latest",
+          "    steps:",
+          "      - uses: actions/checkout@v7",
+          "        with:",
+          "          fetch-depth: 0",
+          "      - name: Run Gitleaks",
+          "        run: |",
+          '          docker run --rm -v "$PWD:/repo" ghcr.io/gitleaks/gitleaks:latest \\',
+          "            detect --source /repo --verbose --redact",
+          "",
+          "  # " + c.sast,
+          "  semgrep:",
+          "    runs-on: ubuntu-latest",
+          "    container:",
+          "      image: semgrep/semgrep",
+          "    steps:",
+          "      - uses: actions/checkout@v7",
+          "      - name: Run Semgrep",
+          "        run: semgrep ci",
+          "        env:",
+          "          SEMGREP_RULES: >-",
+          "            p/owasp-top-ten",
+          "            p/security-audit",
+          "",
+          "  # " + c.sca,
+          "  sca:",
+          "    runs-on: ubuntu-latest",
+          "    steps:",
+          "      - uses: actions/checkout@v7",
+          "      - name: Generate SBOM",
+          "        uses: anchore/sbom-action@v0",
+          "        with:",
+          "          format: cyclonedx-json",
+          "          output-file: sbom.cdx.json",
+          "      - name: Scan vulnerabilities",
+          "        uses: anchore/scan-action@v7",
+          "        with:",
+          "          sbom: sbom.cdx.json",
+          "          fail-build: true",
+          "          severity-cutoff: high",
+          "      - name: Upload SBOM",
+          "        uses: actions/upload-artifact@v7",
+          "        with:",
+          "          name: sbom",
+          "          path: sbom.cdx.json",
+        ].join("\n");
+      }
+
+      const I18N = {
+        ko: {
+          docTitle: "워크플로 생성기 샘플 미리보기",
+          inputTitle: "입력: 샘플 선택값",
+          thPlatform: "CI/CD 플랫폼",
+          platformValue: "GitHub 저장소",
+          thLang: "개발 언어",
+          thDomain: "보안 영역",
+          domainValue: "시크릿 탐지, SAST, SCA",
+          thVuln: "취약점 차단 기준",
+          vulnValue: "High 이상",
+          runBtn: "샘플 생성 결과 보기",
+          resultTitle: "결과: .github/workflows/security.yml (예시)",
+          note: "위 결과는 샘플 선택값 기준 예시입니다. 아래 도구에서 본인 프로젝트의 선택값으로 생성하세요.",
+          output: yaml({
+            secret: "1. 시크릿 탐지: 전체 커밋 이력에서 키와 토큰을 찾습니다",
+            sast: "2. SAST: 코드의 보안 취약 패턴을 찾습니다",
+            sca: "3. SCA: SBOM 을 만들고 High 이상 취약점이 있으면 실패합니다",
+          }),
+        },
+        en: {
+          docTitle: "Workflow Generator Sample Preview",
+          inputTitle: "Input: sample selections",
+          thPlatform: "CI/CD platform",
+          platformValue: "GitHub repository",
+          thLang: "Languages",
+          thDomain: "Security areas",
+          domainValue: "Secret detection, SAST, SCA",
+          thVuln: "Blocking threshold",
+          vulnValue: "High or above",
+          runBtn: "Show the sample result",
+          resultTitle: "Result: .github/workflows/security.yml (example)",
+          note: "This is an example based on the sample selections. Generate your own in the tool below.",
+          output: yaml({
+            secret: "1. Secret detection: scan the full commit history for keys and tokens",
+            sast: "2. SAST: find insecure code patterns",
+            sca: "3. SCA: build an SBOM and fail on vulnerabilities rated High or above",
+          }),
+        },
+      };
+
+      const LANG =
+        new URLSearchParams(window.location.search).get("lang") === "en"
+          ? "en"
+          : "ko";
+      const T = I18N[LANG];
+
+      document.documentElement.lang = LANG;
+      document.title = T.docTitle;
+      document.querySelectorAll("[data-i18n]").forEach((el) => {
+        const v = T[el.dataset.i18n];
+        if (typeof v === "string") el.textContent = v;
+      });
+      document.getElementById("output").textContent = T.output;
+
+      function showResult() {
+        document.getElementById("result").classList.remove("hidden");
+        document.getElementById("runBtn").classList.add("hidden");
+      }
+    </script>
+  </body>
+</html>

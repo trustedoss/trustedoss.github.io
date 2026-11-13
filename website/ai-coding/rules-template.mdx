@@ -7,24 +7,6 @@ sidebar_position: 3
 
 # 오픈소스 컴플라이언스 공통 Rules 템플릿
 
-## Rules 생성기
-
-아래 생성기에서 옵션을 선택하면 바로 다운로드할 수 있는 설정 파일이 만들어집니다.
-
-:::info 이 도구는 Anthropic API 키가 필요합니다
-브라우저에서 직접 Anthropic API를 호출합니다. 본인의 [Anthropic API 키](https://console.anthropic.com/settings/keys)를 입력하면 바로 사용할 수 있으며, 키와 입력 내용은 브라우저에서 Anthropic으로만 전송됩니다(trustedoss 서버를 거치지 않습니다). 사용량은 본인 Anthropic 계정에 과금됩니다.
-:::
-
-<iframe
-  src="/tools/rules-generator.html"
-  width="100%"
-  height="820"
-  frameBorder="0"
-  style={{borderRadius: '12px', border: '1px solid #e5e5e5'}}
-/>
-
----
-
 ## 개요
 
 이 템플릿은 AI 코딩 도구가 코드를 생성할 때 자동으로 오픈소스 정책을 인지하도록 만드는 공통 규칙 모음입니다. CLAUDE.md, .cursor/rules, .clinerules 같은 각 도구의 설정 파일에 붙여넣어 사용합니다. 2026년 현재 OpenAI Codex, Cursor, GitHub Copilot, Devin Desktop, Cline 이 모두 공통 규칙 파일 AGENTS.md 를 공식 지원하므로, AGENTS.md 한 벌을 기본으로 두고 도구별 파일은 차이점만 보완하는 구성도 가능합니다. 허용·금지 라이선스 목록은 사내 정책에 맞게 수정해서 사용하시기 바랍니다.
@@ -55,6 +37,39 @@ grep -rlP '[\x{200B}-\x{200D}\x{2060}\x{FEFF}\x{E0000}-\x{E007F}]' \
 ```
 
 에이전트가 호출하는 MCP 서버·스킬·IDE 확장까지 포함한 통제는 [에이전트와 MCP 도구 거버넌스](./agent-governance)에서 다룹니다.
+
+## Rules 생성기
+
+아래 생성기에서 옵션을 선택하면 바로 다운로드할 수 있는 설정 파일이 만들어집니다.
+
+### 먼저 샘플로 미리보기 (API 키 불필요)
+
+샘플 선택값으로 만든 결과를 먼저 확인한 뒤, 아래 생성기에서 팀의 선택값으로 파일을 만드세요.
+
+<iframe
+  src="/tools/rules-sample-demo.html"
+  width="100%"
+  height="620"
+  frameBorder="0"
+  style={{
+    borderRadius: '12px',
+    border: '1px solid var(--ifm-color-emphasis-300)',
+  }}
+/>
+
+### 내 팀 설정으로 생성하기
+
+:::info 이 도구는 Anthropic API 키가 필요합니다
+브라우저에서 직접 Anthropic API를 호출합니다. 본인의 [Anthropic API 키](https://console.anthropic.com/settings/keys)를 입력하면 바로 사용할 수 있으며, 키와 입력 내용은 브라우저에서 Anthropic으로만 전송됩니다(trustedoss 서버를 거치지 않습니다). 사용량은 본인 Anthropic 계정에 과금됩니다.
+:::
+
+<iframe
+  src="/tools/rules-generator.html"
+  width="100%"
+  height="820"
+  frameBorder="0"
+  style={{borderRadius: '12px', border: '1px solid #e5e5e5'}}
+/>
 
 ---
 
