@@ -107,7 +107,7 @@ cosign으로 분리 서명(detached signature)을 만들어 SBOM과 함께 배�
 
 위 방법 중 가장 손이 덜 가는 형태는 릴리스에 SBOM 파일을 그대로 붙이는 것입니다. 오픈소스
 프로젝트 TRUSCA 는 릴리스마다 CycloneDX SBOM 을 자산으로 올립니다.
-[v0.20.1 릴리스](https://github.com/trustedoss/trusca/releases/latest)의 `trusca-0.20.1.cdx.json` 이 그 파일입니다.
+[v0.20.1 릴리스](https://github.com/trustedoss/trusca/releases/tag/v0.20.1)의 `trusca-0.20.1.cdx.json` 이 그 파일입니다.
 
 버전과 파일명이 1:1 로 묶이므로 "이 버전의 구성이 무엇이었나"를 나중에 재현할 수 있고,
 납품처는 별도 요청 없이 내려받을 수 있습니다. 비공개 제품이라면 같은 방식을 사내 아티팩트

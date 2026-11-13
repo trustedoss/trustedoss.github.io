@@ -11,7 +11,7 @@ sidebar_position: 4
 
 Codex reads `AGENTS.md` as its instruction file. It reads the global file (`~/.codex/AGENTS.md`) first, then concatenates the file at each level from the Git repository root down to the current working directory. Files closer to the current directory appear later, so they override earlier guidance. If `AGENTS.override.md` exists in the same location, it takes precedence over `AGENTS.md`.
 
-`AGENTS.md` is a shared format that Cursor, GitHub Copilot, Devin Desktop, and Cline also support. Keeping the open source policy in a single `AGENTS.md` applies the same rules across several tools and leaves only the differences in tool-specific files.
+`AGENTS.md` is a shared format that Cursor, GitHub Copilot, Devin Desktop, and Cline also support. Claude Code reads it too, but only when there is no `CLAUDE.md`, so if you use both, import it with `@AGENTS.md` in `CLAUDE.md`. Keeping the open source policy in a single `AGENTS.md` applies the same rules across several tools and leaves only the differences in tool-specific files.
 
 ## Configuration File Location
 

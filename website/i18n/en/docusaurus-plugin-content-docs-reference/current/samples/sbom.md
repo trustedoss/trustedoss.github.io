@@ -408,7 +408,7 @@ Date: [ YYYY-MM-DD ]
 | Product name | [ Product or software name ]           |
 | Version      | [ v0.0.0 ]                             |
 | Build date   | [ YYYY-MM-DD HH:MM ]                   |
-| SBOM format  | [ CycloneDX 1.6 JSON / SPDX 2.3 JSON ] |
+| SBOM format  | [ CycloneDX 1.7 JSON / SPDX 2.3 JSON ] |
 | File name    | [ e.g., myproduct-v1.0.0.cdx.json ]    |
 | SHA-256 hash | [ file hash value ]                    |
 

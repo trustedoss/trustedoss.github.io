@@ -18,6 +18,11 @@ If open source policies are written in `CLAUDE.md`, Claude Code automatically co
 - Project root: `CLAUDE.md` (recommended)
 - Per subfolder: `{folder_name}/CLAUDE.md` (supplementary)
 - Global: `~/.claude/CLAUDE.md` (shared across all projects)
+- Managed organization policy: macOS `/Library/Application Support/ClaudeCode/CLAUDE.md`, Linux `/etc/claude-code/CLAUDE.md`, Windows `C:\Program Files\ClaudeCode\CLAUDE.md` (to enforce an organization policy for every user)
+
+:::note Using it together with AGENTS.md
+Claude Code also reads `AGENTS.md`, but only when the directory has no `CLAUDE.md`. When both files exist it reads only `CLAUDE.md`, so if you keep the shared policy in `AGENTS.md`, put `@AGENTS.md` on the first line of `CLAUDE.md` to import it.
+:::
 
 ## How to Apply
 

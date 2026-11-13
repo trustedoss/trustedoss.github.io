@@ -23,14 +23,14 @@ The examples below keep mutable tags such as `@v7` for readability. A tag can be
 
 ## Tool Comparison
 
-| Tool    | Key Characteristics                                    | Supported Targets                   | License    |
-| ------- | ------------------------------------------------------ | ----------------------------------- | ---------- |
-| Checkov | Broad coverage + custom policy support                 | Terraform, K8s, CF, Dockerfile, ARM | Apache-2.0 |
-| tfsec   | Terraform-focused + fast                               | Terraform                           | MIT        |
-| Trivy   | Includes IaC scan (integrated with container security) | Terraform, K8s, Dockerfile          | Apache-2.0 |
-| Kubesec | Kubernetes-only security scoring                       | Kubernetes YAML                     | Apache-2.0 |
+| Tool    | Key Characteristics                                         | Supported Targets                   | License    |
+| ------- | ----------------------------------------------------------- | ----------------------------------- | ---------- |
+| Checkov | Broad coverage + custom policy support                      | Terraform, K8s, CF, Dockerfile, ARM | Apache-2.0 |
+| tfsec   | Terraform-focused (no longer maintained; merged into Trivy) | Terraform                           | MIT        |
+| Trivy   | Includes IaC scan (integrated with container security)      | Terraform, K8s, Dockerfile          | Apache-2.0 |
+| Kubesec | Kubernetes-only security scoring                            | Kubernetes YAML                     | Apache-2.0 |
 
-For multi-IaC environments, Checkov is recommended; for integration with container security, use Trivy. Maintenance of tfsec is being migrated to Trivy, so if you need Terraform-only checks, consider `trivy config` first.
+For multi-IaC environments, Checkov is recommended; for integration with container security, use Trivy. tfsec is no longer maintained and has been merged into Trivy, so if you need Terraform-only checks, use `trivy config`.
 
 ---
 
@@ -110,33 +110,36 @@ iac-security:
 
 ---
 
-## tfsec Setup (Terraform-only)
+## Trivy Setup (Terraform-only checks)
 
-tfsec is specialized for Terraform, runs quickly, and includes built-in security rules for major cloud providers such as AWS, Azure, and GCP. However, its maintenance is being migrated to Trivy, so for new adoption consider `trivy config` first. It is also useful alongside Checkov when you want deeper Terraform-specific checks.
+tfsec is no longer maintained after its last release (v1.28.14, 2025-05), and its repository tells users to move to Trivy. If you need Terraform-only checks, use `trivy config`. The tfsec rules are integrated into Trivy, so you get the same checks.
 
 ### GitHub Actions
 
 ```yaml
-# .github/workflows/iac-security-tfsec.yml (Terraform only)
+# .github/workflows/iac-security-trivy.yml (Terraform only)
 
-name: IaC Security — tfsec
+name: IaC Security — Trivy
 
 on:
   pull_request:
     branches: [main]
 
 jobs:
-  tfsec:
+  trivy-config:
     runs-on: ubuntu-latest
     permissions:
       contents: read
     steps:
       - uses: actions/checkout@v7
 
-      - name: Run tfsec
-        uses: aquasecurity/tfsec-action@v1.0.3
+      - name: Run Trivy config scan
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
-          soft_fail: false
+          scan-type: config
+          scan-ref: .
+          severity: HIGH,CRITICAL
+          exit-code: '1'
 ```
 
 ---

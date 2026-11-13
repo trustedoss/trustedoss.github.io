@@ -11,7 +11,7 @@ sidebar_position: 4
 
 Codex 는 `AGENTS.md` 를 지침 파일로 읽습니다. 전역 파일(`~/.codex/AGENTS.md`)을 먼저 읽고, 이어서 Git 저장소 루트부터 현재 작업 디렉터리까지 각 단계의 파일을 순서대로 이어 붙입니다. 현재 디렉터리에 가까운 파일이 뒤에 놓이므로 앞선 지침을 덮습니다. 같은 위치에 `AGENTS.override.md` 가 있으면 그 파일이 `AGENTS.md` 보다 우선합니다.
 
-`AGENTS.md` 는 Cursor, GitHub Copilot, Devin Desktop, Cline 도 지원하는 공통 규격입니다. 오픈소스 정책을 `AGENTS.md` 한 벌로 두면 여러 도구에 같은 규칙이 적용되고, 도구별 파일에는 차이점만 남길 수 있습니다.
+`AGENTS.md` 는 Cursor, GitHub Copilot, Devin Desktop, Cline 도 지원하는 공통 규격입니다. Claude Code 도 읽지만 `CLAUDE.md` 가 없을 때만 읽으므로, 두 파일을 함께 쓴다면 `CLAUDE.md` 에 `@AGENTS.md` 를 적어 가져오세요. 오픈소스 정책을 `AGENTS.md` 한 벌로 두면 여러 도구에 같은 규칙이 적용되고, 도구별 파일에는 차이점만 남길 수 있습니다.
 
 ## 설정 파일 위치
 

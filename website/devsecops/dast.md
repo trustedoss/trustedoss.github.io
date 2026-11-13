@@ -29,23 +29,23 @@ SAST는 코드를 보고 DAST는 실행 중인 앱을 봅니다. 두 가지를 �
 
 ## 도구 비교
 
-| 도구      | 특징                           | 주요 용도               | 라이선스   |
-| --------- | ------------------------------ | ----------------------- | ---------- |
-| OWASP ZAP | 업계 표준·GUI·자동화 모두 지원 | 웹앱·API 전체 스캔      | Apache-2.0 |
-| Nuclei    | 템플릿 기반·빠른 속도·경량     | 알려진 취약점 패턴 스캔 | MIT        |
+| 도구   | 특징                           | 주요 용도               | 라이선스   |
+| ------ | ------------------------------ | ----------------------- | ---------- |
+| ZAP    | 업계 표준·GUI·자동화 모두 지원 | 웹앱·API 전체 스캔      | Apache-2.0 |
+| Nuclei | 템플릿 기반·빠른 속도·경량     | 알려진 취약점 패턴 스캔 | MIT        |
 
-심층 웹앱 스캔에는 OWASP ZAP, 알려진 CVE·미설정 취약점 빠른 검사에는 Nuclei를 권장합니다.
+심층 웹앱 스캔에는 ZAP, 알려진 CVE·미설정 취약점 빠른 검사에는 Nuclei를 권장합니다.
 
 ---
 
-## OWASP ZAP 설정
+## ZAP 설정
 
 ### GitHub Actions
 
 ```yaml
 # .github/workflows/dast-zap.yml
 
-name: DAST — OWASP ZAP
+name: DAST — ZAP
 
 on:
   push:
@@ -73,6 +73,7 @@ jobs:
           target: http://localhost:8080
           rules_file_name: zap-rules.tsv
           fail_action: true
+          artifact_name: zap-baseline
 
       # ZAP API 스캔 (OpenAPI 명세 기반)
       - name: ZAP API Scan
@@ -81,6 +82,7 @@ jobs:
           target: http://localhost:8080/api/openapi.json
           format: openapi
           fail_action: true
+          artifact_name: zap-api
 
       - name: Upload ZAP report
         uses: actions/upload-artifact@v7

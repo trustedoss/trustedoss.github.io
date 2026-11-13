@@ -9,7 +9,7 @@ sidebar_position: 5
 
 ## 개요
 
-Windsurf 는 2026-06-02 에 Devin Desktop 으로 이름이 바뀌었습니다. IDE와 기능은 그대로이고 브랜드가 Devin 으로 통합됐습니다. 코딩 에이전트도 Cascade 에서 Devin Local 로 교체됐습니다(Cascade 는 2026-07 까지만 제공).
+Windsurf 는 2026-06-02 에 Devin Desktop 으로 이름이 바뀌었습니다. IDE와 기능은 그대로이고 브랜드가 Devin 으로 통합됐습니다. 코딩 에이전트도 Cascade 에서 Devin Local 로 교체됐습니다(Cascade 는 2026-07-01 에 종료됐습니다).
 
 규칙 파일은 프로젝트 단위로 두고, 글로벌 규칙은 앱 설정(UI)에서 별도로 지정합니다. 글로벌 Rules 에는 조직 공통 정책을, 프로젝트 규칙 디렉토리에는 프로젝트 특화 예외나 추가 규칙을 두는 계층 관리가 효율적입니다. 규칙 디렉토리를 저장소에 커밋하면 팀 전체에 동일한 정책이 적용됩니다. 글로벌 규칙과 프로젝트 규칙이 충돌하면 프로젝트 규칙이 우선합니다.
 
@@ -64,7 +64,7 @@ Windsurf 는 2026-06-02 에 Devin Desktop 으로 이름이 바뀌었습니다. I
 
 Devin Local 의 권한은 Deny, Ask, Allow 세 단계이고 Deny 가 우선합니다. 규칙 형식은 `Read(글롭)`, `Write(글롭)`, `Exec(명령 접두사)`, `Fetch(패턴)` 입니다. 정책 파일과 규칙 파일이 함께 변조되지 않도록, 규칙 디렉터리와 설정 경로는 `Write` 규칙에서 Deny 로 지정해 두는 편이 안전합니다.
 
-구형 에이전트 Cascade 를 아직 쓰고 있다면 샌드박스 대신 자동 실행 레벨(Disabled, Allowlist Only, Auto, Turbo)과 명령 목록으로 통제합니다. 설정 키는 리브랜딩 이후에도 `windsurf.cascadeCommandsAllowList` 와 `windsurf.cascadeCommandsDenyList` 를 그대로 쓰며, 거부 목록이 우선합니다.
+구형 에이전트 Cascade 는 2026-07-01 에 종료되어 더 이상 실행되지 않으므로, 예전 `windsurf.cascadeCommands*` 설정 대신 위 Devin Local 권한 규칙으로 통제합니다.
 
 ## 주의사항
 

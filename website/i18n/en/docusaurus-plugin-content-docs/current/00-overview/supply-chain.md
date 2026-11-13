@@ -132,7 +132,7 @@ In response to a series of large-scale supply chain attacks such as SolarWinds a
   and the **SBOM minimum elements** defined by the NTIA (National Telecommunications and Information
   Administration) date from this effort.
 - The administration's course has since changed: EO 14306 (2025-06) removed the SBOM artifact
-  requirements, and OMB M-26-05 (2026-02) rescinded the blanket attestation mandates, moving to a
+  requirements, and OMB M-26-05 (2026-01) rescinded the blanket attestation mandates, moving to a
   **risk-based, per-agency approach**.
 
 - The minimum elements themselves were updated in 2026-07. The **2026 Minimum Elements for a SBOM**,
@@ -163,7 +163,7 @@ An EU-wide regulation adopted in 2024 to strengthen the cybersecurity of digital
 For non-compliance, up to **EUR 15 million** or **2.5% of annual global turnover**, whichever is greater.
 
 **Impact on Korean companies**
-This applies to **any business** that sells software products or services in the EU. All products with digital elements (cloud services, mobile apps, IoT devices) are in scope.
+This applies to manufacturers that place **products with digital elements** (software, mobile apps, IoT devices) on the EU market. Standalone SaaS is generally out of scope, but a remote data processing service that a product needs to perform its functions is covered as part of that product.
 
 ---
 
