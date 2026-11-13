@@ -10,8 +10,11 @@
 /* 사이트 푸터, 배너, 라벨, 그리드, 평가 박스, 기타 */
 
 .footer {
-  &.footer--dark {
-    --ifm-footer-background-color: var(--deepdark);
+  &.footer--light {
+    --ifm-footer-background-color: var(--ifm-color-emphasis-100);
+    --ifm-footer-title-color: var(--ifm-color-content-secondary);
+    --ifm-footer-link-color: var(--ifm-color-content-secondary);
+    border-top: 1px solid var(--ifm-color-emphasis-300);
   }
 
   .container {
@@ -19,7 +22,7 @@
   }
 
   .text--center {
-    color: #858a96;
+    color: var(--ifm-color-content-secondary);
     font-size: 13px;
   }
 
@@ -34,7 +37,7 @@
   }
 
   .footer__title {
-    color: #858a96;
+    color: var(--ifm-color-content-secondary);
     font-size: 14px;
     font-weight: 500;
     margin: 0 0 8px;

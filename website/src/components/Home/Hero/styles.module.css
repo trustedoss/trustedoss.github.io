@@ -10,24 +10,11 @@
    터미널 목업은 반투명 대신 불투명 값을 쓴다. */
 :root {
   /* 라이트: 문서 본문 배경으로 자연스럽게 이어지는 옅은 그라디언트 */
-  --hero-bg:
-    radial-gradient(
-      900px 420px at 16% 0%,
-      rgba(66, 133, 244, 0.1),
-      transparent 60%
-    ),
-    linear-gradient(180deg, #f7f9fc 0%, #eef2f8 100%);
-  --hero-grid: rgba(15, 45, 107, 0.05);
+  --hero-bg: var(--ifm-background-color);
   --hero-ink: #1c1e21;
   --hero-ink-2: #454b53;
   --hero-ink-3: #5f636e;
   --hero-accent: var(--g-blue-700);
-  --hero-title-grad: linear-gradient(
-    90deg,
-    #1967d2 0%,
-    #185abc 52%,
-    #6f42c1 100%
-  );
   --hero-chip-bg: #eaf1fd;
   --hero-chip-br: #cfe0fb;
   --hero-chip-fg: var(--g-blue-800);
@@ -39,45 +26,26 @@
   --hero-surface-fg: #1c1e21;
   --hero-line: #c4c8cf;
 
-  /* 터미널 목업은 두 테마 모두 어둡게 둔다. 터미널이라는 사물의 관습이고,
-     라이트 배경 위에서도 제품 화면으로 읽힌다. */
-  --term-bg: #131a2e;
-  --term-bar: #1c2540;
-  --term-br: #2a3a5f;
-  --term-ink: #eef1f6;
-  --term-ink-2: #c3cad8;
-  --term-ink-3: #98a2b6;
-  --term-accent: var(--g-blue-300);
-  --term-ok: #6ee7a8;
-  --term-chip-bg: #24365e;
-  --term-chip-br: #33487a;
-  --term-chip-fg: #dbe6ff;
+  /* 터미널 목업은 문서 표면과 같은 평면 카드로 둔다. 어두운 카드, 회전, 그림자를 쓰지 않는다. */
+  --term-bg: var(--ifm-color-emphasis-100);
+  --term-bar: var(--ifm-color-emphasis-200);
+  --term-br: var(--ifm-color-emphasis-300);
+  --term-ink: #202124;
+  --term-ink-2: #3c4043;
+  --term-ink-3: #5f6368;
+  --term-accent: var(--g-blue-700);
+  --term-ok: #1e8e3e;
+  --term-chip-bg: #e8f0fe;
+  --term-chip-br: #d2e3fc;
+  --term-chip-fg: #174ea6;
 }
 
 html[data-theme="dark"] {
-  --hero-bg:
-    radial-gradient(
-      820px 360px at 80% 6%,
-      rgba(139, 110, 246, 0.32),
-      transparent 60%
-    ),
-    radial-gradient(
-      980px 440px at 16% 0%,
-      rgba(66, 133, 244, 0.42),
-      transparent 60%
-    ),
-    linear-gradient(160deg, #0a1230 0%, #0f2a63 52%, #123e92 100%);
-  --hero-grid: rgba(255, 255, 255, 0.04);
+  --hero-bg: var(--ifm-background-color);
   --hero-ink: #fff;
   --hero-ink-2: #dfe4ee;
   --hero-ink-3: #b8c0d3;
   --hero-accent: var(--g-blue-300);
-  --hero-title-grad: linear-gradient(
-    90deg,
-    #aecbfa 0%,
-    #8ab4f8 42%,
-    #c2a8ff 100%
-  );
   --hero-chip-bg: #1f2f57;
   --hero-chip-br: #33487a;
   --hero-chip-fg: #dbe6ff;
@@ -88,6 +56,15 @@ html[data-theme="dark"] {
   --hero-surface-hover: #294585;
   --hero-surface-fg: #fff;
   --hero-line: #52689c;
+
+  --term-ink: #e8eaed;
+  --term-ink-2: #bdc1c6;
+  --term-ink-3: #9aa0a6;
+  --term-accent: var(--g-blue-300);
+  --term-ok: #81c995;
+  --term-chip-bg: #24365e;
+  --term-chip-br: #33487a;
+  --term-chip-fg: #dbe6ff;
 }
 
 .hero {
@@ -97,24 +74,6 @@ html[data-theme="dark"] {
   color: var(--hero-ink);
   overflow: hidden;
   background: var(--hero-bg);
-}
-
-/* 미세 그리드 글로우 */
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(var(--hero-grid) 1px, transparent 1px),
-    linear-gradient(90deg, var(--hero-grid) 1px, transparent 1px);
-  background-size: 44px 44px;
-  -webkit-mask: radial-gradient(
-    900px 420px at 50% 10%,
-    #000 0%,
-    transparent 70%
-  );
-  mask: radial-gradient(900px 420px at 50% 10%, #000 0%, transparent 70%);
-  pointer-events: none;
 }
 
 .container {
@@ -156,12 +115,7 @@ html[data-theme="dark"] {
 }
 
 .titleAccent {
-  /* 폴백: background-clip:text 미지원 시 보이는 라이트 블루 */
   color: var(--hero-accent);
-  background: var(--hero-title-grad);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 .subtitle {
@@ -259,17 +213,14 @@ html[data-theme="dark"] {
   width: 100%;
   max-width: 540px;
   margin: 3.25rem auto 0;
-  perspective: 1200px;
 }
 
 .window {
   border: 1px solid var(--term-br);
-  border-radius: 14px;
+  border-radius: 12px;
   background: var(--term-bg);
-  box-shadow: 0 30px 60px -25px rgba(0, 0, 0, 0.35);
   overflow: hidden;
   text-align: left;
-  transform: rotateX(6deg);
 }
 
 .windowBar {
