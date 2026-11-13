@@ -272,7 +272,7 @@ TRUSCA runs this layer three ways.
 That last workflow defaults to advisory and turns blocking on through a `fail_on_gate` input. That is the
 observe-first, block-later progression implemented literally.
 
-## Self-Study: Level 2 Automation
+## Self-Study: PR Comments and Automatic Issue Creation
 
 :::tip Build automation workflows with Claude Code
 The agents below work in conjunction with the CI/CD pipeline.

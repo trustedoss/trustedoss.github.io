@@ -33,14 +33,14 @@ The goal of DevSecOps is to shift as many checks as possible to the left (the co
 
 ## Maturity Model: Four Levels
 
-This model grades DevSecOps maturity on four levels. These level numbers are a separate scale from the stage numbers in the [AI Coding 5-Stage Strategy by Assurance Level](/en/ai-coding/strategy). Do not read the two together.
+This model grades DevSecOps maturity on four levels. The right-hand column shows which stage of the [AI Coding 5-Stage Strategy by Assurance Level](/en/ai-coding/strategy) each level corresponds to. Stage notation on this site follows the 5-stage strategy.
 
-| Level   | Name         | Characteristics                          | Main tools              |
-| ------- | ------------ | ---------------------------------------- | ----------------------- |
-| Level 1 | None         | Security checks manual or absent         | —                       |
-| Level 2 | Basic        | CI automation in key areas               | Gitleaks, grype         |
-| Level 3 | Systematized | Pipeline integration across all areas    | Semgrep, Trivy, Checkov |
-| Level 4 | Optimized    | Auto-remediation · continuous monitoring | Dependabot + AI         |
+| Level   | Name         | Characteristics                          | Main tools              | Matching stage |
+| ------- | ------------ | ---------------------------------------- | ----------------------- | -------------- |
+| Level 1 | None         | Security checks manual or absent         | —                       | Stage 1        |
+| Level 2 | Basic        | CI automation in key areas               | Gitleaks, grype         | Early Stage 3  |
+| Level 3 | Systematized | Pipeline integration across all areas    | Semgrep, Trivy, Checkov | Full Stage 3   |
+| Level 4 | Optimized    | Auto-remediation · continuous monitoring | Dependabot + AI         | Stages 4 and 5 |
 
 For most teams, it is realistic to start at Level 2 and move to Level 3 over 6 to 12 months.
 
@@ -88,7 +88,7 @@ each stage of the AI Coding 5-stage strategy.
 
 **Prerequisite**: Clone the [Trusted OSS Agent repository](https://github.com/trustedoss/trustedoss-agents)
 
-The stage numbers below are those of the [AI Coding 5-Stage Strategy by Assurance Level](/en/ai-coding/strategy). They are a different scale from the maturity levels above.
+The stage numbers below are those of the [AI Coding 5-Stage Strategy by Assurance Level](/en/ai-coding/strategy). They connect to the maturity levels above through the "Matching stage" column.
 
 | Stage                             | agent                | Command                                                  |
 | --------------------------------- | -------------------- | -------------------------------------------------------- |

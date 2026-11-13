@@ -75,15 +75,13 @@ jobs:
       # 3. 금지 라이선스 검사
       - name: Check licenses
         run: |
-          FORBIDDEN="GPL AGPL SSPL"
-          FOUND=""
-          for license in $FORBIDDEN; do
-            if grep -qi "\"$license" sbom.cdx.json; then
-              FOUND="$FOUND $license"
-            fi
-          done
-          if [ -n "$FOUND" ]; then
-            echo "금지 라이선스 발견:$FOUND"
+          # SBOM에서 라이선스 ID를 뽑아 금지 목록과 정확히 대조합니다.
+          # LGPL·MPL 같은 조건부 허용 라이선스는 걸리지 않습니다(\b 단어 경계).
+          jq -r '.components[]?.licenses[]? | (.license.id // .license.name // .expression) // empty' sbom.cdx.json | sort -u > detected-licenses.txt
+          FORBIDDEN='\b(GPL-2\.0|GPL-3\.0|AGPL-3\.0|SSPL-1\.0|Commons-Clause)'
+          if grep -qE "$FORBIDDEN" detected-licenses.txt; then
+            echo "::error::금지 라이선스가 감지되었습니다. 담당자의 승인을 받거나 대체 패키지를 사용하세요."
+            grep -E "$FORBIDDEN" detected-licenses.txt
             exit 1
           fi
           echo "라이선스 검사 통과"
@@ -110,7 +108,7 @@ jobs:
 
 **3. 금지 라이선스 검사 (셸 스크립트)**
 
-SBOM JSON에서 GPL·AGPL·SSPL 문자열을 검색합니다. 금지 라이선스가 발견되면 `exit 1`로 빌드를 실패시킵니다. `FORBIDDEN` 변수를 수정해 [공통 Rules 템플릿](./rules-template)의 금지 목록과 동기화하거나 팀 정책에 맞게 커스터마이징할 수 있습니다.
+SBOM JSON에서 `jq`로 라이선스 ID를 뽑아 금지 목록(GPL, AGPL, SSPL, Commons Clause)과 정확히 대조합니다. 문자열 검색과 달리 LGPL 같은 조건부 허용 라이선스는 걸리지 않습니다. 금지 라이선스가 발견되면 `exit 1`로 빌드를 실패시킵니다. `FORBIDDEN` 변수를 수정해 [공통 Rules 템플릿](./rules-template)의 금지 목록과 동기화하거나 팀 정책에 맞게 커스터마이징할 수 있습니다.
 
 **4. SBOM 아티팩트 보관**
 
@@ -145,15 +143,11 @@ oss-check:
 
     # 3. 금지 라이선스 검사
     - |
-      FORBIDDEN="GPL AGPL SSPL"
-      FOUND=""
-      for license in $FORBIDDEN; do
-        if grep -qi "\"$license" sbom.cdx.json; then
-          FOUND="$FOUND $license"
-        fi
-      done
-      if [ -n "$FOUND" ]; then
-        echo "금지 라이선스 발견:$FOUND"
+      jq -r '.components[]?.licenses[]? | (.license.id // .license.name // .expression) // empty' sbom.cdx.json | sort -u > detected-licenses.txt
+      FORBIDDEN='\b(GPL-2\.0|GPL-3\.0|AGPL-3\.0|SSPL-1\.0|Commons-Clause)'
+      if grep -qE "$FORBIDDEN" detected-licenses.txt; then
+        echo "금지 라이선스가 감지되었습니다. 담당자의 승인을 받거나 대체 패키지를 사용하세요."
+        grep -E "$FORBIDDEN" detected-licenses.txt
         exit 1
       fi
 

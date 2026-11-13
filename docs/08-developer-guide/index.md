@@ -66,57 +66,29 @@ CVSS 9.0의 Critical 취약점이 공개되었지만 팀이 인지하지 못합�
 
 ## 3. 해결 방법 개요
 
-아래 4가지 방법을 조합하여 적용합니다. 보장 수준이 높을수록 구현 복잡도도 높아집니다.
+아래 4가지 방법을 조합하여 적용합니다. 대응하는 [AI 코딩 5단계 전략](/ai-coding/strategy)의 단계가 높을수록 통제가 강하고 구현도 복잡해집니다.
 
-| 방법                    | 설명                                                     | 보장 수준 | 구현 난이도 |
+| 방법                    | 설명                                                     | 대응 단계 | 구현 난이도 |
 | ----------------------- | -------------------------------------------------------- | --------- | ----------- |
-| **CLAUDE.md 정책 명시** | Claude Code에게 지켜야 할 정책을 직접 알린다             | 70%       | 매우 쉬움   |
-| **Skill 정의**          | 라이선스·취약점 확인 절차를 재사용 가능한 skill로 만든다 | 80%       | 쉬움        |
-| **Hooks 자동 검증**     | 의존성 파일 변경 시 자동으로 경고를 발생시킨다           | 90%       | 보통        |
-| **CI/CD 파이프라인**    | PR 시 자동 체크, 위반 시 머지 차단                       | 99%       | 다소 복잡   |
+| **CLAUDE.md 정책 명시** | Claude Code에게 지켜야 할 정책을 직접 알린다             | 2단계     | 매우 쉬움   |
+| **Skill 정의**          | 라이선스·취약점 확인 절차를 재사용 가능한 skill로 만든다 | 2단계     | 쉬움        |
+| **Hooks 자동 검증**     | 의존성 파일 변경 시 자동으로 경고를 발생시킨다           | 2단계     | 보통        |
+| **CI/CD 파이프라인**    | PR 시 자동 체크, 위반 시 머지 차단                       | 3단계     | 다소 복잡   |
 
 :::info[핵심 원칙]
-완벽한 보장을 위해서는 4가지를 모두 적용해야 합니다. 각 방법은 독립적으로 작동하지만, 조합할수록 누락 위험이 줄어듭니다.
+누락 없이 강제하려면 4가지를 모두 적용해야 합니다. 각 방법은 독립적으로 작동하지만, 조합할수록 누락 위험이 줄어듭니다.
 :::
 
 ## 4. 각 방법 상세 가이드
 
 가장 쉬운 방법 1부터 시작해 3·4로 보강하는 순서를 권장합니다.
 
-### 방법 1: CLAUDE.md에 정책 명시 (보장 70%, 쉬움) {#method-1}
+### 방법 1: CLAUDE.md에 정책 명시 (AI 코딩 2단계, 쉬움) {#method-1}
 
-프로젝트 루트의 `CLAUDE.md`에 아래 섹션을 추가하면, Claude Code가 패키지 추가를 도울 때 이 정책을 자동으로 참조합니다. 등급 구분은 [라이선스 분류](/reference/concepts/license-classification) 기준을 따릅니다. 실제 회사 정책의 허용 목록은 03 정책 챕터에서 생성한 `output/policy/license-allowlist.md`이므로, 아래 예시를 붙여넣은 뒤 그 파일 내용에 맞게 조정하세요.
+프로젝트 루트의 `CLAUDE.md`에 정책을 넣으면 Claude Code가 패키지 추가를 도울 때 자동으로 참조합니다. 허용·조건부 허용·금지 목록과 취약점 정책의 전문은 [공통 Rules 템플릿](/ai-coding/rules-template)에 있으므로 그 내용을 붙여넣고, 목록은 03 정책 챕터에서 생성한 `output/policy/license-allowlist.md`에 맞게 바꾸세요. 등급 기준은 [라이선스 분류](/reference/concepts/license-classification)가 정본입니다. 이 챕터만의 고유 내용은 조직 산출물을 가리키는 아래 확인 절차입니다.
 
 ```markdown
 ## 오픈소스 정책 (자동 준수)
-
-### 허용 라이선스
-
-아래 라이선스는 별도 승인 없이 신규 패키지에 사용 가능하다:
-
-- MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC
-- 전체 목록: output/policy/license-allowlist.md 참조
-
-### 조건부 허용 라이선스
-
-아래 라이선스는 담당자 사전 검토와 승인 후 사용 가능하다:
-
-- LGPL, MPL (Weak Copyleft - 사용 방식에 따라 소스 공개 의무 발생, 법무 검토 필요)
-- CC-BY-SA (콘텐츠용 라이선스라 소프트웨어 적용 시 별도 검토 필요)
-- 조건과 예외는 output/policy/license-allowlist.md 참조
-
-### 금지 라이선스
-
-아래 라이선스는 사전 승인 없이 추가 금지:
-
-- GPL, AGPL (Copyleft - 배포 시 소스코드 공개 의무)
-- SSPL, Commons Clause (오픈소스 정의를 충족하지 않는 사용 제한 조항)
-- 상업적 사용 금지 조항이 있는 모든 라이선스
-
-### 취약점 정책
-
-- CVSS 7.0 이상(High/Critical) 취약점이 있는 패키지 사용 금지
-- 알려진 취약점이 있는 버전은 패치 버전으로 업그레이드
 
 ### 패키지 추가 시 확인 절차
 
@@ -128,17 +100,10 @@ CVSS 9.0의 Critical 취약점이 공개되었지만 팀이 인지하지 못합�
 4. 위반 시: 담당자에게 사용 승인 요청 (output/process/usage-approval.md 참조)
 ```
 
-:::note 등급 기준의 정본
-허용·조건부·금지 세 등급의 판단 기준은 [라이선스 분류](/reference/concepts/license-classification)가
-정본입니다. 위 예시는 그 기준을 CLAUDE.md 형식으로 옮긴 것이므로, 등급이 바뀌면 정본을 먼저
-확인하세요. AI 코딩 도구별 설정 파일에 넣을 규칙 전문은
-[공통 Rules 템플릿](/ai-coding/rules-template)에 있습니다.
-:::
-
 - 효과: Claude Code가 정책을 인지하고 위반 시 경고합니다.
 - 한계: 개발자가 터미널에서 직접 `npm install`을 실행하면 개입하지 못합니다.
 
-### 방법 2: Skill로 검사 절차 표준화 (보장 80%, 쉬움) {#method-2}
+### 방법 2: Skill로 검사 절차 표준화 (AI 코딩 2단계, 쉬움) {#method-2}
 
 라이선스·취약점 확인 절차를 `/oss-policy-check` skill로 만들어, 누구나 한 명령으로 같은 검사를 실행합니다. Skill은 디렉토리 단위로 정의하며, 파일 상단의 frontmatter(name, description)가 있어야 인식됩니다.
 
@@ -232,7 +197,7 @@ osv-scanner --recursive .
 - 효과: 검사 절차가 재사용 가능한 한 명령으로 표준화됩니다.
 - 한계: 개발자가 실행을 잊으면 검사되지 않습니다.
 
-### 방법 3: Hooks로 자동 환기 (보장 90%, 보통) {#method-3}
+### 방법 3: Hooks로 자동 환기 (AI 코딩 2단계, 보통) {#method-3}
 
 `.claude/settings.json`에 아래 Hook을 걸어 두면, 의존성 파일이 변경될 때마다 자동으로 경고가 표시됩니다.
 
@@ -260,18 +225,15 @@ Hook 커맨드는 표준 입력(stdin)으로 도구 호출 정보가 담긴 JSON
 - 더 강한 통제: 수정 자체를 차단하려면 같은 스크립트를 `PreToolUse` Hook으로 등록하세요. PreToolUse에서 exit code 2는 도구 호출을 실행 전에 차단합니다.
 - 한계: Claude Code 외부에서 파일을 수정하면 감지하지 못하므로 CI/CD로 보완합니다.
 
-### 방법 4: CI/CD로 머지 차단 (보장 99%, 다소 복잡) {#method-4}
+### 방법 4: CI/CD로 머지 차단 (AI 코딩 3단계, 다소 복잡) {#method-4}
 
 PR에서 syft·grype로 자동 검사하고, 정책 위반 시 머지를 차단합니다. 사람이나 도구의 누락과 무관하게 마지막 관문을 지킵니다. 아래 예시는 무료 오픈소스 도구만 사용합니다([syft](https://github.com/anchore/syft), [grype](https://github.com/anchore/grype) 모두 Apache-2.0).
 
 차단 목록에는 [라이선스 분류](/reference/concepts/license-classification)에서 금지 등급인 라이선스만 넣습니다. LGPL·MPL 같은 조건부 허용 라이선스는 빌드를 실패시키는 대신 담당자 검토로 넘기는 것이 정본 기준입니다.
 
-<details>
-<summary><code>.github/workflows/oss-policy-check.yml</code> 전문</summary>
+워크플로 전문은 [30분 Quick CI/CD](/ai-coding/cicd-quick)의 `oss-policy.yml`을 그대로 쓰세요. SBOM 생성(syft), High 이상 취약점 차단(grype), 금지 라이선스 검사(jq로 ID를 뽑아 대조)가 한 파일에 들어 있습니다. 이 챕터에서 더할 것은 `paths`로 의존성 파일 변경 시에만 실행하는 조건입니다.
 
 ```yaml
-name: OSS Policy Check
-
 on:
   pull_request:
     branches: [main, master]
@@ -282,65 +244,7 @@ on:
       - 'pom.xml'
       - 'go.mod'
       - 'Cargo.toml'
-
-jobs:
-  license-check:
-    name: 라이선스 정책 검사
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v7
-
-      - name: syft로 SBOM 생성
-        uses: anchore/sbom-action@v0
-        with:
-          format: cyclonedx-json
-          output-file: sbom.cdx.json
-
-      - name: 라이선스 추출 및 정책 검사
-        run: |
-          # 앞 단계에서 생성한 SBOM(sbom.cdx.json)에서 라이선스 목록 추출
-          jq -r '.components[]?.licenses[]? | (.license.id // .license.name // .expression) // empty' sbom.cdx.json | sort -u > detected-licenses.txt
-
-          echo "=== 감지된 라이선스 ==="
-          cat detected-licenses.txt
-
-          # 금지 라이선스 확인 (grep -E 확장 정규식, -only/-or-later 변형도 부분 일치로 감지)
-          # \b 는 단어 경계라 LGPL 은 걸리지 않습니다. LGPL·MPL 은 금지가 아니라 조건부
-          # 허용이므로 차단 대신 담당자 검토 대상입니다. GNU grep 기준입니다.
-          FORBIDDEN='\b(GPL-2\.0|GPL-3\.0|AGPL-3\.0|SSPL-1\.0|Commons-Clause)'
-          if grep -qE "$FORBIDDEN" detected-licenses.txt; then
-            echo "::error::금지된 라이선스가 감지되었습니다. 담당자의 승인을 받거나 대체 패키지를 사용하세요."
-            grep -E "$FORBIDDEN" detected-licenses.txt
-            exit 1
-          fi
-
-          echo "✅ 라이선스 검사 통과"
-
-  vulnerability-check:
-    name: 취약점 검사 (High 이상 차단)
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v7
-
-      - name: grype로 취약점 스캔
-        id: scan
-        uses: anchore/scan-action@v7
-        with:
-          path: '.'
-          fail-build: true
-          severity-cutoff: high # High / Critical 취약점 발견 시 머지 차단
-          output-format: sarif # 결과 파일 경로는 아래에서 outputs 로 참조
-
-      - name: 취약점 보고서 업로드
-        if: always()
-        uses: actions/upload-artifact@v7
-        with:
-          name: vulnerability-report
-          # v6부터 결과 파일이 임시 경로에 생성되어 outputs 로 참조합니다.
-          path: ${{ steps.scan.outputs.sarif }}
 ```
-
-</details>
 
 :::note
 이 단계는 ISO/IEC 18974 G3S.1 (알려진 취약점 식별) 요구사항의 자동화된 지속 검증을 지원합니다.

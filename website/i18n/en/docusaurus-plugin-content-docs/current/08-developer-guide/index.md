@@ -67,57 +67,29 @@ Make tools and automation the **default**.
 
 ## 3. Overview of the four methods
 
-Apply a combination of the four methods below. The higher the level of assurance, the higher the implementation complexity.
+Apply a combination of the four methods below. The higher the corresponding stage of the [AI Coding 5-Stage Strategy](/en/ai-coding/strategy), the stronger the control and the more complex the setup.
 
-| Method                          | Description                                                              | Assurance level | Implementation difficulty |
-| ------------------------------- | ------------------------------------------------------------------------ | --------------- | ------------------------- |
-| **Policy in CLAUDE.md**         | Tell Claude Code directly which policies to follow                       | 70%             | Very easy                 |
-| **Skill definition**            | Turn the license and vulnerability check procedure into a reusable skill | 80%             | Easy                      |
-| **Automatic checks with Hooks** | Automatically raise a warning whenever a dependency file changes         | 90%             | Moderate                  |
-| **CI/CD pipeline**              | Automatic checks on every PR; merges are blocked on violations           | 99%             | Somewhat complex          |
+| Method                          | Description                                                              | Matching stage | Implementation difficulty |
+| ------------------------------- | ------------------------------------------------------------------------ | -------------- | ------------------------- |
+| **Policy in CLAUDE.md**         | Tell Claude Code directly which policies to follow                       | Stage 2        | Very easy                 |
+| **Skill definition**            | Turn the license and vulnerability check procedure into a reusable skill | Stage 2        | Easy                      |
+| **Automatic checks with Hooks** | Automatically raise a warning whenever a dependency file changes         | Stage 2        | Moderate                  |
+| **CI/CD pipeline**              | Automatic checks on every PR; merges are blocked on violations           | Stage 3        | Somewhat complex          |
 
 :::info[Core principle]
-For complete assurance, apply all four methods. Each method works independently, but the more you combine them, the lower the risk of anything slipping through.
+To enforce the policy without gaps, apply all four methods. Each method works independently, but the more you combine them, the lower the risk of anything slipping through.
 :::
 
 ## 4. Detailed guide to each method
 
 We recommend starting with the easiest method 1 and reinforcing it with 3 and 4.
 
-### Method 1: State the policy in CLAUDE.md (70% assurance, very easy) {#method-1}
+### Method 1: State the policy in CLAUDE.md (AI coding stage 2, very easy) {#method-1}
 
-Add the section below to `CLAUDE.md` in the project root and Claude Code will reference this policy automatically when it helps you add a package. The categories follow [License Classification](/en/reference/concepts/license-classification). The allowlist that actually governs your company is `output/policy/license-allowlist.md`, generated in the 03 Policy chapter, so adjust the example to match that file after pasting it.
+Putting the policy in `CLAUDE.md` in the project root makes Claude Code reference it automatically when it helps you add a package. The full allowed, conditionally allowed and prohibited lists and the vulnerability policy are in the [Common Rules Template](/en/ai-coding/rules-template), so paste that content and change the lists to match `output/policy/license-allowlist.md`, generated in the 03 Policy chapter. The categories are owned by [License Classification](/en/reference/concepts/license-classification). What is specific to this chapter is the procedure below, which points at your organization's deliverables.
 
 ```markdown
 ## Open Source Policy (automatic compliance)
-
-### Allowed licenses
-
-The following licenses may be used for new packages without separate approval:
-
-- MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC
-- Full list: see output/policy/license-allowlist.md
-
-### Conditionally allowed licenses
-
-The following licenses may be used after review and approval by the program manager:
-
-- LGPL, MPL (Weak Copyleft - source disclosure obligation depending on usage, legal review required)
-- CC-BY-SA (a content license, so applying it to software requires separate review)
-- Conditions and exceptions: see output/policy/license-allowlist.md
-
-### Prohibited licenses
-
-The following licenses must not be added without prior approval:
-
-- GPL, AGPL (Copyleft - source code disclosure obligation on distribution)
-- SSPL, Commons Clause (use restrictions that do not meet the Open Source Definition)
-- Any license with a clause prohibiting commercial use
-
-### Vulnerability policy
-
-- Do not use packages with vulnerabilities of CVSS 7.0 or higher (High/Critical)
-- Upgrade versions with known vulnerabilities to a patched version
 
 ### Checks when adding a package
 
@@ -129,18 +101,10 @@ When adding a new package, always check in this order:
 4. On violation: request usage approval from the program manager (see output/process/usage-approval.md)
 ```
 
-:::note The canonical source for the categories
-The criteria behind the allowed, conditional, and prohibited categories are owned by
-[License Classification](/en/reference/concepts/license-classification). The example above restates
-those criteria in CLAUDE.md form, so check the canonical page first if a category changes. The full
-rule set for AI coding tool configuration files is in the
-[Common Rules Template](/en/ai-coding/rules-template).
-:::
-
 - Effect: Claude Code is aware of the policy and warns you on violations.
 - Limitation: if a developer runs `npm install` directly in the terminal, Claude Code cannot intervene.
 
-### Method 2: Standardize checks with a Skill (80% assurance, easy) {#method-2}
+### Method 2: Standardize checks with a Skill (AI coding stage 2, easy) {#method-2}
 
 Turn the license and vulnerability check procedure into an `/oss-policy-check` skill so anyone can run the same check with a single command. Skills are defined per directory, and the frontmatter (name, description) at the top of the file is required for the skill to be recognized.
 
@@ -236,7 +200,7 @@ Report the check results in the following format:
 - Effect: the check procedure is standardized into one reusable command.
 - Limitation: if developers forget to run it, nothing is checked.
 
-### Method 3: Automatic reminders with Hooks (90% assurance, moderate) {#method-3}
+### Method 3: Automatic reminders with Hooks (AI coding stage 2, moderate) {#method-3}
 
 With the Hook below configured in `.claude/settings.json`, a warning is displayed automatically whenever a dependency file changes.
 
@@ -264,18 +228,15 @@ The hook command receives JSON on standard input describing the tool call (`tool
 - Stronger control: to block the edit itself, register the same script as a `PreToolUse` Hook. In PreToolUse, exit code 2 blocks the tool call before it runs.
 - Limitation: files modified outside Claude Code are not detected, so complement this with CI/CD.
 
-### Method 4: Block merges with CI/CD (99% assurance, somewhat complex) {#method-4}
+### Method 4: Block merges with CI/CD (AI coding stage 3, somewhat complex) {#method-4}
 
 Automatically check every PR with syft and grype, and block the merge on policy violations. This guards the last gate regardless of what people or tools miss. The example below uses free open source tools only ([syft](https://github.com/anchore/syft) and [grype](https://github.com/anchore/grype) are both Apache-2.0).
 
 Put only licenses in the prohibited category of [License Classification](/en/reference/concepts/license-classification) into the block list. Conditionally allowed licenses such as LGPL and MPL go to program manager review rather than failing the build, which is what the canonical page specifies.
 
-<details>
-<summary>Full <code>.github/workflows/oss-policy-check.yml</code></summary>
+For the full workflow, use `oss-policy.yml` from [30-Minute Quick CI/CD](/en/ai-coding/cicd-quick) as is. It has SBOM generation (syft), blocking on High or above vulnerabilities (grype) and the forbidden license check (extract the IDs with jq and match them) in one file. What this chapter adds is the `paths` condition that runs it only when a dependency file changes.
 
 ```yaml
-name: OSS Policy Check
-
 on:
   pull_request:
     branches: [main, master]
@@ -286,66 +247,7 @@ on:
       - 'pom.xml'
       - 'go.mod'
       - 'Cargo.toml'
-
-jobs:
-  license-check:
-    name: License policy check
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v7
-
-      - name: Generate SBOM with syft
-        uses: anchore/sbom-action@v0
-        with:
-          format: cyclonedx-json
-          output-file: sbom.cdx.json
-
-      - name: Extract licenses and check policy
-        run: |
-          # Extract the license list from the SBOM (sbom.cdx.json) generated in the previous step
-          jq -r '.components[]?.licenses[]? | (.license.id // .license.name // .expression) // empty' sbom.cdx.json | sort -u > detected-licenses.txt
-
-          echo "=== Detected licenses ==="
-          cat detected-licenses.txt
-
-          # Check for prohibited licenses (grep -E extended regex; -only/-or-later variants also match partially)
-          # \b is a word boundary, so LGPL does not match. LGPL and MPL are conditionally
-          # allowed rather than prohibited, so they go to manager review instead of a block.
-          # Requires GNU grep.
-          FORBIDDEN='\b(GPL-2\.0|GPL-3\.0|AGPL-3\.0|SSPL-1\.0|Commons-Clause)'
-          if grep -qE "$FORBIDDEN" detected-licenses.txt; then
-            echo "::error::Prohibited licenses detected. Obtain program manager approval or use an alternative package."
-            grep -E "$FORBIDDEN" detected-licenses.txt
-            exit 1
-          fi
-
-          echo "✅ License check passed"
-
-  vulnerability-check:
-    name: Vulnerability check (block High or above)
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v7
-
-      - name: Scan vulnerabilities with grype
-        id: scan
-        uses: anchore/scan-action@v7
-        with:
-          path: '.'
-          fail-build: true
-          severity-cutoff: high # Block the merge when a High / Critical vulnerability is found
-          output-format: sarif # The result file path is referenced below via outputs
-
-      - name: Upload vulnerability report
-        if: always()
-        uses: actions/upload-artifact@v7
-        with:
-          name: vulnerability-report
-          # Since v6 the result file is written to a temp path; reference it via outputs.
-          path: ${{ steps.scan.outputs.sarif }}
 ```
-
-</details>
 
 :::note
 This step supports the automated, continuous verification of the ISO/IEC 18974 G3S.1 requirement (identifying known vulnerabilities).
