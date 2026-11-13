@@ -77,6 +77,6 @@ you must be able to provide evidence if an audit is requested.
 
 **DevSecOps scope**: The DevSecOps implementation in this guide focuses on the open source security assurance of ISO/IEC 18974. Additional areas such as SAST, DAST, and IaC security are security-hardening activities that go beyond the standard's requirements; they are optional improvements outside the scope of certification.
 
-**ISO/IEC 5230 requires separate preparation**: The license compliance standard ISO/IEC 5230 is outside the scope of this guide. See the [Build Your System guide](/en/docs).
+**ISO/IEC 5230 requires separate preparation**: The license compliance standard ISO/IEC 5230 is outside the scope of this guide. See the [Open Source Management guide](/en/docs).
 
 **Self-certification declaration**: once you have the evidence above, follow the procedure in the [self-certification](/en/docs/conformance) chapter. Registration and validity management live there.

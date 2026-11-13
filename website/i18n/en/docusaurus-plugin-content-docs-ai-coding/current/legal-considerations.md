@@ -123,7 +123,7 @@ in the policy template of the [AI Coding Tool Usage Policy](./usage-policy), tog
 approval, data handling, testing, and cost items. Add that one template to your policy document.
 
 The overall structure of the policy document is covered in
-[Build Your System 3. Open Source Policy](/en/docs/policy), and per-tool Rules setup in the
+[Open Source Management 3. Open Source Policy](/en/docs/policy), and per-tool Rules setup in the
 [Common Rules Template](./rules-template).
 
 ## 6. Standards linkage and sources

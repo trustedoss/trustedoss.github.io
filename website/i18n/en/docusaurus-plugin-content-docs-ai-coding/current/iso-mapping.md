@@ -9,15 +9,15 @@ sidebar_position: 11
 
 This page shows which requirements of the two standards the AI coding guide's implementations **operate and strengthen at the development stage**.
 
-:::note The Build Your System guide is the authority for meeting the standards
-The deliverables that **formally satisfy** the standard requirements (policy, SBOM, vulnerability reports, etc.) are produced in the [Build Your System](/en/docs) track.
+:::note The Open Source Management guide is the authority for meeting the standards
+The deliverables that **formally satisfy** the standard requirements (policy, SBOM, vulnerability reports, etc.) are produced in the [Open Source Management](/en/docs) guide.
 The [Requirements Detail Matrix](/en/reference/requirements-matrix) is the canonical per-item mapping of certification questions and verification material.
 The AI coding guide is a means of **automatically applying that policy to daily development** to strengthen execution.
 :::
 
 ## What does it strengthen?
 
-The policy you created in Build Your System exists as a document. The problem is that developers do not remember it every time they write code.
+The policy you created in the Open Source Management guide exists as a document. The problem is that developers do not remember it every time they write code.
 The AI coding guide internalizes that policy into **AI tool Rules and CI gates**, so it is enforced automatically at code-generation and commit time.
 
 ## Requirement mapping
@@ -37,10 +37,10 @@ The AI coding guide internalizes that policy into **AI tool Rules and CI gates**
 | Test gate and test-weakening check ([Testing](./testing))                    | 18974 §4.3.2 Vulnerability response                  | Confirms a fix did not introduce a regression                                 |
 
 :::note
-The AI coding guide **automates the execution** of the items above, but the self-certification declaration and evidence deliverables are completed in the [Build Your System](/en/docs) track.
+The AI coding guide **automates the execution** of the items above, but the self-certification declaration and evidence deliverables are completed in the [Open Source Management](/en/docs) guide.
 :::
 
 ## Next steps
 
-- To build the standards system from scratch, see the [Build Your System guide](/en/docs)
+- To build the standards system from scratch, see the [Open Source Management guide](/en/docs)
 - For organization-wide pipeline-level security enforcement, see the [DevSecOps guide](/en/devsecops/intro)

@@ -11,8 +11,8 @@
   "id": "./index.html",
   "shortcuts": [
     {
-      "name": "체계구축 가이드",
-      "short_name": "체계구축",
+      "name": "오픈소스 관리 가이드",
+      "short_name": "오픈소스 관리",
       "url": "/docs",
       "icons": [{ "src": "img/pwa/manifest-icon-192.png", "sizes": "192x192" }]
     },

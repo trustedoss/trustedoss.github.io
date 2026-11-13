@@ -70,9 +70,9 @@ Expand only after confirming one step.
    guideline, then expand to other tasks and teams, adding Stages 4 and 5 of the
    [5-Stage Strategy](./strategy) and [MCP tool controls](./agent-governance).
 
-## Relation to the Build Your System guide
+## Relation to the Open Source Management guide
 
-If ISO/IEC 5230 and 18974 Self-Certification is your only goal, finish the [Build Your System](/en/docs)
+If ISO/IEC 5230 and 18974 Self-Certification is your only goal, finish the [Open Source Management](/en/docs)
 track first. The policy, SBOM, and vulnerability-response deliverables the standards require are made
 there. This section applies that policy to AI coding tools and CI so it holds at development time, and
 extends it to productivity, collaboration, and testing, which the standards do not cover. Advanced

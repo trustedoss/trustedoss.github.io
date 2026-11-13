@@ -76,7 +76,7 @@ function useKoDestinations(): Destination[] {
       }),
       desc: translate({
         id: 'notFound.link.docs.desc',
-        message: 'ISO/IEC 5230과 18974 기반 체계 구축',
+        message: 'ISO/IEC 5230과 18974 기반 오픈소스 관리',
       }),
     },
     {
