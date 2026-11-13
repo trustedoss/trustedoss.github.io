@@ -108,19 +108,19 @@ For the actual Docker commands, GitHub Actions CI/CD setup, and the sample proje
 
 Key field descriptions:
 
-| Field                         | Description                                                                                           |
-| ----------------------------- | ----------------------------------------------------------------------------------------------------- |
+| Field                         | Description                                                                                          |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------- |
 | `bomFormat`, `specVersion`    | CycloneDX format identifier and specification version. cdxgen 12+ and syft 1.51+ emit 1.7 by default |
-| `metadata.timestamp`          | When the SBOM was generated                                                                           |
-| `metadata.tools.components[]` | Name and version of the tool that built the SBOM, the "SBOM generation tool" CISA 2026 requires       |
-| `metadata.lifecycles[]`       | Lifecycle phase the SBOM was captured in, the "generation context"                                    |
-| `metadata.component`          | Information about the software being analyzed                                                         |
-| `components[].supplier`       | Supplier of the component                                                                             |
-| `components[].hashes[]`       | Component file hash. The `alg` (SHA-256 and so on) and `content` (hex value) pair proves integrity    |
-| `components[].licenses[]`     | License of the component                                                                              |
-| `components[].purl`           | PURL (Package URL, a standard string that uniquely identifies a package)                              |
-| `signature`                   | Top-level BOM signature in JSON Signature Format (JSF), which proves the SBOM was not tampered with   |
-| `vulnerabilities[]`           | Vulnerability information (if present)                                                                |
+| `metadata.timestamp`          | When the SBOM was generated                                                                          |
+| `metadata.tools.components[]` | Name and version of the tool that built the SBOM, the "SBOM generation tool" CISA 2026 requires      |
+| `metadata.lifecycles[]`       | Lifecycle phase the SBOM was captured in, the "generation context"                                   |
+| `metadata.component`          | Information about the software being analyzed                                                        |
+| `components[].supplier`       | Supplier of the component                                                                            |
+| `components[].hashes[]`       | Component file hash. The `alg` (SHA-256 and so on) and `content` (hex value) pair proves integrity   |
+| `components[].licenses[]`     | License of the component                                                                             |
+| `components[].purl`           | PURL (Package URL, a standard string that uniquely identifies a package)                             |
+| `signature`                   | Top-level BOM signature in JSON Signature Format (JSF), which proves the SBOM was not tampered with  |
+| `vulnerabilities[]`           | Vulnerability information (if present)                                                               |
 
 Hashes, the generation tool name, the generation context, and licenses are the fields that the CISA 2026
 minimum elements described in [SBOM Basics: An Introduction to the Software Bill of Materials](../../00-overview/sbom-101.md)

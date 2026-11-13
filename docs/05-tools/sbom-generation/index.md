@@ -108,19 +108,19 @@ FOSSLight, SW360, FOSSology 등 SCA·컴플라이언스 도구의 도입 및 활
 
 주요 필드 설명:
 
-| 필드                          | 설명                                                                                      |
-| ----------------------------- | ----------------------------------------------------------------------------------------- |
+| 필드                          | 설명                                                                                        |
+| ----------------------------- | ------------------------------------------------------------------------------------------- |
 | `bomFormat`, `specVersion`    | CycloneDX 포맷 식별자와 사양 버전. cdxgen 12 이상과 syft 1.51 이상이 1.7 을 기본으로 냅니다 |
-| `metadata.timestamp`          | SBOM 생성 시각                                                                            |
-| `metadata.tools.components[]` | SBOM을 만든 도구의 이름과 버전. CISA 2026 최소 요소의 "SBOM 생성 도구명"에 해당합니다     |
-| `metadata.lifecycles[]`       | SBOM을 만든 수명주기 단계. "생성 맥락"에 해당합니다                                       |
-| `metadata.component`          | 분석 대상 소프트웨어 정보                                                                 |
-| `components[].supplier`       | 컴포넌트 공급자                                                                           |
-| `components[].hashes[]`       | 컴포넌트 파일의 해시. `alg`(SHA-256 등)와 `content`(16진수 값) 쌍으로 무결성을 확인합니다 |
-| `components[].licenses[]`     | 컴포넌트 라이선스                                                                         |
-| `components[].purl`           | PURL(Package URL, 패키지를 고유하게 식별하는 표준 문자열)                                 |
-| `signature`                   | BOM 최상위의 서명 필드. JSON Signature Format(JSF)으로 SBOM 자체의 위·변조를 확인합니다   |
-| `vulnerabilities[]`           | 취약점 정보 (있을 경우)                                                                   |
+| `metadata.timestamp`          | SBOM 생성 시각                                                                              |
+| `metadata.tools.components[]` | SBOM을 만든 도구의 이름과 버전. CISA 2026 최소 요소의 "SBOM 생성 도구명"에 해당합니다       |
+| `metadata.lifecycles[]`       | SBOM을 만든 수명주기 단계. "생성 맥락"에 해당합니다                                         |
+| `metadata.component`          | 분석 대상 소프트웨어 정보                                                                   |
+| `components[].supplier`       | 컴포넌트 공급자                                                                             |
+| `components[].hashes[]`       | 컴포넌트 파일의 해시. `alg`(SHA-256 등)와 `content`(16진수 값) 쌍으로 무결성을 확인합니다   |
+| `components[].licenses[]`     | 컴포넌트 라이선스                                                                           |
+| `components[].purl`           | PURL(Package URL, 패키지를 고유하게 식별하는 표준 문자열)                                   |
+| `signature`                   | BOM 최상위의 서명 필드. JSON Signature Format(JSF)으로 SBOM 자체의 위·변조를 확인합니다     |
+| `vulnerabilities[]`           | 취약점 정보 (있을 경우)                                                                     |
 
 해시, 생성 도구명, 생성 맥락, 라이선스는 [SBOM 기본: 소프트웨어 부품 명세서 입문](../../00-overview/sbom-101.md)의 CISA 2026 최소 요소에서
 새로 필수가 되었거나 핵심 필드로 올라온 항목입니다. 실제로 어떤 필드가 채워지는지는 도구와 생태계에 따라 다릅니다.

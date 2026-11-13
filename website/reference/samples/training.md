@@ -292,12 +292,12 @@ sidebar_position: 6
 
 ### 2. Linux Foundation 강좌
 
-| 과정명                                               | 과정 코드 | 대상          | 시간 | 수료증      | 링크                                                                                                |
-| ---------------------------------------------------- | --------- | ------------- | ---- | ----------- | --------------------------------------------------------------------------------------------------- |
-| Introduction to Open Source License Compliance Management             | LFC193    | 개발자·관리자 | ~3h  | 있음 (무료) | https://training.linuxfoundation.org/training/introduction-to-open-source-license-compliance-management-lfc193/             |
-| Open Source Licensing Basics for Software Developers | LFC191    | 개발자        | ~3h  | 있음 (무료) | https://training.linuxfoundation.org/training/open-source-licensing-basics-for-software-developers/ |
-| Developing Secure Software             | LFD121    | 개발자        | ~12h | 있음 (무료) | https://training.linuxfoundation.org/training/developing-secure-software-lfd121/                    |
-| Kubernetes and Cloud Native Security Associate       | —         | 운영          | —    | 유료        | —                                                                                                   |
+| 과정명                                                    | 과정 코드 | 대상          | 시간 | 수료증      | 링크                                                                                                            |
+| --------------------------------------------------------- | --------- | ------------- | ---- | ----------- | --------------------------------------------------------------------------------------------------------------- |
+| Introduction to Open Source License Compliance Management | LFC193    | 개발자·관리자 | ~3h  | 있음 (무료) | https://training.linuxfoundation.org/training/introduction-to-open-source-license-compliance-management-lfc193/ |
+| Open Source Licensing Basics for Software Developers      | LFC191    | 개발자        | ~3h  | 있음 (무료) | https://training.linuxfoundation.org/training/open-source-licensing-basics-for-software-developers/             |
+| Developing Secure Software                                | LFD121    | 개발자        | ~12h | 있음 (무료) | https://training.linuxfoundation.org/training/developing-secure-software-lfd121/                                |
+| Kubernetes and Cloud Native Security Associate            | —         | 운영          | —    | 유료        | —                                                                                                               |
 
 **커리큘럼 연계**:
 
