@@ -2,6 +2,7 @@
 id: iso-mapping
 title: 'ISO 표준 연계 (AI 코딩)'
 sidebar_label: 'ISO 표준 연계'
+description: AI 코딩 가이드의 구현이 ISO/IEC 5230과 18974의 어느 요구사항을 개발 단계에서 강화하는지 대응표로 보여줍니다.
 sidebar_position: 11
 ---
 

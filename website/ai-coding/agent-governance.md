@@ -2,6 +2,7 @@
 id: agent-governance
 title: '에이전트와 MCP 도구 거버넌스'
 sidebar_label: '에이전트·MCP 도구 거버넌스'
+description: 에이전트가 호출하는 MCP 도구와 읽는 입력을 통제하는 위협 모델, 실행 통제 아홉 가지, 자동화 도구, 조직 정책 예시를 다룹니다.
 sidebar_position: 7
 ---
 

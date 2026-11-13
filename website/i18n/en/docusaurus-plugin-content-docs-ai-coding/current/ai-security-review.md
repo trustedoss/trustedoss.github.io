@@ -2,6 +2,7 @@
 id: ai-security-review
 title: AI Security Code Review
 sidebar_label: AI Security Review
+description: Explains how to set up a Findings-Driven security code review in GitHub Actions, where the AI reviews only the results narrowed down by static analysis tools.
 sidebar_position: 5
 ---
 

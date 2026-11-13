@@ -2,6 +2,7 @@
 id: windsurf
 title: Devin Desktop (formerly Windsurf)
 sidebar_label: Devin Desktop
+description: Explains where Devin Desktop (formerly Windsurf) reads rule files, how to apply them, and an example open source policy.
 sidebar_position: 5
 ---
 

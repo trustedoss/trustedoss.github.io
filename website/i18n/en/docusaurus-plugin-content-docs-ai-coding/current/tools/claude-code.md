@@ -2,6 +2,7 @@
 id: claude-code
 title: Claude Code
 sidebar_label: Claude Code
+description: Explains where Claude Code reads CLAUDE.md, how to apply it, an example open source policy, and how to verify it is applied.
 sidebar_position: 1
 ---
 

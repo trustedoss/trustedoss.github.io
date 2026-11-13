@@ -2,6 +2,7 @@
 id: pipeline-design
 title: 전사 파이프라인 설계
 sidebar_label: 파이프라인 설계
+description: SAST, SCA, 시크릿 탐지, 컨테이너 보안, IaC 보안, DAST 여섯 영역을 하나의 CI 파이프라인으로 통합하는 설계 방법을 안내합니다.
 sidebar_position: 9
 ---
 

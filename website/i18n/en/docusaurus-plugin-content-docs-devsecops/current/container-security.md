@@ -2,6 +2,7 @@
 id: container-security
 title: Container/Image Security
 sidebar_label: Container Security
+description: Explains how Trivy detects vulnerable packages, Dockerfile misconfigurations, and exposed secrets in container images before deployment.
 sidebar_position: 6
 ---
 

@@ -2,6 +2,7 @@
 id: intro
 title: AI 코딩 거버넌스
 sidebar_label: 소개
+description: AI 코딩 도구를 조직이 같은 기준으로 쓰도록 거버넌스를 세우고 운영하는 방법의 네 축과 읽기 시작할 지점을 안내합니다.
 sidebar_position: 1
 slug: intro
 ---

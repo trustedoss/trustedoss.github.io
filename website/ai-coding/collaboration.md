@@ -2,6 +2,7 @@
 id: collaboration
 title: 'AI 코딩의 생산성과 협업'
 sidebar_label: '생산성과 협업'
+description: AI 코딩으로 병목이 옮겨 가는 곳과 규칙 파일의 팀 운영, 계획 합의와 리뷰 분담 방식을 개발팀 관점에서 설명합니다.
 sidebar_position: 12
 ---
 

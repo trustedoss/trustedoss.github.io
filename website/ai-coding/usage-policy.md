@@ -2,6 +2,7 @@
 id: usage-policy
 title: 'AI 코딩 도구 사용 정책'
 sidebar_label: 'AI 코딩 도구 사용 정책'
+description: 조직이 허용할 AI 코딩 도구와 승인 기준, 보내도 되는 데이터, 역할과 책임, 교육 항목을 정하는 사용 정책 작성법을 설명합니다.
 sidebar_position: 2
 ---
 

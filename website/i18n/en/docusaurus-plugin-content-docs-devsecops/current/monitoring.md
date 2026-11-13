@@ -2,6 +2,7 @@
 id: monitoring
 title: Continuous Monitoring and Automated Remediation
 sidebar_label: Monitoring and Automated Remediation
+description: Explains how to keep detecting new vulnerabilities after deployment and auto-generate patch PRs with Dependabot, Renovate, and scheduled scans.
 sidebar_position: 11
 ---
 

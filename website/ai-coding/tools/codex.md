@@ -2,6 +2,7 @@
 id: codex
 title: OpenAI Codex
 sidebar_label: OpenAI Codex
+description: OpenAI Codex가 읽는 AGENTS.md의 적용 순서와 설정 방법, 오픈소스 정책 작성 예시, 적용 확인 방법을 설명합니다.
 sidebar_position: 4
 ---
 

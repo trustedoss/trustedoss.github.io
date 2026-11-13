@@ -2,6 +2,7 @@
 id: collaboration
 title: 'Productivity and Collaboration in AI Coding'
 sidebar_label: 'Productivity and Collaboration'
+description: Explains for development teams where bottlenecks shift with AI coding, how to run rule files as team assets, and how to agree on plans and share reviews.
 sidebar_position: 12
 ---
 

@@ -2,6 +2,7 @@
 id: cline-aider
 title: Cline / Aider Setup
 sidebar_label: Cline / Aider
+description: Explains how to write, apply, and verify an open source policy in the Cline rule files and the Aider policy document.
 sidebar_position: 6
 ---
 

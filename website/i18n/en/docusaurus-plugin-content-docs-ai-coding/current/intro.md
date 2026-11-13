@@ -2,6 +2,7 @@
 id: intro
 title: AI Coding Governance
 sidebar_label: Introduction
+description: Introduces the four axes of setting up and running governance so an organization uses AI coding tools by the same standard, and shows where to start reading.
 sidebar_position: 1
 slug: intro
 ---

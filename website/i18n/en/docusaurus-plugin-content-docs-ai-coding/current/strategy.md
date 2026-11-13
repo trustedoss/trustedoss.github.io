@@ -2,6 +2,7 @@
 id: strategy
 title: 5-Stage Strategy by Assurance Level
 sidebar_label: 5-Stage Strategy
+description: Describes the five-stage strategy that divides AI coding security and compliance controls by enforcement strength, and what each stage involves.
 sidebar_position: 2
 ---
 

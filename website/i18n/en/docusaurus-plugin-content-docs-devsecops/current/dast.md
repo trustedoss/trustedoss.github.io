@@ -2,6 +2,7 @@
 id: dast
 title: Dynamic Analysis (DAST)
 sidebar_label: DAST
+description: Explains how to set up dynamic analysis (DAST) of a running application with ZAP and Nuclei, and what to watch for when adopting it.
 sidebar_position: 8
 ---
 

@@ -2,6 +2,7 @@
 id: legal-considerations
 title: 'AI 생성 코드의 법적 고려'
 sidebar_label: 'AI 생성 코드의 법적 고려'
+description: AI 생성 코드의 저작권 귀속, 공급자의 IP 보증, AI 사용 표시, 상류 오픈소스 프로젝트의 AI 기여 정책을 법무 관점에서 다룹니다.
 sidebar_position: 8
 ---
 

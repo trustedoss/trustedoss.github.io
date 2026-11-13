@@ -2,6 +2,7 @@
 id: ai-fuzzing
 title: AI 퍼징
 sidebar_label: AI 퍼징
+description: 룰로 잡히지 않는 비즈니스 로직 결함과 엣지케이스 입력을 AI 모델이 직접 탐색하는 AI 퍼징(4b 단계)의 방법과 주의점을 설명합니다.
 sidebar_position: 6
 ---
 

@@ -2,6 +2,7 @@
 id: iso-mapping
 title: 'The 18974 items a pipeline satisfies'
 sidebar_label: '18974 items satisfied'
+description: Shows, with a mapping table and a checklist, which ISO/IEC 18974 requirements the pipeline built in the DevSecOps guide satisfies.
 sidebar_position: 12
 ---
 

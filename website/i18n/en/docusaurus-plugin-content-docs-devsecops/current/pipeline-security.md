@@ -2,6 +2,7 @@
 id: pipeline-security
 title: Pipeline Security and Build Provenance
 sidebar_label: Pipeline Security
+description: 'Explains how to protect the CI workflow itself: commit SHA pinning, least-privilege permissions, zizmor scanning, and build provenance and signing.'
 sidebar_position: 10
 ---
 

@@ -2,6 +2,7 @@
 id: copilot
 title: GitHub Copilot
 sidebar_label: GitHub Copilot
+description: GitHub Copilot이 읽는 .github/copilot-instructions.md의 적용 범위와 오픈소스 정책 작성 예시, 적용 확인 방법을 설명합니다.
 sidebar_position: 3
 ---
 
