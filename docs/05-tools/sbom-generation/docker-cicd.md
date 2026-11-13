@@ -95,9 +95,9 @@ jobs:
 
 실습용 샘플 프로젝트가 세 가지 제공됩니다:
 
-- `samples/java-vulnerable/`: log4j-core 2.14.1 포함 → CVE-2021-44228 탐지 예상
-- `samples/python-mixed-license/`: GPL 혼재 → 라이선스 충돌 탐지 예상
-- `samples/nodejs-unlicensed/`: 라이선스 미명시 로컬 패키지 → 라이선스 미식별(NOASSERTION) 탐지 예상
+- `samples/java-vulnerable/`: log4j-core 2.14.1 포함, CVE-2021-44228 탐지 예상
+- `samples/python-mixed-license/`: GPL 혼재, 라이선스 충돌 탐지 예상
+- `samples/nodejs-unlicensed/`: 라이선스 미명시 로컬 패키지, 라이선스 미식별(NOASSERTION) 탐지 예상
 
 ```bash
 # java-vulnerable 샘플로 실습

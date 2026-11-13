@@ -59,12 +59,12 @@ OpenChain 자체 인증은 선언 방식이지만
 3. **취약점 관리 증적**
    - grype 스캔 결과 아티팩트
    - 예외 처리된 CVE 목록·승인 기록 (.grype.yaml 주석 포함)
-   - 취약점 발견→수정 이력 (GitHub Issues·PR)
+   - 취약점 발견부터 수정까지의 이력 (GitHub Issues·PR)
 
 4. **지속적 모니터링 증적**
    - 정기 스캔 워크플로우 실행 로그
    - Dependabot·Renovate PR 이력
-   - 신규 CVE 알림→대응 타임라인
+   - 신규 CVE 알림부터 대응까지의 타임라인
 
 ---
 

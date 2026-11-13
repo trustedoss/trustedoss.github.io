@@ -185,7 +185,7 @@ claude
 
 When Claude Code starts:
 
-1. **Type "Where do I start?"** → It analyzes your current status and automatically guides you to the next step.
+1. **Type "Where do I start?"**: it analyzes your current status and automatically guides you to the next step.
 2. On your first run, the `output/` folder is empty, so it will direct you to the `02-organization-designer` agent.
 3. Claude Code automatically reads `CLAUDE.md` to understand the project context.
 

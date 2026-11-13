@@ -42,5 +42,5 @@ The AI coding guide **automates the execution** of the items above, but the self
 
 ## Next steps
 
-- To build the standards system from scratch → [Build Your System guide](/en/docs)
-- For organization-wide pipeline-level security enforcement → [DevSecOps guide](/en/devsecops/intro)
+- To build the standards system from scratch, see the [Build Your System guide](/en/docs)
+- For organization-wide pipeline-level security enforcement, see the [DevSecOps guide](/en/devsecops/intro)

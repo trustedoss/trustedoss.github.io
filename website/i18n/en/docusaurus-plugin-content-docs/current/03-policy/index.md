@@ -139,7 +139,7 @@ in the trustedoss project root.
       `claude`
 
 If any of these are not checked,
-→ go through the [1. Environment setup](../01-setup/index.md) chapter first.
+go through the [1. Environment setup](../01-setup/index.md) chapter first.
 
 This check just confirms Claude Code is installed and running correctly. The session running now
 is separate from the dedicated 03-policy-generator session you open in Step 1 below. When you start
