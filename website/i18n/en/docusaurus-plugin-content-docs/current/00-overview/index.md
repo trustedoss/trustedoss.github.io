@@ -58,14 +58,14 @@ If you would rather see the output before deciding, go to the [5-minute quick st
 
 | Step            | Deliverable files                                                                                                                                                         | Related standards |
 | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
-| Organization    | `role-definition.md`, `raci-matrix.md`, `appointment-template.md` — [See example](/en/reference/samples/organization)                                                     | [Common]          |
-| Policy          | `oss-policy.md`, `license-allowlist.md` — [See example](/en/reference/samples/policy)                                                                                     | [Common]          |
-| Process         | `usage-approval.md`, `distribution-checklist.md`, `vulnerability-response.md`, `inquiry-response.md`, `process-diagram.md` — [See example](/en/reference/samples/process) | [Common]          |
-| Create SBOM     | `[project].cdx.json`, `sbom-commands.sh`, `license-report.md`, `copyleft-risk.md` — [See example](/en/reference/samples/sbom)                                             | [Common]          |
-| SBOM management | `sbom-management-plan.md`, `sbom-sharing-template.md` — [See example](/en/reference/samples/sbom)                                                                         | [Supply Chain]    |
-| Vulnerability   | `cve-report.md`, `remediation-plan.md` — [See example](/en/reference/samples/vulnerability)                                                                               | [18974]           |
-| Training        | `curriculum.md`, `completion-tracker.md`, `resources.md` — [See example](/en/reference/samples/training)                                                                  | [Common]          |
-| Certification   | `gap-analysis.md`, `declaration-draft.md`, `submission-guide.md` — [See example](/en/reference/samples/conformance)                                                       | [Common]          |
+| Organization    | `role-definition.md`, `raci-matrix.md`, `appointment-template.md` ([See example](/en/reference/samples/organization))                                                     | [Common]          |
+| Policy          | `oss-policy.md`, `license-allowlist.md` ([See example](/en/reference/samples/policy))                                                                                     | [Common]          |
+| Process         | `usage-approval.md`, `distribution-checklist.md`, `vulnerability-response.md`, `inquiry-response.md`, `process-diagram.md` ([See example](/en/reference/samples/process)) | [Common]          |
+| Create SBOM     | `[project].cdx.json`, `sbom-commands.sh`, `license-report.md`, `copyleft-risk.md` ([See example](/en/reference/samples/sbom))                                             | [Common]          |
+| SBOM management | `sbom-management-plan.md`, `sbom-sharing-template.md` ([See example](/en/reference/samples/sbom))                                                                         | [Supply Chain]    |
+| Vulnerability   | `cve-report.md`, `remediation-plan.md` ([See example](/en/reference/samples/vulnerability))                                                                               | [18974]           |
+| Training        | `curriculum.md`, `completion-tracker.md`, `resources.md` ([See example](/en/reference/samples/training))                                                                  | [Common]          |
+| Certification   | `gap-analysis.md`, `declaration-draft.md`, `submission-guide.md` ([See example](/en/reference/samples/conformance))                                                       | [Common]          |
 
 Below is the 7-step journey from zero to self-certification. Check off each step as you complete it to track your progress (saved only in this browser).
 
@@ -84,7 +84,7 @@ Below is the 7-step journey from zero to self-certification. Check off each step
 | Origin        | Response to the rapid rise in open source license disputes | Response to supply chain security incidents such as SolarWinds and Log4Shell |
 
 :::tip
-The full comparison — including version, focus, core requirements, certification method, validity period, related regulations, and mutual complementarity — is canonical in [Standard requirements at a glance](./checklist-mapping.md).
+The full comparison (including version, focus, core requirements, certification method, validity period, related regulations, and mutual complementarity) is canonical in [Standard requirements at a glance](./checklist-mapping.md).
 :::
 
 ### What is self-certification?
@@ -109,10 +109,10 @@ Which chapter fills which group is laid out in [Standard requirements at a glanc
 Take your time to understand and work through each document on your own. We recommend 3-5 days to complete the entire kit.
 :::
 
-1. Read this page — grasp the purpose and structure of the whole journey
-2. Read [Standard requirements at a glance](./checklist-mapping.md) — grasp what the two standards require on a single screen
-3. Read [Software Supply Chain Security: Why It Matters Now](./supply-chain.md) — build the background
-4. Go to [Environment preparation: install the tools needed for the labs](../01-setup/index.md) — install the tools and clone the repository
+1. Read this page to grasp the purpose and structure of the whole journey
+2. Read [Standard requirements at a glance](./checklist-mapping.md) to grasp what the two standards require on a single screen
+3. Read [Software Supply Chain Security: Why It Matters Now](./supply-chain.md) to build the background
+4. Go to [Environment preparation: install the tools needed for the labs](../01-setup/index.md) to install the tools and clone the repository
 
 ---
 

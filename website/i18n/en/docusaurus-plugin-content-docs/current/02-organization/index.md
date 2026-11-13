@@ -21,9 +21,9 @@ pagination_label: '2. Organizational Structure'
 This chapter designates the people responsible for open source management and documents their roles and responsibilities.
 When you run the `organization-designer` agent, the three deliverables below are generated automatically.
 
-- `output/organization/role-definition.md` — Role definition for each program manager
-- `output/organization/raci-matrix.md` — Responsibility matrix by activity
-- `output/organization/appointment-template.md` — Appointment letter template for the program manager
+- `output/organization/role-definition.md`: Role definition for each program manager
+- `output/organization/raci-matrix.md`: Responsibility matrix by activity
+- `output/organization/appointment-template.md`: Appointment letter template for the program manager
 
 > This step meets the ISO/IEC 5230 G1.3 (3.1.2), G2.1 (3.2.2), and G2.2 (3.2.1) requirements, and the equivalent ISO/IEC 18974 items.
 
@@ -31,7 +31,7 @@ When you run the `organization-designer` agent, the three deliverables below are
 
 ## 2. Why designating a program manager comes first
 
-Open source management is an activity that requires decision-making. "Can we use this library?" "How do we respond to this vulnerability?" — someone has to answer these questions. Without clear responsibility, neither the policy nor the process actually works.
+Open source management is an activity that requires decision-making. "Can we use this library?" "How do we respond to this vulnerability?" Someone has to answer these questions. Without clear responsibility, neither the policy nor the process actually works.
 
 That is also why the standards require designating a program manager first. Without an organization in place, every activity that follows falls apart.
 
@@ -53,7 +53,7 @@ ISO/IEC 5230 and ISO/IEC 18974 both require the following two things.
 To meet both standards, you commonly need an OSPM (Open Source Program Manager), a legal role, a security role, and a development representative.
 
 :::tip
-Detailed responsibilities and required competencies for each role are defined in the [KWG Open Source Guide — Organization](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/1-teams/). This chapter's structure and requirement descriptions are reworked from that KWG guide (CC BY 4.0).
+Detailed responsibilities and required competencies for each role are defined in the [KWG Open Source Guide: Organization](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/1-teams/). This chapter's structure and requirement descriptions are reworked from that KWG guide (CC BY 4.0).
 :::
 
 ### Channel for receiving external inquiries (G2.2 requirement)
@@ -62,8 +62,8 @@ You must designate an official email address or channel to receive license oblig
 
 Examples:
 
-- `opensource@company.com` — External inquiries regarding licensing
-- `security@company.com` — Receiving vulnerability reports
+- `opensource@company.com`: External inquiries regarding licensing
+- `security@company.com`: Receiving vulnerability reports
 
 Combining the two channels and operating them under a single address is also a realistic option for small organizations.
 
@@ -120,12 +120,12 @@ ISO/IEC 18974 requires evidence of **periodic review** of the open source progra
 
 **Important**: It is fine for roles to overlap in a small organization. What matters is being clear about who is responsible.
 
-### Assign people by name — the per-team champion model
+### Assign people by name: the per-team champion model
 
 The standards' evidence requires the responsible person's **name**, so a department name or
 "everyone" in the role table does not satisfy the requirement. For roles that involve entire
-business units, we recommend designating a **per-team champion** — one person in each development
-team who acts as the open source contact — and recording their name.
+business units, we recommend designating a **per-team champion** (one person in each development
+team who acts as the open source contact) and recording their name.
 
 Also, designating an **internal best-practice verification owner** who periodically checks that
 the role list and processes match actual best practice naturally accumulates the review evidence
@@ -169,31 +169,31 @@ You interact with the agent and create the organizational deliverables.
 
    ***
 
-   **Question 1/7** — Tell us your company name and department name.
+   **Question 1/7**: Tell us your company name and department name.
 
    `Sample answer: TechStart Inc., Development Team`
 
-   **Question 2/7** — How many developers do you have in total?
+   **Question 2/7**: How many developers do you have in total?
 
    `Sample answer: 50 people`
 
-   **Question 3/7** — Do you have anyone who can be dedicated to open source work? (Concurrent role / 1 dedicated person / 2–5 people / 5 or more people)
+   **Question 3/7**: Do you have anyone who can be dedicated to open source work? (Concurrent role / 1 dedicated person / 2–5 people / 5 or more people)
 
    `Sample answer: Concurrent role`
 
-   **Question 4/7** — Do you have legal counsel? (None / In-house legal team / Currently using an external law firm / Planning to use an external law firm)
+   **Question 4/7**: Do you have legal counsel? (None / In-house legal team / Currently using an external law firm / Planning to use an external law firm)
 
    `Sample answer: Currently using an external law firm`
 
-   **Question 5/7** — Do you have security team support? (None / In-house security team / External security consulting)
+   **Question 5/7**: Do you have security team support? (None / In-house security team / External security consulting)
 
    `Sample answer: None`
 
-   **Question 6/7** — Do you plan to contribute to external open source projects or release internal projects as open source? (Contribution only / Disclosure only / Both / Neither)
+   **Question 6/7**: Do you plan to contribute to external open source projects or release internal projects as open source? (Contribution only / Disclosure only / Both / Neither)
 
    `Sample answer: Neither`
 
-   **Question 7/7** — What is the name of the person who will own the open source program? (If not decided yet, answer "not decided")
+   **Question 7/7**: What is the name of the person who will own the open source program? (If not decided yet, answer "not decided")
 
    `Sample answer: Minjun Kim (Development Team Lead)`
 
@@ -219,7 +219,7 @@ You interact with the agent and create the organizational deliverables.
 
 :::tip If you answered something wrong
 To start over, run `claude` again in the same folder (`agents/en/02-organization-designer`) and
-answer the questions again. The existing files are overwritten with the new content — no need to
+answer the questions again. The existing files are overwritten with the new content, so there is no need to
 delete anything yourself.
 :::
 

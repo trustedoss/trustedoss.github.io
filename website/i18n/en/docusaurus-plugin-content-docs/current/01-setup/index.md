@@ -49,7 +49,7 @@ lines in order with one Enter.
 :::tip When you see "open a new terminal"
 This guide repeatedly says things like "end your Claude session, then run this in a new terminal."
 "Opening a new terminal" means opening the terminal app again the same way as above, leaving the
-current window as is (you can close it or leave it open — either is fine).
+current window as is (you can close it or leave it open; either is fine).
 :::
 
 ## 3. Tools you will need
@@ -213,7 +213,7 @@ This means the Docker Desktop app is not running yet (installing it and running 
 ### When you see "brew: command not found" or similar
 
 The macOS install commands in this guide are written to run without Homebrew. If you hit this
-error, you may be following a different version of these instructions — paste the commands from
+error, you may be following a different version of these instructions. Paste the commands from
 section 4 again.
 
 ### When you can't log in to Claude Code
@@ -255,7 +255,7 @@ The time required varies depending on your tool installation situation.
 
 Once your environment is ready, proceed to the organization design phase.
 
-Read the [Organizational structure: Designating open source personnel and defining roles](../02-organization/index.md) chapter first, then run the agent — or you can run the agent right away.
+Read the [Organizational structure: Designating open source personnel and defining roles](../02-organization/index.md) chapter first, then run the agent, or you can run the agent right away.
 
 :::tip Check before running
 First terminate the current Claude session (`/exit` or `Ctrl+C`), then run the command below in a new terminal.
@@ -266,4 +266,4 @@ cd agents/en/02-organization-designer
 claude
 ```
 
-After the agent finishes, check the outputs: `ls output/organization/` — three files (role definition, RACI matrix, appointment template) mean success.
+After the agent finishes, check the outputs: `ls output/organization/`. Three files (role definition, RACI matrix, appointment template) mean success.

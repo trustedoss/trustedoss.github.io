@@ -17,7 +17,7 @@ The generated SBOM later becomes the basis for license analysis (05-sbom-analyst
 
 :::note How SBOM, vulnerability analysis, and SCA relate
 The **SBOM** (software bill of materials) is the input; **vulnerability analysis** is the step that uses that SBOM to find risks.
-Running both together automatically in CI is **SCA** (Software Composition Analysis) — automation is covered in [DevSecOps → SCA](/en/devsecops/sca).
+Running both together automatically in CI is **SCA** (Software Composition Analysis). Automation is covered in [DevSecOps → SCA](/en/devsecops/sca).
 :::
 
 ---
@@ -51,12 +51,12 @@ Both tools can output CycloneDX JSON; this chapter uses CycloneDX as the standar
 
 [SCANOSS](https://www.scanoss.com/) excels at detecting open source code fragments that were copied and pasted directly, without any package declaration, at the file level. Because its role complements syft/cdxgen, using it in parallel is recommended when source-level precision is required.
 
-:::tip Integrated option from Korea — BomLens (SK Telecom)
+:::tip Integrated option from Korea: BomLens (SK Telecom)
 If you need to handle many languages and scan targets in one run, [BomLens](https://github.com/sktelecom/bomlens) is convenient. It accepts source code, container images, binaries and RootFS, firmware, SBOMs you received (for reassessment), and even HuggingFace models (ML-BOM), and produces a CycloneDX SBOM together with an attribution notice (NOTICE) and a license/security risk report. It wraps syft, cdxgen, and Trivy under the hood, is Apache-2.0, and runs entirely locally on Docker with no data leaving your machine. Besides the CLI it offers a web UI and desktop installers. Keep syft as this chapter's main tool and consider BomLens when you need an integrated run.
 :::
 
 :::tip
-For a guide to adopting and using SCA and compliance tools such as FOSSLight, SW360, and FOSSology, see [KWG Open Source Guide — Tools](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/4-tool/).
+For a guide to adopting and using SCA and compliance tools such as FOSSLight, SW360, and FOSSology, see [KWG Open Source Guide: Tools](https://openchain-project.github.io/OpenChain-KWG/guide/opensource_for_enterprise/4-tool/).
 :::
 
 For the actual Docker commands, GitHub Actions CI/CD setup, and the sample project walkthrough, see the [Docker and CI/CD execution guide](./docker-cicd.md).
@@ -161,7 +161,7 @@ The first run may take an extra 10-15 minutes while Docker images are pulled.
 
 Step-by-step practice:
 
-**Step 1** — Verify Docker Desktop is running
+**Step 1**: Verify Docker Desktop is running
 
 ```bash
 docker ps
@@ -181,7 +181,7 @@ The sample SBOM includes GPL-2.0 copyleft components and packages with CVE vulne
 In this case, skip the SBOM generation steps 4-6 (the sbom-guide agent and script) and jump straight to **Step 7 (run the license analysis)**.
 :::
 
-**Step 2** — Select a project to analyze
+**Step 2**: Select a project to analyze
 
 You can use your own project, or one of the bundled samples.
 
@@ -194,16 +194,16 @@ If this is your first time, choose one of the samples below:
 | `samples/nodejs-unlicensed/`    | Node.js (npm) | Unlicensed package                  | License identification practice           |
 
 :::tip Recommended sample
-`samples/java-vulnerable/` — detect the Log4Shell vulnerability firsthand and see the value of an SBOM.
+`samples/java-vulnerable/`: detect the Log4Shell vulnerability firsthand and see the value of an SBOM.
 :::
 
-**Step 3** — Create the output folder
+**Step 3**: Create the output folder
 
 ```bash
 mkdir -p output/sbom
 ```
 
-**Step 4** — Run the sbom-guide agent
+**Step 4**: Run the sbom-guide agent
 
 :::tip Check before execution
 Terminate the current Claude session first (`/exit` or `Ctrl+C`), then run the command below in a new terminal.
@@ -220,7 +220,7 @@ The agent asks three questions about your project:
 - Main language (e.g. `Java`)
 - Package manager (e.g. `Maven`)
 
-**Step 5** — Run the generated script
+**Step 5**: Run the generated script
 
 When the agent has generated `output/sbom/sbom-commands.sh`, return to the repo root (`cd ../..`) and run it.
 The verification commands from step 6 onward are also repo-root relative.
@@ -230,7 +230,7 @@ cd ../..
 bash output/sbom/sbom-commands.sh
 ```
 
-**Step 6** — Verify the SBOM file exists
+**Step 6**: Verify the SBOM file exists
 
 ```bash
 ls -lh output/sbom/*.cdx.json
@@ -246,7 +246,7 @@ jq '{specVersion, timestamp: .metadata.timestamp, tool: .metadata.tools, lifecyc
 empty in syft output, as the tool comparison table above explains. If you don't have jq, open the file and
 check the same items by eye.
 
-**Step 7** — Run license analysis
+**Step 7**: Run license analysis
 
 :::tip Check before execution
 Terminate the current Claude session first (`/exit` or `Ctrl+C`), then run the command below in a new terminal.
@@ -257,7 +257,7 @@ cd agents/en/05-sbom-analyst
 claude
 ```
 
-**Step 8** — Check the analysis results
+**Step 8**: Check the analysis results
 
 ```bash
 ls output/sbom/license-report.md output/sbom/copyleft-risk.md

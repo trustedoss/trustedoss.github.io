@@ -28,9 +28,9 @@ connection.
 
 An SBOM that covers only code dependencies misses two components of an AI system.
 
-- **Pre-trained models** — often under non-standardized custom licenses (commercial-use conditions,
+- **Pre-trained models**: often under non-standardized custom licenses (commercial-use conditions,
   MAU thresholds, derivative-model obligations).
-- **Training datasets** — CC-family open data licenses carry attribution and share-alike duties.
+- **Training datasets**: CC-family open data licenses carry attribution and share-alike duties.
 
 The extension that records both is the AI SBOM, and the de facto standard formats are
 **CycloneDX ML-BOM** (rich model-card metadata) and **SPDX 3.0 AI Profile** (precise license
@@ -40,7 +40,7 @@ expression).
 
 The SBOM requirements of ISO/IEC 5230 and 18974 (the G3B group) target "open source components of
 the supplied software," so an AI SBOM is not itself mandatory. But if you ship models or datasets
-as part of your product, they are open source components too — extending the same principle to
+as part of your product, they are open source components too. Extending the same principle to
 them is the point of this chapter. For background, see the
 [AI SBOM section of SBOM Basics](../../00-overview/sbom-101.md) and
 [AI System Compliance](/en/ai-coding/iso42001).
@@ -58,10 +58,10 @@ The hands-on work requires a running Docker environment and a network connection
 :::
 
 The hands-on tool is [BomLens](https://github.com/sktelecom/bomlens). Given a HuggingFace model
-identifier, it produces a CycloneDX 1.7 ML-BOM, an attribution notice, and a risk report — all
+identifier, it produces a CycloneDX 1.7 ML-BOM, an attribution notice, and a risk report, all
 locally on Docker.
 
-### Step 1 — Prepare BomLens
+### Step 1: Prepare BomLens
 
 ```bash
 git clone https://github.com/sktelecom/bomlens.git
@@ -75,20 +75,20 @@ the deliverables are not copied back to the host (the tool prints a hint). Clone
 home directory.
 :::
 
-### Step 2 — Scan a model to generate the ML-BOM
+### Step 2: Scan a model to generate the ML-BOM
 
 ```bash
 ./scripts/scan-sbom.sh --project bert-base --version 1.0.0 \
   --model "google-bert/bert-base-uncased" --generate-only
 ```
 
-- Put a HuggingFace model identifier in `--model` — replace it with the model you are reviewing.
+- Put a HuggingFace model identifier in `--model`. Replace it with the model you are reviewing.
 - The dedicated model-scan image (`ghcr.io/sktelecom/bomlens-aibom`) is pulled automatically.
 - Deliverables land in the `bert-base_1.0.0/` subfolder: `bert-base_1.0.0_bom.json` (CycloneDX 1.7
   ML-BOM), a notice, a risk report, a security report, and an NTIA minimum-elements conformance
   check. A model has no package CVEs, so a security report with zero findings is expected.
 
-### Step 3 — Read the ML-BOM
+### Step 3: Read the ML-BOM
 
 Check the following in the generated `bom.json`.
 
@@ -97,15 +97,15 @@ Check the following in the generated `bom.json`.
   using the same [license review procedure as 5.1](../sbom-generation/index.md).
 - **Model-card metadata**: entries carried over from the model card, such as intended use and
   limitations.
-- **Information gaps**: an empty license or dataset entry is itself a finding — verify directly on
+- **Information gaps**: an empty license or dataset entry is itself a finding. Verify directly on
   the HuggingFace model card and record the supplement (the same situation the KWG guide
   demonstrates as license-gap evidence).
 
-### Alternative tool — OWASP AIBOM Generator
+### Alternative tool: OWASP AIBOM Generator
 
 The vendor-neutral alternative is the OWASP AIBOM Generator, which also targets HuggingFace
 models. For installation and usage, see the
-[KWG AI SBOM Guide — tools](https://openchain-project.github.io/OpenChain-KWG/guide/ai-sbom_guide/).
+[KWG AI SBOM Guide: tools](https://openchain-project.github.io/OpenChain-KWG/guide/ai-sbom_guide/).
 
 ### Relationship to the code SBOM
 
@@ -117,7 +117,7 @@ documents per release unit and the retention/sharing procedures of
 ### Continuing to automation
 
 You can regenerate the ML-BOM in CI whenever the model version changes: add the scan command above
-to a workflow the same way the SBOM-generation job works in [DevSecOps — SCA](/en/devsecops/sca).
+to a workflow the same way the SBOM-generation job works in [DevSecOps: SCA](/en/devsecops/sca).
 
 ## 4. Completion checklist
 

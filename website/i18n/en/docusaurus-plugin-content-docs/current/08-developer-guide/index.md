@@ -28,7 +28,7 @@ Having the program manager review every PR is not sustainable.
 This chapter explains four ways to use Claude Code so that **developers comply with the policy without thinking about it**.
 
 :::info Goal
-Claude Code keeps the policy for you, even when the program manager does not review every change — reaching this state is the goal of this chapter.
+Claude Code keeps the policy for you, even when the program manager does not review every change. Reaching this state is the goal of this chapter.
 :::
 
 :::note This chapter vs. the AI coding Rules template
@@ -84,7 +84,7 @@ For complete assurance, apply all four methods. Each method works independently,
 
 We recommend starting with the easiest method 1 and reinforcing it with 3 and 4.
 
-### Method 1 — State the policy in CLAUDE.md (70% assurance, very easy) {#method-1}
+### Method 1: State the policy in CLAUDE.md (70% assurance, very easy) {#method-1}
 
 Add the section below to `CLAUDE.md` in the project root and Claude Code will reference this policy automatically when it helps you add a package. The categories follow [License Classification](/en/reference/concepts/license-classification). The allowlist that actually governs your company is `output/policy/license-allowlist.md`, generated in the 03 Policy chapter, so adjust the example to match that file after pasting it.
 
@@ -140,7 +140,7 @@ rule set for AI coding tool configuration files is in the
 - Effect: Claude Code is aware of the policy and warns you on violations.
 - Limitation: if a developer runs `npm install` directly in the terminal, Claude Code cannot intervene.
 
-### Method 2 — Standardize checks with a Skill (80% assurance, easy) {#method-2}
+### Method 2: Standardize checks with a Skill (80% assurance, easy) {#method-2}
 
 Turn the license and vulnerability check procedure into an `/oss-policy-check` skill so anyone can run the same check with a single command. Skills are defined per directory, and the frontmatter (name, description) at the top of the file is required for the skill to be recognized.
 
@@ -236,7 +236,7 @@ Report the check results in the following format:
 - Effect: the check procedure is standardized into one reusable command.
 - Limitation: if developers forget to run it, nothing is checked.
 
-### Method 3 — Automatic reminders with Hooks (90% assurance, moderate) {#method-3}
+### Method 3: Automatic reminders with Hooks (90% assurance, moderate) {#method-3}
 
 With the Hook below configured in `.claude/settings.json`, a warning is displayed automatically whenever a dependency file changes.
 
@@ -264,7 +264,7 @@ The hook command receives JSON on standard input describing the tool call (`tool
 - Stronger control: to block the edit itself, register the same script as a `PreToolUse` Hook. In PreToolUse, exit code 2 blocks the tool call before it runs.
 - Limitation: files modified outside Claude Code are not detected, so complement this with CI/CD.
 
-### Method 4 — Block merges with CI/CD (99% assurance, somewhat complex) {#method-4}
+### Method 4: Block merges with CI/CD (99% assurance, somewhat complex) {#method-4}
 
 Automatically check every PR with syft and grype, and block the merge on policy violations. This guards the last gate regardless of what people or tools miss. The example below uses free open source tools only ([syft](https://github.com/anchore/syft) and [grype](https://github.com/anchore/grype) are both Apache-2.0).
 

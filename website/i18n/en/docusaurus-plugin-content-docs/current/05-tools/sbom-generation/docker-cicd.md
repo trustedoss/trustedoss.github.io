@@ -15,7 +15,7 @@ This page contains the actual Docker commands for syft and cdxgen, the GitHub Ac
 
 ---
 
-## Running syft with Docker — commands per language/package manager
+## Running syft with Docker: commands per language/package manager
 
 | Language | Package manager | Command                                                                                                |
 | -------- | --------------- | ------------------------------------------------------------------------------------------------------ |
@@ -112,10 +112,10 @@ docker run --rm \
 
 ## Troubleshooting
 
-| Symptom                             | Cause                                                                                     | Solution                                                                                                                             |
-| ----------------------------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| SBOM is empty (`components: []`)    | No lock file                                                                              | Check for `package-lock.json`, `requirements.txt`, `pom.xml`, etc.                                                                   |
-| SBOM is empty but there is no error | Docker file-sharing restriction — the mount resolves to an empty directory (colima, etc.) | Check that the working directory is included in Docker Desktop > Settings > Resources > File Sharing (or your colima mount settings) |
-| Docker volume mount error           | Path problem                                                                              | Switch to an absolute path: `-v /full/path:/src`                                                                                     |
-| Permission denied                   | Permission problem                                                                        | Use `sudo` or add yourself to the Docker group                                                                                       |
-| Image pull takes a long time        | Network                                                                                   | Normal on the first run; the cache is used afterwards                                                                                |
+| Symptom                             | Cause                                                                                    | Solution                                                                                                                             |
+| ----------------------------------- | ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| SBOM is empty (`components: []`)    | No lock file                                                                             | Check for `package-lock.json`, `requirements.txt`, `pom.xml`, etc.                                                                   |
+| SBOM is empty but there is no error | Docker file-sharing restriction: the mount resolves to an empty directory (colima, etc.) | Check that the working directory is included in Docker Desktop > Settings > Resources > File Sharing (or your colima mount settings) |
+| Docker volume mount error           | Path problem                                                                             | Switch to an absolute path: `-v /full/path:/src`                                                                                     |
+| Permission denied                   | Permission problem                                                                       | Use `sudo` or add yourself to the Docker group                                                                                       |
+| Image pull takes a long time        | Network                                                                                  | Normal on the first run; the cache is used afterwards                                                                                |
