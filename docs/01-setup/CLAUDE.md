@@ -45,12 +45,12 @@ node --version
 
 ## 설치가 안 된 도구 발견 시
 
-| 도구           | 설치 방법                                                                                                      |
-| -------------- | -------------------------------------------------------------------------------------------------------------- |
-| Docker Desktop | https://www.docker.com/products/docker-desktop                                                                 |
-| Git            | macOS는 `git --version` 실행 시 Command Line Tools 팝업으로 자동 설치. Windows는 https://git-scm.com/downloads |
-| Claude Code    | `curl -fsSL https://claude.ai/install.sh \| bash` (Windows PowerShell: `irm https://claude.ai/install.ps1 \| iex`) (Node.js 불필요)                                                              |
-| Node.js        | https://nodejs.org (선택, 문서 사이트를 직접 빌드하는 경우만)                                                  |
+| 도구           | 설치 방법                                                                                                                           |
+| -------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| Docker Desktop | https://www.docker.com/products/docker-desktop                                                                                      |
+| Git            | macOS는 `git --version` 실행 시 Command Line Tools 팝업으로 자동 설치. Windows는 https://git-scm.com/downloads                      |
+| Claude Code    | `curl -fsSL https://claude.ai/install.sh \| bash` (Windows PowerShell: `irm https://claude.ai/install.ps1 \| iex`) (Node.js 불필요) |
+| Node.js        | https://nodejs.org (선택, 문서 사이트를 직접 빌드하는 경우만)                                                                       |
 
 ## 저장소 클론
 
