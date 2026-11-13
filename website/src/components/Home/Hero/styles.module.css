@@ -149,7 +149,7 @@ html[data-theme="dark"] {
 .title {
   margin: 0 0 1.5rem;
   font-size: clamp(2rem, 3.4vw, 2.5rem);
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.025em;
   line-height: 1.1;
   color: var(--hero-ink);
