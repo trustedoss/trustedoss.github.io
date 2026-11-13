@@ -54,12 +54,12 @@ current window as is (you can close it or leave it open; either is fine).
 
 ## 3. Tools you will need
 
-| Tool           | Use                                                     | Installation                                 | Version requirement |
-| -------------- | ------------------------------------------------------- | -------------------------------------------- | ------------------- |
-| Docker Desktop | Runs chapter 05 hands-on tools (Dependency-Track, etc.) | Chapter 05 only (alternative path available) | 24.x or later       |
-| Git            | Repository and version management                       | Required                                     | 2.x or later        |
-| Claude Code    | AI-assisted practice; runs the agents                   | Required                                     | Latest version      |
-| Node.js        | Only if you want to build the Docusaurus site yourself  | Optional (not needed for the exercises)      | v18 LTS or later    |
+| Tool           | Use                                                     | Installation                                 | Version requirement                |
+| -------------- | ------------------------------------------------------- | -------------------------------------------- | ---------------------------------- |
+| Docker Desktop | Runs chapter 05 hands-on tools (Dependency-Track, etc.) | Chapter 05 only (alternative path available) | Latest (Docker Engine 24 or later) |
+| Git            | Repository and version management                       | Required                                     | 2.x or later                       |
+| Claude Code    | AI-assisted practice; runs the agents                   | Required                                     | Latest version                     |
+| Node.js        | Only if you want to build the Docusaurus site yourself  | Optional (not needed for the exercises)      | 22 LTS or later (20 minimum)       |
 
 :::info You don't need Node.js to install Claude Code
 The Claude Code install command in section 4 runs without Node.js. Node.js is only needed if you
@@ -85,7 +85,7 @@ Paste these into your terminal, one block at a time (or all at once).
 git --version
 
 # Claude Code (no Node.js, no Homebrew needed)
-curl https://claude.sh | bash
+curl -fsSL https://claude.ai/install.sh | bash
 
 # Docker Desktop — this opens the download page in your browser.
 # Double-click the downloaded .dmg file and drag it into Applications.
@@ -104,11 +104,14 @@ We recommend using WSL2. When installing Docker Desktop, you must enable the WSL
 ```powershell
 # Git for Windows: download and run the installer from https://git-scm.com/download/win
 
-# Claude Code (no Node.js needed)
-curl https://claude.sh | bash
+# Claude Code (no Node.js needed). Run this in PowerShell.
+irm https://claude.ai/install.ps1 | iex
 
 # Or, if you have winget:
-winget install Anthropic.Claude
+winget install Anthropic.ClaudeCode
+
+# Inside a WSL2 terminal, use the Linux command instead.
+# curl -fsSL https://claude.ai/install.sh | bash
 
 # Docker Desktop: download from https://www.docker.com/products/docker-desktop
 # Check "Use WSL2" when the installer asks
@@ -119,14 +122,14 @@ winget install Anthropic.Claude
 ```bash
 # Docker
 sudo apt-get update
-sudo apt-get install docker.io docker-compose
+sudo apt-get install docker.io docker-compose-v2
 sudo usermod -aG docker $USER
 
 # Git
 sudo apt-get install git
 
 # Claude Code (no Node.js needed)
-curl https://claude.sh | bash
+curl -fsSL https://claude.ai/install.sh | bash
 ```
 
 ## 5. Installation verification script
@@ -226,7 +229,7 @@ section 4 again.
 - Clone over HTTPS: `git clone https://github.com/trustedoss/trustedoss-agents.git`
 - If you hit a GitHub authentication error, run `git config --global credential.helper store` and retry.
 
-### When your Node.js version is too old (below v18, only relevant if building the docs site)
+### When your Node.js version is too old (below v20, only relevant if building the docs site)
 
 - We recommend using nvm: `nvm install --lts && nvm use --lts`
 

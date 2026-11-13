@@ -259,10 +259,11 @@ container-security:
   variables:
     DOCKER_TLS_CERTDIR: '/certs'
   script:
-    # docker 이미지에는 trivy가 없으므로 설치
+    # docker 이미지에는 trivy가 없으므로 설치합니다.
+    # 설치 스크립트와 바이너리를 모두 검증한 릴리스 태그로 고정합니다(main이나 latest 금지).
     - apk add --no-cache curl
-    - curl -sSfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh
-      | sh -s -- -b /usr/local/bin
+    - curl -sSfL https://raw.githubusercontent.com/aquasecurity/trivy/v0.76.2/contrib/install.sh
+      | sh -s -- -b /usr/local/bin v0.76.2
     - docker build -t $IMAGE_TAG .
     - trivy image --severity HIGH,CRITICAL
       --exit-code 1 --ignore-unfixed $IMAGE_TAG

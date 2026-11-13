@@ -76,7 +76,10 @@ jobs:
 
 ```bash
 # 특정 태그가 현재 가리키는 커밋 SHA 조회
-gh api repos/actions/checkout/git/ref/tags/v7 --jq '.object.sha'
+# commits/<태그> 는 annotated tag도 커밋까지 따라가므로 항상 커밋 SHA를 돌려줍니다.
+# (git/ref/tags/<태그> 의 .object.sha 는 annotated tag에서 태그 객체 SHA라 쓰면 안 됩니다)
+gh api repos/actions/checkout/commits/v7 --jq '.sha'
+gh api repos/aquasecurity/trivy-action/commits/v0.36.0 --jq '.sha'
 
 # 저장소 전체 워크플로에서 태그 참조를 한 번에 찾기
 grep -rn "uses: .*@v[0-9]" .github/workflows/

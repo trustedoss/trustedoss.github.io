@@ -173,11 +173,15 @@ jobs:
 
           client = anthropic.Anthropic()
           response = client.messages.create(
-              model="claude-opus-5",
-              max_tokens=1500,
+              model="claude-opus-5-5",
+              # Thinking tokens count toward max_tokens, so leave room.
+              max_tokens=16000,
               messages=[{"role": "user", "content": prompt}]
           )
-          result = response.content[0].text
+          # The first block can be a thinking block, so join only the text blocks.
+          result = "".join(b.text for b in response.content if b.type == "text").strip()
+          if response.stop_reason == "max_tokens":
+              result += "\n\n(The response was cut off at the length limit. Raise max_tokens.)"
           pathlib.Path("review_result.txt").write_text(result)
           print(result)
           PYEOF
@@ -191,7 +195,7 @@ jobs:
             const fs = require('fs');
             let result;
             try { result = fs.readFileSync('review_result.txt', 'utf8'); }
-            catch { result = 'PASS'; }
+            catch { core.warning('review_result.txt is missing. Check the AI review step log.'); return; }
             if (result.trim() === 'PASS') return;
 
             // Find the previous comment by marker and update it; create one if absent.

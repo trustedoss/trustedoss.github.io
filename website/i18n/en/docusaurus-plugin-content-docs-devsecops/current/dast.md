@@ -179,10 +179,8 @@ jobs:
       - name: Run Nuclei
         uses: projectdiscovery/nuclei-action@v3
         with:
-          target: http://localhost:8080
-          # Since v3, individual inputs such as templates/severity were removed;
-          # pass nuclei CLI flags directly via flags.
-          flags: '-t cves/ -t misconfiguration/ -t exposures/ -severity medium,high,critical -o nuclei.log'
+          # v3 has no target or flags inputs. Pass the target and every option to the nuclei CLI through args.
+          args: -u http://localhost:8080 -tags cve,misconfig,exposure -severity medium,high,critical -o nuclei.log
 
       - name: Upload Nuclei report
         uses: actions/upload-artifact@v7
@@ -192,15 +190,17 @@ jobs:
           path: nuclei.log
 ```
 
-### Main template categories
+### Main template tags
 
-| Category         | Description                         |
-| ---------------- | ----------------------------------- |
-| cves             | Known CVE vulnerability patterns    |
-| misconfiguration | Security misconfigurations          |
-| exposures        | Sensitive information/file exposure |
-| default-logins   | Default accounts/passwords          |
-| takeovers        | Potential subdomain takeover        |
+These are the values for `-tags` in the example above. Template files now sit under protocol folders such as `http/cves/`, so selecting by tag is simpler than by path (`-t`).
+
+| Tag           | Description                         |
+| ------------- | ----------------------------------- |
+| cve           | Known CVE vulnerability patterns    |
+| misconfig     | Security misconfigurations          |
+| exposure      | Sensitive information/file exposure |
+| default-login | Default accounts/passwords          |
+| takeover      | Potential subdomain takeover        |
 
 ---
 
