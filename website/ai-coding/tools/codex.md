@@ -77,7 +77,7 @@ writable_roots = ["/tmp/build"]
 
 ### 관리 대상 기기에서 강제하기
 
-조직이 배포하는 요구사항 파일을 두면 사용자 설정보다 우선합니다. 경로는 Unix 계열이 `/etc/codex/requirements.toml`, Windows 가 `%ProgramData%\OpenAI\Codex\requirements.toml` 입니다. `allowed_sandbox_modes` 로 허용할 샌드박스 강도를, `allowed_approval_policies` 로 허용할 승인 정책을 제한하고, MCP 서버 허용 목록과 플러그인 출처도 함께 잠글 수 있습니다. 사용자 설정이 요구사항과 충돌하면 Codex 가 호환되는 값으로 낮춰 실행하고 사용자에게 알립니다.
+조직이 배포하는 요구사항 파일을 두면 사용자 설정보다 우선합니다. 경로는 Unix 계열이 `/etc/codex/requirements.toml`, Windows 가 `%ProgramData%\OpenAI\Codex\requirements.toml` 입니다. `allowed_sandbox_modes` 로 허용할 샌드박스 강도를(Codex 0.138.0 이후에는 `allowed_permission_profiles` 와 `default_permissions` 조합을 권장합니다), `allowed_approval_policies` 로 허용할 승인 정책을 제한하고, MCP 서버 허용 목록과 플러그인 출처도 함께 잠글 수 있습니다. 사용자 설정이 요구사항과 충돌하면 Codex 가 호환되는 값으로 낮춰 실행하고 사용자에게 알립니다.
 
 ## 주의사항
 

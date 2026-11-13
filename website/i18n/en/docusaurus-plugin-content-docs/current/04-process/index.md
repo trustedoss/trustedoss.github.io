@@ -122,7 +122,7 @@ The CVSS-severity response-deadline table (the KWG baseline plus a stricter orga
 :::warning Check the separate reporting obligation if you ship into the EU market
 Separately from the response deadlines above, the EU CRA requires reporting an exploited
 vulnerability or a severe incident to regulators (CSIRT and ENISA) within **24 hours for the
-early warning and 72 hours for the notification**, applying from 2026-09-11. This applies
+early warning and 72 hours for the notification**, already applying since 2026-09-11. This applies
 only to organizations placing products with digital elements on the EU market. For the
 detailed deadlines and reporting channel, see the EU CRA section of
 [Vulnerability response deadlines and VEX](/en/reference/concepts/vulnerability-response); for

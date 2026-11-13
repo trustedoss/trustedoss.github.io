@@ -66,7 +66,7 @@ Cursor 의 통제는 실행 승인과 샌드박스 두 계층입니다.
 
 ### 어떻게 켜는가
 
-`Settings > Agents > Approvals & Execution` 에서 Run Mode 와 샌드박스를 지정합니다. 샌드박스의 네트워크 정책은 세 가지입니다. `sandbox.json Only` 는 직접 적은 목록만 허용하고, 기본값인 `sandbox.json + Defaults` 는 내장 허용 목록(약 110개 도메인)을 함께 적용하며, `Allow All` 은 제한을 두지 않습니다. 기본 정책은 거부이므로 목록에 없는 도메인은 막힙니다.
+`Settings > Agents > Approvals & Execution` 에서 Run Mode 와 샌드박스를 지정합니다. 샌드박스의 네트워크 정책은 세 가지입니다. `sandbox.json Only` 는 직접 적은 목록만 허용하고, 기본값인 `sandbox.json + Defaults` 는 내장 허용 목록(약 98개 도메인)을 함께 적용하며, `Allow All` 은 제한을 두지 않습니다. 기본 정책은 거부이므로 목록에 없는 도메인은 막힙니다.
 
 설정은 파일로도 남습니다. `~/.cursor/permissions.json` 이 명령·MCP 서버 허용 목록(`terminalAllowlist`, `mcpAllowlist`, `autoRun`)을, `~/.cursor/sandbox.json` 이 샌드박스 유형과 네트워크 정책(`networkPolicy`, `additionalReadwritePaths`)을 담습니다. 조직 정책은 Enterprise 대시보드의 Auto Run Configuration 과 Cloud Agent 의 Lock Network Access Policy 로 강제하며, 팀 관리자 설정이 개인의 `permissions.json` 과 편집기 설정보다 우선합니다.
 
@@ -75,5 +75,5 @@ Cursor 의 통제는 실행 승인과 샌드박스 두 계층입니다.
 ## 주의사항
 
 :::info 알아두세요
-`alwaysApply: true`로 설정하면 모든 파일에 규칙이 적용되어 토큰 사용량이 증가할 수 있습니다. 정책 규칙처럼 항상 적용이 필요한 경우에는 `alwaysApply: true`를, 특정 언어나 폴더에만 필요한 규칙은 `globs` 패턴으로 범위를 한정하는 것이 효율적입니다. `.cursorrules`(레거시)와 `.cursor/rules/`를 동시에 사용하는 경우 `.cursor/rules/`가 우선 적용되므로, 신규 프로젝트에서는 `.cursor/rules/` 방식을 권장합니다.
+`alwaysApply: true`로 설정하면 모든 파일에 규칙이 적용되어 토큰 사용량이 증가할 수 있습니다. 정책 규칙처럼 항상 적용이 필요한 경우에는 `alwaysApply: true`를, 특정 언어나 폴더에만 필요한 규칙은 `globs` 패턴으로 범위를 한정하는 것이 효율적입니다. `.cursorrules` 는 레거시 형식이고 현재 공식 규칙 문서에는 나오지 않으므로, 신규 프로젝트에서는 `.cursor/rules/` 방식을 쓰세요.
 :::

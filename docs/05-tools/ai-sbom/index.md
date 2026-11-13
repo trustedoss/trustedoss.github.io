@@ -77,7 +77,7 @@ docker pull ghcr.io/sktelecom/bomlens:latest
 - `--model` 에 HuggingFace 모델 식별자를 넣습니다. 자신이 검토할 모델로 바꿔 실행하세요.
 - 모델 스캔용 전용 이미지(`ghcr.io/sktelecom/bomlens-aibom`)가 자동으로 내려받아집니다.
 - 산출물은 `bert-base_1.0.0/` 하위 폴더에 생성됩니다: `bert-base_1.0.0_bom.json`(CycloneDX 1.7 ML-BOM),
-  고지문(notice), 위험 리포트(risk-report), 보안(security) 리포트, NTIA 최소 요소 적합성 점검 결과.
+  고지문(notice), 위험 리포트(risk-report), 보안(security) 리포트, AI 모델용 G7 최소 요소 적합성 점검 결과(AI 스캔은 SPDX 3.0.1 AI/Dataset 문서도 함께 만듭니다).
   모델에는 패키지 CVE 가 없으므로 보안 리포트는 취약점 0건으로 나오는 것이 정상입니다.
 
 ### 3단계: ML-BOM 읽기

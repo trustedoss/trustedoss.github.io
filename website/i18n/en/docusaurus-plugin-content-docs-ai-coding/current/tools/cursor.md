@@ -66,7 +66,7 @@ Cursor's controls come in two layers: execution approval and the sandbox.
 
 ### How to turn it on
 
-Set the Run Mode and the sandbox under `Settings > Agents > Approvals & Execution`. The sandbox network policy has three options: `sandbox.json Only` allows only the list you write, the default `sandbox.json + Defaults` also applies the built-in allowlist (about 110 domains), and `Allow All` applies no restriction. The default policy is deny, so domains outside the list are blocked.
+Set the Run Mode and the sandbox under `Settings > Agents > Approvals & Execution`. The sandbox network policy has three options: `sandbox.json Only` allows only the list you write, the default `sandbox.json + Defaults` also applies the built-in allowlist (about 98 domains), and `Allow All` applies no restriction. The default policy is deny, so domains outside the list are blocked.
 
 The settings are also backed by files. `~/.cursor/permissions.json` holds the command and MCP server allowlists (`terminalAllowlist`, `mcpAllowlist`, `autoRun`), and `~/.cursor/sandbox.json` holds the sandbox type and network policy (`networkPolicy`, `additionalReadwritePaths`). Organization policy is enforced through Auto Run Configuration and the Cloud Agent's Lock Network Access Policy in the Enterprise dashboard, and team admin settings take precedence over a user's `permissions.json` and editor settings.
 
@@ -75,5 +75,5 @@ To block specific commands with certainty, use the `beforeShellExecution` hook i
 ## Notes
 
 :::info Good to know
-When `alwaysApply: true` is set, rules apply to all files and token usage may increase. For policies that must always apply, use `alwaysApply: true`; for rules needed only for specific languages or folders, limit scope with `globs` for efficiency. If both `.cursorrules` (legacy) and `.cursor/rules/` are used, `.cursor/rules/` takes precedence, so `.cursor/rules/` is recommended for new projects.
+When `alwaysApply: true` is set, rules apply to all files and token usage may increase. For policies that must always apply, use `alwaysApply: true`; for rules needed only for specific languages or folders, limit scope with `globs` for efficiency. `.cursorrules` is a legacy format and no longer appears in the current official rules documentation, so use `.cursor/rules/` for new projects.
 :::

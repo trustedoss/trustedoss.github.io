@@ -77,7 +77,7 @@ The implementation differs per operating system. macOS uses the built-in Seatbel
 
 ### Enforcing it on managed devices
 
-A requirements file distributed by the organization takes precedence over user settings. The path is `/etc/codex/requirements.toml` on Unix-like systems and `%ProgramData%\OpenAI\Codex\requirements.toml` on Windows. `allowed_sandbox_modes` limits which sandbox levels are permitted and `allowed_approval_policies` limits which approval policies are permitted; MCP server allowlists and plugin sources can be locked as well. When a user setting conflicts with the requirements, Codex falls back to a compatible value and notifies the user.
+A requirements file distributed by the organization takes precedence over user settings. The path is `/etc/codex/requirements.toml` on Unix-like systems and `%ProgramData%\OpenAI\Codex\requirements.toml` on Windows. `allowed_sandbox_modes` limits which sandbox levels are permitted (for Codex 0.138.0 and later, `allowed_permission_profiles` together with `default_permissions` is recommended) and `allowed_approval_policies` limits which approval policies are permitted; MCP server allowlists and plugin sources can be locked as well. When a user setting conflicts with the requirements, Codex falls back to a compatible value and notifies the user.
 
 ## Notes
 

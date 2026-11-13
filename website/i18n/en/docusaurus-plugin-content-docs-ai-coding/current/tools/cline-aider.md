@@ -102,7 +102,7 @@ A per-command allow and deny list is not documented at present. If you must bloc
 
 ### Aider
 
-Aider has no sandbox option. The confirmation prompt shown before each shell command is the only line of defense, so use `--yes-always`, which skips it, only inside an isolated environment. `.aider.conf.yml` has no entry corresponding to a per-command allow or deny list either.
+Aider has no sandbox option. The confirmation prompt shown before each shell command is the only line of defense, so use `--yes-always`, which skips it, only inside an isolated environment. To turn off shell command suggestions entirely, use `--no-suggest-shell-commands`. `.aider.conf.yml` has no entry corresponding to a per-command allow or deny list either.
 
 An official Docker image (`paulgauthier/aider`) exists, but the documentation presents it as an installation method rather than a security boundary. To use it for isolation, restrict the mounted paths and network access yourself.
 
