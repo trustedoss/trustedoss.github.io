@@ -40,9 +40,9 @@ four areas.
 
 ![Governance foundations set the rules for security and compliance controls, productivity and collaboration, and testing, and the ai-coding-best-practice repository implements their controls](/img/ai-coding/ai-coding-four-areas-en.png)
 
-Tool setup is on the [Claude Code](./tools/claude-code), [Cursor](./tools/cursor),
-[GitHub Copilot](./tools/copilot), [OpenAI Codex](./tools/codex), [Devin Desktop](./tools/windsurf),
-and [Cline / Aider](./tools/cline-aider) pages, ordered by how widely each tool is used at work. In
+Tool setup is on the [Claude Code](./tools/claude-code), [GitHub Copilot](./tools/copilot),
+[OpenAI Codex](./tools/codex), [Cursor](./tools/cursor), [Devin Desktop](./tools/windsurf),
+and [Cline / Aider](./tools/cline-aider) pages, ordered by how widely each tool is used at work (Devin Desktop and Cline / Aider have no figures, so they come last). In
 JetBrains' Developer Ecosystem Survey 2026 (15,509 professional developers, published 2026-08), work
 usage was Claude Code 39%, GitHub Copilot 21%, Codex 16%, and Cursor 12%.
 
@@ -59,7 +59,7 @@ Expand only after confirming one step.
    sent, and who is responsible. If you configure tools before setting rules, personal accounts and
    unapproved extensions stay in use.
 2. **Add rules and gates.** Put a rules file in the repository ([Common Rules Template](./rules-template))
-   and add secret, SAST, and SCA gates to CI ([Quick CI/CD](./cicd-quick)). Rules are advice; gates are
+   and add an SCA gate to CI ([30-Minute Quick CI/CD](./cicd-quick)). Secret detection and SAST are added in the [DevSecOps guide](/en/devsecops/intro). Rules are advice; gates are
    what actually block.
 3. **Make tests the verification standard.** Add core behavior tests and the test-weakening check
    ([Testing](./testing)). The scope you can hand to agents equals the scope your tests check.

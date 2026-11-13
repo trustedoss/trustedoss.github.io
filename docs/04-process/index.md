@@ -235,28 +235,7 @@ AI 도구 사용 여부를 기여 대장에 함께 기록하세요. 승인 이�
 프로세스가 개발 흐름에 자연스럽게 통합되어야 지속 가능합니다. 수동 체크를 자동화하면
 담당자 부담이 줄고 누락 위험도 낮아집니다.
 
-```yaml
-# .github/workflows/oss-compliance.yml
-name: OSS Compliance Check
-
-on:
-  pull_request:
-  schedule:
-    - cron: '0 9 * * 1' # 매주 월요일 09:00 UTC (KST 18:00)
-
-jobs:
-  license-check:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v7
-      - name: SBOM 생성
-        run: |
-          docker run --rm -v "$(pwd)":/project \
-            anchore/syft:latest /project \
-            --output cyclonedx-json > sbom.cdx.json
-      - name: 라이선스 확인
-        run: echo "라이선스 검토 단계"
-```
+CI 워크플로의 전체 예시는 PR 단계 차단 게이트는 [30분 Quick CI/CD](/ai-coding/cicd-quick)와 [SCA](/devsecops/sca)에, 정기 스캔은 [모니터링·자동 교정](/devsecops/monitoring)에 있습니다. 이 챕터에서는 프로세스가 CI와 맞닿는 지점만 정리합니다.
 
 주요 CI/CD 통합 지점은 다음과 같습니다.
 

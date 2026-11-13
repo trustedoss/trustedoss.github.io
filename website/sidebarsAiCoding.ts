@@ -34,9 +34,9 @@ const sidebars: SidebarsConfig = {
       label: '도구별 설정',
       items: [
         'tools/claude-code',
-        'tools/cursor',
         'tools/copilot',
         'tools/codex',
+        'tools/cursor',
         'tools/windsurf',
         'tools/cline-aider',
       ],

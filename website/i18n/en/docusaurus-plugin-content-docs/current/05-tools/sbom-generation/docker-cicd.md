@@ -60,34 +60,7 @@ Recommended for Java Maven projects. Its dependency resolution is more precise t
 
 Integrating SBOM generation into your CI/CD pipeline gives you an up-to-date SBOM automatically for every release.
 
-```yaml
-# .github/workflows/sbom.yml
-name: Generate SBOM
-
-on:
-  push:
-    branches: [main]
-  release:
-    types: [published]
-
-jobs:
-  sbom:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v7
-      - name: Generate SBOM with syft
-        run: |
-          docker run --rm \
-            -v ${{ github.workspace }}:/src \
-            anchore/syft \
-            dir:/src -o cyclonedx-json \
-            > sbom.cdx.json
-      - name: Upload SBOM as artifact
-        uses: actions/upload-artifact@v7
-        with:
-          name: sbom
-          path: sbom.cdx.json
-```
+Full workflow examples, including the pull request gate and SBOM upload, are in [SCA](/en/devsecops/sca) and [30-Minute Quick CI/CD](/en/ai-coding/cicd-quick). The core is to generate a CycloneDX JSON with `syft` on every release and keep it as an artifact.
 
 ---
 

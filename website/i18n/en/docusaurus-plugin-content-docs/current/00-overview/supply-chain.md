@@ -267,7 +267,7 @@ You can simply read this chapter. Focus on understanding the concepts.
 
 ## 9. Next steps
 
-- **Learn the SBOM technical concepts**: go to `sbom-101.md` to learn the CycloneDX and SPDX formats and the SBOM minimum elements.
-- **Go straight to environment preparation**: go to `docs/01-setup/` and start installing the toolchain.
+- **Learn the SBOM technical concepts**: go to [SBOM basics](./sbom-101.md) to learn the CycloneDX and SPDX formats and the SBOM minimum elements.
+- **Go straight to environment preparation**: go to [Environment preparation](../01-setup/index.md) and start installing the toolchain.
 
-Once you understand the concepts well enough, you can begin the hands-on work in `docs/01-setup/`. You can return to this chapter for reference at any time.
+Once you understand the concepts well enough, you can begin the hands-on work in environment preparation. You can return to this chapter for reference at any time.

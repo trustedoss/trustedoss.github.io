@@ -36,9 +36,9 @@ AI 코딩 거버넌스는 위험을 막는 일과 성과를 내는 일을 함께
 
 ![거버넌스 기반이 보안·컴플라이언스 통제, 생산성과 협업, 테스트 환경의 기준이 되고, ai-coding-best-practice 저장소가 세 영역의 통제를 구현하는 구조](/img/ai-coding/ai-coding-four-areas.png)
 
-도구별 설정은 [Claude Code](./tools/claude-code), [Cursor](./tools/cursor),
-[GitHub Copilot](./tools/copilot), [OpenAI Codex](./tools/codex), [Devin Desktop](./tools/windsurf),
-[Cline / Aider](./tools/cline-aider) 페이지에 있습니다. 업무 사용률이 높은 순서로 실었습니다.
+도구별 설정은 [Claude Code](./tools/claude-code), [GitHub Copilot](./tools/copilot),
+[OpenAI Codex](./tools/codex), [Cursor](./tools/cursor), [Devin Desktop](./tools/windsurf),
+[Cline / Aider](./tools/cline-aider) 페이지에 있습니다. 업무 사용률이 높은 순서로 실었습니다(Devin Desktop 과 Cline / Aider 는 수치가 없어 마지막에 두었습니다).
 JetBrains 의 Developer Ecosystem Survey 2026(전문 개발자 15,509명, 2026-08 공개) 기준 업무 사용률은
 Claude Code 39%, GitHub Copilot 21%, Codex 16%, Cursor 12% 입니다.
 
@@ -54,7 +54,7 @@ Claude Code 39%, GitHub Copilot 21%, Codex 16%, Cursor 12% 입니다.
    [AI 코딩 도구 사용 정책](./usage-policy)의 정책 템플릿으로 먼저 정합니다. 기준 없이 도구 설정부터
    하면 개인 계정과 승인되지 않은 확장이 그대로 남습니다.
 2. **규칙과 게이트를 겁니다.** 저장소에 규칙 파일을 두고([공통 Rules 템플릿](./rules-template)),
-   CI 에 시크릿·SAST·SCA 게이트를 겁니다([Quick CI/CD](./cicd-quick)). 규칙은 권고이고 실제로
+   CI 에 SCA 게이트를 겁니다([30분 Quick CI/CD](./cicd-quick)). 시크릿 탐지와 SAST 는 [DevSecOps 가이드](/devsecops/intro)에서 더합니다. 규칙은 권고이고 실제로
    막는 것은 게이트입니다.
 3. **테스트를 검증 기준으로 세웁니다.** 핵심 동작 테스트와 테스트 약화 검사를 겁니다
    ([테스트 환경](./testing)). 에이전트에게 맡길 수 있는 범위는 테스트가 확인하는 범위와 같습니다.

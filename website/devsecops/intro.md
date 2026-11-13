@@ -28,18 +28,19 @@ AI 코딩 가이드의 Quick CI/CD는 개발자가 30분 안에 기본 게이트
 
 ## 이 메뉴의 구성
 
-| 페이지                                | 다루는 내용                   | 권장 독자         |
-| ------------------------------------- | ----------------------------- | ----------------- |
-| [도입 전략](./strategy)               | 성숙도 네 수준·도입 순서      | 팀 리드·아키텍트  |
-| [SAST](./sast)                        | 정적 분석(CodeQL·Semgrep)     | 개발자·DevOps     |
-| [SCA](./sca)                          | 의존성 분석(syft·grype·SBOM)  | DevOps·보안팀     |
-| [시크릿 탐지](./secret-detection)     | 키·토큰 누출 방지(Gitleaks)   | 개발자·DevOps     |
-| [컨테이너 보안](./container-security) | 이미지 취약점(Trivy)          | DevOps·보안팀     |
-| [IaC 보안](./iac-security)            | 인프라 코드 검사(Checkov)     | DevOps·SRE        |
-| [DAST](./dast)                        | 동적 분석(OWASP ZAP·Nuclei)   | 보안팀·QA         |
-| [파이프라인 설계](./pipeline-design)  | 전체 통합 설계·GitHub Actions | DevOps 엔지니어   |
-| [모니터링·자동 교정](./monitoring)    | 배포 후 지속 스캔·자동 PR     | DevOps·보안팀     |
-| [ISO 표준 연계](./iso-mapping)        | ISO/IEC 18974 요구사항 매핑   | 컴플라이언스 담당 |
+| 페이지                                      | 다루는 내용                       | 권장 독자         |
+| ------------------------------------------- | --------------------------------- | ----------------- |
+| [도입 전략](./strategy)                     | 성숙도 네 수준·도입 순서          | 팀 리드·아키텍트  |
+| [시크릿 탐지](./secret-detection)           | 키·토큰 누출 방지(Gitleaks)       | 개발자·DevOps     |
+| [SCA](./sca)                                | 의존성 분석(syft·grype·SBOM)      | DevOps·보안팀     |
+| [SAST](./sast)                              | 정적 분석(CodeQL·Semgrep)         | 개발자·DevOps     |
+| [컨테이너 보안](./container-security)       | 이미지 취약점(Trivy)              | DevOps·보안팀     |
+| [IaC 보안](./iac-security)                  | 인프라 코드 검사(Checkov)         | DevOps·SRE        |
+| [DAST](./dast)                              | 동적 분석(ZAP·Nuclei)             | 보안팀·QA         |
+| [파이프라인 설계](./pipeline-design)        | 전체 통합 설계·GitHub Actions     | DevOps 엔지니어   |
+| [파이프라인 자체 보안](./pipeline-security) | 액션 고정·권한 최소화·비밀값 보호 | DevOps·보안팀     |
+| [모니터링·자동 교정](./monitoring)          | 배포 후 지속 스캔·자동 PR         | DevOps·보안팀     |
+| [표준 대응: DevSecOps](./iso-mapping)       | ISO/IEC 18974 요구사항 매핑       | 컴플라이언스 담당 |
 
 ---
 
@@ -47,14 +48,14 @@ AI 코딩 가이드의 Quick CI/CD는 개발자가 30분 안에 기본 게이트
 
 :::tip 역할별 시작점
 
-| 상황                                            | 시작점                                                       |
-| ----------------------------------------------- | ------------------------------------------------------------ |
-| DevSecOps가 처음이다                            | [도입 전략](./strategy)                                      |
-| 코드 품질·보안 취약점을 코드 단계에서 잡고 싶다 | [SAST](./sast)                                               |
-| 오픈소스 의존성 취약점이 걱정된다               | [SCA](./sca)                                                 |
-| API Key·토큰이 코드에 노출된 적 있다            | [시크릿 탐지](./secret-detection)                            |
-| 컨테이너 환경을 운영 중이다                     | [컨테이너 보안](./container-security)                        |
-| ISO/IEC 18974 인증을 준비 중이다                | [ISO 표준 연계](./iso-mapping) (SCA 페이지 먼저 읽기를 권장) |
+| 상황                                            | 시작점                                                              |
+| ----------------------------------------------- | ------------------------------------------------------------------- |
+| DevSecOps가 처음이다                            | [도입 전략](./strategy)                                             |
+| 코드 품질·보안 취약점을 코드 단계에서 잡고 싶다 | [SAST](./sast)                                                      |
+| 오픈소스 의존성 취약점이 걱정된다               | [SCA](./sca)                                                        |
+| API Key·토큰이 코드에 노출된 적 있다            | [시크릿 탐지](./secret-detection)                                   |
+| 컨테이너 환경을 운영 중이다                     | [컨테이너 보안](./container-security)                               |
+| ISO/IEC 18974 인증을 준비 중이다                | [표준 대응: DevSecOps](./iso-mapping) (SCA 페이지 먼저 읽기를 권장) |
 
 :::
 

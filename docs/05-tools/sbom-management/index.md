@@ -155,34 +155,7 @@ EU 시장에 제품을 출시하는 조직이라면, 발견한 취약점이 실�
 - **GitHub Dependabot:** GitHub 기반 프로젝트에서 의존성 취약점을 자동으로 PR로 알림
 - **OSV.dev 구독:** Google이 운영하는 오픈소스 취약점 데이터베이스 알림 구독
 
-**CI/CD 자동 모니터링 예시 (주간 스캔):**
-
-```yaml
-# .github/workflows/vuln-scan.yml
-name: Weekly Vulnerability Scan
-on:
-  schedule:
-    - cron: '0 9 * * 1' # 매주 월요일 09:00 UTC (KST 18:00)
-jobs:
-  scan:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v7
-      - name: Install syft and grype
-        run: |
-          curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin
-          curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
-      - name: Generate fresh SBOM
-        run: |
-          mkdir -p output/sbom
-          syft . -o cyclonedx-json > output/sbom/myapp-latest.cdx.json
-      - name: Check SBOM for new CVEs
-        run: |
-          # Dependency-Track API 또는 grype 등으로 스캔
-          grype sbom:output/sbom/myapp-latest.cdx.json --fail-on high
-```
-
-이 워크플로우를 통해 매주 최신 SBOM을 기반으로 취약점을 자동 스캔하고, 심각도 높은 취약점 발견 시 CI 빌드를 실패로 처리하여 팀에 알릴 수 있습니다.
+**CI/CD 자동 모니터링:** 주간 또는 매일 정기 스캔 워크플로의 전체 예시는 [모니터링·자동 교정](/devsecops/monitoring)에 있습니다. 최신 SBOM을 만들고 grype 로 스캔해, 기준 이상 취약점이 나오면 CI를 실패시켜 팀에 알립니다.
 
 :::warning grype 가 `sbom format not recognized` 를 낼 때
 syft 1.51 이상은 CycloneDX 1.7 을 냅니다. grype 는 0.118 이상에서만 이 버전을 읽습니다.

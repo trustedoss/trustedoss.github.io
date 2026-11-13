@@ -328,6 +328,7 @@ Related Standards
 
 > **Summary of distribution methods**: SaaS + app stores (iOS/Android) + embedded + internal use
 > Since embedded and app store distribution are included, copyleft licenses are strictly restricted.
+> The table below is an example in which this fictional company tightens GPL for SaaS and AGPL for internal use to conditional, one step stricter than the default verdicts in [License Classification](/en/reference/concepts/license-classification); the default verdicts follow that page.
 
 ---
 

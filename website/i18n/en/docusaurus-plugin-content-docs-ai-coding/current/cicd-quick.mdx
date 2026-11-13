@@ -5,7 +5,7 @@ sidebar_label: 30-Minute Quick CI/CD
 sidebar_position: 4
 ---
 
-# CI/CD Automation
+# 30-Minute Quick CI/CD
 
 :::info Scope of this page
 This page covers a minimal starting point focused on SCA (dependency vulnerabilities + licenses).
@@ -190,7 +190,7 @@ You can relax `severity-cutoff` (GitHub Actions) or `--fail-on` (GitLab CI) from
 
 **Forbidden license list**
 
-Keep the `FORBIDDEN` variable synchronized with the forbidden license list in the [Common Rules Template](./rules-template). For caution licenses such as LGPL and MPL, you can add separate logic that emits warnings instead of failing the build, and connect that flow to legal review.
+Keep the `FORBIDDEN` variable synchronized with the forbidden license list in the [Common Rules Template](./rules-template). For conditionally allowed licenses such as LGPL and MPL, you can add separate logic that emits warnings instead of failing the build, and connect that flow to legal review.
 
 ---
 

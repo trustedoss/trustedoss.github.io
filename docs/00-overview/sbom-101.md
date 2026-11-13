@@ -226,5 +226,4 @@ A: 이 키트를 따라가면 CycloneDX JSON 형식의 SBOM을 생성할 수 있
 
 이 문서를 읽었다면 SBOM의 개념과 생태계를 충분히 이해한 것입니다.
 
-- 배경 지식을 마저 보려면 [표준 요구사항 한눈에](./checklist-mapping.md)로 이동하세요.
 - 실습을 시작하려면 [환경 준비](../01-setup/index.md)에서 syft, cdxgen, Dependency-Track 을 설치하세요.

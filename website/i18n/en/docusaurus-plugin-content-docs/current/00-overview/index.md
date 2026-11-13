@@ -112,7 +112,8 @@ Take your time to understand and work through each document on your own. We reco
 1. Read this page to grasp the purpose and structure of the whole journey
 2. Read [Standard requirements at a glance](./checklist-mapping.md) to grasp what the two standards require on a single screen
 3. Read [Software Supply Chain Security: Why It Matters Now](./supply-chain.md) to build the background
-4. Go to [Environment preparation: install the tools needed for the labs](../01-setup/index.md) to install the tools and clone the repository
+4. Read [SBOM basics](./sbom-101.md) to understand SBOM formats and minimum elements
+5. Go to [Environment preparation: install the tools needed for the labs](../01-setup/index.md) to install the tools and clone the repository
 
 ---
 

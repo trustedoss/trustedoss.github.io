@@ -328,6 +328,7 @@ sidebar_position: 2
 
 > **배포 방식 요약**: SaaS + 앱스토어(iOS/Android) + 임베디드 + 내부용
 > 임베디드 및 앱스토어 배포가 포함되므로 Copyleft 라이선스는 엄격히 제한한다.
+> 아래 표는 이 가상 기업이 [라이선스 분류](/reference/concepts/license-classification)의 기본 판정보다 SaaS의 GPL과 내부용 AGPL을 한 단계 강화해 조건부로 둔 예시이며, 기본 판정은 분류 페이지를 따른다.
 
 ---
 

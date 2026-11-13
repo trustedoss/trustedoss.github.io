@@ -64,6 +64,6 @@ This mapping's chapter and deliverable structure is reworked from that guide.
 
 ## Next steps
 
-Once you have this much, move on to [Environment setup](../01-setup/index.md) to install the tools, then start producing deliverables from [Organization structure](../02-organization/index.md).
+Once you have this much, read the background in [Software Supply Chain Security: Why It Matters Now](./supply-chain.md) and [SBOM basics](./sbom-101.md), then move on to [Environment setup](../01-setup/index.md) to install the tools, then start producing deliverables from [Organization structure](../02-organization/index.md).
 
 The point where you need the per-item certification questions and verification material is the [self-certification](../07-conformance/index.md) chapter. At that point, open the [Requirements Detail Matrix](/en/reference/requirements-matrix) and check it against your gap analysis results.
