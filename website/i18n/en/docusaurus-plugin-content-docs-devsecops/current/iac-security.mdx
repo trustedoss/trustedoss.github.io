@@ -23,12 +23,12 @@ The examples below keep mutable tags such as `@v7` for readability. A tag can be
 
 ## Tool Comparison
 
-| Tool    | Key Characteristics                                    | Supported Targets                   | License    |
-| ------- | ------------------------------------------------------ | ----------------------------------- | ---------- |
-| Checkov | Broad coverage + custom policy support                 | Terraform, K8s, CF, Dockerfile, ARM | Apache-2.0 |
+| Tool    | Key Characteristics                                         | Supported Targets                   | License    |
+| ------- | ----------------------------------------------------------- | ----------------------------------- | ---------- |
+| Checkov | Broad coverage + custom policy support                      | Terraform, K8s, CF, Dockerfile, ARM | Apache-2.0 |
 | tfsec   | Terraform-focused (no longer maintained; merged into Trivy) | Terraform                           | MIT        |
-| Trivy   | Includes IaC scan (integrated with container security) | Terraform, K8s, Dockerfile          | Apache-2.0 |
-| Kubesec | Kubernetes-only security scoring                       | Kubernetes YAML                     | Apache-2.0 |
+| Trivy   | Includes IaC scan (integrated with container security)      | Terraform, K8s, Dockerfile          | Apache-2.0 |
+| Kubesec | Kubernetes-only security scoring                            | Kubernetes YAML                     | Apache-2.0 |
 
 For multi-IaC environments, Checkov is recommended; for integration with container security, use Trivy. tfsec is no longer maintained and has been merged into Trivy, so if you need Terraform-only checks, use `trivy config`.
 

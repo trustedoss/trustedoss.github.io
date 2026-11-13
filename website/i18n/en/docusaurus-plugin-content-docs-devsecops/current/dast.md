@@ -29,10 +29,10 @@ The examples below keep mutable tags such as `@v7` for readability. A tag can be
 
 ## Tool Comparison
 
-| Tool      | Features                                      | Main uses                                 | License    |
-| --------- | --------------------------------------------- | ----------------------------------------- | ---------- |
-| ZAP | Industry-standard, GUI and automation support | Full scan of web apps/APIs                | Apache-2.0 |
-| Nuclei    | Template-based, fast, lightweight             | Scanning for known vulnerability patterns | MIT        |
+| Tool   | Features                                      | Main uses                                 | License    |
+| ------ | --------------------------------------------- | ----------------------------------------- | ---------- |
+| ZAP    | Industry-standard, GUI and automation support | Full scan of web apps/APIs                | Apache-2.0 |
+| Nuclei | Template-based, fast, lightweight             | Scanning for known vulnerability patterns | MIT        |
 
 We recommend ZAP for in-depth web application scanning, and Nuclei for quick checks of known CVEs and misconfigurations.
 
@@ -196,13 +196,13 @@ jobs:
 
 These are the values for `-tags` in the example above. Template files now sit under protocol folders such as `http/cves/`, so selecting by tag is simpler than by path (`-t`).
 
-| Tag              | Description                         |
-| ---------------- | ----------------------------------- |
-| cve              | Known CVE vulnerability patterns    |
-| misconfig        | Security misconfigurations          |
-| exposure         | Sensitive information/file exposure |
-| default-login    | Default accounts/passwords          |
-| takeover         | Potential subdomain takeover        |
+| Tag           | Description                         |
+| ------------- | ----------------------------------- |
+| cve           | Known CVE vulnerability patterns    |
+| misconfig     | Security misconfigurations          |
+| exposure      | Sensitive information/file exposure |
+| default-login | Default accounts/passwords          |
+| takeover      | Potential subdomain takeover        |
 
 ---
 

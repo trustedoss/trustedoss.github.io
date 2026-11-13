@@ -106,7 +106,7 @@ ai-coding-best-practice/
 | ---------------------------- | ------------------- | -------------------------------------------------------- |
 | Automatic Dependency Updates | `dependabot.yml`    | Automatically creates weekly dependency update PRs       |
 | Automatic Patch Merge        | `renovate.json`     | Auto-merges Critical patches, notifies for Major updates |
-| DAST                         | `dast.yml`          | ZAP Baseline: dynamic scan on Push to main         |
+| DAST                         | `dast.yml`          | ZAP Baseline: dynamic scan on Push to main               |
 
 ### Collaboration and Testing
 
