@@ -1,11 +1,11 @@
 /**
- * trustedoss.github.io Features — 세 트랙 (Vercel풍 카드)
+ * trustedoss.github.io 첫 화면 경로 카드 — 네 갈래를 돌아가며 강조한다
  * CC BY 4.0 · TrustedOSS Contributors
  */
 
-import React from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import Link from '@docusaurus/Link';
-import Translate, {translate} from '@docusaurus/Translate';
+import {translate} from '@docusaurus/Translate';
 
 import styles from './styles.module.css';
 
@@ -115,47 +115,111 @@ const TRACKS: Track[] = [
   },
 ];
 
-function TrackCard({icon, title, desc, href}: Track) {
+function TrackCard({
+  icon,
+  title,
+  desc,
+  href,
+  active,
+  onEnter,
+  onLeave,
+}: Track & {active: boolean; onEnter: () => void; onLeave: () => void}) {
   return (
-    <Link to={href} className={styles.card}>
+    <Link
+      to={href}
+      className={`${styles.card} ${active ? styles.active : ''}`}
+      onMouseEnter={onEnter}
+      onMouseLeave={onLeave}
+      onFocus={onEnter}
+      onBlur={onLeave}>
       <span className={styles.icon}>
         <FeatureIcon name={icon} />
       </span>
       <h3 className={styles.title}>{title}</h3>
       <p className={styles.desc}>{desc}</p>
-      <span className={styles.more}>
-        <Translate id="homepage.feature.more">자세히 보기</Translate>
-        <span aria-hidden="true"> →</span>
-      </span>
     </Link>
   );
 }
 
-function Features() {
+const CYCLE_MS = 4000;
+
+/**
+ * 카드를 하나씩 돌아가며 강조한다. 화면에 보일 때만 순환하고, 마우스나
+ * 키보드 포커스가 올라간 카드가 있으면 그 카드가 강조를 가져가며 순환은 멈춘다.
+ * 모션 감소 설정에서는 순환 없이 첫 카드만 강조한다.
+ */
+function useCycle(count: number) {
+  const [index, setIndex] = useState(0);
+  const [pinned, setPinned] = useState<number | null>(null);
+  const [visible, setVisible] = useState(false);
+  const [reduced, setReduced] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setReduced(mq.matches);
+    const onChange = () => setReduced(mq.matches);
+    mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
+  }, []);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || typeof IntersectionObserver === 'undefined') {
+      return undefined;
+    }
+    const io = new IntersectionObserver(([e]) => setVisible(e.isIntersecting), {
+      threshold: 0.3,
+    });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!visible || pinned !== null || reduced) {
+      return undefined;
+    }
+    const id = window.setInterval(() => {
+      if (!document.hidden) {
+        setIndex(i => (i + 1) % count);
+      }
+    }, CYCLE_MS);
+    return () => window.clearInterval(id);
+  }, [visible, pinned, reduced, count]);
+
+  const current = pinned ?? index;
+  return {
+    ref,
+    current,
+    enter: (i: number) => () => {
+      setPinned(i);
+      setIndex(i);
+    },
+    leave: () => setPinned(null),
+  };
+}
+
+function TrackCards() {
+  const cycle = useCycle(TRACKS.length);
   return (
-    <section className={styles.features}>
-      <div className="container">
-        <header className={styles.sectionHeader}>
-          <h2>
-            <Translate id="homepage.features.title">
-              역할에 맞는 세 가지 경로
-            </Translate>
-          </h2>
-          <p>
-            <Translate id="homepage.features.subtitle">
-              표준 기반 관리 체계, 보안 파이프라인, AI 코딩 컴플라이언스 —
-              필요한 경로에서 시작하세요.
-            </Translate>
-          </p>
-        </header>
-        <div className={styles.grid}>
-          {TRACKS.map(track => (
-            <TrackCard key={track.id} {...track} />
-          ))}
-        </div>
-      </div>
-    </section>
+    <nav
+      className={styles.grid}
+      ref={cycle.ref}
+      aria-label={translate({
+        id: 'homepage.features.navLabel',
+        message: '가이드 경로',
+      })}>
+      {TRACKS.map((track, i) => (
+        <TrackCard
+          key={track.id}
+          {...track}
+          active={cycle.current === i}
+          onEnter={cycle.enter(i)}
+          onLeave={cycle.leave}
+        />
+      ))}
+    </nav>
   );
 }
 
-export default Features;
+export default TrackCards;

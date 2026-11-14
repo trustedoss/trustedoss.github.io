@@ -1,39 +1,16 @@
 /**
- * trustedoss.github.io Features styles — Vercel풍 트랙 카드
+ * 첫 화면 경로 카드 styles
  */
-
-.features {
-  padding: var(--space-section) 0;
-  background: var(--ifm-color-emphasis-100);
-  border-top: 1px solid var(--ifm-color-emphasis-200);
-  border-bottom: 1px solid var(--ifm-color-emphasis-200);
-}
-
-.sectionHeader {
-  max-width: 60ch;
-  margin-bottom: 2.75rem;
-}
-
-.sectionHeader h2 {
-  margin: 0 0 0.55rem;
-  font-size: 1.75rem;
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  color: var(--ifm-heading-color);
-}
-
-.sectionHeader p {
-  margin: 0;
-  color: var(--ifm-color-emphasis-600);
-  font-size: 0.95rem;
-  line-height: 1.6;
-}
 
 .grid {
   display: grid;
   /* 카드 4개 (A-4). navbar 의 문서 인스턴스 4개와 같은 갈래다. */
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
+  width: 100%;
+  max-width: 1080px;
+  margin-top: 3rem;
+  text-align: left;
 }
 
 @media (max-width: 1100px) {
@@ -43,9 +20,11 @@
 }
 
 .card {
+  position: relative;
+  isolation: isolate;
   display: flex;
   flex-direction: column;
-  padding: 1.6rem;
+  padding: 1.1rem 1.2rem;
   border: 1px solid var(--ifm-color-emphasis-200);
   border-radius: 12px;
   background: var(--ifm-background-color);
@@ -65,21 +44,76 @@
   color: inherit;
 }
 
+/* 순환 강조: 카드 뒤에 옅은 다색 빛이 번진다. 한 번에 한 카드만 켜진다. */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  z-index: -1;
+  border-radius: 18px;
+  background: linear-gradient(
+    120deg,
+    #4285f4,
+    #24c1e0 35%,
+    #a78bfa 70%,
+    #f9ab00
+  );
+  filter: blur(18px);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+}
+
+/* 빛이 카드 안쪽에 비치지 않도록 카드 면을 불투명하게 덮는다 */
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--ifm-background-color);
+  pointer-events: none;
+}
+
+.card.active {
+  border-color: color-mix(in srgb, var(--ifm-color-primary) 45%, transparent);
+}
+
+.card.active::before {
+  opacity: 0.35;
+}
+
+:global([data-theme="dark"]) .card.active::before {
+  opacity: 0.28;
+}
+
+@media (max-width: 860px) {
+  .card::before {
+    filter: blur(12px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card::before {
+    transition: none;
+  }
+}
+
 .icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
-  margin-bottom: 1.1rem;
-  border-radius: 12px;
+  width: 36px;
+  height: 36px;
+  margin-bottom: 0.75rem;
+  border-radius: 10px;
   color: var(--ifm-color-primary);
   background: color-mix(in srgb, var(--ifm-color-primary) 10%, transparent);
 }
 
 .title {
-  margin: 0 0 0.5rem;
-  font-size: 1.02rem;
+  margin: 0 0 0.35rem;
+  font-size: 1rem;
   font-weight: 600;
   letter-spacing: -0.01em;
   color: var(--ifm-heading-color);
@@ -87,16 +121,14 @@
 
 .desc {
   flex: 1;
-  margin: 0 0 1.1rem;
-  font-size: 0.88rem;
-  line-height: 1.6;
+  margin: 0;
+  font-size: 0.84rem;
+  line-height: 1.55;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
   color: var(--ifm-color-emphasis-600);
-}
-
-.more {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--brand-text);
 }
 
 @media (max-width: 860px) {
