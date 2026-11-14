@@ -17,6 +17,9 @@ jobs:
   lighthouse:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
       - name: Run Lighthouse against production
         uses: treosh/lighthouse-ci-action@v12
         with:
