@@ -17,14 +17,11 @@ jobs:
   lighthouse:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v7
-
-      - name: Enable Corepack
-        run: corepack enable
-
       - name: Run Lighthouse against production
         uses: treosh/lighthouse-ci-action@v12
+        env:
+          # 저장소를 체크아웃하지 않으므로 빌드 해시를 직접 알려 준다.
+          LHCI_BUILD_CONTEXT__CURRENT_HASH: ${{ github.sha }}
         with:
           urls: |
             https://trustedoss.github.io/
