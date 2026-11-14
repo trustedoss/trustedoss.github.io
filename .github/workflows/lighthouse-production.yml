@@ -1,0 +1,30 @@
+name: Lighthouse (production)
+
+# 배포된 운영 사이트를 측정한다. CI 의 로컬 서버는 압축을 하지 않아 운영보다 불리하게
+# 나오므로, 성능 수치는 이 워크플로 결과를 기준으로 본다. 수동 실행 전용이며,
+# 이 파일을 바꾸는 PR 에서도 한 번 돈다.
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - ".github/workflows/lighthouse-production.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Lighthouse against production
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          urls: |
+            https://trustedoss.github.io/
+            https://trustedoss.github.io/docs/overview/supply-chain
+            https://trustedoss.github.io/devsecops/sast
+            https://trustedoss.github.io/ai-coding/intro
+          runs: 3
+          uploadArtifacts: true
+          temporaryPublicStorage: true
