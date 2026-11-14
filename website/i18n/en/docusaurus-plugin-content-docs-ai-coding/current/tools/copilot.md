@@ -79,5 +79,5 @@ The sandbox is turned on with `chat.agent.sandbox.enabled`. It supports macOS, L
 ## Notes
 
 :::info Good to know
-Organization settings support organization-wide custom instructions. Their scope is limited to Copilot Chat, code review, and the coding agent on GitHub.com, so to stay consistent across IDEs, also manage per-repository instruction files from a shared template. Custom instructions apply to Chat, code review, and the coding agent; application to inline code completion is not guaranteed. There may be a short delay after changes.
+Organization settings support organization-wide custom instructions. Their scope is limited to Copilot Chat, code review, and the cloud agent on GitHub.com, and do not apply to local client sessions, so to stay consistent across IDEs, also manage per-repository instruction files from a shared template. Custom instructions apply to Chat, code review, and the cloud agent; application to inline code completion is not guaranteed. There may be a short delay after changes.
 :::

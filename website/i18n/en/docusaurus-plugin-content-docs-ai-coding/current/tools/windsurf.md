@@ -18,7 +18,7 @@ Rules files live at the project level, and global rules are configured separatel
 - Project (recommended): `.devin/rules/` directory, the new standard path, which takes precedence over the others
 - Project (backward compatible): `.windsurf/rules/` directory and the legacy single-file `.windsurfrules`. Existing setups keep working as-is
 - Common format: `AGENTS.md` is supported, and `.cursor/rules` can be imported
-- Global: Global Rules in the app settings
+- Global: Global Rules in the app settings, or `~/.devin/global_rules.md` and `~/.devin/rules/*.md`
 
 There is a 12,000-character limit per file.
 

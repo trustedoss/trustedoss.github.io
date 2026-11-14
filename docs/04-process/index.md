@@ -120,7 +120,7 @@ CVSS 심각도별 대응 기한표(KWG 기준선과 조직별 SLA 강화안)와 
 
 :::warning EU 시장에 제품을 출시한다면 별도 신고 의무 확인
 위 대응 기한과는 별개로, EU CRA는 악용 취약점·심각한 사고를 **24시간 이내 조기 경보,
-72시간 이내 통지**로 규제 당국(CSIRT·ENISA)에 신고할 의무를 2026-09-11부터 적용합니다.
+72시간 이내 통지**로 규제 당국(CSIRT·ENISA)에 신고할 의무가 2026-09-11부터 적용 중입니다.
 EU 시장에 디지털 요소가 있는 제품을 출시하는 조직만 해당합니다. 세부 기한과 신고 채널은
 [취약점 대응 기한과 VEX](/reference/concepts/vulnerability-response) 문서의 EU CRA 절을,
 산출물 반영은 `vulnerability-response.md`의 §9를 참조하세요.

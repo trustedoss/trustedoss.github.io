@@ -85,8 +85,8 @@ home directory.
 - Put a HuggingFace model identifier in `--model`. Replace it with the model you are reviewing.
 - The dedicated model-scan image (`ghcr.io/sktelecom/bomlens-aibom`) is pulled automatically.
 - Deliverables land in the `bert-base_1.0.0/` subfolder: `bert-base_1.0.0_bom.json` (CycloneDX 1.7
-  ML-BOM), a notice, a risk report, a security report, and an NTIA minimum-elements conformance
-  check. A model has no package CVEs, so a security report with zero findings is expected.
+  ML-BOM), a notice, a risk report, a security report, and a G7 minimum-elements for AI conformance
+  check (AI scans also write an SPDX 3.0.1 AI/Dataset document). A model has no package CVEs, so a security report with zero findings is expected.
 
 ### Step 3: Read the ML-BOM
 
