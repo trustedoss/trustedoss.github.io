@@ -2,6 +2,7 @@
 id: cursor
 title: Cursor
 sidebar_label: Cursor
+description: Explains where Cursor reads .cursor/rules files, how to apply them, an open source policy example, and sandbox settings.
 sidebar_position: 2
 ---
 

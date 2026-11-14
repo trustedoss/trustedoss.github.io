@@ -2,6 +2,7 @@
 id: cursor
 title: Cursor
 sidebar_label: Cursor
+description: Cursor가 읽는 .cursor/rules 규칙 파일의 위치와 적용 방법, 오픈소스 정책 작성 예시, 샌드박스 설정을 설명합니다.
 sidebar_position: 2
 ---
 
