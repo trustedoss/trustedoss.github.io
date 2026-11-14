@@ -8,6 +8,7 @@ import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import Translate, {translate} from '@docusaurus/Translate';
 
+import TrackCards from '../Features';
 import styles from './styles.module.css';
 
 function Hero() {
@@ -65,6 +66,7 @@ function Hero() {
             GitHub
           </Link>
         </div>
+        <TrackCards />
         <ul className={styles.meta}>
           {meta.map(item => (
             <li key={item} className={styles.metaItem}>

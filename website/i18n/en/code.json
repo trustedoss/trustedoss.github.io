@@ -456,15 +456,6 @@
     "message": "For AI coding",
     "description": "Feature 3 audience label"
   },
-  "homepage.feature.more": {
-    "message": "Learn more →"
-  },
-  "homepage.features.title": {
-    "message": "Three tracks for your role"
-  },
-  "homepage.features.subtitle": {
-    "message": "A standards-based management system, a security pipeline, and AI coding compliance. Start with the track you need."
-  },
   "homepage.showcase.title": {
     "message": "Real artifacts the agents produce"
   },
@@ -1031,5 +1022,8 @@
   "notFound.link.reference.desc": {
     "message": "Requirements matrix and deliverable samples",
     "description": "Description of the reference link on the 404 page"
+  },
+  "homepage.features.navLabel": {
+    "message": "Guide tracks"
   }
 }

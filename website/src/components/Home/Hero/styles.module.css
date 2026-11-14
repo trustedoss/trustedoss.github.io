@@ -69,7 +69,7 @@ html[data-theme="dark"] {
 
 .hero {
   position: relative;
-  padding: 7.5rem 0 6.5rem;
+  padding: 4.5rem 0 4rem;
   text-align: center;
   color: var(--hero-ink);
   overflow: hidden;
@@ -184,7 +184,7 @@ html[data-theme="dark"] {
   flex-wrap: wrap;
   justify-content: center;
   gap: 0.5rem 1.5rem;
-  margin: 3rem 0 0;
+  margin: 2rem 0 0;
   padding: 0;
   list-style: none;
 }
@@ -242,14 +242,14 @@ html[data-theme="dark"] {
 .windowTitle {
   margin-left: 0.5rem;
   font-family: var(--ifm-font-family-monospace);
-  font-size: 0.74rem;
+  font-size: 0.8rem;
   color: var(--term-ink-3);
 }
 
 .windowBody {
   padding: 1rem 1.1rem 1.2rem;
   font-family: var(--ifm-font-family-monospace);
-  font-size: 0.82rem;
+  font-size: 0.875rem;
   line-height: 1.7;
 }
 
@@ -289,7 +289,7 @@ html[data-theme="dark"] {
   padding: 0.2rem 0.6rem;
   border-radius: 999px;
   font-family: var(--ifm-font-family-base);
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   color: var(--term-chip-fg);
   background: var(--term-chip-bg);
   border: 1px solid var(--term-chip-br);
@@ -297,7 +297,7 @@ html[data-theme="dark"] {
 
 .poweredBy {
   margin: 1.1rem 0 0;
-  font-size: 0.82rem;
+  font-size: 0.875rem;
   color: var(--hero-ink-3);
 }
 
