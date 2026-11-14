@@ -2,6 +2,7 @@
 id: ai-security-review
 title: AI 보안 코드 리뷰
 sidebar_label: AI 보안 리뷰
+description: 정적 분석 도구가 추린 결과만 AI가 검토하는 Findings-Driven 방식의 보안 코드 리뷰를 GitHub Actions로 구성하는 방법을 설명합니다.
 sidebar_position: 5
 ---
 

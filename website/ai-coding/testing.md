@@ -2,6 +2,7 @@
 id: testing
 title: 'AI가 만든 코드의 테스트 환경'
 sidebar_label: '테스트 환경'
+description: AI가 만든 코드를 검증하는 테스트 환경으로 테스트 우선 작업, 테스트 약화 방지 통제, 변이 테스트, 격리 실행을 설명합니다.
 sidebar_position: 13
 ---
 

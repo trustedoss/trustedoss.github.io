@@ -2,6 +2,7 @@
 id: testing
 title: 'Testing for AI-Written Code'
 sidebar_label: 'Testing'
+description: 'Explains the test environment for verifying AI-generated code: test-first work, controls against weakened tests, mutation testing, and isolated execution.'
 sidebar_position: 13
 ---
 

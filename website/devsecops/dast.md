@@ -2,6 +2,7 @@
 id: dast
 title: 동적 분석 (DAST)
 sidebar_label: DAST
+description: 실행 중인 애플리케이션을 ZAP과 Nuclei로 점검하는 동적 분석(DAST)의 설정 방법과 도입 시 주의사항을 설명합니다.
 sidebar_position: 8
 ---
 

@@ -2,6 +2,7 @@
 id: ai-fuzzing
 title: AI Fuzzing
 sidebar_label: AI Fuzzing
+description: Explains how AI fuzzing (stage 4b) lets a model explore business logic flaws and edge-case inputs that rules do not catch, and what to watch for.
 sidebar_position: 6
 ---
 

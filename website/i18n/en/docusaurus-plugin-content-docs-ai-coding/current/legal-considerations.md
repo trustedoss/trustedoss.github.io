@@ -2,6 +2,7 @@
 id: legal-considerations
 title: 'Legal Considerations for AI-Generated Code'
 sidebar_label: 'Legal Considerations for AI-Generated Code'
+description: Covers, from a legal perspective, copyright in AI-generated code, provider IP indemnities, AI use disclosure, and AI contribution policies of upstream projects.
 sidebar_position: 8
 ---
 

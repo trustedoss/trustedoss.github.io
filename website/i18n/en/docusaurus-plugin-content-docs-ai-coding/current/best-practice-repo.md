@@ -2,6 +2,7 @@
 id: best-practice-repo
 title: Best Practice Repository
 sidebar_label: Best Practice Repository
+description: Describes the layout and usage of a reference repository that implements the five-stage strategy and testing and collaboration controls as CI workflows.
 sidebar_position: 10
 ---
 

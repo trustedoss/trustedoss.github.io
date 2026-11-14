@@ -2,6 +2,7 @@
 id: monitoring
 title: 지속적 모니터링 · 자동 교정
 sidebar_label: 모니터링 · 자동 교정
+description: Dependabot, Renovate, 정기 스캔으로 배포 후 새로 발견되는 취약점을 계속 탐지하고 패치 PR을 자동 생성하는 방법을 설명합니다.
 sidebar_position: 11
 ---
 

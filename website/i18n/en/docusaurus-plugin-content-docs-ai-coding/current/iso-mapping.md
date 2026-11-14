@@ -2,6 +2,7 @@
 id: iso-mapping
 title: 'ISO Standards Linkage (AI Coding)'
 sidebar_label: 'ISO Standards Linkage'
+description: Shows in a mapping table which ISO/IEC 5230 and 18974 requirements the implementation in the AI coding guide reinforces at the development stage.
 sidebar_position: 11
 ---
 

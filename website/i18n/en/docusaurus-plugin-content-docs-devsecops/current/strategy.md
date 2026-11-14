@@ -2,6 +2,7 @@
 id: strategy
 title: DevSecOps Adoption Strategy
 sidebar_label: Adoption Strategy
+description: Explains the concept of DevSecOps, why to shift left, a four-level maturity model, and the order in which to adopt each level.
 sidebar_position: 2
 ---
 

@@ -2,6 +2,7 @@
 id: pipeline-security
 title: 파이프라인 자체 보안과 빌드 출처
 sidebar_label: 파이프라인 자체 보안
+description: CI 워크플로 자체를 보호하는 방법으로 커밋 SHA 고정, 권한 최소화, zizmor 검사, 빌드 출처 증명과 서명을 설명합니다.
 sidebar_position: 10
 ---
 

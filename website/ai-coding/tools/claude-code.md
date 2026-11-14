@@ -2,6 +2,7 @@
 id: claude-code
 title: Claude Code
 sidebar_label: Claude Code
+description: Claude Code가 읽는 CLAUDE.md의 위치와 적용 방법, 오픈소스 정책 작성 예시, 적용 확인 방법을 설명합니다.
 sidebar_position: 1
 ---
 

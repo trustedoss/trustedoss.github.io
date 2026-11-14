@@ -1,6 +1,7 @@
 ---
 id: intro
 title: DevSecOps
+description: 오픈소스 관리 가이드에서 만든 정책을 코드와 CI 파이프라인에 자동 적용하는 DevSecOps 섹션의 구성과 시작 지점을 안내합니다.
 slug: intro
 sidebar_position: 1
 ---

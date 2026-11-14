@@ -2,6 +2,7 @@
 id: iso-mapping
 title: '파이프라인으로 충족하는 18974 항목'
 sidebar_label: '18974 항목 충족'
+description: DevSecOps 가이드로 구현한 파이프라인이 ISO/IEC 18974 요구사항의 어느 항목을 충족하는지 대응표와 점검 목록으로 보여줍니다.
 sidebar_position: 12
 ---
 

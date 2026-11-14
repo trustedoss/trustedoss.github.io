@@ -2,6 +2,7 @@
 id: copilot
 title: GitHub Copilot
 sidebar_label: GitHub Copilot
+description: Explains the scope of the .github/copilot-instructions.md file read by GitHub Copilot, an example open source policy, and how to verify it is applied.
 sidebar_position: 3
 ---
 

@@ -2,6 +2,7 @@
 id: best-practice-repo
 title: Best Practice 저장소
 sidebar_label: Best Practice 저장소
+description: 5단계 전략과 테스트, 협업 통제를 CI 워크플로와 설정 파일로 구현한 참조 저장소의 구성과 사용 방법을 안내합니다.
 sidebar_position: 10
 ---
 

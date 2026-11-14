@@ -2,6 +2,7 @@
 id: strategy
 title: 보장 수준별 5단계 전략
 sidebar_label: 5단계 전략
+description: AI 코딩의 보안과 컴플라이언스 통제를 강제하는 강도에 따라 다섯 단계로 나눈 전략과 각 단계의 내용을 설명합니다.
 sidebar_position: 2
 ---
 

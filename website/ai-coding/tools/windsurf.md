@@ -2,6 +2,7 @@
 id: windsurf
 title: Devin Desktop (구 Windsurf)
 sidebar_label: Devin Desktop
+description: Windsurf에서 이름이 바뀐 Devin Desktop의 규칙 파일 위치와 적용 방법, 오픈소스 정책 작성 예시를 설명합니다.
 sidebar_position: 5
 ---
 

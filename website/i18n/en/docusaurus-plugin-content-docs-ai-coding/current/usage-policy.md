@@ -2,6 +2,7 @@
 id: usage-policy
 title: 'AI Coding Tool Usage Policy'
 sidebar_label: 'AI Coding Tool Usage Policy'
+description: Explains how to write a usage policy covering approved AI coding tools, what data may be sent to them, roles and responsibilities, and training.
 sidebar_position: 2
 ---
 

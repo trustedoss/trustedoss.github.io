@@ -1,6 +1,7 @@
 ---
 id: intro
 title: DevSecOps
+description: Introduces the DevSecOps section, which applies open source management policies to code and CI pipelines automatically, and shows where to start.
 slug: intro
 sidebar_position: 1
 ---

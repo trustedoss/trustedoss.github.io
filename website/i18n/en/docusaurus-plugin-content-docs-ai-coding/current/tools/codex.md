@@ -2,6 +2,7 @@
 id: codex
 title: OpenAI Codex
 sidebar_label: OpenAI Codex
+description: Explains the order in which OpenAI Codex reads AGENTS.md, how to configure it, an example open source policy, and how to verify it is applied.
 sidebar_position: 4
 ---
 

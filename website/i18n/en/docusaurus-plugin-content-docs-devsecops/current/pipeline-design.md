@@ -2,6 +2,7 @@
 id: pipeline-design
 title: Enterprise-wide Pipeline Design
 sidebar_label: Pipeline Design
+description: Guides you through integrating six areas (SAST, SCA, secret detection, container security, IaC security, and DAST) into one CI pipeline.
 sidebar_position: 9
 ---
 

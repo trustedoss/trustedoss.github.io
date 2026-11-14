@@ -2,6 +2,7 @@
 id: strategy
 title: DevSecOps 도입 전략
 sidebar_label: 도입 전략
+description: DevSecOps의 개념, Shift Left를 해야 하는 이유, 네 수준의 성숙도 모델과 단계별 도입 순서를 설명합니다.
 sidebar_position: 2
 ---
 

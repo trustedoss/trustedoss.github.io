@@ -2,6 +2,7 @@
 id: container-security
 title: 컨테이너·이미지 보안
 sidebar_label: 컨테이너 보안
+description: 컨테이너 이미지의 OS 패키지와 의존성 취약점, Dockerfile 설정 오류, 시크릿 노출을 Trivy로 배포 전에 탐지하는 방법을 다룹니다.
 sidebar_position: 6
 ---
 

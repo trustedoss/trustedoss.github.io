@@ -2,6 +2,7 @@
 id: cline-aider
 title: Cline / Aider 설정
 sidebar_label: Cline / Aider
+description: Cline의 규칙 파일과 Aider의 정책 문서에 오픈소스 정책을 작성해 적용하고 확인하는 방법을 설명합니다.
 sidebar_position: 6
 ---
 

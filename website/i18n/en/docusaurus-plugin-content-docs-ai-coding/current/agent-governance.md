@@ -2,6 +2,7 @@
 id: agent-governance
 title: 'Agent and MCP Tool Governance'
 sidebar_label: 'Agent & MCP Tool Governance'
+description: Covers the threat model for controlling the MCP tools an agent calls and inputs it reads, nine execution controls, automation tools, and an example policy.
 sidebar_position: 7
 ---
 
