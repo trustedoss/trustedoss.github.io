@@ -59,12 +59,6 @@ function Hero() {
               message: '전체 가이드 보기',
             })}
           </Link>
-          <Link
-            className="button button--secondary button--lg"
-            href="https://github.com/trustedoss/trustedoss.github.io">
-            <span className={styles.ghIcon} aria-hidden="true" />
-            GitHub
-          </Link>
         </div>
         <TrackCards />
         <ul className={styles.meta}>

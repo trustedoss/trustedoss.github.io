@@ -1,12 +1,14 @@
 /**
- * trustedoss.github.io 첫 화면 경로 카드 — 네 갈래를 돌아가며 강조한다
+ * trustedoss.github.io 첫 화면 경로 카드 — 네 갈래 입구. 한 장씩 돌아가며 빛이 번진다
  * CC BY 4.0 · TrustedOSS Contributors
  */
 
-import React, {useEffect, useRef, useState} from 'react';
+import React from 'react';
 import Link from '@docusaurus/Link';
 import {translate} from '@docusaurus/Translate';
 
+import useCycle from '../useCycle';
+import glow from '../glow.module.css';
 import styles from './styles.module.css';
 
 type IconName = 'governance' | 'devsecops' | 'aicoding' | 'reference';
@@ -127,7 +129,7 @@ function TrackCard({
   return (
     <Link
       to={href}
-      className={`${styles.card} ${active ? styles.active : ''}`}
+      className={`${styles.card} ${glow.glow} ${active ? glow.active : ''}`}
       onMouseEnter={onEnter}
       onMouseLeave={onLeave}
       onFocus={onEnter}
@@ -135,72 +137,14 @@ function TrackCard({
       <span className={styles.icon}>
         <FeatureIcon name={icon} />
       </span>
-      <h3 className={styles.title}>{title}</h3>
+      <h2 className={styles.title}>{title}</h2>
       <p className={styles.desc}>{desc}</p>
     </Link>
   );
 }
 
-const CYCLE_MS = 4000;
-
-/**
- * 카드를 하나씩 돌아가며 강조한다. 화면에 보일 때만 순환하고, 마우스나
- * 키보드 포커스가 올라간 카드가 있으면 그 카드가 강조를 가져가며 순환은 멈춘다.
- * 모션 감소 설정에서는 순환 없이 첫 카드만 강조한다.
- */
-function useCycle(count: number) {
-  const [index, setIndex] = useState(0);
-  const [pinned, setPinned] = useState<number | null>(null);
-  const [visible, setVisible] = useState(false);
-  const [reduced, setReduced] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setReduced(mq.matches);
-    const onChange = () => setReduced(mq.matches);
-    mq.addEventListener('change', onChange);
-    return () => mq.removeEventListener('change', onChange);
-  }, []);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el || typeof IntersectionObserver === 'undefined') {
-      return undefined;
-    }
-    const io = new IntersectionObserver(([e]) => setVisible(e.isIntersecting), {
-      threshold: 0.3,
-    });
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!visible || pinned !== null || reduced) {
-      return undefined;
-    }
-    const id = window.setInterval(() => {
-      if (!document.hidden) {
-        setIndex(i => (i + 1) % count);
-      }
-    }, CYCLE_MS);
-    return () => window.clearInterval(id);
-  }, [visible, pinned, reduced, count]);
-
-  const current = pinned ?? index;
-  return {
-    ref,
-    current,
-    enter: (i: number) => () => {
-      setPinned(i);
-      setIndex(i);
-    },
-    leave: () => setPinned(null),
-  };
-}
-
 function TrackCards() {
-  const cycle = useCycle(TRACKS.length);
+  const cycle = useCycle<HTMLElement>(TRACKS.length);
   return (
     <nav
       className={styles.grid}

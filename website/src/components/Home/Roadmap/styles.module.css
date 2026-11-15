@@ -4,7 +4,9 @@
 
 .roadmap {
   padding: var(--space-section) 0;
-  background: var(--ifm-background-color);
+  background: var(--ifm-color-emphasis-100);
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
 }
 
 .sectionHeader {
@@ -33,13 +35,13 @@
   margin-top: 0.65rem;
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--ifm-color-primary);
+  color: var(--brand-text);
   text-decoration: none;
 }
 
 .agentLink:hover {
   text-decoration: underline;
-  color: var(--ifm-color-primary);
+  color: var(--brand-text);
 }
 
 .agentLink span {
