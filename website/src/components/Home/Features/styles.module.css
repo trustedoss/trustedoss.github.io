@@ -8,7 +8,6 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
   width: 100%;
-  max-width: 1080px;
   margin-top: 3rem;
   text-align: left;
 }
@@ -20,8 +19,6 @@
 }
 
 .card {
-  position: relative;
-  isolation: isolate;
   display: flex;
   flex-direction: column;
   padding: 1.1rem 1.2rem;
@@ -42,61 +39,6 @@
   box-shadow: 0 2px 12px rgba(26, 115, 232, 0.12);
   text-decoration: none;
   color: inherit;
-}
-
-/* 순환 강조: 카드 뒤에 옅은 다색 빛이 번진다. 한 번에 한 카드만 켜진다. */
-.card::before {
-  content: "";
-  position: absolute;
-  inset: -6px;
-  z-index: -1;
-  border-radius: 18px;
-  background: linear-gradient(
-    120deg,
-    #4285f4,
-    #24c1e0 35%,
-    #a78bfa 70%,
-    #f9ab00
-  );
-  filter: blur(18px);
-  opacity: 0;
-  transition: opacity 0.6s ease;
-  pointer-events: none;
-}
-
-/* 빛이 카드 안쪽에 비치지 않도록 카드 면을 불투명하게 덮는다 */
-.card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  border-radius: inherit;
-  background: var(--ifm-background-color);
-  pointer-events: none;
-}
-
-.card.active {
-  border-color: color-mix(in srgb, var(--ifm-color-primary) 45%, transparent);
-}
-
-.card.active::before {
-  opacity: 0.35;
-}
-
-:global([data-theme="dark"]) .card.active::before {
-  opacity: 0.28;
-}
-
-@media (max-width: 860px) {
-  .card::before {
-    filter: blur(12px);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .card::before {
-    transition: none;
-  }
 }
 
 .icon {

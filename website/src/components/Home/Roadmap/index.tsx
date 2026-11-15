@@ -7,6 +7,8 @@ import React from 'react';
 import Link from '@docusaurus/Link';
 import Translate, {translate} from '@docusaurus/Translate';
 
+import useCycle from '../useCycle';
+import glow from '../glow.module.css';
 import styles from './styles.module.css';
 
 type Step = {
@@ -98,6 +100,7 @@ const STEPS: Step[] = [
 ];
 
 function Roadmap() {
+  const cycle = useCycle<HTMLOListElement>(STEPS.length);
   return (
     <section className={styles.roadmap}>
       <div className="container">
@@ -122,10 +125,18 @@ function Roadmap() {
             <span aria-hidden="true"> →</span>
           </Link>
         </header>
-        <ol className={styles.grid}>
-          {STEPS.map(step => (
+        <ol className={styles.grid} ref={cycle.ref}>
+          {STEPS.map((step, i) => (
             <li key={step.no} className={styles.step}>
-              <Link to={step.href} className={styles.stepCard}>
+              <Link
+                to={step.href}
+                className={`${styles.stepCard} ${glow.glow} ${
+                  cycle.current === i ? glow.active : ''
+                }`}
+                onMouseEnter={cycle.enter(i)}
+                onMouseLeave={cycle.leave}
+                onFocus={cycle.enter(i)}
+                onBlur={cycle.leave}>
                 <div className={styles.stepTop}>
                   <span className={styles.stepNo}>{step.no}</span>
                   <span className={styles.arrow} aria-hidden="true">

@@ -18,7 +18,7 @@
   }
 
   .container {
-    max-width: 900px;
+    max-width: var(--ifm-container-width);
   }
 
   .text--center {

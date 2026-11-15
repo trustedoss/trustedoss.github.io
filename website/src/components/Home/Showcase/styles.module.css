@@ -81,8 +81,8 @@
 
 .file {
   font-family: var(--ifm-font-family-monospace);
-  font-size: 0.74rem;
-  color: var(--ifm-color-emphasis-600);
+  font-size: 0.8rem;
+  color: var(--ifm-color-emphasis-700);
 }
 
 .preview {
@@ -91,7 +91,7 @@
   background: var(--ifm-color-emphasis-100);
   border: 0;
   border-radius: 0;
-  font-size: 0.78rem;
+  font-size: 0.84rem;
   line-height: 1.65;
   min-height: 9.5rem;
   white-space: pre;
@@ -109,9 +109,9 @@
 
 .caption {
   margin: 0.9rem 0 0;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   line-height: 1.5;
-  color: var(--ifm-color-emphasis-600);
+  color: var(--ifm-color-emphasis-700);
 }
 
 @media (max-width: 860px) {

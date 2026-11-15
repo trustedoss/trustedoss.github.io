@@ -4,7 +4,9 @@
 
 .roadmap {
   padding: var(--space-section) 0;
-  background: var(--ifm-background-color);
+  background: var(--ifm-color-emphasis-100);
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
 }
 
 .sectionHeader {

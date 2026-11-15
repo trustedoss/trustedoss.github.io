@@ -1,0 +1,63 @@
+/**
+ * 카드 뒤에 옅은 다색 빛이 번지는 강조 효과. 한 번에 한 카드에만 .active 를 붙인다.
+ * 카드 안쪽은 ::after 가 불투명하게 덮어 빛이 바깥 가장자리에만 보인다.
+ */
+
+.glow {
+  position: relative;
+  isolation: isolate;
+}
+
+.glow::before {
+  content: "";
+  position: absolute;
+  inset: -10px;
+  z-index: -1;
+  border-radius: 20px;
+  background: linear-gradient(
+    120deg,
+    #4285f4,
+    #24c1e0 35%,
+    #a78bfa 70%,
+    #f9ab00
+  );
+  filter: blur(20px);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+}
+
+.glow::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--ifm-background-color);
+  pointer-events: none;
+}
+
+.active {
+  border-color: color-mix(in srgb, var(--ifm-color-primary) 45%, transparent);
+}
+
+.active::before {
+  opacity: 0.5;
+}
+
+:global([data-theme="dark"]) .active::before {
+  opacity: 0.4;
+}
+
+@media (max-width: 860px) {
+  .glow::before {
+    filter: blur(12px);
+    inset: -6px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glow::before {
+    transition: none;
+  }
+}
