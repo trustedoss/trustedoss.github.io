@@ -137,7 +137,7 @@ function TrackCard({
       <span className={styles.icon}>
         <FeatureIcon name={icon} />
       </span>
-      <h3 className={styles.title}>{title}</h3>
+      <h2 className={styles.title}>{title}</h2>
       <p className={styles.desc}>{desc}</p>
     </Link>
   );

@@ -35,13 +35,13 @@
   margin-top: 0.65rem;
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--ifm-color-primary);
+  color: var(--brand-text);
   text-decoration: none;
 }
 
 .agentLink:hover {
   text-decoration: underline;
-  color: var(--ifm-color-primary);
+  color: var(--brand-text);
 }
 
 .agentLink span {
