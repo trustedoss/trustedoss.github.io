@@ -46,6 +46,10 @@ Each job in the integrated workflow below is lifted from the page for that area.
 
 The stage-2 scans can run in parallel to keep the overall time within 5 minutes.
 
+:::tip You can also build the SCA job with BomLens
+The `sca` job below uses syft and grype. To also produce a NOTICE file and a risk report in CI along with the SBOM, you can switch it to [BomLens](https://github.com/sktelecom/bomlens). A setup that keeps `.grype.yaml` exception handling is in [SCA: Using BomLens](./sca#bomlens), and a BomLens-only setup is in [Quick CI/CD in 30 minutes: Using BomLens](/en/ai-coding/cicd-quick#bomlens). BomLens starts scan containers, so GitLab CI needs the `docker:dind` service, and the first run makes the SCA job take longer because of image downloads.
+:::
+
 ### How one project splits it: TRUSCA
 
 The open source project TRUSCA runs twenty-five workflows. Grouping them by trigger shows the intent.

@@ -37,6 +37,8 @@ CI/CD gates are the only safety net that can mechanically block policy violation
 
 All three tools are free open source. In GitHub Actions you can use them immediately as Marketplace Actions with no installation; in GitLab CI you install them with a single script line.
 
+To handle all three steps with one tool, see [Using BomLens](#bomlens). It produces the SBOM, NOTICE, and security and risk reports in one scan and judges the build failure conditions in the same scan.
+
 ---
 
 ## GitHub Actions
@@ -171,6 +173,114 @@ oss-check:
 | Vulnerability scan | anchore/scan-action (Action) | Install and run grype directly |
 | Trigger condition  | pull_request                 | merge_request_event            |
 | Artifact retention | upload-artifact              | artifacts.paths                |
+
+## Using BomLens (optional) {#bomlens}
+
+[BomLens](https://github.com/sktelecom/bomlens) is an OWASP Incubator project (Apache-2.0) developed by SK Telecom. It uses syft, cdxgen, and Trivy internally, and a single script run produces a CycloneDX SBOM, a NOTICE file, a security report, and an open source risk report. Everything runs inside Docker on the runner, so neither the source code nor the SBOM is sent to an external service.
+
+The 3-tool combination above splits SBOM generation, vulnerability blocking, and license blocking into separate steps per tool. BomLens handles these in one scan, and the scan itself fails the build through `--fail-on` conditions. It fits when you want to generate and keep NOTICE files in CI as well, or when you want to cover container images and firmware with the same tool in addition to source code.
+
+### GitHub Actions example
+
+Instead of an official Marketplace Action, download and run the release archive. Pin the version with `BOMLENS_VERSION` for reproducibility.
+
+```yaml
+# .github/workflows/oss-policy-bomlens.yml
+name: OSS Policy Check (BomLens)
+
+on:
+  pull_request:
+    branches: [main, develop]
+
+env:
+  BOMLENS_VERSION: v1.15.3 # BomLens release to use. Raise this value to take a newer one.
+
+jobs:
+  oss-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Install BomLens
+        run: |
+          mkdir -p /tmp/bomlens
+          curl -fsSL "https://github.com/sktelecom/bomlens/releases/download/$BOMLENS_VERSION/bomlens-cli.tar.gz" | tar -xz -C /tmp/bomlens
+
+      # Generate SBOM, NOTICE, and security reports; fail on High or above vulnerabilities or malicious packages
+      - name: Scan with BomLens
+        run: |
+          /tmp/bomlens/scripts/scan-sbom.sh \
+            --project "${{ github.event.repository.name }}" \
+            --version "${{ github.sha }}" \
+            --all --generate-only \
+            --fail-on vulnerability=high \
+            --fail-on malicious-package
+
+      # Keep the reports even when the build fails, so the cause can be checked
+      - name: Upload reports
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: bomlens-reports
+          path: |
+            */*_bom.json
+            */*_NOTICE.*
+            */*_security.*
+            */*_risk-report.*
+```
+
+### GitLab CI example
+
+BomLens starts scan containers, so it needs a Docker-in-Docker service. This assumes a Docker executor that allows privileged services; GitLab.com's Linux instance runners meet this condition.
+
+```yaml
+# .gitlab-ci.yml (oss-check-bomlens job)
+oss-check-bomlens:
+  stage: test
+  image: docker:latest
+  services:
+    - docker:dind
+  variables:
+    DOCKER_HOST: tcp://docker:2376
+    DOCKER_TLS_CERTDIR: '/certs'
+    BOMLENS_VERSION: v1.15.3
+  before_script:
+    - apk add --no-cache bash curl
+    - mkdir -p /tmp/bomlens
+    - curl -fsSL "https://github.com/sktelecom/bomlens/releases/download/$BOMLENS_VERSION/bomlens-cli.tar.gz" | tar -xz -C /tmp/bomlens
+  script:
+    - /tmp/bomlens/scripts/scan-sbom.sh
+      --project "$CI_PROJECT_NAME"
+      --version "$CI_COMMIT_SHA"
+      --all --generate-only
+      --fail-on vulnerability=high
+      --fail-on malicious-package
+  artifacts:
+    when: always
+    paths:
+      - '*/*_bom.json'
+      - '*/*_NOTICE.*'
+      - '*/*_security.*'
+      - '*/*_risk-report.*'
+    expire_in: 30 days
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+```
+
+### Options and outputs
+
+- `--fail-on vulnerability=<critical|high|medium|low>`: fails the build when a vulnerability at that severity or above is found. It plays the same role as `severity-cutoff` and `--fail-on` in the earlier examples.
+- `--fail-on malicious-package`: fails the build when a known malicious package is included.
+- `--fail-on license-conflict`: when you set the project license with `--license <SPDX ID>`, judges license conflicts with dependencies and fails the build.
+- `--fail-on-conformance`: fails the build when the SBOM minimum elements conformance check reports "fail".
+- `--all` turns on `--notice --security --spdx` together. `--generate-only` saves results locally without uploading them to a server.
+
+Exit codes are 4 when a condition is met, 5 when the scan results cannot judge the condition, and 2 when the conformance check fails. Because the build also fails when a condition cannot be judged, an incomplete scan does not pass.
+
+Outputs are created in the `{project}_{version}/` folder as `_bom.json` (CycloneDX SBOM), `_NOTICE.txt` and `_NOTICE.html` (NOTICE), `_security.*` (security report), `_risk-report.*` (risk report), and `_conformance.*` (conformance check). To check against your team's forbidden license list, apply the license check script from the earlier example to `*/*_bom.json` as is (in GitLab CI, add `jq` to `apk add`).
+
+The first run takes time because it downloads the scan image and language images. For all options and other ways to run it (such as running the Docker image directly), see the [BomLens CI/CD guide](https://sktelecom.github.io/bomlens/guides/ci-cd/).
 
 ---
 
