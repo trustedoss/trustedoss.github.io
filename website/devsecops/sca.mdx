@@ -142,6 +142,67 @@ syft 1.51 이상은 CycloneDX 1.7 을 냅니다. grype 는 0.118 이상에서만
 
 Quick CI/CD 는 30분 안에 첫 게이트를 세우는 것이 목적이고, 이 페이지는 예외 관리와 증적 보관까지 다룹니다. 두 워크플로를 함께 두지 말고 하나만 남기세요.
 
+### BomLens로 구성하기
+
+[BomLens](https://github.com/sktelecom/bomlens)(OWASP Incubator 프로젝트, Apache-2.0)를 쓰면 SBOM, 고지문(NOTICE), 보안·위험 리포트를 한 번의 스캔으로 만들 수 있습니다. 내부적으로 syft, cdxgen, Trivy를 사용하고 러너의 Docker 안에서 실행됩니다. 구성 방식은 두 가지입니다.
+
+- **BomLens 단독:** `--fail-on vulnerability=high` 같은 조건으로 스캔 자체가 빌드를 실패시킵니다. GitHub Actions와 GitLab CI 예시는 [30분 Quick CI/CD: BomLens로 구성하기](/ai-coding/cicd-quick#bomlens로-구성하기-선택)에 있습니다.
+- **BomLens + grype:** BomLens는 `.grype.yaml` 같은 예외 정책 파일을 받지 않습니다. 이 페이지처럼 무시 규칙을 승인 기록과 함께 관리하려면 SBOM과 고지문은 BomLens로 만들고, 빌드 실패 판정은 grype에 맡깁니다.
+
+아래는 두 번째 방식의 GitHub Actions 예시입니다. 위 워크플로의 `Generate SBOM` 단계만 바뀌고, 스캔과 보관은 같습니다.
+
+```yaml
+# .github/workflows/sca.yml (BomLens로 SBOM 생성)
+
+name: SCA — SBOM & Vulnerability Scan
+
+on:
+  pull_request:
+    branches: [main, develop]
+
+env:
+  BOMLENS_VERSION: v1.15.3 # 사용할 BomLens 릴리스. 새 버전을 쓰려면 이 값을 올립니다.
+
+jobs:
+  sca:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install BomLens
+        run: |
+          mkdir -p /tmp/bomlens
+          curl -fsSL "https://github.com/sktelecom/bomlens/releases/download/$BOMLENS_VERSION/bomlens-cli.tar.gz" | tar -xz -C /tmp/bomlens
+
+      # SBOM과 고지문만 만들고, 빌드 실패 판정은 다음 단계의 grype가 합니다
+      - name: Generate SBOM with BomLens
+        run: |
+          /tmp/bomlens/scripts/scan-sbom.sh \
+            --project "${{ github.event.repository.name }}" \
+            --version "${{ github.sha }}" \
+            --notice --generate-only --no-report
+          cp */*_bom.json sbom.cdx.json
+
+      - name: Scan vulnerabilities
+        uses: anchore/scan-action@v7
+        with:
+          sbom: sbom.cdx.json
+          fail-build: true
+          severity-cutoff: high
+          config: .grype.yaml
+
+      - name: Upload SBOM artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: sbom-${{ github.sha }}
+          path: |
+            sbom.cdx.json
+            */*_NOTICE.*
+          retention-days: 90
+```
+
+GitLab CI에서는 [30분 Quick CI/CD의 GitLab 예시](/ai-coding/cicd-quick#bomlens로-구성하기-선택)처럼 `docker:dind` 서비스로 BomLens를 실행한 뒤, 같은 잡에서 grype를 설치해 `grype sbom:sbom.cdx.json --fail-on high --config .grype.yaml`을 실행합니다. BomLens의 SBOM 기본 형식은 CycloneDX 1.6이라 위에서 설명한 1.7 형식 인식 문제는 생기지 않습니다.
+
 ---
 
 ## 취약점 정책 설계

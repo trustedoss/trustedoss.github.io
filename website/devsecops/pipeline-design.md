@@ -46,6 +46,10 @@ SAST, SCA, 시크릿 탐지, 컨테이너 보안, IaC 보안, DAST 6개 영역�
 
 2단계 검사들은 병렬 실행으로 전체 소요 시간을 5분 내로 유지할 수 있습니다.
 
+:::tip SCA 잡을 BomLens로 구성할 수도 있습니다
+아래 `sca` 잡은 syft와 grype를 씁니다. SBOM과 함께 고지문(NOTICE)과 위험 리포트까지 CI에서 만들려면 [BomLens](https://github.com/sktelecom/bomlens)로 바꿀 수 있습니다. `.grype.yaml` 예외 관리를 유지하는 구성은 [SCA: BomLens로 구성하기](./sca#bomlens로-구성하기)에, BomLens 단독 구성은 [30분 Quick CI/CD: BomLens로 구성하기](/ai-coding/cicd-quick#bomlens로-구성하기-선택)에 예시가 있습니다. BomLens는 스캔 컨테이너를 띄우므로 GitLab CI에서는 `docker:dind` 서비스가 필요하고, 첫 실행은 이미지 다운로드로 SCA 잡 소요 시간이 길어집니다.
+:::
+
 ### 실제 분할 사례: TRUSCA
 
 오픈소스 프로젝트 TRUSCA 는 워크플로우를 스물다섯 개로 나눠 운영합니다. 트리거를 기준으로 보면
