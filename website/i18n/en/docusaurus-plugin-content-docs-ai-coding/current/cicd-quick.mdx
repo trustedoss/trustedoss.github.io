@@ -37,7 +37,7 @@ CI/CD gates are the only safety net that can mechanically block policy violation
 
 All three tools are free open source. In GitHub Actions you can use them immediately as Marketplace Actions with no installation; in GitLab CI you install them with a single script line.
 
-To handle all three steps with one tool, see [Using BomLens](#bomlens). It produces the SBOM, NOTICE, and security and risk reports in one scan and judges the build failure conditions in the same scan.
+To handle all three steps with one tool, see [Using BomLens](#using-bomlens-optional). It produces the SBOM, NOTICE, and security and risk reports in one scan and judges the build failure conditions in the same scan.
 
 ---
 
@@ -174,7 +174,7 @@ oss-check:
 | Trigger condition  | pull_request                 | merge_request_event            |
 | Artifact retention | upload-artifact              | artifacts.paths                |
 
-## Using BomLens (optional) {#bomlens}
+## Using BomLens (optional)
 
 [BomLens](https://github.com/sktelecom/bomlens) is an OWASP Incubator project (Apache-2.0) developed by SK Telecom. It uses syft, cdxgen, and Trivy internally, and a single script run produces a CycloneDX SBOM, a NOTICE file, a security report, and an open source risk report. Everything runs inside Docker on the runner, so neither the source code nor the SBOM is sent to an external service.
 

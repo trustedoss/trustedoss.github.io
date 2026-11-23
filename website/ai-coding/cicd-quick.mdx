@@ -37,7 +37,7 @@ CI/CD 게이트는 사람과 AI의 실수에 관계없이 기계적으로 정책
 
 세 도구 모두 무료 오픈소스입니다. GitHub Actions에서는 마켓플레이스 Action으로 설치 없이 바로 쓰고, GitLab CI에서는 스크립트 한 줄로 설치해 사용합니다.
 
-세 단계를 하나의 도구로 처리하려면 [BomLens로 구성하기](#bomlens)를 참고하세요. SBOM, 고지문, 보안·위험 리포트를 한 번의 스캔으로 만들고 같은 스캔에서 빌드 실패 조건을 판정합니다.
+세 단계를 하나의 도구로 처리하려면 [BomLens로 구성하기](#bomlens로-구성하기-선택)를 참고하세요. SBOM, 고지문, 보안·위험 리포트를 한 번의 스캔으로 만들고 같은 스캔에서 빌드 실패 조건을 판정합니다.
 
 ---
 
@@ -174,7 +174,7 @@ oss-check:
 | 트리거 조건   | pull_request                 | merge_request_event  |
 | 아티팩트 보관 | upload-artifact              | artifacts.paths      |
 
-## BomLens로 구성하기 (선택) {#bomlens}
+## BomLens로 구성하기 (선택)
 
 [BomLens](https://github.com/sktelecom/bomlens)는 SK텔레콤이 개발하는 OWASP Incubator 프로젝트(Apache-2.0)입니다. 내부적으로 syft, cdxgen, Trivy를 사용하며, 스크립트 한 번의 실행으로 CycloneDX SBOM, 고지문(NOTICE), 보안 리포트, 오픈소스 위험 리포트를 함께 만듭니다. 전 과정이 러너의 Docker 안에서 실행되어 소스나 SBOM을 외부 서비스로 보내지 않습니다.
 

@@ -142,11 +142,11 @@ Upgrade both tools together, or generate at the older version with `syft ... -o 
 
 Quick CI/CD exists to stand up a first gate in 30 minutes; this page goes on to exception handling and evidence retention. Keep one of the two workflows, not both.
 
-### Using BomLens {#bomlens}
+### Using BomLens
 
 With [BomLens](https://github.com/sktelecom/bomlens) (an OWASP Incubator project, Apache-2.0), one scan produces the SBOM, a NOTICE file, and security and risk reports. It uses syft, cdxgen, and Trivy internally and runs inside Docker on the runner. There are two ways to set it up.
 
-- **BomLens alone:** the scan itself fails the build through conditions such as `--fail-on vulnerability=high`. GitHub Actions and GitLab CI examples are in [Quick CI/CD in 30 minutes: Using BomLens](/en/ai-coding/cicd-quick#bomlens).
+- **BomLens alone:** the scan itself fails the build through conditions such as `--fail-on vulnerability=high`. GitHub Actions and GitLab CI examples are in [Quick CI/CD in 30 minutes: Using BomLens](/en/ai-coding/cicd-quick#using-bomlens-optional).
 - **BomLens + grype:** BomLens does not take an exception policy file like `.grype.yaml`. To manage ignore rules with approval records as this page does, generate the SBOM and NOTICE with BomLens and leave the build failure decision to grype.
 
 Below is a GitHub Actions example of the second approach. Only the `Generate SBOM` step of the workflow above changes; scanning and retention stay the same.
@@ -201,7 +201,7 @@ jobs:
           retention-days: 90
 ```
 
-In GitLab CI, run BomLens with the `docker:dind` service as in the [GitLab example in Quick CI/CD in 30 minutes](/en/ai-coding/cicd-quick#bomlens), then install grype in the same job and run `grype sbom:sbom.cdx.json --fail-on high --config .grype.yaml`. BomLens writes CycloneDX 1.6 by default, so the 1.7 format recognition issue described above does not occur.
+In GitLab CI, run BomLens with the `docker:dind` service as in the [GitLab example in Quick CI/CD in 30 minutes](/en/ai-coding/cicd-quick#using-bomlens-optional), then install grype in the same job and run `grype sbom:sbom.cdx.json --fail-on high --config .grype.yaml`. BomLens writes CycloneDX 1.6 by default, so the 1.7 format recognition issue described above does not occur.
 
 ---
 
